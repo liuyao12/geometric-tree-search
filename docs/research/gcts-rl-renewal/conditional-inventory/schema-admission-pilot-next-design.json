@@ -1,0 +1,208 @@
+{
+  "actual_execution_authorized": false,
+  "ancestry": "Author wrote registry/certifier, older Model/point/bridge components and current Source diagnosis. This is a new unmeasured design hypothesis, not independent own Source certification or actual-resource/data admission. Root supplied negative outcome metadata; no missing result/packet semantics was reconstructed.",
+  "author_identity": "/root/conventional_library",
+  "current_outcome": {
+    "complete_result_json": false,
+    "fixed_worker_peak_bytes": 2076295168,
+    "full_output_cap_bytes": 134217728,
+    "interpretation": "Both new runs failed the original full ordinary-output cap and independently exceeded1GiB worker peaks. Missing complete results cannot be reconstructed, salvaged or retrospectively admitted by this proposal.",
+    "qualified_schema_Model_or_target_proof_evidence": false,
+    "source": "Root task report, not a new independent resource audit",
+    "symbolic_worker_peak_bytes": 1239760896,
+    "worker_success_receipts": false
+  },
+  "executable_changes": false,
+  "implementation_authorized": false,
+  "observations": [
+    {
+      "fact": "Owned inventory/context and Native-prefix snapshots, copied certifier call arguments and retained returned packets coexist. Each ground call receives a fresh full original definition registry; certification/revalidation packets are both retained. These are concrete Source retention/copy sites.",
+      "limit": "No surviving complete results from the two failures, so actual packet counts, reached stages, retained bytes or allocated objects are not inferred.",
+      "lines": [
+        421,
+        457,
+        458,
+        460,
+        463,
+        465,
+        509,
+        510,
+        522,
+        523,
+        531,
+        536,
+        558,
+        559,
+        560,
+        564,
+        601,
+        608,
+        620
+      ],
+      "source": "registry"
+    },
+    {
+      "fact": "Certificates contain full original families/dependency certificates/epochs/derived rows/interface. Each successful call owns a full input_snapshot; ground inputs include the complete registry. Ground output additionally retains original closure and primitive proof/frame mapping. Copying for post-custody and canonical comparison introduces temporary objects/bytes.",
+      "limit": "The same nested object can be aliased within a returned packet; source fields are not a count of independent deep allocations. JSON tree serialization nevertheless repeats every occurrence unless a reference format is used.",
+      "lines": [
+        78,
+        227,
+        228,
+        234,
+        239,
+        240,
+        253,
+        306,
+        366,
+        371,
+        379,
+        382,
+        384,
+        425,
+        431,
+        432,
+        437,
+        438
+      ],
+      "source": "certificate"
+    },
+    {
+      "fact": "Current full Native records are copied/frozen for custody, fallback receipts retain exact records and full stream comparison serializes complete sequences repeatedly.",
+      "limit": "Some receipt locations share the same object reference, e.g. ground Native_fallback and Native_fallback_receipts. Do not count them twice as live deep copies from Source alone.",
+      "lines": [
+        443,
+        463,
+        465,
+        499,
+        500,
+        586,
+        589,
+        610
+      ],
+      "source": "registry"
+    },
+    {
+      "fact": "The driver retains specialize and register outputs as separate stages, a separate original_inventory owned copy, the complete Model and full search output. _owned is a canonical JSON encode/decode ownership copy; _model_identity constructs complete canonical JSON bytes. All can coexist with the live Model/graph/search trace.",
+      "limit": "These are allocation/retention hypotheses, not measured exclusive peak attribution. Parent parser/observer/native highwaters are different scopes.",
+      "lines": [
+        44,
+        49,
+        50,
+        179,
+        180,
+        1198,
+        1203,
+        1236,
+        1242,
+        1273,
+        1275,
+        1278,
+        1301,
+        1303,
+        1323,
+        1324,
+        1326
+      ],
+      "source": "driver"
+    },
+    {
+      "fact": "Model.record builds fresh outer dictionaries/lists and per-placement metadata dictionaries while referring to existing occupancy/mark values.",
+      "limit": "Model.record is shallow with respect to occupancy/marks; repeated record calls are not evidence of two deep copies of every mark tuple.",
+      "lines": [
+        91,
+        92,
+        93,
+        94,
+        95
+      ],
+      "source": "factored_Model"
+    },
+    {
+      "fact": "Final output already uses bounded streaming JSONEncoder chunks and atomic publication. Its output cap counts the complete ordinary tree serialization. It does not retain the whole final JSON byte string at once, although the complete result object remains live.",
+      "limit": "Do not attribute failure to a nonexistent monolithic final-output buffer or claim gzip/streaming alone fixes live object retention.",
+      "lines": [
+        849,
+        855,
+        861,
+        862,
+        863,
+        864,
+        867,
+        868,
+        871,
+        875,
+        876,
+        885,
+        893
+      ],
+      "source": "driver"
+    }
+  ],
+  "proposed_representation": {
+    "boundary": "One exact data-ownership/storage boundary for full certificate/result packets, not an engine/grammar optimization. First share immutable equal values at retention boundaries; then add a separately versioned object-table wire for complete evidence. No logical field, original record, row, candidate, mark or trace node is omitted.",
+    "custody": "The canonical node table and shared data are immutable for an invocation and carry full current Source/input epoch. Copy-on-write wrappers or fresh ordinary materialization isolate mutable consumers. Do not share mutable dict/list objects across caller-owned snapshots, branches or rollback contexts. Content equality is not a mathematical proof/cache authority.",
+    "exact_values": "Preserve bool versus integer, signed integers and assigned0 versus missing, null, all full symbol bytes, float canonical lexical representation including negative zero, dictionary uniqueness and every array/port/registry/alternative order. Full placement keys/transforms/occupancy/marks and full Source/semantic/certificate/native preimages remain available after inverse reconstruction.",
+    "in_memory": "Freeze ordinary JSON data into typed immutable nodes (null,bool,int,float-lexeme,string,array,object). Intern by complete literal structural equality with type tags. A hash may select a comparison bucket only; compare full keys/preimages before reusing a node. Restrict sharing to immutable data; mutable public callback arguments and returned legacy packets must remain fresh owned materializations.",
+    "incremental_scope": "A first storage adapter can freeze each completed returned packet immediately and release its temporary mutable carrier after existing checks, while preserving an exact ordinary inverse. That may reduce retained copies across calls but leaves the current7351 certifier's per-call cloning/revalidation/transient JSON costs. Removing those transients would require a separately reviewed successor accepting immutable views and streamed comparisons; no such change is implemented here.",
+    "no_native_change": "This table represents host evidence only. Native input/output/program/microcode, original block names/bodies and the fresh final proof request are unchanged. No opaque Native decoding or compressed program alteration.",
+    "wire": "A declared top-level schema contains a complete node table and root reference. Nodes carry explicit type tags; arrays retain every ordered child reference and repeated occurrence, objects retain complete exact keys/values, and reference syntax is outside user object payloads. Children precede parents so the table is a finite DAG. Object IDs are deterministic local serialization identities, not theorem or placement identities."
+  },
+  "qualification_obligations": [
+    "Independent encoder/decoder Source review and a separate ordinary-data inverse verifier, with exact current typed node/canonical-byte semantics and full type-aware equality. No hash-only deduplication, prefix/collision matching or silent dictionary/port reorder.",
+    "Use already complete retained ordinary artifacts for a prospective representation-only test; do not invent the missing two result objects. Preserve every full ordinary source preimage and compare fully streamed inverse bytes/SHA/size, then exact relevant semantic records, not only summary hashes.",
+    "Malformed references, cycle/dangling IDs, wrong type tags, bool/int aliasing, duplicate object keys, repeated shared ports, explicit0/missing, terminator256, distant marking support, strings/float edge cases and resource expansion limits need meaningful finite tests; currently unexecuted.",
+    "Verify actual returned public-packet mutation cannot poison immutable storage or later independent materialization. Verify State/Graph/candidate ownership, complete forward/reverse incidence, all mark-only dependencies, global DEAD/FORCED/earliest decision order and exact rollback remain inherited unchanged; table sharing never supplies candidate or pruning authority.",
+    "All4family templates, every original ground definition/interface/dependency, arity/grammar/guard palette, strict-prior references, every Model placement/mark/initial value and every original search alternative/census/event/tree remain reconstructible. No trace thinning or inventory trimming.",
+    "Native/schema admission statuses remain explicit and unchanged logically. Complete table encoding or successful inverse does not establish Model admission or a target proof; current full data gates and fresh final Native authority still apply.",
+    "Predeclare one fair ordinary-versus-exact-storage engineering comparison with identical full inputs/scientific policy/profile, both modes carrying the same dependencies/cost accounting. A single improvement in file size cannot establish lower live RAM, faster search, new theorem, GCTS-specific advantage or RL gain."
+  ],
+  "references": {
+    "Model": {
+      "bytes": 8155,
+      "path": "/private/tmp/gcts-schema-admission-ROOT-source-20261019/schema_admission_family_points_v3.py",
+      "sha256": "7f95858af5af40d2f902d2aea6bc5d5a7944f7fe0b65b6b9a2ea66c0fb2ec4e3"
+    },
+    "certificate": {
+      "bytes": 26687,
+      "path": "/private/tmp/gcts-mp-schema-source-20261019/mp_schema_certificate_v1.py",
+      "sha256": "7351d5954763e8b671411a78a821e5cc560ac1af19477a9491da573a735d2ae4"
+    },
+    "driver": {
+      "bytes": 87409,
+      "path": "/private/tmp/gcts-schema-admission-ROOT-source-20261019/schema_admission_receiver_driver_v4.py",
+      "sha256": "df0b50a4c744f18fd3e8fd53ad63e9b42cf8adf9a270368bab59e5df605d2777"
+    },
+    "factored_Model": {
+      "bytes": 7409,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_receptor_points.py",
+      "sha256": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207"
+    },
+    "registry": {
+      "bytes": 37657,
+      "path": "/private/tmp/gcts-schema-admission-source-20261019/semantic_inventory_oracle_v4.py",
+      "sha256": "a50579cb6ba326d32de3f203214963ec4bcf184613413a2abae2a2f6bb889eca"
+    }
+  },
+  "resource_and_cap_contract": {
+    "closure_seconds": 210,
+    "current_failures": "No current failure is recovered. A future representation study needs new reviewed Sources/declaration/plans/once grants and must preserve both prior failures, not rerun or replace their status.",
+    "encoded_output_cap_bytes": 134217728,
+    "guard_semantics": "If the old ordinary-output guard remains the claimed profile, BOTH encoded and fully expanded canonical ordinary bytes must satisfy its128MiB limit. Compact-wire output whose expanded old JSON exceeds128MiB is a different declared representation/serialization profile even if its physical file is below the same numeric cap; it must not be advertised as passing the unchanged old serialization guard.",
+    "inverse": "Stream exact canonical ordinary bytes from the table with bounded iterative traversal, independently bounded expanded bytes/depth/work and Root absolute deadline. Do not recursively materialize every repeated reference or let a small DAG expand without a measured bound. Full expansion checking itself is charged inside the original profile.",
+    "memory_bytes": 1073741824,
+    "old_expanded_ordinary_output_cap_bytes": 134217728,
+    "required_counters": [
+      "Exact encoded physical bytes and SHA",
+      "Exact fully expanded canonical ordinary logical bytes and SHA, streamed with declared newline convention",
+      "Peak measured in the unchanged original worker+Native scope, including table builder/old carrier/index/transient decoder/inverse and both representations while live",
+      "Whole setup/interner/custody/encoding/inverse/verification/serialization time and normal UNKNOWN/exception retention"
+    ],
+    "work_seconds": 180
+  },
+  "schema": "schema-admission-exact-storage-next-design-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scientific_replays": 0,
+  "source_only": true,
+  "status": "PROPOSED_NOT_IMPLEMENTED_UNMEASURED"
+}

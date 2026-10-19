@@ -1,0 +1,215 @@
+{
+  "GCTS_RL_advantage_established": false,
+  "Root_negative_audit": {
+    "bytes": 22332,
+    "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/ROOT-negative-evidence-audit-v1.json",
+    "sha256": "e9e59f9281c9229338c1e3394ae2c15bc9577e9abc17a60ecd0fbcbe6769956f"
+  },
+  "actuals": [
+    {
+      "Native_peak_bytes": 13402112,
+      "aggregate_is_posthoc_diagnostic_not_runner_admission": true,
+      "complete_transport_stage_entries": 52,
+      "consumed": {
+        "bytes": 653,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/CONSUMED.json",
+        "sha256": "ceb321c315159cad3c06abb23b27a1601431db7f380051edad1d0a5302aac52d"
+      },
+      "diagnostic_separate_peak_sum_bytes": 2089697280,
+      "failure_terminal_seconds": 92.995525917,
+      "fresh_target_proof_admitted": false,
+      "inventory_permission_established": false,
+      "invocation_id": "schema-admission-002-fixed-ROOT-20261019-v2",
+      "last_input_wire": {
+        "bytes": 726120,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/native/input.bin",
+        "sha256": "f710064249b95545b53f0163ee84577c3e586cb4bacaf722a7be374685b2bdc2"
+      },
+      "last_output_wire": {
+        "bytes": 726124,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/native/output.bin",
+        "sha256": "aa8863810297a5a0ae86c21cfd65a7fda3a4e3215bd7f46c91084a60f047ada3"
+      },
+      "last_stage_purpose": "fresh_quantified_receiver_final",
+      "logs_closed": true,
+      "mode": "fixed",
+      "owned_group_absent": true,
+      "partial_exists": false,
+      "resource_admitted": false,
+      "result_json_exists": false,
+      "runner_exit_code": 2,
+      "runner_receipt": {
+        "bytes": 10210,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/runner-receipt.json",
+        "sha256": "8bb1a0fd99f343671fe7ccc8f908ae91e7a7b7e5e7729651cd9208c9e4804d59"
+      },
+      "stage_metadata_establishes_no_logical_result": true,
+      "status": "FAILED_OUTPUT_CAP_AND_RAM_PROFILE",
+      "subject_sha256": "8f2c3c65c65f7b64cda7418aacab11f6f8ec37112fc4070d514b28986ecbd55a",
+      "terminal": {
+        "bytes": 1595,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/plans-v2/runner-plans/schema-admission-002-fixed-ROOT-20261019-v2-terminal-observation/terminal.json",
+        "sha256": "bb201c5317f8e74d675bdec75ad1b12c55460ff3d2dd425e0d66b0d3031b3f59"
+      },
+      "whole_Model_equal_established": false,
+      "worker_alone_exceeds_1GiB": true,
+      "worker_exit_code": 1,
+      "worker_failure": {
+        "bytes": 30333,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/worker-failure.json",
+        "sha256": "e8d0dc179c3d35115fda09525e7c0b6a6d64f11b48f7f523ed4737a2b097ac8a"
+      },
+      "worker_known_failure_exit_seconds": 92.956456334,
+      "worker_peak_bytes": 2076295168,
+      "worker_success_header_exists": false
+    },
+    {
+      "Native_peak_bytes": 12877824,
+      "aggregate_is_posthoc_diagnostic_not_runner_admission": true,
+      "complete_transport_stage_entries": 52,
+      "consumed": {
+        "bytes": 662,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/CONSUMED.json",
+        "sha256": "071665c1b35cc76faa8c6725371dc07a4accf60e4150e0d88a9fdefae51800e6"
+      },
+      "diagnostic_separate_peak_sum_bytes": 1252638720,
+      "failure_terminal_seconds": 92.620580833,
+      "fresh_target_proof_admitted": false,
+      "inventory_permission_established": false,
+      "invocation_id": "schema-admission-002-symbolic-ROOT-20261019-v2",
+      "last_input_wire": {
+        "bytes": 789348,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/native/input.bin",
+        "sha256": "2471dcdce8d6af7b2f45ada5059b6a7a759ed4cacd85507eeaf10b73f2b4367b"
+      },
+      "last_output_wire": {
+        "bytes": 789352,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/native/output.bin",
+        "sha256": "9a7003209c72dae32aaa101c2dce4a1ff7ac635bf97aaccda2bfecf11955b6d5"
+      },
+      "last_stage_purpose": "fresh_quantified_receiver_final",
+      "logs_closed": true,
+      "mode": "symbolic",
+      "owned_group_absent": true,
+      "partial_exists": false,
+      "resource_admitted": false,
+      "result_json_exists": false,
+      "runner_exit_code": 2,
+      "runner_receipt": {
+        "bytes": 10234,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/runner-receipt.json",
+        "sha256": "48a5e76276fbf7929fe48ee3c3c1a284607398a99902dd6c973f9e9445639849"
+      },
+      "stage_metadata_establishes_no_logical_result": true,
+      "status": "FAILED_OUTPUT_CAP_AND_RAM_PROFILE",
+      "subject_sha256": "2ae64f5faa9b6e6e5a9bf59d85fc7be73af2fca76f34f7fb26916b1d275f8169",
+      "terminal": {
+        "bytes": 1605,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/plans-v2/runner-plans/schema-admission-002-symbolic-ROOT-20261019-v2-terminal-observation/terminal.json",
+        "sha256": "198279159a5a24548473fbb76600f807db10d98e026ca95ba09b46cfc98612e3"
+      },
+      "whole_Model_equal_established": false,
+      "worker_alone_exceeds_1GiB": true,
+      "worker_exit_code": 1,
+      "worker_failure": {
+        "bytes": 30334,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/worker-failure.json",
+        "sha256": "ed5c377a9e95a27b902b6796e399d536e6f73e749960cdf27b8ac7db3bb32e23"
+      },
+      "worker_known_failure_exit_seconds": 92.551106208,
+      "worker_peak_bytes": 1239760896,
+      "worker_success_header_exists": false
+    }
+  ],
+  "admitted_complete_results": 0,
+  "admitted_target_proofs": 0,
+  "assertion": {
+    "id": "prospective-fol-20261018-002",
+    "instantiation_rounds": 2,
+    "length": 12,
+    "scope": "Authored prospective synthetic first-order assertion; closed axioms and closed target, no open root assumptions or schemas. Input only, no proof/route/instance hints; twelve rows and two frozen catalog rounds. All runtime outcomes unmeasured.",
+    "target": [
+      "eq",
+      [
+        "fun",
+        "f",
+        [
+          [
+            "fun",
+            "a",
+            []
+          ]
+        ]
+      ],
+      [
+        "fun",
+        "f",
+        [
+          [
+            "fun",
+            "b",
+            []
+          ]
+        ]
+      ]
+    ],
+    "theory": {
+      "axioms": {
+        "a0": [
+          "eq",
+          [
+            "fun",
+            "a",
+            []
+          ],
+          [
+            "fun",
+            "b",
+            []
+          ]
+        ]
+      },
+      "functions": {
+        "a": 0,
+        "b": 0,
+        "f": 1
+      },
+      "predicates": {},
+      "schemas": []
+    },
+    "title": "Prospective first-order assertion 02"
+  },
+  "current_inventory_count_established": false,
+  "current_whole_Model_equality_established": false,
+  "date": "2026-10-19",
+  "failure_only": true,
+  "full_uncompressed_output_size_above_cap_unretained": true,
+  "goal_complete": false,
+  "independent_review": {
+    "bytes": 35781,
+    "path": "/private/tmp/gcts-schema-admission-peer-20261019/peer-saved-failure-evidence-review-v2.json",
+    "sha256": "23eb5fe17d8c9215b18aade53b0cb669671830104fcada4436ce1d8be6524a89"
+  },
+  "limitations": [
+    "Missing complete result means no proof, inventory or Model validation from this pair.",
+    "Both workers alone exceed1GiB. Posthoc separate peak sums are diagnostic, not runner-admitted aggregates or simultaneous RAM.",
+    "Failure terminal times are not search-performance comparisons.",
+    "Transport stage hashes and last opaque raw wire are not substitutes for full original proof requests/results.",
+    "Source-only duplication hypothesis is unmeasured; next representation is unimplemented and its byte-budget semantics require explicit declaration."
+  ],
+  "new_RL_training": false,
+  "new_theorems": 0,
+  "next_design": {
+    "bytes": 13374,
+    "path": "/private/tmp/gcts-schema-admission-source-20261019/next-storage-design-v1.json",
+    "sha256": "9cb1ede6399c9dd24f118334582528a8746b9e77978b8f48e824f2a6315620ca"
+  },
+  "original_caps_unchanged": true,
+  "prior_complete_inventory_expected_definitions": 38,
+  "recursive_proposer_enabled": false,
+  "schema": "schema-admission-pilot-public-summary-v1",
+  "schema_admission_Source_enabled": true,
+  "schema_admission_operationally_qualified": false,
+  "scientific_actuals": 2,
+  "status": "BOTH_FAILED_OUTPUT_AND_RAM_PROFILE"
+}

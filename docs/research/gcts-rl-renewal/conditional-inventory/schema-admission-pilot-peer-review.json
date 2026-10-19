@@ -1,0 +1,635 @@
+{
+  "Model_validation_established": false,
+  "Root_cohort_closure": {
+    "bytes": 1235,
+    "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/ROOT-cohort-closure-v1.json",
+    "sha256": "88caa330ae45e95a8c1540a919b15f3c83cf6110cd4be67b9c75f7b5dad26b06"
+  },
+  "Root_fixed_before_symbolic_closure": {
+    "bytes": 185,
+    "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/ROOT-fixed-closure-before-symbolic-v1.json",
+    "sha256": "30b310c844cfb71fadb35ae8b424888cbaa7654f9870a56976b800f2ebf59411"
+  },
+  "Root_separate_negative_audit": {
+    "bytes": 22332,
+    "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/ROOT-negative-evidence-audit-v1.json",
+    "sha256": "e9e59f9281c9229338c1e3394ae2c15bc9577e9abc17a60ecd0fbcbe6769956f"
+  },
+  "Source_only_representation_evidence": [
+    {
+      "end_line": 895,
+      "function": "_atomic_output",
+      "line": 849,
+      "raw_segment_sha256": "b171dc3907fc2840cc82deacbeffc7cd6f6f32ad502b3bfdeedfda53428bb773",
+      "source": {
+        "bytes": 87409,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-source-20261019/schema_admission_receiver_driver_v4.py",
+        "sha256": "df0b50a4c744f18fd3e8fd53ad63e9b42cf8adf9a270368bab59e5df605d2777"
+      }
+    },
+    {
+      "end_line": 1419,
+      "function": "run_receiver",
+      "line": 1164,
+      "raw_segment_sha256": "23d32b6496e838a02bf097210633e05c85576bd9282eadb1379a51c72fecadcf",
+      "source": {
+        "bytes": 87409,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-source-20261019/schema_admission_receiver_driver_v4.py",
+        "sha256": "df0b50a4c744f18fd3e8fd53ad63e9b42cf8adf9a270368bab59e5df605d2777"
+      }
+    },
+    {
+      "end_line": 621,
+      "function": "_check_inventory_schema_then_native",
+      "line": 446,
+      "raw_segment_sha256": "9938335a6fa07ef9e6b0425d472bd557b249f928b8234769bddfba194998b8ce",
+      "source": {
+        "bytes": 37657,
+        "path": "/private/tmp/gcts-schema-admission-source-20261019/semantic_inventory_oracle_v4.py",
+        "sha256": "a50579cb6ba326d32de3f203214963ec4bcf184613413a2abae2a2f6bb889eca"
+      }
+    },
+    {
+      "end_line": 396,
+      "function": "_run",
+      "line": 366,
+      "raw_segment_sha256": "bcb772325be741fc85c6103e2cf2084a6f5cab51e21efdff3eca43c9ff55bc7a",
+      "source": {
+        "bytes": 26687,
+        "path": "/private/tmp/gcts-mp-schema-source-20261019/mp_schema_certificate_v1.py",
+        "sha256": "7351d5954763e8b671411a78a821e5cc560ac1af19477a9491da573a735d2ae4"
+      }
+    },
+    {
+      "end_line": 438,
+      "function": "check_ground_instance",
+      "line": 415,
+      "raw_segment_sha256": "c85d1a700d1306d6ca953c60df13cd3581e07ff85b803224af8d7ae1a5488b25",
+      "source": {
+        "bytes": 26687,
+        "path": "/private/tmp/gcts-mp-schema-source-20261019/mp_schema_certificate_v1.py",
+        "sha256": "7351d5954763e8b671411a78a821e5cc560ac1af19477a9491da573a735d2ae4"
+      }
+    }
+  ],
+  "actual_execution_authorized": false,
+  "audit": {
+    "bytes": 205927,
+    "path": "/private/tmp/gcts-schema-admission-peer-20261019/saved-failure-raw-audit-v2.json",
+    "sha256": "8b5b0b888fb72492be4ad55ffe4f97c669d627245ee95d94cd1df722134fd493"
+  },
+  "author_identity": "/root",
+  "authorized_index": {
+    "bytes": 10346,
+    "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/plans-v2/authorized-index-v2.json",
+    "sha256": "48501b3c2db109b9da4ab592078d47d9e43ad5a5f7d738281c1da6615012cf01"
+  },
+  "check_count": 1150,
+  "current_declaration": {
+    "bytes": 4828,
+    "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/case-declaration-v2.json",
+    "sha256": "e1826931547adfe6b752dec3550a06d8a0e46dfedc9a9834497282873c8d76bd"
+  },
+  "current_runtime_closure": {
+    "bytes": 237961,
+    "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/runtime-closure-v2.json",
+    "sha256": "a3d56909bd3445074de187b99914d6a4a073d2c4f6a701061880818c74360f7e"
+  },
+  "data_review_passed": true,
+  "findings": [
+    {
+      "finding": "Both exact reviewed V2 subjects were consumed once. Both workers exited1 with OutputCapExceeded in full atomic JSON serialization, both runners exited2, both observer terminal gates failed. Neither complete result.json nor worker-receipt.json nor partial result remains. Both failures are retained; no retry or cap increase was made.",
+      "id": "TWO_CONSUMED_OUTPUT_FAILURES"
+    },
+    {
+      "finding": "Darwin worker wait4 ru_maxrss alone exceeds the original1GiB in both arms. Fixed2076295168B plus Native13402112B gives diagnostic2089697280B; symbolic1239760896B plus Native12877824B gives diagnostic1252638720B. These are posthoc sums of separate measured peaks, not admitted runner aggregates or simultaneous live RAM. Runner aggregate is null and all resource-admission flags are false.",
+      "id": "INDEPENDENT_RAM_FAILURE"
+    },
+    {
+      "finding": "Exact Python and Native were reaped; Native exits0, worker exits1, runner exits2 are distinct. Both retained logs have EOF, owned groups are absent, no signals or observed reappearance, and saved Root process closure agrees all six PIDs/two PGIDs. Failure terminal durations92.995525917s and92.620580833s are not proof timings.",
+      "id": "CLOSED_FAILED_LIFECYCLE"
+    },
+    {
+      "finding": "All25 owned Python Source files per arm match current original raw pins. Full current reviews/subjects/consumption and reached copy/import stage-prefix metadata join. No full returned Source epoch, compiler/inventory/Model/initial/search/point data, schema certificate census or final Native record was published, so complete semantic equality, schema admission, Model validation and proof acceptance are not established.",
+      "id": "SOURCE_COPIES_NOT_FULL_RESULT_AUTHORITY"
+    },
+    {
+      "finding": "Each transport retains52 COMPLETED stage metadata entries: one theory,38tautology,12scheme and one final-purpose stage. Last opaque input/output raw hashes join ordinal51; full requests/results are absent. A stage purpose, completed hash or child exit0 is not a proof, certificate, coverage or Native acceptance receipt. No such proof was recovered or inferred.",
+      "id": "STAGE_HASH_METADATA_ONLY"
+    },
+    {
+      "finding": "Frozen certifier Source returns each ground packet with complete input_snapshot (including full dependency_definitions and epochs), a reconstructed certificate and ground correspondence. Registry retains each returned packet in its ground census; those ground checks occur for every original definition. This is a concrete structural repetition site worth a separately reviewed representation design. No current packet-size attribution, avoidable-RAM measurement, fit or performance prediction is available from these failed outputs.",
+      "id": "SOURCE_ONLY_REPRESENTATION_HYPOTHESIS"
+    }
+  ],
+  "limitations": [
+    "Retained ordinary JSON/raw hash/stat/AST only. No project/scientific module/function, Native, Model, compiler, logic, kernel, solver, search, Reader, renderer or fixture execution, replay or Native/opaque codec decoding. Native code.bin/input.bin/output.bin were only whole raw-hashed. No proof was reconstructed from wire or stage hashes.",
+    "Reviewer authored inherited outer/broker and earlier driver/helper/symbolic/benchmark/CASE/checker/diagnosis components. Current Root/Library new Source edits were separately scoped reviews; this is an independent audit of Root execution artifacts, not a new self-certification of own inherited Source or formal kernel soundness.",
+    "Negative evidence review PASS means the retained failure/custody interpretation is consistent. It does not mean either experiment passed its profile, schema admission or mathematical proof gates. Native child exit0 means transport process closure only. No bounded result exists for whole semantic Model/input/target/theory/registry/proof joins.",
+    "Exact failed serialized candidate size and the fields that crossed128MiB were not retained. Source cap branch plus traceback establishes the original full cap failure, not a size estimate or a safely salvageable prefix. No truncation, hidden packet selection, packet recomputation, output recovery or old proof substitution is admitted.",
+    "Worker-failure stage_intervals are107 cold intake/import/native-setup stages, ending at native table encoding; they are not full driver register/Model/search/output progress receipts.52 transport stage hashes prove only retained transport metadata. Current formula/registry/checker outcomes cannot be checked from those hashes.",
+    "No positive worker receipt or full output/header/Reader inverse exists. Outer positive final raw loop and resource aggregation are skipped after failed worker exit; current raw Source copy equality does not retroactively prove those unreturned live checks. Interpreter baseline/stat and trusted OS/loader scopes remain conditional; observer/controller RAM and interpreter/observer prelude exclusions remain inherited.",
+    "Saved Root process inspection and recorded reaping/EOF/group probes are retained observations, not a new live process query or formal all-descendant proof. Both terminal durations are failure costs only. Diagnostic separate highwater sums may double-count inherited pages and are not simultaneous memory measurements or enforced OS limits.",
+    "The duplicate-input/certificate hypothesis is Source-only and unmeasured. Any future interning/reference-packet design must preserve complete literal preimages, independent reconstruction, exact ownership/error custody, full original registry and final Native/point authority under a new reviewed declaration; this audit authorizes no implementation, retry, budget raise or theorem/fit/speed/RL/GCTS advantage claim."
+  ],
+  "mismatch_count": 0,
+  "negative_bounded_experiment_outcome": true,
+  "prelaunch_final_review": {
+    "bytes": 9998,
+    "path": "/private/tmp/gcts-schema-admission-peer-20261019/typed-final-grant-delta-review-v2.json",
+    "sha256": "72fe72b24bce247c167cbfd95f01def4f41b7f781f932d04cbaa0a4f7feb9043"
+  },
+  "proof_accepted": false,
+  "resource_accepted": false,
+  "review_Source": {
+    "bytes": 27782,
+    "path": "/private/tmp/gcts-schema-admission-peer-20261019/review_saved_failures_v2.py",
+    "sha256": "f874fe8d9bc0c5f4a2a281941882f7f8d76647a7ac8ce8d80ff5b591a1f51c9b"
+  },
+  "reviewer_identity": "/root/conventional_control_review",
+  "rows": [
+    {
+      "Model_validation_established": false,
+      "Native_exit_code": 0,
+      "Native_transport_stage_count": 52,
+      "Native_transport_stage_purposes": {
+        "first_order_scheme": 12,
+        "first_order_tautology": 38,
+        "first_order_theory_admission": 1,
+        "fresh_quantified_receiver_final": 1
+      },
+      "Native_wait4_peak_bytes": 13402112,
+      "Native_wire_raw": {
+        "code.bin": {
+          "bytes": 7558192,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/native/code.bin",
+          "sha256": "97f0b600cffd83552c4e0f0c4fb1f5d26cfdb76e3e74b267bbaebeddc836e7ed"
+        },
+        "input.bin": {
+          "bytes": 726120,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/native/input.bin",
+          "sha256": "f710064249b95545b53f0163ee84577c3e586cb4bacaf722a7be374685b2bdc2"
+        },
+        "output.bin": {
+          "bytes": 726124,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/native/output.bin",
+          "sha256": "aa8863810297a5a0ae86c21cfd65a7fda3a4e3215bd7f46c91084a60f047ada3"
+        }
+      },
+      "actual_directory": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2",
+      "admitted_resource_sum": null,
+      "all25ownedSources": {
+        "bounded_request_oracle": {
+          "bytes": 20424,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/modules/bounded_request_oracle.py",
+          "sha256": "606e790f4ba3ecc976877cbe52ccfd64519262f2ea07214c80d989f58e4f7637"
+        },
+        "certificate_boundary_search": {
+          "bytes": 7089,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/modules/certificate_boundary_search.py",
+          "sha256": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a"
+        },
+        "interned_quantified_family_points_v1": {
+          "bytes": 4311,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/modules/interned_quantified_family_points_v1.py",
+          "sha256": "fb37663b4c0c3de4e9f3c28564678af833857f7ebe761cd83275d62f123b9a8e"
+        },
+        "interned_result_reader_v2": {
+          "bytes": 4705,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/modules/interned_result_reader_v2.py",
+          "sha256": "cd06c8372b6edd05774cf5974c5b6265bbc196afdc68d47507e54a2044dec836"
+        },
+        "logic": {
+          "bytes": 10808,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/modules/logic.py",
+          "sha256": "5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011"
+        },
+        "mp_schema_certificate": {
+          "bytes": 26687,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/modules/mp_schema_certificate.py",
+          "sha256": "7351d5954763e8b671411a78a821e5cc560ac1af19477a9491da573a735d2ae4"
+        },
+        "native_inference_inventory": {
+          "bytes": 10594,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/modules/native_inference_inventory.py",
+          "sha256": "89979f6be8f422ea293c2f0b6c0e966fc9a0710a8e15cbe58437f868cbf75091"
+        },
+        "native_inventory_policy": {
+          "bytes": 2746,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/modules/native_inventory_policy.py",
+          "sha256": "8721a361f4a97e5311f8ed944431d49d08592ed102f50ed333d1ad2b9ff01591"
+        },
+        "native_receptor_points": {
+          "bytes": 8962,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/modules/native_receptor_points.py",
+          "sha256": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888"
+        },
+        "proof_boundary": {
+          "bytes": 6992,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/modules/proof_boundary.py",
+          "sha256": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f"
+        },
+        "quantified_family_points_v2": {
+          "bytes": 8155,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/modules/quantified_family_points_v2.py",
+          "sha256": "7f95858af5af40d2f902d2aea6bc5d5a7944f7fe0b65b6b9a2ea66c0fb2ec4e3"
+        },
+        "quantified_receptors_v1": {
+          "bytes": 11060,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/modules/quantified_receptors_v1.py",
+          "sha256": "d1c4afa10d58abbcf473cb3da8ee8768c974dd05d03ea00b988d574b2441af5a"
+        },
+        "quantified_symbolic_control_v2": {
+          "bytes": 27203,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/modules/quantified_symbolic_control_v2.py",
+          "sha256": "8eda5d6fd91a137c9d22081bcba707631ab29733d2ae4ce413a2913a2b7d3bbe"
+        },
+        "receptor_support_ordering_v1": {
+          "bytes": 18508,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/modules/receptor_support_ordering_v1.py",
+          "sha256": "6e39f5cf5cd261c73515c29d3b315c43c27ae0bc64ef5fb509cea178b0251769"
+        },
+        "semantic_inventory_guidance": {
+          "bytes": 6942,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/modules/semantic_inventory_guidance.py",
+          "sha256": "744948b67e2870ae24737469aceb920624b59d616e8a48f91b99d39f56c14a79"
+        },
+        "semantic_inventory_oracle": {
+          "bytes": 37657,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/modules/semantic_inventory_oracle.py",
+          "sha256": "a50579cb6ba326d32de3f203214963ec4bcf184613413a2abae2a2f6bb889eca"
+        },
+        "semantic_inventory_search_v2": {
+          "bytes": 15936,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/modules/semantic_inventory_search_v2.py",
+          "sha256": "35443c958f2115efa18cc923fb4a4f1070e6e03ccf1d1adf2bb56ce1f7bab28b"
+        },
+        "semantic_lemma_inventory": {
+          "bytes": 7196,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/modules/semantic_lemma_inventory.py",
+          "sha256": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad"
+        },
+        "semantic_point_smt": {
+          "bytes": 4593,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/modules/semantic_point_smt.py",
+          "sha256": "6bcb3fb60529f6888836a1ca0c613b772cea192c9549620f968dbdf7cb9be74a"
+        },
+        "semantic_receiver_driver": {
+          "bytes": 87409,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/modules/semantic_receiver_driver.py",
+          "sha256": "df0b50a4c744f18fd3e8fd53ad63e9b42cf8adf9a270368bab59e5df605d2777"
+        },
+        "semantic_receptor_points": {
+          "bytes": 7409,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/modules/semantic_receptor_points.py",
+          "sha256": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207"
+        },
+        "tape_binary": {
+          "bytes": 3756,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/modules/tape_binary.py",
+          "sha256": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247"
+        },
+        "tape_tree_machine": {
+          "bytes": 19188,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/modules/tape_tree_machine.py",
+          "sha256": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f"
+        },
+        "tree_machine": {
+          "bytes": 13290,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/modules/tree_machine.py",
+          "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257"
+        },
+        "turtle": {
+          "bytes": 28533,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/modules/turtle.py",
+          "sha256": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a"
+        }
+      },
+      "authorization": {
+        "bytes": 7856,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/plans-v2/authorizations/schema-admission-002-fixed-ROOT-20261019-v2.json",
+        "sha256": "07165d888b581a60e2f90cfa21dda355b3ddbcaeb0d85b49c1a109da21cb692d"
+      },
+      "cold_stage_prefix_count": 107,
+      "complete_result_present": false,
+      "consumed": {
+        "bytes": 653,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/CONSUMED.json",
+        "sha256": "ceb321c315159cad3c06abb23b27a1601431db7f380051edad1d0a5302aac52d"
+      },
+      "invocation_id": "schema-admission-002-fixed-ROOT-20261019-v2",
+      "logs": {
+        "stderr": {
+          "bytes": 1210,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/stderr.bin",
+          "sha256": "5c2b11c3cdfc99401b2a792ca7bc7ec8a4be801eaacdf696fe970355481725dd"
+        },
+        "stdout": {
+          "bytes": 0,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/stdout.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "mode": "fixed",
+      "observed_instrument_failure_seconds": 93.01566975,
+      "observer_consumed": {
+        "bytes": 320,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/plans-v2/runner-plans/schema-admission-002-fixed-ROOT-20261019-v2-terminal-observation/CONSUMED.json",
+        "sha256": "7a021dcb3dc44ff179b144b32e8e70408e5244b494fa9b4140564f77df3b5b82"
+      },
+      "observer_stderr": {
+        "bytes": 0,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/plans-v2/runner-plans/schema-admission-002-fixed-ROOT-20261019-v2-terminal-observation/stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "observer_stdout": {
+        "bytes": 252,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/plans-v2/runner-plans/schema-admission-002-fixed-ROOT-20261019-v2-terminal-observation/stdout.bin",
+        "sha256": "2f47a88c59e2a06dbd47a76ac7ee384f941639d3bed4ece7bb9ea5844452200d"
+      },
+      "observer_terminal": {
+        "bytes": 1595,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/plans-v2/runner-plans/schema-admission-002-fixed-ROOT-20261019-v2-terminal-observation/terminal.json",
+        "sha256": "bb201c5317f8e74d675bdec75ad1b12c55460ff3d2dd425e0d66b0d3031b3f59"
+      },
+      "original128MiB_output_cap_failure": true,
+      "posthoc_diagnostic_separate_peak_sum_MiB": 1992.890625,
+      "posthoc_diagnostic_separate_peak_sum_bytes": 2089697280,
+      "proof_accepted": false,
+      "resource_accepted": false,
+      "runner_clock_failure_terminal_seconds": 92.995525917,
+      "runner_exit_code": 2,
+      "runner_plan": {
+        "bytes": 2740,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/plans-v2/runner-plans/schema-admission-002-fixed-ROOT-20261019-v2.json",
+        "sha256": "8e9f418c2e448503c8a4abbe1c0f87b7ce0ba9651c87fbf898d162cc1ef71c80"
+      },
+      "runner_receipt": {
+        "bytes": 10210,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/runner-receipt.json",
+        "sha256": "8bb1a0fd99f343671fe7ccc8f908ae91e7a7b7e5e7729651cd9208c9e4804d59"
+      },
+      "schema_inventory_admission_established": false,
+      "subject_sha256": "8f2c3c65c65f7b64cda7418aacab11f6f8ec37112fc4070d514b28986ecbd55a",
+      "worker_exit_code": 1,
+      "worker_failure": {
+        "bytes": 30333,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/worker-failure.json",
+        "sha256": "e8d0dc179c3d35115fda09525e7c0b6a6d64f11b48f7f523ed4737a2b097ac8a"
+      },
+      "worker_plan": {
+        "bytes": 18106,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/plans-v2/worker-plans/schema-admission-002-fixed-ROOT-20261019-v2.json",
+        "sha256": "c7e740394b2ddd083cf4bd631cc6a1466bb234f1c5d8d7f799883bcfb59b3e34"
+      },
+      "worker_receipt_present": false,
+      "worker_wait4_peak_bytes": 2076295168
+    },
+    {
+      "Model_validation_established": false,
+      "Native_exit_code": 0,
+      "Native_transport_stage_count": 52,
+      "Native_transport_stage_purposes": {
+        "first_order_scheme": 12,
+        "first_order_tautology": 38,
+        "first_order_theory_admission": 1,
+        "fresh_quantified_receiver_final": 1
+      },
+      "Native_wait4_peak_bytes": 12877824,
+      "Native_wire_raw": {
+        "code.bin": {
+          "bytes": 7558192,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/native/code.bin",
+          "sha256": "97f0b600cffd83552c4e0f0c4fb1f5d26cfdb76e3e74b267bbaebeddc836e7ed"
+        },
+        "input.bin": {
+          "bytes": 789348,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/native/input.bin",
+          "sha256": "2471dcdce8d6af7b2f45ada5059b6a7a759ed4cacd85507eeaf10b73f2b4367b"
+        },
+        "output.bin": {
+          "bytes": 789352,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/native/output.bin",
+          "sha256": "9a7003209c72dae32aaa101c2dce4a1ff7ac635bf97aaccda2bfecf11955b6d5"
+        }
+      },
+      "actual_directory": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2",
+      "admitted_resource_sum": null,
+      "all25ownedSources": {
+        "bounded_request_oracle": {
+          "bytes": 20424,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/modules/bounded_request_oracle.py",
+          "sha256": "606e790f4ba3ecc976877cbe52ccfd64519262f2ea07214c80d989f58e4f7637"
+        },
+        "certificate_boundary_search": {
+          "bytes": 7089,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/modules/certificate_boundary_search.py",
+          "sha256": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a"
+        },
+        "interned_quantified_family_points_v1": {
+          "bytes": 4311,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/modules/interned_quantified_family_points_v1.py",
+          "sha256": "fb37663b4c0c3de4e9f3c28564678af833857f7ebe761cd83275d62f123b9a8e"
+        },
+        "interned_result_reader_v2": {
+          "bytes": 4705,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/modules/interned_result_reader_v2.py",
+          "sha256": "cd06c8372b6edd05774cf5974c5b6265bbc196afdc68d47507e54a2044dec836"
+        },
+        "logic": {
+          "bytes": 10808,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/modules/logic.py",
+          "sha256": "5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011"
+        },
+        "mp_schema_certificate": {
+          "bytes": 26687,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/modules/mp_schema_certificate.py",
+          "sha256": "7351d5954763e8b671411a78a821e5cc560ac1af19477a9491da573a735d2ae4"
+        },
+        "native_inference_inventory": {
+          "bytes": 10594,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/modules/native_inference_inventory.py",
+          "sha256": "89979f6be8f422ea293c2f0b6c0e966fc9a0710a8e15cbe58437f868cbf75091"
+        },
+        "native_inventory_policy": {
+          "bytes": 2746,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/modules/native_inventory_policy.py",
+          "sha256": "8721a361f4a97e5311f8ed944431d49d08592ed102f50ed333d1ad2b9ff01591"
+        },
+        "native_receptor_points": {
+          "bytes": 8962,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/modules/native_receptor_points.py",
+          "sha256": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888"
+        },
+        "proof_boundary": {
+          "bytes": 6992,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/modules/proof_boundary.py",
+          "sha256": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f"
+        },
+        "quantified_family_points_v2": {
+          "bytes": 8155,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/modules/quantified_family_points_v2.py",
+          "sha256": "7f95858af5af40d2f902d2aea6bc5d5a7944f7fe0b65b6b9a2ea66c0fb2ec4e3"
+        },
+        "quantified_receptors_v1": {
+          "bytes": 11060,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/modules/quantified_receptors_v1.py",
+          "sha256": "d1c4afa10d58abbcf473cb3da8ee8768c974dd05d03ea00b988d574b2441af5a"
+        },
+        "quantified_symbolic_control_v2": {
+          "bytes": 27203,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/modules/quantified_symbolic_control_v2.py",
+          "sha256": "8eda5d6fd91a137c9d22081bcba707631ab29733d2ae4ce413a2913a2b7d3bbe"
+        },
+        "receptor_support_ordering_v1": {
+          "bytes": 18508,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/modules/receptor_support_ordering_v1.py",
+          "sha256": "6e39f5cf5cd261c73515c29d3b315c43c27ae0bc64ef5fb509cea178b0251769"
+        },
+        "semantic_inventory_guidance": {
+          "bytes": 6942,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/modules/semantic_inventory_guidance.py",
+          "sha256": "744948b67e2870ae24737469aceb920624b59d616e8a48f91b99d39f56c14a79"
+        },
+        "semantic_inventory_oracle": {
+          "bytes": 37657,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/modules/semantic_inventory_oracle.py",
+          "sha256": "a50579cb6ba326d32de3f203214963ec4bcf184613413a2abae2a2f6bb889eca"
+        },
+        "semantic_inventory_search_v2": {
+          "bytes": 15936,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/modules/semantic_inventory_search_v2.py",
+          "sha256": "35443c958f2115efa18cc923fb4a4f1070e6e03ccf1d1adf2bb56ce1f7bab28b"
+        },
+        "semantic_lemma_inventory": {
+          "bytes": 7196,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/modules/semantic_lemma_inventory.py",
+          "sha256": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad"
+        },
+        "semantic_point_smt": {
+          "bytes": 4593,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/modules/semantic_point_smt.py",
+          "sha256": "6bcb3fb60529f6888836a1ca0c613b772cea192c9549620f968dbdf7cb9be74a"
+        },
+        "semantic_receiver_driver": {
+          "bytes": 87409,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/modules/semantic_receiver_driver.py",
+          "sha256": "df0b50a4c744f18fd3e8fd53ad63e9b42cf8adf9a270368bab59e5df605d2777"
+        },
+        "semantic_receptor_points": {
+          "bytes": 7409,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/modules/semantic_receptor_points.py",
+          "sha256": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207"
+        },
+        "tape_binary": {
+          "bytes": 3756,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/modules/tape_binary.py",
+          "sha256": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247"
+        },
+        "tape_tree_machine": {
+          "bytes": 19188,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/modules/tape_tree_machine.py",
+          "sha256": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f"
+        },
+        "tree_machine": {
+          "bytes": 13290,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/modules/tree_machine.py",
+          "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257"
+        },
+        "turtle": {
+          "bytes": 28533,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/modules/turtle.py",
+          "sha256": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a"
+        }
+      },
+      "authorization": {
+        "bytes": 7859,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/plans-v2/authorizations/schema-admission-002-symbolic-ROOT-20261019-v2.json",
+        "sha256": "034853609155e5243f9f12df358f507b830a1bcc47e76d3bf644d1a2c2a22942"
+      },
+      "cold_stage_prefix_count": 107,
+      "complete_result_present": false,
+      "consumed": {
+        "bytes": 662,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/CONSUMED.json",
+        "sha256": "071665c1b35cc76faa8c6725371dc07a4accf60e4150e0d88a9fdefae51800e6"
+      },
+      "invocation_id": "schema-admission-002-symbolic-ROOT-20261019-v2",
+      "logs": {
+        "stderr": {
+          "bytes": 1216,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/stderr.bin",
+          "sha256": "02af5d276a0cb489844989ba7e224dba6507460927e96e0de80cc2f310ea4689"
+        },
+        "stdout": {
+          "bytes": 0,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/stdout.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "mode": "symbolic",
+      "observed_instrument_failure_seconds": 92.645936125,
+      "observer_consumed": {
+        "bytes": 323,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/plans-v2/runner-plans/schema-admission-002-symbolic-ROOT-20261019-v2-terminal-observation/CONSUMED.json",
+        "sha256": "b347328e5f5baac746340a6b9bfc91e3c864dbf8e7acb9beeabf705809aa4dd6"
+      },
+      "observer_stderr": {
+        "bytes": 0,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/plans-v2/runner-plans/schema-admission-002-symbolic-ROOT-20261019-v2-terminal-observation/stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "observer_stdout": {
+        "bytes": 255,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/plans-v2/runner-plans/schema-admission-002-symbolic-ROOT-20261019-v2-terminal-observation/stdout.bin",
+        "sha256": "6055d1c0051f238c118572f4725f78815108309c143fe47d04651013da571c7f"
+      },
+      "observer_terminal": {
+        "bytes": 1605,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/plans-v2/runner-plans/schema-admission-002-symbolic-ROOT-20261019-v2-terminal-observation/terminal.json",
+        "sha256": "198279159a5a24548473fbb76600f807db10d98e026ca95ba09b46cfc98612e3"
+      },
+      "original128MiB_output_cap_failure": true,
+      "posthoc_diagnostic_separate_peak_sum_MiB": 1194.609375,
+      "posthoc_diagnostic_separate_peak_sum_bytes": 1252638720,
+      "proof_accepted": false,
+      "resource_accepted": false,
+      "runner_clock_failure_terminal_seconds": 92.620580833,
+      "runner_exit_code": 2,
+      "runner_plan": {
+        "bytes": 2755,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/plans-v2/runner-plans/schema-admission-002-symbolic-ROOT-20261019-v2.json",
+        "sha256": "b195c53f9f9727312ef7bf2edf18c4ebe32c56f9e1d495da9a22add110aab855"
+      },
+      "runner_receipt": {
+        "bytes": 10234,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/runner-receipt.json",
+        "sha256": "48a5e76276fbf7929fe48ee3c3c1a284607398a99902dd6c973f9e9445639849"
+      },
+      "schema_inventory_admission_established": false,
+      "subject_sha256": "2ae64f5faa9b6e6e5a9bf59d85fc7be73af2fca76f34f7fb26916b1d275f8169",
+      "worker_exit_code": 1,
+      "worker_failure": {
+        "bytes": 30334,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/worker-failure.json",
+        "sha256": "ed5c377a9e95a27b902b6796e399d536e6f73e749960cdf27b8ac7db3bb32e23"
+      },
+      "worker_plan": {
+        "bytes": 18115,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/plans-v2/worker-plans/schema-admission-002-symbolic-ROOT-20261019-v2.json",
+        "sha256": "b60a8e5d6f723399373a67ddb5a5cab7ffc9baf6af445b772d2b845018e8c1ab"
+      },
+      "worker_receipt_present": false,
+      "worker_wait4_peak_bytes": 1239760896
+    }
+  ],
+  "saved_data_only": true,
+  "saved_failure_evidence_review_passed": true,
+  "schema": "schema-admission-saved-failure-evidence-review-v1",
+  "schema_inventory_admission_established": false,
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scientific_replays": 0,
+  "source_only": true,
+  "unique_raw_pin_count": 121
+}

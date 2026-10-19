@@ -1,0 +1,2170 @@
+{
+  "Root_negative_audit": {
+    "bytes": 22332,
+    "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/ROOT-negative-evidence-audit-v1.json",
+    "sha256": "e9e59f9281c9229338c1e3394ae2c15bc9577e9abc17a60ecd0fbcbe6769956f"
+  },
+  "archive": {
+    "bytes": 4219201,
+    "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/schema-admission-pilot-evidence.zip",
+    "sha256": "c649597b759c4eee2def3aeb585a477af39cba3c1f6e9085a8ba2a5993ef7d80"
+  },
+  "assets": [
+    {
+      "bytes": 100462,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/schema-admission-pilot.html",
+      "sha256": "cbaee25d244d6b992592a10715ee67b090e38e570c7e9ab0b8e9e838bfee59dd"
+    },
+    {
+      "bytes": 8581,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/schema-admission-pilot-summary.json",
+      "sha256": "5dd400260535bfe68b3d9f8b2082b7c1edf6108590b214596415bc997caec615"
+    },
+    {
+      "bytes": 22332,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/schema-admission-pilot-audit.json",
+      "sha256": "e9e59f9281c9229338c1e3394ae2c15bc9577e9abc17a60ecd0fbcbe6769956f"
+    },
+    {
+      "bytes": 35781,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/schema-admission-pilot-peer-review.json",
+      "sha256": "23eb5fe17d8c9215b18aade53b0cb669671830104fcada4436ce1d8be6524a89"
+    },
+    {
+      "bytes": 56524,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/schema-admission-pilot-fixed-failure.json",
+      "sha256": "1d344c941a54948cce3021e97f4412dbe818a297cab462cbe7261cb53f670ae4"
+    },
+    {
+      "bytes": 56562,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/schema-admission-pilot-symbolic-failure.json",
+      "sha256": "e264fedaeb41bacf116e1113bb191356a4415e76f19b0858fc42d0bf3d013537"
+    },
+    {
+      "bytes": 13374,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/schema-admission-pilot-next-design.json",
+      "sha256": "9cb1ede6399c9dd24f118334582528a8746b9e77978b8f48e824f2a6315620ca"
+    },
+    {
+      "bytes": 90932,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/reader.html",
+      "sha256": "50866e0a2adca7d93b0990fb19f46f1b015b8979aeac0ac6679a2e1c035821f2"
+    },
+    {
+      "bytes": 426218,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/mp-schema-shadow.html",
+      "sha256": "8f8748a2ac9daa097888de4d582c34ddef925b061974a30f68e19c9965718696"
+    },
+    {
+      "bytes": 14294,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/parallel-research.html",
+      "sha256": "99d262dff983257ec19ab95f6b693565d8b96552ebe1b06b422e3c64f9a87b80"
+    }
+  ],
+  "goal_complete": false,
+  "independent_review": {
+    "bytes": 35781,
+    "path": "/private/tmp/gcts-schema-admission-peer-20261019/peer-saved-failure-evidence-review-v2.json",
+    "sha256": "23eb5fe17d8c9215b18aade53b0cb669671830104fcada4436ce1d8be6524a89"
+  },
+  "members": [
+    {
+      "bytes": 122,
+      "member": "Root/ROOT-before-actual-process-check-v1.json",
+      "sha256": "04a91123c0a142e9fe0e8711eef59fbc219524cf66604aefd5b18e0734195dd0",
+      "source": {
+        "bytes": 122,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/ROOT-before-actual-process-check-v1.json",
+        "sha256": "04a91123c0a142e9fe0e8711eef59fbc219524cf66604aefd5b18e0734195dd0"
+      }
+    },
+    {
+      "bytes": 1235,
+      "member": "Root/ROOT-cohort-closure-v1.json",
+      "sha256": "88caa330ae45e95a8c1540a919b15f3c83cf6110cd4be67b9c75f7b5dad26b06",
+      "source": {
+        "bytes": 1235,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/ROOT-cohort-closure-v1.json",
+        "sha256": "88caa330ae45e95a8c1540a919b15f3c83cf6110cd4be67b9c75f7b5dad26b06"
+      }
+    },
+    {
+      "bytes": 333,
+      "member": "Root/ROOT-false-preflight-v1.json",
+      "sha256": "62d1f39aa84d3c62666683c0ec695542d90796b79a2b56dee3c14de32acb1315",
+      "source": {
+        "bytes": 333,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/ROOT-false-preflight-v1.json",
+        "sha256": "62d1f39aa84d3c62666683c0ec695542d90796b79a2b56dee3c14de32acb1315"
+      }
+    },
+    {
+      "bytes": 481,
+      "member": "Root/ROOT-false-preflight-v2.json",
+      "sha256": "b2681c83fd388110c8f125b148e309224e0f8bb87fbd71e2722ff52b961dcb7a",
+      "source": {
+        "bytes": 481,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/ROOT-false-preflight-v2.json",
+        "sha256": "b2681c83fd388110c8f125b148e309224e0f8bb87fbd71e2722ff52b961dcb7a"
+      }
+    },
+    {
+      "bytes": 2865,
+      "member": "Root/ROOT-final-grant-adoption-v2.json",
+      "sha256": "ca0b3800c2676268ecf54480a32114cddfec2041eb63a29ea0e088d8b93c2dba",
+      "source": {
+        "bytes": 2865,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/ROOT-final-grant-adoption-v2.json",
+        "sha256": "ca0b3800c2676268ecf54480a32114cddfec2041eb63a29ea0e088d8b93c2dba"
+      }
+    },
+    {
+      "bytes": 185,
+      "member": "Root/ROOT-fixed-closure-before-symbolic-v1.json",
+      "sha256": "30b310c844cfb71fadb35ae8b424888cbaa7654f9870a56976b800f2ebf59411",
+      "source": {
+        "bytes": 185,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/ROOT-fixed-closure-before-symbolic-v1.json",
+        "sha256": "30b310c844cfb71fadb35ae8b424888cbaa7654f9870a56976b800f2ebf59411"
+      }
+    },
+    {
+      "bytes": 22332,
+      "member": "Root/ROOT-negative-evidence-audit-v1.json",
+      "sha256": "e9e59f9281c9229338c1e3394ae2c15bc9577e9abc17a60ecd0fbcbe6769956f",
+      "source": {
+        "bytes": 22332,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/ROOT-negative-evidence-audit-v1.json",
+        "sha256": "e9e59f9281c9229338c1e3394ae2c15bc9577e9abc17a60ecd0fbcbe6769956f"
+      }
+    },
+    {
+      "bytes": 27549,
+      "member": "Root/ROOT-whole-raw-preflight-v2.json",
+      "sha256": "91b008428244711ef2f66887c3ecc10583e71227f404f3e7476eb37098eabcd6",
+      "source": {
+        "bytes": 27549,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/ROOT-whole-raw-preflight-v2.json",
+        "sha256": "91b008428244711ef2f66887c3ecc10583e71227f404f3e7476eb37098eabcd6"
+      }
+    },
+    {
+      "bytes": 9763,
+      "member": "Root/audit_failures_v1.py",
+      "sha256": "2532bd7f3b5fb2fd7e64d5956301ae31745e0548664b81c4a01433afb5adcbed",
+      "source": {
+        "bytes": 9763,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/audit_failures_v1.py",
+        "sha256": "2532bd7f3b5fb2fd7e64d5956301ae31745e0548664b81c4a01433afb5adcbed"
+      }
+    },
+    {
+      "bytes": 10020,
+      "member": "Root/audit_failures_v2.py",
+      "sha256": "dbfa3004f792b05db4354a01fc95953078f52556ade3bf67dbaee0191ec1633f",
+      "source": {
+        "bytes": 10020,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/audit_failures_v2.py",
+        "sha256": "dbfa3004f792b05db4354a01fc95953078f52556ade3bf67dbaee0191ec1633f"
+      }
+    },
+    {
+      "bytes": 10393,
+      "member": "Root/build_publication_v1.py",
+      "sha256": "248523af0df2d85f9d8b20566add67613e94d4dae377bb1fd271030a6897723c",
+      "source": {
+        "bytes": 10393,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/build_publication_v1.py",
+        "sha256": "248523af0df2d85f9d8b20566add67613e94d4dae377bb1fd271030a6897723c"
+      }
+    },
+    {
+      "bytes": 4828,
+      "member": "Root/case-declaration-v1.json",
+      "sha256": "7acf5c3e87f4bfbd8fbf0735aadc4edfa221b2f8603fd4e577189be2c0a0608e",
+      "source": {
+        "bytes": 4828,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/case-declaration-v1.json",
+        "sha256": "7acf5c3e87f4bfbd8fbf0735aadc4edfa221b2f8603fd4e577189be2c0a0608e"
+      }
+    },
+    {
+      "bytes": 4828,
+      "member": "Root/case-declaration-v2.json",
+      "sha256": "e1826931547adfe6b752dec3550a06d8a0e46dfedc9a9834497282873c8d76bd",
+      "source": {
+        "bytes": 4828,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/case-declaration-v2.json",
+        "sha256": "e1826931547adfe6b752dec3550a06d8a0e46dfedc9a9834497282873c8d76bd"
+      }
+    },
+    {
+      "bytes": 6370,
+      "member": "Root/grant_v1.py",
+      "sha256": "58ba638838a9531ffbf67f12c273e68b77e16209382ac1d2839ca05ab5a02580",
+      "source": {
+        "bytes": 6370,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/grant_v1.py",
+        "sha256": "58ba638838a9531ffbf67f12c273e68b77e16209382ac1d2839ca05ab5a02580"
+      }
+    },
+    {
+      "bytes": 6373,
+      "member": "Root/grant_v2.py",
+      "sha256": "f2e8b1ac001e38edc9e0e2fb104514aa1a3633ef28dfcaa2c2a572826fe5bf12",
+      "source": {
+        "bytes": 6373,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/grant_v2.py",
+        "sha256": "f2e8b1ac001e38edc9e0e2fb104514aa1a3633ef28dfcaa2c2a572826fe5bf12"
+      }
+    },
+    {
+      "bytes": 16093,
+      "member": "Root/pilot-report-template-v2.html",
+      "sha256": "49884fc4f730090d1e3ac341470e4ffc1dc398c263a883dd00a4ad5c3abc3f47",
+      "source": {
+        "bytes": 16093,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/pilot-report-template-v2.html",
+        "sha256": "49884fc4f730090d1e3ac341470e4ffc1dc398c263a883dd00a4ad5c3abc3f47"
+      }
+    },
+    {
+      "bytes": 15855,
+      "member": "Root/pilot-report-template.html",
+      "sha256": "4fe3453c57b955b0ab84ed1e56ffff4ffe3aa492b2521a75085051076c71ae4f",
+      "source": {
+        "bytes": 15855,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/pilot-report-template.html",
+        "sha256": "4fe3453c57b955b0ab84ed1e56ffff4ffe3aa492b2521a75085051076c71ae4f"
+      }
+    },
+    {
+      "bytes": 13105,
+      "member": "Root/prepare_prospective_v1.py",
+      "sha256": "dd5205541892b019d44d78391572f3f43e4dee98aec892d6bd544f4882a2f71e",
+      "source": {
+        "bytes": 13105,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/prepare_prospective_v1.py",
+        "sha256": "dd5205541892b019d44d78391572f3f43e4dee98aec892d6bd544f4882a2f71e"
+      }
+    },
+    {
+      "bytes": 14469,
+      "member": "Root/prepare_prospective_v2.py",
+      "sha256": "452a553f2d949498dd9ca00438284dd62c6974a293c9be75caa9fe4d17137aa4",
+      "source": {
+        "bytes": 14469,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/prepare_prospective_v2.py",
+        "sha256": "452a553f2d949498dd9ca00438284dd62c6974a293c9be75caa9fe4d17137aa4"
+      }
+    },
+    {
+      "bytes": 367907,
+      "member": "Root/prior-case002-fixed-bulk-result.json",
+      "sha256": "c8bc92e3d1035ef21d3fca88bc923e24308f8acfcfdef242747323911383292b",
+      "source": {
+        "bytes": 367907,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/prior-case002-fixed-bulk-result.json",
+        "sha256": "c8bc92e3d1035ef21d3fca88bc923e24308f8acfcfdef242747323911383292b"
+      }
+    },
+    {
+      "bytes": 9663,
+      "member": "Root/prospective-design-v1.json",
+      "sha256": "6e773126383a1c47f5eff577d6815399f1f3967fa03b7d9efdbd1aaeb7f989b0",
+      "source": {
+        "bytes": 9663,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/prospective-design-v1.json",
+        "sha256": "6e773126383a1c47f5eff577d6815399f1f3967fa03b7d9efdbd1aaeb7f989b0"
+      }
+    },
+    {
+      "bytes": 9663,
+      "member": "Root/prospective-design-v2.json",
+      "sha256": "8eacc173eaadb09a4a9bc49ec53cd1e4494e7a4e266cf3e98f99c8fcdc05d031",
+      "source": {
+        "bytes": 9663,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/prospective-design-v2.json",
+        "sha256": "8eacc173eaadb09a4a9bc49ec53cd1e4494e7a4e266cf3e98f99c8fcdc05d031"
+      }
+    },
+    {
+      "bytes": 235741,
+      "member": "Root/runtime-closure-v1.json",
+      "sha256": "a7a52f680c5289a5c24a56bb31bb91c151a07bbc14440d3e182a1dfb62b1931b",
+      "source": {
+        "bytes": 235741,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/runtime-closure-v1.json",
+        "sha256": "a7a52f680c5289a5c24a56bb31bb91c151a07bbc14440d3e182a1dfb62b1931b"
+      }
+    },
+    {
+      "bytes": 237961,
+      "member": "Root/runtime-closure-v2.json",
+      "sha256": "a3d56909bd3445074de187b99914d6a4a073d2c4f6a701061880818c74360f7e",
+      "source": {
+        "bytes": 237961,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/runtime-closure-v2.json",
+        "sha256": "a3d56909bd3445074de187b99914d6a4a073d2c4f6a701061880818c74360f7e"
+      }
+    },
+    {
+      "bytes": 4492,
+      "member": "Root/validate_publication_v1.py",
+      "sha256": "f5df6c58b20c0c1fb54801fac94e8848135e6f766dc0008cbe358e6091fa733c",
+      "source": {
+        "bytes": 4492,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/validate_publication_v1.py",
+        "sha256": "f5df6c58b20c0c1fb54801fac94e8848135e6f766dc0008cbe358e6091fa733c"
+      }
+    },
+    {
+      "bytes": 405,
+      "member": "plans/authorization-drafts/schema-admission-002-fixed-ROOT-20261019-v1.json",
+      "sha256": "25839c10b3b939d7902e05dc7a30c38fa885221ffe5d8c4397e85b34f0c4230a",
+      "source": {
+        "bytes": 405,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/plans/authorization-drafts/schema-admission-002-fixed-ROOT-20261019-v1.json",
+        "sha256": "25839c10b3b939d7902e05dc7a30c38fa885221ffe5d8c4397e85b34f0c4230a"
+      }
+    },
+    {
+      "bytes": 405,
+      "member": "plans/authorization-drafts/schema-admission-002-symbolic-ROOT-20261019-v1.json",
+      "sha256": "6208e17fea7656f7ae716a9c706b6a75d8a9c0d91b5df271a5ba34645eba1e7b",
+      "source": {
+        "bytes": 405,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/plans/authorization-drafts/schema-admission-002-symbolic-ROOT-20261019-v1.json",
+        "sha256": "6208e17fea7656f7ae716a9c706b6a75d8a9c0d91b5df271a5ba34645eba1e7b"
+      }
+    },
+    {
+      "bytes": 7267,
+      "member": "plans/prospective-index-v1.json",
+      "sha256": "64c278d0b4ea9cf365408d44500a1b9675d6ee6a72a8434399405eadd732f715",
+      "source": {
+        "bytes": 7267,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/plans/prospective-index-v1.json",
+        "sha256": "64c278d0b4ea9cf365408d44500a1b9675d6ee6a72a8434399405eadd732f715"
+      }
+    },
+    {
+      "bytes": 2739,
+      "member": "plans/runner-plan-drafts/schema-admission-002-fixed-ROOT-20261019-v1.json",
+      "sha256": "79467516fa384a142b63a2be103401fe51a6e67c5df6b73fdaa94f4c4dd96224",
+      "source": {
+        "bytes": 2739,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/plans/runner-plan-drafts/schema-admission-002-fixed-ROOT-20261019-v1.json",
+        "sha256": "79467516fa384a142b63a2be103401fe51a6e67c5df6b73fdaa94f4c4dd96224"
+      }
+    },
+    {
+      "bytes": 2754,
+      "member": "plans/runner-plan-drafts/schema-admission-002-symbolic-ROOT-20261019-v1.json",
+      "sha256": "2ae825681863504ab4f2a74ac4bc0829550cd5d54001115ea4f01c863beb87b5",
+      "source": {
+        "bytes": 2754,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/plans/runner-plan-drafts/schema-admission-002-symbolic-ROOT-20261019-v1.json",
+        "sha256": "2ae825681863504ab4f2a74ac4bc0829550cd5d54001115ea4f01c863beb87b5"
+      }
+    },
+    {
+      "bytes": 18106,
+      "member": "plans/worker-plans/schema-admission-002-fixed-ROOT-20261019-v1.json",
+      "sha256": "43227d877e69267ec465fbe34b55cdf32d7c7c6d11bdc5e96a7af6de83c475b1",
+      "source": {
+        "bytes": 18106,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/plans/worker-plans/schema-admission-002-fixed-ROOT-20261019-v1.json",
+        "sha256": "43227d877e69267ec465fbe34b55cdf32d7c7c6d11bdc5e96a7af6de83c475b1"
+      }
+    },
+    {
+      "bytes": 18115,
+      "member": "plans/worker-plans/schema-admission-002-symbolic-ROOT-20261019-v1.json",
+      "sha256": "e12785b252904cefc0d45ac9e85c1e4368def24b7b1b33ce11a62d638d7ffd11",
+      "source": {
+        "bytes": 18115,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/plans/worker-plans/schema-admission-002-symbolic-ROOT-20261019-v1.json",
+        "sha256": "e12785b252904cefc0d45ac9e85c1e4368def24b7b1b33ce11a62d638d7ffd11"
+      }
+    },
+    {
+      "bytes": 405,
+      "member": "plans-v2/authorization-drafts/schema-admission-002-fixed-ROOT-20261019-v2.json",
+      "sha256": "ba710fbb8580cf4258ae0a17b21745ef95d385243ed7698d484e1b178702c5ef",
+      "source": {
+        "bytes": 405,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/plans-v2/authorization-drafts/schema-admission-002-fixed-ROOT-20261019-v2.json",
+        "sha256": "ba710fbb8580cf4258ae0a17b21745ef95d385243ed7698d484e1b178702c5ef"
+      }
+    },
+    {
+      "bytes": 405,
+      "member": "plans-v2/authorization-drafts/schema-admission-002-symbolic-ROOT-20261019-v2.json",
+      "sha256": "7de4c5e05077cee570075d0798d0d575db3620100880c259b411ca10fbfd4cec",
+      "source": {
+        "bytes": 405,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/plans-v2/authorization-drafts/schema-admission-002-symbolic-ROOT-20261019-v2.json",
+        "sha256": "7de4c5e05077cee570075d0798d0d575db3620100880c259b411ca10fbfd4cec"
+      }
+    },
+    {
+      "bytes": 7856,
+      "member": "plans-v2/authorizations/schema-admission-002-fixed-ROOT-20261019-v2.json",
+      "sha256": "07165d888b581a60e2f90cfa21dda355b3ddbcaeb0d85b49c1a109da21cb692d",
+      "source": {
+        "bytes": 7856,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/plans-v2/authorizations/schema-admission-002-fixed-ROOT-20261019-v2.json",
+        "sha256": "07165d888b581a60e2f90cfa21dda355b3ddbcaeb0d85b49c1a109da21cb692d"
+      }
+    },
+    {
+      "bytes": 7859,
+      "member": "plans-v2/authorizations/schema-admission-002-symbolic-ROOT-20261019-v2.json",
+      "sha256": "034853609155e5243f9f12df358f507b830a1bcc47e76d3bf644d1a2c2a22942",
+      "source": {
+        "bytes": 7859,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/plans-v2/authorizations/schema-admission-002-symbolic-ROOT-20261019-v2.json",
+        "sha256": "034853609155e5243f9f12df358f507b830a1bcc47e76d3bf644d1a2c2a22942"
+      }
+    },
+    {
+      "bytes": 10346,
+      "member": "plans-v2/authorized-index-v2.json",
+      "sha256": "48501b3c2db109b9da4ab592078d47d9e43ad5a5f7d738281c1da6615012cf01",
+      "source": {
+        "bytes": 10346,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/plans-v2/authorized-index-v2.json",
+        "sha256": "48501b3c2db109b9da4ab592078d47d9e43ad5a5f7d738281c1da6615012cf01"
+      }
+    },
+    {
+      "bytes": 7285,
+      "member": "plans-v2/prospective-index-v2.json",
+      "sha256": "551700c4ff8d0aeaa92ef4a7218c43f425ebd95a6f23e160152589b54c1c2824",
+      "source": {
+        "bytes": 7285,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/plans-v2/prospective-index-v2.json",
+        "sha256": "551700c4ff8d0aeaa92ef4a7218c43f425ebd95a6f23e160152589b54c1c2824"
+      }
+    },
+    {
+      "bytes": 2745,
+      "member": "plans-v2/runner-plan-drafts/schema-admission-002-fixed-ROOT-20261019-v2.json",
+      "sha256": "3a920ccf168812759c7216d42738ee9b8baef73e245eeaa7b88ce34c7357ea5a",
+      "source": {
+        "bytes": 2745,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/plans-v2/runner-plan-drafts/schema-admission-002-fixed-ROOT-20261019-v2.json",
+        "sha256": "3a920ccf168812759c7216d42738ee9b8baef73e245eeaa7b88ce34c7357ea5a"
+      }
+    },
+    {
+      "bytes": 2760,
+      "member": "plans-v2/runner-plan-drafts/schema-admission-002-symbolic-ROOT-20261019-v2.json",
+      "sha256": "404e02b3f40b9c8af7440b6ee3a1f432fef5a63fa74394d741a2902b2f4d7cf5",
+      "source": {
+        "bytes": 2760,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/plans-v2/runner-plan-drafts/schema-admission-002-symbolic-ROOT-20261019-v2.json",
+        "sha256": "404e02b3f40b9c8af7440b6ee3a1f432fef5a63fa74394d741a2902b2f4d7cf5"
+      }
+    },
+    {
+      "bytes": 320,
+      "member": "plans-v2/runner-plans/schema-admission-002-fixed-ROOT-20261019-v2-terminal-observation/CONSUMED.json",
+      "sha256": "7a021dcb3dc44ff179b144b32e8e70408e5244b494fa9b4140564f77df3b5b82",
+      "source": {
+        "bytes": 320,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/plans-v2/runner-plans/schema-admission-002-fixed-ROOT-20261019-v2-terminal-observation/CONSUMED.json",
+        "sha256": "7a021dcb3dc44ff179b144b32e8e70408e5244b494fa9b4140564f77df3b5b82"
+      }
+    },
+    {
+      "bytes": 0,
+      "member": "plans-v2/runner-plans/schema-admission-002-fixed-ROOT-20261019-v2-terminal-observation/stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": {
+        "bytes": 0,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/plans-v2/runner-plans/schema-admission-002-fixed-ROOT-20261019-v2-terminal-observation/stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "bytes": 252,
+      "member": "plans-v2/runner-plans/schema-admission-002-fixed-ROOT-20261019-v2-terminal-observation/stdout.bin",
+      "sha256": "2f47a88c59e2a06dbd47a76ac7ee384f941639d3bed4ece7bb9ea5844452200d",
+      "source": {
+        "bytes": 252,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/plans-v2/runner-plans/schema-admission-002-fixed-ROOT-20261019-v2-terminal-observation/stdout.bin",
+        "sha256": "2f47a88c59e2a06dbd47a76ac7ee384f941639d3bed4ece7bb9ea5844452200d"
+      }
+    },
+    {
+      "bytes": 1595,
+      "member": "plans-v2/runner-plans/schema-admission-002-fixed-ROOT-20261019-v2-terminal-observation/terminal.json",
+      "sha256": "bb201c5317f8e74d675bdec75ad1b12c55460ff3d2dd425e0d66b0d3031b3f59",
+      "source": {
+        "bytes": 1595,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/plans-v2/runner-plans/schema-admission-002-fixed-ROOT-20261019-v2-terminal-observation/terminal.json",
+        "sha256": "bb201c5317f8e74d675bdec75ad1b12c55460ff3d2dd425e0d66b0d3031b3f59"
+      }
+    },
+    {
+      "bytes": 2740,
+      "member": "plans-v2/runner-plans/schema-admission-002-fixed-ROOT-20261019-v2.json",
+      "sha256": "8e9f418c2e448503c8a4abbe1c0f87b7ce0ba9651c87fbf898d162cc1ef71c80",
+      "source": {
+        "bytes": 2740,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/plans-v2/runner-plans/schema-admission-002-fixed-ROOT-20261019-v2.json",
+        "sha256": "8e9f418c2e448503c8a4abbe1c0f87b7ce0ba9651c87fbf898d162cc1ef71c80"
+      }
+    },
+    {
+      "bytes": 323,
+      "member": "plans-v2/runner-plans/schema-admission-002-symbolic-ROOT-20261019-v2-terminal-observation/CONSUMED.json",
+      "sha256": "b347328e5f5baac746340a6b9bfc91e3c864dbf8e7acb9beeabf705809aa4dd6",
+      "source": {
+        "bytes": 323,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/plans-v2/runner-plans/schema-admission-002-symbolic-ROOT-20261019-v2-terminal-observation/CONSUMED.json",
+        "sha256": "b347328e5f5baac746340a6b9bfc91e3c864dbf8e7acb9beeabf705809aa4dd6"
+      }
+    },
+    {
+      "bytes": 0,
+      "member": "plans-v2/runner-plans/schema-admission-002-symbolic-ROOT-20261019-v2-terminal-observation/stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": {
+        "bytes": 0,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/plans-v2/runner-plans/schema-admission-002-symbolic-ROOT-20261019-v2-terminal-observation/stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "bytes": 255,
+      "member": "plans-v2/runner-plans/schema-admission-002-symbolic-ROOT-20261019-v2-terminal-observation/stdout.bin",
+      "sha256": "6055d1c0051f238c118572f4725f78815108309c143fe47d04651013da571c7f",
+      "source": {
+        "bytes": 255,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/plans-v2/runner-plans/schema-admission-002-symbolic-ROOT-20261019-v2-terminal-observation/stdout.bin",
+        "sha256": "6055d1c0051f238c118572f4725f78815108309c143fe47d04651013da571c7f"
+      }
+    },
+    {
+      "bytes": 1605,
+      "member": "plans-v2/runner-plans/schema-admission-002-symbolic-ROOT-20261019-v2-terminal-observation/terminal.json",
+      "sha256": "198279159a5a24548473fbb76600f807db10d98e026ca95ba09b46cfc98612e3",
+      "source": {
+        "bytes": 1605,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/plans-v2/runner-plans/schema-admission-002-symbolic-ROOT-20261019-v2-terminal-observation/terminal.json",
+        "sha256": "198279159a5a24548473fbb76600f807db10d98e026ca95ba09b46cfc98612e3"
+      }
+    },
+    {
+      "bytes": 2755,
+      "member": "plans-v2/runner-plans/schema-admission-002-symbolic-ROOT-20261019-v2.json",
+      "sha256": "b195c53f9f9727312ef7bf2edf18c4ebe32c56f9e1d495da9a22add110aab855",
+      "source": {
+        "bytes": 2755,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/plans-v2/runner-plans/schema-admission-002-symbolic-ROOT-20261019-v2.json",
+        "sha256": "b195c53f9f9727312ef7bf2edf18c4ebe32c56f9e1d495da9a22add110aab855"
+      }
+    },
+    {
+      "bytes": 18106,
+      "member": "plans-v2/worker-plans/schema-admission-002-fixed-ROOT-20261019-v2.json",
+      "sha256": "c7e740394b2ddd083cf4bd631cc6a1466bb234f1c5d8d7f799883bcfb59b3e34",
+      "source": {
+        "bytes": 18106,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/plans-v2/worker-plans/schema-admission-002-fixed-ROOT-20261019-v2.json",
+        "sha256": "c7e740394b2ddd083cf4bd631cc6a1466bb234f1c5d8d7f799883bcfb59b3e34"
+      }
+    },
+    {
+      "bytes": 18115,
+      "member": "plans-v2/worker-plans/schema-admission-002-symbolic-ROOT-20261019-v2.json",
+      "sha256": "b60a8e5d6f723399373a67ddb5a5cab7ffc9baf6af445b772d2b845018e8c1ab",
+      "source": {
+        "bytes": 18115,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/plans-v2/worker-plans/schema-admission-002-symbolic-ROOT-20261019-v2.json",
+        "sha256": "b60a8e5d6f723399373a67ddb5a5cab7ffc9baf6af445b772d2b845018e8c1ab"
+      }
+    },
+    {
+      "bytes": 653,
+      "member": "actual-fixed-v2/CONSUMED.json",
+      "sha256": "ceb321c315159cad3c06abb23b27a1601431db7f380051edad1d0a5302aac52d",
+      "source": {
+        "bytes": 653,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/CONSUMED.json",
+        "sha256": "ceb321c315159cad3c06abb23b27a1601431db7f380051edad1d0a5302aac52d"
+      }
+    },
+    {
+      "bytes": 20424,
+      "member": "actual-fixed-v2/modules/bounded_request_oracle.py",
+      "sha256": "606e790f4ba3ecc976877cbe52ccfd64519262f2ea07214c80d989f58e4f7637",
+      "source": {
+        "bytes": 20424,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/modules/bounded_request_oracle.py",
+        "sha256": "606e790f4ba3ecc976877cbe52ccfd64519262f2ea07214c80d989f58e4f7637"
+      }
+    },
+    {
+      "bytes": 7089,
+      "member": "actual-fixed-v2/modules/certificate_boundary_search.py",
+      "sha256": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a",
+      "source": {
+        "bytes": 7089,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/modules/certificate_boundary_search.py",
+        "sha256": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a"
+      }
+    },
+    {
+      "bytes": 4311,
+      "member": "actual-fixed-v2/modules/interned_quantified_family_points_v1.py",
+      "sha256": "fb37663b4c0c3de4e9f3c28564678af833857f7ebe761cd83275d62f123b9a8e",
+      "source": {
+        "bytes": 4311,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/modules/interned_quantified_family_points_v1.py",
+        "sha256": "fb37663b4c0c3de4e9f3c28564678af833857f7ebe761cd83275d62f123b9a8e"
+      }
+    },
+    {
+      "bytes": 4705,
+      "member": "actual-fixed-v2/modules/interned_result_reader_v2.py",
+      "sha256": "cd06c8372b6edd05774cf5974c5b6265bbc196afdc68d47507e54a2044dec836",
+      "source": {
+        "bytes": 4705,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/modules/interned_result_reader_v2.py",
+        "sha256": "cd06c8372b6edd05774cf5974c5b6265bbc196afdc68d47507e54a2044dec836"
+      }
+    },
+    {
+      "bytes": 10808,
+      "member": "actual-fixed-v2/modules/logic.py",
+      "sha256": "5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011",
+      "source": {
+        "bytes": 10808,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/modules/logic.py",
+        "sha256": "5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011"
+      }
+    },
+    {
+      "bytes": 26687,
+      "member": "actual-fixed-v2/modules/mp_schema_certificate.py",
+      "sha256": "7351d5954763e8b671411a78a821e5cc560ac1af19477a9491da573a735d2ae4",
+      "source": {
+        "bytes": 26687,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/modules/mp_schema_certificate.py",
+        "sha256": "7351d5954763e8b671411a78a821e5cc560ac1af19477a9491da573a735d2ae4"
+      }
+    },
+    {
+      "bytes": 10594,
+      "member": "actual-fixed-v2/modules/native_inference_inventory.py",
+      "sha256": "89979f6be8f422ea293c2f0b6c0e966fc9a0710a8e15cbe58437f868cbf75091",
+      "source": {
+        "bytes": 10594,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/modules/native_inference_inventory.py",
+        "sha256": "89979f6be8f422ea293c2f0b6c0e966fc9a0710a8e15cbe58437f868cbf75091"
+      }
+    },
+    {
+      "bytes": 2746,
+      "member": "actual-fixed-v2/modules/native_inventory_policy.py",
+      "sha256": "8721a361f4a97e5311f8ed944431d49d08592ed102f50ed333d1ad2b9ff01591",
+      "source": {
+        "bytes": 2746,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/modules/native_inventory_policy.py",
+        "sha256": "8721a361f4a97e5311f8ed944431d49d08592ed102f50ed333d1ad2b9ff01591"
+      }
+    },
+    {
+      "bytes": 8962,
+      "member": "actual-fixed-v2/modules/native_receptor_points.py",
+      "sha256": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888",
+      "source": {
+        "bytes": 8962,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/modules/native_receptor_points.py",
+        "sha256": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888"
+      }
+    },
+    {
+      "bytes": 6992,
+      "member": "actual-fixed-v2/modules/proof_boundary.py",
+      "sha256": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f",
+      "source": {
+        "bytes": 6992,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/modules/proof_boundary.py",
+        "sha256": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f"
+      }
+    },
+    {
+      "bytes": 8155,
+      "member": "actual-fixed-v2/modules/quantified_family_points_v2.py",
+      "sha256": "7f95858af5af40d2f902d2aea6bc5d5a7944f7fe0b65b6b9a2ea66c0fb2ec4e3",
+      "source": {
+        "bytes": 8155,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/modules/quantified_family_points_v2.py",
+        "sha256": "7f95858af5af40d2f902d2aea6bc5d5a7944f7fe0b65b6b9a2ea66c0fb2ec4e3"
+      }
+    },
+    {
+      "bytes": 11060,
+      "member": "actual-fixed-v2/modules/quantified_receptors_v1.py",
+      "sha256": "d1c4afa10d58abbcf473cb3da8ee8768c974dd05d03ea00b988d574b2441af5a",
+      "source": {
+        "bytes": 11060,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/modules/quantified_receptors_v1.py",
+        "sha256": "d1c4afa10d58abbcf473cb3da8ee8768c974dd05d03ea00b988d574b2441af5a"
+      }
+    },
+    {
+      "bytes": 27203,
+      "member": "actual-fixed-v2/modules/quantified_symbolic_control_v2.py",
+      "sha256": "8eda5d6fd91a137c9d22081bcba707631ab29733d2ae4ce413a2913a2b7d3bbe",
+      "source": {
+        "bytes": 27203,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/modules/quantified_symbolic_control_v2.py",
+        "sha256": "8eda5d6fd91a137c9d22081bcba707631ab29733d2ae4ce413a2913a2b7d3bbe"
+      }
+    },
+    {
+      "bytes": 18508,
+      "member": "actual-fixed-v2/modules/receptor_support_ordering_v1.py",
+      "sha256": "6e39f5cf5cd261c73515c29d3b315c43c27ae0bc64ef5fb509cea178b0251769",
+      "source": {
+        "bytes": 18508,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/modules/receptor_support_ordering_v1.py",
+        "sha256": "6e39f5cf5cd261c73515c29d3b315c43c27ae0bc64ef5fb509cea178b0251769"
+      }
+    },
+    {
+      "bytes": 6942,
+      "member": "actual-fixed-v2/modules/semantic_inventory_guidance.py",
+      "sha256": "744948b67e2870ae24737469aceb920624b59d616e8a48f91b99d39f56c14a79",
+      "source": {
+        "bytes": 6942,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/modules/semantic_inventory_guidance.py",
+        "sha256": "744948b67e2870ae24737469aceb920624b59d616e8a48f91b99d39f56c14a79"
+      }
+    },
+    {
+      "bytes": 37657,
+      "member": "actual-fixed-v2/modules/semantic_inventory_oracle.py",
+      "sha256": "a50579cb6ba326d32de3f203214963ec4bcf184613413a2abae2a2f6bb889eca",
+      "source": {
+        "bytes": 37657,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/modules/semantic_inventory_oracle.py",
+        "sha256": "a50579cb6ba326d32de3f203214963ec4bcf184613413a2abae2a2f6bb889eca"
+      }
+    },
+    {
+      "bytes": 15936,
+      "member": "actual-fixed-v2/modules/semantic_inventory_search_v2.py",
+      "sha256": "35443c958f2115efa18cc923fb4a4f1070e6e03ccf1d1adf2bb56ce1f7bab28b",
+      "source": {
+        "bytes": 15936,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/modules/semantic_inventory_search_v2.py",
+        "sha256": "35443c958f2115efa18cc923fb4a4f1070e6e03ccf1d1adf2bb56ce1f7bab28b"
+      }
+    },
+    {
+      "bytes": 7196,
+      "member": "actual-fixed-v2/modules/semantic_lemma_inventory.py",
+      "sha256": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad",
+      "source": {
+        "bytes": 7196,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/modules/semantic_lemma_inventory.py",
+        "sha256": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad"
+      }
+    },
+    {
+      "bytes": 4593,
+      "member": "actual-fixed-v2/modules/semantic_point_smt.py",
+      "sha256": "6bcb3fb60529f6888836a1ca0c613b772cea192c9549620f968dbdf7cb9be74a",
+      "source": {
+        "bytes": 4593,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/modules/semantic_point_smt.py",
+        "sha256": "6bcb3fb60529f6888836a1ca0c613b772cea192c9549620f968dbdf7cb9be74a"
+      }
+    },
+    {
+      "bytes": 87409,
+      "member": "actual-fixed-v2/modules/semantic_receiver_driver.py",
+      "sha256": "df0b50a4c744f18fd3e8fd53ad63e9b42cf8adf9a270368bab59e5df605d2777",
+      "source": {
+        "bytes": 87409,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/modules/semantic_receiver_driver.py",
+        "sha256": "df0b50a4c744f18fd3e8fd53ad63e9b42cf8adf9a270368bab59e5df605d2777"
+      }
+    },
+    {
+      "bytes": 7409,
+      "member": "actual-fixed-v2/modules/semantic_receptor_points.py",
+      "sha256": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207",
+      "source": {
+        "bytes": 7409,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/modules/semantic_receptor_points.py",
+        "sha256": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207"
+      }
+    },
+    {
+      "bytes": 3756,
+      "member": "actual-fixed-v2/modules/tape_binary.py",
+      "sha256": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247",
+      "source": {
+        "bytes": 3756,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/modules/tape_binary.py",
+        "sha256": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247"
+      }
+    },
+    {
+      "bytes": 19188,
+      "member": "actual-fixed-v2/modules/tape_tree_machine.py",
+      "sha256": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f",
+      "source": {
+        "bytes": 19188,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/modules/tape_tree_machine.py",
+        "sha256": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f"
+      }
+    },
+    {
+      "bytes": 13290,
+      "member": "actual-fixed-v2/modules/tree_machine.py",
+      "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257",
+      "source": {
+        "bytes": 13290,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/modules/tree_machine.py",
+        "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257"
+      }
+    },
+    {
+      "bytes": 28533,
+      "member": "actual-fixed-v2/modules/turtle.py",
+      "sha256": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a",
+      "source": {
+        "bytes": 28533,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/modules/turtle.py",
+        "sha256": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a"
+      }
+    },
+    {
+      "bytes": 7558192,
+      "member": "actual-fixed-v2/native/code.bin",
+      "sha256": "97f0b600cffd83552c4e0f0c4fb1f5d26cfdb76e3e74b267bbaebeddc836e7ed",
+      "source": {
+        "bytes": 7558192,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/native/code.bin",
+        "sha256": "97f0b600cffd83552c4e0f0c4fb1f5d26cfdb76e3e74b267bbaebeddc836e7ed"
+      }
+    },
+    {
+      "bytes": 726120,
+      "member": "actual-fixed-v2/native/input.bin",
+      "sha256": "f710064249b95545b53f0163ee84577c3e586cb4bacaf722a7be374685b2bdc2",
+      "source": {
+        "bytes": 726120,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/native/input.bin",
+        "sha256": "f710064249b95545b53f0163ee84577c3e586cb4bacaf722a7be374685b2bdc2"
+      }
+    },
+    {
+      "bytes": 726124,
+      "member": "actual-fixed-v2/native/output.bin",
+      "sha256": "aa8863810297a5a0ae86c21cfd65a7fda3a4e3215bd7f46c91084a60f047ada3",
+      "source": {
+        "bytes": 726124,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/native/output.bin",
+        "sha256": "aa8863810297a5a0ae86c21cfd65a7fda3a4e3215bd7f46c91084a60f047ada3"
+      }
+    },
+    {
+      "bytes": 10210,
+      "member": "actual-fixed-v2/runner-receipt.json",
+      "sha256": "8bb1a0fd99f343671fe7ccc8f908ae91e7a7b7e5e7729651cd9208c9e4804d59",
+      "source": {
+        "bytes": 10210,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/runner-receipt.json",
+        "sha256": "8bb1a0fd99f343671fe7ccc8f908ae91e7a7b7e5e7729651cd9208c9e4804d59"
+      }
+    },
+    {
+      "bytes": 1210,
+      "member": "actual-fixed-v2/stderr.bin",
+      "sha256": "5c2b11c3cdfc99401b2a792ca7bc7ec8a4be801eaacdf696fe970355481725dd",
+      "source": {
+        "bytes": 1210,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/stderr.bin",
+        "sha256": "5c2b11c3cdfc99401b2a792ca7bc7ec8a4be801eaacdf696fe970355481725dd"
+      }
+    },
+    {
+      "bytes": 0,
+      "member": "actual-fixed-v2/stdout.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": {
+        "bytes": 0,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/stdout.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "bytes": 30333,
+      "member": "actual-fixed-v2/worker-failure.json",
+      "sha256": "e8d0dc179c3d35115fda09525e7c0b6a6d64f11b48f7f523ed4737a2b097ac8a",
+      "source": {
+        "bytes": 30333,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-fixed-v2/worker-failure.json",
+        "sha256": "e8d0dc179c3d35115fda09525e7c0b6a6d64f11b48f7f523ed4737a2b097ac8a"
+      }
+    },
+    {
+      "bytes": 662,
+      "member": "actual-symbolic-v2/CONSUMED.json",
+      "sha256": "071665c1b35cc76faa8c6725371dc07a4accf60e4150e0d88a9fdefae51800e6",
+      "source": {
+        "bytes": 662,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/CONSUMED.json",
+        "sha256": "071665c1b35cc76faa8c6725371dc07a4accf60e4150e0d88a9fdefae51800e6"
+      }
+    },
+    {
+      "bytes": 20424,
+      "member": "actual-symbolic-v2/modules/bounded_request_oracle.py",
+      "sha256": "606e790f4ba3ecc976877cbe52ccfd64519262f2ea07214c80d989f58e4f7637",
+      "source": {
+        "bytes": 20424,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/modules/bounded_request_oracle.py",
+        "sha256": "606e790f4ba3ecc976877cbe52ccfd64519262f2ea07214c80d989f58e4f7637"
+      }
+    },
+    {
+      "bytes": 7089,
+      "member": "actual-symbolic-v2/modules/certificate_boundary_search.py",
+      "sha256": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a",
+      "source": {
+        "bytes": 7089,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/modules/certificate_boundary_search.py",
+        "sha256": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a"
+      }
+    },
+    {
+      "bytes": 4311,
+      "member": "actual-symbolic-v2/modules/interned_quantified_family_points_v1.py",
+      "sha256": "fb37663b4c0c3de4e9f3c28564678af833857f7ebe761cd83275d62f123b9a8e",
+      "source": {
+        "bytes": 4311,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/modules/interned_quantified_family_points_v1.py",
+        "sha256": "fb37663b4c0c3de4e9f3c28564678af833857f7ebe761cd83275d62f123b9a8e"
+      }
+    },
+    {
+      "bytes": 4705,
+      "member": "actual-symbolic-v2/modules/interned_result_reader_v2.py",
+      "sha256": "cd06c8372b6edd05774cf5974c5b6265bbc196afdc68d47507e54a2044dec836",
+      "source": {
+        "bytes": 4705,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/modules/interned_result_reader_v2.py",
+        "sha256": "cd06c8372b6edd05774cf5974c5b6265bbc196afdc68d47507e54a2044dec836"
+      }
+    },
+    {
+      "bytes": 10808,
+      "member": "actual-symbolic-v2/modules/logic.py",
+      "sha256": "5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011",
+      "source": {
+        "bytes": 10808,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/modules/logic.py",
+        "sha256": "5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011"
+      }
+    },
+    {
+      "bytes": 26687,
+      "member": "actual-symbolic-v2/modules/mp_schema_certificate.py",
+      "sha256": "7351d5954763e8b671411a78a821e5cc560ac1af19477a9491da573a735d2ae4",
+      "source": {
+        "bytes": 26687,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/modules/mp_schema_certificate.py",
+        "sha256": "7351d5954763e8b671411a78a821e5cc560ac1af19477a9491da573a735d2ae4"
+      }
+    },
+    {
+      "bytes": 10594,
+      "member": "actual-symbolic-v2/modules/native_inference_inventory.py",
+      "sha256": "89979f6be8f422ea293c2f0b6c0e966fc9a0710a8e15cbe58437f868cbf75091",
+      "source": {
+        "bytes": 10594,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/modules/native_inference_inventory.py",
+        "sha256": "89979f6be8f422ea293c2f0b6c0e966fc9a0710a8e15cbe58437f868cbf75091"
+      }
+    },
+    {
+      "bytes": 2746,
+      "member": "actual-symbolic-v2/modules/native_inventory_policy.py",
+      "sha256": "8721a361f4a97e5311f8ed944431d49d08592ed102f50ed333d1ad2b9ff01591",
+      "source": {
+        "bytes": 2746,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/modules/native_inventory_policy.py",
+        "sha256": "8721a361f4a97e5311f8ed944431d49d08592ed102f50ed333d1ad2b9ff01591"
+      }
+    },
+    {
+      "bytes": 8962,
+      "member": "actual-symbolic-v2/modules/native_receptor_points.py",
+      "sha256": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888",
+      "source": {
+        "bytes": 8962,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/modules/native_receptor_points.py",
+        "sha256": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888"
+      }
+    },
+    {
+      "bytes": 6992,
+      "member": "actual-symbolic-v2/modules/proof_boundary.py",
+      "sha256": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f",
+      "source": {
+        "bytes": 6992,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/modules/proof_boundary.py",
+        "sha256": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f"
+      }
+    },
+    {
+      "bytes": 8155,
+      "member": "actual-symbolic-v2/modules/quantified_family_points_v2.py",
+      "sha256": "7f95858af5af40d2f902d2aea6bc5d5a7944f7fe0b65b6b9a2ea66c0fb2ec4e3",
+      "source": {
+        "bytes": 8155,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/modules/quantified_family_points_v2.py",
+        "sha256": "7f95858af5af40d2f902d2aea6bc5d5a7944f7fe0b65b6b9a2ea66c0fb2ec4e3"
+      }
+    },
+    {
+      "bytes": 11060,
+      "member": "actual-symbolic-v2/modules/quantified_receptors_v1.py",
+      "sha256": "d1c4afa10d58abbcf473cb3da8ee8768c974dd05d03ea00b988d574b2441af5a",
+      "source": {
+        "bytes": 11060,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/modules/quantified_receptors_v1.py",
+        "sha256": "d1c4afa10d58abbcf473cb3da8ee8768c974dd05d03ea00b988d574b2441af5a"
+      }
+    },
+    {
+      "bytes": 27203,
+      "member": "actual-symbolic-v2/modules/quantified_symbolic_control_v2.py",
+      "sha256": "8eda5d6fd91a137c9d22081bcba707631ab29733d2ae4ce413a2913a2b7d3bbe",
+      "source": {
+        "bytes": 27203,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/modules/quantified_symbolic_control_v2.py",
+        "sha256": "8eda5d6fd91a137c9d22081bcba707631ab29733d2ae4ce413a2913a2b7d3bbe"
+      }
+    },
+    {
+      "bytes": 18508,
+      "member": "actual-symbolic-v2/modules/receptor_support_ordering_v1.py",
+      "sha256": "6e39f5cf5cd261c73515c29d3b315c43c27ae0bc64ef5fb509cea178b0251769",
+      "source": {
+        "bytes": 18508,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/modules/receptor_support_ordering_v1.py",
+        "sha256": "6e39f5cf5cd261c73515c29d3b315c43c27ae0bc64ef5fb509cea178b0251769"
+      }
+    },
+    {
+      "bytes": 6942,
+      "member": "actual-symbolic-v2/modules/semantic_inventory_guidance.py",
+      "sha256": "744948b67e2870ae24737469aceb920624b59d616e8a48f91b99d39f56c14a79",
+      "source": {
+        "bytes": 6942,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/modules/semantic_inventory_guidance.py",
+        "sha256": "744948b67e2870ae24737469aceb920624b59d616e8a48f91b99d39f56c14a79"
+      }
+    },
+    {
+      "bytes": 37657,
+      "member": "actual-symbolic-v2/modules/semantic_inventory_oracle.py",
+      "sha256": "a50579cb6ba326d32de3f203214963ec4bcf184613413a2abae2a2f6bb889eca",
+      "source": {
+        "bytes": 37657,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/modules/semantic_inventory_oracle.py",
+        "sha256": "a50579cb6ba326d32de3f203214963ec4bcf184613413a2abae2a2f6bb889eca"
+      }
+    },
+    {
+      "bytes": 15936,
+      "member": "actual-symbolic-v2/modules/semantic_inventory_search_v2.py",
+      "sha256": "35443c958f2115efa18cc923fb4a4f1070e6e03ccf1d1adf2bb56ce1f7bab28b",
+      "source": {
+        "bytes": 15936,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/modules/semantic_inventory_search_v2.py",
+        "sha256": "35443c958f2115efa18cc923fb4a4f1070e6e03ccf1d1adf2bb56ce1f7bab28b"
+      }
+    },
+    {
+      "bytes": 7196,
+      "member": "actual-symbolic-v2/modules/semantic_lemma_inventory.py",
+      "sha256": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad",
+      "source": {
+        "bytes": 7196,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/modules/semantic_lemma_inventory.py",
+        "sha256": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad"
+      }
+    },
+    {
+      "bytes": 4593,
+      "member": "actual-symbolic-v2/modules/semantic_point_smt.py",
+      "sha256": "6bcb3fb60529f6888836a1ca0c613b772cea192c9549620f968dbdf7cb9be74a",
+      "source": {
+        "bytes": 4593,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/modules/semantic_point_smt.py",
+        "sha256": "6bcb3fb60529f6888836a1ca0c613b772cea192c9549620f968dbdf7cb9be74a"
+      }
+    },
+    {
+      "bytes": 87409,
+      "member": "actual-symbolic-v2/modules/semantic_receiver_driver.py",
+      "sha256": "df0b50a4c744f18fd3e8fd53ad63e9b42cf8adf9a270368bab59e5df605d2777",
+      "source": {
+        "bytes": 87409,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/modules/semantic_receiver_driver.py",
+        "sha256": "df0b50a4c744f18fd3e8fd53ad63e9b42cf8adf9a270368bab59e5df605d2777"
+      }
+    },
+    {
+      "bytes": 7409,
+      "member": "actual-symbolic-v2/modules/semantic_receptor_points.py",
+      "sha256": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207",
+      "source": {
+        "bytes": 7409,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/modules/semantic_receptor_points.py",
+        "sha256": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207"
+      }
+    },
+    {
+      "bytes": 3756,
+      "member": "actual-symbolic-v2/modules/tape_binary.py",
+      "sha256": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247",
+      "source": {
+        "bytes": 3756,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/modules/tape_binary.py",
+        "sha256": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247"
+      }
+    },
+    {
+      "bytes": 19188,
+      "member": "actual-symbolic-v2/modules/tape_tree_machine.py",
+      "sha256": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f",
+      "source": {
+        "bytes": 19188,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/modules/tape_tree_machine.py",
+        "sha256": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f"
+      }
+    },
+    {
+      "bytes": 13290,
+      "member": "actual-symbolic-v2/modules/tree_machine.py",
+      "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257",
+      "source": {
+        "bytes": 13290,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/modules/tree_machine.py",
+        "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257"
+      }
+    },
+    {
+      "bytes": 28533,
+      "member": "actual-symbolic-v2/modules/turtle.py",
+      "sha256": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a",
+      "source": {
+        "bytes": 28533,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/modules/turtle.py",
+        "sha256": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a"
+      }
+    },
+    {
+      "bytes": 7558192,
+      "member": "actual-symbolic-v2/native/code.bin",
+      "sha256": "97f0b600cffd83552c4e0f0c4fb1f5d26cfdb76e3e74b267bbaebeddc836e7ed",
+      "source": {
+        "bytes": 7558192,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/native/code.bin",
+        "sha256": "97f0b600cffd83552c4e0f0c4fb1f5d26cfdb76e3e74b267bbaebeddc836e7ed"
+      }
+    },
+    {
+      "bytes": 789348,
+      "member": "actual-symbolic-v2/native/input.bin",
+      "sha256": "2471dcdce8d6af7b2f45ada5059b6a7a759ed4cacd85507eeaf10b73f2b4367b",
+      "source": {
+        "bytes": 789348,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/native/input.bin",
+        "sha256": "2471dcdce8d6af7b2f45ada5059b6a7a759ed4cacd85507eeaf10b73f2b4367b"
+      }
+    },
+    {
+      "bytes": 789352,
+      "member": "actual-symbolic-v2/native/output.bin",
+      "sha256": "9a7003209c72dae32aaa101c2dce4a1ff7ac635bf97aaccda2bfecf11955b6d5",
+      "source": {
+        "bytes": 789352,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/native/output.bin",
+        "sha256": "9a7003209c72dae32aaa101c2dce4a1ff7ac635bf97aaccda2bfecf11955b6d5"
+      }
+    },
+    {
+      "bytes": 10234,
+      "member": "actual-symbolic-v2/runner-receipt.json",
+      "sha256": "48a5e76276fbf7929fe48ee3c3c1a284607398a99902dd6c973f9e9445639849",
+      "source": {
+        "bytes": 10234,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/runner-receipt.json",
+        "sha256": "48a5e76276fbf7929fe48ee3c3c1a284607398a99902dd6c973f9e9445639849"
+      }
+    },
+    {
+      "bytes": 1216,
+      "member": "actual-symbolic-v2/stderr.bin",
+      "sha256": "02af5d276a0cb489844989ba7e224dba6507460927e96e0de80cc2f310ea4689",
+      "source": {
+        "bytes": 1216,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/stderr.bin",
+        "sha256": "02af5d276a0cb489844989ba7e224dba6507460927e96e0de80cc2f310ea4689"
+      }
+    },
+    {
+      "bytes": 0,
+      "member": "actual-symbolic-v2/stdout.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": {
+        "bytes": 0,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/stdout.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "bytes": 30334,
+      "member": "actual-symbolic-v2/worker-failure.json",
+      "sha256": "ed5c377a9e95a27b902b6796e399d536e6f73e749960cdf27b8ac7db3bb32e23",
+      "source": {
+        "bytes": 30334,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-20261019/actual-symbolic-v2/worker-failure.json",
+        "sha256": "ed5c377a9e95a27b902b6796e399d536e6f73e749960cdf27b8ac7db3bb32e23"
+      }
+    },
+    {
+      "bytes": 9000,
+      "member": "Root-current-Source/build_cold_v1.py",
+      "sha256": "06f55b74e1a6cbef72b3c2c381d5a64c91c3b60866a982c87e8634cef0e29a06",
+      "source": {
+        "bytes": 9000,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-source-20261019/build_cold_v1.py",
+        "sha256": "06f55b74e1a6cbef72b3c2c381d5a64c91c3b60866a982c87e8634cef0e29a06"
+      }
+    },
+    {
+      "bytes": 6016,
+      "member": "Root-current-Source/build_consumer_gates_v1.py",
+      "sha256": "abacbf08a707415255d72683890a59ab42dcd90edc62e850fccd63f73c251d56",
+      "source": {
+        "bytes": 6016,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-source-20261019/build_consumer_gates_v1.py",
+        "sha256": "abacbf08a707415255d72683890a59ab42dcd90edc62e850fccd63f73c251d56"
+      }
+    },
+    {
+      "bytes": 6589,
+      "member": "Root-current-Source/build_driver_v1.py",
+      "sha256": "766b8a2db7375d62843228d17eae0cd5270873fb0533eeebe6e0dd00e576b8ac",
+      "source": {
+        "bytes": 6589,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-source-20261019/build_driver_v1.py",
+        "sha256": "766b8a2db7375d62843228d17eae0cd5270873fb0533eeebe6e0dd00e576b8ac"
+      }
+    },
+    {
+      "bytes": 9793,
+      "member": "Root-current-Source/build_once_v1.py",
+      "sha256": "b5e3b0b251c3fb3267408d36230bd98d5bf94bc5dff1579156c3637edf113070",
+      "source": {
+        "bytes": 9793,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-source-20261019/build_once_v1.py",
+        "sha256": "b5e3b0b251c3fb3267408d36230bd98d5bf94bc5dff1579156c3637edf113070"
+      }
+    },
+    {
+      "bytes": 2736,
+      "member": "Root-current-Source/cold-Source-contract-v1.json",
+      "sha256": "6830336ed51865c0554cb94508dc03acfb1a9db73a96ca19b861d79446b5e266",
+      "source": {
+        "bytes": 2736,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-source-20261019/cold-Source-contract-v1.json",
+        "sha256": "6830336ed51865c0554cb94508dc03acfb1a9db73a96ca19b861d79446b5e266"
+      }
+    },
+    {
+      "bytes": 2345,
+      "member": "Root-current-Source/consumer-gate-Source-contract-v1.json",
+      "sha256": "b6bee7a74ee6e595897005e44c859aff726a57d665ef130c62c701bd438aeb94",
+      "source": {
+        "bytes": 2345,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-source-20261019/consumer-gate-Source-contract-v1.json",
+        "sha256": "b6bee7a74ee6e595897005e44c859aff726a57d665ef130c62c701bd438aeb94"
+      }
+    },
+    {
+      "bytes": 2351,
+      "member": "Root-current-Source/driver-Source-contract-v1.json",
+      "sha256": "93afd687004b7a7322a309f281c6df6776c8f0dc2ee6f9bf1eabb4807e155ce5",
+      "source": {
+        "bytes": 2351,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-source-20261019/driver-Source-contract-v1.json",
+        "sha256": "93afd687004b7a7322a309f281c6df6776c8f0dc2ee6f9bf1eabb4807e155ce5"
+      }
+    },
+    {
+      "bytes": 4332,
+      "member": "Root-current-Source/intake-Source-contract-v1.json",
+      "sha256": "e3afd3b0f06e67b07e96d983a0d4a4214d7a166d189b1e1e63b331b752b8a979",
+      "source": {
+        "bytes": 4332,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-source-20261019/intake-Source-contract-v1.json",
+        "sha256": "e3afd3b0f06e67b07e96d983a0d4a4214d7a166d189b1e1e63b331b752b8a979"
+      }
+    },
+    {
+      "bytes": 4965,
+      "member": "Root-current-Source/observe_schema_admission_runner_v1.py",
+      "sha256": "5c21a90bff7a1b0873695bbecef68749af35fbeaa004e7919309d12994d07fec",
+      "source": {
+        "bytes": 4965,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-source-20261019/observe_schema_admission_runner_v1.py",
+        "sha256": "5c21a90bff7a1b0873695bbecef68749af35fbeaa004e7919309d12994d07fec"
+      }
+    },
+    {
+      "bytes": 39413,
+      "member": "Root-current-Source/schema_admission_cold_v1.py",
+      "sha256": "ca7e91079982948ecbde5816b0d175810031981835ec8ddfa17f273379574868",
+      "source": {
+        "bytes": 39413,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-source-20261019/schema_admission_cold_v1.py",
+        "sha256": "ca7e91079982948ecbde5816b0d175810031981835ec8ddfa17f273379574868"
+      }
+    },
+    {
+      "bytes": 8155,
+      "member": "Root-current-Source/schema_admission_family_points_v3.py",
+      "sha256": "7f95858af5af40d2f902d2aea6bc5d5a7944f7fe0b65b6b9a2ea66c0fb2ec4e3",
+      "source": {
+        "bytes": 8155,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-source-20261019/schema_admission_family_points_v3.py",
+        "sha256": "7f95858af5af40d2f902d2aea6bc5d5a7944f7fe0b65b6b9a2ea66c0fb2ec4e3"
+      }
+    },
+    {
+      "bytes": 37189,
+      "member": "Root-current-Source/schema_admission_once_runner_v1.py",
+      "sha256": "599708c22bba2ebb395bf22819026f3185cf975523450754bc04612fd20c2814",
+      "source": {
+        "bytes": 37189,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-source-20261019/schema_admission_once_runner_v1.py",
+        "sha256": "599708c22bba2ebb395bf22819026f3185cf975523450754bc04612fd20c2814"
+      }
+    },
+    {
+      "bytes": 87409,
+      "member": "Root-current-Source/schema_admission_receiver_driver_v4.py",
+      "sha256": "df0b50a4c744f18fd3e8fd53ad63e9b42cf8adf9a270368bab59e5df605d2777",
+      "source": {
+        "bytes": 87409,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-source-20261019/schema_admission_receiver_driver_v4.py",
+        "sha256": "df0b50a4c744f18fd3e8fd53ad63e9b42cf8adf9a270368bab59e5df605d2777"
+      }
+    },
+    {
+      "bytes": 18508,
+      "member": "Root-current-Source/schema_admission_support_ordering_v2.py",
+      "sha256": "6e39f5cf5cd261c73515c29d3b315c43c27ae0bc64ef5fb509cea178b0251769",
+      "source": {
+        "bytes": 18508,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-source-20261019/schema_admission_support_ordering_v2.py",
+        "sha256": "6e39f5cf5cd261c73515c29d3b315c43c27ae0bc64ef5fb509cea178b0251769"
+      }
+    },
+    {
+      "bytes": 27203,
+      "member": "Root-current-Source/schema_admission_symbolic_control_v3.py",
+      "sha256": "8eda5d6fd91a137c9d22081bcba707631ab29733d2ae4ce413a2913a2b7d3bbe",
+      "source": {
+        "bytes": 27203,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-source-20261019/schema_admission_symbolic_control_v3.py",
+        "sha256": "8eda5d6fd91a137c9d22081bcba707631ab29733d2ae4ce413a2913a2b7d3bbe"
+      }
+    },
+    {
+      "bytes": 15597,
+      "member": "Root-current-Source/schema_driver_helpers_v1.txt",
+      "sha256": "9fb4d84c9dc4875c1a4af8a11bf6eb81edfb1f748e3f29f77913685bf381964c",
+      "source": {
+        "bytes": 15597,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-source-20261019/schema_driver_helpers_v1.txt",
+        "sha256": "9fb4d84c9dc4875c1a4af8a11bf6eb81edfb1f748e3f29f77913685bf381964c"
+      }
+    },
+    {
+      "bytes": 3932,
+      "member": "Library-registry-Source/API-v1.json",
+      "sha256": "29851b67bb672383b6ff5c67abbe63fd2e1835155ae4d88d6f0bfa2e5c15d596",
+      "source": {
+        "bytes": 3932,
+        "path": "/private/tmp/gcts-schema-admission-source-20261019/API-v1.json",
+        "sha256": "29851b67bb672383b6ff5c67abbe63fd2e1835155ae4d88d6f0bfa2e5c15d596"
+      }
+    },
+    {
+      "bytes": 7148,
+      "member": "Library-registry-Source/Source-contract-v1.json",
+      "sha256": "a8d1f2fd405e7813874250ee12a80ec3db2a2440b716f8171aa5a0b6366b60b0",
+      "source": {
+        "bytes": 7148,
+        "path": "/private/tmp/gcts-schema-admission-source-20261019/Source-contract-v1.json",
+        "sha256": "a8d1f2fd405e7813874250ee12a80ec3db2a2440b716f8171aa5a0b6366b60b0"
+      }
+    },
+    {
+      "bytes": 10011,
+      "member": "Library-registry-Source/author-static-audit-v1.json",
+      "sha256": "3288f757b6d7aee4a6340893b4c5082ceb27a3948a5f0da0cfbbfa41196cd6b2",
+      "source": {
+        "bytes": 10011,
+        "path": "/private/tmp/gcts-schema-admission-source-20261019/author-static-audit-v1.json",
+        "sha256": "3288f757b6d7aee4a6340893b4c5082ceb27a3948a5f0da0cfbbfa41196cd6b2"
+      }
+    },
+    {
+      "bytes": 14012,
+      "member": "Library-registry-Source/freeze_packet_v1.py",
+      "sha256": "7283a948e76aa534afc2156a280bb4ec8752ab3ad68f2febfb805b6bc8a99097",
+      "source": {
+        "bytes": 14012,
+        "path": "/private/tmp/gcts-schema-admission-source-20261019/freeze_packet_v1.py",
+        "sha256": "7283a948e76aa534afc2156a280bb4ec8752ab3ad68f2febfb805b6bc8a99097"
+      }
+    },
+    {
+      "bytes": 2491,
+      "member": "Library-registry-Source/handoff-v1.json",
+      "sha256": "f318fd6edcc4f59a08cc7a39fc70ff6370786ef946a269c0df96b502330a9cff",
+      "source": {
+        "bytes": 2491,
+        "path": "/private/tmp/gcts-schema-admission-source-20261019/handoff-v1.json",
+        "sha256": "f318fd6edcc4f59a08cc7a39fc70ff6370786ef946a269c0df96b502330a9cff"
+      }
+    },
+    {
+      "bytes": 13374,
+      "member": "Library-registry-Source/next-storage-design-v1.json",
+      "sha256": "9cb1ede6399c9dd24f118334582528a8746b9e77978b8f48e824f2a6315620ca",
+      "source": {
+        "bytes": 13374,
+        "path": "/private/tmp/gcts-schema-admission-source-20261019/next-storage-design-v1.json",
+        "sha256": "9cb1ede6399c9dd24f118334582528a8746b9e77978b8f48e824f2a6315620ca"
+      }
+    },
+    {
+      "bytes": 37657,
+      "member": "Library-registry-Source/semantic_inventory_oracle_v4.py",
+      "sha256": "a50579cb6ba326d32de3f203214963ec4bcf184613413a2abae2a2f6bb889eca",
+      "source": {
+        "bytes": 37657,
+        "path": "/private/tmp/gcts-schema-admission-source-20261019/semantic_inventory_oracle_v4.py",
+        "sha256": "a50579cb6ba326d32de3f203214963ec4bcf184613413a2abae2a2f6bb889eca"
+      }
+    },
+    {
+      "bytes": 4778,
+      "member": "qualified-certifier-Source/API-v1.json",
+      "sha256": "5ee531cf0c1cc42b73dc0b5b50ae2d654589c95d89331386309860d708249da7",
+      "source": {
+        "bytes": 4778,
+        "path": "/private/tmp/gcts-mp-schema-source-20261019/API-v1.json",
+        "sha256": "5ee531cf0c1cc42b73dc0b5b50ae2d654589c95d89331386309860d708249da7"
+      }
+    },
+    {
+      "bytes": 8004,
+      "member": "qualified-certifier-Source/Source-contract-v1.json",
+      "sha256": "89bbc922468373f6f82e38fced4bd9187c4f2be58cbab88065f9cf0891d3cb4d",
+      "source": {
+        "bytes": 8004,
+        "path": "/private/tmp/gcts-mp-schema-source-20261019/Source-contract-v1.json",
+        "sha256": "89bbc922468373f6f82e38fced4bd9187c4f2be58cbab88065f9cf0891d3cb4d"
+      }
+    },
+    {
+      "bytes": 10284,
+      "member": "qualified-certifier-Source/author-static-audit-v1.json",
+      "sha256": "622c5b6751004851dfd728b2ea0b95c5b7c16546748f6bf5129203a20210ae26",
+      "source": {
+        "bytes": 10284,
+        "path": "/private/tmp/gcts-mp-schema-source-20261019/author-static-audit-v1.json",
+        "sha256": "622c5b6751004851dfd728b2ea0b95c5b7c16546748f6bf5129203a20210ae26"
+      }
+    },
+    {
+      "bytes": 15417,
+      "member": "qualified-certifier-Source/freeze_packet_v1.py",
+      "sha256": "35679df25c1cee466c085ffba6664a2cff3277d50dbddc9ec6a7d16d7d65f76e",
+      "source": {
+        "bytes": 15417,
+        "path": "/private/tmp/gcts-mp-schema-source-20261019/freeze_packet_v1.py",
+        "sha256": "35679df25c1cee466c085ffba6664a2cff3277d50dbddc9ec6a7d16d7d65f76e"
+      }
+    },
+    {
+      "bytes": 2047,
+      "member": "qualified-certifier-Source/handoff-v1.json",
+      "sha256": "21279a23bf897dd8a3dd5f30cf8a22023ce60e9ff387c98c3fe48c9c6c5f5b89",
+      "source": {
+        "bytes": 2047,
+        "path": "/private/tmp/gcts-mp-schema-source-20261019/handoff-v1.json",
+        "sha256": "21279a23bf897dd8a3dd5f30cf8a22023ce60e9ff387c98c3fe48c9c6c5f5b89"
+      }
+    },
+    {
+      "bytes": 26687,
+      "member": "qualified-certifier-Source/mp_schema_certificate_v1.py",
+      "sha256": "7351d5954763e8b671411a78a821e5cc560ac1af19477a9491da573a735d2ae4",
+      "source": {
+        "bytes": 26687,
+        "path": "/private/tmp/gcts-mp-schema-source-20261019/mp_schema_certificate_v1.py",
+        "sha256": "7351d5954763e8b671411a78a821e5cc560ac1af19477a9491da573a735d2ae4"
+      }
+    },
+    {
+      "bytes": 4502,
+      "member": "qualified-certifier-Source/original-four-template-policy.json",
+      "sha256": "f5f0c22121f4c503db319fe6e01c4c3a146ac9db9deb7e2ccec0aab1a2f32161",
+      "source": {
+        "bytes": 4502,
+        "path": "/private/tmp/gcts-mp-schema-source-20261019/original-four-template-policy.json",
+        "sha256": "f5f0c22121f4c503db319fe6e01c4c3a146ac9db9deb7e2ccec0aab1a2f32161"
+      }
+    },
+    {
+      "bytes": 5039,
+      "member": "qualified-certifier-Source/report-template-review-v1.json",
+      "sha256": "bf9289f47671f587e5c322c736b33d954b1b524a15f2376ca5c1cc7b2cf9cf3f",
+      "source": {
+        "bytes": 5039,
+        "path": "/private/tmp/gcts-mp-schema-source-20261019/report-template-review-v1.json",
+        "sha256": "bf9289f47671f587e5c322c736b33d954b1b524a15f2376ca5c1cc7b2cf9cf3f"
+      }
+    },
+    {
+      "bytes": 7042,
+      "member": "independent-reviews/consumer-gate-design-addendum-v1.json",
+      "sha256": "4c604d13cb7f6706e0666f1da1d0caf56aa1ad389da055bdb030a5ddade166b7",
+      "source": {
+        "bytes": 7042,
+        "path": "/private/tmp/gcts-schema-admission-peer-20261019/consumer-gate-design-addendum-v1.json",
+        "sha256": "4c604d13cb7f6706e0666f1da1d0caf56aa1ad389da055bdb030a5ddade166b7"
+      }
+    },
+    {
+      "bytes": 1664,
+      "member": "independent-reviews/consumer-gate-peer-handoff-v1.json",
+      "sha256": "140b038347cdb3ace3b5fcc719afd340edff18f08e89f000e4b678b178b98dc0",
+      "source": {
+        "bytes": 1664,
+        "path": "/private/tmp/gcts-schema-admission-peer-20261019/consumer-gate-peer-handoff-v1.json",
+        "sha256": "140b038347cdb3ace3b5fcc719afd340edff18f08e89f000e4b678b178b98dc0"
+      }
+    },
+    {
+      "bytes": 12171,
+      "member": "independent-reviews/consumer-gate-raw-audit-v1.json",
+      "sha256": "28199fc2239dea1d9b9ff5a4ec364f953beaf4aa989ff545198a3644064660ff",
+      "source": {
+        "bytes": 12171,
+        "path": "/private/tmp/gcts-schema-admission-peer-20261019/consumer-gate-raw-audit-v1.json",
+        "sha256": "28199fc2239dea1d9b9ff5a4ec364f953beaf4aa989ff545198a3644064660ff"
+      }
+    },
+    {
+      "bytes": 25225,
+      "member": "independent-reviews/design-soundness-and-admission-obligations-v1.json",
+      "sha256": "9be676866d3f5e4cafe421584f6c1564cfb4f1ffd38530def6a222bd8cee9082",
+      "source": {
+        "bytes": 25225,
+        "path": "/private/tmp/gcts-schema-admission-peer-20261019/design-soundness-and-admission-obligations-v1.json",
+        "sha256": "9be676866d3f5e4cafe421584f6c1564cfb4f1ffd38530def6a222bd8cee9082"
+      }
+    },
+    {
+      "bytes": 1134,
+      "member": "independent-reviews/driver-peer-handoff-v1.json",
+      "sha256": "a193a159547b5a222c4969517cc548c8ff5be597bbc12972b8ca846b63668870",
+      "source": {
+        "bytes": 1134,
+        "path": "/private/tmp/gcts-schema-admission-peer-20261019/driver-peer-handoff-v1.json",
+        "sha256": "a193a159547b5a222c4969517cc548c8ff5be597bbc12972b8ca846b63668870"
+      }
+    },
+    {
+      "bytes": 11492,
+      "member": "independent-reviews/driver-raw-Source-audit-v1.json",
+      "sha256": "e4e601d7aff6f1bbcb7ff50bf4bdc7236091863713e9a051aa4baedcce3166ec",
+      "source": {
+        "bytes": 11492,
+        "path": "/private/tmp/gcts-schema-admission-peer-20261019/driver-raw-Source-audit-v1.json",
+        "sha256": "e4e601d7aff6f1bbcb7ff50bf4bdc7236091863713e9a051aa4baedcce3166ec"
+      }
+    },
+    {
+      "bytes": 1024,
+      "member": "independent-reviews/final-grant-delta-handoff-v2.json",
+      "sha256": "aeca4ad9f457f4839ca71dc532b7dd36c0d29b3b23a90d39ae53e5d475459d9d",
+      "source": {
+        "bytes": 1024,
+        "path": "/private/tmp/gcts-schema-admission-peer-20261019/final-grant-delta-handoff-v2.json",
+        "sha256": "aeca4ad9f457f4839ca71dc532b7dd36c0d29b3b23a90d39ae53e5d475459d9d"
+      }
+    },
+    {
+      "bytes": 78538,
+      "member": "independent-reviews/final-grant-delta-raw-audit-v2.json",
+      "sha256": "7c4658a94f99ce51003bb11c7da9eabd6de9b68d734135a037a6540b5f7a4689",
+      "source": {
+        "bytes": 78538,
+        "path": "/private/tmp/gcts-schema-admission-peer-20261019/final-grant-delta-raw-audit-v2.json",
+        "sha256": "7c4658a94f99ce51003bb11c7da9eabd6de9b68d734135a037a6540b5f7a4689"
+      }
+    },
+    {
+      "bytes": 23603,
+      "member": "independent-reviews/freeze_design_obligations_v1.py",
+      "sha256": "5f97acb39a255123c14ed44d328505333f53407c279016104e8fa6a8e4ded26b",
+      "source": {
+        "bytes": 23603,
+        "path": "/private/tmp/gcts-schema-admission-peer-20261019/freeze_design_obligations_v1.py",
+        "sha256": "5f97acb39a255123c14ed44d328505333f53407c279016104e8fa6a8e4ded26b"
+      }
+    },
+    {
+      "bytes": 6889,
+      "member": "independent-reviews/freeze_gate_addendum_v1.py",
+      "sha256": "4d0424d21f524835757321491cbf84bdbd26c36a4e7c6cc48154de28d748f415",
+      "source": {
+        "bytes": 6889,
+        "path": "/private/tmp/gcts-schema-admission-peer-20261019/freeze_gate_addendum_v1.py",
+        "sha256": "4d0424d21f524835757321491cbf84bdbd26c36a4e7c6cc48154de28d748f415"
+      }
+    },
+    {
+      "bytes": 762,
+      "member": "independent-reviews/gate-addendum-handoff-v1.json",
+      "sha256": "dbc3776f99fb238ca6bf02862163682e4613993c714bec905e652c2aef8c9dd6",
+      "source": {
+        "bytes": 762,
+        "path": "/private/tmp/gcts-schema-admission-peer-20261019/gate-addendum-handoff-v1.json",
+        "sha256": "dbc3776f99fb238ca6bf02862163682e4613993c714bec905e652c2aef8c9dd6"
+      }
+    },
+    {
+      "bytes": 4026,
+      "member": "independent-reviews/handoff-v1.json",
+      "sha256": "8874bc8dca49737f3b41c3ae773cbfd7fcbf98c46b9c3525d718e55cce4e1473",
+      "source": {
+        "bytes": 4026,
+        "path": "/private/tmp/gcts-schema-admission-peer-20261019/handoff-v1.json",
+        "sha256": "8874bc8dca49737f3b41c3ae773cbfd7fcbf98c46b9c3525d718e55cce4e1473"
+      }
+    },
+    {
+      "bytes": 3053,
+      "member": "independent-reviews/intake-peer-handoff-v1.json",
+      "sha256": "f8477e426d0aa8489b82dc264a90b0006916f334fe006a9dd3fa172e0c9ccd53",
+      "source": {
+        "bytes": 3053,
+        "path": "/private/tmp/gcts-schema-admission-peer-20261019/intake-peer-handoff-v1.json",
+        "sha256": "f8477e426d0aa8489b82dc264a90b0006916f334fe006a9dd3fa172e0c9ccd53"
+      }
+    },
+    {
+      "bytes": 17069,
+      "member": "independent-reviews/intake-raw-Source-audit-v1.json",
+      "sha256": "0333a9c3418ebb29ab54b88dfdab591a5452079b8c5ee8e49f6165f73f89e0d8",
+      "source": {
+        "bytes": 17069,
+        "path": "/private/tmp/gcts-schema-admission-peer-20261019/intake-raw-Source-audit-v1.json",
+        "sha256": "0333a9c3418ebb29ab54b88dfdab591a5452079b8c5ee8e49f6165f73f89e0d8"
+      }
+    },
+    {
+      "bytes": 35781,
+      "member": "independent-reviews/peer-saved-failure-evidence-review-v2.json",
+      "sha256": "23eb5fe17d8c9215b18aade53b0cb669671830104fcada4436ce1d8be6524a89",
+      "source": {
+        "bytes": 35781,
+        "path": "/private/tmp/gcts-schema-admission-peer-20261019/peer-saved-failure-evidence-review-v2.json",
+        "sha256": "23eb5fe17d8c9215b18aade53b0cb669671830104fcada4436ce1d8be6524a89"
+      }
+    },
+    {
+      "bytes": 991,
+      "member": "independent-reviews/prospective-peer-handoff-v1.json",
+      "sha256": "cdf854d216ecd57361d0dcdf27a76ebf9dec924340f6221ba46d5eef6920800d",
+      "source": {
+        "bytes": 991,
+        "path": "/private/tmp/gcts-schema-admission-peer-20261019/prospective-peer-handoff-v1.json",
+        "sha256": "cdf854d216ecd57361d0dcdf27a76ebf9dec924340f6221ba46d5eef6920800d"
+      }
+    },
+    {
+      "bytes": 993,
+      "member": "independent-reviews/prospective-peer-handoff-v2.json",
+      "sha256": "80dc98f6ac7d78a3f5343ff1cf7fd1979ccff83b503a60a9e3dee621d32486a3",
+      "source": {
+        "bytes": 993,
+        "path": "/private/tmp/gcts-schema-admission-peer-20261019/prospective-peer-handoff-v2.json",
+        "sha256": "80dc98f6ac7d78a3f5343ff1cf7fd1979ccff83b503a60a9e3dee621d32486a3"
+      }
+    },
+    {
+      "bytes": 242116,
+      "member": "independent-reviews/prospective-raw-metadata-audit-v1.json",
+      "sha256": "b45923bffdf50676429c6c4960e5748441d4159ab230613a0fadfc87951ee6a0",
+      "source": {
+        "bytes": 242116,
+        "path": "/private/tmp/gcts-schema-admission-peer-20261019/prospective-raw-metadata-audit-v1.json",
+        "sha256": "b45923bffdf50676429c6c4960e5748441d4159ab230613a0fadfc87951ee6a0"
+      }
+    },
+    {
+      "bytes": 254000,
+      "member": "independent-reviews/prospective-raw-metadata-audit-v2.json",
+      "sha256": "a12a0caa36e523a85771aa88e871d0877465e4166a39ab9b195d7e1bcd8fe3f9",
+      "source": {
+        "bytes": 254000,
+        "path": "/private/tmp/gcts-schema-admission-peer-20261019/prospective-raw-metadata-audit-v2.json",
+        "sha256": "a12a0caa36e523a85771aa88e871d0877465e4166a39ab9b195d7e1bcd8fe3f9"
+      }
+    },
+    {
+      "bytes": 1126,
+      "member": "independent-reviews/registry-peer-handoff-v1.json",
+      "sha256": "1d2fe9ea0f72fbc6ad617992b9276a096f686627079b1d13695ca993bb768efa",
+      "source": {
+        "bytes": 1126,
+        "path": "/private/tmp/gcts-schema-admission-peer-20261019/registry-peer-handoff-v1.json",
+        "sha256": "1d2fe9ea0f72fbc6ad617992b9276a096f686627079b1d13695ca993bb768efa"
+      }
+    },
+    {
+      "bytes": 1126,
+      "member": "independent-reviews/registry-peer-handoff-v2.json",
+      "sha256": "6191d6c3f3d6f1111e0036bed9b0a195747cdbe8d2bcfaa9fc4ecc4423aed8b8",
+      "source": {
+        "bytes": 1126,
+        "path": "/private/tmp/gcts-schema-admission-peer-20261019/registry-peer-handoff-v2.json",
+        "sha256": "6191d6c3f3d6f1111e0036bed9b0a195747cdbe8d2bcfaa9fc4ecc4423aed8b8"
+      }
+    },
+    {
+      "bytes": 7663,
+      "member": "independent-reviews/registry-raw-Source-audit-v1.json",
+      "sha256": "e6f5b85ecf8b9429dafd180758cb966af1c8093b3756de9a23379533b594d8d4",
+      "source": {
+        "bytes": 7663,
+        "path": "/private/tmp/gcts-schema-admission-peer-20261019/registry-raw-Source-audit-v1.json",
+        "sha256": "e6f5b85ecf8b9429dafd180758cb966af1c8093b3756de9a23379533b594d8d4"
+      }
+    },
+    {
+      "bytes": 7663,
+      "member": "independent-reviews/registry-raw-Source-audit-v2.json",
+      "sha256": "7446f2608e0a3cf778ffbe80a19a399120a1d377a2ff7d4c099b976bd832161d",
+      "source": {
+        "bytes": 7663,
+        "path": "/private/tmp/gcts-schema-admission-peer-20261019/registry-raw-Source-audit-v2.json",
+        "sha256": "7446f2608e0a3cf778ffbe80a19a399120a1d377a2ff7d4c099b976bd832161d"
+      }
+    },
+    {
+      "bytes": 15408,
+      "member": "independent-reviews/review_consumer_gates_v1.py",
+      "sha256": "a8facf5de57106c2551a64ad81349862c2ef25a2d3f9f86fc59b91ea548bbcaa",
+      "source": {
+        "bytes": 15408,
+        "path": "/private/tmp/gcts-schema-admission-peer-20261019/review_consumer_gates_v1.py",
+        "sha256": "a8facf5de57106c2551a64ad81349862c2ef25a2d3f9f86fc59b91ea548bbcaa"
+      }
+    },
+    {
+      "bytes": 24359,
+      "member": "independent-reviews/review_driver_Source_v1.py",
+      "sha256": "2aaa1064c2a8ef5a5ffa6afd2bbada67067420f81a02afd9fb05d851cb5acddb",
+      "source": {
+        "bytes": 24359,
+        "path": "/private/tmp/gcts-schema-admission-peer-20261019/review_driver_Source_v1.py",
+        "sha256": "2aaa1064c2a8ef5a5ffa6afd2bbada67067420f81a02afd9fb05d851cb5acddb"
+      }
+    },
+    {
+      "bytes": 13233,
+      "member": "independent-reviews/review_final_grant_delta_v2.py",
+      "sha256": "3e69c3625cc7af424826f9d7010e851e50dd7b4deff137d6f0841181b5c0d78c",
+      "source": {
+        "bytes": 13233,
+        "path": "/private/tmp/gcts-schema-admission-peer-20261019/review_final_grant_delta_v2.py",
+        "sha256": "3e69c3625cc7af424826f9d7010e851e50dd7b4deff137d6f0841181b5c0d78c"
+      }
+    },
+    {
+      "bytes": 23222,
+      "member": "independent-reviews/review_intake_Source_v1.py",
+      "sha256": "77d3dcb7cc1005807ef3fbd12849df54c1fd2deac59834da6d6fd7e0487e63c5",
+      "source": {
+        "bytes": 23222,
+        "path": "/private/tmp/gcts-schema-admission-peer-20261019/review_intake_Source_v1.py",
+        "sha256": "77d3dcb7cc1005807ef3fbd12849df54c1fd2deac59834da6d6fd7e0487e63c5"
+      }
+    },
+    {
+      "bytes": 30588,
+      "member": "independent-reviews/review_prospective_metadata.py",
+      "sha256": "c76dc091abab53a4ea299660a130e8c37334c1c912f6fd1a69c77354aa6a7ad2",
+      "source": {
+        "bytes": 30588,
+        "path": "/private/tmp/gcts-schema-admission-peer-20261019/review_prospective_metadata.py",
+        "sha256": "c76dc091abab53a4ea299660a130e8c37334c1c912f6fd1a69c77354aa6a7ad2"
+      }
+    },
+    {
+      "bytes": 35800,
+      "member": "independent-reviews/review_prospective_metadata_v2.py",
+      "sha256": "acc2c63368c5dd6515195b98184ee61db136d5e21882cb06844e52bc0c397d96",
+      "source": {
+        "bytes": 35800,
+        "path": "/private/tmp/gcts-schema-admission-peer-20261019/review_prospective_metadata_v2.py",
+        "sha256": "acc2c63368c5dd6515195b98184ee61db136d5e21882cb06844e52bc0c397d96"
+      }
+    },
+    {
+      "bytes": 22831,
+      "member": "independent-reviews/review_registry_Source_v1.py",
+      "sha256": "d37038566ae4522e6137ad1af81bc6a179db020715963b19e05b6eb4af2fde2a",
+      "source": {
+        "bytes": 22831,
+        "path": "/private/tmp/gcts-schema-admission-peer-20261019/review_registry_Source_v1.py",
+        "sha256": "d37038566ae4522e6137ad1af81bc6a179db020715963b19e05b6eb4af2fde2a"
+      }
+    },
+    {
+      "bytes": 23183,
+      "member": "independent-reviews/review_registry_Source_v2.py",
+      "sha256": "a87f0e0950656d464ce9099b29cd9e339e00fa96ab5818859bcb6a8975c6c5e5",
+      "source": {
+        "bytes": 23183,
+        "path": "/private/tmp/gcts-schema-admission-peer-20261019/review_registry_Source_v2.py",
+        "sha256": "a87f0e0950656d464ce9099b29cd9e339e00fa96ab5818859bcb6a8975c6c5e5"
+      }
+    },
+    {
+      "bytes": 27782,
+      "member": "independent-reviews/review_saved_failures_v2.py",
+      "sha256": "f874fe8d9bc0c5f4a2a281941882f7f8d76647a7ac8ce8d80ff5b591a1f51c9b",
+      "source": {
+        "bytes": 27782,
+        "path": "/private/tmp/gcts-schema-admission-peer-20261019/review_saved_failures_v2.py",
+        "sha256": "f874fe8d9bc0c5f4a2a281941882f7f8d76647a7ac8ce8d80ff5b591a1f51c9b"
+      }
+    },
+    {
+      "bytes": 885,
+      "member": "independent-reviews/saved-failure-peer-handoff-v2.json",
+      "sha256": "0adc90b32b1483fed8dd09c1dd9c04f730b3b53b667c2b333d07bec200b739d5",
+      "source": {
+        "bytes": 885,
+        "path": "/private/tmp/gcts-schema-admission-peer-20261019/saved-failure-peer-handoff-v2.json",
+        "sha256": "0adc90b32b1483fed8dd09c1dd9c04f730b3b53b667c2b333d07bec200b739d5"
+      }
+    },
+    {
+      "bytes": 205927,
+      "member": "independent-reviews/saved-failure-raw-audit-v2.json",
+      "sha256": "8b5b0b888fb72492be4ad55ffe4f97c669d627245ee95d94cd1df722134fd493",
+      "source": {
+        "bytes": 205927,
+        "path": "/private/tmp/gcts-schema-admission-peer-20261019/saved-failure-raw-audit-v2.json",
+        "sha256": "8b5b0b888fb72492be4ad55ffe4f97c669d627245ee95d94cd1df722134fd493"
+      }
+    },
+    {
+      "bytes": 8163,
+      "member": "independent-reviews/typed-consumer-gate-Source-review-v1.json",
+      "sha256": "724276e5ac2b22e52459d473edea9af776e6bf84f1a5c54d2fe76308bd89f2dc",
+      "source": {
+        "bytes": 8163,
+        "path": "/private/tmp/gcts-schema-admission-peer-20261019/typed-consumer-gate-Source-review-v1.json",
+        "sha256": "724276e5ac2b22e52459d473edea9af776e6bf84f1a5c54d2fe76308bd89f2dc"
+      }
+    },
+    {
+      "bytes": 10393,
+      "member": "independent-reviews/typed-driver-Source-review-v1.json",
+      "sha256": "29c103a1486d37498f71fa6015deadd1818c19ef21e8b5a6f11603010c47c2fe",
+      "source": {
+        "bytes": 10393,
+        "path": "/private/tmp/gcts-schema-admission-peer-20261019/typed-driver-Source-review-v1.json",
+        "sha256": "29c103a1486d37498f71fa6015deadd1818c19ef21e8b5a6f11603010c47c2fe"
+      }
+    },
+    {
+      "bytes": 9998,
+      "member": "independent-reviews/typed-final-grant-delta-review-v2.json",
+      "sha256": "72fe72b24bce247c167cbfd95f01def4f41b7f781f932d04cbaa0a4f7feb9043",
+      "source": {
+        "bytes": 9998,
+        "path": "/private/tmp/gcts-schema-admission-peer-20261019/typed-final-grant-delta-review-v2.json",
+        "sha256": "72fe72b24bce247c167cbfd95f01def4f41b7f781f932d04cbaa0a4f7feb9043"
+      }
+    },
+    {
+      "bytes": 14195,
+      "member": "independent-reviews/typed-intake-Source-review-v1.json",
+      "sha256": "7c11530bfb1607c7e05cd79f19852296eb506a1f84ed6e1136ae9361c830ce83",
+      "source": {
+        "bytes": 14195,
+        "path": "/private/tmp/gcts-schema-admission-peer-20261019/typed-intake-Source-review-v1.json",
+        "sha256": "7c11530bfb1607c7e05cd79f19852296eb506a1f84ed6e1136ae9361c830ce83"
+      }
+    },
+    {
+      "bytes": 4969,
+      "member": "independent-reviews/typed-pilot-report-scope-review-v1.json",
+      "sha256": "a729786213b5af7a7ecc3473b817871f857e1031565904646f7a154e1f1b539d",
+      "source": {
+        "bytes": 4969,
+        "path": "/private/tmp/gcts-schema-admission-peer-20261019/typed-pilot-report-scope-review-v1.json",
+        "sha256": "a729786213b5af7a7ecc3473b817871f857e1031565904646f7a154e1f1b539d"
+      }
+    },
+    {
+      "bytes": 4678,
+      "member": "independent-reviews/typed-pilot-report-scope-review-v2.json",
+      "sha256": "05b9d5fa4519b5e531c402c904e3989dd0de0f1f2a1a206c8dab4997ee538db8",
+      "source": {
+        "bytes": 4678,
+        "path": "/private/tmp/gcts-schema-admission-peer-20261019/typed-pilot-report-scope-review-v2.json",
+        "sha256": "05b9d5fa4519b5e531c402c904e3989dd0de0f1f2a1a206c8dab4997ee538db8"
+      }
+    },
+    {
+      "bytes": 30093,
+      "member": "independent-reviews/typed-prospective-review-v1.json",
+      "sha256": "2baff274c50143e6302d4d9c7d9ee03abdaa4640e81542033123cdce510a1474",
+      "source": {
+        "bytes": 30093,
+        "path": "/private/tmp/gcts-schema-admission-peer-20261019/typed-prospective-review-v1.json",
+        "sha256": "2baff274c50143e6302d4d9c7d9ee03abdaa4640e81542033123cdce510a1474"
+      }
+    },
+    {
+      "bytes": 30245,
+      "member": "independent-reviews/typed-prospective-review-v2.json",
+      "sha256": "320667213fd85a532d965de8af930e57a32081822eb007a86127e5fccd538c28",
+      "source": {
+        "bytes": 30245,
+        "path": "/private/tmp/gcts-schema-admission-peer-20261019/typed-prospective-review-v2.json",
+        "sha256": "320667213fd85a532d965de8af930e57a32081822eb007a86127e5fccd538c28"
+      }
+    },
+    {
+      "bytes": 9674,
+      "member": "independent-reviews/typed-registry-Source-review-v1.json",
+      "sha256": "318b69ff79e558fac8ecf4bb52c37661d7191346ec93be8722abfc6e75b197e7",
+      "source": {
+        "bytes": 9674,
+        "path": "/private/tmp/gcts-schema-admission-peer-20261019/typed-registry-Source-review-v1.json",
+        "sha256": "318b69ff79e558fac8ecf4bb52c37661d7191346ec93be8722abfc6e75b197e7"
+      }
+    },
+    {
+      "bytes": 9674,
+      "member": "independent-reviews/typed-registry-Source-review-v2.json",
+      "sha256": "59f43754249e1842eea0c53c2c9e5ef09111be15772ed59fe0873343807bf0c9",
+      "source": {
+        "bytes": 9674,
+        "path": "/private/tmp/gcts-schema-admission-peer-20261019/typed-registry-Source-review-v2.json",
+        "sha256": "59f43754249e1842eea0c53c2c9e5ef09111be15772ed59fe0873343807bf0c9"
+      }
+    },
+    {
+      "bytes": 12299,
+      "member": "current-import-census/build_census_v1.py",
+      "sha256": "36584a277af226d82fe09684f412475d602d80d85fe9cdbd9d9f8f74d91aa692",
+      "source": {
+        "bytes": 12299,
+        "path": "/private/tmp/gcts-schema-admission-import-census-20261019/build_census_v1.py",
+        "sha256": "36584a277af226d82fe09684f412475d602d80d85fe9cdbd9d9f8f74d91aa692"
+      }
+    },
+    {
+      "bytes": 1267,
+      "member": "current-import-census/handoff-v1.json",
+      "sha256": "a3a48449e299a930d000b18c4f50a0c8de29674b031bcefe11c261281cb200c5",
+      "source": {
+        "bytes": 1267,
+        "path": "/private/tmp/gcts-schema-admission-import-census-20261019/handoff-v1.json",
+        "sha256": "a3a48449e299a930d000b18c4f50a0c8de29674b031bcefe11c261281cb200c5"
+      }
+    },
+    {
+      "bytes": 238682,
+      "member": "current-import-census/newcensus-v1.json",
+      "sha256": "9f293e48a048cb085281c3c6bbff6d8f9c3424f36421af7b1da582d4d63e4eb4",
+      "source": {
+        "bytes": 238682,
+        "path": "/private/tmp/gcts-schema-admission-import-census-20261019/newcensus-v1.json",
+        "sha256": "9f293e48a048cb085281c3c6bbff6d8f9c3424f36421af7b1da582d4d63e4eb4"
+      }
+    },
+    {
+      "bytes": 41808,
+      "member": "Native-inputs/boundary-oracle-v2",
+      "sha256": "2b6bf8bb09a4e03d0cb1b4595dea1fe6d4432aa93d8f7eed72c30077fd9941a4",
+      "source": {
+        "bytes": 41808,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/boundary-oracle-v2",
+        "sha256": "2b6bf8bb09a4e03d0cb1b4595dea1fe6d4432aa93d8f7eed72c30077fd9941a4"
+      }
+    },
+    {
+      "bytes": 1114802,
+      "member": "Native-inputs/proof-boundary-microcode-001.json.gz",
+      "sha256": "23e2b54cc8365fa42f05148885dc7da671f525f8cb24b154f5c69aeeb3180336",
+      "source": {
+        "bytes": 1114802,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/proof-boundary-microcode-001.json.gz",
+        "sha256": "23e2b54cc8365fa42f05148885dc7da671f525f8cb24b154f5c69aeeb3180336"
+      }
+    },
+    {
+      "bytes": 1494417,
+      "member": "Native-inputs/proof-boundary-001.json",
+      "sha256": "977ceac5504ad3d712c7fa2d46d20494b42e30820f77eb2bffbeea313d07ee54",
+      "source": {
+        "bytes": 1494417,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/proof-boundary-001.json",
+        "sha256": "977ceac5504ad3d712c7fa2d46d20494b42e30820f77eb2bffbeea313d07ee54"
+      }
+    },
+    {
+      "bytes": 4502,
+      "member": "inputs/policy.json",
+      "sha256": "f5f0c22121f4c503db319fe6e01c4c3a146ac9db9deb7e2ccec0aab1a2f32161",
+      "source": {
+        "bytes": 4502,
+        "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic-inventory-policy-001.json",
+        "sha256": "f5f0c22121f4c503db319fe6e01c4c3a146ac9db9deb7e2ccec0aab1a2f32161"
+      }
+    },
+    {
+      "bytes": 22422,
+      "member": "inputs/input-capsule.json",
+      "sha256": "1a42c2ab16680dddbac504ca5b2d79559370785884805cf4d56b5c1c22c63dc0",
+      "source": {
+        "bytes": 22422,
+        "path": "/private/tmp/gcts-local-operational-20261019/full-assertion-capsule.json",
+        "sha256": "1a42c2ab16680dddbac504ca5b2d79559370785884805cf4d56b5c1c22c63dc0"
+      }
+    },
+    {
+      "bytes": 17577,
+      "member": "inputs/raw-kernel.tree",
+      "sha256": "8c86a24231d9c7d1777d7998b747a8cfd07087c168da64db6c5dff0820c802ed",
+      "source": {
+        "bytes": 17577,
+        "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/fol_checker.tree",
+        "sha256": "8c86a24231d9c7d1777d7998b747a8cfd07087c168da64db6c5dff0820c802ed"
+      }
+    },
+    {
+      "bytes": 14195,
+      "member": "scoped-review-receipts/composition_Source.json",
+      "sha256": "7c11530bfb1607c7e05cd79f19852296eb506a1f84ed6e1136ae9361c830ce83",
+      "source": {
+        "bytes": 14195,
+        "path": "/private/tmp/gcts-schema-admission-peer-20261019/typed-intake-Source-review-v1.json",
+        "sha256": "7c11530bfb1607c7e05cd79f19852296eb506a1f84ed6e1136ae9361c830ce83"
+      }
+    },
+    {
+      "bytes": 8163,
+      "member": "scoped-review-receipts/consumer_gates_Source.json",
+      "sha256": "724276e5ac2b22e52459d473edea9af776e6bf84f1a5c54d2fe76308bd89f2dc",
+      "source": {
+        "bytes": 8163,
+        "path": "/private/tmp/gcts-schema-admission-peer-20261019/typed-consumer-gate-Source-review-v1.json",
+        "sha256": "724276e5ac2b22e52459d473edea9af776e6bf84f1a5c54d2fe76308bd89f2dc"
+      }
+    },
+    {
+      "bytes": 10393,
+      "member": "scoped-review-receipts/driver_Source.json",
+      "sha256": "29c103a1486d37498f71fa6015deadd1818c19ef21e8b5a6f11603010c47c2fe",
+      "source": {
+        "bytes": 10393,
+        "path": "/private/tmp/gcts-schema-admission-peer-20261019/typed-driver-Source-review-v1.json",
+        "sha256": "29c103a1486d37498f71fa6015deadd1818c19ef21e8b5a6f11603010c47c2fe"
+      }
+    },
+    {
+      "bytes": 14195,
+      "member": "scoped-review-receipts/once_Source.json",
+      "sha256": "7c11530bfb1607c7e05cd79f19852296eb506a1f84ed6e1136ae9361c830ce83",
+      "source": {
+        "bytes": 14195,
+        "path": "/private/tmp/gcts-schema-admission-peer-20261019/typed-intake-Source-review-v1.json",
+        "sha256": "7c11530bfb1607c7e05cd79f19852296eb506a1f84ed6e1136ae9361c830ce83"
+      }
+    },
+    {
+      "bytes": 30245,
+      "member": "scoped-review-receipts/prospective_plans.json",
+      "sha256": "320667213fd85a532d965de8af930e57a32081822eb007a86127e5fccd538c28",
+      "source": {
+        "bytes": 30245,
+        "path": "/private/tmp/gcts-schema-admission-peer-20261019/typed-prospective-review-v2.json",
+        "sha256": "320667213fd85a532d965de8af930e57a32081822eb007a86127e5fccd538c28"
+      }
+    },
+    {
+      "bytes": 9674,
+      "member": "scoped-review-receipts/registry_Source.json",
+      "sha256": "59f43754249e1842eea0c53c2c9e5ef09111be15772ed59fe0873343807bf0c9",
+      "source": {
+        "bytes": 9674,
+        "path": "/private/tmp/gcts-schema-admission-peer-20261019/typed-registry-Source-review-v2.json",
+        "sha256": "59f43754249e1842eea0c53c2c9e5ef09111be15772ed59fe0873343807bf0c9"
+      }
+    },
+    {
+      "bytes": 8399,
+      "member": "scoped-review-receipts/retained_ordering_Source.json",
+      "sha256": "84c4e5e5b1528bafc12f8f957e89ea648b1e358ce888206879639cb954dc8f2e",
+      "source": {
+        "bytes": 8399,
+        "path": "/private/tmp/gcts-and-support-ordering-independent-peer-20261018/typed-ordering-components-Source-review-v1.json",
+        "sha256": "84c4e5e5b1528bafc12f8f957e89ea648b1e358ce888206879639cb954dc8f2e"
+      }
+    },
+    {
+      "bytes": 1132,
+      "member": "README.txt",
+      "sha256": "c9c0613357c59252662fec9e9df600a02bf5552179a8a6aa740eff0d985f7c93"
+    }
+  ],
+  "posthoc_opaque_Native_decodes": 0,
+  "schema": "schema-admission-pilot-public-manifest-v1",
+  "scientific_replays": 0
+}
