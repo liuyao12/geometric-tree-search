@@ -1,0 +1,1181 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Failure-safe observation helpers — GCTS research</title><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<style>:root{--ink:#193740;--muted:#506772;--line:#bfd0d3;--paper:#f3f7f6;--teal:#12666a;--purple:#7350a2;--amber:#996b20}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 system-ui,-apple-system,sans-serif}main{max-width:1180px;padding:36px 30px 80px;margin:auto}a{color:#0d666f}nav{display:flex;gap:22px;flex-wrap:wrap;margin-bottom:44px;font-size:15px}h1{font:600 clamp(32px,5vw,54px)/1.12 Georgia,serif;max-width:980px;margin:12px 0 22px}h2{font:600 29px/1.25 Georgia,serif;margin:0 0 22px}h3{font-size:19px}p{max-width:980px}.eyebrow{font-size:12px;letter-spacing:1.5px;font-weight:750;text-transform:uppercase;color:var(--teal)}.lead{font-size:22px;max-width:980px}.boundary{border-left:5px solid var(--amber);background:#fff2dd;padding:18px 24px;margin:28px 0}.cards{display:grid;grid-template-columns:1fr 1fr;gap:22px}.cards article{border:1px solid var(--line);background:white;padding:22px 26px}.cards b{font-size:22px}.cards p{margin-bottom:0}.timeline{height:46px;display:flex;margin:25px 0 12px;border:1px solid var(--line)}.time-legend{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;font-size:15px}.time-legend b{display:block}.time-legend p{margin-top:5px}.proof-table{min-width:980px}.proof-table pre{max-width:500px}section{margin-top:58px;scroll-margin-top:24px}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:850px;background:white;font-size:15px}th,td{padding:16px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}thead{background:#e2edef}caption{text-align:left;font-size:13px;color:var(--muted);margin-top:10px;caption-side:bottom}.path{display:grid;grid-template-columns:1fr 46px 1fr 46px 1fr;align-items:stretch;margin:25px 0}.path article{background:white;border-top:5px solid var(--teal);padding:22px;border-left:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line)}.path.evidence article{border-top-color:var(--purple)}.path article strong{display:block;font-size:19px;line-height:1.3}.path p{font-size:15px;margin-bottom:0}.arrow{align-self:center;text-align:center;font-size:25px;color:#617a84}.lane{font-size:12px;font-weight:750;letter-spacing:1.4px;color:var(--teal);text-transform:uppercase}.lane.purple{color:var(--purple)}.note{font-size:14px;color:var(--muted)}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-height:560px;overflow:auto;background:#e5edef;padding:22px;font-size:12px;border:1px solid var(--line)}details{margin:22px 0}summary{cursor:pointer;font-weight:650}li{margin:12px 0}footer{border-top:1px solid var(--line);margin-top:65px;padding-top:22px;color:var(--muted);font-size:14px}code{font-size:.87em;background:#e4edee;padding:2px 4px}@media(max-width:730px){main{padding:24px 18px 60px}.cards,.time-legend{grid-template-columns:1fr}.path{grid-template-columns:1fr}.path .arrow{transform:rotate(90deg);height:42px}.lead{font-size:19px}}
+
+.diagnostic{background:white;border:1px solid var(--line);padding:14px 20px;margin:12px 0}.diagnostic summary{overflow-wrap:anywhere}.diagnostic summary span{float:right;color:var(--teal);font-size:13px}.counts{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:25px 0}.counts article{padding:25px;background:white;border-top:5px solid var(--purple)}.counts strong{display:block;font-size:28px}.scope{background:#e2efeb;padding:18px 24px;border-left:5px solid var(--teal)}@media(max-width:730px){.counts{grid-template-columns:1fr}}
+
+.status-failed{color:#933b2c}.timeline-row{margin:28px 0}.timeline-track{position:relative;display:flex;height:35px;background:#e7eded;border:1px solid var(--line);margin:10px 0}.timeline-track span{display:block}.scientific{background:#2e7e83}.evidence-cost{background:repeating-linear-gradient(135deg,#ddba7d,#ddba7d 8px,#efd4a7 8px,#efd4a7 16px)}.work-limit{position:absolute;left:85.714286%;height:53px;top:-9px;border-left:2px dashed #873c31}.terminal{position:absolute;top:-4px;height:43px;border-left:3px solid #512c25}.timeline-row p{font-size:14px}.legend-line{display:flex;flex-wrap:wrap;gap:18px;font-size:14px}.swatch{display:inline-block;width:18px;height:12px;margin-right:6px}.raw-arm{padding:16px;background:white;border:1px solid var(--line)}.small-table{min-width:780px}.history{border-left:5px solid var(--purple);padding:18px 24px;background:#eee9f5}.audit-count{font-size:30px;font-weight:700}section{scroll-margin-top:24px}
+.prefix-row{display:grid;grid-template-columns:190px 1fr;gap:18px;align-items:center;margin:22px 0}.prefix-cells{display:grid;grid-template-columns:repeat(27,minmax(3px,1fr));gap:3px}.prefix-cells i{display:block;height:25px;background:#dee7e8;border:1px solid #b1c5c7}.prefix-cells i.done{background:#22847b;border-color:#176b65}.prefix-cells i.active{background:#e4ba6d;border-color:#9b6c29}.prefix-label{font-size:14px}.prefix-note{grid-column:2;font-size:13px;color:var(--muted)}.helper-card{background:white;border:1px solid var(--line);border-top:5px solid var(--teal);padding:22px}.qa-details{background:white;border:1px solid var(--line);padding:14px 18px}.qa-details summary{font-size:15px}.flow-helper{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.ok{color:#176f65}.source-note{border-left:4px solid var(--purple);background:#eeeaf4;padding:16px 22px}.compact{min-width:700px}@media(max-width:730px){.prefix-row,.flow-helper{grid-template-columns:1fr}.prefix-note{grid-column:1}}</style></head><body><main><nav><a href="reader.html#finalization-observation">Research notebook</a><a href="#outcome">Outcome</a><a href="#prefixes">Interrupted tests</a><a href="#groups">Every diagnostic</a><a href="#next">Next experiment</a><a href="owned-evidence.html#proof">Earlier admitted proof</a></nav><p class="eyebrow">19 October 2026 · Observation helpers · One bounded worker</p><h1>Failure diagnostics survive the helper tests.</h1><p class="lead">Before another full proof-search run, we tested the new phase ledger with fake clocks, fake actions and passive statistics. Every declared group passed; deliberate interruptions retained their partial records.</p><p class="boundary">This qualifies finite instrumentation helpers. No proof search or new theorem was produced. The <a href="cadence-integration.html#outcome">two earlier fresh full-pipeline failures</a> and <a href="owned-evidence.html#proof">earlier admitted symbolic proof</a> keep their separate outcomes.</p><section id="outcome"><h2>A narrow preparation step passed.</h2><div class="counts"><article><strong>\(27\)</strong>Normal diagnostic groups passed.</article><article><strong>\(3\)</strong>Interrupted calls retained the expected prefixes.</article></div><p>One fresh worker made \(4\) harness calls: one complete call and three planned interruptions. The complete call reached \(57\) harness checkpoints. The worker checked the original exception object, restored clock slot and shallow callable bindings after each interrupted call.</p><div class="table-wrap"><table class="compact"><thead><tr><th>Observed helper-only result</th><th>Value</th><th>Scope</th></tr></thead><tbody><tr><th>External terminal from runner Source entry</th><td>\(0.180694916\,\mathrm{s}\)</td><td>Complete one-worker helper qualification; excludes observer/Python prelude.</td></tr><tr><th>Darwin worker highwater</th><td>\(51986432\,\mathrm{bytes}\)</td><td>Posthoc worker measurement; outer and observer RAM excluded.</td></tr><tr><th>Complete ordinary result</th><td>\(22999\,\mathrm{bytes}\)</td><td>Includes all normal and interrupted diagnostic packets.</td></tr><tr><th>Conservative physical ledger</th><td>\(9461641\,\mathrm{bytes}\)</td><td>Pre-receipt files plus the original \(9\,\mathrm{MiB}\) outer metadata reservation.</td></tr><tr><th>Proof search / Model / Native / proof replay</th><td>\(0\)</td><td>Those production operations were outside this qualification.</td></tr></tbody><caption>These observations describe the finite helper test. They estimate neither the real evidence path nor a speed improvement.</caption></table></div><p>All positive worker work, known exit and complete outer checks finished before \(180\,\mathrm{s}\); the external terminal finished before \(210\,\mathrm{s}\). The worker was reaped, its owned process group was absent, and regular captured logs closed. No retry was used.</p></section><section id="method"><h2>Retain observations without changing proof authority.</h2><div class="flow-helper"><article class="helper-card"><b>Observe the action</b><p>Record start, return or failure around an existing action. Nested intervals can overlap.</p></article><article class="helper-card"><b>Detach a bounded record</b><p>Copy passive statistics and a small phase ledger. Later mutations must not alter the saved copy.</p></article><article class="helper-card"><b>Preserve the failure</b><p>Attach available diagnostics and rethrow the same original exception. Metadata failure can leave an explicit unavailable marker.</p></article></div><p>Driver metadata is bounded by \(64\,\mathrm{KiB}\), with at most \(16\) phase rows and \(8\) snapshots of \(8\,\mathrm{KiB}\) each. Cold observation snapshots are bounded by \(256\,\mathrm{KiB}\) and \(32\) rows. The tests cover normal copies, selected foreign exceptions, size limits, unavailable markers and clock restoration.</p><p class="source-note">The integration code has Source review. This actual exercised only its new metadata helpers with synthetic interfaces. Full driver/cold execution, real Arena or inverse work, actual deadline retention and full proof-pipeline fit remain unqualified for this successor.</p></section><section id="prefixes"><h2>Completed diagnostics do not erase an interrupted finish.</h2><p>Each green cell counts one completed diagnostic group. Amber identifies the next active group. Every interrupted packet retains status <code>FAILED_OR_UNFINISHED</code>, including the final interruption after all groups.</p><div class="prefix-row"><div class="prefix-label"><b>At entry</b><br>\(0\) completed groups</div><div class="prefix-cells" role="img" aria-label="0 completed diagnostic groups; qualification unfinished"><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></div><div class="prefix-note">Checkpoint \(1\) · <code>RuntimeError</code> · same original exception retained</div></div><details class="qa-details" id="prefix-initial_checkpoint"><summary>Inspect the complete at entry packet</summary><pre>{
+  &quot;checkpoint_calls&quot;: 1,
+  &quot;checkpoint_ordinal&quot;: 1,
+  &quot;clock_slot_restored&quot;: true,
+  &quot;exact_exception_identity&quot;: true,
+  &quot;exception_type&quot;: &quot;RuntimeError&quot;,
+  &quot;helper_callable_bindings_unchanged&quot;: true,
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;initial_checkpoint&quot;,
+  &quot;prefix&quot;: {
+    &quot;active_fixture&quot;: null,
+    &quot;authority&quot;: false,
+    &quot;complete_prefix_retained&quot;: true,
+    &quot;completed_diagnostics&quot;: [],
+    &quot;completed_fixture_count&quot;: 0,
+    &quot;expected_fixture_names&quot;: [
+      &quot;driver_normal_call_and_detached_record&quot;,
+      &quot;driver_nested_phase_intervals&quot;,
+      &quot;driver_action_foreign_exception_identity&quot;,
+      &quot;driver_entry_clock_foreign_exception_identity&quot;,
+      &quot;driver_return_clock_error_after_action&quot;,
+      &quot;driver_failure_clock_preserves_primary_error&quot;,
+      &quot;driver_passive_snapshot_detachment&quot;,
+      &quot;driver_snapshot_foreign_exception_identity&quot;,
+      &quot;driver_declared_names_refuse_unknown&quot;,
+      &quot;driver_sixteen_phase_cap&quot;,
+      &quot;driver_eight_snapshot_cap&quot;,
+      &quot;driver_eight_KiB_snapshot_cap&quot;,
+      &quot;driver_sixtyfour_KiB_record_and_unavailable_marker&quot;,
+      &quot;driver_complete_record_detachment&quot;,
+      &quot;cold_nested_open_and_returned_phases&quot;,
+      &quot;cold_thirtytwo_row_and_unknown_name_limits&quot;,
+      &quot;cold_counter_guard_timing_snapshot_cutoff&quot;,
+      &quot;cold_clock_faults_are_best_effort&quot;,
+      &quot;cold_twohundredfiftysix_KiB_observation_cap&quot;,
+      &quot;cold_late_failure_retains_driver_receipt_and_statistics&quot;,
+      &quot;cold_error_attributes_retained_without_receipt&quot;,
+      &quot;cold_malformed_or_oversized_driver_metadata_fallback&quot;,
+      &quot;cold_malformed_observation_metadata_fallback&quot;,
+      &quot;cold_active_error_identity_with_both_fallbacks&quot;,
+      &quot;cold_malformed_phase_and_counter_best_effort&quot;,
+      &quot;cold_driver_unavailable_marker_remains_unavailable&quot;,
+      &quot;cold_failure_clock_cannot_replace_active_error&quot;
+    ],
+    &quot;full_pipeline_qualified&quot;: false,
+    &quot;full_qualification_completed&quot;: false,
+    &quot;mathematical_authority&quot;: false,
+    &quot;resource_authority&quot;: false,
+    &quot;schema&quot;: &quot;finalization-instrumentation-helper-prefix-v1&quot;,
+    &quot;stage&quot;: &quot;initial_checkpoint&quot;,
+    &quot;status&quot;: &quot;FAILED_OR_UNFINISHED&quot;
+  },
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><div class="prefix-row"><div class="prefix-label"><b>After the first group</b><br>\(1\) completed groups</div><div class="prefix-cells" role="img" aria-label="1 completed diagnostic groups; qualification unfinished"><i class="done"></i><i class="active"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></div><div class="prefix-note">Checkpoint \(4\) · <code>ValueError</code> · same original exception retained</div></div><details class="qa-details" id="prefix-after_first_completed_group"><summary>Inspect the complete after the first group packet</summary><pre>{
+  &quot;checkpoint_calls&quot;: 4,
+  &quot;checkpoint_ordinal&quot;: 4,
+  &quot;clock_slot_restored&quot;: true,
+  &quot;exact_exception_identity&quot;: true,
+  &quot;exception_type&quot;: &quot;ValueError&quot;,
+  &quot;helper_callable_bindings_unchanged&quot;: true,
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;after_first_completed_group&quot;,
+  &quot;prefix&quot;: {
+    &quot;active_fixture&quot;: &quot;driver_nested_phase_intervals&quot;,
+    &quot;authority&quot;: false,
+    &quot;complete_prefix_retained&quot;: true,
+    &quot;completed_diagnostics&quot;: [
+      {
+        &quot;details&quot;: {
+          &quot;action_calls&quot;: 1,
+          &quot;clock_calls&quot;: 2,
+          &quot;targets&quot;: [
+            &quot;call&quot;,
+            &quot;record&quot;
+          ]
+        },
+        &quot;mathematical_authority&quot;: false,
+        &quot;name&quot;: &quot;driver_normal_call_and_detached_record&quot;,
+        &quot;status&quot;: &quot;passed&quot;
+      }
+    ],
+    &quot;completed_fixture_count&quot;: 1,
+    &quot;expected_fixture_names&quot;: [
+      &quot;driver_normal_call_and_detached_record&quot;,
+      &quot;driver_nested_phase_intervals&quot;,
+      &quot;driver_action_foreign_exception_identity&quot;,
+      &quot;driver_entry_clock_foreign_exception_identity&quot;,
+      &quot;driver_return_clock_error_after_action&quot;,
+      &quot;driver_failure_clock_preserves_primary_error&quot;,
+      &quot;driver_passive_snapshot_detachment&quot;,
+      &quot;driver_snapshot_foreign_exception_identity&quot;,
+      &quot;driver_declared_names_refuse_unknown&quot;,
+      &quot;driver_sixteen_phase_cap&quot;,
+      &quot;driver_eight_snapshot_cap&quot;,
+      &quot;driver_eight_KiB_snapshot_cap&quot;,
+      &quot;driver_sixtyfour_KiB_record_and_unavailable_marker&quot;,
+      &quot;driver_complete_record_detachment&quot;,
+      &quot;cold_nested_open_and_returned_phases&quot;,
+      &quot;cold_thirtytwo_row_and_unknown_name_limits&quot;,
+      &quot;cold_counter_guard_timing_snapshot_cutoff&quot;,
+      &quot;cold_clock_faults_are_best_effort&quot;,
+      &quot;cold_twohundredfiftysix_KiB_observation_cap&quot;,
+      &quot;cold_late_failure_retains_driver_receipt_and_statistics&quot;,
+      &quot;cold_error_attributes_retained_without_receipt&quot;,
+      &quot;cold_malformed_or_oversized_driver_metadata_fallback&quot;,
+      &quot;cold_malformed_observation_metadata_fallback&quot;,
+      &quot;cold_active_error_identity_with_both_fallbacks&quot;,
+      &quot;cold_malformed_phase_and_counter_best_effort&quot;,
+      &quot;cold_driver_unavailable_marker_remains_unavailable&quot;,
+      &quot;cold_failure_clock_cannot_replace_active_error&quot;
+    ],
+    &quot;full_pipeline_qualified&quot;: false,
+    &quot;full_qualification_completed&quot;: false,
+    &quot;mathematical_authority&quot;: false,
+    &quot;resource_authority&quot;: false,
+    &quot;schema&quot;: &quot;finalization-instrumentation-helper-prefix-v1&quot;,
+    &quot;stage&quot;: &quot;fixture_before_checkpoint&quot;,
+    &quot;status&quot;: &quot;FAILED_OR_UNFINISHED&quot;
+  },
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><div class="prefix-row"><div class="prefix-label"><b>At the final checkpoint</b><br>\(27\) completed groups</div><div class="prefix-cells" role="img" aria-label="27 completed diagnostic groups; qualification unfinished"><i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i></div><div class="prefix-note">Checkpoint \(57\) · <code>StopIteration</code> · same original exception retained</div></div><details class="qa-details" id="prefix-final_checkpoint"><summary>Inspect the complete at the final checkpoint packet</summary><pre>{
+  &quot;checkpoint_calls&quot;: 57,
+  &quot;checkpoint_ordinal&quot;: 57,
+  &quot;clock_slot_restored&quot;: true,
+  &quot;exact_exception_identity&quot;: true,
+  &quot;exception_type&quot;: &quot;StopIteration&quot;,
+  &quot;helper_callable_bindings_unchanged&quot;: true,
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;final_checkpoint&quot;,
+  &quot;prefix&quot;: {
+    &quot;active_fixture&quot;: null,
+    &quot;authority&quot;: false,
+    &quot;complete_prefix_retained&quot;: true,
+    &quot;completed_diagnostics&quot;: [
+      {
+        &quot;details&quot;: {
+          &quot;action_calls&quot;: 1,
+          &quot;clock_calls&quot;: 2,
+          &quot;targets&quot;: [
+            &quot;call&quot;,
+            &quot;record&quot;
+          ]
+        },
+        &quot;mathematical_authority&quot;: false,
+        &quot;name&quot;: &quot;driver_normal_call_and_detached_record&quot;,
+        &quot;status&quot;: &quot;passed&quot;
+      },
+      {
+        &quot;details&quot;: {
+          &quot;disjoint_cost_sum_asserted&quot;: false,
+          &quot;overlapping_intervals&quot;: true,
+          &quot;rows&quot;: 2,
+          &quot;targets&quot;: [
+            &quot;call&quot;,
+            &quot;record&quot;
+          ]
+        },
+        &quot;mathematical_authority&quot;: false,
+        &quot;name&quot;: &quot;driver_nested_phase_intervals&quot;,
+        &quot;status&quot;: &quot;passed&quot;
+      },
+      {
+        &quot;details&quot;: {
+          &quot;exact_error_classes&quot;: [
+            &quot;RuntimeError&quot;,
+            &quot;ValueError&quot;,
+            &quot;StopIteration&quot;
+          ],
+          &quot;targets&quot;: [
+            &quot;call&quot;,
+            &quot;attach&quot;
+          ]
+        },
+        &quot;mathematical_authority&quot;: false,
+        &quot;name&quot;: &quot;driver_action_foreign_exception_identity&quot;,
+        &quot;status&quot;: &quot;passed&quot;
+      },
+      {
+        &quot;details&quot;: {
+          &quot;checkpoint&quot;: &quot;initial observe&quot;,
+          &quot;exact_error_classes&quot;: [
+            &quot;RuntimeError&quot;,
+            &quot;ValueError&quot;,
+            &quot;StopIteration&quot;
+          ],
+          &quot;targets&quot;: [
+            &quot;call&quot;,
+            &quot;attach&quot;
+          ]
+        },
+        &quot;mathematical_authority&quot;: false,
+        &quot;name&quot;: &quot;driver_entry_clock_foreign_exception_identity&quot;,
+        &quot;status&quot;: &quot;passed&quot;
+      },
+      {
+        &quot;details&quot;: {
+          &quot;checkpoint&quot;: &quot;post action observe&quot;,
+          &quot;exact_error_classes&quot;: [
+            &quot;RuntimeError&quot;,
+            &quot;ValueError&quot;,
+            &quot;StopIteration&quot;
+          ],
+          &quot;targets&quot;: [
+            &quot;call&quot;,
+            &quot;attach&quot;
+          ]
+        },
+        &quot;mathematical_authority&quot;: false,
+        &quot;name&quot;: &quot;driver_return_clock_error_after_action&quot;,
+        &quot;status&quot;: &quot;passed&quot;
+      },
+      {
+        &quot;details&quot;: {
+          &quot;exact_primary_classes&quot;: [
+            &quot;RuntimeError&quot;,
+            &quot;ValueError&quot;,
+            &quot;StopIteration&quot;
+          ],
+          &quot;failure_clock_error&quot;: &quot;StopIteration&quot;,
+          &quot;targets&quot;: [
+            &quot;call&quot;,
+            &quot;attach&quot;
+          ]
+        },
+        &quot;mathematical_authority&quot;: false,
+        &quot;name&quot;: &quot;driver_failure_clock_preserves_primary_error&quot;,
+        &quot;status&quot;: &quot;passed&quot;
+      },
+      {
+        &quot;details&quot;: {
+          &quot;passive_statistics_calls&quot;: 1,
+          &quot;storage_operations_calls&quot;: 0,
+          &quot;targets&quot;: [
+            &quot;snapshot&quot;,
+            &quot;record&quot;
+          ]
+        },
+        &quot;mathematical_authority&quot;: false,
+        &quot;name&quot;: &quot;driver_passive_snapshot_detachment&quot;,
+        &quot;status&quot;: &quot;passed&quot;
+      },
+      {
+        &quot;details&quot;: {
+          &quot;reached_fault_sites&quot;: [
+            &quot;RuntimeError:clock&quot;,
+            &quot;RuntimeError:statistics&quot;,
+            &quot;ValueError:clock&quot;,
+            &quot;ValueError:statistics&quot;,
+            &quot;StopIteration:clock&quot;,
+            &quot;StopIteration:statistics&quot;
+          ],
+          &quot;targets&quot;: [
+            &quot;snapshot&quot;,
+            &quot;record&quot;
+          ]
+        },
+        &quot;mathematical_authority&quot;: false,
+        &quot;name&quot;: &quot;driver_snapshot_foreign_exception_identity&quot;,
+        &quot;status&quot;: &quot;passed&quot;
+      },
+      {
+        &quot;details&quot;: {
+          &quot;refused_names&quot;: 2,
+          &quot;targets&quot;: [
+            &quot;call&quot;,
+            &quot;snapshot&quot;
+          ]
+        },
+        &quot;mathematical_authority&quot;: false,
+        &quot;name&quot;: &quot;driver_declared_names_refuse_unknown&quot;,
+        &quot;status&quot;: &quot;passed&quot;
+      },
+      {
+        &quot;details&quot;: {
+          &quot;accepted_rows&quot;: 16,
+          &quot;refused_row&quot;: 17,
+          &quot;targets&quot;: [
+            &quot;call&quot;
+          ]
+        },
+        &quot;mathematical_authority&quot;: false,
+        &quot;name&quot;: &quot;driver_sixteen_phase_cap&quot;,
+        &quot;status&quot;: &quot;passed&quot;
+      },
+      {
+        &quot;details&quot;: {
+          &quot;accepted_snapshots&quot;: 8,
+          &quot;refused_snapshot&quot;: 9,
+          &quot;targets&quot;: [
+            &quot;snapshot&quot;
+          ]
+        },
+        &quot;mathematical_authority&quot;: false,
+        &quot;name&quot;: &quot;driver_eight_snapshot_cap&quot;,
+        &quot;status&quot;: &quot;passed&quot;
+      },
+      {
+        &quot;details&quot;: {
+          &quot;cap_bytes&quot;: 8192,
+          &quot;refused_payload_string_bytes&quot;: 8192,
+          &quot;targets&quot;: [
+            &quot;snapshot&quot;
+          ]
+        },
+        &quot;mathematical_authority&quot;: false,
+        &quot;name&quot;: &quot;driver_eight_KiB_snapshot_cap&quot;,
+        &quot;status&quot;: &quot;passed&quot;
+      },
+      {
+        &quot;details&quot;: {
+          &quot;each_snapshot_bytes&quot;: 8192,
+          &quot;exact_primary_identity&quot;: true,
+          &quot;marker&quot;: {
+            &quot;authority&quot;: false,
+            &quot;complete_ledger_retained&quot;: false,
+            &quot;mathematical_authority&quot;: false,
+            &quot;metadata_error_type&quot;: &quot;DriverDataError&quot;,
+            &quot;phase_count&quot;: 1,
+            &quot;profile&quot;: &quot;owned-finalization-phase-instrumented-v1&quot;,
+            &quot;resource_authority&quot;: false,
+            &quot;schema&quot;: &quot;owned-finalization-observation-unavailable-v1&quot;,
+            &quot;snapshot_count&quot;: 8,
+            &quot;status&quot;: &quot;UNAVAILABLE&quot;
+          },
+          &quot;record_cap_bytes&quot;: 65536,
+          &quot;snapshot_rows&quot;: 8,
+          &quot;targets&quot;: [
+            &quot;snapshot&quot;,
+            &quot;record&quot;,
+            &quot;call&quot;,
+            &quot;attach&quot;
+          ]
+        },
+        &quot;mathematical_authority&quot;: false,
+        &quot;name&quot;: &quot;driver_sixtyfour_KiB_record_and_unavailable_marker&quot;,
+        &quot;status&quot;: &quot;passed&quot;
+      },
+      {
+        &quot;details&quot;: {
+          &quot;scientific_authority&quot;: false,
+          &quot;targets&quot;: [
+            &quot;complete&quot;,
+            &quot;record&quot;
+          ]
+        },
+        &quot;mathematical_authority&quot;: false,
+        &quot;name&quot;: &quot;driver_complete_record_detachment&quot;,
+        &quot;status&quot;: &quot;passed&quot;
+      },
+      {
+        &quot;details&quot;: {
+          &quot;intervals_may_overlap&quot;: true,
+          &quot;open_at_failure_rows&quot;: 2,
+          &quot;returned_rows&quot;: 1,
+          &quot;targets&quot;: [
+            &quot;new_cold_observation&quot;,
+            &quot;cold_phase_begin&quot;,
+            &quot;cold_phase_end&quot;,
+            &quot;cold_phase_failure&quot;,
+            &quot;cold_observation_snapshot&quot;
+          ],
+          &quot;unstarted_rows_fabricated&quot;: 0
+        },
+        &quot;mathematical_authority&quot;: false,
+        &quot;name&quot;: &quot;cold_nested_open_and_returned_phases&quot;,
+        &quot;status&quot;: &quot;passed&quot;
+      },
+      {
+        &quot;details&quot;: {
+          &quot;refused_row&quot;: 33,
+          &quot;retained_rows&quot;: 32,
+          &quot;targets&quot;: [
+            &quot;cold_phase_begin&quot;
+          ],
+          &quot;unknown_name_refused&quot;: true
+        },
+        &quot;mathematical_authority&quot;: false,
+        &quot;name&quot;: &quot;cold_thirtytwo_row_and_unknown_name_limits&quot;,
+        &quot;status&quot;: &quot;passed&quot;
+      },
+      {
+        &quot;details&quot;: {
+          &quot;aggregate_counters_only&quot;: true,
+          &quot;callback_origin_categories_measured&quot;: false,
+          &quot;fake_elapsed_ns&quot;: 300,
+          &quot;later_work_excluded&quot;: true,
+          &quot;overlapping_intervals_not_summed_as_disjoint&quot;: true,
+          &quot;targets&quot;: [
+            &quot;cold_count&quot;,
+            &quot;cold_guard_finished&quot;,
+            &quot;cold_observation_snapshot&quot;
+          ]
+        },
+        &quot;mathematical_authority&quot;: false,
+        &quot;name&quot;: &quot;cold_counter_guard_timing_snapshot_cutoff&quot;,
+        &quot;status&quot;: &quot;passed&quot;
+      },
+      {
+        &quot;details&quot;: {
+          &quot;intentionally_suppressed_diagnostic_classes&quot;: [
+            &quot;RuntimeError&quot;,
+            &quot;ValueError&quot;,
+            &quot;StopIteration&quot;
+          ],
+          &quot;invalid_clock_values&quot;: 3,
+          &quot;targets&quot;: [
+            &quot;cold_phase_begin&quot;,
+            &quot;cold_phase_end&quot;,
+            &quot;cold_observation_snapshot&quot;
+          ]
+        },
+        &quot;mathematical_authority&quot;: false,
+        &quot;name&quot;: &quot;cold_clock_faults_are_best_effort&quot;,
+        &quot;status&quot;: &quot;passed&quot;
+      },
+      {
+        &quot;details&quot;: {
+          &quot;cap_bytes&quot;: 262144,
+          &quot;targets&quot;: [
+            &quot;cold_observation_snapshot&quot;,
+            &quot;cold_failure_diagnostics&quot;
+          ]
+        },
+        &quot;mathematical_authority&quot;: false,
+        &quot;name&quot;: &quot;cold_twohundredfiftysix_KiB_observation_cap&quot;,
+        &quot;status&quot;: &quot;passed&quot;
+      },
+      {
+        &quot;details&quot;: {
+          &quot;later_failure_rescued&quot;: false,
+          &quot;retained_complete_driver_receipt&quot;: true,
+          &quot;targets&quot;: [
+            &quot;cold_phase_failure&quot;,
+            &quot;bounded_driver_diagnostics&quot;,
+            &quot;cold_failure_diagnostics&quot;
+          ]
+        },
+        &quot;mathematical_authority&quot;: false,
+        &quot;name&quot;: &quot;cold_late_failure_retains_driver_receipt_and_statistics&quot;,
+        &quot;status&quot;: &quot;passed&quot;
+      },
+      {
+        &quot;details&quot;: {
+          &quot;driver_receipt_fabricated&quot;: false,
+          &quot;targets&quot;: [
+            &quot;bounded_driver_diagnostics&quot;
+          ]
+        },
+        &quot;mathematical_authority&quot;: false,
+        &quot;name&quot;: &quot;cold_error_attributes_retained_without_receipt&quot;,
+        &quot;status&quot;: &quot;passed&quot;
+      },
+      {
+        &quot;details&quot;: {
+          &quot;cases&quot;: 3,
+          &quot;metadata_error_types&quot;: [
+            &quot;AttributeError&quot;,
+            &quot;TypeError&quot;,
+            &quot;ColdError&quot;
+          ],
+          &quot;targets&quot;: [
+            &quot;bounded_driver_diagnostics&quot;,
+            &quot;cold_failure_diagnostics&quot;
+          ]
+        },
+        &quot;mathematical_authority&quot;: false,
+        &quot;name&quot;: &quot;cold_malformed_or_oversized_driver_metadata_fallback&quot;,
+        &quot;status&quot;: &quot;passed&quot;
+      },
+      {
+        &quot;details&quot;: {
+          &quot;cases&quot;: 2,
+          &quot;metadata_error_types&quot;: [
+            &quot;TypeError&quot;,
+            &quot;TypeError&quot;
+          ],
+          &quot;targets&quot;: [
+            &quot;cold_failure_diagnostics&quot;
+          ]
+        },
+        &quot;mathematical_authority&quot;: false,
+        &quot;name&quot;: &quot;cold_malformed_observation_metadata_fallback&quot;,
+        &quot;status&quot;: &quot;passed&quot;
+      },
+      {
+        &quot;details&quot;: {
+          &quot;exact_active_error_classes&quot;: [
+            &quot;RuntimeError&quot;,
+            &quot;ValueError&quot;,
+            &quot;StopIteration&quot;
+          ],
+          &quot;targets&quot;: [
+            &quot;cold_failure_diagnostics&quot;
+          ]
+        },
+        &quot;mathematical_authority&quot;: false,
+        &quot;name&quot;: &quot;cold_active_error_identity_with_both_fallbacks&quot;,
+        &quot;status&quot;: &quot;passed&quot;
+      },
+      {
+        &quot;details&quot;: {
+          &quot;absent_metadata_best_effort&quot;: true,
+          &quot;explicit_diagnostic_errors&quot;: 2,
+          &quot;targets&quot;: [
+            &quot;cold_count&quot;,
+            &quot;cold_phase_begin&quot;,
+            &quot;cold_phase_end&quot;,
+            &quot;cold_guard_finished&quot;,
+            &quot;cold_phase_failure&quot;
+          ]
+        },
+        &quot;mathematical_authority&quot;: false,
+        &quot;name&quot;: &quot;cold_malformed_phase_and_counter_best_effort&quot;,
+        &quot;status&quot;: &quot;passed&quot;
+      },
+      {
+        &quot;details&quot;: {
+          &quot;normal_pipeline_acceptance_tested&quot;: false,
+          &quot;targets&quot;: [
+            &quot;bounded_driver_diagnostics&quot;
+          ],
+          &quot;unavailable_marker_preserved&quot;: true
+        },
+        &quot;mathematical_authority&quot;: false,
+        &quot;name&quot;: &quot;cold_driver_unavailable_marker_remains_unavailable&quot;,
+        &quot;status&quot;: &quot;passed&quot;
+      },
+      {
+        &quot;details&quot;: {
+          &quot;diagnostic_clock&quot;: &quot;StopIteration&quot;,
+          &quot;exact_active_error_classes&quot;: [
+            &quot;RuntimeError&quot;,
+            &quot;ValueError&quot;,
+            &quot;StopIteration&quot;
+          ],
+          &quot;targets&quot;: [
+            &quot;cold_phase_failure&quot;,
+            &quot;cold_failure_diagnostics&quot;
+          ]
+        },
+        &quot;mathematical_authority&quot;: false,
+        &quot;name&quot;: &quot;cold_failure_clock_cannot_replace_active_error&quot;,
+        &quot;status&quot;: &quot;passed&quot;
+      }
+    ],
+    &quot;completed_fixture_count&quot;: 27,
+    &quot;expected_fixture_names&quot;: [
+      &quot;driver_normal_call_and_detached_record&quot;,
+      &quot;driver_nested_phase_intervals&quot;,
+      &quot;driver_action_foreign_exception_identity&quot;,
+      &quot;driver_entry_clock_foreign_exception_identity&quot;,
+      &quot;driver_return_clock_error_after_action&quot;,
+      &quot;driver_failure_clock_preserves_primary_error&quot;,
+      &quot;driver_passive_snapshot_detachment&quot;,
+      &quot;driver_snapshot_foreign_exception_identity&quot;,
+      &quot;driver_declared_names_refuse_unknown&quot;,
+      &quot;driver_sixteen_phase_cap&quot;,
+      &quot;driver_eight_snapshot_cap&quot;,
+      &quot;driver_eight_KiB_snapshot_cap&quot;,
+      &quot;driver_sixtyfour_KiB_record_and_unavailable_marker&quot;,
+      &quot;driver_complete_record_detachment&quot;,
+      &quot;cold_nested_open_and_returned_phases&quot;,
+      &quot;cold_thirtytwo_row_and_unknown_name_limits&quot;,
+      &quot;cold_counter_guard_timing_snapshot_cutoff&quot;,
+      &quot;cold_clock_faults_are_best_effort&quot;,
+      &quot;cold_twohundredfiftysix_KiB_observation_cap&quot;,
+      &quot;cold_late_failure_retains_driver_receipt_and_statistics&quot;,
+      &quot;cold_error_attributes_retained_without_receipt&quot;,
+      &quot;cold_malformed_or_oversized_driver_metadata_fallback&quot;,
+      &quot;cold_malformed_observation_metadata_fallback&quot;,
+      &quot;cold_active_error_identity_with_both_fallbacks&quot;,
+      &quot;cold_malformed_phase_and_counter_best_effort&quot;,
+      &quot;cold_driver_unavailable_marker_remains_unavailable&quot;,
+      &quot;cold_failure_clock_cannot_replace_active_error&quot;
+    ],
+    &quot;full_pipeline_qualified&quot;: false,
+    &quot;full_qualification_completed&quot;: false,
+    &quot;mathematical_authority&quot;: false,
+    &quot;resource_authority&quot;: false,
+    &quot;schema&quot;: &quot;finalization-instrumentation-helper-prefix-v1&quot;,
+    &quot;stage&quot;: &quot;result_final_checkpoint&quot;,
+    &quot;status&quot;: &quot;FAILED_OR_UNFINISHED&quot;
+  },
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><p>The selected errors were <code>RuntimeError</code>, <code>ValueError</code> and <code>StopIteration</code>. The worker first checked the real absolute work deadline before each planned interruption. Retained prefix bytes stayed unchanged through later calls.</p></section><section id="groups"><h2>Inspect every diagnostic group.</h2><p>These literal saved packets report the helper checks. Some detail counts are Source-backed declarations; they are not complete independent measurements of every operation origin. Synthetic clock values supply no real performance estimate.</p><details class="qa-details" id="group-1"><summary><span class="ok">Passed</span> · driver normal call and detached record</summary><pre>{
+  &quot;details&quot;: {
+    &quot;action_calls&quot;: 1,
+    &quot;clock_calls&quot;: 2,
+    &quot;targets&quot;: [
+      &quot;call&quot;,
+      &quot;record&quot;
+    ]
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;driver_normal_call_and_detached_record&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="qa-details" id="group-2"><summary><span class="ok">Passed</span> · driver nested phase intervals</summary><pre>{
+  &quot;details&quot;: {
+    &quot;disjoint_cost_sum_asserted&quot;: false,
+    &quot;overlapping_intervals&quot;: true,
+    &quot;rows&quot;: 2,
+    &quot;targets&quot;: [
+      &quot;call&quot;,
+      &quot;record&quot;
+    ]
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;driver_nested_phase_intervals&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="qa-details" id="group-3"><summary><span class="ok">Passed</span> · driver action foreign exception identity</summary><pre>{
+  &quot;details&quot;: {
+    &quot;exact_error_classes&quot;: [
+      &quot;RuntimeError&quot;,
+      &quot;ValueError&quot;,
+      &quot;StopIteration&quot;
+    ],
+    &quot;targets&quot;: [
+      &quot;call&quot;,
+      &quot;attach&quot;
+    ]
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;driver_action_foreign_exception_identity&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="qa-details" id="group-4"><summary><span class="ok">Passed</span> · driver entry clock foreign exception identity</summary><pre>{
+  &quot;details&quot;: {
+    &quot;checkpoint&quot;: &quot;initial observe&quot;,
+    &quot;exact_error_classes&quot;: [
+      &quot;RuntimeError&quot;,
+      &quot;ValueError&quot;,
+      &quot;StopIteration&quot;
+    ],
+    &quot;targets&quot;: [
+      &quot;call&quot;,
+      &quot;attach&quot;
+    ]
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;driver_entry_clock_foreign_exception_identity&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="qa-details" id="group-5"><summary><span class="ok">Passed</span> · driver return clock error after action</summary><pre>{
+  &quot;details&quot;: {
+    &quot;checkpoint&quot;: &quot;post action observe&quot;,
+    &quot;exact_error_classes&quot;: [
+      &quot;RuntimeError&quot;,
+      &quot;ValueError&quot;,
+      &quot;StopIteration&quot;
+    ],
+    &quot;targets&quot;: [
+      &quot;call&quot;,
+      &quot;attach&quot;
+    ]
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;driver_return_clock_error_after_action&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="qa-details" id="group-6"><summary><span class="ok">Passed</span> · driver failure clock preserves primary error</summary><pre>{
+  &quot;details&quot;: {
+    &quot;exact_primary_classes&quot;: [
+      &quot;RuntimeError&quot;,
+      &quot;ValueError&quot;,
+      &quot;StopIteration&quot;
+    ],
+    &quot;failure_clock_error&quot;: &quot;StopIteration&quot;,
+    &quot;targets&quot;: [
+      &quot;call&quot;,
+      &quot;attach&quot;
+    ]
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;driver_failure_clock_preserves_primary_error&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="qa-details" id="group-7"><summary><span class="ok">Passed</span> · driver passive snapshot detachment</summary><pre>{
+  &quot;details&quot;: {
+    &quot;passive_statistics_calls&quot;: 1,
+    &quot;storage_operations_calls&quot;: 0,
+    &quot;targets&quot;: [
+      &quot;snapshot&quot;,
+      &quot;record&quot;
+    ]
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;driver_passive_snapshot_detachment&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="qa-details" id="group-8"><summary><span class="ok">Passed</span> · driver snapshot foreign exception identity</summary><pre>{
+  &quot;details&quot;: {
+    &quot;reached_fault_sites&quot;: [
+      &quot;RuntimeError:clock&quot;,
+      &quot;RuntimeError:statistics&quot;,
+      &quot;ValueError:clock&quot;,
+      &quot;ValueError:statistics&quot;,
+      &quot;StopIteration:clock&quot;,
+      &quot;StopIteration:statistics&quot;
+    ],
+    &quot;targets&quot;: [
+      &quot;snapshot&quot;,
+      &quot;record&quot;
+    ]
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;driver_snapshot_foreign_exception_identity&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="qa-details" id="group-9"><summary><span class="ok">Passed</span> · driver declared names refuse unknown</summary><pre>{
+  &quot;details&quot;: {
+    &quot;refused_names&quot;: 2,
+    &quot;targets&quot;: [
+      &quot;call&quot;,
+      &quot;snapshot&quot;
+    ]
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;driver_declared_names_refuse_unknown&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="qa-details" id="group-10"><summary><span class="ok">Passed</span> · driver sixteen phase cap</summary><pre>{
+  &quot;details&quot;: {
+    &quot;accepted_rows&quot;: 16,
+    &quot;refused_row&quot;: 17,
+    &quot;targets&quot;: [
+      &quot;call&quot;
+    ]
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;driver_sixteen_phase_cap&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="qa-details" id="group-11"><summary><span class="ok">Passed</span> · driver eight snapshot cap</summary><pre>{
+  &quot;details&quot;: {
+    &quot;accepted_snapshots&quot;: 8,
+    &quot;refused_snapshot&quot;: 9,
+    &quot;targets&quot;: [
+      &quot;snapshot&quot;
+    ]
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;driver_eight_snapshot_cap&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="qa-details" id="group-12"><summary><span class="ok">Passed</span> · driver eight KiB snapshot cap</summary><pre>{
+  &quot;details&quot;: {
+    &quot;cap_bytes&quot;: 8192,
+    &quot;refused_payload_string_bytes&quot;: 8192,
+    &quot;targets&quot;: [
+      &quot;snapshot&quot;
+    ]
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;driver_eight_KiB_snapshot_cap&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="qa-details" id="group-13"><summary><span class="ok">Passed</span> · driver sixtyfour KiB record and unavailable marker</summary><pre>{
+  &quot;details&quot;: {
+    &quot;each_snapshot_bytes&quot;: 8192,
+    &quot;exact_primary_identity&quot;: true,
+    &quot;marker&quot;: {
+      &quot;authority&quot;: false,
+      &quot;complete_ledger_retained&quot;: false,
+      &quot;mathematical_authority&quot;: false,
+      &quot;metadata_error_type&quot;: &quot;DriverDataError&quot;,
+      &quot;phase_count&quot;: 1,
+      &quot;profile&quot;: &quot;owned-finalization-phase-instrumented-v1&quot;,
+      &quot;resource_authority&quot;: false,
+      &quot;schema&quot;: &quot;owned-finalization-observation-unavailable-v1&quot;,
+      &quot;snapshot_count&quot;: 8,
+      &quot;status&quot;: &quot;UNAVAILABLE&quot;
+    },
+    &quot;record_cap_bytes&quot;: 65536,
+    &quot;snapshot_rows&quot;: 8,
+    &quot;targets&quot;: [
+      &quot;snapshot&quot;,
+      &quot;record&quot;,
+      &quot;call&quot;,
+      &quot;attach&quot;
+    ]
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;driver_sixtyfour_KiB_record_and_unavailable_marker&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="qa-details" id="group-14"><summary><span class="ok">Passed</span> · driver complete record detachment</summary><pre>{
+  &quot;details&quot;: {
+    &quot;scientific_authority&quot;: false,
+    &quot;targets&quot;: [
+      &quot;complete&quot;,
+      &quot;record&quot;
+    ]
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;driver_complete_record_detachment&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="qa-details" id="group-15"><summary><span class="ok">Passed</span> · cold nested open and returned phases</summary><pre>{
+  &quot;details&quot;: {
+    &quot;intervals_may_overlap&quot;: true,
+    &quot;open_at_failure_rows&quot;: 2,
+    &quot;returned_rows&quot;: 1,
+    &quot;targets&quot;: [
+      &quot;new_cold_observation&quot;,
+      &quot;cold_phase_begin&quot;,
+      &quot;cold_phase_end&quot;,
+      &quot;cold_phase_failure&quot;,
+      &quot;cold_observation_snapshot&quot;
+    ],
+    &quot;unstarted_rows_fabricated&quot;: 0
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;cold_nested_open_and_returned_phases&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="qa-details" id="group-16"><summary><span class="ok">Passed</span> · cold thirtytwo row and unknown name limits</summary><pre>{
+  &quot;details&quot;: {
+    &quot;refused_row&quot;: 33,
+    &quot;retained_rows&quot;: 32,
+    &quot;targets&quot;: [
+      &quot;cold_phase_begin&quot;
+    ],
+    &quot;unknown_name_refused&quot;: true
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;cold_thirtytwo_row_and_unknown_name_limits&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="qa-details" id="group-17"><summary><span class="ok">Passed</span> · cold counter guard timing snapshot cutoff</summary><pre>{
+  &quot;details&quot;: {
+    &quot;aggregate_counters_only&quot;: true,
+    &quot;callback_origin_categories_measured&quot;: false,
+    &quot;fake_elapsed_ns&quot;: 300,
+    &quot;later_work_excluded&quot;: true,
+    &quot;overlapping_intervals_not_summed_as_disjoint&quot;: true,
+    &quot;targets&quot;: [
+      &quot;cold_count&quot;,
+      &quot;cold_guard_finished&quot;,
+      &quot;cold_observation_snapshot&quot;
+    ]
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;cold_counter_guard_timing_snapshot_cutoff&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="qa-details" id="group-18"><summary><span class="ok">Passed</span> · cold clock faults are best effort</summary><pre>{
+  &quot;details&quot;: {
+    &quot;intentionally_suppressed_diagnostic_classes&quot;: [
+      &quot;RuntimeError&quot;,
+      &quot;ValueError&quot;,
+      &quot;StopIteration&quot;
+    ],
+    &quot;invalid_clock_values&quot;: 3,
+    &quot;targets&quot;: [
+      &quot;cold_phase_begin&quot;,
+      &quot;cold_phase_end&quot;,
+      &quot;cold_observation_snapshot&quot;
+    ]
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;cold_clock_faults_are_best_effort&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="qa-details" id="group-19"><summary><span class="ok">Passed</span> · cold twohundredfiftysix KiB observation cap</summary><pre>{
+  &quot;details&quot;: {
+    &quot;cap_bytes&quot;: 262144,
+    &quot;targets&quot;: [
+      &quot;cold_observation_snapshot&quot;,
+      &quot;cold_failure_diagnostics&quot;
+    ]
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;cold_twohundredfiftysix_KiB_observation_cap&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="qa-details" id="group-20"><summary><span class="ok">Passed</span> · cold late failure retains driver receipt and statistics</summary><pre>{
+  &quot;details&quot;: {
+    &quot;later_failure_rescued&quot;: false,
+    &quot;retained_complete_driver_receipt&quot;: true,
+    &quot;targets&quot;: [
+      &quot;cold_phase_failure&quot;,
+      &quot;bounded_driver_diagnostics&quot;,
+      &quot;cold_failure_diagnostics&quot;
+    ]
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;cold_late_failure_retains_driver_receipt_and_statistics&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="qa-details" id="group-21"><summary><span class="ok">Passed</span> · cold error attributes retained without receipt</summary><pre>{
+  &quot;details&quot;: {
+    &quot;driver_receipt_fabricated&quot;: false,
+    &quot;targets&quot;: [
+      &quot;bounded_driver_diagnostics&quot;
+    ]
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;cold_error_attributes_retained_without_receipt&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="qa-details" id="group-22"><summary><span class="ok">Passed</span> · cold malformed or oversized driver metadata fallback</summary><pre>{
+  &quot;details&quot;: {
+    &quot;cases&quot;: 3,
+    &quot;metadata_error_types&quot;: [
+      &quot;AttributeError&quot;,
+      &quot;TypeError&quot;,
+      &quot;ColdError&quot;
+    ],
+    &quot;targets&quot;: [
+      &quot;bounded_driver_diagnostics&quot;,
+      &quot;cold_failure_diagnostics&quot;
+    ]
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;cold_malformed_or_oversized_driver_metadata_fallback&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="qa-details" id="group-23"><summary><span class="ok">Passed</span> · cold malformed observation metadata fallback</summary><pre>{
+  &quot;details&quot;: {
+    &quot;cases&quot;: 2,
+    &quot;metadata_error_types&quot;: [
+      &quot;TypeError&quot;,
+      &quot;TypeError&quot;
+    ],
+    &quot;targets&quot;: [
+      &quot;cold_failure_diagnostics&quot;
+    ]
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;cold_malformed_observation_metadata_fallback&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="qa-details" id="group-24"><summary><span class="ok">Passed</span> · cold active error identity with both fallbacks</summary><pre>{
+  &quot;details&quot;: {
+    &quot;exact_active_error_classes&quot;: [
+      &quot;RuntimeError&quot;,
+      &quot;ValueError&quot;,
+      &quot;StopIteration&quot;
+    ],
+    &quot;targets&quot;: [
+      &quot;cold_failure_diagnostics&quot;
+    ]
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;cold_active_error_identity_with_both_fallbacks&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="qa-details" id="group-25"><summary><span class="ok">Passed</span> · cold malformed phase and counter best effort</summary><pre>{
+  &quot;details&quot;: {
+    &quot;absent_metadata_best_effort&quot;: true,
+    &quot;explicit_diagnostic_errors&quot;: 2,
+    &quot;targets&quot;: [
+      &quot;cold_count&quot;,
+      &quot;cold_phase_begin&quot;,
+      &quot;cold_phase_end&quot;,
+      &quot;cold_guard_finished&quot;,
+      &quot;cold_phase_failure&quot;
+    ]
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;cold_malformed_phase_and_counter_best_effort&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="qa-details" id="group-26"><summary><span class="ok">Passed</span> · cold driver unavailable marker remains unavailable</summary><pre>{
+  &quot;details&quot;: {
+    &quot;normal_pipeline_acceptance_tested&quot;: false,
+    &quot;targets&quot;: [
+      &quot;bounded_driver_diagnostics&quot;
+    ],
+    &quot;unavailable_marker_preserved&quot;: true
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;cold_driver_unavailable_marker_remains_unavailable&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="qa-details" id="group-27"><summary><span class="ok">Passed</span> · cold failure clock cannot replace active error</summary><pre>{
+  &quot;details&quot;: {
+    &quot;diagnostic_clock&quot;: &quot;StopIteration&quot;,
+    &quot;exact_active_error_classes&quot;: [
+      &quot;RuntimeError&quot;,
+      &quot;ValueError&quot;,
+      &quot;StopIteration&quot;
+    ],
+    &quot;targets&quot;: [
+      &quot;cold_phase_failure&quot;,
+      &quot;cold_failure_diagnostics&quot;
+    ]
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;cold_failure_clock_cannot_replace_active_error&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details></section><section id="parallel"><h2>Parallel review found concrete defects.</h2><div class="flow-helper"><article class="helper-card"><b>Implementation</b><p>Library authored the cold observation helpers and finite harness; Root authored the driver ledger and wrappers.</p></article><article class="helper-card"><b>Independent review</b><p>Control reviewed the Sources, dependency coupling and plan, then audited saved results without replay.</p></article><article class="helper-card"><b>Root coordination</b><p>Kept inputs and caps fixed, ran the worker while peers were tool-idle, and joined the final evidence.</p></article></div><p>Review caught a name collision that could mask the original error, a lost harness failure prefix, an omitted executed Source binding and a standard-library startup conflict. Rejected drafts remain in the archive. A premature combined Source pass was explicitly superseded when the dependency check found the startup problem; the repaired subject received a new review.</p><p>Root checked \(123\) saved-data joins with no mismatch. The independent saved audit reports \(175\) checks with no mismatch. The same Control agent filled multiple review roles and authored some historical helper/outer algorithms; the receipts retain those overlaps. This review supplies no fresh proof of the inherited mathematical kernel.</p></section><section id="next"><h2>Next, measure the complete evidence path.</h2><p>Bind the reviewed instrumented driver and cold worker into a fresh matched full-pipeline subject. Keep the same mathematical input, point engine, inventory, Native checks and original limits. Charge the observations and their output to that run.</p><p>Separate assembly, sealing, export, writes, inverse preparation and stream comparison where retained boundaries permit. Report nested intervals as overlapping, and state the snapshot cutoff. A failed run may retain only a prefix or unavailable marker; it still fails complete admission.</p><p><a href="finalization-observation-next-design.json">Read the exact Source-only integration handoff</a>. No next full-pipeline actual has run or is authorized by this page. The broader aim remains useful automated proof search on held-out arithmetic and Hilbert-style geometry, with conventional controls and marking/RL ablations.</p><p class="note">This instrumentation changes no proof rule, search proposal, point marking, candidate graph, global dead/forced scheduling, generation ordering or rollback. It establishes no new general GCTS conformance or learned-policy result.</p></section><section id="records"><h2>Inspect the saved record.</h2><p><a href="finalization-observation-summary.json">Complete qualification and independent review</a> · <a href="finalization-observation-manifest.json">Archive manifest</a> · <a href="finalization-observation-archive.zip">Sources, rejected drafts, reviews and actual receipts</a></p><p>The archive contains no historical proof replay. The pinned Python, operating system and bundled runtime remain external trusted prerequisites. Archived grants are consumed once-only historical records.</p><details class="qa-details" id="raw-review"><summary>Independent saved-record audit</summary><pre>{
+  &quot;Model_calls&quot;: 0,
+  &quot;Native_calls&quot;: 0,
+  &quot;Root_audit&quot;: {
+    &quot;bytes&quot;: 15346,
+    &quot;path&quot;: &quot;/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/ROOT-saved-actual-audit-v1.json&quot;,
+    &quot;sha256&quot;: &quot;17caa5d25df10831fa74045813de5dda8c35ee87c0bb26ed7572c7151ab4a6b5&quot;
+  },
+  &quot;Source_review&quot;: {
+    &quot;bytes&quot;: 15549,
+    &quot;path&quot;: &quot;/private/tmp/gcts-finalization-instrumentation-peer-20261019/typed-components-Source-review-v3.json&quot;,
+    &quot;sha256&quot;: &quot;b62e7c100be5effc60948e8453c6d590d12a1a0d8dcc0d5613671113cdee0f9b&quot;
+  },
+  &quot;actual_execution_authorized&quot;: false,
+  &quot;audit&quot;: {
+    &quot;bytes&quot;: 18216,
+    &quot;path&quot;: &quot;/private/tmp/gcts-finalization-instrumentation-peer-20261019/helper-saved-actual-audit-v1.json&quot;,
+    &quot;sha256&quot;: &quot;faec7418bb5bc43c524df743095c1866d605b5bf9ed1613b854c28edda3bf6c9&quot;
+  },
+  &quot;author_identity&quot;: &quot;/root&quot;,
+  &quot;authorization&quot;: {
+    &quot;bytes&quot;: 1263,
+    &quot;path&quot;: &quot;/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/authorization-true-v1.json&quot;,
+    &quot;sha256&quot;: &quot;0db91f07e5a33be2caf8a0849cfa24bc17ed9c041287b8703f3d27afbc2215c9&quot;
+  },
+  &quot;authorship_disclosure&quot;: &quot;Root authored driver/wrappers and actual admission; Library authored cold/harness; Control authored historical controls/helper/outer and current Source reviews, not these new targets. This is an independent saved-data audit, not independent certification of historical own algorithms or a mathematical/kernel theorem.&quot;,
+  &quot;check_count&quot;: 175,
+  &quot;closure&quot;: {
+    &quot;bytes&quot;: 1013,
+    &quot;path&quot;: &quot;/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/ROOT-cohort-closure-v1.json&quot;,
+    &quot;sha256&quot;: &quot;7c8e6c4aea4f0f425496f20630bb62958555b5401dfcd0e8d42a3cce72359fac&quot;
+  },
+  &quot;codec_replays&quot;: 0,
+  &quot;component_calls&quot;: 0,
+  &quot;counts&quot;: {
+    &quot;helper_calls&quot;: 4,
+    &quot;normal_checkpoint_calls&quot;: 57,
+    &quot;normal_groups&quot;: 27,
+    &quot;prefix_completed_rows&quot;: [
+      0,
+      1,
+      27
+    ],
+    &quot;prefix_interruptions&quot;: 3,
+    &quot;worker_launches&quot;: 1
+  },
+  &quot;current_sources&quot;: {
+    &quot;cold&quot;: {
+      &quot;bytes&quot;: 72712,
+      &quot;path&quot;: &quot;/private/tmp/gcts-finalization-instrumentation-library-20261019/owned_evidence_cold_v6.py&quot;,
+      &quot;sha256&quot;: &quot;e1101723f559ae2dfecc030470a3e6e9e79c71b10c416c2bcdfc8f2f5b101d43&quot;
+    },
+    &quot;driver&quot;: {
+      &quot;bytes&quot;: 120766,
+      &quot;path&quot;: &quot;/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/owned_evidence_receiver_driver_v6.py&quot;,
+      &quot;sha256&quot;: &quot;e8ff0690472140e510f8ffab383be8c22791da6b27ef0a27fda013ea48e5f5cf&quot;
+    },
+    &quot;harness&quot;: {
+      &quot;bytes&quot;: 33853,
+      &quot;path&quot;: &quot;/private/tmp/gcts-finalization-instrumentation-library-20261019/qualify_finalization_harness_v2.py&quot;,
+      &quot;sha256&quot;: &quot;59b3d6de41c89b41b9e351df8c3d91239d3f3a25ceb1f03852b0b9060efa9fcc&quot;
+    },
+    &quot;observer&quot;: {
+      &quot;bytes&quot;: 5170,
+      &quot;path&quot;: &quot;/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/observe_finalization_helpers_once_v3.py&quot;,
+      &quot;sha256&quot;: &quot;c2c4cc851a890f7204bf08f20f30d4f676c1d8152a72ef138f37d14a9ca7c6aa&quot;
+    },
+    &quot;runner&quot;: {
+      &quot;bytes&quot;: 13071,
+      &quot;path&quot;: &quot;/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/run_finalization_helpers_once_v3.py&quot;,
+      &quot;sha256&quot;: &quot;051ec35804bdaf1938e57f823045930944902ed077cd83733eef309fcad70621&quot;
+    },
+    &quot;worker&quot;: {
+      &quot;bytes&quot;: 15924,
+      &quot;path&quot;: &quot;/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/qualify_finalization_worker_v6.py&quot;,
+      &quot;sha256&quot;: &quot;3751bb6ee1e9bc69b698c52deac2c5479ba97f6ba24f203cb242718db56ddee8&quot;
+    }
+  },
+  &quot;declaration&quot;: {
+    &quot;bytes&quot;: 7193,
+    &quot;path&quot;: &quot;/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/helper-qualification-declaration-v2.json&quot;,
+    &quot;sha256&quot;: &quot;6357a92151c9559b412fcefb9ecd58c329c4c41426aedadac1299559982db1a9&quot;
+  },
+  &quot;findings&quot;: [],
+  &quot;finite_helper_qualification_supported&quot;: true,
+  &quot;fixture_calls&quot;: 0,
+  &quot;full_pipeline_qualified&quot;: false,
+  &quot;grant_delta&quot;: {
+    &quot;bytes&quot;: 10079,
+    &quot;path&quot;: &quot;/private/tmp/gcts-finalization-instrumentation-peer-20261019/typed-final-grant-delta-review-v1.json&quot;,
+    &quot;sha256&quot;: &quot;43128f579a2430d2d8dbccaa1e6b91fc2cb9d205f75b4465b52f403fa6f4fbdd&quot;
+  },
+  &quot;inherited_Source_review_limitations&quot;: {
+    &quot;current_actual_status&quot;: &quot;The later exactly-once helper actual exercised the repaired charged ctypes startup and completed the finite helper-only controls. Historical future-tense requirements describe the state when the Source review was frozen; they do not describe current unperformed helper work.&quot;,
+    &quot;raw_Source_review&quot;: {
+      &quot;bytes&quot;: 15549,
+      &quot;path&quot;: &quot;/private/tmp/gcts-finalization-instrumentation-peer-20261019/typed-components-Source-review-v3.json&quot;,
+      &quot;sha256&quot;: &quot;b62e7c100be5effc60948e8453c6d590d12a1a0d8dcc0d5613671113cdee0f9b&quot;
+    },
+    &quot;temporal_scope&quot;: &quot;HISTORICAL_PRELAUNCH_SOURCE_REVIEW&quot;,
+    &quot;verbatim_historical_limitations&quot;: [
+      &quot;This Source PASS gives no runtime/finite resource qualification or execution authority. Root must independently adopt exact scopes, then obtain separate prospective plan, true-grant delta and fresh-path review before any one worker.&quot;,
+      &quot;The qualifier executes whole raw-pinned driver/cold/harness modules under non-main names, but targets only new observation helpers with fake clocks/actions/passive Store. It does not qualify real run_receiver_owned/cold main, finalization output, saved inverse, Model, graph/rollback, Native or full-pipeline retention.&quot;,
+      &quot;Trusted raw-pinned loading/exclusive ownership, initial/final Source/Python hashes and shallow function/class/code/globals/default identity checks are disclosed. This is not a formal all-callable/global/cell integrity seal, adversarial memory sandbox or continuous OS guarantee. The explicit audit denial list is finite.&quot;,
+      &quot;Some action_calls=1/storage_operations_calls=0 packet values are Source-backed declarations, not dynamic complete call-origin totals. Selected27 groups plus three prefix interruptions do not establish arbitrary foreign exception/site/latency coverage.&quot;,
+      &quot;All positive worker/header/knownexit and standalone outer whole checks remain180seconds; terminal210 and225 observer failurecleanup remain distinct. 1GiB is Darwin worker highwater after exit, noNative. Diagnostics/prefix/copies/serialization/logs and reserved outer metadata consume the unchanged byte/time/RAM profile.&quot;,
+      &quot;Clock restore checks on error are best effort and never repair an error into success. Metadata/record-cap/attachment failure may retain only explicit UNAVAILABLE or nothing if even best-effort attachment fails. No partial prefix or returned packet becomes a qualified result.&quot;,
+      &quot;No current actual, causal speed/RAM gain, theorem, GCTS/RL advantage or historical missing measurement is inferred. Source checkpoints and synthetic intervals are distinct from real future cost.&quot;,
+      &quot;The explicit trusted bundled ctypes preload initializes stdlib pythonapi before installing the finite audit hook and is fully charged to original work time. Its whole Python module Source is pinned/raw-checked before and after preload with exact module origin. Other bundled stdlib/C-extension loading remains a trusted runtime dependency, not an all-stdlib binary/callable seal. Later target/fixture ctypes.dlopen remains denied. This startup fix has not been run.&quot;
+    ]
+  },
+  &quot;inverse_replays&quot;: 0,
+  &quot;limitations&quot;: [
+    &quot;Exact exception identity, restoration and detachment are recorded results produced by the reviewed trusted worker; saved JSON cannot independently recreate Python object identity. Whole packet/prefix/name/count/custody joins were independently checked without replay.&quot;,
+    &quot;Some packet action/storage counts are Source-backed declarations; fake phase clocks and intervals are synthetic. No real finalization bottleneck or isolated inverse duration is inferred from this helper run.&quot;,
+    &quot;Known worker wait4 and owned-group/log closure are retained runner gates; Root additionally records independent group absence. Control did not perform a new live process probe and claims none.&quot;,
+    &quot;Standalone worker peak excludes runner/observer RAM. Source-entry terminal0.180694916s excludes observer/Python prelude; observer-main elapsed0.202297833s is separate. No causal speed or integration fit claim.&quot;,
+    &quot;The reviewed charged bundled ctypes startup and metadata-only driver/cold/harness loading were exercised in the successful current helper actual, followed by the declared finite audit denial and all27 groups plus3 interruption controls. This establishes only this finite observed startup/helper path under raw-pinned trusted exclusive ownership, not a formal runtime/stdlib integrity seal or arbitrary callback theorem.&quot;,
+    &quot;Current grant, once markers, Source/raw checks, resource limits and authoritative terminal closure were independently joined as saved evidence. No further helper grant or execution is required to support this particular finite saved qualification. Any new worker, including a production measurement, requires its own separately reviewed Source/closure/plan/grant/freshness scope.&quot;,
+    &quot;The production run_receiver_owned/cold main, actual finalization output retention, inverse/real Store/Arena/Model/Native/search, full ordinary result and proof gates were not exercised by this helper qualification. No production fit, causal performance, GCTS/RL or mathematical advantage is inferred.&quot;,
+    &quot;Metadata helpers remain bounded best effort: a record/snapshot/attachment failure may yield explicit UNAVAILABLE or no marker if even best-effort attachment fails. A partial prefix, diagnostic packet or returned nonadmitted value cannot restore scientific success.&quot;,
+    &quot;All175 saved-data checks and their full audit apply unchanged. V2 changes only temporal reporting scope; every current result/Source/plan/grant/counter/resource/closure pin and recorded outcome remains exactly V1.&quot;
+  ],
+  &quot;mathematical_proof_accepted&quot;: false,
+  &quot;metrics&quot;: {
+    &quot;Source_entry_to_external_terminal_seconds&quot;: 0.180694916,
+    &quot;actual_complete_physical_bytes&quot;: 29430,
+    &quot;conservative_physical_bytes&quot;: 9461641,
+    &quot;logical_result_bytes&quot;: 22999,
+    &quot;observer_main_elapsed_seconds&quot;: 0.202297833,
+    &quot;physical_before_runner_receipt&quot;: 24457,
+    &quot;worker_highwater_MiB&quot;: 49.578125,
+    &quot;worker_highwater_bytes&quot;: 51986432
+  },
+  &quot;mismatch_count&quot;: 0,
+  &quot;module_imports&quot;: 0,
+  &quot;new_theorem&quot;: false,
+  &quot;plan&quot;: {
+    &quot;bytes&quot;: 2551,
+    &quot;path&quot;: &quot;/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/plan-authorized-v1.json&quot;,
+    &quot;sha256&quot;: &quot;9822085a61d1f24f1826bb5b8ffdff9380604c4ab70b68c48b12fb1d40f1a2f3&quot;
+  },
+  &quot;prospective_review&quot;: {
+    &quot;bytes&quot;: 8273,
+    &quot;path&quot;: &quot;/private/tmp/gcts-finalization-instrumentation-peer-20261019/typed-prospective-plan-review-v2.json&quot;,
+    &quot;sha256&quot;: &quot;5bd127e4920553a501e96f40e1f0396e861bf2aabd03b3f99b2c3e2dd735f2a0&quot;
+  },
+  &quot;python&quot;: {
+    &quot;bytes&quot;: 18058560,
+    &quot;path&quot;: &quot;/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12&quot;,
+    &quot;sha256&quot;: &quot;21a9986bad1dbbcd813a252b19b4263fc0755ed2dbf8632c83e5d6117a12f319&quot;
+  },
+  &quot;renderer_calls&quot;: 0,
+  &quot;result&quot;: {
+    &quot;bytes&quot;: 22999,
+    &quot;path&quot;: &quot;/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/actual-helper-v2/result.json&quot;,
+    &quot;sha256&quot;: &quot;643ff85352bbc586da295d0127ffb731b1b5bd636b640d7e4153fdb590b43baa&quot;
+  },
+  &quot;reviewer_identity&quot;: &quot;/root/conventional_control_review&quot;,
+  &quot;runner_receipt&quot;: {
+    &quot;bytes&quot;: 2977,
+    &quot;path&quot;: &quot;/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/actual-helper-v2/runner-receipt.json&quot;,
+    &quot;sha256&quot;: &quot;921a54bba49a76539f5c1e6980d57365f605f0b19903c7026029d0191341e63e&quot;
+  },
+  &quot;saved_data_only&quot;: true,
+  &quot;saved_review_passed&quot;: true,
+  &quot;schema&quot;: &quot;finalization-instrumentation-helper-saved-review-v1&quot;,
+  &quot;scientific_acceptance&quot;: false,
+  &quot;scientific_calls&quot;: 0,
+  &quot;scope&quot;: &quot;Independent saved ordinary JSON/raw-byte evidence audit only; all27 selected fake-interface helper groups plus three reached unfinished-prefix interruptions are retained consistently with exact once subject/current Sources and original standalone gates. No helper/module/component was imported or called for this audit. This supports finite helper instrumentation qualification, not producer/cold-main/inverse/Model/Native/proof or full-pipeline qualification.&quot;,
+  &quot;startup_stdlib&quot;: {
+    &quot;bytes&quot;: 18268,
+    &quot;path&quot;: &quot;/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/ctypes/__init__.py&quot;,
+    &quot;sha256&quot;: &quot;e048845f8f5c14a5fc873526a27da4a19d4eed25ab2f2a01fa6e0b79faca78d0&quot;
+  },
+  &quot;subject_sha256&quot;: &quot;cdc3b27b58d3852abf0f674f8eb0d97ce79871cba500a386b19e2ae193411965&quot;,
+  &quot;temporal_reporting_correction&quot;: {
+    &quot;Source_changed&quot;: false,
+    &quot;disposition&quot;: &quot;V1 remains immutable. Historical Source wording moved under an explicitly prelaunch key; current limitations describe exercised helper startup and still-unexecuted production scope.&quot;,
+    &quot;finding&quot;: &quot;Inherited unqualified prelaunch future-tense limitations incorrectly described already-completed helper startup/grant as pending in the current saved outcome.&quot;,
+    &quot;metadata_only&quot;: true,
+    &quot;parent_saved_review&quot;: {
+      &quot;bytes&quot;: 10648,
+      &quot;path&quot;: &quot;/private/tmp/gcts-finalization-instrumentation-peer-20261019/typed-saved-helper-qualification-review-v1.json&quot;,
+      &quot;sha256&quot;: &quot;31d4ec3189483c41cd7748b59507823bde7dad3f3ade4675738ad2ad251e1914&quot;
+    },
+    &quot;raw_data_changed&quot;: false,
+    &quot;replayed&quot;: false,
+    &quot;reused_check_count&quot;: 175,
+    &quot;reused_saved_audit&quot;: {
+      &quot;bytes&quot;: 18216,
+      &quot;path&quot;: &quot;/private/tmp/gcts-finalization-instrumentation-peer-20261019/helper-saved-actual-audit-v1.json&quot;,
+      &quot;sha256&quot;: &quot;faec7418bb5bc43c524df743095c1866d605b5bf9ed1613b854c28edda3bf6c9&quot;
+    },
+    &quot;scientific_calls&quot;: 0
+  },
+  &quot;terminal&quot;: {
+    &quot;bytes&quot;: 1547,
+    &quot;path&quot;: &quot;/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/plan-authorized-v1-terminal-observation/terminal.json&quot;,
+    &quot;sha256&quot;: &quot;0e92814497c55d9f5df997e6e726644cd67a65d0d103abfe235d676d50ea7af8&quot;
+  },
+  &quot;tools_stopped_after_handoff&quot;: true,
+  &quot;worker_receipt&quot;: {
+    &quot;bytes&quot;: 916,
+    &quot;path&quot;: &quot;/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/actual-helper-v2/worker-receipt.json&quot;,
+    &quot;sha256&quot;: &quot;cb5cbddb5521c3813fcca7f9f21e28127eba9b01a1bb52a622124c1e052beaa2&quot;
+  }
+}</pre></details></section><footer>Research program active. This page records a finite instrumentation milestone; no new theorem, full-pipeline result or GCTS+RL advantage is claimed.</footer></main></body></html>

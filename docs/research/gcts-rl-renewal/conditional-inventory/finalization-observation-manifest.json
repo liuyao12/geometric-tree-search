@@ -1,0 +1,1278 @@
+{
+  "archive": {
+    "bytes": 658541,
+    "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/publication-v1/finalization-observation-archive.zip",
+    "sha256": "424bda22c6abdd93f828dd0a1ba813727a3fa4ea8cb07a014c18a3061e7eec0a"
+  },
+  "changes": {
+    "cadence_base": {
+      "bytes": 34579,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/cadence-integration.html",
+      "sha256": "677b5e3801edf3430cce2284312dab24add8838f1c4f7b825d7f873a30f87c17"
+    },
+    "cadence_follow_up_sha256": "6fcdaece76cdfe4721007d2aed8d9186beae8d0acb05e80479fa7ac2c01df102",
+    "reader_base": {
+      "bytes": 93388,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/reader.html",
+      "sha256": "0617c4fd37b4bc6e1db0f58caa43ac323ba35062f5d4f5be8b94c46a4fa1bb6e"
+    },
+    "reader_insert_sha256": "bcb3ba62f0c4f34d66fea4527585b3709a306524222eba6ed66a123032504058"
+  },
+  "full_pipeline_qualified": false,
+  "member_count": 156,
+  "members": [
+    {
+      "member": "actual/CONSUMED.json",
+      "source": {
+        "bytes": 542,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/actual-helper-v2/CONSUMED.json",
+        "sha256": "3c6f9d8a8da072226fad2797141a82a7c03ce84bf363661b2ef2bd0cdf8a9855"
+      }
+    },
+    {
+      "member": "actual/result.json",
+      "source": {
+        "bytes": 22999,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/actual-helper-v2/result.json",
+        "sha256": "643ff85352bbc586da295d0127ffb731b1b5bd636b640d7e4153fdb590b43baa"
+      }
+    },
+    {
+      "member": "actual/runner-receipt.json",
+      "source": {
+        "bytes": 2977,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/actual-helper-v2/runner-receipt.json",
+        "sha256": "921a54bba49a76539f5c1e6980d57365f605f0b19903c7026029d0191341e63e"
+      }
+    },
+    {
+      "member": "actual/stderr.bin",
+      "source": {
+        "bytes": 0,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/actual-helper-v2/stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "member": "actual/stdout.bin",
+      "source": {
+        "bytes": 0,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/actual-helper-v2/stdout.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "member": "actual/worker-receipt.json",
+      "source": {
+        "bytes": 916,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/actual-helper-v2/worker-receipt.json",
+        "sha256": "cb5cbddb5521c3813fcca7f9f21e28127eba9b01a1bb52a622124c1e052beaa2"
+      }
+    },
+    {
+      "member": "library/API-v1.json",
+      "source": {
+        "bytes": 3273,
+        "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/API-v1.json",
+        "sha256": "db6dfce3ecf0daa0d57255ef0f6a2c42a5bcaaaef734a8d39a61d79541a8734f"
+      }
+    },
+    {
+      "member": "library/Source-argument-v1.json",
+      "source": {
+        "bytes": 4364,
+        "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/Source-argument-v1.json",
+        "sha256": "df4f0b301d5d81e53adc87888ffeefd124b84d096cc6cdcbe5d96dffea27944f"
+      }
+    },
+    {
+      "member": "library/Source-contract-v1.json",
+      "source": {
+        "bytes": 3162,
+        "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/Source-contract-v1.json",
+        "sha256": "73da7c253cbd384f95d7298b850243b109723d549f7622c339cfdf2e878941f2"
+      }
+    },
+    {
+      "member": "library/Source-delta-v1.json",
+      "source": {
+        "bytes": 5844,
+        "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/Source-delta-v1.json",
+        "sha256": "e0f7fe89f46c37e7dc2cf4968f54a4007588193860743dc339e247377ad397fc"
+      }
+    },
+    {
+      "member": "library/author-static-audit-v1.json",
+      "source": {
+        "bytes": 19260,
+        "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/author-static-audit-v1.json",
+        "sha256": "7db560bc20ebee1801055bd0ca58b684fb24d1b4a68245dbf9c44c8c5a5a1c31"
+      }
+    },
+    {
+      "member": "library/author-transform-v1.json",
+      "source": {
+        "bytes": 18603,
+        "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/author-transform-v1.json",
+        "sha256": "2dde81f23363163293f269be08779ace8ca96474e67d63405232293a6f23eeaf"
+      }
+    },
+    {
+      "member": "library/author-transform-v2.json",
+      "source": {
+        "bytes": 4354,
+        "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/author-transform-v2.json",
+        "sha256": "f8d6bf433aed2d303431fb8361917b8bd53954ce797b44c75efb3f16803b9a16"
+      }
+    },
+    {
+      "member": "library/author_cold_v5.py",
+      "source": {
+        "bytes": 17045,
+        "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/author_cold_v5.py",
+        "sha256": "91c1bafb2733ce46131e4daa8c1f2702e2c945d8707e67c162810fcd01edbb5f"
+      }
+    },
+    {
+      "member": "library/author_cold_v6.py",
+      "source": {
+        "bytes": 4430,
+        "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/author_cold_v6.py",
+        "sha256": "59b77d38f457449bd7de51eae4601cceb4e8252063d4a5ee1f6d1735f49fb564"
+      }
+    },
+    {
+      "member": "library/author_helper_harness_v2.py",
+      "source": {
+        "bytes": 17800,
+        "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/author_helper_harness_v2.py",
+        "sha256": "cfc9b01e78ddbc52edf2f591143ab8c14e7d4f6a875b9b8d51b61c107841a1c5"
+      }
+    },
+    {
+      "member": "library/author_next_integration_design_v1.py",
+      "source": {
+        "bytes": 21706,
+        "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/author_next_integration_design_v1.py",
+        "sha256": "93bb895078db1df8b091703cd7b6c85904c8088971836e1e0d011bb50663c73c"
+      }
+    },
+    {
+      "member": "library/freeze_cold_v6.py",
+      "source": {
+        "bytes": 18095,
+        "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/freeze_cold_v6.py",
+        "sha256": "9dfa60c3b7cf89c4f851d1bc0abc3bcc6f9425726547cfa4dca91fd7aed1ea25"
+      }
+    },
+    {
+      "member": "library/freeze_helper_harness_v1.py",
+      "source": {
+        "bytes": 14724,
+        "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/freeze_helper_harness_v1.py",
+        "sha256": "99b01b966831d91f1d836c9acefbfd687d47b5ae8234095df435a6768df2a843"
+      }
+    },
+    {
+      "member": "library/handoff-v1.json",
+      "source": {
+        "bytes": 2800,
+        "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/handoff-v1.json",
+        "sha256": "25de12ec5ed247c05fa38eb4915113de3fbf79e5f8ab9f974e115eabb4dcacf2"
+      }
+    },
+    {
+      "member": "library/harness-inert-forward.patch",
+      "source": {
+        "bytes": 396,
+        "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/harness-inert-forward.patch",
+        "sha256": "5feb19b403cbb984602e5d29861fbf37e53221ed5825998b3bb8ab1a4c45417f"
+      }
+    },
+    {
+      "member": "library/harness-inert-reverse.patch",
+      "source": {
+        "bytes": 396,
+        "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/harness-inert-reverse.patch",
+        "sha256": "9497dcbaa961520425cd4786496078ee99fbf567e95ab533549e2d4bbd32208f"
+      }
+    },
+    {
+      "member": "library/harness-v1-to-v2.patch",
+      "source": {
+        "bytes": 5932,
+        "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/harness-v1-to-v2.patch",
+        "sha256": "e557501dd99c1e8597e5f5ae93c18ac8b89a698b8af3786ab4515bc4f5ad2f47"
+      }
+    },
+    {
+      "member": "library/harness-v2-to-v1.patch",
+      "source": {
+        "bytes": 5932,
+        "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/harness-v2-to-v1.patch",
+        "sha256": "9211574be2f808b77474584a48bbda22bbba03f75927149cf3385d038c0c090e"
+      }
+    },
+    {
+      "member": "library/held-draft-v5-forward.patch",
+      "source": {
+        "bytes": 6210,
+        "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/held-draft-v5-forward.patch",
+        "sha256": "d346f9b9f8a9a8ec145947881fbbf96550512e8f65a82637d8fbf4447c88d614"
+      }
+    },
+    {
+      "member": "library/held-draft-v5-inverse.patch",
+      "source": {
+        "bytes": 6210,
+        "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/held-draft-v5-inverse.patch",
+        "sha256": "0d62717f665d5dc9c7fc083ee86d031f1d9b70c40b10f04c2a334e1e74ea9af5"
+      }
+    },
+    {
+      "member": "library/next-full-pipeline-integration-design-handoff-v1.json",
+      "source": {
+        "bytes": 1988,
+        "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/next-full-pipeline-integration-design-handoff-v1.json",
+        "sha256": "6e272555524e3968cec0762a2410157453bbca58ff9cad77c325af92e32ba14d"
+      }
+    },
+    {
+      "member": "library/next-full-pipeline-integration-design-v1.json",
+      "source": {
+        "bytes": 46832,
+        "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/next-full-pipeline-integration-design-v1.json",
+        "sha256": "6de4ff67b77d0fabb9704731927f9a0e3f599a2a5d8ca2fcf8daeabd3d38d1e5"
+      }
+    },
+    {
+      "member": "library/owned_evidence_cold_v5.py",
+      "source": {
+        "bytes": 71513,
+        "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/owned_evidence_cold_v5.py",
+        "sha256": "f7b2b4127418cbb06709b8e1d5d59c95e56345d64a2b80fdca749e89f6c23635"
+      }
+    },
+    {
+      "member": "library/owned_evidence_cold_v6.py",
+      "source": {
+        "bytes": 72712,
+        "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/owned_evidence_cold_v6.py",
+        "sha256": "e1101723f559ae2dfecc030470a3e6e9e79c71b10c416c2bcdfc8f2f5b101d43"
+      }
+    },
+    {
+      "member": "library/parent-v4-forward.patch",
+      "source": {
+        "bytes": 23743,
+        "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/parent-v4-forward.patch",
+        "sha256": "68685aceed8f2e773e49cdf2923333341ec3f3fd5f1d9f2f26ef4282e44f95cc"
+      }
+    },
+    {
+      "member": "library/parent-v4-inverse.patch",
+      "source": {
+        "bytes": 23743,
+        "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/parent-v4-inverse.patch",
+        "sha256": "9efeb0d4045cb660700f07a498501373f3fcf04c80ca8d7f00ed2f88539e3ce1"
+      }
+    },
+    {
+      "member": "library/proposed-cold-fault-cases-v1.json",
+      "source": {
+        "bytes": 1871,
+        "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/proposed-cold-fault-cases-v1.json",
+        "sha256": "1fdeb4db83abd9973427ab2e6edb51e9b87fc9687c1a31c587f6522d75ace5ae"
+      }
+    },
+    {
+      "member": "library/qualification-API-v1.json",
+      "source": {
+        "bytes": 4291,
+        "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/qualification-API-v1.json",
+        "sha256": "a910e7287ee183211a1afdc91cb834cb3dbe4327e793bad450d3d7e245a0cdd0"
+      }
+    },
+    {
+      "member": "library/qualification-API-v2.json",
+      "source": {
+        "bytes": 6242,
+        "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/qualification-API-v2.json",
+        "sha256": "8747f6a3daf25d5e77dee1aa7bceeca68dc0bcc1e677dc6933b2c534cebc91ee"
+      }
+    },
+    {
+      "member": "library/qualification-Source-contract-v1.json",
+      "source": {
+        "bytes": 2397,
+        "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/qualification-Source-contract-v1.json",
+        "sha256": "d4230e1634e2a188e165f708255eaa557c1c495e7cf3da0abc582d7c282e34a2"
+      }
+    },
+    {
+      "member": "library/qualification-Source-contract-v2.json",
+      "source": {
+        "bytes": 2496,
+        "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/qualification-Source-contract-v2.json",
+        "sha256": "762011ed0b0f7132fc40c852194516b627233d32456ce6ee67efbd15b3631273"
+      }
+    },
+    {
+      "member": "library/qualification-author-static-audit-v1.json",
+      "source": {
+        "bytes": 4089,
+        "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/qualification-author-static-audit-v1.json",
+        "sha256": "3e22d2748ae8a24d5f97ac0be5494929f55fc3564ec7a8a481d9952663154ed5"
+      }
+    },
+    {
+      "member": "library/qualification-author-static-audit-v2.json",
+      "source": {
+        "bytes": 6210,
+        "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/qualification-author-static-audit-v2.json",
+        "sha256": "b04665d331d9cf408f0d2ba7f4389bd9b9cde87d605f4ee16f695196ec85c4a9"
+      }
+    },
+    {
+      "member": "library/qualification-coverage-v1.json",
+      "source": {
+        "bytes": 10717,
+        "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/qualification-coverage-v1.json",
+        "sha256": "74ff081ecae0b12efadb7ece099907380ad57d84bc45b465ab2d50c6af4b2d03"
+      }
+    },
+    {
+      "member": "library/qualification-delta-v2.json",
+      "source": {
+        "bytes": 1527,
+        "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/qualification-delta-v2.json",
+        "sha256": "116a465632b73e6f0903920412edce1748f88ac06aa6dc6eccd18567dc25536b"
+      }
+    },
+    {
+      "member": "library/qualification-handoff-v1.json",
+      "source": {
+        "bytes": 2897,
+        "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/qualification-handoff-v1.json",
+        "sha256": "7f2a40013c4d364d2179029f847f965e53832f55cfdc5af2821dce09506f06d8"
+      }
+    },
+    {
+      "member": "library/qualification-handoff-v2.json",
+      "source": {
+        "bytes": 2599,
+        "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/qualification-handoff-v2.json",
+        "sha256": "af064b54309fa5ee415b875173c8cae599200da861afb89a4f74d33f88111830"
+      }
+    },
+    {
+      "member": "library/qualify_finalization_harness_v1.py",
+      "source": {
+        "bytes": 30763,
+        "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/qualify_finalization_harness_v1.py",
+        "sha256": "d1291c030dc0b031b0d8440521bf5ce9bbee5ddf0e3c17bf6b7f4e7a7a20472d"
+      }
+    },
+    {
+      "member": "library/qualify_finalization_harness_v2.py",
+      "source": {
+        "bytes": 33853,
+        "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/qualify_finalization_harness_v2.py",
+        "sha256": "59b3d6de41c89b41b9e351df8c3d91239d3f3a25ceb1f03852b0b9060efa9fcc"
+      }
+    },
+    {
+      "member": "observer/CONSUMED.json",
+      "source": {
+        "bytes": 285,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/plan-authorized-v1-terminal-observation/CONSUMED.json",
+        "sha256": "bae6fe97e426ffaad9cfabd71ca5d17e0445e08c46e91a9a6f7d06ee11d8a129"
+      }
+    },
+    {
+      "member": "observer/stderr.bin",
+      "source": {
+        "bytes": 0,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/plan-authorized-v1-terminal-observation/stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "member": "observer/stdout.bin",
+      "source": {
+        "bytes": 164,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/plan-authorized-v1-terminal-observation/stdout.bin",
+        "sha256": "3678e87b26d578345368c93c6d7436a34bd312341676f0a794a25fe01ab43410"
+      }
+    },
+    {
+      "member": "observer/terminal.json",
+      "source": {
+        "bytes": 1547,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/plan-authorized-v1-terminal-observation/terminal.json",
+        "sha256": "0e92814497c55d9f5df997e6e726644cd67a65d0d103abfe235d676d50ea7af8"
+      }
+    },
+    {
+      "member": "reference/basic-tiling-algorithm.md",
+      "source": {
+        "bytes": 36240,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/basic-tiling-algorithm-HEAD.md",
+        "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+      }
+    },
+    {
+      "member": "report/README.txt",
+      "source": {
+        "bytes": 503,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/publication-v1/README.txt",
+        "sha256": "2f7a471b7a216d08a233f542d94ad88b6952cbe56a92c430a08a2fc56398b7c2"
+      }
+    },
+    {
+      "member": "report/cadence-integration.html",
+      "source": {
+        "bytes": 35007,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/publication-v1/cadence-integration.html",
+        "sha256": "98b4b65b250de1fe4a53c32d6c03e583e4046d98159e0213ae3fe6449653f7d8"
+      }
+    },
+    {
+      "member": "report/finalization-observation-next-design.json",
+      "source": {
+        "bytes": 46832,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/publication-v1/finalization-observation-next-design.json",
+        "sha256": "6de4ff67b77d0fabb9704731927f9a0e3f599a2a5d8ca2fcf8daeabd3d38d1e5"
+      }
+    },
+    {
+      "member": "report/finalization-observation-summary.json",
+      "source": {
+        "bytes": 94170,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/publication-v1/finalization-observation-summary.json",
+        "sha256": "6c7448768bbf7e6b4d5b62aa025e5bd7001e86d75a7ac10e9e72d00cc6451615"
+      }
+    },
+    {
+      "member": "report/finalization-observation.html",
+      "source": {
+        "bytes": 73240,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/publication-v1/finalization-observation.html",
+        "sha256": "e4e70bc9f25c80c9ead72f7000b1b6e47f6f2ba8234392c58db3510ce3725c72"
+      }
+    },
+    {
+      "member": "report/reader.html",
+      "source": {
+        "bytes": 94133,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/publication-v1/reader.html",
+        "sha256": "45d7a70073761582ef7f56ee839934e4de4d182c5f7a9459f4b55dff7abfc93c"
+      }
+    },
+    {
+      "member": "review/audit_cold_v6_v1.py",
+      "source": {
+        "bytes": 10263,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/audit_cold_v6_v1.py",
+        "sha256": "5ac60b08a94a6fda8e9da3418cbbeef949cfaf5e338a6e5890c12f963c1921cf"
+      }
+    },
+    {
+      "member": "review/audit_components_v1.py",
+      "source": {
+        "bytes": 24908,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/audit_components_v1.py",
+        "sha256": "d9d12962c7c5e48bf40013e2b98196e3d308b70bfd08ac11717d2292a2261c04"
+      }
+    },
+    {
+      "member": "review/audit_components_v2.py",
+      "source": {
+        "bytes": 24960,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/audit_components_v2.py",
+        "sha256": "11ce5a10b18304655ce368fcad36f73169e794b8a994d0fbb852e3f6ae2708fe"
+      }
+    },
+    {
+      "member": "review/audit_driver_v5_negative_v1.py",
+      "source": {
+        "bytes": 7451,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/audit_driver_v5_negative_v1.py",
+        "sha256": "1fec88305ec9f00287dd14aad9d9c73b94da3ab3ad36bca815c0c14c732fff5d"
+      }
+    },
+    {
+      "member": "review/audit_driver_v5_negative_v2.py",
+      "source": {
+        "bytes": 7450,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/audit_driver_v5_negative_v2.py",
+        "sha256": "170d4133b24db309ae854f41edd4ba1347422364cee38259e2b62964583207b5"
+      }
+    },
+    {
+      "member": "review/audit_driver_v6_v1.py",
+      "source": {
+        "bytes": 8670,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/audit_driver_v6_v1.py",
+        "sha256": "9a64eadba2ec8172c41adb52587857e23213ab02813298659618da70cdf516bf"
+      }
+    },
+    {
+      "member": "review/audit_harness_v1_negative.py",
+      "source": {
+        "bytes": 9500,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/audit_harness_v1_negative.py",
+        "sha256": "259fec6de20537027fde69d6a9342dad4bbd132b903d51c577afc870e6356dfb"
+      }
+    },
+    {
+      "member": "review/audit_helper_wrappers_v1_negative.py",
+      "source": {
+        "bytes": 9519,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/audit_helper_wrappers_v1_negative.py",
+        "sha256": "9d7f07db51a885ae068394ca45a6da422c973354fefaf9d3fc8a1c1d53576a2d"
+      }
+    },
+    {
+      "member": "review/audit_plan_and_import_negative_v1.py",
+      "source": {
+        "bytes": 10929,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/audit_plan_and_import_negative_v1.py",
+        "sha256": "3aec26bd8ccc4c9f0f99f2ebcf7822fe1b9031da2a17f3ba2d5b6131ee30b690"
+      }
+    },
+    {
+      "member": "review/audit_saved_helpers_v1.py",
+      "source": {
+        "bytes": 23750,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/audit_saved_helpers_v1.py",
+        "sha256": "33d7794bcc423a2724a6bf583d2f5fcc06c8670501429c82af22413c1b76064b"
+      }
+    },
+    {
+      "member": "review/audit_successor_v2.py",
+      "source": {
+        "bytes": 13990,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/audit_successor_v2.py",
+        "sha256": "6e977a81d31bbdac80b2f671719c54cc01f401cbded281045540f6993befb397"
+      }
+    },
+    {
+      "member": "review/audit_successor_v3.py",
+      "source": {
+        "bytes": 14038,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/audit_successor_v3.py",
+        "sha256": "5e86156f8431e2000f464dceca23cb8bac9cc3efee3778f641672f3a9d370599"
+      }
+    },
+    {
+      "member": "review/audit_successor_v4.py",
+      "source": {
+        "bytes": 14165,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/audit_successor_v4.py",
+        "sha256": "d7a30fc6ea7da4737edef4bf1ef9428c0df802f12512ec54468d3c5cb8420339"
+      }
+    },
+    {
+      "member": "review/cold-v6-Source-audit-v1.json",
+      "source": {
+        "bytes": 22841,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/cold-v6-Source-audit-v1.json",
+        "sha256": "7b8151ebfc008156e6c0ef6c13e059a6bd8ae7e24d3207b9b39b4e408b211d08"
+      }
+    },
+    {
+      "member": "review/components-harness-independent-inert-diff.txt",
+      "source": {
+        "bytes": 35511,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/components-harness-independent-inert-diff.txt",
+        "sha256": "2f3abe413aaacc84e26cf0cb18024a0488896e23d8b4de5d1656a05909285b15"
+      }
+    },
+    {
+      "member": "review/components-observer-pin-independent-inert-diff.txt",
+      "source": {
+        "bytes": 5667,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/components-observer-pin-independent-inert-diff.txt",
+        "sha256": "d337864a55072ca0d1457a6fc100cc0877840c8818b55afea1bb8267f0563298"
+      }
+    },
+    {
+      "member": "review/components-runner-prefix-independent-inert-diff.txt",
+      "source": {
+        "bytes": 13575,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/components-runner-prefix-independent-inert-diff.txt",
+        "sha256": "40fbb748b32216fbfe74b047da63e6db61d8e6a39dee9c8dd89427c7f3cb8bb0"
+      }
+    },
+    {
+      "member": "review/components-worker-prefix-independent-inert-diff.txt",
+      "source": {
+        "bytes": 16398,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/components-worker-prefix-independent-inert-diff.txt",
+        "sha256": "22c4d2f6c426f412aa5ebf05b60cea540f4173acea896a452e041eb32e78b553"
+      }
+    },
+    {
+      "member": "review/driver-v4-v5-independent-inert-diff.txt",
+      "source": {
+        "bytes": 124331,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/driver-v4-v5-independent-inert-diff.txt",
+        "sha256": "fde3e356c78e7b2b327e9b4640f80ac7f2ef914f3e61823cd3dc60fba6630d90"
+      }
+    },
+    {
+      "member": "review/driver-v5-Source-negative-audit-v1.json",
+      "source": {
+        "bytes": 7836,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/driver-v5-Source-negative-audit-v1.json",
+        "sha256": "c31d5aaf2f97d7ad0cae66d0bcb1e1a98a887e0c863f0f339c82d353f383d2c6"
+      }
+    },
+    {
+      "member": "review/driver-v5-v6-independent-inert-diff.txt",
+      "source": {
+        "bytes": 128976,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/driver-v5-v6-independent-inert-diff.txt",
+        "sha256": "b1c6f26433437704bba7fc3afb4c0fc700e421b7e6c66ed9c582ad97c38fc64a"
+      }
+    },
+    {
+      "member": "review/driver-v6-Source-audit-v1.json",
+      "source": {
+        "bytes": 7278,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/driver-v6-Source-audit-v1.json",
+        "sha256": "eb67c40d0c3bd5e9da189fb29474e6ab06925cbd1587e33826cf68536297a30c"
+      }
+    },
+    {
+      "member": "review/freeze_review_criteria_v1.py",
+      "source": {
+        "bytes": 13909,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/freeze_review_criteria_v1.py",
+        "sha256": "b1fc37c8058d8f82aac5831eb2ef5c45053bc008e6252b7d607fe08d6c3923d9"
+      }
+    },
+    {
+      "member": "review/helper-components-Source-audit-v1.json",
+      "source": {
+        "bytes": 17796,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/helper-components-Source-audit-v1.json",
+        "sha256": "658602edc349dbb91a062d045cade29fa6a1bd86e52ac5eb948f172e9299d616"
+      }
+    },
+    {
+      "member": "review/helper-harness-Source-negative-audit-v1.json",
+      "source": {
+        "bytes": 7719,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/helper-harness-Source-negative-audit-v1.json",
+        "sha256": "60c0049c678224591763f9eacd38a6960dd07695c56ce5b596b49a7019719831"
+      }
+    },
+    {
+      "member": "review/helper-observer-parent-current-inert-diff.txt",
+      "source": {
+        "bytes": 6373,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/helper-observer-parent-current-inert-diff.txt",
+        "sha256": "45825ae8a7ca408df1cde7e475bb46ba7f31ff2c3cf6f5d62b3d56869fdedee0"
+      }
+    },
+    {
+      "member": "review/helper-plan-and-import-negative-audit-v1.json",
+      "source": {
+        "bytes": 11064,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/helper-plan-and-import-negative-audit-v1.json",
+        "sha256": "008d7f6b1badeed09677a27dc4a0ab003514bc4b2287f5983dc324d8fafe52c5"
+      }
+    },
+    {
+      "member": "review/helper-prospective-plan-audit-v2.json",
+      "source": {
+        "bytes": 7912,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/helper-prospective-plan-audit-v2.json",
+        "sha256": "0218868a3f25c3ddd3fb6d143d290ccfe56d4e5014ed08856171eeb827234189"
+      }
+    },
+    {
+      "member": "review/helper-runner-parent-current-inert-diff.txt",
+      "source": {
+        "bytes": 20469,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/helper-runner-parent-current-inert-diff.txt",
+        "sha256": "daf5fbaa372f05055fc14fa8247992a2bc8037a71808d82d3996c9835122b5f7"
+      }
+    },
+    {
+      "member": "review/helper-saved-actual-audit-v1.json",
+      "source": {
+        "bytes": 18216,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/helper-saved-actual-audit-v1.json",
+        "sha256": "faec7418bb5bc43c524df743095c1866d605b5bf9ed1613b854c28edda3bf6c9"
+      }
+    },
+    {
+      "member": "review/helper-startup-successor-Source-audit-v1.json",
+      "source": {
+        "bytes": 6242,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/helper-startup-successor-Source-audit-v1.json",
+        "sha256": "af9449190977df9066e5057527fdd4d07018c0f792fa063bf55a8975529e5690"
+      }
+    },
+    {
+      "member": "review/helper-worker-v5-v6-independent-inert-diff.txt",
+      "source": {
+        "bytes": 16600,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/helper-worker-v5-v6-independent-inert-diff.txt",
+        "sha256": "d6230dab75ff8dac65cfaf0c01f74ffda1e6a9b8bb292075c233dced528513fb"
+      }
+    },
+    {
+      "member": "review/helper-wrapper-Source-negative-audit-v1.json",
+      "source": {
+        "bytes": 5683,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/helper-wrapper-Source-negative-audit-v1.json",
+        "sha256": "977df8d6210470dd73ba877d606bf7a45394ea6ae9520d4f3b20a62bc4f100dd"
+      }
+    },
+    {
+      "member": "review/next-full-pipeline-obligations-v1.json",
+      "source": {
+        "bytes": 3321,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/next-full-pipeline-obligations-v1.json",
+        "sha256": "7a6d2c92f92f3f2ae9e5b7226a510d91e29a4215984ce9f8f8d4265c01fadfe1"
+      }
+    },
+    {
+      "member": "review/review-criteria-v1.json",
+      "source": {
+        "bytes": 15311,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/review-criteria-v1.json",
+        "sha256": "c373d7c20ea8d73cf786b019ce08dba8d353b032e2aacfda72bbbcc7ef2ddcef"
+      }
+    },
+    {
+      "member": "review/saved-review-temporal-correction-v1.json",
+      "source": {
+        "bytes": 1145,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/saved-review-temporal-correction-v1.json",
+        "sha256": "fb6889c11bfff69e25acf4b9ff0473b6b14e22fcc27f4f5d987cb61c2d1064a7"
+      }
+    },
+    {
+      "member": "review/typed-cold-Source-review-v1.json",
+      "source": {
+        "bytes": 9071,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/typed-cold-Source-review-v1.json",
+        "sha256": "aa68e248905958c34a3cc5bc2fd99f54c09322e537ce580f9bf52e90fe4b84cc"
+      }
+    },
+    {
+      "member": "review/typed-components-Source-review-v1.json",
+      "source": {
+        "bytes": 13085,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/typed-components-Source-review-v1.json",
+        "sha256": "cdbe54198f69f84ed7083a8095750d64a129be5de538ae1f0b740f8a5638b44b"
+      }
+    },
+    {
+      "member": "review/typed-components-Source-review-v2-negative.json",
+      "source": {
+        "bytes": 6956,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/typed-components-Source-review-v2-negative.json",
+        "sha256": "eca9914e1dbb13b9c5021e37e84d70e0c608a7d1049d0b0f8af15a4ddd2a9e01"
+      }
+    },
+    {
+      "member": "review/typed-components-Source-review-v3.json",
+      "source": {
+        "bytes": 15549,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/typed-components-Source-review-v3.json",
+        "sha256": "b62e7c100be5effc60948e8453c6d590d12a1a0d8dcc0d5613671113cdee0f9b"
+      }
+    },
+    {
+      "member": "review/typed-driver-Source-review-v1-negative.json",
+      "source": {
+        "bytes": 5780,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/typed-driver-Source-review-v1-negative.json",
+        "sha256": "842d07a2fb892fda88f3b8c9278733c16d5d3912f81e8027b553ff500e5422fa"
+      }
+    },
+    {
+      "member": "review/typed-driver-Source-review-v2.json",
+      "source": {
+        "bytes": 6760,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/typed-driver-Source-review-v2.json",
+        "sha256": "3bb96dfc82e2808fd18eed8a1eb84df18ee8b8f1e55c56ecd09463f1de209ec8"
+      }
+    },
+    {
+      "member": "review/typed-final-grant-delta-review-v1.json",
+      "source": {
+        "bytes": 10079,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/typed-final-grant-delta-review-v1.json",
+        "sha256": "43128f579a2430d2d8dbccaa1e6b91fc2cb9d205f75b4465b52f403fa6f4fbdd"
+      }
+    },
+    {
+      "member": "review/typed-helper-harness-Source-review-v1-negative.json",
+      "source": {
+        "bytes": 5912,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/typed-helper-harness-Source-review-v1-negative.json",
+        "sha256": "eed4cfa755720891de3e729557834137cd0b436cce67112b3b3901d57f59fef6"
+      }
+    },
+    {
+      "member": "review/typed-helper-wrapper-Source-review-v1-negative.json",
+      "source": {
+        "bytes": 5180,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/typed-helper-wrapper-Source-review-v1-negative.json",
+        "sha256": "9876de304ee5b5faed4efac34e5ea5b43decd33c4c3302b476e51eed8f27b6ec"
+      }
+    },
+    {
+      "member": "review/typed-prospective-plan-review-v1-negative.json",
+      "source": {
+        "bytes": 7510,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/typed-prospective-plan-review-v1-negative.json",
+        "sha256": "6846a6d9f402c0c069eb5610b5f9f5a89cf239bcb692d04846625810eab9ef25"
+      }
+    },
+    {
+      "member": "review/typed-prospective-plan-review-v2.json",
+      "source": {
+        "bytes": 8273,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/typed-prospective-plan-review-v2.json",
+        "sha256": "5bd127e4920553a501e96f40e1f0396e861bf2aabd03b3f99b2c3e2dd735f2a0"
+      }
+    },
+    {
+      "member": "review/typed-saved-helper-qualification-review-v1.json",
+      "source": {
+        "bytes": 10648,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/typed-saved-helper-qualification-review-v1.json",
+        "sha256": "31d4ec3189483c41cd7748b59507823bde7dad3f3ade4675738ad2ad251e1914"
+      }
+    },
+    {
+      "member": "review/typed-saved-helper-qualification-review-v2.json",
+      "source": {
+        "bytes": 14105,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/typed-saved-helper-qualification-review-v2.json",
+        "sha256": "5fec67cfd2c1ae2beed64bb6e87342d798054e756b546b0bdcc6e35c3f247531"
+      }
+    },
+    {
+      "member": "root/ROOT-cohort-barrier-v1.json",
+      "source": {
+        "bytes": 1422,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/ROOT-cohort-barrier-v1.json",
+        "sha256": "c6ddaf1e98e2e0efb3736d01e359df472ff3c8045c52db145c0d051115d4e120"
+      }
+    },
+    {
+      "member": "root/ROOT-cohort-closure-v1.json",
+      "source": {
+        "bytes": 1013,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/ROOT-cohort-closure-v1.json",
+        "sha256": "7c8e6c4aea4f0f425496f20630bb62958555b5401dfcd0e8d42a3cce72359fac"
+      }
+    },
+    {
+      "member": "root/ROOT-components-Source-adoption-v1.json",
+      "source": {
+        "bytes": 954,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/ROOT-components-Source-adoption-v1.json",
+        "sha256": "a767b8b5219c7cb1875b40601989945b1c141158a68baa17227f960b04ba2fd3"
+      }
+    },
+    {
+      "member": "root/ROOT-current-state-revalidation-v1.json",
+      "source": {
+        "bytes": 908,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/ROOT-current-state-revalidation-v1.json",
+        "sha256": "7d91fa6901bfe5730dec67c0360ebd272b513c1e29bda4219b12fae1c4977f97"
+      }
+    },
+    {
+      "member": "root/ROOT-driver-negative-adoption-v1.json",
+      "source": {
+        "bytes": 631,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/ROOT-driver-negative-adoption-v1.json",
+        "sha256": "5e5255a51659e276c3812a0506f54477b4b70578a48de402cb0b8a41cf8c794c"
+      }
+    },
+    {
+      "member": "root/ROOT-helper-negative-adoption-v1.json",
+      "source": {
+        "bytes": 1062,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/ROOT-helper-negative-adoption-v1.json",
+        "sha256": "fcde60833bf52dbd114e0312f86d60710e31c70dfdde5b331b92b00e14b32059"
+      }
+    },
+    {
+      "member": "root/ROOT-helper-startup-correction-v1.json",
+      "source": {
+        "bytes": 2157,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/ROOT-helper-startup-correction-v1.json",
+        "sha256": "27e1293ce8a4a003af714b257a6969fd79ad983fb3047fd4102da6fb8211bc4c"
+      }
+    },
+    {
+      "member": "root/ROOT-independent-saved-adoption-v1.json",
+      "source": {
+        "bytes": 1330,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/ROOT-independent-saved-adoption-v1.json",
+        "sha256": "35e36673b4af8cead8f1a74386ba545bcf673b94e0b5f29c15120863e5817c70"
+      }
+    },
+    {
+      "member": "root/ROOT-saved-actual-audit-v1.json",
+      "source": {
+        "bytes": 15346,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/ROOT-saved-actual-audit-v1.json",
+        "sha256": "17caa5d25df10831fa74045813de5dda8c35ee87c0bb26ed7572c7151ab4a6b5"
+      }
+    },
+    {
+      "member": "root/ROOT-scope-adoption-v1.json",
+      "source": {
+        "bytes": 4960,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/ROOT-scope-adoption-v1.json",
+        "sha256": "523caed1c8a468230a187b15ffc9fd976234c2c7eb1655e28bd5e21952a1cae9"
+      }
+    },
+    {
+      "member": "root/audit_saved_helper_v1.py",
+      "source": {
+        "bytes": 11989,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/audit_saved_helper_v1.py",
+        "sha256": "1d8b699ed6135ed3ae6525286de762f4864f47b7ead9fdb76b56698c244cab54"
+      }
+    },
+    {
+      "member": "root/author_driver_v5.py",
+      "source": {
+        "bytes": 10748,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/author_driver_v5.py",
+        "sha256": "154f224645dcae5700a42207dbc6452c1b3c24d912100b48350de9a750f1a6ca"
+      }
+    },
+    {
+      "member": "root/author_driver_v6.py",
+      "source": {
+        "bytes": 5266,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/author_driver_v6.py",
+        "sha256": "8e3bd28b7cec951dc21f4de02b3fafc05b102f03340767c0e62b574271638055"
+      }
+    },
+    {
+      "member": "root/author_helper_startup_successor_v1.py",
+      "source": {
+        "bytes": 4220,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/author_helper_startup_successor_v1.py",
+        "sha256": "9b768b4dc251e0eaeca5f169c35d30be46935c76478c4ed19cb0f989afc77041"
+      }
+    },
+    {
+      "member": "root/author_helper_wrappers_v1.py",
+      "source": {
+        "bytes": 5845,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/author_helper_wrappers_v1.py",
+        "sha256": "1eb0257b2713e0a07c987fa586973e237f79fb073eb6bb7beca4919cd962882d"
+      }
+    },
+    {
+      "member": "root/author_helper_wrappers_v2.py",
+      "source": {
+        "bytes": 6253,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/author_helper_wrappers_v2.py",
+        "sha256": "63203ce938b451c4a2f3a35015b4974163eb5db0cff4822b74590a008efb240c"
+      }
+    },
+    {
+      "member": "root/author_helper_wrappers_v3.py",
+      "source": {
+        "bytes": 8064,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/author_helper_wrappers_v3.py",
+        "sha256": "bcbbba77868297e27eda93f850140d901f82234728508ecc1b35a963d65176fc"
+      }
+    },
+    {
+      "member": "root/authorization-false-v1.json",
+      "source": {
+        "bytes": 520,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/authorization-false-v1.json",
+        "sha256": "4635574d9f1c58f6d4bd7ab5333702992d4f5966dca5d74e2dc1c4978d334e34"
+      }
+    },
+    {
+      "member": "root/authorization-false-v2.json",
+      "source": {
+        "bytes": 520,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/authorization-false-v2.json",
+        "sha256": "a0c5330066717cefc5491498ec96f89b183321f09d47c85f97d33cecc5e810fa"
+      }
+    },
+    {
+      "member": "root/authorization-true-v1.json",
+      "source": {
+        "bytes": 1263,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/authorization-true-v1.json",
+        "sha256": "0db91f07e5a33be2caf8a0849cfa24bc17ed9c041287b8703f3d27afbc2215c9"
+      }
+    },
+    {
+      "member": "root/build_false_helper_plan_v1.py",
+      "source": {
+        "bytes": 6716,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/build_false_helper_plan_v1.py",
+        "sha256": "3d014fa5c14551fd527bc4c44f02136cbe6c7350519daac1a67eb2ae7d4fc2d3"
+      }
+    },
+    {
+      "member": "root/build_false_helper_plan_v2.py",
+      "source": {
+        "bytes": 7245,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/build_false_helper_plan_v2.py",
+        "sha256": "bffac6c4cdb4f4bafada83fdb53178c86cebdf51cdb6073a40ac904cfca74c2c"
+      }
+    },
+    {
+      "member": "root/driver-Source-authoring-v1.json",
+      "source": {
+        "bytes": 1479,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/driver-Source-authoring-v1.json",
+        "sha256": "e21554b001d820cfad37877a45c06a4bf4670a709152dc679af67f8c79e9ec12"
+      }
+    },
+    {
+      "member": "root/driver-Source-correction-v1.json",
+      "source": {
+        "bytes": 1450,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/driver-Source-correction-v1.json",
+        "sha256": "7b45fdbb979e0ebca728b373bb04086f1a7aa77353674ec5d7c3bee291a62950"
+      }
+    },
+    {
+      "member": "root/false-helper-plan-manifest-v1.json",
+      "source": {
+        "bytes": 4906,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/false-helper-plan-manifest-v1.json",
+        "sha256": "5fbdf7b1042112ffdb79b07de0fb98d0ca92184ef3645edc6389380005080e77"
+      }
+    },
+    {
+      "member": "root/false-helper-plan-manifest-v2.json",
+      "source": {
+        "bytes": 4906,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/false-helper-plan-manifest-v2.json",
+        "sha256": "87f29588b829a6810b22ec2a173b1c1ef0c51066ec0bcbd98cdbe03838be44de"
+      }
+    },
+    {
+      "member": "root/grant_reviewed_helper_once_v1.py",
+      "source": {
+        "bytes": 5970,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/grant_reviewed_helper_once_v1.py",
+        "sha256": "18a7fef34555c49b82cb925af008051c76261096e0102a5765b82fd32cee6ba0"
+      }
+    },
+    {
+      "member": "root/helper-normal-checkpoint-binding-v1.json",
+      "source": {
+        "bytes": 791,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/helper-normal-checkpoint-binding-v1.json",
+        "sha256": "1b7ca78056c629c9bf8a904c63ac5ab27fd01655f6c6abff16eb96e9bca71c69"
+      }
+    },
+    {
+      "member": "root/helper-outer-Source-authoring-v1.json",
+      "source": {
+        "bytes": 1718,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/helper-outer-Source-authoring-v1.json",
+        "sha256": "de83c1c4c4ac229042a05e638da418c864246e4faaaa83be8be5db5db237e25d"
+      }
+    },
+    {
+      "member": "root/helper-prefix-control-Source-v1.json",
+      "source": {
+        "bytes": 1334,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/helper-prefix-control-Source-v1.json",
+        "sha256": "fb43d2217336746466f1852a9ecbc4b8458fbfd55c4025d6c6061878efe88817"
+      }
+    },
+    {
+      "member": "root/helper-qualification-declaration-v1.json",
+      "source": {
+        "bytes": 6573,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/helper-qualification-declaration-v1.json",
+        "sha256": "4aa7497516bbf9016edabf89b977b1b845ced591a76b1ab921d8be2ea852ea55"
+      }
+    },
+    {
+      "member": "root/helper-qualification-declaration-v2.json",
+      "source": {
+        "bytes": 7193,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/helper-qualification-declaration-v2.json",
+        "sha256": "6357a92151c9559b412fcefb9ecd58c329c4c41426aedadac1299559982db1a9"
+      }
+    },
+    {
+      "member": "root/helper-wrapper-correction-v1.json",
+      "source": {
+        "bytes": 2099,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/helper-wrapper-correction-v1.json",
+        "sha256": "a84bbe9b5070c6bb6ddf4e467eecf4d50ce5338b7f7c7c56aacd743d60b41651"
+      }
+    },
+    {
+      "member": "root/observe_finalization_helpers_once_v1.py",
+      "source": {
+        "bytes": 5170,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/observe_finalization_helpers_once_v1.py",
+        "sha256": "d4262124016c30bf53d2703d24971143cabcc99ebb3c774fb8058b839f30a704"
+      }
+    },
+    {
+      "member": "root/observe_finalization_helpers_once_v2.py",
+      "source": {
+        "bytes": 5170,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/observe_finalization_helpers_once_v2.py",
+        "sha256": "d008c09dc11996e2e7094378a6128477cb7c1c27cd5b0a2815885cae292d6b81"
+      }
+    },
+    {
+      "member": "root/observe_finalization_helpers_once_v3.py",
+      "source": {
+        "bytes": 5170,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/observe_finalization_helpers_once_v3.py",
+        "sha256": "c2c4cc851a890f7204bf08f20f30d4f676c1d8152a72ef138f37d14a9ca7c6aa"
+      }
+    },
+    {
+      "member": "root/owned_evidence_receiver_driver_v5.py",
+      "source": {
+        "bytes": 119296,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/owned_evidence_receiver_driver_v5.py",
+        "sha256": "c5e6c472056512fa08cc50cf0324175db446119e22901afe414b3f0edc3c3d54"
+      }
+    },
+    {
+      "member": "root/owned_evidence_receiver_driver_v6.py",
+      "source": {
+        "bytes": 120766,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/owned_evidence_receiver_driver_v6.py",
+        "sha256": "e8ff0690472140e510f8ffab383be8c22791da6b27ef0a27fda013ea48e5f5cf"
+      }
+    },
+    {
+      "member": "root/plan-authorized-v1.json",
+      "source": {
+        "bytes": 2551,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/plan-authorized-v1.json",
+        "sha256": "9822085a61d1f24f1826bb5b8ffdff9380604c4ab70b68c48b12fb1d40f1a2f3"
+      }
+    },
+    {
+      "member": "root/plan-false-v1.json",
+      "source": {
+        "bytes": 2551,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/plan-false-v1.json",
+        "sha256": "ffc9cae2e6af04fa42b39f77c5a129ddbb507560f5cf44a3806f0be5988499d8"
+      }
+    },
+    {
+      "member": "root/plan-false-v2.json",
+      "source": {
+        "bytes": 2551,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/plan-false-v2.json",
+        "sha256": "08cb849ced6402af68116f833bd5ef0d90fd4b82b57e1d909fa7368c952a204e"
+      }
+    },
+    {
+      "member": "root/qualify_finalization_worker_v1.py",
+      "source": {
+        "bytes": 9034,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/qualify_finalization_worker_v1.py",
+        "sha256": "481b124257252e735763b14182d3cc1410a439eb6013446d66af55a643eed637"
+      }
+    },
+    {
+      "member": "root/qualify_finalization_worker_v2.py",
+      "source": {
+        "bytes": 11361,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/qualify_finalization_worker_v2.py",
+        "sha256": "4b08478cdec865e68aac09e539c74d5d41a8528e2b5c87d020e36e1721a204e2"
+      }
+    },
+    {
+      "member": "root/qualify_finalization_worker_v3.py",
+      "source": {
+        "bytes": 11600,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/qualify_finalization_worker_v3.py",
+        "sha256": "5e52e0ff9736bd6109eee79512a9d4db1c0224196ccaafa24887dc4a54ffc200"
+      }
+    },
+    {
+      "member": "root/qualify_finalization_worker_v4.py",
+      "source": {
+        "bytes": 15372,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/qualify_finalization_worker_v4.py",
+        "sha256": "b1eeef8e183e753a09f6955750480ce608184256203f9c8b1155f8f116cdf94e"
+      }
+    },
+    {
+      "member": "root/qualify_finalization_worker_v5.py",
+      "source": {
+        "bytes": 15435,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/qualify_finalization_worker_v5.py",
+        "sha256": "56fa29726a48dd0e4c16c041c68e1eedea3fc92530bd8385af0df4bc0a224275"
+      }
+    },
+    {
+      "member": "root/qualify_finalization_worker_v6.py",
+      "source": {
+        "bytes": 15924,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/qualify_finalization_worker_v6.py",
+        "sha256": "3751bb6ee1e9bc69b698c52deac2c5479ba97f6ba24f203cb242718db56ddee8"
+      }
+    },
+    {
+      "member": "root/run_finalization_helpers_once_v1.py",
+      "source": {
+        "bytes": 12314,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/run_finalization_helpers_once_v1.py",
+        "sha256": "f5e5ceab7d13eafb6a24e2bd3c9facbf66f094009cebaed4dc79ae11e7c1c4d1"
+      }
+    },
+    {
+      "member": "root/run_finalization_helpers_once_v2.py",
+      "source": {
+        "bytes": 12321,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/run_finalization_helpers_once_v2.py",
+        "sha256": "312c085ac25306d2c88e5c45cd608b9d7db131de3dbee6ac2f170c5ec838485b"
+      }
+    },
+    {
+      "member": "root/run_finalization_helpers_once_v3.py",
+      "source": {
+        "bytes": 13071,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/run_finalization_helpers_once_v3.py",
+        "sha256": "051ec35804bdaf1938e57f823045930944902ed077cd83733eef309fcad70621"
+      }
+    },
+    {
+      "member": "root/worker-self-review-correction-v1.json",
+      "source": {
+        "bytes": 906,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/worker-self-review-correction-v1.json",
+        "sha256": "eaddd7581435170173c72234be46865a0acafd9cc017bcab86ab23cd0ef362f3"
+      }
+    }
+  ],
+  "purpose": "Complete current helper actual, current six Sources, retained rejected drafts/reviews and direct declaration/grant scopes. Historical scientific proof and runtime dependency pins remain separately external, not executed or replayed here.",
+  "schema": "GCTS-finalization-helper-archive-manifest-v1",
+  "scientific_acceptance": false,
+  "scientific_calls_in_presentation": 0,
+  "source_correction_and_rejected_PASS_retained": true
+}

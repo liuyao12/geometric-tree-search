@@ -1,0 +1,905 @@
+{
+  "actual_execution_authorized": false,
+  "ancestry": {
+    "author_overlap": "Author wrote coldV6, helper harness, prior cold/driver adapters and Model/bridge/point/certifier Sources. This memo is design reconnaissance, not independent certification of own Sources or the new full pipeline.",
+    "helper_actual": "Parent reports one closed helper-only actual:27 normal groups plus3 reached interruption prefixes0/1/27, four harness calls. Its saved data is independently audited by Control; this memo does not independently replay/audit it.",
+    "helper_saved_audit": {
+      "bytes": 15346,
+      "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/ROOT-saved-actual-audit-v1.json",
+      "sha256": "17caa5d25df10831fa74045813de5dda8c35ee87c0bb26ed7572c7151ab4a6b5"
+    },
+    "helper_scope": "Fake interfaces/new metadata helpers only; no run_receiver_owned/cold main/real inverse/Native/Model/search calls. No full-pipeline, real timing, memory-fit, output-fit or proof admission follows.",
+    "independent_Source_reviews": {
+      "cold": {
+        "bytes": 9071,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/typed-cold-Source-review-v1.json",
+        "sha256": "aa68e248905958c34a3cc5bc2fd99f54c09322e537ce580f9bf52e90fe4b84cc"
+      },
+      "driver": {
+        "bytes": 6760,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/typed-driver-Source-review-v2.json",
+        "sha256": "3bb96dfc82e2808fd18eed8a1eb84df18ee8b8f1e55c56ecd09463f1de209ec8"
+      },
+      "helper_current_source_group": {
+        "bytes": 15549,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/typed-components-Source-review-v3.json",
+        "sha256": "b62e7c100be5effc60948e8453c6d590d12a1a0d8dcc0d5613671113cdee0f9b"
+      },
+      "helper_packet": {
+        "bytes": 2599,
+        "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/qualification-handoff-v2.json",
+        "sha256": "af064b54309fa5ee415b875173c8cae599200da861afb89a4f74d33f88111830"
+      }
+    }
+  },
+  "author_identity": "/root/conventional_library",
+  "codec_inverse_Native_calls": 0,
+  "common_pair": {
+    "common": {
+      "complete_historical_formula_family_templates": 4,
+      "inventory_certification_mode": "schema_then_native",
+      "model_storage": "literal_interned",
+      "original_case001_complete_ground_definitions": 10,
+      "proof_rows": 12,
+      "result_reader": "interned",
+      "search_ordering": "and_support",
+      "syntax_UI_rounds": 2
+    },
+    "comparison": "One familiar development control with two distinct search methods. No ordinary-storage arm, randomized replication, blind theorem gain, causal speedup, learner or GCTS/RL advantage claim.",
+    "exact_selected_receiver": {
+      "id": "prospective-fol-20261018-001",
+      "instantiation_rounds": 2,
+      "length": 12,
+      "scope": "Authored prospective synthetic first-order assertion; closed axioms and closed target, no open root assumptions or schemas. Input only, no proof/route/instance hints; twelve rows and two frozen catalog rounds. All runtime outcomes unmeasured.",
+      "target": [
+        "pred",
+        "P",
+        [
+          [
+            "fun",
+            "b",
+            []
+          ]
+        ]
+      ],
+      "theory": {
+        "axioms": {
+          "a0": [
+            "eq",
+            [
+              "fun",
+              "a",
+              []
+            ],
+            [
+              "fun",
+              "b",
+              []
+            ]
+          ],
+          "a1": [
+            "pred",
+            "P",
+            [
+              [
+                "fun",
+                "a",
+                []
+              ]
+            ]
+          ]
+        },
+        "functions": {
+          "a": 0,
+          "b": 0
+        },
+        "predicates": {
+          "P": 1
+        },
+        "schemas": []
+      },
+      "title": "Prospective first-order assertion 01"
+    },
+    "modes": [
+      "fixed",
+      "symbolic"
+    ],
+    "no_helper_replay": "Do not append the four helper qualification invocations to production proof work. Existing cold five adapter diagnostic groups/eight Stores remain exactly as previously declared.",
+    "one_fresh_actual_per_mode": true,
+    "original_assertion_capsule": {
+      "bytes": 22422,
+      "path": "/private/tmp/gcts-local-operational-20261019/full-assertion-capsule.json",
+      "sha256": "1a42c2ab16680dddbac504ca5b2d79559370785884805cf4d56b5c1c22c63dc0"
+    },
+    "pass_fail": "Each arm needs the complete original Native/schema/Model/point/evidence/old-reader/source/worker-exit/resource/terminal gates independently. Observation visibility is the added research datum; unavailable/failure outcomes remain failures or UNKNOWN, never assumed pipeline success.",
+    "prospective_order": "fixed then symbolic unless Root declares a different fixed order before any run; never change after traces",
+    "receiver_id": "prospective-fol-20261018-001"
+  },
+  "component_calls": 0,
+  "current_components": {
+    "cold": {
+      "bytes": 72712,
+      "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/owned_evidence_cold_v6.py",
+      "sha256": "e1101723f559ae2dfecc030470a3e6e9e79c71b10c416c2bcdfc8f2f5b101d43"
+    },
+    "cold_handoff": {
+      "bytes": 2800,
+      "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/handoff-v1.json",
+      "sha256": "25de12ec5ed247c05fa38eb4915113de3fbf79e5f8ab9f974e115eabb4dcacf2"
+    },
+    "driver": {
+      "bytes": 120766,
+      "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/owned_evidence_receiver_driver_v6.py",
+      "sha256": "e8ff0690472140e510f8ffab383be8c22791da6b27ef0a27fda013ea48e5f5cf"
+    },
+    "evidence_profile": {
+      "bytes": 3662,
+      "path": "/private/tmp/gcts-cadence-integration-library-20261019/EVIDENCE_PROFILE-v4.json",
+      "sha256": "3a78d1d75a77f9d1aec11f531b9b2e88bfe920901aabdf691270cfbe2a906ee8"
+    }
+  },
+  "design_status": "PROPOSED_UNIMPLEMENTED_UNMEASURED",
+  "evidence": [
+    {
+      "Source": {
+        "bytes": 72712,
+        "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/owned_evidence_cold_v6.py",
+        "sha256": "e1101723f559ae2dfecc030470a3e6e9e79c71b10c416c2bcdfc8f2f5b101d43"
+      },
+      "claim": "Bounded detached cold metadata helpers and unavailable failure fallbacks.",
+      "evidence_kind": "raw Source inspection; no function call",
+      "first_line": 285,
+      "last_line": 398
+    },
+    {
+      "Source": {
+        "bytes": 72712,
+        "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/owned_evidence_cold_v6.py",
+        "sha256": "e1101723f559ae2dfecc030470a3e6e9e79c71b10c416c2bcdfc8f2f5b101d43"
+      },
+      "claim": "Original overall/source-guard body plus local observation; mandatory finalization_profile declaration join.",
+      "evidence_kind": "raw Source inspection; no function call",
+      "first_line": 718,
+      "last_line": 772
+    },
+    {
+      "Source": {
+        "bytes": 72712,
+        "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/owned_evidence_cold_v6.py",
+        "sha256": "e1101723f559ae2dfecc030470a3e6e9e79c71b10c416c2bcdfc8f2f5b101d43"
+      },
+      "claim": "Existing epoch binds declaration and current evidence/inverse headers without new scientific input fields.",
+      "evidence_kind": "raw Source inspection; no function call",
+      "first_line": 907,
+      "last_line": 928
+    },
+    {
+      "Source": {
+        "bytes": 72712,
+        "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/owned_evidence_cold_v6.py",
+        "sha256": "e1101723f559ae2dfecc030470a3e6e9e79c71b10c416c2bcdfc8f2f5b101d43"
+      },
+      "claim": "Same run_receiver_owned call and immediate driver-return/custody phase boundaries.",
+      "evidence_kind": "raw Source inspection; no function call",
+      "first_line": 946,
+      "last_line": 960
+    },
+    {
+      "Source": {
+        "bytes": 72712,
+        "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/owned_evidence_cold_v6.py",
+        "sha256": "e1101723f559ae2dfecc030470a3e6e9e79c71b10c416c2bcdfc8f2f5b101d43"
+      },
+      "claim": "Normal driver completion metadata, detached cutoff snapshot, whole physical ledger and final guards/header serialization.",
+      "evidence_kind": "raw Source inspection; no function call",
+      "first_line": 1064,
+      "last_line": 1116
+    },
+    {
+      "Source": {
+        "bytes": 72712,
+        "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/owned_evidence_cold_v6.py",
+        "sha256": "e1101723f559ae2dfecc030470a3e6e9e79c71b10c416c2bcdfc8f2f5b101d43"
+      },
+      "claim": "Late failure retains returned diagnostics/partial statistics without masking or retry.",
+      "evidence_kind": "raw Source inspection; no function call",
+      "first_line": 1117,
+      "last_line": 1153
+    },
+    {
+      "Source": {
+        "bytes": 120766,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/owned_evidence_receiver_driver_v6.py",
+        "sha256": "e8ff0690472140e510f8ffab383be8c22791da6b27ef0a27fda013ea48e5f5cf"
+      },
+      "claim": "Current instrumented driver version, bounded observation class, passive snapshots and unavailable marker.",
+      "evidence_kind": "raw Source inspection; no function call",
+      "first_line": 1422,
+      "last_line": 1509
+    },
+    {
+      "Source": {
+        "bytes": 120766,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/owned_evidence_receiver_driver_v6.py",
+        "sha256": "e8ff0690472140e510f8ffab383be8c22791da6b27ef0a27fda013ea48e5f5cf"
+      },
+      "claim": "Same final assemble/seal/wire/write/full-boundary actions wrapped with observations; no new root datum.",
+      "evidence_kind": "raw Source inspection; no function call",
+      "first_line": 1553,
+      "last_line": 1570
+    },
+    {
+      "Source": {
+        "bytes": 41480,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/owned_evidence_once_runner_v2.py",
+        "sha256": "b8f11d9a50c05b93f1066ecdcebec46f3d14681ae0e69c25450e8aee09f252ae"
+      },
+      "claim": "Existing complete28+schema1 intake, exact pair subject/declaration/profile joins.",
+      "evidence_kind": "raw Source inspection; no function call",
+      "first_line": 162,
+      "last_line": 205
+    },
+    {
+      "Source": {
+        "bytes": 41480,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/owned_evidence_once_runner_v2.py",
+        "sha256": "b8f11d9a50c05b93f1066ecdcebec46f3d14681ae0e69c25450e8aee09f252ae"
+      },
+      "claim": "Whole worker/result/forest custody, complete inverse metadata, physical output and epoch joins.",
+      "evidence_kind": "raw Source inspection; no function call",
+      "first_line": 371,
+      "last_line": 440
+    },
+    {
+      "Source": {
+        "bytes": 41480,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/owned_evidence_once_runner_v2.py",
+        "sha256": "b8f11d9a50c05b93f1066ecdcebec46f3d14681ae0e69c25450e8aee09f252ae"
+      },
+      "claim": "Original separate highwater/positive180 and complete210 outer gates.",
+      "evidence_kind": "raw Source inspection; no function call",
+      "first_line": 480,
+      "last_line": 495
+    },
+    {
+      "Source": {
+        "bytes": 5604,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/observe_owned_evidence_runner_v2.py",
+        "sha256": "70cce32675f2d2b0648155cae05dbe7415c25945aeaf3949d65b5fc3e4f5d9d8"
+      },
+      "claim": "Observer final terminal uses inherited Source-entry endpoint; prelude is separately labeled.",
+      "evidence_kind": "raw Source inspection; no function call",
+      "first_line": 36,
+      "last_line": 88
+    }
+  ],
+  "fixture_calls": 0,
+  "future_execution_authorized": false,
+  "limitations": [
+    "Source-only design, not a new implementation or grant; no target Source edited.",
+    "Only exact raw Source/AST/import comparison and ordinary metadata descriptors used here; no fixture/component/proof/inverse replay.",
+    "Own authored instrumentation is not independently certified by this memo; distinct scoped Source reviews are dependencies.",
+    "Instrumentation can change cost and even whether the unchanged profile finishes. No fit, speed, memory-saving or causal benefit prediction.",
+    "Earlier failed full-pipeline pairs and their full diagnostic artifacts remain nonadmitted and immutable."
+  ],
+  "master": {
+    "bytes": 36240,
+    "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/basic-tiling-algorithm-HEAD.md",
+    "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+  },
+  "minimal_binding_changes": [
+    {
+      "action": "Replace receiver_driver4850f66e/114308 by exact e8ff0690/120766. Replace cold02a0e8f7/62809 by exact e1101723/72712. No scientific role, native input, Model, registry, evidence component or library substitution.",
+      "proposed_component_map": {
+        "bounded_transport": {
+          "bytes": 20424,
+          "path": "/private/tmp/gcts-semantic-family-transport-source-20261018/bounded_request_oracle_v1.py",
+          "sha256": "606e790f4ba3ecc976877cbe52ccfd64519262f2ea07214c80d989f58e4f7637"
+        },
+        "receiver_driver": {
+          "bytes": 120766,
+          "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/owned_evidence_receiver_driver_v6.py",
+          "sha256": "e8ff0690472140e510f8ffab383be8c22791da6b27ef0a27fda013ea48e5f5cf"
+        }
+      },
+      "where": "Both fresh worker plans and runtime closure"
+    },
+    {
+      "action": "Preserve existing comparison schema. Add mandatory finalization_profile literal owned-finalization-phase-instrumented-v1, as already required by coldV6. Bind new complete closure and current Source/helper review prerequisites. Keep exact original assertion capsule and selected receiver, full profile and both arms. No extra route/hint input.",
+      "new_required_field": {
+        "finalization_profile": "owned-finalization-phase-instrumented-v1"
+      },
+      "unchanged_once_fields": [
+        "actual_directory",
+        "authorization",
+        "cold",
+        "environment",
+        "integration_declaration",
+        "inventory_certification_mode",
+        "invocation_id",
+        "limits",
+        "mode",
+        "model_storage",
+        "observer",
+        "python",
+        "receiver_id",
+        "result_reader",
+        "runner",
+        "runtime_closure",
+        "schema",
+        "search_ordering",
+        "worker_plan"
+      ],
+      "unchanged_worker_fields": [
+        "actual_directory",
+        "cold",
+        "components",
+        "declaration",
+        "integration_declaration",
+        "inventory_certification_mode",
+        "invocation_id",
+        "mode",
+        "model_storage",
+        "native_inputs",
+        "policy",
+        "project_sources",
+        "python",
+        "receiver_id",
+        "result_reader",
+        "runtime_closure",
+        "schema",
+        "search_ordering",
+        "z3"
+      ],
+      "where": "New integration declaration"
+    },
+    {
+      "action": "Refresh cold and receiver_driver descriptors, current review provenance, original/owned materialized maps and raw/AST census line/pin metadata. Do not copy stale old Source descriptors or imply imports are new. Existing scientific/evidence maps stay byte-pinned.",
+      "alias_count_before_schema": 28,
+      "full_proposed_materialized_aliases": {
+        "bounded_request_oracle": {
+          "bytes": 20424,
+          "path": "/private/tmp/gcts-semantic-family-transport-source-20261018/bounded_request_oracle_v1.py",
+          "sha256": "606e790f4ba3ecc976877cbe52ccfd64519262f2ea07214c80d989f58e4f7637"
+        },
+        "certificate_boundary_search": {
+          "bytes": 7089,
+          "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/certificate_boundary_search.py",
+          "sha256": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a"
+        },
+        "exact_evidence_arena": {
+          "bytes": 38300,
+          "path": "/private/tmp/gcts-direct-reconcile-library-20261019/exact_evidence_arena_v3.py",
+          "sha256": "fd3f1e1372c59365cc43c06dd8c815bdaca8cab6a2e4fa292d23a901d7f146f8"
+        },
+        "independent_forest_inverse": {
+          "bytes": 24144,
+          "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/independent_forest_inverse_v7.py",
+          "sha256": "fcbed7c5b95c8b8e6b1fc152c3d93689d644aa2e3ac32810dc77857e475750a7"
+        },
+        "interned_quantified_family_points_v1": {
+          "bytes": 4311,
+          "path": "/private/tmp/gcts-compact-point-representation-source-20261018/interned_quantified_family_points_v1.py",
+          "sha256": "fb37663b4c0c3de4e9f3c28564678af833857f7ebe761cd83275d62f123b9a8e"
+        },
+        "interned_result_reader_v2": {
+          "bytes": 4705,
+          "path": "/private/tmp/gcts-interned-output-reader-source-20261018/interned_result_reader_v2.py",
+          "sha256": "cd06c8372b6edd05774cf5974c5b6265bbc196afdc68d47507e54a2044dec836"
+        },
+        "logic": {
+          "bytes": 10808,
+          "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/logic.py",
+          "sha256": "5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011"
+        },
+        "native_inference_inventory": {
+          "bytes": 10594,
+          "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/native_inference_inventory.py",
+          "sha256": "89979f6be8f422ea293c2f0b6c0e966fc9a0710a8e15cbe58437f868cbf75091"
+        },
+        "native_inventory_policy": {
+          "bytes": 2746,
+          "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/native_inventory_policy.py",
+          "sha256": "8721a361f4a97e5311f8ed944431d49d08592ed102f50ed333d1ad2b9ff01591"
+        },
+        "native_receptor_points": {
+          "bytes": 8962,
+          "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/native_receptor_points.py",
+          "sha256": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888"
+        },
+        "owned_evidence_adapter": {
+          "bytes": 14997,
+          "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/owned_evidence_adapter_v3.py",
+          "sha256": "91fb57f8a3fdd4563cb74f641b630bd725b813bd305608463920dd191f0216a8"
+        },
+        "owned_inventory_join": {
+          "bytes": 13359,
+          "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/owned_inventory_join_v2.py",
+          "sha256": "0287ee16f2da0cd2f8303f97f295f5e9bf091452718ef2f0fe2f3d0804daa872"
+        },
+        "proof_boundary": {
+          "bytes": 6992,
+          "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/proof_boundary.py",
+          "sha256": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f"
+        },
+        "quantified_family_points_v2": {
+          "bytes": 8155,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-source-20261019/schema_admission_family_points_v3.py",
+          "sha256": "7f95858af5af40d2f902d2aea6bc5d5a7944f7fe0b65b6b9a2ea66c0fb2ec4e3"
+        },
+        "quantified_receptors_v1": {
+          "bytes": 11060,
+          "path": "/private/tmp/gcts-quantified-adapter-source-20261018/quantified_receptors_v1.py",
+          "sha256": "d1c4afa10d58abbcf473cb3da8ee8768c974dd05d03ea00b988d574b2441af5a"
+        },
+        "quantified_symbolic_control_v2": {
+          "bytes": 27203,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-source-20261019/schema_admission_symbolic_control_v3.py",
+          "sha256": "8eda5d6fd91a137c9d22081bcba707631ab29733d2ae4ce413a2913a2b7d3bbe"
+        },
+        "receptor_support_ordering_v1": {
+          "bytes": 18508,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-source-20261019/schema_admission_support_ordering_v2.py",
+          "sha256": "6e39f5cf5cd261c73515c29d3b315c43c27ae0bc64ef5fb509cea178b0251769"
+        },
+        "semantic_inventory_guidance": {
+          "bytes": 6942,
+          "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_inventory_guidance.py",
+          "sha256": "744948b67e2870ae24737469aceb920624b59d616e8a48f91b99d39f56c14a79"
+        },
+        "semantic_inventory_oracle": {
+          "bytes": 55841,
+          "path": "/private/tmp/gcts-owned-evidence-integration-library-20261019/semantic_inventory_oracle_v5.py",
+          "sha256": "1692345882cd14076f52ad257ab9e29daac92711a677c6febb17664b47a07ee0"
+        },
+        "semantic_inventory_search_v2": {
+          "bytes": 15936,
+          "path": "/private/tmp/gcts-and-support-point-source-20261018/semantic_inventory_search_v2.py",
+          "sha256": "35443c958f2115efa18cc923fb4a4f1070e6e03ccf1d1adf2bb56ce1f7bab28b"
+        },
+        "semantic_lemma_inventory": {
+          "bytes": 7196,
+          "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_lemma_inventory.py",
+          "sha256": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad"
+        },
+        "semantic_point_smt": {
+          "bytes": 4593,
+          "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_point_smt.py",
+          "sha256": "6bcb3fb60529f6888836a1ca0c613b772cea192c9549620f968dbdf7cb9be74a"
+        },
+        "semantic_receiver_driver": {
+          "bytes": 120766,
+          "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/owned_evidence_receiver_driver_v6.py",
+          "sha256": "e8ff0690472140e510f8ffab383be8c22791da6b27ef0a27fda013ea48e5f5cf"
+        },
+        "semantic_receptor_points": {
+          "bytes": 7409,
+          "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_receptor_points.py",
+          "sha256": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207"
+        },
+        "tape_binary": {
+          "bytes": 3756,
+          "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/tape_binary.py",
+          "sha256": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247"
+        },
+        "tape_tree_machine": {
+          "bytes": 19188,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/tape_tree_machine.py",
+          "sha256": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f"
+        },
+        "tree_machine": {
+          "bytes": 13290,
+          "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/tree_machine.py",
+          "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257"
+        },
+        "turtle": {
+          "bytes": 28533,
+          "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/turtle.py",
+          "sha256": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a"
+        }
+      },
+      "old_new_import_AST_equal": {
+        "cold": true,
+        "driver": true
+      },
+      "separately_imported_schema_modules": 1,
+      "unchanged_evidence_sources": {
+        "adapter": {
+          "bytes": 14997,
+          "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/owned_evidence_adapter_v3.py",
+          "sha256": "91fb57f8a3fdd4563cb74f641b630bd725b813bd305608463920dd191f0216a8"
+        },
+        "arena": {
+          "bytes": 38300,
+          "path": "/private/tmp/gcts-direct-reconcile-library-20261019/exact_evidence_arena_v3.py",
+          "sha256": "fd3f1e1372c59365cc43c06dd8c815bdaca8cab6a2e4fa292d23a901d7f146f8"
+        },
+        "inverse": {
+          "bytes": 24144,
+          "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/independent_forest_inverse_v7.py",
+          "sha256": "fcbed7c5b95c8b8e6b1fc152c3d93689d644aa2e3ac32810dc77857e475750a7"
+        },
+        "join": {
+          "bytes": 13359,
+          "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/owned_inventory_join_v2.py",
+          "sha256": "0287ee16f2da0cd2f8303f97f295f5e9bf091452718ef2f0fe2f3d0804daa872"
+        }
+      },
+      "unchanged_project_sources": {
+        "certificate_boundary_search": {
+          "bytes": 7089,
+          "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/certificate_boundary_search.py",
+          "sha256": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a"
+        },
+        "interned_quantified_family_points_v1": {
+          "bytes": 4311,
+          "path": "/private/tmp/gcts-compact-point-representation-source-20261018/interned_quantified_family_points_v1.py",
+          "sha256": "fb37663b4c0c3de4e9f3c28564678af833857f7ebe761cd83275d62f123b9a8e"
+        },
+        "interned_result_reader_v2": {
+          "bytes": 4705,
+          "path": "/private/tmp/gcts-interned-output-reader-source-20261018/interned_result_reader_v2.py",
+          "sha256": "cd06c8372b6edd05774cf5974c5b6265bbc196afdc68d47507e54a2044dec836"
+        },
+        "logic": {
+          "bytes": 10808,
+          "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/logic.py",
+          "sha256": "5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011"
+        },
+        "native_inference_inventory": {
+          "bytes": 10594,
+          "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/native_inference_inventory.py",
+          "sha256": "89979f6be8f422ea293c2f0b6c0e966fc9a0710a8e15cbe58437f868cbf75091"
+        },
+        "native_inventory_policy": {
+          "bytes": 2746,
+          "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/native_inventory_policy.py",
+          "sha256": "8721a361f4a97e5311f8ed944431d49d08592ed102f50ed333d1ad2b9ff01591"
+        },
+        "native_receptor_points": {
+          "bytes": 8962,
+          "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/native_receptor_points.py",
+          "sha256": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888"
+        },
+        "proof_boundary": {
+          "bytes": 6992,
+          "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/proof_boundary.py",
+          "sha256": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f"
+        },
+        "quantified_family_points_v2": {
+          "bytes": 8155,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-source-20261019/schema_admission_family_points_v3.py",
+          "sha256": "7f95858af5af40d2f902d2aea6bc5d5a7944f7fe0b65b6b9a2ea66c0fb2ec4e3"
+        },
+        "quantified_receptors_v1": {
+          "bytes": 11060,
+          "path": "/private/tmp/gcts-quantified-adapter-source-20261018/quantified_receptors_v1.py",
+          "sha256": "d1c4afa10d58abbcf473cb3da8ee8768c974dd05d03ea00b988d574b2441af5a"
+        },
+        "quantified_symbolic_control_v2": {
+          "bytes": 27203,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-source-20261019/schema_admission_symbolic_control_v3.py",
+          "sha256": "8eda5d6fd91a137c9d22081bcba707631ab29733d2ae4ce413a2913a2b7d3bbe"
+        },
+        "receptor_support_ordering_v1": {
+          "bytes": 18508,
+          "path": "/private/tmp/gcts-schema-admission-ROOT-source-20261019/schema_admission_support_ordering_v2.py",
+          "sha256": "6e39f5cf5cd261c73515c29d3b315c43c27ae0bc64ef5fb509cea178b0251769"
+        },
+        "semantic_inventory_guidance": {
+          "bytes": 6942,
+          "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_inventory_guidance.py",
+          "sha256": "744948b67e2870ae24737469aceb920624b59d616e8a48f91b99d39f56c14a79"
+        },
+        "semantic_inventory_oracle": {
+          "bytes": 55841,
+          "path": "/private/tmp/gcts-owned-evidence-integration-library-20261019/semantic_inventory_oracle_v5.py",
+          "sha256": "1692345882cd14076f52ad257ab9e29daac92711a677c6febb17664b47a07ee0"
+        },
+        "semantic_inventory_search_v2": {
+          "bytes": 15936,
+          "path": "/private/tmp/gcts-and-support-point-source-20261018/semantic_inventory_search_v2.py",
+          "sha256": "35443c958f2115efa18cc923fb4a4f1070e6e03ccf1d1adf2bb56ce1f7bab28b"
+        },
+        "semantic_lemma_inventory": {
+          "bytes": 7196,
+          "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_lemma_inventory.py",
+          "sha256": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad"
+        },
+        "semantic_point_smt": {
+          "bytes": 4593,
+          "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_point_smt.py",
+          "sha256": "6bcb3fb60529f6888836a1ca0c613b772cea192c9549620f968dbdf7cb9be74a"
+        },
+        "semantic_receptor_points": {
+          "bytes": 7409,
+          "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_receptor_points.py",
+          "sha256": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207"
+        },
+        "tape_binary": {
+          "bytes": 3756,
+          "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/tape_binary.py",
+          "sha256": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247"
+        },
+        "tape_tree_machine": {
+          "bytes": 19188,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/tape_tree_machine.py",
+          "sha256": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f"
+        },
+        "tree_machine": {
+          "bytes": 13290,
+          "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/tree_machine.py",
+          "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257"
+        },
+        "turtle": {
+          "bytes": 28533,
+          "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/turtle.py",
+          "sha256": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a"
+        }
+      },
+      "unchanged_schema_sources": {
+        "mp_schema_certificate": {
+          "bytes": 26687,
+          "path": "/private/tmp/gcts-mp-schema-source-20261019/mp_schema_certificate_v1.py",
+          "sha256": "7351d5954763e8b671411a78a821e5cc560ac1af19477a9491da573a735d2ae4"
+        }
+      },
+      "where": "New closure metadata"
+    },
+    {
+      "action": "At minimum update runner own VERSION/current COLD_PIN and observer own VERSION/current runner raw pin; preserve existing guard/process/reaping/EOF/highwater/whole-output checks. Current runner already authenticates full closure/component/worker/declaration maps. The reviewed cold enforces finalization_profile and completed normal driver diagnostic. New profile-aware retained-data admission must join both new observation packets to the raw worker/driver receipt.",
+      "no_new_scientific_calls": true,
+      "optional_small_metadata_gate": "If Root wants explicit redundant outer enforcement, add only declared finalization_profile and normal observation schema/profile/authority/completed equality joins, with exact current driver version. This is separately reviewable metadata-only Source delta, not permission to skip the existing cold checks or rerun any component.",
+      "where": "Narrow outer Source successor"
+    },
+    {
+      "action": "Use new two invocation IDs, absent actual directories and absent terminal-observation folders, fresh false plans and max-one subjects. Bind current independent component/outer/prospective scopes and all minimum raw subjects; final true grant delta and Root adoption only after review. Do not modify or reuse old consumed subjects, outputs or helper grant. All agents idle during serial measured windows.",
+      "where": "Fresh IDs/paths/subjects/reviews/grants"
+    }
+  ],
+  "observation_interpretation": {
+    "cold": "Absolute Source-entry monotonic nanoseconds; RETURNED, IN_PROGRESS and OPEN_AT_FAILURE are different. Missing/unstarted rows remain absent and None timestamps are not durations.",
+    "counter_scope": "overall_tick_invocations/source_guard_invocations/completed/failed/timed_intervals/elapsed_ns are cold-local aggregate counters only. Do not infer Arena/adapter callback dispatch counts, public/completion checkpoints, mathematical operation counts or disjoint guard costs.",
+    "cutoff": "cold_observation.snapshot_cutoff_ns limits counts and rows to that detached snapshot. Later final guards, fixed-point ledger/receipt serialization, cleanup and worker exit are outside it. It is not a full-window invocation count.",
+    "driver": "Absolute caller monotonic seconds; action_returned and completed distinguish action result from successful post-action diagnostic. Failure-observed time can be unavailable; unavailable marker is not a complete normal packet.",
+    "old_decode_seconds": "Inherited result_reading.decode_seconds starts before complete forest verification and therefore includes the inverse interval. Label as the inherited combined interval, not pure JSON decoding. New named subphases refine that view without changing old field semantics.",
+    "overlap": "driver_run encloses driver finalization, saved_forest_full_comparison encloses independent_prepare and independent_stream_and_compare, and source_guard intervals can lie inside those stages. Never add enclosing and enclosed intervals as disjoint costs.",
+    "store_statistics": "Only passive existing Store.statistics snapshots; no guard, stream, inverse or scientific replay. Counters are observations, not independent resource/Native authority.",
+    "units": "Keep float driver seconds and cold integer nanoseconds labeled; any conversion for display is presentation arithmetic with ordinary precision limitations, not a new exact custody predicate."
+  },
+  "parents": {
+    "cold": {
+      "bytes": 62809,
+      "path": "/private/tmp/gcts-cadence-integration-library-20261019/owned_evidence_cold_v4.py",
+      "sha256": "02a0e8f708b0c4928630b8eb7a7956ad9cde9341e658fd0b1528c3159b267377"
+    },
+    "cold_master_addendum": {
+      "bytes": 1098,
+      "path": "/private/tmp/gcts-cadence-integration-library-20261019/current-master-addendum-handoff-v1.json",
+      "sha256": "28fb51b4933b18ecf2c27ba901fd245b6cce0e5559951c9725afe2bc37865ca7"
+    },
+    "declaration": {
+      "bytes": 9188,
+      "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/case-declaration-v1.json",
+      "sha256": "edeb0a482ef1cbf39a832a948df663a997b21035da1b04d7b9db8820a8b23b56"
+    },
+    "false_manifest": {
+      "bytes": 3458,
+      "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/false-plan-manifest-v1.json",
+      "sha256": "59046bf3d90ea3b12221f7e8df67a34994afcc759563d2cd89f2c7b1a2f04b66"
+    },
+    "observer": {
+      "bytes": 5604,
+      "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/observe_owned_evidence_runner_v2.py",
+      "sha256": "70cce32675f2d2b0648155cae05dbe7415c25945aeaf3949d65b5fc3e4f5d9d8"
+    },
+    "previous_negative_admission": {
+      "bytes": 65904,
+      "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/ROOT-saved-actual-audit-v1.json",
+      "sha256": "08d0dace08316e5c78297a718b59470f7dd7ff7b346a281368fa774a6cf4efab"
+    },
+    "runner": {
+      "bytes": 41480,
+      "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/owned_evidence_once_runner_v2.py",
+      "sha256": "b8f11d9a50c05b93f1066ecdcebec46f3d14681ae0e69c25450e8aee09f252ae"
+    },
+    "runtime_closure": {
+      "bytes": 90869,
+      "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/runtime-closure-v1.json",
+      "sha256": "2b89eef2c16a3148a48910bb794bbabe8dece22e91033f51b9fd79bb09f33b25"
+    }
+  },
+  "purpose": "One fresh full original001 fixed/symbolic matched pair to observe finalization under the unchanged complete pipeline profile; no new carrier benchmark or performance optimization.",
+  "required_epoch_and_return_custody": {
+    "cold_version": "owned-evidence-intake-cold-v6-instrumented",
+    "driver_version": "semantic-family-owned-evidence-driver-v2-instrumented",
+    "existing_schema": "semantic-family-receiver-source-epoch-v6-explicit-schema-admission",
+    "forest": "Retain full forest and freshly independent whole inverse stream/full byte comparison, old Reader full canonical reconstruction, full point region and current Native ledger/final proof gates. No extra inverse call is needed for observations.",
+    "joins": [
+      "Exact worker receipt invocation/worker-plan/cold/Python/receiver/mode/source epoch and original deadlines.",
+      "Header finalization_observation equals the retained driver_output_receipt.finalization_observation literal canonical preimage; never a substitute for proof or resource gates.",
+      "Header cold_observation is a fresh detached snapshot, not live counter backing. Retain snapshot_cutoff_ns/snapshot_scope and all partial inverse statistics actually available.",
+      "Current Source callable seals include the new driver observation class and cold helpers under the same complete28+schema1 custody. No new harness alias/import or helper replay in the proof pair."
+    ],
+    "normal_cold_packet": {
+      "authority": false,
+      "mathematical_authority": false,
+      "profile": "owned-finalization-phase-instrumented-v1",
+      "resource_authority": false,
+      "schema": "owned-cold-phase-observation-v1"
+    },
+    "normal_driver_packet": {
+      "authority": false,
+      "completed": true,
+      "mathematical_authority": false,
+      "profile": "owned-finalization-phase-instrumented-v1",
+      "resource_authority": false,
+      "schema": "owned-finalization-observation-v1"
+    },
+    "ordinary_result": "Retain complete ordinary result.json BODY plus exactly one LF; no filtering to observation-only output.",
+    "profile_transitive_binding": "Existing source_epoch.result_representation.integration_declaration raw descriptor authenticates the exact new finalization_profile; no additional scientific epoch field or Source change is required.",
+    "version_note": "The existing scientific result version string and Source/run-path epochs change to current identities. No new diagnostic fields enter scientific final result/evidence roots. Do not claim old/new whole raw JSON bytes identical."
+  },
+  "required_prelaunch_checks": [
+    "Current-master/ownSource ancestry and distinct exact component reviews adopted; helper-only pass kept separately scoped.",
+    "New complete declaration+28-alias/schema1 closure and both exact false worker/once subjects independently reviewed; fixed native/Python/Z3/program/Model/registry/library/profile unchanged.",
+    "Any new outer Source delta independently raw/AST/compile reviewed, no inherited pass for changed pins/body.",
+    "Fresh true max-one grants change only allowed authorization metadata, exact current subjects and role containment verified; old consumed subjects remain immutable.",
+    "Absent new actual/terminal paths and all peers idle before each Root-only sequential launch. No execution authorization supplied by this memo."
+  ],
+  "retained_failure_policy": {
+    "cold": "Keep existing bounded worker-failure schema with owned_finalization_observation, owned_evidence_statistics, driver_returned_receipt, cold_observation, diagnostic_output_prefixes, stage_intervals and Native cleanup metadata. Preserve each actual available item; missing is unavailable, not reconstructed after the window.",
+    "downstream": "If outer rejects before reading a normal worker header, preserve any raw failure file/logs by descriptor as diagnostic custody without importing components or retrospectively probing/filling missing telemetry. Runner/observer failure booleans and nulls remain literal.",
+    "driver": "On action/clock/metadata failure, same error carries best-effort owned_finalization_observation; unavailable marker explicitly has complete_ledger_retained false and no authority.",
+    "no_masking": "Best-effort observation timestamps/copy/serialization cannot replace the active exception. No partial normal header, no late rewritten result or evidence forest, no cap increase.",
+    "no_rescue": "Any late inverse/Reader/point/source/deadline/output/resource failure preserves the exact original error and unsuccessful status; an earlier Native candidate or complete driver packet does not admit a proof or retry."
+  },
+  "schema": "instrumented-finalization-full-pipeline-next-design-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_only": true,
+  "unchanged_caps_and_cost_scope": {
+    "clock": "Parent Source-entry epoch inherited: positive scientific work, all saved inverse/Reader/point/ledger checks and result/worker-header serialization plus known worker exit strictly before180. Subsequent full outer metadata/source/runtime/highwater/log/EOF/group and external observer terminal before210. Observer/interpreter prelude separately recorded, not silently included in worker Source-entry epoch.",
+    "cold_diagnostic_bytes": 262144,
+    "cold_phase_rows": 32,
+    "complete_physical_budget": "ordinary result+forest+all current actual-root JSON including expanded worker receipt, plus conservative final-runner/observer reservations, within128MiB; new diagnostic copies/serialization are included.",
+    "driver_diagnostic_record_bytes": 65536,
+    "driver_phase_rows": 16,
+    "driver_snapshot_bytes": 8192,
+    "driver_snapshot_rows": 8,
+    "each_log_bytes": 4194304,
+    "encoded_and_expanded_result_bytes": 134217728,
+    "evidence_profile_unchanged": {
+      "adapter_diagnostics": {
+        "adapter_limits": {
+          "chunk_bytes": 4096,
+          "depth": 32,
+          "operations": 100000,
+          "value_bytes": 1048576
+        },
+        "arena_limits": {
+          "cache_bytes": 4096,
+          "cache_entries": 256,
+          "chunk_bytes": 4096,
+          "depth": 32,
+          "documents_expanded_bytes": 1048576,
+          "edges": 16384,
+          "fragment_bytes": 4096,
+          "integer_digits": 4096,
+          "materialized_bytes": 1048576,
+          "materialized_occurrences": 10000,
+          "nodes": 4096,
+          "root_expanded_bytes": 1048576,
+          "roots": 64,
+          "scalar_bytes": 1048576,
+          "wire_bytes": 1048576,
+          "work": 1000000
+        },
+        "cases": [
+          "tuple_projection_and_typed_paths",
+          "assembly_repeated_roots_and_full_canonical_body",
+          "foreign_callback_exception_identity",
+          "callback_reentrancy_fails_closed",
+          "failed_assembly_prefix_has_no_usable_output"
+        ],
+        "maximum_fresh_Stores": 8,
+        "schema": "owned-adapter-finite-diagnostic-profile-v1",
+        "scope": "Small finite adapter boundary checks before original full001 proof pipeline; same original total work/peak/output caps, not a carrier benchmark or proof authority."
+      },
+      "adapter_limits": {
+        "chunk_bytes": 65536,
+        "depth": 512,
+        "operations": 400000000,
+        "value_bytes": 134217728
+      },
+      "arena_limits": {
+        "cache_bytes": 8388608,
+        "cache_entries": 65536,
+        "chunk_bytes": 65536,
+        "depth": 512,
+        "documents_expanded_bytes": 134217728,
+        "edges": 8000000,
+        "fragment_bytes": 4096,
+        "integer_digits": 4096,
+        "materialized_bytes": 4194304,
+        "materialized_occurrences": 100000,
+        "nodes": 2000000,
+        "root_expanded_bytes": 134217728,
+        "roots": 4096,
+        "scalar_bytes": 16777216,
+        "wire_bytes": 134217728,
+        "work": 400000000
+      },
+      "encoded_and_logical_cap_bytes": 134217728,
+      "inverse_execution_profile": "independent-forest-actual-operations-v2-callback-cadence1024",
+      "inverse_limits": {
+        "cache_bytes": 8388608,
+        "cache_entries": 65536,
+        "chunk_bytes": 65536,
+        "depth": 513,
+        "edges": 8000000,
+        "expanded_bytes": 134217728,
+        "fragment_bytes": 4096,
+        "integer_digits": 4096,
+        "nodes": 2000000,
+        "roots": 4096,
+        "scalar_bytes": 16777216,
+        "wire_bytes": 134217728,
+        "work": 30000000
+      },
+      "inverse_version": "independent-evidence-forest-inverse-v7-bounded-callback-cadence",
+      "logical_output": "complete-legacy-JSON-body-plus-LF",
+      "physical_accounting": "ordinary_result+forest+all_root_JSON_metadata_including_worker_receipt",
+      "schema": "owned-evidence-integration-profile-v1",
+      "sole_document": "receiver:complete-legacy-result",
+      "sources": {
+        "adapter": {
+          "bytes": 14997,
+          "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/owned_evidence_adapter_v3.py",
+          "sha256": "91fb57f8a3fdd4563cb74f641b630bd725b813bd305608463920dd191f0216a8"
+        },
+        "arena": {
+          "bytes": 38300,
+          "path": "/private/tmp/gcts-direct-reconcile-library-20261019/exact_evidence_arena_v3.py",
+          "sha256": "fd3f1e1372c59365cc43c06dd8c815bdaca8cab6a2e4fa292d23a901d7f146f8"
+        },
+        "inverse": {
+          "bytes": 24144,
+          "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/independent_forest_inverse_v7.py",
+          "sha256": "fcbed7c5b95c8b8e6b1fc152c3d93689d644aa2e3ac32810dc77857e475750a7"
+        },
+        "join": {
+          "bytes": 13359,
+          "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/owned_inventory_join_v2.py",
+          "sha256": "0287ee16f2da0cd2f8303f97f295f5e9bf091452718ef2f0fe2f3d0804daa872"
+        }
+      },
+      "unfinished_storage": "NO_COMPLETE_RESULT_NO_PROOF_OR_RESOURCE_ADMISSION"
+    },
+    "failure_metadata_bytes": 1048576,
+    "highwater_policy": "Conservative Darwin worker wait4 highwater plus separately reaped Native highwater; not whole process-group live RAM enforcement or parent/observer heap.",
+    "no_stopped_clock": "All extra observation clock reads, snapshots, copies, output/canonicalization and retained-data checks consume the same actual wall/memory/output allowances. No budget renewal at driver return, inverse preparation, partial failure or helper prerequisite.",
+    "old_outer_metadata_reservations": {
+      "all_observer_metadata": 1048576,
+      "final_runner": 8388608
+    },
+    "overall_seconds": 210,
+    "profile_unchanged": {
+      "check_steps": 2048,
+      "compile_queries": 512,
+      "conservative_worker_plus_native_peak_bytes": 1073741824,
+      "guard_steps": 1000000000,
+      "inventory_registration_aggregate_micro_steps": 5000000000,
+      "overall_seconds": 210,
+      "proposal_steps": 24,
+      "registry_steps": 5000000000,
+      "result_bytes": 134217728,
+      "search_max_nodes": 5000,
+      "search_seconds": 30,
+      "seed": 64000,
+      "work_seconds": 180
+    },
+    "separate_worker_plus_Native_highwater_bytes": 1073741824,
+    "work_seconds": 180
+  }
+}

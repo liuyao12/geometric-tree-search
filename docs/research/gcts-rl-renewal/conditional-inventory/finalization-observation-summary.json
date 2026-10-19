@@ -1,0 +1,2491 @@
+{
+  "GCTS_RL_advantage": false,
+  "broad_goal_status": "active",
+  "causal_speed_claim": false,
+  "complete_worker_payload": {
+    "Model_calls": 0,
+    "Native_calls": 0,
+    "clock_slot_restored": true,
+    "denied_runtime_events": [],
+    "helper_callable_bindings_unchanged": true,
+    "helper_qualification_calls": 4,
+    "invocation_id": "finalization-helper-ROOT-20261019-v2",
+    "mathematical_proof_replays": 0,
+    "new_theorem": false,
+    "normal_checkpoint_calls": 57,
+    "opaque_Native_decodes": 0,
+    "plan": {
+      "bytes": 2551,
+      "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/plan-authorized-v1.json",
+      "sha256": "9822085a61d1f24f1826bb5b8ffdff9380604c4ab70b68c48b12fb1d40f1a2f3"
+    },
+    "prefix_fault_checks": [
+      {
+        "checkpoint_calls": 1,
+        "checkpoint_ordinal": 1,
+        "clock_slot_restored": true,
+        "exact_exception_identity": true,
+        "exception_type": "RuntimeError",
+        "helper_callable_bindings_unchanged": true,
+        "mathematical_authority": false,
+        "name": "initial_checkpoint",
+        "prefix": {
+          "active_fixture": null,
+          "authority": false,
+          "complete_prefix_retained": true,
+          "completed_diagnostics": [],
+          "completed_fixture_count": 0,
+          "expected_fixture_names": [
+            "driver_normal_call_and_detached_record",
+            "driver_nested_phase_intervals",
+            "driver_action_foreign_exception_identity",
+            "driver_entry_clock_foreign_exception_identity",
+            "driver_return_clock_error_after_action",
+            "driver_failure_clock_preserves_primary_error",
+            "driver_passive_snapshot_detachment",
+            "driver_snapshot_foreign_exception_identity",
+            "driver_declared_names_refuse_unknown",
+            "driver_sixteen_phase_cap",
+            "driver_eight_snapshot_cap",
+            "driver_eight_KiB_snapshot_cap",
+            "driver_sixtyfour_KiB_record_and_unavailable_marker",
+            "driver_complete_record_detachment",
+            "cold_nested_open_and_returned_phases",
+            "cold_thirtytwo_row_and_unknown_name_limits",
+            "cold_counter_guard_timing_snapshot_cutoff",
+            "cold_clock_faults_are_best_effort",
+            "cold_twohundredfiftysix_KiB_observation_cap",
+            "cold_late_failure_retains_driver_receipt_and_statistics",
+            "cold_error_attributes_retained_without_receipt",
+            "cold_malformed_or_oversized_driver_metadata_fallback",
+            "cold_malformed_observation_metadata_fallback",
+            "cold_active_error_identity_with_both_fallbacks",
+            "cold_malformed_phase_and_counter_best_effort",
+            "cold_driver_unavailable_marker_remains_unavailable",
+            "cold_failure_clock_cannot_replace_active_error"
+          ],
+          "full_pipeline_qualified": false,
+          "full_qualification_completed": false,
+          "mathematical_authority": false,
+          "resource_authority": false,
+          "schema": "finalization-instrumentation-helper-prefix-v1",
+          "stage": "initial_checkpoint",
+          "status": "FAILED_OR_UNFINISHED"
+        },
+        "status": "passed"
+      },
+      {
+        "checkpoint_calls": 4,
+        "checkpoint_ordinal": 4,
+        "clock_slot_restored": true,
+        "exact_exception_identity": true,
+        "exception_type": "ValueError",
+        "helper_callable_bindings_unchanged": true,
+        "mathematical_authority": false,
+        "name": "after_first_completed_group",
+        "prefix": {
+          "active_fixture": "driver_nested_phase_intervals",
+          "authority": false,
+          "complete_prefix_retained": true,
+          "completed_diagnostics": [
+            {
+              "details": {
+                "action_calls": 1,
+                "clock_calls": 2,
+                "targets": [
+                  "call",
+                  "record"
+                ]
+              },
+              "mathematical_authority": false,
+              "name": "driver_normal_call_and_detached_record",
+              "status": "passed"
+            }
+          ],
+          "completed_fixture_count": 1,
+          "expected_fixture_names": [
+            "driver_normal_call_and_detached_record",
+            "driver_nested_phase_intervals",
+            "driver_action_foreign_exception_identity",
+            "driver_entry_clock_foreign_exception_identity",
+            "driver_return_clock_error_after_action",
+            "driver_failure_clock_preserves_primary_error",
+            "driver_passive_snapshot_detachment",
+            "driver_snapshot_foreign_exception_identity",
+            "driver_declared_names_refuse_unknown",
+            "driver_sixteen_phase_cap",
+            "driver_eight_snapshot_cap",
+            "driver_eight_KiB_snapshot_cap",
+            "driver_sixtyfour_KiB_record_and_unavailable_marker",
+            "driver_complete_record_detachment",
+            "cold_nested_open_and_returned_phases",
+            "cold_thirtytwo_row_and_unknown_name_limits",
+            "cold_counter_guard_timing_snapshot_cutoff",
+            "cold_clock_faults_are_best_effort",
+            "cold_twohundredfiftysix_KiB_observation_cap",
+            "cold_late_failure_retains_driver_receipt_and_statistics",
+            "cold_error_attributes_retained_without_receipt",
+            "cold_malformed_or_oversized_driver_metadata_fallback",
+            "cold_malformed_observation_metadata_fallback",
+            "cold_active_error_identity_with_both_fallbacks",
+            "cold_malformed_phase_and_counter_best_effort",
+            "cold_driver_unavailable_marker_remains_unavailable",
+            "cold_failure_clock_cannot_replace_active_error"
+          ],
+          "full_pipeline_qualified": false,
+          "full_qualification_completed": false,
+          "mathematical_authority": false,
+          "resource_authority": false,
+          "schema": "finalization-instrumentation-helper-prefix-v1",
+          "stage": "fixture_before_checkpoint",
+          "status": "FAILED_OR_UNFINISHED"
+        },
+        "status": "passed"
+      },
+      {
+        "checkpoint_calls": 57,
+        "checkpoint_ordinal": 57,
+        "clock_slot_restored": true,
+        "exact_exception_identity": true,
+        "exception_type": "StopIteration",
+        "helper_callable_bindings_unchanged": true,
+        "mathematical_authority": false,
+        "name": "final_checkpoint",
+        "prefix": {
+          "active_fixture": null,
+          "authority": false,
+          "complete_prefix_retained": true,
+          "completed_diagnostics": [
+            {
+              "details": {
+                "action_calls": 1,
+                "clock_calls": 2,
+                "targets": [
+                  "call",
+                  "record"
+                ]
+              },
+              "mathematical_authority": false,
+              "name": "driver_normal_call_and_detached_record",
+              "status": "passed"
+            },
+            {
+              "details": {
+                "disjoint_cost_sum_asserted": false,
+                "overlapping_intervals": true,
+                "rows": 2,
+                "targets": [
+                  "call",
+                  "record"
+                ]
+              },
+              "mathematical_authority": false,
+              "name": "driver_nested_phase_intervals",
+              "status": "passed"
+            },
+            {
+              "details": {
+                "exact_error_classes": [
+                  "RuntimeError",
+                  "ValueError",
+                  "StopIteration"
+                ],
+                "targets": [
+                  "call",
+                  "attach"
+                ]
+              },
+              "mathematical_authority": false,
+              "name": "driver_action_foreign_exception_identity",
+              "status": "passed"
+            },
+            {
+              "details": {
+                "checkpoint": "initial observe",
+                "exact_error_classes": [
+                  "RuntimeError",
+                  "ValueError",
+                  "StopIteration"
+                ],
+                "targets": [
+                  "call",
+                  "attach"
+                ]
+              },
+              "mathematical_authority": false,
+              "name": "driver_entry_clock_foreign_exception_identity",
+              "status": "passed"
+            },
+            {
+              "details": {
+                "checkpoint": "post action observe",
+                "exact_error_classes": [
+                  "RuntimeError",
+                  "ValueError",
+                  "StopIteration"
+                ],
+                "targets": [
+                  "call",
+                  "attach"
+                ]
+              },
+              "mathematical_authority": false,
+              "name": "driver_return_clock_error_after_action",
+              "status": "passed"
+            },
+            {
+              "details": {
+                "exact_primary_classes": [
+                  "RuntimeError",
+                  "ValueError",
+                  "StopIteration"
+                ],
+                "failure_clock_error": "StopIteration",
+                "targets": [
+                  "call",
+                  "attach"
+                ]
+              },
+              "mathematical_authority": false,
+              "name": "driver_failure_clock_preserves_primary_error",
+              "status": "passed"
+            },
+            {
+              "details": {
+                "passive_statistics_calls": 1,
+                "storage_operations_calls": 0,
+                "targets": [
+                  "snapshot",
+                  "record"
+                ]
+              },
+              "mathematical_authority": false,
+              "name": "driver_passive_snapshot_detachment",
+              "status": "passed"
+            },
+            {
+              "details": {
+                "reached_fault_sites": [
+                  "RuntimeError:clock",
+                  "RuntimeError:statistics",
+                  "ValueError:clock",
+                  "ValueError:statistics",
+                  "StopIteration:clock",
+                  "StopIteration:statistics"
+                ],
+                "targets": [
+                  "snapshot",
+                  "record"
+                ]
+              },
+              "mathematical_authority": false,
+              "name": "driver_snapshot_foreign_exception_identity",
+              "status": "passed"
+            },
+            {
+              "details": {
+                "refused_names": 2,
+                "targets": [
+                  "call",
+                  "snapshot"
+                ]
+              },
+              "mathematical_authority": false,
+              "name": "driver_declared_names_refuse_unknown",
+              "status": "passed"
+            },
+            {
+              "details": {
+                "accepted_rows": 16,
+                "refused_row": 17,
+                "targets": [
+                  "call"
+                ]
+              },
+              "mathematical_authority": false,
+              "name": "driver_sixteen_phase_cap",
+              "status": "passed"
+            },
+            {
+              "details": {
+                "accepted_snapshots": 8,
+                "refused_snapshot": 9,
+                "targets": [
+                  "snapshot"
+                ]
+              },
+              "mathematical_authority": false,
+              "name": "driver_eight_snapshot_cap",
+              "status": "passed"
+            },
+            {
+              "details": {
+                "cap_bytes": 8192,
+                "refused_payload_string_bytes": 8192,
+                "targets": [
+                  "snapshot"
+                ]
+              },
+              "mathematical_authority": false,
+              "name": "driver_eight_KiB_snapshot_cap",
+              "status": "passed"
+            },
+            {
+              "details": {
+                "each_snapshot_bytes": 8192,
+                "exact_primary_identity": true,
+                "marker": {
+                  "authority": false,
+                  "complete_ledger_retained": false,
+                  "mathematical_authority": false,
+                  "metadata_error_type": "DriverDataError",
+                  "phase_count": 1,
+                  "profile": "owned-finalization-phase-instrumented-v1",
+                  "resource_authority": false,
+                  "schema": "owned-finalization-observation-unavailable-v1",
+                  "snapshot_count": 8,
+                  "status": "UNAVAILABLE"
+                },
+                "record_cap_bytes": 65536,
+                "snapshot_rows": 8,
+                "targets": [
+                  "snapshot",
+                  "record",
+                  "call",
+                  "attach"
+                ]
+              },
+              "mathematical_authority": false,
+              "name": "driver_sixtyfour_KiB_record_and_unavailable_marker",
+              "status": "passed"
+            },
+            {
+              "details": {
+                "scientific_authority": false,
+                "targets": [
+                  "complete",
+                  "record"
+                ]
+              },
+              "mathematical_authority": false,
+              "name": "driver_complete_record_detachment",
+              "status": "passed"
+            },
+            {
+              "details": {
+                "intervals_may_overlap": true,
+                "open_at_failure_rows": 2,
+                "returned_rows": 1,
+                "targets": [
+                  "new_cold_observation",
+                  "cold_phase_begin",
+                  "cold_phase_end",
+                  "cold_phase_failure",
+                  "cold_observation_snapshot"
+                ],
+                "unstarted_rows_fabricated": 0
+              },
+              "mathematical_authority": false,
+              "name": "cold_nested_open_and_returned_phases",
+              "status": "passed"
+            },
+            {
+              "details": {
+                "refused_row": 33,
+                "retained_rows": 32,
+                "targets": [
+                  "cold_phase_begin"
+                ],
+                "unknown_name_refused": true
+              },
+              "mathematical_authority": false,
+              "name": "cold_thirtytwo_row_and_unknown_name_limits",
+              "status": "passed"
+            },
+            {
+              "details": {
+                "aggregate_counters_only": true,
+                "callback_origin_categories_measured": false,
+                "fake_elapsed_ns": 300,
+                "later_work_excluded": true,
+                "overlapping_intervals_not_summed_as_disjoint": true,
+                "targets": [
+                  "cold_count",
+                  "cold_guard_finished",
+                  "cold_observation_snapshot"
+                ]
+              },
+              "mathematical_authority": false,
+              "name": "cold_counter_guard_timing_snapshot_cutoff",
+              "status": "passed"
+            },
+            {
+              "details": {
+                "intentionally_suppressed_diagnostic_classes": [
+                  "RuntimeError",
+                  "ValueError",
+                  "StopIteration"
+                ],
+                "invalid_clock_values": 3,
+                "targets": [
+                  "cold_phase_begin",
+                  "cold_phase_end",
+                  "cold_observation_snapshot"
+                ]
+              },
+              "mathematical_authority": false,
+              "name": "cold_clock_faults_are_best_effort",
+              "status": "passed"
+            },
+            {
+              "details": {
+                "cap_bytes": 262144,
+                "targets": [
+                  "cold_observation_snapshot",
+                  "cold_failure_diagnostics"
+                ]
+              },
+              "mathematical_authority": false,
+              "name": "cold_twohundredfiftysix_KiB_observation_cap",
+              "status": "passed"
+            },
+            {
+              "details": {
+                "later_failure_rescued": false,
+                "retained_complete_driver_receipt": true,
+                "targets": [
+                  "cold_phase_failure",
+                  "bounded_driver_diagnostics",
+                  "cold_failure_diagnostics"
+                ]
+              },
+              "mathematical_authority": false,
+              "name": "cold_late_failure_retains_driver_receipt_and_statistics",
+              "status": "passed"
+            },
+            {
+              "details": {
+                "driver_receipt_fabricated": false,
+                "targets": [
+                  "bounded_driver_diagnostics"
+                ]
+              },
+              "mathematical_authority": false,
+              "name": "cold_error_attributes_retained_without_receipt",
+              "status": "passed"
+            },
+            {
+              "details": {
+                "cases": 3,
+                "metadata_error_types": [
+                  "AttributeError",
+                  "TypeError",
+                  "ColdError"
+                ],
+                "targets": [
+                  "bounded_driver_diagnostics",
+                  "cold_failure_diagnostics"
+                ]
+              },
+              "mathematical_authority": false,
+              "name": "cold_malformed_or_oversized_driver_metadata_fallback",
+              "status": "passed"
+            },
+            {
+              "details": {
+                "cases": 2,
+                "metadata_error_types": [
+                  "TypeError",
+                  "TypeError"
+                ],
+                "targets": [
+                  "cold_failure_diagnostics"
+                ]
+              },
+              "mathematical_authority": false,
+              "name": "cold_malformed_observation_metadata_fallback",
+              "status": "passed"
+            },
+            {
+              "details": {
+                "exact_active_error_classes": [
+                  "RuntimeError",
+                  "ValueError",
+                  "StopIteration"
+                ],
+                "targets": [
+                  "cold_failure_diagnostics"
+                ]
+              },
+              "mathematical_authority": false,
+              "name": "cold_active_error_identity_with_both_fallbacks",
+              "status": "passed"
+            },
+            {
+              "details": {
+                "absent_metadata_best_effort": true,
+                "explicit_diagnostic_errors": 2,
+                "targets": [
+                  "cold_count",
+                  "cold_phase_begin",
+                  "cold_phase_end",
+                  "cold_guard_finished",
+                  "cold_phase_failure"
+                ]
+              },
+              "mathematical_authority": false,
+              "name": "cold_malformed_phase_and_counter_best_effort",
+              "status": "passed"
+            },
+            {
+              "details": {
+                "normal_pipeline_acceptance_tested": false,
+                "targets": [
+                  "bounded_driver_diagnostics"
+                ],
+                "unavailable_marker_preserved": true
+              },
+              "mathematical_authority": false,
+              "name": "cold_driver_unavailable_marker_remains_unavailable",
+              "status": "passed"
+            },
+            {
+              "details": {
+                "diagnostic_clock": "StopIteration",
+                "exact_active_error_classes": [
+                  "RuntimeError",
+                  "ValueError",
+                  "StopIteration"
+                ],
+                "targets": [
+                  "cold_phase_failure",
+                  "cold_failure_diagnostics"
+                ]
+              },
+              "mathematical_authority": false,
+              "name": "cold_failure_clock_cannot_replace_active_error",
+              "status": "passed"
+            }
+          ],
+          "completed_fixture_count": 27,
+          "expected_fixture_names": [
+            "driver_normal_call_and_detached_record",
+            "driver_nested_phase_intervals",
+            "driver_action_foreign_exception_identity",
+            "driver_entry_clock_foreign_exception_identity",
+            "driver_return_clock_error_after_action",
+            "driver_failure_clock_preserves_primary_error",
+            "driver_passive_snapshot_detachment",
+            "driver_snapshot_foreign_exception_identity",
+            "driver_declared_names_refuse_unknown",
+            "driver_sixteen_phase_cap",
+            "driver_eight_snapshot_cap",
+            "driver_eight_KiB_snapshot_cap",
+            "driver_sixtyfour_KiB_record_and_unavailable_marker",
+            "driver_complete_record_detachment",
+            "cold_nested_open_and_returned_phases",
+            "cold_thirtytwo_row_and_unknown_name_limits",
+            "cold_counter_guard_timing_snapshot_cutoff",
+            "cold_clock_faults_are_best_effort",
+            "cold_twohundredfiftysix_KiB_observation_cap",
+            "cold_late_failure_retains_driver_receipt_and_statistics",
+            "cold_error_attributes_retained_without_receipt",
+            "cold_malformed_or_oversized_driver_metadata_fallback",
+            "cold_malformed_observation_metadata_fallback",
+            "cold_active_error_identity_with_both_fallbacks",
+            "cold_malformed_phase_and_counter_best_effort",
+            "cold_driver_unavailable_marker_remains_unavailable",
+            "cold_failure_clock_cannot_replace_active_error"
+          ],
+          "full_pipeline_qualified": false,
+          "full_qualification_completed": false,
+          "mathematical_authority": false,
+          "resource_authority": false,
+          "schema": "finalization-instrumentation-helper-prefix-v1",
+          "stage": "result_final_checkpoint",
+          "status": "FAILED_OR_UNFINISHED"
+        },
+        "status": "passed"
+      }
+    ],
+    "qualification": {
+      "authority": false,
+      "diagnostics": [
+        {
+          "details": {
+            "action_calls": 1,
+            "clock_calls": 2,
+            "targets": [
+              "call",
+              "record"
+            ]
+          },
+          "mathematical_authority": false,
+          "name": "driver_normal_call_and_detached_record",
+          "status": "passed"
+        },
+        {
+          "details": {
+            "disjoint_cost_sum_asserted": false,
+            "overlapping_intervals": true,
+            "rows": 2,
+            "targets": [
+              "call",
+              "record"
+            ]
+          },
+          "mathematical_authority": false,
+          "name": "driver_nested_phase_intervals",
+          "status": "passed"
+        },
+        {
+          "details": {
+            "exact_error_classes": [
+              "RuntimeError",
+              "ValueError",
+              "StopIteration"
+            ],
+            "targets": [
+              "call",
+              "attach"
+            ]
+          },
+          "mathematical_authority": false,
+          "name": "driver_action_foreign_exception_identity",
+          "status": "passed"
+        },
+        {
+          "details": {
+            "checkpoint": "initial observe",
+            "exact_error_classes": [
+              "RuntimeError",
+              "ValueError",
+              "StopIteration"
+            ],
+            "targets": [
+              "call",
+              "attach"
+            ]
+          },
+          "mathematical_authority": false,
+          "name": "driver_entry_clock_foreign_exception_identity",
+          "status": "passed"
+        },
+        {
+          "details": {
+            "checkpoint": "post action observe",
+            "exact_error_classes": [
+              "RuntimeError",
+              "ValueError",
+              "StopIteration"
+            ],
+            "targets": [
+              "call",
+              "attach"
+            ]
+          },
+          "mathematical_authority": false,
+          "name": "driver_return_clock_error_after_action",
+          "status": "passed"
+        },
+        {
+          "details": {
+            "exact_primary_classes": [
+              "RuntimeError",
+              "ValueError",
+              "StopIteration"
+            ],
+            "failure_clock_error": "StopIteration",
+            "targets": [
+              "call",
+              "attach"
+            ]
+          },
+          "mathematical_authority": false,
+          "name": "driver_failure_clock_preserves_primary_error",
+          "status": "passed"
+        },
+        {
+          "details": {
+            "passive_statistics_calls": 1,
+            "storage_operations_calls": 0,
+            "targets": [
+              "snapshot",
+              "record"
+            ]
+          },
+          "mathematical_authority": false,
+          "name": "driver_passive_snapshot_detachment",
+          "status": "passed"
+        },
+        {
+          "details": {
+            "reached_fault_sites": [
+              "RuntimeError:clock",
+              "RuntimeError:statistics",
+              "ValueError:clock",
+              "ValueError:statistics",
+              "StopIteration:clock",
+              "StopIteration:statistics"
+            ],
+            "targets": [
+              "snapshot",
+              "record"
+            ]
+          },
+          "mathematical_authority": false,
+          "name": "driver_snapshot_foreign_exception_identity",
+          "status": "passed"
+        },
+        {
+          "details": {
+            "refused_names": 2,
+            "targets": [
+              "call",
+              "snapshot"
+            ]
+          },
+          "mathematical_authority": false,
+          "name": "driver_declared_names_refuse_unknown",
+          "status": "passed"
+        },
+        {
+          "details": {
+            "accepted_rows": 16,
+            "refused_row": 17,
+            "targets": [
+              "call"
+            ]
+          },
+          "mathematical_authority": false,
+          "name": "driver_sixteen_phase_cap",
+          "status": "passed"
+        },
+        {
+          "details": {
+            "accepted_snapshots": 8,
+            "refused_snapshot": 9,
+            "targets": [
+              "snapshot"
+            ]
+          },
+          "mathematical_authority": false,
+          "name": "driver_eight_snapshot_cap",
+          "status": "passed"
+        },
+        {
+          "details": {
+            "cap_bytes": 8192,
+            "refused_payload_string_bytes": 8192,
+            "targets": [
+              "snapshot"
+            ]
+          },
+          "mathematical_authority": false,
+          "name": "driver_eight_KiB_snapshot_cap",
+          "status": "passed"
+        },
+        {
+          "details": {
+            "each_snapshot_bytes": 8192,
+            "exact_primary_identity": true,
+            "marker": {
+              "authority": false,
+              "complete_ledger_retained": false,
+              "mathematical_authority": false,
+              "metadata_error_type": "DriverDataError",
+              "phase_count": 1,
+              "profile": "owned-finalization-phase-instrumented-v1",
+              "resource_authority": false,
+              "schema": "owned-finalization-observation-unavailable-v1",
+              "snapshot_count": 8,
+              "status": "UNAVAILABLE"
+            },
+            "record_cap_bytes": 65536,
+            "snapshot_rows": 8,
+            "targets": [
+              "snapshot",
+              "record",
+              "call",
+              "attach"
+            ]
+          },
+          "mathematical_authority": false,
+          "name": "driver_sixtyfour_KiB_record_and_unavailable_marker",
+          "status": "passed"
+        },
+        {
+          "details": {
+            "scientific_authority": false,
+            "targets": [
+              "complete",
+              "record"
+            ]
+          },
+          "mathematical_authority": false,
+          "name": "driver_complete_record_detachment",
+          "status": "passed"
+        },
+        {
+          "details": {
+            "intervals_may_overlap": true,
+            "open_at_failure_rows": 2,
+            "returned_rows": 1,
+            "targets": [
+              "new_cold_observation",
+              "cold_phase_begin",
+              "cold_phase_end",
+              "cold_phase_failure",
+              "cold_observation_snapshot"
+            ],
+            "unstarted_rows_fabricated": 0
+          },
+          "mathematical_authority": false,
+          "name": "cold_nested_open_and_returned_phases",
+          "status": "passed"
+        },
+        {
+          "details": {
+            "refused_row": 33,
+            "retained_rows": 32,
+            "targets": [
+              "cold_phase_begin"
+            ],
+            "unknown_name_refused": true
+          },
+          "mathematical_authority": false,
+          "name": "cold_thirtytwo_row_and_unknown_name_limits",
+          "status": "passed"
+        },
+        {
+          "details": {
+            "aggregate_counters_only": true,
+            "callback_origin_categories_measured": false,
+            "fake_elapsed_ns": 300,
+            "later_work_excluded": true,
+            "overlapping_intervals_not_summed_as_disjoint": true,
+            "targets": [
+              "cold_count",
+              "cold_guard_finished",
+              "cold_observation_snapshot"
+            ]
+          },
+          "mathematical_authority": false,
+          "name": "cold_counter_guard_timing_snapshot_cutoff",
+          "status": "passed"
+        },
+        {
+          "details": {
+            "intentionally_suppressed_diagnostic_classes": [
+              "RuntimeError",
+              "ValueError",
+              "StopIteration"
+            ],
+            "invalid_clock_values": 3,
+            "targets": [
+              "cold_phase_begin",
+              "cold_phase_end",
+              "cold_observation_snapshot"
+            ]
+          },
+          "mathematical_authority": false,
+          "name": "cold_clock_faults_are_best_effort",
+          "status": "passed"
+        },
+        {
+          "details": {
+            "cap_bytes": 262144,
+            "targets": [
+              "cold_observation_snapshot",
+              "cold_failure_diagnostics"
+            ]
+          },
+          "mathematical_authority": false,
+          "name": "cold_twohundredfiftysix_KiB_observation_cap",
+          "status": "passed"
+        },
+        {
+          "details": {
+            "later_failure_rescued": false,
+            "retained_complete_driver_receipt": true,
+            "targets": [
+              "cold_phase_failure",
+              "bounded_driver_diagnostics",
+              "cold_failure_diagnostics"
+            ]
+          },
+          "mathematical_authority": false,
+          "name": "cold_late_failure_retains_driver_receipt_and_statistics",
+          "status": "passed"
+        },
+        {
+          "details": {
+            "driver_receipt_fabricated": false,
+            "targets": [
+              "bounded_driver_diagnostics"
+            ]
+          },
+          "mathematical_authority": false,
+          "name": "cold_error_attributes_retained_without_receipt",
+          "status": "passed"
+        },
+        {
+          "details": {
+            "cases": 3,
+            "metadata_error_types": [
+              "AttributeError",
+              "TypeError",
+              "ColdError"
+            ],
+            "targets": [
+              "bounded_driver_diagnostics",
+              "cold_failure_diagnostics"
+            ]
+          },
+          "mathematical_authority": false,
+          "name": "cold_malformed_or_oversized_driver_metadata_fallback",
+          "status": "passed"
+        },
+        {
+          "details": {
+            "cases": 2,
+            "metadata_error_types": [
+              "TypeError",
+              "TypeError"
+            ],
+            "targets": [
+              "cold_failure_diagnostics"
+            ]
+          },
+          "mathematical_authority": false,
+          "name": "cold_malformed_observation_metadata_fallback",
+          "status": "passed"
+        },
+        {
+          "details": {
+            "exact_active_error_classes": [
+              "RuntimeError",
+              "ValueError",
+              "StopIteration"
+            ],
+            "targets": [
+              "cold_failure_diagnostics"
+            ]
+          },
+          "mathematical_authority": false,
+          "name": "cold_active_error_identity_with_both_fallbacks",
+          "status": "passed"
+        },
+        {
+          "details": {
+            "absent_metadata_best_effort": true,
+            "explicit_diagnostic_errors": 2,
+            "targets": [
+              "cold_count",
+              "cold_phase_begin",
+              "cold_phase_end",
+              "cold_guard_finished",
+              "cold_phase_failure"
+            ]
+          },
+          "mathematical_authority": false,
+          "name": "cold_malformed_phase_and_counter_best_effort",
+          "status": "passed"
+        },
+        {
+          "details": {
+            "normal_pipeline_acceptance_tested": false,
+            "targets": [
+              "bounded_driver_diagnostics"
+            ],
+            "unavailable_marker_preserved": true
+          },
+          "mathematical_authority": false,
+          "name": "cold_driver_unavailable_marker_remains_unavailable",
+          "status": "passed"
+        },
+        {
+          "details": {
+            "diagnostic_clock": "StopIteration",
+            "exact_active_error_classes": [
+              "RuntimeError",
+              "ValueError",
+              "StopIteration"
+            ],
+            "targets": [
+              "cold_phase_failure",
+              "cold_failure_diagnostics"
+            ]
+          },
+          "mathematical_authority": false,
+          "name": "cold_failure_clock_cannot_replace_active_error",
+          "status": "passed"
+        }
+      ],
+      "expected_fixture_names": [
+        "driver_normal_call_and_detached_record",
+        "driver_nested_phase_intervals",
+        "driver_action_foreign_exception_identity",
+        "driver_entry_clock_foreign_exception_identity",
+        "driver_return_clock_error_after_action",
+        "driver_failure_clock_preserves_primary_error",
+        "driver_passive_snapshot_detachment",
+        "driver_snapshot_foreign_exception_identity",
+        "driver_declared_names_refuse_unknown",
+        "driver_sixteen_phase_cap",
+        "driver_eight_snapshot_cap",
+        "driver_eight_KiB_snapshot_cap",
+        "driver_sixtyfour_KiB_record_and_unavailable_marker",
+        "driver_complete_record_detachment",
+        "cold_nested_open_and_returned_phases",
+        "cold_thirtytwo_row_and_unknown_name_limits",
+        "cold_counter_guard_timing_snapshot_cutoff",
+        "cold_clock_faults_are_best_effort",
+        "cold_twohundredfiftysix_KiB_observation_cap",
+        "cold_late_failure_retains_driver_receipt_and_statistics",
+        "cold_error_attributes_retained_without_receipt",
+        "cold_malformed_or_oversized_driver_metadata_fallback",
+        "cold_malformed_observation_metadata_fallback",
+        "cold_active_error_identity_with_both_fallbacks",
+        "cold_malformed_phase_and_counter_best_effort",
+        "cold_driver_unavailable_marker_remains_unavailable",
+        "cold_failure_clock_cannot_replace_active_error"
+      ],
+      "full_pipeline_qualified": false,
+      "limitations": [
+        "Finite fake-boundary/passive-statistics helper checks only; Source authentication is outer-worker responsibility.",
+        "No run_receiver_owned, _owned_atomic_output, cold main, saved-evidence verifier, real Store/Arena/inverse/Model/search/Native call.",
+        "No full-pipeline retention, resource fit, real clock/callback cadence, proof validity or speed qualification.",
+        "Cold best-effort metadata helpers are not general metadata-schema validators.",
+        "All fake timing intervals are synthetic and overlapping phases are not additive costs.",
+        "Clock restoration on externally interrupted failure is a finally obligation additionally checked by the outer worker."
+      ],
+      "limits": {
+        "cold_metadata_bytes": 262144,
+        "cold_phase_rows": 32,
+        "driver_phase_rows": 16,
+        "driver_record_bytes": 65536,
+        "driver_snapshot_bytes": 8192,
+        "driver_snapshots": 8,
+        "fixture_groups": 27,
+        "result_bytes": 131072
+      },
+      "mathematical_authority": false,
+      "mock_slot": {
+        "code_defaults_or_callable_body_mutations": false,
+        "name": "cold._NOW_NS",
+        "restored": true
+      },
+      "resource_authority": false,
+      "schema": "finalization-instrumentation-helper-qualification-v1",
+      "source_pins": {
+        "cold": {
+          "bytes": 72712,
+          "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/owned_evidence_cold_v6.py",
+          "sha256": "e1101723f559ae2dfecc030470a3e6e9e79c71b10c416c2bcdfc8f2f5b101d43"
+        },
+        "driver": {
+          "bytes": 120766,
+          "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/owned_evidence_receiver_driver_v6.py",
+          "sha256": "e8ff0690472140e510f8ffab383be8c22791da6b27ef0a27fda013ea48e5f5cf"
+        }
+      },
+      "status": "FINITE_INSTRUMENTATION_HELPERS_QUALIFIED"
+    },
+    "retained_prefixes_detached": true,
+    "schema": "finalization-instrumentation-qualification-result-v1",
+    "scientific_acceptance": false,
+    "scope": "Only Source-reviewed new observation helpers with fake boundary/action/passive Store. No production driver/cold main, point model, Native, inverse or historical proof calls. Raw Sources and function/default bindings rechecked; trusted exclusive ownership during finite fixtures, not an adversarial memory sandbox or universal soundness proof.",
+    "search_calls": 0,
+    "version": "finalization-instrumentation-helper-worker-v6"
+  },
+  "conservative_physical_bytes": 9461641,
+  "date": "2026-10-19",
+  "evidence": {
+    "declaration": {
+      "bytes": 7193,
+      "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/helper-qualification-declaration-v2.json",
+      "sha256": "6357a92151c9559b412fcefb9ecd58c329c4c41426aedadac1299559982db1a9"
+    },
+    "next_Source_only_design": {
+      "bytes": 46832,
+      "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/next-full-pipeline-integration-design-v1.json",
+      "sha256": "6de4ff67b77d0fabb9704731927f9a0e3f599a2a5d8ca2fcf8daeabd3d38d1e5"
+    },
+    "peer_saved_review": {
+      "bytes": 14105,
+      "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/typed-saved-helper-qualification-review-v2.json",
+      "sha256": "5fec67cfd2c1ae2beed64bb6e87342d798054e756b546b0bdcc6e35c3f247531"
+    },
+    "plan": {
+      "bytes": 2551,
+      "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/plan-authorized-v1.json",
+      "sha256": "9822085a61d1f24f1826bb5b8ffdff9380604c4ab70b68c48b12fb1d40f1a2f3"
+    },
+    "result": {
+      "bytes": 22999,
+      "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/actual-helper-v2/result.json",
+      "sha256": "643ff85352bbc586da295d0127ffb731b1b5bd636b640d7e4153fdb590b43baa"
+    },
+    "root_audit": {
+      "bytes": 15346,
+      "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/ROOT-saved-actual-audit-v1.json",
+      "sha256": "17caa5d25df10831fa74045813de5dda8c35ee87c0bb26ed7572c7151ab4a6b5"
+    },
+    "runner": {
+      "bytes": 2977,
+      "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/actual-helper-v2/runner-receipt.json",
+      "sha256": "921a54bba49a76539f5c1e6980d57365f605f0b19903c7026029d0191341e63e"
+    },
+    "sources": {
+      "cold": {
+        "bytes": 72712,
+        "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/owned_evidence_cold_v6.py",
+        "sha256": "e1101723f559ae2dfecc030470a3e6e9e79c71b10c416c2bcdfc8f2f5b101d43"
+      },
+      "driver": {
+        "bytes": 120766,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/owned_evidence_receiver_driver_v6.py",
+        "sha256": "e8ff0690472140e510f8ffab383be8c22791da6b27ef0a27fda013ea48e5f5cf"
+      },
+      "harness": {
+        "bytes": 33853,
+        "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/qualify_finalization_harness_v2.py",
+        "sha256": "59b3d6de41c89b41b9e351df8c3d91239d3f3a25ceb1f03852b0b9060efa9fcc"
+      },
+      "observer": {
+        "bytes": 5170,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/observe_finalization_helpers_once_v3.py",
+        "sha256": "c2c4cc851a890f7204bf08f20f30d4f676c1d8152a72ef138f37d14a9ca7c6aa"
+      },
+      "runner": {
+        "bytes": 13071,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/run_finalization_helpers_once_v3.py",
+        "sha256": "051ec35804bdaf1938e57f823045930944902ed077cd83733eef309fcad70621"
+      },
+      "worker": {
+        "bytes": 15924,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/qualify_finalization_worker_v6.py",
+        "sha256": "3751bb6ee1e9bc69b698c52deac2c5479ba97f6ba24f203cb242718db56ddee8"
+      }
+    },
+    "terminal": {
+      "bytes": 1547,
+      "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/plan-authorized-v1-terminal-observation/terminal.json",
+      "sha256": "0e92814497c55d9f5df997e6e726644cd67a65d0d103abfe235d676d50ea7af8"
+    }
+  },
+  "finite_helper_qualification": true,
+  "full_pipeline_qualified": false,
+  "goal_complete": false,
+  "helper_calls": 4,
+  "history": "Both previously consumed fresh full-pipeline attempts remain failures. Earlier successful symbolic integration and standalone inverse qualification remain separate historical evidence; no missing historical counters are inferred.",
+  "independent_saved_review": {
+    "Model_calls": 0,
+    "Native_calls": 0,
+    "Root_audit": {
+      "bytes": 15346,
+      "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/ROOT-saved-actual-audit-v1.json",
+      "sha256": "17caa5d25df10831fa74045813de5dda8c35ee87c0bb26ed7572c7151ab4a6b5"
+    },
+    "Source_review": {
+      "bytes": 15549,
+      "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/typed-components-Source-review-v3.json",
+      "sha256": "b62e7c100be5effc60948e8453c6d590d12a1a0d8dcc0d5613671113cdee0f9b"
+    },
+    "actual_execution_authorized": false,
+    "audit": {
+      "bytes": 18216,
+      "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/helper-saved-actual-audit-v1.json",
+      "sha256": "faec7418bb5bc43c524df743095c1866d605b5bf9ed1613b854c28edda3bf6c9"
+    },
+    "author_identity": "/root",
+    "authorization": {
+      "bytes": 1263,
+      "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/authorization-true-v1.json",
+      "sha256": "0db91f07e5a33be2caf8a0849cfa24bc17ed9c041287b8703f3d27afbc2215c9"
+    },
+    "authorship_disclosure": "Root authored driver/wrappers and actual admission; Library authored cold/harness; Control authored historical controls/helper/outer and current Source reviews, not these new targets. This is an independent saved-data audit, not independent certification of historical own algorithms or a mathematical/kernel theorem.",
+    "check_count": 175,
+    "closure": {
+      "bytes": 1013,
+      "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/ROOT-cohort-closure-v1.json",
+      "sha256": "7c8e6c4aea4f0f425496f20630bb62958555b5401dfcd0e8d42a3cce72359fac"
+    },
+    "codec_replays": 0,
+    "component_calls": 0,
+    "counts": {
+      "helper_calls": 4,
+      "normal_checkpoint_calls": 57,
+      "normal_groups": 27,
+      "prefix_completed_rows": [
+        0,
+        1,
+        27
+      ],
+      "prefix_interruptions": 3,
+      "worker_launches": 1
+    },
+    "current_sources": {
+      "cold": {
+        "bytes": 72712,
+        "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/owned_evidence_cold_v6.py",
+        "sha256": "e1101723f559ae2dfecc030470a3e6e9e79c71b10c416c2bcdfc8f2f5b101d43"
+      },
+      "driver": {
+        "bytes": 120766,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/owned_evidence_receiver_driver_v6.py",
+        "sha256": "e8ff0690472140e510f8ffab383be8c22791da6b27ef0a27fda013ea48e5f5cf"
+      },
+      "harness": {
+        "bytes": 33853,
+        "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/qualify_finalization_harness_v2.py",
+        "sha256": "59b3d6de41c89b41b9e351df8c3d91239d3f3a25ceb1f03852b0b9060efa9fcc"
+      },
+      "observer": {
+        "bytes": 5170,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/observe_finalization_helpers_once_v3.py",
+        "sha256": "c2c4cc851a890f7204bf08f20f30d4f676c1d8152a72ef138f37d14a9ca7c6aa"
+      },
+      "runner": {
+        "bytes": 13071,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/run_finalization_helpers_once_v3.py",
+        "sha256": "051ec35804bdaf1938e57f823045930944902ed077cd83733eef309fcad70621"
+      },
+      "worker": {
+        "bytes": 15924,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/qualify_finalization_worker_v6.py",
+        "sha256": "3751bb6ee1e9bc69b698c52deac2c5479ba97f6ba24f203cb242718db56ddee8"
+      }
+    },
+    "declaration": {
+      "bytes": 7193,
+      "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/helper-qualification-declaration-v2.json",
+      "sha256": "6357a92151c9559b412fcefb9ecd58c329c4c41426aedadac1299559982db1a9"
+    },
+    "findings": [],
+    "finite_helper_qualification_supported": true,
+    "fixture_calls": 0,
+    "full_pipeline_qualified": false,
+    "grant_delta": {
+      "bytes": 10079,
+      "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/typed-final-grant-delta-review-v1.json",
+      "sha256": "43128f579a2430d2d8dbccaa1e6b91fc2cb9d205f75b4465b52f403fa6f4fbdd"
+    },
+    "inherited_Source_review_limitations": {
+      "current_actual_status": "The later exactly-once helper actual exercised the repaired charged ctypes startup and completed the finite helper-only controls. Historical future-tense requirements describe the state when the Source review was frozen; they do not describe current unperformed helper work.",
+      "raw_Source_review": {
+        "bytes": 15549,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/typed-components-Source-review-v3.json",
+        "sha256": "b62e7c100be5effc60948e8453c6d590d12a1a0d8dcc0d5613671113cdee0f9b"
+      },
+      "temporal_scope": "HISTORICAL_PRELAUNCH_SOURCE_REVIEW",
+      "verbatim_historical_limitations": [
+        "This Source PASS gives no runtime/finite resource qualification or execution authority. Root must independently adopt exact scopes, then obtain separate prospective plan, true-grant delta and fresh-path review before any one worker.",
+        "The qualifier executes whole raw-pinned driver/cold/harness modules under non-main names, but targets only new observation helpers with fake clocks/actions/passive Store. It does not qualify real run_receiver_owned/cold main, finalization output, saved inverse, Model, graph/rollback, Native or full-pipeline retention.",
+        "Trusted raw-pinned loading/exclusive ownership, initial/final Source/Python hashes and shallow function/class/code/globals/default identity checks are disclosed. This is not a formal all-callable/global/cell integrity seal, adversarial memory sandbox or continuous OS guarantee. The explicit audit denial list is finite.",
+        "Some action_calls=1/storage_operations_calls=0 packet values are Source-backed declarations, not dynamic complete call-origin totals. Selected27 groups plus three prefix interruptions do not establish arbitrary foreign exception/site/latency coverage.",
+        "All positive worker/header/knownexit and standalone outer whole checks remain180seconds; terminal210 and225 observer failurecleanup remain distinct. 1GiB is Darwin worker highwater after exit, noNative. Diagnostics/prefix/copies/serialization/logs and reserved outer metadata consume the unchanged byte/time/RAM profile.",
+        "Clock restore checks on error are best effort and never repair an error into success. Metadata/record-cap/attachment failure may retain only explicit UNAVAILABLE or nothing if even best-effort attachment fails. No partial prefix or returned packet becomes a qualified result.",
+        "No current actual, causal speed/RAM gain, theorem, GCTS/RL advantage or historical missing measurement is inferred. Source checkpoints and synthetic intervals are distinct from real future cost.",
+        "The explicit trusted bundled ctypes preload initializes stdlib pythonapi before installing the finite audit hook and is fully charged to original work time. Its whole Python module Source is pinned/raw-checked before and after preload with exact module origin. Other bundled stdlib/C-extension loading remains a trusted runtime dependency, not an all-stdlib binary/callable seal. Later target/fixture ctypes.dlopen remains denied. This startup fix has not been run."
+      ]
+    },
+    "inverse_replays": 0,
+    "limitations": [
+      "Exact exception identity, restoration and detachment are recorded results produced by the reviewed trusted worker; saved JSON cannot independently recreate Python object identity. Whole packet/prefix/name/count/custody joins were independently checked without replay.",
+      "Some packet action/storage counts are Source-backed declarations; fake phase clocks and intervals are synthetic. No real finalization bottleneck or isolated inverse duration is inferred from this helper run.",
+      "Known worker wait4 and owned-group/log closure are retained runner gates; Root additionally records independent group absence. Control did not perform a new live process probe and claims none.",
+      "Standalone worker peak excludes runner/observer RAM. Source-entry terminal0.180694916s excludes observer/Python prelude; observer-main elapsed0.202297833s is separate. No causal speed or integration fit claim.",
+      "The reviewed charged bundled ctypes startup and metadata-only driver/cold/harness loading were exercised in the successful current helper actual, followed by the declared finite audit denial and all27 groups plus3 interruption controls. This establishes only this finite observed startup/helper path under raw-pinned trusted exclusive ownership, not a formal runtime/stdlib integrity seal or arbitrary callback theorem.",
+      "Current grant, once markers, Source/raw checks, resource limits and authoritative terminal closure were independently joined as saved evidence. No further helper grant or execution is required to support this particular finite saved qualification. Any new worker, including a production measurement, requires its own separately reviewed Source/closure/plan/grant/freshness scope.",
+      "The production run_receiver_owned/cold main, actual finalization output retention, inverse/real Store/Arena/Model/Native/search, full ordinary result and proof gates were not exercised by this helper qualification. No production fit, causal performance, GCTS/RL or mathematical advantage is inferred.",
+      "Metadata helpers remain bounded best effort: a record/snapshot/attachment failure may yield explicit UNAVAILABLE or no marker if even best-effort attachment fails. A partial prefix, diagnostic packet or returned nonadmitted value cannot restore scientific success.",
+      "All175 saved-data checks and their full audit apply unchanged. V2 changes only temporal reporting scope; every current result/Source/plan/grant/counter/resource/closure pin and recorded outcome remains exactly V1."
+    ],
+    "mathematical_proof_accepted": false,
+    "metrics": {
+      "Source_entry_to_external_terminal_seconds": 0.180694916,
+      "actual_complete_physical_bytes": 29430,
+      "conservative_physical_bytes": 9461641,
+      "logical_result_bytes": 22999,
+      "observer_main_elapsed_seconds": 0.202297833,
+      "physical_before_runner_receipt": 24457,
+      "worker_highwater_MiB": 49.578125,
+      "worker_highwater_bytes": 51986432
+    },
+    "mismatch_count": 0,
+    "module_imports": 0,
+    "new_theorem": false,
+    "plan": {
+      "bytes": 2551,
+      "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/plan-authorized-v1.json",
+      "sha256": "9822085a61d1f24f1826bb5b8ffdff9380604c4ab70b68c48b12fb1d40f1a2f3"
+    },
+    "prospective_review": {
+      "bytes": 8273,
+      "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/typed-prospective-plan-review-v2.json",
+      "sha256": "5bd127e4920553a501e96f40e1f0396e861bf2aabd03b3f99b2c3e2dd735f2a0"
+    },
+    "python": {
+      "bytes": 18058560,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+      "sha256": "21a9986bad1dbbcd813a252b19b4263fc0755ed2dbf8632c83e5d6117a12f319"
+    },
+    "renderer_calls": 0,
+    "result": {
+      "bytes": 22999,
+      "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/actual-helper-v2/result.json",
+      "sha256": "643ff85352bbc586da295d0127ffb731b1b5bd636b640d7e4153fdb590b43baa"
+    },
+    "reviewer_identity": "/root/conventional_control_review",
+    "runner_receipt": {
+      "bytes": 2977,
+      "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/actual-helper-v2/runner-receipt.json",
+      "sha256": "921a54bba49a76539f5c1e6980d57365f605f0b19903c7026029d0191341e63e"
+    },
+    "saved_data_only": true,
+    "saved_review_passed": true,
+    "schema": "finalization-instrumentation-helper-saved-review-v1",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "Independent saved ordinary JSON/raw-byte evidence audit only; all27 selected fake-interface helper groups plus three reached unfinished-prefix interruptions are retained consistently with exact once subject/current Sources and original standalone gates. No helper/module/component was imported or called for this audit. This supports finite helper instrumentation qualification, not producer/cold-main/inverse/Model/Native/proof or full-pipeline qualification.",
+    "startup_stdlib": {
+      "bytes": 18268,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/ctypes/__init__.py",
+      "sha256": "e048845f8f5c14a5fc873526a27da4a19d4eed25ab2f2a01fa6e0b79faca78d0"
+    },
+    "subject_sha256": "cdc3b27b58d3852abf0f674f8eb0d97ce79871cba500a386b19e2ae193411965",
+    "temporal_reporting_correction": {
+      "Source_changed": false,
+      "disposition": "V1 remains immutable. Historical Source wording moved under an explicitly prelaunch key; current limitations describe exercised helper startup and still-unexecuted production scope.",
+      "finding": "Inherited unqualified prelaunch future-tense limitations incorrectly described already-completed helper startup/grant as pending in the current saved outcome.",
+      "metadata_only": true,
+      "parent_saved_review": {
+        "bytes": 10648,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/typed-saved-helper-qualification-review-v1.json",
+        "sha256": "31d4ec3189483c41cd7748b59507823bde7dad3f3ade4675738ad2ad251e1914"
+      },
+      "raw_data_changed": false,
+      "replayed": false,
+      "reused_check_count": 175,
+      "reused_saved_audit": {
+        "bytes": 18216,
+        "path": "/private/tmp/gcts-finalization-instrumentation-peer-20261019/helper-saved-actual-audit-v1.json",
+        "sha256": "faec7418bb5bc43c524df743095c1866d605b5bf9ed1613b854c28edda3bf6c9"
+      },
+      "scientific_calls": 0
+    },
+    "terminal": {
+      "bytes": 1547,
+      "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/plan-authorized-v1-terminal-observation/terminal.json",
+      "sha256": "0e92814497c55d9f5df997e6e726644cd67a65d0d103abfe235d676d50ea7af8"
+    },
+    "tools_stopped_after_handoff": true,
+    "worker_receipt": {
+      "bytes": 916,
+      "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/actual-helper-v2/worker-receipt.json",
+      "sha256": "cb5cbddb5521c3813fcca7f9f21e28127eba9b01a1bb52a622124c1e052beaa2"
+    }
+  },
+  "limitations": [
+    "Finite fake-boundary/passive-statistics helper checks only; Source authentication is outer-worker responsibility.",
+    "No run_receiver_owned, _owned_atomic_output, cold main, saved-evidence verifier, real Store/Arena/inverse/Model/search/Native call.",
+    "No full-pipeline retention, resource fit, real clock/callback cadence, proof validity or speed qualification.",
+    "Cold best-effort metadata helpers are not general metadata-schema validators.",
+    "All fake timing intervals are synthetic and overlapping phases are not additive costs.",
+    "Clock restoration on externally interrupted failure is a finally obligation additionally checked by the outer worker.",
+    "Finite fake-interface helper behavior only; no full driver/cold retention or real evidence cost measured.",
+    "Source-backed some detail declarations are not independent dynamic operation-origin counts.",
+    "Trusted raw Sources/runtime/exclusive ownership; shallow binding/default/code checks, finite denylist.",
+    "Synthetic intervals and nested phases are not disjoint real performance costs.",
+    "Outer/observer RAM excluded; highwater posthoc, not a continuous RSS limit; standalone allpositive180 stronger than full pipeline later210."
+  ],
+  "logical_result_bytes": 22999,
+  "mathematical_proof_admitted": false,
+  "new_theorem": false,
+  "next": "Bind reviewed instrumented driver/cold in a new full-pipeline subject and measure retained phases under unchanged complete proof and resource gates. No next actual is authorized by this report or archived consumed grants.",
+  "normal_checkpoint_calls": 57,
+  "normal_groups": 27,
+  "observed_helper_terminal_seconds": 0.180694916,
+  "outcome": "FINITE_INSTRUMENTATION_HELPERS_QUALIFIED",
+  "physical_before_runner_receipt": 24457,
+  "prefix_controls": [
+    {
+      "checkpoint_calls": 1,
+      "checkpoint_ordinal": 1,
+      "clock_slot_restored": true,
+      "exact_exception_identity": true,
+      "exception_type": "RuntimeError",
+      "helper_callable_bindings_unchanged": true,
+      "mathematical_authority": false,
+      "name": "initial_checkpoint",
+      "prefix": {
+        "active_fixture": null,
+        "authority": false,
+        "complete_prefix_retained": true,
+        "completed_diagnostics": [],
+        "completed_fixture_count": 0,
+        "expected_fixture_names": [
+          "driver_normal_call_and_detached_record",
+          "driver_nested_phase_intervals",
+          "driver_action_foreign_exception_identity",
+          "driver_entry_clock_foreign_exception_identity",
+          "driver_return_clock_error_after_action",
+          "driver_failure_clock_preserves_primary_error",
+          "driver_passive_snapshot_detachment",
+          "driver_snapshot_foreign_exception_identity",
+          "driver_declared_names_refuse_unknown",
+          "driver_sixteen_phase_cap",
+          "driver_eight_snapshot_cap",
+          "driver_eight_KiB_snapshot_cap",
+          "driver_sixtyfour_KiB_record_and_unavailable_marker",
+          "driver_complete_record_detachment",
+          "cold_nested_open_and_returned_phases",
+          "cold_thirtytwo_row_and_unknown_name_limits",
+          "cold_counter_guard_timing_snapshot_cutoff",
+          "cold_clock_faults_are_best_effort",
+          "cold_twohundredfiftysix_KiB_observation_cap",
+          "cold_late_failure_retains_driver_receipt_and_statistics",
+          "cold_error_attributes_retained_without_receipt",
+          "cold_malformed_or_oversized_driver_metadata_fallback",
+          "cold_malformed_observation_metadata_fallback",
+          "cold_active_error_identity_with_both_fallbacks",
+          "cold_malformed_phase_and_counter_best_effort",
+          "cold_driver_unavailable_marker_remains_unavailable",
+          "cold_failure_clock_cannot_replace_active_error"
+        ],
+        "full_pipeline_qualified": false,
+        "full_qualification_completed": false,
+        "mathematical_authority": false,
+        "resource_authority": false,
+        "schema": "finalization-instrumentation-helper-prefix-v1",
+        "stage": "initial_checkpoint",
+        "status": "FAILED_OR_UNFINISHED"
+      },
+      "status": "passed"
+    },
+    {
+      "checkpoint_calls": 4,
+      "checkpoint_ordinal": 4,
+      "clock_slot_restored": true,
+      "exact_exception_identity": true,
+      "exception_type": "ValueError",
+      "helper_callable_bindings_unchanged": true,
+      "mathematical_authority": false,
+      "name": "after_first_completed_group",
+      "prefix": {
+        "active_fixture": "driver_nested_phase_intervals",
+        "authority": false,
+        "complete_prefix_retained": true,
+        "completed_diagnostics": [
+          {
+            "details": {
+              "action_calls": 1,
+              "clock_calls": 2,
+              "targets": [
+                "call",
+                "record"
+              ]
+            },
+            "mathematical_authority": false,
+            "name": "driver_normal_call_and_detached_record",
+            "status": "passed"
+          }
+        ],
+        "completed_fixture_count": 1,
+        "expected_fixture_names": [
+          "driver_normal_call_and_detached_record",
+          "driver_nested_phase_intervals",
+          "driver_action_foreign_exception_identity",
+          "driver_entry_clock_foreign_exception_identity",
+          "driver_return_clock_error_after_action",
+          "driver_failure_clock_preserves_primary_error",
+          "driver_passive_snapshot_detachment",
+          "driver_snapshot_foreign_exception_identity",
+          "driver_declared_names_refuse_unknown",
+          "driver_sixteen_phase_cap",
+          "driver_eight_snapshot_cap",
+          "driver_eight_KiB_snapshot_cap",
+          "driver_sixtyfour_KiB_record_and_unavailable_marker",
+          "driver_complete_record_detachment",
+          "cold_nested_open_and_returned_phases",
+          "cold_thirtytwo_row_and_unknown_name_limits",
+          "cold_counter_guard_timing_snapshot_cutoff",
+          "cold_clock_faults_are_best_effort",
+          "cold_twohundredfiftysix_KiB_observation_cap",
+          "cold_late_failure_retains_driver_receipt_and_statistics",
+          "cold_error_attributes_retained_without_receipt",
+          "cold_malformed_or_oversized_driver_metadata_fallback",
+          "cold_malformed_observation_metadata_fallback",
+          "cold_active_error_identity_with_both_fallbacks",
+          "cold_malformed_phase_and_counter_best_effort",
+          "cold_driver_unavailable_marker_remains_unavailable",
+          "cold_failure_clock_cannot_replace_active_error"
+        ],
+        "full_pipeline_qualified": false,
+        "full_qualification_completed": false,
+        "mathematical_authority": false,
+        "resource_authority": false,
+        "schema": "finalization-instrumentation-helper-prefix-v1",
+        "stage": "fixture_before_checkpoint",
+        "status": "FAILED_OR_UNFINISHED"
+      },
+      "status": "passed"
+    },
+    {
+      "checkpoint_calls": 57,
+      "checkpoint_ordinal": 57,
+      "clock_slot_restored": true,
+      "exact_exception_identity": true,
+      "exception_type": "StopIteration",
+      "helper_callable_bindings_unchanged": true,
+      "mathematical_authority": false,
+      "name": "final_checkpoint",
+      "prefix": {
+        "active_fixture": null,
+        "authority": false,
+        "complete_prefix_retained": true,
+        "completed_diagnostics": [
+          {
+            "details": {
+              "action_calls": 1,
+              "clock_calls": 2,
+              "targets": [
+                "call",
+                "record"
+              ]
+            },
+            "mathematical_authority": false,
+            "name": "driver_normal_call_and_detached_record",
+            "status": "passed"
+          },
+          {
+            "details": {
+              "disjoint_cost_sum_asserted": false,
+              "overlapping_intervals": true,
+              "rows": 2,
+              "targets": [
+                "call",
+                "record"
+              ]
+            },
+            "mathematical_authority": false,
+            "name": "driver_nested_phase_intervals",
+            "status": "passed"
+          },
+          {
+            "details": {
+              "exact_error_classes": [
+                "RuntimeError",
+                "ValueError",
+                "StopIteration"
+              ],
+              "targets": [
+                "call",
+                "attach"
+              ]
+            },
+            "mathematical_authority": false,
+            "name": "driver_action_foreign_exception_identity",
+            "status": "passed"
+          },
+          {
+            "details": {
+              "checkpoint": "initial observe",
+              "exact_error_classes": [
+                "RuntimeError",
+                "ValueError",
+                "StopIteration"
+              ],
+              "targets": [
+                "call",
+                "attach"
+              ]
+            },
+            "mathematical_authority": false,
+            "name": "driver_entry_clock_foreign_exception_identity",
+            "status": "passed"
+          },
+          {
+            "details": {
+              "checkpoint": "post action observe",
+              "exact_error_classes": [
+                "RuntimeError",
+                "ValueError",
+                "StopIteration"
+              ],
+              "targets": [
+                "call",
+                "attach"
+              ]
+            },
+            "mathematical_authority": false,
+            "name": "driver_return_clock_error_after_action",
+            "status": "passed"
+          },
+          {
+            "details": {
+              "exact_primary_classes": [
+                "RuntimeError",
+                "ValueError",
+                "StopIteration"
+              ],
+              "failure_clock_error": "StopIteration",
+              "targets": [
+                "call",
+                "attach"
+              ]
+            },
+            "mathematical_authority": false,
+            "name": "driver_failure_clock_preserves_primary_error",
+            "status": "passed"
+          },
+          {
+            "details": {
+              "passive_statistics_calls": 1,
+              "storage_operations_calls": 0,
+              "targets": [
+                "snapshot",
+                "record"
+              ]
+            },
+            "mathematical_authority": false,
+            "name": "driver_passive_snapshot_detachment",
+            "status": "passed"
+          },
+          {
+            "details": {
+              "reached_fault_sites": [
+                "RuntimeError:clock",
+                "RuntimeError:statistics",
+                "ValueError:clock",
+                "ValueError:statistics",
+                "StopIteration:clock",
+                "StopIteration:statistics"
+              ],
+              "targets": [
+                "snapshot",
+                "record"
+              ]
+            },
+            "mathematical_authority": false,
+            "name": "driver_snapshot_foreign_exception_identity",
+            "status": "passed"
+          },
+          {
+            "details": {
+              "refused_names": 2,
+              "targets": [
+                "call",
+                "snapshot"
+              ]
+            },
+            "mathematical_authority": false,
+            "name": "driver_declared_names_refuse_unknown",
+            "status": "passed"
+          },
+          {
+            "details": {
+              "accepted_rows": 16,
+              "refused_row": 17,
+              "targets": [
+                "call"
+              ]
+            },
+            "mathematical_authority": false,
+            "name": "driver_sixteen_phase_cap",
+            "status": "passed"
+          },
+          {
+            "details": {
+              "accepted_snapshots": 8,
+              "refused_snapshot": 9,
+              "targets": [
+                "snapshot"
+              ]
+            },
+            "mathematical_authority": false,
+            "name": "driver_eight_snapshot_cap",
+            "status": "passed"
+          },
+          {
+            "details": {
+              "cap_bytes": 8192,
+              "refused_payload_string_bytes": 8192,
+              "targets": [
+                "snapshot"
+              ]
+            },
+            "mathematical_authority": false,
+            "name": "driver_eight_KiB_snapshot_cap",
+            "status": "passed"
+          },
+          {
+            "details": {
+              "each_snapshot_bytes": 8192,
+              "exact_primary_identity": true,
+              "marker": {
+                "authority": false,
+                "complete_ledger_retained": false,
+                "mathematical_authority": false,
+                "metadata_error_type": "DriverDataError",
+                "phase_count": 1,
+                "profile": "owned-finalization-phase-instrumented-v1",
+                "resource_authority": false,
+                "schema": "owned-finalization-observation-unavailable-v1",
+                "snapshot_count": 8,
+                "status": "UNAVAILABLE"
+              },
+              "record_cap_bytes": 65536,
+              "snapshot_rows": 8,
+              "targets": [
+                "snapshot",
+                "record",
+                "call",
+                "attach"
+              ]
+            },
+            "mathematical_authority": false,
+            "name": "driver_sixtyfour_KiB_record_and_unavailable_marker",
+            "status": "passed"
+          },
+          {
+            "details": {
+              "scientific_authority": false,
+              "targets": [
+                "complete",
+                "record"
+              ]
+            },
+            "mathematical_authority": false,
+            "name": "driver_complete_record_detachment",
+            "status": "passed"
+          },
+          {
+            "details": {
+              "intervals_may_overlap": true,
+              "open_at_failure_rows": 2,
+              "returned_rows": 1,
+              "targets": [
+                "new_cold_observation",
+                "cold_phase_begin",
+                "cold_phase_end",
+                "cold_phase_failure",
+                "cold_observation_snapshot"
+              ],
+              "unstarted_rows_fabricated": 0
+            },
+            "mathematical_authority": false,
+            "name": "cold_nested_open_and_returned_phases",
+            "status": "passed"
+          },
+          {
+            "details": {
+              "refused_row": 33,
+              "retained_rows": 32,
+              "targets": [
+                "cold_phase_begin"
+              ],
+              "unknown_name_refused": true
+            },
+            "mathematical_authority": false,
+            "name": "cold_thirtytwo_row_and_unknown_name_limits",
+            "status": "passed"
+          },
+          {
+            "details": {
+              "aggregate_counters_only": true,
+              "callback_origin_categories_measured": false,
+              "fake_elapsed_ns": 300,
+              "later_work_excluded": true,
+              "overlapping_intervals_not_summed_as_disjoint": true,
+              "targets": [
+                "cold_count",
+                "cold_guard_finished",
+                "cold_observation_snapshot"
+              ]
+            },
+            "mathematical_authority": false,
+            "name": "cold_counter_guard_timing_snapshot_cutoff",
+            "status": "passed"
+          },
+          {
+            "details": {
+              "intentionally_suppressed_diagnostic_classes": [
+                "RuntimeError",
+                "ValueError",
+                "StopIteration"
+              ],
+              "invalid_clock_values": 3,
+              "targets": [
+                "cold_phase_begin",
+                "cold_phase_end",
+                "cold_observation_snapshot"
+              ]
+            },
+            "mathematical_authority": false,
+            "name": "cold_clock_faults_are_best_effort",
+            "status": "passed"
+          },
+          {
+            "details": {
+              "cap_bytes": 262144,
+              "targets": [
+                "cold_observation_snapshot",
+                "cold_failure_diagnostics"
+              ]
+            },
+            "mathematical_authority": false,
+            "name": "cold_twohundredfiftysix_KiB_observation_cap",
+            "status": "passed"
+          },
+          {
+            "details": {
+              "later_failure_rescued": false,
+              "retained_complete_driver_receipt": true,
+              "targets": [
+                "cold_phase_failure",
+                "bounded_driver_diagnostics",
+                "cold_failure_diagnostics"
+              ]
+            },
+            "mathematical_authority": false,
+            "name": "cold_late_failure_retains_driver_receipt_and_statistics",
+            "status": "passed"
+          },
+          {
+            "details": {
+              "driver_receipt_fabricated": false,
+              "targets": [
+                "bounded_driver_diagnostics"
+              ]
+            },
+            "mathematical_authority": false,
+            "name": "cold_error_attributes_retained_without_receipt",
+            "status": "passed"
+          },
+          {
+            "details": {
+              "cases": 3,
+              "metadata_error_types": [
+                "AttributeError",
+                "TypeError",
+                "ColdError"
+              ],
+              "targets": [
+                "bounded_driver_diagnostics",
+                "cold_failure_diagnostics"
+              ]
+            },
+            "mathematical_authority": false,
+            "name": "cold_malformed_or_oversized_driver_metadata_fallback",
+            "status": "passed"
+          },
+          {
+            "details": {
+              "cases": 2,
+              "metadata_error_types": [
+                "TypeError",
+                "TypeError"
+              ],
+              "targets": [
+                "cold_failure_diagnostics"
+              ]
+            },
+            "mathematical_authority": false,
+            "name": "cold_malformed_observation_metadata_fallback",
+            "status": "passed"
+          },
+          {
+            "details": {
+              "exact_active_error_classes": [
+                "RuntimeError",
+                "ValueError",
+                "StopIteration"
+              ],
+              "targets": [
+                "cold_failure_diagnostics"
+              ]
+            },
+            "mathematical_authority": false,
+            "name": "cold_active_error_identity_with_both_fallbacks",
+            "status": "passed"
+          },
+          {
+            "details": {
+              "absent_metadata_best_effort": true,
+              "explicit_diagnostic_errors": 2,
+              "targets": [
+                "cold_count",
+                "cold_phase_begin",
+                "cold_phase_end",
+                "cold_guard_finished",
+                "cold_phase_failure"
+              ]
+            },
+            "mathematical_authority": false,
+            "name": "cold_malformed_phase_and_counter_best_effort",
+            "status": "passed"
+          },
+          {
+            "details": {
+              "normal_pipeline_acceptance_tested": false,
+              "targets": [
+                "bounded_driver_diagnostics"
+              ],
+              "unavailable_marker_preserved": true
+            },
+            "mathematical_authority": false,
+            "name": "cold_driver_unavailable_marker_remains_unavailable",
+            "status": "passed"
+          },
+          {
+            "details": {
+              "diagnostic_clock": "StopIteration",
+              "exact_active_error_classes": [
+                "RuntimeError",
+                "ValueError",
+                "StopIteration"
+              ],
+              "targets": [
+                "cold_phase_failure",
+                "cold_failure_diagnostics"
+              ]
+            },
+            "mathematical_authority": false,
+            "name": "cold_failure_clock_cannot_replace_active_error",
+            "status": "passed"
+          }
+        ],
+        "completed_fixture_count": 27,
+        "expected_fixture_names": [
+          "driver_normal_call_and_detached_record",
+          "driver_nested_phase_intervals",
+          "driver_action_foreign_exception_identity",
+          "driver_entry_clock_foreign_exception_identity",
+          "driver_return_clock_error_after_action",
+          "driver_failure_clock_preserves_primary_error",
+          "driver_passive_snapshot_detachment",
+          "driver_snapshot_foreign_exception_identity",
+          "driver_declared_names_refuse_unknown",
+          "driver_sixteen_phase_cap",
+          "driver_eight_snapshot_cap",
+          "driver_eight_KiB_snapshot_cap",
+          "driver_sixtyfour_KiB_record_and_unavailable_marker",
+          "driver_complete_record_detachment",
+          "cold_nested_open_and_returned_phases",
+          "cold_thirtytwo_row_and_unknown_name_limits",
+          "cold_counter_guard_timing_snapshot_cutoff",
+          "cold_clock_faults_are_best_effort",
+          "cold_twohundredfiftysix_KiB_observation_cap",
+          "cold_late_failure_retains_driver_receipt_and_statistics",
+          "cold_error_attributes_retained_without_receipt",
+          "cold_malformed_or_oversized_driver_metadata_fallback",
+          "cold_malformed_observation_metadata_fallback",
+          "cold_active_error_identity_with_both_fallbacks",
+          "cold_malformed_phase_and_counter_best_effort",
+          "cold_driver_unavailable_marker_remains_unavailable",
+          "cold_failure_clock_cannot_replace_active_error"
+        ],
+        "full_pipeline_qualified": false,
+        "full_qualification_completed": false,
+        "mathematical_authority": false,
+        "resource_authority": false,
+        "schema": "finalization-instrumentation-helper-prefix-v1",
+        "stage": "result_final_checkpoint",
+        "status": "FAILED_OR_UNFINISHED"
+      },
+      "status": "passed"
+    }
+  ],
+  "qualification": {
+    "authority": false,
+    "diagnostics": [
+      {
+        "details": {
+          "action_calls": 1,
+          "clock_calls": 2,
+          "targets": [
+            "call",
+            "record"
+          ]
+        },
+        "mathematical_authority": false,
+        "name": "driver_normal_call_and_detached_record",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "disjoint_cost_sum_asserted": false,
+          "overlapping_intervals": true,
+          "rows": 2,
+          "targets": [
+            "call",
+            "record"
+          ]
+        },
+        "mathematical_authority": false,
+        "name": "driver_nested_phase_intervals",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "exact_error_classes": [
+            "RuntimeError",
+            "ValueError",
+            "StopIteration"
+          ],
+          "targets": [
+            "call",
+            "attach"
+          ]
+        },
+        "mathematical_authority": false,
+        "name": "driver_action_foreign_exception_identity",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "checkpoint": "initial observe",
+          "exact_error_classes": [
+            "RuntimeError",
+            "ValueError",
+            "StopIteration"
+          ],
+          "targets": [
+            "call",
+            "attach"
+          ]
+        },
+        "mathematical_authority": false,
+        "name": "driver_entry_clock_foreign_exception_identity",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "checkpoint": "post action observe",
+          "exact_error_classes": [
+            "RuntimeError",
+            "ValueError",
+            "StopIteration"
+          ],
+          "targets": [
+            "call",
+            "attach"
+          ]
+        },
+        "mathematical_authority": false,
+        "name": "driver_return_clock_error_after_action",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "exact_primary_classes": [
+            "RuntimeError",
+            "ValueError",
+            "StopIteration"
+          ],
+          "failure_clock_error": "StopIteration",
+          "targets": [
+            "call",
+            "attach"
+          ]
+        },
+        "mathematical_authority": false,
+        "name": "driver_failure_clock_preserves_primary_error",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "passive_statistics_calls": 1,
+          "storage_operations_calls": 0,
+          "targets": [
+            "snapshot",
+            "record"
+          ]
+        },
+        "mathematical_authority": false,
+        "name": "driver_passive_snapshot_detachment",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "reached_fault_sites": [
+            "RuntimeError:clock",
+            "RuntimeError:statistics",
+            "ValueError:clock",
+            "ValueError:statistics",
+            "StopIteration:clock",
+            "StopIteration:statistics"
+          ],
+          "targets": [
+            "snapshot",
+            "record"
+          ]
+        },
+        "mathematical_authority": false,
+        "name": "driver_snapshot_foreign_exception_identity",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "refused_names": 2,
+          "targets": [
+            "call",
+            "snapshot"
+          ]
+        },
+        "mathematical_authority": false,
+        "name": "driver_declared_names_refuse_unknown",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "accepted_rows": 16,
+          "refused_row": 17,
+          "targets": [
+            "call"
+          ]
+        },
+        "mathematical_authority": false,
+        "name": "driver_sixteen_phase_cap",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "accepted_snapshots": 8,
+          "refused_snapshot": 9,
+          "targets": [
+            "snapshot"
+          ]
+        },
+        "mathematical_authority": false,
+        "name": "driver_eight_snapshot_cap",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "cap_bytes": 8192,
+          "refused_payload_string_bytes": 8192,
+          "targets": [
+            "snapshot"
+          ]
+        },
+        "mathematical_authority": false,
+        "name": "driver_eight_KiB_snapshot_cap",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "each_snapshot_bytes": 8192,
+          "exact_primary_identity": true,
+          "marker": {
+            "authority": false,
+            "complete_ledger_retained": false,
+            "mathematical_authority": false,
+            "metadata_error_type": "DriverDataError",
+            "phase_count": 1,
+            "profile": "owned-finalization-phase-instrumented-v1",
+            "resource_authority": false,
+            "schema": "owned-finalization-observation-unavailable-v1",
+            "snapshot_count": 8,
+            "status": "UNAVAILABLE"
+          },
+          "record_cap_bytes": 65536,
+          "snapshot_rows": 8,
+          "targets": [
+            "snapshot",
+            "record",
+            "call",
+            "attach"
+          ]
+        },
+        "mathematical_authority": false,
+        "name": "driver_sixtyfour_KiB_record_and_unavailable_marker",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "scientific_authority": false,
+          "targets": [
+            "complete",
+            "record"
+          ]
+        },
+        "mathematical_authority": false,
+        "name": "driver_complete_record_detachment",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "intervals_may_overlap": true,
+          "open_at_failure_rows": 2,
+          "returned_rows": 1,
+          "targets": [
+            "new_cold_observation",
+            "cold_phase_begin",
+            "cold_phase_end",
+            "cold_phase_failure",
+            "cold_observation_snapshot"
+          ],
+          "unstarted_rows_fabricated": 0
+        },
+        "mathematical_authority": false,
+        "name": "cold_nested_open_and_returned_phases",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "refused_row": 33,
+          "retained_rows": 32,
+          "targets": [
+            "cold_phase_begin"
+          ],
+          "unknown_name_refused": true
+        },
+        "mathematical_authority": false,
+        "name": "cold_thirtytwo_row_and_unknown_name_limits",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "aggregate_counters_only": true,
+          "callback_origin_categories_measured": false,
+          "fake_elapsed_ns": 300,
+          "later_work_excluded": true,
+          "overlapping_intervals_not_summed_as_disjoint": true,
+          "targets": [
+            "cold_count",
+            "cold_guard_finished",
+            "cold_observation_snapshot"
+          ]
+        },
+        "mathematical_authority": false,
+        "name": "cold_counter_guard_timing_snapshot_cutoff",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "intentionally_suppressed_diagnostic_classes": [
+            "RuntimeError",
+            "ValueError",
+            "StopIteration"
+          ],
+          "invalid_clock_values": 3,
+          "targets": [
+            "cold_phase_begin",
+            "cold_phase_end",
+            "cold_observation_snapshot"
+          ]
+        },
+        "mathematical_authority": false,
+        "name": "cold_clock_faults_are_best_effort",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "cap_bytes": 262144,
+          "targets": [
+            "cold_observation_snapshot",
+            "cold_failure_diagnostics"
+          ]
+        },
+        "mathematical_authority": false,
+        "name": "cold_twohundredfiftysix_KiB_observation_cap",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "later_failure_rescued": false,
+          "retained_complete_driver_receipt": true,
+          "targets": [
+            "cold_phase_failure",
+            "bounded_driver_diagnostics",
+            "cold_failure_diagnostics"
+          ]
+        },
+        "mathematical_authority": false,
+        "name": "cold_late_failure_retains_driver_receipt_and_statistics",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "driver_receipt_fabricated": false,
+          "targets": [
+            "bounded_driver_diagnostics"
+          ]
+        },
+        "mathematical_authority": false,
+        "name": "cold_error_attributes_retained_without_receipt",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "cases": 3,
+          "metadata_error_types": [
+            "AttributeError",
+            "TypeError",
+            "ColdError"
+          ],
+          "targets": [
+            "bounded_driver_diagnostics",
+            "cold_failure_diagnostics"
+          ]
+        },
+        "mathematical_authority": false,
+        "name": "cold_malformed_or_oversized_driver_metadata_fallback",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "cases": 2,
+          "metadata_error_types": [
+            "TypeError",
+            "TypeError"
+          ],
+          "targets": [
+            "cold_failure_diagnostics"
+          ]
+        },
+        "mathematical_authority": false,
+        "name": "cold_malformed_observation_metadata_fallback",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "exact_active_error_classes": [
+            "RuntimeError",
+            "ValueError",
+            "StopIteration"
+          ],
+          "targets": [
+            "cold_failure_diagnostics"
+          ]
+        },
+        "mathematical_authority": false,
+        "name": "cold_active_error_identity_with_both_fallbacks",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "absent_metadata_best_effort": true,
+          "explicit_diagnostic_errors": 2,
+          "targets": [
+            "cold_count",
+            "cold_phase_begin",
+            "cold_phase_end",
+            "cold_guard_finished",
+            "cold_phase_failure"
+          ]
+        },
+        "mathematical_authority": false,
+        "name": "cold_malformed_phase_and_counter_best_effort",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "normal_pipeline_acceptance_tested": false,
+          "targets": [
+            "bounded_driver_diagnostics"
+          ],
+          "unavailable_marker_preserved": true
+        },
+        "mathematical_authority": false,
+        "name": "cold_driver_unavailable_marker_remains_unavailable",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "diagnostic_clock": "StopIteration",
+          "exact_active_error_classes": [
+            "RuntimeError",
+            "ValueError",
+            "StopIteration"
+          ],
+          "targets": [
+            "cold_phase_failure",
+            "cold_failure_diagnostics"
+          ]
+        },
+        "mathematical_authority": false,
+        "name": "cold_failure_clock_cannot_replace_active_error",
+        "status": "passed"
+      }
+    ],
+    "expected_fixture_names": [
+      "driver_normal_call_and_detached_record",
+      "driver_nested_phase_intervals",
+      "driver_action_foreign_exception_identity",
+      "driver_entry_clock_foreign_exception_identity",
+      "driver_return_clock_error_after_action",
+      "driver_failure_clock_preserves_primary_error",
+      "driver_passive_snapshot_detachment",
+      "driver_snapshot_foreign_exception_identity",
+      "driver_declared_names_refuse_unknown",
+      "driver_sixteen_phase_cap",
+      "driver_eight_snapshot_cap",
+      "driver_eight_KiB_snapshot_cap",
+      "driver_sixtyfour_KiB_record_and_unavailable_marker",
+      "driver_complete_record_detachment",
+      "cold_nested_open_and_returned_phases",
+      "cold_thirtytwo_row_and_unknown_name_limits",
+      "cold_counter_guard_timing_snapshot_cutoff",
+      "cold_clock_faults_are_best_effort",
+      "cold_twohundredfiftysix_KiB_observation_cap",
+      "cold_late_failure_retains_driver_receipt_and_statistics",
+      "cold_error_attributes_retained_without_receipt",
+      "cold_malformed_or_oversized_driver_metadata_fallback",
+      "cold_malformed_observation_metadata_fallback",
+      "cold_active_error_identity_with_both_fallbacks",
+      "cold_malformed_phase_and_counter_best_effort",
+      "cold_driver_unavailable_marker_remains_unavailable",
+      "cold_failure_clock_cannot_replace_active_error"
+    ],
+    "full_pipeline_qualified": false,
+    "limitations": [
+      "Finite fake-boundary/passive-statistics helper checks only; Source authentication is outer-worker responsibility.",
+      "No run_receiver_owned, _owned_atomic_output, cold main, saved-evidence verifier, real Store/Arena/inverse/Model/search/Native call.",
+      "No full-pipeline retention, resource fit, real clock/callback cadence, proof validity or speed qualification.",
+      "Cold best-effort metadata helpers are not general metadata-schema validators.",
+      "All fake timing intervals are synthetic and overlapping phases are not additive costs.",
+      "Clock restoration on externally interrupted failure is a finally obligation additionally checked by the outer worker."
+    ],
+    "limits": {
+      "cold_metadata_bytes": 262144,
+      "cold_phase_rows": 32,
+      "driver_phase_rows": 16,
+      "driver_record_bytes": 65536,
+      "driver_snapshot_bytes": 8192,
+      "driver_snapshots": 8,
+      "fixture_groups": 27,
+      "result_bytes": 131072
+    },
+    "mathematical_authority": false,
+    "mock_slot": {
+      "code_defaults_or_callable_body_mutations": false,
+      "name": "cold._NOW_NS",
+      "restored": true
+    },
+    "resource_authority": false,
+    "schema": "finalization-instrumentation-helper-qualification-v1",
+    "source_pins": {
+      "cold": {
+        "bytes": 72712,
+        "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/owned_evidence_cold_v6.py",
+        "sha256": "e1101723f559ae2dfecc030470a3e6e9e79c71b10c416c2bcdfc8f2f5b101d43"
+      },
+      "driver": {
+        "bytes": 120766,
+        "path": "/private/tmp/gcts-finalization-instrumentation-ROOT-20261019/owned_evidence_receiver_driver_v6.py",
+        "sha256": "e8ff0690472140e510f8ffab383be8c22791da6b27ef0a27fda013ea48e5f5cf"
+      }
+    },
+    "status": "FINITE_INSTRUMENTATION_HELPERS_QUALIFIED"
+  },
+  "resource_scope": "Standalone helper worker only: all positive worker/header/knownexit/whole outer checks before180 seconds; final outer terminal before210. Observer225 is failure-only cleanup. Darwin worker posthoc highwater <=1GiB, no Native. Complete ordinary physical/logical outputs <=128MiB including outer9MiB reservations, each log <=4MiB. Outer/observer RSS excluded; no live RSS enforcement.",
+  "schema": "GCTS-finalization-helper-public-summary-v1",
+  "scientific_acceptance": false,
+  "trust_scope": "Trusted exclusive-owner raw Source/origin custody, shallow function/class/code/globals/default identity checks, finite process/network/dlopen audit denylist. Bundled ctypes startup is explicit, raw-pinned and charged before hook; rest of standard runtime is trusted. No adversarial memory or all-callable seal.",
+  "worker_highwater_bytes": 51986432
+}
