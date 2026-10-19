@@ -1,0 +1,272 @@
+{
+  "Reader_calls": 0,
+  "Root_admission": {
+    "bytes": 8712,
+    "path": "/private/tmp/gcts-mp-schema-shadow-ROOT-20261019/ROOT-actual-admission-v1.json",
+    "sha256": "5f9a35737e2a4f13fd5196ecf8fbb2316f4664d922d0a924d6934bc37b8b9543"
+  },
+  "actual_execution_authorized": false,
+  "audit": {
+    "bytes": 169515,
+    "path": "/private/tmp/gcts-mp-schema-peer-20261019/saved-evidence-audit-v1.json",
+    "sha256": "2fdcd677d00a5af0bdc46db4f355162d2aa673915120e32d9f4bb5c041285793"
+  },
+  "author_identity": "/root",
+  "authorization": {
+    "bytes": 5957,
+    "path": "/private/tmp/gcts-mp-schema-shadow-ROOT-20261019/plans/authorizations/mp-schema-shadow-001-fixed-bulk-ROOT-20261019-v1.json",
+    "sha256": "1522f89175a81a3834770244cab75ec73eef8ac41fe33fcf9c9db435a165bce1"
+  },
+  "authorized_index": {
+    "bytes": 6805,
+    "path": "/private/tmp/gcts-mp-schema-shadow-ROOT-20261019/plans/authorized-index-v1.json",
+    "sha256": "3aec0042c73374883b0564445c5d24e729a294db23505b798466d5a81ce14eb5"
+  },
+  "case_declaration": {
+    "bytes": 4278,
+    "path": "/private/tmp/gcts-mp-schema-shadow-ROOT-20261019/case-declaration-v1.json",
+    "sha256": "86ac3cfc55b363b3190816fe3d50959e1fb254c6b842e7ec1ced0d48afbfd525"
+  },
+  "check_count": 1131,
+  "codec_calls": 0,
+  "cohort_closure": {
+    "bytes": 335,
+    "path": "/private/tmp/gcts-mp-schema-shadow-ROOT-20261019/ROOT-cohort-closure-v1.json",
+    "sha256": "2d8303bc96f8ef71216f5417cd46da836c5e0c10cd5d94c05144b6a01522bdde"
+  },
+  "compiler_calls": 0,
+  "complete_preimage_hashes": {
+    "complete_semantic_compiler": {
+      "bytes": 4280,
+      "sha256": "28f330ed6763f088e06306717ea6d53251b2987a5d8637c57140daedfa6852b2"
+    },
+    "complete_semantic_initial_state": {
+      "bytes": 2238,
+      "sha256": "4029763a48810949587a789daa387f2d09f06837544584f411c53d7747507bfb"
+    },
+    "complete_semantic_inventory": {
+      "bytes": 19394,
+      "sha256": "8b88ed7050935181c43a807fe7f81fde9dd06881a370483b719226fd0515c919"
+    },
+    "complete_semantic_model": {
+      "bytes": 32242696,
+      "sha256": "5d43672118e25671e40d8be92d98d60e8c3140ebf1b0e54b22d1c7702c5b784f"
+    },
+    "whole_all_component_stage_packets": {
+      "bytes": 744743,
+      "sha256": "ed55de76df57f7859f5df492ef2c5cc82671f8858cc16733bb7efea61230501b"
+    },
+    "whole_family_census": {
+      "bytes": 98493,
+      "sha256": "befcc886b4f9bc4213a57781c4013084035e79d3611e33f7d123dbbc9b1c9ca0"
+    },
+    "whole_finite_fixtures": {
+      "bytes": 184126,
+      "sha256": "749c0a0ba9b8aa62ef7ac4471e978b839244beee956a8de3e95841d192d72f7b"
+    },
+    "whole_generic_inline": {
+      "bytes": 144379,
+      "sha256": "5281594ea0b3dcefa6b409b3ad6cdd5a1b2cc81721b09b1420d1962cf6322e1e"
+    },
+    "whole_ground_packets": {
+      "bytes": 300736,
+      "sha256": "bfa8a183905e1b8f769449e9bc250ceacf97b856b51518180e3880596bcb0486"
+    },
+    "whole_saved_point_union": {
+      "bytes": 32123,
+      "sha256": "2ff056a7a43ae4b8f9bc3a52aec9984288456cf590395c0f9ceba2aba3b50592"
+    }
+  },
+  "current_Source_subjects": {
+    "base_driver": {
+      "bytes": 70193,
+      "path": "/private/tmp/gcts-adaptive-groups-ROOT-source-20261019/inventory_certification_receiver_driver_v3.py",
+      "sha256": "16186e8a0c3906be90d716145cff3d52830ab0cd1f12a0fd366342abf6e55912"
+    },
+    "cold": {
+      "bytes": 42669,
+      "path": "/private/tmp/gcts-mp-schema-shadow-intake-ROOT-source-20261019/mp_schema_shadow_cold_v3.py",
+      "sha256": "5a9fae2f4747bc3049c408394a497b276ba15685b90469c44b02b4ecdf0282e0"
+    },
+    "mp_schema_certificate": {
+      "bytes": 26687,
+      "path": "/private/tmp/gcts-mp-schema-source-20261019/mp_schema_certificate_v1.py",
+      "sha256": "7351d5954763e8b671411a78a821e5cc560ac1af19477a9491da573a735d2ae4"
+    },
+    "mp_schema_shadow_qualification": {
+      "bytes": 19493,
+      "path": "/private/tmp/gcts-mp-schema-shadow-intake-ROOT-source-20261019/mp_schema_shadow_qualification_v3.py",
+      "sha256": "5e3b715242b40941dc918e623746ba90a946d12fc3f3158b99ff3a4115e38694"
+    },
+    "observer": {
+      "bytes": 4965,
+      "path": "/private/tmp/gcts-mp-schema-shadow-intake-ROOT-source-20261019/observe_mp_schema_shadow_runner_v3.py",
+      "sha256": "af5704fd80f47e7faa58db52a93cfa1c0ed595a414ec02b3fb9bb974f3aa1d9d"
+    },
+    "once": {
+      "bytes": 36338,
+      "path": "/private/tmp/gcts-mp-schema-shadow-intake-ROOT-source-20261019/mp_schema_shadow_once_runner_v3.py",
+      "sha256": "d6abb164ef920f1fcab5f0efc6499762474f2e7a82d796a2ac4ea414ae6fedf8"
+    },
+    "registry": {
+      "bytes": 19364,
+      "path": "/private/tmp/gcts-adaptive-groups-ROOT-source-20261019/semantic_inventory_oracle_v3.py",
+      "sha256": "3abdba011e81344ba8d260ee665c980eb860326e36abfd50ff35750f3a12c6ff"
+    }
+  },
+  "data_review_passed": true,
+  "findings": [
+    {
+      "finding": "All original4 policy families and10 exact ground definitions/interfaces/native blocks remain; current Native query15 contains the whole registry and full current theory. All17 Native request/preimage/input/output metadata join exact completed transport stages. Query16 is a distinct fresh final whole request, with the actual12-row selected word and all-and-only2 used original block definitions.",
+      "id": "FULL_ORIGINAL_NATIVE_CONTROL"
+    },
+    {
+      "finding": "Complete compiler fields except explicit seconds, complete original registry definitions/interfaces/native blocks, every model field except compile_seconds and all initial-state fields are literal-equal to the immutable prior control. Full selected keys and proof word are also equal. This is direct full JSON comparison with retained preimage hashes, not digest-only equality or performance equivalence.",
+      "id": "PRIOR_SEMANTIC_PREIMAGE_EQUALITY"
+    },
+    {
+      "finding": "Exact finite coverage4families/10ground/3generic/19fixtures,42 retained stage packets and152950 charged check callbacks. Three MP/call certificates revalidate; the GEN family is explicitly NOT_ELIGIBLE and kept in the original policy. All10 ground primitive words/interfaces are exactly the fresh full-Native registry bodies. Generic child aliases preserve repeated ordered [0,0], derived-MP source2, and exact final-result reification.",
+      "id": "FINITE_SHADOW_SUCCESS"
+    },
+    {
+      "finding": "Eight fixed malformed results, changed Source/semantic epochs, direct returned-packet mutation rejection/fresh recovery, three exact callback identity observations and private-work1 UNKNOWN are present. Only expected quota UNKNOWN occurs in the completed stage list. Cyclic fixture is specifically cyclic-container rejection and does not demonstrate family-ID DAG guard coverage. Error identity flags rely on exact reviewed fixture Source plus saved observation; they are not serialized exception objects.",
+      "id": "NEGATIVE_AND_OWNERSHIP_SCOPE"
+    },
+    {
+      "finding": "Literal saved union of60 original point tiles covers all60 required roots at exact encoded unit12 with all2192 assigned marks consistent; C/G/ordered source packets decode to the fresh Native word. Full initial snapshot hash matches recorded engine/root-restored fingerprints. Full literal post-rollback graph is not exported; no stronger all-state rollback or all-input oracle claim is made.",
+      "id": "POINT_AND_RESTORATION"
+    },
+    {
+      "finding": "Exact once subject/grant/max1/consumed/one launch/current24base+2Shadow originals/owned paths/import origins and all41Z3 raw pins join. Normal worker/Native/runner exit0, explicit wait4 receipts, EOF/log/group absence and no signals/reappearance are retained. Known worker exit49.411324958s, terminal50.890808958s; separate Darwin peaks737329152+13631488=750960640B,716.171875MiB. Both full outputs total38029149B; literal canonical bytes and before/after base-body checksum match.",
+      "id": "WHOLE_PROFILE_AND_CUSTODY"
+    },
+    {
+      "finding": "Schema sidecar and all returned/certificate authority flags remain false. Original full Native admission, Model/search and final fresh Native gates precede Shadow. Shadow structural evidence has no Model permission, pruning, new axiom or target-proof authority; no schema bypass is activated.",
+      "id": "NO_SCHEMA_PERMISSION"
+    }
+  ],
+  "fixture_calls": 0,
+  "independent_obligations": {
+    "bytes": 23740,
+    "path": "/private/tmp/gcts-mp-schema-peer-20261019/soundness-and-qualification-obligations-v1.json",
+    "sha256": "c1603d97d1bc45397196a231d1ed1d89204d8ae527e8a1715e01f1706afa6315"
+  },
+  "kernel_calls": 0,
+  "limitations": [
+    "This is a retained ordinary JSON/raw-byte/stat/hash audit after the authoritative terminal window. No scientific project/Native/logic/kernel/Model/compiler/solver/search/Reader/renderer/fixture or codec function was imported or evaluated, and no proof or scientific experiment was replayed. Opaque native gzip/code/input/output were raw-hashed only. Literal saved point arithmetic and command/reference/preimage comparisons do not execute a mathematical kernel or Native program.",
+    "Reviewer authored inherited outer/broker/earlier driver/current support helper+symbolic and prior benchmark/CASE/checker/diagnoses, and the predeclared schema obligation note; current Root intake/wrapper and Library certifier were separately Source-reviewed. This is independent of Root execution/admission and current component authors but is not a fresh independent Source certificate of inherited own components. Same reviewer covers several disclosed Source scopes; role labels are not distinct people.",
+    "The conditional soundness argument remains human/unformalized and narrowly meta/imp assumption/MP/certified calls. Finite actual correspondence and three generic edge cases do not establish universal kernel correctness, all substitutions, all dependency DAGs, every malicious input, arbitrary callback interleaving or Source-to-historical-microcode compiler correctness. GEN/eigenvariable/binder templates remain noneligible and independently Native controlled.",
+    "Callback identity is observed by the exact reviewed fixture at its reached authentic callback; JSON stores an identity assertion, not the live exception object. Cyclic-container fixture never reaches an active family-ID DAG cycle. Private quota UNKNOWN has no input-custody completion or partial certificate; normal UNKNOWN-prefix and thrown-stop retention behavior follows Source review but was not exercised by this all-positive cohort beyond the declared quota fixture.",
+    "Original result unchanged means its complete bytes and literal preimage were unchanged before/after Shadow in this new run. Its Source epoch and timing metadata differ from old results; only the explicit complete semantic projections and literal proof/selected keys are directly equal to the old control. Stage packets can repeat one returned generic result and are not unique module-call counts.",
+    "Native input/output hash joins establish exact saved request/transport custody, not independent decoding of binary tape or fresh mathematical rechecking. The final input/output files retain only the last query; earlier hashes survive in exact matching per-record/per-stage metadata. No earlier raw wire image is invented. Final proof uses2 of10 definitions but full10 were freshly admitted before Model.",
+    "Resource gate is the original Source-entry180positive work/output/known worker exit and210external terminal, conservative sum of separate Darwin worker+Native highwaters1GiB, combined128MiB result and original log/native/search caps. This is not simultaneous live RAM or OS enforcement. Observer/controller RAM and pre-Source-entry observer/interpreter prelude are separate. Full initial/Python/Source custody uses trusted OS metadata/captured-callable/loader assumptions, not formal continuous sealing or arbitrary mutable-data defense.",
+    "Current normal aggregate-profile pass follows the reviewed final outer whole-Python/Source raw loop; older/memory-failed diagnostics that skip that loop are not upgraded. Final process absence is retained Root ps metadata and once group probes, not a new live process probe by this reviewer. Synchronous filesystem blocking and loader/OS trust limits remain.",
+    "This is a familiar case001 qualification, not a new theorem, broad benchmark, automatic schema extraction proof, speed advantage, statistical result, GCTS-specific superiority or RL. All original actuals remain immutable; no new grant/launch/retry or schema-only admission is authorized. Root scientific/publication/goal classification remains separate."
+  ],
+  "mismatch_count": 0,
+  "model_calls": 0,
+  "module_evaluations": 0,
+  "native_calls": 0,
+  "observations": {
+    "Native_queries": 17,
+    "Native_query_purposes": {
+      "check_generated_lemma_definitions": 1,
+      "first_order_scheme": 3,
+      "first_order_tautology": 11,
+      "first_order_theory_admission": 1,
+      "fresh_quantified_receiver_final": 1
+    },
+    "Shadow_elapsed_seconds": 6.119532791,
+    "Shadow_status": "SHADOW_QUALIFICATION_PASSED",
+    "check_callbacks": 152950,
+    "combined_bytes": 38029149,
+    "conservative_sum_MiB": 716.171875,
+    "conservative_sum_bytes": 750960640,
+    "eligible_certificates": 3,
+    "families": 4,
+    "fixtures": 19,
+    "generic_inline_cases": 3,
+    "ineligible_GEN": 1,
+    "model_candidates": 10078,
+    "native_highwater_bytes": 13631488,
+    "observer_instrument_elapsed_seconds": 50.9134585,
+    "original_ground_definitions": 10,
+    "proof_rows": 12,
+    "result_bytes": 36481858,
+    "retained_stage_packets": 42,
+    "search_attempts": 60,
+    "search_nodes": 61,
+    "selected_point_tiles": 60,
+    "sidecar_bytes": 1547291,
+    "status": "native_proof_discovered",
+    "terminal_elapsed_seconds": 50.890808958,
+    "union_assigned_marks": 2192,
+    "worker_elapsed_seconds": 49.411324958,
+    "worker_highwater_bytes": 737329152
+  },
+  "once_plan": {
+    "bytes": 2749,
+    "path": "/private/tmp/gcts-mp-schema-shadow-ROOT-20261019/plans/runner-plans/mp-schema-shadow-001-fixed-bulk-ROOT-20261019-v1.json",
+    "sha256": "7bb4ea4b5b6ac12368ff7541963808d9af9f2c3ac14a45f4aa01b9af27400c61"
+  },
+  "prior_whole_case001_result": {
+    "bytes": 36482958,
+    "path": "/private/tmp/gcts-mp-schema-shadow-ROOT-20261019/prior-case001-fixed-bulk-result.json",
+    "sha256": "4e02917b4dffec237fbb13f5cc6949c8da1cbed5976e41914cef466baf053184"
+  },
+  "project_imports": 0,
+  "raw_pin_count": 127,
+  "renderer_calls": 0,
+  "resource_custody_review_passed": true,
+  "review_Source": {
+    "bytes": 50173,
+    "path": "/private/tmp/gcts-mp-schema-peer-20261019/audit_saved_evidence_v1.py",
+    "sha256": "2256927133f35a901412df7f6482e203b187c93165d460c42974e4124584fae2"
+  },
+  "reviewer_identity": "/root/conventional_control_review",
+  "runner_receipt": {
+    "bytes": 67237,
+    "path": "/private/tmp/gcts-mp-schema-shadow-ROOT-20261019/actual-v1/runner-receipt.json",
+    "sha256": "3e9231c9ca468d58e2364576121182b0bbf58ddbc1c58235fcf7754c7f757077"
+  },
+  "runtime_closure": {
+    "bytes": 74506,
+    "path": "/private/tmp/gcts-mp-schema-shadow-ROOT-20261019/runtime-closure-v1.json",
+    "sha256": "7e98daead0140a5f10b9f8d6e7e5318d966052fba4c769a01c2e27b3b9b6357f"
+  },
+  "saved_data_only": true,
+  "saved_evidence_review_passed": true,
+  "schema": "mp-schema-shadow-saved-evidence-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scientific_replays": 0,
+  "scope": "Exact saved bytes, original/owned Source/runtime/once/resource custody and literal Native/point/SHADOW correspondence; no Native replay or independent kernel soundness theorem",
+  "search_calls": 0,
+  "solver_calls": 0,
+  "source_only": false,
+  "terminal_observation": {
+    "bytes": 1598,
+    "path": "/private/tmp/gcts-mp-schema-shadow-ROOT-20261019/plans/runner-plans/mp-schema-shadow-001-fixed-bulk-ROOT-20261019-v1-terminal-observation/terminal.json",
+    "sha256": "6e0ec7e21563af9d8836062e916604ec4c41716ee6f6b1416537f2e77e2ada52"
+  },
+  "whole_result": {
+    "bytes": 36481858,
+    "path": "/private/tmp/gcts-mp-schema-shadow-ROOT-20261019/actual-v1/result.json",
+    "sha256": "03bc53f5a6203a0e802eb3a7d756832cd5986cbfa3fb886b64ac0f7736d33190"
+  },
+  "whole_schema_shadow": {
+    "bytes": 1547291,
+    "path": "/private/tmp/gcts-mp-schema-shadow-ROOT-20261019/actual-v1/schema-shadow-result.json",
+    "sha256": "37a2a1b8d98d2df990fa8345eb0933c7b6cad276753c7c702ec056d8289154ad"
+  },
+  "worker_plan": {
+    "bytes": 18082,
+    "path": "/private/tmp/gcts-mp-schema-shadow-ROOT-20261019/plans/worker-plans/mp-schema-shadow-001-fixed-bulk-ROOT-20261019-v1.json",
+    "sha256": "6ea2ee8295031cd14d8a50cfbfa6997235a97bc4ae4c53491515e5c82c6eb9de"
+  },
+  "worker_receipt": {
+    "bytes": 50774,
+    "path": "/private/tmp/gcts-mp-schema-shadow-ROOT-20261019/actual-v1/worker-receipt.json",
+    "sha256": "76206105ef5e1519a009896d89ff594bd36e443dc30bb0ced38c7a318d4da3fb"
+  }
+}

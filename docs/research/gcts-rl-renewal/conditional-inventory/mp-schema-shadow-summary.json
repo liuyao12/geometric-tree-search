@@ -1,0 +1,162 @@
+{
+  "GCTS_RL_advantage_established": false,
+  "RL_training": false,
+  "Root_admission": {
+    "bytes": 8712,
+    "path": "/private/tmp/gcts-mp-schema-shadow-ROOT-20261019/ROOT-actual-admission-v1.json",
+    "sha256": "5f9a35737e2a4f13fd5196ecf8fbb2316f4664d922d0a924d6934bc37b8b9543"
+  },
+  "check_callbacks": 152950,
+  "combined_result_bytes": 38029149,
+  "conservative_separate_peak_sum_bytes": 750960640,
+  "coverage": {
+    "families_returned": 4,
+    "fixtures_returned": 19,
+    "generic_inline_completed": 3,
+    "ground_packets_returned": 10
+  },
+  "date": "2026-10-19",
+  "family_dispositions": [
+    {
+      "dependencies": [],
+      "id": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+      "parameters": 2,
+      "status": "ELIGIBLE_CERTIFICATE"
+    },
+    {
+      "dependencies": [],
+      "id": "95b300a69e1d6ffc5ac2c404baed707bd84be1e37b4ae397836766c0ecdc39da",
+      "parameters": 3,
+      "status": "ELIGIBLE_CERTIFICATE"
+    },
+    {
+      "dependencies": [],
+      "id": "8a035116a4e2ca64655bef36a63030f6267acd58a97630881b6255b1e3a460d5",
+      "parameters": 0,
+      "status": "NOT_ELIGIBLE"
+    },
+    {
+      "dependencies": [
+        "95b300a69e1d6ffc5ac2c404baed707bd84be1e37b4ae397836766c0ecdc39da"
+      ],
+      "id": "4d18d55b21511961a09163eb1bb1fca35e64f17062c1d8aa97c384806916d166",
+      "parameters": 5,
+      "status": "ELIGIBLE_CERTIFICATE"
+    }
+  ],
+  "fresh_native_control_proof": true,
+  "full_native_bulk_ground_definitions": 10,
+  "full_prior_semantic_literals": {
+    "compiler": {
+      "bytes": 4280,
+      "full_current_prior_literal_equal": true,
+      "sha256": "28f330ed6763f088e06306717ea6d53251b2987a5d8637c57140daedfa6852b2"
+    },
+    "initial": {
+      "bytes": 2238,
+      "full_current_prior_literal_equal": true,
+      "sha256": "4029763a48810949587a789daa387f2d09f06837544584f411c53d7747507bfb"
+    },
+    "inventory": {
+      "bytes": 19394,
+      "full_current_prior_literal_equal": true,
+      "sha256": "8b88ed7050935181c43a807fe7f81fde9dd06881a370483b719226fd0515c919"
+    },
+    "model": {
+      "bytes": 32242696,
+      "full_current_prior_literal_equal": true,
+      "sha256": "5d43672118e25671e40d8be92d98d60e8c3140ebf1b0e54b22d1c7702c5b784f"
+    }
+  },
+  "goal_complete": false,
+  "independent_review": {
+    "bytes": 16915,
+    "path": "/private/tmp/gcts-mp-schema-peer-20261019/peer-saved-evidence-review-v1.json",
+    "sha256": "3dd22909df5cfcde422a52b8d0fa0c0aeac7cede8937f78def713ed7d3fa4ef2"
+  },
+  "limitations": [
+    "Finite familiar control qualification; no newly discovered theorem or search-performance comparison.",
+    "Original Native bulk ground admission and final proof checking remained mandatory. No schema bypass or Model permission.",
+    "Soundness is a reviewed unformalized conditional argument for the narrow fragment, not a Source-to-Native formal theorem.",
+    "Generic inline fixtures are author-supplied plumbing tests, never target proof routes. Cyclic-container fixture does not dynamically exercise every family-DAG guard.",
+    "Saved packet entries are retained stages, not unique module-call counts. Native microsteps and schema check callbacks are distinct units.",
+    "Only last Native wire files survive on disk; earlier input/output hashes are joined to broker records, not decoded or regenerated.",
+    "Memory gate is a conservative sum of separate Darwin worker/Native highwaters; observer/controller and posthoc inspection are outside the timed scientific-worker gate."
+  ],
+  "native_queries": 17,
+  "new_theorems": 0,
+  "qualification_only": true,
+  "recursive_proposer_enabled": false,
+  "retained_component_stage_entries": 42,
+  "schema": "mp-schema-shadow-public-summary-v1",
+  "schema_admission_lane_enabled": false,
+  "scientific_actuals": 1,
+  "shadow_interval_seconds": 6.119532791,
+  "status": "SHADOW_QUALIFICATION_PASSED",
+  "target": {
+    "id": "prospective-fol-20261018-001",
+    "instantiation_rounds": 2,
+    "length": 12,
+    "scope": "Authored prospective synthetic first-order assertion; closed axioms and closed target, no open root assumptions or schemas. Input only, no proof/route/instance hints; twelve rows and two frozen catalog rounds. All runtime outcomes unmeasured.",
+    "target": [
+      "pred",
+      "P",
+      [
+        [
+          "fun",
+          "b",
+          []
+        ]
+      ]
+    ],
+    "theory": {
+      "axioms": {
+        "a0": [
+          "eq",
+          [
+            "fun",
+            "a",
+            []
+          ],
+          [
+            "fun",
+            "b",
+            []
+          ]
+        ],
+        "a1": [
+          "pred",
+          "P",
+          [
+            [
+              "fun",
+              "a",
+              []
+            ]
+          ]
+        ]
+      },
+      "functions": {
+        "a": 0,
+        "b": 0
+      },
+      "predicates": {
+        "P": 1
+      },
+      "schemas": []
+    },
+    "title": "Prospective first-order assertion 01"
+  },
+  "terminal_seconds": 50.890808958,
+  "trust": "Original full Native ground inventory and final proof checking mandatory. Certificate/qualifier have no Model or Native permission.",
+  "universal_soundness_formalized": false,
+  "whole_region": {
+    "assigned_mark_points": 2192,
+    "decoded_rows": 12,
+    "required_points": 60,
+    "selected_placements": 60,
+    "status": "VERIFIED_WHOLE_FINITE_POINT_REGION",
+    "union_sha256": "2ff056a7a43ae4b8f9bc3a52aec9984288456cf590395c0f9ceba2aba3b50592"
+  },
+  "worker_seconds": 49.411324958
+}

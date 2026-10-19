@@ -1,0 +1,257 @@
+{
+  "GCTS_RL_advantage_established": false,
+  "Native_calls": 0,
+  "ROOT_resource_admitted": true,
+  "admission_checks_passed": true,
+  "all10_primitive_bodies_literal_equal_to_fresh_Native": true,
+  "authorized_index": {
+    "bytes": 6805,
+    "path": "/private/tmp/gcts-mp-schema-shadow-ROOT-20261019/plans/authorized-index-v1.json",
+    "sha256": "3aec0042c73374883b0564445c5d24e729a294db23505b798466d5a81ce14eb5"
+  },
+  "before_after_literal": {
+    "body_bytes": 36481857,
+    "body_sha256": "a218068b1be380370e4327e6cdd92acb4a7f07474afdfae4a6814f4dce793273",
+    "chunks": 17392718,
+    "literal_bytes_equal": true
+  },
+  "block_custody": {
+    "all_and_only_recursive_dependencies": true,
+    "all_literal_registered": true,
+    "supplied_names": [
+      "lemma1696b5c541069ea05eefbfe62f7a08ed5924b032e5aed9eaa59beb9395cb4317",
+      "lemmae5cc6400c2dec1f53e31864fc169b5e8964c4b9e49e5664338f7fec66b9bd1b6"
+    ]
+  },
+  "check_callbacks": 152950,
+  "cohort_closure": {
+    "bytes": 335,
+    "path": "/private/tmp/gcts-mp-schema-shadow-ROOT-20261019/ROOT-cohort-closure-v1.json",
+    "sha256": "2d8303bc96f8ef71216f5417cd46da836c5e0c10cd5d94c05144b6a01522bdde"
+  },
+  "combined_result_bytes": 38029149,
+  "coverage": {
+    "families_returned": 4,
+    "fixtures_returned": 19,
+    "generic_inline_completed": 3,
+    "ground_packets_returned": 10
+  },
+  "family_dispositions": [
+    {
+      "dependencies": [],
+      "id": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+      "parameters": 2,
+      "status": "ELIGIBLE_CERTIFICATE"
+    },
+    {
+      "dependencies": [],
+      "id": "95b300a69e1d6ffc5ac2c404baed707bd84be1e37b4ae397836766c0ecdc39da",
+      "parameters": 3,
+      "status": "ELIGIBLE_CERTIFICATE"
+    },
+    {
+      "dependencies": [],
+      "id": "8a035116a4e2ca64655bef36a63030f6267acd58a97630881b6255b1e3a460d5",
+      "parameters": 0,
+      "status": "NOT_ELIGIBLE"
+    },
+    {
+      "dependencies": [
+        "95b300a69e1d6ffc5ac2c404baed707bd84be1e37b4ae397836766c0ecdc39da"
+      ],
+      "id": "4d18d55b21511961a09163eb1bb1fca35e64f17062c1d8aa97c384806916d166",
+      "parameters": 5,
+      "status": "ELIGIBLE_CERTIFICATE"
+    }
+  ],
+  "final_native_input_sha256": "a94031145884037d9b7ee2f40a75c3866658da736c66430d0cd55f58de855625",
+  "final_native_output_sha256": "b4a0285e38bd305a548027e00de37034e98e708c1fc8da009553ef7c4284f4de",
+  "final_native_request_sha256": "3687ef2abb62f53f80c0f578b4fbc3b7669baee7fe0c52f05493fa204f8bebf1",
+  "finite_shadow_qualified": true,
+  "fixtures": [
+    {
+      "name": "ordered_repeated_ports",
+      "passed": true,
+      "status": "GROUND_CORRESPONDENCE"
+    },
+    {
+      "name": "derived_child_assumption",
+      "passed": true,
+      "status": "GROUND_CORRESPONDENCE"
+    },
+    {
+      "name": "last_alias_after_unrelated",
+      "passed": true,
+      "status": "GROUND_CORRESPONDENCE"
+    },
+    {
+      "name": "bool_meta",
+      "passed": true,
+      "status": "REJECTED"
+    },
+    {
+      "name": "out_of_range_meta",
+      "passed": true,
+      "status": "REJECTED"
+    },
+    {
+      "name": "forward_MP",
+      "passed": true,
+      "status": "REJECTED"
+    },
+    {
+      "name": "changed_MP_implication",
+      "passed": true,
+      "status": "REJECTED"
+    },
+    {
+      "name": "changed_ordered_ground_premise",
+      "passed": true,
+      "status": "REJECTED"
+    },
+    {
+      "name": "missing_dependency",
+      "passed": true,
+      "status": "NOT_ELIGIBLE"
+    },
+    {
+      "name": "cyclic_certificate",
+      "passed": true,
+      "status": "REJECTED"
+    },
+    {
+      "name": "changed_ground_identity",
+      "passed": true,
+      "status": "REJECTED"
+    },
+    {
+      "name": "changed_Source_epoch",
+      "passed": true,
+      "status": "REJECTED"
+    },
+    {
+      "name": "changed_semantic_epoch",
+      "passed": true,
+      "status": "REJECTED"
+    },
+    {
+      "name": "direct_returned_packet_mutation",
+      "passed": true,
+      "status": "REJECTED"
+    },
+    {
+      "name": "fresh_after_mutation",
+      "passed": true,
+      "status": "ELIGIBLE_CERTIFICATE"
+    },
+    {
+      "name": "exact_source_guard_error",
+      "passed": true,
+      "status": null
+    },
+    {
+      "name": "exact_check_error",
+      "passed": true,
+      "status": null
+    },
+    {
+      "name": "exact_formula_validator_error",
+      "passed": true,
+      "status": null
+    },
+    {
+      "name": "private_work_budget",
+      "passed": true,
+      "status": "UNKNOWN"
+    }
+  ],
+  "fresh_native_control_proof": true,
+  "full_native_bulk_definitions": 10,
+  "full_prior_semantic_literals": {
+    "compiler": {
+      "bytes": 4280,
+      "full_current_prior_literal_equal": true,
+      "sha256": "28f330ed6763f088e06306717ea6d53251b2987a5d8637c57140daedfa6852b2"
+    },
+    "initial": {
+      "bytes": 2238,
+      "full_current_prior_literal_equal": true,
+      "sha256": "4029763a48810949587a789daa387f2d09f06837544584f411c53d7747507bfb"
+    },
+    "inventory": {
+      "bytes": 19394,
+      "full_current_prior_literal_equal": true,
+      "sha256": "8b88ed7050935181c43a807fe7f81fde9dd06881a370483b719226fd0515c919"
+    },
+    "model": {
+      "bytes": 32242696,
+      "full_current_prior_literal_equal": true,
+      "sha256": "5d43672118e25671e40d8be92d98d60e8c3140ebf1b0e54b22d1c7702c5b784f"
+    }
+  },
+  "goal_complete": false,
+  "invocation_id": "mp-schema-shadow-001-fixed-bulk-ROOT-20261019-v1",
+  "limitations": [
+    "Finite familiar control qualification; no newly discovered theorem or search-performance comparison.",
+    "Original Native bulk ground admission and final proof checking remained mandatory. No schema bypass or Model permission.",
+    "Soundness is a reviewed unformalized conditional argument for the narrow fragment, not a Source-to-Native formal theorem.",
+    "Generic inline fixtures are author-supplied plumbing tests, never target proof routes. Cyclic-container fixture does not dynamically exercise every family-DAG guard.",
+    "Saved packet entries are retained stages, not unique module-call counts. Native microsteps and schema check callbacks are distinct units.",
+    "Only last Native wire files survive on disk; earlier input/output hashes are joined to broker records, not decoded or regenerated.",
+    "Memory gate is a conservative sum of separate Darwin worker/Native highwaters; observer/controller and posthoc inspection are outside the timed scientific-worker gate."
+  ],
+  "native_queries": 17,
+  "new_RL_training": false,
+  "new_theorem": false,
+  "packet_entries_are_not_unique_call_count": true,
+  "recursive_proposer_enabled": false,
+  "result": {
+    "bytes": 36481858,
+    "path": "/private/tmp/gcts-mp-schema-shadow-ROOT-20261019/actual-v1/result.json",
+    "sha256": "03bc53f5a6203a0e802eb3a7d756832cd5986cbfa3fb886b64ac0f7736d33190"
+  },
+  "returned_packet_stage_entries": 42,
+  "runner_receipt": {
+    "bytes": 67237,
+    "path": "/private/tmp/gcts-mp-schema-shadow-ROOT-20261019/actual-v1/runner-receipt.json",
+    "sha256": "3e9231c9ca468d58e2364576121182b0bbf58ddbc1c58235fcf7754c7f757077"
+  },
+  "saved_evidence_only": true,
+  "schema": "ROOT-mp-schema-shadow-retained-admission-v1",
+  "schema_admission_lane_enabled": false,
+  "scientific_replays": 0,
+  "separate_peak_sum_MiB": 716.171875,
+  "separate_peak_sum_bytes": 750960640,
+  "shadow_interval_seconds": 6.119532791,
+  "shadow_status": "SHADOW_QUALIFICATION_PASSED",
+  "sidecar": {
+    "bytes": 1547291,
+    "path": "/private/tmp/gcts-mp-schema-shadow-ROOT-20261019/actual-v1/schema-shadow-result.json",
+    "sha256": "37a2a1b8d98d2df990fa8345eb0933c7b6cad276753c7c702ec056d8289154ad"
+  },
+  "source_only": false,
+  "source_pins_checked": 53,
+  "status": "native_proof_discovered",
+  "subject_sha256": "4c8b18798415d7952a945c26b58b94b82d0102aa37e5c1b7406f5b4dd0680047",
+  "terminal": {
+    "bytes": 1598,
+    "path": "/private/tmp/gcts-mp-schema-shadow-ROOT-20261019/plans/runner-plans/mp-schema-shadow-001-fixed-bulk-ROOT-20261019-v1-terminal-observation/terminal.json",
+    "sha256": "6e0ec7e21563af9d8836062e916604ec4c41716ee6f6b1416537f2e77e2ada52"
+  },
+  "terminal_seconds": 50.890808958,
+  "universal_soundness_formalized": false,
+  "whole_region": {
+    "assigned_mark_points": 2192,
+    "decoded_rows": 12,
+    "required_points": 60,
+    "selected_placements": 60,
+    "status": "VERIFIED_WHOLE_FINITE_POINT_REGION",
+    "union_sha256": "2ff056a7a43ae4b8f9bc3a52aec9984288456cf590395c0f9ceba2aba3b50592"
+  },
+  "worker_receipt": {
+    "bytes": 50774,
+    "path": "/private/tmp/gcts-mp-schema-shadow-ROOT-20261019/actual-v1/worker-receipt.json",
+    "sha256": "76206105ef5e1519a009896d89ff594bd36e443dc30bb0ced38c7a318d4da3fb"
+  },
+  "worker_seconds": 49.411324958
+}
