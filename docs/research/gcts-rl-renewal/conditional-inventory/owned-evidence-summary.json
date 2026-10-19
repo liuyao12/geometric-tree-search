@@ -1,0 +1,2938 @@
+{
+  "GCTS_RL_advantage_established": false,
+  "actual_subject_count": 2,
+  "actual_subjects_consumed_once": true,
+  "arms": [
+    {
+      "ROOT_mathematical_proof_admitted": false,
+      "ROOT_resource_accepted": false,
+      "aggregate_peak_bytes": 915259392,
+      "classification": "NOT QUALIFIED",
+      "elapsed_latex": "181.101\\,\\mathrm{s}",
+      "elapsed_seconds": 181.1010425,
+      "full_saved_record": {
+        "ROOT_mathematical_proof_admitted": false,
+        "ROOT_resource_accepted": false,
+        "aggregate_peak_bytes": null,
+        "elapsed_seconds": 181.1010425,
+        "errors": [
+          {
+            "message": "normal exact Python exit0",
+            "stamp_ns": 758292883955916,
+            "type": "OnceRunnerError"
+          }
+        ],
+        "group_absent": true,
+        "logs_complete": true,
+        "mode": "fixed",
+        "once_plan": {
+          "bytes": 2790,
+          "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/plans-v1/once-plans/owned-evidence-001-fixed-ROOT-20261019-v1.json",
+          "sha256": "e7d7e714ea7ef0cdaa94efee0bc25b3119b2b2224e008785ed55be8733d8749e"
+        },
+        "outer_exit_code": 2,
+        "outputs": {
+          "stderr": {
+            "bytes": 1951,
+            "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-fixed-v1/stderr.bin",
+            "sha256": "b1739a036e96815ca14b1ed513a4028fe488657ddf4e7dd3cb63b175e55cb76e"
+          },
+          "stdout": {
+            "bytes": 0,
+            "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-fixed-v1/stdout.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "resource_candidate": false,
+        "runner_receipt": {
+          "bytes": 12009,
+          "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-fixed-v1/runner-receipt.json",
+          "sha256": "e40aa4cee51541c69d5e68729fce53ec3ae45fe2b418aa6bde3f3b2405539475"
+        },
+        "scientific_acceptance": false,
+        "terminal": {
+          "bytes": 1617,
+          "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/plans-v1/once-plans/owned-evidence-001-fixed-ROOT-20261019-v1-terminal-observation/terminal.json",
+          "sha256": "7935672f3ab68fc37f4e0eb320b90b04db67b7cc6e8a8cd961c0acc6f59f6c1a"
+        },
+        "worker_exit_code": 1,
+        "worker_failure": {
+          "cleanup_errors": [],
+          "complete_output_accepted": false,
+          "diagnostic_output_prefixes": [
+            {
+              "bytes": 15181545,
+              "complete_output_accepted": false,
+              "diagnostic_only": true,
+              "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-fixed-v1/evidence-forest.json",
+              "sha256": "f7e39ed6b02d3c6b80cccb5e40ac4f254a1d989fdf129b6571df500d1bbe554a"
+            },
+            {
+              "bytes": 36914326,
+              "complete_output_accepted": false,
+              "diagnostic_only": true,
+              "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-fixed-v1/result.json",
+              "sha256": "16e1935a7b46b70dc8588e1427d9de5de59554816f743de2ea9bd462a6545b25"
+            }
+          ],
+          "error_type": "ColdError",
+          "logical_proof_accepted": false,
+          "message": "full saved evidence inverse within original work",
+          "native_transport": {
+            "CPP_self_reported_peak_is_resource_authority": false,
+            "aggregate_resource_accepted": false,
+            "all_reaped": true,
+            "cleanup_errors": [],
+            "closed": true,
+            "closure_deadline": 758321.829061916,
+            "complete_records": 16,
+            "constructor_completed": true,
+            "limits": {
+              "binary_file_bytes": 67108864,
+              "cleanup_reserve_seconds": 30,
+              "maximum_cleanup_seconds": 10,
+              "normal_quit_grace_seconds": 1,
+              "poll_seconds": 0.05,
+              "queries": 100000,
+              "ready_bytes": 256,
+              "reply_bytes": 65536,
+              "stderr_bytes": 65536,
+              "stdout_total_bytes": 16777216,
+              "terminate_grace_seconds": 1
+            },
+            "logical_proof_accepted": false,
+            "native_exit_code": 0,
+            "native_high_water_bytes": 13320192,
+            "native_pgid": 34266,
+            "native_pid": 34268,
+            "parent_pgid": 34266,
+            "parent_pid": 34266,
+            "ready": "READY 92457 88986 0 1 2",
+            "request_stages": [
+              {
+                "input_sha256": "b224af9e292a45dd3bc6eeae43e85151bcc50786e28ba8510b2095b9d4fa57ca",
+                "limit": 1000000000,
+                "ordinal": 0,
+                "output_sha256": "b8bd02ac78a3baab2faed241181087150898f44a3c4e8f62c438dd344d2576d1",
+                "purpose": "first_order_theory_admission",
+                "record_id": 0,
+                "request_sha256": "36d444863483832379f33dbd210735f00168ecc676e40c2f272b3527d2961ed5",
+                "stage": "COMPLETED"
+              },
+              {
+                "input_sha256": "8a32deefe233a137f8a1e7225ace56e037ddb8eb9966691e74a6772766c3a6c9",
+                "limit": 1000000000,
+                "ordinal": 1,
+                "output_sha256": "6ad2d946f13695c19e84270739c4c6a007181307654c00fdc3f46b9d4069d8e3",
+                "purpose": "first_order_tautology",
+                "record_id": 1,
+                "request_sha256": "33f1c3a845f8258dd0320f63bd16e1c34af67ae646fd52b8e7dd6dfe9d1df03d",
+                "stage": "COMPLETED"
+              },
+              {
+                "input_sha256": "bbeb05f41babf201dd9832a559da333c3a35a4a093e232bb890192903cbf1a5e",
+                "limit": 1000000000,
+                "ordinal": 2,
+                "output_sha256": "91d0435515f8b6ee4782ddceafa2c4be1afb375441e5c98517d90b6622700497",
+                "purpose": "first_order_tautology",
+                "record_id": 2,
+                "request_sha256": "a58dfdd08b894ae81f7a547ad3f7ab76f4d1dc978322914e5aab8ad310f463e1",
+                "stage": "COMPLETED"
+              },
+              {
+                "input_sha256": "24e59c028b00e9b5758be9db6f49c8737bac58e40469538705eaf5f2afe7d283",
+                "limit": 1000000000,
+                "ordinal": 3,
+                "output_sha256": "b28c2d6cba13549d62ac3efe40d7041e760a62be50e93a40f369f8b9ce3ad845",
+                "purpose": "first_order_tautology",
+                "record_id": 3,
+                "request_sha256": "4d903414aab3c9c3204ac2f864b10589dde1ae49f41e1198515b96b4322324ad",
+                "stage": "COMPLETED"
+              },
+              {
+                "input_sha256": "53372aa8db628eec5aefb3d7ea5b739c996d8480ba4ce968512ebce552b319e5",
+                "limit": 1000000000,
+                "ordinal": 4,
+                "output_sha256": "c36daa0450781a65e0924b98ce9ec67e860c42d8cf30e26e9fbea4d82dc1570d",
+                "purpose": "first_order_tautology",
+                "record_id": 4,
+                "request_sha256": "117d4c4168d12ddc1116dac22043c034a39710afd34d5e6c24bb80df21d0956f",
+                "stage": "COMPLETED"
+              },
+              {
+                "input_sha256": "43f264dcd2eaace14b2f8e29ca93c3ee968e267e5d36abd355be72992de5fe72",
+                "limit": 1000000000,
+                "ordinal": 5,
+                "output_sha256": "f2756062110206e802c43dda4ac460a5411de4b1e4153b3a3cf671e0a02bb5da",
+                "purpose": "first_order_tautology",
+                "record_id": 5,
+                "request_sha256": "11c416366dc67dd172848a7e2c1b5c4e69ae602e9e9b04632cb15ee4d05347f9",
+                "stage": "COMPLETED"
+              },
+              {
+                "input_sha256": "d751621ccaf81653d37cde7a62018cea805305d07e28dea028a3b44f1f3c8574",
+                "limit": 1000000000,
+                "ordinal": 6,
+                "output_sha256": "1a4ab24c89b1af90a6cba8710cf507ced7904f94b03da7e130535e5413f96eb0",
+                "purpose": "first_order_tautology",
+                "record_id": 6,
+                "request_sha256": "782ca37bf073ec30953187adb5026c5a374b39d9ddb42a54e47fb641e6260432",
+                "stage": "COMPLETED"
+              },
+              {
+                "input_sha256": "c98f4475df21c66886b5da657d3f3384eb48473de570b244e23cce0a273f7186",
+                "limit": 1000000000,
+                "ordinal": 7,
+                "output_sha256": "73c681fcf667a5a1da46d65f35b7877a0282954485a35c51f157bc504f8cf7c5",
+                "purpose": "first_order_tautology",
+                "record_id": 7,
+                "request_sha256": "9b554605606ebccdba754dfe972a2d25183c64b3077a3965f335c14eaaaa267d",
+                "stage": "COMPLETED"
+              },
+              {
+                "input_sha256": "e90de0d082809e7d96c43d7089c0530fbaa60d0d59ba04d479af78abd10bec77",
+                "limit": 1000000000,
+                "ordinal": 8,
+                "output_sha256": "d6104eacca0c547ea3a225b780cab14bc815f2d842cf297489b51c9df60fcae7",
+                "purpose": "first_order_tautology",
+                "record_id": 8,
+                "request_sha256": "56dd4fbdd1aa27510ac38af7bf0a842d834c75b0b6394b78dbb63f8d16eb0494",
+                "stage": "COMPLETED"
+              },
+              {
+                "input_sha256": "02934633429531a84f98f60d2a88ba143cc907d3398e9b046bafd986cd4afbb5",
+                "limit": 1000000000,
+                "ordinal": 9,
+                "output_sha256": "054761fd6b6b2a79a969b433dbe70e3a53826818b880585f51f1b6fadfad3871",
+                "purpose": "first_order_tautology",
+                "record_id": 9,
+                "request_sha256": "dbfc9d5f7acaacdbb006f4b781030719cb7397ca20fed4e90627e680019f6f57",
+                "stage": "COMPLETED"
+              },
+              {
+                "input_sha256": "94a4e670e6f5aa68ab155259270bb07b2faf462adfde3e192ea221d8c4bedde6",
+                "limit": 1000000000,
+                "ordinal": 10,
+                "output_sha256": "c4b09e6149fd40bf834efab2fc965b5246e062d08acccbd019d75ba74f257ef1",
+                "purpose": "first_order_tautology",
+                "record_id": 10,
+                "request_sha256": "1000b9182abaeb5aec4bf781db22bc7a2f556ef4bc9adf026a46266fcbfd4dd2",
+                "stage": "COMPLETED"
+              },
+              {
+                "input_sha256": "5b9a30ae15ccd6b3eb1589311c2408e035b7a27ee4a5d561d873cd7f12eccf33",
+                "limit": 1000000000,
+                "ordinal": 11,
+                "output_sha256": "60c9b207671449a96d5ba4629930a8e605abaac687c3b453b01ffe2dce1277f2",
+                "purpose": "first_order_tautology",
+                "record_id": 11,
+                "request_sha256": "83be1b29d89696c15d97458ce13abf467b4595896780f5716b6bed5679cecf31",
+                "stage": "COMPLETED"
+              },
+              {
+                "input_sha256": "e155c4f19d7906abfadd3cb2df6b194fb2bb180dc7fa94c7da93e153c9db1031",
+                "limit": 1000000000,
+                "ordinal": 12,
+                "output_sha256": "dad96f8ed5f08dc08c680736b9a445dbac4cf66034765dbadced527c1fe4406d",
+                "purpose": "first_order_scheme",
+                "record_id": 12,
+                "request_sha256": "2f0a912d5c3493ef025a79e89cd6c83cf70e04b0d8577e1ac227fa8901193d94",
+                "stage": "COMPLETED"
+              },
+              {
+                "input_sha256": "1ac6360de9cad4c90e3373ca238376d9fea81c0fe64030d32e4f267fb9f11b84",
+                "limit": 1000000000,
+                "ordinal": 13,
+                "output_sha256": "790f5eda5ce3e030a3daa4f7669d5b019686818fbe25c9cdfab4e81d879e1c01",
+                "purpose": "first_order_scheme",
+                "record_id": 13,
+                "request_sha256": "e2fa929411abc851313b38c405ad6ac9d43ad6264ce5d573f924901c6152f58c",
+                "stage": "COMPLETED"
+              },
+              {
+                "input_sha256": "f66f7f1cb48b64be1718497fe0fbca80b672d396fc6ca8298ea2ac623390a32e",
+                "limit": 1000000000,
+                "ordinal": 14,
+                "output_sha256": "c1f2176c96fa1f6a7bce2f56bc3fe6212a089113a9615c87e0c9ca7004bf33bb",
+                "purpose": "first_order_scheme",
+                "record_id": 14,
+                "request_sha256": "4b9e0eebe1ccdc1880455be4584ca7d9a4381b66813838ef8f09bebe4b70df97",
+                "stage": "COMPLETED"
+              },
+              {
+                "input_sha256": "a94031145884037d9b7ee2f40a75c3866658da736c66430d0cd55f58de855625",
+                "limit": 5000000000,
+                "ordinal": 15,
+                "output_sha256": "b4a0285e38bd305a548027e00de37034e98e708c1fc8da009553ef7c4284f4de",
+                "purpose": "fresh_quantified_receiver_final",
+                "record_id": 15,
+                "request_sha256": "3687ef2abb62f53f80c0f578b4fbc3b7669baee7fe0c52f05493fa204f8bebf1",
+                "stage": "COMPLETED"
+              }
+            ],
+            "ru_maxrss_unit": "bytes on declared Darwin runtime; Root must gate platform",
+            "same_owned_process_group": true,
+            "schema": "semantic-family-native-transport-receipt-v1",
+            "scientific_acceptance": false,
+            "stderr_bytes": 0,
+            "stderr_complete": true,
+            "stderr_hex": "",
+            "stderr_utf8": "",
+            "stdout_bytes": 3400,
+            "stdout_eof": true,
+            "stdout_pending_bytes": 0,
+            "termination_signals": [],
+            "version": "semantic-family-bounded-request-oracle-transport-v1",
+            "wait4_status": 0,
+            "wait4_usage": {
+              "ru_majflt": 22,
+              "ru_maxrss": 13320192,
+              "ru_minflt": 1565,
+              "ru_stime": 0.118727,
+              "ru_utime": 12.156099
+            },
+            "work_deadline": 758291.829061916
+          },
+          "owned_evidence_statistics": null,
+          "resource_accepted": false,
+          "result_already_published": {
+            "bytes": 36914326,
+            "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-fixed-v1/result.json",
+            "sha256": "16e1935a7b46b70dc8588e1427d9de5de59554816f743de2ea9bd462a6545b25"
+          },
+          "retry_authorized": false,
+          "schema": "ROOT-owned-evidence-worker-failure-v1",
+          "scientific_acceptance": false,
+          "stage_intervals": [
+            {
+              "returned_ns": 758111896511958,
+              "stage": "intake:owned_evidence_cold_v3.py",
+              "started_ns": 758111896317666
+            },
+            {
+              "returned_ns": 758111906949291,
+              "stage": "intake:python3.12",
+              "started_ns": 758111896518500
+            },
+            {
+              "returned_ns": 758111907883916,
+              "stage": "intake:semantic-inventory-policy-001.json",
+              "started_ns": 758111906966083
+            },
+            {
+              "returned_ns": 758111908783041,
+              "stage": "intake:full-assertion-capsule.json",
+              "started_ns": 758111907894875
+            },
+            {
+              "returned_ns": 758111908884125,
+              "stage": "intake:runtime-closure-v1.json",
+              "started_ns": 758111908787625
+            },
+            {
+              "returned_ns": 758111908940458,
+              "stage": "intake:case-declaration-v1.json",
+              "started_ns": 758111908886916
+            },
+            {
+              "returned_ns": 758111909351041,
+              "stage": "select frozen receiver",
+              "started_ns": 758111909328416
+            },
+            {
+              "returned_ns": 758111910094541,
+              "stage": "intake:parent runtime closure",
+              "started_ns": 758111909351833
+            },
+            {
+              "returned_ns": 758111910935291,
+              "stage": "copy:certificate_boundary_search",
+              "started_ns": 758111910514291
+            },
+            {
+              "returned_ns": 758111911587666,
+              "stage": "copy:interned_quantified_family_points_v1",
+              "started_ns": 758111911044500
+            },
+            {
+              "returned_ns": 758111911981458,
+              "stage": "copy:interned_result_reader_v2",
+              "started_ns": 758111911687458
+            },
+            {
+              "returned_ns": 758111912345958,
+              "stage": "copy:logic",
+              "started_ns": 758111912064791
+            },
+            {
+              "returned_ns": 758111912968750,
+              "stage": "copy:native_inference_inventory",
+              "started_ns": 758111912439416
+            },
+            {
+              "returned_ns": 758111913553666,
+              "stage": "copy:native_inventory_policy",
+              "started_ns": 758111913088000
+            },
+            {
+              "returned_ns": 758111914251000,
+              "stage": "copy:native_receptor_points",
+              "started_ns": 758111913655541
+            },
+            {
+              "returned_ns": 758111914616875,
+              "stage": "copy:proof_boundary",
+              "started_ns": 758111914359916
+            },
+            {
+              "returned_ns": 758111915206666,
+              "stage": "copy:quantified_family_points_v2",
+              "started_ns": 758111914815916
+            },
+            {
+              "returned_ns": 758111915572916,
+              "stage": "copy:quantified_receptors_v1",
+              "started_ns": 758111915320083
+            },
+            {
+              "returned_ns": 758111915912208,
+              "stage": "copy:quantified_symbolic_control_v2",
+              "started_ns": 758111915702958
+            },
+            {
+              "returned_ns": 758111916253375,
+              "stage": "copy:receptor_support_ordering_v1",
+              "started_ns": 758111916050083
+            },
+            {
+              "returned_ns": 758111916533333,
+              "stage": "copy:semantic_inventory_guidance",
+              "started_ns": 758111916365791
+            },
+            {
+              "returned_ns": 758111917765500,
+              "stage": "copy:semantic_inventory_oracle",
+              "started_ns": 758111916656166
+            },
+            {
+              "returned_ns": 758111918434291,
+              "stage": "copy:semantic_inventory_search_v2",
+              "started_ns": 758111917992583
+            },
+            {
+              "returned_ns": 758111918720541,
+              "stage": "copy:semantic_lemma_inventory",
+              "started_ns": 758111918564000
+            },
+            {
+              "returned_ns": 758111919212791,
+              "stage": "copy:semantic_point_smt",
+              "started_ns": 758111918801583
+            },
+            {
+              "returned_ns": 758111919484250,
+              "stage": "copy:semantic_receptor_points",
+              "started_ns": 758111919299291
+            },
+            {
+              "returned_ns": 758111919761000,
+              "stage": "copy:tape_binary",
+              "started_ns": 758111919571625
+            },
+            {
+              "returned_ns": 758111920567833,
+              "stage": "copy:tape_tree_machine",
+              "started_ns": 758111919840166
+            },
+            {
+              "returned_ns": 758111921064958,
+              "stage": "copy:tree_machine",
+              "started_ns": 758111920660791
+            },
+            {
+              "returned_ns": 758111921397708,
+              "stage": "copy:turtle",
+              "started_ns": 758111921154666
+            },
+            {
+              "returned_ns": 758111922301791,
+              "stage": "copy:semantic_receiver_driver",
+              "started_ns": 758111921486791
+            },
+            {
+              "returned_ns": 758111923073708,
+              "stage": "copy:bounded_request_oracle",
+              "started_ns": 758111922524208
+            },
+            {
+              "returned_ns": 758111923478958,
+              "stage": "copy:owned_evidence_adapter",
+              "started_ns": 758111923164041
+            },
+            {
+              "returned_ns": 758111924163083,
+              "stage": "copy:exact_evidence_arena",
+              "started_ns": 758111923570458
+            },
+            {
+              "returned_ns": 758111924555291,
+              "stage": "copy:owned_inventory_join",
+              "started_ns": 758111924268958
+            },
+            {
+              "returned_ns": 758111925108958,
+              "stage": "copy:independent_forest_inverse",
+              "started_ns": 758111924645875
+            },
+            {
+              "returned_ns": 758111925807375,
+              "stage": "copy schema:mp_schema_certificate",
+              "started_ns": 758111925206916
+            },
+            {
+              "returned_ns": 758111926327041,
+              "stage": "kernel semantic raw Source",
+              "started_ns": 758111925905416
+            },
+            {
+              "returned_ns": 758111927068041,
+              "stage": "Z3 intake:__init__.py",
+              "started_ns": 758111926336291
+            },
+            {
+              "returned_ns": 758111929256541,
+              "stage": "Z3 intake:z3.py",
+              "started_ns": 758111927073166
+            },
+            {
+              "returned_ns": 758111929464458,
+              "stage": "Z3 intake:z3consts.py",
+              "started_ns": 758111929264041
+            },
+            {
+              "returned_ns": 758111930214791,
+              "stage": "Z3 intake:z3core.py",
+              "started_ns": 758111929467791
+            },
+            {
+              "returned_ns": 758111930415916,
+              "stage": "Z3 intake:z3num.py",
+              "started_ns": 758111930218541
+            },
+            {
+              "returned_ns": 758111931001833,
+              "stage": "Z3 intake:z3poly.py",
+              "started_ns": 758111930421375
+            },
+            {
+              "returned_ns": 758111931560541,
+              "stage": "Z3 intake:z3printer.py",
+              "started_ns": 758111931004833
+            },
+            {
+              "returned_ns": 758111931820541,
+              "stage": "Z3 intake:z3rcf.py",
+              "started_ns": 758111931564000
+            },
+            {
+              "returned_ns": 758111932229708,
+              "stage": "Z3 intake:z3types.py",
+              "started_ns": 758111931824083
+            },
+            {
+              "returned_ns": 758111932656500,
+              "stage": "Z3 intake:z3util.py",
+              "started_ns": 758111932232250
+            },
+            {
+              "returned_ns": 758111933874541,
+              "stage": "Z3 intake:z3++.h",
+              "started_ns": 758111932660458
+            },
+            {
+              "returned_ns": 758111934520208,
+              "stage": "Z3 intake:z3.h",
+              "started_ns": 758111933879500
+            },
+            {
+              "returned_ns": 758111934940875,
+              "stage": "Z3 intake:z3_algebraic.h",
+              "started_ns": 758111934523375
+            },
+            {
+              "returned_ns": 758111936382625,
+              "stage": "Z3 intake:z3_api.h",
+              "started_ns": 758111934951750
+            },
+            {
+              "returned_ns": 758111936687166,
+              "stage": "Z3 intake:z3_ast_containers.h",
+              "started_ns": 758111936387916
+            },
+            {
+              "returned_ns": 758111937072875,
+              "stage": "Z3 intake:z3_fixedpoint.h",
+              "started_ns": 758111936691791
+            },
+            {
+              "returned_ns": 758111937538041,
+              "stage": "Z3 intake:z3_fpa.h",
+              "started_ns": 758111937076083
+            },
+            {
+              "returned_ns": 758111937807875,
+              "stage": "Z3 intake:z3_macros.h",
+              "started_ns": 758111937543375
+            },
+            {
+              "returned_ns": 758111938163208,
+              "stage": "Z3 intake:z3_optimization.h",
+              "started_ns": 758111937810916
+            },
+            {
+              "returned_ns": 758111939014291,
+              "stage": "Z3 intake:z3_polynomial.h",
+              "started_ns": 758111938166666
+            },
+            {
+              "returned_ns": 758111939224666,
+              "stage": "Z3 intake:z3_rcf.h",
+              "started_ns": 758111939017208
+            },
+            {
+              "returned_ns": 758111939426125,
+              "stage": "Z3 intake:z3_spacer.h",
+              "started_ns": 758111939227875
+            },
+            {
+              "returned_ns": 758111939630958,
+              "stage": "Z3 intake:z3_v1.h",
+              "started_ns": 758111939429000
+            },
+            {
+              "returned_ns": 758111939818833,
+              "stage": "Z3 intake:z3_version.h",
+              "started_ns": 758111939634041
+            },
+            {
+              "returned_ns": 758111967161041,
+              "stage": "Z3 intake:libz3.4.15.dylib",
+              "started_ns": 758111939821750
+            },
+            {
+              "returned_ns": 758111987388833,
+              "stage": "Z3 intake:libz3.dll",
+              "started_ns": 758111967189041
+            },
+            {
+              "returned_ns": 758112018879458,
+              "stage": "Z3 intake:libz3.dylib",
+              "started_ns": 758111987412875
+            },
+            {
+              "returned_ns": 758112020559291,
+              "stage": "Z3 intake:msvcp140.dll",
+              "started_ns": 758112018904958
+            },
+            {
+              "returned_ns": 758112020769208,
+              "stage": "Z3 intake:msvcp140_1.dll",
+              "started_ns": 758112020564708
+            },
+            {
+              "returned_ns": 758112021683583,
+              "stage": "Z3 intake:msvcp140_2.dll",
+              "started_ns": 758112020772333
+            },
+            {
+              "returned_ns": 758112022061708,
+              "stage": "Z3 intake:msvcp140_atomic_wait.dll",
+              "started_ns": 758112021716708
+            },
+            {
+              "returned_ns": 758112022567583,
+              "stage": "Z3 intake:msvcp140_codecvt_ids.dll",
+              "started_ns": 758112022066625
+            },
+            {
+              "returned_ns": 758112024066041,
+              "stage": "Z3 intake:vcomp140.dll",
+              "started_ns": 758112022570916
+            },
+            {
+              "returned_ns": 758112025136708,
+              "stage": "Z3 intake:vcruntime140.dll",
+              "started_ns": 758112024070250
+            },
+            {
+              "returned_ns": 758112025694750,
+              "stage": "Z3 intake:vcruntime140_1.dll",
+              "started_ns": 758112025141875
+            },
+            {
+              "returned_ns": 758112026152125,
+              "stage": "Z3 intake:vcruntime140_threads.dll",
+              "started_ns": 758112025698583
+            },
+            {
+              "returned_ns": 758112057905083,
+              "stage": "Z3 intake:z3",
+              "started_ns": 758112026156583
+            },
+            {
+              "returned_ns": 758112058365458,
+              "stage": "Z3 intake:METADATA",
+              "started_ns": 758112057945916
+            },
+            {
+              "returned_ns": 758112058568166,
+              "stage": "Z3 intake:WHEEL",
+              "started_ns": 758112058370791
+            },
+            {
+              "returned_ns": 758112059058375,
+              "stage": "Z3 intake:top_level.txt",
+              "started_ns": 758112058572416
+            },
+            {
+              "returned_ns": 758112059198041,
+              "stage": "Z3 intake:RECORD",
+              "started_ns": 758112059061666
+            },
+            {
+              "returned_ns": 758112073765666,
+              "stage": "import:certificate_boundary_search",
+              "started_ns": 758112059214000
+            },
+            {
+              "returned_ns": 758112097286625,
+              "stage": "import:interned_quantified_family_points_v1",
+              "started_ns": 758112073768791
+            },
+            {
+              "returned_ns": 758112097781166,
+              "stage": "import:interned_result_reader_v2",
+              "started_ns": 758112097289083
+            },
+            {
+              "returned_ns": 758112097784791,
+              "stage": "import:logic",
+              "started_ns": 758112097783125
+            },
+            {
+              "returned_ns": 758112099445666,
+              "stage": "import:native_inference_inventory",
+              "started_ns": 758112097785375
+            },
+            {
+              "returned_ns": 758112100056625,
+              "stage": "import:native_inventory_policy",
+              "started_ns": 758112099447916
+            },
+            {
+              "returned_ns": 758112100059958,
+              "stage": "import:native_receptor_points",
+              "started_ns": 758112100057916
+            },
+            {
+              "returned_ns": 758112100061416,
+              "stage": "import:proof_boundary",
+              "started_ns": 758112100060500
+            },
+            {
+              "returned_ns": 758112100062333,
+              "stage": "import:quantified_family_points_v2",
+              "started_ns": 758112100061833
+            },
+            {
+              "returned_ns": 758112100063250,
+              "stage": "import:quantified_receptors_v1",
+              "started_ns": 758112100062708
+            },
+            {
+              "returned_ns": 758112102865208,
+              "stage": "import:quantified_symbolic_control_v2",
+              "started_ns": 758112100063583
+            },
+            {
+              "returned_ns": 758112105037750,
+              "stage": "import:receptor_support_ordering_v1",
+              "started_ns": 758112102868250
+            },
+            {
+              "returned_ns": 758112106336666,
+              "stage": "import:semantic_inventory_guidance",
+              "started_ns": 758112105039666
+            },
+            {
+              "returned_ns": 758112111000625,
+              "stage": "import:semantic_inventory_oracle",
+              "started_ns": 758112106338166
+            },
+            {
+              "returned_ns": 758112113486250,
+              "stage": "import:semantic_inventory_search_v2",
+              "started_ns": 758112111003750
+            },
+            {
+              "returned_ns": 758112114394083,
+              "stage": "import:semantic_lemma_inventory",
+              "started_ns": 758112113488875
+            },
+            {
+              "returned_ns": 758112114954208,
+              "stage": "import:semantic_point_smt",
+              "started_ns": 758112114395916
+            },
+            {
+              "returned_ns": 758112114957583,
+              "stage": "import:semantic_receptor_points",
+              "started_ns": 758112114955583
+            },
+            {
+              "returned_ns": 758112114959041,
+              "stage": "import:tape_binary",
+              "started_ns": 758112114958291
+            },
+            {
+              "returned_ns": 758112114960333,
+              "stage": "import:tape_tree_machine",
+              "started_ns": 758112114959541
+            },
+            {
+              "returned_ns": 758112114961541,
+              "stage": "import:tree_machine",
+              "started_ns": 758112114960708
+            },
+            {
+              "returned_ns": 758112114962583,
+              "stage": "import:turtle",
+              "started_ns": 758112114962041
+            },
+            {
+              "returned_ns": 758112128254750,
+              "stage": "import:semantic_receiver_driver",
+              "started_ns": 758112114963250
+            },
+            {
+              "returned_ns": 758112130421375,
+              "stage": "import:bounded_request_oracle",
+              "started_ns": 758112128258083
+            },
+            {
+              "returned_ns": 758112138505958,
+              "stage": "import:owned_evidence_adapter",
+              "started_ns": 758112130426291
+            },
+            {
+              "returned_ns": 758112143786291,
+              "stage": "import:exact_evidence_arena",
+              "started_ns": 758112138512458
+            },
+            {
+              "returned_ns": 758112145397208,
+              "stage": "import:owned_inventory_join",
+              "started_ns": 758112143791166
+            },
+            {
+              "returned_ns": 758112148046708,
+              "stage": "import:independent_forest_inverse",
+              "started_ns": 758112145399208
+            },
+            {
+              "returned_ns": 758112236858625,
+              "stage": "import:Z3",
+              "started_ns": 758112148918958
+            },
+            {
+              "returned_ns": 758112251373208,
+              "stage": "import schema:mp_schema_certificate",
+              "started_ns": 758112248264333
+            },
+            {
+              "returned_ns": 758112266717500,
+              "stage": "native intake:boundary-oracle-v2",
+              "started_ns": 758112266185125
+            },
+            {
+              "returned_ns": 758112272005875,
+              "stage": "native intake:proof-boundary-microcode-001.json.gz",
+              "started_ns": 758112266723625
+            },
+            {
+              "returned_ns": 758112276208500,
+              "stage": "native intake:proof-boundary-001.json",
+              "started_ns": 758112272013958
+            },
+            {
+              "returned_ns": 758112279640458,
+              "stage": "decode native template",
+              "started_ns": 758112276211416
+            },
+            {
+              "returned_ns": 758112391814291,
+              "stage": "decode fixed microcode",
+              "started_ns": 758112279643541
+            },
+            {
+              "returned_ns": 758112718158583,
+              "stage": "encode fixed native table",
+              "started_ns": 758112505401291
+            },
+            {
+              "returned_ns": 758113705997125,
+              "stage": "owned-adapter-boundary-diagnostics",
+              "started_ns": 758112722184041
+            }
+          ]
+        },
+        "worker_failure_descriptor": {
+          "bytes": 19413,
+          "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-fixed-v1/worker-failure.json",
+          "sha256": "2d85c8e9156a08c1ccecf08001127aaf95bab372b0682198187e60292c9e5fb3"
+        }
+      },
+      "last_stage": "Saved-forest document stream: work deadline",
+      "mode": "fixed",
+      "peak_diagnostic_only": true,
+      "peak_latex": "872.86\\,\\mathrm{MiB}",
+      "plain_outcome": "The search found a Native-accepted proof. The fresh saved-forest inverse hit the work deadline, so the complete result is not admitted.",
+      "proof_disposition": "No complete admitted result"
+    },
+    {
+      "ROOT_mathematical_proof_admitted": true,
+      "ROOT_resource_accepted": true,
+      "aggregate_peak_bytes": 903380992,
+      "classification": "QUALIFIED FINITE INTEGRATION",
+      "elapsed_latex": "176.029\\,\\mathrm{s}",
+      "elapsed_seconds": 176.0285565,
+      "full_saved_record": {
+        "ROOT_mathematical_proof_admitted": true,
+        "ROOT_resource_accepted": true,
+        "adapter_diagnostics": {
+          "fresh_Stores": 8,
+          "groups": [
+            {
+              "details": {
+                "caller_mutation_isolated": true,
+                "strict_types": true,
+                "tuple_projection": true
+              },
+              "mathematical_authority": false,
+              "name": "tuple_projection_and_typed_paths",
+              "schema": "owned-adapter-finite-diagnostic-v1",
+              "status": "passed"
+            },
+            {
+              "details": {
+                "full_body": true,
+                "repeated_ports": true,
+                "sealed_document": "diagnostic:layout"
+              },
+              "mathematical_authority": false,
+              "name": "assembly_repeated_roots_and_full_canonical_body",
+              "schema": "owned-adapter-finite-diagnostic-v1",
+              "status": "passed"
+            },
+            {
+              "details": {
+                "capture_exact_exception_types": [
+                  "RuntimeError",
+                  "ValueError",
+                  "StopIteration"
+                ],
+                "limitation": "Finite callback opportunities; no universal exception-path coverage.",
+                "manual_next_foreign_StopIteration": true,
+                "stream_completed": false
+              },
+              "mathematical_authority": false,
+              "name": "foreign_callback_exception_identity",
+              "schema": "owned-adapter-finite-diagnostic-v1",
+              "status": "passed"
+            },
+            {
+              "details": {
+                "charged_reentry_rejected": true,
+                "exact_outer_error": true,
+                "passive_statistics": true,
+                "usable_output": false
+              },
+              "mathematical_authority": false,
+              "name": "callback_reentrancy_fails_closed",
+              "schema": "owned-adapter-finite-diagnostic-v1",
+              "status": "passed"
+            },
+            {
+              "details": {
+                "attempted_cost_monotone": true,
+                "complete_output_accepted": false,
+                "failed_prefix_only": true,
+                "partial_roots_preserved": true
+              },
+              "mathematical_authority": false,
+              "name": "failed_assembly_prefix_has_no_usable_output",
+              "schema": "owned-adapter-finite-diagnostic-v1",
+              "status": "passed"
+            }
+          ],
+          "mathematical_authority": false,
+          "profile": {
+            "adapter_limits": {
+              "chunk_bytes": 4096,
+              "depth": 32,
+              "operations": 100000,
+              "value_bytes": 1048576
+            },
+            "arena_limits": {
+              "cache_bytes": 4096,
+              "cache_entries": 256,
+              "chunk_bytes": 4096,
+              "depth": 32,
+              "documents_expanded_bytes": 1048576,
+              "edges": 16384,
+              "fragment_bytes": 4096,
+              "integer_digits": 4096,
+              "materialized_bytes": 1048576,
+              "materialized_occurrences": 10000,
+              "nodes": 4096,
+              "root_expanded_bytes": 1048576,
+              "roots": 64,
+              "scalar_bytes": 1048576,
+              "wire_bytes": 1048576,
+              "work": 1000000
+            },
+            "cases": [
+              "tuple_projection_and_typed_paths",
+              "assembly_repeated_roots_and_full_canonical_body",
+              "foreign_callback_exception_identity",
+              "callback_reentrancy_fails_closed",
+              "failed_assembly_prefix_has_no_usable_output"
+            ],
+            "maximum_fresh_Stores": 8,
+            "schema": "owned-adapter-finite-diagnostic-profile-v1",
+            "scope": "Small finite adapter boundary checks before original full001 proof pipeline; same original total work/peak/output caps, not a carrier benchmark or proof authority."
+          },
+          "schema": "owned-adapter-finite-diagnostic-result-v1",
+          "scope": "Finite runtime observations only, charged to this full original001 invocation.",
+          "status": "COMPLETE"
+        },
+        "aggregate_peak_bytes": 903380992,
+        "elapsed_seconds": 176.0285565,
+        "errors": [],
+        "evidence_statistics": {
+          "arena": {
+            "authority": false,
+            "cache_bytes": 8388608,
+            "cache_entries": 31331,
+            "counters": {
+              "bookkeeping_items": 9171911,
+              "bound_checks": 88682678,
+              "capture_frames": 26427982,
+              "completed_streams": 256,
+              "compose_children": 183,
+              "compose_reconciliation": 203,
+              "compose_sort": 18,
+              "copied_bytes": 34340217,
+              "copy_chunks": 14456538,
+              "document_labels": 1,
+              "document_reachability": 2219969,
+              "emitted_bytes": 34340217,
+              "emitted_tokens": 17150940,
+              "exports": 1,
+              "float_conversion": 338,
+              "fragment_builds": 31331,
+              "fragment_built_bytes": 8388608,
+              "fragment_hits": 4510324,
+              "fragment_reference_checks": 350140,
+              "full_node_comparisons": 10913059,
+              "full_validation_nodes": 157984,
+              "integer_conversion": 12459906,
+              "integer_digits_scanned": 14725639,
+              "intern_lookups": 10992051,
+              "key_sort": 39442,
+              "path_components": 5416,
+              "path_object_keys": 25621,
+              "path_resolutions": 1182,
+              "publication_bookkeeping": 5530360,
+              "read_operations": 2166,
+              "reconciliation_begins": 164,
+              "reconciliation_complete_reads": 164,
+              "reconciliation_edges": 10991867,
+              "reconciliation_equalities": 6911493,
+              "reconciliation_frames": 26427982,
+              "reconciliation_key_characters": 7743468,
+              "reconciliation_key_copies": 363548,
+              "reconciliation_key_lookups": 727096,
+              "reconciliation_keys": 363548,
+              "reconciliation_lengths": 19958919,
+              "reconciliation_numeric_characters": 14717040,
+              "reconciliation_text_characters": 3849429,
+              "reconciliation_text_copies": 7698858,
+              "reconciliation_text_lengths": 677800,
+              "seal_bookkeeping": 79177,
+              "stream_frames": 17150940,
+              "string_characters": 6538109,
+              "string_encodes": 98959,
+              "summary_edges": 6659904,
+              "summary_nodes": 236976,
+              "validation_pairs": 176752,
+              "validation_roots": 368,
+              "view_key_copies": 9,
+              "wire_json_parts": 5757664,
+              "wire_nodes": 157984,
+              "wire_reference_copies": 4439936,
+              "wire_scanned_bytes": 29813744,
+              "work": 355073213
+            },
+            "documents": 1,
+            "edges": 2219968,
+            "lifecycle": "SEALED",
+            "logical_document_bytes": 34001836,
+            "nodes": 78992,
+            "physical_wire_bytes": 14906873,
+            "roots": 184
+          },
+          "authority": false,
+          "counters": {
+            "assembly_child_slots": 183,
+            "assembly_frames": 205,
+            "canonical_stream_requests": 1,
+            "completed_captures": 164,
+            "generated_labels": 165,
+            "inventory_bundle_reads": 2,
+            "legacy_JSON_copy_chunks": 31869384,
+            "legacy_JSON_freezes": 577,
+            "legacy_JSON_parse_begin": 164,
+            "legacy_JSON_parse_end": 164,
+            "legacy_JSON_parts": 31869384,
+            "legacy_container_slots": 21998390,
+            "legacy_domain_frames": 30895002,
+            "ordinary_comparison_chunks": 249,
+            "path_references": 662,
+            "reference_comparison_chunks": 6,
+            "view_requests": 926,
+            "wire_requests": 1
+          },
+          "failed": false,
+          "operations": 116635629,
+          "schema": "owned-evidence-adapter-statistics-v1"
+        },
+        "evidence_verification": {
+          "completed_ns": 758481842656083,
+          "declaration": {
+            "authority": "representation-only; no Native or mathematical acceptance",
+            "execution_profile": "independent-forest-actual-operations-v1",
+            "limits": {
+              "cache_bytes": 8388608,
+              "cache_entries": 65536,
+              "chunk_bytes": 65536,
+              "depth": 513,
+              "edges": 8000000,
+              "expanded_bytes": 134217728,
+              "fragment_bytes": 4096,
+              "integer_digits": 4096,
+              "nodes": 2000000,
+              "roots": 4096,
+              "scalar_bytes": 16777216,
+              "wire_bytes": 134217728,
+              "work": 30000000
+            },
+            "original": {
+              "bytes": 22313,
+              "path": "/private/tmp/gcts-incremental-arena-ROOT-20261019/independent_forest_inverse_v6.py",
+              "sha256": "fbd655a86424ce5634ce0307af62549f5b1c4412cb9e58b752df0e13ae2397e4"
+            },
+            "owned": {
+              "bytes": 22313,
+              "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/modules/independent_forest_inverse.py",
+              "sha256": "fbd655a86424ce5634ce0307af62549f5b1c4412cb9e58b752df0e13ae2397e4"
+            },
+            "schema": "owned-evidence-independent-inverse-declaration-v1",
+            "sole_document": "receiver:complete-legacy-result",
+            "stream": "BODY-only-plus-one-external-LF",
+            "version": "independent-evidence-forest-inverse-v6-full-scalar-and-ledger-bounds"
+          },
+          "forest": {
+            "bytes": 14906873,
+            "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/evidence-forest.json",
+            "sha256": "c783757e1f0119d60249ac6c43e581ecce35861471299fae67926d4cc840d146"
+          },
+          "logical_body_bytes": 34001835,
+          "logical_file_bytes": 34001836,
+          "mathematical_authority": false,
+          "representation_only": true,
+          "schema": "owned-evidence-saved-forest-verification-v1",
+          "started_ns": 758470603167000,
+          "statistics": {
+            "aggregate_document_bytes": 34001836,
+            "aggregate_document_value_occurrences": 10992051,
+            "attempted_operations": 21304533,
+            "build_copied_bytes": 1344963,
+            "cache_attempts": 43209,
+            "cache_capacity_fallbacks": 0,
+            "cache_entries": 43209,
+            "cache_hits_build": 119867,
+            "cache_hits_stream": 2083598,
+            "cache_ineligible_nodes": 35783,
+            "cache_payload_bytes": 1344963,
+            "callback_dispatches": 21304533,
+            "catalogue_roots": 184,
+            "documents": {
+              "receiver:complete-legacy-result": {
+                "attempts": 1,
+                "body_bytes": 34001835,
+                "chunks": 519,
+                "closed_incomplete": false,
+                "completed": true,
+                "copied_body_bytes": 34001835,
+                "emitted_body_bytes": 34001835,
+                "logical_file_bytes": 34001836,
+                "logical_value_occurrences": 10992051,
+                "node_height": 20,
+                "root_id": 78991,
+                "stream_value_occurrences": 10992051
+              }
+            },
+            "execution_profile": "independent-forest-actual-operations-v1",
+            "last_operation": "document_completion",
+            "logical_documents": 1,
+            "operations_by_kind": {
+              "ascii_token_begin": 1512,
+              "ascii_token_end": 1512,
+              "build_cache_hit": 119867,
+              "build_copy": 296280,
+              "build_walk_action": 416147,
+              "cache_eligibility": 78992,
+              "catalogue_reference_digits": 184,
+              "catalogue_root": 184,
+              "document_completion": 1,
+              "document_label_read": 1,
+              "document_lookup": 1,
+              "document_stream_attempt": 1,
+              "float_canonical_begin": 81,
+              "float_canonical_end": 81,
+              "float_parse_begin": 81,
+              "float_parse_end": 81,
+              "freeze_fragment": 43209,
+              "initial": 1,
+              "integer_lexeme_begin": 1431,
+              "integer_lexeme_end": 1431,
+              "logical_document": 1,
+              "preparation_completion": 1,
+              "reachability_edge": 2219968,
+              "reachability_node": 78992,
+              "reference_wire_digits": 2219968,
+              "scalar_scan_window": 90555,
+              "stream_cache_hit": 2083598,
+              "stream_copy_block": 4403551,
+              "stream_walk_action": 6522568,
+              "tokenize_begin": 89207,
+              "tokenize_end": 89207,
+              "typed_equality_begin": 78992,
+              "typed_equality_end": 78992,
+              "validate_edge": 2219968,
+              "validate_node": 78992,
+              "validate_pair": 88376,
+              "yield_chunk": 519
+            },
+            "phase": "DOCUMENT_COMPLETE",
+            "prepared": true,
+            "scalar_characters_scanned": 658845,
+            "validated_edges": 2219968,
+            "validated_nodes": 78992,
+            "wire_canonical_bytes": 14906873
+          },
+          "status": "COMPLETE"
+        },
+        "final_region_verification": {
+          "assigned_mark_points": 2810,
+          "completed_ns": 758487964315083,
+          "decoded_rows": 12,
+          "required_points": 60,
+          "scope": "Separate raw whole-target occupancy, initial/selected marking agreement and literal C/G/input row decoding; no engine, solver or logical kernel call.",
+          "selected_placements": 60,
+          "status": "VERIFIED_WHOLE_FINITE_POINT_REGION",
+          "union_sha256": "b9bc4f4d9d6d2402206bf2399b4a0fd11d5e69a02bd4b9adc41616ad40532363"
+        },
+        "fresh_independent_inverse_completed": true,
+        "group_absent": true,
+        "logs_complete": true,
+        "mode": "symbolic",
+        "once_plan": {
+          "bytes": 2805,
+          "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/plans-v1/once-plans/owned-evidence-001-symbolic-ROOT-20261019-v1.json",
+          "sha256": "0833f791a9f23a277c97cd96866d0c29176401a17d9d406bd22d989a84e0b17b"
+        },
+        "outer_exit_code": 0,
+        "outputs": {
+          "evidence_forest": {
+            "bytes": 14906873,
+            "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/evidence-forest.json",
+            "sha256": "c783757e1f0119d60249ac6c43e581ecce35861471299fae67926d4cc840d146"
+          },
+          "physical_output_budget": {
+            "conservative_physical_bytes": 58413397,
+            "limit_bytes": 134217728,
+            "logical_bytes": 34001836,
+            "metadata": [
+              {
+                "bytes": 666,
+                "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/CONSUMED.json",
+                "sha256": "51a51a1de7f134479372fea88a26cf0a8733f4b70a82426e2dc80195e7457243"
+              },
+              {
+                "bytes": 66838,
+                "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/worker-receipt.json",
+                "sha256": "002b536459e70bef5c89ca6a3be8d82671ed3feb1196b0b3ae9bce035f3cc832"
+              }
+            ],
+            "observer_metadata_reserved_bytes": 1048576,
+            "runner_receipt_reserved_bytes": 8388608,
+            "schema": "owned-evidence-conservative-output-ledger-v1"
+          },
+          "result": {
+            "bytes": 34001836,
+            "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/result.json",
+            "sha256": "e6e247eb9e52640d92b1ae51b837661be372bbdf2f6865d0273db13d2d6a0310"
+          },
+          "stderr": {
+            "bytes": 0,
+            "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/stderr.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 0,
+            "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/stdout.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "worker_receipt": {
+            "bytes": 66838,
+            "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/worker-receipt.json",
+            "sha256": "002b536459e70bef5c89ca6a3be8d82671ed3feb1196b0b3ae9bce035f3cc832"
+          }
+        },
+        "physical_output_ledger": {
+          "aggregate_physical_bytes": 48976213,
+          "cap_bytes": 134217728,
+          "counted_once": true,
+          "evidence_forest": {
+            "bytes": 14906873,
+            "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/evidence-forest.json",
+            "sha256": "c783757e1f0119d60249ac6c43e581ecce35861471299fae67926d4cc840d146"
+          },
+          "excluded": "fixed Source/module/native inputs and separately bounded stdout/stderr",
+          "logical_cap_bytes": 134217728,
+          "logical_result_bytes": 34001836,
+          "ordinary_result": {
+            "bytes": 34001836,
+            "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/result.json",
+            "sha256": "e6e247eb9e52640d92b1ae51b837661be372bbdf2f6865d0273db13d2d6a0310"
+          },
+          "other_root_JSON_metadata": [
+            {
+              "bytes": 666,
+              "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/CONSUMED.json",
+              "sha256": "51a51a1de7f134479372fea88a26cf0a8733f4b70a82426e2dc80195e7457243"
+            }
+          ],
+          "schema": "owned-evidence-physical-output-ledger-v1",
+          "worker_receipt_bytes": 66838,
+          "worker_receipt_descriptor": "external_once_runner"
+        },
+        "resource_candidate": true,
+        "runner_receipt": {
+          "bytes": 86991,
+          "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/runner-receipt.json",
+          "sha256": "40b40c250bfbea11028c88b16d015203d3ab1d8358b9807bab7364b4cc4ca7b2"
+        },
+        "schema_inventory_admitted": true,
+        "scientific_acceptance": false,
+        "terminal": {
+          "bytes": 1625,
+          "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/plans-v1/once-plans/owned-evidence-001-symbolic-ROOT-20261019-v1-terminal-observation/terminal.json",
+          "sha256": "fc3479c1bde1619cd649fc27d8e7efde29a5a1ac907cebd3d06bf45cba5d717f"
+        },
+        "worker_exit_code": 0,
+        "worker_status": "native_proof_discovered"
+      },
+      "last_stage": "Full checks and external terminal complete",
+      "mode": "symbolic",
+      "peak_diagnostic_only": false,
+      "peak_latex": "861.53\\,\\mathrm{MiB}",
+      "plain_outcome": "The existing proof gates, full saved-forest inverse, complete ordinary-result reader, and resource/terminal gates all passed.",
+      "proof_disposition": "Known control proof admitted"
+    }
+  ],
+  "author_identity": "/root",
+  "authority_and_provenance": {
+    "Root_cohort_closure": {
+      "bytes": 2859,
+      "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/ROOT-cohort-closure-v1.json",
+      "sha256": "f840456dc1b9d35b5022380af1082aa6e4d779a098e7e28b0b97b47fddbbde99"
+    },
+    "Root_saved_actual_audit": {
+      "bytes": 51477,
+      "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/ROOT-saved-actual-audit-v1.json",
+      "sha256": "779c265fd0d2b33e9dbfce999e5865a8d29e4021fd9ed092b7ce6870e416f5c5"
+    },
+    "Root_scopes_and_grants": {
+      "bytes": 2617,
+      "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/ROOT-scope-adoption-and-grants-v1.json",
+      "sha256": "9f65a605f3e9760082e98aa31112dce7545d8b5dfad4b33f1b8f239c41cce34f"
+    },
+    "Source_reviews": [
+      {
+        "bytes": 34820,
+        "path": "/private/tmp/gcts-owned-evidence-integration-peer-20261019/typed-components-Source-review-v2.json",
+        "sha256": "ed7b318805db207700efb2018fa1c67cce65a458209f012d1d81d22f2efd0127"
+      },
+      {
+        "bytes": 5181,
+        "path": "/private/tmp/gcts-owned-evidence-integration-peer-20261019/typed-once-Source-review-v1.json",
+        "sha256": "e0d53838a2ff74c9f72017e32dfe8cfbcc70679a777be47a9d653185d9b4048c"
+      },
+      {
+        "bytes": 12580,
+        "path": "/private/tmp/gcts-owned-evidence-integration-peer-20261019/typed-prospective-plan-review-v1.json",
+        "sha256": "6bc713a1af9b411182788bdf28b5dc8d08bbae3007c4645bb24b884c849f6d30"
+      },
+      {
+        "bytes": 39240,
+        "path": "/private/tmp/gcts-owned-evidence-integration-peer-20261019/typed-final-grant-delta-review-v1.json",
+        "sha256": "00ec96a6de0a68b22c8bfc1db21b072a77d623061f08a232d09ff22c67836dc8"
+      }
+    ],
+    "current_contract": {
+      "bytes": 5104,
+      "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/ROOT-integration-Source-contract-v1.json",
+      "sha256": "2558d9e092969671ef9722e3fb1801cbcdf1de9da18cac2032ba5e8d6a283091"
+    },
+    "independent_saved_outcome_review": {
+      "bytes": 16276,
+      "path": "/private/tmp/gcts-owned-evidence-integration-peer-20261019/typed-owned-integration-saved-review-v1.json",
+      "sha256": "5cff9e88dde9fc8f0e6c35226dda841e1119365d62037596b2f21074bd5c0328"
+    },
+    "next_design": {
+      "bytes": 26238,
+      "path": "/private/tmp/gcts-owned-evidence-integration-library-20261019/post-actual-next-design-v1.json",
+      "sha256": "492ba0068cb87e2b1f3eade2a80a06af28afe5014b04bb303f1a2e46261adfa7"
+    },
+    "original_assertion_capsule": {
+      "bytes": 22422,
+      "path": "/private/tmp/gcts-local-operational-20261019/full-assertion-capsule.json",
+      "sha256": "1a42c2ab16680dddbac504ca5b2d79559370785884805cf4d56b5c1c22c63dc0"
+    },
+    "scope": "Three current Source/once/prospective roles use one disclosed reviewer, retaining exact older independent scientific/consumer/certifier ancestry and author overlap. Descriptor custody does not add kernel or mathematical authority. The admitted symbolic result relies the full existing gates and current trusted-runtime assumptions."
+  },
+  "classification": "PROGRESS",
+  "findings": [
+    "The same original assertion, primitive rules, inventory policy, Model inputs, search limits, and complete proof checks were retained in both arms. No proof route was supplied.",
+    "The symbolic control demonstrates that this evidence representation can coexist with the full proof pipeline on this familiar finite input. Its full result is reconstructed and admitted under the original profile.",
+    "The fixed arm has local Native proof acceptance but no completed independent saved-forest inverse or final worker header. Its result and forest remain diagnostic-only artifacts.",
+    "For the symbolic arm, scientific work stops near \\(52.60\\,\\mathrm{s}\\), while the full external terminal arrives near \\(176.03\\,\\mathrm{s}\\). The retained output/closure envelope is a practical bottleneck, with no finer causal partition for its largest segment.",
+    "The next Source-only hypothesis is bounded batching of delegated inverse clock callbacks while retaining every validation, operation/cap check, completion check, and full old pipeline gate. It is unimplemented and needs a changed execution profile and fresh independent qualification. The larger assembly/seal/export envelope still needs measurement."
+  ],
+  "goal_complete": false,
+  "headline": "Symbolic control qualifies; fixed GCTS arm misses the reconstruction deadline.",
+  "limits": [
+    "This is one familiar synthetic first-order assertion. It is not a held-out theorem, arithmetic or geometry benchmark advance, generalization result, or evidence of GCTS+RL superiority.",
+    "There is no ordinary-storage ablation or causal speed/memory comparison. Both arms use the new carrier, and the fixed arm fails complete qualification.",
+    "Five complete finite adapter diagnostic packets survive for the symbolic arm. The fixed arm retains only a returned diagnostic-stage interval, supporting completion by Source-backed inference rather than a saved per-group audit.",
+    "The five diagnostic groups cover selected callback/type/assembly failures, not every hostile callback, exception path, or forged-object case. Trusted interpreter/OS, exclusive ownership, and inherited proof-kernel review assumptions remain.",
+    "The fixed inverse failure has no retained start/completion packet or inverse counter snapshot. Its exact inverse duration is unavailable; no replay was performed to fill that gap."
+  ],
+  "new_RL_training": false,
+  "new_theorem_claim": false,
+  "notebook_blurb": "The symbolic control passes the full original proof, evidence, and resource gates. The fixed GCTS arm reaches Native proof acceptance but runs out of work time during saved-evidence reconstruction. This establishes no GCTS or RL advantage.",
+  "qualified_arms": [
+    "symbolic"
+  ],
+  "saved_data_only": true,
+  "saved_proof_presentation": {
+    "blocks": [
+      {
+        "display_label": "B1",
+        "literal_json": "{\"conclusion\":[\"imp\",[\"eq\",[\"fun\",\"a\",[]],[\"fun\",\"a\",[]]],[\"eq\",[\"fun\",\"a\",[]],[\"fun\",\"b\",[]]]],\"name\":\"lemma123dffc077304d6f5569591588aeb01e9aee4963a0675c39a01b279b772947dc\",\"premises\":[[\"imp\",[\"eq\",[\"fun\",\"a\",[]],[\"fun\",\"b\",[]]],[\"imp\",[\"eq\",[\"fun\",\"a\",[]],[\"fun\",\"a\",[]]],[\"eq\",[\"fun\",\"a\",[]],[\"fun\",\"b\",[]]]]],[\"eq\",[\"fun\",\"a\",[]],[\"fun\",\"b\",[]]]],\"proof\":[{\"formula\":[\"imp\",[\"eq\",[\"fun\",\"a\",[]],[\"fun\",\"b\",[]]],[\"imp\",[\"eq\",[\"fun\",\"a\",[]],[\"fun\",\"a\",[]]],[\"eq\",[\"fun\",\"a\",[]],[\"fun\",\"b\",[]]]]],\"index\":0,\"rule\":\"assumption\"},{\"formula\":[\"eq\",[\"fun\",\"a\",[]],[\"fun\",\"b\",[]]],\"index\":1,\"rule\":\"assumption\"},{\"antecedent\":1,\"formula\":[\"imp\",[\"eq\",[\"fun\",\"a\",[]],[\"fun\",\"a\",[]]],[\"eq\",[\"fun\",\"a\",[]],[\"fun\",\"b\",[]]]],\"implication\":0,\"rule\":\"mp\"}]}",
+        "saved_block": {
+          "conclusion": [
+            "imp",
+            [
+              "eq",
+              [
+                "fun",
+                "a",
+                []
+              ],
+              [
+                "fun",
+                "a",
+                []
+              ]
+            ],
+            [
+              "eq",
+              [
+                "fun",
+                "a",
+                []
+              ],
+              [
+                "fun",
+                "b",
+                []
+              ]
+            ]
+          ],
+          "name": "lemma123dffc077304d6f5569591588aeb01e9aee4963a0675c39a01b279b772947dc",
+          "premises": [
+            [
+              "imp",
+              [
+                "eq",
+                [
+                  "fun",
+                  "a",
+                  []
+                ],
+                [
+                  "fun",
+                  "b",
+                  []
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "eq",
+                  [
+                    "fun",
+                    "a",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "a",
+                    []
+                  ]
+                ],
+                [
+                  "eq",
+                  [
+                    "fun",
+                    "a",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "b",
+                    []
+                  ]
+                ]
+              ]
+            ],
+            [
+              "eq",
+              [
+                "fun",
+                "a",
+                []
+              ],
+              [
+                "fun",
+                "b",
+                []
+              ]
+            ]
+          ],
+          "proof": [
+            {
+              "formula": [
+                "imp",
+                [
+                  "eq",
+                  [
+                    "fun",
+                    "a",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "b",
+                    []
+                  ]
+                ],
+                [
+                  "imp",
+                  [
+                    "eq",
+                    [
+                      "fun",
+                      "a",
+                      []
+                    ],
+                    [
+                      "fun",
+                      "a",
+                      []
+                    ]
+                  ],
+                  [
+                    "eq",
+                    [
+                      "fun",
+                      "a",
+                      []
+                    ],
+                    [
+                      "fun",
+                      "b",
+                      []
+                    ]
+                  ]
+                ]
+              ],
+              "index": 0,
+              "rule": "assumption"
+            },
+            {
+              "formula": [
+                "eq",
+                [
+                  "fun",
+                  "a",
+                  []
+                ],
+                [
+                  "fun",
+                  "b",
+                  []
+                ]
+              ],
+              "index": 1,
+              "rule": "assumption"
+            },
+            {
+              "antecedent": 1,
+              "formula": [
+                "imp",
+                [
+                  "eq",
+                  [
+                    "fun",
+                    "a",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "a",
+                    []
+                  ]
+                ],
+                [
+                  "eq",
+                  [
+                    "fun",
+                    "a",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "b",
+                    []
+                  ]
+                ]
+              ],
+              "implication": 0,
+              "rule": "mp"
+            }
+          ]
+        }
+      },
+      {
+        "display_label": "B2",
+        "literal_json": "{\"conclusion\":[\"imp\",[\"eq\",[\"fun\",\"a\",[]],[\"fun\",\"b\",[]]],[\"eq\",[\"fun\",\"b\",[]],[\"fun\",\"b\",[]]]],\"name\":\"lemma5ca8e587ec6d3d665b95620c2edc1e66dcf2d25a98ac4efb752ac1b304aa6420\",\"premises\":[[\"imp\",[\"eq\",[\"fun\",\"a\",[]],[\"fun\",\"b\",[]]],[\"imp\",[\"eq\",[\"fun\",\"a\",[]],[\"fun\",\"b\",[]]],[\"eq\",[\"fun\",\"b\",[]],[\"fun\",\"b\",[]]]]],[\"eq\",[\"fun\",\"a\",[]],[\"fun\",\"b\",[]]]],\"proof\":[{\"formula\":[\"imp\",[\"eq\",[\"fun\",\"a\",[]],[\"fun\",\"b\",[]]],[\"imp\",[\"eq\",[\"fun\",\"a\",[]],[\"fun\",\"b\",[]]],[\"eq\",[\"fun\",\"b\",[]],[\"fun\",\"b\",[]]]]],\"index\":0,\"rule\":\"assumption\"},{\"formula\":[\"eq\",[\"fun\",\"a\",[]],[\"fun\",\"b\",[]]],\"index\":1,\"rule\":\"assumption\"},{\"antecedent\":1,\"formula\":[\"imp\",[\"eq\",[\"fun\",\"a\",[]],[\"fun\",\"b\",[]]],[\"eq\",[\"fun\",\"b\",[]],[\"fun\",\"b\",[]]]],\"implication\":0,\"rule\":\"mp\"}]}",
+        "saved_block": {
+          "conclusion": [
+            "imp",
+            [
+              "eq",
+              [
+                "fun",
+                "a",
+                []
+              ],
+              [
+                "fun",
+                "b",
+                []
+              ]
+            ],
+            [
+              "eq",
+              [
+                "fun",
+                "b",
+                []
+              ],
+              [
+                "fun",
+                "b",
+                []
+              ]
+            ]
+          ],
+          "name": "lemma5ca8e587ec6d3d665b95620c2edc1e66dcf2d25a98ac4efb752ac1b304aa6420",
+          "premises": [
+            [
+              "imp",
+              [
+                "eq",
+                [
+                  "fun",
+                  "a",
+                  []
+                ],
+                [
+                  "fun",
+                  "b",
+                  []
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "eq",
+                  [
+                    "fun",
+                    "a",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "b",
+                    []
+                  ]
+                ],
+                [
+                  "eq",
+                  [
+                    "fun",
+                    "b",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "b",
+                    []
+                  ]
+                ]
+              ]
+            ],
+            [
+              "eq",
+              [
+                "fun",
+                "a",
+                []
+              ],
+              [
+                "fun",
+                "b",
+                []
+              ]
+            ]
+          ],
+          "proof": [
+            {
+              "formula": [
+                "imp",
+                [
+                  "eq",
+                  [
+                    "fun",
+                    "a",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "b",
+                    []
+                  ]
+                ],
+                [
+                  "imp",
+                  [
+                    "eq",
+                    [
+                      "fun",
+                      "a",
+                      []
+                    ],
+                    [
+                      "fun",
+                      "b",
+                      []
+                    ]
+                  ],
+                  [
+                    "eq",
+                    [
+                      "fun",
+                      "b",
+                      []
+                    ],
+                    [
+                      "fun",
+                      "b",
+                      []
+                    ]
+                  ]
+                ]
+              ],
+              "index": 0,
+              "rule": "assumption"
+            },
+            {
+              "formula": [
+                "eq",
+                [
+                  "fun",
+                  "a",
+                  []
+                ],
+                [
+                  "fun",
+                  "b",
+                  []
+                ]
+              ],
+              "index": 1,
+              "rule": "assumption"
+            },
+            {
+              "antecedent": 1,
+              "formula": [
+                "imp",
+                [
+                  "eq",
+                  [
+                    "fun",
+                    "a",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "b",
+                    []
+                  ]
+                ],
+                [
+                  "eq",
+                  [
+                    "fun",
+                    "b",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "b",
+                    []
+                  ]
+                ]
+              ],
+              "implication": 0,
+              "rule": "mp"
+            }
+          ]
+        }
+      },
+      {
+        "display_label": "B3",
+        "literal_json": "{\"conclusion\":[\"imp\",[\"pred\",\"P\",[[\"fun\",\"a\",[]]]],[\"pred\",\"P\",[[\"fun\",\"b\",[]]]]],\"name\":\"lemma1696b5c541069ea05eefbfe62f7a08ed5924b032e5aed9eaa59beb9395cb4317\",\"premises\":[[\"imp\",[\"eq\",[\"fun\",\"a\",[]],[\"fun\",\"b\",[]]],[\"imp\",[\"pred\",\"P\",[[\"fun\",\"a\",[]]]],[\"pred\",\"P\",[[\"fun\",\"b\",[]]]]]],[\"eq\",[\"fun\",\"a\",[]],[\"fun\",\"b\",[]]]],\"proof\":[{\"formula\":[\"imp\",[\"eq\",[\"fun\",\"a\",[]],[\"fun\",\"b\",[]]],[\"imp\",[\"pred\",\"P\",[[\"fun\",\"a\",[]]]],[\"pred\",\"P\",[[\"fun\",\"b\",[]]]]]],\"index\":0,\"rule\":\"assumption\"},{\"formula\":[\"eq\",[\"fun\",\"a\",[]],[\"fun\",\"b\",[]]],\"index\":1,\"rule\":\"assumption\"},{\"antecedent\":1,\"formula\":[\"imp\",[\"pred\",\"P\",[[\"fun\",\"a\",[]]]],[\"pred\",\"P\",[[\"fun\",\"b\",[]]]]],\"implication\":0,\"rule\":\"mp\"}]}",
+        "saved_block": {
+          "conclusion": [
+            "imp",
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "a",
+                  []
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "b",
+                  []
+                ]
+              ]
+            ]
+          ],
+          "name": "lemma1696b5c541069ea05eefbfe62f7a08ed5924b032e5aed9eaa59beb9395cb4317",
+          "premises": [
+            [
+              "imp",
+              [
+                "eq",
+                [
+                  "fun",
+                  "a",
+                  []
+                ],
+                [
+                  "fun",
+                  "b",
+                  []
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "fun",
+                      "a",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "fun",
+                      "b",
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "eq",
+              [
+                "fun",
+                "a",
+                []
+              ],
+              [
+                "fun",
+                "b",
+                []
+              ]
+            ]
+          ],
+          "proof": [
+            {
+              "formula": [
+                "imp",
+                [
+                  "eq",
+                  [
+                    "fun",
+                    "a",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "b",
+                    []
+                  ]
+                ],
+                [
+                  "imp",
+                  [
+                    "pred",
+                    "P",
+                    [
+                      [
+                        "fun",
+                        "a",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "pred",
+                    "P",
+                    [
+                      [
+                        "fun",
+                        "b",
+                        []
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              "index": 0,
+              "rule": "assumption"
+            },
+            {
+              "formula": [
+                "eq",
+                [
+                  "fun",
+                  "a",
+                  []
+                ],
+                [
+                  "fun",
+                  "b",
+                  []
+                ]
+              ],
+              "index": 1,
+              "rule": "assumption"
+            },
+            {
+              "antecedent": 1,
+              "formula": [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "fun",
+                      "a",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "fun",
+                      "b",
+                      []
+                    ]
+                  ]
+                ]
+              ],
+              "implication": 0,
+              "rule": "mp"
+            }
+          ]
+        }
+      },
+      {
+        "display_label": "B4",
+        "literal_json": "{\"conclusion\":[\"pred\",\"P\",[[\"fun\",\"b\",[]]]],\"name\":\"lemmae5cc6400c2dec1f53e31864fc169b5e8964c4b9e49e5664338f7fec66b9bd1b6\",\"premises\":[[\"imp\",[\"pred\",\"P\",[[\"fun\",\"a\",[]]]],[\"pred\",\"P\",[[\"fun\",\"b\",[]]]]],[\"pred\",\"P\",[[\"fun\",\"a\",[]]]]],\"proof\":[{\"formula\":[\"imp\",[\"pred\",\"P\",[[\"fun\",\"a\",[]]]],[\"pred\",\"P\",[[\"fun\",\"b\",[]]]]],\"index\":0,\"rule\":\"assumption\"},{\"formula\":[\"pred\",\"P\",[[\"fun\",\"a\",[]]]],\"index\":1,\"rule\":\"assumption\"},{\"antecedent\":1,\"formula\":[\"pred\",\"P\",[[\"fun\",\"b\",[]]]],\"implication\":0,\"rule\":\"mp\"}]}",
+        "saved_block": {
+          "conclusion": [
+            "pred",
+            "P",
+            [
+              [
+                "fun",
+                "b",
+                []
+              ]
+            ]
+          ],
+          "name": "lemmae5cc6400c2dec1f53e31864fc169b5e8964c4b9e49e5664338f7fec66b9bd1b6",
+          "premises": [
+            [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "fun",
+                    "a",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "fun",
+                    "b",
+                    []
+                  ]
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "a",
+                  []
+                ]
+              ]
+            ]
+          ],
+          "proof": [
+            {
+              "formula": [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "fun",
+                      "a",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "fun",
+                      "b",
+                      []
+                    ]
+                  ]
+                ]
+              ],
+              "index": 0,
+              "rule": "assumption"
+            },
+            {
+              "formula": [
+                "pred",
+                "P",
+                [
+                  [
+                    "fun",
+                    "a",
+                    []
+                  ]
+                ]
+              ],
+              "index": 1,
+              "rule": "assumption"
+            },
+            {
+              "antecedent": 1,
+              "formula": [
+                "pred",
+                "P",
+                [
+                  [
+                    "fun",
+                    "b",
+                    []
+                  ]
+                ]
+              ],
+              "implication": 0,
+              "rule": "mp"
+            }
+          ]
+        }
+      },
+      {
+        "display_label": "B5",
+        "literal_json": "{\"conclusion\":[\"eq\",[\"fun\",\"b\",[]],[\"fun\",\"b\",[]]],\"name\":\"lemma8604f527b524d94fd44a794f01684bfe042c9fb7a815fd7455a5a20a993c4685\",\"premises\":[[\"imp\",[\"eq\",[\"fun\",\"a\",[]],[\"fun\",\"a\",[]]],[\"eq\",[\"fun\",\"a\",[]],[\"fun\",\"b\",[]]]],[\"imp\",[\"eq\",[\"fun\",\"a\",[]],[\"fun\",\"b\",[]]],[\"eq\",[\"fun\",\"b\",[]],[\"fun\",\"b\",[]]]],[\"eq\",[\"fun\",\"a\",[]],[\"fun\",\"a\",[]]]],\"proof\":[{\"formula\":[\"imp\",[\"eq\",[\"fun\",\"a\",[]],[\"fun\",\"a\",[]]],[\"eq\",[\"fun\",\"a\",[]],[\"fun\",\"b\",[]]]],\"index\":0,\"rule\":\"assumption\"},{\"formula\":[\"imp\",[\"eq\",[\"fun\",\"a\",[]],[\"fun\",\"b\",[]]],[\"eq\",[\"fun\",\"b\",[]],[\"fun\",\"b\",[]]]],\"index\":1,\"rule\":\"assumption\"},{\"formula\":[\"eq\",[\"fun\",\"a\",[]],[\"fun\",\"a\",[]]],\"index\":2,\"rule\":\"assumption\"},{\"antecedent\":2,\"formula\":[\"eq\",[\"fun\",\"a\",[]],[\"fun\",\"b\",[]]],\"implication\":0,\"rule\":\"mp\"},{\"antecedent\":3,\"formula\":[\"eq\",[\"fun\",\"b\",[]],[\"fun\",\"b\",[]]],\"implication\":1,\"rule\":\"mp\"}]}",
+        "saved_block": {
+          "conclusion": [
+            "eq",
+            [
+              "fun",
+              "b",
+              []
+            ],
+            [
+              "fun",
+              "b",
+              []
+            ]
+          ],
+          "name": "lemma8604f527b524d94fd44a794f01684bfe042c9fb7a815fd7455a5a20a993c4685",
+          "premises": [
+            [
+              "imp",
+              [
+                "eq",
+                [
+                  "fun",
+                  "a",
+                  []
+                ],
+                [
+                  "fun",
+                  "a",
+                  []
+                ]
+              ],
+              [
+                "eq",
+                [
+                  "fun",
+                  "a",
+                  []
+                ],
+                [
+                  "fun",
+                  "b",
+                  []
+                ]
+              ]
+            ],
+            [
+              "imp",
+              [
+                "eq",
+                [
+                  "fun",
+                  "a",
+                  []
+                ],
+                [
+                  "fun",
+                  "b",
+                  []
+                ]
+              ],
+              [
+                "eq",
+                [
+                  "fun",
+                  "b",
+                  []
+                ],
+                [
+                  "fun",
+                  "b",
+                  []
+                ]
+              ]
+            ],
+            [
+              "eq",
+              [
+                "fun",
+                "a",
+                []
+              ],
+              [
+                "fun",
+                "a",
+                []
+              ]
+            ]
+          ],
+          "proof": [
+            {
+              "formula": [
+                "imp",
+                [
+                  "eq",
+                  [
+                    "fun",
+                    "a",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "a",
+                    []
+                  ]
+                ],
+                [
+                  "eq",
+                  [
+                    "fun",
+                    "a",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "b",
+                    []
+                  ]
+                ]
+              ],
+              "index": 0,
+              "rule": "assumption"
+            },
+            {
+              "formula": [
+                "imp",
+                [
+                  "eq",
+                  [
+                    "fun",
+                    "a",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "b",
+                    []
+                  ]
+                ],
+                [
+                  "eq",
+                  [
+                    "fun",
+                    "b",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "b",
+                    []
+                  ]
+                ]
+              ],
+              "index": 1,
+              "rule": "assumption"
+            },
+            {
+              "formula": [
+                "eq",
+                [
+                  "fun",
+                  "a",
+                  []
+                ],
+                [
+                  "fun",
+                  "a",
+                  []
+                ]
+              ],
+              "index": 2,
+              "rule": "assumption"
+            },
+            {
+              "antecedent": 2,
+              "formula": [
+                "eq",
+                [
+                  "fun",
+                  "a",
+                  []
+                ],
+                [
+                  "fun",
+                  "b",
+                  []
+                ]
+              ],
+              "implication": 0,
+              "rule": "mp"
+            },
+            {
+              "antecedent": 3,
+              "formula": [
+                "eq",
+                [
+                  "fun",
+                  "b",
+                  []
+                ],
+                [
+                  "fun",
+                  "b",
+                  []
+                ]
+              ],
+              "implication": 1,
+              "rule": "mp"
+            }
+          ]
+        }
+      }
+    ],
+    "full_proof_row_count": 12,
+    "mathematical_authority": false,
+    "presentation_successor": "Spacing correction only; original saved rows, formulas, block names, source result descriptor and authority limits unchanged.",
+    "proof_replay": false,
+    "rows": [
+      {
+        "displayed_row": 1,
+        "english": "Use the given predicate hypothesis.",
+        "formula_latex": "P(a)",
+        "literal_json": "{\"formula\":[\"pred\",\"P\",[[\"fun\",\"a\",[]]]],\"name\":\"a1\",\"rule\":\"axiom\"}",
+        "saved_step": {
+          "formula": [
+            "pred",
+            "P",
+            [
+              [
+                "fun",
+                "a",
+                []
+              ]
+            ]
+          ],
+          "name": "a1",
+          "rule": "axiom"
+        }
+      },
+      {
+        "displayed_row": 2,
+        "english": "Use the given equality hypothesis.",
+        "formula_latex": "a=b",
+        "literal_json": "{\"formula\":[\"eq\",[\"fun\",\"a\",[]],[\"fun\",\"b\",[]]],\"name\":\"a0\",\"rule\":\"axiom\"}",
+        "saved_step": {
+          "formula": [
+            "eq",
+            [
+              "fun",
+              "a",
+              []
+            ],
+            [
+              "fun",
+              "b",
+              []
+            ]
+          ],
+          "name": "a0",
+          "rule": "axiom"
+        }
+      },
+      {
+        "displayed_row": 3,
+        "english": "Instantiate equality substitution for the predicate.",
+        "formula_latex": "(a=b)\\to(P(a)\\to P(b))",
+        "literal_json": "{\"formula\":[\"imp\",[\"eq\",[\"fun\",\"a\",[]],[\"fun\",\"b\",[]]],[\"imp\",[\"pred\",\"P\",[[\"fun\",\"a\",[]]]],[\"pred\",\"P\",[[\"fun\",\"b\",[]]]]]],\"left\":[\"fun\",\"a\",[]],\"right\":[\"fun\",\"b\",[]],\"rule\":\"eq_subst\",\"template\":[\"pred\",\"P\",[[\"var\",\"hole0\"]]],\"variable\":\"hole0\"}",
+        "saved_step": {
+          "formula": [
+            "imp",
+            [
+              "eq",
+              [
+                "fun",
+                "a",
+                []
+              ],
+              [
+                "fun",
+                "b",
+                []
+              ]
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "fun",
+                    "a",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "fun",
+                    "b",
+                    []
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "left": [
+            "fun",
+            "a",
+            []
+          ],
+          "right": [
+            "fun",
+            "b",
+            []
+          ],
+          "rule": "eq_subst",
+          "template": [
+            "pred",
+            "P",
+            [
+              [
+                "var",
+                "hole0"
+              ]
+            ]
+          ],
+          "variable": "hole0"
+        }
+      },
+      {
+        "displayed_row": 4,
+        "english": "Apply reusable block B3 to displayed rows 3 and 2.",
+        "formula_latex": "P(a)\\to P(b)",
+        "literal_json": "{\"formula\":[\"imp\",[\"pred\",\"P\",[[\"fun\",\"a\",[]]]],[\"pred\",\"P\",[[\"fun\",\"b\",[]]]]],\"inputs\":[2,1],\"name\":\"lemma1696b5c541069ea05eefbfe62f7a08ed5924b032e5aed9eaa59beb9395cb4317\",\"rule\":\"block\"}",
+        "saved_step": {
+          "formula": [
+            "imp",
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "a",
+                  []
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "b",
+                  []
+                ]
+              ]
+            ]
+          ],
+          "inputs": [
+            2,
+            1
+          ],
+          "name": "lemma1696b5c541069ea05eefbfe62f7a08ed5924b032e5aed9eaa59beb9395cb4317",
+          "rule": "block"
+        }
+      },
+      {
+        "displayed_row": 5,
+        "english": "Apply reusable block B4 to displayed rows 4 and 1.",
+        "formula_latex": "P(b)",
+        "literal_json": "{\"formula\":[\"pred\",\"P\",[[\"fun\",\"b\",[]]]],\"inputs\":[3,0],\"name\":\"lemmae5cc6400c2dec1f53e31864fc169b5e8964c4b9e49e5664338f7fec66b9bd1b6\",\"rule\":\"block\"}",
+        "saved_step": {
+          "formula": [
+            "pred",
+            "P",
+            [
+              [
+                "fun",
+                "b",
+                []
+              ]
+            ]
+          ],
+          "inputs": [
+            3,
+            0
+          ],
+          "name": "lemmae5cc6400c2dec1f53e31864fc169b5e8964c4b9e49e5664338f7fec66b9bd1b6",
+          "rule": "block"
+        }
+      },
+      {
+        "displayed_row": 6,
+        "english": "Use reflexivity of equality.",
+        "formula_latex": "a=a",
+        "literal_json": "{\"formula\":[\"eq\",[\"fun\",\"a\",[]],[\"fun\",\"a\",[]]],\"rule\":\"refl\"}",
+        "saved_step": {
+          "formula": [
+            "eq",
+            [
+              "fun",
+              "a",
+              []
+            ],
+            [
+              "fun",
+              "a",
+              []
+            ]
+          ],
+          "rule": "refl"
+        }
+      },
+      {
+        "displayed_row": 7,
+        "english": "Instantiate equality substitution with the left term held fixed.",
+        "formula_latex": "(a=b)\\to((a=a)\\to(a=b))",
+        "literal_json": "{\"formula\":[\"imp\",[\"eq\",[\"fun\",\"a\",[]],[\"fun\",\"b\",[]]],[\"imp\",[\"eq\",[\"fun\",\"a\",[]],[\"fun\",\"a\",[]]],[\"eq\",[\"fun\",\"a\",[]],[\"fun\",\"b\",[]]]]],\"left\":[\"fun\",\"a\",[]],\"right\":[\"fun\",\"b\",[]],\"rule\":\"eq_subst\",\"template\":[\"eq\",[\"fun\",\"a\",[]],[\"var\",\"hole0\"]],\"variable\":\"hole0\"}",
+        "saved_step": {
+          "formula": [
+            "imp",
+            [
+              "eq",
+              [
+                "fun",
+                "a",
+                []
+              ],
+              [
+                "fun",
+                "b",
+                []
+              ]
+            ],
+            [
+              "imp",
+              [
+                "eq",
+                [
+                  "fun",
+                  "a",
+                  []
+                ],
+                [
+                  "fun",
+                  "a",
+                  []
+                ]
+              ],
+              [
+                "eq",
+                [
+                  "fun",
+                  "a",
+                  []
+                ],
+                [
+                  "fun",
+                  "b",
+                  []
+                ]
+              ]
+            ]
+          ],
+          "left": [
+            "fun",
+            "a",
+            []
+          ],
+          "right": [
+            "fun",
+            "b",
+            []
+          ],
+          "rule": "eq_subst",
+          "template": [
+            "eq",
+            [
+              "fun",
+              "a",
+              []
+            ],
+            [
+              "var",
+              "hole0"
+            ]
+          ],
+          "variable": "hole0"
+        }
+      },
+      {
+        "displayed_row": 8,
+        "english": "Apply reusable block B1 to displayed rows 7 and 2.",
+        "formula_latex": "(a=a)\\to(a=b)",
+        "literal_json": "{\"formula\":[\"imp\",[\"eq\",[\"fun\",\"a\",[]],[\"fun\",\"a\",[]]],[\"eq\",[\"fun\",\"a\",[]],[\"fun\",\"b\",[]]]],\"inputs\":[6,1],\"name\":\"lemma123dffc077304d6f5569591588aeb01e9aee4963a0675c39a01b279b772947dc\",\"rule\":\"block\"}",
+        "saved_step": {
+          "formula": [
+            "imp",
+            [
+              "eq",
+              [
+                "fun",
+                "a",
+                []
+              ],
+              [
+                "fun",
+                "a",
+                []
+              ]
+            ],
+            [
+              "eq",
+              [
+                "fun",
+                "a",
+                []
+              ],
+              [
+                "fun",
+                "b",
+                []
+              ]
+            ]
+          ],
+          "inputs": [
+            6,
+            1
+          ],
+          "name": "lemma123dffc077304d6f5569591588aeb01e9aee4963a0675c39a01b279b772947dc",
+          "rule": "block"
+        }
+      },
+      {
+        "displayed_row": 9,
+        "english": "Instantiate equality substitution with the right term held fixed.",
+        "formula_latex": "(a=b)\\to((a=b)\\to(b=b))",
+        "literal_json": "{\"formula\":[\"imp\",[\"eq\",[\"fun\",\"a\",[]],[\"fun\",\"b\",[]]],[\"imp\",[\"eq\",[\"fun\",\"a\",[]],[\"fun\",\"b\",[]]],[\"eq\",[\"fun\",\"b\",[]],[\"fun\",\"b\",[]]]]],\"left\":[\"fun\",\"a\",[]],\"right\":[\"fun\",\"b\",[]],\"rule\":\"eq_subst\",\"template\":[\"eq\",[\"var\",\"hole0\"],[\"fun\",\"b\",[]]],\"variable\":\"hole0\"}",
+        "saved_step": {
+          "formula": [
+            "imp",
+            [
+              "eq",
+              [
+                "fun",
+                "a",
+                []
+              ],
+              [
+                "fun",
+                "b",
+                []
+              ]
+            ],
+            [
+              "imp",
+              [
+                "eq",
+                [
+                  "fun",
+                  "a",
+                  []
+                ],
+                [
+                  "fun",
+                  "b",
+                  []
+                ]
+              ],
+              [
+                "eq",
+                [
+                  "fun",
+                  "b",
+                  []
+                ],
+                [
+                  "fun",
+                  "b",
+                  []
+                ]
+              ]
+            ]
+          ],
+          "left": [
+            "fun",
+            "a",
+            []
+          ],
+          "right": [
+            "fun",
+            "b",
+            []
+          ],
+          "rule": "eq_subst",
+          "template": [
+            "eq",
+            [
+              "var",
+              "hole0"
+            ],
+            [
+              "fun",
+              "b",
+              []
+            ]
+          ],
+          "variable": "hole0"
+        }
+      },
+      {
+        "displayed_row": 10,
+        "english": "Apply reusable block B2 to displayed rows 9 and 2.",
+        "formula_latex": "(a=b)\\to(b=b)",
+        "literal_json": "{\"formula\":[\"imp\",[\"eq\",[\"fun\",\"a\",[]],[\"fun\",\"b\",[]]],[\"eq\",[\"fun\",\"b\",[]],[\"fun\",\"b\",[]]]],\"inputs\":[8,1],\"name\":\"lemma5ca8e587ec6d3d665b95620c2edc1e66dcf2d25a98ac4efb752ac1b304aa6420\",\"rule\":\"block\"}",
+        "saved_step": {
+          "formula": [
+            "imp",
+            [
+              "eq",
+              [
+                "fun",
+                "a",
+                []
+              ],
+              [
+                "fun",
+                "b",
+                []
+              ]
+            ],
+            [
+              "eq",
+              [
+                "fun",
+                "b",
+                []
+              ],
+              [
+                "fun",
+                "b",
+                []
+              ]
+            ]
+          ],
+          "inputs": [
+            8,
+            1
+          ],
+          "name": "lemma5ca8e587ec6d3d665b95620c2edc1e66dcf2d25a98ac4efb752ac1b304aa6420",
+          "rule": "block"
+        }
+      },
+      {
+        "displayed_row": 11,
+        "english": "Apply reusable block B5 to displayed rows 8, 10 and 6.",
+        "formula_latex": "b=b",
+        "literal_json": "{\"formula\":[\"eq\",[\"fun\",\"b\",[]],[\"fun\",\"b\",[]]],\"inputs\":[7,9,5],\"name\":\"lemma8604f527b524d94fd44a794f01684bfe042c9fb7a815fd7455a5a20a993c4685\",\"rule\":\"block\"}",
+        "saved_step": {
+          "formula": [
+            "eq",
+            [
+              "fun",
+              "b",
+              []
+            ],
+            [
+              "fun",
+              "b",
+              []
+            ]
+          ],
+          "inputs": [
+            7,
+            9,
+            5
+          ],
+          "name": "lemma8604f527b524d94fd44a794f01684bfe042c9fb7a815fd7455a5a20a993c4685",
+          "rule": "block"
+        }
+      },
+      {
+        "displayed_row": 12,
+        "english": "Apply reusable block B4 again to displayed rows 4 and 1; end at the target.",
+        "formula_latex": "P(b)",
+        "literal_json": "{\"formula\":[\"pred\",\"P\",[[\"fun\",\"b\",[]]]],\"inputs\":[3,0],\"name\":\"lemmae5cc6400c2dec1f53e31864fc169b5e8964c4b9e49e5664338f7fec66b9bd1b6\",\"rule\":\"block\"}",
+        "saved_step": {
+          "formula": [
+            "pred",
+            "P",
+            [
+              [
+                "fun",
+                "b",
+                []
+              ]
+            ]
+          ],
+          "inputs": [
+            3,
+            0
+          ],
+          "name": "lemmae5cc6400c2dec1f53e31864fc169b5e8964c4b9e49e5664338f7fec66b9bd1b6",
+          "rule": "block"
+        }
+      }
+    ],
+    "saved_data_only": true,
+    "schema": "ROOT-saved-symbolic-proof-presentation-v1",
+    "scope": "All12 saved final-request rows, displayed with one-based row numbers; source inputs retain zero-based indices. Exact original formulas/rules/block labels were checked as ordinary JSON data. Target first appears at displayed row5; the frozen12-row profile retains additional steps and returns to the target at row12. No proof shortening, new theorem, validation call, or search replay.",
+    "source_result": {
+      "bytes": 34001836,
+      "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/result.json",
+      "sha256": "e6e247eb9e52640d92b1ae51b837661be372bbdf2f6865d0273db13d2d6a0310"
+    }
+  },
+  "schema": "ROOT-owned-evidence-integration-progress-v1",
+  "scientific_calls": 0,
+  "scientific_replay": false,
+  "scientific_status": "One familiar symbolic control proof is admitted. The fixed GCTS point-search result is not admitted because the complete saved-evidence inverse exceeded its work window.",
+  "short_status": "Only the symbolic control qualifies; the fixed GCTS arm remains a deadline failure.",
+  "symbolic_timing": {
+    "cold_physical_ledger": {
+      "aggregate_physical_bytes": 48976213,
+      "cap_bytes": 134217728,
+      "counted_once": true,
+      "evidence_forest": {
+        "bytes": 14906873,
+        "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/evidence-forest.json",
+        "sha256": "c783757e1f0119d60249ac6c43e581ecce35861471299fae67926d4cc840d146"
+      },
+      "excluded": "fixed Source/module/native inputs and separately bounded stdout/stderr",
+      "logical_cap_bytes": 134217728,
+      "logical_result_bytes": 34001836,
+      "ordinary_result": {
+        "bytes": 34001836,
+        "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/result.json",
+        "sha256": "e6e247eb9e52640d92b1ae51b837661be372bbdf2f6865d0273db13d2d6a0310"
+      },
+      "other_root_JSON_metadata": [
+        {
+          "bytes": 666,
+          "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/CONSUMED.json",
+          "sha256": "51a51a1de7f134479372fea88a26cf0a8733f4b70a82426e2dc80195e7457243"
+        }
+      ],
+      "schema": "owned-evidence-physical-output-ledger-v1",
+      "worker_receipt_bytes": 66838,
+      "worker_receipt_descriptor": "external_once_runner"
+    },
+    "decode_seconds_scope": "Legacy field starts before the new independent inverse; not isolated parser time.",
+    "driver_return_seconds": 156.294118708,
+    "external_terminal_seconds": 176.0285565,
+    "forest_bytes": 14906873,
+    "full_result_bytes": 34001836,
+    "inverse_seconds": 11.239489083,
+    "outer_conservative_physical_ledger": {
+      "conservative_physical_bytes": 58413397,
+      "limit_bytes": 134217728,
+      "logical_bytes": 34001836,
+      "metadata": [
+        {
+          "bytes": 666,
+          "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/CONSUMED.json",
+          "sha256": "51a51a1de7f134479372fea88a26cf0a8733f4b70a82426e2dc80195e7457243"
+        },
+        {
+          "bytes": 66838,
+          "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/worker-receipt.json",
+          "sha256": "002b536459e70bef5c89ca6a3be8d82671ed3feb1196b0b3ae9bce035f3cc832"
+        }
+      ],
+      "observer_metadata_reserved_bytes": 1048576,
+      "runner_receipt_reserved_bytes": 8388608,
+      "schema": "owned-evidence-conservative-output-ledger-v1"
+    },
+    "scientific_stop_seconds": 52.60079933295492
+  },
+  "unqualified_arms": [
+    "fixed"
+  ]
+}

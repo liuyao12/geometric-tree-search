@@ -1,0 +1,2949 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Evidence integration with proof search — GCTS research</title>
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<style>:root{--ink:#193740;--muted:#506772;--line:#bfd0d3;--paper:#f3f7f6;--teal:#12666a;--purple:#7350a2;--amber:#996b20}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 system-ui,-apple-system,sans-serif}main{max-width:1180px;padding:36px 30px 80px;margin:auto}a{color:#0d666f}nav{display:flex;gap:22px;flex-wrap:wrap;margin-bottom:44px;font-size:15px}h1{font:600 clamp(32px,5vw,54px)/1.12 Georgia,serif;max-width:980px;margin:12px 0 22px}h2{font:600 29px/1.25 Georgia,serif;margin:0 0 22px}h3{font-size:19px}p{max-width:980px}.eyebrow{font-size:12px;letter-spacing:1.5px;font-weight:750;text-transform:uppercase;color:var(--teal)}.lead{font-size:22px;max-width:980px}.boundary{border-left:5px solid var(--amber);background:#fff2dd;padding:18px 24px;margin:28px 0}.cards{display:grid;grid-template-columns:1fr 1fr;gap:22px}.cards article{border:1px solid var(--line);background:white;padding:22px 26px}.cards b{font-size:22px}.cards p{margin-bottom:0}.timeline{height:46px;display:flex;margin:25px 0 12px;border:1px solid var(--line)}.time-legend{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;font-size:15px}.time-legend b{display:block}.time-legend p{margin-top:5px}.proof-table{min-width:980px}.proof-table pre{max-width:500px}section{margin-top:58px;scroll-margin-top:24px}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:850px;background:white;font-size:15px}th,td{padding:16px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}thead{background:#e2edef}caption{text-align:left;font-size:13px;color:var(--muted);margin-top:10px;caption-side:bottom}.path{display:grid;grid-template-columns:1fr 46px 1fr 46px 1fr;align-items:stretch;margin:25px 0}.path article{background:white;border-top:5px solid var(--teal);padding:22px;border-left:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line)}.path.evidence article{border-top-color:var(--purple)}.path article strong{display:block;font-size:19px;line-height:1.3}.path p{font-size:15px;margin-bottom:0}.arrow{align-self:center;text-align:center;font-size:25px;color:#617a84}.lane{font-size:12px;font-weight:750;letter-spacing:1.4px;color:var(--teal);text-transform:uppercase}.lane.purple{color:var(--purple)}.note{font-size:14px;color:var(--muted)}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-height:560px;overflow:auto;background:#e5edef;padding:22px;font-size:12px;border:1px solid var(--line)}details{margin:22px 0}summary{cursor:pointer;font-weight:650}li{margin:12px 0}footer{border-top:1px solid var(--line);margin-top:65px;padding-top:22px;color:var(--muted);font-size:14px}code{font-size:.87em;background:#e4edee;padding:2px 4px}@media(max-width:730px){main{padding:24px 18px 60px}.cards,.time-legend{grid-template-columns:1fr}.path{grid-template-columns:1fr}.path .arrow{transform:rotate(90deg);height:42px}.lead{font-size:19px}}
+</style></head><body><main><nav><a href="reader.html#owned-evidence">Conditional inventory notebook</a><a href="exact-evidence.html#outcome">Previous carrier qualification</a><a href="#outcome">Current outcomes</a><a href="#proof">Saved proof</a><a href="#reader">Inspect records</a></nav>
+<p class="eyebrow">19 October 2026 · Independent review and matched integration control</p><h1>Evidence storage meets the full proof-search pipeline.</h1><p class="lead">Symbolic control qualifies; fixed GCTS arm misses the reconstruction deadline.</p><p>This milestone asks whether the qualified evidence carrier can retain a complete proof-search result while keeping every existing proof gate. The test uses the familiar assertion \(a=b,\;P(a)\vdash P(b)\), with the same original input and search limits in both arms.</p><div class="boundary"><b>Scientific status:</b> One familiar symbolic control proof is admitted. The fixed GCTS point-search result is not admitted because the complete saved-evidence inverse exceeded its work window. No new theorem, learned policy, GCTS advantage, or performance improvement follows from this integration control.</div>
+<section id="outcome"><p class="eyebrow">Frozen input · Fixed and symbolic arms</p><h2>Both outcomes remain in the record.</h2><div class="cards"><article><b>Fixed</b><p>The search found a Native-accepted proof. The fresh saved-forest inverse hit the work deadline, so the complete result is not admitted.</p></article><article><b>Symbolic</b><p>The existing proof gates, full saved-forest inverse, complete ordinary-result reader, and resource/terminal gates all passed.</p></article></div><div class="table-wrap"><table><thead><tr><th>Arm</th><th>Outcome</th><th>Last stage</th><th>Observed terminal</th><th>Worker + Native peak</th><th>Proof disposition</th></tr></thead><tbody><tr><th>fixed</th><td>NOT QUALIFIED</td><td>Saved-forest document stream: work deadline</td><td>\(181.101\,\mathrm{s}\)</td><td>\(872.86\,\mathrm{MiB}\)<br><small>Diagnostic sum; no resource admission.</small></td><td>No complete admitted result</td></tr><tr><th>symbolic</th><td>QUALIFIED FINITE INTEGRATION</td><td>Full checks and external terminal complete</td><td>\(176.029\,\mathrm{s}\)</td><td>\(861.53\,\mathrm{MiB}\)</td><td>Known control proof admitted</td></tr></tbody><caption>Wall time includes setup and complete output checks. Separate process peaks are conservatively added. Failure prefixes carry no proof or resource admission.</caption></table></div></section>
+<section id="timing"><p class="eyebrow">Successful symbolic control only</p><h2>Evidence closure dominates the observed run.</h2><div class="timeline" role="img" aria-label="Symbolic timeline: scientific phase 52.60 seconds, driver closure 103.69 seconds, remaining checks and external terminal 19.73 seconds"><span style="width:29.881969368393314%;background:#12666a"></span><span style="width:58.907100891351725%;background:#7350a2"></span><span style="width:11.210929740254953%;background:#b17a24"></span></div><div class="time-legend"><article><b>Scientific phase</b><p>\(52.60\,\mathrm{s}\), through the recorded scientific stop.</p></article><article><b>Driver output and closure</b><p>\(103.69\,\mathrm{s}\), through driver return. Includes assembly, export, streams, and guards.</p></article><article><b>Remaining checks and terminal</b><p>\(19.73\,\mathrm{s}\), including the fresh inverse, result reading, and final checks.</p></article></div><p class="note">The independent saved inverse takes \(11.239\,\mathrm{s}\). The earlier field named <code>decode_seconds</code> includes that inverse; it is not isolated parser time. The unpartitioned oracle-close-to-forest-serialization envelope is \(81.065\,\mathrm{s}\). These observations do not identify a causal optimization or predict its benefit. No complete inverse timing survives for the fixed arm.</p></section>
+<section id="proof"><p class="eyebrow">Admitted symbolic result · Full saved row sequence</p><h2>The discovered proof, line by line.</h2><p>This is the machine-selected final request for the familiar assertion, presented in formulas and English. Displayed row numbers start at \(1\); the raw saved indices start at \(0\). Reusable blocks have display labels <code>B1</code> through <code>B5</code>, in the order stored in the request.</p><div class="table-wrap"><table class="proof-table"><thead><tr><th>Row</th><th>Formula</th><th>Reading and saved step</th></tr></thead><tbody><tr><th>\(1\)</th><td>\(P(a)\)</td><td>Use the given predicate hypothesis.<details><summary>Saved step</summary><pre>{&quot;formula&quot;:[&quot;pred&quot;,&quot;P&quot;,[[&quot;fun&quot;,&quot;a&quot;,[]]]],&quot;name&quot;:&quot;a1&quot;,&quot;rule&quot;:&quot;axiom&quot;}</pre></details></td></tr><tr><th>\(2\)</th><td>\(a=b\)</td><td>Use the given equality hypothesis.<details><summary>Saved step</summary><pre>{&quot;formula&quot;:[&quot;eq&quot;,[&quot;fun&quot;,&quot;a&quot;,[]],[&quot;fun&quot;,&quot;b&quot;,[]]],&quot;name&quot;:&quot;a0&quot;,&quot;rule&quot;:&quot;axiom&quot;}</pre></details></td></tr><tr><th>\(3\)</th><td>\((a=b)\to(P(a)\to P(b))\)</td><td>Instantiate equality substitution for the predicate.<details><summary>Saved step</summary><pre>{&quot;formula&quot;:[&quot;imp&quot;,[&quot;eq&quot;,[&quot;fun&quot;,&quot;a&quot;,[]],[&quot;fun&quot;,&quot;b&quot;,[]]],[&quot;imp&quot;,[&quot;pred&quot;,&quot;P&quot;,[[&quot;fun&quot;,&quot;a&quot;,[]]]],[&quot;pred&quot;,&quot;P&quot;,[[&quot;fun&quot;,&quot;b&quot;,[]]]]]],&quot;left&quot;:[&quot;fun&quot;,&quot;a&quot;,[]],&quot;right&quot;:[&quot;fun&quot;,&quot;b&quot;,[]],&quot;rule&quot;:&quot;eq_subst&quot;,&quot;template&quot;:[&quot;pred&quot;,&quot;P&quot;,[[&quot;var&quot;,&quot;hole0&quot;]]],&quot;variable&quot;:&quot;hole0&quot;}</pre></details></td></tr><tr><th>\(4\)</th><td>\(P(a)\to P(b)\)</td><td>Apply reusable block B3 to displayed rows \(3\) and \(2\).<details><summary>Saved step</summary><pre>{&quot;formula&quot;:[&quot;imp&quot;,[&quot;pred&quot;,&quot;P&quot;,[[&quot;fun&quot;,&quot;a&quot;,[]]]],[&quot;pred&quot;,&quot;P&quot;,[[&quot;fun&quot;,&quot;b&quot;,[]]]]],&quot;inputs&quot;:[2,1],&quot;name&quot;:&quot;lemma1696b5c541069ea05eefbfe62f7a08ed5924b032e5aed9eaa59beb9395cb4317&quot;,&quot;rule&quot;:&quot;block&quot;}</pre></details></td></tr><tr><th>\(5\)</th><td>\(P(b)\)</td><td>Apply reusable block B4 to displayed rows \(4\) and \(1\).<details><summary>Saved step</summary><pre>{&quot;formula&quot;:[&quot;pred&quot;,&quot;P&quot;,[[&quot;fun&quot;,&quot;b&quot;,[]]]],&quot;inputs&quot;:[3,0],&quot;name&quot;:&quot;lemmae5cc6400c2dec1f53e31864fc169b5e8964c4b9e49e5664338f7fec66b9bd1b6&quot;,&quot;rule&quot;:&quot;block&quot;}</pre></details></td></tr><tr><th>\(6\)</th><td>\(a=a\)</td><td>Use reflexivity of equality.<details><summary>Saved step</summary><pre>{&quot;formula&quot;:[&quot;eq&quot;,[&quot;fun&quot;,&quot;a&quot;,[]],[&quot;fun&quot;,&quot;a&quot;,[]]],&quot;rule&quot;:&quot;refl&quot;}</pre></details></td></tr><tr><th>\(7\)</th><td>\((a=b)\to((a=a)\to(a=b))\)</td><td>Instantiate equality substitution with the left term held fixed.<details><summary>Saved step</summary><pre>{&quot;formula&quot;:[&quot;imp&quot;,[&quot;eq&quot;,[&quot;fun&quot;,&quot;a&quot;,[]],[&quot;fun&quot;,&quot;b&quot;,[]]],[&quot;imp&quot;,[&quot;eq&quot;,[&quot;fun&quot;,&quot;a&quot;,[]],[&quot;fun&quot;,&quot;a&quot;,[]]],[&quot;eq&quot;,[&quot;fun&quot;,&quot;a&quot;,[]],[&quot;fun&quot;,&quot;b&quot;,[]]]]],&quot;left&quot;:[&quot;fun&quot;,&quot;a&quot;,[]],&quot;right&quot;:[&quot;fun&quot;,&quot;b&quot;,[]],&quot;rule&quot;:&quot;eq_subst&quot;,&quot;template&quot;:[&quot;eq&quot;,[&quot;fun&quot;,&quot;a&quot;,[]],[&quot;var&quot;,&quot;hole0&quot;]],&quot;variable&quot;:&quot;hole0&quot;}</pre></details></td></tr><tr><th>\(8\)</th><td>\((a=a)\to(a=b)\)</td><td>Apply reusable block B1 to displayed rows \(7\) and \(2\).<details><summary>Saved step</summary><pre>{&quot;formula&quot;:[&quot;imp&quot;,[&quot;eq&quot;,[&quot;fun&quot;,&quot;a&quot;,[]],[&quot;fun&quot;,&quot;a&quot;,[]]],[&quot;eq&quot;,[&quot;fun&quot;,&quot;a&quot;,[]],[&quot;fun&quot;,&quot;b&quot;,[]]]],&quot;inputs&quot;:[6,1],&quot;name&quot;:&quot;lemma123dffc077304d6f5569591588aeb01e9aee4963a0675c39a01b279b772947dc&quot;,&quot;rule&quot;:&quot;block&quot;}</pre></details></td></tr><tr><th>\(9\)</th><td>\((a=b)\to((a=b)\to(b=b))\)</td><td>Instantiate equality substitution with the right term held fixed.<details><summary>Saved step</summary><pre>{&quot;formula&quot;:[&quot;imp&quot;,[&quot;eq&quot;,[&quot;fun&quot;,&quot;a&quot;,[]],[&quot;fun&quot;,&quot;b&quot;,[]]],[&quot;imp&quot;,[&quot;eq&quot;,[&quot;fun&quot;,&quot;a&quot;,[]],[&quot;fun&quot;,&quot;b&quot;,[]]],[&quot;eq&quot;,[&quot;fun&quot;,&quot;b&quot;,[]],[&quot;fun&quot;,&quot;b&quot;,[]]]]],&quot;left&quot;:[&quot;fun&quot;,&quot;a&quot;,[]],&quot;right&quot;:[&quot;fun&quot;,&quot;b&quot;,[]],&quot;rule&quot;:&quot;eq_subst&quot;,&quot;template&quot;:[&quot;eq&quot;,[&quot;var&quot;,&quot;hole0&quot;],[&quot;fun&quot;,&quot;b&quot;,[]]],&quot;variable&quot;:&quot;hole0&quot;}</pre></details></td></tr><tr><th>\(10\)</th><td>\((a=b)\to(b=b)\)</td><td>Apply reusable block B2 to displayed rows \(9\) and \(2\).<details><summary>Saved step</summary><pre>{&quot;formula&quot;:[&quot;imp&quot;,[&quot;eq&quot;,[&quot;fun&quot;,&quot;a&quot;,[]],[&quot;fun&quot;,&quot;b&quot;,[]]],[&quot;eq&quot;,[&quot;fun&quot;,&quot;b&quot;,[]],[&quot;fun&quot;,&quot;b&quot;,[]]]],&quot;inputs&quot;:[8,1],&quot;name&quot;:&quot;lemma5ca8e587ec6d3d665b95620c2edc1e66dcf2d25a98ac4efb752ac1b304aa6420&quot;,&quot;rule&quot;:&quot;block&quot;}</pre></details></td></tr><tr><th>\(11\)</th><td>\(b=b\)</td><td>Apply reusable block B5 to displayed rows \(8\), \(10\) and \(6\).<details><summary>Saved step</summary><pre>{&quot;formula&quot;:[&quot;eq&quot;,[&quot;fun&quot;,&quot;b&quot;,[]],[&quot;fun&quot;,&quot;b&quot;,[]]],&quot;inputs&quot;:[7,9,5],&quot;name&quot;:&quot;lemma8604f527b524d94fd44a794f01684bfe042c9fb7a815fd7455a5a20a993c4685&quot;,&quot;rule&quot;:&quot;block&quot;}</pre></details></td></tr><tr><th>\(12\)</th><td>\(P(b)\)</td><td>Apply reusable block B4 again to displayed rows \(4\) and \(1\); end at the target.<details><summary>Saved step</summary><pre>{&quot;formula&quot;:[&quot;pred&quot;,&quot;P&quot;,[[&quot;fun&quot;,&quot;b&quot;,[]]]],&quot;inputs&quot;:[3,0],&quot;name&quot;:&quot;lemmae5cc6400c2dec1f53e31864fc169b5e8964c4b9e49e5664338f7fec66b9bd1b6&quot;,&quot;rule&quot;:&quot;block&quot;}</pre></details></td></tr></tbody></table></div><p>The target first appears at displayed row \(5\). The frozen \(12\)-row profile retains extra derivations and returns to the target in its final row; this report preserves all of them. Translation is presentation only. Validity comes from the admitted proof pipeline.</p><h3>Expand the stored reusable blocks</h3><details><summary>Reusable block B1</summary><pre>{&quot;conclusion&quot;:[&quot;imp&quot;,[&quot;eq&quot;,[&quot;fun&quot;,&quot;a&quot;,[]],[&quot;fun&quot;,&quot;a&quot;,[]]],[&quot;eq&quot;,[&quot;fun&quot;,&quot;a&quot;,[]],[&quot;fun&quot;,&quot;b&quot;,[]]]],&quot;name&quot;:&quot;lemma123dffc077304d6f5569591588aeb01e9aee4963a0675c39a01b279b772947dc&quot;,&quot;premises&quot;:[[&quot;imp&quot;,[&quot;eq&quot;,[&quot;fun&quot;,&quot;a&quot;,[]],[&quot;fun&quot;,&quot;b&quot;,[]]],[&quot;imp&quot;,[&quot;eq&quot;,[&quot;fun&quot;,&quot;a&quot;,[]],[&quot;fun&quot;,&quot;a&quot;,[]]],[&quot;eq&quot;,[&quot;fun&quot;,&quot;a&quot;,[]],[&quot;fun&quot;,&quot;b&quot;,[]]]]],[&quot;eq&quot;,[&quot;fun&quot;,&quot;a&quot;,[]],[&quot;fun&quot;,&quot;b&quot;,[]]]],&quot;proof&quot;:[{&quot;formula&quot;:[&quot;imp&quot;,[&quot;eq&quot;,[&quot;fun&quot;,&quot;a&quot;,[]],[&quot;fun&quot;,&quot;b&quot;,[]]],[&quot;imp&quot;,[&quot;eq&quot;,[&quot;fun&quot;,&quot;a&quot;,[]],[&quot;fun&quot;,&quot;a&quot;,[]]],[&quot;eq&quot;,[&quot;fun&quot;,&quot;a&quot;,[]],[&quot;fun&quot;,&quot;b&quot;,[]]]]],&quot;index&quot;:0,&quot;rule&quot;:&quot;assumption&quot;},{&quot;formula&quot;:[&quot;eq&quot;,[&quot;fun&quot;,&quot;a&quot;,[]],[&quot;fun&quot;,&quot;b&quot;,[]]],&quot;index&quot;:1,&quot;rule&quot;:&quot;assumption&quot;},{&quot;antecedent&quot;:1,&quot;formula&quot;:[&quot;imp&quot;,[&quot;eq&quot;,[&quot;fun&quot;,&quot;a&quot;,[]],[&quot;fun&quot;,&quot;a&quot;,[]]],[&quot;eq&quot;,[&quot;fun&quot;,&quot;a&quot;,[]],[&quot;fun&quot;,&quot;b&quot;,[]]]],&quot;implication&quot;:0,&quot;rule&quot;:&quot;mp&quot;}]}</pre></details><details><summary>Reusable block B2</summary><pre>{&quot;conclusion&quot;:[&quot;imp&quot;,[&quot;eq&quot;,[&quot;fun&quot;,&quot;a&quot;,[]],[&quot;fun&quot;,&quot;b&quot;,[]]],[&quot;eq&quot;,[&quot;fun&quot;,&quot;b&quot;,[]],[&quot;fun&quot;,&quot;b&quot;,[]]]],&quot;name&quot;:&quot;lemma5ca8e587ec6d3d665b95620c2edc1e66dcf2d25a98ac4efb752ac1b304aa6420&quot;,&quot;premises&quot;:[[&quot;imp&quot;,[&quot;eq&quot;,[&quot;fun&quot;,&quot;a&quot;,[]],[&quot;fun&quot;,&quot;b&quot;,[]]],[&quot;imp&quot;,[&quot;eq&quot;,[&quot;fun&quot;,&quot;a&quot;,[]],[&quot;fun&quot;,&quot;b&quot;,[]]],[&quot;eq&quot;,[&quot;fun&quot;,&quot;b&quot;,[]],[&quot;fun&quot;,&quot;b&quot;,[]]]]],[&quot;eq&quot;,[&quot;fun&quot;,&quot;a&quot;,[]],[&quot;fun&quot;,&quot;b&quot;,[]]]],&quot;proof&quot;:[{&quot;formula&quot;:[&quot;imp&quot;,[&quot;eq&quot;,[&quot;fun&quot;,&quot;a&quot;,[]],[&quot;fun&quot;,&quot;b&quot;,[]]],[&quot;imp&quot;,[&quot;eq&quot;,[&quot;fun&quot;,&quot;a&quot;,[]],[&quot;fun&quot;,&quot;b&quot;,[]]],[&quot;eq&quot;,[&quot;fun&quot;,&quot;b&quot;,[]],[&quot;fun&quot;,&quot;b&quot;,[]]]]],&quot;index&quot;:0,&quot;rule&quot;:&quot;assumption&quot;},{&quot;formula&quot;:[&quot;eq&quot;,[&quot;fun&quot;,&quot;a&quot;,[]],[&quot;fun&quot;,&quot;b&quot;,[]]],&quot;index&quot;:1,&quot;rule&quot;:&quot;assumption&quot;},{&quot;antecedent&quot;:1,&quot;formula&quot;:[&quot;imp&quot;,[&quot;eq&quot;,[&quot;fun&quot;,&quot;a&quot;,[]],[&quot;fun&quot;,&quot;b&quot;,[]]],[&quot;eq&quot;,[&quot;fun&quot;,&quot;b&quot;,[]],[&quot;fun&quot;,&quot;b&quot;,[]]]],&quot;implication&quot;:0,&quot;rule&quot;:&quot;mp&quot;}]}</pre></details><details><summary>Reusable block B3</summary><pre>{&quot;conclusion&quot;:[&quot;imp&quot;,[&quot;pred&quot;,&quot;P&quot;,[[&quot;fun&quot;,&quot;a&quot;,[]]]],[&quot;pred&quot;,&quot;P&quot;,[[&quot;fun&quot;,&quot;b&quot;,[]]]]],&quot;name&quot;:&quot;lemma1696b5c541069ea05eefbfe62f7a08ed5924b032e5aed9eaa59beb9395cb4317&quot;,&quot;premises&quot;:[[&quot;imp&quot;,[&quot;eq&quot;,[&quot;fun&quot;,&quot;a&quot;,[]],[&quot;fun&quot;,&quot;b&quot;,[]]],[&quot;imp&quot;,[&quot;pred&quot;,&quot;P&quot;,[[&quot;fun&quot;,&quot;a&quot;,[]]]],[&quot;pred&quot;,&quot;P&quot;,[[&quot;fun&quot;,&quot;b&quot;,[]]]]]],[&quot;eq&quot;,[&quot;fun&quot;,&quot;a&quot;,[]],[&quot;fun&quot;,&quot;b&quot;,[]]]],&quot;proof&quot;:[{&quot;formula&quot;:[&quot;imp&quot;,[&quot;eq&quot;,[&quot;fun&quot;,&quot;a&quot;,[]],[&quot;fun&quot;,&quot;b&quot;,[]]],[&quot;imp&quot;,[&quot;pred&quot;,&quot;P&quot;,[[&quot;fun&quot;,&quot;a&quot;,[]]]],[&quot;pred&quot;,&quot;P&quot;,[[&quot;fun&quot;,&quot;b&quot;,[]]]]]],&quot;index&quot;:0,&quot;rule&quot;:&quot;assumption&quot;},{&quot;formula&quot;:[&quot;eq&quot;,[&quot;fun&quot;,&quot;a&quot;,[]],[&quot;fun&quot;,&quot;b&quot;,[]]],&quot;index&quot;:1,&quot;rule&quot;:&quot;assumption&quot;},{&quot;antecedent&quot;:1,&quot;formula&quot;:[&quot;imp&quot;,[&quot;pred&quot;,&quot;P&quot;,[[&quot;fun&quot;,&quot;a&quot;,[]]]],[&quot;pred&quot;,&quot;P&quot;,[[&quot;fun&quot;,&quot;b&quot;,[]]]]],&quot;implication&quot;:0,&quot;rule&quot;:&quot;mp&quot;}]}</pre></details><details><summary>Reusable block B4</summary><pre>{&quot;conclusion&quot;:[&quot;pred&quot;,&quot;P&quot;,[[&quot;fun&quot;,&quot;b&quot;,[]]]],&quot;name&quot;:&quot;lemmae5cc6400c2dec1f53e31864fc169b5e8964c4b9e49e5664338f7fec66b9bd1b6&quot;,&quot;premises&quot;:[[&quot;imp&quot;,[&quot;pred&quot;,&quot;P&quot;,[[&quot;fun&quot;,&quot;a&quot;,[]]]],[&quot;pred&quot;,&quot;P&quot;,[[&quot;fun&quot;,&quot;b&quot;,[]]]]],[&quot;pred&quot;,&quot;P&quot;,[[&quot;fun&quot;,&quot;a&quot;,[]]]]],&quot;proof&quot;:[{&quot;formula&quot;:[&quot;imp&quot;,[&quot;pred&quot;,&quot;P&quot;,[[&quot;fun&quot;,&quot;a&quot;,[]]]],[&quot;pred&quot;,&quot;P&quot;,[[&quot;fun&quot;,&quot;b&quot;,[]]]]],&quot;index&quot;:0,&quot;rule&quot;:&quot;assumption&quot;},{&quot;formula&quot;:[&quot;pred&quot;,&quot;P&quot;,[[&quot;fun&quot;,&quot;a&quot;,[]]]],&quot;index&quot;:1,&quot;rule&quot;:&quot;assumption&quot;},{&quot;antecedent&quot;:1,&quot;formula&quot;:[&quot;pred&quot;,&quot;P&quot;,[[&quot;fun&quot;,&quot;b&quot;,[]]]],&quot;implication&quot;:0,&quot;rule&quot;:&quot;mp&quot;}]}</pre></details><details><summary>Reusable block B5</summary><pre>{&quot;conclusion&quot;:[&quot;eq&quot;,[&quot;fun&quot;,&quot;b&quot;,[]],[&quot;fun&quot;,&quot;b&quot;,[]]],&quot;name&quot;:&quot;lemma8604f527b524d94fd44a794f01684bfe042c9fb7a815fd7455a5a20a993c4685&quot;,&quot;premises&quot;:[[&quot;imp&quot;,[&quot;eq&quot;,[&quot;fun&quot;,&quot;a&quot;,[]],[&quot;fun&quot;,&quot;a&quot;,[]]],[&quot;eq&quot;,[&quot;fun&quot;,&quot;a&quot;,[]],[&quot;fun&quot;,&quot;b&quot;,[]]]],[&quot;imp&quot;,[&quot;eq&quot;,[&quot;fun&quot;,&quot;a&quot;,[]],[&quot;fun&quot;,&quot;b&quot;,[]]],[&quot;eq&quot;,[&quot;fun&quot;,&quot;b&quot;,[]],[&quot;fun&quot;,&quot;b&quot;,[]]]],[&quot;eq&quot;,[&quot;fun&quot;,&quot;a&quot;,[]],[&quot;fun&quot;,&quot;a&quot;,[]]]],&quot;proof&quot;:[{&quot;formula&quot;:[&quot;imp&quot;,[&quot;eq&quot;,[&quot;fun&quot;,&quot;a&quot;,[]],[&quot;fun&quot;,&quot;a&quot;,[]]],[&quot;eq&quot;,[&quot;fun&quot;,&quot;a&quot;,[]],[&quot;fun&quot;,&quot;b&quot;,[]]]],&quot;index&quot;:0,&quot;rule&quot;:&quot;assumption&quot;},{&quot;formula&quot;:[&quot;imp&quot;,[&quot;eq&quot;,[&quot;fun&quot;,&quot;a&quot;,[]],[&quot;fun&quot;,&quot;b&quot;,[]]],[&quot;eq&quot;,[&quot;fun&quot;,&quot;b&quot;,[]],[&quot;fun&quot;,&quot;b&quot;,[]]]],&quot;index&quot;:1,&quot;rule&quot;:&quot;assumption&quot;},{&quot;formula&quot;:[&quot;eq&quot;,[&quot;fun&quot;,&quot;a&quot;,[]],[&quot;fun&quot;,&quot;a&quot;,[]]],&quot;index&quot;:2,&quot;rule&quot;:&quot;assumption&quot;},{&quot;antecedent&quot;:2,&quot;formula&quot;:[&quot;eq&quot;,[&quot;fun&quot;,&quot;a&quot;,[]],[&quot;fun&quot;,&quot;b&quot;,[]]],&quot;implication&quot;:0,&quot;rule&quot;:&quot;mp&quot;},{&quot;antecedent&quot;:3,&quot;formula&quot;:[&quot;eq&quot;,[&quot;fun&quot;,&quot;b&quot;,[]],[&quot;fun&quot;,&quot;b&quot;,[]]],&quot;implication&quot;:1,&quot;rule&quot;:&quot;mp&quot;}]}</pre></details></section>
+<section id="design"><p class="eyebrow">Two required chains of evidence</p><h2>Storage never supplies mathematical authority.</h2><p class="lane">The proof chain</p><div class="path"><article><strong>Original assertion and rules</strong><p>Complete hypotheses, target, inventory, and current theory. No supplied proof route.</p></article><div class="arrow" aria-hidden="true">→</div><article><strong>Unchanged search</strong><p>The same point model, candidate bookkeeping, pruning, rollback, and primitive inference rules.</p></article><div class="arrow" aria-hidden="true">→</div><article><strong>Full proof checks</strong><p>Fresh Native acceptance, complete used definitions, whole finite point-region check, and exact evidence joins.</p></article></div><p class="lane purple">The representation chain</p><div class="path evidence"><article><strong>Capture completed packets</strong><p>Read-only references retain literal evidence; operational Model inputs remain ordinary data.</p></article><div class="arrow" aria-hidden="true">→</div><article><strong>Save one complete forest</strong><p>All captured roots must be reachable from the declared complete result. No dropped or hidden records.</p></article><div class="arrow" aria-hidden="true">→</div><article><strong>Reconstruct every byte</strong><p>A separate inverse reads the saved forest and must reproduce the complete ordinary result exactly.</p></article></div><p class="note">The representation chain is required in addition to the proof chain. Hashes identify artifacts; they do not replace either chain.</p></section>
+<section id="review"><p class="eyebrow">What parallel review contributed</p><h2>Independent checks changed the implementation.</h2><ul><li>Callback reentrancy could bypass an early adapter gate. The repaired adapter owns the arena and stream interfaces.</li><li>An early comparison could conflate Boolean, integer, and floating point values. The reader now checks complete canonical bytes and exact key sets.</li><li>A deadline before Store construction could be masked by a later statistics call. The failure path now preserves the original error.</li></ul><p>The registry and cold-worker author, independent reviewer, and coordinating Root had distinct duties. Current reviews state their exact scope and preserve the earlier provenance and author overlap of inherited algorithms. A source review alone gives no runtime or mathematical acceptance.</p></section>
+<section id="findings"><p class="eyebrow">Results and next decision</p><h2>What the milestone establishes.</h2><ul><li>The same original assertion, primitive rules, inventory policy, Model inputs, search limits, and complete proof checks were retained in both arms. No proof route was supplied.</li><li>The symbolic control demonstrates that this evidence representation can coexist with the full proof pipeline on this familiar finite input. Its full result is reconstructed and admitted under the original profile.</li><li>The fixed arm has local Native proof acceptance but no completed independent saved-forest inverse or final worker header. Its result and forest remain diagnostic-only artifacts.</li><li>For the symbolic arm, scientific work stops near \(52.60\,\mathrm{s}\), while the full external terminal arrives near \(176.03\,\mathrm{s}\). The retained output/closure envelope is a practical bottleneck, with no finer causal partition for its largest segment.</li><li>The next Source-only hypothesis is bounded batching of delegated inverse clock callbacks while retaining every validation, operation/cap check, completion check, and full old pipeline gate. It is unimplemented and needs a changed execution profile and fresh independent qualification. The larger assembly/seal/export envelope still needs measurement.</li></ul><ul><li>This is one familiar synthetic first-order assertion. It is not a held-out theorem, arithmetic or geometry benchmark advance, generalization result, or evidence of GCTS+RL superiority.</li><li>There is no ordinary-storage ablation or causal speed/memory comparison. Both arms use the new carrier, and the fixed arm fails complete qualification.</li><li>Five complete finite adapter diagnostic packets survive for the symbolic arm. The fixed arm retains only a returned diagnostic-stage interval, supporting completion by Source-backed inference rather than a saved per-group audit.</li><li>The five diagnostic groups cover selected callback/type/assembly failures, not every hostile callback, exception path, or forged-object case. Trusted interpreter/OS, exclusive ownership, and inherited proof-kernel review assumptions remain.</li><li>The fixed inverse failure has no retained start/completion packet or inverse counter snapshot. Its exact inverse duration is unavailable; no replay was performed to fill that gap.</li></ul><p>All runs retain the original \(180\,\mathrm{s}\) positive work window, \(210\,\mathrm{s}\) external terminal gate, conservative \(1\,\mathrm{GiB}\) worker-plus-Native cap, \(128\,\mathrm{MiB}\) complete logical and aggregate physical output caps, and \(4\,\mathrm{MiB}\) per-log limits. The forest inverse keeps its separate \(30,000,000\) operation bound. These limits were not relaxed to admit a failure.</p></section>
+<section id="reader"><p class="eyebrow">Saved records · No live proof replay</p><h2>Inspect the exact outcome.</h2><p><a href="owned-evidence-next-design.json">Unimplemented next-design hypothesis and timing analysis</a></p><p><a href="owned-evidence-summary.json">Outcome and complete artifact descriptors</a> · <a href="owned-evidence-manifest.json">Archive member manifest</a> · <a href="owned-evidence-archive.zip">Sources, reviews, plans, and actual receipts</a></p><details><summary>Full outcome JSON</summary><pre>{
+  &quot;GCTS_RL_advantage_established&quot;: false,
+  &quot;actual_subject_count&quot;: 2,
+  &quot;actual_subjects_consumed_once&quot;: true,
+  &quot;arms&quot;: [
+    {
+      &quot;ROOT_mathematical_proof_admitted&quot;: false,
+      &quot;ROOT_resource_accepted&quot;: false,
+      &quot;aggregate_peak_bytes&quot;: 915259392,
+      &quot;classification&quot;: &quot;NOT QUALIFIED&quot;,
+      &quot;elapsed_latex&quot;: &quot;181.101\\,\\mathrm{s}&quot;,
+      &quot;elapsed_seconds&quot;: 181.1010425,
+      &quot;full_saved_record&quot;: {
+        &quot;ROOT_mathematical_proof_admitted&quot;: false,
+        &quot;ROOT_resource_accepted&quot;: false,
+        &quot;aggregate_peak_bytes&quot;: null,
+        &quot;elapsed_seconds&quot;: 181.1010425,
+        &quot;errors&quot;: [
+          {
+            &quot;message&quot;: &quot;normal exact Python exit0&quot;,
+            &quot;stamp_ns&quot;: 758292883955916,
+            &quot;type&quot;: &quot;OnceRunnerError&quot;
+          }
+        ],
+        &quot;group_absent&quot;: true,
+        &quot;logs_complete&quot;: true,
+        &quot;mode&quot;: &quot;fixed&quot;,
+        &quot;once_plan&quot;: {
+          &quot;bytes&quot;: 2790,
+          &quot;path&quot;: &quot;/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/plans-v1/once-plans/owned-evidence-001-fixed-ROOT-20261019-v1.json&quot;,
+          &quot;sha256&quot;: &quot;e7d7e714ea7ef0cdaa94efee0bc25b3119b2b2224e008785ed55be8733d8749e&quot;
+        },
+        &quot;outer_exit_code&quot;: 2,
+        &quot;outputs&quot;: {
+          &quot;stderr&quot;: {
+            &quot;bytes&quot;: 1951,
+            &quot;path&quot;: &quot;/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-fixed-v1/stderr.bin&quot;,
+            &quot;sha256&quot;: &quot;b1739a036e96815ca14b1ed513a4028fe488657ddf4e7dd3cb63b175e55cb76e&quot;
+          },
+          &quot;stdout&quot;: {
+            &quot;bytes&quot;: 0,
+            &quot;path&quot;: &quot;/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-fixed-v1/stdout.bin&quot;,
+            &quot;sha256&quot;: &quot;e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855&quot;
+          }
+        },
+        &quot;resource_candidate&quot;: false,
+        &quot;runner_receipt&quot;: {
+          &quot;bytes&quot;: 12009,
+          &quot;path&quot;: &quot;/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-fixed-v1/runner-receipt.json&quot;,
+          &quot;sha256&quot;: &quot;e40aa4cee51541c69d5e68729fce53ec3ae45fe2b418aa6bde3f3b2405539475&quot;
+        },
+        &quot;scientific_acceptance&quot;: false,
+        &quot;terminal&quot;: {
+          &quot;bytes&quot;: 1617,
+          &quot;path&quot;: &quot;/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/plans-v1/once-plans/owned-evidence-001-fixed-ROOT-20261019-v1-terminal-observation/terminal.json&quot;,
+          &quot;sha256&quot;: &quot;7935672f3ab68fc37f4e0eb320b90b04db67b7cc6e8a8cd961c0acc6f59f6c1a&quot;
+        },
+        &quot;worker_exit_code&quot;: 1,
+        &quot;worker_failure&quot;: {
+          &quot;cleanup_errors&quot;: [],
+          &quot;complete_output_accepted&quot;: false,
+          &quot;diagnostic_output_prefixes&quot;: [
+            {
+              &quot;bytes&quot;: 15181545,
+              &quot;complete_output_accepted&quot;: false,
+              &quot;diagnostic_only&quot;: true,
+              &quot;path&quot;: &quot;/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-fixed-v1/evidence-forest.json&quot;,
+              &quot;sha256&quot;: &quot;f7e39ed6b02d3c6b80cccb5e40ac4f254a1d989fdf129b6571df500d1bbe554a&quot;
+            },
+            {
+              &quot;bytes&quot;: 36914326,
+              &quot;complete_output_accepted&quot;: false,
+              &quot;diagnostic_only&quot;: true,
+              &quot;path&quot;: &quot;/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-fixed-v1/result.json&quot;,
+              &quot;sha256&quot;: &quot;16e1935a7b46b70dc8588e1427d9de5de59554816f743de2ea9bd462a6545b25&quot;
+            }
+          ],
+          &quot;error_type&quot;: &quot;ColdError&quot;,
+          &quot;logical_proof_accepted&quot;: false,
+          &quot;message&quot;: &quot;full saved evidence inverse within original work&quot;,
+          &quot;native_transport&quot;: {
+            &quot;CPP_self_reported_peak_is_resource_authority&quot;: false,
+            &quot;aggregate_resource_accepted&quot;: false,
+            &quot;all_reaped&quot;: true,
+            &quot;cleanup_errors&quot;: [],
+            &quot;closed&quot;: true,
+            &quot;closure_deadline&quot;: 758321.829061916,
+            &quot;complete_records&quot;: 16,
+            &quot;constructor_completed&quot;: true,
+            &quot;limits&quot;: {
+              &quot;binary_file_bytes&quot;: 67108864,
+              &quot;cleanup_reserve_seconds&quot;: 30,
+              &quot;maximum_cleanup_seconds&quot;: 10,
+              &quot;normal_quit_grace_seconds&quot;: 1,
+              &quot;poll_seconds&quot;: 0.05,
+              &quot;queries&quot;: 100000,
+              &quot;ready_bytes&quot;: 256,
+              &quot;reply_bytes&quot;: 65536,
+              &quot;stderr_bytes&quot;: 65536,
+              &quot;stdout_total_bytes&quot;: 16777216,
+              &quot;terminate_grace_seconds&quot;: 1
+            },
+            &quot;logical_proof_accepted&quot;: false,
+            &quot;native_exit_code&quot;: 0,
+            &quot;native_high_water_bytes&quot;: 13320192,
+            &quot;native_pgid&quot;: 34266,
+            &quot;native_pid&quot;: 34268,
+            &quot;parent_pgid&quot;: 34266,
+            &quot;parent_pid&quot;: 34266,
+            &quot;ready&quot;: &quot;READY 92457 88986 0 1 2&quot;,
+            &quot;request_stages&quot;: [
+              {
+                &quot;input_sha256&quot;: &quot;b224af9e292a45dd3bc6eeae43e85151bcc50786e28ba8510b2095b9d4fa57ca&quot;,
+                &quot;limit&quot;: 1000000000,
+                &quot;ordinal&quot;: 0,
+                &quot;output_sha256&quot;: &quot;b8bd02ac78a3baab2faed241181087150898f44a3c4e8f62c438dd344d2576d1&quot;,
+                &quot;purpose&quot;: &quot;first_order_theory_admission&quot;,
+                &quot;record_id&quot;: 0,
+                &quot;request_sha256&quot;: &quot;36d444863483832379f33dbd210735f00168ecc676e40c2f272b3527d2961ed5&quot;,
+                &quot;stage&quot;: &quot;COMPLETED&quot;
+              },
+              {
+                &quot;input_sha256&quot;: &quot;8a32deefe233a137f8a1e7225ace56e037ddb8eb9966691e74a6772766c3a6c9&quot;,
+                &quot;limit&quot;: 1000000000,
+                &quot;ordinal&quot;: 1,
+                &quot;output_sha256&quot;: &quot;6ad2d946f13695c19e84270739c4c6a007181307654c00fdc3f46b9d4069d8e3&quot;,
+                &quot;purpose&quot;: &quot;first_order_tautology&quot;,
+                &quot;record_id&quot;: 1,
+                &quot;request_sha256&quot;: &quot;33f1c3a845f8258dd0320f63bd16e1c34af67ae646fd52b8e7dd6dfe9d1df03d&quot;,
+                &quot;stage&quot;: &quot;COMPLETED&quot;
+              },
+              {
+                &quot;input_sha256&quot;: &quot;bbeb05f41babf201dd9832a559da333c3a35a4a093e232bb890192903cbf1a5e&quot;,
+                &quot;limit&quot;: 1000000000,
+                &quot;ordinal&quot;: 2,
+                &quot;output_sha256&quot;: &quot;91d0435515f8b6ee4782ddceafa2c4be1afb375441e5c98517d90b6622700497&quot;,
+                &quot;purpose&quot;: &quot;first_order_tautology&quot;,
+                &quot;record_id&quot;: 2,
+                &quot;request_sha256&quot;: &quot;a58dfdd08b894ae81f7a547ad3f7ab76f4d1dc978322914e5aab8ad310f463e1&quot;,
+                &quot;stage&quot;: &quot;COMPLETED&quot;
+              },
+              {
+                &quot;input_sha256&quot;: &quot;24e59c028b00e9b5758be9db6f49c8737bac58e40469538705eaf5f2afe7d283&quot;,
+                &quot;limit&quot;: 1000000000,
+                &quot;ordinal&quot;: 3,
+                &quot;output_sha256&quot;: &quot;b28c2d6cba13549d62ac3efe40d7041e760a62be50e93a40f369f8b9ce3ad845&quot;,
+                &quot;purpose&quot;: &quot;first_order_tautology&quot;,
+                &quot;record_id&quot;: 3,
+                &quot;request_sha256&quot;: &quot;4d903414aab3c9c3204ac2f864b10589dde1ae49f41e1198515b96b4322324ad&quot;,
+                &quot;stage&quot;: &quot;COMPLETED&quot;
+              },
+              {
+                &quot;input_sha256&quot;: &quot;53372aa8db628eec5aefb3d7ea5b739c996d8480ba4ce968512ebce552b319e5&quot;,
+                &quot;limit&quot;: 1000000000,
+                &quot;ordinal&quot;: 4,
+                &quot;output_sha256&quot;: &quot;c36daa0450781a65e0924b98ce9ec67e860c42d8cf30e26e9fbea4d82dc1570d&quot;,
+                &quot;purpose&quot;: &quot;first_order_tautology&quot;,
+                &quot;record_id&quot;: 4,
+                &quot;request_sha256&quot;: &quot;117d4c4168d12ddc1116dac22043c034a39710afd34d5e6c24bb80df21d0956f&quot;,
+                &quot;stage&quot;: &quot;COMPLETED&quot;
+              },
+              {
+                &quot;input_sha256&quot;: &quot;43f264dcd2eaace14b2f8e29ca93c3ee968e267e5d36abd355be72992de5fe72&quot;,
+                &quot;limit&quot;: 1000000000,
+                &quot;ordinal&quot;: 5,
+                &quot;output_sha256&quot;: &quot;f2756062110206e802c43dda4ac460a5411de4b1e4153b3a3cf671e0a02bb5da&quot;,
+                &quot;purpose&quot;: &quot;first_order_tautology&quot;,
+                &quot;record_id&quot;: 5,
+                &quot;request_sha256&quot;: &quot;11c416366dc67dd172848a7e2c1b5c4e69ae602e9e9b04632cb15ee4d05347f9&quot;,
+                &quot;stage&quot;: &quot;COMPLETED&quot;
+              },
+              {
+                &quot;input_sha256&quot;: &quot;d751621ccaf81653d37cde7a62018cea805305d07e28dea028a3b44f1f3c8574&quot;,
+                &quot;limit&quot;: 1000000000,
+                &quot;ordinal&quot;: 6,
+                &quot;output_sha256&quot;: &quot;1a4ab24c89b1af90a6cba8710cf507ced7904f94b03da7e130535e5413f96eb0&quot;,
+                &quot;purpose&quot;: &quot;first_order_tautology&quot;,
+                &quot;record_id&quot;: 6,
+                &quot;request_sha256&quot;: &quot;782ca37bf073ec30953187adb5026c5a374b39d9ddb42a54e47fb641e6260432&quot;,
+                &quot;stage&quot;: &quot;COMPLETED&quot;
+              },
+              {
+                &quot;input_sha256&quot;: &quot;c98f4475df21c66886b5da657d3f3384eb48473de570b244e23cce0a273f7186&quot;,
+                &quot;limit&quot;: 1000000000,
+                &quot;ordinal&quot;: 7,
+                &quot;output_sha256&quot;: &quot;73c681fcf667a5a1da46d65f35b7877a0282954485a35c51f157bc504f8cf7c5&quot;,
+                &quot;purpose&quot;: &quot;first_order_tautology&quot;,
+                &quot;record_id&quot;: 7,
+                &quot;request_sha256&quot;: &quot;9b554605606ebccdba754dfe972a2d25183c64b3077a3965f335c14eaaaa267d&quot;,
+                &quot;stage&quot;: &quot;COMPLETED&quot;
+              },
+              {
+                &quot;input_sha256&quot;: &quot;e90de0d082809e7d96c43d7089c0530fbaa60d0d59ba04d479af78abd10bec77&quot;,
+                &quot;limit&quot;: 1000000000,
+                &quot;ordinal&quot;: 8,
+                &quot;output_sha256&quot;: &quot;d6104eacca0c547ea3a225b780cab14bc815f2d842cf297489b51c9df60fcae7&quot;,
+                &quot;purpose&quot;: &quot;first_order_tautology&quot;,
+                &quot;record_id&quot;: 8,
+                &quot;request_sha256&quot;: &quot;56dd4fbdd1aa27510ac38af7bf0a842d834c75b0b6394b78dbb63f8d16eb0494&quot;,
+                &quot;stage&quot;: &quot;COMPLETED&quot;
+              },
+              {
+                &quot;input_sha256&quot;: &quot;02934633429531a84f98f60d2a88ba143cc907d3398e9b046bafd986cd4afbb5&quot;,
+                &quot;limit&quot;: 1000000000,
+                &quot;ordinal&quot;: 9,
+                &quot;output_sha256&quot;: &quot;054761fd6b6b2a79a969b433dbe70e3a53826818b880585f51f1b6fadfad3871&quot;,
+                &quot;purpose&quot;: &quot;first_order_tautology&quot;,
+                &quot;record_id&quot;: 9,
+                &quot;request_sha256&quot;: &quot;dbfc9d5f7acaacdbb006f4b781030719cb7397ca20fed4e90627e680019f6f57&quot;,
+                &quot;stage&quot;: &quot;COMPLETED&quot;
+              },
+              {
+                &quot;input_sha256&quot;: &quot;94a4e670e6f5aa68ab155259270bb07b2faf462adfde3e192ea221d8c4bedde6&quot;,
+                &quot;limit&quot;: 1000000000,
+                &quot;ordinal&quot;: 10,
+                &quot;output_sha256&quot;: &quot;c4b09e6149fd40bf834efab2fc965b5246e062d08acccbd019d75ba74f257ef1&quot;,
+                &quot;purpose&quot;: &quot;first_order_tautology&quot;,
+                &quot;record_id&quot;: 10,
+                &quot;request_sha256&quot;: &quot;1000b9182abaeb5aec4bf781db22bc7a2f556ef4bc9adf026a46266fcbfd4dd2&quot;,
+                &quot;stage&quot;: &quot;COMPLETED&quot;
+              },
+              {
+                &quot;input_sha256&quot;: &quot;5b9a30ae15ccd6b3eb1589311c2408e035b7a27ee4a5d561d873cd7f12eccf33&quot;,
+                &quot;limit&quot;: 1000000000,
+                &quot;ordinal&quot;: 11,
+                &quot;output_sha256&quot;: &quot;60c9b207671449a96d5ba4629930a8e605abaac687c3b453b01ffe2dce1277f2&quot;,
+                &quot;purpose&quot;: &quot;first_order_tautology&quot;,
+                &quot;record_id&quot;: 11,
+                &quot;request_sha256&quot;: &quot;83be1b29d89696c15d97458ce13abf467b4595896780f5716b6bed5679cecf31&quot;,
+                &quot;stage&quot;: &quot;COMPLETED&quot;
+              },
+              {
+                &quot;input_sha256&quot;: &quot;e155c4f19d7906abfadd3cb2df6b194fb2bb180dc7fa94c7da93e153c9db1031&quot;,
+                &quot;limit&quot;: 1000000000,
+                &quot;ordinal&quot;: 12,
+                &quot;output_sha256&quot;: &quot;dad96f8ed5f08dc08c680736b9a445dbac4cf66034765dbadced527c1fe4406d&quot;,
+                &quot;purpose&quot;: &quot;first_order_scheme&quot;,
+                &quot;record_id&quot;: 12,
+                &quot;request_sha256&quot;: &quot;2f0a912d5c3493ef025a79e89cd6c83cf70e04b0d8577e1ac227fa8901193d94&quot;,
+                &quot;stage&quot;: &quot;COMPLETED&quot;
+              },
+              {
+                &quot;input_sha256&quot;: &quot;1ac6360de9cad4c90e3373ca238376d9fea81c0fe64030d32e4f267fb9f11b84&quot;,
+                &quot;limit&quot;: 1000000000,
+                &quot;ordinal&quot;: 13,
+                &quot;output_sha256&quot;: &quot;790f5eda5ce3e030a3daa4f7669d5b019686818fbe25c9cdfab4e81d879e1c01&quot;,
+                &quot;purpose&quot;: &quot;first_order_scheme&quot;,
+                &quot;record_id&quot;: 13,
+                &quot;request_sha256&quot;: &quot;e2fa929411abc851313b38c405ad6ac9d43ad6264ce5d573f924901c6152f58c&quot;,
+                &quot;stage&quot;: &quot;COMPLETED&quot;
+              },
+              {
+                &quot;input_sha256&quot;: &quot;f66f7f1cb48b64be1718497fe0fbca80b672d396fc6ca8298ea2ac623390a32e&quot;,
+                &quot;limit&quot;: 1000000000,
+                &quot;ordinal&quot;: 14,
+                &quot;output_sha256&quot;: &quot;c1f2176c96fa1f6a7bce2f56bc3fe6212a089113a9615c87e0c9ca7004bf33bb&quot;,
+                &quot;purpose&quot;: &quot;first_order_scheme&quot;,
+                &quot;record_id&quot;: 14,
+                &quot;request_sha256&quot;: &quot;4b9e0eebe1ccdc1880455be4584ca7d9a4381b66813838ef8f09bebe4b70df97&quot;,
+                &quot;stage&quot;: &quot;COMPLETED&quot;
+              },
+              {
+                &quot;input_sha256&quot;: &quot;a94031145884037d9b7ee2f40a75c3866658da736c66430d0cd55f58de855625&quot;,
+                &quot;limit&quot;: 5000000000,
+                &quot;ordinal&quot;: 15,
+                &quot;output_sha256&quot;: &quot;b4a0285e38bd305a548027e00de37034e98e708c1fc8da009553ef7c4284f4de&quot;,
+                &quot;purpose&quot;: &quot;fresh_quantified_receiver_final&quot;,
+                &quot;record_id&quot;: 15,
+                &quot;request_sha256&quot;: &quot;3687ef2abb62f53f80c0f578b4fbc3b7669baee7fe0c52f05493fa204f8bebf1&quot;,
+                &quot;stage&quot;: &quot;COMPLETED&quot;
+              }
+            ],
+            &quot;ru_maxrss_unit&quot;: &quot;bytes on declared Darwin runtime; Root must gate platform&quot;,
+            &quot;same_owned_process_group&quot;: true,
+            &quot;schema&quot;: &quot;semantic-family-native-transport-receipt-v1&quot;,
+            &quot;scientific_acceptance&quot;: false,
+            &quot;stderr_bytes&quot;: 0,
+            &quot;stderr_complete&quot;: true,
+            &quot;stderr_hex&quot;: &quot;&quot;,
+            &quot;stderr_utf8&quot;: &quot;&quot;,
+            &quot;stdout_bytes&quot;: 3400,
+            &quot;stdout_eof&quot;: true,
+            &quot;stdout_pending_bytes&quot;: 0,
+            &quot;termination_signals&quot;: [],
+            &quot;version&quot;: &quot;semantic-family-bounded-request-oracle-transport-v1&quot;,
+            &quot;wait4_status&quot;: 0,
+            &quot;wait4_usage&quot;: {
+              &quot;ru_majflt&quot;: 22,
+              &quot;ru_maxrss&quot;: 13320192,
+              &quot;ru_minflt&quot;: 1565,
+              &quot;ru_stime&quot;: 0.118727,
+              &quot;ru_utime&quot;: 12.156099
+            },
+            &quot;work_deadline&quot;: 758291.829061916
+          },
+          &quot;owned_evidence_statistics&quot;: null,
+          &quot;resource_accepted&quot;: false,
+          &quot;result_already_published&quot;: {
+            &quot;bytes&quot;: 36914326,
+            &quot;path&quot;: &quot;/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-fixed-v1/result.json&quot;,
+            &quot;sha256&quot;: &quot;16e1935a7b46b70dc8588e1427d9de5de59554816f743de2ea9bd462a6545b25&quot;
+          },
+          &quot;retry_authorized&quot;: false,
+          &quot;schema&quot;: &quot;ROOT-owned-evidence-worker-failure-v1&quot;,
+          &quot;scientific_acceptance&quot;: false,
+          &quot;stage_intervals&quot;: [
+            {
+              &quot;returned_ns&quot;: 758111896511958,
+              &quot;stage&quot;: &quot;intake:owned_evidence_cold_v3.py&quot;,
+              &quot;started_ns&quot;: 758111896317666
+            },
+            {
+              &quot;returned_ns&quot;: 758111906949291,
+              &quot;stage&quot;: &quot;intake:python3.12&quot;,
+              &quot;started_ns&quot;: 758111896518500
+            },
+            {
+              &quot;returned_ns&quot;: 758111907883916,
+              &quot;stage&quot;: &quot;intake:semantic-inventory-policy-001.json&quot;,
+              &quot;started_ns&quot;: 758111906966083
+            },
+            {
+              &quot;returned_ns&quot;: 758111908783041,
+              &quot;stage&quot;: &quot;intake:full-assertion-capsule.json&quot;,
+              &quot;started_ns&quot;: 758111907894875
+            },
+            {
+              &quot;returned_ns&quot;: 758111908884125,
+              &quot;stage&quot;: &quot;intake:runtime-closure-v1.json&quot;,
+              &quot;started_ns&quot;: 758111908787625
+            },
+            {
+              &quot;returned_ns&quot;: 758111908940458,
+              &quot;stage&quot;: &quot;intake:case-declaration-v1.json&quot;,
+              &quot;started_ns&quot;: 758111908886916
+            },
+            {
+              &quot;returned_ns&quot;: 758111909351041,
+              &quot;stage&quot;: &quot;select frozen receiver&quot;,
+              &quot;started_ns&quot;: 758111909328416
+            },
+            {
+              &quot;returned_ns&quot;: 758111910094541,
+              &quot;stage&quot;: &quot;intake:parent runtime closure&quot;,
+              &quot;started_ns&quot;: 758111909351833
+            },
+            {
+              &quot;returned_ns&quot;: 758111910935291,
+              &quot;stage&quot;: &quot;copy:certificate_boundary_search&quot;,
+              &quot;started_ns&quot;: 758111910514291
+            },
+            {
+              &quot;returned_ns&quot;: 758111911587666,
+              &quot;stage&quot;: &quot;copy:interned_quantified_family_points_v1&quot;,
+              &quot;started_ns&quot;: 758111911044500
+            },
+            {
+              &quot;returned_ns&quot;: 758111911981458,
+              &quot;stage&quot;: &quot;copy:interned_result_reader_v2&quot;,
+              &quot;started_ns&quot;: 758111911687458
+            },
+            {
+              &quot;returned_ns&quot;: 758111912345958,
+              &quot;stage&quot;: &quot;copy:logic&quot;,
+              &quot;started_ns&quot;: 758111912064791
+            },
+            {
+              &quot;returned_ns&quot;: 758111912968750,
+              &quot;stage&quot;: &quot;copy:native_inference_inventory&quot;,
+              &quot;started_ns&quot;: 758111912439416
+            },
+            {
+              &quot;returned_ns&quot;: 758111913553666,
+              &quot;stage&quot;: &quot;copy:native_inventory_policy&quot;,
+              &quot;started_ns&quot;: 758111913088000
+            },
+            {
+              &quot;returned_ns&quot;: 758111914251000,
+              &quot;stage&quot;: &quot;copy:native_receptor_points&quot;,
+              &quot;started_ns&quot;: 758111913655541
+            },
+            {
+              &quot;returned_ns&quot;: 758111914616875,
+              &quot;stage&quot;: &quot;copy:proof_boundary&quot;,
+              &quot;started_ns&quot;: 758111914359916
+            },
+            {
+              &quot;returned_ns&quot;: 758111915206666,
+              &quot;stage&quot;: &quot;copy:quantified_family_points_v2&quot;,
+              &quot;started_ns&quot;: 758111914815916
+            },
+            {
+              &quot;returned_ns&quot;: 758111915572916,
+              &quot;stage&quot;: &quot;copy:quantified_receptors_v1&quot;,
+              &quot;started_ns&quot;: 758111915320083
+            },
+            {
+              &quot;returned_ns&quot;: 758111915912208,
+              &quot;stage&quot;: &quot;copy:quantified_symbolic_control_v2&quot;,
+              &quot;started_ns&quot;: 758111915702958
+            },
+            {
+              &quot;returned_ns&quot;: 758111916253375,
+              &quot;stage&quot;: &quot;copy:receptor_support_ordering_v1&quot;,
+              &quot;started_ns&quot;: 758111916050083
+            },
+            {
+              &quot;returned_ns&quot;: 758111916533333,
+              &quot;stage&quot;: &quot;copy:semantic_inventory_guidance&quot;,
+              &quot;started_ns&quot;: 758111916365791
+            },
+            {
+              &quot;returned_ns&quot;: 758111917765500,
+              &quot;stage&quot;: &quot;copy:semantic_inventory_oracle&quot;,
+              &quot;started_ns&quot;: 758111916656166
+            },
+            {
+              &quot;returned_ns&quot;: 758111918434291,
+              &quot;stage&quot;: &quot;copy:semantic_inventory_search_v2&quot;,
+              &quot;started_ns&quot;: 758111917992583
+            },
+            {
+              &quot;returned_ns&quot;: 758111918720541,
+              &quot;stage&quot;: &quot;copy:semantic_lemma_inventory&quot;,
+              &quot;started_ns&quot;: 758111918564000
+            },
+            {
+              &quot;returned_ns&quot;: 758111919212791,
+              &quot;stage&quot;: &quot;copy:semantic_point_smt&quot;,
+              &quot;started_ns&quot;: 758111918801583
+            },
+            {
+              &quot;returned_ns&quot;: 758111919484250,
+              &quot;stage&quot;: &quot;copy:semantic_receptor_points&quot;,
+              &quot;started_ns&quot;: 758111919299291
+            },
+            {
+              &quot;returned_ns&quot;: 758111919761000,
+              &quot;stage&quot;: &quot;copy:tape_binary&quot;,
+              &quot;started_ns&quot;: 758111919571625
+            },
+            {
+              &quot;returned_ns&quot;: 758111920567833,
+              &quot;stage&quot;: &quot;copy:tape_tree_machine&quot;,
+              &quot;started_ns&quot;: 758111919840166
+            },
+            {
+              &quot;returned_ns&quot;: 758111921064958,
+              &quot;stage&quot;: &quot;copy:tree_machine&quot;,
+              &quot;started_ns&quot;: 758111920660791
+            },
+            {
+              &quot;returned_ns&quot;: 758111921397708,
+              &quot;stage&quot;: &quot;copy:turtle&quot;,
+              &quot;started_ns&quot;: 758111921154666
+            },
+            {
+              &quot;returned_ns&quot;: 758111922301791,
+              &quot;stage&quot;: &quot;copy:semantic_receiver_driver&quot;,
+              &quot;started_ns&quot;: 758111921486791
+            },
+            {
+              &quot;returned_ns&quot;: 758111923073708,
+              &quot;stage&quot;: &quot;copy:bounded_request_oracle&quot;,
+              &quot;started_ns&quot;: 758111922524208
+            },
+            {
+              &quot;returned_ns&quot;: 758111923478958,
+              &quot;stage&quot;: &quot;copy:owned_evidence_adapter&quot;,
+              &quot;started_ns&quot;: 758111923164041
+            },
+            {
+              &quot;returned_ns&quot;: 758111924163083,
+              &quot;stage&quot;: &quot;copy:exact_evidence_arena&quot;,
+              &quot;started_ns&quot;: 758111923570458
+            },
+            {
+              &quot;returned_ns&quot;: 758111924555291,
+              &quot;stage&quot;: &quot;copy:owned_inventory_join&quot;,
+              &quot;started_ns&quot;: 758111924268958
+            },
+            {
+              &quot;returned_ns&quot;: 758111925108958,
+              &quot;stage&quot;: &quot;copy:independent_forest_inverse&quot;,
+              &quot;started_ns&quot;: 758111924645875
+            },
+            {
+              &quot;returned_ns&quot;: 758111925807375,
+              &quot;stage&quot;: &quot;copy schema:mp_schema_certificate&quot;,
+              &quot;started_ns&quot;: 758111925206916
+            },
+            {
+              &quot;returned_ns&quot;: 758111926327041,
+              &quot;stage&quot;: &quot;kernel semantic raw Source&quot;,
+              &quot;started_ns&quot;: 758111925905416
+            },
+            {
+              &quot;returned_ns&quot;: 758111927068041,
+              &quot;stage&quot;: &quot;Z3 intake:__init__.py&quot;,
+              &quot;started_ns&quot;: 758111926336291
+            },
+            {
+              &quot;returned_ns&quot;: 758111929256541,
+              &quot;stage&quot;: &quot;Z3 intake:z3.py&quot;,
+              &quot;started_ns&quot;: 758111927073166
+            },
+            {
+              &quot;returned_ns&quot;: 758111929464458,
+              &quot;stage&quot;: &quot;Z3 intake:z3consts.py&quot;,
+              &quot;started_ns&quot;: 758111929264041
+            },
+            {
+              &quot;returned_ns&quot;: 758111930214791,
+              &quot;stage&quot;: &quot;Z3 intake:z3core.py&quot;,
+              &quot;started_ns&quot;: 758111929467791
+            },
+            {
+              &quot;returned_ns&quot;: 758111930415916,
+              &quot;stage&quot;: &quot;Z3 intake:z3num.py&quot;,
+              &quot;started_ns&quot;: 758111930218541
+            },
+            {
+              &quot;returned_ns&quot;: 758111931001833,
+              &quot;stage&quot;: &quot;Z3 intake:z3poly.py&quot;,
+              &quot;started_ns&quot;: 758111930421375
+            },
+            {
+              &quot;returned_ns&quot;: 758111931560541,
+              &quot;stage&quot;: &quot;Z3 intake:z3printer.py&quot;,
+              &quot;started_ns&quot;: 758111931004833
+            },
+            {
+              &quot;returned_ns&quot;: 758111931820541,
+              &quot;stage&quot;: &quot;Z3 intake:z3rcf.py&quot;,
+              &quot;started_ns&quot;: 758111931564000
+            },
+            {
+              &quot;returned_ns&quot;: 758111932229708,
+              &quot;stage&quot;: &quot;Z3 intake:z3types.py&quot;,
+              &quot;started_ns&quot;: 758111931824083
+            },
+            {
+              &quot;returned_ns&quot;: 758111932656500,
+              &quot;stage&quot;: &quot;Z3 intake:z3util.py&quot;,
+              &quot;started_ns&quot;: 758111932232250
+            },
+            {
+              &quot;returned_ns&quot;: 758111933874541,
+              &quot;stage&quot;: &quot;Z3 intake:z3++.h&quot;,
+              &quot;started_ns&quot;: 758111932660458
+            },
+            {
+              &quot;returned_ns&quot;: 758111934520208,
+              &quot;stage&quot;: &quot;Z3 intake:z3.h&quot;,
+              &quot;started_ns&quot;: 758111933879500
+            },
+            {
+              &quot;returned_ns&quot;: 758111934940875,
+              &quot;stage&quot;: &quot;Z3 intake:z3_algebraic.h&quot;,
+              &quot;started_ns&quot;: 758111934523375
+            },
+            {
+              &quot;returned_ns&quot;: 758111936382625,
+              &quot;stage&quot;: &quot;Z3 intake:z3_api.h&quot;,
+              &quot;started_ns&quot;: 758111934951750
+            },
+            {
+              &quot;returned_ns&quot;: 758111936687166,
+              &quot;stage&quot;: &quot;Z3 intake:z3_ast_containers.h&quot;,
+              &quot;started_ns&quot;: 758111936387916
+            },
+            {
+              &quot;returned_ns&quot;: 758111937072875,
+              &quot;stage&quot;: &quot;Z3 intake:z3_fixedpoint.h&quot;,
+              &quot;started_ns&quot;: 758111936691791
+            },
+            {
+              &quot;returned_ns&quot;: 758111937538041,
+              &quot;stage&quot;: &quot;Z3 intake:z3_fpa.h&quot;,
+              &quot;started_ns&quot;: 758111937076083
+            },
+            {
+              &quot;returned_ns&quot;: 758111937807875,
+              &quot;stage&quot;: &quot;Z3 intake:z3_macros.h&quot;,
+              &quot;started_ns&quot;: 758111937543375
+            },
+            {
+              &quot;returned_ns&quot;: 758111938163208,
+              &quot;stage&quot;: &quot;Z3 intake:z3_optimization.h&quot;,
+              &quot;started_ns&quot;: 758111937810916
+            },
+            {
+              &quot;returned_ns&quot;: 758111939014291,
+              &quot;stage&quot;: &quot;Z3 intake:z3_polynomial.h&quot;,
+              &quot;started_ns&quot;: 758111938166666
+            },
+            {
+              &quot;returned_ns&quot;: 758111939224666,
+              &quot;stage&quot;: &quot;Z3 intake:z3_rcf.h&quot;,
+              &quot;started_ns&quot;: 758111939017208
+            },
+            {
+              &quot;returned_ns&quot;: 758111939426125,
+              &quot;stage&quot;: &quot;Z3 intake:z3_spacer.h&quot;,
+              &quot;started_ns&quot;: 758111939227875
+            },
+            {
+              &quot;returned_ns&quot;: 758111939630958,
+              &quot;stage&quot;: &quot;Z3 intake:z3_v1.h&quot;,
+              &quot;started_ns&quot;: 758111939429000
+            },
+            {
+              &quot;returned_ns&quot;: 758111939818833,
+              &quot;stage&quot;: &quot;Z3 intake:z3_version.h&quot;,
+              &quot;started_ns&quot;: 758111939634041
+            },
+            {
+              &quot;returned_ns&quot;: 758111967161041,
+              &quot;stage&quot;: &quot;Z3 intake:libz3.4.15.dylib&quot;,
+              &quot;started_ns&quot;: 758111939821750
+            },
+            {
+              &quot;returned_ns&quot;: 758111987388833,
+              &quot;stage&quot;: &quot;Z3 intake:libz3.dll&quot;,
+              &quot;started_ns&quot;: 758111967189041
+            },
+            {
+              &quot;returned_ns&quot;: 758112018879458,
+              &quot;stage&quot;: &quot;Z3 intake:libz3.dylib&quot;,
+              &quot;started_ns&quot;: 758111987412875
+            },
+            {
+              &quot;returned_ns&quot;: 758112020559291,
+              &quot;stage&quot;: &quot;Z3 intake:msvcp140.dll&quot;,
+              &quot;started_ns&quot;: 758112018904958
+            },
+            {
+              &quot;returned_ns&quot;: 758112020769208,
+              &quot;stage&quot;: &quot;Z3 intake:msvcp140_1.dll&quot;,
+              &quot;started_ns&quot;: 758112020564708
+            },
+            {
+              &quot;returned_ns&quot;: 758112021683583,
+              &quot;stage&quot;: &quot;Z3 intake:msvcp140_2.dll&quot;,
+              &quot;started_ns&quot;: 758112020772333
+            },
+            {
+              &quot;returned_ns&quot;: 758112022061708,
+              &quot;stage&quot;: &quot;Z3 intake:msvcp140_atomic_wait.dll&quot;,
+              &quot;started_ns&quot;: 758112021716708
+            },
+            {
+              &quot;returned_ns&quot;: 758112022567583,
+              &quot;stage&quot;: &quot;Z3 intake:msvcp140_codecvt_ids.dll&quot;,
+              &quot;started_ns&quot;: 758112022066625
+            },
+            {
+              &quot;returned_ns&quot;: 758112024066041,
+              &quot;stage&quot;: &quot;Z3 intake:vcomp140.dll&quot;,
+              &quot;started_ns&quot;: 758112022570916
+            },
+            {
+              &quot;returned_ns&quot;: 758112025136708,
+              &quot;stage&quot;: &quot;Z3 intake:vcruntime140.dll&quot;,
+              &quot;started_ns&quot;: 758112024070250
+            },
+            {
+              &quot;returned_ns&quot;: 758112025694750,
+              &quot;stage&quot;: &quot;Z3 intake:vcruntime140_1.dll&quot;,
+              &quot;started_ns&quot;: 758112025141875
+            },
+            {
+              &quot;returned_ns&quot;: 758112026152125,
+              &quot;stage&quot;: &quot;Z3 intake:vcruntime140_threads.dll&quot;,
+              &quot;started_ns&quot;: 758112025698583
+            },
+            {
+              &quot;returned_ns&quot;: 758112057905083,
+              &quot;stage&quot;: &quot;Z3 intake:z3&quot;,
+              &quot;started_ns&quot;: 758112026156583
+            },
+            {
+              &quot;returned_ns&quot;: 758112058365458,
+              &quot;stage&quot;: &quot;Z3 intake:METADATA&quot;,
+              &quot;started_ns&quot;: 758112057945916
+            },
+            {
+              &quot;returned_ns&quot;: 758112058568166,
+              &quot;stage&quot;: &quot;Z3 intake:WHEEL&quot;,
+              &quot;started_ns&quot;: 758112058370791
+            },
+            {
+              &quot;returned_ns&quot;: 758112059058375,
+              &quot;stage&quot;: &quot;Z3 intake:top_level.txt&quot;,
+              &quot;started_ns&quot;: 758112058572416
+            },
+            {
+              &quot;returned_ns&quot;: 758112059198041,
+              &quot;stage&quot;: &quot;Z3 intake:RECORD&quot;,
+              &quot;started_ns&quot;: 758112059061666
+            },
+            {
+              &quot;returned_ns&quot;: 758112073765666,
+              &quot;stage&quot;: &quot;import:certificate_boundary_search&quot;,
+              &quot;started_ns&quot;: 758112059214000
+            },
+            {
+              &quot;returned_ns&quot;: 758112097286625,
+              &quot;stage&quot;: &quot;import:interned_quantified_family_points_v1&quot;,
+              &quot;started_ns&quot;: 758112073768791
+            },
+            {
+              &quot;returned_ns&quot;: 758112097781166,
+              &quot;stage&quot;: &quot;import:interned_result_reader_v2&quot;,
+              &quot;started_ns&quot;: 758112097289083
+            },
+            {
+              &quot;returned_ns&quot;: 758112097784791,
+              &quot;stage&quot;: &quot;import:logic&quot;,
+              &quot;started_ns&quot;: 758112097783125
+            },
+            {
+              &quot;returned_ns&quot;: 758112099445666,
+              &quot;stage&quot;: &quot;import:native_inference_inventory&quot;,
+              &quot;started_ns&quot;: 758112097785375
+            },
+            {
+              &quot;returned_ns&quot;: 758112100056625,
+              &quot;stage&quot;: &quot;import:native_inventory_policy&quot;,
+              &quot;started_ns&quot;: 758112099447916
+            },
+            {
+              &quot;returned_ns&quot;: 758112100059958,
+              &quot;stage&quot;: &quot;import:native_receptor_points&quot;,
+              &quot;started_ns&quot;: 758112100057916
+            },
+            {
+              &quot;returned_ns&quot;: 758112100061416,
+              &quot;stage&quot;: &quot;import:proof_boundary&quot;,
+              &quot;started_ns&quot;: 758112100060500
+            },
+            {
+              &quot;returned_ns&quot;: 758112100062333,
+              &quot;stage&quot;: &quot;import:quantified_family_points_v2&quot;,
+              &quot;started_ns&quot;: 758112100061833
+            },
+            {
+              &quot;returned_ns&quot;: 758112100063250,
+              &quot;stage&quot;: &quot;import:quantified_receptors_v1&quot;,
+              &quot;started_ns&quot;: 758112100062708
+            },
+            {
+              &quot;returned_ns&quot;: 758112102865208,
+              &quot;stage&quot;: &quot;import:quantified_symbolic_control_v2&quot;,
+              &quot;started_ns&quot;: 758112100063583
+            },
+            {
+              &quot;returned_ns&quot;: 758112105037750,
+              &quot;stage&quot;: &quot;import:receptor_support_ordering_v1&quot;,
+              &quot;started_ns&quot;: 758112102868250
+            },
+            {
+              &quot;returned_ns&quot;: 758112106336666,
+              &quot;stage&quot;: &quot;import:semantic_inventory_guidance&quot;,
+              &quot;started_ns&quot;: 758112105039666
+            },
+            {
+              &quot;returned_ns&quot;: 758112111000625,
+              &quot;stage&quot;: &quot;import:semantic_inventory_oracle&quot;,
+              &quot;started_ns&quot;: 758112106338166
+            },
+            {
+              &quot;returned_ns&quot;: 758112113486250,
+              &quot;stage&quot;: &quot;import:semantic_inventory_search_v2&quot;,
+              &quot;started_ns&quot;: 758112111003750
+            },
+            {
+              &quot;returned_ns&quot;: 758112114394083,
+              &quot;stage&quot;: &quot;import:semantic_lemma_inventory&quot;,
+              &quot;started_ns&quot;: 758112113488875
+            },
+            {
+              &quot;returned_ns&quot;: 758112114954208,
+              &quot;stage&quot;: &quot;import:semantic_point_smt&quot;,
+              &quot;started_ns&quot;: 758112114395916
+            },
+            {
+              &quot;returned_ns&quot;: 758112114957583,
+              &quot;stage&quot;: &quot;import:semantic_receptor_points&quot;,
+              &quot;started_ns&quot;: 758112114955583
+            },
+            {
+              &quot;returned_ns&quot;: 758112114959041,
+              &quot;stage&quot;: &quot;import:tape_binary&quot;,
+              &quot;started_ns&quot;: 758112114958291
+            },
+            {
+              &quot;returned_ns&quot;: 758112114960333,
+              &quot;stage&quot;: &quot;import:tape_tree_machine&quot;,
+              &quot;started_ns&quot;: 758112114959541
+            },
+            {
+              &quot;returned_ns&quot;: 758112114961541,
+              &quot;stage&quot;: &quot;import:tree_machine&quot;,
+              &quot;started_ns&quot;: 758112114960708
+            },
+            {
+              &quot;returned_ns&quot;: 758112114962583,
+              &quot;stage&quot;: &quot;import:turtle&quot;,
+              &quot;started_ns&quot;: 758112114962041
+            },
+            {
+              &quot;returned_ns&quot;: 758112128254750,
+              &quot;stage&quot;: &quot;import:semantic_receiver_driver&quot;,
+              &quot;started_ns&quot;: 758112114963250
+            },
+            {
+              &quot;returned_ns&quot;: 758112130421375,
+              &quot;stage&quot;: &quot;import:bounded_request_oracle&quot;,
+              &quot;started_ns&quot;: 758112128258083
+            },
+            {
+              &quot;returned_ns&quot;: 758112138505958,
+              &quot;stage&quot;: &quot;import:owned_evidence_adapter&quot;,
+              &quot;started_ns&quot;: 758112130426291
+            },
+            {
+              &quot;returned_ns&quot;: 758112143786291,
+              &quot;stage&quot;: &quot;import:exact_evidence_arena&quot;,
+              &quot;started_ns&quot;: 758112138512458
+            },
+            {
+              &quot;returned_ns&quot;: 758112145397208,
+              &quot;stage&quot;: &quot;import:owned_inventory_join&quot;,
+              &quot;started_ns&quot;: 758112143791166
+            },
+            {
+              &quot;returned_ns&quot;: 758112148046708,
+              &quot;stage&quot;: &quot;import:independent_forest_inverse&quot;,
+              &quot;started_ns&quot;: 758112145399208
+            },
+            {
+              &quot;returned_ns&quot;: 758112236858625,
+              &quot;stage&quot;: &quot;import:Z3&quot;,
+              &quot;started_ns&quot;: 758112148918958
+            },
+            {
+              &quot;returned_ns&quot;: 758112251373208,
+              &quot;stage&quot;: &quot;import schema:mp_schema_certificate&quot;,
+              &quot;started_ns&quot;: 758112248264333
+            },
+            {
+              &quot;returned_ns&quot;: 758112266717500,
+              &quot;stage&quot;: &quot;native intake:boundary-oracle-v2&quot;,
+              &quot;started_ns&quot;: 758112266185125
+            },
+            {
+              &quot;returned_ns&quot;: 758112272005875,
+              &quot;stage&quot;: &quot;native intake:proof-boundary-microcode-001.json.gz&quot;,
+              &quot;started_ns&quot;: 758112266723625
+            },
+            {
+              &quot;returned_ns&quot;: 758112276208500,
+              &quot;stage&quot;: &quot;native intake:proof-boundary-001.json&quot;,
+              &quot;started_ns&quot;: 758112272013958
+            },
+            {
+              &quot;returned_ns&quot;: 758112279640458,
+              &quot;stage&quot;: &quot;decode native template&quot;,
+              &quot;started_ns&quot;: 758112276211416
+            },
+            {
+              &quot;returned_ns&quot;: 758112391814291,
+              &quot;stage&quot;: &quot;decode fixed microcode&quot;,
+              &quot;started_ns&quot;: 758112279643541
+            },
+            {
+              &quot;returned_ns&quot;: 758112718158583,
+              &quot;stage&quot;: &quot;encode fixed native table&quot;,
+              &quot;started_ns&quot;: 758112505401291
+            },
+            {
+              &quot;returned_ns&quot;: 758113705997125,
+              &quot;stage&quot;: &quot;owned-adapter-boundary-diagnostics&quot;,
+              &quot;started_ns&quot;: 758112722184041
+            }
+          ]
+        },
+        &quot;worker_failure_descriptor&quot;: {
+          &quot;bytes&quot;: 19413,
+          &quot;path&quot;: &quot;/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-fixed-v1/worker-failure.json&quot;,
+          &quot;sha256&quot;: &quot;2d85c8e9156a08c1ccecf08001127aaf95bab372b0682198187e60292c9e5fb3&quot;
+        }
+      },
+      &quot;last_stage&quot;: &quot;Saved-forest document stream: work deadline&quot;,
+      &quot;mode&quot;: &quot;fixed&quot;,
+      &quot;peak_diagnostic_only&quot;: true,
+      &quot;peak_latex&quot;: &quot;872.86\\,\\mathrm{MiB}&quot;,
+      &quot;plain_outcome&quot;: &quot;The search found a Native-accepted proof. The fresh saved-forest inverse hit the work deadline, so the complete result is not admitted.&quot;,
+      &quot;proof_disposition&quot;: &quot;No complete admitted result&quot;
+    },
+    {
+      &quot;ROOT_mathematical_proof_admitted&quot;: true,
+      &quot;ROOT_resource_accepted&quot;: true,
+      &quot;aggregate_peak_bytes&quot;: 903380992,
+      &quot;classification&quot;: &quot;QUALIFIED FINITE INTEGRATION&quot;,
+      &quot;elapsed_latex&quot;: &quot;176.029\\,\\mathrm{s}&quot;,
+      &quot;elapsed_seconds&quot;: 176.0285565,
+      &quot;full_saved_record&quot;: {
+        &quot;ROOT_mathematical_proof_admitted&quot;: true,
+        &quot;ROOT_resource_accepted&quot;: true,
+        &quot;adapter_diagnostics&quot;: {
+          &quot;fresh_Stores&quot;: 8,
+          &quot;groups&quot;: [
+            {
+              &quot;details&quot;: {
+                &quot;caller_mutation_isolated&quot;: true,
+                &quot;strict_types&quot;: true,
+                &quot;tuple_projection&quot;: true
+              },
+              &quot;mathematical_authority&quot;: false,
+              &quot;name&quot;: &quot;tuple_projection_and_typed_paths&quot;,
+              &quot;schema&quot;: &quot;owned-adapter-finite-diagnostic-v1&quot;,
+              &quot;status&quot;: &quot;passed&quot;
+            },
+            {
+              &quot;details&quot;: {
+                &quot;full_body&quot;: true,
+                &quot;repeated_ports&quot;: true,
+                &quot;sealed_document&quot;: &quot;diagnostic:layout&quot;
+              },
+              &quot;mathematical_authority&quot;: false,
+              &quot;name&quot;: &quot;assembly_repeated_roots_and_full_canonical_body&quot;,
+              &quot;schema&quot;: &quot;owned-adapter-finite-diagnostic-v1&quot;,
+              &quot;status&quot;: &quot;passed&quot;
+            },
+            {
+              &quot;details&quot;: {
+                &quot;capture_exact_exception_types&quot;: [
+                  &quot;RuntimeError&quot;,
+                  &quot;ValueError&quot;,
+                  &quot;StopIteration&quot;
+                ],
+                &quot;limitation&quot;: &quot;Finite callback opportunities; no universal exception-path coverage.&quot;,
+                &quot;manual_next_foreign_StopIteration&quot;: true,
+                &quot;stream_completed&quot;: false
+              },
+              &quot;mathematical_authority&quot;: false,
+              &quot;name&quot;: &quot;foreign_callback_exception_identity&quot;,
+              &quot;schema&quot;: &quot;owned-adapter-finite-diagnostic-v1&quot;,
+              &quot;status&quot;: &quot;passed&quot;
+            },
+            {
+              &quot;details&quot;: {
+                &quot;charged_reentry_rejected&quot;: true,
+                &quot;exact_outer_error&quot;: true,
+                &quot;passive_statistics&quot;: true,
+                &quot;usable_output&quot;: false
+              },
+              &quot;mathematical_authority&quot;: false,
+              &quot;name&quot;: &quot;callback_reentrancy_fails_closed&quot;,
+              &quot;schema&quot;: &quot;owned-adapter-finite-diagnostic-v1&quot;,
+              &quot;status&quot;: &quot;passed&quot;
+            },
+            {
+              &quot;details&quot;: {
+                &quot;attempted_cost_monotone&quot;: true,
+                &quot;complete_output_accepted&quot;: false,
+                &quot;failed_prefix_only&quot;: true,
+                &quot;partial_roots_preserved&quot;: true
+              },
+              &quot;mathematical_authority&quot;: false,
+              &quot;name&quot;: &quot;failed_assembly_prefix_has_no_usable_output&quot;,
+              &quot;schema&quot;: &quot;owned-adapter-finite-diagnostic-v1&quot;,
+              &quot;status&quot;: &quot;passed&quot;
+            }
+          ],
+          &quot;mathematical_authority&quot;: false,
+          &quot;profile&quot;: {
+            &quot;adapter_limits&quot;: {
+              &quot;chunk_bytes&quot;: 4096,
+              &quot;depth&quot;: 32,
+              &quot;operations&quot;: 100000,
+              &quot;value_bytes&quot;: 1048576
+            },
+            &quot;arena_limits&quot;: {
+              &quot;cache_bytes&quot;: 4096,
+              &quot;cache_entries&quot;: 256,
+              &quot;chunk_bytes&quot;: 4096,
+              &quot;depth&quot;: 32,
+              &quot;documents_expanded_bytes&quot;: 1048576,
+              &quot;edges&quot;: 16384,
+              &quot;fragment_bytes&quot;: 4096,
+              &quot;integer_digits&quot;: 4096,
+              &quot;materialized_bytes&quot;: 1048576,
+              &quot;materialized_occurrences&quot;: 10000,
+              &quot;nodes&quot;: 4096,
+              &quot;root_expanded_bytes&quot;: 1048576,
+              &quot;roots&quot;: 64,
+              &quot;scalar_bytes&quot;: 1048576,
+              &quot;wire_bytes&quot;: 1048576,
+              &quot;work&quot;: 1000000
+            },
+            &quot;cases&quot;: [
+              &quot;tuple_projection_and_typed_paths&quot;,
+              &quot;assembly_repeated_roots_and_full_canonical_body&quot;,
+              &quot;foreign_callback_exception_identity&quot;,
+              &quot;callback_reentrancy_fails_closed&quot;,
+              &quot;failed_assembly_prefix_has_no_usable_output&quot;
+            ],
+            &quot;maximum_fresh_Stores&quot;: 8,
+            &quot;schema&quot;: &quot;owned-adapter-finite-diagnostic-profile-v1&quot;,
+            &quot;scope&quot;: &quot;Small finite adapter boundary checks before original full001 proof pipeline; same original total work/peak/output caps, not a carrier benchmark or proof authority.&quot;
+          },
+          &quot;schema&quot;: &quot;owned-adapter-finite-diagnostic-result-v1&quot;,
+          &quot;scope&quot;: &quot;Finite runtime observations only, charged to this full original001 invocation.&quot;,
+          &quot;status&quot;: &quot;COMPLETE&quot;
+        },
+        &quot;aggregate_peak_bytes&quot;: 903380992,
+        &quot;elapsed_seconds&quot;: 176.0285565,
+        &quot;errors&quot;: [],
+        &quot;evidence_statistics&quot;: {
+          &quot;arena&quot;: {
+            &quot;authority&quot;: false,
+            &quot;cache_bytes&quot;: 8388608,
+            &quot;cache_entries&quot;: 31331,
+            &quot;counters&quot;: {
+              &quot;bookkeeping_items&quot;: 9171911,
+              &quot;bound_checks&quot;: 88682678,
+              &quot;capture_frames&quot;: 26427982,
+              &quot;completed_streams&quot;: 256,
+              &quot;compose_children&quot;: 183,
+              &quot;compose_reconciliation&quot;: 203,
+              &quot;compose_sort&quot;: 18,
+              &quot;copied_bytes&quot;: 34340217,
+              &quot;copy_chunks&quot;: 14456538,
+              &quot;document_labels&quot;: 1,
+              &quot;document_reachability&quot;: 2219969,
+              &quot;emitted_bytes&quot;: 34340217,
+              &quot;emitted_tokens&quot;: 17150940,
+              &quot;exports&quot;: 1,
+              &quot;float_conversion&quot;: 338,
+              &quot;fragment_builds&quot;: 31331,
+              &quot;fragment_built_bytes&quot;: 8388608,
+              &quot;fragment_hits&quot;: 4510324,
+              &quot;fragment_reference_checks&quot;: 350140,
+              &quot;full_node_comparisons&quot;: 10913059,
+              &quot;full_validation_nodes&quot;: 157984,
+              &quot;integer_conversion&quot;: 12459906,
+              &quot;integer_digits_scanned&quot;: 14725639,
+              &quot;intern_lookups&quot;: 10992051,
+              &quot;key_sort&quot;: 39442,
+              &quot;path_components&quot;: 5416,
+              &quot;path_object_keys&quot;: 25621,
+              &quot;path_resolutions&quot;: 1182,
+              &quot;publication_bookkeeping&quot;: 5530360,
+              &quot;read_operations&quot;: 2166,
+              &quot;reconciliation_begins&quot;: 164,
+              &quot;reconciliation_complete_reads&quot;: 164,
+              &quot;reconciliation_edges&quot;: 10991867,
+              &quot;reconciliation_equalities&quot;: 6911493,
+              &quot;reconciliation_frames&quot;: 26427982,
+              &quot;reconciliation_key_characters&quot;: 7743468,
+              &quot;reconciliation_key_copies&quot;: 363548,
+              &quot;reconciliation_key_lookups&quot;: 727096,
+              &quot;reconciliation_keys&quot;: 363548,
+              &quot;reconciliation_lengths&quot;: 19958919,
+              &quot;reconciliation_numeric_characters&quot;: 14717040,
+              &quot;reconciliation_text_characters&quot;: 3849429,
+              &quot;reconciliation_text_copies&quot;: 7698858,
+              &quot;reconciliation_text_lengths&quot;: 677800,
+              &quot;seal_bookkeeping&quot;: 79177,
+              &quot;stream_frames&quot;: 17150940,
+              &quot;string_characters&quot;: 6538109,
+              &quot;string_encodes&quot;: 98959,
+              &quot;summary_edges&quot;: 6659904,
+              &quot;summary_nodes&quot;: 236976,
+              &quot;validation_pairs&quot;: 176752,
+              &quot;validation_roots&quot;: 368,
+              &quot;view_key_copies&quot;: 9,
+              &quot;wire_json_parts&quot;: 5757664,
+              &quot;wire_nodes&quot;: 157984,
+              &quot;wire_reference_copies&quot;: 4439936,
+              &quot;wire_scanned_bytes&quot;: 29813744,
+              &quot;work&quot;: 355073213
+            },
+            &quot;documents&quot;: 1,
+            &quot;edges&quot;: 2219968,
+            &quot;lifecycle&quot;: &quot;SEALED&quot;,
+            &quot;logical_document_bytes&quot;: 34001836,
+            &quot;nodes&quot;: 78992,
+            &quot;physical_wire_bytes&quot;: 14906873,
+            &quot;roots&quot;: 184
+          },
+          &quot;authority&quot;: false,
+          &quot;counters&quot;: {
+            &quot;assembly_child_slots&quot;: 183,
+            &quot;assembly_frames&quot;: 205,
+            &quot;canonical_stream_requests&quot;: 1,
+            &quot;completed_captures&quot;: 164,
+            &quot;generated_labels&quot;: 165,
+            &quot;inventory_bundle_reads&quot;: 2,
+            &quot;legacy_JSON_copy_chunks&quot;: 31869384,
+            &quot;legacy_JSON_freezes&quot;: 577,
+            &quot;legacy_JSON_parse_begin&quot;: 164,
+            &quot;legacy_JSON_parse_end&quot;: 164,
+            &quot;legacy_JSON_parts&quot;: 31869384,
+            &quot;legacy_container_slots&quot;: 21998390,
+            &quot;legacy_domain_frames&quot;: 30895002,
+            &quot;ordinary_comparison_chunks&quot;: 249,
+            &quot;path_references&quot;: 662,
+            &quot;reference_comparison_chunks&quot;: 6,
+            &quot;view_requests&quot;: 926,
+            &quot;wire_requests&quot;: 1
+          },
+          &quot;failed&quot;: false,
+          &quot;operations&quot;: 116635629,
+          &quot;schema&quot;: &quot;owned-evidence-adapter-statistics-v1&quot;
+        },
+        &quot;evidence_verification&quot;: {
+          &quot;completed_ns&quot;: 758481842656083,
+          &quot;declaration&quot;: {
+            &quot;authority&quot;: &quot;representation-only; no Native or mathematical acceptance&quot;,
+            &quot;execution_profile&quot;: &quot;independent-forest-actual-operations-v1&quot;,
+            &quot;limits&quot;: {
+              &quot;cache_bytes&quot;: 8388608,
+              &quot;cache_entries&quot;: 65536,
+              &quot;chunk_bytes&quot;: 65536,
+              &quot;depth&quot;: 513,
+              &quot;edges&quot;: 8000000,
+              &quot;expanded_bytes&quot;: 134217728,
+              &quot;fragment_bytes&quot;: 4096,
+              &quot;integer_digits&quot;: 4096,
+              &quot;nodes&quot;: 2000000,
+              &quot;roots&quot;: 4096,
+              &quot;scalar_bytes&quot;: 16777216,
+              &quot;wire_bytes&quot;: 134217728,
+              &quot;work&quot;: 30000000
+            },
+            &quot;original&quot;: {
+              &quot;bytes&quot;: 22313,
+              &quot;path&quot;: &quot;/private/tmp/gcts-incremental-arena-ROOT-20261019/independent_forest_inverse_v6.py&quot;,
+              &quot;sha256&quot;: &quot;fbd655a86424ce5634ce0307af62549f5b1c4412cb9e58b752df0e13ae2397e4&quot;
+            },
+            &quot;owned&quot;: {
+              &quot;bytes&quot;: 22313,
+              &quot;path&quot;: &quot;/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/modules/independent_forest_inverse.py&quot;,
+              &quot;sha256&quot;: &quot;fbd655a86424ce5634ce0307af62549f5b1c4412cb9e58b752df0e13ae2397e4&quot;
+            },
+            &quot;schema&quot;: &quot;owned-evidence-independent-inverse-declaration-v1&quot;,
+            &quot;sole_document&quot;: &quot;receiver:complete-legacy-result&quot;,
+            &quot;stream&quot;: &quot;BODY-only-plus-one-external-LF&quot;,
+            &quot;version&quot;: &quot;independent-evidence-forest-inverse-v6-full-scalar-and-ledger-bounds&quot;
+          },
+          &quot;forest&quot;: {
+            &quot;bytes&quot;: 14906873,
+            &quot;path&quot;: &quot;/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/evidence-forest.json&quot;,
+            &quot;sha256&quot;: &quot;c783757e1f0119d60249ac6c43e581ecce35861471299fae67926d4cc840d146&quot;
+          },
+          &quot;logical_body_bytes&quot;: 34001835,
+          &quot;logical_file_bytes&quot;: 34001836,
+          &quot;mathematical_authority&quot;: false,
+          &quot;representation_only&quot;: true,
+          &quot;schema&quot;: &quot;owned-evidence-saved-forest-verification-v1&quot;,
+          &quot;started_ns&quot;: 758470603167000,
+          &quot;statistics&quot;: {
+            &quot;aggregate_document_bytes&quot;: 34001836,
+            &quot;aggregate_document_value_occurrences&quot;: 10992051,
+            &quot;attempted_operations&quot;: 21304533,
+            &quot;build_copied_bytes&quot;: 1344963,
+            &quot;cache_attempts&quot;: 43209,
+            &quot;cache_capacity_fallbacks&quot;: 0,
+            &quot;cache_entries&quot;: 43209,
+            &quot;cache_hits_build&quot;: 119867,
+            &quot;cache_hits_stream&quot;: 2083598,
+            &quot;cache_ineligible_nodes&quot;: 35783,
+            &quot;cache_payload_bytes&quot;: 1344963,
+            &quot;callback_dispatches&quot;: 21304533,
+            &quot;catalogue_roots&quot;: 184,
+            &quot;documents&quot;: {
+              &quot;receiver:complete-legacy-result&quot;: {
+                &quot;attempts&quot;: 1,
+                &quot;body_bytes&quot;: 34001835,
+                &quot;chunks&quot;: 519,
+                &quot;closed_incomplete&quot;: false,
+                &quot;completed&quot;: true,
+                &quot;copied_body_bytes&quot;: 34001835,
+                &quot;emitted_body_bytes&quot;: 34001835,
+                &quot;logical_file_bytes&quot;: 34001836,
+                &quot;logical_value_occurrences&quot;: 10992051,
+                &quot;node_height&quot;: 20,
+                &quot;root_id&quot;: 78991,
+                &quot;stream_value_occurrences&quot;: 10992051
+              }
+            },
+            &quot;execution_profile&quot;: &quot;independent-forest-actual-operations-v1&quot;,
+            &quot;last_operation&quot;: &quot;document_completion&quot;,
+            &quot;logical_documents&quot;: 1,
+            &quot;operations_by_kind&quot;: {
+              &quot;ascii_token_begin&quot;: 1512,
+              &quot;ascii_token_end&quot;: 1512,
+              &quot;build_cache_hit&quot;: 119867,
+              &quot;build_copy&quot;: 296280,
+              &quot;build_walk_action&quot;: 416147,
+              &quot;cache_eligibility&quot;: 78992,
+              &quot;catalogue_reference_digits&quot;: 184,
+              &quot;catalogue_root&quot;: 184,
+              &quot;document_completion&quot;: 1,
+              &quot;document_label_read&quot;: 1,
+              &quot;document_lookup&quot;: 1,
+              &quot;document_stream_attempt&quot;: 1,
+              &quot;float_canonical_begin&quot;: 81,
+              &quot;float_canonical_end&quot;: 81,
+              &quot;float_parse_begin&quot;: 81,
+              &quot;float_parse_end&quot;: 81,
+              &quot;freeze_fragment&quot;: 43209,
+              &quot;initial&quot;: 1,
+              &quot;integer_lexeme_begin&quot;: 1431,
+              &quot;integer_lexeme_end&quot;: 1431,
+              &quot;logical_document&quot;: 1,
+              &quot;preparation_completion&quot;: 1,
+              &quot;reachability_edge&quot;: 2219968,
+              &quot;reachability_node&quot;: 78992,
+              &quot;reference_wire_digits&quot;: 2219968,
+              &quot;scalar_scan_window&quot;: 90555,
+              &quot;stream_cache_hit&quot;: 2083598,
+              &quot;stream_copy_block&quot;: 4403551,
+              &quot;stream_walk_action&quot;: 6522568,
+              &quot;tokenize_begin&quot;: 89207,
+              &quot;tokenize_end&quot;: 89207,
+              &quot;typed_equality_begin&quot;: 78992,
+              &quot;typed_equality_end&quot;: 78992,
+              &quot;validate_edge&quot;: 2219968,
+              &quot;validate_node&quot;: 78992,
+              &quot;validate_pair&quot;: 88376,
+              &quot;yield_chunk&quot;: 519
+            },
+            &quot;phase&quot;: &quot;DOCUMENT_COMPLETE&quot;,
+            &quot;prepared&quot;: true,
+            &quot;scalar_characters_scanned&quot;: 658845,
+            &quot;validated_edges&quot;: 2219968,
+            &quot;validated_nodes&quot;: 78992,
+            &quot;wire_canonical_bytes&quot;: 14906873
+          },
+          &quot;status&quot;: &quot;COMPLETE&quot;
+        },
+        &quot;final_region_verification&quot;: {
+          &quot;assigned_mark_points&quot;: 2810,
+          &quot;completed_ns&quot;: 758487964315083,
+          &quot;decoded_rows&quot;: 12,
+          &quot;required_points&quot;: 60,
+          &quot;scope&quot;: &quot;Separate raw whole-target occupancy, initial/selected marking agreement and literal C/G/input row decoding; no engine, solver or logical kernel call.&quot;,
+          &quot;selected_placements&quot;: 60,
+          &quot;status&quot;: &quot;VERIFIED_WHOLE_FINITE_POINT_REGION&quot;,
+          &quot;union_sha256&quot;: &quot;b9bc4f4d9d6d2402206bf2399b4a0fd11d5e69a02bd4b9adc41616ad40532363&quot;
+        },
+        &quot;fresh_independent_inverse_completed&quot;: true,
+        &quot;group_absent&quot;: true,
+        &quot;logs_complete&quot;: true,
+        &quot;mode&quot;: &quot;symbolic&quot;,
+        &quot;once_plan&quot;: {
+          &quot;bytes&quot;: 2805,
+          &quot;path&quot;: &quot;/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/plans-v1/once-plans/owned-evidence-001-symbolic-ROOT-20261019-v1.json&quot;,
+          &quot;sha256&quot;: &quot;0833f791a9f23a277c97cd96866d0c29176401a17d9d406bd22d989a84e0b17b&quot;
+        },
+        &quot;outer_exit_code&quot;: 0,
+        &quot;outputs&quot;: {
+          &quot;evidence_forest&quot;: {
+            &quot;bytes&quot;: 14906873,
+            &quot;path&quot;: &quot;/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/evidence-forest.json&quot;,
+            &quot;sha256&quot;: &quot;c783757e1f0119d60249ac6c43e581ecce35861471299fae67926d4cc840d146&quot;
+          },
+          &quot;physical_output_budget&quot;: {
+            &quot;conservative_physical_bytes&quot;: 58413397,
+            &quot;limit_bytes&quot;: 134217728,
+            &quot;logical_bytes&quot;: 34001836,
+            &quot;metadata&quot;: [
+              {
+                &quot;bytes&quot;: 666,
+                &quot;path&quot;: &quot;/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/CONSUMED.json&quot;,
+                &quot;sha256&quot;: &quot;51a51a1de7f134479372fea88a26cf0a8733f4b70a82426e2dc80195e7457243&quot;
+              },
+              {
+                &quot;bytes&quot;: 66838,
+                &quot;path&quot;: &quot;/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/worker-receipt.json&quot;,
+                &quot;sha256&quot;: &quot;002b536459e70bef5c89ca6a3be8d82671ed3feb1196b0b3ae9bce035f3cc832&quot;
+              }
+            ],
+            &quot;observer_metadata_reserved_bytes&quot;: 1048576,
+            &quot;runner_receipt_reserved_bytes&quot;: 8388608,
+            &quot;schema&quot;: &quot;owned-evidence-conservative-output-ledger-v1&quot;
+          },
+          &quot;result&quot;: {
+            &quot;bytes&quot;: 34001836,
+            &quot;path&quot;: &quot;/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/result.json&quot;,
+            &quot;sha256&quot;: &quot;e6e247eb9e52640d92b1ae51b837661be372bbdf2f6865d0273db13d2d6a0310&quot;
+          },
+          &quot;stderr&quot;: {
+            &quot;bytes&quot;: 0,
+            &quot;path&quot;: &quot;/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/stderr.bin&quot;,
+            &quot;sha256&quot;: &quot;e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855&quot;
+          },
+          &quot;stdout&quot;: {
+            &quot;bytes&quot;: 0,
+            &quot;path&quot;: &quot;/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/stdout.bin&quot;,
+            &quot;sha256&quot;: &quot;e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855&quot;
+          },
+          &quot;worker_receipt&quot;: {
+            &quot;bytes&quot;: 66838,
+            &quot;path&quot;: &quot;/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/worker-receipt.json&quot;,
+            &quot;sha256&quot;: &quot;002b536459e70bef5c89ca6a3be8d82671ed3feb1196b0b3ae9bce035f3cc832&quot;
+          }
+        },
+        &quot;physical_output_ledger&quot;: {
+          &quot;aggregate_physical_bytes&quot;: 48976213,
+          &quot;cap_bytes&quot;: 134217728,
+          &quot;counted_once&quot;: true,
+          &quot;evidence_forest&quot;: {
+            &quot;bytes&quot;: 14906873,
+            &quot;path&quot;: &quot;/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/evidence-forest.json&quot;,
+            &quot;sha256&quot;: &quot;c783757e1f0119d60249ac6c43e581ecce35861471299fae67926d4cc840d146&quot;
+          },
+          &quot;excluded&quot;: &quot;fixed Source/module/native inputs and separately bounded stdout/stderr&quot;,
+          &quot;logical_cap_bytes&quot;: 134217728,
+          &quot;logical_result_bytes&quot;: 34001836,
+          &quot;ordinary_result&quot;: {
+            &quot;bytes&quot;: 34001836,
+            &quot;path&quot;: &quot;/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/result.json&quot;,
+            &quot;sha256&quot;: &quot;e6e247eb9e52640d92b1ae51b837661be372bbdf2f6865d0273db13d2d6a0310&quot;
+          },
+          &quot;other_root_JSON_metadata&quot;: [
+            {
+              &quot;bytes&quot;: 666,
+              &quot;path&quot;: &quot;/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/CONSUMED.json&quot;,
+              &quot;sha256&quot;: &quot;51a51a1de7f134479372fea88a26cf0a8733f4b70a82426e2dc80195e7457243&quot;
+            }
+          ],
+          &quot;schema&quot;: &quot;owned-evidence-physical-output-ledger-v1&quot;,
+          &quot;worker_receipt_bytes&quot;: 66838,
+          &quot;worker_receipt_descriptor&quot;: &quot;external_once_runner&quot;
+        },
+        &quot;resource_candidate&quot;: true,
+        &quot;runner_receipt&quot;: {
+          &quot;bytes&quot;: 86991,
+          &quot;path&quot;: &quot;/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/runner-receipt.json&quot;,
+          &quot;sha256&quot;: &quot;40b40c250bfbea11028c88b16d015203d3ab1d8358b9807bab7364b4cc4ca7b2&quot;
+        },
+        &quot;schema_inventory_admitted&quot;: true,
+        &quot;scientific_acceptance&quot;: false,
+        &quot;terminal&quot;: {
+          &quot;bytes&quot;: 1625,
+          &quot;path&quot;: &quot;/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/plans-v1/once-plans/owned-evidence-001-symbolic-ROOT-20261019-v1-terminal-observation/terminal.json&quot;,
+          &quot;sha256&quot;: &quot;fc3479c1bde1619cd649fc27d8e7efde29a5a1ac907cebd3d06bf45cba5d717f&quot;
+        },
+        &quot;worker_exit_code&quot;: 0,
+        &quot;worker_status&quot;: &quot;native_proof_discovered&quot;
+      },
+      &quot;last_stage&quot;: &quot;Full checks and external terminal complete&quot;,
+      &quot;mode&quot;: &quot;symbolic&quot;,
+      &quot;peak_diagnostic_only&quot;: false,
+      &quot;peak_latex&quot;: &quot;861.53\\,\\mathrm{MiB}&quot;,
+      &quot;plain_outcome&quot;: &quot;The existing proof gates, full saved-forest inverse, complete ordinary-result reader, and resource/terminal gates all passed.&quot;,
+      &quot;proof_disposition&quot;: &quot;Known control proof admitted&quot;
+    }
+  ],
+  &quot;author_identity&quot;: &quot;/root&quot;,
+  &quot;authority_and_provenance&quot;: {
+    &quot;Root_cohort_closure&quot;: {
+      &quot;bytes&quot;: 2859,
+      &quot;path&quot;: &quot;/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/ROOT-cohort-closure-v1.json&quot;,
+      &quot;sha256&quot;: &quot;f840456dc1b9d35b5022380af1082aa6e4d779a098e7e28b0b97b47fddbbde99&quot;
+    },
+    &quot;Root_saved_actual_audit&quot;: {
+      &quot;bytes&quot;: 51477,
+      &quot;path&quot;: &quot;/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/ROOT-saved-actual-audit-v1.json&quot;,
+      &quot;sha256&quot;: &quot;779c265fd0d2b33e9dbfce999e5865a8d29e4021fd9ed092b7ce6870e416f5c5&quot;
+    },
+    &quot;Root_scopes_and_grants&quot;: {
+      &quot;bytes&quot;: 2617,
+      &quot;path&quot;: &quot;/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/ROOT-scope-adoption-and-grants-v1.json&quot;,
+      &quot;sha256&quot;: &quot;9f65a605f3e9760082e98aa31112dce7545d8b5dfad4b33f1b8f239c41cce34f&quot;
+    },
+    &quot;Source_reviews&quot;: [
+      {
+        &quot;bytes&quot;: 34820,
+        &quot;path&quot;: &quot;/private/tmp/gcts-owned-evidence-integration-peer-20261019/typed-components-Source-review-v2.json&quot;,
+        &quot;sha256&quot;: &quot;ed7b318805db207700efb2018fa1c67cce65a458209f012d1d81d22f2efd0127&quot;
+      },
+      {
+        &quot;bytes&quot;: 5181,
+        &quot;path&quot;: &quot;/private/tmp/gcts-owned-evidence-integration-peer-20261019/typed-once-Source-review-v1.json&quot;,
+        &quot;sha256&quot;: &quot;e0d53838a2ff74c9f72017e32dfe8cfbcc70679a777be47a9d653185d9b4048c&quot;
+      },
+      {
+        &quot;bytes&quot;: 12580,
+        &quot;path&quot;: &quot;/private/tmp/gcts-owned-evidence-integration-peer-20261019/typed-prospective-plan-review-v1.json&quot;,
+        &quot;sha256&quot;: &quot;6bc713a1af9b411182788bdf28b5dc8d08bbae3007c4645bb24b884c849f6d30&quot;
+      },
+      {
+        &quot;bytes&quot;: 39240,
+        &quot;path&quot;: &quot;/private/tmp/gcts-owned-evidence-integration-peer-20261019/typed-final-grant-delta-review-v1.json&quot;,
+        &quot;sha256&quot;: &quot;00ec96a6de0a68b22c8bfc1db21b072a77d623061f08a232d09ff22c67836dc8&quot;
+      }
+    ],
+    &quot;current_contract&quot;: {
+      &quot;bytes&quot;: 5104,
+      &quot;path&quot;: &quot;/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/ROOT-integration-Source-contract-v1.json&quot;,
+      &quot;sha256&quot;: &quot;2558d9e092969671ef9722e3fb1801cbcdf1de9da18cac2032ba5e8d6a283091&quot;
+    },
+    &quot;independent_saved_outcome_review&quot;: {
+      &quot;bytes&quot;: 16276,
+      &quot;path&quot;: &quot;/private/tmp/gcts-owned-evidence-integration-peer-20261019/typed-owned-integration-saved-review-v1.json&quot;,
+      &quot;sha256&quot;: &quot;5cff9e88dde9fc8f0e6c35226dda841e1119365d62037596b2f21074bd5c0328&quot;
+    },
+    &quot;next_design&quot;: {
+      &quot;bytes&quot;: 26238,
+      &quot;path&quot;: &quot;/private/tmp/gcts-owned-evidence-integration-library-20261019/post-actual-next-design-v1.json&quot;,
+      &quot;sha256&quot;: &quot;492ba0068cb87e2b1f3eade2a80a06af28afe5014b04bb303f1a2e46261adfa7&quot;
+    },
+    &quot;original_assertion_capsule&quot;: {
+      &quot;bytes&quot;: 22422,
+      &quot;path&quot;: &quot;/private/tmp/gcts-local-operational-20261019/full-assertion-capsule.json&quot;,
+      &quot;sha256&quot;: &quot;1a42c2ab16680dddbac504ca5b2d79559370785884805cf4d56b5c1c22c63dc0&quot;
+    },
+    &quot;scope&quot;: &quot;Three current Source/once/prospective roles use one disclosed reviewer, retaining exact older independent scientific/consumer/certifier ancestry and author overlap. Descriptor custody does not add kernel or mathematical authority. The admitted symbolic result relies the full existing gates and current trusted-runtime assumptions.&quot;
+  },
+  &quot;classification&quot;: &quot;PROGRESS&quot;,
+  &quot;findings&quot;: [
+    &quot;The same original assertion, primitive rules, inventory policy, Model inputs, search limits, and complete proof checks were retained in both arms. No proof route was supplied.&quot;,
+    &quot;The symbolic control demonstrates that this evidence representation can coexist with the full proof pipeline on this familiar finite input. Its full result is reconstructed and admitted under the original profile.&quot;,
+    &quot;The fixed arm has local Native proof acceptance but no completed independent saved-forest inverse or final worker header. Its result and forest remain diagnostic-only artifacts.&quot;,
+    &quot;For the symbolic arm, scientific work stops near \\(52.60\\,\\mathrm{s}\\), while the full external terminal arrives near \\(176.03\\,\\mathrm{s}\\). The retained output/closure envelope is a practical bottleneck, with no finer causal partition for its largest segment.&quot;,
+    &quot;The next Source-only hypothesis is bounded batching of delegated inverse clock callbacks while retaining every validation, operation/cap check, completion check, and full old pipeline gate. It is unimplemented and needs a changed execution profile and fresh independent qualification. The larger assembly/seal/export envelope still needs measurement.&quot;
+  ],
+  &quot;goal_complete&quot;: false,
+  &quot;headline&quot;: &quot;Symbolic control qualifies; fixed GCTS arm misses the reconstruction deadline.&quot;,
+  &quot;limits&quot;: [
+    &quot;This is one familiar synthetic first-order assertion. It is not a held-out theorem, arithmetic or geometry benchmark advance, generalization result, or evidence of GCTS+RL superiority.&quot;,
+    &quot;There is no ordinary-storage ablation or causal speed/memory comparison. Both arms use the new carrier, and the fixed arm fails complete qualification.&quot;,
+    &quot;Five complete finite adapter diagnostic packets survive for the symbolic arm. The fixed arm retains only a returned diagnostic-stage interval, supporting completion by Source-backed inference rather than a saved per-group audit.&quot;,
+    &quot;The five diagnostic groups cover selected callback/type/assembly failures, not every hostile callback, exception path, or forged-object case. Trusted interpreter/OS, exclusive ownership, and inherited proof-kernel review assumptions remain.&quot;,
+    &quot;The fixed inverse failure has no retained start/completion packet or inverse counter snapshot. Its exact inverse duration is unavailable; no replay was performed to fill that gap.&quot;
+  ],
+  &quot;new_RL_training&quot;: false,
+  &quot;new_theorem_claim&quot;: false,
+  &quot;notebook_blurb&quot;: &quot;The symbolic control passes the full original proof, evidence, and resource gates. The fixed GCTS arm reaches Native proof acceptance but runs out of work time during saved-evidence reconstruction. This establishes no GCTS or RL advantage.&quot;,
+  &quot;qualified_arms&quot;: [
+    &quot;symbolic&quot;
+  ],
+  &quot;saved_data_only&quot;: true,
+  &quot;saved_proof_presentation&quot;: {
+    &quot;blocks&quot;: [
+      {
+        &quot;display_label&quot;: &quot;B1&quot;,
+        &quot;literal_json&quot;: &quot;{\&quot;conclusion\&quot;:[\&quot;imp\&quot;,[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;a\&quot;,[]],[\&quot;fun\&quot;,\&quot;a\&quot;,[]]],[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;a\&quot;,[]],[\&quot;fun\&quot;,\&quot;b\&quot;,[]]]],\&quot;name\&quot;:\&quot;lemma123dffc077304d6f5569591588aeb01e9aee4963a0675c39a01b279b772947dc\&quot;,\&quot;premises\&quot;:[[\&quot;imp\&quot;,[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;a\&quot;,[]],[\&quot;fun\&quot;,\&quot;b\&quot;,[]]],[\&quot;imp\&quot;,[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;a\&quot;,[]],[\&quot;fun\&quot;,\&quot;a\&quot;,[]]],[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;a\&quot;,[]],[\&quot;fun\&quot;,\&quot;b\&quot;,[]]]]],[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;a\&quot;,[]],[\&quot;fun\&quot;,\&quot;b\&quot;,[]]]],\&quot;proof\&quot;:[{\&quot;formula\&quot;:[\&quot;imp\&quot;,[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;a\&quot;,[]],[\&quot;fun\&quot;,\&quot;b\&quot;,[]]],[\&quot;imp\&quot;,[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;a\&quot;,[]],[\&quot;fun\&quot;,\&quot;a\&quot;,[]]],[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;a\&quot;,[]],[\&quot;fun\&quot;,\&quot;b\&quot;,[]]]]],\&quot;index\&quot;:0,\&quot;rule\&quot;:\&quot;assumption\&quot;},{\&quot;formula\&quot;:[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;a\&quot;,[]],[\&quot;fun\&quot;,\&quot;b\&quot;,[]]],\&quot;index\&quot;:1,\&quot;rule\&quot;:\&quot;assumption\&quot;},{\&quot;antecedent\&quot;:1,\&quot;formula\&quot;:[\&quot;imp\&quot;,[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;a\&quot;,[]],[\&quot;fun\&quot;,\&quot;a\&quot;,[]]],[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;a\&quot;,[]],[\&quot;fun\&quot;,\&quot;b\&quot;,[]]]],\&quot;implication\&quot;:0,\&quot;rule\&quot;:\&quot;mp\&quot;}]}&quot;,
+        &quot;saved_block&quot;: {
+          &quot;conclusion&quot;: [
+            &quot;imp&quot;,
+            [
+              &quot;eq&quot;,
+              [
+                &quot;fun&quot;,
+                &quot;a&quot;,
+                []
+              ],
+              [
+                &quot;fun&quot;,
+                &quot;a&quot;,
+                []
+              ]
+            ],
+            [
+              &quot;eq&quot;,
+              [
+                &quot;fun&quot;,
+                &quot;a&quot;,
+                []
+              ],
+              [
+                &quot;fun&quot;,
+                &quot;b&quot;,
+                []
+              ]
+            ]
+          ],
+          &quot;name&quot;: &quot;lemma123dffc077304d6f5569591588aeb01e9aee4963a0675c39a01b279b772947dc&quot;,
+          &quot;premises&quot;: [
+            [
+              &quot;imp&quot;,
+              [
+                &quot;eq&quot;,
+                [
+                  &quot;fun&quot;,
+                  &quot;a&quot;,
+                  []
+                ],
+                [
+                  &quot;fun&quot;,
+                  &quot;b&quot;,
+                  []
+                ]
+              ],
+              [
+                &quot;imp&quot;,
+                [
+                  &quot;eq&quot;,
+                  [
+                    &quot;fun&quot;,
+                    &quot;a&quot;,
+                    []
+                  ],
+                  [
+                    &quot;fun&quot;,
+                    &quot;a&quot;,
+                    []
+                  ]
+                ],
+                [
+                  &quot;eq&quot;,
+                  [
+                    &quot;fun&quot;,
+                    &quot;a&quot;,
+                    []
+                  ],
+                  [
+                    &quot;fun&quot;,
+                    &quot;b&quot;,
+                    []
+                  ]
+                ]
+              ]
+            ],
+            [
+              &quot;eq&quot;,
+              [
+                &quot;fun&quot;,
+                &quot;a&quot;,
+                []
+              ],
+              [
+                &quot;fun&quot;,
+                &quot;b&quot;,
+                []
+              ]
+            ]
+          ],
+          &quot;proof&quot;: [
+            {
+              &quot;formula&quot;: [
+                &quot;imp&quot;,
+                [
+                  &quot;eq&quot;,
+                  [
+                    &quot;fun&quot;,
+                    &quot;a&quot;,
+                    []
+                  ],
+                  [
+                    &quot;fun&quot;,
+                    &quot;b&quot;,
+                    []
+                  ]
+                ],
+                [
+                  &quot;imp&quot;,
+                  [
+                    &quot;eq&quot;,
+                    [
+                      &quot;fun&quot;,
+                      &quot;a&quot;,
+                      []
+                    ],
+                    [
+                      &quot;fun&quot;,
+                      &quot;a&quot;,
+                      []
+                    ]
+                  ],
+                  [
+                    &quot;eq&quot;,
+                    [
+                      &quot;fun&quot;,
+                      &quot;a&quot;,
+                      []
+                    ],
+                    [
+                      &quot;fun&quot;,
+                      &quot;b&quot;,
+                      []
+                    ]
+                  ]
+                ]
+              ],
+              &quot;index&quot;: 0,
+              &quot;rule&quot;: &quot;assumption&quot;
+            },
+            {
+              &quot;formula&quot;: [
+                &quot;eq&quot;,
+                [
+                  &quot;fun&quot;,
+                  &quot;a&quot;,
+                  []
+                ],
+                [
+                  &quot;fun&quot;,
+                  &quot;b&quot;,
+                  []
+                ]
+              ],
+              &quot;index&quot;: 1,
+              &quot;rule&quot;: &quot;assumption&quot;
+            },
+            {
+              &quot;antecedent&quot;: 1,
+              &quot;formula&quot;: [
+                &quot;imp&quot;,
+                [
+                  &quot;eq&quot;,
+                  [
+                    &quot;fun&quot;,
+                    &quot;a&quot;,
+                    []
+                  ],
+                  [
+                    &quot;fun&quot;,
+                    &quot;a&quot;,
+                    []
+                  ]
+                ],
+                [
+                  &quot;eq&quot;,
+                  [
+                    &quot;fun&quot;,
+                    &quot;a&quot;,
+                    []
+                  ],
+                  [
+                    &quot;fun&quot;,
+                    &quot;b&quot;,
+                    []
+                  ]
+                ]
+              ],
+              &quot;implication&quot;: 0,
+              &quot;rule&quot;: &quot;mp&quot;
+            }
+          ]
+        }
+      },
+      {
+        &quot;display_label&quot;: &quot;B2&quot;,
+        &quot;literal_json&quot;: &quot;{\&quot;conclusion\&quot;:[\&quot;imp\&quot;,[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;a\&quot;,[]],[\&quot;fun\&quot;,\&quot;b\&quot;,[]]],[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;b\&quot;,[]],[\&quot;fun\&quot;,\&quot;b\&quot;,[]]]],\&quot;name\&quot;:\&quot;lemma5ca8e587ec6d3d665b95620c2edc1e66dcf2d25a98ac4efb752ac1b304aa6420\&quot;,\&quot;premises\&quot;:[[\&quot;imp\&quot;,[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;a\&quot;,[]],[\&quot;fun\&quot;,\&quot;b\&quot;,[]]],[\&quot;imp\&quot;,[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;a\&quot;,[]],[\&quot;fun\&quot;,\&quot;b\&quot;,[]]],[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;b\&quot;,[]],[\&quot;fun\&quot;,\&quot;b\&quot;,[]]]]],[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;a\&quot;,[]],[\&quot;fun\&quot;,\&quot;b\&quot;,[]]]],\&quot;proof\&quot;:[{\&quot;formula\&quot;:[\&quot;imp\&quot;,[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;a\&quot;,[]],[\&quot;fun\&quot;,\&quot;b\&quot;,[]]],[\&quot;imp\&quot;,[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;a\&quot;,[]],[\&quot;fun\&quot;,\&quot;b\&quot;,[]]],[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;b\&quot;,[]],[\&quot;fun\&quot;,\&quot;b\&quot;,[]]]]],\&quot;index\&quot;:0,\&quot;rule\&quot;:\&quot;assumption\&quot;},{\&quot;formula\&quot;:[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;a\&quot;,[]],[\&quot;fun\&quot;,\&quot;b\&quot;,[]]],\&quot;index\&quot;:1,\&quot;rule\&quot;:\&quot;assumption\&quot;},{\&quot;antecedent\&quot;:1,\&quot;formula\&quot;:[\&quot;imp\&quot;,[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;a\&quot;,[]],[\&quot;fun\&quot;,\&quot;b\&quot;,[]]],[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;b\&quot;,[]],[\&quot;fun\&quot;,\&quot;b\&quot;,[]]]],\&quot;implication\&quot;:0,\&quot;rule\&quot;:\&quot;mp\&quot;}]}&quot;,
+        &quot;saved_block&quot;: {
+          &quot;conclusion&quot;: [
+            &quot;imp&quot;,
+            [
+              &quot;eq&quot;,
+              [
+                &quot;fun&quot;,
+                &quot;a&quot;,
+                []
+              ],
+              [
+                &quot;fun&quot;,
+                &quot;b&quot;,
+                []
+              ]
+            ],
+            [
+              &quot;eq&quot;,
+              [
+                &quot;fun&quot;,
+                &quot;b&quot;,
+                []
+              ],
+              [
+                &quot;fun&quot;,
+                &quot;b&quot;,
+                []
+              ]
+            ]
+          ],
+          &quot;name&quot;: &quot;lemma5ca8e587ec6d3d665b95620c2edc1e66dcf2d25a98ac4efb752ac1b304aa6420&quot;,
+          &quot;premises&quot;: [
+            [
+              &quot;imp&quot;,
+              [
+                &quot;eq&quot;,
+                [
+                  &quot;fun&quot;,
+                  &quot;a&quot;,
+                  []
+                ],
+                [
+                  &quot;fun&quot;,
+                  &quot;b&quot;,
+                  []
+                ]
+              ],
+              [
+                &quot;imp&quot;,
+                [
+                  &quot;eq&quot;,
+                  [
+                    &quot;fun&quot;,
+                    &quot;a&quot;,
+                    []
+                  ],
+                  [
+                    &quot;fun&quot;,
+                    &quot;b&quot;,
+                    []
+                  ]
+                ],
+                [
+                  &quot;eq&quot;,
+                  [
+                    &quot;fun&quot;,
+                    &quot;b&quot;,
+                    []
+                  ],
+                  [
+                    &quot;fun&quot;,
+                    &quot;b&quot;,
+                    []
+                  ]
+                ]
+              ]
+            ],
+            [
+              &quot;eq&quot;,
+              [
+                &quot;fun&quot;,
+                &quot;a&quot;,
+                []
+              ],
+              [
+                &quot;fun&quot;,
+                &quot;b&quot;,
+                []
+              ]
+            ]
+          ],
+          &quot;proof&quot;: [
+            {
+              &quot;formula&quot;: [
+                &quot;imp&quot;,
+                [
+                  &quot;eq&quot;,
+                  [
+                    &quot;fun&quot;,
+                    &quot;a&quot;,
+                    []
+                  ],
+                  [
+                    &quot;fun&quot;,
+                    &quot;b&quot;,
+                    []
+                  ]
+                ],
+                [
+                  &quot;imp&quot;,
+                  [
+                    &quot;eq&quot;,
+                    [
+                      &quot;fun&quot;,
+                      &quot;a&quot;,
+                      []
+                    ],
+                    [
+                      &quot;fun&quot;,
+                      &quot;b&quot;,
+                      []
+                    ]
+                  ],
+                  [
+                    &quot;eq&quot;,
+                    [
+                      &quot;fun&quot;,
+                      &quot;b&quot;,
+                      []
+                    ],
+                    [
+                      &quot;fun&quot;,
+                      &quot;b&quot;,
+                      []
+                    ]
+                  ]
+                ]
+              ],
+              &quot;index&quot;: 0,
+              &quot;rule&quot;: &quot;assumption&quot;
+            },
+            {
+              &quot;formula&quot;: [
+                &quot;eq&quot;,
+                [
+                  &quot;fun&quot;,
+                  &quot;a&quot;,
+                  []
+                ],
+                [
+                  &quot;fun&quot;,
+                  &quot;b&quot;,
+                  []
+                ]
+              ],
+              &quot;index&quot;: 1,
+              &quot;rule&quot;: &quot;assumption&quot;
+            },
+            {
+              &quot;antecedent&quot;: 1,
+              &quot;formula&quot;: [
+                &quot;imp&quot;,
+                [
+                  &quot;eq&quot;,
+                  [
+                    &quot;fun&quot;,
+                    &quot;a&quot;,
+                    []
+                  ],
+                  [
+                    &quot;fun&quot;,
+                    &quot;b&quot;,
+                    []
+                  ]
+                ],
+                [
+                  &quot;eq&quot;,
+                  [
+                    &quot;fun&quot;,
+                    &quot;b&quot;,
+                    []
+                  ],
+                  [
+                    &quot;fun&quot;,
+                    &quot;b&quot;,
+                    []
+                  ]
+                ]
+              ],
+              &quot;implication&quot;: 0,
+              &quot;rule&quot;: &quot;mp&quot;
+            }
+          ]
+        }
+      },
+      {
+        &quot;display_label&quot;: &quot;B3&quot;,
+        &quot;literal_json&quot;: &quot;{\&quot;conclusion\&quot;:[\&quot;imp\&quot;,[\&quot;pred\&quot;,\&quot;P\&quot;,[[\&quot;fun\&quot;,\&quot;a\&quot;,[]]]],[\&quot;pred\&quot;,\&quot;P\&quot;,[[\&quot;fun\&quot;,\&quot;b\&quot;,[]]]]],\&quot;name\&quot;:\&quot;lemma1696b5c541069ea05eefbfe62f7a08ed5924b032e5aed9eaa59beb9395cb4317\&quot;,\&quot;premises\&quot;:[[\&quot;imp\&quot;,[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;a\&quot;,[]],[\&quot;fun\&quot;,\&quot;b\&quot;,[]]],[\&quot;imp\&quot;,[\&quot;pred\&quot;,\&quot;P\&quot;,[[\&quot;fun\&quot;,\&quot;a\&quot;,[]]]],[\&quot;pred\&quot;,\&quot;P\&quot;,[[\&quot;fun\&quot;,\&quot;b\&quot;,[]]]]]],[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;a\&quot;,[]],[\&quot;fun\&quot;,\&quot;b\&quot;,[]]]],\&quot;proof\&quot;:[{\&quot;formula\&quot;:[\&quot;imp\&quot;,[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;a\&quot;,[]],[\&quot;fun\&quot;,\&quot;b\&quot;,[]]],[\&quot;imp\&quot;,[\&quot;pred\&quot;,\&quot;P\&quot;,[[\&quot;fun\&quot;,\&quot;a\&quot;,[]]]],[\&quot;pred\&quot;,\&quot;P\&quot;,[[\&quot;fun\&quot;,\&quot;b\&quot;,[]]]]]],\&quot;index\&quot;:0,\&quot;rule\&quot;:\&quot;assumption\&quot;},{\&quot;formula\&quot;:[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;a\&quot;,[]],[\&quot;fun\&quot;,\&quot;b\&quot;,[]]],\&quot;index\&quot;:1,\&quot;rule\&quot;:\&quot;assumption\&quot;},{\&quot;antecedent\&quot;:1,\&quot;formula\&quot;:[\&quot;imp\&quot;,[\&quot;pred\&quot;,\&quot;P\&quot;,[[\&quot;fun\&quot;,\&quot;a\&quot;,[]]]],[\&quot;pred\&quot;,\&quot;P\&quot;,[[\&quot;fun\&quot;,\&quot;b\&quot;,[]]]]],\&quot;implication\&quot;:0,\&quot;rule\&quot;:\&quot;mp\&quot;}]}&quot;,
+        &quot;saved_block&quot;: {
+          &quot;conclusion&quot;: [
+            &quot;imp&quot;,
+            [
+              &quot;pred&quot;,
+              &quot;P&quot;,
+              [
+                [
+                  &quot;fun&quot;,
+                  &quot;a&quot;,
+                  []
+                ]
+              ]
+            ],
+            [
+              &quot;pred&quot;,
+              &quot;P&quot;,
+              [
+                [
+                  &quot;fun&quot;,
+                  &quot;b&quot;,
+                  []
+                ]
+              ]
+            ]
+          ],
+          &quot;name&quot;: &quot;lemma1696b5c541069ea05eefbfe62f7a08ed5924b032e5aed9eaa59beb9395cb4317&quot;,
+          &quot;premises&quot;: [
+            [
+              &quot;imp&quot;,
+              [
+                &quot;eq&quot;,
+                [
+                  &quot;fun&quot;,
+                  &quot;a&quot;,
+                  []
+                ],
+                [
+                  &quot;fun&quot;,
+                  &quot;b&quot;,
+                  []
+                ]
+              ],
+              [
+                &quot;imp&quot;,
+                [
+                  &quot;pred&quot;,
+                  &quot;P&quot;,
+                  [
+                    [
+                      &quot;fun&quot;,
+                      &quot;a&quot;,
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  &quot;pred&quot;,
+                  &quot;P&quot;,
+                  [
+                    [
+                      &quot;fun&quot;,
+                      &quot;b&quot;,
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              &quot;eq&quot;,
+              [
+                &quot;fun&quot;,
+                &quot;a&quot;,
+                []
+              ],
+              [
+                &quot;fun&quot;,
+                &quot;b&quot;,
+                []
+              ]
+            ]
+          ],
+          &quot;proof&quot;: [
+            {
+              &quot;formula&quot;: [
+                &quot;imp&quot;,
+                [
+                  &quot;eq&quot;,
+                  [
+                    &quot;fun&quot;,
+                    &quot;a&quot;,
+                    []
+                  ],
+                  [
+                    &quot;fun&quot;,
+                    &quot;b&quot;,
+                    []
+                  ]
+                ],
+                [
+                  &quot;imp&quot;,
+                  [
+                    &quot;pred&quot;,
+                    &quot;P&quot;,
+                    [
+                      [
+                        &quot;fun&quot;,
+                        &quot;a&quot;,
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    &quot;pred&quot;,
+                    &quot;P&quot;,
+                    [
+                      [
+                        &quot;fun&quot;,
+                        &quot;b&quot;,
+                        []
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              &quot;index&quot;: 0,
+              &quot;rule&quot;: &quot;assumption&quot;
+            },
+            {
+              &quot;formula&quot;: [
+                &quot;eq&quot;,
+                [
+                  &quot;fun&quot;,
+                  &quot;a&quot;,
+                  []
+                ],
+                [
+                  &quot;fun&quot;,
+                  &quot;b&quot;,
+                  []
+                ]
+              ],
+              &quot;index&quot;: 1,
+              &quot;rule&quot;: &quot;assumption&quot;
+            },
+            {
+              &quot;antecedent&quot;: 1,
+              &quot;formula&quot;: [
+                &quot;imp&quot;,
+                [
+                  &quot;pred&quot;,
+                  &quot;P&quot;,
+                  [
+                    [
+                      &quot;fun&quot;,
+                      &quot;a&quot;,
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  &quot;pred&quot;,
+                  &quot;P&quot;,
+                  [
+                    [
+                      &quot;fun&quot;,
+                      &quot;b&quot;,
+                      []
+                    ]
+                  ]
+                ]
+              ],
+              &quot;implication&quot;: 0,
+              &quot;rule&quot;: &quot;mp&quot;
+            }
+          ]
+        }
+      },
+      {
+        &quot;display_label&quot;: &quot;B4&quot;,
+        &quot;literal_json&quot;: &quot;{\&quot;conclusion\&quot;:[\&quot;pred\&quot;,\&quot;P\&quot;,[[\&quot;fun\&quot;,\&quot;b\&quot;,[]]]],\&quot;name\&quot;:\&quot;lemmae5cc6400c2dec1f53e31864fc169b5e8964c4b9e49e5664338f7fec66b9bd1b6\&quot;,\&quot;premises\&quot;:[[\&quot;imp\&quot;,[\&quot;pred\&quot;,\&quot;P\&quot;,[[\&quot;fun\&quot;,\&quot;a\&quot;,[]]]],[\&quot;pred\&quot;,\&quot;P\&quot;,[[\&quot;fun\&quot;,\&quot;b\&quot;,[]]]]],[\&quot;pred\&quot;,\&quot;P\&quot;,[[\&quot;fun\&quot;,\&quot;a\&quot;,[]]]]],\&quot;proof\&quot;:[{\&quot;formula\&quot;:[\&quot;imp\&quot;,[\&quot;pred\&quot;,\&quot;P\&quot;,[[\&quot;fun\&quot;,\&quot;a\&quot;,[]]]],[\&quot;pred\&quot;,\&quot;P\&quot;,[[\&quot;fun\&quot;,\&quot;b\&quot;,[]]]]],\&quot;index\&quot;:0,\&quot;rule\&quot;:\&quot;assumption\&quot;},{\&quot;formula\&quot;:[\&quot;pred\&quot;,\&quot;P\&quot;,[[\&quot;fun\&quot;,\&quot;a\&quot;,[]]]],\&quot;index\&quot;:1,\&quot;rule\&quot;:\&quot;assumption\&quot;},{\&quot;antecedent\&quot;:1,\&quot;formula\&quot;:[\&quot;pred\&quot;,\&quot;P\&quot;,[[\&quot;fun\&quot;,\&quot;b\&quot;,[]]]],\&quot;implication\&quot;:0,\&quot;rule\&quot;:\&quot;mp\&quot;}]}&quot;,
+        &quot;saved_block&quot;: {
+          &quot;conclusion&quot;: [
+            &quot;pred&quot;,
+            &quot;P&quot;,
+            [
+              [
+                &quot;fun&quot;,
+                &quot;b&quot;,
+                []
+              ]
+            ]
+          ],
+          &quot;name&quot;: &quot;lemmae5cc6400c2dec1f53e31864fc169b5e8964c4b9e49e5664338f7fec66b9bd1b6&quot;,
+          &quot;premises&quot;: [
+            [
+              &quot;imp&quot;,
+              [
+                &quot;pred&quot;,
+                &quot;P&quot;,
+                [
+                  [
+                    &quot;fun&quot;,
+                    &quot;a&quot;,
+                    []
+                  ]
+                ]
+              ],
+              [
+                &quot;pred&quot;,
+                &quot;P&quot;,
+                [
+                  [
+                    &quot;fun&quot;,
+                    &quot;b&quot;,
+                    []
+                  ]
+                ]
+              ]
+            ],
+            [
+              &quot;pred&quot;,
+              &quot;P&quot;,
+              [
+                [
+                  &quot;fun&quot;,
+                  &quot;a&quot;,
+                  []
+                ]
+              ]
+            ]
+          ],
+          &quot;proof&quot;: [
+            {
+              &quot;formula&quot;: [
+                &quot;imp&quot;,
+                [
+                  &quot;pred&quot;,
+                  &quot;P&quot;,
+                  [
+                    [
+                      &quot;fun&quot;,
+                      &quot;a&quot;,
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  &quot;pred&quot;,
+                  &quot;P&quot;,
+                  [
+                    [
+                      &quot;fun&quot;,
+                      &quot;b&quot;,
+                      []
+                    ]
+                  ]
+                ]
+              ],
+              &quot;index&quot;: 0,
+              &quot;rule&quot;: &quot;assumption&quot;
+            },
+            {
+              &quot;formula&quot;: [
+                &quot;pred&quot;,
+                &quot;P&quot;,
+                [
+                  [
+                    &quot;fun&quot;,
+                    &quot;a&quot;,
+                    []
+                  ]
+                ]
+              ],
+              &quot;index&quot;: 1,
+              &quot;rule&quot;: &quot;assumption&quot;
+            },
+            {
+              &quot;antecedent&quot;: 1,
+              &quot;formula&quot;: [
+                &quot;pred&quot;,
+                &quot;P&quot;,
+                [
+                  [
+                    &quot;fun&quot;,
+                    &quot;b&quot;,
+                    []
+                  ]
+                ]
+              ],
+              &quot;implication&quot;: 0,
+              &quot;rule&quot;: &quot;mp&quot;
+            }
+          ]
+        }
+      },
+      {
+        &quot;display_label&quot;: &quot;B5&quot;,
+        &quot;literal_json&quot;: &quot;{\&quot;conclusion\&quot;:[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;b\&quot;,[]],[\&quot;fun\&quot;,\&quot;b\&quot;,[]]],\&quot;name\&quot;:\&quot;lemma8604f527b524d94fd44a794f01684bfe042c9fb7a815fd7455a5a20a993c4685\&quot;,\&quot;premises\&quot;:[[\&quot;imp\&quot;,[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;a\&quot;,[]],[\&quot;fun\&quot;,\&quot;a\&quot;,[]]],[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;a\&quot;,[]],[\&quot;fun\&quot;,\&quot;b\&quot;,[]]]],[\&quot;imp\&quot;,[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;a\&quot;,[]],[\&quot;fun\&quot;,\&quot;b\&quot;,[]]],[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;b\&quot;,[]],[\&quot;fun\&quot;,\&quot;b\&quot;,[]]]],[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;a\&quot;,[]],[\&quot;fun\&quot;,\&quot;a\&quot;,[]]]],\&quot;proof\&quot;:[{\&quot;formula\&quot;:[\&quot;imp\&quot;,[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;a\&quot;,[]],[\&quot;fun\&quot;,\&quot;a\&quot;,[]]],[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;a\&quot;,[]],[\&quot;fun\&quot;,\&quot;b\&quot;,[]]]],\&quot;index\&quot;:0,\&quot;rule\&quot;:\&quot;assumption\&quot;},{\&quot;formula\&quot;:[\&quot;imp\&quot;,[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;a\&quot;,[]],[\&quot;fun\&quot;,\&quot;b\&quot;,[]]],[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;b\&quot;,[]],[\&quot;fun\&quot;,\&quot;b\&quot;,[]]]],\&quot;index\&quot;:1,\&quot;rule\&quot;:\&quot;assumption\&quot;},{\&quot;formula\&quot;:[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;a\&quot;,[]],[\&quot;fun\&quot;,\&quot;a\&quot;,[]]],\&quot;index\&quot;:2,\&quot;rule\&quot;:\&quot;assumption\&quot;},{\&quot;antecedent\&quot;:2,\&quot;formula\&quot;:[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;a\&quot;,[]],[\&quot;fun\&quot;,\&quot;b\&quot;,[]]],\&quot;implication\&quot;:0,\&quot;rule\&quot;:\&quot;mp\&quot;},{\&quot;antecedent\&quot;:3,\&quot;formula\&quot;:[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;b\&quot;,[]],[\&quot;fun\&quot;,\&quot;b\&quot;,[]]],\&quot;implication\&quot;:1,\&quot;rule\&quot;:\&quot;mp\&quot;}]}&quot;,
+        &quot;saved_block&quot;: {
+          &quot;conclusion&quot;: [
+            &quot;eq&quot;,
+            [
+              &quot;fun&quot;,
+              &quot;b&quot;,
+              []
+            ],
+            [
+              &quot;fun&quot;,
+              &quot;b&quot;,
+              []
+            ]
+          ],
+          &quot;name&quot;: &quot;lemma8604f527b524d94fd44a794f01684bfe042c9fb7a815fd7455a5a20a993c4685&quot;,
+          &quot;premises&quot;: [
+            [
+              &quot;imp&quot;,
+              [
+                &quot;eq&quot;,
+                [
+                  &quot;fun&quot;,
+                  &quot;a&quot;,
+                  []
+                ],
+                [
+                  &quot;fun&quot;,
+                  &quot;a&quot;,
+                  []
+                ]
+              ],
+              [
+                &quot;eq&quot;,
+                [
+                  &quot;fun&quot;,
+                  &quot;a&quot;,
+                  []
+                ],
+                [
+                  &quot;fun&quot;,
+                  &quot;b&quot;,
+                  []
+                ]
+              ]
+            ],
+            [
+              &quot;imp&quot;,
+              [
+                &quot;eq&quot;,
+                [
+                  &quot;fun&quot;,
+                  &quot;a&quot;,
+                  []
+                ],
+                [
+                  &quot;fun&quot;,
+                  &quot;b&quot;,
+                  []
+                ]
+              ],
+              [
+                &quot;eq&quot;,
+                [
+                  &quot;fun&quot;,
+                  &quot;b&quot;,
+                  []
+                ],
+                [
+                  &quot;fun&quot;,
+                  &quot;b&quot;,
+                  []
+                ]
+              ]
+            ],
+            [
+              &quot;eq&quot;,
+              [
+                &quot;fun&quot;,
+                &quot;a&quot;,
+                []
+              ],
+              [
+                &quot;fun&quot;,
+                &quot;a&quot;,
+                []
+              ]
+            ]
+          ],
+          &quot;proof&quot;: [
+            {
+              &quot;formula&quot;: [
+                &quot;imp&quot;,
+                [
+                  &quot;eq&quot;,
+                  [
+                    &quot;fun&quot;,
+                    &quot;a&quot;,
+                    []
+                  ],
+                  [
+                    &quot;fun&quot;,
+                    &quot;a&quot;,
+                    []
+                  ]
+                ],
+                [
+                  &quot;eq&quot;,
+                  [
+                    &quot;fun&quot;,
+                    &quot;a&quot;,
+                    []
+                  ],
+                  [
+                    &quot;fun&quot;,
+                    &quot;b&quot;,
+                    []
+                  ]
+                ]
+              ],
+              &quot;index&quot;: 0,
+              &quot;rule&quot;: &quot;assumption&quot;
+            },
+            {
+              &quot;formula&quot;: [
+                &quot;imp&quot;,
+                [
+                  &quot;eq&quot;,
+                  [
+                    &quot;fun&quot;,
+                    &quot;a&quot;,
+                    []
+                  ],
+                  [
+                    &quot;fun&quot;,
+                    &quot;b&quot;,
+                    []
+                  ]
+                ],
+                [
+                  &quot;eq&quot;,
+                  [
+                    &quot;fun&quot;,
+                    &quot;b&quot;,
+                    []
+                  ],
+                  [
+                    &quot;fun&quot;,
+                    &quot;b&quot;,
+                    []
+                  ]
+                ]
+              ],
+              &quot;index&quot;: 1,
+              &quot;rule&quot;: &quot;assumption&quot;
+            },
+            {
+              &quot;formula&quot;: [
+                &quot;eq&quot;,
+                [
+                  &quot;fun&quot;,
+                  &quot;a&quot;,
+                  []
+                ],
+                [
+                  &quot;fun&quot;,
+                  &quot;a&quot;,
+                  []
+                ]
+              ],
+              &quot;index&quot;: 2,
+              &quot;rule&quot;: &quot;assumption&quot;
+            },
+            {
+              &quot;antecedent&quot;: 2,
+              &quot;formula&quot;: [
+                &quot;eq&quot;,
+                [
+                  &quot;fun&quot;,
+                  &quot;a&quot;,
+                  []
+                ],
+                [
+                  &quot;fun&quot;,
+                  &quot;b&quot;,
+                  []
+                ]
+              ],
+              &quot;implication&quot;: 0,
+              &quot;rule&quot;: &quot;mp&quot;
+            },
+            {
+              &quot;antecedent&quot;: 3,
+              &quot;formula&quot;: [
+                &quot;eq&quot;,
+                [
+                  &quot;fun&quot;,
+                  &quot;b&quot;,
+                  []
+                ],
+                [
+                  &quot;fun&quot;,
+                  &quot;b&quot;,
+                  []
+                ]
+              ],
+              &quot;implication&quot;: 1,
+              &quot;rule&quot;: &quot;mp&quot;
+            }
+          ]
+        }
+      }
+    ],
+    &quot;full_proof_row_count&quot;: 12,
+    &quot;mathematical_authority&quot;: false,
+    &quot;presentation_successor&quot;: &quot;Spacing correction only; original saved rows, formulas, block names, source result descriptor and authority limits unchanged.&quot;,
+    &quot;proof_replay&quot;: false,
+    &quot;rows&quot;: [
+      {
+        &quot;displayed_row&quot;: 1,
+        &quot;english&quot;: &quot;Use the given predicate hypothesis.&quot;,
+        &quot;formula_latex&quot;: &quot;P(a)&quot;,
+        &quot;literal_json&quot;: &quot;{\&quot;formula\&quot;:[\&quot;pred\&quot;,\&quot;P\&quot;,[[\&quot;fun\&quot;,\&quot;a\&quot;,[]]]],\&quot;name\&quot;:\&quot;a1\&quot;,\&quot;rule\&quot;:\&quot;axiom\&quot;}&quot;,
+        &quot;saved_step&quot;: {
+          &quot;formula&quot;: [
+            &quot;pred&quot;,
+            &quot;P&quot;,
+            [
+              [
+                &quot;fun&quot;,
+                &quot;a&quot;,
+                []
+              ]
+            ]
+          ],
+          &quot;name&quot;: &quot;a1&quot;,
+          &quot;rule&quot;: &quot;axiom&quot;
+        }
+      },
+      {
+        &quot;displayed_row&quot;: 2,
+        &quot;english&quot;: &quot;Use the given equality hypothesis.&quot;,
+        &quot;formula_latex&quot;: &quot;a=b&quot;,
+        &quot;literal_json&quot;: &quot;{\&quot;formula\&quot;:[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;a\&quot;,[]],[\&quot;fun\&quot;,\&quot;b\&quot;,[]]],\&quot;name\&quot;:\&quot;a0\&quot;,\&quot;rule\&quot;:\&quot;axiom\&quot;}&quot;,
+        &quot;saved_step&quot;: {
+          &quot;formula&quot;: [
+            &quot;eq&quot;,
+            [
+              &quot;fun&quot;,
+              &quot;a&quot;,
+              []
+            ],
+            [
+              &quot;fun&quot;,
+              &quot;b&quot;,
+              []
+            ]
+          ],
+          &quot;name&quot;: &quot;a0&quot;,
+          &quot;rule&quot;: &quot;axiom&quot;
+        }
+      },
+      {
+        &quot;displayed_row&quot;: 3,
+        &quot;english&quot;: &quot;Instantiate equality substitution for the predicate.&quot;,
+        &quot;formula_latex&quot;: &quot;(a=b)\\to(P(a)\\to P(b))&quot;,
+        &quot;literal_json&quot;: &quot;{\&quot;formula\&quot;:[\&quot;imp\&quot;,[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;a\&quot;,[]],[\&quot;fun\&quot;,\&quot;b\&quot;,[]]],[\&quot;imp\&quot;,[\&quot;pred\&quot;,\&quot;P\&quot;,[[\&quot;fun\&quot;,\&quot;a\&quot;,[]]]],[\&quot;pred\&quot;,\&quot;P\&quot;,[[\&quot;fun\&quot;,\&quot;b\&quot;,[]]]]]],\&quot;left\&quot;:[\&quot;fun\&quot;,\&quot;a\&quot;,[]],\&quot;right\&quot;:[\&quot;fun\&quot;,\&quot;b\&quot;,[]],\&quot;rule\&quot;:\&quot;eq_subst\&quot;,\&quot;template\&quot;:[\&quot;pred\&quot;,\&quot;P\&quot;,[[\&quot;var\&quot;,\&quot;hole0\&quot;]]],\&quot;variable\&quot;:\&quot;hole0\&quot;}&quot;,
+        &quot;saved_step&quot;: {
+          &quot;formula&quot;: [
+            &quot;imp&quot;,
+            [
+              &quot;eq&quot;,
+              [
+                &quot;fun&quot;,
+                &quot;a&quot;,
+                []
+              ],
+              [
+                &quot;fun&quot;,
+                &quot;b&quot;,
+                []
+              ]
+            ],
+            [
+              &quot;imp&quot;,
+              [
+                &quot;pred&quot;,
+                &quot;P&quot;,
+                [
+                  [
+                    &quot;fun&quot;,
+                    &quot;a&quot;,
+                    []
+                  ]
+                ]
+              ],
+              [
+                &quot;pred&quot;,
+                &quot;P&quot;,
+                [
+                  [
+                    &quot;fun&quot;,
+                    &quot;b&quot;,
+                    []
+                  ]
+                ]
+              ]
+            ]
+          ],
+          &quot;left&quot;: [
+            &quot;fun&quot;,
+            &quot;a&quot;,
+            []
+          ],
+          &quot;right&quot;: [
+            &quot;fun&quot;,
+            &quot;b&quot;,
+            []
+          ],
+          &quot;rule&quot;: &quot;eq_subst&quot;,
+          &quot;template&quot;: [
+            &quot;pred&quot;,
+            &quot;P&quot;,
+            [
+              [
+                &quot;var&quot;,
+                &quot;hole0&quot;
+              ]
+            ]
+          ],
+          &quot;variable&quot;: &quot;hole0&quot;
+        }
+      },
+      {
+        &quot;displayed_row&quot;: 4,
+        &quot;english&quot;: &quot;Apply reusable block B3 to displayed rows 3 and 2.&quot;,
+        &quot;formula_latex&quot;: &quot;P(a)\\to P(b)&quot;,
+        &quot;literal_json&quot;: &quot;{\&quot;formula\&quot;:[\&quot;imp\&quot;,[\&quot;pred\&quot;,\&quot;P\&quot;,[[\&quot;fun\&quot;,\&quot;a\&quot;,[]]]],[\&quot;pred\&quot;,\&quot;P\&quot;,[[\&quot;fun\&quot;,\&quot;b\&quot;,[]]]]],\&quot;inputs\&quot;:[2,1],\&quot;name\&quot;:\&quot;lemma1696b5c541069ea05eefbfe62f7a08ed5924b032e5aed9eaa59beb9395cb4317\&quot;,\&quot;rule\&quot;:\&quot;block\&quot;}&quot;,
+        &quot;saved_step&quot;: {
+          &quot;formula&quot;: [
+            &quot;imp&quot;,
+            [
+              &quot;pred&quot;,
+              &quot;P&quot;,
+              [
+                [
+                  &quot;fun&quot;,
+                  &quot;a&quot;,
+                  []
+                ]
+              ]
+            ],
+            [
+              &quot;pred&quot;,
+              &quot;P&quot;,
+              [
+                [
+                  &quot;fun&quot;,
+                  &quot;b&quot;,
+                  []
+                ]
+              ]
+            ]
+          ],
+          &quot;inputs&quot;: [
+            2,
+            1
+          ],
+          &quot;name&quot;: &quot;lemma1696b5c541069ea05eefbfe62f7a08ed5924b032e5aed9eaa59beb9395cb4317&quot;,
+          &quot;rule&quot;: &quot;block&quot;
+        }
+      },
+      {
+        &quot;displayed_row&quot;: 5,
+        &quot;english&quot;: &quot;Apply reusable block B4 to displayed rows 4 and 1.&quot;,
+        &quot;formula_latex&quot;: &quot;P(b)&quot;,
+        &quot;literal_json&quot;: &quot;{\&quot;formula\&quot;:[\&quot;pred\&quot;,\&quot;P\&quot;,[[\&quot;fun\&quot;,\&quot;b\&quot;,[]]]],\&quot;inputs\&quot;:[3,0],\&quot;name\&quot;:\&quot;lemmae5cc6400c2dec1f53e31864fc169b5e8964c4b9e49e5664338f7fec66b9bd1b6\&quot;,\&quot;rule\&quot;:\&quot;block\&quot;}&quot;,
+        &quot;saved_step&quot;: {
+          &quot;formula&quot;: [
+            &quot;pred&quot;,
+            &quot;P&quot;,
+            [
+              [
+                &quot;fun&quot;,
+                &quot;b&quot;,
+                []
+              ]
+            ]
+          ],
+          &quot;inputs&quot;: [
+            3,
+            0
+          ],
+          &quot;name&quot;: &quot;lemmae5cc6400c2dec1f53e31864fc169b5e8964c4b9e49e5664338f7fec66b9bd1b6&quot;,
+          &quot;rule&quot;: &quot;block&quot;
+        }
+      },
+      {
+        &quot;displayed_row&quot;: 6,
+        &quot;english&quot;: &quot;Use reflexivity of equality.&quot;,
+        &quot;formula_latex&quot;: &quot;a=a&quot;,
+        &quot;literal_json&quot;: &quot;{\&quot;formula\&quot;:[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;a\&quot;,[]],[\&quot;fun\&quot;,\&quot;a\&quot;,[]]],\&quot;rule\&quot;:\&quot;refl\&quot;}&quot;,
+        &quot;saved_step&quot;: {
+          &quot;formula&quot;: [
+            &quot;eq&quot;,
+            [
+              &quot;fun&quot;,
+              &quot;a&quot;,
+              []
+            ],
+            [
+              &quot;fun&quot;,
+              &quot;a&quot;,
+              []
+            ]
+          ],
+          &quot;rule&quot;: &quot;refl&quot;
+        }
+      },
+      {
+        &quot;displayed_row&quot;: 7,
+        &quot;english&quot;: &quot;Instantiate equality substitution with the left term held fixed.&quot;,
+        &quot;formula_latex&quot;: &quot;(a=b)\\to((a=a)\\to(a=b))&quot;,
+        &quot;literal_json&quot;: &quot;{\&quot;formula\&quot;:[\&quot;imp\&quot;,[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;a\&quot;,[]],[\&quot;fun\&quot;,\&quot;b\&quot;,[]]],[\&quot;imp\&quot;,[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;a\&quot;,[]],[\&quot;fun\&quot;,\&quot;a\&quot;,[]]],[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;a\&quot;,[]],[\&quot;fun\&quot;,\&quot;b\&quot;,[]]]]],\&quot;left\&quot;:[\&quot;fun\&quot;,\&quot;a\&quot;,[]],\&quot;right\&quot;:[\&quot;fun\&quot;,\&quot;b\&quot;,[]],\&quot;rule\&quot;:\&quot;eq_subst\&quot;,\&quot;template\&quot;:[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;a\&quot;,[]],[\&quot;var\&quot;,\&quot;hole0\&quot;]],\&quot;variable\&quot;:\&quot;hole0\&quot;}&quot;,
+        &quot;saved_step&quot;: {
+          &quot;formula&quot;: [
+            &quot;imp&quot;,
+            [
+              &quot;eq&quot;,
+              [
+                &quot;fun&quot;,
+                &quot;a&quot;,
+                []
+              ],
+              [
+                &quot;fun&quot;,
+                &quot;b&quot;,
+                []
+              ]
+            ],
+            [
+              &quot;imp&quot;,
+              [
+                &quot;eq&quot;,
+                [
+                  &quot;fun&quot;,
+                  &quot;a&quot;,
+                  []
+                ],
+                [
+                  &quot;fun&quot;,
+                  &quot;a&quot;,
+                  []
+                ]
+              ],
+              [
+                &quot;eq&quot;,
+                [
+                  &quot;fun&quot;,
+                  &quot;a&quot;,
+                  []
+                ],
+                [
+                  &quot;fun&quot;,
+                  &quot;b&quot;,
+                  []
+                ]
+              ]
+            ]
+          ],
+          &quot;left&quot;: [
+            &quot;fun&quot;,
+            &quot;a&quot;,
+            []
+          ],
+          &quot;right&quot;: [
+            &quot;fun&quot;,
+            &quot;b&quot;,
+            []
+          ],
+          &quot;rule&quot;: &quot;eq_subst&quot;,
+          &quot;template&quot;: [
+            &quot;eq&quot;,
+            [
+              &quot;fun&quot;,
+              &quot;a&quot;,
+              []
+            ],
+            [
+              &quot;var&quot;,
+              &quot;hole0&quot;
+            ]
+          ],
+          &quot;variable&quot;: &quot;hole0&quot;
+        }
+      },
+      {
+        &quot;displayed_row&quot;: 8,
+        &quot;english&quot;: &quot;Apply reusable block B1 to displayed rows 7 and 2.&quot;,
+        &quot;formula_latex&quot;: &quot;(a=a)\\to(a=b)&quot;,
+        &quot;literal_json&quot;: &quot;{\&quot;formula\&quot;:[\&quot;imp\&quot;,[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;a\&quot;,[]],[\&quot;fun\&quot;,\&quot;a\&quot;,[]]],[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;a\&quot;,[]],[\&quot;fun\&quot;,\&quot;b\&quot;,[]]]],\&quot;inputs\&quot;:[6,1],\&quot;name\&quot;:\&quot;lemma123dffc077304d6f5569591588aeb01e9aee4963a0675c39a01b279b772947dc\&quot;,\&quot;rule\&quot;:\&quot;block\&quot;}&quot;,
+        &quot;saved_step&quot;: {
+          &quot;formula&quot;: [
+            &quot;imp&quot;,
+            [
+              &quot;eq&quot;,
+              [
+                &quot;fun&quot;,
+                &quot;a&quot;,
+                []
+              ],
+              [
+                &quot;fun&quot;,
+                &quot;a&quot;,
+                []
+              ]
+            ],
+            [
+              &quot;eq&quot;,
+              [
+                &quot;fun&quot;,
+                &quot;a&quot;,
+                []
+              ],
+              [
+                &quot;fun&quot;,
+                &quot;b&quot;,
+                []
+              ]
+            ]
+          ],
+          &quot;inputs&quot;: [
+            6,
+            1
+          ],
+          &quot;name&quot;: &quot;lemma123dffc077304d6f5569591588aeb01e9aee4963a0675c39a01b279b772947dc&quot;,
+          &quot;rule&quot;: &quot;block&quot;
+        }
+      },
+      {
+        &quot;displayed_row&quot;: 9,
+        &quot;english&quot;: &quot;Instantiate equality substitution with the right term held fixed.&quot;,
+        &quot;formula_latex&quot;: &quot;(a=b)\\to((a=b)\\to(b=b))&quot;,
+        &quot;literal_json&quot;: &quot;{\&quot;formula\&quot;:[\&quot;imp\&quot;,[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;a\&quot;,[]],[\&quot;fun\&quot;,\&quot;b\&quot;,[]]],[\&quot;imp\&quot;,[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;a\&quot;,[]],[\&quot;fun\&quot;,\&quot;b\&quot;,[]]],[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;b\&quot;,[]],[\&quot;fun\&quot;,\&quot;b\&quot;,[]]]]],\&quot;left\&quot;:[\&quot;fun\&quot;,\&quot;a\&quot;,[]],\&quot;right\&quot;:[\&quot;fun\&quot;,\&quot;b\&quot;,[]],\&quot;rule\&quot;:\&quot;eq_subst\&quot;,\&quot;template\&quot;:[\&quot;eq\&quot;,[\&quot;var\&quot;,\&quot;hole0\&quot;],[\&quot;fun\&quot;,\&quot;b\&quot;,[]]],\&quot;variable\&quot;:\&quot;hole0\&quot;}&quot;,
+        &quot;saved_step&quot;: {
+          &quot;formula&quot;: [
+            &quot;imp&quot;,
+            [
+              &quot;eq&quot;,
+              [
+                &quot;fun&quot;,
+                &quot;a&quot;,
+                []
+              ],
+              [
+                &quot;fun&quot;,
+                &quot;b&quot;,
+                []
+              ]
+            ],
+            [
+              &quot;imp&quot;,
+              [
+                &quot;eq&quot;,
+                [
+                  &quot;fun&quot;,
+                  &quot;a&quot;,
+                  []
+                ],
+                [
+                  &quot;fun&quot;,
+                  &quot;b&quot;,
+                  []
+                ]
+              ],
+              [
+                &quot;eq&quot;,
+                [
+                  &quot;fun&quot;,
+                  &quot;b&quot;,
+                  []
+                ],
+                [
+                  &quot;fun&quot;,
+                  &quot;b&quot;,
+                  []
+                ]
+              ]
+            ]
+          ],
+          &quot;left&quot;: [
+            &quot;fun&quot;,
+            &quot;a&quot;,
+            []
+          ],
+          &quot;right&quot;: [
+            &quot;fun&quot;,
+            &quot;b&quot;,
+            []
+          ],
+          &quot;rule&quot;: &quot;eq_subst&quot;,
+          &quot;template&quot;: [
+            &quot;eq&quot;,
+            [
+              &quot;var&quot;,
+              &quot;hole0&quot;
+            ],
+            [
+              &quot;fun&quot;,
+              &quot;b&quot;,
+              []
+            ]
+          ],
+          &quot;variable&quot;: &quot;hole0&quot;
+        }
+      },
+      {
+        &quot;displayed_row&quot;: 10,
+        &quot;english&quot;: &quot;Apply reusable block B2 to displayed rows 9 and 2.&quot;,
+        &quot;formula_latex&quot;: &quot;(a=b)\\to(b=b)&quot;,
+        &quot;literal_json&quot;: &quot;{\&quot;formula\&quot;:[\&quot;imp\&quot;,[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;a\&quot;,[]],[\&quot;fun\&quot;,\&quot;b\&quot;,[]]],[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;b\&quot;,[]],[\&quot;fun\&quot;,\&quot;b\&quot;,[]]]],\&quot;inputs\&quot;:[8,1],\&quot;name\&quot;:\&quot;lemma5ca8e587ec6d3d665b95620c2edc1e66dcf2d25a98ac4efb752ac1b304aa6420\&quot;,\&quot;rule\&quot;:\&quot;block\&quot;}&quot;,
+        &quot;saved_step&quot;: {
+          &quot;formula&quot;: [
+            &quot;imp&quot;,
+            [
+              &quot;eq&quot;,
+              [
+                &quot;fun&quot;,
+                &quot;a&quot;,
+                []
+              ],
+              [
+                &quot;fun&quot;,
+                &quot;b&quot;,
+                []
+              ]
+            ],
+            [
+              &quot;eq&quot;,
+              [
+                &quot;fun&quot;,
+                &quot;b&quot;,
+                []
+              ],
+              [
+                &quot;fun&quot;,
+                &quot;b&quot;,
+                []
+              ]
+            ]
+          ],
+          &quot;inputs&quot;: [
+            8,
+            1
+          ],
+          &quot;name&quot;: &quot;lemma5ca8e587ec6d3d665b95620c2edc1e66dcf2d25a98ac4efb752ac1b304aa6420&quot;,
+          &quot;rule&quot;: &quot;block&quot;
+        }
+      },
+      {
+        &quot;displayed_row&quot;: 11,
+        &quot;english&quot;: &quot;Apply reusable block B5 to displayed rows 8, 10 and 6.&quot;,
+        &quot;formula_latex&quot;: &quot;b=b&quot;,
+        &quot;literal_json&quot;: &quot;{\&quot;formula\&quot;:[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;b\&quot;,[]],[\&quot;fun\&quot;,\&quot;b\&quot;,[]]],\&quot;inputs\&quot;:[7,9,5],\&quot;name\&quot;:\&quot;lemma8604f527b524d94fd44a794f01684bfe042c9fb7a815fd7455a5a20a993c4685\&quot;,\&quot;rule\&quot;:\&quot;block\&quot;}&quot;,
+        &quot;saved_step&quot;: {
+          &quot;formula&quot;: [
+            &quot;eq&quot;,
+            [
+              &quot;fun&quot;,
+              &quot;b&quot;,
+              []
+            ],
+            [
+              &quot;fun&quot;,
+              &quot;b&quot;,
+              []
+            ]
+          ],
+          &quot;inputs&quot;: [
+            7,
+            9,
+            5
+          ],
+          &quot;name&quot;: &quot;lemma8604f527b524d94fd44a794f01684bfe042c9fb7a815fd7455a5a20a993c4685&quot;,
+          &quot;rule&quot;: &quot;block&quot;
+        }
+      },
+      {
+        &quot;displayed_row&quot;: 12,
+        &quot;english&quot;: &quot;Apply reusable block B4 again to displayed rows 4 and 1; end at the target.&quot;,
+        &quot;formula_latex&quot;: &quot;P(b)&quot;,
+        &quot;literal_json&quot;: &quot;{\&quot;formula\&quot;:[\&quot;pred\&quot;,\&quot;P\&quot;,[[\&quot;fun\&quot;,\&quot;b\&quot;,[]]]],\&quot;inputs\&quot;:[3,0],\&quot;name\&quot;:\&quot;lemmae5cc6400c2dec1f53e31864fc169b5e8964c4b9e49e5664338f7fec66b9bd1b6\&quot;,\&quot;rule\&quot;:\&quot;block\&quot;}&quot;,
+        &quot;saved_step&quot;: {
+          &quot;formula&quot;: [
+            &quot;pred&quot;,
+            &quot;P&quot;,
+            [
+              [
+                &quot;fun&quot;,
+                &quot;b&quot;,
+                []
+              ]
+            ]
+          ],
+          &quot;inputs&quot;: [
+            3,
+            0
+          ],
+          &quot;name&quot;: &quot;lemmae5cc6400c2dec1f53e31864fc169b5e8964c4b9e49e5664338f7fec66b9bd1b6&quot;,
+          &quot;rule&quot;: &quot;block&quot;
+        }
+      }
+    ],
+    &quot;saved_data_only&quot;: true,
+    &quot;schema&quot;: &quot;ROOT-saved-symbolic-proof-presentation-v1&quot;,
+    &quot;scope&quot;: &quot;All12 saved final-request rows, displayed with one-based row numbers; source inputs retain zero-based indices. Exact original formulas/rules/block labels were checked as ordinary JSON data. Target first appears at displayed row5; the frozen12-row profile retains additional steps and returns to the target at row12. No proof shortening, new theorem, validation call, or search replay.&quot;,
+    &quot;source_result&quot;: {
+      &quot;bytes&quot;: 34001836,
+      &quot;path&quot;: &quot;/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/result.json&quot;,
+      &quot;sha256&quot;: &quot;e6e247eb9e52640d92b1ae51b837661be372bbdf2f6865d0273db13d2d6a0310&quot;
+    }
+  },
+  &quot;schema&quot;: &quot;ROOT-owned-evidence-integration-progress-v1&quot;,
+  &quot;scientific_calls&quot;: 0,
+  &quot;scientific_replay&quot;: false,
+  &quot;scientific_status&quot;: &quot;One familiar symbolic control proof is admitted. The fixed GCTS point-search result is not admitted because the complete saved-evidence inverse exceeded its work window.&quot;,
+  &quot;short_status&quot;: &quot;Only the symbolic control qualifies; the fixed GCTS arm remains a deadline failure.&quot;,
+  &quot;symbolic_timing&quot;: {
+    &quot;cold_physical_ledger&quot;: {
+      &quot;aggregate_physical_bytes&quot;: 48976213,
+      &quot;cap_bytes&quot;: 134217728,
+      &quot;counted_once&quot;: true,
+      &quot;evidence_forest&quot;: {
+        &quot;bytes&quot;: 14906873,
+        &quot;path&quot;: &quot;/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/evidence-forest.json&quot;,
+        &quot;sha256&quot;: &quot;c783757e1f0119d60249ac6c43e581ecce35861471299fae67926d4cc840d146&quot;
+      },
+      &quot;excluded&quot;: &quot;fixed Source/module/native inputs and separately bounded stdout/stderr&quot;,
+      &quot;logical_cap_bytes&quot;: 134217728,
+      &quot;logical_result_bytes&quot;: 34001836,
+      &quot;ordinary_result&quot;: {
+        &quot;bytes&quot;: 34001836,
+        &quot;path&quot;: &quot;/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/result.json&quot;,
+        &quot;sha256&quot;: &quot;e6e247eb9e52640d92b1ae51b837661be372bbdf2f6865d0273db13d2d6a0310&quot;
+      },
+      &quot;other_root_JSON_metadata&quot;: [
+        {
+          &quot;bytes&quot;: 666,
+          &quot;path&quot;: &quot;/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/CONSUMED.json&quot;,
+          &quot;sha256&quot;: &quot;51a51a1de7f134479372fea88a26cf0a8733f4b70a82426e2dc80195e7457243&quot;
+        }
+      ],
+      &quot;schema&quot;: &quot;owned-evidence-physical-output-ledger-v1&quot;,
+      &quot;worker_receipt_bytes&quot;: 66838,
+      &quot;worker_receipt_descriptor&quot;: &quot;external_once_runner&quot;
+    },
+    &quot;decode_seconds_scope&quot;: &quot;Legacy field starts before the new independent inverse; not isolated parser time.&quot;,
+    &quot;driver_return_seconds&quot;: 156.294118708,
+    &quot;external_terminal_seconds&quot;: 176.0285565,
+    &quot;forest_bytes&quot;: 14906873,
+    &quot;full_result_bytes&quot;: 34001836,
+    &quot;inverse_seconds&quot;: 11.239489083,
+    &quot;outer_conservative_physical_ledger&quot;: {
+      &quot;conservative_physical_bytes&quot;: 58413397,
+      &quot;limit_bytes&quot;: 134217728,
+      &quot;logical_bytes&quot;: 34001836,
+      &quot;metadata&quot;: [
+        {
+          &quot;bytes&quot;: 666,
+          &quot;path&quot;: &quot;/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/CONSUMED.json&quot;,
+          &quot;sha256&quot;: &quot;51a51a1de7f134479372fea88a26cf0a8733f4b70a82426e2dc80195e7457243&quot;
+        },
+        {
+          &quot;bytes&quot;: 66838,
+          &quot;path&quot;: &quot;/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/worker-receipt.json&quot;,
+          &quot;sha256&quot;: &quot;002b536459e70bef5c89ca6a3be8d82671ed3feb1196b0b3ae9bce035f3cc832&quot;
+        }
+      ],
+      &quot;observer_metadata_reserved_bytes&quot;: 1048576,
+      &quot;runner_receipt_reserved_bytes&quot;: 8388608,
+      &quot;schema&quot;: &quot;owned-evidence-conservative-output-ledger-v1&quot;
+    },
+    &quot;scientific_stop_seconds&quot;: 52.60079933295492
+  },
+  &quot;unqualified_arms&quot;: [
+    &quot;fixed&quot;
+  ]
+}</pre></details><p>The archive retains rejected drafts and negative reviews as well as the final candidates. It records runtime pins; it does not bundle the entire trusted operating system or Python/Z3 runtime.</p></section><footer>The research program remains active. This page records a bounded engineering milestone in automated proof search; it does not establish plane tiling, first-order completeness, or GCTS+RL superiority.</footer></main></body></html>

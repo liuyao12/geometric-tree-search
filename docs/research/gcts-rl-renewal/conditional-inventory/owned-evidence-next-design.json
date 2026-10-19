@@ -1,0 +1,578 @@
+{
+  "schema": "owned-evidence-post-actual-next-design-v1",
+  "author_identity": "/root/conventional_library",
+  "status": "SAVED_METADATA_ANALYSIS_AND_PROPOSED_UNIMPLEMENTED_UNMEASURED_DESIGN",
+  "source_only": true,
+  "saved_data_only": true,
+  "scientific_calls": 0,
+  "scientific_replays": 0,
+  "scientific_acceptance": false,
+  "future_execution_authorized": false,
+  "ancestry": "Author of current cold coupling/diagnostics, owned registry, qualified arena and earlier Model/point/driver work. This is descriptive data/Source design, not an independent certificate of those Sources or a new admission.",
+  "Root_audit": {
+    "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/ROOT-saved-actual-audit-v1.json",
+    "sha256": "779c265fd0d2b33e9dbfce999e5865a8d29e4021fd9ed092b7ce6870e416f5c5",
+    "bytes": 51477
+  },
+  "sources": {
+    "cold": {
+      "path": "/private/tmp/gcts-owned-evidence-integration-library-20261019/owned_evidence_cold_v3.py",
+      "sha256": "a445a7fbbd2575c13223268cd23f0ad910d93bc34415421ec5583bee876828d4",
+      "bytes": 62795
+    },
+    "driver": {
+      "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/owned_evidence_receiver_driver_v4.py",
+      "sha256": "4850f66edeeb73033979ab5860ca745d5936eb3455bbef3eba10e5ba0c5ff62c",
+      "bytes": 114308
+    },
+    "adapter": {
+      "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/owned_evidence_adapter_v3.py",
+      "sha256": "91fb57f8a3fdd4563cb74f641b630bd725b813bd305608463920dd191f0216a8",
+      "bytes": 14997
+    },
+    "arena": {
+      "path": "/private/tmp/gcts-direct-reconcile-library-20261019/exact_evidence_arena_v3.py",
+      "sha256": "fd3f1e1372c59365cc43c06dd8c815bdaca8cab6a2e4fa292d23a901d7f146f8",
+      "bytes": 38300
+    },
+    "inverse": {
+      "path": "/private/tmp/gcts-incremental-arena-ROOT-20261019/independent_forest_inverse_v6.py",
+      "sha256": "fbd655a86424ce5634ce0307af62549f5b1c4412cb9e58b752df0e13ae2397e4",
+      "bytes": 22313
+    }
+  },
+  "source_citations": [
+    {
+      "role": "cold",
+      "source": {
+        "path": "/private/tmp/gcts-owned-evidence-integration-library-20261019/owned_evidence_cold_v3.py",
+        "sha256": "a445a7fbbd2575c13223268cd23f0ad910d93bc34415421ec5583bee876828d4",
+        "bytes": 62795
+      },
+      "symbol": "verify_saved_evidence",
+      "line": 275,
+      "end_line": 334
+    },
+    {
+      "role": "cold",
+      "source": {
+        "path": "/private/tmp/gcts-owned-evidence-integration-library-20261019/owned_evidence_cold_v3.py",
+        "sha256": "a445a7fbbd2575c13223268cd23f0ad910d93bc34415421ec5583bee876828d4",
+        "bytes": 62795
+      },
+      "symbol": "main",
+      "line": 543,
+      "end_line": 968
+    },
+    {
+      "role": "driver",
+      "source": {
+        "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/owned_evidence_receiver_driver_v4.py",
+        "sha256": "4850f66edeeb73033979ab5860ca745d5936eb3455bbef3eba10e5ba0c5ff62c",
+        "bytes": 114308
+      },
+      "symbol": "_atomic_owned_stream",
+      "line": 1447,
+      "end_line": 1472
+    },
+    {
+      "role": "driver",
+      "source": {
+        "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/owned_evidence_receiver_driver_v4.py",
+        "sha256": "4850f66edeeb73033979ab5860ca745d5936eb3455bbef3eba10e5ba0c5ff62c",
+        "bytes": 114308
+      },
+      "symbol": "_owned_atomic_output",
+      "line": 1474,
+      "end_line": 1482
+    },
+    {
+      "role": "driver",
+      "source": {
+        "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/owned_evidence_receiver_driver_v4.py",
+        "sha256": "4850f66edeeb73033979ab5860ca745d5936eb3455bbef3eba10e5ba0c5ff62c",
+        "bytes": 114308
+      },
+      "symbol": "run_receiver_owned",
+      "line": 1518,
+      "end_line": 1783
+    },
+    {
+      "role": "adapter",
+      "source": {
+        "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/owned_evidence_adapter_v3.py",
+        "sha256": "91fb57f8a3fdd4563cb74f641b630bd725b813bd305608463920dd191f0216a8",
+        "bytes": 14997
+      },
+      "symbol": "_canonical",
+      "line": 148,
+      "end_line": 157
+    },
+    {
+      "role": "adapter",
+      "source": {
+        "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/owned_evidence_adapter_v3.py",
+        "sha256": "91fb57f8a3fdd4563cb74f641b630bd725b813bd305608463920dd191f0216a8",
+        "bytes": 14997
+      },
+      "symbol": "_capture",
+      "line": 158,
+      "end_line": 165
+    },
+    {
+      "role": "adapter",
+      "source": {
+        "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/owned_evidence_adapter_v3.py",
+        "sha256": "91fb57f8a3fdd4563cb74f641b630bd725b813bd305608463920dd191f0216a8",
+        "bytes": 14997
+      },
+      "symbol": "assemble",
+      "line": 169,
+      "end_line": 197
+    },
+    {
+      "role": "arena",
+      "source": {
+        "path": "/private/tmp/gcts-direct-reconcile-library-20261019/exact_evidence_arena_v3.py",
+        "sha256": "fd3f1e1372c59365cc43c06dd8c815bdaca8cab6a2e4fa292d23a901d7f146f8",
+        "bytes": 38300
+      },
+      "symbol": "_pull",
+      "line": 162,
+      "end_line": 181
+    },
+    {
+      "role": "arena",
+      "source": {
+        "path": "/private/tmp/gcts-direct-reconcile-library-20261019/exact_evidence_arena_v3.py",
+        "sha256": "fd3f1e1372c59365cc43c06dd8c815bdaca8cab6a2e4fa292d23a901d7f146f8",
+        "bytes": 38300
+      },
+      "symbol": "_cache",
+      "line": 309,
+      "end_line": 322
+    },
+    {
+      "role": "arena",
+      "source": {
+        "path": "/private/tmp/gcts-direct-reconcile-library-20261019/exact_evidence_arena_v3.py",
+        "sha256": "fd3f1e1372c59365cc43c06dd8c815bdaca8cab6a2e4fa292d23a901d7f146f8",
+        "bytes": 38300
+      },
+      "symbol": "_full_validate",
+      "line": 578,
+      "end_line": 621
+    },
+    {
+      "role": "arena",
+      "source": {
+        "path": "/private/tmp/gcts-direct-reconcile-library-20261019/exact_evidence_arena_v3.py",
+        "sha256": "fd3f1e1372c59365cc43c06dd8c815bdaca8cab6a2e4fa292d23a901d7f146f8",
+        "bytes": 38300
+      },
+      "symbol": "seal",
+      "line": 640,
+      "end_line": 669
+    },
+    {
+      "role": "arena",
+      "source": {
+        "path": "/private/tmp/gcts-direct-reconcile-library-20261019/exact_evidence_arena_v3.py",
+        "sha256": "fd3f1e1372c59365cc43c06dd8c815bdaca8cab6a2e4fa292d23a901d7f146f8",
+        "bytes": 38300
+      },
+      "symbol": "to_wire",
+      "line": 670,
+      "end_line": 676
+    },
+    {
+      "role": "inverse",
+      "source": {
+        "path": "/private/tmp/gcts-incremental-arena-ROOT-20261019/independent_forest_inverse_v6.py",
+        "sha256": "fbd655a86424ce5634ce0307af62549f5b1c4412cb9e58b752df0e13ae2397e4",
+        "bytes": 22313
+      },
+      "symbol": "prepare_forest",
+      "line": 221,
+      "end_line": 361
+    },
+    {
+      "role": "inverse",
+      "source": {
+        "path": "/private/tmp/gcts-incremental-arena-ROOT-20261019/independent_forest_inverse_v6.py",
+        "sha256": "fbd655a86424ce5634ce0307af62549f5b1c4412cb9e58b752df0e13ae2397e4",
+        "bytes": 22313
+      },
+      "symbol": "tick",
+      "line": 62,
+      "end_line": 71
+    },
+    {
+      "role": "inverse",
+      "source": {
+        "path": "/private/tmp/gcts-incremental-arena-ROOT-20261019/independent_forest_inverse_v6.py",
+        "sha256": "fbd655a86424ce5634ce0307af62549f5b1c4412cb9e58b752df0e13ae2397e4",
+        "bytes": 22313
+      },
+      "symbol": "_advance",
+      "line": 164,
+      "end_line": 183
+    }
+  ],
+  "observed_arms": [
+    {
+      "mode": "fixed",
+      "original_receiver_id": "prospective-fol-20261018-001",
+      "saved_result_status": "native_proof_discovered",
+      "saved_result_native_proof_accepted": true,
+      "saved_result_work_window_complete": true,
+      "Root_full_invocation_admitted": false,
+      "Root_resource_admitted": false,
+      "outer_elapsed_seconds": 181.1010425,
+      "worker_exit_code": 1,
+      "aggregate_peak_bytes": null,
+      "group_absent": true,
+      "logs_complete": true,
+      "raw": {
+        "result.json": {
+          "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-fixed-v1/result.json",
+          "sha256": "16e1935a7b46b70dc8588e1427d9de5de59554816f743de2ea9bd462a6545b25",
+          "bytes": 36914326
+        },
+        "evidence-forest.json": {
+          "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-fixed-v1/evidence-forest.json",
+          "sha256": "f7e39ed6b02d3c6b80cccb5e40ac4f254a1d989fdf129b6571df500d1bbe554a",
+          "bytes": 15181545
+        },
+        "CONSUMED.json": {
+          "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-fixed-v1/CONSUMED.json",
+          "sha256": "3363e4ffd283fb9a52a2839b474517655b92f75e0c6605b737e67d6e9bc306fd",
+          "bytes": 657
+        },
+        "runner-receipt.json": {
+          "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-fixed-v1/runner-receipt.json",
+          "sha256": "e40aa4cee51541c69d5e68729fce53ec3ae45fe2b418aa6bde3f3b2405539475",
+          "bytes": 12009
+        },
+        "stderr.bin": {
+          "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-fixed-v1/stderr.bin",
+          "sha256": "b1739a036e96815ca14b1ed513a4028fe488657ddf4e7dd3cb63b175e55cb76e",
+          "bytes": 1951
+        }
+      },
+      "endpoints": {
+        "Source_entry_began_ns": 758111829061916,
+        "work_deadline_ns": 758291829061916,
+        "overall_deadline_ns": 758321829061916,
+        "scientific_stopped_monotonic": 758159.9329555,
+        "oracle_closed_monotonic": 758160.009229416,
+        "worker_terminal_observed_ns": 758292883873291
+      },
+      "stages": [
+        {
+          "stage": "before_oracle",
+          "started_monotonic": 758113.789510708,
+          "returned_monotonic": 758113.789516125,
+          "elapsed_seconds": 5.417e-06
+        },
+        {
+          "stage": "compile",
+          "started_monotonic": 758113.883945458,
+          "returned_monotonic": 758124.064100875,
+          "elapsed_seconds": 10.180155417
+        },
+        {
+          "stage": "compile_record_joins",
+          "started_monotonic": 758124.076572041,
+          "returned_monotonic": 758124.170385833,
+          "elapsed_seconds": 0.093813792
+        },
+        {
+          "stage": "specialize",
+          "started_monotonic": 758124.184405375,
+          "returned_monotonic": 758124.185206541,
+          "elapsed_seconds": 0.000801166
+        },
+        {
+          "stage": "register",
+          "started_monotonic": 758124.204820541,
+          "returned_monotonic": 758128.263525708,
+          "elapsed_seconds": 4.058705167
+        },
+        {
+          "stage": "inventory_record_join",
+          "started_monotonic": 758128.2750235,
+          "returned_monotonic": 758150.087251583,
+          "elapsed_seconds": 21.812228083
+        },
+        {
+          "stage": "model",
+          "started_monotonic": 758150.09940275,
+          "returned_monotonic": 758151.252589583,
+          "elapsed_seconds": 1.153186833
+        },
+        {
+          "stage": "search",
+          "started_monotonic": 758151.733784333,
+          "returned_monotonic": 758153.139351458,
+          "elapsed_seconds": 1.405567125
+        },
+        {
+          "stage": "final_native",
+          "started_monotonic": 758154.091246916,
+          "returned_monotonic": 758159.888133375,
+          "elapsed_seconds": 5.796886459
+        },
+        {
+          "stage": "essential_ancestry",
+          "started_monotonic": 758159.900802375,
+          "returned_monotonic": 758159.901243208,
+          "elapsed_seconds": 0.000440833
+        },
+        {
+          "stage": "winning_hint_links",
+          "started_monotonic": 758159.913985666,
+          "returned_monotonic": 758159.920185166,
+          "elapsed_seconds": 0.0061995
+        }
+      ],
+      "scientific_stage_stop_from_Source_entry_seconds": 48.103893584,
+      "worker_exit_from_Source_entry_seconds": 181.054811375,
+      "failure": {
+        "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-fixed-v1/worker-failure.json",
+        "sha256": "2d85c8e9156a08c1ccecf08001127aaf95bab372b0682198187e60292c9e5fb3",
+        "bytes": 19413
+      },
+      "failure_type": "ColdError",
+      "failure_message": "full saved evidence inverse within original work",
+      "direct_trace": "verify_saved_evidence next(source) -> inverse _DocumentStream._advance -> _Pieces.take -> _State.tick -> cold evidence_tick180 deadline",
+      "exact_inverse_elapsed_seconds": null,
+      "driver_serialization_elapsed_seconds": null,
+      "retained_inverse_statistics": null,
+      "absence_scope": "No worker-success header, inverse completion/statistics packet or driver output receipt was retained. Raw ordinary result/forest remain diagnostic only.",
+      "memory_scope": "Root admitted aggregate peak is null. This note does not backfill a failed resource gate or claim a memory pass."
+    },
+    {
+      "mode": "symbolic",
+      "original_receiver_id": "prospective-fol-20261018-001",
+      "saved_result_status": "native_proof_discovered",
+      "saved_result_native_proof_accepted": true,
+      "saved_result_work_window_complete": true,
+      "Root_full_invocation_admitted": true,
+      "Root_resource_admitted": true,
+      "outer_elapsed_seconds": 176.0285565,
+      "worker_exit_code": 0,
+      "aggregate_peak_bytes": 903380992,
+      "group_absent": true,
+      "logs_complete": true,
+      "raw": {
+        "result.json": {
+          "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/result.json",
+          "sha256": "e6e247eb9e52640d92b1ae51b837661be372bbdf2f6865d0273db13d2d6a0310",
+          "bytes": 34001836
+        },
+        "evidence-forest.json": {
+          "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/evidence-forest.json",
+          "sha256": "c783757e1f0119d60249ac6c43e581ecce35861471299fae67926d4cc840d146",
+          "bytes": 14906873
+        },
+        "CONSUMED.json": {
+          "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/CONSUMED.json",
+          "sha256": "51a51a1de7f134479372fea88a26cf0a8733f4b70a82426e2dc80195e7457243",
+          "bytes": 666
+        },
+        "runner-receipt.json": {
+          "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/runner-receipt.json",
+          "sha256": "40b40c250bfbea11028c88b16d015203d3ab1d8358b9807bab7364b4cc4ca7b2",
+          "bytes": 86991
+        },
+        "stderr.bin": {
+          "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/stderr.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "endpoints": {
+        "Source_entry_began_ns": 758313980294625,
+        "work_deadline_ns": 758493980294625,
+        "overall_deadline_ns": 758523980294625,
+        "scientific_stopped_monotonic": 758366.581093958,
+        "oracle_closed_monotonic": 758366.654590166,
+        "worker_terminal_observed_ns": 758488285184250,
+        "driver_returned_ns": 758470274413333,
+        "inverse_started_ns": 758470603167000,
+        "inverse_completed_ns": 758481842656083,
+        "reading_started_ns": 758470470029958,
+        "ordinary_parser_decoded_ns": 758483195345500,
+        "ordinary_roundtrip_completed_ns": 758487951339541
+      },
+      "stages": [
+        {
+          "stage": "before_oracle",
+          "started_monotonic": 758315.472985416,
+          "returned_monotonic": 758315.472988208,
+          "elapsed_seconds": 2.792e-06
+        },
+        {
+          "stage": "compile",
+          "started_monotonic": 758315.529426916,
+          "returned_monotonic": 758327.2278355,
+          "elapsed_seconds": 11.698408584
+        },
+        {
+          "stage": "compile_record_joins",
+          "started_monotonic": 758327.239823041,
+          "returned_monotonic": 758327.329422083,
+          "elapsed_seconds": 0.089599042
+        },
+        {
+          "stage": "specialize",
+          "started_monotonic": 758327.341760041,
+          "returned_monotonic": 758327.342573708,
+          "elapsed_seconds": 0.000813667
+        },
+        {
+          "stage": "register",
+          "started_monotonic": 758327.361105666,
+          "returned_monotonic": 758331.651339083,
+          "elapsed_seconds": 4.290233417
+        },
+        {
+          "stage": "inventory_record_join",
+          "started_monotonic": 758331.664062291,
+          "returned_monotonic": 758353.237919083,
+          "elapsed_seconds": 21.573856792
+        },
+        {
+          "stage": "model",
+          "started_monotonic": 758353.24970625,
+          "returned_monotonic": 758354.423082875,
+          "elapsed_seconds": 1.173376625
+        },
+        {
+          "stage": "search",
+          "started_monotonic": 758354.88757075,
+          "returned_monotonic": 758355.029559958,
+          "elapsed_seconds": 0.141989208
+        },
+        {
+          "stage": "symbolic_point_projection",
+          "started_monotonic": 758355.04226975,
+          "returned_monotonic": 758355.073750458,
+          "elapsed_seconds": 0.031480708
+        },
+        {
+          "stage": "final_native",
+          "started_monotonic": 758355.98769225,
+          "returned_monotonic": 758366.545447083,
+          "elapsed_seconds": 10.557754833
+        },
+        {
+          "stage": "essential_ancestry",
+          "started_monotonic": 758366.557385875,
+          "returned_monotonic": 758366.557742583,
+          "elapsed_seconds": 0.000356708
+        },
+        {
+          "stage": "winning_hint_links",
+          "started_monotonic": 758366.569425291,
+          "returned_monotonic": 758366.56943475,
+          "elapsed_seconds": 9.459e-06
+        }
+      ],
+      "scientific_stage_stop_from_Source_entry_seconds": 52.600799333,
+      "worker_exit_from_Source_entry_seconds": 174.304889625,
+      "worker_header": {
+        "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/worker-receipt.json",
+        "sha256": "002b536459e70bef5c89ca6a3be8d82671ed3feb1196b0b3ae9bce035f3cc832",
+        "bytes": 66838
+      },
+      "timing_envelopes": {
+        "scientific_stop_to_driver_return_seconds": 103.693319375,
+        "oracle_closed_to_forest_serialization_start_seconds": 81.065168,
+        "forest_serialization_to_publication_preflight_seconds": 0.4908852089429274,
+        "complete_ordinary_output_serialization_to_publication_preflight_seconds": 21.996318500023335,
+        "independent_inverse_exact_seconds": 11.239489083,
+        "combined_reader_reported_decode_seconds": 12.725315542,
+        "reading_start_to_inverse_start_seconds": 0.133137042,
+        "inverse_completion_to_ordinary_parser_decoded_seconds": 1.352689417,
+        "ordinary_canonical_roundtrip_envelope_seconds": 4.755994041,
+        "total_reader_envelope_seconds": 17.481309583,
+        "remaining_work_after_ordinary_roundtrip_seconds": 6.028955084
+      },
+      "inverse_counters": {
+        "attempted_operations": 21304533,
+        "callback_dispatches": 21304533,
+        "validated_nodes": 78992,
+        "validated_edges": 2219968,
+        "logical_value_occurrences": 10992051,
+        "emitted_document_chunks": 519
+      },
+      "producer_counters": {
+        "arena_work": 355073213,
+        "adapter_operations": 116635629,
+        "arena_roots": 184,
+        "arena_nodes": 78992,
+        "legacy_JSON_parts": 31869384,
+        "legacy_JSON_copy_chunks": 31869384,
+        "final_and_prior_stream_tokens": 17150940,
+        "final_and_prior_copy_chunks": 14456538
+      },
+      "interpretation": "The81.065168s oracle-closed→forest-serialization-start interval covers driver bookkeeping plus final assemble/seal/wire and their guards. It is not a separately measured capture or serialization subphase."
+    }
+  ],
+  "findings": [
+    "Fixed remains a failed complete invocation: emitted ordinary result and forest are diagnostic, not admitted proof or resource success. Deadline occurred during independent inverse document streaming, before old reader/point/header checks could complete.",
+    "Symbolic is a Root-admitted full Native/point/owned-representation invocation at176.0285565s and conservative worker+Native peak903380992B. Representation checks confer no independent mathematical authority.",
+    "Fixed scientific stages stopped48.103893584s after entry; symbolic52.600799333s. Search time alone does not explain end-to-end outcomes; stages include different ordinary output payloads and preservation costs.",
+    "Symbolic oracle-close→forest serialization-start81.065168s is an observed composite lifetime envelope. Per-assembly/capture/seal/wire elapsed splits were not recorded; counters establish operation totals, not allocation or CPU causation.",
+    "Symbolic full ordinary output serialization-to-preflight21.996318500s, independent inverse11.239489083s and ordinary canonical roundtrip4.755994041s are retained separate costs. No check should be dropped to fit.",
+    "The field result_reading.decode_seconds12.725315542 includes the inverse and forest reread. Inverse completion→ordinary parser decoded1.352689417s is only an upper envelope for old decode because cleanup/guards lie inside it.",
+    "There is no ordinary-storage arm, repetition, balanced order or phase profiler here. Do not infer memory savings, a GCTS-vs-symbolic advantage, the cause of the fixed timeout, or a guaranteed optimization fit."
+  ],
+  "one_recommended_next_design": {
+    "status": "PROPOSED_NOT_IMPLEMENTED_UNMEASURED",
+    "owner": "Root independently authors inverse successor; Control distinct review. Do not edit qualified encoder/arena/adapter or current scientific modules.",
+    "change": "Batch only delegated inverse clock-callback dispatch at a declared bounded cadence, while retaining every current validation/stream operation, exact per-kind attempted-operation count and unconditional30m work-cap test. New explicit execution_profile; same forest wire/API.",
+    "rationale": "Saved symbolic inverse has21,304,533 operations and21,304,533 callback dispatches. Raw _State.tick calls evidence_tick on every operation; that callback invokes total and work clocks. This is a concrete optimization surface, not measured overhead attribution.",
+    "finite_policy": [
+      "Call the supplied check immediately on first operation, after at most1024 subsequent tick operations, at public preparation/stream entry as appropriate, before every emitted bounded chunk, and before preparation/stream successful completion and trailing completion pull.",
+      "All internal cap tests, typed equality, metadata scans, prior references, reachability, canonical bytes, ordered multiplicities and expanded occurrence ledgers remain unconditional at their old logical operations.",
+      "No guard/reset, cache/input reuse, operation-unit redefinition or private cap raise. Callback_dispatches becomes a distinct observed counter; attempted_operations and per-kind validation semantics remain unchanged.",
+      "Preserve private quota ownership, reentrancy gates, custom non-generator stream, exact delegated BaseException identity at the invoked checkpoint and explicit completed requirement. Withdraw any claim to unchanged callback ordinal/timing coverage.",
+      "Keep cold source/raw checks before/after inverse, full old parser+canonical inverse, exact point checks, Native ledger/final whole proof, atomic files and strict positive/known-exit180 plus terminal210 gates.",
+      "Cadence bounds logical operations, not elapsed latency; callback scheduling does not prove hard mid-operation preemption. Final gates must reject any late completion."
+    ],
+    "qualification_obligations": [
+      "Distinct raw/AST review establishes that only callback scheduling/bookkeeping and profile/version differ; no omitted validation or altered count unit.",
+      "Future separately granted finite fixtures must cover callback identity including StopIteration, late completion, reentrancy and own quota; prior ordinal-based coverage cannot be silently inherited.",
+      "A future common-profile fixed/symbolic original001 full-pipeline pair must retain every old mathematical datum/check and all global caps. Do not count the failed fixed output as a successful control or resume it as cache.",
+      "If causal time benefit is claimed, prospectively compare both old and new profiles freshly under a declared order; historical unmatched observations alone are not an ablation.",
+      "Any measured fit/speed effect is unknown. The much larger final assembly/seal/wire envelope may still dominate, and no success is promised."
+    ],
+    "unchanged_caps": {
+      "work_seconds": 180,
+      "total_seconds": 210,
+      "conservative_worker_plus_Native_bytes": 1073741824,
+      "physical_output_bytes": 134217728,
+      "logical_output_bytes": 134217728,
+      "log_bytes_each": 4194304,
+      "arena_attempted_work": 400000000,
+      "adapter_operations": 400000000,
+      "inverse_attempted_work": 30000000
+    },
+    "not_proposed": [
+      "No removed full logical output or old verification",
+      "No new theorem/family/rule/route",
+      "No changes to complete inventory/Model/marks/candidates/fallback/rollback",
+      "No new actual or cap raise now"
+    ]
+  },
+  "limitations": [
+    "No component was imported or called, including our own encoder/cold/adapter/fixtures.",
+    "Saved ordinary result JSON was parsed only for retained stage/status/timing metadata; no Native decoding or mathematical proof replay.",
+    "This memo does not duplicate the separate full saved-data/resource audit or establish mathematical soundness.",
+    "The next Source proposal is an explicit execution-profile change even though numeric caps and internal validation accounting stay fixed.",
+    "Current failed and successful actual directories remain immutable; no publication/report change is made."
+  ]
+}
