@@ -1,0 +1,2350 @@
+{
+  "Source_design": {
+    "bytes": 18760,
+    "path": "/private/tmp/gcts-first-order-suite-intake-source-20261018/composition-Source-contract-v1.json",
+    "sha256": "672f077450ccab0d52efc0fe4e2f93415c776aea0d358cb4c935deac9a49097e"
+  },
+  "Z3": {
+    "conditional_imports": "z3core importlib_resources branch is only Python<3.9; __builtin__ branch only Python2. Both are inactive under the declared3.12 runtime. importlib.resources/builtins are standard. The apparent common_z3 import is a docstring usage example, absent from AST imports.",
+    "file_count": 41,
+    "files": [
+      {
+        "bytes": 210,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/__init__.py",
+        "relative_path": "z3/__init__.py",
+        "sha256": "53c4529a01f38e7c0d593b7548c79e0d7398aa09f7d7cbd1773470859ee2febd"
+      },
+      {
+        "bytes": 347383,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/z3.py",
+        "relative_path": "z3/z3.py",
+        "sha256": "a175fce3e5e6f7cbe7aefb54a5d01d63addc206811a9cbd3e58f87f48c10432b"
+      },
+      {
+        "bytes": 8062,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/z3consts.py",
+        "relative_path": "z3/z3consts.py",
+        "sha256": "59737a55612e9bddb33f7ec4a27db9fbc880a92053fa8a88919fcc934e1f7573"
+      },
+      {
+        "bytes": 202386,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/z3core.py",
+        "relative_path": "z3/z3core.py",
+        "sha256": "c5859f1938aa7b5ce1c35ab52295ccb1405daa1ae224cb4ec292efbe98b1064e"
+      },
+      {
+        "bytes": 16090,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/z3num.py",
+        "relative_path": "z3/z3num.py",
+        "sha256": "d7ad7cceb560867f55dcbd87c5866e1c365fddec92faa22321bf91b60c431dee"
+      },
+      {
+        "bytes": 1113,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/z3poly.py",
+        "relative_path": "z3/z3poly.py",
+        "sha256": "fd06029418e5899b300fe3b3a300d110c8e174e633cba8b751314f22a583394e"
+      },
+      {
+        "bytes": 46300,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/z3printer.py",
+        "relative_path": "z3/z3printer.py",
+        "sha256": "714f9fa34a1da9281bdc1a98d8e89d650daca6e99cd1839d325c4d3605a99730"
+      },
+      {
+        "bytes": 5039,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/z3rcf.py",
+        "relative_path": "z3/z3rcf.py",
+        "sha256": "504e0339b1bb06075c19ca52e51457716671218a2f2191d0c9754e0b75bede87"
+      },
+      {
+        "bytes": 4883,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/z3types.py",
+        "relative_path": "z3/z3types.py",
+        "sha256": "ba728354b4a9ee40bcfbd899f405d904bc4bb023e41807044c06c318548c3080"
+      },
+      {
+        "bytes": 11387,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/z3util.py",
+        "relative_path": "z3/z3util.py",
+        "sha256": "7087f1bbb0119e0e8f545d70cba9a21446ff267cda1289e55b3c2e4e644effd9"
+      },
+      {
+        "bytes": 196419,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/include/z3++.h",
+        "relative_path": "z3/include/z3++.h",
+        "sha256": "9fbeffe8be3e178f1ec5af06fa861ae19a1a659b9d2fe1440712cff9271930c8"
+      },
+      {
+        "bytes": 495,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/include/z3.h",
+        "relative_path": "z3/include/z3.h",
+        "sha256": "60cc2bb3e1df2c0fc6105b6a73c032b9d4f47487471616994ba63df8d81898a8"
+      },
+      {
+        "bytes": 7193,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/include/z3_algebraic.h",
+        "relative_path": "z3/include/z3_algebraic.h",
+        "sha256": "7659d6dec25e49e2dd6546a6ca6c05adb27437a989d857af0cbcc7191adb45a6"
+      },
+      {
+        "bytes": 271071,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/include/z3_api.h",
+        "relative_path": "z3/include/z3_api.h",
+        "sha256": "02706214023c7e077ff11fc824a557f4d692ccd87e3c65c4231af9e24fedc563"
+      },
+      {
+        "bytes": 5735,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/include/z3_ast_containers.h",
+        "relative_path": "z3/include/z3_ast_containers.h",
+        "sha256": "6687f3ec9483f3774b8951be0f9944ab47f61bedbd42193d075dd88c612fb248"
+      },
+      {
+        "bytes": 14123,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/include/z3_fixedpoint.h",
+        "relative_path": "z3/include/z3_fixedpoint.h",
+        "sha256": "cc8a424163dd6a92a1bfe07dea68edb8fc8dabb58f612b1e85a033a21178dedc"
+      },
+      {
+        "bytes": 43462,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/include/z3_fpa.h",
+        "relative_path": "z3/include/z3_fpa.h",
+        "sha256": "f357754480a39788653f91063af53f2e054b2382a8486171a0a17a99e1354947"
+      },
+      {
+        "bytes": 389,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/include/z3_macros.h",
+        "relative_path": "z3/include/z3_macros.h",
+        "sha256": "9d92f8136abef10dd8429a28fd9068e9b3e4feb5696072763cd8d0edc1f00b24"
+      },
+      {
+        "bytes": 12936,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/include/z3_optimization.h",
+        "relative_path": "z3/include/z3_optimization.h",
+        "sha256": "d6b857c21186f0710d8729ad3b7d9b39baa07b5c81855e106d3619c6423f48cc"
+      },
+      {
+        "bytes": 1056,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/include/z3_polynomial.h",
+        "relative_path": "z3/include/z3_polynomial.h",
+        "sha256": "e1894c40edb37115cf221a8ef2f7e5557c7360c3c0583f05582f849ebdd78c36"
+      },
+      {
+        "bytes": 9952,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/include/z3_rcf.h",
+        "relative_path": "z3/include/z3_rcf.h",
+        "sha256": "5f2219157573043338df52808a2597f52cf9b179aa8b8006b4893571027632c7"
+      },
+      {
+        "bytes": 4459,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/include/z3_spacer.h",
+        "relative_path": "z3/include/z3_spacer.h",
+        "sha256": "dd23be86e4fc74cd0adf6ca944834d165b93f6a6f3af81923116db97a7ee1ddd"
+      },
+      {
+        "bytes": 2220,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/include/z3_v1.h",
+        "relative_path": "z3/include/z3_v1.h",
+        "sha256": "30d1776dafddd426d06a4a737d51d37731b45790fc26573b361562e3758ebb04"
+      },
+      {
+        "bytes": 192,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/include/z3_version.h",
+        "relative_path": "z3/include/z3_version.h",
+        "sha256": "98fe36ecc01c784e0039ca18b66e531038ecca89736e487c10f1ad53dc39253a"
+      },
+      {
+        "bytes": 25364904,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/lib/libz3.4.15.dylib",
+        "relative_path": "z3/lib/libz3.4.15.dylib",
+        "sha256": "3164e079c221c23a843396a485a6e912ee423918ee64ea03943e584305439a98"
+      },
+      {
+        "bytes": 17477120,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/lib/libz3.dll",
+        "relative_path": "z3/lib/libz3.dll",
+        "sha256": "a86f051ce2e985857c7d53a635c3920742cb0053e04d61dd501215db533996f6"
+      },
+      {
+        "bytes": 25364904,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/lib/libz3.dylib",
+        "relative_path": "z3/lib/libz3.dylib",
+        "sha256": "3164e079c221c23a843396a485a6e912ee423918ee64ea03943e584305439a98"
+      },
+      {
+        "bytes": 557728,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/lib/msvcp140.dll",
+        "relative_path": "z3/lib/msvcp140.dll",
+        "sha256": "0f885b509a685d2bbfa652fed26b5fb31d88fbdab0a978c641d1c7b8aa460aa9"
+      },
+      {
+        "bytes": 35952,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/lib/msvcp140_1.dll",
+        "relative_path": "z3/lib/msvcp140_1.dll",
+        "sha256": "bfad5aef4c63a669e3c140655cdfdf395b6c979b400a447bd5dcb65ed8826c3d"
+      },
+      {
+        "bytes": 280200,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/lib/msvcp140_2.dll",
+        "relative_path": "z3/lib/msvcp140_2.dll",
+        "sha256": "3ea06f0ee098b4823cb79599df3780e7f23cce52c19aac31d2a0d47efe33a5e9"
+      },
+      {
+        "bytes": 50304,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/lib/msvcp140_atomic_wait.dll",
+        "relative_path": "z3/lib/msvcp140_atomic_wait.dll",
+        "sha256": "640b2aefced484d0368eea5bdd06addd0658a3a70a49256e560d6923b404a479"
+      },
+      {
+        "bytes": 31872,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/lib/msvcp140_codecvt_ids.dll",
+        "relative_path": "z3/lib/msvcp140_codecvt_ids.dll",
+        "sha256": "f2069a52880ec885ee7f0511186100eb7fada0411a2b4948fafea7735b878a18"
+      },
+      {
+        "bytes": 193152,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/lib/vcomp140.dll",
+        "relative_path": "z3/lib/vcomp140.dll",
+        "sha256": "55aba23cdcd6484fbb06f4155b8ca75adfce7a881f10afd0c49457165e677164"
+      },
+      {
+        "bytes": 124544,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/lib/vcruntime140.dll",
+        "relative_path": "z3/lib/vcruntime140.dll",
+        "sha256": "d5e4d9a3e835fa679450145d6a7d94e36573a509317111904d9b3712c30d9066"
+      },
+      {
+        "bytes": 49792,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/lib/vcruntime140_1.dll",
+        "relative_path": "z3/lib/vcruntime140_1.dll",
+        "sha256": "1f2d41c4aa5db0bc33ebf7b66d72943a817d7ce6cbe880502a9403823633093f"
+      },
+      {
+        "bytes": 38528,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/lib/vcruntime140_threads.dll",
+        "relative_path": "z3/lib/vcruntime140_threads.dll",
+        "sha256": "219915cf20822f34d5e7c1fdd4e21ae7f3396881096c51036225fb8f84b47afa"
+      },
+      {
+        "bytes": 25601056,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3_solver-4.15.3.0.data/data/bin/z3",
+        "relative_path": "z3_solver-4.15.3.0.data/data/bin/z3",
+        "sha256": "b93a874ccdeb27feb29e7c0a92b999f6531014a7a12976c96fc422b8202ac766"
+      },
+      {
+        "bytes": 778,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3_solver-4.15.3.0.dist-info/METADATA",
+        "relative_path": "z3_solver-4.15.3.0.dist-info/METADATA",
+        "sha256": "2585c295b189883eea09c7eb95e3b692cb74caf2a29085abae40de69eb0bea13"
+      },
+      {
+        "bytes": 105,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3_solver-4.15.3.0.dist-info/WHEEL",
+        "relative_path": "z3_solver-4.15.3.0.dist-info/WHEEL",
+        "sha256": "3da3f83ef903ca249ce02e83870e9c71099fc6c585ad2bfe94942306c86ed21c"
+      },
+      {
+        "bytes": 3,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3_solver-4.15.3.0.dist-info/top_level.txt",
+        "relative_path": "z3_solver-4.15.3.0.dist-info/top_level.txt",
+        "sha256": "5e1b3b203b8d9c1fe1424420b5d56a8244880e1a7539eb7e88b035ec0257fafe"
+      },
+      {
+        "bytes": 3209,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3_solver-4.15.3.0.dist-info/RECORD",
+        "relative_path": "z3_solver-4.15.3.0.dist-info/RECORD",
+        "sha256": "bf34c15d433d827d8b3ad4597983d781df16ecbddaf4035b1ebc0f5a9edff82d"
+      }
+    ],
+    "intake_receipt": {
+      "bytes": 7208,
+      "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-intake-v1.json",
+      "sha256": "4fda1aaa029de5fd331ea6e45816bcc085673bddb3c016820b160e7e284afb8d"
+    },
+    "module_imports_performed": 0,
+    "native_loader_custody": "z3core searches cwd/default/env directories and falls back to ctypes.CDLL by library name. Before import Root should set supported builtins.Z3_LIB_DIRS to only exact owned z3/lib, clear environment Z3_LIBRARY_PATH/PYTHONPATH/PATH additions or freeze them explicitly, then require loaded _lib._name resolves to pinned owned libz3.dylib. All loaded native dynamic dependencies/origins remain Root activation obligations. No Z3 import/version API/solver call here.",
+    "package_AST_import_sites": [
+      {
+        "file": "z3/__init__.py",
+        "line": 1,
+        "module": "z3",
+        "names": [
+          "*"
+        ],
+        "relative_level": 1
+      },
+      {
+        "file": "z3/__init__.py",
+        "line": 3,
+        "module": null,
+        "names": [
+          "z3num"
+        ],
+        "relative_level": 1
+      },
+      {
+        "file": "z3/__init__.py",
+        "line": 4,
+        "module": null,
+        "names": [
+          "z3poly"
+        ],
+        "relative_level": 1
+      },
+      {
+        "file": "z3/__init__.py",
+        "line": 5,
+        "module": null,
+        "names": [
+          "z3printer"
+        ],
+        "relative_level": 1
+      },
+      {
+        "file": "z3/__init__.py",
+        "line": 6,
+        "module": null,
+        "names": [
+          "z3rcf"
+        ],
+        "relative_level": 1
+      },
+      {
+        "file": "z3/__init__.py",
+        "line": 7,
+        "module": null,
+        "names": [
+          "z3types"
+        ],
+        "relative_level": 1
+      },
+      {
+        "file": "z3/__init__.py",
+        "line": 8,
+        "module": null,
+        "names": [
+          "z3util"
+        ],
+        "relative_level": 1
+      },
+      {
+        "file": "z3/__init__.py",
+        "line": 11,
+        "module": null,
+        "names": [
+          "z3core"
+        ],
+        "relative_level": 1
+      },
+      {
+        "file": "z3/__init__.py",
+        "line": 12,
+        "module": null,
+        "names": [
+          "z3consts"
+        ],
+        "relative_level": 1
+      },
+      {
+        "file": "z3/z3.py",
+        "line": 46,
+        "module": null,
+        "names": [
+          "z3core"
+        ],
+        "relative_level": 1
+      },
+      {
+        "file": "z3/z3.py",
+        "line": 47,
+        "module": "z3core",
+        "names": [
+          "*"
+        ],
+        "relative_level": 1
+      },
+      {
+        "file": "z3/z3.py",
+        "line": 48,
+        "module": "z3types",
+        "names": [
+          "*"
+        ],
+        "relative_level": 1
+      },
+      {
+        "file": "z3/z3.py",
+        "line": 49,
+        "module": "z3consts",
+        "names": [
+          "*"
+        ],
+        "relative_level": 1
+      },
+      {
+        "file": "z3/z3.py",
+        "line": 50,
+        "module": "z3printer",
+        "names": [
+          "*"
+        ],
+        "relative_level": 1
+      },
+      {
+        "file": "z3/z3.py",
+        "line": 51,
+        "module": "fractions",
+        "names": [
+          "Fraction"
+        ],
+        "relative_level": 0
+      },
+      {
+        "file": "z3/z3.py",
+        "line": 52,
+        "module": "sys",
+        "relative_level": 0
+      },
+      {
+        "file": "z3/z3.py",
+        "line": 53,
+        "module": "io",
+        "relative_level": 0
+      },
+      {
+        "file": "z3/z3.py",
+        "line": 54,
+        "module": "math",
+        "relative_level": 0
+      },
+      {
+        "file": "z3/z3.py",
+        "line": 55,
+        "module": "copy",
+        "relative_level": 0
+      },
+      {
+        "file": "z3/z3.py",
+        "line": 59,
+        "module": "collections.abc",
+        "names": [
+          "Callable"
+        ],
+        "relative_level": 0
+      },
+      {
+        "file": "z3/z3.py",
+        "line": 60,
+        "module": "typing",
+        "names": [
+          "Any",
+          "Iterable",
+          "Sequence"
+        ],
+        "relative_level": 0
+      },
+      {
+        "file": "z3/z3.py",
+        "line": 57,
+        "module": "typing",
+        "names": [
+          "Iterable",
+          "Iterator"
+        ],
+        "relative_level": 0
+      },
+      {
+        "file": "z3/z3.py",
+        "line": 10136,
+        "module": "struct",
+        "relative_level": 0
+      },
+      {
+        "file": "z3/z3.py",
+        "line": 11707,
+        "module": "threading",
+        "relative_level": 0
+      },
+      {
+        "file": "z3/z3core.py",
+        "line": 3,
+        "module": "atexit",
+        "relative_level": 0
+      },
+      {
+        "file": "z3/z3core.py",
+        "line": 4,
+        "module": "sys",
+        "relative_level": 0
+      },
+      {
+        "file": "z3/z3core.py",
+        "line": 4,
+        "module": "os",
+        "relative_level": 0
+      },
+      {
+        "file": "z3/z3core.py",
+        "line": 5,
+        "module": "contextlib",
+        "relative_level": 0
+      },
+      {
+        "file": "z3/z3core.py",
+        "line": 6,
+        "module": "ctypes",
+        "relative_level": 0
+      },
+      {
+        "file": "z3/z3core.py",
+        "line": 11,
+        "module": "z3types",
+        "names": [
+          "*"
+        ],
+        "relative_level": 1
+      },
+      {
+        "file": "z3/z3core.py",
+        "line": 12,
+        "module": "z3consts",
+        "names": [
+          "*"
+        ],
+        "relative_level": 1
+      },
+      {
+        "file": "z3/z3core.py",
+        "line": 8,
+        "module": "importlib.resources",
+        "relative_level": 0
+      },
+      {
+        "file": "z3/z3core.py",
+        "line": 10,
+        "module": "importlib_resources",
+        "relative_level": 0
+      },
+      {
+        "file": "z3/z3core.py",
+        "line": 32,
+        "module": "__builtin__",
+        "relative_level": 0
+      },
+      {
+        "file": "z3/z3core.py",
+        "line": 36,
+        "module": "builtins",
+        "relative_level": 0
+      },
+      {
+        "file": "z3/z3num.py",
+        "line": 8,
+        "module": "z3",
+        "names": [
+          "*"
+        ],
+        "relative_level": 1
+      },
+      {
+        "file": "z3/z3num.py",
+        "line": 9,
+        "module": "z3core",
+        "names": [
+          "*"
+        ],
+        "relative_level": 1
+      },
+      {
+        "file": "z3/z3num.py",
+        "line": 10,
+        "module": "z3printer",
+        "names": [
+          "*"
+        ],
+        "relative_level": 1
+      },
+      {
+        "file": "z3/z3num.py",
+        "line": 11,
+        "module": "fractions",
+        "names": [
+          "Fraction"
+        ],
+        "relative_level": 0
+      },
+      {
+        "file": "z3/z3num.py",
+        "line": 13,
+        "module": "z3",
+        "names": [
+          "_get_ctx"
+        ],
+        "relative_level": 1
+      },
+      {
+        "file": "z3/z3poly.py",
+        "line": 9,
+        "module": "z3",
+        "names": [
+          "*"
+        ],
+        "relative_level": 1
+      },
+      {
+        "file": "z3/z3poly.py",
+        "line": 35,
+        "module": "doctest",
+        "relative_level": 0
+      },
+      {
+        "file": "z3/z3printer.py",
+        "line": 8,
+        "module": "sys",
+        "relative_level": 0
+      },
+      {
+        "file": "z3/z3printer.py",
+        "line": 9,
+        "module": "io",
+        "relative_level": 0
+      },
+      {
+        "file": "z3/z3printer.py",
+        "line": 22,
+        "module": "z3consts",
+        "names": [
+          "*"
+        ],
+        "relative_level": 1
+      },
+      {
+        "file": "z3/z3printer.py",
+        "line": 23,
+        "module": "z3core",
+        "names": [
+          "*"
+        ],
+        "relative_level": 1
+      },
+      {
+        "file": "z3/z3printer.py",
+        "line": 24,
+        "module": "ctypes",
+        "names": [
+          "*"
+        ],
+        "relative_level": 0
+      },
+      {
+        "file": "z3/z3printer.py",
+        "line": 16,
+        "module": "z3",
+        "relative_level": 0
+      },
+      {
+        "file": "z3/z3printer.py",
+        "line": 20,
+        "module": null,
+        "names": [
+          "z3"
+        ],
+        "relative_level": 1
+      },
+      {
+        "file": "z3/z3printer.py",
+        "line": 264,
+        "module": "codecs",
+        "relative_level": 0
+      },
+      {
+        "file": "z3/z3rcf.py",
+        "line": 12,
+        "module": "z3",
+        "names": [
+          "*"
+        ],
+        "relative_level": 1
+      },
+      {
+        "file": "z3/z3rcf.py",
+        "line": 13,
+        "module": "z3core",
+        "names": [
+          "*"
+        ],
+        "relative_level": 1
+      },
+      {
+        "file": "z3/z3rcf.py",
+        "line": 14,
+        "module": "z3printer",
+        "names": [
+          "*"
+        ],
+        "relative_level": 1
+      },
+      {
+        "file": "z3/z3types.py",
+        "line": 9,
+        "module": "ctypes",
+        "relative_level": 0
+      },
+      {
+        "file": "z3/z3util.py",
+        "line": 14,
+        "module": "ctypes",
+        "relative_level": 0
+      },
+      {
+        "file": "z3/z3util.py",
+        "line": 15,
+        "module": "z3",
+        "names": [
+          "*"
+        ],
+        "relative_level": 1
+      }
+    ],
+    "package_root": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package",
+    "release_metadata": {
+      "bytes": 7431,
+      "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-release-4.15.3.0.json",
+      "sha256": "1b38291db459c8f49eb0e34a36343b3b10439b2378c498a8c05855833a015cac"
+    },
+    "solver_calls_performed": 0,
+    "total_bytes": 96386706,
+    "version_from_wheel_metadata": "4.15.3.0",
+    "wheel": {
+      "bytes": 36882388,
+      "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3_solver-4.15.3.0-py3-none-macosx_13_0_arm64.whl",
+      "sha256": "65335aab295ded7c0ce27c85556067087a87052389ff160777d1a1d48ef0d74f"
+    }
+  },
+  "Z3_imports": 0,
+  "actual_execution_authorized": false,
+  "additional_nonseed_components": {
+    "bounded_transport": {
+      "bytes": 20424,
+      "path": "/private/tmp/gcts-semantic-family-transport-source-20261018/bounded_request_oracle_v1.py",
+      "sha256": "606e790f4ba3ecc976877cbe52ccfd64519262f2ea07214c80d989f58e4f7637"
+    },
+    "receiver_driver": {
+      "bytes": 53725,
+      "path": "/private/tmp/gcts-and-support-cold-source-20261018/and_support_receiver_driver_v1.py",
+      "sha256": "5f73835dfc9219f06f01206ebf6bbac5744eea582cbfb03deed42105f2ccacd0"
+    }
+  },
+  "author_identity": "/root",
+  "authoring_python": {
+    "bytes": 18058560,
+    "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+    "sha256": "21a9986bad1dbbcd813a252b19b4263fc0755ed2dbf8632c83e5d6117a12f319"
+  },
+  "benchmark_input_capsule": {
+    "bytes": 22422,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/first-order-suite-progress-20261018/input-capsule-v1.json",
+    "sha256": "1a42c2ab16680dddbac504ca5b2d79559370785884805cf4d56b5c1c22c63dc0"
+  },
+  "benchmark_intake_parent_closure": {
+    "bytes": 72661,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/and-support-ordering-progress-20261018/runtime-closure-v1.json",
+    "sha256": "8246d2d2afdd3045067af2ae12b45f9fe6619451bbd33fd47e6b09d0ae5f06b8"
+  },
+  "bridge_scope": "All40 runs retain exact previous24scientificaliases and their full import/native/runtime maps. Only new Source-entry intake hash/version and outer/observer entrypins adapt to10 frozen assertion inputs, each with4arms. No scientific operation evaluated here.",
+  "current_composition_handoff": {
+    "bytes": 5138,
+    "path": "/private/tmp/gcts-first-order-suite-intake-source-20261018/handoff-v1.json",
+    "sha256": "5a950ff347671ae4d93267eed8482148bb603d50ff7932fcb698c2d3073034fc"
+  },
+  "external_imports": [
+    "z3"
+  ],
+  "fixed_native_inputs": {
+    "canonical_micro_sha256": "2f9e430b0b7034ed615d81c3e9b3978dc47ba4136686227a9b86df5779b203ac",
+    "canonical_program_sha256": "877c47879b027b08f02d3923d1e6dd9ccaf9a12e354567109f1aaa640a8fb673",
+    "code_bin": "Per-arm Root work via unchanged tape_binary.write_micro; no decode/encoder executed in this inventory.",
+    "opaque_microcode_gzip": {
+      "bytes": 1114802,
+      "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/proof-boundary-microcode-001.json.gz",
+      "sha256": "23e2b54cc8365fa42f05148885dc7da671f525f8cb24b154f5c69aeeb3180336"
+    },
+    "program_and_template": {
+      "bytes": 1494417,
+      "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/proof-boundary-001.json",
+      "sha256": "977ceac5504ad3d712c7fa2d46d20494b42e30820f77eb2bffbeea313d07ee54"
+    }
+  },
+  "import_sites": [
+    {
+      "form": "Import",
+      "import_name": "copy",
+      "kind": "stdlib",
+      "line": 7,
+      "root": "copy",
+      "source_module": "bounded_request_oracle"
+    },
+    {
+      "form": "Import",
+      "import_name": "hashlib",
+      "kind": "stdlib",
+      "line": 8,
+      "root": "hashlib",
+      "source_module": "bounded_request_oracle"
+    },
+    {
+      "form": "Import",
+      "import_name": "json",
+      "kind": "stdlib",
+      "line": 9,
+      "root": "json",
+      "source_module": "bounded_request_oracle"
+    },
+    {
+      "form": "Import",
+      "import_name": "math",
+      "kind": "stdlib",
+      "line": 10,
+      "root": "math",
+      "source_module": "bounded_request_oracle"
+    },
+    {
+      "form": "Import",
+      "import_name": "os",
+      "kind": "stdlib",
+      "line": 11,
+      "root": "os",
+      "source_module": "bounded_request_oracle"
+    },
+    {
+      "form": "ImportFrom",
+      "import_name": "pathlib",
+      "kind": "stdlib",
+      "line": 12,
+      "root": "pathlib",
+      "source_module": "bounded_request_oracle"
+    },
+    {
+      "form": "Import",
+      "import_name": "selectors",
+      "kind": "stdlib",
+      "line": 13,
+      "root": "selectors",
+      "source_module": "bounded_request_oracle"
+    },
+    {
+      "form": "Import",
+      "import_name": "select",
+      "kind": "stdlib",
+      "line": 14,
+      "root": "select",
+      "source_module": "bounded_request_oracle"
+    },
+    {
+      "form": "Import",
+      "import_name": "signal",
+      "kind": "stdlib",
+      "line": 15,
+      "root": "signal",
+      "source_module": "bounded_request_oracle"
+    },
+    {
+      "form": "Import",
+      "import_name": "stat",
+      "kind": "stdlib",
+      "line": 16,
+      "root": "stat",
+      "source_module": "bounded_request_oracle"
+    },
+    {
+      "form": "Import",
+      "import_name": "subprocess",
+      "kind": "stdlib",
+      "line": 17,
+      "root": "subprocess",
+      "source_module": "bounded_request_oracle"
+    },
+    {
+      "form": "Import",
+      "import_name": "copy",
+      "kind": "stdlib",
+      "line": 9,
+      "root": "copy",
+      "source_module": "certificate_boundary_search"
+    },
+    {
+      "form": "Import",
+      "import_name": "hashlib",
+      "kind": "stdlib",
+      "line": 9,
+      "root": "hashlib",
+      "source_module": "certificate_boundary_search"
+    },
+    {
+      "form": "Import",
+      "import_name": "itertools",
+      "kind": "stdlib",
+      "line": 9,
+      "root": "itertools",
+      "source_module": "certificate_boundary_search"
+    },
+    {
+      "form": "Import",
+      "import_name": "json",
+      "kind": "stdlib",
+      "line": 9,
+      "root": "json",
+      "source_module": "certificate_boundary_search"
+    },
+    {
+      "form": "Import",
+      "import_name": "subprocess",
+      "kind": "stdlib",
+      "line": 9,
+      "root": "subprocess",
+      "source_module": "certificate_boundary_search"
+    },
+    {
+      "form": "Import",
+      "import_name": "time",
+      "kind": "stdlib",
+      "line": 9,
+      "root": "time",
+      "source_module": "certificate_boundary_search"
+    },
+    {
+      "form": "ImportFrom",
+      "import_name": "pathlib",
+      "kind": "stdlib",
+      "line": 10,
+      "root": "pathlib",
+      "source_module": "certificate_boundary_search"
+    },
+    {
+      "form": "ImportFrom",
+      "import_name": "proof_boundary",
+      "kind": "project",
+      "line": 11,
+      "root": "proof_boundary",
+      "source_module": "certificate_boundary_search"
+    },
+    {
+      "form": "ImportFrom",
+      "import_name": "tape_binary",
+      "kind": "project",
+      "line": 12,
+      "root": "tape_binary",
+      "source_module": "certificate_boundary_search"
+    },
+    {
+      "form": "ImportFrom",
+      "import_name": "quantified_family_points_v2",
+      "kind": "project",
+      "line": 7,
+      "root": "quantified_family_points_v2",
+      "source_module": "interned_quantified_family_points_v1"
+    },
+    {
+      "form": "ImportFrom",
+      "import_name": "semantic_receptor_points",
+      "kind": "project",
+      "line": 8,
+      "root": "semantic_receptor_points",
+      "source_module": "interned_quantified_family_points_v1"
+    },
+    {
+      "form": "ImportFrom",
+      "import_name": "native_receptor_points",
+      "kind": "project",
+      "line": 9,
+      "root": "native_receptor_points",
+      "source_module": "interned_quantified_family_points_v1"
+    },
+    {
+      "form": "ImportFrom",
+      "import_name": "turtle",
+      "kind": "project",
+      "line": 10,
+      "root": "turtle",
+      "source_module": "interned_quantified_family_points_v1"
+    },
+    {
+      "form": "Import",
+      "import_name": "json",
+      "kind": "stdlib",
+      "line": 7,
+      "root": "json",
+      "source_module": "interned_result_reader_v2"
+    },
+    {
+      "form": "ImportFrom",
+      "import_name": "collections",
+      "kind": "stdlib",
+      "line": 9,
+      "root": "collections",
+      "source_module": "logic"
+    },
+    {
+      "form": "ImportFrom",
+      "import_name": "itertools",
+      "kind": "stdlib",
+      "line": 10,
+      "root": "itertools",
+      "source_module": "logic"
+    },
+    {
+      "form": "Import",
+      "import_name": "collections",
+      "kind": "stdlib",
+      "line": 8,
+      "root": "collections",
+      "source_module": "native_inference_inventory"
+    },
+    {
+      "form": "Import",
+      "import_name": "hashlib",
+      "kind": "stdlib",
+      "line": 8,
+      "root": "hashlib",
+      "source_module": "native_inference_inventory"
+    },
+    {
+      "form": "Import",
+      "import_name": "itertools",
+      "kind": "stdlib",
+      "line": 8,
+      "root": "itertools",
+      "source_module": "native_inference_inventory"
+    },
+    {
+      "form": "ImportFrom",
+      "import_name": "certificate_boundary_search",
+      "kind": "project",
+      "line": 9,
+      "root": "certificate_boundary_search",
+      "source_module": "native_inference_inventory"
+    },
+    {
+      "form": "Import",
+      "import_name": "math",
+      "kind": "stdlib",
+      "line": 2,
+      "root": "math",
+      "source_module": "native_inventory_policy"
+    },
+    {
+      "form": "Import",
+      "import_name": "collections",
+      "kind": "stdlib",
+      "line": 9,
+      "root": "collections",
+      "source_module": "native_receptor_points"
+    },
+    {
+      "form": "Import",
+      "import_name": "copy",
+      "kind": "stdlib",
+      "line": 9,
+      "root": "copy",
+      "source_module": "native_receptor_points"
+    },
+    {
+      "form": "Import",
+      "import_name": "hashlib",
+      "kind": "stdlib",
+      "line": 9,
+      "root": "hashlib",
+      "source_module": "native_receptor_points"
+    },
+    {
+      "form": "Import",
+      "import_name": "json",
+      "kind": "stdlib",
+      "line": 9,
+      "root": "json",
+      "source_module": "native_receptor_points"
+    },
+    {
+      "form": "Import",
+      "import_name": "time",
+      "kind": "stdlib",
+      "line": 9,
+      "root": "time",
+      "source_module": "native_receptor_points"
+    },
+    {
+      "form": "ImportFrom",
+      "import_name": "certificate_boundary_search",
+      "kind": "project",
+      "line": 10,
+      "root": "certificate_boundary_search",
+      "source_module": "native_receptor_points"
+    },
+    {
+      "form": "ImportFrom",
+      "import_name": "turtle",
+      "kind": "project",
+      "line": 11,
+      "root": "turtle",
+      "source_module": "native_receptor_points"
+    },
+    {
+      "form": "ImportFrom",
+      "import_name": "tree_machine",
+      "kind": "project",
+      "line": 8,
+      "root": "tree_machine",
+      "source_module": "proof_boundary"
+    },
+    {
+      "form": "ImportFrom",
+      "import_name": "tape_tree_machine",
+      "kind": "project",
+      "line": 9,
+      "root": "tape_tree_machine",
+      "source_module": "proof_boundary"
+    },
+    {
+      "form": "ImportFrom",
+      "import_name": "pathlib",
+      "kind": "stdlib",
+      "line": 10,
+      "root": "pathlib",
+      "source_module": "proof_boundary"
+    },
+    {
+      "form": "ImportFrom",
+      "import_name": "tree_machine",
+      "kind": "project",
+      "line": 11,
+      "root": "tree_machine",
+      "source_module": "proof_boundary"
+    },
+    {
+      "form": "Import",
+      "import_name": "collections",
+      "kind": "stdlib",
+      "line": 6,
+      "root": "collections",
+      "source_module": "quantified_family_points_v2"
+    },
+    {
+      "form": "Import",
+      "import_name": "copy",
+      "kind": "stdlib",
+      "line": 6,
+      "root": "copy",
+      "source_module": "quantified_family_points_v2"
+    },
+    {
+      "form": "Import",
+      "import_name": "math",
+      "kind": "stdlib",
+      "line": 6,
+      "root": "math",
+      "source_module": "quantified_family_points_v2"
+    },
+    {
+      "form": "Import",
+      "import_name": "time",
+      "kind": "stdlib",
+      "line": 6,
+      "root": "time",
+      "source_module": "quantified_family_points_v2"
+    },
+    {
+      "form": "ImportFrom",
+      "import_name": "certificate_boundary_search",
+      "kind": "project",
+      "line": 7,
+      "root": "certificate_boundary_search",
+      "source_module": "quantified_family_points_v2"
+    },
+    {
+      "form": "ImportFrom",
+      "import_name": "quantified_receptors_v1",
+      "kind": "project",
+      "line": 8,
+      "root": "quantified_receptors_v1",
+      "source_module": "quantified_family_points_v2"
+    },
+    {
+      "form": "ImportFrom",
+      "import_name": "native_receptor_points",
+      "kind": "project",
+      "line": 9,
+      "root": "native_receptor_points",
+      "source_module": "quantified_family_points_v2"
+    },
+    {
+      "form": "ImportFrom",
+      "import_name": "semantic_receptor_points",
+      "kind": "project",
+      "line": 10,
+      "root": "semantic_receptor_points",
+      "source_module": "quantified_family_points_v2"
+    },
+    {
+      "form": "Import",
+      "import_name": "collections",
+      "kind": "stdlib",
+      "line": 7,
+      "root": "collections",
+      "source_module": "quantified_receptors_v1"
+    },
+    {
+      "form": "Import",
+      "import_name": "copy",
+      "kind": "stdlib",
+      "line": 7,
+      "root": "copy",
+      "source_module": "quantified_receptors_v1"
+    },
+    {
+      "form": "Import",
+      "import_name": "math",
+      "kind": "stdlib",
+      "line": 7,
+      "root": "math",
+      "source_module": "quantified_receptors_v1"
+    },
+    {
+      "form": "Import",
+      "import_name": "time",
+      "kind": "stdlib",
+      "line": 7,
+      "root": "time",
+      "source_module": "quantified_receptors_v1"
+    },
+    {
+      "form": "Import",
+      "import_name": "logic",
+      "kind": "project",
+      "line": 8,
+      "root": "logic",
+      "source_module": "quantified_receptors_v1"
+    },
+    {
+      "form": "ImportFrom",
+      "import_name": "certificate_boundary_search",
+      "kind": "project",
+      "line": 9,
+      "root": "certificate_boundary_search",
+      "source_module": "quantified_receptors_v1"
+    },
+    {
+      "form": "ImportFrom",
+      "import_name": "native_receptor_points",
+      "kind": "project",
+      "line": 10,
+      "root": "native_receptor_points",
+      "source_module": "quantified_receptors_v1"
+    },
+    {
+      "form": "ImportFrom",
+      "import_name": "semantic_receptor_points",
+      "kind": "project",
+      "line": 11,
+      "root": "semantic_receptor_points",
+      "source_module": "quantified_receptors_v1"
+    },
+    {
+      "form": "Import",
+      "import_name": "hashlib",
+      "kind": "stdlib",
+      "line": 7,
+      "root": "hashlib",
+      "source_module": "quantified_symbolic_control_v2"
+    },
+    {
+      "form": "Import",
+      "import_name": "itertools",
+      "kind": "stdlib",
+      "line": 8,
+      "root": "itertools",
+      "source_module": "quantified_symbolic_control_v2"
+    },
+    {
+      "form": "Import",
+      "import_name": "json",
+      "kind": "stdlib",
+      "line": 9,
+      "root": "json",
+      "source_module": "quantified_symbolic_control_v2"
+    },
+    {
+      "form": "Import",
+      "import_name": "math",
+      "kind": "stdlib",
+      "line": 10,
+      "root": "math",
+      "source_module": "quantified_symbolic_control_v2"
+    },
+    {
+      "form": "Import",
+      "import_name": "time",
+      "kind": "stdlib",
+      "line": 11,
+      "root": "time",
+      "source_module": "quantified_symbolic_control_v2"
+    },
+    {
+      "form": "Import",
+      "import_name": "hashlib",
+      "kind": "stdlib",
+      "line": 8,
+      "root": "hashlib",
+      "source_module": "receptor_support_ordering_v1"
+    },
+    {
+      "form": "Import",
+      "import_name": "json",
+      "kind": "stdlib",
+      "line": 9,
+      "root": "json",
+      "source_module": "receptor_support_ordering_v1"
+    },
+    {
+      "form": "Import",
+      "import_name": "collections",
+      "kind": "stdlib",
+      "line": 2,
+      "root": "collections",
+      "source_module": "semantic_inventory_guidance"
+    },
+    {
+      "form": "Import",
+      "import_name": "hashlib",
+      "kind": "stdlib",
+      "line": 2,
+      "root": "hashlib",
+      "source_module": "semantic_inventory_guidance"
+    },
+    {
+      "form": "ImportFrom",
+      "import_name": "certificate_boundary_search",
+      "kind": "project",
+      "line": 3,
+      "root": "certificate_boundary_search",
+      "source_module": "semantic_inventory_guidance"
+    },
+    {
+      "form": "ImportFrom",
+      "import_name": "native_inference_inventory",
+      "kind": "project",
+      "line": 4,
+      "root": "native_inference_inventory",
+      "source_module": "semantic_inventory_guidance"
+    },
+    {
+      "form": "Import",
+      "import_name": "copy",
+      "kind": "stdlib",
+      "line": 2,
+      "root": "copy",
+      "source_module": "semantic_inventory_oracle"
+    },
+    {
+      "form": "Import",
+      "import_name": "hashlib",
+      "kind": "stdlib",
+      "line": 2,
+      "root": "hashlib",
+      "source_module": "semantic_inventory_oracle"
+    },
+    {
+      "form": "Import",
+      "import_name": "json",
+      "kind": "stdlib",
+      "line": 2,
+      "root": "json",
+      "source_module": "semantic_inventory_oracle"
+    },
+    {
+      "form": "Import",
+      "import_name": "time",
+      "kind": "stdlib",
+      "line": 2,
+      "root": "time",
+      "source_module": "semantic_inventory_oracle"
+    },
+    {
+      "form": "ImportFrom",
+      "import_name": "certificate_boundary_search",
+      "kind": "project",
+      "line": 3,
+      "root": "certificate_boundary_search",
+      "source_module": "semantic_inventory_oracle"
+    },
+    {
+      "form": "ImportFrom",
+      "import_name": "tape_binary",
+      "kind": "project",
+      "line": 4,
+      "root": "tape_binary",
+      "source_module": "semantic_inventory_oracle"
+    },
+    {
+      "form": "Import",
+      "import_name": "collections",
+      "kind": "stdlib",
+      "line": 2,
+      "root": "collections",
+      "source_module": "semantic_inventory_search_v2"
+    },
+    {
+      "form": "Import",
+      "import_name": "random",
+      "kind": "stdlib",
+      "line": 2,
+      "root": "random",
+      "source_module": "semantic_inventory_search_v2"
+    },
+    {
+      "form": "Import",
+      "import_name": "time",
+      "kind": "stdlib",
+      "line": 2,
+      "root": "time",
+      "source_module": "semantic_inventory_search_v2"
+    },
+    {
+      "form": "ImportFrom",
+      "import_name": "native_receptor_points",
+      "kind": "project",
+      "line": 3,
+      "root": "native_receptor_points",
+      "source_module": "semantic_inventory_search_v2"
+    },
+    {
+      "form": "ImportFrom",
+      "import_name": "native_inventory_policy",
+      "kind": "project",
+      "line": 4,
+      "root": "native_inventory_policy",
+      "source_module": "semantic_inventory_search_v2"
+    },
+    {
+      "form": "ImportFrom",
+      "import_name": "native_inference_inventory",
+      "kind": "project",
+      "line": 5,
+      "root": "native_inference_inventory",
+      "source_module": "semantic_inventory_search_v2"
+    },
+    {
+      "form": "ImportFrom",
+      "import_name": "semantic_inventory_guidance",
+      "kind": "project",
+      "line": 6,
+      "root": "semantic_inventory_guidance",
+      "source_module": "semantic_inventory_search_v2"
+    },
+    {
+      "form": "ImportFrom",
+      "import_name": "turtle",
+      "kind": "project",
+      "line": 7,
+      "root": "turtle",
+      "source_module": "semantic_inventory_search_v2"
+    },
+    {
+      "form": "ImportFrom",
+      "import_name": "semantic_inventory_guidance",
+      "kind": "project",
+      "line": 8,
+      "root": "semantic_inventory_guidance",
+      "source_module": "semantic_inventory_search_v2"
+    },
+    {
+      "form": "ImportFrom",
+      "import_name": "receptor_support_ordering_v1",
+      "kind": "project",
+      "line": 9,
+      "root": "receptor_support_ordering_v1",
+      "source_module": "semantic_inventory_search_v2"
+    },
+    {
+      "form": "Import",
+      "import_name": "copy",
+      "kind": "stdlib",
+      "line": 7,
+      "root": "copy",
+      "source_module": "semantic_lemma_inventory"
+    },
+    {
+      "form": "Import",
+      "import_name": "itertools",
+      "kind": "stdlib",
+      "line": 7,
+      "root": "itertools",
+      "source_module": "semantic_lemma_inventory"
+    },
+    {
+      "form": "ImportFrom",
+      "import_name": "certificate_boundary_search",
+      "kind": "project",
+      "line": 8,
+      "root": "certificate_boundary_search",
+      "source_module": "semantic_lemma_inventory"
+    },
+    {
+      "form": "Import",
+      "import_name": "collections",
+      "kind": "stdlib",
+      "line": 2,
+      "root": "collections",
+      "source_module": "semantic_point_smt"
+    },
+    {
+      "form": "Import",
+      "import_name": "time",
+      "kind": "stdlib",
+      "line": 2,
+      "root": "time",
+      "source_module": "semantic_point_smt"
+    },
+    {
+      "form": "ImportFrom",
+      "import_name": "certificate_boundary_search",
+      "kind": "project",
+      "line": 3,
+      "root": "certificate_boundary_search",
+      "source_module": "semantic_point_smt"
+    },
+    {
+      "form": "Import",
+      "import_name": "z3",
+      "kind": "external",
+      "line": 8,
+      "root": "z3",
+      "source_module": "semantic_point_smt"
+    },
+    {
+      "form": "Import",
+      "import_name": "hashlib",
+      "kind": "stdlib",
+      "line": 8,
+      "root": "hashlib",
+      "source_module": "semantic_receiver_driver"
+    },
+    {
+      "form": "Import",
+      "import_name": "json",
+      "kind": "stdlib",
+      "line": 9,
+      "root": "json",
+      "source_module": "semantic_receiver_driver"
+    },
+    {
+      "form": "Import",
+      "import_name": "math",
+      "kind": "stdlib",
+      "line": 10,
+      "root": "math",
+      "source_module": "semantic_receiver_driver"
+    },
+    {
+      "form": "Import",
+      "import_name": "os",
+      "kind": "stdlib",
+      "line": 11,
+      "root": "os",
+      "source_module": "semantic_receiver_driver"
+    },
+    {
+      "form": "ImportFrom",
+      "import_name": "pathlib",
+      "kind": "stdlib",
+      "line": 12,
+      "root": "pathlib",
+      "source_module": "semantic_receiver_driver"
+    },
+    {
+      "form": "Import",
+      "import_name": "tempfile",
+      "kind": "stdlib",
+      "line": 13,
+      "root": "tempfile",
+      "source_module": "semantic_receiver_driver"
+    },
+    {
+      "form": "Import",
+      "import_name": "collections",
+      "kind": "stdlib",
+      "line": 7,
+      "root": "collections",
+      "source_module": "semantic_receptor_points"
+    },
+    {
+      "form": "Import",
+      "import_name": "copy",
+      "kind": "stdlib",
+      "line": 7,
+      "root": "copy",
+      "source_module": "semantic_receptor_points"
+    },
+    {
+      "form": "Import",
+      "import_name": "time",
+      "kind": "stdlib",
+      "line": 7,
+      "root": "time",
+      "source_module": "semantic_receptor_points"
+    },
+    {
+      "form": "ImportFrom",
+      "import_name": "certificate_boundary_search",
+      "kind": "project",
+      "line": 8,
+      "root": "certificate_boundary_search",
+      "source_module": "semantic_receptor_points"
+    },
+    {
+      "form": "ImportFrom",
+      "import_name": "native_receptor_points",
+      "kind": "project",
+      "line": 9,
+      "root": "native_receptor_points",
+      "source_module": "semantic_receptor_points"
+    },
+    {
+      "form": "ImportFrom",
+      "import_name": "turtle",
+      "kind": "project",
+      "line": 10,
+      "root": "turtle",
+      "source_module": "semantic_receptor_points"
+    },
+    {
+      "form": "Import",
+      "import_name": "struct",
+      "kind": "stdlib",
+      "line": 2,
+      "root": "struct",
+      "source_module": "tape_binary"
+    },
+    {
+      "form": "ImportFrom",
+      "import_name": "pathlib",
+      "kind": "stdlib",
+      "line": 3,
+      "root": "pathlib",
+      "source_module": "tape_binary"
+    },
+    {
+      "form": "ImportFrom",
+      "import_name": "tape_tree_machine",
+      "kind": "project",
+      "line": 4,
+      "root": "tape_tree_machine",
+      "source_module": "tape_binary"
+    },
+    {
+      "form": "Import",
+      "import_name": "hashlib",
+      "kind": "stdlib",
+      "line": 8,
+      "root": "hashlib",
+      "source_module": "tape_tree_machine"
+    },
+    {
+      "form": "Import",
+      "import_name": "json",
+      "kind": "stdlib",
+      "line": 8,
+      "root": "json",
+      "source_module": "tape_tree_machine"
+    },
+    {
+      "form": "Import",
+      "import_name": "time",
+      "kind": "stdlib",
+      "line": 8,
+      "root": "time",
+      "source_module": "tape_tree_machine"
+    },
+    {
+      "form": "ImportFrom",
+      "import_name": "itertools",
+      "kind": "stdlib",
+      "line": 9,
+      "root": "itertools",
+      "source_module": "tape_tree_machine"
+    },
+    {
+      "form": "ImportFrom",
+      "import_name": "tree_machine",
+      "kind": "project",
+      "line": 10,
+      "root": "tree_machine",
+      "source_module": "tape_tree_machine"
+    },
+    {
+      "form": "Import",
+      "import_name": "ast",
+      "kind": "stdlib",
+      "line": 8,
+      "root": "ast",
+      "source_module": "tree_machine"
+    },
+    {
+      "form": "Import",
+      "import_name": "hashlib",
+      "kind": "stdlib",
+      "line": 8,
+      "root": "hashlib",
+      "source_module": "tree_machine"
+    },
+    {
+      "form": "Import",
+      "import_name": "json",
+      "kind": "stdlib",
+      "line": 8,
+      "root": "json",
+      "source_module": "tree_machine"
+    },
+    {
+      "form": "Import",
+      "import_name": "time",
+      "kind": "stdlib",
+      "line": 8,
+      "root": "time",
+      "source_module": "tree_machine"
+    },
+    {
+      "form": "ImportFrom",
+      "import_name": "collections",
+      "kind": "stdlib",
+      "line": 9,
+      "root": "collections",
+      "source_module": "tree_machine"
+    },
+    {
+      "form": "ImportFrom",
+      "import_name": "__future__",
+      "kind": "stdlib",
+      "line": 6,
+      "root": "__future__",
+      "source_module": "turtle"
+    },
+    {
+      "form": "Import",
+      "import_name": "math",
+      "kind": "stdlib",
+      "line": 8,
+      "root": "math",
+      "source_module": "turtle"
+    },
+    {
+      "form": "Import",
+      "import_name": "random",
+      "kind": "stdlib",
+      "line": 9,
+      "root": "random",
+      "source_module": "turtle"
+    },
+    {
+      "form": "Import",
+      "import_name": "time",
+      "kind": "stdlib",
+      "line": 10,
+      "root": "time",
+      "source_module": "turtle"
+    },
+    {
+      "form": "ImportFrom",
+      "import_name": "collections",
+      "kind": "stdlib",
+      "line": 11,
+      "root": "collections",
+      "source_module": "turtle"
+    },
+    {
+      "form": "ImportFrom",
+      "import_name": "dataclasses",
+      "kind": "stdlib",
+      "line": 12,
+      "root": "dataclasses",
+      "source_module": "turtle"
+    },
+    {
+      "form": "ImportFrom",
+      "import_name": "fractions",
+      "kind": "stdlib",
+      "line": 13,
+      "root": "fractions",
+      "source_module": "turtle"
+    },
+    {
+      "form": "ImportFrom",
+      "import_name": "itertools",
+      "kind": "stdlib",
+      "line": 14,
+      "root": "itertools",
+      "source_module": "turtle"
+    }
+  ],
+  "limitations": [
+    "Raw closure and hashes establish declared input identities, not activation or mathematical soundness.",
+    "Pinned Python, bundled recursive standard library, OS and dynamic loader are trusted runtime; this is not whole-OS formal validation.",
+    "Inherited stdlib entry-file references cover historical roots only; all current stdlib import roots are explicitly enumerated. Activation verifies declared project/Z3 origins and captures callable identities, without recursive mutable-object sealing.",
+    "This inventory authorizes no actual. Native input decoding, code construction, all imports, compiler/model/search and native queries remain inside separate Root cold grants."
+  ],
+  "literal_dynamic_import_sites": [
+    {
+      "call_AST": "Call(func=Name(id='__import__', ctx=Load()), args=[Constant(value='math')], keywords=[])",
+      "import_name": "math",
+      "line": 88,
+      "module": "certificate_boundary_search"
+    },
+    {
+      "call_AST": "Call(func=Name(id='__import__', ctx=Load()), args=[Constant(value='math')], keywords=[])",
+      "import_name": "math",
+      "line": 87,
+      "module": "native_receptor_points"
+    }
+  ],
+  "materialized_aliases": {
+    "bounded_request_oracle": {
+      "bytes": 20424,
+      "path": "/private/tmp/gcts-semantic-family-transport-source-20261018/bounded_request_oracle_v1.py",
+      "sha256": "606e790f4ba3ecc976877cbe52ccfd64519262f2ea07214c80d989f58e4f7637"
+    },
+    "certificate_boundary_search": {
+      "bytes": 7089,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/certificate_boundary_search.py",
+      "sha256": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a"
+    },
+    "interned_quantified_family_points_v1": {
+      "bytes": 4311,
+      "path": "/private/tmp/gcts-compact-point-representation-source-20261018/interned_quantified_family_points_v1.py",
+      "sha256": "fb37663b4c0c3de4e9f3c28564678af833857f7ebe761cd83275d62f123b9a8e"
+    },
+    "interned_result_reader_v2": {
+      "bytes": 4705,
+      "path": "/private/tmp/gcts-interned-output-reader-source-20261018/interned_result_reader_v2.py",
+      "sha256": "cd06c8372b6edd05774cf5974c5b6265bbc196afdc68d47507e54a2044dec836"
+    },
+    "logic": {
+      "bytes": 10808,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/logic.py",
+      "sha256": "5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011"
+    },
+    "native_inference_inventory": {
+      "bytes": 10594,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/native_inference_inventory.py",
+      "sha256": "89979f6be8f422ea293c2f0b6c0e966fc9a0710a8e15cbe58437f868cbf75091"
+    },
+    "native_inventory_policy": {
+      "bytes": 2746,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/native_inventory_policy.py",
+      "sha256": "8721a361f4a97e5311f8ed944431d49d08592ed102f50ed333d1ad2b9ff01591"
+    },
+    "native_receptor_points": {
+      "bytes": 8962,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/native_receptor_points.py",
+      "sha256": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888"
+    },
+    "proof_boundary": {
+      "bytes": 6992,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/proof_boundary.py",
+      "sha256": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f"
+    },
+    "quantified_family_points_v2": {
+      "bytes": 6472,
+      "path": "/private/tmp/gcts-quantified-adapter-source-20261018/quantified_family_points_v2.py",
+      "sha256": "f65eb38269db74ff5db0d9eb2096a38d7f07bbd6a579aa564acc692f84e4437c"
+    },
+    "quantified_receptors_v1": {
+      "bytes": 11060,
+      "path": "/private/tmp/gcts-quantified-adapter-source-20261018/quantified_receptors_v1.py",
+      "sha256": "d1c4afa10d58abbcf473cb3da8ee8768c974dd05d03ea00b988d574b2441af5a"
+    },
+    "quantified_symbolic_control_v2": {
+      "bytes": 26238,
+      "path": "/private/tmp/gcts-and-support-ordering-source-20261018/quantified_symbolic_control_v2.py",
+      "sha256": "740319d243cc2fd2eefe1d7ef1611d8bcfe6f0ff70a2ce2ed72771e78f64a391"
+    },
+    "receptor_support_ordering_v1": {
+      "bytes": 16868,
+      "path": "/private/tmp/gcts-and-support-ordering-source-20261018/receptor_support_ordering_v1.py",
+      "sha256": "18cf90ebd75d746db3eb251eaffa92cd6a25432b70f34653b57f3d58ef5d8adc"
+    },
+    "semantic_inventory_guidance": {
+      "bytes": 6942,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_inventory_guidance.py",
+      "sha256": "744948b67e2870ae24737469aceb920624b59d616e8a48f91b99d39f56c14a79"
+    },
+    "semantic_inventory_oracle": {
+      "bytes": 2180,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_inventory_oracle.py",
+      "sha256": "f41bfd56829b89b015fcf7a4dbd41dabd36110156e345353059980a66f6a4400"
+    },
+    "semantic_inventory_search_v2": {
+      "bytes": 15936,
+      "path": "/private/tmp/gcts-and-support-point-source-20261018/semantic_inventory_search_v2.py",
+      "sha256": "35443c958f2115efa18cc923fb4a4f1070e6e03ccf1d1adf2bb56ce1f7bab28b"
+    },
+    "semantic_lemma_inventory": {
+      "bytes": 7196,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_lemma_inventory.py",
+      "sha256": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad"
+    },
+    "semantic_point_smt": {
+      "bytes": 4593,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_point_smt.py",
+      "sha256": "6bcb3fb60529f6888836a1ca0c613b772cea192c9549620f968dbdf7cb9be74a"
+    },
+    "semantic_receiver_driver": {
+      "bytes": 53725,
+      "path": "/private/tmp/gcts-and-support-cold-source-20261018/and_support_receiver_driver_v1.py",
+      "sha256": "5f73835dfc9219f06f01206ebf6bbac5744eea582cbfb03deed42105f2ccacd0"
+    },
+    "semantic_receptor_points": {
+      "bytes": 7409,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_receptor_points.py",
+      "sha256": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207"
+    },
+    "tape_binary": {
+      "bytes": 3756,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/tape_binary.py",
+      "sha256": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247"
+    },
+    "tape_tree_machine": {
+      "bytes": 19188,
+      "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/tape_tree_machine.py",
+      "sha256": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f"
+    },
+    "tree_machine": {
+      "bytes": 13290,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/tree_machine.py",
+      "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257"
+    },
+    "turtle": {
+      "bytes": 28533,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/turtle.py",
+      "sha256": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a"
+    }
+  },
+  "materialized_project_and_component_count": 24,
+  "native_CPP": {
+    "binary": {
+      "bytes": 41808,
+      "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/boundary-oracle-v2",
+      "sha256": "2b6bf8bb09a4e03d0cb1b4595dea1fe6d4432aa93d8f7eed72c30077fd9941a4"
+    },
+    "build_receipt": {
+      "bytes": 1120,
+      "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/native-build-v2.json",
+      "sha256": "b98e6f5d1366a741ce94d43ad261834019ffc9e673e4b1d54747f6719db4e365"
+    },
+    "build_scientific_queries": 0,
+    "preserved_failed_build_receipt": {
+      "bytes": 29632,
+      "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/native-build-v1.json",
+      "sha256": "8149deffc16da11355a64e358ac97ade8fb2d3fef287d06eee901c80c0a919c2"
+    },
+    "source": {
+      "bytes": 3547,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/boundary_oracle.cpp",
+      "sha256": "f0965f08fc9e8272d0fdd1ab3233c3a308267a4fc3b2e1a928c39dbeaaec31be"
+    }
+  },
+  "nested_and_dynamic_scope": "All AST descendants in all23 current aliased Sources, including nested/conditional imports and both literal __import__ sites. No source imported or evaluated by this authoring.",
+  "ordering_current_sources": {
+    "family_search": {
+      "bytes": 15936,
+      "path": "/private/tmp/gcts-and-support-point-source-20261018/semantic_inventory_search_v2.py",
+      "sha256": "35443c958f2115efa18cc923fb4a4f1070e6e03ccf1d1adf2bb56ce1f7bab28b"
+    },
+    "support_ordering": {
+      "bytes": 16868,
+      "path": "/private/tmp/gcts-and-support-ordering-source-20261018/receptor_support_ordering_v1.py",
+      "sha256": "18cf90ebd75d746db3eb251eaffa92cd6a25432b70f34653b57f3d58ef5d8adc"
+    },
+    "symbolic_control": {
+      "bytes": 26238,
+      "path": "/private/tmp/gcts-and-support-ordering-source-20261018/quantified_symbolic_control_v2.py",
+      "sha256": "740319d243cc2fd2eefe1d7ef1611d8bcfe6f0ff70a2ce2ed72771e78f64a391"
+    }
+  },
+  "ordering_parent_sources": {
+    "quantified_symbolic_control_v1": {
+      "bytes": 20067,
+      "path": "/private/tmp/gcts-symbolic-control-source-20261018/quantified_symbolic_control_v1.py",
+      "sha256": "140880d1bb1cec17a1a9f1b3ebab73516f63ce447972d124698c0dccf23d033f"
+    },
+    "semantic_inventory_search": {
+      "bytes": 5318,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_inventory_search.py",
+      "sha256": "df296cb1ac2398cee3c23eb9436a6c27906802360489b20a7bb0e6a59736b188"
+    }
+  },
+  "parent_closure": {
+    "bytes": 69562,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/runtime-closure-v1.json",
+    "sha256": "63fa8e0d66175a925c61b38ff6c727f5d180f738e2735eb07a3317849c3ed5cf"
+  },
+  "project_import_edges": {
+    "bounded_request_oracle": [],
+    "certificate_boundary_search": [
+      "proof_boundary",
+      "tape_binary"
+    ],
+    "interned_quantified_family_points_v1": [
+      "native_receptor_points",
+      "quantified_family_points_v2",
+      "semantic_receptor_points",
+      "turtle"
+    ],
+    "interned_result_reader_v2": [],
+    "logic": [],
+    "native_inference_inventory": [
+      "certificate_boundary_search"
+    ],
+    "native_inventory_policy": [],
+    "native_receptor_points": [
+      "certificate_boundary_search",
+      "turtle"
+    ],
+    "proof_boundary": [
+      "tape_tree_machine",
+      "tree_machine"
+    ],
+    "quantified_family_points_v2": [
+      "certificate_boundary_search",
+      "native_receptor_points",
+      "quantified_receptors_v1",
+      "semantic_receptor_points"
+    ],
+    "quantified_receptors_v1": [
+      "certificate_boundary_search",
+      "logic",
+      "native_receptor_points",
+      "semantic_receptor_points"
+    ],
+    "quantified_symbolic_control_v2": [],
+    "receptor_support_ordering_v1": [],
+    "semantic_inventory_guidance": [
+      "certificate_boundary_search",
+      "native_inference_inventory"
+    ],
+    "semantic_inventory_oracle": [
+      "certificate_boundary_search",
+      "tape_binary"
+    ],
+    "semantic_inventory_search_v2": [
+      "native_inference_inventory",
+      "native_inventory_policy",
+      "native_receptor_points",
+      "receptor_support_ordering_v1",
+      "semantic_inventory_guidance",
+      "turtle"
+    ],
+    "semantic_lemma_inventory": [
+      "certificate_boundary_search"
+    ],
+    "semantic_point_smt": [
+      "certificate_boundary_search"
+    ],
+    "semantic_receiver_driver": [],
+    "semantic_receptor_points": [
+      "certificate_boundary_search",
+      "native_receptor_points",
+      "turtle"
+    ],
+    "tape_binary": [
+      "tape_tree_machine"
+    ],
+    "tape_tree_machine": [
+      "tree_machine"
+    ],
+    "tree_machine": [],
+    "turtle": []
+  },
+  "project_module_count": 22,
+  "project_sources": {
+    "certificate_boundary_search": {
+      "bytes": 7089,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/certificate_boundary_search.py",
+      "sha256": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a"
+    },
+    "interned_quantified_family_points_v1": {
+      "bytes": 4311,
+      "path": "/private/tmp/gcts-compact-point-representation-source-20261018/interned_quantified_family_points_v1.py",
+      "sha256": "fb37663b4c0c3de4e9f3c28564678af833857f7ebe761cd83275d62f123b9a8e"
+    },
+    "interned_result_reader_v2": {
+      "bytes": 4705,
+      "path": "/private/tmp/gcts-interned-output-reader-source-20261018/interned_result_reader_v2.py",
+      "sha256": "cd06c8372b6edd05774cf5974c5b6265bbc196afdc68d47507e54a2044dec836"
+    },
+    "logic": {
+      "bytes": 10808,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/logic.py",
+      "sha256": "5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011"
+    },
+    "native_inference_inventory": {
+      "bytes": 10594,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/native_inference_inventory.py",
+      "sha256": "89979f6be8f422ea293c2f0b6c0e966fc9a0710a8e15cbe58437f868cbf75091"
+    },
+    "native_inventory_policy": {
+      "bytes": 2746,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/native_inventory_policy.py",
+      "sha256": "8721a361f4a97e5311f8ed944431d49d08592ed102f50ed333d1ad2b9ff01591"
+    },
+    "native_receptor_points": {
+      "bytes": 8962,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/native_receptor_points.py",
+      "sha256": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888"
+    },
+    "proof_boundary": {
+      "bytes": 6992,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/proof_boundary.py",
+      "sha256": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f"
+    },
+    "quantified_family_points_v2": {
+      "bytes": 6472,
+      "path": "/private/tmp/gcts-quantified-adapter-source-20261018/quantified_family_points_v2.py",
+      "sha256": "f65eb38269db74ff5db0d9eb2096a38d7f07bbd6a579aa564acc692f84e4437c"
+    },
+    "quantified_receptors_v1": {
+      "bytes": 11060,
+      "path": "/private/tmp/gcts-quantified-adapter-source-20261018/quantified_receptors_v1.py",
+      "sha256": "d1c4afa10d58abbcf473cb3da8ee8768c974dd05d03ea00b988d574b2441af5a"
+    },
+    "quantified_symbolic_control_v2": {
+      "bytes": 26238,
+      "path": "/private/tmp/gcts-and-support-ordering-source-20261018/quantified_symbolic_control_v2.py",
+      "sha256": "740319d243cc2fd2eefe1d7ef1611d8bcfe6f0ff70a2ce2ed72771e78f64a391"
+    },
+    "receptor_support_ordering_v1": {
+      "bytes": 16868,
+      "path": "/private/tmp/gcts-and-support-ordering-source-20261018/receptor_support_ordering_v1.py",
+      "sha256": "18cf90ebd75d746db3eb251eaffa92cd6a25432b70f34653b57f3d58ef5d8adc"
+    },
+    "semantic_inventory_guidance": {
+      "bytes": 6942,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_inventory_guidance.py",
+      "sha256": "744948b67e2870ae24737469aceb920624b59d616e8a48f91b99d39f56c14a79"
+    },
+    "semantic_inventory_oracle": {
+      "bytes": 2180,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_inventory_oracle.py",
+      "sha256": "f41bfd56829b89b015fcf7a4dbd41dabd36110156e345353059980a66f6a4400"
+    },
+    "semantic_inventory_search_v2": {
+      "bytes": 15936,
+      "path": "/private/tmp/gcts-and-support-point-source-20261018/semantic_inventory_search_v2.py",
+      "sha256": "35443c958f2115efa18cc923fb4a4f1070e6e03ccf1d1adf2bb56ce1f7bab28b"
+    },
+    "semantic_lemma_inventory": {
+      "bytes": 7196,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_lemma_inventory.py",
+      "sha256": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad"
+    },
+    "semantic_point_smt": {
+      "bytes": 4593,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_point_smt.py",
+      "sha256": "6bcb3fb60529f6888836a1ca0c613b772cea192c9549620f968dbdf7cb9be74a"
+    },
+    "semantic_receptor_points": {
+      "bytes": 7409,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_receptor_points.py",
+      "sha256": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207"
+    },
+    "tape_binary": {
+      "bytes": 3756,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/tape_binary.py",
+      "sha256": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247"
+    },
+    "tape_tree_machine": {
+      "bytes": 19188,
+      "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/tape_tree_machine.py",
+      "sha256": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f"
+    },
+    "tree_machine": {
+      "bytes": 13290,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/tree_machine.py",
+      "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257"
+    },
+    "turtle": {
+      "bytes": 28533,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/turtle.py",
+      "sha256": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a"
+    }
+  },
+  "raw_project_import_closure_complete_for_declared_seeds": true,
+  "reader_scope": "Existing builtin/interned full-result reader modes, shared Reader alias and full canonical inverse remain. Added only compact Model alias and selected driver custody role; both Models imported/copied/sealed equally in both arms.",
+  "runtime": {
+    "Python_executable": {
+      "bytes": 18058560,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+      "sha256": "21a9986bad1dbbcd813a252b19b4263fc0755ed2dbf8632c83e5d6117a12f319"
+    },
+    "entry_symlink": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "entry_symlink_resolves_to": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+    "platform_required": "declared Darwin arm64/little-endian; verify dynamically in separately authorized Root cold",
+    "stdlib_root": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12",
+    "stdlib_scope": "Direct named entry-file/native-extension raw references only; interpreter builtins, recursive standard-library imports, native loader and OS dynamic library closure must be sealed/recorded by Root cold. No claim this metadata is an activation seal."
+  },
+  "schema": "ROOT-and-support-ordering-raw-runtime-closure-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "seeds": [
+    "quantified_receptors_v1",
+    "quantified_family_points_v2",
+    "semantic_lemma_inventory",
+    "semantic_inventory_oracle",
+    "semantic_point_smt",
+    "tape_binary",
+    "proof_boundary",
+    "semantic_receiver_driver",
+    "bounded_request_oracle",
+    "interned_result_reader_v2",
+    "interned_quantified_family_points_v1",
+    "semantic_inventory_search_v2",
+    "quantified_symbolic_control_v2",
+    "receptor_support_ordering_v1"
+  ],
+  "source_only": true,
+  "status": "ROOT_RAW_SOURCE_CLOSURE_NO_EXECUTION_GRANT",
+  "stdlib_entry_references": {
+    "__future__": {
+      "kind": "Python entry file",
+      "pin": {
+        "bytes": 5218,
+        "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/__future__.py",
+        "sha256": "981d4c398849f9ebcab72300d9c1fe288fd6d7f28957b3b3fa3a493a5836d95c"
+      }
+    },
+    "ast": {
+      "kind": "Python entry file",
+      "pin": {
+        "bytes": 64452,
+        "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/ast.py",
+        "sha256": "b515c23dbbc459329d3b802a3aac742cc456d7472e66f7ed6e9dc97e40596d7d"
+      }
+    },
+    "collections": {
+      "kind": "Python package entry",
+      "pin": {
+        "bytes": 52378,
+        "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/collections/__init__.py",
+        "sha256": "7fdb04dd248ab37909f46d2085bfee56b32d7e91e49ad3a2fad99c453295659b"
+      }
+    },
+    "copy": {
+      "kind": "Python entry file",
+      "pin": {
+        "bytes": 8412,
+        "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/copy.py",
+        "sha256": "cbd25547933176fcf6bb05c2adc9f4796d15ac20b9b82dcf890daea7203daeab"
+      }
+    },
+    "dataclasses": {
+      "kind": "Python entry file",
+      "pin": {
+        "bytes": 62085,
+        "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/dataclasses.py",
+        "sha256": "d242aea5fcf6408b1c1f622442f88f68b9526ce1f8bd2890d74a144677c427d9"
+      }
+    },
+    "fractions": {
+      "kind": "Python entry file",
+      "pin": {
+        "bytes": 38147,
+        "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/fractions.py",
+        "sha256": "d52d1ab9d5be26924e4914a5e40069c992bbfa68f773694c2e5ee8452d0766a0"
+      }
+    },
+    "hashlib": {
+      "kind": "Python entry file",
+      "pin": {
+        "bytes": 9349,
+        "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/hashlib.py",
+        "sha256": "6dbdebf270868b391080e21dc9687eddfaf321c965ad979f68d3f5c423c613ab"
+      }
+    },
+    "itertools": {
+      "interpreter_reference": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+      "kind": "builtin/runtime binding to confirm at activation",
+      "pins": []
+    },
+    "json": {
+      "kind": "Python package entry",
+      "pin": {
+        "bytes": 14020,
+        "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/__init__.py",
+        "sha256": "d5d41e2c29049515d295d81a6d40b4890fbec8d8482cfb401630f8ef2f77e4d5"
+      }
+    },
+    "math": {
+      "interpreter_reference": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+      "kind": "builtin/runtime binding to confirm at activation",
+      "pins": []
+    },
+    "pathlib": {
+      "kind": "Python entry file",
+      "pin": {
+        "bytes": 51052,
+        "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py",
+        "sha256": "10ba48ae8063cfe7589436041d0d4628c05f427c7709cf8e75e486f8930cc32c"
+      }
+    },
+    "random": {
+      "kind": "Python entry file",
+      "pin": {
+        "bytes": 34689,
+        "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/random.py",
+        "sha256": "de48263a837339c7e01cf9f3c4d756696e0e0775f7778eb9cf81ad5b00134569"
+      }
+    },
+    "struct": {
+      "kind": "Python entry file",
+      "pin": {
+        "bytes": 257,
+        "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/struct.py",
+        "sha256": "9c231f9497caf513a22dee8f790b07f969b0e45854a0bdd6dd84b492e08c2856"
+      }
+    },
+    "subprocess": {
+      "kind": "Python entry file",
+      "pin": {
+        "bytes": 88747,
+        "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py",
+        "sha256": "85d29b2bf0249f5436838298c9a60ee93508b1102e9ac43b001f8a7e7ae8f375"
+      }
+    },
+    "time": {
+      "interpreter_reference": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+      "kind": "builtin/runtime binding to confirm at activation",
+      "pins": []
+    }
+  },
+  "stdlib_import_roots": [
+    "__future__",
+    "ast",
+    "collections",
+    "copy",
+    "dataclasses",
+    "fractions",
+    "hashlib",
+    "itertools",
+    "json",
+    "math",
+    "os",
+    "pathlib",
+    "random",
+    "select",
+    "selectors",
+    "signal",
+    "stat",
+    "struct",
+    "subprocess",
+    "tempfile",
+    "time"
+  ],
+  "unresolved_project_imports": []
+}

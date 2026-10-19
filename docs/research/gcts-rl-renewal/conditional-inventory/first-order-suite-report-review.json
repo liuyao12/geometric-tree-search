@@ -1,0 +1,594 @@
+{
+  "schema": "first-order-suite-human-report-review-v1",
+  "scope": "Frozen V3 saved report/display/claim audit, not a proof checker or Source certification",
+  "author_identity": "/root",
+  "reviewer_identity": "/root/conventional_library",
+  "report_review_passed": true,
+  "saved_data_only": true,
+  "source_and_retained_data_only": true,
+  "scientific_calls": 0,
+  "scientific_replays": 0,
+  "scientific_acceptance": false,
+  "actual_execution_authorized": false,
+  "draft_assets": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/first-order-suite-progress-20261018/report-draft-assets-v3.json",
+    "sha256": "c1ac5ed8f43b1084087bf352cc5e9e041cc400b62238fa1bcb5e675526d50156",
+    "bytes": 19199
+  },
+  "assets": [
+    {
+      "bytes": 2046475,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-001-fixed-legacy-result.json.gz",
+      "sha256": "1f37be6975a265f7dea0ac2b15339369d5e6eb931712062ddf4130ab5a274a4f"
+    },
+    {
+      "bytes": 1660612,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-001-fixed-legacy-proof.html",
+      "sha256": "ca53e96c094e1569f73a675749b185e9e60a1eb55718ea4b41072016c57a8d99"
+    },
+    {
+      "bytes": 1378631,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-001-symbolic-and-support-result.json.gz",
+      "sha256": "9856527bd35da39c2c9381e5e7b6911cc9b423460c0550158451e4331e00cc0d"
+    },
+    {
+      "bytes": 1909601,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-001-symbolic-and-support-proof.html",
+      "sha256": "d61bd4c30cfd7e18975b55fe7910d2497714e374924eab2f57617fc32cf1dce3"
+    },
+    {
+      "bytes": 1363640,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-001-symbolic-legacy-result.json.gz",
+      "sha256": "91e873efa996b6c07caab2018f20a604451e09c940262ea116955ab64dbf5d67"
+    },
+    {
+      "bytes": 1909588,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-001-symbolic-legacy-proof.html",
+      "sha256": "a72642798d943194484bd30bf5753bd126bc4c7972af52ae6243a777ed5a2299"
+    },
+    {
+      "bytes": 2047964,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-001-fixed-and-support-result.json.gz",
+      "sha256": "8401c7a3b92b06fdceac4270080cf4da12d679476374a846518b6757d9bedbe3"
+    },
+    {
+      "bytes": 1602973,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-001-fixed-and-support-proof.html",
+      "sha256": "d1458edb732733f36bc1c46fbdd8b8536af64a19a55d00ba9c0c3c86d69d0009"
+    },
+    {
+      "bytes": 46023,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-002-symbolic-and-support-result.json.gz",
+      "sha256": "723b16ea7bfb268fdfd185b9b58069319e17c48c46aa5b7f0c13c19069e1c7b5"
+    },
+    {
+      "bytes": 46031,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-002-symbolic-legacy-result.json.gz",
+      "sha256": "7ac7e248f05d435155db6ceb8b98dbb56a37a2b305c2059084c0d28923faf739"
+    },
+    {
+      "bytes": 46028,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-002-fixed-and-support-result.json.gz",
+      "sha256": "ed1d6bdf0738d146d00d8bb94455aa35316e4d7d5d7324d92248f46244564313"
+    },
+    {
+      "bytes": 46020,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-002-fixed-legacy-result.json.gz",
+      "sha256": "367adbf459399341b6034c030a9ae3da4f5dda70ff5e13f23d03b6a7f5cd0107"
+    },
+    {
+      "bytes": 57486,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-003-symbolic-legacy-result.json.gz",
+      "sha256": "5837c681d674c781dd6535da8d4356079a9bf9b3740da4056f769a089d7aece8"
+    },
+    {
+      "bytes": 57445,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-003-fixed-and-support-result.json.gz",
+      "sha256": "a47ef8d817a95383c047ef91d7a8190b6bf70d4445f38795419a2049c13abd1a"
+    },
+    {
+      "bytes": 57495,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-003-fixed-legacy-result.json.gz",
+      "sha256": "ce24a62d9a17e74b7ab611114eb0a17663cb348093c5b783d94941e8d9a82ee2"
+    },
+    {
+      "bytes": 57468,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-003-symbolic-and-support-result.json.gz",
+      "sha256": "455398a13b6c5f3a6c5e62d4eb103bebad4e8e25d4c5901840c670628e40515e"
+    },
+    {
+      "bytes": 2566633,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-004-fixed-and-support-result.json.gz",
+      "sha256": "2e8b51b8f0f40e858363286f49f03ca5550ee5e6ca6767ff1b8bc5a7a58365d8"
+    },
+    {
+      "bytes": 1857563,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-004-fixed-and-support-proof.html",
+      "sha256": "0d8d3f1c7cc17761cd9f9d33c049d2da65a7e6b4c8a20e97bc412451a8cab20d"
+    },
+    {
+      "bytes": 2588819,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-004-fixed-legacy-result.json.gz",
+      "sha256": "f7b857117bb6272fa752e3f338983e34371d91d93725c938ca01fb9a1921d39a"
+    },
+    {
+      "bytes": 2409185,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-004-fixed-legacy-proof.html",
+      "sha256": "aa4824e3f9b64fcf52b88d798429cd1cecb42f6350858fbc991b9050f0c70da1"
+    },
+    {
+      "bytes": 1975229,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-004-symbolic-and-support-result.json.gz",
+      "sha256": "2c344e0b374bdbd614135efc58405474228f39d670a8724341fb1da22c9f8a63"
+    },
+    {
+      "bytes": 2349285,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-004-symbolic-and-support-proof.html",
+      "sha256": "b668d38becee314639a38aacfaaddab202ac5669d4f9262ae8603fd134ba3405"
+    },
+    {
+      "bytes": 1964576,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-004-symbolic-legacy-result.json.gz",
+      "sha256": "c0a54ebc64b8315fe5f49eb15801bdf1bf31a265a53bf2d3f61ef40f12999371"
+    },
+    {
+      "bytes": 2349272,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-004-symbolic-legacy-proof.html",
+      "sha256": "32ba7e671597dc51e87a36cabf636370a32775347df081bb27c4362d49cb38ae"
+    },
+    {
+      "bytes": 71543,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-005-fixed-legacy-result.json.gz",
+      "sha256": "c31b7f1219ae27a025d55125ccebef6a807c42982688e280f640902ae8b729a4"
+    },
+    {
+      "bytes": 71557,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-005-symbolic-and-support-result.json.gz",
+      "sha256": "e2bebb34c99254b2967acca717fbef2eae6a9795cc8f5d9c045ff1afa92049a4"
+    },
+    {
+      "bytes": 71525,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-005-symbolic-legacy-result.json.gz",
+      "sha256": "bf9a199937a23a4eb80ee5111e7d69313bae240544d2cd784e000bd8f2e284b6"
+    },
+    {
+      "bytes": 71532,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-005-fixed-and-support-result.json.gz",
+      "sha256": "42f0d8f8bb5ec462dad97b7c9cebfab8de3c9a63d394307ebfcbf87bc704b453"
+    },
+    {
+      "bytes": 3236453,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-006-symbolic-and-support-result.json.gz",
+      "sha256": "5ca9a63bea560cd5d545ed5b323f440886c84daca24d354fb40b337a1b3938ba"
+    },
+    {
+      "bytes": 2713287,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-006-symbolic-legacy-result.json.gz",
+      "sha256": "0dd0c1bb95f05e90673dcc6b3cad8fca45c3238a31daba239499d08d77562349"
+    },
+    {
+      "bytes": 7834328,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-006-fixed-and-support-result.json.gz",
+      "sha256": "a9fc0375b4e494beb1b3f22258f0a13795591c996b5252ce88902ed93f98cc00"
+    },
+    {
+      "bytes": 8065555,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-006-fixed-legacy-result.json.gz",
+      "sha256": "7dc537e53fc5c028697bffde0424dc4d404acc97c2bb5204af4e90909a7029c2"
+    },
+    {
+      "bytes": 1325599,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-007-symbolic-legacy-result.json.gz",
+      "sha256": "d256eeb5e11cd5a86cf505146b07dbb7e114743d3bc6c36371940e19e8935beb"
+    },
+    {
+      "bytes": 5223326,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-007-fixed-and-support-result.json.gz",
+      "sha256": "9c292347c1b7587f7f5ccde60128458ce6cdbb1c61b781d75286cc0eaf8b29bd"
+    },
+    {
+      "bytes": 5336750,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-007-fixed-legacy-result.json.gz",
+      "sha256": "95cd695a07982debfb6a711e797de92b4ad436ce244c174dc15ba2e68e28f9d5"
+    },
+    {
+      "bytes": 1662287,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-007-symbolic-and-support-result.json.gz",
+      "sha256": "bf9d8d65f781423e996b01566c43401fbbde9b8ae96fc82a263d97cff5d6842a"
+    },
+    {
+      "bytes": 3813767,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-008-fixed-and-support-result.json.gz",
+      "sha256": "00da918fb76409988d0e6e7c4b5b14eb0bf3b1bdb4cc62d0ea92846155b7b9bb"
+    },
+    {
+      "bytes": 3602820,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-008-fixed-legacy-result.json.gz",
+      "sha256": "b7a1ad9c49b0ddb084afbdbc79c3b393621c25ca16e5685ff6c42727f74dd958"
+    },
+    {
+      "bytes": 1442226,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-008-symbolic-and-support-result.json.gz",
+      "sha256": "fa1fa85538e11972f06e94b984928e0d1da7636324103a5ac6cadb5fb80dd4b4"
+    },
+    {
+      "bytes": 1236559,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-008-symbolic-legacy-result.json.gz",
+      "sha256": "696bdeb5ceacda1ba700c46f8aefbe937450e95bfd78beb4d175ece3944ca1cd"
+    },
+    {
+      "bytes": 2118203,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-009-fixed-legacy-result.json.gz",
+      "sha256": "63f6031401407f01b9dc0daef857e043d7b58af7ef09d0a962ec228982f5f585"
+    },
+    {
+      "bytes": 1709404,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-009-fixed-legacy-proof.html",
+      "sha256": "e6be632a29299857e9f5f9522fe0bcb6294e22619e5b75aaeb4e49cc36ed7a0f"
+    },
+    {
+      "bytes": 1450588,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-009-symbolic-and-support-result.json.gz",
+      "sha256": "611c1c1ca71e4b14966ff18400b76feefb469c3c54509f65ef5e8d6a70ae035e"
+    },
+    {
+      "bytes": 1942116,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-009-symbolic-and-support-proof.html",
+      "sha256": "42cfe665c82db15e698d46b67427b47a3a32ab2e04bdf1699c55909c0b8347b0"
+    },
+    {
+      "bytes": 1435461,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-009-symbolic-legacy-result.json.gz",
+      "sha256": "de4185a490021ecf70366fa633eab7af33709a8676393f006f66e27d9cdd5bc9"
+    },
+    {
+      "bytes": 1942103,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-009-symbolic-legacy-proof.html",
+      "sha256": "1f54620b445f68e93a3cb562bd2c26b3026c52cd858c4fb558a1a7f09ef5757e"
+    },
+    {
+      "bytes": 2120255,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-009-fixed-and-support-result.json.gz",
+      "sha256": "b72ff3b69c05cd754be5cf18a0c0f4e861704635eb7ed1ab29525916f40ece8d"
+    },
+    {
+      "bytes": 1636067,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-009-fixed-and-support-proof.html",
+      "sha256": "8cbf2060820609c2117297439f54d4181143d62ef530a03fa30e939daf107dd7"
+    },
+    {
+      "bytes": 71741,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-010-symbolic-and-support-result.json.gz",
+      "sha256": "677222a4421dae804cfd6a93937dc8a4d7e81980a1829c05d2456340fe61a983"
+    },
+    {
+      "bytes": 71741,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-010-symbolic-legacy-result.json.gz",
+      "sha256": "9832fb4a4c6158d9ee909ad3d8bf73a93c5febe80d8583ca84754134f72b81a9"
+    },
+    {
+      "bytes": 71755,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-010-fixed-and-support-result.json.gz",
+      "sha256": "edb980ff542acbbccb44227b24b279f18a8a5269fa1d776ac1f0ba0ccc838e4e"
+    },
+    {
+      "bytes": 71749,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-010-fixed-legacy-result.json.gz",
+      "sha256": "5e63452f080318cf79b62cb8df0b71380b81be63e7d3f94344974740360b5b7f"
+    },
+    {
+      "bytes": 2469912,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/first-order-suite-summary.json",
+      "sha256": "83240fc304822b686fd5c4d38d856d876ef12edf3898789e4eb928b487fdce4a"
+    },
+    {
+      "bytes": 2465113,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/first-order-suite-admission.json",
+      "sha256": "da6088925e44be6ca4bcb7fb21573fc676c8706eb01cc59f5eb73ceb7998371c"
+    },
+    {
+      "bytes": 26168,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/first-order-suite-declaration.json",
+      "sha256": "1d79da9c0ae23c0b5e1073e18957edec3ad89fea944e4d4c656816df802e468c"
+    },
+    {
+      "bytes": 25396,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/first-order-suite-design.json",
+      "sha256": "3b324a86de79a408a4d1317d94c6e03a807e4367afaf15f24cf0ec5e2288139f"
+    },
+    {
+      "bytes": 73258,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/first-order-suite-runtime-closure.json",
+      "sha256": "e3ed95935216bdbae1cfea900050718a7b21f81a11dc9d50a608585101e8d1cf"
+    },
+    {
+      "bytes": 22422,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/first-order-suite-inputs.json",
+      "sha256": "1a42c2ab16680dddbac504ca5b2d79559370785884805cf4d56b5c1c22c63dc0"
+    },
+    {
+      "bytes": 40325,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/first-order-suite.html",
+      "sha256": "39083aea8c5751b125b8f4069057ddda459c411c801e4185709c0ac6864bb3bd"
+    },
+    {
+      "bytes": 87760,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/reader.html",
+      "sha256": "216da7163944a264a87a0fc259e3353a0be1389570d8ad2b63d924ef268bf15e"
+    },
+    {
+      "bytes": 15917,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/and-support-ordering.html",
+      "sha256": "c94523d6cb6b0c0b4091716a01c9d8a9c8a0afa1ac04046543be0f49a509f88b"
+    }
+  ],
+  "pure_renderer": {
+    "bytes": 23778,
+    "path": "/private/tmp/gcts-semantic-proof-renderer-source-20261018/semantic_proof_renderer_v2.py",
+    "sha256": "bd929c531205dfd9fcfd6732c9de554d71e2abdd492a80aac1dd094965b77e77"
+  },
+  "Root_admission": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/first-order-suite-progress-20261018/ROOT-actual-admission-v1.json",
+    "sha256": "da6088925e44be6ca4bcb7fb21573fc676c8706eb01cc59f5eb73ceb7998371c",
+    "bytes": 2465113
+  },
+  "independent_data_review": {
+    "path": "/private/tmp/gcts-first-order-suite-retained-data-peer-20261018/typed-data-review-v1.json",
+    "sha256": "b3619abc106f3b91b2d4a1ea1d2e6d42aa5ed9a9917b0759e7fb436ae690dc2b",
+    "bytes": 420125
+  },
+  "independent_resource_review": {
+    "path": "/private/tmp/gcts-first-order-suite-retained-resource-peer-20261018/typed-resource-review-v1.json",
+    "sha256": "334567150bff9a2277c13a2f643330a63ad468ac1154ccd7b8cc0713025ed6a4",
+    "bytes": 11139
+  },
+  "comparison_analysis": {
+    "path": "/private/tmp/gcts-first-order-suite-comparison-peer-20261018/typed-comparison-analysis-v1.json",
+    "sha256": "44c8ddd909e9f68ad09b9ec95fb9deb8661533810bec75d932d8d33feec12906",
+    "bytes": 53644
+  },
+  "comparison_data": {
+    "path": "/private/tmp/gcts-first-order-suite-comparison-peer-20261018/retained-comparison-data-v2.json",
+    "sha256": "778cd84e170ac2c333a90157b419a0dd3dbd470698baf0a3a32c3bed05ee030e",
+    "bytes": 470203
+  },
+  "raw_display_audit": {
+    "path": "/private/tmp/gcts-first-order-suite-report-peer-20261018/raw-display-audit-v2.json",
+    "sha256": "b73f5125473e20cb387ec3e959453a2a142cdd943f2f9b24d539e225ba1375a3",
+    "bytes": 42383355
+  },
+  "display_audit_Source": {
+    "path": "/private/tmp/gcts-first-order-suite-report-peer-20261018/audit_display_v2.py",
+    "sha256": "3db126b46eed469761dbcbe8847d3721d506bffcecd008bf6cea5dce610f7790",
+    "bytes": 24303
+  },
+  "summary": {
+    "checks": 337376,
+    "mismatches": 0,
+    "displayed_proof_rows": 520,
+    "ordered_port_rows": 174,
+    "registered_bodies": 104,
+    "selected_tiles": 672,
+    "point_value_rows": 80783,
+    "proof_readers": 12,
+    "statement_ASTs": 10,
+    "main_cost_rows": 40,
+    "matrix_cells": 40,
+    "current_HTML_pages_with_unique_ID_and_MathJax_checks": 15,
+    "full_raw_frozen_asset_pins": 61
+  },
+  "proof_display_details": [
+    {
+      "file": "fol-001-fixed-legacy-proof.html",
+      "invocation_id": "fol-suite-001-fixed-legacy-ROOT-20261018-v1",
+      "root_rows": 12,
+      "registered_bodies": 10,
+      "lemma_rows": 38,
+      "tiles": 60,
+      "point_value_rows": 5561,
+      "arity": 3
+    },
+    {
+      "file": "fol-001-symbolic-and-support-proof.html",
+      "invocation_id": "fol-suite-001-symbolic-and-support-ROOT-20261018-v1",
+      "root_rows": 12,
+      "registered_bodies": 10,
+      "lemma_rows": 38,
+      "tiles": 60,
+      "point_value_rows": 6555,
+      "arity": 3
+    },
+    {
+      "file": "fol-001-symbolic-legacy-proof.html",
+      "invocation_id": "fol-suite-001-symbolic-legacy-ROOT-20261018-v1",
+      "root_rows": 12,
+      "registered_bodies": 10,
+      "lemma_rows": 38,
+      "tiles": 60,
+      "point_value_rows": 6555,
+      "arity": 3
+    },
+    {
+      "file": "fol-001-fixed-and-support-proof.html",
+      "invocation_id": "fol-suite-001-fixed-and-support-ROOT-20261018-v1",
+      "root_rows": 12,
+      "registered_bodies": 10,
+      "lemma_rows": 38,
+      "tiles": 60,
+      "point_value_rows": 5378,
+      "arity": 3
+    },
+    {
+      "file": "fol-004-fixed-and-support-proof.html",
+      "invocation_id": "fol-suite-004-fixed-and-support-ROOT-20261018-v1",
+      "root_rows": 12,
+      "registered_bodies": 6,
+      "lemma_rows": 18,
+      "tiles": 48,
+      "point_value_rows": 6576,
+      "arity": 2
+    },
+    {
+      "file": "fol-004-fixed-legacy-proof.html",
+      "invocation_id": "fol-suite-004-fixed-legacy-ROOT-20261018-v1",
+      "root_rows": 12,
+      "registered_bodies": 6,
+      "lemma_rows": 18,
+      "tiles": 48,
+      "point_value_rows": 8724,
+      "arity": 2
+    },
+    {
+      "file": "fol-004-symbolic-and-support-proof.html",
+      "invocation_id": "fol-suite-004-symbolic-and-support-ROOT-20261018-v1",
+      "root_rows": 12,
+      "registered_bodies": 6,
+      "lemma_rows": 18,
+      "tiles": 48,
+      "point_value_rows": 8452,
+      "arity": 2
+    },
+    {
+      "file": "fol-004-symbolic-legacy-proof.html",
+      "invocation_id": "fol-suite-004-symbolic-legacy-ROOT-20261018-v1",
+      "root_rows": 12,
+      "registered_bodies": 6,
+      "lemma_rows": 18,
+      "tiles": 48,
+      "point_value_rows": 8452,
+      "arity": 2
+    },
+    {
+      "file": "fol-009-fixed-legacy-proof.html",
+      "invocation_id": "fol-suite-009-fixed-legacy-ROOT-20261018-v1",
+      "root_rows": 12,
+      "registered_bodies": 10,
+      "lemma_rows": 38,
+      "tiles": 60,
+      "point_value_rows": 5724,
+      "arity": 3
+    },
+    {
+      "file": "fol-009-symbolic-and-support-proof.html",
+      "invocation_id": "fol-suite-009-symbolic-and-support-ROOT-20261018-v1",
+      "root_rows": 12,
+      "registered_bodies": 10,
+      "lemma_rows": 38,
+      "tiles": 60,
+      "point_value_rows": 6663,
+      "arity": 3
+    },
+    {
+      "file": "fol-009-symbolic-legacy-proof.html",
+      "invocation_id": "fol-suite-009-symbolic-legacy-ROOT-20261018-v1",
+      "root_rows": 12,
+      "registered_bodies": 10,
+      "lemma_rows": 38,
+      "tiles": 60,
+      "point_value_rows": 6663,
+      "arity": 3
+    },
+    {
+      "file": "fol-009-fixed-and-support-proof.html",
+      "invocation_id": "fol-suite-009-fixed-and-support-ROOT-20261018-v1",
+      "root_rows": 12,
+      "registered_bodies": 10,
+      "lemma_rows": 38,
+      "tiles": 60,
+      "point_value_rows": 5480,
+      "arity": 3
+    }
+  ],
+  "findings": [
+    {
+      "id": "H1",
+      "disposition": "PASS",
+      "finding": "All40 launch-order cost rows, outcomes, method-specific work counts, search/full times, conservative memory and full rawMiB values match retained records at their displayed precision. All40 outcome matrix cells link to the correct proof reader or statement. Counts12proofs/16inventoryspace/12searchbudget,3/10inputslots and2/8primarygroups are correct;009/010are explicitly correlated renames."
+    },
+    {
+      "id": "H2",
+      "disposition": "PASS",
+      "finding": "All ten displayed assertion statements parse back to the exact frozen signature/ordered hypothesis formulas and target AST. The restricted display parser covers only visible term/function/equality/predicate/negation/implication/quantifier notation; it performs no inference, capture substitution or proof search."
+    },
+    {
+      "id": "H3",
+      "disposition": "PASS",
+      "finding": "All12 retained root words and all104complete registered lemma bodies are shown:520root/body rows with exact formulaAST, literal command, one-based display/zero-based actual references, essential-row highlighting and recorded English rule reasons.174ordered port rows preserve every declared input, order/repetition, actual source formula and correct anchor."
+    },
+    {
+      "id": "H4",
+      "disposition": "PASS",
+      "finding": "All672actual selected point glyphs and12rows perreader match full selected placement packets. Derivedarity is3for001/009and2for004, yielding60or48selectedrolepoints. Every one of80,783occupancy/mark rows has the exact coordinate, integer/scaledvalue and layercolor. Assignedzero, terminators and distant marks are displayed from literal data, with no graph/Native replay. Full selected packet JSON and all body/metadata payloads match."
+    },
+    {
+      "id": "H5",
+      "disposition": "PASS",
+      "finding": "Formula delimiters and established MathJax loading are present, current IDs are unique and current-page/cross-proof anchors resolve. C/G/input glyphrole colors and formula/command/mode/source markingcolors agree with recorded roles/layers. Schematic square/translation-only and12/12normalization limits are explicit; the readers do not claim primitive-square macro inlining."
+    },
+    {
+      "id": "H6",
+      "disposition": "PASS",
+      "finding": "V3proofquality9\u21925essentialprimitivecommands/depth5\u21923for equalitytransport+rename agrees with independent saved-data review; symboliclegacyalreadyhas5/depth3and allwordshave12highlevel rows. Report states unchanged solvedcases and no solve-rate/GCTS/RL superiority. All12proofshaveessentiallevel1calls, noessentialGEN; directfamilyuse is distinguished from the old UI+GEN compositeflag."
+    },
+    {
+      "id": "H7",
+      "disposition": "PASS",
+      "finding": "Main/report metadata distinguish presearch whole-inventoryunknown_space_budget from exhausted search, retainallfailures/denominators, samecase fullavailablepreimages, fullcost/resource conventions and no supplied target routes. Authored/nonofficial/nonblind/single-deterministic/3,3,2,2order constraints and no newRL/fixeduniversalWang/PA/Hilbert/plane-tiling claim are truthful."
+    },
+    {
+      "id": "H8",
+      "disposition": "PASS",
+      "finding": "Public summary actuals equal Rootadmission actuals literally; admission/design/declaration/closure/input publiccopies have exact source bytes. Current childreader announces FORTYfrozenruns/2of8groups and labels the earliercurried card as earlierdevelopment. Earlierexperiment page points to current first-order result, without rewriting its historical four-run outcomes."
+    },
+    {
+      "id": "H9",
+      "disposition": "PENDING_FINAL_PACKAGE_GATE",
+      "finding": "All61frozen assets remain exact. New current proof/rawgzip/casearchive file links exist and currentanchors pass. Four reviewJSONlinks, commonarchive and finalmanifest were intentionally pending and are excluded from publication-ready link acceptance. Rootmust complete and independently audit those objects plus archive/gzipbyteidentity, then verify deployedassets. No missing pendinglink is hidden as a passed finalpackage test."
+    }
+  ],
+  "pending_packaging_links": [
+    {
+      "page": "first-order-suite.html",
+      "href": "first-order-suite-evidence-manifest.json",
+      "scope": "PENDING_FINAL_PACKAGE"
+    },
+    {
+      "page": "first-order-suite.html",
+      "href": "first-order-suite-data-review.json",
+      "scope": "PENDING_FINAL_PACKAGE"
+    },
+    {
+      "page": "first-order-suite.html",
+      "href": "first-order-suite-resource-review.json",
+      "scope": "PENDING_FINAL_PACKAGE"
+    },
+    {
+      "page": "first-order-suite.html",
+      "href": "first-order-suite-comparison-review.json",
+      "scope": "PENDING_FINAL_PACKAGE"
+    },
+    {
+      "page": "first-order-suite.html",
+      "href": "first-order-suite-report-review.json",
+      "scope": "PENDING_FINAL_PACKAGE"
+    },
+    {
+      "page": "first-order-suite.html",
+      "href": "first-order-suite-common-evidence.zip",
+      "scope": "PENDING_FINAL_PACKAGE"
+    }
+  ],
+  "ancestry": {
+    "reviewer_overlap": "Authored point ordering Source, earlier quantified/compact Model/storage/driver work and parent proof renderer. Also authored retained comparison and grant/plan/composition reviews. Did not author Root report or execute actuals.",
+    "separate_authorities": "This is saved display/claim review only. Current immutable pure rendererbd929identity is pinned and its output is independently compared; no own renderer Source certificate or mathematical proof validity is inferred. Rootadmission and Receiverdata/Controlresource peers are separate scopes.",
+    "no_scientific_evaluation": "No renderer, compiler, Reader, Model, support helper, search, Native, solver, proof kernel, codec or fixture imported/called. Ordinary rawJSON/HTML/Source/hash processing only."
+  },
+  "limits": [
+    "No browser, MathJax JavaScript execution, CSS pixel layout, accessibility interaction, archive reproduction or live deployment was checked here. Root owns final visual/live/package QA.",
+    "Full mathematical/whole-region validity is not established by English or the restricted displayed-TeX parser; it remains Native/Rootadmission and distinct retained-data audit authority.",
+    "The audit checks every displayed literal selected packet and scalar row, not a replay of all40search trees or Native computations. Complete raw inputs/results remain separately retained.",
+    "Historical inherited child-reader links outside current fol-/first-order-suite assets were not rehydrated or exhaustively tested; current owned pages and newresultlinks were checked. Root final link audit remains required.",
+    "Reviewer auditV1 stopped afterall12proof checks because its own card-label predicate expected numeral40where page correctly spellsFORTY. V2corrects only that predicate/adds old-cardlabelcheck and repeats the complete audit; no report/result/Source changed."
+  ],
+  "final_status": "PASS for exactV3frozen human display/claims; final package/link/live gates remain separate. No report files edited."
+}

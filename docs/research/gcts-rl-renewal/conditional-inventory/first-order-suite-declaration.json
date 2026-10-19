@@ -1,0 +1,607 @@
+{
+  "actual_execution_authorized": false,
+  "author_identity": "/root",
+  "distinct_inputs": 10,
+  "execution": "Root-only sequential originalmaxone actuals with all agents idle. All40subjects/grants prospectively reviewed before first. Cohort closes all40 without tuning/case substitution/grammar or profile reduction/consumed retry. Ambiguous processownership must be resolved before nextslot.",
+  "failure_policy": "Retain ALL capacity/budget/grammar/memory/time/output/exception outcomes. Failed methods remain in denominator. A nativepositive aboveprofile remains diagnostic. No proof replay or scientific operation outside charged actuals.",
+  "frozen_scientific_runtime_closure": {
+    "bytes": 72661,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/and-support-ordering-progress-20261018/runtime-closure-v1.json",
+    "sha256": "8246d2d2afdd3045067af2ae12b45f9fe6619451bbd33fd47e6b09d0ae5f06b8"
+  },
+  "goal_complete": false,
+  "groups": [
+    {
+      "case_id": "prospective-fol-20261018-001",
+      "group": "ground-equality-predicate-transport",
+      "renaming_control_of": null,
+      "structural_primary": true
+    },
+    {
+      "case_id": "prospective-fol-20261018-002",
+      "group": "unary-function-congruence",
+      "renaming_control_of": null,
+      "structural_primary": true
+    },
+    {
+      "case_id": "prospective-fol-20261018-003",
+      "group": "ground-equality-chain",
+      "renaming_control_of": null,
+      "structural_primary": true
+    },
+    {
+      "case_id": "prospective-fol-20261018-004",
+      "group": "functional-universal-horn",
+      "renaming_control_of": null,
+      "structural_primary": true
+    },
+    {
+      "case_id": "prospective-fol-20261018-005",
+      "group": "binary-relational-permutation",
+      "renaming_control_of": null,
+      "structural_primary": true
+    },
+    {
+      "case_id": "prospective-fol-20261018-006",
+      "group": "quantified-shared-premise-fork-join",
+      "renaming_control_of": null,
+      "structural_primary": true
+    },
+    {
+      "case_id": "prospective-fol-20261018-007",
+      "group": "quantified-hypothetical-composition",
+      "renaming_control_of": null,
+      "structural_primary": true
+    },
+    {
+      "case_id": "prospective-fol-20261018-008",
+      "group": "quantified-contraposition",
+      "renaming_control_of": null,
+      "structural_primary": true
+    },
+    {
+      "case_id": "prospective-fol-20261018-009",
+      "group": "ground-equality-predicate-transport",
+      "renaming_control_of": "prospective-fol-20261018-001",
+      "structural_primary": false
+    },
+    {
+      "case_id": "prospective-fol-20261018-010",
+      "group": "binary-relational-permutation",
+      "renaming_control_of": "prospective-fol-20261018-005",
+      "structural_primary": false
+    }
+  ],
+  "input_capsule": {
+    "bytes": 22422,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/first-order-suite-progress-20261018/input-capsule-v1.json",
+    "sha256": "1a42c2ab16680dddbac504ca5b2d79559370785884805cf4d56b5c1c22c63dc0"
+  },
+  "intake_Source_handoff": {
+    "bytes": 5138,
+    "path": "/private/tmp/gcts-first-order-suite-intake-source-20261018/handoff-v1.json",
+    "sha256": "5a950ff347671ae4d93267eed8482148bb603d50ff7932fcb698c2d3073034fc"
+  },
+  "intervention": "No scientific implementation changes from sharedAND cohort: exact22project+2component aliases, same support helper/point search/symbolic search/driver/compiler/registry/Model/Native/reader/policy. Only assertion selection and exact cold/outer/observer custody Source adapt to10 frozen inputs; four arms per case.",
+  "limits": {
+    "check_steps": 2048,
+    "compile_queries": 512,
+    "conservative_worker_plus_native_peak_bytes": 1073741824,
+    "guard_steps": 1000000000,
+    "overall_seconds": 210,
+    "proposal_steps": 24,
+    "registry_steps": 5000000000,
+    "result_bytes": 134217728,
+    "search_max_nodes": 5000,
+    "search_seconds": 30,
+    "seed": 64000,
+    "work_seconds": 180
+  },
+  "method_domains": "Point original rowJoin setting24 plus arbitrarysampledproposals+defer; symbolic stable64legalcandidatewindows. Different workunits. No GCTS/RL advantage inferred without case-level comparison.",
+  "new_RL_training": false,
+  "prior_milestone": {
+    "bytes": 4117,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/and-support-ordering-progress-20261018/ROOT-live-final-v1.json",
+    "sha256": "fb5918aaa13ebed8305aecfe896757973f8bcfdbb6734ce61b4e45301bd502e6"
+  },
+  "required_next": "Independent rawinput/losslesscapsule/design review; minimal Sourceintake successors with unchanged scientific24closure; distinct composition/once reviews; Root full40+percase4armdeclarations/falseplans/subject review, then grants/delta/Rootadoption/allagentsidle. No execution authorized by design.",
+  "runtime_closure": {
+    "bytes": 73258,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/first-order-suite-progress-20261018/runtime-closure-v1.json",
+    "sha256": "e3ed95935216bdbae1cfea900050718a7b21f81a11dc9d50a608585101e8d1cf"
+  },
+  "schedule": [
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-001-fixed-legacy-ROOT-20261018-v1",
+      "case_order": 1,
+      "invocation_id": "fol-suite-001-fixed-legacy-ROOT-20261018-v1",
+      "mode": "fixed",
+      "model_storage": "literal_interned",
+      "order": 1,
+      "receiver_id": "prospective-fol-20261018-001",
+      "result_reader": "interned",
+      "search_ordering": "legacy",
+      "within_case_order": 1
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-001-symbolic-and-support-ROOT-20261018-v1",
+      "case_order": 1,
+      "invocation_id": "fol-suite-001-symbolic-and-support-ROOT-20261018-v1",
+      "mode": "symbolic",
+      "model_storage": "literal_interned",
+      "order": 2,
+      "receiver_id": "prospective-fol-20261018-001",
+      "result_reader": "interned",
+      "search_ordering": "and_support",
+      "within_case_order": 2
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-001-symbolic-legacy-ROOT-20261018-v1",
+      "case_order": 1,
+      "invocation_id": "fol-suite-001-symbolic-legacy-ROOT-20261018-v1",
+      "mode": "symbolic",
+      "model_storage": "literal_interned",
+      "order": 3,
+      "receiver_id": "prospective-fol-20261018-001",
+      "result_reader": "interned",
+      "search_ordering": "legacy",
+      "within_case_order": 3
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-001-fixed-and-support-ROOT-20261018-v1",
+      "case_order": 1,
+      "invocation_id": "fol-suite-001-fixed-and-support-ROOT-20261018-v1",
+      "mode": "fixed",
+      "model_storage": "literal_interned",
+      "order": 4,
+      "receiver_id": "prospective-fol-20261018-001",
+      "result_reader": "interned",
+      "search_ordering": "and_support",
+      "within_case_order": 4
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-002-symbolic-and-support-ROOT-20261018-v1",
+      "case_order": 2,
+      "invocation_id": "fol-suite-002-symbolic-and-support-ROOT-20261018-v1",
+      "mode": "symbolic",
+      "model_storage": "literal_interned",
+      "order": 5,
+      "receiver_id": "prospective-fol-20261018-002",
+      "result_reader": "interned",
+      "search_ordering": "and_support",
+      "within_case_order": 1
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-002-symbolic-legacy-ROOT-20261018-v1",
+      "case_order": 2,
+      "invocation_id": "fol-suite-002-symbolic-legacy-ROOT-20261018-v1",
+      "mode": "symbolic",
+      "model_storage": "literal_interned",
+      "order": 6,
+      "receiver_id": "prospective-fol-20261018-002",
+      "result_reader": "interned",
+      "search_ordering": "legacy",
+      "within_case_order": 2
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-002-fixed-and-support-ROOT-20261018-v1",
+      "case_order": 2,
+      "invocation_id": "fol-suite-002-fixed-and-support-ROOT-20261018-v1",
+      "mode": "fixed",
+      "model_storage": "literal_interned",
+      "order": 7,
+      "receiver_id": "prospective-fol-20261018-002",
+      "result_reader": "interned",
+      "search_ordering": "and_support",
+      "within_case_order": 3
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-002-fixed-legacy-ROOT-20261018-v1",
+      "case_order": 2,
+      "invocation_id": "fol-suite-002-fixed-legacy-ROOT-20261018-v1",
+      "mode": "fixed",
+      "model_storage": "literal_interned",
+      "order": 8,
+      "receiver_id": "prospective-fol-20261018-002",
+      "result_reader": "interned",
+      "search_ordering": "legacy",
+      "within_case_order": 4
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-003-symbolic-legacy-ROOT-20261018-v1",
+      "case_order": 3,
+      "invocation_id": "fol-suite-003-symbolic-legacy-ROOT-20261018-v1",
+      "mode": "symbolic",
+      "model_storage": "literal_interned",
+      "order": 9,
+      "receiver_id": "prospective-fol-20261018-003",
+      "result_reader": "interned",
+      "search_ordering": "legacy",
+      "within_case_order": 1
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-003-fixed-and-support-ROOT-20261018-v1",
+      "case_order": 3,
+      "invocation_id": "fol-suite-003-fixed-and-support-ROOT-20261018-v1",
+      "mode": "fixed",
+      "model_storage": "literal_interned",
+      "order": 10,
+      "receiver_id": "prospective-fol-20261018-003",
+      "result_reader": "interned",
+      "search_ordering": "and_support",
+      "within_case_order": 2
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-003-fixed-legacy-ROOT-20261018-v1",
+      "case_order": 3,
+      "invocation_id": "fol-suite-003-fixed-legacy-ROOT-20261018-v1",
+      "mode": "fixed",
+      "model_storage": "literal_interned",
+      "order": 11,
+      "receiver_id": "prospective-fol-20261018-003",
+      "result_reader": "interned",
+      "search_ordering": "legacy",
+      "within_case_order": 3
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-003-symbolic-and-support-ROOT-20261018-v1",
+      "case_order": 3,
+      "invocation_id": "fol-suite-003-symbolic-and-support-ROOT-20261018-v1",
+      "mode": "symbolic",
+      "model_storage": "literal_interned",
+      "order": 12,
+      "receiver_id": "prospective-fol-20261018-003",
+      "result_reader": "interned",
+      "search_ordering": "and_support",
+      "within_case_order": 4
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-004-fixed-and-support-ROOT-20261018-v1",
+      "case_order": 4,
+      "invocation_id": "fol-suite-004-fixed-and-support-ROOT-20261018-v1",
+      "mode": "fixed",
+      "model_storage": "literal_interned",
+      "order": 13,
+      "receiver_id": "prospective-fol-20261018-004",
+      "result_reader": "interned",
+      "search_ordering": "and_support",
+      "within_case_order": 1
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-004-fixed-legacy-ROOT-20261018-v1",
+      "case_order": 4,
+      "invocation_id": "fol-suite-004-fixed-legacy-ROOT-20261018-v1",
+      "mode": "fixed",
+      "model_storage": "literal_interned",
+      "order": 14,
+      "receiver_id": "prospective-fol-20261018-004",
+      "result_reader": "interned",
+      "search_ordering": "legacy",
+      "within_case_order": 2
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-004-symbolic-and-support-ROOT-20261018-v1",
+      "case_order": 4,
+      "invocation_id": "fol-suite-004-symbolic-and-support-ROOT-20261018-v1",
+      "mode": "symbolic",
+      "model_storage": "literal_interned",
+      "order": 15,
+      "receiver_id": "prospective-fol-20261018-004",
+      "result_reader": "interned",
+      "search_ordering": "and_support",
+      "within_case_order": 3
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-004-symbolic-legacy-ROOT-20261018-v1",
+      "case_order": 4,
+      "invocation_id": "fol-suite-004-symbolic-legacy-ROOT-20261018-v1",
+      "mode": "symbolic",
+      "model_storage": "literal_interned",
+      "order": 16,
+      "receiver_id": "prospective-fol-20261018-004",
+      "result_reader": "interned",
+      "search_ordering": "legacy",
+      "within_case_order": 4
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-005-fixed-legacy-ROOT-20261018-v1",
+      "case_order": 5,
+      "invocation_id": "fol-suite-005-fixed-legacy-ROOT-20261018-v1",
+      "mode": "fixed",
+      "model_storage": "literal_interned",
+      "order": 17,
+      "receiver_id": "prospective-fol-20261018-005",
+      "result_reader": "interned",
+      "search_ordering": "legacy",
+      "within_case_order": 1
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-005-symbolic-and-support-ROOT-20261018-v1",
+      "case_order": 5,
+      "invocation_id": "fol-suite-005-symbolic-and-support-ROOT-20261018-v1",
+      "mode": "symbolic",
+      "model_storage": "literal_interned",
+      "order": 18,
+      "receiver_id": "prospective-fol-20261018-005",
+      "result_reader": "interned",
+      "search_ordering": "and_support",
+      "within_case_order": 2
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-005-symbolic-legacy-ROOT-20261018-v1",
+      "case_order": 5,
+      "invocation_id": "fol-suite-005-symbolic-legacy-ROOT-20261018-v1",
+      "mode": "symbolic",
+      "model_storage": "literal_interned",
+      "order": 19,
+      "receiver_id": "prospective-fol-20261018-005",
+      "result_reader": "interned",
+      "search_ordering": "legacy",
+      "within_case_order": 3
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-005-fixed-and-support-ROOT-20261018-v1",
+      "case_order": 5,
+      "invocation_id": "fol-suite-005-fixed-and-support-ROOT-20261018-v1",
+      "mode": "fixed",
+      "model_storage": "literal_interned",
+      "order": 20,
+      "receiver_id": "prospective-fol-20261018-005",
+      "result_reader": "interned",
+      "search_ordering": "and_support",
+      "within_case_order": 4
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-006-symbolic-and-support-ROOT-20261018-v1",
+      "case_order": 6,
+      "invocation_id": "fol-suite-006-symbolic-and-support-ROOT-20261018-v1",
+      "mode": "symbolic",
+      "model_storage": "literal_interned",
+      "order": 21,
+      "receiver_id": "prospective-fol-20261018-006",
+      "result_reader": "interned",
+      "search_ordering": "and_support",
+      "within_case_order": 1
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-006-symbolic-legacy-ROOT-20261018-v1",
+      "case_order": 6,
+      "invocation_id": "fol-suite-006-symbolic-legacy-ROOT-20261018-v1",
+      "mode": "symbolic",
+      "model_storage": "literal_interned",
+      "order": 22,
+      "receiver_id": "prospective-fol-20261018-006",
+      "result_reader": "interned",
+      "search_ordering": "legacy",
+      "within_case_order": 2
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-006-fixed-and-support-ROOT-20261018-v1",
+      "case_order": 6,
+      "invocation_id": "fol-suite-006-fixed-and-support-ROOT-20261018-v1",
+      "mode": "fixed",
+      "model_storage": "literal_interned",
+      "order": 23,
+      "receiver_id": "prospective-fol-20261018-006",
+      "result_reader": "interned",
+      "search_ordering": "and_support",
+      "within_case_order": 3
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-006-fixed-legacy-ROOT-20261018-v1",
+      "case_order": 6,
+      "invocation_id": "fol-suite-006-fixed-legacy-ROOT-20261018-v1",
+      "mode": "fixed",
+      "model_storage": "literal_interned",
+      "order": 24,
+      "receiver_id": "prospective-fol-20261018-006",
+      "result_reader": "interned",
+      "search_ordering": "legacy",
+      "within_case_order": 4
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-007-symbolic-legacy-ROOT-20261018-v1",
+      "case_order": 7,
+      "invocation_id": "fol-suite-007-symbolic-legacy-ROOT-20261018-v1",
+      "mode": "symbolic",
+      "model_storage": "literal_interned",
+      "order": 25,
+      "receiver_id": "prospective-fol-20261018-007",
+      "result_reader": "interned",
+      "search_ordering": "legacy",
+      "within_case_order": 1
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-007-fixed-and-support-ROOT-20261018-v1",
+      "case_order": 7,
+      "invocation_id": "fol-suite-007-fixed-and-support-ROOT-20261018-v1",
+      "mode": "fixed",
+      "model_storage": "literal_interned",
+      "order": 26,
+      "receiver_id": "prospective-fol-20261018-007",
+      "result_reader": "interned",
+      "search_ordering": "and_support",
+      "within_case_order": 2
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-007-fixed-legacy-ROOT-20261018-v1",
+      "case_order": 7,
+      "invocation_id": "fol-suite-007-fixed-legacy-ROOT-20261018-v1",
+      "mode": "fixed",
+      "model_storage": "literal_interned",
+      "order": 27,
+      "receiver_id": "prospective-fol-20261018-007",
+      "result_reader": "interned",
+      "search_ordering": "legacy",
+      "within_case_order": 3
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-007-symbolic-and-support-ROOT-20261018-v1",
+      "case_order": 7,
+      "invocation_id": "fol-suite-007-symbolic-and-support-ROOT-20261018-v1",
+      "mode": "symbolic",
+      "model_storage": "literal_interned",
+      "order": 28,
+      "receiver_id": "prospective-fol-20261018-007",
+      "result_reader": "interned",
+      "search_ordering": "and_support",
+      "within_case_order": 4
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-008-fixed-and-support-ROOT-20261018-v1",
+      "case_order": 8,
+      "invocation_id": "fol-suite-008-fixed-and-support-ROOT-20261018-v1",
+      "mode": "fixed",
+      "model_storage": "literal_interned",
+      "order": 29,
+      "receiver_id": "prospective-fol-20261018-008",
+      "result_reader": "interned",
+      "search_ordering": "and_support",
+      "within_case_order": 1
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-008-fixed-legacy-ROOT-20261018-v1",
+      "case_order": 8,
+      "invocation_id": "fol-suite-008-fixed-legacy-ROOT-20261018-v1",
+      "mode": "fixed",
+      "model_storage": "literal_interned",
+      "order": 30,
+      "receiver_id": "prospective-fol-20261018-008",
+      "result_reader": "interned",
+      "search_ordering": "legacy",
+      "within_case_order": 2
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-008-symbolic-and-support-ROOT-20261018-v1",
+      "case_order": 8,
+      "invocation_id": "fol-suite-008-symbolic-and-support-ROOT-20261018-v1",
+      "mode": "symbolic",
+      "model_storage": "literal_interned",
+      "order": 31,
+      "receiver_id": "prospective-fol-20261018-008",
+      "result_reader": "interned",
+      "search_ordering": "and_support",
+      "within_case_order": 3
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-008-symbolic-legacy-ROOT-20261018-v1",
+      "case_order": 8,
+      "invocation_id": "fol-suite-008-symbolic-legacy-ROOT-20261018-v1",
+      "mode": "symbolic",
+      "model_storage": "literal_interned",
+      "order": 32,
+      "receiver_id": "prospective-fol-20261018-008",
+      "result_reader": "interned",
+      "search_ordering": "legacy",
+      "within_case_order": 4
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-009-fixed-legacy-ROOT-20261018-v1",
+      "case_order": 9,
+      "invocation_id": "fol-suite-009-fixed-legacy-ROOT-20261018-v1",
+      "mode": "fixed",
+      "model_storage": "literal_interned",
+      "order": 33,
+      "receiver_id": "prospective-fol-20261018-009",
+      "result_reader": "interned",
+      "search_ordering": "legacy",
+      "within_case_order": 1
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-009-symbolic-and-support-ROOT-20261018-v1",
+      "case_order": 9,
+      "invocation_id": "fol-suite-009-symbolic-and-support-ROOT-20261018-v1",
+      "mode": "symbolic",
+      "model_storage": "literal_interned",
+      "order": 34,
+      "receiver_id": "prospective-fol-20261018-009",
+      "result_reader": "interned",
+      "search_ordering": "and_support",
+      "within_case_order": 2
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-009-symbolic-legacy-ROOT-20261018-v1",
+      "case_order": 9,
+      "invocation_id": "fol-suite-009-symbolic-legacy-ROOT-20261018-v1",
+      "mode": "symbolic",
+      "model_storage": "literal_interned",
+      "order": 35,
+      "receiver_id": "prospective-fol-20261018-009",
+      "result_reader": "interned",
+      "search_ordering": "legacy",
+      "within_case_order": 3
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-009-fixed-and-support-ROOT-20261018-v1",
+      "case_order": 9,
+      "invocation_id": "fol-suite-009-fixed-and-support-ROOT-20261018-v1",
+      "mode": "fixed",
+      "model_storage": "literal_interned",
+      "order": 36,
+      "receiver_id": "prospective-fol-20261018-009",
+      "result_reader": "interned",
+      "search_ordering": "and_support",
+      "within_case_order": 4
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-010-symbolic-and-support-ROOT-20261018-v1",
+      "case_order": 10,
+      "invocation_id": "fol-suite-010-symbolic-and-support-ROOT-20261018-v1",
+      "mode": "symbolic",
+      "model_storage": "literal_interned",
+      "order": 37,
+      "receiver_id": "prospective-fol-20261018-010",
+      "result_reader": "interned",
+      "search_ordering": "and_support",
+      "within_case_order": 1
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-010-symbolic-legacy-ROOT-20261018-v1",
+      "case_order": 10,
+      "invocation_id": "fol-suite-010-symbolic-legacy-ROOT-20261018-v1",
+      "mode": "symbolic",
+      "model_storage": "literal_interned",
+      "order": 38,
+      "receiver_id": "prospective-fol-20261018-010",
+      "result_reader": "interned",
+      "search_ordering": "legacy",
+      "within_case_order": 2
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-010-fixed-and-support-ROOT-20261018-v1",
+      "case_order": 10,
+      "invocation_id": "fol-suite-010-fixed-and-support-ROOT-20261018-v1",
+      "mode": "fixed",
+      "model_storage": "literal_interned",
+      "order": 39,
+      "receiver_id": "prospective-fol-20261018-010",
+      "result_reader": "interned",
+      "search_ordering": "and_support",
+      "within_case_order": 3
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-010-fixed-legacy-ROOT-20261018-v1",
+      "case_order": 10,
+      "invocation_id": "fol-suite-010-fixed-legacy-ROOT-20261018-v1",
+      "mode": "fixed",
+      "model_storage": "literal_interned",
+      "order": 40,
+      "receiver_id": "prospective-fol-20261018-010",
+      "result_reader": "interned",
+      "search_ordering": "legacy",
+      "within_case_order": 4
+    }
+  ],
+  "schema": "ROOT-frozen-first-order-40-arm-experiment-declaration-v1",
+  "scientific_calls": 0,
+  "scoring": "Per-case and per-structural-group admittedproofwithinfullprofile, fullcoldcost and separate methodworkunits.10inputs include2renames linkedto001/005, not10independentgroups. Oneonce deterministicarm percase, no statisticalclaim or externalprover/TPTPscore.",
+  "source_gate": "Source/input/full40subject reviews, separate maxonegrants/delta/Rootadoption/allagentsidle required. This full40declaration grants no execution.",
+  "source_state": "FROZEN_SCIENTIFIC_CODE_MINIMAL_INPUT_INTAKE_SUBJECT_TO_DISTINCT_REVIEWS",
+  "source_suite": {
+    "bytes": 31857,
+    "path": "/private/tmp/gcts-first-order-next-benchmark-source-20261018/suite-input-index-v1.json",
+    "sha256": "63e2e0d650a281080d4d763e730f7ca742a5c4d5edfb53ada3fb5c0ec54a666c"
+  },
+  "structural_groups": 8,
+  "total_actuals": 40
+}

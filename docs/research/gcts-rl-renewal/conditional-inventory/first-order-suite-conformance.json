@@ -1,0 +1,35 @@
+{
+  "Root_admission": {
+    "bytes": 2465113,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/first-order-suite-progress-20261018/ROOT-actual-admission-v1.json",
+    "sha256": "da6088925e44be6ca4bcb7fb21573fc676c8706eb01cc59f5eb73ceb7998371c"
+  },
+  "goal_complete": false,
+  "master": {
+    "bytes": 21657,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+    "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+  },
+  "point_domain": "Exact finite C/G/input point roles, capacity12 normalized t/12; missing mark distinct from zero; remote assigned marks must agree.",
+  "proposal": "Shared heuristic ranks same row-Join24 plus sampled/defer choices; no learned or proved pruning added; no new RL or recursive multirow generator.",
+  "protected_overview": {
+    "bytes": 390450,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/research/gcts-rl-renewal/index.html",
+    "sha256": "d04878220b6c43b16bbc1ff6cd17d24d824e2c3049a2b47600f0e26eec0cd770"
+  },
+  "raw_runtime_closure": {
+    "bytes": 73258,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/first-order-suite-progress-20261018/runtime-closure-v1.json",
+    "sha256": "e3ed95935216bdbae1cfea900050718a7b21f81a11dc9d50a608585101e8d1cf"
+  },
+  "scheduler": "Unchanged full frontier/candidate bookkeeping; global DEAD then FORCED then earliest generation branching, degree tie breaks only; full primitive fallback and exact rollback.",
+  "schema": "ROOT-first-order-suite-conformance-v1",
+  "scientific_Source_unchanged": true,
+  "scientific_replays": 0,
+  "scope_gaps": [
+    "Case-specific finite catalog and fixed12row/twoUIround grammar, no fixed universal Wang palette or completeness.",
+    "No new RL training, cluster hierarchy learning, PA/Hilbert theorem, Turtle/Penrose trial, substitution or plane proof.",
+    "Source reviews and retained audits are scoped with inherited authorship; pinned interpreter/OS trusted; no continuous formal isolation."
+  ],
+  "specialized_control": "Symbolic chronological prefix DFS, stable64legal-candidate ranking windows. This conventional control is not a GCTS scheduler and uses different work units."
+}

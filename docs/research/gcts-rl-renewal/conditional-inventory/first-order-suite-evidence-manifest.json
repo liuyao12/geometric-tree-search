@@ -1,0 +1,5542 @@
+{
+  "Root_review_adoption": {
+    "bytes": 3292,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/first-order-suite-progress-20261018/ROOT-retained-review-adoption-v1.json",
+    "sha256": "c1ed4067648e007e24aaf2758f2fce8fd5ef9bb518a6fefd716fe0327c1411fa"
+  },
+  "admitted_instances": 12,
+  "all_archive_raw_hashes_verified": true,
+  "case_archive_raw_members": 1640,
+  "case_archives": [
+    {
+      "bytes": 11888318,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/first-order-suite-case-001-evidence.zip",
+      "sha256": "41706f2b75523af34dad2b6b1c3751577c527dfebbee8db05d7fb6650fe77acd"
+    },
+    {
+      "bytes": 5697458,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/first-order-suite-case-002-evidence.zip",
+      "sha256": "25ad79dd2a132faef1259fd48fc389e20a8134d18c36c44667a91d25db771bbb"
+    },
+    {
+      "bytes": 6009895,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/first-order-suite-case-003-evidence.zip",
+      "sha256": "3e77d3fb296e5d982b1fcdc25328e1d5e98ab2fe664bd7e1bc9e1f1098c5ad1f"
+    },
+    {
+      "bytes": 14152556,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/first-order-suite-case-004-evidence.zip",
+      "sha256": "4fec2db7b7767b8215e689561d0b858c8804d14ff462d1fdc15d08ff26c410f6"
+    },
+    {
+      "bytes": 6178466,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/first-order-suite-case-005-evidence.zip",
+      "sha256": "8d56ef295a16d4e9c43f60b70cbb74438f303c5bf32f49419ecedd1be37936c7"
+    },
+    {
+      "bytes": 26991013,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/first-order-suite-case-006-evidence.zip",
+      "sha256": "3d647e3eb1b4b35ff7450730691fbb09e81550ded11de82a940ec6f60117e098"
+    },
+    {
+      "bytes": 18605685,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/first-order-suite-case-007-evidence.zip",
+      "sha256": "f95ba0430d45ee5f0ce48f72397c82efbd24df81c2ec9462e2bff7bbf053a9f1"
+    },
+    {
+      "bytes": 15114392,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/first-order-suite-case-008-evidence.zip",
+      "sha256": "3595ec7e2c7032d22329b5f01494eb1f51d9002742b85ca401420163899aaa6d"
+    },
+    {
+      "bytes": 12177098,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/first-order-suite-case-009-evidence.zip",
+      "sha256": "dca973b174adaf5eb5d221a195819d2ec79923b4e383365ab59384425c51f505"
+    },
+    {
+      "bytes": 6192917,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/first-order-suite-case-010-evidence.zip",
+      "sha256": "5c9e2a0cf3861fbd94f6d98ab422ee64df52aea1c3832d5811737662739032fd"
+    }
+  ],
+  "common_archive": {
+    "bytes": 24973503,
+    "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/first-order-suite-common-evidence.zip",
+    "sha256": "78db71fd6364ae723bacb7448b0491c441c129bd72434140d733c1b4f825781b"
+  },
+  "common_archive_members": 534,
+  "correlated_renamings": 2,
+  "goal_complete": false,
+  "link_scope": "Every link and anchor in all13newdocuments; every newlyaddedlink in twoexistingpages compared with exact parent72e180. Unchanged historical references remain outside this release scope.",
+  "local_links": [
+    {
+      "href": "reader.html#first-order-suite",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#outcomes",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#proofs",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#assessment",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#evidence",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#case-001",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#proof-reader",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "fol-001-fixed-legacy-result.json.gz",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-definition-3",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-root-line-4",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-root-line-3",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-root-line-4",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-root-line-3",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-definition-1",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-root-line-5",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-root-line-1",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-root-line-5",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-root-line-1",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-definition-1",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-root-line-5",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-root-line-1",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-root-line-5",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-root-line-1",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-definition-1",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-root-line-5",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-root-line-1",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-root-line-5",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-root-line-1",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-definition-10",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-root-line-5",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-root-line-9",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-root-line-1",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-root-line-5",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-root-line-9",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-root-line-1",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-definition-6",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-root-line-10",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-root-line-0",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-root-line-10",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-root-line-0",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-root-line-0",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-root-line-1",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-root-line-2",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-root-line-3",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-root-line-4",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-root-line-5",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-root-line-6",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-root-line-7",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-root-line-8",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-root-line-9",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-root-line-10",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-root-line-11",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-definition-1-line-0",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-definition-1-line-1",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-definition-2-line-0",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-definition-2-line-1",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-definition-3-line-0",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-definition-3-line-1",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-definition-4-line-0",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-definition-4-line-1",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-definition-5-line-0",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-definition-5-line-1",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-definition-6-line-0",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-definition-6-line-1",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-definition-7-line-0",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-definition-7-line-2",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-definition-7-line-1",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-definition-7-line-3",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-definition-8-line-0",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-definition-8-line-2",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-definition-8-line-1",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-definition-8-line-3",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-definition-9-line-0",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-definition-9-line-2",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-definition-9-line-1",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-definition-9-line-3",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-definition-10-line-0",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-definition-10-line-2",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-definition-10-line-1",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-70a7dbe32c0f1969-definition-10-line-3",
+      "source": "fol-001-fixed-legacy-proof.html"
+    },
+    {
+      "href": "reader.html#first-order-suite",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#outcomes",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#proofs",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#assessment",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#evidence",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#case-001",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#proof-reader",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "fol-001-symbolic-and-support-result.json.gz",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-definition-5",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-root-line-2",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-root-line-1",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-root-line-2",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-root-line-1",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-definition-6",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-root-line-3",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-root-line-0",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-root-line-3",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-root-line-0",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-definition-3",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-root-line-6",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-root-line-1",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-root-line-6",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-root-line-1",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-definition-4",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-root-line-8",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-root-line-1",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-root-line-8",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-root-line-1",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-definition-7",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-root-line-7",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-root-line-9",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-root-line-5",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-root-line-7",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-root-line-9",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-root-line-5",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-definition-6",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-root-line-3",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-root-line-0",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-root-line-3",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-root-line-0",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-root-line-0",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-root-line-1",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-root-line-2",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-root-line-3",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-root-line-4",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-root-line-5",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-root-line-6",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-root-line-7",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-root-line-8",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-root-line-9",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-root-line-10",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-root-line-11",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-definition-1-line-0",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-definition-1-line-1",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-definition-2-line-0",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-definition-2-line-1",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-definition-3-line-0",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-definition-3-line-1",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-definition-4-line-0",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-definition-4-line-1",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-definition-5-line-0",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-definition-5-line-1",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-definition-6-line-0",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-definition-6-line-1",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-definition-7-line-0",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-definition-7-line-2",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-definition-7-line-1",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-definition-7-line-3",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-definition-8-line-0",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-definition-8-line-2",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-definition-8-line-1",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-definition-8-line-3",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-definition-9-line-0",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-definition-9-line-2",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-definition-9-line-1",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-definition-9-line-3",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-definition-10-line-0",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-definition-10-line-2",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-definition-10-line-1",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-006144a12c77b983-definition-10-line-3",
+      "source": "fol-001-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "reader.html#first-order-suite",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#outcomes",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#proofs",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#assessment",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#evidence",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#case-001",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#proof-reader",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "fol-001-symbolic-legacy-result.json.gz",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-definition-5",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-root-line-2",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-root-line-1",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-root-line-2",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-root-line-1",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-definition-6",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-root-line-3",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-root-line-0",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-root-line-3",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-root-line-0",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-definition-3",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-root-line-6",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-root-line-1",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-root-line-6",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-root-line-1",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-definition-4",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-root-line-8",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-root-line-1",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-root-line-8",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-root-line-1",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-definition-7",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-root-line-7",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-root-line-9",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-root-line-5",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-root-line-7",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-root-line-9",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-root-line-5",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-definition-6",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-root-line-3",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-root-line-0",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-root-line-3",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-root-line-0",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-root-line-0",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-root-line-1",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-root-line-2",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-root-line-3",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-root-line-4",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-root-line-5",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-root-line-6",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-root-line-7",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-root-line-8",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-root-line-9",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-root-line-10",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-root-line-11",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-definition-1-line-0",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-definition-1-line-1",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-definition-2-line-0",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-definition-2-line-1",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-definition-3-line-0",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-definition-3-line-1",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-definition-4-line-0",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-definition-4-line-1",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-definition-5-line-0",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-definition-5-line-1",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-definition-6-line-0",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-definition-6-line-1",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-definition-7-line-0",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-definition-7-line-2",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-definition-7-line-1",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-definition-7-line-3",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-definition-8-line-0",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-definition-8-line-2",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-definition-8-line-1",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-definition-8-line-3",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-definition-9-line-0",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-definition-9-line-2",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-definition-9-line-1",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-definition-9-line-3",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-definition-10-line-0",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-definition-10-line-2",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-definition-10-line-1",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-edc186186c0157c8-definition-10-line-3",
+      "source": "fol-001-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "reader.html#first-order-suite",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#outcomes",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#proofs",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#assessment",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#evidence",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#case-001",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#proof-reader",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "fol-001-fixed-and-support-result.json.gz",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-definition-5",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-root-line-2",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-root-line-1",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-root-line-2",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-root-line-1",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-definition-6",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-root-line-3",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-root-line-0",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-root-line-3",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-root-line-0",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-definition-6",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-root-line-3",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-root-line-0",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-root-line-3",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-root-line-0",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-definition-6",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-root-line-3",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-root-line-0",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-root-line-3",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-root-line-0",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-definition-6",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-root-line-3",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-root-line-0",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-root-line-3",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-root-line-0",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-definition-6",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-root-line-3",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-root-line-0",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-root-line-3",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-root-line-0",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-definition-6",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-root-line-3",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-root-line-0",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-root-line-3",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-root-line-0",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-definition-6",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-root-line-3",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-root-line-0",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-root-line-3",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-root-line-0",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-definition-6",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-root-line-3",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-root-line-0",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-root-line-3",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-root-line-0",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-root-line-0",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-root-line-1",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-root-line-2",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-root-line-3",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-root-line-4",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-root-line-5",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-root-line-6",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-root-line-7",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-root-line-8",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-root-line-9",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-root-line-10",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-root-line-11",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-definition-1-line-0",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-definition-1-line-1",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-definition-2-line-0",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-definition-2-line-1",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-definition-3-line-0",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-definition-3-line-1",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-definition-4-line-0",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-definition-4-line-1",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-definition-5-line-0",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-definition-5-line-1",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-definition-6-line-0",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-definition-6-line-1",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-definition-7-line-0",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-definition-7-line-2",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-definition-7-line-1",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-definition-7-line-3",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-definition-8-line-0",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-definition-8-line-2",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-definition-8-line-1",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-definition-8-line-3",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-definition-9-line-0",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-definition-9-line-2",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-definition-9-line-1",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-definition-9-line-3",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-definition-10-line-0",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-definition-10-line-2",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-definition-10-line-1",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-3fef69de9ac8bef1-definition-10-line-3",
+      "source": "fol-001-fixed-and-support-proof.html"
+    },
+    {
+      "href": "reader.html#first-order-suite",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#outcomes",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#proofs",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#assessment",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#evidence",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#case-004",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#proof-reader",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "fol-004-fixed-and-support-result.json.gz",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-definition-1",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-root-line-2",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-root-line-1",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-root-line-2",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-root-line-1",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-definition-4",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-root-line-3",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-root-line-0",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-root-line-3",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-root-line-0",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-definition-4",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-root-line-3",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-root-line-0",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-root-line-3",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-root-line-0",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-definition-4",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-root-line-3",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-root-line-0",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-root-line-3",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-root-line-0",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-definition-4",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-root-line-3",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-root-line-0",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-root-line-3",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-root-line-0",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-definition-4",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-root-line-3",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-root-line-0",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-root-line-3",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-root-line-0",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-definition-4",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-root-line-3",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-root-line-0",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-root-line-3",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-root-line-0",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-definition-4",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-root-line-3",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-root-line-0",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-root-line-3",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-root-line-0",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-definition-4",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-root-line-3",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-root-line-0",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-root-line-3",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-root-line-0",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-root-line-0",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-root-line-1",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-root-line-2",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-root-line-3",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-root-line-4",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-root-line-5",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-root-line-6",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-root-line-7",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-root-line-8",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-root-line-9",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-root-line-10",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-root-line-11",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-definition-1-line-0",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-definition-1-line-1",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-definition-2-line-0",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-definition-2-line-1",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-definition-3-line-0",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-definition-3-line-1",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-definition-4-line-0",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-definition-4-line-1",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-definition-5-line-0",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-definition-5-line-1",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-definition-6-line-0",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-9080647901a9d99a-definition-6-line-1",
+      "source": "fol-004-fixed-and-support-proof.html"
+    },
+    {
+      "href": "reader.html#first-order-suite",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#outcomes",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#proofs",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#assessment",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#evidence",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#case-004",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#proof-reader",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "fol-004-fixed-legacy-result.json.gz",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-definition-3",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-root-line-2",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-root-line-1",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-root-line-2",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-root-line-1",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-definition-3",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-root-line-2",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-root-line-1",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-root-line-2",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-root-line-1",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-definition-3",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-root-line-2",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-root-line-1",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-root-line-2",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-root-line-1",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-definition-3",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-root-line-2",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-root-line-1",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-root-line-2",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-root-line-1",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-definition-3",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-root-line-2",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-root-line-1",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-root-line-2",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-root-line-1",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-definition-3",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-root-line-2",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-root-line-1",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-root-line-2",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-root-line-1",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-definition-1",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-root-line-9",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-root-line-1",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-root-line-9",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-root-line-1",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-definition-4",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-root-line-10",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-root-line-0",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-root-line-10",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-root-line-0",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-root-line-0",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-root-line-1",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-root-line-2",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-root-line-3",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-root-line-4",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-root-line-5",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-root-line-6",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-root-line-7",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-root-line-8",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-root-line-9",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-root-line-10",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-root-line-11",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-definition-1-line-0",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-definition-1-line-1",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-definition-2-line-0",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-definition-2-line-1",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-definition-3-line-0",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-definition-3-line-1",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-definition-4-line-0",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-definition-4-line-1",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-definition-5-line-0",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-definition-5-line-1",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-definition-6-line-0",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-ed12970713ada2eb-definition-6-line-1",
+      "source": "fol-004-fixed-legacy-proof.html"
+    },
+    {
+      "href": "reader.html#first-order-suite",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#outcomes",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#proofs",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#assessment",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#evidence",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#case-004",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#proof-reader",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "fol-004-symbolic-and-support-result.json.gz",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-definition-1",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-root-line-2",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-root-line-1",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-root-line-2",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-root-line-1",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-definition-4",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-root-line-3",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-root-line-0",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-root-line-3",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-root-line-0",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-definition-3",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-root-line-5",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-root-line-1",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-root-line-5",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-root-line-1",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-definition-2",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-root-line-7",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-root-line-1",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-root-line-7",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-root-line-1",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-definition-4",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-root-line-3",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-root-line-0",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-root-line-3",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-root-line-0",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-definition-4",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-root-line-3",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-root-line-0",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-root-line-3",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-root-line-0",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-definition-4",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-root-line-3",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-root-line-0",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-root-line-3",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-root-line-0",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-root-line-0",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-root-line-1",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-root-line-2",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-root-line-3",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-root-line-4",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-root-line-5",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-root-line-6",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-root-line-7",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-root-line-8",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-root-line-9",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-root-line-10",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-root-line-11",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-definition-1-line-0",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-definition-1-line-1",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-definition-2-line-0",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-definition-2-line-1",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-definition-3-line-0",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-definition-3-line-1",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-definition-4-line-0",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-definition-4-line-1",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-definition-5-line-0",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-definition-5-line-1",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-definition-6-line-0",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-f2bab3d67fad127f-definition-6-line-1",
+      "source": "fol-004-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "reader.html#first-order-suite",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#outcomes",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#proofs",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#assessment",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#evidence",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#case-004",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#proof-reader",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "fol-004-symbolic-legacy-result.json.gz",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-definition-1",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-root-line-2",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-root-line-1",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-root-line-2",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-root-line-1",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-definition-4",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-root-line-3",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-root-line-0",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-root-line-3",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-root-line-0",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-definition-3",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-root-line-5",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-root-line-1",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-root-line-5",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-root-line-1",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-definition-2",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-root-line-7",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-root-line-1",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-root-line-7",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-root-line-1",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-definition-4",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-root-line-3",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-root-line-0",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-root-line-3",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-root-line-0",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-definition-4",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-root-line-3",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-root-line-0",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-root-line-3",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-root-line-0",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-definition-4",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-root-line-3",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-root-line-0",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-root-line-3",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-root-line-0",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-root-line-0",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-root-line-1",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-root-line-2",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-root-line-3",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-root-line-4",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-root-line-5",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-root-line-6",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-root-line-7",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-root-line-8",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-root-line-9",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-root-line-10",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-root-line-11",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-definition-1-line-0",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-definition-1-line-1",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-definition-2-line-0",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-definition-2-line-1",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-definition-3-line-0",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-definition-3-line-1",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-definition-4-line-0",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-definition-4-line-1",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-definition-5-line-0",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-definition-5-line-1",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-definition-6-line-0",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-87260b84ade5e4d6-definition-6-line-1",
+      "source": "fol-004-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "reader.html#first-order-suite",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#outcomes",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#proofs",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#assessment",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#evidence",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#case-009",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#proof-reader",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "fol-009-fixed-legacy-result.json.gz",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-definition-3",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-root-line-4",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-root-line-3",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-root-line-4",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-root-line-3",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-definition-1",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-root-line-5",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-root-line-1",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-root-line-5",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-root-line-1",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-definition-1",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-root-line-5",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-root-line-1",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-root-line-5",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-root-line-1",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-definition-1",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-root-line-5",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-root-line-1",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-root-line-5",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-root-line-1",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-definition-10",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-root-line-5",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-root-line-9",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-root-line-1",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-root-line-5",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-root-line-9",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-root-line-1",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-definition-6",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-root-line-10",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-root-line-0",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-root-line-10",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-root-line-0",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-root-line-0",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-root-line-1",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-root-line-2",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-root-line-3",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-root-line-4",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-root-line-5",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-root-line-6",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-root-line-7",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-root-line-8",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-root-line-9",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-root-line-10",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-root-line-11",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-definition-1-line-0",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-definition-1-line-1",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-definition-2-line-0",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-definition-2-line-1",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-definition-3-line-0",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-definition-3-line-1",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-definition-4-line-0",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-definition-4-line-1",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-definition-5-line-0",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-definition-5-line-1",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-definition-6-line-0",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-definition-6-line-1",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-definition-7-line-0",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-definition-7-line-2",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-definition-7-line-1",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-definition-7-line-3",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-definition-8-line-0",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-definition-8-line-2",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-definition-8-line-1",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-definition-8-line-3",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-definition-9-line-0",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-definition-9-line-2",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-definition-9-line-1",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-definition-9-line-3",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-definition-10-line-0",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-definition-10-line-2",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-definition-10-line-1",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-d2fbe8618184066e-definition-10-line-3",
+      "source": "fol-009-fixed-legacy-proof.html"
+    },
+    {
+      "href": "reader.html#first-order-suite",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#outcomes",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#proofs",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#assessment",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#evidence",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#case-009",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#proof-reader",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "fol-009-symbolic-and-support-result.json.gz",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-definition-5",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-root-line-2",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-root-line-1",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-root-line-2",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-root-line-1",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-definition-6",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-root-line-3",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-root-line-0",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-root-line-3",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-root-line-0",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-definition-3",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-root-line-6",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-root-line-1",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-root-line-6",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-root-line-1",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-definition-4",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-root-line-8",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-root-line-1",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-root-line-8",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-root-line-1",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-definition-2",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-root-line-9",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-root-line-1",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-root-line-9",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-root-line-1",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-definition-6",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-root-line-3",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-root-line-0",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-root-line-3",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-root-line-0",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-root-line-0",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-root-line-1",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-root-line-2",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-root-line-3",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-root-line-4",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-root-line-5",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-root-line-6",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-root-line-7",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-root-line-8",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-root-line-9",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-root-line-10",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-root-line-11",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-definition-1-line-0",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-definition-1-line-1",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-definition-2-line-0",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-definition-2-line-1",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-definition-3-line-0",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-definition-3-line-1",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-definition-4-line-0",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-definition-4-line-1",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-definition-5-line-0",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-definition-5-line-1",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-definition-6-line-0",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-definition-6-line-1",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-definition-7-line-0",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-definition-7-line-2",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-definition-7-line-1",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-definition-7-line-3",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-definition-8-line-0",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-definition-8-line-2",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-definition-8-line-1",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-definition-8-line-3",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-definition-9-line-0",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-definition-9-line-2",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-definition-9-line-1",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-definition-9-line-3",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-definition-10-line-0",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-definition-10-line-2",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-definition-10-line-1",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-75dc50fb9907c33f-definition-10-line-3",
+      "source": "fol-009-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "reader.html#first-order-suite",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#outcomes",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#proofs",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#assessment",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#evidence",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#case-009",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#proof-reader",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "fol-009-symbolic-legacy-result.json.gz",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-definition-5",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-root-line-2",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-root-line-1",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-root-line-2",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-root-line-1",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-definition-6",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-root-line-3",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-root-line-0",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-root-line-3",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-root-line-0",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-definition-3",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-root-line-6",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-root-line-1",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-root-line-6",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-root-line-1",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-definition-4",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-root-line-8",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-root-line-1",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-root-line-8",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-root-line-1",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-definition-2",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-root-line-9",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-root-line-1",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-root-line-9",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-root-line-1",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-definition-6",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-root-line-3",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-root-line-0",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-root-line-3",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-root-line-0",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-root-line-0",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-root-line-1",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-root-line-2",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-root-line-3",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-root-line-4",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-root-line-5",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-root-line-6",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-root-line-7",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-root-line-8",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-root-line-9",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-root-line-10",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-root-line-11",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-definition-1-line-0",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-definition-1-line-1",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-definition-2-line-0",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-definition-2-line-1",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-definition-3-line-0",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-definition-3-line-1",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-definition-4-line-0",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-definition-4-line-1",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-definition-5-line-0",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-definition-5-line-1",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-definition-6-line-0",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-definition-6-line-1",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-definition-7-line-0",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-definition-7-line-2",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-definition-7-line-1",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-definition-7-line-3",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-definition-8-line-0",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-definition-8-line-2",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-definition-8-line-1",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-definition-8-line-3",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-definition-9-line-0",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-definition-9-line-2",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-definition-9-line-1",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-definition-9-line-3",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-definition-10-line-0",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-definition-10-line-2",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-definition-10-line-1",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "#semantic-proof-338b6ec7935a27b3-definition-10-line-3",
+      "source": "fol-009-symbolic-legacy-proof.html"
+    },
+    {
+      "href": "reader.html#first-order-suite",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#outcomes",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#proofs",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#assessment",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#evidence",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "first-order-suite.html#case-009",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#proof-reader",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "fol-009-fixed-and-support-result.json.gz",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-definition-5",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-root-line-2",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-root-line-1",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-root-line-2",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-root-line-1",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-definition-6",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-root-line-3",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-root-line-0",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-root-line-3",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-root-line-0",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-definition-6",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-root-line-3",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-root-line-0",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-root-line-3",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-root-line-0",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-definition-6",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-root-line-3",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-root-line-0",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-root-line-3",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-root-line-0",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-definition-6",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-root-line-3",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-root-line-0",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-root-line-3",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-root-line-0",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-definition-6",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-root-line-3",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-root-line-0",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-root-line-3",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-root-line-0",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-definition-6",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-root-line-3",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-root-line-0",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-root-line-3",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-root-line-0",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-definition-6",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-root-line-3",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-root-line-0",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-root-line-3",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-root-line-0",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-definition-6",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-root-line-3",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-root-line-0",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-root-line-3",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-root-line-0",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-root-line-0",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-root-line-1",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-root-line-2",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-root-line-3",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-root-line-4",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-root-line-5",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-root-line-6",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-root-line-7",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-root-line-8",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-root-line-9",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-root-line-10",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-root-line-11",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-definition-1-line-0",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-definition-1-line-1",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-definition-2-line-0",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-definition-2-line-1",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-definition-3-line-0",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-definition-3-line-1",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-definition-4-line-0",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-definition-4-line-1",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-definition-5-line-0",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-definition-5-line-1",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-definition-6-line-0",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-definition-6-line-1",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-definition-7-line-0",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-definition-7-line-2",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-definition-7-line-1",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-definition-7-line-3",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-definition-8-line-0",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-definition-8-line-2",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-definition-8-line-1",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-definition-8-line-3",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-definition-9-line-0",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-definition-9-line-2",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-definition-9-line-1",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-definition-9-line-3",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-definition-10-line-0",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-definition-10-line-2",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-definition-10-line-1",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-a4972fb94c8bb2bd-definition-10-line-3",
+      "source": "fol-009-fixed-and-support-proof.html"
+    },
+    {
+      "href": "reader.html#first-order-suite",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "first-order-suite.html#outcomes",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "first-order-suite.html#proofs",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "first-order-suite.html#assessment",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "first-order-suite.html#evidence",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "#case-001",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-001-fixed-legacy-proof.html",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-001-fixed-and-support-proof.html",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-001-symbolic-legacy-proof.html",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-001-symbolic-and-support-proof.html",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "#case-002",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "#case-002",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "#case-002",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "#case-002",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "#case-002",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "#case-003",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "#case-003",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "#case-003",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "#case-003",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "#case-003",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "#case-004",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-004-fixed-legacy-proof.html",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-004-fixed-and-support-proof.html",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-004-symbolic-legacy-proof.html",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-004-symbolic-and-support-proof.html",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "#case-005",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "#case-005",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "#case-005",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "#case-005",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "#case-005",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "#case-006",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "#case-006",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "#case-006",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "#case-006",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "#case-006",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "#case-007",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "#case-007",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "#case-007",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "#case-007",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "#case-007",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "#case-008",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "#case-008",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "#case-008",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "#case-008",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "#case-008",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "#case-009",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-009-fixed-legacy-proof.html",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-009-fixed-and-support-proof.html",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-009-symbolic-legacy-proof.html",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-009-symbolic-and-support-proof.html",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "#case-010",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "#case-010",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "#case-010",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "#case-010",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "#case-010",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-001-fixed-legacy-proof.html#proof-reader",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-001-fixed-legacy-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-001-symbolic-and-support-proof.html#proof-reader",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-001-symbolic-and-support-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-001-symbolic-legacy-proof.html#proof-reader",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-001-symbolic-legacy-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-001-fixed-and-support-proof.html#proof-reader",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-001-fixed-and-support-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-002-symbolic-and-support-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-002-symbolic-legacy-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-002-fixed-and-support-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-002-fixed-legacy-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-003-symbolic-legacy-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-003-fixed-and-support-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-003-fixed-legacy-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-003-symbolic-and-support-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-004-fixed-and-support-proof.html#proof-reader",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-004-fixed-and-support-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-004-fixed-legacy-proof.html#proof-reader",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-004-fixed-legacy-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-004-symbolic-and-support-proof.html#proof-reader",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-004-symbolic-and-support-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-004-symbolic-legacy-proof.html#proof-reader",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-004-symbolic-legacy-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-005-fixed-legacy-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-005-symbolic-and-support-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-005-symbolic-legacy-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-005-fixed-and-support-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-006-symbolic-and-support-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-006-symbolic-legacy-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-006-fixed-and-support-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-006-fixed-legacy-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-007-symbolic-legacy-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-007-fixed-and-support-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-007-fixed-legacy-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-007-symbolic-and-support-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-008-fixed-and-support-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-008-fixed-legacy-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-008-symbolic-and-support-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-008-symbolic-legacy-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-009-fixed-legacy-proof.html#proof-reader",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-009-fixed-legacy-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-009-symbolic-and-support-proof.html#proof-reader",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-009-symbolic-and-support-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-009-symbolic-legacy-proof.html#proof-reader",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-009-symbolic-legacy-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-009-fixed-and-support-proof.html#proof-reader",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-009-fixed-and-support-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-010-symbolic-and-support-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-010-symbolic-legacy-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-010-fixed-and-support-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-010-fixed-legacy-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-001-fixed-legacy-proof.html#proof-reader",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-001-fixed-legacy-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-001-symbolic-and-support-proof.html#proof-reader",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-001-symbolic-and-support-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-001-symbolic-legacy-proof.html#proof-reader",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-001-symbolic-legacy-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-001-fixed-and-support-proof.html#proof-reader",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-001-fixed-and-support-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-002-symbolic-and-support-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-002-symbolic-legacy-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-002-fixed-and-support-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-002-fixed-legacy-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-003-symbolic-legacy-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-003-fixed-and-support-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-003-fixed-legacy-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-003-symbolic-and-support-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-004-fixed-and-support-proof.html#proof-reader",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-004-fixed-and-support-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-004-fixed-legacy-proof.html#proof-reader",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-004-fixed-legacy-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-004-symbolic-and-support-proof.html#proof-reader",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-004-symbolic-and-support-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-004-symbolic-legacy-proof.html#proof-reader",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-004-symbolic-legacy-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-005-fixed-legacy-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-005-symbolic-and-support-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-005-symbolic-legacy-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-005-fixed-and-support-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-006-symbolic-and-support-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-006-symbolic-legacy-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-006-fixed-and-support-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-006-fixed-legacy-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-007-symbolic-legacy-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-007-fixed-and-support-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-007-fixed-legacy-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-007-symbolic-and-support-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-008-fixed-and-support-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-008-fixed-legacy-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-008-symbolic-and-support-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-008-symbolic-legacy-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-009-fixed-legacy-proof.html#proof-reader",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-009-fixed-legacy-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-009-symbolic-and-support-proof.html#proof-reader",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-009-symbolic-and-support-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-009-symbolic-legacy-proof.html#proof-reader",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-009-symbolic-legacy-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-009-fixed-and-support-proof.html#proof-reader",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-009-fixed-and-support-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-010-symbolic-and-support-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-010-symbolic-legacy-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-010-fixed-and-support-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "fol-010-fixed-legacy-result.json.gz",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "first-order-suite-summary.json",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "first-order-suite-admission.json",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "first-order-suite-design.json",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "first-order-suite-declaration.json",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "first-order-suite-inputs.json",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "first-order-suite-runtime-closure.json",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "first-order-suite-evidence-manifest.json",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "first-order-suite-data-review.json",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "first-order-suite-resource-review.json",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "first-order-suite-comparison-review.json",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "first-order-suite-report-review.json",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "first-order-suite-common-evidence.zip",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "first-order-suite-case-001-evidence.zip",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "first-order-suite-case-002-evidence.zip",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "first-order-suite-case-003-evidence.zip",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "first-order-suite-case-004-evidence.zip",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "first-order-suite-case-005-evidence.zip",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "first-order-suite-case-006-evidence.zip",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "first-order-suite-case-007-evidence.zip",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "first-order-suite-case-008-evidence.zip",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "first-order-suite-case-009-evidence.zip",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "first-order-suite-case-010-evidence.zip",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "and-support-ordering.html#outcomes",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "reader.html#first-order-suite",
+      "source": "first-order-suite.html"
+    },
+    {
+      "href": "first-order-suite.html#outcomes",
+      "source": "reader.html"
+    },
+    {
+      "href": "first-order-suite.html#proofs",
+      "source": "reader.html"
+    },
+    {
+      "href": "first-order-suite.html#parallel",
+      "source": "reader.html"
+    },
+    {
+      "href": "first-order-suite.html#outcomes",
+      "source": "and-support-ordering.html"
+    }
+  ],
+  "local_links_checked": 1132,
+  "new_RL_training": false,
+  "primary_groups": 8,
+  "published": {
+    "and-support-ordering.html": {
+      "bytes": 15917,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/and-support-ordering.html",
+      "sha256": "c94523d6cb6b0c0b4091716a01c9d8a9c8a0afa1ac04046543be0f49a509f88b"
+    },
+    "first-order-suite-admission.json": {
+      "bytes": 2465113,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/first-order-suite-admission.json",
+      "sha256": "da6088925e44be6ca4bcb7fb21573fc676c8706eb01cc59f5eb73ceb7998371c"
+    },
+    "first-order-suite-case-001-evidence.zip": {
+      "bytes": 11888318,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/first-order-suite-case-001-evidence.zip",
+      "sha256": "41706f2b75523af34dad2b6b1c3751577c527dfebbee8db05d7fb6650fe77acd"
+    },
+    "first-order-suite-case-002-evidence.zip": {
+      "bytes": 5697458,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/first-order-suite-case-002-evidence.zip",
+      "sha256": "25ad79dd2a132faef1259fd48fc389e20a8134d18c36c44667a91d25db771bbb"
+    },
+    "first-order-suite-case-003-evidence.zip": {
+      "bytes": 6009895,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/first-order-suite-case-003-evidence.zip",
+      "sha256": "3e77d3fb296e5d982b1fcdc25328e1d5e98ab2fe664bd7e1bc9e1f1098c5ad1f"
+    },
+    "first-order-suite-case-004-evidence.zip": {
+      "bytes": 14152556,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/first-order-suite-case-004-evidence.zip",
+      "sha256": "4fec2db7b7767b8215e689561d0b858c8804d14ff462d1fdc15d08ff26c410f6"
+    },
+    "first-order-suite-case-005-evidence.zip": {
+      "bytes": 6178466,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/first-order-suite-case-005-evidence.zip",
+      "sha256": "8d56ef295a16d4e9c43f60b70cbb74438f303c5bf32f49419ecedd1be37936c7"
+    },
+    "first-order-suite-case-006-evidence.zip": {
+      "bytes": 26991013,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/first-order-suite-case-006-evidence.zip",
+      "sha256": "3d647e3eb1b4b35ff7450730691fbb09e81550ded11de82a940ec6f60117e098"
+    },
+    "first-order-suite-case-007-evidence.zip": {
+      "bytes": 18605685,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/first-order-suite-case-007-evidence.zip",
+      "sha256": "f95ba0430d45ee5f0ce48f72397c82efbd24df81c2ec9462e2bff7bbf053a9f1"
+    },
+    "first-order-suite-case-008-evidence.zip": {
+      "bytes": 15114392,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/first-order-suite-case-008-evidence.zip",
+      "sha256": "3595ec7e2c7032d22329b5f01494eb1f51d9002742b85ca401420163899aaa6d"
+    },
+    "first-order-suite-case-009-evidence.zip": {
+      "bytes": 12177098,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/first-order-suite-case-009-evidence.zip",
+      "sha256": "dca973b174adaf5eb5d221a195819d2ec79923b4e383365ab59384425c51f505"
+    },
+    "first-order-suite-case-010-evidence.zip": {
+      "bytes": 6192917,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/first-order-suite-case-010-evidence.zip",
+      "sha256": "5c9e2a0cf3861fbd94f6d98ab422ee64df52aea1c3832d5811737662739032fd"
+    },
+    "first-order-suite-case-package-review.json": {
+      "bytes": 19549,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/first-order-suite-case-package-review.json",
+      "sha256": "b2117bd64f57a16f1d31fe5af1483f72fd8e55fd111f1f0ff77517f103ecd3be"
+    },
+    "first-order-suite-common-evidence.zip": {
+      "bytes": 24973503,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/first-order-suite-common-evidence.zip",
+      "sha256": "78db71fd6364ae723bacb7448b0491c441c129bd72434140d733c1b4f825781b"
+    },
+    "first-order-suite-comparison-review.json": {
+      "bytes": 53644,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/first-order-suite-comparison-review.json",
+      "sha256": "44c8ddd909e9f68ad09b9ec95fb9deb8661533810bec75d932d8d33feec12906"
+    },
+    "first-order-suite-conformance.json": {
+      "bytes": 2296,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/first-order-suite-conformance.json",
+      "sha256": "544caa415f4884d9d8d51018c01fad23509981978286d6ddb073ed3344fe55d2"
+    },
+    "first-order-suite-data-review.json": {
+      "bytes": 420125,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/first-order-suite-data-review.json",
+      "sha256": "b3619abc106f3b91b2d4a1ea1d2e6d42aa5ed9a9917b0759e7fb436ae690dc2b"
+    },
+    "first-order-suite-declaration.json": {
+      "bytes": 26168,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/first-order-suite-declaration.json",
+      "sha256": "1d79da9c0ae23c0b5e1073e18957edec3ad89fea944e4d4c656816df802e468c"
+    },
+    "first-order-suite-design.json": {
+      "bytes": 25396,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/first-order-suite-design.json",
+      "sha256": "3b324a86de79a408a4d1317d94c6e03a807e4367afaf15f24cf0ec5e2288139f"
+    },
+    "first-order-suite-inputs.json": {
+      "bytes": 22422,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/first-order-suite-inputs.json",
+      "sha256": "1a42c2ab16680dddbac504ca5b2d79559370785884805cf4d56b5c1c22c63dc0"
+    },
+    "first-order-suite-report-review.json": {
+      "bytes": 30584,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/first-order-suite-report-review.json",
+      "sha256": "f5f48df52aa1faf06cd084e9366cdf957dec25ae8c64d65be58ad21d1dc6b512"
+    },
+    "first-order-suite-resource-review.json": {
+      "bytes": 11139,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/first-order-suite-resource-review.json",
+      "sha256": "334567150bff9a2277c13a2f643330a63ad468ac1154ccd7b8cc0713025ed6a4"
+    },
+    "first-order-suite-runtime-closure.json": {
+      "bytes": 73258,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/first-order-suite-runtime-closure.json",
+      "sha256": "e3ed95935216bdbae1cfea900050718a7b21f81a11dc9d50a608585101e8d1cf"
+    },
+    "first-order-suite-summary.json": {
+      "bytes": 2469912,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/first-order-suite-summary.json",
+      "sha256": "83240fc304822b686fd5c4d38d856d876ef12edf3898789e4eb928b487fdce4a"
+    },
+    "first-order-suite.html": {
+      "bytes": 40325,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/first-order-suite.html",
+      "sha256": "39083aea8c5751b125b8f4069057ddda459c411c801e4185709c0ac6864bb3bd"
+    },
+    "fol-001-fixed-and-support-proof.html": {
+      "bytes": 1602973,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-001-fixed-and-support-proof.html",
+      "sha256": "d1458edb732733f36bc1c46fbdd8b8536af64a19a55d00ba9c0c3c86d69d0009"
+    },
+    "fol-001-fixed-and-support-result.json.gz": {
+      "bytes": 2047964,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-001-fixed-and-support-result.json.gz",
+      "sha256": "8401c7a3b92b06fdceac4270080cf4da12d679476374a846518b6757d9bedbe3"
+    },
+    "fol-001-fixed-legacy-proof.html": {
+      "bytes": 1660612,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-001-fixed-legacy-proof.html",
+      "sha256": "ca53e96c094e1569f73a675749b185e9e60a1eb55718ea4b41072016c57a8d99"
+    },
+    "fol-001-fixed-legacy-result.json.gz": {
+      "bytes": 2046475,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-001-fixed-legacy-result.json.gz",
+      "sha256": "1f37be6975a265f7dea0ac2b15339369d5e6eb931712062ddf4130ab5a274a4f"
+    },
+    "fol-001-symbolic-and-support-proof.html": {
+      "bytes": 1909601,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-001-symbolic-and-support-proof.html",
+      "sha256": "d61bd4c30cfd7e18975b55fe7910d2497714e374924eab2f57617fc32cf1dce3"
+    },
+    "fol-001-symbolic-and-support-result.json.gz": {
+      "bytes": 1378631,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-001-symbolic-and-support-result.json.gz",
+      "sha256": "9856527bd35da39c2c9381e5e7b6911cc9b423460c0550158451e4331e00cc0d"
+    },
+    "fol-001-symbolic-legacy-proof.html": {
+      "bytes": 1909588,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-001-symbolic-legacy-proof.html",
+      "sha256": "a72642798d943194484bd30bf5753bd126bc4c7972af52ae6243a777ed5a2299"
+    },
+    "fol-001-symbolic-legacy-result.json.gz": {
+      "bytes": 1363640,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-001-symbolic-legacy-result.json.gz",
+      "sha256": "91e873efa996b6c07caab2018f20a604451e09c940262ea116955ab64dbf5d67"
+    },
+    "fol-002-fixed-and-support-result.json.gz": {
+      "bytes": 46028,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-002-fixed-and-support-result.json.gz",
+      "sha256": "ed1d6bdf0738d146d00d8bb94455aa35316e4d7d5d7324d92248f46244564313"
+    },
+    "fol-002-fixed-legacy-result.json.gz": {
+      "bytes": 46020,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-002-fixed-legacy-result.json.gz",
+      "sha256": "367adbf459399341b6034c030a9ae3da4f5dda70ff5e13f23d03b6a7f5cd0107"
+    },
+    "fol-002-symbolic-and-support-result.json.gz": {
+      "bytes": 46023,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-002-symbolic-and-support-result.json.gz",
+      "sha256": "723b16ea7bfb268fdfd185b9b58069319e17c48c46aa5b7f0c13c19069e1c7b5"
+    },
+    "fol-002-symbolic-legacy-result.json.gz": {
+      "bytes": 46031,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-002-symbolic-legacy-result.json.gz",
+      "sha256": "7ac7e248f05d435155db6ceb8b98dbb56a37a2b305c2059084c0d28923faf739"
+    },
+    "fol-003-fixed-and-support-result.json.gz": {
+      "bytes": 57445,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-003-fixed-and-support-result.json.gz",
+      "sha256": "a47ef8d817a95383c047ef91d7a8190b6bf70d4445f38795419a2049c13abd1a"
+    },
+    "fol-003-fixed-legacy-result.json.gz": {
+      "bytes": 57495,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-003-fixed-legacy-result.json.gz",
+      "sha256": "ce24a62d9a17e74b7ab611114eb0a17663cb348093c5b783d94941e8d9a82ee2"
+    },
+    "fol-003-symbolic-and-support-result.json.gz": {
+      "bytes": 57468,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-003-symbolic-and-support-result.json.gz",
+      "sha256": "455398a13b6c5f3a6c5e62d4eb103bebad4e8e25d4c5901840c670628e40515e"
+    },
+    "fol-003-symbolic-legacy-result.json.gz": {
+      "bytes": 57486,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-003-symbolic-legacy-result.json.gz",
+      "sha256": "5837c681d674c781dd6535da8d4356079a9bf9b3740da4056f769a089d7aece8"
+    },
+    "fol-004-fixed-and-support-proof.html": {
+      "bytes": 1857563,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-004-fixed-and-support-proof.html",
+      "sha256": "0d8d3f1c7cc17761cd9f9d33c049d2da65a7e6b4c8a20e97bc412451a8cab20d"
+    },
+    "fol-004-fixed-and-support-result.json.gz": {
+      "bytes": 2566633,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-004-fixed-and-support-result.json.gz",
+      "sha256": "2e8b51b8f0f40e858363286f49f03ca5550ee5e6ca6767ff1b8bc5a7a58365d8"
+    },
+    "fol-004-fixed-legacy-proof.html": {
+      "bytes": 2409185,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-004-fixed-legacy-proof.html",
+      "sha256": "aa4824e3f9b64fcf52b88d798429cd1cecb42f6350858fbc991b9050f0c70da1"
+    },
+    "fol-004-fixed-legacy-result.json.gz": {
+      "bytes": 2588819,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-004-fixed-legacy-result.json.gz",
+      "sha256": "f7b857117bb6272fa752e3f338983e34371d91d93725c938ca01fb9a1921d39a"
+    },
+    "fol-004-symbolic-and-support-proof.html": {
+      "bytes": 2349285,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-004-symbolic-and-support-proof.html",
+      "sha256": "b668d38becee314639a38aacfaaddab202ac5669d4f9262ae8603fd134ba3405"
+    },
+    "fol-004-symbolic-and-support-result.json.gz": {
+      "bytes": 1975229,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-004-symbolic-and-support-result.json.gz",
+      "sha256": "2c344e0b374bdbd614135efc58405474228f39d670a8724341fb1da22c9f8a63"
+    },
+    "fol-004-symbolic-legacy-proof.html": {
+      "bytes": 2349272,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-004-symbolic-legacy-proof.html",
+      "sha256": "32ba7e671597dc51e87a36cabf636370a32775347df081bb27c4362d49cb38ae"
+    },
+    "fol-004-symbolic-legacy-result.json.gz": {
+      "bytes": 1964576,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-004-symbolic-legacy-result.json.gz",
+      "sha256": "c0a54ebc64b8315fe5f49eb15801bdf1bf31a265a53bf2d3f61ef40f12999371"
+    },
+    "fol-005-fixed-and-support-result.json.gz": {
+      "bytes": 71532,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-005-fixed-and-support-result.json.gz",
+      "sha256": "42f0d8f8bb5ec462dad97b7c9cebfab8de3c9a63d394307ebfcbf87bc704b453"
+    },
+    "fol-005-fixed-legacy-result.json.gz": {
+      "bytes": 71543,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-005-fixed-legacy-result.json.gz",
+      "sha256": "c31b7f1219ae27a025d55125ccebef6a807c42982688e280f640902ae8b729a4"
+    },
+    "fol-005-symbolic-and-support-result.json.gz": {
+      "bytes": 71557,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-005-symbolic-and-support-result.json.gz",
+      "sha256": "e2bebb34c99254b2967acca717fbef2eae6a9795cc8f5d9c045ff1afa92049a4"
+    },
+    "fol-005-symbolic-legacy-result.json.gz": {
+      "bytes": 71525,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-005-symbolic-legacy-result.json.gz",
+      "sha256": "bf9a199937a23a4eb80ee5111e7d69313bae240544d2cd784e000bd8f2e284b6"
+    },
+    "fol-006-fixed-and-support-result.json.gz": {
+      "bytes": 7834328,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-006-fixed-and-support-result.json.gz",
+      "sha256": "a9fc0375b4e494beb1b3f22258f0a13795591c996b5252ce88902ed93f98cc00"
+    },
+    "fol-006-fixed-legacy-result.json.gz": {
+      "bytes": 8065555,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-006-fixed-legacy-result.json.gz",
+      "sha256": "7dc537e53fc5c028697bffde0424dc4d404acc97c2bb5204af4e90909a7029c2"
+    },
+    "fol-006-symbolic-and-support-result.json.gz": {
+      "bytes": 3236453,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-006-symbolic-and-support-result.json.gz",
+      "sha256": "5ca9a63bea560cd5d545ed5b323f440886c84daca24d354fb40b337a1b3938ba"
+    },
+    "fol-006-symbolic-legacy-result.json.gz": {
+      "bytes": 2713287,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-006-symbolic-legacy-result.json.gz",
+      "sha256": "0dd0c1bb95f05e90673dcc6b3cad8fca45c3238a31daba239499d08d77562349"
+    },
+    "fol-007-fixed-and-support-result.json.gz": {
+      "bytes": 5223326,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-007-fixed-and-support-result.json.gz",
+      "sha256": "9c292347c1b7587f7f5ccde60128458ce6cdbb1c61b781d75286cc0eaf8b29bd"
+    },
+    "fol-007-fixed-legacy-result.json.gz": {
+      "bytes": 5336750,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-007-fixed-legacy-result.json.gz",
+      "sha256": "95cd695a07982debfb6a711e797de92b4ad436ce244c174dc15ba2e68e28f9d5"
+    },
+    "fol-007-symbolic-and-support-result.json.gz": {
+      "bytes": 1662287,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-007-symbolic-and-support-result.json.gz",
+      "sha256": "bf9d8d65f781423e996b01566c43401fbbde9b8ae96fc82a263d97cff5d6842a"
+    },
+    "fol-007-symbolic-legacy-result.json.gz": {
+      "bytes": 1325599,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-007-symbolic-legacy-result.json.gz",
+      "sha256": "d256eeb5e11cd5a86cf505146b07dbb7e114743d3bc6c36371940e19e8935beb"
+    },
+    "fol-008-fixed-and-support-result.json.gz": {
+      "bytes": 3813767,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-008-fixed-and-support-result.json.gz",
+      "sha256": "00da918fb76409988d0e6e7c4b5b14eb0bf3b1bdb4cc62d0ea92846155b7b9bb"
+    },
+    "fol-008-fixed-legacy-result.json.gz": {
+      "bytes": 3602820,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-008-fixed-legacy-result.json.gz",
+      "sha256": "b7a1ad9c49b0ddb084afbdbc79c3b393621c25ca16e5685ff6c42727f74dd958"
+    },
+    "fol-008-symbolic-and-support-result.json.gz": {
+      "bytes": 1442226,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-008-symbolic-and-support-result.json.gz",
+      "sha256": "fa1fa85538e11972f06e94b984928e0d1da7636324103a5ac6cadb5fb80dd4b4"
+    },
+    "fol-008-symbolic-legacy-result.json.gz": {
+      "bytes": 1236559,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-008-symbolic-legacy-result.json.gz",
+      "sha256": "696bdeb5ceacda1ba700c46f8aefbe937450e95bfd78beb4d175ece3944ca1cd"
+    },
+    "fol-009-fixed-and-support-proof.html": {
+      "bytes": 1636067,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-009-fixed-and-support-proof.html",
+      "sha256": "8cbf2060820609c2117297439f54d4181143d62ef530a03fa30e939daf107dd7"
+    },
+    "fol-009-fixed-and-support-result.json.gz": {
+      "bytes": 2120255,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-009-fixed-and-support-result.json.gz",
+      "sha256": "b72ff3b69c05cd754be5cf18a0c0f4e861704635eb7ed1ab29525916f40ece8d"
+    },
+    "fol-009-fixed-legacy-proof.html": {
+      "bytes": 1709404,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-009-fixed-legacy-proof.html",
+      "sha256": "e6be632a29299857e9f5f9522fe0bcb6294e22619e5b75aaeb4e49cc36ed7a0f"
+    },
+    "fol-009-fixed-legacy-result.json.gz": {
+      "bytes": 2118203,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-009-fixed-legacy-result.json.gz",
+      "sha256": "63f6031401407f01b9dc0daef857e043d7b58af7ef09d0a962ec228982f5f585"
+    },
+    "fol-009-symbolic-and-support-proof.html": {
+      "bytes": 1942116,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-009-symbolic-and-support-proof.html",
+      "sha256": "42cfe665c82db15e698d46b67427b47a3a32ab2e04bdf1699c55909c0b8347b0"
+    },
+    "fol-009-symbolic-and-support-result.json.gz": {
+      "bytes": 1450588,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-009-symbolic-and-support-result.json.gz",
+      "sha256": "611c1c1ca71e4b14966ff18400b76feefb469c3c54509f65ef5e8d6a70ae035e"
+    },
+    "fol-009-symbolic-legacy-proof.html": {
+      "bytes": 1942103,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-009-symbolic-legacy-proof.html",
+      "sha256": "1f54620b445f68e93a3cb562bd2c26b3026c52cd858c4fb558a1a7f09ef5757e"
+    },
+    "fol-009-symbolic-legacy-result.json.gz": {
+      "bytes": 1435461,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-009-symbolic-legacy-result.json.gz",
+      "sha256": "de4185a490021ecf70366fa633eab7af33709a8676393f006f66e27d9cdd5bc9"
+    },
+    "fol-010-fixed-and-support-result.json.gz": {
+      "bytes": 71755,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-010-fixed-and-support-result.json.gz",
+      "sha256": "edb980ff542acbbccb44227b24b279f18a8a5269fa1d776ac1f0ba0ccc838e4e"
+    },
+    "fol-010-fixed-legacy-result.json.gz": {
+      "bytes": 71749,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-010-fixed-legacy-result.json.gz",
+      "sha256": "5e63452f080318cf79b62cb8df0b71380b81be63e7d3f94344974740360b5b7f"
+    },
+    "fol-010-symbolic-and-support-result.json.gz": {
+      "bytes": 71741,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-010-symbolic-and-support-result.json.gz",
+      "sha256": "677222a4421dae804cfd6a93937dc8a4d7e81980a1829c05d2456340fe61a983"
+    },
+    "fol-010-symbolic-legacy-result.json.gz": {
+      "bytes": 71741,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/fol-010-symbolic-legacy-result.json.gz",
+      "sha256": "9832fb4a4c6158d9ee909ad3d8bf73a93c5febe80d8583ca84754134f72b81a9"
+    },
+    "reader.html": {
+      "bytes": 87760,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/reader.html",
+      "sha256": "216da7163944a264a87a0fc259e3353a0be1389570d8ad2b63d924ef268bf15e"
+    }
+  },
+  "retained_actuals": 40,
+  "schema": "first-order-suite-public-evidence-manifest-v1",
+  "scope": "Manifest excludes own rawidentity. Archives contain internal rawmember manifests. Source/retained/display/packaging reviews have separate scopes and inherited authorship. All40 complete scientific outcomes remain public.",
+  "solved_primary_groups": 2,
+  "unchanged_historical_links_not_rechecked": [
+    {
+      "href": "../index.html#conditional-inventory",
+      "source": "reader.html"
+    },
+    {
+      "href": "../checked-tile-reuse/reader.html#comparison",
+      "source": "reader.html"
+    },
+    {
+      "href": "and-support-ordering.html#outcomes",
+      "source": "reader.html"
+    },
+    {
+      "href": "and-support-ordering.html#proofs",
+      "source": "reader.html"
+    },
+    {
+      "href": "and-support-ordering.html#parallel",
+      "source": "reader.html"
+    },
+    {
+      "href": "parallel-search-planning.html#roles",
+      "source": "reader.html"
+    },
+    {
+      "href": "parallel-search-planning.html#diagnosis",
+      "source": "reader.html"
+    },
+    {
+      "href": "parallel-search-planning.html#benchmarks",
+      "source": "reader.html"
+    },
+    {
+      "href": "parallel-search-planning.html#next",
+      "source": "reader.html"
+    },
+    {
+      "href": "model-storage-integration.html#outcomes",
+      "source": "reader.html"
+    },
+    {
+      "href": "model-storage-integration.html#proofs",
+      "source": "reader.html"
+    },
+    {
+      "href": "model-storage-integration.html#evidence",
+      "source": "reader.html"
+    },
+    {
+      "href": "model-qualification.html#outcomes",
+      "source": "reader.html"
+    },
+    {
+      "href": "model-qualification.html#checks",
+      "source": "reader.html"
+    },
+    {
+      "href": "model-qualification.html#evidence",
+      "source": "reader.html"
+    },
+    {
+      "href": "cold-reader-integration.html#outcomes",
+      "source": "reader.html"
+    },
+    {
+      "href": "cold-reader-integration-symbolic-proof.html",
+      "source": "reader.html"
+    },
+    {
+      "href": "cold-reader-integration.html#parallel",
+      "source": "reader.html"
+    },
+    {
+      "href": "compact-storage.html#outcomes",
+      "source": "reader.html"
+    },
+    {
+      "href": "compact-storage.html#capacity",
+      "source": "reader.html"
+    },
+    {
+      "href": "compact-storage.html#parallel",
+      "source": "reader.html"
+    },
+    {
+      "href": "structural-transfer.html#outcomes",
+      "source": "reader.html"
+    },
+    {
+      "href": "structural-transfer-c2-symbolic-proof.html",
+      "source": "reader.html"
+    },
+    {
+      "href": "structural-transfer.html#parallel",
+      "source": "reader.html"
+    },
+    {
+      "href": "symbolic-comparison.html#outcomes",
+      "source": "reader.html"
+    },
+    {
+      "href": "symbolic-comparison-r1-symbolic-proof.html",
+      "source": "reader.html"
+    },
+    {
+      "href": "symbolic-comparison-r1-fixed-proof.html",
+      "source": "reader.html"
+    },
+    {
+      "href": "representation-memory-assessment.html",
+      "source": "reader.html"
+    },
+    {
+      "href": "quantified-transfer.html#outcomes",
+      "source": "reader.html"
+    },
+    {
+      "href": "quantified-transfer-r1-fixed-proof.html",
+      "source": "reader.html"
+    },
+    {
+      "href": "quantified-transfer.html#finding",
+      "source": "reader.html"
+    },
+    {
+      "href": "quantified-transfer-summary.json",
+      "source": "reader.html"
+    },
+    {
+      "href": "family-transfer.html#outcomes",
+      "source": "reader.html"
+    },
+    {
+      "href": "family-transfer-proof-fixed.html",
+      "source": "reader.html"
+    },
+    {
+      "href": "family-transfer.html#parallel",
+      "source": "reader.html"
+    },
+    {
+      "href": "family-transfer-summary.json",
+      "source": "reader.html"
+    },
+    {
+      "href": "closed-root-search.html#outcomes",
+      "source": "reader.html"
+    },
+    {
+      "href": "closed-root-search.html#parallel",
+      "source": "reader.html"
+    },
+    {
+      "href": "closed-root-search-summary.json",
+      "source": "reader.html"
+    },
+    {
+      "href": "closed-roots.html#tiles",
+      "source": "reader.html"
+    },
+    {
+      "href": "closed-roots.html#parallel",
+      "source": "reader.html"
+    },
+    {
+      "href": "closed-roots-summary.json",
+      "source": "reader.html"
+    },
+    {
+      "href": "role-receptors.html#instances",
+      "source": "reader.html"
+    },
+    {
+      "href": "role-receptors.html#next",
+      "source": "reader.html"
+    },
+    {
+      "href": "role-receptors-summary.json",
+      "source": "reader.html"
+    },
+    {
+      "href": "licensed-clusters.html#instances",
+      "source": "reader.html"
+    },
+    {
+      "href": "licensed-clusters.html#review",
+      "source": "reader.html"
+    },
+    {
+      "href": "licensed-clusters-summary.json",
+      "source": "reader.html"
+    },
+    {
+      "href": "two-witness.html#comparison",
+      "source": "reader.html"
+    },
+    {
+      "href": "two-witness.html#tiles",
+      "source": "reader.html"
+    },
+    {
+      "href": "two-witness.html#next",
+      "source": "reader.html"
+    },
+    {
+      "href": "prototype-cache.html#comparison",
+      "source": "reader.html"
+    },
+    {
+      "href": "prototype-cache.html#tiles",
+      "source": "reader.html"
+    },
+    {
+      "href": "prototype-cache.html#parallel",
+      "source": "reader.html"
+    },
+    {
+      "href": "early-row.html#parallel",
+      "source": "reader.html"
+    },
+    {
+      "href": "early-row.html#marking",
+      "source": "reader.html"
+    },
+    {
+      "href": "early-row.html#profile",
+      "source": "reader.html"
+    },
+    {
+      "href": "receiver-transfer.html#tile",
+      "source": "reader.html"
+    },
+    {
+      "href": "receiver-transfer.html#runs",
+      "source": "reader.html"
+    },
+    {
+      "href": "receiver-transfer-summary.json",
+      "source": "reader.html"
+    },
+    {
+      "href": "receiver-transfer-evidence-manifest.json",
+      "source": "reader.html"
+    },
+    {
+      "href": "receiver-transfer-reproduction.zip",
+      "source": "reader.html"
+    },
+    {
+      "href": "mined-families.html#all-records",
+      "source": "reader.html"
+    },
+    {
+      "href": "mined-families-summary.json",
+      "source": "reader.html"
+    },
+    {
+      "href": "receiver-integration-plan.json",
+      "source": "reader.html"
+    },
+    {
+      "href": "mined-families-evidence-manifest.json",
+      "source": "reader.html"
+    },
+    {
+      "href": "mined-families-reproduction.zip",
+      "source": "reader.html"
+    },
+    {
+      "href": "arithmetic-right-two.html#proof-reader",
+      "source": "reader.html"
+    },
+    {
+      "href": "arithmetic-right-two-summary.json",
+      "source": "reader.html"
+    },
+    {
+      "href": "logical-pool-progress-summary.json",
+      "source": "reader.html"
+    },
+    {
+      "href": "parallel-oct17-evidence-manifest.json",
+      "source": "reader.html"
+    },
+    {
+      "href": "parallel-oct17-reproduction.zip",
+      "source": "reader.html"
+    },
+    {
+      "href": "arithmetic-baseline.html#proof-reader",
+      "source": "reader.html"
+    },
+    {
+      "href": "arithmetic-baseline-summary.json",
+      "source": "reader.html"
+    },
+    {
+      "href": "arithmetic-baseline-evidence-manifest.json",
+      "source": "reader.html"
+    },
+    {
+      "href": "arithmetic-baseline-reproduction.zip",
+      "source": "reader.html"
+    },
+    {
+      "href": "native-head-marking-summary.json",
+      "source": "reader.html"
+    },
+    {
+      "href": "native-head-marking-evidence-manifest.json",
+      "source": "reader.html"
+    },
+    {
+      "href": "native-head-marking-reproduction.zip",
+      "source": "reader.html"
+    },
+    {
+      "href": "selected-proof-progress-summary.json",
+      "source": "reader.html"
+    },
+    {
+      "href": "selected-proof-progress-evidence-manifest.json",
+      "source": "reader.html"
+    },
+    {
+      "href": "selected-proof-progress-reproduction.zip",
+      "source": "reader.html"
+    },
+    {
+      "href": "matched-comparison-summary.json",
+      "source": "reader.html"
+    },
+    {
+      "href": "matched-comparison-evidence-manifest.json",
+      "source": "reader.html"
+    },
+    {
+      "href": "matched-comparison-reproduction.zip",
+      "source": "reader.html"
+    },
+    {
+      "href": "#parallel",
+      "source": "reader.html"
+    },
+    {
+      "href": "recording-limit-summary.json",
+      "source": "reader.html"
+    },
+    {
+      "href": "recording-limit-evidence-manifest.json",
+      "source": "reader.html"
+    },
+    {
+      "href": "source-development-addendum.json",
+      "source": "reader.html"
+    },
+    {
+      "href": "first-admission-diagnostic-summary.json",
+      "source": "reader.html"
+    },
+    {
+      "href": "first-admission-evidence-manifest.json",
+      "source": "reader.html"
+    },
+    {
+      "href": "callback-diagnostic-summary.json",
+      "source": "reader.html"
+    },
+    {
+      "href": "callback-evidence-manifest.json",
+      "source": "reader.html"
+    },
+    {
+      "href": "#parallel",
+      "source": "reader.html"
+    },
+    {
+      "href": "head-filter-evidence-manifest.json",
+      "source": "reader.html"
+    },
+    {
+      "href": "head-filter-summary.json",
+      "source": "reader.html"
+    },
+    {
+      "href": "receiver-evidence-manifest.json",
+      "source": "reader.html"
+    },
+    {
+      "href": "receiver-summary.json",
+      "source": "reader.html"
+    },
+    {
+      "href": "../fresh-proofs/reader.html?v=n155#proof-reader",
+      "source": "reader.html"
+    },
+    {
+      "href": "fresh-hilbert-status-reconciliation.json",
+      "source": "reader.html"
+    },
+    {
+      "href": "../hilbert-i2/reader.html?v=n156#proof-reader",
+      "source": "reader.html"
+    },
+    {
+      "href": "family-transfer.html#parallel",
+      "source": "reader.html"
+    },
+    {
+      "href": "parallel-work-status.json",
+      "source": "reader.html"
+    },
+    {
+      "href": "parallel-research-plan.json",
+      "source": "reader.html"
+    },
+    {
+      "href": "fresh-hilbert-compatibility-plan.json",
+      "source": "reader.html"
+    },
+    {
+      "href": "prototype-cache.html#comparison",
+      "source": "reader.html"
+    },
+    {
+      "href": "two-witness.html#comparison",
+      "source": "reader.html"
+    },
+    {
+      "href": "licensed-clusters.html#instances",
+      "source": "reader.html"
+    },
+    {
+      "href": "role-receptors.html#instances",
+      "source": "reader.html"
+    },
+    {
+      "href": "closed-roots.html#inventory",
+      "source": "reader.html"
+    },
+    {
+      "href": "closed-root-search.html#outcomes",
+      "source": "reader.html"
+    },
+    {
+      "href": "reader.html#and-support-ordering",
+      "source": "and-support-ordering.html"
+    },
+    {
+      "href": "#outcomes",
+      "source": "and-support-ordering.html"
+    },
+    {
+      "href": "#proofs",
+      "source": "and-support-ordering.html"
+    },
+    {
+      "href": "#parallel",
+      "source": "and-support-ordering.html"
+    },
+    {
+      "href": "#evidence",
+      "source": "and-support-ordering.html"
+    },
+    {
+      "href": "and-support-fixed-and-support-proof.html#proof-reader",
+      "source": "and-support-ordering.html"
+    },
+    {
+      "href": "and-support-symbolic-and-support-proof.html#proof-reader",
+      "source": "and-support-ordering.html"
+    },
+    {
+      "href": "parallel-search-planning.html#benchmarks",
+      "source": "and-support-ordering.html"
+    },
+    {
+      "href": "and-support-ordering-summary.json",
+      "source": "and-support-ordering.html"
+    },
+    {
+      "href": "and-support-ordering-admission.json",
+      "source": "and-support-ordering.html"
+    },
+    {
+      "href": "and-support-ordering-declaration.json",
+      "source": "and-support-ordering.html"
+    },
+    {
+      "href": "and-support-ordering-runtime-closure.json",
+      "source": "and-support-ordering.html"
+    },
+    {
+      "href": "and-support-ordering-evidence-manifest.json",
+      "source": "and-support-ordering.html"
+    },
+    {
+      "href": "and-support-ordering-evidence.zip",
+      "source": "and-support-ordering.html"
+    },
+    {
+      "href": "and-support-ordering-data-review.json",
+      "source": "and-support-ordering.html"
+    },
+    {
+      "href": "and-support-ordering-resource-review.json",
+      "source": "and-support-ordering.html"
+    },
+    {
+      "href": "and-support-ordering-comparison-review.json",
+      "source": "and-support-ordering.html"
+    },
+    {
+      "href": "and-support-ordering-report-review.json",
+      "source": "and-support-ordering.html"
+    },
+    {
+      "href": "and-support-fixed-legacy-result.json.gz",
+      "source": "and-support-ordering.html"
+    },
+    {
+      "href": "and-support-symbolic-and-support-result.json.gz",
+      "source": "and-support-ordering.html"
+    },
+    {
+      "href": "and-support-symbolic-legacy-result.json.gz",
+      "source": "and-support-ordering.html"
+    },
+    {
+      "href": "and-support-fixed-and-support-result.json.gz",
+      "source": "and-support-ordering.html"
+    },
+    {
+      "href": "parallel-search-planning.html#roles",
+      "source": "and-support-ordering.html"
+    },
+    {
+      "href": "structural-transfer.html#outcomes",
+      "source": "and-support-ordering.html"
+    }
+  ]
+}

@@ -1,0 +1,189 @@
+{
+  "actual_execution_authorized": false,
+  "ancestry": {
+    "actual_execution_author": "/root",
+    "authored_current_helper_and_symbolic": true,
+    "authored_inherited_outerV2": true,
+    "authored_prior_driver_broker_benchmark": true,
+    "current_outer_author": "/root/receiver_driver_review",
+    "distinct_current_Source_peers_relied_upon": true,
+    "own_Source_certification": false
+  },
+  "audit": {
+    "bytes": 3846799,
+    "path": "/private/tmp/gcts-first-order-suite-retained-resource-peer-20261018/raw-retained-resource-audit-v1.json",
+    "sha256": "d96889b348a16061debfeccde965f096dfc534ea0d9f239092b8f3d29abffc7c"
+  },
+  "audit_Source": {
+    "bytes": 36926,
+    "path": "/private/tmp/gcts-first-order-suite-retained-resource-peer-20261018/audit_suite_resources_v1.py",
+    "sha256": "a93534cbd0e51a94c6225bfe0e3212c9bd8909b94922e8ed5270b88766f5dd97"
+  },
+  "author_identity": "/root",
+  "case_declarations": {
+    "prospective-fol-20261018-001": {
+      "bytes": 5106,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/first-order-suite-progress-20261018/case-declarations/prospective-fol-20261018-001.json",
+      "sha256": "aa86e436a82709fec750bea04f6f0a2d0702904c70a25d927d3e9f4644a70917"
+    },
+    "prospective-fol-20261018-002": {
+      "bytes": 5116,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/first-order-suite-progress-20261018/case-declarations/prospective-fol-20261018-002.json",
+      "sha256": "8aee5b63f52fdce3abf4845d8f4ba74fc82f3a0e8de3c430864370a95c8b26c7"
+    },
+    "prospective-fol-20261018-003": {
+      "bytes": 5145,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/first-order-suite-progress-20261018/case-declarations/prospective-fol-20261018-003.json",
+      "sha256": "eac1f5e56e8faebc02514416301a92890039814b38acdbaefcffe839caa67ada"
+    },
+    "prospective-fol-20261018-004": {
+      "bytes": 5639,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/first-order-suite-progress-20261018/case-declarations/prospective-fol-20261018-004.json",
+      "sha256": "46fc46f3127b70d0c3d85bf5bc1f29c5530933a8894457d0806744dddc9370a7"
+    },
+    "prospective-fol-20261018-005": {
+      "bytes": 5845,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/first-order-suite-progress-20261018/case-declarations/prospective-fol-20261018-005.json",
+      "sha256": "7d58643cc11a9e8f16b4fac8598b74bf7e1a776d4fb7f355d60d6e0eb9befa06"
+    },
+    "prospective-fol-20261018-006": {
+      "bytes": 6709,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/first-order-suite-progress-20261018/case-declarations/prospective-fol-20261018-006.json",
+      "sha256": "4defa10a6c6c70bf950f21dbb9f107e69612db85973416d2a794cbc80fe90f56"
+    },
+    "prospective-fol-20261018-007": {
+      "bytes": 5921,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/first-order-suite-progress-20261018/case-declarations/prospective-fol-20261018-007.json",
+      "sha256": "27dd3889221e558d55e2959201689577482fe63f6257e3df099f656e4bc7ede1"
+    },
+    "prospective-fol-20261018-008": {
+      "bytes": 5548,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/first-order-suite-progress-20261018/case-declarations/prospective-fol-20261018-008.json",
+      "sha256": "151488a39e34cdce67969b60345c300d93e83ab35607b15e5874bc6680361da4"
+    },
+    "prospective-fol-20261018-009": {
+      "bytes": 5116,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/first-order-suite-progress-20261018/case-declarations/prospective-fol-20261018-009.json",
+      "sha256": "c10462df6ad57d3e13d24b1d3b9fb7a982458977c15510cf44b13d210a592a8a"
+    },
+    "prospective-fol-20261018-010": {
+      "bytes": 5855,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/first-order-suite-progress-20261018/case-declarations/prospective-fol-20261018-010.json",
+      "sha256": "fc43ef08bffb530cd857ec74b7e1eab7fd3c6df8493c6a721e74b64f56db7c07"
+    }
+  },
+  "check_count": 15211,
+  "cohort_closure": {
+    "bytes": 52310,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/first-order-suite-progress-20261018/ROOT-cohort-closure-v1.json",
+    "sha256": "326c2f81cd9380651679d91ae741740e33eb522a8c5bfd9575952b304906a21f"
+  },
+  "compiler_calls": 0,
+  "current_Source_and_plan_reviews": {
+    "composition_Source": {
+      "bytes": 16317,
+      "path": "/private/tmp/gcts-first-order-suite-composition-peer-20261018/typed-Source-review-v1.json",
+      "sha256": "cdf18b7acb2285a0c89a8f392eebebc32f4a97b22fa5c0466e56c2f6ba381dc6"
+    },
+    "once_Source": {
+      "bytes": 7442,
+      "path": "/private/tmp/gcts-first-order-suite-once-peer-20261018/typed-Source-review-v1.json",
+      "sha256": "9639f8aebdced55d55e549e89582da15bc942c5fe1e96ccdfe99f07649a76d9c"
+    },
+    "ordering_Source": {
+      "bytes": 8399,
+      "path": "/private/tmp/gcts-and-support-ordering-independent-peer-20261018/typed-ordering-components-Source-review-v1.json",
+      "sha256": "84c4e5e5b1528bafc12f8f957e89ea648b1e358ce888206879639cb954dc8f2e"
+    },
+    "prospective_plans": {
+      "bytes": 232643,
+      "path": "/private/tmp/gcts-first-order-suite-prospective-peer-20261018/typed-prospective-plan-review-v1.json",
+      "sha256": "97de1560414b8756d20cd478077ca58bfa50e4960c314bb392f3cf9419c0a72a"
+    }
+  },
+  "declaration": {
+    "bytes": 26168,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/first-order-suite-progress-20261018/experiment-declaration-v1.json",
+    "sha256": "1d79da9c0ae23c0b5e1073e18957edec3ad89fea944e4d4c656816df802e468c"
+  },
+  "final_grant_adoption": {
+    "bytes": 22207,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/first-order-suite-progress-20261018/ROOT-final-grant-adoption-v1.json",
+    "sha256": "16a3c8f6d39c623ca5c2d2cf67b223db3a71b37536260e796f48e2b4d1d7a4b3"
+  },
+  "final_grant_review": {
+    "bytes": 302607,
+    "path": "/private/tmp/gcts-first-order-suite-final-grant-peer-20261018/typed-final-grant-delta-review-v1.json",
+    "sha256": "d66f4415d544414186674562ce22d8ddd54ddb2e28d3e733c2ba969d5fb32d5f"
+  },
+  "findings": [
+    {
+      "finding": "All40 max-one grants/markers/current24alias/selected search+helper+compactModel/original and owned preimages join; every worker and native child has explicit terminal/reap/EOF/group data and no signal/reappearance/late failure. Observer exit, runner exit and worker wait4 exit are separate retained observations.",
+      "id": "FORTY_CLOSED_CURRENT_SUBJECTS",
+      "severity": "evidence"
+    },
+    {
+      "finding": "All40 conservative separate Darwin worker+native peak sums fit1GiB; full raw outputs fit128MiB. All12 positive candidates completed output/Reader and known worker exit before180, and all40 outer/external terminal checks completed before210.",
+      "id": "ORIGINAL_PROFILE",
+      "severity": "evidence"
+    },
+    {
+      "finding": "This receipt audits retained resource and custody records only. It does not evaluate proof rules, support scores, point legality, native machine semantics, causal performance or GCTS/RL advantage.",
+      "id": "NO_MATHEMATICAL_OR_COMPARATIVE_ADMISSION",
+      "severity": "scope"
+    }
+  ],
+  "index": {
+    "bytes": 90732,
+    "path": "/private/tmp/gcts-first-order-suite-plans-ROOT-20261018-v1/authorized-index-v1.json",
+    "sha256": "8892cb887508d87f0b6d7cf0091975f9654a70ecf60872437688ae76207544d0"
+  },
+  "input_capsule": {
+    "bytes": 22422,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/first-order-suite-progress-20261018/input-capsule-v1.json",
+    "sha256": "1a42c2ab16680dddbac504ca5b2d79559370785884805cf4d56b5c1c22c63dc0"
+  },
+  "limitations": [
+    "Reviewer authored inherited outerV2, current AND-support helper and symbolic control plus earlier protocol/benchmark components. This is independent of Root actual execution, not an independent Source certificate of those implementations. Genuine current Source/plan peers are separately bound.",
+    "Standard-library JSON parsing/canonical byte hashing/statistics and raw file hashes only. No research module/native/solver/compiler/Model/search/logic/kernel/renderer execution, replay, program or opaque microcode decoding, process launch or live group probe.",
+    "Stored logical/native/point flags remain separate mathematical admission evidence; this review does not accept proofs or infer nonprovability from UNKNOWN.",
+    "Conservative sum is separately captured process high-water RSS in bytes on declared Darwin, not simultaneous live aggregate RAM. Cohort controller/outer/observer memory excluded; no enforced live1GiB bound or escaped-descendant OS attestation.",
+    "Pinned Python/native loader/bundled stdlib and trusted OS metadata assumptions remain. Raw present-byte checks and saved callable guards are not a formal continuous worker seal. Parent Source-entry clocks exclude observer/Python prelude, separately recorded.",
+    "All current resource candidates passed, so no earlier aggregate-memory gate skipped the final outer whole raw loop in these40 records. Earlier diagnostic runs remain unchanged and retain their conditional custody scope.",
+    "Ten frozen inputs across eight structural groups include two linked renames, with four authorselected rotating arms per case. No repetitions/statistical speed/generalization/RL or uniquely geometric advantage claim. All40 stored outcomes, including all28 UNKNOWN, are retained without dropping or cap changes."
+  ],
+  "mathematical_proof_accepted": false,
+  "mismatch_count": 0,
+  "model_calls": 0,
+  "native_calls": 0,
+  "native_codec_or_decompression_calls": 0,
+  "project_imports": 0,
+  "renderer_calls": 0,
+  "resource_data_review_passed": true,
+  "resource_profile_pass_count": 40,
+  "resource_review_passed": true,
+  "result_table": {
+    "bytes": 132126,
+    "path": "/private/tmp/gcts-first-order-suite-retained-resource-peer-20261018/forty-result-resource-table-v1.json",
+    "sha256": "9d12fdd149715202009f17c0f0b5ec7df6a0a6bb655dde1713a8a854a14b94fb"
+  },
+  "retained_actuals": 40,
+  "reviewer_identity": "/root/conventional_control_review",
+  "runtime_closure": {
+    "bytes": 73258,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/first-order-suite-progress-20261018/runtime-closure-v1.json",
+    "sha256": "e3ed95935216bdbae1cfea900050718a7b21f81a11dc9d50a608585101e8d1cf"
+  },
+  "saved_data_only": true,
+  "schema": "first-order-suite-retained-resource-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scientific_replays": 0,
+  "scope": "Retained resource/terminal/transport/Source-custody only",
+  "search_calls": 0,
+  "solver_calls": 0,
+  "source_only": true,
+  "stored_native_inventory_UNKNOWN": 16,
+  "stored_positive_candidates": 12,
+  "stored_search_UNKNOWN": 12
+}

@@ -1,0 +1,1620 @@
+{
+  "schema": "first-order-suite-retained-comparison-analysis-v1",
+  "analysis_author_identity": "/root/conventional_library",
+  "subject_actual_author_identity": "/root",
+  "reviewer_identity": "/root/conventional_library",
+  "retained_data_and_Source_only": true,
+  "comparison_analysis_passed": true,
+  "scientific_replays": 0,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "actual_execution_authorized": false,
+  "authorized_index": {
+    "path": "/private/tmp/gcts-first-order-suite-plans-ROOT-20261018-v1/authorized-index-v1.json",
+    "sha256": "8892cb887508d87f0b6d7cf0091975f9654a70ecf60872437688ae76207544d0",
+    "bytes": 90732
+  },
+  "cohort_closure": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/first-order-suite-progress-20261018/ROOT-cohort-closure-v1.json",
+    "sha256": "326c2f81cd9380651679d91ae741740e33eb522a8c5bfd9575952b304906a21f",
+    "bytes": 52310
+  },
+  "Root_admission": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/first-order-suite-progress-20261018/ROOT-actual-admission-v1.json",
+    "sha256": "da6088925e44be6ca4bcb7fb21573fc676c8706eb01cc59f5eb73ceb7998371c",
+    "bytes": 2465113
+  },
+  "input_capsule": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/first-order-suite-progress-20261018/input-capsule-v1.json",
+    "sha256": "1a42c2ab16680dddbac504ca5b2d79559370785884805cf4d56b5c1c22c63dc0",
+    "bytes": 22422
+  },
+  "prospective_design": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/first-order-suite-progress-20261018/prospective-design-v1.json",
+    "sha256": "3b324a86de79a408a4d1317d94c6e03a807e4367afaf15f24cf0ec5e2288139f",
+    "bytes": 25396
+  },
+  "data_audit": {
+    "path": "/private/tmp/gcts-first-order-suite-comparison-peer-20261018/retained-comparison-data-v2.json",
+    "sha256": "778cd84e170ac2c333a90157b419a0dd3dbd470698baf0a3a32c3bed05ee030e",
+    "bytes": 470203
+  },
+  "saved_proof_observations": {
+    "path": "/private/tmp/gcts-first-order-suite-comparison-peer-20261018/retained-proof-observations-v1.json",
+    "sha256": "ee317665f5f9ffe51b36174aa2cc4723b19c319cf8b5e1bae3c033124c65ef99",
+    "bytes": 465928
+  },
+  "symbolic_preparation": {
+    "path": "/private/tmp/gcts-first-order-suite-comparison-peer-20261018/symbolic-preparation-observations-v1.json",
+    "sha256": "0174cc405c471c904b110fb5450c7e8387cbfa4e67d82697f0f74336d886e3a0",
+    "bytes": 9389
+  },
+  "Sources": {
+    "master": {
+      "source": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+        "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+        "bytes": 21657
+      },
+      "citations": null
+    },
+    "compiler": {
+      "source": {
+        "path": "/private/tmp/gcts-quantified-adapter-source-20261018/quantified_receptors_v1.py",
+        "sha256": "d1c4afa10d58abbcf473cb3da8ee8768c974dd05d03ea00b988d574b2441af5a",
+        "bytes": 11060
+      },
+      "citations": {
+        "bounded_catalog": [
+          21,
+          104
+        ],
+        "domains": [
+          106,
+          121
+        ],
+        "native_admission": [
+          123,
+          139
+        ]
+      }
+    },
+    "registry": {
+      "source": {
+        "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_inventory_oracle.py",
+        "sha256": "f41bfd56829b89b015fcf7a4dbd41dabd36110156e345353059980a66f6a4400",
+        "bytes": 2180
+      },
+      "citations": {
+        "whole_inventory_check": [
+          25,
+          30
+        ]
+      }
+    },
+    "driver": {
+      "source": {
+        "path": "/private/tmp/gcts-and-support-cold-source-20261018/and_support_receiver_driver_v1.py",
+        "sha256": "5f73835dfc9219f06f01206ebf6bbac5744eea582cbfb03deed42105f2ccacd0",
+        "bytes": 53725
+      },
+      "citations": {
+        "legacy_UI_GEN_flag": [
+          424,
+          431
+        ],
+        "whole_inventory_stop": [
+          764,
+          775
+        ],
+        "separate_composite_hint_flag": [
+          825,
+          833
+        ]
+      }
+    },
+    "shared_helper": {
+      "source": {
+        "path": "/private/tmp/gcts-and-support-ordering-source-20261018/receptor_support_ordering_v1.py",
+        "sha256": "18cf90ebd75d746db3eb251eaffa92cd6a25432b70f34653b57f3d58ef5d8adc",
+        "bytes": 16868
+      },
+      "citations": {
+        "potential": [
+          223,
+          245
+        ],
+        "score_and_stable_order": [
+          248,
+          333
+        ]
+      }
+    },
+    "point_search": {
+      "source": {
+        "path": "/private/tmp/gcts-and-support-point-source-20261018/semantic_inventory_search_v2.py",
+        "sha256": "35443c958f2115efa18cc923fb4a4f1070e6e03ccf1d1adf2bb56ce1f7bab28b",
+        "bytes": 15936
+      },
+      "citations": {
+        "scoring_only": [
+          85,
+          151
+        ],
+        "graph_setup": [
+          154,
+          186
+        ],
+        "mandatory_branch_hint": [
+          190,
+          238
+        ]
+      }
+    },
+    "symbolic_control": {
+      "source": {
+        "path": "/private/tmp/gcts-and-support-ordering-source-20261018/quantified_symbolic_control_v2.py",
+        "sha256": "740319d243cc2fd2eefe1d7ef1611d8bcfe6f0ff70a2ce2ed72771e78f64a391",
+        "bytes": 26238
+      },
+      "citations": {
+        "setup": [
+          202,
+          282
+        ],
+        "unchanged_iterator_and_windows": [
+          320,
+          394
+        ],
+        "budget_and_rollback": [
+          400,
+          481
+        ]
+      }
+    }
+  },
+  "audit_checks": {
+    "checks": 439,
+    "mismatches": 0,
+    "status_counts": {
+      "native_proof_discovered": 12,
+      "unknown_native_inventory": 16,
+      "unknown_search_budget": 12
+    },
+    "scientific_replays": 0
+  },
+  "samecase_complete_literal_comparisons": {
+    "comparisons": 168,
+    "all_equal": true,
+    "scope": "Full canonical byte equality, not hash-only comparison; compiler omits only seconds, Model omits only compile_seconds; full specializations, inventory definitions/interfaces/native_blocks and initial state retained.16inventory-stopped runs have noModel/initial/search, not fabricated empty equality.12 reached-treatment helper graphs additionally full-literal equal across methods."
+  },
+  "outcomes": {
+    "runs": 40,
+    "all_resource_and_terminal_candidates": 40,
+    "Root_admitted_native_proofs": 12,
+    "unknown_native_inventory": 16,
+    "unknown_search_budget": 12,
+    "distinct_solved_case_inputs": 3,
+    "solved_primary_groups": 2,
+    "primary_groups": 8,
+    "solved_inputs": [
+      "prospective-fol-20261018-001",
+      "prospective-fol-20261018-004",
+      "prospective-fol-20261018-009"
+    ],
+    "correlated_renames": {
+      "009": "001",
+      "010": "005"
+    },
+    "new_RL_training": false,
+    "prior_c3_development_result_pooled": false
+  },
+  "arm_summaries": [
+    {
+      "mode": "fixed",
+      "search_ordering": "legacy",
+      "runs": 10,
+      "Root_admitted_proof_runs": 3,
+      "solved_primary_groups": 2,
+      "primary_groups": 8,
+      "status_counts": {
+        "native_proof_discovered": 3,
+        "unknown_native_inventory": 4,
+        "unknown_search_budget": 3
+      },
+      "external_terminal_seconds": {
+        "min": 38.198437459,
+        "max": 163.921224666,
+        "median": 77.377536042,
+        "sum": 842.5481640419999
+      },
+      "worker_plus_native_MiB": {
+        "min": 271.046875,
+        "max": 845.578125,
+        "median": 502.3359375,
+        "sum": 4735.515625
+      },
+      "native_queries": 403,
+      "interpretation": "Different point-placement and symbolic-prefix units; UNKNOWN wall time is not time-to-proof."
+    },
+    {
+      "mode": "fixed",
+      "search_ordering": "and_support",
+      "runs": 10,
+      "Root_admitted_proof_runs": 3,
+      "solved_primary_groups": 2,
+      "primary_groups": 8,
+      "status_counts": {
+        "native_proof_discovered": 3,
+        "unknown_native_inventory": 4,
+        "unknown_search_budget": 3
+      },
+      "external_terminal_seconds": {
+        "min": 38.7294975,
+        "max": 167.234169458,
+        "median": 73.4639489165,
+        "sum": 826.2416940820001
+      },
+      "worker_plus_native_MiB": {
+        "min": 270.96875,
+        "max": 872.984375,
+        "median": 511.984375,
+        "sum": 4836.984375
+      },
+      "native_queries": 403,
+      "interpretation": "Different point-placement and symbolic-prefix units; UNKNOWN wall time is not time-to-proof."
+    },
+    {
+      "mode": "symbolic",
+      "search_ordering": "legacy",
+      "runs": 10,
+      "Root_admitted_proof_runs": 3,
+      "solved_primary_groups": 2,
+      "primary_groups": 8,
+      "status_counts": {
+        "native_proof_discovered": 3,
+        "unknown_native_inventory": 4,
+        "unknown_search_budget": 3
+      },
+      "external_terminal_seconds": {
+        "min": 37.718937,
+        "max": 98.662860166,
+        "median": 51.608845125,
+        "sum": 596.200091833
+      },
+      "worker_plus_native_MiB": {
+        "min": 270.8125,
+        "max": 642.671875,
+        "median": 435.0078125,
+        "sum": 4034.703125
+      },
+      "native_queries": 403,
+      "interpretation": "Different point-placement and symbolic-prefix units; UNKNOWN wall time is not time-to-proof."
+    },
+    {
+      "mode": "symbolic",
+      "search_ordering": "and_support",
+      "runs": 10,
+      "Root_admitted_proof_runs": 3,
+      "solved_primary_groups": 2,
+      "primary_groups": 8,
+      "status_counts": {
+        "native_proof_discovered": 3,
+        "unknown_native_inventory": 4,
+        "unknown_search_budget": 3
+      },
+      "external_terminal_seconds": {
+        "min": 38.242673291,
+        "max": 98.82650975,
+        "median": 53.6765861665,
+        "sum": 619.8788084579999
+      },
+      "worker_plus_native_MiB": {
+        "min": 271.03125,
+        "max": 685.609375,
+        "median": 436.7109375,
+        "sum": 4292.765625
+      },
+      "native_queries": 403,
+      "interpretation": "Different point-placement and symbolic-prefix units; UNKNOWN wall time is not time-to-proof."
+    }
+  ],
+  "case_summaries": [
+    {
+      "receiver_id": "prospective-fol-20261018-001",
+      "group": "ground-equality-predicate-transport",
+      "primary": true,
+      "renaming_control_of": null,
+      "formula_latex": "\\{a=b,\\ P(a)\\}\\ \\vdash\\ P(b)",
+      "all4_status": "native_proof_discovered",
+      "compile": {
+        "status": "complete",
+        "basis": 11,
+        "schemes": 3,
+        "tautologies": 1,
+        "variables": []
+      },
+      "inventory": {
+        "definitions": 10,
+        "native_status": "accepted",
+        "native_micro_steps": 1876601674,
+        "native_physical_head": 1456,
+        "native_limit": 5000000000
+      },
+      "model": {
+        "placements": 10078,
+        "arity": 3,
+        "roots": 60,
+        "command_counts": [
+          157,
+          168,
+          201,
+          256,
+          333,
+          432,
+          553,
+          696,
+          861,
+          1048,
+          1257,
+          135
+        ]
+      },
+      "all4_same_semantic_preimages": true
+    },
+    {
+      "receiver_id": "prospective-fol-20261018-002",
+      "group": "unary-function-congruence",
+      "primary": true,
+      "renaming_control_of": null,
+      "formula_latex": "\\{a=b\\}\\ \\vdash\\ f(a)=f(b)",
+      "all4_status": "unknown_native_inventory",
+      "compile": {
+        "status": "complete",
+        "basis": 38,
+        "schemes": 12,
+        "tautologies": 2,
+        "variables": []
+      },
+      "inventory": {
+        "definitions": 38,
+        "native_status": "unknown_space_budget",
+        "native_micro_steps": 872854609,
+        "native_physical_head": 74896,
+        "native_limit": 5000000000
+      },
+      "model": null,
+      "all4_same_semantic_preimages": true
+    },
+    {
+      "receiver_id": "prospective-fol-20261018-003",
+      "group": "ground-equality-chain",
+      "primary": true,
+      "renaming_control_of": null,
+      "formula_latex": "\\{a=b,\\ b=c\\}\\ \\vdash\\ a=c",
+      "all4_status": "unknown_native_inventory",
+      "compile": {
+        "status": "complete",
+        "basis": 32,
+        "schemes": 12,
+        "tautologies": 3,
+        "variables": []
+      },
+      "inventory": {
+        "definitions": 72,
+        "native_status": "unknown_space_budget",
+        "native_micro_steps": 637751583,
+        "native_physical_head": 74896,
+        "native_limit": 5000000000
+      },
+      "model": null,
+      "all4_same_semantic_preimages": true
+    },
+    {
+      "receiver_id": "prospective-fol-20261018-004",
+      "group": "functional-universal-horn",
+      "primary": true,
+      "renaming_control_of": null,
+      "formula_latex": "\\{\\forall x\\,(P(x)\\Rightarrow Q(f(x))),\\ P(a)\\}\\ \\vdash\\ Q(f(a))",
+      "all4_status": "native_proof_discovered",
+      "compile": {
+        "status": "complete",
+        "basis": 13,
+        "schemes": 3,
+        "tautologies": 0,
+        "variables": [
+          "x"
+        ]
+      },
+      "inventory": {
+        "definitions": 6,
+        "native_status": "accepted",
+        "native_micro_steps": 1067684616,
+        "native_physical_head": 1456,
+        "native_limit": 5000000000
+      },
+      "model": {
+        "placements": 10408,
+        "arity": 2,
+        "roots": 48,
+        "command_counts": [
+          133,
+          159,
+          211,
+          289,
+          393,
+          523,
+          679,
+          861,
+          1069,
+          1303,
+          1563,
+          142
+        ]
+      },
+      "all4_same_semantic_preimages": true
+    },
+    {
+      "receiver_id": "prospective-fol-20261018-005",
+      "group": "binary-relational-permutation",
+      "primary": true,
+      "renaming_control_of": null,
+      "formula_latex": "\\{\\forall x\\,\\forall y\\,(R(x,y)\\Rightarrow S(y,x)),\\ R(a,b)\\}\\ \\vdash\\ S(b,a)",
+      "all4_status": "unknown_native_inventory",
+      "compile": {
+        "status": "complete",
+        "basis": 76,
+        "schemes": 20,
+        "tautologies": 0,
+        "variables": [
+          "fresh0",
+          "x",
+          "y"
+        ]
+      },
+      "inventory": {
+        "definitions": 53,
+        "native_status": "unknown_space_budget",
+        "native_micro_steps": 915798408,
+        "native_physical_head": 74896,
+        "native_limit": 5000000000
+      },
+      "model": null,
+      "all4_same_semantic_preimages": true
+    },
+    {
+      "receiver_id": "prospective-fol-20261018-006",
+      "group": "quantified-shared-premise-fork-join",
+      "primary": true,
+      "renaming_control_of": null,
+      "formula_latex": "\\{\\forall x\\,(P(x)\\Rightarrow Q(x)),\\ \\forall x\\,(P(x)\\Rightarrow R(x)),\\ \\forall x\\,(Q(x)\\Rightarrow(R(x)\\Rightarrow S(x))),\\ \\forall x\\,P(x)\\}\\ \\vdash\\ \\forall x\\,S(x)",
+      "all4_status": "unknown_search_budget",
+      "compile": {
+        "status": "complete",
+        "basis": 18,
+        "schemes": 5,
+        "tautologies": 0,
+        "variables": [
+          "x"
+        ]
+      },
+      "inventory": {
+        "definitions": 13,
+        "native_status": "accepted",
+        "native_micro_steps": 2619967971,
+        "native_physical_head": 1456,
+        "native_limit": 5000000000
+      },
+      "model": {
+        "placements": 17510,
+        "arity": 3,
+        "roots": 60,
+        "command_counts": [
+          347,
+          383,
+          455,
+          563,
+          707,
+          887,
+          1103,
+          1355,
+          1643,
+          1967,
+          2327,
+          151
+        ]
+      },
+      "all4_same_semantic_preimages": true
+    },
+    {
+      "receiver_id": "prospective-fol-20261018-007",
+      "group": "quantified-hypothetical-composition",
+      "primary": true,
+      "renaming_control_of": null,
+      "formula_latex": "\\{\\forall x\\,(P(x)\\Rightarrow Q(x)),\\ \\forall x\\,(Q(x)\\Rightarrow R(x))\\}\\ \\vdash\\ \\forall x\\,(P(x)\\Rightarrow R(x))",
+      "all4_status": "unknown_search_budget",
+      "compile": {
+        "status": "complete",
+        "basis": 12,
+        "schemes": 3,
+        "tautologies": 0,
+        "variables": [
+          "x"
+        ]
+      },
+      "inventory": {
+        "definitions": 7,
+        "native_status": "accepted",
+        "native_micro_steps": 1091673047,
+        "native_physical_head": 1456,
+        "native_limit": 5000000000
+      },
+      "model": {
+        "placements": 10294,
+        "arity": 3,
+        "roots": 60,
+        "command_counts": [
+          135,
+          159,
+          207,
+          279,
+          375,
+          495,
+          639,
+          807,
+          999,
+          1215,
+          1455,
+          143
+        ]
+      },
+      "all4_same_semantic_preimages": true
+    },
+    {
+      "receiver_id": "prospective-fol-20261018-008",
+      "group": "quantified-contraposition",
+      "primary": true,
+      "renaming_control_of": null,
+      "formula_latex": "\\{\\forall x\\,(P(x)\\Rightarrow Q(x))\\}\\ \\vdash\\ \\forall x\\,(\\neg Q(x)\\Rightarrow\\neg P(x))",
+      "all4_status": "unknown_search_budget",
+      "compile": {
+        "status": "complete",
+        "basis": 10,
+        "schemes": 2,
+        "tautologies": 0,
+        "variables": [
+          "x"
+        ]
+      },
+      "inventory": {
+        "definitions": 4,
+        "native_status": "accepted",
+        "native_micro_steps": 575499142,
+        "native_physical_head": 1456,
+        "native_limit": 5000000000
+      },
+      "model": {
+        "placements": 7401,
+        "arity": 2,
+        "roots": 48,
+        "command_counts": [
+          72,
+          92,
+          132,
+          192,
+          272,
+          372,
+          492,
+          632,
+          792,
+          972,
+          1172,
+          139
+        ]
+      },
+      "all4_same_semantic_preimages": true
+    },
+    {
+      "receiver_id": "prospective-fol-20261018-009",
+      "group": "ground-equality-predicate-transport",
+      "primary": false,
+      "renaming_control_of": "prospective-fol-20261018-001",
+      "formula_latex": "\\{c_0=c_1,\\ U(c_0)\\}\\ \\vdash\\ U(c_1)",
+      "all4_status": "native_proof_discovered",
+      "compile": {
+        "status": "complete",
+        "basis": 11,
+        "schemes": 3,
+        "tautologies": 1,
+        "variables": []
+      },
+      "inventory": {
+        "definitions": 10,
+        "native_status": "accepted",
+        "native_micro_steps": 1927857103,
+        "native_physical_head": 1456,
+        "native_limit": 5000000000
+      },
+      "model": {
+        "placements": 10078,
+        "arity": 3,
+        "roots": 60,
+        "command_counts": [
+          157,
+          168,
+          201,
+          256,
+          333,
+          432,
+          553,
+          696,
+          861,
+          1048,
+          1257,
+          135
+        ]
+      },
+      "all4_same_semantic_preimages": true
+    },
+    {
+      "receiver_id": "prospective-fol-20261018-010",
+      "group": "binary-relational-permutation",
+      "primary": false,
+      "renaming_control_of": "prospective-fol-20261018-005",
+      "formula_latex": "\\{\\forall m\\,\\forall n\\,(V(m,n)\\Rightarrow W(n,m)),\\ V(d_0,d_1)\\}\\ \\vdash\\ W(d_1,d_0)",
+      "all4_status": "unknown_native_inventory",
+      "compile": {
+        "status": "complete",
+        "basis": 76,
+        "schemes": 20,
+        "tautologies": 0,
+        "variables": [
+          "fresh0",
+          "m",
+          "n"
+        ]
+      },
+      "inventory": {
+        "definitions": 53,
+        "native_status": "unknown_space_budget",
+        "native_micro_steps": 922604950,
+        "native_physical_head": 74896,
+        "native_limit": 5000000000
+      },
+      "model": null,
+      "all4_same_semantic_preimages": true
+    }
+  ],
+  "within_method_pairs": [
+    {
+      "receiver_id": "prospective-fol-20261018-001",
+      "mode": "fixed",
+      "unit": "attempts",
+      "legacy_work": 63,
+      "support_work": 60,
+      "legacy_search_seconds": 1.1085529580013826,
+      "support_search_seconds": 1.2470236660446972,
+      "legacy_external_terminal_seconds": 50.404493292,
+      "support_external_terminal_seconds": 47.333461416,
+      "legacy_worker_plus_native_MiB": 503.890625,
+      "support_worker_plus_native_MiB": 515.3125,
+      "support": {
+        "enabled": true,
+        "metadata_status": "COMPLETE",
+        "graph_seconds": 0.002514124964363873,
+        "graph_status": "COMPLETE",
+        "graph_sha256": "b41e194a05d16b3fd988867c289c5ac5db22d49aa01192997c6964fa2f432dab",
+        "graph_counts": {
+          "axiom_visits": 2,
+          "basis_rule_visits": 11,
+          "copy_nodes": 4202,
+          "edges_considered": 24,
+          "formula_visits": 71,
+          "work": 108
+        },
+        "target_formula_id": 10,
+        "call_records": 12,
+        "rank_counts": {
+          "ranking_SCORED": 12,
+          "changed_full_window_order": 3,
+          "changed_first_ranked_option": 2,
+          "changed_legacy_hint_choice": 2
+        },
+        "rank_work_sum": 12322,
+        "rank_option_count": 191,
+        "metrics": null,
+        "base_target_costs": {
+          "5": 1,
+          "4": 1,
+          "3": 1,
+          "2": 1,
+          "1": 1,
+          "0": 7
+        },
+        "selected_target_costs": {
+          "4": 1,
+          "3": 1,
+          "2": 1,
+          "1": 1,
+          "0": 8
+        },
+        "selected_positive_marginal_reductions": 5,
+        "selected_makes_target_finite": 0
+      }
+    },
+    {
+      "receiver_id": "prospective-fol-20261018-001",
+      "mode": "symbolic",
+      "unit": "prefix_extensions",
+      "legacy_work": 12,
+      "support_work": 12,
+      "legacy_search_seconds": 0.10105016606394202,
+      "support_search_seconds": 0.14144270902033895,
+      "legacy_external_terminal_seconds": 49.73535775,
+      "support_external_terminal_seconds": 50.430343166,
+      "legacy_worker_plus_native_MiB": 430.78125,
+      "support_worker_plus_native_MiB": 427.34375,
+      "support": {
+        "enabled": true,
+        "metadata_status": null,
+        "graph_seconds": null,
+        "graph_status": "COMPLETE",
+        "graph_sha256": "b41e194a05d16b3fd988867c289c5ac5db22d49aa01192997c6964fa2f432dab",
+        "graph_counts": {
+          "axiom_visits": 2,
+          "basis_rule_visits": 11,
+          "copy_nodes": 4202,
+          "edges_considered": 24,
+          "formula_visits": 71,
+          "work": 108
+        },
+        "target_formula_id": 10,
+        "call_records": 12,
+        "rank_counts": {
+          "ranking_SCORED": 12
+        },
+        "rank_work_sum": 11356,
+        "rank_option_count": 149,
+        "metrics": {
+          "complete_windows": 12,
+          "fallback_windows": 0,
+          "prefetched_candidates": 149,
+          "scored_windows": 12
+        },
+        "base_target_costs": {
+          "5": 1,
+          "4": 1,
+          "3": 1,
+          "2": 1,
+          "1": 1,
+          "0": 7
+        },
+        "selected_target_costs": {
+          "4": 1,
+          "3": 1,
+          "2": 1,
+          "1": 1,
+          "0": 8
+        },
+        "selected_positive_marginal_reductions": 5,
+        "selected_makes_target_finite": 0
+      }
+    },
+    {
+      "receiver_id": "prospective-fol-20261018-004",
+      "mode": "fixed",
+      "unit": "attempts",
+      "legacy_work": 59,
+      "support_work": 48,
+      "legacy_search_seconds": 1.3232220830395818,
+      "support_search_seconds": 1.294121582992375,
+      "legacy_external_terminal_seconds": 54.371671041,
+      "support_external_terminal_seconds": 53.046548625,
+      "legacy_worker_plus_native_MiB": 565.375,
+      "support_worker_plus_native_MiB": 567.28125,
+      "support": {
+        "enabled": true,
+        "metadata_status": "COMPLETE",
+        "graph_seconds": 0.0021071250084787607,
+        "graph_status": "COMPLETE",
+        "graph_sha256": "cae17c1bd53a0ebdd399abb21d457ee339798470c958b48617c273cd828d95a7",
+        "graph_counts": {
+          "axiom_visits": 2,
+          "basis_rule_visits": 13,
+          "copy_nodes": 3431,
+          "edges_considered": 18,
+          "formula_visits": 56,
+          "work": 89
+        },
+        "target_formula_id": 10,
+        "call_records": 12,
+        "rank_counts": {
+          "ranking_SCORED": 12,
+          "changed_full_window_order": 3,
+          "changed_first_ranked_option": 1,
+          "changed_legacy_hint_choice": 1
+        },
+        "rank_work_sum": 8324,
+        "rank_option_count": 171,
+        "metrics": null,
+        "base_target_costs": {
+          "5": 1,
+          "4": 1,
+          "3": 1,
+          "2": 1,
+          "1": 1,
+          "0": 7
+        },
+        "selected_target_costs": {
+          "4": 1,
+          "3": 1,
+          "2": 1,
+          "1": 1,
+          "0": 8
+        },
+        "selected_positive_marginal_reductions": 5,
+        "selected_makes_target_finite": 0
+      }
+    },
+    {
+      "receiver_id": "prospective-fol-20261018-004",
+      "mode": "symbolic",
+      "unit": "prefix_extensions",
+      "legacy_work": 12,
+      "support_work": 12,
+      "legacy_search_seconds": 0.15572020795661956,
+      "support_search_seconds": 0.19050945795606822,
+      "legacy_external_terminal_seconds": 53.4823325,
+      "support_external_terminal_seconds": 52.619588833,
+      "legacy_worker_plus_native_MiB": 483.25,
+      "support_worker_plus_native_MiB": 536.984375,
+      "support": {
+        "enabled": true,
+        "metadata_status": null,
+        "graph_seconds": null,
+        "graph_status": "COMPLETE",
+        "graph_sha256": "cae17c1bd53a0ebdd399abb21d457ee339798470c958b48617c273cd828d95a7",
+        "graph_counts": {
+          "axiom_visits": 2,
+          "basis_rule_visits": 13,
+          "copy_nodes": 3431,
+          "edges_considered": 18,
+          "formula_visits": 56,
+          "work": 89
+        },
+        "target_formula_id": 10,
+        "call_records": 12,
+        "rank_counts": {
+          "ranking_SCORED": 12
+        },
+        "rank_work_sum": 6463,
+        "rank_option_count": 107,
+        "metrics": {
+          "complete_windows": 12,
+          "fallback_windows": 0,
+          "prefetched_candidates": 107,
+          "scored_windows": 12
+        },
+        "base_target_costs": {
+          "5": 1,
+          "4": 1,
+          "3": 1,
+          "2": 1,
+          "1": 1,
+          "0": 7
+        },
+        "selected_target_costs": {
+          "4": 1,
+          "3": 1,
+          "2": 1,
+          "1": 1,
+          "0": 8
+        },
+        "selected_positive_marginal_reductions": 5,
+        "selected_makes_target_finite": 0
+      }
+    },
+    {
+      "receiver_id": "prospective-fol-20261018-006",
+      "mode": "fixed",
+      "unit": "attempts",
+      "legacy_work": 1556,
+      "support_work": 1690,
+      "legacy_search_seconds": 30.02715891704429,
+      "support_search_seconds": 30.02556220802944,
+      "legacy_external_terminal_seconds": 163.921224666,
+      "support_external_terminal_seconds": 167.234169458,
+      "legacy_worker_plus_native_MiB": 845.578125,
+      "support_worker_plus_native_MiB": 872.984375,
+      "support": {
+        "enabled": true,
+        "metadata_status": "COMPLETE",
+        "graph_seconds": 0.003774666925892234,
+        "graph_status": "COMPLETE",
+        "graph_sha256": "e73d2062ff1fcd7b0e0e8d966e8ff3d74a60bcf23335af1c8f4377b87b88af9d",
+        "graph_counts": {
+          "axiom_visits": 4,
+          "basis_rule_visits": 18,
+          "copy_nodes": 5013,
+          "edges_considered": 36,
+          "formula_visits": 107,
+          "work": 165
+        },
+        "target_formula_id": 4,
+        "call_records": 156,
+        "rank_counts": {
+          "ranking_SCORED": 156,
+          "changed_full_window_order": 14,
+          "changed_first_ranked_option": 11,
+          "changed_legacy_hint_choice": 11
+        },
+        "rank_work_sum": 142412,
+        "rank_option_count": 1511,
+        "metrics": null,
+        "base_target_costs": {
+          "18": 1,
+          "16": 1,
+          "14": 1,
+          "12": 1,
+          "11": 1,
+          "10": 1,
+          "9": 27,
+          "8": 73,
+          "7": 44,
+          "6": 6
+        },
+        "selected_target_costs": {
+          "16": 1,
+          "14": 1,
+          "12": 1,
+          "11": 1,
+          "10": 1,
+          "9": 21,
+          "8": 65,
+          "7": 57,
+          "6": 8
+        },
+        "selected_positive_marginal_reductions": 30,
+        "selected_makes_target_finite": 0
+      }
+    },
+    {
+      "receiver_id": "prospective-fol-20261018-006",
+      "mode": "symbolic",
+      "unit": "prefix_extensions",
+      "legacy_work": 5000,
+      "support_work": 5000,
+      "legacy_search_seconds": 6.127439000061713,
+      "support_search_seconds": 8.207231375039555,
+      "legacy_external_terminal_seconds": 74.980897292,
+      "support_external_terminal_seconds": 79.338548584,
+      "legacy_worker_plus_native_MiB": 642.671875,
+      "support_worker_plus_native_MiB": 685.609375,
+      "support": {
+        "enabled": true,
+        "metadata_status": null,
+        "graph_seconds": null,
+        "graph_status": "COMPLETE",
+        "graph_sha256": "e73d2062ff1fcd7b0e0e8d966e8ff3d74a60bcf23335af1c8f4377b87b88af9d",
+        "graph_counts": {
+          "axiom_visits": 4,
+          "basis_rule_visits": 18,
+          "copy_nodes": 5013,
+          "edges_considered": 36,
+          "formula_visits": 107,
+          "work": 165
+        },
+        "target_formula_id": 4,
+        "call_records": 5001,
+        "rank_counts": {
+          "ranking_SCORED": 238,
+          "changed_full_window_order": 232,
+          "changed_first_ranked_option": 230,
+          "no_complete_ranking": 4763
+        },
+        "rank_work_sum": 527199,
+        "rank_option_count": 5104,
+        "metrics": {
+          "complete_windows": 238,
+          "fallback_windows": 0,
+          "prefetched_candidates": 5104,
+          "scored_windows": 238
+        },
+        "base_target_costs": {
+          "18": 1,
+          "16": 1,
+          "14": 1,
+          "12": 1,
+          "11": 1,
+          "10": 1,
+          "9": 1,
+          "8": 1,
+          "7": 170,
+          "6": 54,
+          "5": 6
+        },
+        "selected_target_costs": {
+          "16": 1,
+          "14": 1,
+          "12": 1,
+          "11": 1,
+          "10": 1,
+          "9": 1,
+          "8": 1,
+          "7": 1,
+          "6": 170,
+          "5": 54,
+          "4": 6
+        },
+        "selected_positive_marginal_reductions": 238,
+        "selected_makes_target_finite": 0
+      }
+    },
+    {
+      "receiver_id": "prospective-fol-20261018-007",
+      "mode": "fixed",
+      "unit": "attempts",
+      "legacy_work": 1939,
+      "support_work": 1640,
+      "legacy_search_seconds": 30.023430416942574,
+      "support_search_seconds": 30.02224570896942,
+      "legacy_external_terminal_seconds": 129.732159875,
+      "support_external_terminal_seconds": 124.573209792,
+      "legacy_worker_plus_native_MiB": 656.234375,
+      "support_worker_plus_native_MiB": 672.46875,
+      "support": {
+        "enabled": true,
+        "metadata_status": "COMPLETE",
+        "graph_seconds": 0.0017924170242622495,
+        "graph_status": "COMPLETE",
+        "graph_sha256": "66d39cff2890e157758c32ba69f5eb0231cf783b1525afd477fbfef20f4954e5",
+        "graph_counts": {
+          "axiom_visits": 2,
+          "basis_rule_visits": 12,
+          "copy_nodes": 2814,
+          "edges_considered": 21,
+          "formula_visits": 63,
+          "work": 98
+        },
+        "target_formula_id": 1,
+        "call_records": 141,
+        "rank_counts": {
+          "ranking_SCORED": 141
+        },
+        "rank_work_sum": 83108,
+        "rank_option_count": 1788,
+        "metrics": null,
+        "base_target_costs": {
+          "None": 141
+        },
+        "selected_target_costs": {
+          "None": 141
+        },
+        "selected_positive_marginal_reductions": 0,
+        "selected_makes_target_finite": 0
+      }
+    },
+    {
+      "receiver_id": "prospective-fol-20261018-007",
+      "mode": "symbolic",
+      "unit": "prefix_extensions",
+      "legacy_work": 5000,
+      "support_work": 5000,
+      "legacy_search_seconds": 6.691083499928936,
+      "support_search_seconds": 9.74029733298812,
+      "legacy_external_terminal_seconds": 46.463667542,
+      "support_external_terminal_seconds": 57.503074709,
+      "legacy_worker_plus_native_MiB": 490.703125,
+      "support_worker_plus_native_MiB": 573.03125,
+      "support": {
+        "enabled": true,
+        "metadata_status": null,
+        "graph_seconds": null,
+        "graph_status": "COMPLETE",
+        "graph_sha256": "66d39cff2890e157758c32ba69f5eb0231cf783b1525afd477fbfef20f4954e5",
+        "graph_counts": {
+          "axiom_visits": 2,
+          "basis_rule_visits": 12,
+          "copy_nodes": 2814,
+          "edges_considered": 21,
+          "formula_visits": 63,
+          "work": 98
+        },
+        "target_formula_id": 1,
+        "call_records": 5001,
+        "rank_counts": {
+          "ranking_SCORED": 339,
+          "no_complete_ranking": 4662
+        },
+        "rank_work_sum": 201095,
+        "rank_option_count": 5063,
+        "metrics": {
+          "complete_windows": 339,
+          "fallback_windows": 0,
+          "prefetched_candidates": 5063,
+          "scored_windows": 339
+        },
+        "base_target_costs": {
+          "None": 339
+        },
+        "selected_target_costs": {
+          "None": 339
+        },
+        "selected_positive_marginal_reductions": 0,
+        "selected_makes_target_finite": 0
+      }
+    },
+    {
+      "receiver_id": "prospective-fol-20261018-008",
+      "mode": "fixed",
+      "unit": "attempts",
+      "legacy_work": 2277,
+      "support_work": 2099,
+      "legacy_search_seconds": 30.022879750002176,
+      "support_search_seconds": 30.01349304104224,
+      "legacy_external_terminal_seconds": 107.201731208,
+      "support_external_terminal_seconds": 104.507409541,
+      "legacy_worker_plus_native_MiB": 577.375,
+      "support_worker_plus_native_MiB": 614.21875,
+      "support": {
+        "enabled": true,
+        "metadata_status": "COMPLETE",
+        "graph_seconds": 0.0012494579423218966,
+        "graph_status": "COMPLETE",
+        "graph_sha256": "c866fe48b788e7ce11e9ecad5bad42d0592b3c498c1242de1d773ef9a470c192",
+        "graph_counts": {
+          "axiom_visits": 1,
+          "basis_rule_visits": 10,
+          "copy_nodes": 1923,
+          "edges_considered": 13,
+          "formula_visits": 41,
+          "work": 65
+        },
+        "target_formula_id": 0,
+        "call_records": 216,
+        "rank_counts": {
+          "ranking_SCORED": 215,
+          "no_complete_ranking": 1
+        },
+        "rank_work_sum": 107949,
+        "rank_option_count": 2798,
+        "metrics": null,
+        "base_target_costs": {
+          "None": 215
+        },
+        "selected_target_costs": {
+          "None": 215
+        },
+        "selected_positive_marginal_reductions": 0,
+        "selected_makes_target_finite": 0
+      }
+    },
+    {
+      "receiver_id": "prospective-fol-20261018-008",
+      "mode": "symbolic",
+      "unit": "prefix_extensions",
+      "legacy_work": 5000,
+      "support_work": 5000,
+      "legacy_search_seconds": 8.006179250078276,
+      "support_search_seconds": 10.444114624988288,
+      "legacy_external_terminal_seconds": 37.718937,
+      "support_external_terminal_seconds": 45.283951791,
+      "legacy_worker_plus_native_MiB": 439.234375,
+      "support_worker_plus_native_MiB": 531.515625,
+      "support": {
+        "enabled": true,
+        "metadata_status": null,
+        "graph_seconds": null,
+        "graph_status": "COMPLETE",
+        "graph_sha256": "c866fe48b788e7ce11e9ecad5bad42d0592b3c498c1242de1d773ef9a470c192",
+        "graph_counts": {
+          "axiom_visits": 1,
+          "basis_rule_visits": 10,
+          "copy_nodes": 1923,
+          "edges_considered": 13,
+          "formula_visits": 41,
+          "work": 65
+        },
+        "target_formula_id": 0,
+        "call_records": 5001,
+        "rank_counts": {
+          "ranking_SCORED": 486,
+          "no_complete_ranking": 4515
+        },
+        "rank_work_sum": 190990,
+        "rank_option_count": 5051,
+        "metrics": {
+          "complete_windows": 486,
+          "fallback_windows": 0,
+          "prefetched_candidates": 5051,
+          "scored_windows": 486
+        },
+        "base_target_costs": {
+          "None": 486
+        },
+        "selected_target_costs": {
+          "None": 486
+        },
+        "selected_positive_marginal_reductions": 0,
+        "selected_makes_target_finite": 0
+      }
+    },
+    {
+      "receiver_id": "prospective-fol-20261018-009",
+      "mode": "fixed",
+      "unit": "attempts",
+      "legacy_work": 63,
+      "support_work": 60,
+      "legacy_search_seconds": 1.3749488340690732,
+      "support_search_seconds": 1.4695190830389038,
+      "legacy_external_terminal_seconds": 60.51129075,
+      "support_external_terminal_seconds": 51.390218083,
+      "legacy_worker_plus_native_MiB": 500.78125,
+      "support_worker_plus_native_MiB": 508.65625,
+      "support": {
+        "enabled": true,
+        "metadata_status": "COMPLETE",
+        "graph_seconds": 0.0023929999442771077,
+        "graph_status": "COMPLETE",
+        "graph_sha256": "260ed63ed72aa1d4397bd233077ff95f36bc6fb021af00c861ab35f0a209a486",
+        "graph_counts": {
+          "axiom_visits": 2,
+          "basis_rule_visits": 11,
+          "copy_nodes": 4202,
+          "edges_considered": 24,
+          "formula_visits": 71,
+          "work": 108
+        },
+        "target_formula_id": 10,
+        "call_records": 12,
+        "rank_counts": {
+          "ranking_SCORED": 12,
+          "changed_full_window_order": 3,
+          "changed_first_ranked_option": 2,
+          "changed_legacy_hint_choice": 2
+        },
+        "rank_work_sum": 12357,
+        "rank_option_count": 192,
+        "metrics": null,
+        "base_target_costs": {
+          "5": 1,
+          "4": 1,
+          "3": 1,
+          "2": 1,
+          "1": 1,
+          "0": 7
+        },
+        "selected_target_costs": {
+          "4": 1,
+          "3": 1,
+          "2": 1,
+          "1": 1,
+          "0": 8
+        },
+        "selected_positive_marginal_reductions": 5,
+        "selected_makes_target_finite": 0
+      }
+    },
+    {
+      "receiver_id": "prospective-fol-20261018-009",
+      "mode": "symbolic",
+      "unit": "prefix_extensions",
+      "legacy_work": 12,
+      "support_work": 12,
+      "legacy_search_seconds": 0.10276962502393872,
+      "support_search_seconds": 0.13826787506695837,
+      "legacy_external_terminal_seconds": 53.557971708,
+      "support_external_terminal_seconds": 54.7335835,
+      "legacy_worker_plus_native_MiB": 460.1875,
+      "support_worker_plus_native_MiB": 446.078125,
+      "support": {
+        "enabled": true,
+        "metadata_status": null,
+        "graph_seconds": null,
+        "graph_status": "COMPLETE",
+        "graph_sha256": "260ed63ed72aa1d4397bd233077ff95f36bc6fb021af00c861ab35f0a209a486",
+        "graph_counts": {
+          "axiom_visits": 2,
+          "basis_rule_visits": 11,
+          "copy_nodes": 4202,
+          "edges_considered": 24,
+          "formula_visits": 71,
+          "work": 108
+        },
+        "target_formula_id": 10,
+        "call_records": 12,
+        "rank_counts": {
+          "ranking_SCORED": 12
+        },
+        "rank_work_sum": 11353,
+        "rank_option_count": 149,
+        "metrics": {
+          "complete_windows": 12,
+          "fallback_windows": 0,
+          "prefetched_candidates": 149,
+          "scored_windows": 12
+        },
+        "base_target_costs": {
+          "5": 1,
+          "4": 1,
+          "3": 1,
+          "2": 1,
+          "1": 1,
+          "0": 7
+        },
+        "selected_target_costs": {
+          "4": 1,
+          "3": 1,
+          "2": 1,
+          "1": 1,
+          "0": 8
+        },
+        "selected_positive_marginal_reductions": 5,
+        "selected_makes_target_finite": 0
+      }
+    }
+  ],
+  "phase_summaries": [
+    {
+      "status": "native_proof_discovered",
+      "runs": 12,
+      "external_terminal_seconds": {
+        "min": 47.333461416,
+        "max": 60.51129075,
+        "median": 52.833068729000004,
+        "sum": 631.616860664
+      },
+      "worker_plus_native_MiB": {
+        "min": 427.34375,
+        "max": 567.28125,
+        "median": 502.3359375,
+        "sum": 5945.921875
+      },
+      "phases_seconds": {
+        "compile": {
+          "min": 9.16629408299923,
+          "max": 13.764802291058004,
+          "median": 10.57433085446246,
+          "sum": 134.2090518748155
+        },
+        "register": {
+          "min": 8.270495665958151,
+          "max": 15.734654334024526,
+          "median": 13.98601024999516,
+          "sum": 149.85186854295898
+        },
+        "model": {
+          "min": 1.3354826250579208,
+          "max": 2.0386576669989154,
+          "median": 1.506405625026673,
+          "sum": 19.43424070905894
+        },
+        "search": {
+          "min": 0.10106404207181185,
+          "max": 1.4701527080032974,
+          "median": 0.6498110619722866,
+          "sum": 8.650724333128892
+        },
+        "final_native": {
+          "min": 5.60774633300025,
+          "max": 11.135020583984442,
+          "median": 10.114358750055544,
+          "sum": 110.74145704321563
+        }
+      },
+      "serialization_seconds": {
+        "min": 3.6905274579767138,
+        "max": 6.032085375045426,
+        "median": 4.87938806245802,
+        "sum": 58.924457957735285
+      },
+      "reader_roundtrip_seconds": {
+        "min": 5.879037459,
+        "max": 9.472376708,
+        "median": 7.5097704165,
+        "sum": 91.01067479199997
+      },
+      "raw_result_bytes": {
+        "min": 33236407,
+        "max": 46030268,
+        "median": 36874760.5,
+        "sum": 462376582
+      }
+    },
+    {
+      "status": "unknown_native_inventory",
+      "runs": 16,
+      "external_terminal_seconds": {
+        "min": 38.198437459,
+        "max": 98.82650975,
+        "median": 70.57559925000001,
+        "sum": 1114.7929162929997
+      },
+      "worker_plus_native_MiB": {
+        "min": 270.8125,
+        "max": 277.78125,
+        "median": 271.25,
+        "sum": 4352.421875
+      },
+      "phases_seconds": {
+        "compile": {
+          "min": 31.031323625007644,
+          "max": 89.15896187501494,
+          "median": 61.492159874993376,
+          "sum": 973.278298875899
+        },
+        "register": {
+          "min": 5.3384441250236705,
+          "max": 7.856806957977824,
+          "median": 7.134925228485372,
+          "sum": 109.22787482989952
+        },
+        "model": null,
+        "search": null,
+        "final_native": null
+      },
+      "serialization_seconds": {
+        "min": 0.02946162491571158,
+        "max": 0.07913229102268815,
+        "median": 0.041256791504565626,
+        "sum": 0.671767916996032
+      },
+      "reader_roundtrip_seconds": {
+        "min": 0.125972125,
+        "max": 0.199785917,
+        "median": 0.1601649795,
+        "sum": 2.537638421
+      },
+      "raw_result_bytes": {
+        "min": 367541,
+        "max": 586443,
+        "median": 552751.0,
+        "sum": 8238015
+      }
+    },
+    {
+      "status": "unknown_search_budget",
+      "runs": 12,
+      "external_terminal_seconds": {
+        "min": 37.718937,
+        "max": 167.234169458,
+        "median": 91.92297906249999,
+        "sum": 1138.458981458
+      },
+      "worker_plus_native_MiB": {
+        "min": 439.234375,
+        "max": 872.984375,
+        "median": 628.4453125,
+        "sum": 7601.625
+      },
+      "phases_seconds": {
+        "compile": {
+          "min": 9.285216875025071,
+          "max": 22.737600457970984,
+          "median": 12.956257791433018,
+          "sum": 179.16825624904595
+        },
+        "register": {
+          "min": 4.561124874977395,
+          "max": 20.120406833011657,
+          "median": 8.830151271016803,
+          "sum": 133.03842120803893
+        },
+        "model": {
+          "min": 1.3079817090183496,
+          "max": 2.6655913749709725,
+          "median": 1.6837005000561476,
+          "sum": 22.229728793143295
+        },
+        "search": {
+          "min": 6.127455875044689,
+          "max": 30.0282668749569,
+          "median": 20.229167708486784,
+          "sum": 229.3561299997382
+        },
+        "final_native": null
+      },
+      "serialization_seconds": {
+        "min": 3.718573624966666,
+        "max": 36.43010374996811,
+        "median": 15.346507500042208,
+        "sum": 218.84437379194424
+      },
+      "reader_roundtrip_seconds": {
+        "min": 5.637189958,
+        "max": 47.166790375,
+        "median": 20.8166832295,
+        "sum": 275.597433083
+      },
+      "raw_result_bytes": {
+        "min": 28610919,
+        "max": 109707473,
+        "median": 63360583.5,
+        "sum": 787060113
+      }
+    }
+  ],
+  "findings": [
+    {
+      "id": "F1",
+      "conclusion": "No solve-rate advantage from shared AND support on this frozen suite.",
+      "evidence": "Each of four arms solves the same3/10 input slots and2/8 primary structural groups.009 is a correlated rename of001. The12 proof runs are not12 distinct theorems; familiar priorcurriedc3 was a separate development experiment and is not pooled."
+    },
+    {
+      "id": "F2",
+      "conclusion": "Sixteen failures are presearch inventory-capacity outcomes, not heuristic search failures.",
+      "evidence": "Cases002,003,005,010 all4arms compile completely and materialize their whole38,72,53,53-definition inventories. Registration returns unknown_space_budget atphysical_head74896, with respective micro_steps872854609,637751583,915798408,922604950 below declared5e9. Model, initial state and search are absent. RegistrySource25\u201330 checks every definition in one Native request; no reduced accepted subset was searched. UNKNOWN is neither logical rejection nor a false theorem."
+    },
+    {
+      "id": "F3",
+      "conclusion": "All three remaining primary groups reach search and remain budget-unknown in both orderings.",
+      "evidence": "006/007/008 fixed arms reach their30second private search deadline below5000placements; symbolic arms reach5000prefix extensions. Both preserve rollback. Shared support changes006 choices (11fixed hints;230symbolic first-options), but does not complete the target. Count/time differences are observations inside different search trees and units, not completeness or impossibility results."
+    },
+    {
+      "id": "F4",
+      "conclusion": "On two groups the helper supplies no finite target potential and therefore no order discrimination.",
+      "evidence": "For007, all141fixed and339symbolic scored calls record targetcostNone before/after. For008,215fixed and486symbolic scored calls likewise remainNone; the final additional fixed call records its owned search deadline. Their score permutations remain identity. This is a limitation of the saved finite support graph, not a proof that the original search grammar or mathematical theorem is impossible. CompilerSource constructs bounded subformula/UI/EQ catalogs, not arbitrary propositional bridge synthesis."
+    },
+    {
+      "id": "F5",
+      "conclusion": "Support reduces some easy point placement counts but incurs work with no new solved case.",
+      "evidence": "Fixed placement counts00163\u219260,00459\u219248,00963\u219260; corresponding backtracks3\u21920,11\u21920,3\u21920. Search seconds0011.1086\u21921.2470,0041.3232\u21921.2941,0091.3749\u21921.4695 are mixed. Symbolic orderings both finish12extensions and0backtracks on these cases; support retains107\u2013149prefetched candidates, does more skeleton/guard work and has higher observed search time. No cross-method placement/extension speed ratio is valid."
+    },
+    {
+      "id": "F6",
+      "conclusion": "Graph setup is small; whole advice/output/pipeline overhead must still be counted.",
+      "evidence": "Recorded fixed graph setup0.00125\u20130.00377seconds for six reached treatment runs. Projection/rank operation counts are fully retained, not exclusive timings; proposal_seconds includes old Join/sampling/validation and scoring. Symbolic preparation includes old grammar/maps plus optional graph and is not exclusive helper profiling. Native compiler/registry and full output/readback often dominate end-to-end cost. No runtime allocation or generic speed inference follows."
+    },
+    {
+      "id": "F7",
+      "conclusion": "Real parameterized registry clusters are essential in the saved proofs, with no demonstrated higher-level reuse.",
+      "evidence": "All12 admitted proofs contain2\u20133 essential level1 registered block calls; all6fixed positives have a same-instance winning family hint,5with changed canonical alternative order. All source-essential calls are level1, with no essential nested/dependent family. All4historical templates are supplied to every arm; matched ground inventories vary bycase. No primitive-only/no-inventory ablation was run, so solve success cannot be attributed causally to the library."
+    },
+    {
+      "id": "F8",
+      "conclusion": "Do not use old composite milestone flags to deny current proof/cluster success.",
+      "evidence": "Top family_hint_success=false and quantified_reasoning_success=false on all12because driver431/833 requires essentialUI AND GEN for that older milestone. Actual004proofs haveUI1/GEN0;001/009haveUI0/GEN0. Direct winning_hint_links and essential calls show the family use separately. Primary suite proof success correctly requires fresh Native+wholepoint+fullprofile, notUI+GEN."
+    },
+    {
+      "id": "F9",
+      "conclusion": "Current proof tiles are factored finite command/guard/input roles.",
+      "evidence": "001/009 have derivedarity3 and60selected role points;004hasarity2 and48. Every proof has12highlevel rows, with registered primitive bodies retained for inspection. This remains per-input finite first-order proof compilation and checked family instantiation, not a completed single fixed universal Wang palette, learnedRL result or PA/Hilbert-geometry benchmark."
+    }
+  ],
+  "recommended_next_step": {
+    "proposal_only": true,
+    "priority": "Separate generic Native whole-inventory representation/capacity qualification before interpreting moreordering comparisons.",
+    "reason": "Three of eight primary groups never reach advice or model construction. A semantics-preserving full-registry encoding study would address an observed shared bottleneck; no inventory may be dropped. Preserve this40outcome cohort, require independently frozen Sources/profiles/fresh controls and Native equivalence. Catalogue-coverage issues007/008 remain separate Source/retained-data limitations; do not tune a case proof route or declare impossibility from the support scores.",
+    "not_authorized": "No implementation, rerun, larger budget, case substitution, proof replay or altered grammar authorized by this analysis."
+  },
+  "authorship_and_limits": {
+    "overlap": "Authored current point treatment, earlier quantified adapters/compact Model/storage bridge and some parent driver/renderer Sources. Coordinated ABI with shared helper/symbolic author but did not author those two current modules. Analysis is independent of Root executions/publication, not independent own-point Source certification.",
+    "no_scientific_replay": "Only stdlib read/hash/JSON/statistics and raw Source lines were used. No Model/Native/solver/prover/search/helper/compiler/Reader/renderer/codec/fixture imported or evaluated; no failed case solved outside budget.",
+    "sampling": "Ten authored synthetic inputs/eightgroups, visible architecture, nonofficialTPTP/nonblind/nonrandom, one deterministic arm/case. Rotations are exact but firstpositions3/3/2/2. No significance, general superiority or official external-prover claim.",
+    "resource_scope": "40resource/terminalcandidate statuses agree withRoot admission. Worker+Native memory is conservative separate Darwinwait4 peaks, excludesparent/observer, not simultaneouslive aggregate memory. This is comparison, not the separate full resource/custody audit.",
+    "native_scope": "Rootadmissionda608 supplies mathematical/wholepoint acceptance; saved observer primitive counts are observations, not reviewer replay/certification.",
+    "reporting_correction": "PreservedV1reduction used a GCTSroot-restored predicate on12specialized symboliccontrols and flattened the wrong score metadata fields. V2uses actual prefix/projection restoration+Modelidentity and reads score_id links.439current checks/0mismatches; no actual or Source was changed. Initial metadata-only command syntax preflights did not execute target code."
+  },
+  "analysis_Source_files": [
+    {
+      "path": "/private/tmp/gcts-first-order-suite-comparison-peer-20261018/analyze_retained_v1.py",
+      "sha256": "ee81ab02eb8c0c4fff196104cc31ac013a70c08fad3fa33f228e36d575554e1d",
+      "bytes": 9291
+    },
+    {
+      "path": "/private/tmp/gcts-first-order-suite-comparison-peer-20261018/refine_observations_v2.py",
+      "sha256": "5a028ba94cea0be0e22c32410234380889e6fceb396892291e1b93e0c576e8b6",
+      "bytes": 4793
+    },
+    {
+      "path": "/private/tmp/gcts-first-order-suite-comparison-peer-20261018/observe_symbolic_setup_v1.py",
+      "sha256": "539ac87d908575d21814affe6a84ddb2ad1478d372f7dc488468d274ef9f70a3",
+      "bytes": 1196
+    },
+    {
+      "path": "/private/tmp/gcts-first-order-suite-comparison-peer-20261018/freeze_analysis_v1.py",
+      "sha256": "b09ba6981ca58f9d0e58766761a6f935929659c282ad24f3329f2267eca24879",
+      "bytes": 15679
+    }
+  ]
+}
