@@ -1,0 +1,183 @@
+{
+  "authority": "Clusters are advice; original GCTS graph/scheduler/rollback/base fallback and fresh whole final Native check remain authoritative.",
+  "baseline_scope": "Exactly measured full-theory empty-block trivial-root admission, not an isolated Native phase. All baseline multiples and differences are arithmetic references, never lower/upper bounds or savings predictions. Host-minus-CPP duration is an arithmetic timing difference, not a semantic phase decomposition.",
+  "cost_cases": [
+    {
+      "accepted_prefix_extra_empty_reference_vs_one": 752231125,
+      "accepted_prefix_steps_minus_empty_reference": 4037678036,
+      "bulk_minus_single_steps_only_comparable_if_bothcomplete": null,
+      "bulk_status": "unknown_space_budget",
+      "bulk_steps": 872854609,
+      "empty_request_canonical_bytes": 260,
+      "empty_request_steps": 30089245,
+      "full_inventory_empty_reference": 1143391310,
+      "issued_max_closure_definitions": 1,
+      "planned_max_closure_definitions": 1,
+      "receiver_id": "prospective-fol-20261018-002",
+      "sample_invocations": [
+        "inventory-cert-002-fixed-bulk-ROOT-20261018-v1",
+        "inventory-cert-002-symbolic-closures-ROOT-20261018-v1",
+        "inventory-cert-002-symbolic-bulk-ROOT-20261018-v1",
+        "inventory-cert-002-fixed-closures-ROOT-20261018-v1"
+      ],
+      "single_accepted_definitions": 26,
+      "single_issued_requests": 27,
+      "single_never_issued_roots": 11,
+      "single_status": "unknown_step_budget",
+      "single_successful_prefix_steps": 4819998406,
+      "single_total_steps": 5000000000,
+      "single_unqualified_definitions": 12,
+      "total_definitions": 38
+    },
+    {
+      "accepted_prefix_extra_empty_reference_vs_one": 1067341440,
+      "accepted_prefix_steps_minus_empty_reference": 3872705793,
+      "bulk_minus_single_steps_only_comparable_if_bothcomplete": null,
+      "bulk_status": "unknown_space_budget",
+      "bulk_steps": 637751583,
+      "empty_request_canonical_bytes": 302,
+      "empty_request_steps": 35578048,
+      "full_inventory_empty_reference": 2561619456,
+      "issued_max_closure_definitions": 1,
+      "planned_max_closure_definitions": 3,
+      "receiver_id": "prospective-fol-20261018-003",
+      "sample_invocations": [
+        "inventory-cert-003-symbolic-closures-ROOT-20261018-v1",
+        "inventory-cert-003-symbolic-bulk-ROOT-20261018-v1",
+        "inventory-cert-003-fixed-closures-ROOT-20261018-v1",
+        "inventory-cert-003-fixed-bulk-ROOT-20261018-v1"
+      ],
+      "single_accepted_definitions": 31,
+      "single_issued_requests": 32,
+      "single_never_issued_roots": 40,
+      "single_status": "unknown_step_budget",
+      "single_successful_prefix_steps": 4975625281,
+      "single_total_steps": 5000000000,
+      "single_unqualified_definitions": 41,
+      "total_definitions": 72
+    },
+    {
+      "accepted_prefix_extra_empty_reference_vs_one": 921318354,
+      "accepted_prefix_steps_minus_empty_reference": 3829493961,
+      "bulk_minus_single_steps_only_comparable_if_bothcomplete": null,
+      "bulk_status": "unknown_space_budget",
+      "bulk_steps": 915798408,
+      "empty_request_canonical_bytes": 388,
+      "empty_request_steps": 51184353,
+      "full_inventory_empty_reference": 2712770709,
+      "issued_max_closure_definitions": 1,
+      "planned_max_closure_definitions": 1,
+      "receiver_id": "prospective-fol-20261018-005",
+      "sample_invocations": [
+        "inventory-cert-005-symbolic-bulk-ROOT-20261018-v1",
+        "inventory-cert-005-fixed-closures-ROOT-20261018-v1",
+        "inventory-cert-005-fixed-bulk-ROOT-20261018-v1",
+        "inventory-cert-005-symbolic-closures-ROOT-20261018-v1"
+      ],
+      "single_accepted_definitions": 19,
+      "single_issued_requests": 20,
+      "single_never_issued_roots": 33,
+      "single_status": "unknown_step_budget",
+      "single_successful_prefix_steps": 4801996668,
+      "single_total_steps": 5000000000,
+      "single_unqualified_definitions": 34,
+      "total_definitions": 53
+    },
+    {
+      "accepted_prefix_extra_empty_reference_vs_one": 930790026,
+      "accepted_prefix_steps_minus_empty_reference": 3882236133,
+      "bulk_minus_single_steps_only_comparable_if_bothcomplete": null,
+      "bulk_status": "unknown_space_budget",
+      "bulk_steps": 922604950,
+      "empty_request_canonical_bytes": 392,
+      "empty_request_steps": 51710557,
+      "full_inventory_empty_reference": 2740659521,
+      "issued_max_closure_definitions": 1,
+      "planned_max_closure_definitions": 1,
+      "receiver_id": "prospective-fol-20261018-010",
+      "sample_invocations": [
+        "inventory-cert-010-fixed-closures-ROOT-20261018-v1",
+        "inventory-cert-010-fixed-bulk-ROOT-20261018-v1",
+        "inventory-cert-010-symbolic-closures-ROOT-20261018-v1",
+        "inventory-cert-010-symbolic-bulk-ROOT-20261018-v1"
+      ],
+      "single_accepted_definitions": 19,
+      "single_issued_requests": 20,
+      "single_never_issued_roots": 33,
+      "single_status": "unknown_step_budget",
+      "single_successful_prefix_steps": 4864736716,
+      "single_total_steps": 5000000000,
+      "single_unqualified_definitions": 34,
+      "total_definitions": 53
+    },
+    {
+      "accepted_prefix_extra_empty_reference_vs_one": 314267544,
+      "accepted_prefix_steps_minus_empty_reference": 1341595995,
+      "bulk_minus_single_steps_only_comparable_if_bothcomplete": 185819519,
+      "bulk_status": "accepted",
+      "bulk_steps": 1876601674,
+      "empty_request_canonical_bytes": 294,
+      "empty_request_steps": 34918616,
+      "full_inventory_empty_reference": 349186160,
+      "issued_max_closure_definitions": 1,
+      "planned_max_closure_definitions": 1,
+      "receiver_id": "prospective-fol-20261018-001",
+      "sample_invocations": [
+        "inventory-cert-001-fixed-bulk-ROOT-20261018-v1",
+        "inventory-cert-001-symbolic-closures-ROOT-20261018-v1",
+        "inventory-cert-001-symbolic-bulk-ROOT-20261018-v1",
+        "inventory-cert-001-fixed-closures-ROOT-20261018-v1"
+      ],
+      "single_accepted_definitions": 10,
+      "single_issued_requests": 10,
+      "single_never_issued_roots": 0,
+      "single_status": "accepted",
+      "single_successful_prefix_steps": 1690782155,
+      "single_total_steps": 1690782155,
+      "single_unqualified_definitions": 0,
+      "total_definitions": 10
+    }
+  ],
+  "date": "2026-10-19 UTC",
+  "goal_active": true,
+  "new_RL_training": false,
+  "new_actual_executions": 0,
+  "new_theorems": 0,
+  "next_decisions": [
+    "Couple reviewed grouping Source to a fresh bounded launcher and prospectively freeze at most one complete-case002 pilot.",
+    "Qualify recursive planner separately; compare disabled/enabled proposal modes over identical complete candidate data and scheduler.",
+    "Report actual discovered proofs and costs; no runtime advantage inferred from Source review."
+  ],
+  "prior_twenty_run_report": "inventory-certification.html#outcomes",
+  "schema": "parallel-research-milestone-v1",
+  "scientific_statement": "Parallel implementation and saved-data analysis; no new search or Native execution.",
+  "source_review_scope": "AST, raw bytes, static reasoning and compile-without-evaluation only. Not runtime qualification or a new kernel soundness proof.",
+  "sources": {
+    "group_review": {
+      "bytes": 11934,
+      "path": "/private/tmp/gcts-adaptive-groups-independent-peer-20261019/typed-Source-review-v1.json",
+      "sha256": "ff2d6a15e9625f6873554d7b682abe601c3865ec4af0297c20f59e4111e9c65c"
+    },
+    "grouping_contract": {
+      "bytes": 6521,
+      "path": "/private/tmp/gcts-adaptive-groups-ROOT-source-20261019/Source-contract-v1.json",
+      "sha256": "fa36563c7a3c5f283c473521ac5ba6a154d3fe0309d358b8f9160845b97bfb99"
+    },
+    "recursive_handoff": {
+      "bytes": 2970,
+      "path": "/private/tmp/gcts-recursive-receptor-source-20261019/handoff-v1.json",
+      "sha256": "9d7d6a6467a477626989997c052df74dab668ccf26c3dd9a59d54fffec229944"
+    },
+    "recursive_review": {
+      "bytes": 6246,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/grouped-certification-progress-20261019/ROOT-recursive-source-review-v1.json",
+      "sha256": "0e350e41b8512db717069e57ee143ed712a45998eac6f8021330f27e7dca897d"
+    },
+    "saved_cost_handoff": {
+      "bytes": 2208,
+      "path": "/private/tmp/gcts-grouped-certification-analysis-20261019/handoff-v2.json",
+      "sha256": "50b3a5bf38a4371e21d0b67e69ac67be9f610ad7fcbfaf36011ad61e6531fad6"
+    }
+  },
+  "status": "SOURCE_MILESTONE_ONLY"
+}

@@ -1,0 +1,334 @@
+{
+  "archive": {
+    "bytes": 457905,
+    "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/parallel-research-evidence.zip",
+    "sha256": "8cadc9a586d70d527fcb53f504cb8f1bdb74cf8e21ba2226202e1047a21df0f5"
+  },
+  "members": [
+    {
+      "bytes": 11827,
+      "member": "cost-analysis/HTML-ready-findings-v1.json",
+      "path": "/private/tmp/gcts-grouped-certification-analysis-20261019/HTML-ready-findings-v1.json",
+      "sha256": "53134356b090c6b942c13181fca1bbf9df10ca74a93c3528d3e327e6c1044be7"
+    },
+    {
+      "bytes": 10224,
+      "member": "cost-analysis/analyze_saved_costs_v1.py",
+      "path": "/private/tmp/gcts-grouped-certification-analysis-20261019/analyze_saved_costs_v1.py",
+      "sha256": "c72be8c51f8fbbed3ec78ded69bf908a13f2964819d38be141ccbf94429df45d"
+    },
+    {
+      "bytes": 16262,
+      "member": "cost-analysis/grouped-certification-Source-assessment-v1.json",
+      "path": "/private/tmp/gcts-grouped-certification-analysis-20261019/grouped-certification-Source-assessment-v1.json",
+      "sha256": "1caf19e02efa97aa75bc44e57f96bf7c01acf9177556b4f7626995b3e14dccfb"
+    },
+    {
+      "bytes": 4260,
+      "member": "cost-analysis/grouped-pilot-judgement-v2.json",
+      "path": "/private/tmp/gcts-grouped-certification-analysis-20261019/grouped-pilot-judgement-v2.json",
+      "sha256": "590921b84e789fb56493078b40d343a195fd92a43bf5a0dc5538be65b5e59aa7"
+    },
+    {
+      "bytes": 1974,
+      "member": "cost-analysis/handoff-v1.json",
+      "path": "/private/tmp/gcts-grouped-certification-analysis-20261019/handoff-v1.json",
+      "sha256": "1326de1be21138f67dc7d1dcb0ba76d5ab4107c34a59a71c7d2fc86117042075"
+    },
+    {
+      "bytes": 2208,
+      "member": "cost-analysis/handoff-v2.json",
+      "path": "/private/tmp/gcts-grouped-certification-analysis-20261019/handoff-v2.json",
+      "sha256": "50b3a5bf38a4371e21d0b67e69ac67be9f610ad7fcbfaf36011ad61e6531fad6"
+    },
+    {
+      "bytes": 18356,
+      "member": "cost-analysis/raw-Source-evidence-v1.json",
+      "path": "/private/tmp/gcts-grouped-certification-analysis-20261019/raw-Source-evidence-v1.json",
+      "sha256": "f35665397d52a09305dd200962a71b84b7c54b50d653651e8a8846a282ee70e8"
+    },
+    {
+      "bytes": 91569,
+      "member": "cost-analysis/retained-analysis-audit-v1.json",
+      "path": "/private/tmp/gcts-grouped-certification-analysis-20261019/retained-analysis-audit-v1.json",
+      "sha256": "d1e7a30d5d084bf65717b54068bc5dddf211d731fcce4025beb08e6a00c6935c"
+    },
+    {
+      "bytes": 65977,
+      "member": "cost-analysis/saved-cost-decomposition-v1.json",
+      "path": "/private/tmp/gcts-grouped-certification-analysis-20261019/saved-cost-decomposition-v1.json",
+      "sha256": "3fb2c0e46fb66a6a3561ed91ffac9a69b28cdec52389c806f6958f2e2b8ebb7e"
+    },
+    {
+      "bytes": 6253142,
+      "member": "cost-analysis/saved-request-samples-v1.json",
+      "path": "/private/tmp/gcts-grouped-certification-analysis-20261019/saved-request-samples-v1.json",
+      "sha256": "544cbd12e8f9bd798c8c1eb52f321af4980116baff3519f5423270c0a01bac46"
+    },
+    {
+      "bytes": 6521,
+      "member": "grouping-Source/Source-contract-v1.json",
+      "path": "/private/tmp/gcts-adaptive-groups-ROOT-source-20261019/Source-contract-v1.json",
+      "sha256": "fa36563c7a3c5f283c473521ac5ba6a154d3fe0309d358b8f9160845b97bfb99"
+    },
+    {
+      "bytes": 4227,
+      "member": "grouping-Source/author-static-audit-v1.json",
+      "path": "/private/tmp/gcts-adaptive-groups-ROOT-source-20261019/author-static-audit-v1.json",
+      "sha256": "f00b1cb9f1684ce7dbdacf52203049c7f146890a910ccd467c276368818c4a3e"
+    },
+    {
+      "bytes": 3406,
+      "member": "grouping-Source/freeze_source_v1.py",
+      "path": "/private/tmp/gcts-adaptive-groups-ROOT-source-20261019/freeze_source_v1.py",
+      "sha256": "879ccc39bdaf7472f3afbc90b5a7afad14a6e8a2ba11c73eab245c95bf31fbb6"
+    },
+    {
+      "bytes": 70193,
+      "member": "grouping-Source/inventory_certification_receiver_driver_v3.py",
+      "path": "/private/tmp/gcts-adaptive-groups-ROOT-source-20261019/inventory_certification_receiver_driver_v3.py",
+      "sha256": "16186e8a0c3906be90d716145cff3d52830ab0cd1f12a0fd366342abf6e55912"
+    },
+    {
+      "bytes": 19364,
+      "member": "grouping-Source/semantic_inventory_oracle_v3.py",
+      "path": "/private/tmp/gcts-adaptive-groups-ROOT-source-20261019/semantic_inventory_oracle_v3.py",
+      "sha256": "3abdba011e81344ba8d260ee665c980eb860326e36abfd50ff35750f3a12c6ff"
+    },
+    {
+      "bytes": 2966,
+      "member": "recursive-Source/API-design-v1.json",
+      "path": "/private/tmp/gcts-recursive-receptor-source-20261019/API-design-v1.json",
+      "sha256": "640a555bc3cd37f8196642d8483089f9344cd82d0ac1fc281c54672c9955f841"
+    },
+    {
+      "bytes": 9646,
+      "member": "recursive-Source/API-v1.json",
+      "path": "/private/tmp/gcts-recursive-receptor-source-20261019/API-v1.json",
+      "sha256": "f7c497fdb19aefb87d3ac7e1527842ac1aecb69a982605cab3d4b233bb9a0cd0"
+    },
+    {
+      "bytes": 10325,
+      "member": "recursive-Source/Source-contract-v1.json",
+      "path": "/private/tmp/gcts-recursive-receptor-source-20261019/Source-contract-v1.json",
+      "sha256": "6afa232cbf5b9bd82fcb4a1d95c10f925f99c4674f6d5f8d76d0380060c104f3"
+    },
+    {
+      "bytes": 697,
+      "member": "recursive-Source/author-preflight-note-v1.json",
+      "path": "/private/tmp/gcts-recursive-receptor-source-20261019/author-preflight-note-v1.json",
+      "sha256": "14d61ff99a386a887c526cf3ee6b437065625e091262f8a4c4319c6f19c74eea"
+    },
+    {
+      "bytes": 21354,
+      "member": "recursive-Source/author-static-audit-v1.json",
+      "path": "/private/tmp/gcts-recursive-receptor-source-20261019/author-static-audit-v1.json",
+      "sha256": "c643b8b6543742a423edfd687328c1be733a6e585fdbd6000ca40c3e29893525"
+    },
+    {
+      "bytes": 15387,
+      "member": "recursive-Source/finish_packet_v1.py",
+      "path": "/private/tmp/gcts-recursive-receptor-source-20261019/finish_packet_v1.py",
+      "sha256": "1bdba268fd0c4e4f5e8b64336adde3c940d22f0a371967cb3115a084e1dc0647"
+    },
+    {
+      "bytes": 9593,
+      "member": "recursive-Source/freeze_source_v1.py",
+      "path": "/private/tmp/gcts-recursive-receptor-source-20261019/freeze_source_v1.py",
+      "sha256": "327f79d21694763062e9df06f789529534261929be8539b65c8127efbe4157bf"
+    },
+    {
+      "bytes": 2970,
+      "member": "recursive-Source/handoff-v1.json",
+      "path": "/private/tmp/gcts-recursive-receptor-source-20261019/handoff-v1.json",
+      "sha256": "9d7d6a6467a477626989997c052df74dab668ccf26c3dd9a59d54fffec229944"
+    },
+    {
+      "bytes": 0,
+      "member": "recursive-Source/inert-patch-planner-add/recursive_receptor_planner_v1.py",
+      "path": "/private/tmp/gcts-recursive-receptor-source-20261019/inert-patch-planner-add/recursive_receptor_planner_v1.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 15936,
+      "member": "recursive-Source/inert-patch-search-successor/semantic_inventory_search_v3.py",
+      "path": "/private/tmp/gcts-recursive-receptor-source-20261019/inert-patch-search-successor/semantic_inventory_search_v3.py",
+      "sha256": "35443c958f2115efa18cc923fb4a4f1070e6e03ccf1d1adf2bb56ce1f7bab28b"
+    },
+    {
+      "bytes": 30121,
+      "member": "recursive-Source/planner-add-forward.patch",
+      "path": "/private/tmp/gcts-recursive-receptor-source-20261019/planner-add-forward.patch",
+      "sha256": "20e9afcd3ca6e21b12993bb2bc324568849daa747a2fe3ca8aad2a083cabbe37"
+    },
+    {
+      "bytes": 30121,
+      "member": "recursive-Source/planner-add-inverse.patch",
+      "path": "/private/tmp/gcts-recursive-receptor-source-20261019/planner-add-inverse.patch",
+      "sha256": "ca85c8ee16251b5a1ae7624d5b75c48fee1b3c793fe860128b55f65a5bc34a47"
+    },
+    {
+      "bytes": 0,
+      "member": "recursive-Source/planner-add-preimage.txt",
+      "path": "/private/tmp/gcts-recursive-receptor-source-20261019/planner-add-preimage.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 3305,
+      "member": "recursive-Source/reconstruction-contract-v1.json",
+      "path": "/private/tmp/gcts-recursive-receptor-source-20261019/reconstruction-contract-v1.json",
+      "sha256": "a88036f2527a49c6e23b4c89f3968e419b3a5573428f8d8f8d594026f7ca7ea2"
+    },
+    {
+      "bytes": 29433,
+      "member": "recursive-Source/recursive_receptor_planner_v1.py",
+      "path": "/private/tmp/gcts-recursive-receptor-source-20261019/recursive_receptor_planner_v1.py",
+      "sha256": "66335c8cd72196c8527a91e61fd9bc6e70932e0bdb2623555b30f2be1e4e7e35"
+    },
+    {
+      "bytes": 2782,
+      "member": "recursive-Source/reference-sources-v1.json",
+      "path": "/private/tmp/gcts-recursive-receptor-source-20261019/reference-sources-v1.json",
+      "sha256": "2d18a5d977b3d8cdf7e7eeed4338a62304ba0654e12339c327e7a9f57fd3e0ea"
+    },
+    {
+      "bytes": 8478,
+      "member": "recursive-Source/search-successor-forward.patch",
+      "path": "/private/tmp/gcts-recursive-receptor-source-20261019/search-successor-forward.patch",
+      "sha256": "42e8b908587babd564035fbdb789007944a49d61faaa641c9ae7ea30f4489fb5"
+    },
+    {
+      "bytes": 8478,
+      "member": "recursive-Source/search-successor-inverse.patch",
+      "path": "/private/tmp/gcts-recursive-receptor-source-20261019/search-successor-inverse.patch",
+      "sha256": "b09b3189194d4a71fae520f96e3d7fd29dc518c5ceaa47b0f8a61cefdf97e6a8"
+    },
+    {
+      "bytes": 15936,
+      "member": "recursive-Source/search-successor-preimage.txt",
+      "path": "/private/tmp/gcts-recursive-receptor-source-20261019/search-successor-preimage.txt",
+      "sha256": "35443c958f2115efa18cc923fb4a4f1070e6e03ccf1d1adf2bb56ce1f7bab28b"
+    },
+    {
+      "bytes": 20098,
+      "member": "recursive-Source/semantic_inventory_search_v3.py",
+      "path": "/private/tmp/gcts-recursive-receptor-source-20261019/semantic_inventory_search_v3.py",
+      "sha256": "a52c21a856b35addd83e4fa468ba74f880ce98e2582134bb2c6e2a71118e81d7"
+    },
+    {
+      "bytes": 7964,
+      "member": "recursive-Source/source-delta-v1.json",
+      "path": "/private/tmp/gcts-recursive-receptor-source-20261019/source-delta-v1.json",
+      "sha256": "2f0f9fd1d385ac7a429380fa86511c01f8ff79588ccb0bf8c69de74112a2b7c1"
+    },
+    {
+      "bytes": 11946,
+      "member": "grouping-review/driver-inert-F0/forward.patch",
+      "path": "/private/tmp/gcts-adaptive-groups-independent-peer-20261019/driver-inert-F0/forward.patch",
+      "sha256": "d333aa92fc6b7435443fd211499aeaa2fb8660327bd6371164c9b69ae8573f68"
+    },
+    {
+      "bytes": 11946,
+      "member": "grouping-review/driver-inert-F0/inverse.patch",
+      "path": "/private/tmp/gcts-adaptive-groups-independent-peer-20261019/driver-inert-F0/inverse.patch",
+      "sha256": "7ea160223f7fc8b64cb242c40e35a36796272c9108bbcea7c2b63537bcf71515"
+    },
+    {
+      "bytes": 62044,
+      "member": "grouping-review/driver-inert-F0/payload.txt",
+      "path": "/private/tmp/gcts-adaptive-groups-independent-peer-20261019/driver-inert-F0/payload.txt",
+      "sha256": "2ba4a2de010da425e0f74f2c09b553d2051d7fc1a79fbe438845ec0a53c34466"
+    },
+    {
+      "bytes": 1739,
+      "member": "grouping-review/handoff-v1.json",
+      "path": "/private/tmp/gcts-adaptive-groups-independent-peer-20261019/handoff-v1.json",
+      "sha256": "f7f961e73f77f2f20fd42d68df53144bc614dc283e539c134b4f3b18857d20d0"
+    },
+    {
+      "bytes": 30364,
+      "member": "grouping-review/raw-Source-audit-v1.json",
+      "path": "/private/tmp/gcts-adaptive-groups-independent-peer-20261019/raw-Source-audit-v1.json",
+      "sha256": "817e22a02d0b543899c22a6dfc21acd0d4f77014c1ce33f443430b72665d9efe"
+    },
+    {
+      "bytes": 7736,
+      "member": "grouping-review/registry-inert-F0/forward.patch",
+      "path": "/private/tmp/gcts-adaptive-groups-independent-peer-20261019/registry-inert-F0/forward.patch",
+      "sha256": "16d920991e7917210762c576ee121de715634de84f230f1ce8f6d404a3b81fc7"
+    },
+    {
+      "bytes": 7736,
+      "member": "grouping-review/registry-inert-F0/inverse.patch",
+      "path": "/private/tmp/gcts-adaptive-groups-independent-peer-20261019/registry-inert-F0/inverse.patch",
+      "sha256": "c1451923149d2f42db0a3d5ce8e0697fe3aa74423ac7c4d5b019ec9ed27a8fa9"
+    },
+    {
+      "bytes": 12626,
+      "member": "grouping-review/registry-inert-F0/payload.txt",
+      "path": "/private/tmp/gcts-adaptive-groups-independent-peer-20261019/registry-inert-F0/payload.txt",
+      "sha256": "2010ca7cb6f3da0734efe03e5be0f7e166b7e4d5939078dea0451361cf5890f3"
+    },
+    {
+      "bytes": 16061,
+      "member": "grouping-review/review_Source_v1.py",
+      "path": "/private/tmp/gcts-adaptive-groups-independent-peer-20261019/review_Source_v1.py",
+      "sha256": "43826f76c858c4e68ef201d99a40daf89ae263f0d67969f07bda660017ff7537"
+    },
+    {
+      "bytes": 11934,
+      "member": "grouping-review/typed-Source-review-v1.json",
+      "path": "/private/tmp/gcts-adaptive-groups-independent-peer-20261019/typed-Source-review-v1.json",
+      "sha256": "ff2d6a15e9625f6873554d7b682abe601c3865ec4af0297c20f59e4111e9c65c"
+    },
+    {
+      "bytes": 12626,
+      "member": "grouping-parent-Source/semantic_inventory_oracle_v2.py",
+      "path": "/private/tmp/gcts-inventory-batching-ROOT-source-20261018/semantic_inventory_oracle_v2.py",
+      "sha256": "2010ca7cb6f3da0734efe03e5be0f7e166b7e4d5939078dea0451361cf5890f3"
+    },
+    {
+      "bytes": 62044,
+      "member": "grouping-parent-Source/inventory_certification_receiver_driver_v2.py",
+      "path": "/private/tmp/gcts-inventory-batching-ROOT-source-20261018/inventory_certification_receiver_driver_v2.py",
+      "sha256": "2ba4a2de010da425e0f74f2c09b553d2051d7fc1a79fbe438845ec0a53c34466"
+    },
+    {
+      "bytes": 21657,
+      "member": "contract/basic-tiling-algorithm.md",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    {
+      "bytes": 15936,
+      "member": "recursive-parent-Source/semantic_inventory_search_v2.py",
+      "path": "/private/tmp/gcts-and-support-point-source-20261018/semantic_inventory_search_v2.py",
+      "sha256": "35443c958f2115efa18cc923fb4a4f1070e6e03ccf1d1adf2bb56ce1f7bab28b"
+    },
+    {
+      "bytes": 2073,
+      "member": "Root/ROOT-start-v1.json",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/grouped-certification-progress-20261019/ROOT-start-v1.json",
+      "sha256": "3246bebb70db040dcd60bdce41ea0c2a2f66e130028db1649bcfa249e6dcb00d"
+    },
+    {
+      "bytes": 1133,
+      "member": "Root/ROOT-group-review-adoption-v1.json",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/grouped-certification-progress-20261019/ROOT-group-review-adoption-v1.json",
+      "sha256": "6708f6a248e4d884260aa22b6dc26c9a35ccc02ead85a63a3d683a27f8e39dfa"
+    },
+    {
+      "bytes": 6246,
+      "member": "Root/ROOT-recursive-source-review-v1.json",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/grouped-certification-progress-20261019/ROOT-recursive-source-review-v1.json",
+      "sha256": "0e350e41b8512db717069e57ee143ed712a45998eac6f8021330f27e7dca897d"
+    },
+    {
+      "bytes": 6302,
+      "member": "Root/review_recursive_source_v1.py",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/grouped-certification-progress-20261019/review_recursive_source_v1.py",
+      "sha256": "52bbd2f49d8f62843dd76a9cec0e16130117643a8dc1e5a881bc393384771653"
+    }
+  ],
+  "schema": "parallel-research-evidence-manifest-v1"
+}
