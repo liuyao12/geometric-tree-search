@@ -1,0 +1,80 @@
+{
+  "archive_scan": {
+    "all_members_byte_checked": true,
+    "archive": {
+      "bytes": 10641417,
+      "file": "graph-sharing-search-evidence.tar.gz",
+      "sha256": "66b880f265e190cd6f3cf1215e329647195ac79a4c415123e3a629ca9aff83f3"
+    },
+    "members": 192,
+    "omitted_trusted_runtime": [
+      {
+        "pin": {
+          "bytes": 18058560,
+          "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+          "sha256": "b6ea0c2a9bfce48dbf181a53f1ca4f0562d40658b85bf47258e2a88d8f9e3933"
+        },
+        "reason": "Pinned isolated trusted CPython binary not redistributed; all research Sources and Native assets are included."
+      }
+    ],
+    "partial_raw_metadata_only": [],
+    "payload_bytes": 130074122,
+    "schema": "graph-sharing-archive-complete-byte-scan-v1"
+  },
+  "conclusion": "All three whole jobs qualify under original caps.18searches558point placements24audits144word controls66new graph controls. Two admitted S0/SC certificates repeat the same known fourteen-line proof. Eight local packets complete two repeated conclusions; all point searches UNKNOWN. No new theorem, useful cluster acceleration or trained RL advantage.",
+  "files": [
+    {
+      "bytes": 1912851,
+      "file": "graph-sharing-search-data.json",
+      "sha256": "5c96efd4b75c35196109e5a9992bf5c15a78353dd4713b85e4c7be262dfb017a"
+    },
+    {
+      "bytes": 59571,
+      "file": "graph-sharing-search-engineering.json",
+      "sha256": "4c54b24f31adaf5e44b8d7b7a4894c642580ae7f7007b34f99335c9fdda0b47a"
+    },
+    {
+      "bytes": 10641417,
+      "file": "graph-sharing-search-evidence.tar.gz",
+      "sha256": "66b880f265e190cd6f3cf1215e329647195ac79a4c415123e3a629ca9aff83f3"
+    },
+    {
+      "bytes": 188849,
+      "file": "graph-sharing-search-review-C.json",
+      "sha256": "b68b56157f85145dfbca016f3d10b8d874f92c0ff64995e72e4eb4cbdbef6819"
+    },
+    {
+      "bytes": 73331,
+      "file": "graph-sharing-search-review-L.json",
+      "sha256": "859c52d80909d7f899b11839417ff97123fb56f00a71a2ad12bfcf84c4dceda0"
+    },
+    {
+      "bytes": 38979,
+      "file": "graph-sharing-search.html",
+      "sha256": "37abc3eb40665acdeedccbf67e8ece4922d0b04847e01dbe29d2469db39f7d43"
+    },
+    {
+      "bytes": 113175,
+      "file": "reader.html",
+      "sha256": "f3fae87b60e7766f7e5fb6231d9dd377b51bc5ae27a33da26e9b1ebc716c6f55"
+    }
+  ],
+  "reader_delta": {
+    "after": {
+      "bytes": 113175,
+      "sha256": "f3fae87b60e7766f7e5fb6231d9dd377b51bc5ae27a33da26e9b1ebc716c6f55"
+    },
+    "before": {
+      "bytes": 112533,
+      "sha256": "e4e2298530c0b154ae4ce85ef65829d63c3fa438219e5924f849d1db3c2969ec"
+    },
+    "deleting_exact_insertion_recovers_prior_body": true,
+    "inserted_bytes": 642,
+    "inserted_text": "<section id=\"graph-sharing-update\" class=\"panel\"><h2>The bounded proof-search comparison now qualifies</h2><p><a href=\"graph-sharing-search.html#reader\">Read the qualified proofs, formulas, English and colored tiles</a>. Read-only graph sharing brings all three cold jobs within the original resource caps. S0 and SC repeat the same known fourteen-line proof; all point searches remain unknown. Eight qualified local packets repeat two steps. No new theorem, useful cluster acceleration or trained RL advantage is established. <a href=\"graph-sharing-search.html#storage\">Inspect the storage change and independent controls</a>.</p></section>\n",
+    "offset": 1331,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/reader.html",
+    "schema": "graph-sharing-reader-exact-insertion-v1"
+  },
+  "schema": "graph-sharing-search-publication-manifest-v1",
+  "source_parent_commit": "b16829d04af9d78a5638cef03848ae77fbbe1bd9"
+}

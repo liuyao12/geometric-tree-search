@@ -1,0 +1,1455 @@
+{
+  "Native_purpose_counts": {
+    "first_order_scheme": 43,
+    "first_order_tautology": 210,
+    "first_order_theory_admission": 12,
+    "pilot_ground_cluster_admission": 3,
+    "pilot_test_pilot-fork-join-positive_S0": 1,
+    "pilot_test_pilot-fork-join-positive_SC": 1,
+    "pilot_training_essential_primitive": 9,
+    "pilot_training_whole_primitive": 9
+  },
+  "Native_status_counts": {
+    "accepted": 76,
+    "rejected": 209,
+    "unknown_step_budget": 3
+  },
+  "Root_initial_passive_join": {
+    "bytes": 10965,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/root/initial-passive-actual-join-v1.json",
+    "sha256": "4d1794476201ef0c30926b20f1f7d9bf0df297843dd4d793b08d028e2fedb6c5"
+  },
+  "Root_initial_passive_join_is_independent_admission": false,
+  "Root_preflight": {
+    "bytes": 3293,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/root/Root-preflight-v1.json",
+    "sha256": "328e368f62e50903aa7eaf49ac0183cc74c4a73f5b295639ac524d7e902e05ed"
+  },
+  "actual_file_pins": [
+    {
+      "bytes": 1496,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa.observer/observer.json",
+      "sha256": "f1d761515ff25f4dcd9780a14d74db065df5b28fa5f9e8d8bcb04b1988b8a505"
+    },
+    {
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa.observer/stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 1804,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa.observer/stdout.bin",
+      "sha256": "92d3279330371294933842dfac13aa8c91ed85a7ea67d6c06798775f03211b18"
+    },
+    {
+      "bytes": 263,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/CONSUMED.json",
+      "sha256": "26f2146deb680aa4235ec2e67e8624febe3d78bd96ce9158bb8a77a180caa6be"
+    },
+    {
+      "bytes": 41808,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/native/boundary-oracle",
+      "sha256": "2b6bf8bb09a4e03d0cb1b4595dea1fe6d4432aa93d8f7eed72c30077fd9941a4"
+    },
+    {
+      "bytes": 7558192,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/native/code.bin",
+      "sha256": "97f0b600cffd83552c4e0f0c4fb1f5d26cfdb76e3e74b267bbaebeddc836e7ed"
+    },
+    {
+      "bytes": 817244,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/native/input.bin",
+      "sha256": "a66951150278d8e1fe075dd9488e2218932ba1de1f18f3eec96c3479d5962047"
+    },
+    {
+      "bytes": 817248,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/native/output.bin",
+      "sha256": "f34eb85eaeda13507a0772cddbb551789b1acbdeeb64133eae24d74d3983b146"
+    },
+    {
+      "bytes": 237,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/owned-child.json",
+      "sha256": "67f2fa37b6931c5624ab8d2c93929ddda043a0dbe61d82da6acc8a382cb4fc97"
+    },
+    {
+      "bytes": 31620390,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/result.json",
+      "sha256": "011d153f5a15c8bfc9ef3fdafd96b2c0550ed2cf15ceaf69ed2edf4a24d09bbd"
+    },
+    {
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 117,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/stdout.bin",
+      "sha256": "7ffb4d6feb31725bf44d19da40b2900689976afcf6a648bde1a18b6a2f1956e5"
+    },
+    {
+      "bytes": 2028,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/terminal.json",
+      "sha256": "30cf2ca6286d3024dd265255662fb90c6317c23abbc7d61baff48d9dd3625579"
+    },
+    {
+      "bytes": 582,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/worker-header.json",
+      "sha256": "19d7bd8fcaa30b7b7a09f0257124fe09b5fd83a2802e6ccc874d9e06a533e75c"
+    },
+    {
+      "bytes": 1495,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-fork-join-positive.observer/observer.json",
+      "sha256": "55464e15af204076cff77ca6bf37ed4d20cf8ec069c6640e961a75f9f54852a4"
+    },
+    {
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-fork-join-positive.observer/stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 1801,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-fork-join-positive.observer/stdout.bin",
+      "sha256": "b2e839231d486f904a427ff11456a73d3f2926ed7b830ef2ba2e9eb96d6ab3cb"
+    },
+    {
+      "bytes": 261,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-fork-join-positive/CONSUMED.json",
+      "sha256": "b8400680f9167fc047d03e7e2f812dbd987d1070d535f470b5957cc0ed231981"
+    },
+    {
+      "bytes": 41808,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-fork-join-positive/native/boundary-oracle",
+      "sha256": "2b6bf8bb09a4e03d0cb1b4595dea1fe6d4432aa93d8f7eed72c30077fd9941a4"
+    },
+    {
+      "bytes": 7558192,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-fork-join-positive/native/code.bin",
+      "sha256": "97f0b600cffd83552c4e0f0c4fb1f5d26cfdb76e3e74b267bbaebeddc836e7ed"
+    },
+    {
+      "bytes": 682164,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-fork-join-positive/native/input.bin",
+      "sha256": "11af34b9d1c50b2228504b83da142597692ca8b68b00b86faa77336b81f29409"
+    },
+    {
+      "bytes": 682168,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-fork-join-positive/native/output.bin",
+      "sha256": "9e903e18627706581107004526e907830a109b2a211a715d9426f517a66d67fd"
+    },
+    {
+      "bytes": 235,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-fork-join-positive/owned-child.json",
+      "sha256": "ca32746ca1e9b322f1b73b91c0cef87553e4397afad1ff30cad74125c8a7297c"
+    },
+    {
+      "bytes": 31677127,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-fork-join-positive/result.json",
+      "sha256": "55b8eddfb187b635257a7bb4b1af2fd64d17a5e56bf31f6a8d912c8e49e9e46d"
+    },
+    {
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-fork-join-positive/stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 116,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-fork-join-positive/stdout.bin",
+      "sha256": "eb8c4100da011002029b66f222037d9a1b96abc67f72994ec8aa4198e58b2ffc"
+    },
+    {
+      "bytes": 2025,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-fork-join-positive/terminal.json",
+      "sha256": "a538a40dc60a4d3655dd5b2037242a5ccc352568f3a4fccbc8ae68413d695734"
+    },
+    {
+      "bytes": 580,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-fork-join-positive/worker-header.json",
+      "sha256": "731210376383a7775029582b173cc2fdbd329a81f4acf4fbd62d6588c8d9246f"
+    },
+    {
+      "bytes": 1515,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-quantifier-equality-positive.observer/observer.json",
+      "sha256": "26451c1a7a92ea1fbe4036ebe7a54d0540c081b8310536567f346d1b701b8ed3"
+    },
+    {
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-quantifier-equality-positive.observer/stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 1841,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-quantifier-equality-positive.observer/stdout.bin",
+      "sha256": "943273903fe40fd4f38026958d2f25279d87f09b78e125c1457cab570ce7ba3d"
+    },
+    {
+      "bytes": 271,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/CONSUMED.json",
+      "sha256": "7d656cc2592fa85a53fb7d152956dc03fb6d2788d1a2d1d2c8f7a4a061535c0f"
+    },
+    {
+      "bytes": 41808,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/native/boundary-oracle",
+      "sha256": "2b6bf8bb09a4e03d0cb1b4595dea1fe6d4432aa93d8f7eed72c30077fd9941a4"
+    },
+    {
+      "bytes": 7558192,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/native/code.bin",
+      "sha256": "97f0b600cffd83552c4e0f0c4fb1f5d26cfdb76e3e74b267bbaebeddc836e7ed"
+    },
+    {
+      "bytes": 900052,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/native/input.bin",
+      "sha256": "f2432fb8ac10022fe24de0e42d9ddeda8fc1426e973948fd699c6136a6e12ce8"
+    },
+    {
+      "bytes": 900056,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/native/output.bin",
+      "sha256": "8ffed28c4da3ce93bfaf6c7faec40dd3d25b68c0d2614f3d8334066ae6ac1404"
+    },
+    {
+      "bytes": 245,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/owned-child.json",
+      "sha256": "914cd735dbd949249b840fb5bbbc5f3a4c96aad398aed2a36330ea87719ebd28"
+    },
+    {
+      "bytes": 31232453,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/result.json",
+      "sha256": "ed31033ed91efa8356f77e78ea9078a7f93dc821722c52785e93f212d6dc5a9e"
+    },
+    {
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 125,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/stdout.bin",
+      "sha256": "c1c12cb0ab8fe36faa35b7578ea5046cdd9eeb1ea1583d749eeeb0a2739afe3f"
+    },
+    {
+      "bytes": 2065,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/terminal.json",
+      "sha256": "8e4db20a21e6ba8a6b077af23780e4444c3494de5a93374c49b4ce1ae93a2f59"
+    },
+    {
+      "bytes": 600,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/worker-header.json",
+      "sha256": "cdd96093fc5f4c73a745af96a0743838bf5749cb16a06198cd9953a0a35bd8a9"
+    }
+  ],
+  "aggregate": {
+    "Native_queries": 288,
+    "graph_controls": 66,
+    "point_audits": 24,
+    "point_placements": 558,
+    "qualified_arms": 18,
+    "saved_checker_accepted_recipient_packets": 2,
+    "searched_arms": 18,
+    "skipped_arms": 0,
+    "word_controls": 144
+  },
+  "attestation": {
+    "fixtures_executed_by_reviewer": 0,
+    "logical_replays": 0,
+    "old_frozen_files_mutated": false,
+    "partial_files_parsed": false,
+    "primary_index_reader_active_access": false,
+    "scientific_calls": 0,
+    "subject_imports": 0,
+    "tools_stopped_after_freeze": true
+  },
+  "baseline_copy_receipt": {
+    "bytes": 21956,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/root/baseline-copy-pins-v1.json",
+    "sha256": "aee718cbfde5885802a6a00b4633caaf2884e59be0c1cada0b7912a6305c9edf"
+  },
+  "cases": [
+    {
+      "Native_closed_reaped_exit0": true,
+      "Native_complete_queries": 91,
+      "Native_join_summary_sha256": "d412c1318a5f3faa9791791b791578a54308b8cb335e0bdda10187719f3d9bea",
+      "Native_purpose_counts": {
+        "first_order_scheme": 12,
+        "first_order_tautology": 66,
+        "first_order_theory_admission": 4,
+        "pilot_ground_cluster_admission": 1,
+        "pilot_test_pilot-fork-join-positive_S0": 1,
+        "pilot_test_pilot-fork-join-positive_SC": 1,
+        "pilot_training_essential_primitive": 3,
+        "pilot_training_whole_primitive": 3
+      },
+      "Native_request_stage_digest_joins": 91,
+      "Native_status_counts": {
+        "accepted": 24,
+        "rejected": 66,
+        "unknown_step_budget": 1
+      },
+      "callbacks": 16723468,
+      "case_id": "pilot-fork-join-positive",
+      "classification": "RESOURCE_CUSTODY_ACCEPTED",
+      "consumed": {
+        "bytes": 261,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-fork-join-positive/CONSUMED.json",
+        "sha256": "b8400680f9167fc047d03e7e2f812dbd987d1070d535f470b5957cc0ed231981"
+      },
+      "grant": {
+        "bytes": 2197,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/root/grant-pilot-fork-join-positive-v1.json",
+        "sha256": "48d39b09f92fabb11cc05a06498be447ac932db89ab60c11290418d168fd2c91"
+      },
+      "graph_control_checkpoints": 38420,
+      "graph_control_ids": [
+        "top-dictionaries-private",
+        "child-domain-detaches",
+        "parent-updates-after-copy",
+        "siblings-and-grandchild-diverge",
+        "later-shared-domain-detaches-again",
+        "fractional-capacity-and-empty",
+        "completed-root-multiple-support-edge",
+        "new-frontier-and-generation",
+        "disconnected-and-seed-generations",
+        "mark-only-distant-zero-one",
+        "explicit-zero-is-not-absent",
+        "boundary-release-restores-existing-domain-members",
+        "global-dead-beats-forced",
+        "global-forced-beats-early-branch",
+        "generation-beats-smaller-degree",
+        "degree-breaks-generation-tie",
+        "empty-copy-repeat-update",
+        "RuntimeError-identity-parent-safe",
+        "ValueError-identity-parent-safe",
+        "StopIteration-identity-parent-safe",
+        "missing-inverse-edge-detected",
+        "missing-forward-member-detected"
+      ],
+      "graph_controls_returned_passed": 22,
+      "graph_corruption_refusals": 2,
+      "graph_synthetic_identity_refusals": 3,
+      "header": {
+        "bytes": 580,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-fork-join-positive/worker-header.json",
+        "sha256": "731210376383a7775029582b173cc2fdbd329a81f4acf4fbd62d6588c8d9246f"
+      },
+      "historical_D13": {
+        "claim": "Historical raw measurement comparison only. D13 failed positives remain failed; different bounded work/traces and extra controls forbid phase-cause or statistical speedup inference.",
+        "classification": "REJECTED_OBSERVER_WHOLE_MEMORY_CEILING",
+        "memory_terms": {
+          "ceiling_bytes": 1073741824,
+          "observer_final_peak_bytes": 21725184,
+          "observer_output_reserve_bytes": 9437184,
+          "parent_final_peak_bytes": 70746112,
+          "parent_output_reserve_bytes": 9437184,
+          "parent_reserved_bound_bytes": 1052409856,
+          "phase_causality_established": false,
+          "waited_Native_peak_bytes": 13172736,
+          "waited_child_peak_bytes": 959053824,
+          "whole_excess_bytes": 9830400,
+          "whole_headroom_bytes": 0,
+          "whole_reserved_peak_bytes": 1083572224,
+          "worker_postoutput_peak_bytes": 959053824,
+          "worker_postoutput_plus_Native_bytes": 972226560,
+          "worker_preoutput_peak_bytes": 959053824
+        },
+        "resource_candidate_accepted": false,
+        "review": {
+          "bytes": 71157,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-novelty-proof-pilot-20261020/verification-L/typed-point-novelty-resource-custody-review-v1.json",
+          "sha256": "25c39903e8a4b5d03e50a31122303c5af4cee1e7a718ce45bf86aaaf7c51db54"
+        },
+        "same_memory_ceiling": true,
+        "whole_peak_difference_D14_minus_D13_bytes": -194330624
+      },
+      "last_work_stage_end_seconds": 102.85146770800202,
+      "memory_terms": {
+        "ceiling_bytes": 1073741824,
+        "observer_final_peak_bytes": 21856256,
+        "observer_output_reserve_bytes": 9437184,
+        "parent_final_peak_bytes": 67715072,
+        "parent_output_reserve_bytes": 9437184,
+        "parent_reserved_bound_bytes": 857948160,
+        "phase_causality_established": false,
+        "waited_Native_peak_bytes": 13123584,
+        "waited_child_peak_bytes": 767672320,
+        "whole_headroom_bytes": 184500224,
+        "whole_reserved_peak_bytes": 889241600,
+        "worker_postoutput_peak_bytes": 767655936,
+        "worker_preoutput_peak_bytes": 702791680
+      },
+      "observed_graph_sharing": {
+        "copy_events_with_identity_counts": 29,
+        "scope": "Local Python identity observations from tiny copies, not bytes/RSS or phase attribution.",
+        "summed_domain_set_alias_occurrences": 53,
+        "summed_edge_set_alias_occurrences": 134
+      },
+      "observer": {
+        "bytes": 1495,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-fork-join-positive.observer/observer.json",
+        "sha256": "55464e15af204076cff77ca6bf37ed4d20cf8ec069c6640e961a75f9f54852a4"
+      },
+      "observer_final_gate_seconds": 103.61434229199949,
+      "observer_stored_plus_receipt_allowance_bytes": 41695053,
+      "old_native_usable_count": 0,
+      "ordering_instances": 7,
+      "parent_exit": 0,
+      "parent_final_custody_gate_seconds": 103.56378037499962,
+      "parent_known_exit_seconds": 103.53926137500093,
+      "parent_stored_before_terminal_bytes": 40642651,
+      "plan": {
+        "bytes": 20870,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/root/plan-pilot-fork-join-positive-v1.json",
+        "sha256": "b4e167b5b8b1482effa1876841afe12449208365784f6613d7e8584e072d5dff"
+      },
+      "point_audits": 8,
+      "point_placements": 193,
+      "registry_native_admitted": false,
+      "registry_native_status": "unknown_step_budget",
+      "resource_candidate_accepted": true,
+      "result": {
+        "bytes": 31677127,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-fork-join-positive/result.json",
+        "sha256": "55b8eddfb187b635257a7bb4b1af2fd64d17a5e56bf31f6a8d912c8e49e9e46d"
+      },
+      "saved_checker_accepted_recipient_packets": [
+        {
+          "arm": "S0",
+          "native_query": 89,
+          "rows": 14,
+          "scope": "Repeated known target, saved Host/full-region/Native acceptance; no new theorem or point proof."
+        },
+        {
+          "arm": "SC",
+          "native_query": 90,
+          "rows": 14,
+          "scope": "Repeated known target, saved Host/full-region/Native acceptance; no new theorem or point proof."
+        }
+      ],
+      "scientific_record_complete": true,
+      "search_arms": [
+        {
+          "attempts": 14,
+          "domain_audits": 0,
+          "execution_status": "SEARCH_RETURNED",
+          "id": "S0",
+          "method": "symbolic",
+          "native_proof_accepted": true,
+          "point_placements": null,
+          "proof_verification_status": "HOST_REGION_NATIVE_ACCEPTED",
+          "root_restored": true,
+          "search_seconds": 0.10288995900191367,
+          "search_status": "symbolic_proof_candidate"
+        },
+        {
+          "attempts": 49,
+          "domain_audits": 2,
+          "execution_status": "SEARCH_RETURNED",
+          "id": "P11",
+          "method": "point",
+          "native_proof_accepted": false,
+          "point_placements": 49,
+          "proof_verification_status": "NO_PROOF_CANDIDATE",
+          "root_restored": true,
+          "search_seconds": 2.1213839580013882,
+          "search_status": "unknown_search_budget"
+        },
+        {
+          "attempts": 44,
+          "domain_audits": 2,
+          "execution_status": "SEARCH_RETURNED",
+          "id": "P00",
+          "method": "point",
+          "native_proof_accepted": false,
+          "point_placements": 44,
+          "proof_verification_status": "NO_PROOF_CANDIDATE",
+          "root_restored": true,
+          "search_seconds": 2.155403208002099,
+          "search_status": "unknown_search_budget"
+        },
+        {
+          "attempts": 14,
+          "domain_audits": 0,
+          "execution_status": "SEARCH_RETURNED",
+          "id": "SC",
+          "method": "symbolic",
+          "native_proof_accepted": true,
+          "point_placements": null,
+          "proof_verification_status": "HOST_REGION_NATIVE_ACCEPTED",
+          "root_restored": true,
+          "search_seconds": 0.10877912500291131,
+          "search_status": "symbolic_proof_candidate"
+        },
+        {
+          "attempts": 49,
+          "domain_audits": 2,
+          "execution_status": "SEARCH_RETURNED",
+          "id": "P10",
+          "method": "point",
+          "native_proof_accepted": false,
+          "point_placements": 49,
+          "proof_verification_status": "NO_PROOF_CANDIDATE",
+          "root_restored": true,
+          "search_seconds": 2.1184822079958394,
+          "search_status": "unknown_search_budget"
+        },
+        {
+          "attempts": 51,
+          "domain_audits": 2,
+          "execution_status": "SEARCH_RETURNED",
+          "id": "P01",
+          "method": "point",
+          "native_proof_accepted": false,
+          "point_placements": 51,
+          "proof_verification_status": "NO_PROOF_CANDIDATE",
+          "root_restored": true,
+          "search_seconds": 2.1503048750018934,
+          "search_status": "unknown_search_budget"
+        }
+      ],
+      "stable_final_file_count": 14,
+      "stable_final_physical_bytes": 40647972,
+      "terminal": {
+        "bytes": 2025,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-fork-join-positive/terminal.json",
+        "sha256": "a538a40dc60a4d3655dd5b2037242a5ccc352568f3a4fccbc8ae68413d695734"
+      },
+      "tool_observer_exit": 0,
+      "tool_observer_summary_seconds": 103.61470387499867,
+      "tool_session": 2055,
+      "word_controls_returned_passed": 48,
+      "worker_elapsed_seconds": 102.9331288329995,
+      "worker_header_seconds": 103.18593454099755,
+      "worker_status": "COMPLETE"
+    },
+    {
+      "Native_closed_reaped_exit0": true,
+      "Native_complete_queries": 108,
+      "Native_join_summary_sha256": "6107e92da4c19b33c09d15f9f0e1187a76ca7382c2bae0e35d1f754a7ed1bc51",
+      "Native_purpose_counts": {
+        "first_order_scheme": 19,
+        "first_order_tautology": 78,
+        "first_order_theory_admission": 4,
+        "pilot_ground_cluster_admission": 1,
+        "pilot_training_essential_primitive": 3,
+        "pilot_training_whole_primitive": 3
+      },
+      "Native_request_stage_digest_joins": 108,
+      "Native_status_counts": {
+        "accepted": 30,
+        "rejected": 77,
+        "unknown_step_budget": 1
+      },
+      "callbacks": 17384939,
+      "case_id": "pilot-quantifier-equality-positive",
+      "classification": "RESOURCE_CUSTODY_ACCEPTED",
+      "consumed": {
+        "bytes": 271,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/CONSUMED.json",
+        "sha256": "7d656cc2592fa85a53fb7d152956dc03fb6d2788d1a2d1d2c8f7a4a061535c0f"
+      },
+      "grant": {
+        "bytes": 2217,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/root/grant-pilot-quantifier-equality-positive-v1.json",
+        "sha256": "50f18c85ada939a324639e49361ec18ffa72191d3c9ed74e0701053efad1b281"
+      },
+      "graph_control_checkpoints": 38420,
+      "graph_control_ids": [
+        "top-dictionaries-private",
+        "child-domain-detaches",
+        "parent-updates-after-copy",
+        "siblings-and-grandchild-diverge",
+        "later-shared-domain-detaches-again",
+        "fractional-capacity-and-empty",
+        "completed-root-multiple-support-edge",
+        "new-frontier-and-generation",
+        "disconnected-and-seed-generations",
+        "mark-only-distant-zero-one",
+        "explicit-zero-is-not-absent",
+        "boundary-release-restores-existing-domain-members",
+        "global-dead-beats-forced",
+        "global-forced-beats-early-branch",
+        "generation-beats-smaller-degree",
+        "degree-breaks-generation-tie",
+        "empty-copy-repeat-update",
+        "RuntimeError-identity-parent-safe",
+        "ValueError-identity-parent-safe",
+        "StopIteration-identity-parent-safe",
+        "missing-inverse-edge-detected",
+        "missing-forward-member-detected"
+      ],
+      "graph_controls_returned_passed": 22,
+      "graph_corruption_refusals": 2,
+      "graph_synthetic_identity_refusals": 3,
+      "header": {
+        "bytes": 600,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/worker-header.json",
+        "sha256": "cdd96093fc5f4c73a745af96a0743838bf5749cb16a06198cd9953a0a35bd8a9"
+      },
+      "historical_D13": {
+        "claim": "Historical raw measurement comparison only. D13 failed positives remain failed; different bounded work/traces and extra controls forbid phase-cause or statistical speedup inference.",
+        "classification": "REJECTED_OBSERVER_WHOLE_MEMORY_CEILING",
+        "memory_terms": {
+          "ceiling_bytes": 1073741824,
+          "observer_final_peak_bytes": 21807104,
+          "observer_output_reserve_bytes": 9437184,
+          "parent_final_peak_bytes": 72843264,
+          "parent_output_reserve_bytes": 9437184,
+          "parent_reserved_bound_bytes": 1064042496,
+          "phase_causality_established": false,
+          "waited_Native_peak_bytes": 13516800,
+          "waited_child_peak_bytes": 968245248,
+          "whole_excess_bytes": 21544960,
+          "whole_headroom_bytes": 0,
+          "whole_reserved_peak_bytes": 1095286784,
+          "worker_postoutput_peak_bytes": 968245248,
+          "worker_postoutput_plus_Native_bytes": 981762048,
+          "worker_preoutput_peak_bytes": 968245248
+        },
+        "resource_candidate_accepted": false,
+        "review": {
+          "bytes": 71157,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-novelty-proof-pilot-20261020/verification-L/typed-point-novelty-resource-custody-review-v1.json",
+          "sha256": "25c39903e8a4b5d03e50a31122303c5af4cee1e7a718ce45bf86aaaf7c51db54"
+        },
+        "same_memory_ceiling": true,
+        "whole_peak_difference_D14_minus_D13_bytes": -129122304
+      },
+      "last_work_stage_end_seconds": 103.68010579099791,
+      "memory_terms": {
+        "ceiling_bytes": 1073741824,
+        "observer_final_peak_bytes": 21594112,
+        "observer_output_reserve_bytes": 9437184,
+        "parent_final_peak_bytes": 72957952,
+        "parent_output_reserve_bytes": 9437184,
+        "parent_reserved_bound_bytes": 935133184,
+        "phase_causality_established": false,
+        "waited_Native_peak_bytes": 13533184,
+        "waited_child_peak_bytes": 839204864,
+        "whole_headroom_bytes": 107577344,
+        "whole_reserved_peak_bytes": 966164480,
+        "worker_postoutput_peak_bytes": 839188480,
+        "worker_preoutput_peak_bytes": 775208960
+      },
+      "observed_graph_sharing": {
+        "copy_events_with_identity_counts": 29,
+        "scope": "Local Python identity observations from tiny copies, not bytes/RSS or phase attribution.",
+        "summed_domain_set_alias_occurrences": 53,
+        "summed_edge_set_alias_occurrences": 134
+      },
+      "observer": {
+        "bytes": 1515,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-quantifier-equality-positive.observer/observer.json",
+        "sha256": "26451c1a7a92ea1fbe4036ebe7a54d0540c081b8310536567f346d1b701b8ed3"
+      },
+      "observer_final_gate_seconds": 105.05351958399842,
+      "observer_stored_plus_receipt_allowance_bytes": 41686284,
+      "old_native_usable_count": 0,
+      "ordering_instances": 11,
+      "parent_exit": 0,
+      "parent_final_custody_gate_seconds": 104.99483974999748,
+      "parent_known_exit_seconds": 104.96687470799952,
+      "parent_stored_before_terminal_bytes": 40633802,
+      "plan": {
+        "bytes": 20890,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/root/plan-pilot-quantifier-equality-positive-v1.json",
+        "sha256": "f4f1ad1b4cdb97b45e33bc16f69eee7862d8b6d68ca80806153a785c4f1a4831"
+      },
+      "point_audits": 8,
+      "point_placements": 175,
+      "registry_native_admitted": false,
+      "registry_native_status": "unknown_step_budget",
+      "resource_candidate_accepted": true,
+      "result": {
+        "bytes": 31232453,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/result.json",
+        "sha256": "ed31033ed91efa8356f77e78ea9078a7f93dc821722c52785e93f212d6dc5a9e"
+      },
+      "saved_checker_accepted_recipient_packets": [],
+      "scientific_record_complete": true,
+      "search_arms": [
+        {
+          "attempts": 45,
+          "domain_audits": 2,
+          "execution_status": "SEARCH_RETURNED",
+          "id": "P01",
+          "method": "point",
+          "native_proof_accepted": false,
+          "point_placements": 45,
+          "proof_verification_status": "NO_PROOF_CANDIDATE",
+          "root_restored": true,
+          "search_seconds": 2.12968862499838,
+          "search_status": "unknown_search_budget"
+        },
+        {
+          "attempts": 42,
+          "domain_audits": 2,
+          "execution_status": "SEARCH_RETURNED",
+          "id": "P10",
+          "method": "point",
+          "native_proof_accepted": false,
+          "point_placements": 42,
+          "proof_verification_status": "NO_PROOF_CANDIDATE",
+          "root_restored": true,
+          "search_seconds": 2.491246334000607,
+          "search_status": "unknown_search_budget"
+        },
+        {
+          "attempts": 600,
+          "domain_audits": 0,
+          "execution_status": "SEARCH_RETURNED",
+          "id": "SC",
+          "method": "symbolic",
+          "native_proof_accepted": false,
+          "point_placements": null,
+          "proof_verification_status": "NO_PROOF_CANDIDATE",
+          "root_restored": true,
+          "search_seconds": 1.229587999994692,
+          "search_status": "unknown_search_budget"
+        },
+        {
+          "attempts": 45,
+          "domain_audits": 2,
+          "execution_status": "SEARCH_RETURNED",
+          "id": "P00",
+          "method": "point",
+          "native_proof_accepted": false,
+          "point_placements": 45,
+          "proof_verification_status": "NO_PROOF_CANDIDATE",
+          "root_restored": true,
+          "search_seconds": 2.1105239590033307,
+          "search_status": "unknown_search_budget"
+        },
+        {
+          "attempts": 43,
+          "domain_audits": 2,
+          "execution_status": "SEARCH_RETURNED",
+          "id": "P11",
+          "method": "point",
+          "native_proof_accepted": false,
+          "point_placements": 43,
+          "proof_verification_status": "NO_PROOF_CANDIDATE",
+          "root_restored": true,
+          "search_seconds": 2.114537540997844,
+          "search_status": "unknown_search_budget"
+        },
+        {
+          "attempts": 600,
+          "domain_audits": 0,
+          "execution_status": "SEARCH_RETURNED",
+          "id": "S0",
+          "method": "symbolic",
+          "native_proof_accepted": false,
+          "point_placements": null,
+          "proof_verification_status": "NO_PROOF_CANDIDATE",
+          "root_restored": true,
+          "search_seconds": 0.7390799580025487,
+          "search_status": "unknown_search_budget"
+        }
+      ],
+      "stable_final_file_count": 14,
+      "stable_final_physical_bytes": 40639223,
+      "terminal": {
+        "bytes": 2065,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/terminal.json",
+        "sha256": "8e4db20a21e6ba8a6b077af23780e4444c3494de5a93374c49b4ce1ae93a2f59"
+      },
+      "tool_observer_exit": 0,
+      "tool_observer_summary_seconds": 105.05413183400378,
+      "tool_session": 83879,
+      "word_controls_returned_passed": 48,
+      "worker_elapsed_seconds": 103.76218754099682,
+      "worker_header_seconds": 104.00589108299755,
+      "worker_status": "COMPLETE"
+    },
+    {
+      "Native_closed_reaped_exit0": true,
+      "Native_complete_queries": 89,
+      "Native_join_summary_sha256": "ffbb572619ce9d64bc7292b0acc3c980f87e24feffb90dcf6f4442c89bcad60b",
+      "Native_purpose_counts": {
+        "first_order_scheme": 12,
+        "first_order_tautology": 66,
+        "first_order_theory_admission": 4,
+        "pilot_ground_cluster_admission": 1,
+        "pilot_training_essential_primitive": 3,
+        "pilot_training_whole_primitive": 3
+      },
+      "Native_request_stage_digest_joins": 89,
+      "Native_status_counts": {
+        "accepted": 22,
+        "rejected": 66,
+        "unknown_step_budget": 1
+      },
+      "callbacks": 17322185,
+      "case_id": "pilot-fork-join-missing-Pa",
+      "classification": "RESOURCE_CUSTODY_ACCEPTED",
+      "consumed": {
+        "bytes": 263,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/CONSUMED.json",
+        "sha256": "26f2146deb680aa4235ec2e67e8624febe3d78bd96ce9158bb8a77a180caa6be"
+      },
+      "grant": {
+        "bytes": 2201,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/root/grant-pilot-fork-join-missing-Pa-v1.json",
+        "sha256": "1fd67bab2fa1cc86ff60febd0b67ce98bdf8fc2b59c509ee66136f5294e5f83f"
+      },
+      "graph_control_checkpoints": 38420,
+      "graph_control_ids": [
+        "top-dictionaries-private",
+        "child-domain-detaches",
+        "parent-updates-after-copy",
+        "siblings-and-grandchild-diverge",
+        "later-shared-domain-detaches-again",
+        "fractional-capacity-and-empty",
+        "completed-root-multiple-support-edge",
+        "new-frontier-and-generation",
+        "disconnected-and-seed-generations",
+        "mark-only-distant-zero-one",
+        "explicit-zero-is-not-absent",
+        "boundary-release-restores-existing-domain-members",
+        "global-dead-beats-forced",
+        "global-forced-beats-early-branch",
+        "generation-beats-smaller-degree",
+        "degree-breaks-generation-tie",
+        "empty-copy-repeat-update",
+        "RuntimeError-identity-parent-safe",
+        "ValueError-identity-parent-safe",
+        "StopIteration-identity-parent-safe",
+        "missing-inverse-edge-detected",
+        "missing-forward-member-detected"
+      ],
+      "graph_controls_returned_passed": 22,
+      "graph_corruption_refusals": 2,
+      "graph_synthetic_identity_refusals": 3,
+      "header": {
+        "bytes": 582,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/worker-header.json",
+        "sha256": "19d7bd8fcaa30b7b7a09f0257124fe09b5fd83a2802e6ccc874d9e06a533e75c"
+      },
+      "historical_D13": {
+        "claim": "Historical raw measurement comparison only. D13 failed positives remain failed; different bounded work/traces and extra controls forbid phase-cause or statistical speedup inference.",
+        "classification": "RESOURCE_CUSTODY_ACCEPTED",
+        "memory_terms": {
+          "ceiling_bytes": 1073741824,
+          "observer_final_peak_bytes": 21659648,
+          "observer_output_reserve_bytes": 9437184,
+          "parent_final_peak_bytes": 68567040,
+          "parent_output_reserve_bytes": 9437184,
+          "parent_reserved_bound_bytes": 996098048,
+          "phase_causality_established": false,
+          "waited_Native_peak_bytes": 13467648,
+          "waited_child_peak_bytes": 904626176,
+          "whole_excess_bytes": 0,
+          "whole_headroom_bytes": 46546944,
+          "whole_reserved_peak_bytes": 1027194880,
+          "worker_postoutput_peak_bytes": 904626176,
+          "worker_postoutput_plus_Native_bytes": 918093824,
+          "worker_preoutput_peak_bytes": 904626176
+        },
+        "resource_candidate_accepted": true,
+        "review": {
+          "bytes": 71157,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-novelty-proof-pilot-20261020/verification-L/typed-point-novelty-resource-custody-review-v1.json",
+          "sha256": "25c39903e8a4b5d03e50a31122303c5af4cee1e7a718ce45bf86aaaf7c51db54"
+        },
+        "same_memory_ceiling": true,
+        "whole_peak_difference_D14_minus_D13_bytes": -87818240
+      },
+      "last_work_stage_end_seconds": 94.21293850000075,
+      "memory_terms": {
+        "ceiling_bytes": 1073741824,
+        "observer_final_peak_bytes": 21708800,
+        "observer_output_reserve_bytes": 9437184,
+        "parent_final_peak_bytes": 73318400,
+        "parent_output_reserve_bytes": 9437184,
+        "parent_reserved_bound_bytes": 908230656,
+        "phase_causality_established": false,
+        "waited_Native_peak_bytes": 13467648,
+        "waited_child_peak_bytes": 812007424,
+        "whole_headroom_bytes": 134365184,
+        "whole_reserved_peak_bytes": 939376640,
+        "worker_postoutput_peak_bytes": 812007424,
+        "worker_preoutput_peak_bytes": 747307008
+      },
+      "observed_graph_sharing": {
+        "copy_events_with_identity_counts": 29,
+        "scope": "Local Python identity observations from tiny copies, not bytes/RSS or phase attribution.",
+        "summed_domain_set_alias_occurrences": 53,
+        "summed_edge_set_alias_occurrences": 134
+      },
+      "observer": {
+        "bytes": 1496,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa.observer/observer.json",
+        "sha256": "f1d761515ff25f4dcd9780a14d74db065df5b28fa5f9e8d8bcb04b1988b8a505"
+      },
+      "observer_final_gate_seconds": 95.00323308299994,
+      "observer_stored_plus_receipt_allowance_bytes": 41908489,
+      "old_native_usable_count": 0,
+      "ordering_instances": 7,
+      "parent_exit": 0,
+      "parent_final_custody_gate_seconds": 94.92513470900303,
+      "parent_known_exit_seconds": 94.89939279200189,
+      "parent_stored_before_terminal_bytes": 40856081,
+      "plan": {
+        "bytes": 20874,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/root/plan-pilot-fork-join-missing-Pa-v1.json",
+        "sha256": "9876d1f2198e0c13d0484be1ddc65ec40b2b845c971702d48e135ce2cf482e8d"
+      },
+      "point_audits": 8,
+      "point_placements": 190,
+      "registry_native_admitted": false,
+      "registry_native_status": "unknown_step_budget",
+      "resource_candidate_accepted": true,
+      "result": {
+        "bytes": 31620390,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/result.json",
+        "sha256": "011d153f5a15c8bfc9ef3fdafd96b2c0550ed2cf15ceaf69ed2edf4a24d09bbd"
+      },
+      "saved_checker_accepted_recipient_packets": [],
+      "scientific_record_complete": true,
+      "search_arms": [
+        {
+          "attempts": 51,
+          "domain_audits": 2,
+          "execution_status": "SEARCH_RETURNED",
+          "id": "P00",
+          "method": "point",
+          "native_proof_accepted": false,
+          "point_placements": 51,
+          "proof_verification_status": "NO_PROOF_CANDIDATE",
+          "root_restored": true,
+          "search_seconds": 2.1319021669987706,
+          "search_status": "unknown_search_budget"
+        },
+        {
+          "attempts": 600,
+          "domain_audits": 0,
+          "execution_status": "SEARCH_RETURNED",
+          "id": "SC",
+          "method": "symbolic",
+          "native_proof_accepted": false,
+          "point_placements": null,
+          "proof_verification_status": "NO_PROOF_CANDIDATE",
+          "root_restored": true,
+          "search_seconds": 1.4132478750034352,
+          "search_status": "unknown_search_budget"
+        },
+        {
+          "attempts": 41,
+          "domain_audits": 2,
+          "execution_status": "SEARCH_RETURNED",
+          "id": "P10",
+          "method": "point",
+          "native_proof_accepted": false,
+          "point_placements": 41,
+          "proof_verification_status": "NO_PROOF_CANDIDATE",
+          "root_restored": true,
+          "search_seconds": 2.1113199169994914,
+          "search_status": "unknown_search_budget"
+        },
+        {
+          "attempts": 49,
+          "domain_audits": 2,
+          "execution_status": "SEARCH_RETURNED",
+          "id": "P01",
+          "method": "point",
+          "native_proof_accepted": false,
+          "point_placements": 49,
+          "proof_verification_status": "NO_PROOF_CANDIDATE",
+          "root_restored": true,
+          "search_seconds": 2.1274157500010915,
+          "search_status": "unknown_search_budget"
+        },
+        {
+          "attempts": 600,
+          "domain_audits": 0,
+          "execution_status": "SEARCH_RETURNED",
+          "id": "S0",
+          "method": "symbolic",
+          "native_proof_accepted": false,
+          "point_placements": null,
+          "proof_verification_status": "NO_PROOF_CANDIDATE",
+          "root_restored": true,
+          "search_seconds": 1.0622103329951642,
+          "search_status": "unknown_search_budget"
+        },
+        {
+          "attempts": 49,
+          "domain_audits": 2,
+          "execution_status": "SEARCH_RETURNED",
+          "id": "P11",
+          "method": "point",
+          "native_proof_accepted": false,
+          "point_placements": 49,
+          "proof_verification_status": "NO_PROOF_CANDIDATE",
+          "root_restored": true,
+          "search_seconds": 2.1439237919985317,
+          "search_status": "unknown_search_budget"
+        }
+      ],
+      "stable_final_file_count": 14,
+      "stable_final_physical_bytes": 40861409,
+      "terminal": {
+        "bytes": 2028,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/terminal.json",
+        "sha256": "30cf2ca6286d3024dd265255662fb90c6317c23abbc7d61baff48d9dd3625579"
+      },
+      "tool_observer_exit": 0,
+      "tool_observer_summary_seconds": 95.00366162499995,
+      "tool_session": 24043,
+      "word_controls_returned_passed": 48,
+      "worker_elapsed_seconds": 94.28816029200243,
+      "worker_header_seconds": 94.5446173340024,
+      "worker_status": "COMPLETE"
+    }
+  ],
+  "check_count": 10,
+  "checks": [
+    {
+      "detail": "All53 execution closure raw bodies, all3 plan bodies, protocol/normative pins and33 exact copies rehashed after actuals.31 copies remain predecessor-identical; changed turtle/control runtime remain their exact reviewed author Source. No Source or old qualification mutation.",
+      "id": "all-offered-source-bodies-unchanged",
+      "passed": true
+    },
+    {
+      "detail": "Three distinct single-use grants join exact plans/runner/observer/four reviews/Root preflight and exclusive CONSUMED records.3fresh cases and no remaining uses; no retry, old grant/result/library or failed-prefix adoption.",
+      "id": "fresh-three-consumed-grants",
+      "passed": true
+    },
+    {
+      "detail": "All42 complete actual/observer files raw-pinned,14 per case; no partial files found or parsed. Stable final physical totals, worker48MiB results, parent4MiB logs/terminal and observer1MiB logs/receipt meet unchanged bounds. Stable counters join actual file totals.",
+      "id": "complete-42-file-census",
+      "passed": true
+    },
+    {
+      "detail": "Every worker/result/header COMPLETE, first Root fault false, error null, child/parent/observer/tool exit0, log EOF and no overflow/errors. Exact header/result/terminal/observer/source joins hold; all output-source pins unchanged after completion.",
+      "id": "terminal-and-source-custody",
+      "passed": true
+    },
+    {
+      "detail": "Every last completed work stage is before160s; worker/header/known child exit before180s; final parent/observer materialization custody below210s.225fallback untriggered. All genuine callback counts below400m; cooperative local2s overshoot is disclosed and not a changed hard timer.",
+      "id": "full-time-callback-gates",
+      "passed": true
+    },
+    {
+      "detail": "Recomputed all parent/observer conservative formulas with worker post-output HWM, waited-child HWM, Native wait4 HWM, final parent and observer HWM, and both9MiB conservative output reserves. Whole889241600/966164480/939376640 all below1073741824. No phase-causal attribution or generalized fit claim.",
+      "id": "post-output-whole-memory",
+      "passed": true
+    },
+    {
+      "detail": "All three Native constructors completed, same owned process group, EOF/cleanup terminal, wait4exit0/reaped and no signals/errors. All288 complete query IDs/stage ordinals/purposes/1e9limits/request canonical digests/input/output digests join. Final raw input/output files match last records; executable pins match. No Native request/checker replay.",
+      "id": "all-Native-reaping-and-288-joins",
+      "passed": true
+    },
+    {
+      "detail": "Every original scheduled arm returned:18 searched,0 skipped. Native registry UNKNOWN remains unadmitted/usable empty, ordering-only instances separate; transport scientific/aggregate acceptance flags remain false and Root outer resource gate is separate. All point searches remain UNKNOWN; saved first S0/SC14row acceptances repeat a known target and are not new point proofs.",
+      "id": "all-six-status-scope-separation",
+      "passed": true
+    },
+    {
+      "detail": "All144 word controls and66 graph controls returned PASSED within admitted jobs, exact bank fixture/control identities retained. Three exact synthetic identity faults and two fresh corruption refusals per case remain diagnostic-only; local set alias counts are identity observations, not byte allocation measurements. No own oracle replay or self-admission; independent C Source/scientific reviews remain separate.",
+      "id": "actual-new-and-old-controls",
+      "passed": true
+    },
+    {
+      "detail": "Complete preserved D13 resource review supplies matched raw pre/post/waited-child/Native/parent/observer/reserve terms under the same1GiB gate. Two old positive failures remain rejected; one old negative remains accepted. D14 all-pass does not establish memory-phase causality, statistical speedup or mathematical/GCTS/RL advantage.",
+      "id": "historical-D13-not-rescued",
+      "passed": true
+    }
+  ],
+  "consumed_grants": [
+    {
+      "consumed": {
+        "bytes": 261,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-fork-join-positive/CONSUMED.json",
+        "sha256": "b8400680f9167fc047d03e7e2f812dbd987d1070d535f470b5957cc0ed231981"
+      },
+      "grant": {
+        "bytes": 2197,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/root/grant-pilot-fork-join-positive-v1.json",
+        "sha256": "48d39b09f92fabb11cc05a06498be447ac932db89ab60c11290418d168fd2c91"
+      }
+    },
+    {
+      "consumed": {
+        "bytes": 271,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/CONSUMED.json",
+        "sha256": "7d656cc2592fa85a53fb7d152956dc03fb6d2788d1a2d1d2c8f7a4a061535c0f"
+      },
+      "grant": {
+        "bytes": 2217,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/root/grant-pilot-quantifier-equality-positive-v1.json",
+        "sha256": "50f18c85ada939a324639e49361ec18ffa72191d3c9ed74e0701053efad1b281"
+      }
+    },
+    {
+      "consumed": {
+        "bytes": 263,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/CONSUMED.json",
+        "sha256": "26f2146deb680aa4235ec2e67e8624febe3d78bd96ce9158bb8a77a180caa6be"
+      },
+      "grant": {
+        "bytes": 2201,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/root/grant-pilot-fork-join-missing-Pa-v1.json",
+        "sha256": "1fd67bab2fa1cc86ff60febd0b67ce98bdf8fc2b59c509ee66136f5294e5f83f"
+      }
+    }
+  ],
+  "external_tool_observer": {
+    "bytes": 3164,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/root/external-tool-observer-v1.json",
+    "sha256": "286ebbf936362b24f571b96ba55863c72de4a9157b75fa9729be45f181c6e7fd"
+  },
+  "failed_checks": 0,
+  "four_required_reviews": [
+    {
+      "bytes": 33985,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/review-C/typed-graph-sharing-Source-review-v1.json",
+      "sha256": "b1c3cf8e2625b2a4d094d37658b29a6181e77b121fb03b31505e6950d68e1c35"
+    },
+    {
+      "bytes": 26613,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/verification-L/typed-graph-sharing-Source-ABI-review-v1.json",
+      "sha256": "df17171992cc6bc676f5b5f9fde82135b028927dea56e0aa4873c20bd544d50b"
+    },
+    {
+      "bytes": 29724,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/review-C/typed-graph-sharing-whole-prospective-Source-review-v1.json",
+      "sha256": "4e839424ea85693bdddc9b3ec13b4d7afeb7ee5b63c7ccb47cc4886331ad8f57"
+    },
+    {
+      "bytes": 39953,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/verification-L/typed-graph-sharing-whole-plan-Source-ABI-review-v1.json",
+      "sha256": "ed5a4a367389915fe332f46ce3ded133aebdb6331e4a19c14e3d5d6f7e3b09b3"
+    }
+  ],
+  "limitations": [
+    "Resource acceptance is for these three actuals only; no general program/memory fit prediction.",
+    "No phase profile was measured; Source sharing and tiny object identities do not quantify byte-memory savings or explain HWM changes.",
+    "Single timed historical comparison is not statistical speedup or search advantage evidence; local2second windows allow checkpoint overshoot and different traces.",
+    "Known14row first-target S0/SC certificates are saved accepted repeats; no point proof, new theorem, learned RL benefit, physical universal Wang qualification, full arithmetic/Hilbert theory result or whole-goal completion follows.",
+    "All controls are finite closed sequential/read-only-borrowed-set API controls. Synthetic generations/direct placements/changed boundary contexts are not conforming live search traces or marking-version authority.",
+    "Native transport request/data/close joins do not replay logical validation. Final scientific qualification requires independent C outcome interpretation."
+  ],
+  "limits": {
+    "custody_seconds": 210,
+    "log_bytes": 4194304,
+    "memory_bytes": 1073741824,
+    "observer_fallback_seconds": 225,
+    "physical_bytes": 134217728,
+    "positive_seconds": 180,
+    "reserved_outer_bytes": 9437184,
+    "result_bytes": 50331648,
+    "root_callbacks": 400000000,
+    "work_seconds": 160
+  },
+  "partial_raw_pins": [],
+  "plans": [
+    {
+      "bytes": 20870,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/root/plan-pilot-fork-join-positive-v1.json",
+      "sha256": "b4e167b5b8b1482effa1876841afe12449208365784f6613d7e8584e072d5dff"
+    },
+    {
+      "bytes": 20890,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/root/plan-pilot-quantifier-equality-positive-v1.json",
+      "sha256": "f4f1ad1b4cdb97b45e33bc16f69eee7862d8b6d68ca80806153a785c4f1a4831"
+    },
+    {
+      "bytes": 20874,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/root/plan-pilot-fork-join-missing-Pa-v1.json",
+      "sha256": "9876d1f2198e0c13d0484be1ddc65ec40b2b845c971702d48e135ce2cf482e8d"
+    }
+  ],
+  "protocol": {
+    "bytes": 14130,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/root/protocol-v1.json",
+    "sha256": "8f4eb5273f95596f47a5173604972e440f3b928a6ed02b9b465b41c087a56e27"
+  },
+  "remaining_grant_uses": 0,
+  "review_passed": true,
+  "review_scope": "Complete D14 saved-evidence resource/custody, Source immutability, once-grant, file/log/clock/memory and Native record joins. C separately evaluates scientific meaning; L does not rerun or self-admit its authored Graph controls.",
+  "schema": "typed-graph-sharing-resource-custody-review-v1",
+  "scientific_limits": {
+    "cluster_binding_work": 20000,
+    "cluster_instances": 12,
+    "cluster_proposals": 16,
+    "compile_queries": 512,
+    "domain_audits": 2,
+    "marking_certificates": 12,
+    "marking_proposals": 48,
+    "marking_work": 200000,
+    "native_steps": 1000000000,
+    "search_attempts": 600,
+    "search_seconds": 2.0
+  },
+  "status": "PASS_PASSIVE_RESOURCE_CUSTODY_CLASSIFICATION_THREE_ACCEPTED_NO_SCIENTIFIC_REPLAY",
+  "whole_closure_body_pins_revalidated": [
+    {
+      "bytes": 18058560,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+      "sha256": "b6ea0c2a9bfce48dbf181a53f1ca4f0562d40658b85bf47258e2a88d8f9e3933"
+    },
+    {
+      "bytes": 15326,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/implementation-B/API-v1.json",
+      "sha256": "5243a339ada10439fea79f9e9587fa1f8bad9cd266698b47aa5b17f3d94a9b89"
+    },
+    {
+      "bytes": 3141,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/implementation-B/abstention-policy-v1.json",
+      "sha256": "9c22ef40b0d63af01bc2a5382008b144be34dd03d29c1dac8aa4d7f6fc0922ea"
+    },
+    {
+      "bytes": 29244,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/implementation-B/graph_source_v1.py",
+      "sha256": "67cf41b84d05645bbd384682baad1fc2c1a8c2f4ff1418c9577f4c139891fc0f"
+    },
+    {
+      "bytes": 6356,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/implementation-B/handoff-v1.json",
+      "sha256": "964adb271ed107826238847ca09f40d5165a7b04b4baf6529113b97240e981a9"
+    },
+    {
+      "bytes": 4841,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/implementation-B/ordering-policy-v1.json",
+      "sha256": "57ee2d9d253fd8d6cb30c54a2c8bdfda8ce76be99d02b019390cd7948f5025db"
+    },
+    {
+      "bytes": 3673,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/implementation-B/point-ordering-policy-v1.json",
+      "sha256": "e371edf8ff17d201ffb9dd880cb66c80ce493e74d58f71cac72478d917f61882"
+    },
+    {
+      "bytes": 54202,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/implementation-B/proof_search_pilot_v12.py",
+      "sha256": "4398b96d9f0e066e89429472d3637023fa9999ca00d2652b6ddbf77c3c1e600b"
+    },
+    {
+      "bytes": 12236,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/root/case_worker_v1.py",
+      "sha256": "0be1c1602c5de75d2e34115981abf70cded421c4144327cd587f51dc904318b1"
+    },
+    {
+      "bytes": 3367,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/root/independent_countermodel_v1.py",
+      "sha256": "d16d781f2740c658cc841873032d0eda445f619d0f9a7db3ce8b3fba20843ce3"
+    },
+    {
+      "bytes": 10113,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/root/observe_case_once_v2.py",
+      "sha256": "24804c7d4558d8df511942d9e6b2e4d8d2cfd88ce7df6f5b5f775f87d0c20ca9"
+    },
+    {
+      "bytes": 12973,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/root/run_case_once_v3.py",
+      "sha256": "98c55321bb87a8c04b2c6d56b357aba9c3a8f5fc98660474ae3ac1c9d00b0aca"
+    },
+    {
+      "bytes": 20424,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/runtime/bounded_request_oracle.py",
+      "sha256": "606e790f4ba3ecc976877cbe52ccfd64519262f2ea07214c80d989f58e4f7637"
+    },
+    {
+      "bytes": 7089,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/runtime/certificate_boundary_search.py",
+      "sha256": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a"
+    },
+    {
+      "bytes": 18396,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/runtime/compact_point_model_v1.py",
+      "sha256": "a0d91692f50ab196013177669f8808f624c197ce5e3c1051ab0146a9c1616368"
+    },
+    {
+      "bytes": 30365,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/runtime/compact_reference_verifier_v1.py",
+      "sha256": "c4b5f719014245acb2a8e05a7375b2c2fa44e27a8a748777d5b559f83eea687f"
+    },
+    {
+      "bytes": 27925,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/runtime/graph_copy_reference_v1.py",
+      "sha256": "8712a15aeb1308e3dd9b5e6a122513525e4b8ad8ed4c8f6d7d556d5f4cb0ac8c"
+    },
+    {
+      "bytes": 4311,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/runtime/interned_quantified_family_points_v1.py",
+      "sha256": "fb37663b4c0c3de4e9f3c28564678af833857f7ebe761cd83275d62f123b9a8e"
+    },
+    {
+      "bytes": 4705,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/runtime/interned_result_reader_v2.py",
+      "sha256": "cd06c8372b6edd05774cf5974c5b6265bbc196afdc68d47507e54a2044dec836"
+    },
+    {
+      "bytes": 10808,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/runtime/logic.py",
+      "sha256": "5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011"
+    },
+    {
+      "bytes": 10594,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/runtime/native_inference_inventory.py",
+      "sha256": "89979f6be8f422ea293c2f0b6c0e966fc9a0710a8e15cbe58437f868cbf75091"
+    },
+    {
+      "bytes": 2746,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/runtime/native_inventory_policy.py",
+      "sha256": "8721a361f4a97e5311f8ed944431d49d08592ed102f50ed333d1ad2b9ff01591"
+    },
+    {
+      "bytes": 8962,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/runtime/native_receptor_points.py",
+      "sha256": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888"
+    },
+    {
+      "bytes": 6992,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/runtime/proof_boundary.py",
+      "sha256": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f"
+    },
+    {
+      "bytes": 6472,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/runtime/quantified_family_points_v2.py",
+      "sha256": "f65eb38269db74ff5db0d9eb2096a38d7f07bbd6a579aa564acc692f84e4437c"
+    },
+    {
+      "bytes": 11060,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/runtime/quantified_receptors_v1.py",
+      "sha256": "d1c4afa10d58abbcf473cb3da8ee8768c974dd05d03ea00b988d574b2441af5a"
+    },
+    {
+      "bytes": 26238,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/runtime/quantified_symbolic_control_v2.py",
+      "sha256": "740319d243cc2fd2eefe1d7ef1611d8bcfe6f0ff70a2ce2ed72771e78f64a391"
+    },
+    {
+      "bytes": 16868,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/runtime/receptor_support_ordering_v1.py",
+      "sha256": "18cf90ebd75d746db3eb251eaffa92cd6a25432b70f34653b57f3d58ef5d8adc"
+    },
+    {
+      "bytes": 6942,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/runtime/semantic_inventory_guidance.py",
+      "sha256": "744948b67e2870ae24737469aceb920624b59d616e8a48f91b99d39f56c14a79"
+    },
+    {
+      "bytes": 2180,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/runtime/semantic_inventory_oracle.py",
+      "sha256": "f41bfd56829b89b015fcf7a4dbd41dabd36110156e345353059980a66f6a4400"
+    },
+    {
+      "bytes": 15936,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/runtime/semantic_inventory_search_v2.py",
+      "sha256": "35443c958f2115efa18cc923fb4a4f1070e6e03ccf1d1adf2bb56ce1f7bab28b"
+    },
+    {
+      "bytes": 7196,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/runtime/semantic_lemma_inventory.py",
+      "sha256": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad"
+    },
+    {
+      "bytes": 4593,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/runtime/semantic_point_smt.py",
+      "sha256": "6bcb3fb60529f6888836a1ca0c613b772cea192c9549620f968dbdf7cb9be74a"
+    },
+    {
+      "bytes": 53725,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/runtime/semantic_receiver_driver.py",
+      "sha256": "5f73835dfc9219f06f01206ebf6bbac5744eea582cbfb03deed42105f2ccacd0"
+    },
+    {
+      "bytes": 7409,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/runtime/semantic_receptor_points.py",
+      "sha256": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207"
+    },
+    {
+      "bytes": 3756,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/runtime/tape_binary.py",
+      "sha256": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247"
+    },
+    {
+      "bytes": 19188,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/runtime/tape_tree_machine.py",
+      "sha256": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f"
+    },
+    {
+      "bytes": 13290,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/runtime/tree_machine.py",
+      "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257"
+    },
+    {
+      "bytes": 29244,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/runtime/turtle.py",
+      "sha256": "67cf41b84d05645bbd384682baad1fc2c1a8c2f4ff1418c9577f4c139891fc0f"
+    },
+    {
+      "bytes": 17663,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/runtime/word_point_model_v1.py",
+      "sha256": "4acf64cde5aa12966688cbd41c6918ba6604931483518ed5a5dc938d661b262a"
+    },
+    {
+      "bytes": 35387,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/runtime/word_point_reference_verifier_v1.py",
+      "sha256": "3acf80c6d40acaa277ed9a51eb33d1959c25ec23c6300ce5f144c9c670e229da"
+    },
+    {
+      "bytes": 5229,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/verification-L/API-v1.json",
+      "sha256": "9887d520bc1f74830514864a5fc5c41b0a0be78affcd261ebb5d78ddcf2d5b68"
+    },
+    {
+      "bytes": 24929,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/verification-L/control-bank-v1.json",
+      "sha256": "45d61d7d67dab17912edbe85e429421ce2d695a7ed0901ee20c8a8f5bf0843b0"
+    },
+    {
+      "bytes": 27925,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/verification-L/graph_copy_reference_v1.py",
+      "sha256": "8712a15aeb1308e3dd9b5e6a122513525e4b8ad8ed4c8f6d7d556d5f4cb0ac8c"
+    },
+    {
+      "bytes": 3071,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/verification-L/handoff-v1.json",
+      "sha256": "a61f95a10332069117257843e2f5bb251dde8296e34c37cce4af15842d950588"
+    },
+    {
+      "bytes": 54044,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-novelty-proof-pilot-20261020/implementation-B/proof_search_pilot_v11.py",
+      "sha256": "3ec6ff3b7acc8335b43c2dc366f6dddbd05c0f9bcfc3d899733999373d91afe6"
+    },
+    {
+      "bytes": 28533,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-novelty-proof-pilot-20261020/runtime/turtle.py",
+      "sha256": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a"
+    },
+    {
+      "bytes": 11376,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/corpus-L/acquisition-and-comparison-v2.json",
+      "sha256": "7d55cdd85d44228bed4e452b8bdf82f29ea6275284540b32eeb1ae957871d928"
+    },
+    {
+      "bytes": 14901,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/corpus-L/pilot-inputs-v2.json",
+      "sha256": "2f206ef004c4d723f862ee36f08355816c5264a5809340be9787331d82d33cd6"
+    },
+    {
+      "bytes": 41808,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/implementation-B/recovered/and-support/Native-runtime/boundary-oracle-v2",
+      "sha256": "2b6bf8bb09a4e03d0cb1b4595dea1fe6d4432aa93d8f7eed72c30077fd9941a4"
+    },
+    {
+      "bytes": 3547,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/implementation-B/recovered/and-support/Native-runtime/boundary_oracle.cpp",
+      "sha256": "f0965f08fc9e8272d0fdd1ab3233c3a308267a4fc3b2e1a928c39dbeaaec31be"
+    },
+    {
+      "bytes": 1494417,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/implementation-B/recovered/and-support/fixed-native-inputs/proof-boundary-001.json",
+      "sha256": "977ceac5504ad3d712c7fa2d46d20494b42e30820f77eb2bffbeea313d07ee54"
+    },
+    {
+      "bytes": 1114802,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/implementation-B/recovered/and-support/fixed-native-inputs/proof-boundary-microcode-001.json.gz",
+      "sha256": "23e2b54cc8365fa42f05148885dc7da671f525f8cb24b154f5c69aeeb3180336"
+    }
+  ],
+  "whole_offer": {
+    "bytes": 26928,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-graph-sharing-proof-pilot-20261020/root/prospective-whole-offer-v1.json",
+    "sha256": "da780c67930d4e99fa823410d85e1d141a79328f2332b61c429c5762cd0ba725"
+  }
+}
