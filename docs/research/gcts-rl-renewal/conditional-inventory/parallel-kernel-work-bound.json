@@ -1,0 +1,537 @@
+{
+  "schema": "full-fixed-cohort-manual-Root-work-lower-bound-v1",
+  "status": "CONDITIONAL_SOURCE_AND_COMPLETE_NEGATIVE_METADATA_ARGUMENT_AWAITING_INDEPENDENT_REVIEW",
+  "scope": "Diagnostic resource analysis of the fixed original whole cohort. Not admission of the rejected old actual, any partial, G1, a theorem or a new invocation.",
+  "pins": {
+    "master": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/basic-tiling-algorithm.md",
+      "bytes": 36240,
+      "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+    },
+    "old_worker": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/qualify_complete_batch_worker_v2.py",
+      "bytes": 116476,
+      "sha256": "9ea014de87d5af2ed3017442f690699a0ef54750c8d8be12890e373936b65a03"
+    },
+    "old_component": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/components-B/implicit_wang_batch_v2.py",
+      "bytes": 38513,
+      "sha256": "2dd3269a96bbe8db63afdffc3b175830dad5dea7cc94555024a7aac95ef088e7"
+    },
+    "selector": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/recovered/inherited-Source/wang_unknown_certificate_initializer_v1.py",
+      "bytes": 27193,
+      "sha256": "02cf1718e09c1eadb4eda4811436e1c7139cb2e1c255f9d73894e0e3b5d21b43"
+    },
+    "graph": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/recovered/L/implicit_wang_point_search_v1.py",
+      "bytes": 36892,
+      "sha256": "1a83c9c59b2e1862d5a2acda69b826ccc3a8e2cf4899e824286f711f8bf25981"
+    },
+    "original_bank": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/recovered/ROOT/implicit-inputs-v1.json",
+      "bytes": 740651,
+      "sha256": "10fe60d005a2f586a76bf69ae30317b8dae538ba9f126714b9f71ffa474a89b4"
+    },
+    "new_bank": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/diagnostics-L/new-diagnostic-bank-v1.json",
+      "bytes": 38883,
+      "sha256": "6e579fa58384188b5444606c87dbdee92a86f5771a983a36fbf6904192e669ab"
+    },
+    "old_complete_failure": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/actual-batch-v2/worker-failure.json",
+      "bytes": 513516,
+      "sha256": "081ce0625607fa82ebd8957314b990fa26eb880c5715cc09e220863d4bfa2685"
+    },
+    "old_cutoff_metadata": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/bounds-B/cutoff-metadata-v1.json",
+      "bytes": 7396,
+      "sha256": "f3482f22b0c968914f51ee41887726660d25d1ca5c302be65792f2cf50dff439"
+    },
+    "old_plan": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/batch-plan-authorized-v2.json",
+      "bytes": 3562,
+      "sha256": "5ad547859e7a1092a36e9f715c9cf521aeb8748f0aba3f34248b15bd1705d378"
+    },
+    "old_closure": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/batch-runtime-closure-v2.json",
+      "bytes": 12465,
+      "sha256": "8138c744d1b8b301029db6391f21c7fdaf49b39b4355390d85a92412fff925c0"
+    },
+    "old_retirement": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/ROOT-grant-retirement-v2.json",
+      "bytes": 5051,
+      "sha256": "d724f817dca900ce1e02bde46ae2a1b644344f12ca27b1de42173d3d1f4ab74d"
+    },
+    "frozen_parent_offer": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/schema-B/handoff-v1.json",
+      "bytes": 26901,
+      "sha256": "24fc6d6463bec5935cf92004ba16e3514d983896f212be149d4d3bf62940607b"
+    },
+    "frozen_producer": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/schema-B/linked_evidence_v1.py",
+      "bytes": 14589,
+      "sha256": "d62f6ecc21ae1e471dd43482e67db9681ad5c2c83c346524e880bdd23402e18b"
+    },
+    "frozen_worker_v1": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/schema-B/qualify_linked_batch_worker_v1.py",
+      "bytes": 119048,
+      "sha256": "0246bae88d9ed51b6b0cfde350b37e9e8cd7703baaee03b988aad38f89e37349"
+    },
+    "frozen_hook": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/schema-B/implicit_wang_linked_v1.py",
+      "bytes": 40502,
+      "sha256": "413c0e001d66dd18ba87c10ccba2ba9c0e82c8bb17a3db4b1e2058775b09b4d2"
+    },
+    "custody_v2_offer": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/schema-B/custody-v2/handoff-v2.json",
+      "bytes": 2773,
+      "sha256": "88b6905335dfec7704ec6fb05ac7c0f49f4b4c5e7a5104ae875574a8a7f88171"
+    },
+    "custody_v2_worker": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/schema-B/custody-v2/qualify_linked_batch_worker_v2.py",
+      "bytes": 122173,
+      "sha256": "463c2bb80ab5ee5bae2cb58fe635f82c45e812e997a2498dfb5da027632ca932"
+    },
+    "codec": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/schema-B/strict_value_dag_v1.py",
+      "bytes": 20200,
+      "sha256": "0f0cdf59ca7b676dd0bb86a7ff18be4ea6ca9a681d47b740d53db4e885e300b5"
+    },
+    "json_encoder": {
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/encoder.py",
+      "bytes": 16075,
+      "sha256": "52bfb1b66029cc70fa3bd7fe11df9f2e03922d413407a341b387a22c987f24f8"
+    },
+    "python": {
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+      "bytes": 18058560,
+      "sha256": "b6ea0c2a9bfce48dbf181a53f1ca4f0562d40658b85bf47258e2a88d8f9e3933"
+    }
+  },
+  "full_literal_bank_read_scope": "Complete original JSON bytes parsed only as ordinary saved input metadata. Four full small machines and all ten full graph declarations inspected. Large256-symbol32-state7936-transition bank retained hash-exact; no semantic generator or transition interpreter called.",
+  "palette_formula": {
+    "step": "\\(p=b(b+1)^2+3db(b+1)+s(b+1)\\).",
+    "nonstep": "\\(h=12b+2b(q+1)+18\\).",
+    "total": "\\(n=p+h\\). All disjoint Source families/identities counted; s is the exact number of stationary literal rows.",
+    "requests": "Each tile appears in16 masks: exactly16*n selects. At most16*n distinct nonempty masks plus7 distinct declared empty masks, hence at most32*n+7 requests, partitioned independently per case into128-request scopes.",
+    "table": [
+      {
+        "id": "palette-empty-transition",
+        "b": 4,
+        "q": 2,
+        "d": 0,
+        "s": 0,
+        "step": 100,
+        "nonstep": 90,
+        "total": 190,
+        "selects": 3040,
+        "step_selects": 1600,
+        "request_upper": 6087,
+        "scope_upper": 48
+      },
+      {
+        "id": "palette-all-stationary",
+        "b": 4,
+        "q": 2,
+        "d": 4,
+        "s": 4,
+        "step": 360,
+        "nonstep": 90,
+        "total": 450,
+        "selects": 7200,
+        "step_selects": 5760,
+        "request_upper": 14407,
+        "scope_upper": 113
+      },
+      {
+        "id": "palette-mixed-holes",
+        "b": 4,
+        "q": 3,
+        "d": 4,
+        "s": 2,
+        "step": 350,
+        "nonstep": 98,
+        "total": 448,
+        "selects": 7168,
+        "step_selects": 5600,
+        "request_upper": 14343,
+        "scope_upper": 113
+      },
+      {
+        "id": "palette-five-symbols",
+        "b": 5,
+        "q": 3,
+        "d": 5,
+        "s": 1,
+        "step": 636,
+        "nonstep": 118,
+        "total": 754,
+        "selects": 12064,
+        "step_selects": 10176,
+        "request_upper": 24135,
+        "scope_upper": 189
+      }
+    ],
+    "totals": {
+      "tiles": 1842,
+      "step_tiles": 1446,
+      "nonstep_tiles": 396,
+      "select_occurrences": 29472,
+      "step_select_occurrences": 23136,
+      "nonstep_select_occurrences": 6336,
+      "request_upper": 58972,
+      "scope_upper": 463
+    }
+  },
+  "complete_cutoff_joins": {
+    "old_stage": "FULL_PACKET_WRITE",
+    "old_first_fault": {
+      "message": "whole JSON packet cap",
+      "type": "PolicyFailure"
+    },
+    "completed_case_ids": [
+      "palette-empty-transition",
+      "palette-all-stationary",
+      "palette-mixed-holes",
+      "palette-five-symbols",
+      "palette-large-logical-universe",
+      "connected-failed-children-first",
+      "connected-failed-children-all",
+      "distant-DEAD-before-FORCED",
+      "distant-FORCED-before-BRANCH",
+      "earliest-before-lower-degree-TEST-VARIANT",
+      "off-support-zero-pin",
+      "whole-board-capacity1-head-prefix",
+      "whole-board-capacity1-head-suffix",
+      "whole-board-capacity2-head-prefix",
+      "whole-board-capacity2-head-suffix"
+    ],
+    "started_with_profile": 345,
+    "completed_with_profile": 333,
+    "raised_with_profile": 12,
+    "wrapper_breakdown": "345 = small321 + large1 + normalgraph10 + legacygraph13. Only twelve original graph invalid/foreign profiles failed; work1 UNKNOWN closes one profile with no oracle. New49 diagnostic profiles use different batch_diagnostic_* counters and cannot be included in345.",
+    "small_scope_exact": 321,
+    "small_request_interval": {
+      "lower": 40580,
+      "upper": 41088
+    },
+    "small_request_interval_reason": "Four nonempty per-case sequences with321 ceil(R_i/128) chunks give128*(321-4)+4 <= sum R_i <=128*321.",
+    "small_count_interval": {
+      "lower": 11108,
+      "upper": 11616
+    },
+    "small_count_reason": "Subtract exact29472 small selects from the small request interval.",
+    "profile_select_completed": 31904,
+    "profile_count_completed": 12209,
+    "large_sequence": {
+      "count": 20,
+      "select": 22,
+      "total": 42
+    },
+    "normal_graph_select_exact": 2410,
+    "normal_graph_count_interval": {
+      "lower": 573,
+      "upper": 1081
+    },
+    "graph_join": "31904-29472-22=2410 normal graph selects;12209-20-small_count gives graph counts573..1081. All13 legacy graph diagnostic paths make no oracle call; new batch direct queries use other counters.",
+    "no_partial_content_used": true,
+    "conditionality": "The saved counters are complete cutoff observations from a negative actual, not new admissions. A new complete Source-equivalent qualification path with observation-only hooks and no genuine fault must preserve the original semantic/query/tick stream. This Source/path join is an explicit premise for independent review."
+  },
+  "concrete_graph_analysis": {
+    "literal_cases": [
+      {
+        "id": "connected-failed-children-first",
+        "sites": 2,
+        "pins": 6,
+        "initial_degrees": [
+          5,
+          5
+        ],
+        "solutions": 1,
+        "placements": 5,
+        "count_queries": 9,
+        "select_queries": 11,
+        "journal_rows": 29,
+        "observations": 18,
+        "reason": "Left r=0,1,2 fails, r=3 forces right; FIRST exclusion restarts select scans1+2+3+4; right forced scan1."
+      },
+      {
+        "id": "connected-failed-children-all",
+        "sites": 2,
+        "pins": 6,
+        "initial_degrees": [
+          5,
+          5
+        ],
+        "solutions": 1,
+        "placements": 6,
+        "count_queries": 7,
+        "select_queries": 16,
+        "journal_rows": 34,
+        "observations": 24,
+        "reason": "Left r=0..3,wall; only r=3 succeeds; ALL left rank scans1+2+3+4+5 plus right1."
+      },
+      {
+        "id": "distant-DEAD-before-FORCED",
+        "sites": 2,
+        "pins": 5,
+        "initial_degrees": [
+          1,
+          0
+        ],
+        "solutions": 0,
+        "placements": 0,
+        "count_queries": 2,
+        "select_queries": 0,
+        "journal_rows": 2,
+        "observations": 4,
+        "reason": "Distant assignedzero north color has no palette tile, so global DEAD before placement."
+      },
+      {
+        "id": "distant-FORCED-before-BRANCH",
+        "sites": 2,
+        "pins": 7,
+        "initial_degrees": [
+          5,
+          1
+        ],
+        "solutions": 5,
+        "placements": 6,
+        "count_queries": 2,
+        "select_queries": 16,
+        "journal_rows": 34,
+        "observations": 24,
+        "reason": "Distant forced site filled once, then five independent left choices; counts cached and no neighboring frontier domain changes."
+      },
+      {
+        "id": "earliest-before-lower-degree-TEST-VARIANT",
+        "sites": 2,
+        "pins": 3,
+        "initial_degrees": [
+          190,
+          5
+        ],
+        "solutions": 1,
+        "placements": 2,
+        "count_queries": 2,
+        "select_queries": 2,
+        "journal_rows": 8,
+        "observations": 6,
+        "reason": "Generations0/7 choose unrestricted site first; first candidate at both sites succeeds; no adjacent frontier update."
+      },
+      {
+        "id": "off-support-zero-pin",
+        "sites": 1,
+        "pins": 5,
+        "initial_degrees": [
+          1
+        ],
+        "solutions": 1,
+        "placements": 1,
+        "count_queries": 1,
+        "select_queries": 1,
+        "journal_rows": 5,
+        "observations": 5,
+        "reason": "One forced tile; distant explicitzero mark retained but not an edge dependency."
+      }
+    ],
+    "literal_totals": {
+      "sites": 11,
+      "solutions": 9,
+      "count_queries": 23,
+      "select_queries": 46,
+      "journal_rows": 112,
+      "observations": 81
+    },
+    "boards": [
+      {
+        "id": "whole-board-capacity1-head-prefix",
+        "capacity": 1,
+        "width": 5,
+        "height": 3,
+        "sites": 15,
+        "boundary_pins": 16,
+        "solutions": 1
+      },
+      {
+        "id": "whole-board-capacity1-head-suffix",
+        "capacity": 1,
+        "width": 5,
+        "height": 3,
+        "sites": 15,
+        "boundary_pins": 16,
+        "solutions": 1
+      },
+      {
+        "id": "whole-board-capacity2-head-prefix",
+        "capacity": 2,
+        "width": 6,
+        "height": 3,
+        "sites": 18,
+        "boundary_pins": 18,
+        "solutions": 3
+      },
+      {
+        "id": "whole-board-capacity2-head-suffix",
+        "capacity": 2,
+        "width": 6,
+        "height": 3,
+        "sites": 18,
+        "boundary_pins": 18,
+        "solutions": 3
+      }
+    ],
+    "board_solution_argument": "Height=steps+2=3; board width=prefix1+capacity+suffix1+frames2=capacity+4. Capacity1 contains only terminator. Capacity2 contains terminator+blank or either one bit+terminator:3 words. The unique fixed initial head takes one stationary transition (0,3)->(accepting1,write0); each initial word determines the middle/collector/frame tiles uniquely. Thus1/1/3/3 whole-board solutions,17 total with literal cases.",
+    "board_aggregate_select_exact": 2364,
+    "board_aggregate_count_interval": {
+      "lower": 550,
+      "upper": 1058
+    },
+    "all_normal_graph_query_interval": {
+      "lower": 2983,
+      "upper": 3491
+    },
+    "board_operational_bounds_from_complete_counter_join": {
+      "placements_upper": 2364,
+      "journal_rows_upper": 14192,
+      "observations_upper": 9472,
+      "derivation": "Every placement consumes at least one select; in ALL, outer decisions=P+1, restored frames F<=P and branch continuations C<=P. Journal=(P+1)+2P+2F+C+1<=6P+2, observations=1+(P+1)+2F+C+2<=4P+4. Sum four boards with P_total<=2364 gives14192/9472. This uses no graph execution or generic million-query cap."
+    },
+    "per_board_query_unknown": "Complete saved scalar maps do not allocate the2364/550..1058 board queries among the four boards. No rejected partial is decoded to invent those shares.",
+    "not_used_for_primary_work_lower_bound": "The numerical graph trace/solution calculations are separate manual claims needing review. The primary obstruction below uses only small-query witnesses/count lower bounds and old total callbacks."
+  },
+  "new_copy_lower_bounds": {
+    "copy_Source": "linked_evidence.literal_copy invokes the genuine Root check once for every visited literal node and once extra per dict item; no alias cache. The active set detects cycles and is cleared on exit, so equal/aliased siblings are traversed independently.",
+    "raw_generic_select": {
+      "raw_nodes_lower": 66,
+      "dict_key_checks": 11,
+      "Root_checks_per_copy_lower": 77
+    },
+    "generic_derivation": "t has6 nodes. m has at least29 (four rows: row/point/two coordinate ints/channel/at least one-element constructor tuple). id has at least3, origin at least1, edges tuple at least9, kind1; six tile keys+tile root7. Tile>=56, selected receipt adds10 =>66. Receipt/tile dictionaries add5+6=11 key-loop checks.",
+    "raw_step_select": {
+      "raw_nodes_lower": 112,
+      "dict_key_checks": 11,
+      "Root_checks_per_copy_lower": 123
+    },
+    "step_derivation": "Minimal step uses wall/plain/wall. Complete origin8; id10; edges25; t6; m45; six keys+tile dict7 and kind1 =>tile102; receipt112. Head/plain alternatives only increase this lower bound.",
+    "typed_preimage": "_receipt_tree encodes every raw non-None node by a two-element (tag,payload/childrenTuple) carrier. Every raw node contributes exactly three visited native nodes in its typed preimage, including an empty children tuple. All selected/count receipts here have no None leaf. Thus minimum preimage-copy Root checks are3*raw_nodes:336 step,198 generic,27 count.",
+    "raw_count": {
+      "raw_nodes": 9,
+      "dict_key_checks": 4,
+      "Root_checks_per_copy": 13,
+      "preimage_copy_Root_checks": 27
+    },
+    "required_query_snapshot_multiplicity": [
+      {
+        "stage": "QUERY_PRODUCED",
+        "raw_receipt_copies": 2,
+        "typed_preimage_copies": 0,
+        "reason": "active_query.produced_receipt and version"
+      },
+      {
+        "stage": "QUERY_PREIMAGE",
+        "raw_receipt_copies": 1,
+        "typed_preimage_copies": 2,
+        "reason": "active query receipt/preimage plus version preimage"
+      },
+      {
+        "stage": "QUERY_DELIVERED",
+        "raw_receipt_copies": 2,
+        "typed_preimage_copies": 1,
+        "reason": "active query receipt/preimage plus version receipt"
+      },
+      {
+        "stage": "QUERY_RETURN",
+        "raw_receipt_copies": 1,
+        "typed_preimage_copies": 0,
+        "reason": "complete returned receipt event value"
+      },
+      {
+        "stage": "PROFILE_RETURN",
+        "raw_receipt_copies": 2,
+        "typed_preimage_copies": 2,
+        "reason": "full result.receipts/exact_receipt_preimages and ordinary lifetime.receipts/expected_receipts"
+      }
+    ],
+    "per_completed_query_total": {
+      "raw_receipt_copies": 8,
+      "typed_preimage_copies": 5
+    },
+    "per_query_Root_check_lower": {
+      "step": 2664,
+      "generic_selected": 1606,
+      "count": 239
+    },
+    "query_copy_totals": {
+      "step": 61634304,
+      "generic_selected": 10175616,
+      "count": 2654812,
+      "total": 74464732
+    },
+    "scope_cost": "Each five-key event scope costs16 genuine checks: dict1 +5 per-key loop checks +10 key/value node visits. Every completed query emits six distinct ENTER/REGISTERED/PRODUCED/PREIMAGE/DELIVERED/RETURN events, adding96 scope checks independent of payload copies.",
+    "small_scope_copy_checks_lower": 3895680,
+    "new_journal_extra_Root_checks_lower": 78360412,
+    "excluded_positive_costs": [
+      "Additional request/active-query/counter/record framing copies.",
+      "Profile/custody/case/group/variant/call/graph observation payloads/scopes.",
+      "Large and all graph queries;49 new diagnostic profiles and standalone references.",
+      "New raw-bank/Source/argument/final-owner checks.",
+      "Codec encode/decode, independent parent checking, full-tree measures and writer checks."
+    ],
+    "double_count_rule": "Scope copies and copied payload subtrees are disjoint source traversals. Every raw receipt and preimage occurrence is a fresh literal_copy walk; no repeated value is charged twice merely because the formula has two descriptions."
+  },
+  "old_qualification_lower_bound": {
+    "saved_root_callbacks": 324982843,
+    "canonical_partial_raw_length_only": 124780541,
+    "partial_pin_from_frozen_metadata": {
+      "sha256": "49baf9b389b81f710893f6d88754e86dead98184394332fb8ae1637b669a4231",
+      "bytes": 124780541
+    },
+    "JSON_parts_argument": "Old write_json checks every1024 successful JSON parts. With ensure_ascii=True, indent=None, separators comma/colon and stdlib Python iterencode(_one_shot=False), every yielded part has at least one ASCII byte. No partial content is read; length alone bounds successful parts.",
+    "old_JSON_write_checks_upper": 121855,
+    "old_nonqualification_intake_allowance_upper": 1024,
+    "intake_reason": "Source explicitly has initial Root check, one completed WORKER_CONSUMED write, three loads with one entry check plus two guard checks each, and final prewrite guard. Actual Source bound is small (13 under this fixed record);1024 is a deliberately conservative exclusion covering all this nonqualification intake, not added work or a resource allowance.",
+    "old_qualification_Root_checks_lower": 324859964,
+    "Source_additivity_premise": "The successor keeps every original semantic operation, private tick/callback and original Root guard/call body on a complete same-bank path. The hook and journal only add independent genuine Root checks; they do not call the graph charged callback for notification work, alter private counters, answer queries from a cache or skip original guards. New exact-owner seal comparison is pure and does not refund checks. A genuine fault/refusal instead prevents completion."
+  },
+  "primary_conditional_conclusion": {
+    "formula": "\\(324859964+78360412=403220376>400000000\\).",
+    "whole_required_Root_checks_lower": 403220376,
+    "unchanged_limit": 400000000,
+    "excess_lower": 3220376,
+    "interpretation": "If the stated whole-trace Source/cutoff joins hold, the copying journal format cannot complete the fixed full cohort under the original Root callback cap, even before codec/schema/writer work. This is a conditional Source/manual resource negative, not a measured new invocation or proof that all G1 designs are infeasible.",
+    "applies_to_custody_only_v2": "The separately frozen named-owner-seal v2 changes no journal copy/multiplicity/check call. It therefore does not remove this obstruction."
+  },
+  "wire_tree_memory_scope": {
+    "wire_lower": "At least6*40580+6*321+8=245414 small-query/profile/custody/case event records. Each distinct12-field event row costs at least27 record/framing bytes, its distinct positive ordinal value at least5 bytes, and the ordered event-list reference at least1 byte: at least8098662 canonical DAG bytes before all other owners. This lower bound is below128MiB and cannot rule byte fit in or out.",
+    "wire_upper_unknown": "Exact strict-equality sharing classes among varying attempted_work, masks, copied lifetime prefixes, graph snapshots, typed preimages and closure manifest remain unresolved manually. No encoder or node cardinality sizer is called.",
+    "tree_lower": "Journal stores at least eight full raw receipt and five full typed-preimage occurrences per complete query, even if final DAG shares them. Full decoder freshly materializes every ordered native occurrence; the old packet and runtime owners remain retained. This is the structural source of the Root-copy negative.",
+    "HWM": "No RSS/HWM byte lower bound or fit claim is established. Live native tuple/container multiplicity is large, but allocation size is not automatically an OS resident high-water observation. Codec native expansion and whole typed argument seal bytes need a separate reviewed bound or admission.",
+    "stored_physical_logical": "Original both128MiB gates, aggregate9MiB reserve/log/header/summary accounting,1GiB HWM and180/210 deadlines remain. The primary Root-work obstruction already blocks this unchanged format; no need to infer byte shares or stage times."
+  },
+  "known_other_negatives": [
+    "Frozen custody regression66b418...; separately fixed only in unrun custody-v2.",
+    "Frozen descriptor versus palette_descriptor schema mismatch02aa31...; separate small Source correction pending."
+  ],
+  "prohibited_operations": {
+    "subject_imports": 0,
+    "subject_calls": 0,
+    "helper_calls": 0,
+    "compiler_calls": 0,
+    "checker_calls": 0,
+    "fixture_calls": 0,
+    "generator_calls": 0,
+    "sizing_calls": 0,
+    "probe_calls": 0,
+    "partial_opens": 0,
+    "partial_parses": 0,
+    "new_actuals": 0,
+    "new_grants": 0
+  },
+  "old_G0_negative_unchanged": true,
+  "G1_adopted": false,
+  "runtime_qualified": false,
+  "resource_accepted": false,
+  "mathematical_authority": false
+}

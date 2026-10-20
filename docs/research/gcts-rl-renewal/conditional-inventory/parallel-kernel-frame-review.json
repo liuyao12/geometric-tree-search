@@ -1,0 +1,174 @@
+{
+  "AST_parse": true,
+  "G1_adopted": false,
+  "GCTS_RL_advantage_established": false,
+  "actual_execution_authorized": false,
+  "additional_unrun_recipes": [
+    {
+      "executed": false,
+      "id": "empty-frame-nonaccept",
+      "recipe": "FRAMES^: withVALUE11=0,1,256 andlongnodeID; poptakes declaredemptyport, never componentout. Rootmust separately decide whether value1 means acceptance. Nopayloadwrite exceptcursorrelocation."
+    },
+    {
+      "executed": false,
+      "id": "nested-frame-prefix-inverse",
+      "recipe": "Depth1/2with distinctfn/pc/dest andvectorsincludingempty; pushthenpoprestoreexactlatestF/PC/D/R andstrictpreviousframeprefix. Allsavedwordlengthrelations including0/255/256/257."
+    },
+    {
+      "executed": false,
+      "id": "full-register-restore",
+      "recipe": "CallerRlonger/shorter/empty than currentcalleeR, repeatedrefs andnonnilnodevalues; restorationmust copyentirevector andclearstaletail, notonlytouchedregisters."
+    },
+    {
+      "executed": false,
+      "id": "callee-return-and-cache-preservation",
+      "recipe": "DistinguishableVALUE11andBUFFER14/argumentcachebeforepop; verifyfullpayloadunchangedthroughrestore, and Rootsubsequentregisterwrite uses restoredD8 andsavedVALUE11."
+    },
+    {
+      "executed": false,
+      "id": "frame-delimiters-and-cutoffs",
+      "recipe": "Fenceeveryneededheaderword/vector/!/colonwrite andrestorationcell. Missingcomma/pipe/!/: andemptyfieldcontrols distinguishedfromvalid-domain theorem; destructivefailure neverrepairedoradmitted."
+    },
+    {
+      "executed": false,
+      "id": "caller-next-PC-and-args",
+      "recipe": "PC7mustalreadybe callercontinuation; allactualargumentvaluescapturedbeforeanycalleeRoverwrite; fn/PC/dest/arityboundsvalidatedbyfuturecontroller, notbyframeprimitives."
+    }
+  ],
+  "all_recipes_unrun": true,
+  "author": {
+    "bytes": 7377,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/freeze_call_frames_review_v1.py",
+    "sha256": "bd7a7f8424702c4a2d84be5a504aa22d00edb2abb7fae282a5dd0a4864e39d65"
+  },
+  "builder_review": {
+    "bytes": 16963,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/typed-shared-builder-v2-Source-review-v1.json",
+    "sha256": "86f80c8045573bca2d63318ea522ca19358f24a414b744fee115b9cfb8650375"
+  },
+  "checks": [
+    {
+      "check": "raw-pin:runtime_call_frames_v1.py",
+      "passed": true
+    },
+    {
+      "check": "fresh-copy:runtime_call_frames_v1.py",
+      "passed": true
+    },
+    {
+      "check": "raw-pin:runtime-call-frames-API-v1.json",
+      "passed": true
+    },
+    {
+      "check": "fresh-copy:runtime-call-frames-API-v1.json",
+      "passed": true
+    },
+    {
+      "check": "no-imports",
+      "passed": true
+    },
+    {
+      "check": "exact-Builder-v2",
+      "passed": true
+    },
+    {
+      "check": "all-four-families-unrun",
+      "passed": true
+    },
+    {
+      "check": "scope-no-full-VM",
+      "passed": true
+    },
+    {
+      "check": "all-five-functions",
+      "passed": true
+    },
+    {
+      "check": "fresh-review",
+      "passed": true
+    }
+  ],
+  "compiler_calls": 0,
+  "failed_checks": [],
+  "fixture_calls": 0,
+  "frozen_files_mutated": false,
+  "full_Source_API_manual_plan_read": true,
+  "full_VM_qualified": false,
+  "function_matrix": [
+    {
+      "argument": "Erase complete0/1/semicolon vector untilcolon/B andrewind R4, leaving blankpayload. Validvector/Bpadding are callerpreconditions; not arbitrary malformedpayloadvalidator.",
+      "end": 19,
+      "line": 14,
+      "name": "_clear_vector"
+    },
+    {
+      "argument": "Rewind fixedsource, copyallbits into FRAMESB cells andappend suppliedfixeddelimiter. Payloadsource unchanged; nonemptycanonicalinput is a precondition, not checked by helper.",
+      "end": 29,
+      "line": 21,
+      "name": "_append_word"
+    },
+    {
+      "argument": "Seek uniqueusedcolon ofvalid FRAMESlist, eraseit then append completeF6,PC7,D8 withcomma/comma/pipe, fullR4records, ! andnewcolon. Every sourcepayload includingVALUE11/BUFFER14 remains unchanged; partialappendfailure unadmitted.",
+      "end": 55,
+      "line": 31,
+      "name": "frame_push"
+    },
+    {
+      "argument": "Clear destinationword, require firstsourcebit, copy/erase everybit until declaredcomma/pipe, erase delimiter andrewind destination. Sourcecursor then points tonextfield. Priorframes outside copiedinterval untouched.",
+      "end": 66,
+      "line": 57,
+      "name": "_pop_field"
+    },
+    {
+      "argument": "Seekcolon, examine preceding! or^; empty takes suppliednonacceptport withoutpayloadchanges. Otherwise backscan lastframe toprevious!/^, clearcalleeR, restorefullF6/PC7/D8, copy/eraseentire savedR, erase! andoldcolon; scan erasedB backward toprevious!/^ then writeprefixcolon. VALUE11 andallotherbands preserved.",
+      "end": 101,
+      "line": 68,
+      "name": "frame_pop"
+    }
+  ],
+  "goal_status": "active",
+  "helper_calls": 0,
+  "manual_argument": "Under validfixedlayout/canonicalwords/completevalidR and FRAMESgrammar, pushappendsoneexactfullframe. Inpop, last! andbackscanprevious!/^ uniquelyidentifylatestframe. Forwarddestructivefieldcopies restoreall3words andentireR, then backwardBscan reinstatescolon atpreciseprefixboundary. Thus push/pop are payloadinverses forcallercontext whilecalleeVALUE11remainsunchanged. Empty/capacity/malformedstatuses confer noacceptanceauthority.",
+  "manual_argument_not_mechanized": true,
+  "new_actuals": 0,
+  "new_grants": 0,
+  "new_theorem": false,
+  "old_G0_negative_unchanged": true,
+  "partial_files_opened": 0,
+  "pins": [
+    {
+      "bytes": 4873,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/call-frames-Sources-v1/runtime_call_frames_v1.py",
+      "sha256": "2d149f77342ff1d51734a9da6b334448d24e42cf4ed3ff69bd472c8af6429524"
+    },
+    {
+      "bytes": 3394,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/call-frames-Sources-v1/runtime-call-frames-API-v1.json",
+      "sha256": "bd21cfd5f5c2be2411fc4814ab4cde00e1de709bbd28501044f8d6a6bf618d1b"
+    }
+  ],
+  "primary_reader_index_active_mutated": false,
+  "remaining_obligations": [
+    "FullRootcontroller supplies nonaccepting emptyport; Source does not itself ban passing ACCEPT as that continuation. Genericcomponentparameters are trustedfixedSource and must be validated by wholeclient/invariant proof.",
+    "Fullframelist/canonicalreference/wordandprogramarity/index invariants must be established physically beforeuse; helpers are not completearbitrarygrammarvalidators.",
+    "Full13opcodefetch/callargcapture, operandalias patterns, nextPCincrement, sourceoperandpreservation, rootVALUE11exact1condition and programseed/parser remain absent.",
+    "Valid16bandinitialization, public/theory/target/Wangselectorbinding and noextraACCEPT/stuttering proof remain open.",
+    "Source/default/closure/argument/callback/rawprefix custody andfirstRootfault beforeownedclassification; failedconstruction/runtimeprefix neveradmitted orresumedasrescue.",
+    "No machine/table/statecensus or fit was generated; original400m/180/210/1GiB/128MiBexpanded-stored-physical/9MiBreserve/logcaps unchanged."
+  ],
+  "review_passed": true,
+  "reviewer_identity": "/root/recovered_batch_review",
+  "runtime_qualified": false,
+  "schema": "typed-runtime-call-frames-v1-Source-review-v1",
+  "semantic_replays": 0,
+  "simulator_calls": 0,
+  "sizing_probes": 0,
+  "source_only": true,
+  "status": "PASS_CONDITIONAL_COMPONENT_SOURCE_ONLY",
+  "subject_calls": 0,
+  "subject_imports": 0,
+  "table_generation_calls": 0,
+  "tools_stopped_after_freeze": true,
+  "unused_compile": true,
+  "whole_four_family_bank_read": true
+}

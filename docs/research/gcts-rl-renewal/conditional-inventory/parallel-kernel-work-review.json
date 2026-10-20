@@ -1,0 +1,812 @@
+{
+  "G1_adopted": false,
+  "GCTS_RL_advantage_established": false,
+  "actual_execution_authorized": false,
+  "author": {
+    "bytes": 15151,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/freeze_primary_work_bound_review_v1.py",
+    "sha256": "150c1ccac5af1147755a2e98c35c49381f0251d1b9b88383e02f764488197d0b"
+  },
+  "checker_calls": 0,
+  "checks": [
+    {
+      "check": "Exact frozen handoff",
+      "passed": true
+    },
+    {
+      "check": "No partial path: basic-tiling-algorithm.md",
+      "passed": true
+    },
+    {
+      "check": "Exact raw pin: basic-tiling-algorithm.md",
+      "passed": true
+    },
+    {
+      "check": "Fresh dependency copy: master",
+      "passed": true
+    },
+    {
+      "check": "No partial path: qualify_complete_batch_worker_v2.py",
+      "passed": true
+    },
+    {
+      "check": "Exact raw pin: qualify_complete_batch_worker_v2.py",
+      "passed": true
+    },
+    {
+      "check": "Fresh dependency copy: old_worker",
+      "passed": true
+    },
+    {
+      "check": "No partial path: implicit_wang_batch_v2.py",
+      "passed": true
+    },
+    {
+      "check": "Exact raw pin: implicit_wang_batch_v2.py",
+      "passed": true
+    },
+    {
+      "check": "Fresh dependency copy: old_component",
+      "passed": true
+    },
+    {
+      "check": "No partial path: wang_unknown_certificate_initializer_v1.py",
+      "passed": true
+    },
+    {
+      "check": "Exact raw pin: wang_unknown_certificate_initializer_v1.py",
+      "passed": true
+    },
+    {
+      "check": "Fresh dependency copy: selector",
+      "passed": true
+    },
+    {
+      "check": "No partial path: implicit_wang_point_search_v1.py",
+      "passed": true
+    },
+    {
+      "check": "Exact raw pin: implicit_wang_point_search_v1.py",
+      "passed": true
+    },
+    {
+      "check": "Fresh dependency copy: graph",
+      "passed": true
+    },
+    {
+      "check": "No partial path: implicit-inputs-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Exact raw pin: implicit-inputs-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Fresh dependency copy: original_bank",
+      "passed": true
+    },
+    {
+      "check": "No partial path: new-diagnostic-bank-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Exact raw pin: new-diagnostic-bank-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Fresh dependency copy: new_bank",
+      "passed": true
+    },
+    {
+      "check": "No partial path: worker-failure.json",
+      "passed": true
+    },
+    {
+      "check": "Exact raw pin: worker-failure.json",
+      "passed": true
+    },
+    {
+      "check": "Fresh dependency copy: old_complete_failure",
+      "passed": true
+    },
+    {
+      "check": "No partial path: cutoff-metadata-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Exact raw pin: cutoff-metadata-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Fresh dependency copy: old_cutoff_metadata",
+      "passed": true
+    },
+    {
+      "check": "No partial path: batch-plan-authorized-v2.json",
+      "passed": true
+    },
+    {
+      "check": "Exact raw pin: batch-plan-authorized-v2.json",
+      "passed": true
+    },
+    {
+      "check": "Fresh dependency copy: old_plan",
+      "passed": true
+    },
+    {
+      "check": "No partial path: batch-runtime-closure-v2.json",
+      "passed": true
+    },
+    {
+      "check": "Exact raw pin: batch-runtime-closure-v2.json",
+      "passed": true
+    },
+    {
+      "check": "Fresh dependency copy: old_closure",
+      "passed": true
+    },
+    {
+      "check": "No partial path: ROOT-grant-retirement-v2.json",
+      "passed": true
+    },
+    {
+      "check": "Exact raw pin: ROOT-grant-retirement-v2.json",
+      "passed": true
+    },
+    {
+      "check": "Fresh dependency copy: old_retirement",
+      "passed": true
+    },
+    {
+      "check": "No partial path: handoff-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Exact raw pin: handoff-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Fresh dependency copy: frozen_parent_offer",
+      "passed": true
+    },
+    {
+      "check": "No partial path: linked_evidence_v1.py",
+      "passed": true
+    },
+    {
+      "check": "Exact raw pin: linked_evidence_v1.py",
+      "passed": true
+    },
+    {
+      "check": "Fresh dependency copy: frozen_producer",
+      "passed": true
+    },
+    {
+      "check": "No partial path: qualify_linked_batch_worker_v1.py",
+      "passed": true
+    },
+    {
+      "check": "Exact raw pin: qualify_linked_batch_worker_v1.py",
+      "passed": true
+    },
+    {
+      "check": "Fresh dependency copy: frozen_worker_v1",
+      "passed": true
+    },
+    {
+      "check": "No partial path: implicit_wang_linked_v1.py",
+      "passed": true
+    },
+    {
+      "check": "Exact raw pin: implicit_wang_linked_v1.py",
+      "passed": true
+    },
+    {
+      "check": "Fresh dependency copy: frozen_hook",
+      "passed": true
+    },
+    {
+      "check": "No partial path: handoff-v2.json",
+      "passed": true
+    },
+    {
+      "check": "Exact raw pin: handoff-v2.json",
+      "passed": true
+    },
+    {
+      "check": "Fresh dependency copy: custody_v2_offer",
+      "passed": true
+    },
+    {
+      "check": "No partial path: qualify_linked_batch_worker_v2.py",
+      "passed": true
+    },
+    {
+      "check": "Exact raw pin: qualify_linked_batch_worker_v2.py",
+      "passed": true
+    },
+    {
+      "check": "Fresh dependency copy: custody_v2_worker",
+      "passed": true
+    },
+    {
+      "check": "No partial path: strict_value_dag_v1.py",
+      "passed": true
+    },
+    {
+      "check": "Exact raw pin: strict_value_dag_v1.py",
+      "passed": true
+    },
+    {
+      "check": "Fresh dependency copy: codec",
+      "passed": true
+    },
+    {
+      "check": "No partial path: encoder.py",
+      "passed": true
+    },
+    {
+      "check": "Exact raw pin: encoder.py",
+      "passed": true
+    },
+    {
+      "check": "Fresh dependency copy: json_encoder",
+      "passed": true
+    },
+    {
+      "check": "No partial path: python3.12",
+      "passed": true
+    },
+    {
+      "check": "Exact raw pin: python3.12",
+      "passed": true
+    },
+    {
+      "check": "No partial path: full-cohort-count-and-work-bound-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Exact raw pin: full-cohort-count-and-work-bound-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Fresh bound copy: full-cohort-count-and-work-bound-v1.json",
+      "passed": true
+    },
+    {
+      "check": "No partial path: one-owner-event-successor-design-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Exact raw pin: one-owner-event-successor-design-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Fresh bound copy: one-owner-event-successor-design-v1.json",
+      "passed": true
+    },
+    {
+      "check": "No partial path: author_freeze_bounds_v1.py",
+      "passed": true
+    },
+    {
+      "check": "Exact raw pin: author_freeze_bounds_v1.py",
+      "passed": true
+    },
+    {
+      "check": "Fresh bound copy: author_freeze_bounds_v1.py",
+      "passed": true
+    },
+    {
+      "check": "Complete failure cutoff",
+      "passed": true
+    },
+    {
+      "check": "All counter maps copied exactly",
+      "passed": true
+    },
+    {
+      "check": "All original normal ids completed",
+      "passed": true
+    },
+    {
+      "check": "No complete positive output",
+      "passed": true
+    },
+    {
+      "check": "Raw length pin retained in complete retirement metadata",
+      "passed": true
+    },
+    {
+      "check": "All four literal palette formula rows",
+      "passed": true
+    },
+    {
+      "check": "Small select populations",
+      "passed": true
+    },
+    {
+      "check": "Thirteen legacy graph profiles",
+      "passed": true
+    },
+    {
+      "check": "Wrapper population",
+      "passed": true
+    },
+    {
+      "check": "Deterministic chunk lower bound",
+      "passed": true
+    },
+    {
+      "check": "Manual receipt and preimage arithmetic",
+      "passed": true
+    },
+    {
+      "check": "Primary work arithmetic",
+      "passed": true
+    },
+    {
+      "check": "Author primary values",
+      "passed": true
+    },
+    {
+      "check": "Unchanged original body: qualify_small_palette",
+      "passed": true
+    },
+    {
+      "check": "Unchanged original body: qualify_large_palette",
+      "passed": true
+    },
+    {
+      "check": "Unchanged original Root method: check",
+      "passed": true
+    },
+    {
+      "check": "Unchanged original Root method: guard",
+      "passed": true
+    },
+    {
+      "check": "Unchanged original Root method: policy",
+      "passed": true
+    },
+    {
+      "check": "Fresh review",
+      "passed": true
+    }
+  ],
+  "compiler_calls": 0,
+  "conclusion": "Under the explicit complete same-bank Source/cutoff preservation premise, the frozen copying journal cannot complete this full fixed cohort within the original Root callback cap, before codec/schema work. A new invocation was neither made nor needed for this conditional obstruction.",
+  "dependency_pins": [
+    {
+      "bytes": 36240,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/basic-tiling-algorithm.md",
+      "role": "master",
+      "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+    },
+    {
+      "bytes": 116476,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/qualify_complete_batch_worker_v2.py",
+      "role": "old_worker",
+      "sha256": "9ea014de87d5af2ed3017442f690699a0ef54750c8d8be12890e373936b65a03"
+    },
+    {
+      "bytes": 38513,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/components-B/implicit_wang_batch_v2.py",
+      "role": "old_component",
+      "sha256": "2dd3269a96bbe8db63afdffc3b175830dad5dea7cc94555024a7aac95ef088e7"
+    },
+    {
+      "bytes": 27193,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/recovered/inherited-Source/wang_unknown_certificate_initializer_v1.py",
+      "role": "selector",
+      "sha256": "02cf1718e09c1eadb4eda4811436e1c7139cb2e1c255f9d73894e0e3b5d21b43"
+    },
+    {
+      "bytes": 36892,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/recovered/L/implicit_wang_point_search_v1.py",
+      "role": "graph",
+      "sha256": "1a83c9c59b2e1862d5a2acda69b826ccc3a8e2cf4899e824286f711f8bf25981"
+    },
+    {
+      "bytes": 740651,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/recovered/ROOT/implicit-inputs-v1.json",
+      "role": "original_bank",
+      "sha256": "10fe60d005a2f586a76bf69ae30317b8dae538ba9f126714b9f71ffa474a89b4"
+    },
+    {
+      "bytes": 38883,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/diagnostics-L/new-diagnostic-bank-v1.json",
+      "role": "new_bank",
+      "sha256": "6e579fa58384188b5444606c87dbdee92a86f5771a983a36fbf6904192e669ab"
+    },
+    {
+      "bytes": 513516,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/actual-batch-v2/worker-failure.json",
+      "role": "old_complete_failure",
+      "sha256": "081ce0625607fa82ebd8957314b990fa26eb880c5715cc09e220863d4bfa2685"
+    },
+    {
+      "bytes": 7396,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/bounds-B/cutoff-metadata-v1.json",
+      "role": "old_cutoff_metadata",
+      "sha256": "f3482f22b0c968914f51ee41887726660d25d1ca5c302be65792f2cf50dff439"
+    },
+    {
+      "bytes": 3562,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/batch-plan-authorized-v2.json",
+      "role": "old_plan",
+      "sha256": "5ad547859e7a1092a36e9f715c9cf521aeb8748f0aba3f34248b15bd1705d378"
+    },
+    {
+      "bytes": 12465,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/batch-runtime-closure-v2.json",
+      "role": "old_closure",
+      "sha256": "8138c744d1b8b301029db6391f21c7fdaf49b39b4355390d85a92412fff925c0"
+    },
+    {
+      "bytes": 5051,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/ROOT-grant-retirement-v2.json",
+      "role": "old_retirement",
+      "sha256": "d724f817dca900ce1e02bde46ae2a1b644344f12ca27b1de42173d3d1f4ab74d"
+    },
+    {
+      "bytes": 26901,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/schema-B/handoff-v1.json",
+      "role": "frozen_parent_offer",
+      "sha256": "24fc6d6463bec5935cf92004ba16e3514d983896f212be149d4d3bf62940607b"
+    },
+    {
+      "bytes": 14589,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/schema-B/linked_evidence_v1.py",
+      "role": "frozen_producer",
+      "sha256": "d62f6ecc21ae1e471dd43482e67db9681ad5c2c83c346524e880bdd23402e18b"
+    },
+    {
+      "bytes": 119048,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/schema-B/qualify_linked_batch_worker_v1.py",
+      "role": "frozen_worker_v1",
+      "sha256": "0246bae88d9ed51b6b0cfde350b37e9e8cd7703baaee03b988aad38f89e37349"
+    },
+    {
+      "bytes": 40502,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/schema-B/implicit_wang_linked_v1.py",
+      "role": "frozen_hook",
+      "sha256": "413c0e001d66dd18ba87c10ccba2ba9c0e82c8bb17a3db4b1e2058775b09b4d2"
+    },
+    {
+      "bytes": 2773,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/schema-B/custody-v2/handoff-v2.json",
+      "role": "custody_v2_offer",
+      "sha256": "88b6905335dfec7704ec6fb05ac7c0f49f4b4c5e7a5104ae875574a8a7f88171"
+    },
+    {
+      "bytes": 122173,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/schema-B/custody-v2/qualify_linked_batch_worker_v2.py",
+      "role": "custody_v2_worker",
+      "sha256": "463c2bb80ab5ee5bae2cb58fe635f82c45e812e997a2498dfb5da027632ca932"
+    },
+    {
+      "bytes": 20200,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/schema-B/strict_value_dag_v1.py",
+      "role": "codec",
+      "sha256": "0f0cdf59ca7b676dd0bb86a7ff18be4ea6ca9a681d47b740d53db4e885e300b5"
+    },
+    {
+      "bytes": 16075,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/encoder.py",
+      "role": "json_encoder",
+      "sha256": "52bfb1b66029cc70fa3bd7fe11df9f2e03922d413407a341b387a22c987f24f8"
+    },
+    {
+      "bytes": 18058560,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+      "role": "python",
+      "sha256": "b6ea0c2a9bfce48dbf181a53f1ca4f0562d40658b85bf47258e2a88d8f9e3933"
+    }
+  ],
+  "failed_checks": [],
+  "fixture_calls": 0,
+  "frozen_offered_files_mutated": false,
+  "full_VM_qualified": false,
+  "full_offer_review_completed": false,
+  "generator_calls": 0,
+  "goal_status": "active",
+  "handoff": {
+    "bytes": 7481,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/primary-work-bound-Sources-v1/handoff-v1.json",
+    "sha256": "a7b30e63d9c3e669115fec37d44693f686ccc49a33ace2af8a372c03953c95ef"
+  },
+  "helper_calls": 0,
+  "manual_findings": [
+    {
+      "argument": "Complete failure and retirement metadata retain the callback cutoff, full counter maps, original completed ids, empty outputs and raw partial length/hash. The partial was never opened. This is negative historical metadata, not admission.",
+      "id": "Old cutoff provenance"
+    },
+    {
+      "argument": "Old write_json increments parts only after cap acceptance and output.write; self.check follows each successful multiple of 1024. A final cap-failing part contributes no check. There is no successful final check because this write failed. Root raised a possible extra-check question, then resolved it from these exact lines; this review independently agrees.",
+      "id": "JSON part boundary"
+    },
+    {
+      "argument": "Pinned Python JSONEncoder.iterencode defaults _one_shot=False, selects _make_iterencode, indent None, comma/colon separators, ensure_ascii True. Every yielded literal/string/number/punctuation/buffer part has positive ASCII length; strings have quotes even when empty and compact list buffers are opening bracket or comma. Thus successful-part count is at most raw byte length. No decoder or encoder was run.",
+      "id": "Nonempty parts"
+    },
+    {
+      "argument": "Before qualification: initial Root check, completed small WORKER_CONSUMED write, three module loads with entry and two guard checks each, and final prewrite guard. Failure-summary construction/writing has no Root.check. The exclusion 1024 exceeds the manually counted fixed 13 checks and safely excludes this intake rather than adding a resource allowance.",
+      "id": "Intake exclusion"
+    },
+    {
+      "argument": "Disjoint Source families give step b(b+1)^2+3db(b+1)+s(b+1); base collectors/frame rows plus initializer give nonstep 12b+2b(q+1)+18. Four literal input declarations agree with all authored counts. This is a manual Source argument, not execution of the cardinality helper.",
+      "id": "Palette formula"
+    },
+    {
+      "argument": "The original small qualification inserts each tile into all sixteen masks and selects every rank of every resulting bucket. Merged equal masks preserve their full tile lists. Consequently each tile contributes sixteen select occurrences, irrespective of mask sharing. Original small and large qualification function AST bodies are unchanged after renaming.",
+      "id": "Every mask witness"
+    },
+    {
+      "argument": "Complete saved counters give 345 wrapper profiles. Source gives one large, ten normal graph and thirteen legacy graph profiles. New batch diagnostics use distinct counters. All small cases completed; the remainder is 321 nonempty small scopes across four independently chunked request streams. This establishes the interval lower bound 40580, not an invented exact request count.",
+      "id": "Scope membership"
+    },
+    {
+      "argument": "Generic selected tile has at least t6, m29, id3, origin1, edges9, kind1, six keys and dictionary root7: tile56 and receipt66. Step wall/plain/wall has origin8, id10, edges25, t6, m45, kind1 and keys/root7: tile102 and receipt112. Other step alternatives only increase these minima. Receipt and tile dictionaries add eleven key-loop checks.",
+      "id": "Raw selected nodes"
+    },
+    {
+      "argument": "Count receipt has dictionary root plus four keys/four scalar values, giving nine native nodes and four key-loop checks. _receipt_tree maps each non-None native node to a tag/payload pair plus payload carrier, exactly three traversal nodes per original node. These count/select receipts have no None leaves. Thus typed lower counts are 27, 198 and 336.",
+      "id": "Count and typed nodes"
+    },
+    {
+      "argument": "Produced snapshot traverses raw receipt twice; preimage snapshot raw once and typed twice; delivered snapshot raw twice and typed once; query return raw once; profile return result and lifetime traverse raw twice and typed twice. literal_copy has cycle detection only, no alias cache: every occurrence is visited independently. This yields eight raw and five typed copies, excluding all reconciliation version copies and other positive work.",
+      "id": "Copy multiplicity"
+    },
+    {
+      "argument": "Every completed query has six separate enter/registered/produced/preimage/delivered/return scope copies. A five-key scalar/None scope costs dictionary node plus five key-loop checks plus ten key/value nodes, at least sixteen checks. Those scope traversals are disjoint from receipt/preimage payload traversals.",
+      "id": "Scope disjointness"
+    },
+    {
+      "argument": "The claimed total is conditional on preserving the historical complete same-bank semantic/query/private-tick and original Root guard/call stream. Source wrappers are observational additions and Root check/guard/policy methods are AST identical. Any earlier genuine fault prevents completion instead. This is not a new measured call total or a mechanically proved all-path refinement.",
+      "id": "Conditional additivity"
+    },
+    {
+      "argument": "The reviewed named-owner v2 changes only the seal/version, retaining the same journal hook and copies. It cannot remove this copying-work obstruction. Snapshot key correction is separate and cannot refund checks.",
+      "id": "Custody successor"
+    },
+    {
+      "argument": "The one-owner successor note correctly proposes versioned immutable full values with separately retained raw owners and per-event ordinal/scope/role references. Such a different implementation can remove this particular repeated-copy premise; it still needs complete correspondence, independent validator, custody, resource bounds and explicit changed-gate adoption. No fit follows from this note.",
+      "id": "Design consequence"
+    }
+  ],
+  "new_actuals": 0,
+  "new_grants": 0,
+  "new_theorem": false,
+  "not_reviewed_as_part_of_this_PASS": [
+    "Concrete graph trace/solution/board operational counts in the author note.",
+    "The secondary canonical DAG byte lower bound and exact sharing classes.",
+    "Any resident-memory, whole-byte, elapsed-time upper bound or fit claim.",
+    "The complete schema/outer-controller offer or one-owner successor implementation."
+  ],
+  "old_G0_negative_unchanged": true,
+  "partial_files_opened": 0,
+  "partial_parses": 0,
+  "primary_bound": {
+    "excess_lower": 3220376,
+    "new_small_payload_lower": 74464732,
+    "new_small_scope_lower": 3895680,
+    "old_qualification_lower": 324859964,
+    "total_lower": 403220376,
+    "unchanged_limit": 400000000
+  },
+  "primary_reader_index_active_mutated": false,
+  "resolved_review_question": {
+    "outcome": "No additional callback: cap rejection precedes write, part increment and modulo guard.",
+    "scientific_negative": false,
+    "subject": "Possible callback on final failing JSON part"
+  },
+  "retained_negatives": [
+    {
+      "bytes": 16636,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/typed-linked-parent-Source-custody-negative-v1.json",
+      "sha256": "66b418285700b49d0101bd1449d21607e1976bc4d6decac0bac64695b1a42d90"
+    },
+    {
+      "bytes": 6027,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/typed-linked-parent-snapshot-schema-negative-v1.json",
+      "sha256": "02aa31a0f65f7b73b7223af3277004d952d54bde7c62db4f2688f612630f7989"
+    }
+  ],
+  "review_passed": true,
+  "reviewer_identity": "/root/recovered_batch_review",
+  "runtime_qualified": false,
+  "schema": "typed-primary-copying-journal-work-bound-Source-review-v1",
+  "semantic_replays": 0,
+  "simulator_calls": 0,
+  "sizing_probes": 0,
+  "source_copies": [
+    {
+      "bytes": 23374,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/primary-work-bound-Sources-v1/author_freeze_bounds_v1.py",
+      "sha256": "4cbceaa13fd4830d302575543868d53e8418489e6a4db92550e68ee970ff8853"
+    },
+    {
+      "bytes": 20200,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/primary-work-bound-Sources-v1/codec-strict_value_dag_v1.py",
+      "sha256": "0f0cdf59ca7b676dd0bb86a7ff18be4ea6ca9a681d47b740d53db4e885e300b5"
+    },
+    {
+      "bytes": 2773,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/primary-work-bound-Sources-v1/custody_v2_offer-handoff-v2.json",
+      "sha256": "88b6905335dfec7704ec6fb05ac7c0f49f4b4c5e7a5104ae875574a8a7f88171"
+    },
+    {
+      "bytes": 122173,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/primary-work-bound-Sources-v1/custody_v2_worker-qualify_linked_batch_worker_v2.py",
+      "sha256": "463c2bb80ab5ee5bae2cb58fe635f82c45e812e997a2498dfb5da027632ca932"
+    },
+    {
+      "bytes": 40502,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/primary-work-bound-Sources-v1/frozen_hook-implicit_wang_linked_v1.py",
+      "sha256": "413c0e001d66dd18ba87c10ccba2ba9c0e82c8bb17a3db4b1e2058775b09b4d2"
+    },
+    {
+      "bytes": 26901,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/primary-work-bound-Sources-v1/frozen_parent_offer-handoff-v1.json",
+      "sha256": "24fc6d6463bec5935cf92004ba16e3514d983896f212be149d4d3bf62940607b"
+    },
+    {
+      "bytes": 14589,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/primary-work-bound-Sources-v1/frozen_producer-linked_evidence_v1.py",
+      "sha256": "d62f6ecc21ae1e471dd43482e67db9681ad5c2c83c346524e880bdd23402e18b"
+    },
+    {
+      "bytes": 119048,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/primary-work-bound-Sources-v1/frozen_worker_v1-qualify_linked_batch_worker_v1.py",
+      "sha256": "0246bae88d9ed51b6b0cfde350b37e9e8cd7703baaee03b988aad38f89e37349"
+    },
+    {
+      "bytes": 25326,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/primary-work-bound-Sources-v1/full-cohort-count-and-work-bound-v1.json",
+      "sha256": "b12129c0aa6de86de33875772d1071e931f97b5ccc83cf51210685b943fb213a"
+    },
+    {
+      "bytes": 36892,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/primary-work-bound-Sources-v1/graph-implicit_wang_point_search_v1.py",
+      "sha256": "1a83c9c59b2e1862d5a2acda69b826ccc3a8e2cf4899e824286f711f8bf25981"
+    },
+    {
+      "bytes": 7481,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/primary-work-bound-Sources-v1/handoff-v1.json",
+      "sha256": "a7b30e63d9c3e669115fec37d44693f686ccc49a33ace2af8a372c03953c95ef"
+    },
+    {
+      "bytes": 16075,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/primary-work-bound-Sources-v1/json_encoder-encoder.py",
+      "sha256": "52bfb1b66029cc70fa3bd7fe11df9f2e03922d413407a341b387a22c987f24f8"
+    },
+    {
+      "bytes": 36240,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/primary-work-bound-Sources-v1/master-basic-tiling-algorithm.md",
+      "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+    },
+    {
+      "bytes": 38883,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/primary-work-bound-Sources-v1/new_bank-new-diagnostic-bank-v1.json",
+      "sha256": "6e579fa58384188b5444606c87dbdee92a86f5771a983a36fbf6904192e669ab"
+    },
+    {
+      "bytes": 12465,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/primary-work-bound-Sources-v1/old_closure-batch-runtime-closure-v2.json",
+      "sha256": "8138c744d1b8b301029db6391f21c7fdaf49b39b4355390d85a92412fff925c0"
+    },
+    {
+      "bytes": 513516,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/primary-work-bound-Sources-v1/old_complete_failure-worker-failure.json",
+      "sha256": "081ce0625607fa82ebd8957314b990fa26eb880c5715cc09e220863d4bfa2685"
+    },
+    {
+      "bytes": 38513,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/primary-work-bound-Sources-v1/old_component-implicit_wang_batch_v2.py",
+      "sha256": "2dd3269a96bbe8db63afdffc3b175830dad5dea7cc94555024a7aac95ef088e7"
+    },
+    {
+      "bytes": 7396,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/primary-work-bound-Sources-v1/old_cutoff_metadata-cutoff-metadata-v1.json",
+      "sha256": "f3482f22b0c968914f51ee41887726660d25d1ca5c302be65792f2cf50dff439"
+    },
+    {
+      "bytes": 3562,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/primary-work-bound-Sources-v1/old_plan-batch-plan-authorized-v2.json",
+      "sha256": "5ad547859e7a1092a36e9f715c9cf521aeb8748f0aba3f34248b15bd1705d378"
+    },
+    {
+      "bytes": 5051,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/primary-work-bound-Sources-v1/old_retirement-ROOT-grant-retirement-v2.json",
+      "sha256": "d724f817dca900ce1e02bde46ae2a1b644344f12ca27b1de42173d3d1f4ab74d"
+    },
+    {
+      "bytes": 116476,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/primary-work-bound-Sources-v1/old_worker-qualify_complete_batch_worker_v2.py",
+      "sha256": "9ea014de87d5af2ed3017442f690699a0ef54750c8d8be12890e373936b65a03"
+    },
+    {
+      "bytes": 4510,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/primary-work-bound-Sources-v1/one-owner-event-successor-design-v1.json",
+      "sha256": "0d2829be580772c6b473a4edb31e683a18dc863491db0412044ec4469c68c467"
+    },
+    {
+      "bytes": 740651,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/primary-work-bound-Sources-v1/original_bank-implicit-inputs-v1.json",
+      "sha256": "10fe60d005a2f586a76bf69ae30317b8dae538ba9f126714b9f71ffa474a89b4"
+    },
+    {
+      "bytes": 27193,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/primary-work-bound-Sources-v1/selector-wang_unknown_certificate_initializer_v1.py",
+      "sha256": "02cf1718e09c1eadb4eda4811436e1c7139cb2e1c255f9d73894e0e3b5d21b43"
+    }
+  ],
+  "source_only": true,
+  "static_metadata": [
+    {
+      "AST_parse": true,
+      "executed": false,
+      "pin": {
+        "bytes": 116476,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/primary-work-bound-Sources-v1/old_worker-qualify_complete_batch_worker_v2.py",
+        "sha256": "9ea014de87d5af2ed3017442f690699a0ef54750c8d8be12890e373936b65a03"
+      },
+      "unused_compile": true
+    },
+    {
+      "AST_parse": true,
+      "executed": false,
+      "pin": {
+        "bytes": 38513,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/primary-work-bound-Sources-v1/old_component-implicit_wang_batch_v2.py",
+        "sha256": "2dd3269a96bbe8db63afdffc3b175830dad5dea7cc94555024a7aac95ef088e7"
+      },
+      "unused_compile": true
+    },
+    {
+      "AST_parse": true,
+      "executed": false,
+      "pin": {
+        "bytes": 119048,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/primary-work-bound-Sources-v1/frozen_worker_v1-qualify_linked_batch_worker_v1.py",
+        "sha256": "0246bae88d9ed51b6b0cfde350b37e9e8cd7703baaee03b988aad38f89e37349"
+      },
+      "unused_compile": true
+    },
+    {
+      "AST_parse": true,
+      "executed": false,
+      "pin": {
+        "bytes": 40502,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/primary-work-bound-Sources-v1/frozen_hook-implicit_wang_linked_v1.py",
+        "sha256": "413c0e001d66dd18ba87c10ccba2ba9c0e82c8bb17a3db4b1e2058775b09b4d2"
+      },
+      "unused_compile": true
+    },
+    {
+      "AST_parse": true,
+      "executed": false,
+      "pin": {
+        "bytes": 14589,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/primary-work-bound-Sources-v1/frozen_producer-linked_evidence_v1.py",
+        "sha256": "d62f6ecc21ae1e471dd43482e67db9681ad5c2c83c346524e880bdd23402e18b"
+      },
+      "unused_compile": true
+    },
+    {
+      "AST_parse": true,
+      "executed": false,
+      "pin": {
+        "bytes": 16075,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/primary-work-bound-Sources-v1/json_encoder-encoder.py",
+        "sha256": "52bfb1b66029cc70fa3bd7fe11df9f2e03922d413407a341b387a22c987f24f8"
+      },
+      "unused_compile": true
+    }
+  ],
+  "status": "PASS_CONDITIONAL_PRIMARY_WORK_OBSTRUCTION_ONLY",
+  "subject_calls": 0,
+  "subject_imports": 0,
+  "tools_stopped_after_freeze": true
+}

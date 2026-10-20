@@ -1,0 +1,375 @@
+{
+  "G1_adopted": false,
+  "actual_execution_authorized": false,
+  "author": {
+    "bytes": 7382,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/freeze_linked_parent_custody_negative_v1.py",
+    "sha256": "84938ce5c6647c20508487533423308075634a6d1c010248992055f2a7bdd295"
+  },
+  "checker_calls": 0,
+  "checks": [
+    {
+      "check": "exact-frozen-offer",
+      "passed": true
+    },
+    {
+      "check": "not-partial:linked_evidence_v1.py",
+      "passed": true
+    },
+    {
+      "check": "exact:linked_evidence_v1.py",
+      "passed": true
+    },
+    {
+      "check": "fresh:linked_evidence_v1.py",
+      "passed": true
+    },
+    {
+      "check": "not-partial:validate_linked_evidence_v1.py",
+      "passed": true
+    },
+    {
+      "check": "exact:validate_linked_evidence_v1.py",
+      "passed": true
+    },
+    {
+      "check": "fresh:validate_linked_evidence_v1.py",
+      "passed": true
+    },
+    {
+      "check": "not-partial:implicit_wang_linked_v1.py",
+      "passed": true
+    },
+    {
+      "check": "exact:implicit_wang_linked_v1.py",
+      "passed": true
+    },
+    {
+      "check": "fresh:implicit_wang_linked_v1.py",
+      "passed": true
+    },
+    {
+      "check": "not-partial:qualify_linked_batch_worker_v1.py",
+      "passed": true
+    },
+    {
+      "check": "exact:qualify_linked_batch_worker_v1.py",
+      "passed": true
+    },
+    {
+      "check": "fresh:qualify_linked_batch_worker_v1.py",
+      "passed": true
+    },
+    {
+      "check": "not-partial:worker_integration_v1.fragment.py",
+      "passed": true
+    },
+    {
+      "check": "exact:worker_integration_v1.fragment.py",
+      "passed": true
+    },
+    {
+      "check": "fresh:worker_integration_v1.fragment.py",
+      "passed": true
+    },
+    {
+      "check": "not-partial:API-v1.json",
+      "passed": true
+    },
+    {
+      "check": "exact:API-v1.json",
+      "passed": true
+    },
+    {
+      "check": "fresh:API-v1.json",
+      "passed": true
+    },
+    {
+      "check": "not-partial:full-preservation-map-v1.json",
+      "passed": true
+    },
+    {
+      "check": "exact:full-preservation-map-v1.json",
+      "passed": true
+    },
+    {
+      "check": "fresh:full-preservation-map-v1.json",
+      "passed": true
+    },
+    {
+      "check": "not-partial:manual-correspondence-and-resource-v1.json",
+      "passed": true
+    },
+    {
+      "check": "exact:manual-correspondence-and-resource-v1.json",
+      "passed": true
+    },
+    {
+      "check": "fresh:manual-correspondence-and-resource-v1.json",
+      "passed": true
+    },
+    {
+      "check": "not-partial:prospective-whole-diagnostics-v1.json",
+      "passed": true
+    },
+    {
+      "check": "exact:prospective-whole-diagnostics-v1.json",
+      "passed": true
+    },
+    {
+      "check": "fresh:prospective-whole-diagnostics-v1.json",
+      "passed": true
+    },
+    {
+      "check": "not-partial:obligation-status-v1.json",
+      "passed": true
+    },
+    {
+      "check": "exact:obligation-status-v1.json",
+      "passed": true
+    },
+    {
+      "check": "fresh:obligation-status-v1.json",
+      "passed": true
+    },
+    {
+      "check": "not-partial:author-static-audit-v1.json",
+      "passed": true
+    },
+    {
+      "check": "exact:author-static-audit-v1.json",
+      "passed": true
+    },
+    {
+      "check": "fresh:author-static-audit-v1.json",
+      "passed": true
+    },
+    {
+      "check": "not-partial:dependency-pins-v1.json",
+      "passed": true
+    },
+    {
+      "check": "exact:dependency-pins-v1.json",
+      "passed": true
+    },
+    {
+      "check": "fresh:dependency-pins-v1.json",
+      "passed": true
+    },
+    {
+      "check": "not-partial:author_successor_sources_v1.py",
+      "passed": true
+    },
+    {
+      "check": "exact:author_successor_sources_v1.py",
+      "passed": true
+    },
+    {
+      "check": "fresh:author_successor_sources_v1.py",
+      "passed": true
+    },
+    {
+      "check": "not-partial:author_freeze_metadata_v1.py",
+      "passed": true
+    },
+    {
+      "check": "exact:author_freeze_metadata_v1.py",
+      "passed": true
+    },
+    {
+      "check": "fresh:author_freeze_metadata_v1.py",
+      "passed": true
+    },
+    {
+      "check": "fresh-handoff-copy",
+      "passed": true
+    },
+    {
+      "check": "old-worker-exact",
+      "passed": true
+    },
+    {
+      "check": "fresh-old",
+      "passed": true
+    },
+    {
+      "check": "exact-dynamic-Facade-methods",
+      "passed": true
+    },
+    {
+      "check": "old-seal-named-class-members",
+      "passed": true
+    },
+    {
+      "check": "new-seal-only-class-member-values",
+      "passed": true
+    },
+    {
+      "check": "graph-body-uses-captured-Facade",
+      "passed": true
+    },
+    {
+      "check": "fresh-negative",
+      "passed": true
+    }
+  ],
+  "compiler_calls": 0,
+  "failed_requirements": [
+    "S17_RUNTIME_CUSTODY_EXACT_CLASS_MEMBER_BINDINGS"
+  ],
+  "failed_static_metadata_checks": [],
+  "finding": {
+    "claim": "The recursive successor seals the set of functions reachable through a captured class, but no longer seals class member names or descriptor associations. Swapping two existing class methods leaves every recursively recorded function row and class closure-cell identity unchanged.",
+    "dynamic_class": {
+      "end": 1152,
+      "line": 1148,
+      "name": "Facade"
+    },
+    "exact_predecessor_Source": "def function_owner_seal(value):\n    need(type(value)is types.FunctionType,'owned synchronous profile callback function')\n    closure=value.__closure__\n    owners=[]\n    if closure is not None:\n        for cell in closure:\n            try:\n                content=cell.cell_contents\n                owner=id(content)\n            except ValueError:\n                content=None;owner=None\n            class_members=[]\n            if type(content)is type:\n                for name,item in sorted(vars(content).items()):\n                    if type(item)in(staticmethod,classmethod):item=item.__func__\n                    if type(item)is types.FunctionType:\n                        class_members.append((name,id(item),id(item.__code__),\n                            id(item.__defaults__),id(item.__kwdefaults__),id(item.__closure__)))\n            owners.append((id(cell),owner,tuple(class_members)))\n    return(id(value),id(value.__code__),id(value.__defaults__),id(value.__kwdefaults__),\n           id(closure),tuple(owners))",
+    "exact_successor_Source": "def _recursive_function_owner_seal(value):\n    \"\"\"Also seal helper functions newly captured by observed query wrappers.\"\"\"\n    need(type(value)is types.FunctionType,'owned synchronous callback function')\n    pending=[value];seen=set();rows=[]\n    while pending:\n        fn=pending.pop()\n        if id(fn)in seen:continue\n        seen.add(id(fn));closure=fn.__closure__;cells=[]\n        if closure is not None:\n            for cell in closure:\n                try:content=cell.cell_contents\n                except ValueError:content=None\n                cells.append((id(cell),id(content)))\n                if type(content)is types.FunctionType:pending.append(content)\n                if type(content)is type:\n                    for member in vars(content).values():\n                        if type(member)in(staticmethod,classmethod):member=member.__func__\n                        if type(member)is types.FunctionType:pending.append(member)\n        rows.append((id(fn),id(fn.__code__),id(fn.__defaults__),id(fn.__kwdefaults__),id(closure),tuple(cells)))\n    return tuple(sorted(rows))",
+    "executed": false,
+    "function": {
+      "end": 1895,
+      "line": 1876,
+      "name": "_recursive_function_owner_seal"
+    },
+    "id": "LINKED_CLASS_BINDING_SEAL_REGRESSION",
+    "manual_derivation": [
+      "A captured class contributes only its class object identity as closure content; its member functions are added to a traversal worklist via vars(class).values().",
+      "The traversal emits rows keyed by function identity/code/default/kwdefault/closure/cells and sorts the final rows. It records neither member name nor descriptor kind or name-to-function edge.",
+      "Swap C.count_query and C.select_query while retaining both function objects. The class object identity and function set/rows remain unchanged, even though attribute lookup bindings differ.",
+      "The predecessor separately recorded sorted(name,id(function),...) tuples for a captured class. Those named tuples change under the swap.",
+      "Frozen worker actually creates local Facade with these two methods and captures it in graph_body/search lambda. It is not a module-owned class whose mapping is independently covered by the module callable_seal."
+    ],
+    "offered_files_mutated": false,
+    "predecessor_function": {
+      "end": 575,
+      "line": 555,
+      "name": "function_owner_seal"
+    },
+    "required_successor": "Retain recursive helper closure coverage while also sealing each captured class named member association and descriptor type/function binding (including non-function members if claimed), then extend unrun whole custody recipes. Preserve exact frozen v1.",
+    "scope_limit": "This is an integrity-seal counterexample, not an observed accepted false mathematical proof or a runtime claim. Swapped actual methods may independently fail arity/semantic checks; that does not establish the missing exact custody invariant.",
+    "severity": "BLOCKING_EXACT_CUSTODY_QUALIFICATION",
+    "source": {
+      "bytes": 119048,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/linked-parent-negative-preimages-v1/qualify_linked_batch_worker_v1.py",
+      "sha256": "0246bae88d9ed51b6b0cfde350b37e9e8cd7703baaee03b988aad38f89e37349"
+    },
+    "unrun_counterexample_recipe": [
+      "Inside a prospective test exposing the actual closure-owned Facade and graph_body, compute the successor seal before mutation.",
+      "Retain a=Facade.count_query and b=Facade.select_query; set Facade.count_query=b and Facade.select_query=a.",
+      "Compute the successor seal again: direct Source calculation predicts equality. The old named class-member seal predicts inequality.",
+      "Exercise the actual whole Root guard/custody path at the mutation checkpoint. Qualification requires an independently latched integrity fault before any planned sentinel classification.",
+      "Retain original class/function/rawowner identities and full negative prefix; do not promote a callback failure, arity failure or restored class to successful custody evidence."
+    ]
+  },
+  "fixture_calls": 0,
+  "frozen_files_mutated": false,
+  "full_review_completed": false,
+  "goal_status": "active",
+  "helper_calls": 0,
+  "new_actuals": 0,
+  "new_grants": 0,
+  "offer": {
+    "bytes": 26901,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/linked-parent-negative-preimages-v1/handoff-v1.json",
+    "sha256": "24fc6d6463bec5935cf92004ba16e3514d983896f212be149d4d3bf62940607b"
+  },
+  "old_G0_negative_unchanged": true,
+  "partial_files_opened": 0,
+  "predecessor_worker": {
+    "bytes": 116476,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/linked-parent-negative-preimages-v1/predecessor-worker-9ea014.py",
+    "sha256": "9ea014de87d5af2ed3017442f690699a0ef54750c8d8be12890e373936b65a03"
+  },
+  "primary_reader_index_active_mutated": false,
+  "raw_preimages": [
+    {
+      "bytes": 14589,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/linked-parent-negative-preimages-v1/linked_evidence_v1.py",
+      "sha256": "d62f6ecc21ae1e471dd43482e67db9681ad5c2c83c346524e880bdd23402e18b"
+    },
+    {
+      "bytes": 33471,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/linked-parent-negative-preimages-v1/validate_linked_evidence_v1.py",
+      "sha256": "b87dd325e260a0ef57f914f9b3da00519a26bd8bcff0c1e3a4c4e7c96254a95d"
+    },
+    {
+      "bytes": 40502,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/linked-parent-negative-preimages-v1/implicit_wang_linked_v1.py",
+      "sha256": "413c0e001d66dd18ba87c10ccba2ba9c0e82c8bb17a3db4b1e2058775b09b4d2"
+    },
+    {
+      "bytes": 119048,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/linked-parent-negative-preimages-v1/qualify_linked_batch_worker_v1.py",
+      "sha256": "0246bae88d9ed51b6b0cfde350b37e9e8cd7703baaee03b988aad38f89e37349"
+    },
+    {
+      "bytes": 12281,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/linked-parent-negative-preimages-v1/worker_integration_v1.fragment.py",
+      "sha256": "3322d024c590725d82ee57ccb671ade06d0618f5706a320ffc7cf548b61a64bf"
+    },
+    {
+      "bytes": 23993,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/linked-parent-negative-preimages-v1/API-v1.json",
+      "sha256": "e7f15c4b89fb7f06bece46a8b3c41dde832d86351b05712a74206867f14272a4"
+    },
+    {
+      "bytes": 20475,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/linked-parent-negative-preimages-v1/full-preservation-map-v1.json",
+      "sha256": "ddb213949950a0505da537fe72c5a1a3e35f07c3751940a7320f328d4a92431d"
+    },
+    {
+      "bytes": 8585,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/linked-parent-negative-preimages-v1/manual-correspondence-and-resource-v1.json",
+      "sha256": "010fde0e9f48376fa4907382702b7b51d0d9df4c9403aaeb169f29bf99b96346"
+    },
+    {
+      "bytes": 35806,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/linked-parent-negative-preimages-v1/prospective-whole-diagnostics-v1.json",
+      "sha256": "f2b132092fa5611916865be6a35d44c51a07bce06a195fac2954c101d58a2704"
+    },
+    {
+      "bytes": 14020,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/linked-parent-negative-preimages-v1/obligation-status-v1.json",
+      "sha256": "341c1e0e5ea97ee74c7ab5439689809ced0d7c86312c018413f58e45a322e5d8"
+    },
+    {
+      "bytes": 2898,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/linked-parent-negative-preimages-v1/author-static-audit-v1.json",
+      "sha256": "70f6ea4ec3feaba112f308d97aea861ea51126bf9071e1d48897e31d2148a05f"
+    },
+    {
+      "bytes": 4389,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/linked-parent-negative-preimages-v1/dependency-pins-v1.json",
+      "sha256": "aaa54e58d6dfac62442c1ce6802638b702780cfe6998e9eb4bd48e3eba62522a"
+    },
+    {
+      "bytes": 9266,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/linked-parent-negative-preimages-v1/author_successor_sources_v1.py",
+      "sha256": "b62e7237666b239f42f55926ad87c57fc2f0441796211eae401dd674370df372"
+    },
+    {
+      "bytes": 33563,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/linked-parent-negative-preimages-v1/author_freeze_metadata_v1.py",
+      "sha256": "dd6a02f71f74e23410a33bae71b174527815268dab0b98c54cfc6c99cc2b4adb"
+    }
+  ],
+  "review_passed": false,
+  "review_scope": "Early blocking finding while reviewing complete frozen parent/worker offer. No full-schema, event-completeness, whole-harness or resource-fit PASS is claimed.",
+  "reviewer_identity": "/root/recovered_batch_review",
+  "schema": "typed-linked-parent-Source-custody-negative-v1",
+  "semantic_replays": 0,
+  "simulator_calls": 0,
+  "sizing_probes": 0,
+  "source_only": true,
+  "static_metadata": {
+    "AST_parses": 3,
+    "research_code_executed": false,
+    "unused_compiles": 2
+  },
+  "status": "FAIL_SOURCE_CUSTODY_REGRESSION",
+  "subject_calls": 0,
+  "subject_imports": 0,
+  "tools_stopped_after_freeze": true
+}

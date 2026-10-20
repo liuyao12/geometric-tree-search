@@ -1,0 +1,195 @@
+{
+  "G1_adopted": false,
+  "GCTS_RL_advantage_established": false,
+  "actual_execution_authorized": false,
+  "all5_recipes_unrun": true,
+  "author": {
+    "bytes": 6102,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/freeze_snapshot_delta_review_v2.py",
+    "sha256": "9a80f04478d3f1dbf08f4616dcdac1290989d829254835f3a37d3310c8f717d6"
+  },
+  "checker_calls": 0,
+  "checks": [
+    {
+      "check": "Exact frozen handoff",
+      "passed": true
+    },
+    {
+      "check": "Exact pin: validate_linked_evidence_v2.py",
+      "passed": true
+    },
+    {
+      "check": "Fresh copy: validate_linked_evidence_v2.py",
+      "passed": true
+    },
+    {
+      "check": "Exact pin: manual-delta-v2.json",
+      "passed": true
+    },
+    {
+      "check": "Fresh copy: manual-delta-v2.json",
+      "passed": true
+    },
+    {
+      "check": "Exact pin: static-audit-v2.json",
+      "passed": true
+    },
+    {
+      "check": "Fresh copy: static-audit-v2.json",
+      "passed": true
+    },
+    {
+      "check": "Exact pin: unrun-schema-recipes-v2.json",
+      "passed": true
+    },
+    {
+      "check": "Fresh copy: unrun-schema-recipes-v2.json",
+      "passed": true
+    },
+    {
+      "check": "Frozen predecessor unchanged",
+      "passed": true
+    },
+    {
+      "check": "Unique snapshot occurrence",
+      "passed": true
+    },
+    {
+      "check": "Exact two-change Source inverse",
+      "passed": true
+    },
+    {
+      "check": "Five complete declarative recipes",
+      "passed": true
+    },
+    {
+      "check": "Exact fourteen original field names",
+      "passed": true
+    },
+    {
+      "check": "Original graph unchanged",
+      "passed": true
+    },
+    {
+      "check": "Full expected packet equality preserved",
+      "passed": true
+    },
+    {
+      "check": "Exact field set still used",
+      "passed": true
+    },
+    {
+      "check": "Fresh review",
+      "passed": true
+    }
+  ],
+  "compiler_calls": 0,
+  "failed_checks": [],
+  "fit_proved": false,
+  "fixture_calls": 0,
+  "frozen_offered_files_mutated": false,
+  "full_VM_qualified": false,
+  "full_offer_review_completed": false,
+  "generator_calls": 0,
+  "goal_status": "active",
+  "handoff": {
+    "bytes": 1639,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/snapshot-schema-Sources-v2/handoff-v2.json",
+    "sha256": "ec230e3c8b981892f492550a45b381662c116ec2fbda93db857863598468ce3f"
+  },
+  "helper_calls": 0,
+  "manual_findings": [
+    {
+      "argument": "Only the VERSION label and required snapshot field descriptor to palette_descriptor change. Full raw inverse matches the frozen predecessor exactly. No original graph or packet field is renamed, omitted or rewritten.",
+      "id": "Exact correction"
+    },
+    {
+      "argument": "Graph._core_plain emits points, chosen, marks, domains and exclusions; _observe adds schema, reason, mode, palette_descriptor, dependencies, branch_stack, scheduler, rollback_parent and work. The successor exact fourteen-key set matches these complete original fields.",
+      "id": "Original producer shape"
+    },
+    {
+      "argument": "The five unrun recipes retain the complete original shape and test wrong predecessor alias, both names, missing name and changed nested descriptor. Shape candidate is not whole admission; changed nested value/type/order remains subject to complete strict expected-packet equality.",
+      "id": "Mutation controls"
+    },
+    {
+      "argument": "The exact key set continues to reject omissions and extras. Full packet comparison, catalog/event joins and all other validator code are unchanged by this delta. This review does not newly certify all unchanged code.",
+      "id": "No narrowing"
+    },
+    {
+      "argument": "The named-custody correction is a separate reviewed successor. The copying-journal conditional callback lower bound remains; neither this correction nor custody v2 removes it. Outer controller, useful fit, full offer review, G1 adoption and runtime qualification remain open.",
+      "id": "Independent remaining obstruction"
+    }
+  ],
+  "new_actuals": 0,
+  "new_grants": 0,
+  "new_theorem": false,
+  "old_G0_negative_unchanged": true,
+  "original_graph": {
+    "bytes": 36892,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/snapshot-schema-Sources-v2/implicit_wang_point_search_v1.py",
+    "sha256": "1a83c9c59b2e1862d5a2acda69b826ccc3a8e2cf4899e824286f711f8bf25981"
+  },
+  "partial_files_opened": 0,
+  "pins": [
+    {
+      "bytes": 33498,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/snapshot-schema-Sources-v2/validate_linked_evidence_v2.py",
+      "sha256": "6aa672be93da75f6ae5739086147d10311ac5bda4c5df37e32550badb797f6b2"
+    },
+    {
+      "bytes": 2295,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/snapshot-schema-Sources-v2/manual-delta-v2.json",
+      "sha256": "4a8100b0f89091f1c33671d84e30df65f7fec3cc55af153db34df3dffa521722"
+    },
+    {
+      "bytes": 402,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/snapshot-schema-Sources-v2/static-audit-v2.json",
+      "sha256": "f14cb886eb3adf5fb87634785bfd0ab786af068efde6cfc2695f448d57419ad4"
+    },
+    {
+      "bytes": 977,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/snapshot-schema-Sources-v2/unrun-schema-recipes-v2.json",
+      "sha256": "368796ff40651442dbc3e57d4bd53f187aa3c8282000cbcdda53e00a3772730b"
+    }
+  ],
+  "predecessor": {
+    "bytes": 33471,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/snapshot-schema-Sources-v2/validate_linked_evidence_v1.py",
+    "sha256": "b87dd325e260a0ef57f914f9b3da00519a26bd8bcff0c1e3a4c4e7c96254a95d"
+  },
+  "primary_reader_index_active_mutated": false,
+  "related_reviews": [
+    {
+      "bytes": 9495,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/typed-linked-named-custody-v2-Source-delta-review-v1.json",
+      "sha256": "acf8ad91e28605a3a7e3d72b6d840a95693ac09b19745319b5463336d81e0df1"
+    },
+    {
+      "bytes": 34083,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/typed-primary-copying-journal-work-bound-Source-review-v1.json",
+      "sha256": "ac89a05cc0a62255cf90ed5cc90325a20c7137b735b734edc355dee3dd592893"
+    }
+  ],
+  "retained_negative": {
+    "bytes": 6027,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/typed-linked-parent-snapshot-schema-negative-v1.json",
+    "sha256": "02aa31a0f65f7b73b7223af3277004d952d54bde7c62db4f2688f612630f7989"
+  },
+  "review_passed": true,
+  "reviewer_identity": "/root/recovered_batch_review",
+  "runtime_qualified": false,
+  "schema": "typed-linked-snapshot-schema-v2-Source-delta-review-v1",
+  "semantic_replays": 0,
+  "simulator_calls": 0,
+  "sizing_probes": 0,
+  "source_only": true,
+  "static_metadata": {
+    "AST_parse": true,
+    "executed": false,
+    "unused_compile": true
+  },
+  "status": "PASS_SPECIFIC_SOURCE_DELTA_ONLY",
+  "subject_calls": 0,
+  "subject_imports": 0,
+  "tools_stopped_after_freeze": true
+}

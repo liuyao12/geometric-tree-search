@@ -1,0 +1,954 @@
+{
+  "AST_parse": true,
+  "G1_adopted": false,
+  "GCTS_RL_advantage_established": false,
+  "actual_execution_authorized": false,
+  "additional_unrun_recipes": [
+    {
+      "id": "nested-key-lifetime",
+      "recipe": "Outerkeyx pluschildobjectkeyx thenparenttailduplicatex: childscope reusevalid, laterparentduplicateinvalid; retainallframecells.",
+      "unrun": true
+    },
+    {
+      "id": "task-scratch-alias-preservation",
+      "recipe": "DistinctRETURN/LEFT/RIGHT/TEMPsentinels atarrays/objectrows/keyUTF8/requestkeycons; scheduledchildref andpoppedrequestvalue surviveCOUNT/heaplookups exactly.",
+      "unrun": true
+    },
+    {
+      "id": "whole-native-surrogate-distinction",
+      "recipe": "Usecodepointlists[65536]and[55296,56320]asdistinctnativekeys/values; keepUTF8surrogatepasswordidentity, avoidJSONstringnormalizationfixture.",
+      "unrun": true
+    },
+    {
+      "id": "projected-colon-contract",
+      "recipe": "SamevalidthroughcolonforestwithpostcolonBversusdata mustbedistinguishedbyRootinitializer/selector; noincorrectcomponentallbandEOFclaim.",
+      "unrun": true
+    },
+    {
+      "id": "full-table-provenance-and-metadata",
+      "recipe": "PreservefreshfullUTF8root/table/rawowners; rowshapecontrolalone cannotlicensearbitrarytable. Missing/declarationwrongtypesrefusals neverclasslaundered.",
+      "unrun": true
+    }
+  ],
+  "author": {
+    "bytes": 14527,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/freeze_tagged_value_boot_v2_review.py",
+    "sha256": "0c1c6b660db0b3e8f110d42cfb4eda5fb47a2ff3a05cd4b42c99d44646cb83d1"
+  },
+  "bank_scope": {
+    "all_unrun": true,
+    "counts_are_declarative_not_executed": true,
+    "new_cohorts": 23,
+    "preserved_component_cohorts": 11,
+    "preserved_historical_gap_records": 6,
+    "standalone_UTF8_dependency_cases_required": 5378
+  },
+  "body_implemented_conditionally_in_Source": true,
+  "checker_calls": 0,
+  "checks": [
+    {
+      "check": "handoff-exact",
+      "passed": true
+    },
+    {
+      "check": "member:linked_boot_values_v2.py:no-partial",
+      "passed": true
+    },
+    {
+      "check": "member:linked_boot_values_v2.py:raw-pin",
+      "passed": true
+    },
+    {
+      "check": "fresh:linked_boot_values_v2.py",
+      "passed": true
+    },
+    {
+      "check": "member:API-v2.json:no-partial",
+      "passed": true
+    },
+    {
+      "check": "member:API-v2.json:raw-pin",
+      "passed": true
+    },
+    {
+      "check": "fresh:API-v2.json",
+      "passed": true
+    },
+    {
+      "check": "member:manual-argument-v2.json:no-partial",
+      "passed": true
+    },
+    {
+      "check": "member:manual-argument-v2.json:raw-pin",
+      "passed": true
+    },
+    {
+      "check": "fresh:manual-argument-v2.json",
+      "passed": true
+    },
+    {
+      "check": "member:prospective-whole-bank-v2.json:no-partial",
+      "passed": true
+    },
+    {
+      "check": "member:prospective-whole-bank-v2.json:raw-pin",
+      "passed": true
+    },
+    {
+      "check": "fresh:prospective-whole-bank-v2.json",
+      "passed": true
+    },
+    {
+      "check": "member:lineage-pins-v2.json:no-partial",
+      "passed": true
+    },
+    {
+      "check": "member:lineage-pins-v2.json:raw-pin",
+      "passed": true
+    },
+    {
+      "check": "fresh:lineage-pins-v2.json",
+      "passed": true
+    },
+    {
+      "check": "member:author-static-audit-v2.json:no-partial",
+      "passed": true
+    },
+    {
+      "check": "member:author-static-audit-v2.json:raw-pin",
+      "passed": true
+    },
+    {
+      "check": "fresh:author-static-audit-v2.json",
+      "passed": true
+    },
+    {
+      "check": "member:freeze-manifest-v2.json:no-partial",
+      "passed": true
+    },
+    {
+      "check": "member:freeze-manifest-v2.json:raw-pin",
+      "passed": true
+    },
+    {
+      "check": "fresh:freeze-manifest-v2.json",
+      "passed": true
+    },
+    {
+      "check": "fresh-handoff",
+      "passed": true
+    },
+    {
+      "check": "manifest-exact-members",
+      "passed": true
+    },
+    {
+      "check": "lineage:0:no-partial",
+      "passed": true
+    },
+    {
+      "check": "lineage:0:raw-pin",
+      "passed": true
+    },
+    {
+      "check": "lineage:1:no-partial",
+      "passed": true
+    },
+    {
+      "check": "lineage:1:raw-pin",
+      "passed": true
+    },
+    {
+      "check": "lineage:2:no-partial",
+      "passed": true
+    },
+    {
+      "check": "lineage:2:raw-pin",
+      "passed": true
+    },
+    {
+      "check": "lineage:3:no-partial",
+      "passed": true
+    },
+    {
+      "check": "lineage:3:raw-pin",
+      "passed": true
+    },
+    {
+      "check": "lineage:4:no-partial",
+      "passed": true
+    },
+    {
+      "check": "lineage:4:raw-pin",
+      "passed": true
+    },
+    {
+      "check": "lineage:5:no-partial",
+      "passed": true
+    },
+    {
+      "check": "lineage:5:raw-pin",
+      "passed": true
+    },
+    {
+      "check": "lineage:6:no-partial",
+      "passed": true
+    },
+    {
+      "check": "lineage:6:raw-pin",
+      "passed": true
+    },
+    {
+      "check": "lineage:7:no-partial",
+      "passed": true
+    },
+    {
+      "check": "lineage:7:raw-pin",
+      "passed": true
+    },
+    {
+      "check": "lineage:8:no-partial",
+      "passed": true
+    },
+    {
+      "check": "lineage:8:raw-pin",
+      "passed": true
+    },
+    {
+      "check": "lineage:9:no-partial",
+      "passed": true
+    },
+    {
+      "check": "lineage:9:raw-pin",
+      "passed": true
+    },
+    {
+      "check": "lineage:10:no-partial",
+      "passed": true
+    },
+    {
+      "check": "lineage:10:raw-pin",
+      "passed": true
+    },
+    {
+      "check": "lineage:11:no-partial",
+      "passed": true
+    },
+    {
+      "check": "lineage:11:raw-pin",
+      "passed": true
+    },
+    {
+      "check": "lineage:12:no-partial",
+      "passed": true
+    },
+    {
+      "check": "lineage:12:raw-pin",
+      "passed": true
+    },
+    {
+      "check": "lineage:13:no-partial",
+      "passed": true
+    },
+    {
+      "check": "lineage:13:raw-pin",
+      "passed": true
+    },
+    {
+      "check": "lineage:14:no-partial",
+      "passed": true
+    },
+    {
+      "check": "lineage:14:raw-pin",
+      "passed": true
+    },
+    {
+      "check": "no-imports",
+      "passed": true
+    },
+    {
+      "check": "full41function-inventory",
+      "passed": true
+    },
+    {
+      "check": "v1-control-body-preserved:_put",
+      "passed": true
+    },
+    {
+      "check": "v1-control-body-preserved:_row",
+      "passed": true
+    },
+    {
+      "check": "v1-control-body-preserved:_constant",
+      "passed": true
+    },
+    {
+      "check": "v1-control-body-preserved:_copy",
+      "passed": true
+    },
+    {
+      "check": "v1-control-body-preserved:_increment",
+      "passed": true
+    },
+    {
+      "check": "v1-control-body-preserved:_canonical_word",
+      "passed": true
+    },
+    {
+      "check": "v1-control-body-preserved:_atom_or_node",
+      "passed": true
+    },
+    {
+      "check": "v1-control-body-preserved:_compare_words",
+      "passed": true
+    },
+    {
+      "check": "v1-control-body-preserved:_next_heap_record",
+      "passed": true
+    },
+    {
+      "check": "v1-control-body-preserved:_compare_heap_field",
+      "passed": true
+    },
+    {
+      "check": "v1-control-body-preserved:_copy_heap_field",
+      "passed": true
+    },
+    {
+      "check": "v1-control-body-preserved:_write_word_here",
+      "passed": true
+    },
+    {
+      "check": "v1-control-body-preserved:_valid_reference",
+      "passed": true
+    },
+    {
+      "check": "v1-control-body-preserved:canonical_cons",
+      "passed": true
+    },
+    {
+      "check": "v1-control-body-preserved:heap_lookup",
+      "passed": true
+    },
+    {
+      "check": "v1-control-body-preserved:_clear_records",
+      "passed": true
+    },
+    {
+      "check": "v1-control-body-preserved:stack_push",
+      "passed": true
+    },
+    {
+      "check": "v1-control-body-preserved:stack_pop",
+      "passed": true
+    },
+    {
+      "check": "v1-control-body-preserved:_read_atom9",
+      "passed": true
+    },
+    {
+      "check": "v1-control-body-preserved:postfix_roots",
+      "passed": true
+    },
+    {
+      "check": "v1-control-body-preserved:install_postfix_pair",
+      "passed": true
+    },
+    {
+      "check": "new-helper-unique:_word_is",
+      "passed": true
+    },
+    {
+      "check": "new-helper-unique:_push_word_to",
+      "passed": true
+    },
+    {
+      "check": "new-helper-unique:_pop_word_from",
+      "passed": true
+    },
+    {
+      "check": "new-helper-unique:_empty_records",
+      "passed": true
+    },
+    {
+      "check": "new-helper-unique:_records_to_empty_word",
+      "passed": true
+    },
+    {
+      "check": "new-helper-unique:_word_to_empty_records",
+      "passed": true
+    },
+    {
+      "check": "new-helper-unique:_copy_records_to_output",
+      "passed": true
+    },
+    {
+      "check": "new-helper-unique:_push_task",
+      "passed": true
+    },
+    {
+      "check": "new-helper-unique:_open_key_frame",
+      "passed": true
+    },
+    {
+      "check": "new-helper-unique:_close_key_frame",
+      "passed": true
+    },
+    {
+      "check": "new-helper-unique:_unique_key_and_append",
+      "passed": true
+    },
+    {
+      "check": "new-helper-unique:_append_byte",
+      "passed": true
+    },
+    {
+      "check": "new-helper-unique:_link_utf8",
+      "passed": true
+    },
+    {
+      "check": "new-helper-unique:_byteword",
+      "passed": true
+    },
+    {
+      "check": "new-helper-unique:_unary",
+      "passed": true
+    },
+    {
+      "check": "new-helper-unique:_tagged_validator",
+      "passed": true
+    },
+    {
+      "check": "new-helper-unique:_schedule_stack_roots",
+      "passed": true
+    },
+    {
+      "check": "new-helper-unique:_fixed_key",
+      "passed": true
+    },
+    {
+      "check": "new-helper-unique:_request_assembly",
+      "passed": true
+    },
+    {
+      "check": "new-helper-unique:install_value_boot",
+      "passed": true
+    },
+    {
+      "check": "all41manual-rows",
+      "passed": true
+    },
+    {
+      "check": "entire-priorbank-retained",
+      "passed": true
+    },
+    {
+      "check": "all23new-cohorts",
+      "passed": true
+    },
+    {
+      "check": "prior11-plus6",
+      "passed": true
+    },
+    {
+      "check": "explicit-incomplete-full-BOOT",
+      "passed": true
+    },
+    {
+      "check": "declared-fixedlimits",
+      "passed": true
+    },
+    {
+      "check": "working-success-not-ACCEPT",
+      "passed": true
+    },
+    {
+      "check": "fresh-review",
+      "passed": true
+    }
+  ],
+  "compiler_calls": 0,
+  "complete_interpreter": false,
+  "failed_checks": [],
+  "fixture_calls": 0,
+  "frozen_files_mutated": false,
+  "full_BOOT_qualified": false,
+  "full_CodecV2_or_host_checker_equivalence": false,
+  "full_Source_API_manual_and_complete_bank_read": true,
+  "goal_status": "active",
+  "handoff": {
+    "bytes": 5305,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/tagged-BOOT-Sources-v2/handoff-v2.json",
+    "sha256": "cc8de8d62e27b0a02bfd500d46edb501d9e1069184f986671e0ea4ea9d472163"
+  },
+  "helper_calls": 0,
+  "manual_argument": {
+    "canonical-heap": "Use reviewedv1argument underphysicallyvalidateduniquepair/topologicalseed. ExactexistingIDrefs andnewappenddenotations remainstable; equalityofpropercanonicalbytewordstructure impliesequalref.",
+    "public-and-request": "OUTPUTkeepspublic3beforefreeparserclearsSTACK, thenappendsfree2. Assemblypopsreverse5roots andprependsmatchingfixedkeyrows. TEMPpoppedvalue notclobberedbykeycons. Entireobjectorderedprotocol/theory/target/blocks/proof; no hostrequestconstructorintransitions.",
+    "strings-and-keys": "Everyrawlisthead mustbe byteatom0..255; buffercontains eightLSBbits perhead withnointerbytepadding. LinkedfreshUTF8table checkswholeword atnil. Objectduplicatekeys comparecompletecanonicalrefs withininnermostframe; canonicalnativeUTF8encoding isinjective ondeclarednativecodepointsequences. No rawJSONnormalization inferred.",
+    "success-cleanup": "TASKS/FRAMES/OUTPUTcheckedempty, STACKclearedfromrowlistwordtoemptycolon; F6/PC7/D8neverusedbyinstalledbody. RETURNcontainscanonicalrequestref atRootworkingcontinuation, nottheoremacceptance.",
+    "tasks": "Maintainorderedtasks(type,node) withactualwordrecords andnestedFRAMESobjectscopes. Eachcontainer schedulesrestbeforechild; LIFOcompleteschild(andanynestedframes) beforeparentrest. Allpendingnodes eventuallychecked underacyclicseed; sharing mayrepeatwork.",
+    "termination-and-cost": "Topologicalchildren strictlysmallerID establishfinitetraversal onfiniteinput; heapscans/binarycopy/taskunfolding stillcostrealwork andcapacity. This isnotpolynomialbound, horizonbound, generatedcensus or128MiBfit."
+  },
+  "manual_argument_not_mechanized": true,
+  "new_actuals": 0,
+  "new_grants": 0,
+  "new_theorem": false,
+  "old21semantic_AST_bodies_preserved": true,
+  "old_G0_negative_unchanged": true,
+  "partial_files_opened": 0,
+  "pins": [
+    {
+      "bytes": 38636,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/tagged-BOOT-Sources-v2/linked_boot_values_v2.py",
+      "sha256": "af383eb8dad6e19285f43602325fa3db78123a472d6a73ce59c51c507cd8ca2d"
+    },
+    {
+      "bytes": 10837,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/tagged-BOOT-Sources-v2/API-v2.json",
+      "sha256": "cf3ab122a0d70c16acb65d9924e09d48bca117459170d6706dedbab5d8654b4d"
+    },
+    {
+      "bytes": 10004,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/tagged-BOOT-Sources-v2/manual-argument-v2.json",
+      "sha256": "44d5c2d604f1e51c6f8739c422d37405b14ad47055ab72b8fc771a57a2f7476f"
+    },
+    {
+      "bytes": 34920,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/tagged-BOOT-Sources-v2/prospective-whole-bank-v2.json",
+      "sha256": "8868be162b2c99a3e9b588beca16f1a018f9f3fe573b84a9166c12422fe593c1"
+    },
+    {
+      "bytes": 4512,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/tagged-BOOT-Sources-v2/lineage-pins-v2.json",
+      "sha256": "28a741646f849b01a45158b22fd587c4b846057d7ccda31fb4f1f232ae5b6ad0"
+    },
+    {
+      "bytes": 1923,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/tagged-BOOT-Sources-v2/author-static-audit-v2.json",
+      "sha256": "de9e154d04ff3d7c1944b9de3beb3a1cbd6640eb78ec6590d0c85930606cdaff"
+    },
+    {
+      "bytes": 2204,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/tagged-BOOT-Sources-v2/freeze-manifest-v2.json",
+      "sha256": "9c08dbf8c34f71875185cb9776d992da05c84dd173d847ed46a5de7d9bd98f46"
+    }
+  ],
+  "primary_reader_index_active_mutated": false,
+  "proof_discovery": false,
+  "remaining_obligations": [
+    {
+      "id": "LV2-G1",
+      "obligation": "Rootactualinitializationtiles physicallyenforceall16bands/cursors/headers/nooverlap, immutableprogram/public/certificatepins andcanonicalwordpadding. Nohiddenhostlayoutpredicate canqualifyproof."
+    },
+    {
+      "id": "LV2-G2",
+      "obligation": "Completeimmutableprogram/seedloader physicallyvalidatecanon/topologicaluniquepairs beforeentry; generichelpers preservebutdonotestablishthosepreconditions."
+    },
+    {
+      "id": "LV2-G3",
+      "obligation": "ProjectedEOFmeansfixedcolon plusphysicalpostcolonBpins to#; bodydoesnotrejectarbitrarypostcolondata itself. Selectorcannotemit/movecolon; Rootintake/selectorbody remainsabsent."
+    },
+    {
+      "id": "LV2-G4",
+      "obligation": "FreshwholeUTF8generation mustbe ownedandboundto08f947Source insidefuturewholeactual. Savedqualifiedtable/admission2fc8 doesnotgrantnewexecution orprovefreshlinkerprovenance."
+    },
+    {
+      "id": "LV2-G5",
+      "obligation": "Inputdomain nativeorderedtaggedvalues withsurrogatepass bytewords, includingseparatenativeadjacentsurrogates. RawJSONimage/escape-normalization/expectedproblemhashinjectivity remainsseparateoriginalF6, never silentlyequated."
+    },
+    {
+      "id": "LV2-G6",
+      "obligation": "Root13opcodefetch/controller/programmetadata/register/frame/call/return andsuppliedworkingcontinuation linkage, exactrootreturn1ACCEPT, publiclicensing andnoextraaccept stillopen."
+    },
+    {
+      "id": "LV2-G7",
+      "obligation": "CompletewholeSource/banks/outerepochs/resource/writer/expansion/callbackcustodyfirstfault reviewandfreshonceauthorization beforeanygeneration/execution. No goodpartial/rescue/retry orunknown->theoremnegative."
+    }
+  ],
+  "review_passed": true,
+  "reviewer_identity": "/root/recovered_batch_review",
+  "runtime_qualified": false,
+  "schema": "typed-linked-tagged-value-BOOT-v2-Source-review-v1",
+  "semantic_replays": 0,
+  "simulator_calls": 0,
+  "sizing_probes": 0,
+  "source_function_matrix": [
+    {
+      "argument": "Completes every9nonfence RAW slot to supplied invalid continuation; fence remains sharedlowerer BOUND. Choice values exactliteral tuples; no runtime host operation.",
+      "end": 31,
+      "executed": false,
+      "line": 26,
+      "lineage": "Reviewedv1; semantic ASTbody/args unchanged (docstrings excluded).",
+      "name": "_put",
+      "status": "CONDITIONAL_MANUAL_SOURCE_ARGUMENT"
+    },
+    {
+      "argument": "One named Source state allocation then full put, inherited raw-prefix/foreign/Rootguard obligations.",
+      "end": 37,
+      "executed": false,
+      "line": 34,
+      "lineage": "Reviewedv1; semantic ASTbody/args unchanged (docstrings excluded).",
+      "name": "_row",
+      "status": "CONDITIONAL_MANUAL_SOURCE_ARGUMENT"
+    },
+    {
+      "argument": "Only internal fixed bitword257/zero callsites; reverse Source chain writes bits in forward tape order after clearing. Not a problem-dependent word constructor.",
+      "end": 45,
+      "executed": false,
+      "line": 40,
+      "lineage": "Reviewedv1; semantic ASTbody/args unchanged (docstrings excluded).",
+      "name": "_constant",
+      "status": "CONDITIONAL_MANUAL_SOURCE_ARGUMENT"
+    },
+    {
+      "argument": "Rewinds/clears output, copies every source bit in order untilB and rewinds output; contents of input preserved, cursor maymove. Requires distinct known bands and canonical padding.",
+      "end": 57,
+      "executed": false,
+      "line": 48,
+      "lineage": "Reviewedv1; semantic ASTbody/args unchanged (docstrings excluded).",
+      "name": "_copy",
+      "status": "CONDITIONAL_MANUAL_SOURCE_ARGUMENT"
+    },
+    {
+      "argument": "Physical LSBcarry1->0,0/B->1 with rewound result; canonical nonempty COUNT invariant.",
+      "end": 65,
+      "executed": false,
+      "line": 60,
+      "lineage": "Reviewedv1; semantic ASTbody/args unchanged (docstrings excluded).",
+      "name": "_increment",
+      "status": "CONDITIONAL_MANUAL_SOURCE_ARGUMENT"
+    },
+    {
+      "argument": "First0 allowed only if immediateB or eventually final1; first1 likewise; accepts exactly nonempty canonicalLSB strings (0 or highbit1). Invalid visible symbols useinvalid; no trailing-padding validator.",
+      "end": 79,
+      "executed": false,
+      "line": 68,
+      "lineage": "Reviewedv1; semantic ASTbody/args unchanged (docstrings excluded).",
+      "name": "_canonical_word",
+      "status": "CONDITIONAL_MANUAL_SOURCE_ARGUMENT"
+    },
+    {
+      "argument": "After canonical validation, fewerthan9bits means atom<=255. At ninth bit only lower8zero plus1 plusB is256; every other canonical value isnodecandidate, never automatically existing node.",
+      "end": 103,
+      "executed": false,
+      "line": 82,
+      "lineage": "Reviewedv1; semantic ASTbody/args unchanged (docstrings excluded).",
+      "name": "_atom_or_node",
+      "status": "CONDITIONAL_MANUAL_SOURCE_ARGUMENT"
+    },
+    {
+      "argument": "Exact bits and simultaneousB termination; mismatch preserves both wordcontents and choosesno; cursorpositions maychange.",
+      "end": 119,
+      "executed": false,
+      "line": 106,
+      "lineage": "Reviewedv1; semantic ASTbody/args unchanged (docstrings excluded).",
+      "name": "_compare_words",
+      "status": "CONDITIONAL_MANUAL_SOURCE_ARGUMENT"
+    },
+    {
+      "argument": "From anywhere inside current wellformed pairrecord, skips0/1/comma tosemicolon thensteps to nextrecord/colon; relies on validated canonicalseed.",
+      "end": 126,
+      "executed": false,
+      "line": 122,
+      "lineage": "Reviewedv1; semantic ASTbody/args unchanged (docstrings excluded).",
+      "name": "_next_heap_record",
+      "status": "CONDITIONAL_MANUAL_SOURCE_ARGUMENT"
+    },
+    {
+      "argument": "Compares full heapfield to word including exact fielddelimiter/B alignment; consumes delimiter only on success; mismatch leavesheapcursor where skip can finish currentrecord.",
+      "end": 142,
+      "executed": false,
+      "line": 129,
+      "lineage": "Reviewedv1; semantic ASTbody/args unchanged (docstrings excluded).",
+      "name": "_compare_heap_field",
+      "status": "CONDITIONAL_MANUAL_SOURCE_ARGUMENT"
+    },
+    {
+      "argument": "Clears destination and copies entire heapfield, consumes specifieddelimiter and rewinds result. Seedguarantees nonempty canonical childrefs.",
+      "end": 153,
+      "executed": false,
+      "line": 145,
+      "lineage": "Reviewedv1; semantic ASTbody/args unchanged (docstrings excluded).",
+      "name": "_copy_heap_field",
+      "status": "CONDITIONAL_MANUAL_SOURCE_ARGUMENT"
+    },
+    {
+      "argument": "Replaces declared firstsymbol by firstbit then writes subsequent bits intoB, appendsdelimiter and advances. Srccontents preserved. Requires actual nonempty word, padding and proper destinationcursor.",
+      "end": 169,
+      "executed": false,
+      "line": 156,
+      "lineage": "Reviewedv1; semantic ASTbody/args unchanged (docstrings excluded).",
+      "name": "_write_word_here",
+      "status": "CONDITIONAL_MANUAL_SOURCE_ARGUMENT"
+    },
+    {
+      "argument": "Canonical word then fixed finite atomrange test; nodecandidate scans actual seed/current records with physical COUNT257+ordinal, invalidatcolon when absent. Does not validate seedtopology itself.",
+      "end": 185,
+      "executed": false,
+      "line": 172,
+      "lineage": "Reviewedv1; semantic ASTbody/args unchanged (docstrings excluded).",
+      "name": "_valid_reference",
+      "status": "CONDITIONAL_MANUAL_SOURCE_ARGUMENT"
+    },
+    {
+      "argument": "Validate both operands before scan, compare exact left/right fields, reuse unique equalpairID; else append atcolon with COUNTnextID. Operands denote atoms/earliernodes, so successful append preserves topology/acyclicity/uniqueness under validated seed. Earlierrecordcontents unchanged.",
+      "end": 213,
+      "executed": false,
+      "line": 188,
+      "lineage": "Reviewedv1; semantic ASTbody/args unchanged (docstrings excluded).",
+      "name": "canonical_cons",
+      "status": "CONDITIONAL_MANUAL_SOURCE_ARGUMENT"
+    },
+    {
+      "argument": "Validate canonical RETURN word then scan actual implicitIDs, copy bothchildfields onmatch. Atoms/nonexistentIDs cannotmatch node257+ordinal. RETURN/HEAP contents preserved; no host array lookup at runtime.",
+      "end": 235,
+      "executed": false,
+      "line": 216,
+      "lineage": "Reviewedv1; semantic ASTbody/args unchanged (docstrings excluded).",
+      "name": "heap_lookup",
+      "status": "CONDITIONAL_MANUAL_SOURCE_ARGUMENT"
+    },
+    {
+      "argument": "Erases old properrecords up tocolon and restores emptycolon afterrewind; only valid scratchrecord grammar/padding assumed; no arbitrary payload sanitizer claim.",
+      "end": 246,
+      "executed": false,
+      "line": 238,
+      "lineage": "Reviewedv1; semantic ASTbody/args unchanged (docstrings excluded).",
+      "name": "_clear_records",
+      "status": "CONDITIONAL_MANUAL_SOURCE_ARGUMENT"
+    },
+    {
+      "argument": "Append nonempty valid RETURN reference atcolon, semicolon thennewcolon; requires caller alreadyvalidated ref. No new heaprecord is created by push.",
+      "end": 258,
+      "executed": false,
+      "line": 249,
+      "lineage": "Reviewedv1; semantic ASTbody/args unchanged (docstrings excluded).",
+      "name": "stack_push",
+      "status": "CONDITIONAL_MANUAL_SOURCE_ARGUMENT"
+    },
+    {
+      "argument": "Find endcolon, expose lastsemicolon as temporarycolon, seek left to priorsemicolon/^, copy/erase lastbits, erase temporarycolon, rewind and restorecolon atfirsterasedcell. Previousrecords unchanged; underflow destructivefailure invalid, never admitted.",
+      "end": 285,
+      "executed": false,
+      "line": 261,
+      "lineage": "Reviewedv1; semantic ASTbody/args unchanged (docstrings excluded).",
+      "name": "stack_pop",
+      "status": "CONDITIONAL_MANUAL_SOURCE_ARGUMENT"
+    },
+    {
+      "argument": "Nine physical input bits, ninth1 permitted only if low8all0; trimhighzeros backward; allzero restores single0. Thus all257atoms admitted and257..511refused, with exact sourcecursor advancement.",
+      "end": 311,
+      "executed": false,
+      "line": 288,
+      "lineage": "Reviewedv1; semantic ASTbody/args unchanged (docstrings excluded).",
+      "name": "_read_atom9",
+      "status": "CONDITIONAL_MANUAL_SOURCE_ARGUMENT"
+    },
+    {
+      "argument": "Only fixed PUBLIC1/3roots and CERTIFICATE2/2roots. Clear stack, atom pushesactualID, cons popsright thenleft, interns/pushes actualnodeID, semicolon scans actualrefrecordcount; Bpadding tofirstcolon. Structural segment only, no taggedgrammar/UTF8/EOF theorem.",
+      "end": 343,
+      "executed": false,
+      "line": 314,
+      "lineage": "Reviewedv1; semantic ASTbody/args unchanged (docstrings excluded).",
+      "name": "postfix_roots",
+      "status": "CONDITIONAL_MANUAL_SOURCE_ARGUMENT"
+    },
+    {
+      "argument": "Installs two separate entrybodies with supplied static ports; does not sequence/preservePUBLIC roots or assemble request. Explicit full_BOOT/tagged/request flagsfalse.",
+      "end": 351,
+      "executed": false,
+      "line": 346,
+      "lineage": "Reviewedv1; semantic ASTbody/args unchanged (docstrings excluded).",
+      "name": "install_postfix_pair",
+      "status": "CONDITIONAL_MANUAL_SOURCE_ARGUMENT"
+    },
+    {
+      "argument": "Exact fixed Sourcebitword match withB simultaneousend, preservingword; everybranch rewindsbeforetesting, so chained tag/type tests seeoriginalvalue.",
+      "end": 363,
+      "executed": false,
+      "line": 354,
+      "lineage": "Newv2 Source manually read in full.",
+      "name": "_word_is",
+      "status": "CONDITIONAL_MANUAL_SOURCE_ARGUMENT"
+    },
+    {
+      "argument": "Append actual sourceword to private task/outputrecordstack, including semicolon/newcolon. Inputnonempty canonicalword/validstack layout required; no runtime hostcontainer.",
+      "end": 375,
+      "executed": false,
+      "line": 366,
+      "lineage": "Newv2 Source manually read in full.",
+      "name": "_push_word_to",
+      "status": "CONDITIONAL_MANUAL_SOURCE_ARGUMENT"
+    },
+    {
+      "argument": "Pop actuallastword into destination with erasure/colonrestoration; same physicalstructure asv1stackpop. Validprivatewordrecordgrammar assumed; no hoststack/index.",
+      "end": 402,
+      "executed": false,
+      "line": 378,
+      "lineage": "Newv2 Source manually read in full.",
+      "name": "_pop_word_from",
+      "status": "CONDITIONAL_MANUAL_SOURCE_ARGUMENT"
+    },
+    {
+      "argument": "Checkfirstcellafter^ isexactcolon, preservingit; used forcomplete task/frame/output cleanup assertions.",
+      "end": 407,
+      "executed": false,
+      "line": 405,
+      "lineage": "Newv2 Source manually read in full.",
+      "name": "_empty_records",
+      "status": "CONDITIONAL_MANUAL_SOURCE_ARGUMENT"
+    },
+    {
+      "argument": "Requireemptyrecordcolon and eraseit toB; explicit mode switch after allsource roots popped.",
+      "end": 412,
+      "executed": false,
+      "line": 410,
+      "lineage": "Newv2 Source manually read in full.",
+      "name": "_records_to_empty_word",
+      "status": "CONDITIONAL_MANUAL_SOURCE_ARGUMENT"
+    },
+    {
+      "argument": "Clear fullbitword andplaceemptycolon; explicit buffer->record switch beforefreeparse andfinalreturn.",
+      "end": 417,
+      "executed": false,
+      "line": 415,
+      "lineage": "Newv2 Source manually read in full.",
+      "name": "_word_to_empty_records",
+      "status": "CONDITIONAL_MANUAL_SOURCE_ARGUMENT"
+    },
+    {
+      "argument": "FindOUTPUTcolon and appendallSTACKrecords inoriginalorder, preservingSourceSTACK. Used onlyafterexact3/2rootcount sofullpublic/free roots retained independently oflaterSTACKclear.",
+      "end": 443,
+      "executed": false,
+      "line": 420,
+      "lineage": "Newv2 Source manually read in full.",
+      "name": "_copy_records_to_output",
+      "status": "CONDITIONAL_MANUAL_SOURCE_ARGUMENT"
+    },
+    {
+      "argument": "Fixedkind0/1/2Sourcearg only; appendtype thennode actualword so nodepopsfirst. COUNTliteraltype clobbered; LEFT/RIGHT/RETURNsourcecontents preserved ascallerrequires.",
+      "end": 453,
+      "executed": false,
+      "line": 446,
+      "lineage": "Newv2 Source manually read in full.",
+      "name": "_push_task",
+      "status": "CONDITIONAL_MANUAL_SOURCE_ARGUMENT"
+    },
+    {
+      "argument": "ReplaceFRAMESusedcolon with| andnewcolon; marksinnermostobjectkeyscope physically.",
+      "end": 463,
+      "executed": false,
+      "line": 456,
+      "lineage": "Newv2 Source manually read in full.",
+      "name": "_open_key_frame",
+      "status": "CONDITIONAL_MANUAL_SOURCE_ARGUMENT"
+    },
+    {
+      "argument": "Scanlastcolon backward eraseonlycurrentkeyrecords untilinnermost|, replacebarbycolon; previousobjectframecontents preserved.",
+      "end": 477,
+      "executed": false,
+      "line": 466,
+      "lineage": "Newv2 Source manually read in full.",
+      "name": "_close_key_frame",
+      "status": "CONDITIONAL_MANUAL_SOURCE_ARGUMENT"
+    },
+    {
+      "argument": "Findinnermost| then compareLEFTkeyrefagainst everykeyref through itscolon withexactwordendalignment. Mismatchskips currentrecord; exactduplicateinvalid. Newkeyrefappendedbeforevalidation; anyinvalidkey laterrejectsentirerun.",
+      "end": 509,
+      "executed": false,
+      "line": 480,
+      "lineage": "Newv2 Source manually read in full.",
+      "name": "_unique_key_and_append",
+      "status": "CONDITIONAL_MANUAL_SOURCE_ARGUMENT"
+    },
+    {
+      "argument": "ReadLEFTcanonicalbyteword, copyatmost8bits into currentSTACKbufferposition andpadshortwords withzeros toexactly8LSBbits; a ninthbit refuses. Atom256/nodeIDs cannot masquerade asbyte.",
+      "end": 529,
+      "executed": false,
+      "line": 512,
+      "lineage": "Newv2 Source manually read in full.",
+      "name": "_append_byte",
+      "status": "CONDITIONAL_MANUAL_SOURCE_ARGUMENT"
+    },
+    {
+      "argument": "Mapeveryliteralworkingrow fromfreshfullqualifiedtable ontoSTACK. Exact4slots/workingstate, halts/entries/undefineds/type/move/write/fencechecks. DONEout,REJECT1,BOUND2. Shapecheck doesnotcertifysemanticprovenance/freshness; RootmustbindwholefreshSource result.",
+      "end": 601,
+      "executed": false,
+      "line": 532,
+      "lineage": "Newv2 Source manually read in full.",
+      "name": "_link_utf8",
+      "status": "CONDITIONAL_MANUAL_SOURCE_ARGUMENT"
+    },
+    {
+      "argument": "Traverse propercanonicalheaplist viaRETURN, lookupLEFTbyte/RIGHTtail, append8bits, copytailtoRETURN anditerate; nil256rewindsentirebufferintolinkedUTF8. No hostdecoder or partialbyteaccept.",
+      "end": 613,
+      "executed": false,
+      "line": 604,
+      "lineage": "Newv2 Source manually read in full.",
+      "name": "_byteword",
+      "status": "CONDITIONAL_MANUAL_SOURCE_ARGUMENT"
+    },
+    {
+      "argument": "Traverse properpairlist whoseheadsareexact1; nilendspositive, negativefirstentryexcludesnil. Impropertails/headmutationslookup/refusal. No nativeinteger predicate inrows.",
+      "end": 625,
+      "executed": false,
+      "line": 616,
+      "lineage": "Newv2 Source manually read in full.",
+      "name": "_unary",
+      "status": "CONDITIONAL_MANUAL_SOURCE_ARGUMENT"
+    },
+    {
+      "argument": "Physicaltaskdispatch VALUE/ARRAYTAIL/OBJECTTAIL checksactualheaprefs andexact0..6tags. AllchildVALUE obligations pushedaftertail soLIFOvisitschildbeforeparenttail. Objectframeopen/close matchesnestedlifetime; bytewords/string/keys passlinkedUTF8, Boolean/null/unary normalforms exact.",
+      "end": 687,
+      "executed": false,
+      "line": 628,
+      "lineage": "Newv2 Source manually read in full.",
+      "name": "_tagged_validator",
+      "status": "CONDITIONAL_MANUAL_SOURCE_ARGUMENT"
+    },
+    {
+      "argument": "Unrolledfixedcount3/2, popactualroots andscheduleeachVALUE; allroots popped beforeSTACKcolon becomesB buffer. No depth/input-derived state allocation.",
+      "end": 696,
+      "executed": false,
+      "line": 690,
+      "lineage": "Newv2 Source manually read in full.",
+      "name": "_schedule_stack_roots",
+      "status": "CONDITIONAL_MANUAL_SOURCE_ARGUMENT"
+    },
+    {
+      "argument": "Onlyliteralprotocol/theory/target/blocks/proofASCIIkeys,31totalbytes; reverse Sourceunrolling leads runtimecons construction incorrectbyteorder. TEMPvalue preserved becausecanonicalcons neverwritesband13.",
+      "end": 720,
+      "executed": false,
+      "line": 699,
+      "lineage": "Newv2 Source manually read in full.",
+      "name": "_fixed_key",
+      "status": "CONDITIONAL_MANUAL_SOURCE_ARGUMENT"
+    },
+    {
+      "argument": "OUTPUTfivevalues popproof,blocks,target,theory,protocol; buildrawkey/valuepair thenprependrow intorowlist heldSTACKword. Wraptag0 andcheckemptyOUTPUT/TASKS/FRAMES, clearSTACKword->emptycolon. RETURNrequestroot survivescleanup.",
+      "end": 745,
+      "executed": false,
+      "line": 723,
+      "lineage": "Newv2 Source manually read in full.",
+      "name": "_request_assembly",
+      "status": "CONDITIONAL_MANUAL_SOURCE_ARGUMENT"
+    },
+    {
+      "argument": "Freshrootstaticassembly, explicitcheck/outworking>=4/invalid1/nameguard; assembleprivatebodies thenactualexecution PUBLIC3 save/schedule/validate, STACKmode switch, CERT2 save/schedule/validate, exactrequest. Initialprivateclear andfailureprefixrawowners present; noACCEPT orVMcontroller.",
+      "end": 805,
+      "executed": false,
+      "line": 748,
+      "lineage": "Newv2 Source manually read in full.",
+      "name": "install_value_boot",
+      "status": "CONDITIONAL_MANUAL_SOURCE_ARGUMENT"
+    }
+  ],
+  "source_only": true,
+  "status": "PASS_CONDITIONAL_VALUE_BODY_SOURCE_ONLY",
+  "subject_calls": 0,
+  "subject_imports": 0,
+  "table_generation_calls": 0,
+  "tools_stopped_after_freeze": true,
+  "unused_compile": true
+}

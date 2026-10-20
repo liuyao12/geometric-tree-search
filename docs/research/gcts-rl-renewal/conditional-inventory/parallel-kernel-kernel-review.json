@@ -1,0 +1,759 @@
+{
+  "G1_adopted": false,
+  "GCTS_RL_advantage_established": false,
+  "Source_recovery": [
+    {
+      "bytes": 3846,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/source-recovery-manifest-v1.json",
+      "sha256": "c246a0f6662b86f48331737905dfcfa9f6e58671e1aa6449565bde379a445c9b"
+    },
+    {
+      "bytes": 1373,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/source-recovery-successor-v2.json",
+      "sha256": "03b24b67e8c714d547647933da5c26e5fd055f69bbd2e49fd5b7b097eabe1d6e"
+    },
+    {
+      "bytes": 982,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/Sources/Root-source-recovery-v1.json",
+      "sha256": "b59ea27ff729f0cf7c6bfcfb5b625006ae89e618601377c48a7ce67c5ddbd09e"
+    }
+  ],
+  "actual_execution_authorized": false,
+  "all_function_obligations_covered": true,
+  "all_rule_branches_covered": true,
+  "author": {
+    "bytes": 51611,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/freeze_common_kernel_source_audit_v1.py",
+    "sha256": "2565683bf177f1f43206b9d4ca9f7825726c62d329974175fdd5edb7e4a00463"
+  },
+  "checker_calls": 0,
+  "checks": [
+    {
+      "check": "source-pin:serialized_kernel.py",
+      "passed": true
+    },
+    {
+      "check": "source-pin:fol_checker.tree",
+      "passed": true
+    },
+    {
+      "check": "source-pin:boundary_syntax.tree",
+      "passed": true
+    },
+    {
+      "check": "source-pin:proof_boundary.py",
+      "passed": true
+    },
+    {
+      "check": "source-pin:tree_machine.py",
+      "passed": true
+    },
+    {
+      "check": "source-pin:combined_source.tree",
+      "passed": true
+    },
+    {
+      "check": "source-pin:fixed-interpreter-encoding-contract-v1.json",
+      "passed": true
+    },
+    {
+      "check": "source-pin:basic-tiling-algorithm.md",
+      "passed": true
+    },
+    {
+      "check": "combined:literal-full-wrapper-plus-one-main-rename",
+      "passed": true
+    },
+    {
+      "check": "combined:all69-functions",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:main",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:nil",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:same",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:l1",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:l2",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:l3",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:l4",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:l5",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:l6",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:size1",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:size2",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:size3",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:second",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:third",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:append",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:reverse",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:length",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:nth",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:member",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:is_type",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:text_is",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:get",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:fields",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:signature_ok",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:tag",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:arg1",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:arg2",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:jstr",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:arr",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:make1",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:make2",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:make3",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:var",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:fun",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:all",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:imp",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:eq",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:term_ok",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:formula_ok",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:byte_less",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:next_byte",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:text_less",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:insert",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:union",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:remove",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:term_free",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:free",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:subst_args",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:subst_term",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:increment_digits",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:decimal",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:subst",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:collect_atoms",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:truth",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:valuations",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:tautology",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:induction",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:formulas_ok",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:lookup",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:check_blocks",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:references",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:proof",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:prior",
+      "passed": true
+    },
+    {
+      "check": "unique-tree-manual:rule_ok",
+      "passed": true
+    },
+    {
+      "check": "manual:complete-every-function:serialized_kernel.py",
+      "passed": true
+    },
+    {
+      "check": "manual:complete-every-function:fol_checker.tree",
+      "passed": true
+    },
+    {
+      "check": "manual:complete-every-function:boundary_syntax.tree",
+      "passed": true
+    },
+    {
+      "check": "manual:complete-every-function:proof_boundary.py",
+      "passed": true
+    },
+    {
+      "check": "manual:complete-every-function:tree_machine.py",
+      "passed": true
+    },
+    {
+      "check": "rules:all-eleven-exact-dispatch-branches",
+      "passed": true
+    },
+    {
+      "check": "fresh:complete-function-rule-obligation-matrix-v1.json",
+      "passed": true
+    },
+    {
+      "check": "fresh:common-kernel-prospective-recipes-v1.json",
+      "passed": true
+    },
+    {
+      "check": "fresh:common-kernel-source-interface-negatives-v1.json",
+      "passed": true
+    },
+    {
+      "check": "fresh:independent-full-common-kernel-Source-audit-v1.json",
+      "passed": true
+    }
+  ],
+  "compiler_calls": 0,
+  "failed_static_checks": [],
+  "findings": [
+    {
+      "changes_made": false,
+      "claim": "Checker.request does not clear the old block registry when replacing its theory.",
+      "executed": false,
+      "id": "F1",
+      "lines": [
+        29,
+        33,
+        217,
+        239
+      ],
+      "manual_counterexample": "Use the same Checker for literal requests first and second below; old empty-premise block proves bot using old axiom, then remains available under empty new theory.",
+      "predicted_reused_low_level_result": "Both requests return normally; second bot has no derivation in the new empty theory.",
+      "requests": [
+        {
+          "blocks": [
+            {
+              "conclusion": [
+                "bot"
+              ],
+              "name": "stale",
+              "premises": [],
+              "proof": [
+                {
+                  "formula": [
+                    "bot"
+                  ],
+                  "name": "old-false",
+                  "rule": "axiom"
+                }
+              ]
+            }
+          ],
+          "proof": [
+            {
+              "formula": [
+                "bot"
+              ],
+              "inputs": [],
+              "name": "stale",
+              "rule": "block"
+            }
+          ],
+          "protocol": "gcts-fol-1",
+          "target": [
+            "bot"
+          ],
+          "theory": {
+            "axioms": {
+              "old-false": [
+                "bot"
+              ]
+            },
+            "functions": {},
+            "predicates": {},
+            "schemas": []
+          }
+        },
+        {
+          "blocks": [],
+          "proof": [
+            {
+              "formula": [
+                "bot"
+              ],
+              "inputs": [],
+              "name": "stale",
+              "rule": "block"
+            }
+          ],
+          "protocol": "gcts-fol-1",
+          "target": [
+            "bot"
+          ],
+          "theory": {
+            "axioms": {},
+            "functions": {},
+            "predicates": {},
+            "schemas": []
+          }
+        }
+      ],
+      "required_invariant": "One fresh Checker per request, or a separately reviewed successor reset of blocks at the request boundary. Never infer safety for arbitrary reusable Checker.request/proof calls.",
+      "safe_entrypoints": "check(payload) constructs a new Checker for each call; tree main starts registryNone. Neither current entrypoint has this reuse bug.",
+      "severity": "HIGH_IF_LOW_LEVEL_CHECKER_IS_REUSED",
+      "source": "serialized_kernel.py"
+    },
+    {
+      "claim": "wire_word accepts arbitrary byte words, including255, not just canonical UTF8-surrogatepass strings.",
+      "executed": false,
+      "id": "F2",
+      "lines": [
+        6,
+        11,
+        27,
+        59
+      ],
+      "logical_effect": "Sound relative to a byte-word name language; not the same current host string language.",
+      "manual_counterexample": "In an otherwise valid refl(eq(var(name),var(name))) request, let the tagged variable-name string body be the single byte255. Full wire/term/formula/proof logic accepts this byte-name reflexivity, but it is outside host str UTF8 encoding image.",
+      "required_invariant": "A faithful text syntax gate must cover every nested string and object key. Qualified lexical routine is not already linked merely because it passed standalone tests.",
+      "severity": "BLOCKS_UNRESTRICTED_HOST_TREE_CORRESPONDENCE",
+      "source": "boundary_syntax.tree"
+    },
+    {
+      "claim": "boundary_words ignores extra request fields, while host check and full semantic_main reject them.",
+      "executed": false,
+      "id": "F3",
+      "lines": [
+        41,
+        43
+      ],
+      "literal_request": {
+        "blocks": [],
+        "extra": null,
+        "proof": [
+          {
+            "formula": [
+              "eq",
+              [
+                "var",
+                "x"
+              ],
+              [
+                "var",
+                "x"
+              ]
+            ],
+            "rule": "refl"
+          }
+        ],
+        "protocol": "gcts-fol-1",
+        "target": [
+          "eq",
+          [
+            "var",
+            "x"
+          ],
+          [
+            "var",
+            "x"
+          ]
+        ],
+        "theory": {
+          "axioms": {},
+          "functions": {},
+          "predicates": {},
+          "schemas": []
+        }
+      },
+      "manual_prediction": "Host check rejects extra field; helper emits the same5 selected values as a valid reflexivity request. No unsound mathematical conclusion follows, but arbitrary-input rejection correspondence is false.",
+      "required_invariant": "Restrict this author utility to already exact-five-field requests or independently validate the full input before encoding; do not silently claim utility is an input validator.",
+      "severity": "INPUT_DOMAIN_CORRESPONDENCE_GAP",
+      "source": "proof_boundary.py"
+    },
+    {
+      "claim": "The checker accepts relative to arbitrary supplied closed axioms and optional nat-induction; no built-in PA/Hilbert context license and no mandatory external full public pin is enforced by the common checker.",
+      "executed": false,
+      "id": "F4",
+      "manual_recipe": "A public theory whose named axiom is bot admits a one-line bot axiom proof. That is legitimate relative-theory derivability, not an absolute mathematical theorem. Changing target/theory when expected_problem_sha256 is None is intentionally not refused by check.",
+      "required_invariant": "Externally license and freeze complete theory/signature/schema/binder formalization and exact protocol/target, then compare full values. Hashes remain custody metadata.",
+      "severity": "PUBLIC_THEORY_LICENSE_AND_BINDING_OPEN",
+      "source": "serialized_kernel.py;fol_checker.tree;proof_boundary.py"
+    },
+    {
+      "claim": "Generic ValueError, including a native decimal integer-digit parser guard failure if enabled, is classified rejected rather than unknown_resource_budget.",
+      "executed": false,
+      "id": "F5",
+      "lines": [
+        252,
+        264
+      ],
+      "manual_recipe": "If the runtime decoder enforces decimal limitD, declare an unused function with a natural arity havingD+1 decimal digits, use an otherwise valid reflexivity proof and sufficient explicit max_bytes. Native json.loads guard can raise ValueError before logical checking; abstract tagged unary signature remains well formed. No guard value or runtime occurrence was probed here.",
+      "required_invariant": "Scope correspondence to successfully decoded admissible values under adequate native resources, or classify such native-limit failures separately in a reviewed successor. Rejection is certificate-relative and never theorem negation.",
+      "severity": "RESOURCE_STATUS_CORRESPONDENCE_GAP",
+      "source": "serialized_kernel.py"
+    },
+    {
+      "claim": "Native all-str tagged-value domain is not automatically the image of UTF8-decoded JSON bytes. Standard ASCII JSON surrogate-pair normalization must be distinguished from surrogatepass encoding.",
+      "evidence_scope": "Static reading of pinned stdlib pure-Python encoder.py lines48-68 and decoder.py lines118-125 only; C accelerator equivalence and an actual observation were not executed or certified here.",
+      "executed": false,
+      "id": "F6",
+      "manual_recipe": "Compare native name codepoints[65536] with native name codepoints[55296,56320]. Pure-Python stdlib ASCII encoder Source emits the same two Unicode escapes; decoder Source combines escaped high/low pair. The tagged UTF8-surrogatepass words differ. Thus canonical hashes alone must not identify all arbitrary native string values.",
+      "required_invariant": "State whether the theorem concerns native Checker.request values or check(payload) JSON-image values; provide a full codec/normalization argument for that domain and full-value public binding. Do not add a smaller selected theorem language silently.",
+      "severity": "SERIALIZATION_DOMAIN_AND_HASH_INJECTIVITY_OPEN",
+      "source": "serialized_kernel.py canonical/check; tree_machine.py encode_json"
+    },
+    {
+      "claim": "decoded_heap is a debug textual decoder, not a canonical or complete proof validator; tree_word assumes valid heap/root and uses internal-1 marker.",
+      "executed": false,
+      "id": "F7",
+      "manual_recipe": "Missing finalsemicolon is removed by split(... )[:-1]; raw root-1 is treated as output cons marker. Those invalid arguments are outside the trusted valid Heap path, not a new checker acceptance counterexample.",
+      "required_invariant": "Never use these helpers as validation of candidate heap records or candidate addresses. Candidate input is only atoms/cons and all actual semantic values must be checked after BOOT.",
+      "severity": "LOW_LEVEL_BOUNDARY_PRECONDITIONS",
+      "source": "proof_boundary.py decoded_heap/tree_word"
+    },
+    {
+      "claim": "Full compiler, immutable image/heap, canonical BOOT semantic values, public binding, all13 opcodes and literal physical linked machine remain distinct obligations.",
+      "executed": false,
+      "id": "F8",
+      "required_invariant": "The reviewed69-function Source is not itself a physical checker. L structural grammar and standalone UTF8 do not establish value construction/controller/linkage. Preserve BOUND/unknown and no extra accept across every interface.",
+      "severity": "FULL_PHYSICAL_CORRESPONDENCE_UNPROVED",
+      "source": "proof_boundary.py;tree_machine.py;fixed-interpreter-encoding-contract-v1.json"
+    }
+  ],
+  "fixture_calls": 0,
+  "fresh_public_check_rule_soundness": "No rule-level counterexample found; conditional manual relative-theory argument above.",
+  "frozen_files_mutated": false,
+  "full_Source_read": [
+    "master contract",
+    "full fixed-interpreter design",
+    "full serialized_kernel",
+    "full64-function folchecker",
+    "full5-function wirewrapper",
+    "full69-function combinedSource",
+    "full proof_boundary",
+    "full tree_machine"
+  ],
+  "full_physical_VM_qualified": false,
+  "function_count": 128,
+  "goal_status": "active",
+  "helper_calls": 0,
+  "interface_negatives": {
+    "bytes": 9877,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/common-kernel-source-interface-negatives-v1.json",
+    "sha256": "a6696af08ff4fa5699a865c492d4d1a928aa68b99e4bfbfcef534939b7a70f8b"
+  },
+  "manual_relative_soundness_argument": {
+    "PA_scope": "Only exact externally licensed full PAaxioms plus arbitrary nat-induction templates can justify PAderivations. zero/succ symbolnames alone do not make a model natural numbers. Additional functions/predicates with induction require explicit theorylicense.",
+    "claim": "For a fresh one-request checker, valid finite input and faithfully bound licensed theory \\(T\\), if checking terminates with acceptance then \\(T\\vdash A\\) in the displayed classical first-order calculus with equality and precisely the enabled induction schema. Consequently every intended model of those licensed axioms/schema satisfies \\(A\\).",
+    "epistemic_status": "Independent manual Source argument with concrete interface counterexample recipes; conditional, not a mechanized proof. No rule-level counterexample found in fresh valid-domain entrypoint; not a certification of every low-levelAPI.",
+    "geometry_scope": "Current signature is one-sorted first-order arities. Points/lines/planes, incidence/betweenness/congruence, dimensions and binder/classfield encodings must all be faithfully formalized/licensed externally before any Hilbert/Euclidean theorem claim. No explicit Euclidean picture is used.",
+    "not_claimed": [
+      "mechanized soundness theorem",
+      "runtime qualification of common checker or full VM",
+      "complete proof search",
+      "PA consistency or soundness",
+      "Hilbert geometry formalization adequacy",
+      "GCTS or RL contribution/speedup",
+      "any new discovered mathematical theorem"
+    ],
+    "proof_plan": [
+      "Simultaneous structural induction for term/formula validation and faithful representation, then free-variable and capture-avoiding substitution lemmas. Names are uninterpreted symbols; arbitrary bijective renaming does not supply intended geometry.",
+      "For each of the11 rule rows, prove semantic validity under any assignment satisfying closed theoryaxioms, enabledschemas and current blockpremises. Generalization uses the complete forbidden free-variable set.",
+      "Induct over prior blockregistry: each block is a sound sequent under its own exactpremises and the same unchangedtheory. Blockcall applies it only to strictlyprior exactpremise lines.",
+      "Within each proof, induct over appended provedprefix. Every line is wellformed and entailed by currentpremises. Lastline exacttarget concludes; top-level assumptions empty.",
+      "Use same full grammar/constructors and deterministic captureavoidance to obtain host/tree acceptance correspondence only on the stated common representation domain, fresh state and adequate resource conditions. F2/F3/F5/F6 prevent an unqualified all-input/status theorem now.",
+      "Separately prove Source->bytecode->BOOT semanticvalues->physical machine->Wang rows->point t/m acceptance, noextraaccept and publicpin equality. None follows from this manual rule argument."
+    ]
+  },
+  "matrix": {
+    "bytes": 106741,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/complete-function-rule-obligation-matrix-v1.json",
+    "sha256": "61e5065faae06f13bf68139d1d48d869f4c434d887cf816f0ca71c8b524f3699"
+  },
+  "mechanized_proof": false,
+  "new_actual_invocations": 0,
+  "new_grants": 0,
+  "new_theorem": false,
+  "old_G0_negative_unchanged": true,
+  "partial_files_opened": 0,
+  "primary_reader_index_active_mutated": false,
+  "prospective_recipes": {
+    "bytes": 69740,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/common-kernel-prospective-recipes-v1.json",
+    "sha256": "65d8189a2a044199e71f51cdd9b252b4ef371c4f698f3e5a4faaec074a863f86"
+  },
+  "remaining_gaps": [
+    "F1: Checker.request does not clear the old block registry when replacing its theory.",
+    "F2: wire_word accepts arbitrary byte words, including255, not just canonical UTF8-surrogatepass strings.",
+    "F3: boundary_words ignores extra request fields, while host check and full semantic_main reject them.",
+    "F4: The checker accepts relative to arbitrary supplied closed axioms and optional nat-induction; no built-in PA/Hilbert context license and no mandatory external full public pin is enforced by the common checker.",
+    "F5: Generic ValueError, including a native decimal integer-digit parser guard failure if enabled, is classified rejected rather than unknown_resource_budget.",
+    "F6: Native all-str tagged-value domain is not automatically the image of UTF8-decoded JSON bytes. Standard ASCII JSON surrogate-pair normalization must be distinguished from surrogatepass encoding.",
+    "F7: decoded_heap is a debug textual decoder, not a canonical or complete proof validator; tree_word assumes valid heap/root and uses internal-1 marker.",
+    "F8: Full compiler, immutable image/heap, canonical BOOT semantic values, public binding, all13 opcodes and literal physical linked machine remain distinct obligations."
+  ],
+  "review_author_metadata_negative": {
+    "cause": "Explicit full AST inventory caught omission of two nested non-inference helper rows, validate.integer and run.finish, from the compiler support matrix. Add their strict-int-bound and metadata-only receipt obligations; no checker Source changed, called, imported or simulated. No audit report was emitted before correction.",
+    "compiler_calls": 0,
+    "failed_check": "manual:complete-every-function:tree_machine.py",
+    "fixture_calls": 0,
+    "missing_functions": [
+      "validate.integer",
+      "run.finish"
+    ],
+    "raw_author_preimage": {
+      "bytes": 51120,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/kernel-audit-author-preimage-v1.py",
+      "sha256": "d8afca2c91e7149b6f2a5083234f2510c4164554ae7e32cb1d044c3d8ab639e4"
+    },
+    "schema": "Source-audit-metadata-author-negative-v1",
+    "source_files_mutated": false,
+    "subject_calls": 0,
+    "subject_imports": 0
+  },
+  "review_author_metadata_negative_pin": {
+    "bytes": 956,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/kernel-audit-author-negative-v1.json",
+    "sha256": "385c1fef9315f96207d72dd7659eabe16ee755f918a95612b458ec52a24c447d"
+  },
+  "reviewer_identity": "/root/recovered_batch_review",
+  "rule_count": 11,
+  "runtime_qualified": false,
+  "schema": "independent-full-common-kernel-correspondence-Source-audit-v1",
+  "semantic_replays": 0,
+  "simulator_calls": 0,
+  "sizing_probes": 0,
+  "source_only": true,
+  "source_recovery_note": "Initial exact git blob was missing in promisor clone; failed read-only retrieval preserved. Root recovered exact bytes through read-only git/blob API; sha/length verified before copying. No smaller kernel retyped or substituted.",
+  "sources": [
+    {
+      "bytes": 13977,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/Sources/serialized_kernel.py",
+      "sha256": "045cdba67ead9f12e91c702736fa09a5ae4d9796aea86831d65b245031a261f4"
+    },
+    {
+      "bytes": 17577,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/Sources/fol_checker.tree",
+      "sha256": "8c86a24231d9c7d1777d7998b747a8cfd07087c168da64db6c5dff0820c802ed"
+    },
+    {
+      "bytes": 1739,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/Sources/boundary_syntax.tree",
+      "sha256": "b19efd9bb2b599c1eefb7a62b5b92257483c809e63a81431f683064acd60c25c"
+    },
+    {
+      "bytes": 6992,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/Sources/proof_boundary.py",
+      "sha256": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f"
+    },
+    {
+      "bytes": 13290,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/Sources/tree_machine.py",
+      "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257"
+    },
+    {
+      "bytes": 19325,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/Sources/combined_source.tree",
+      "sha256": "8b3b0af5a4f36a6eb01c8ad080b420bb014af84f647e8e95d0f61832edbb4623"
+    },
+    {
+      "bytes": 22116,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/Sources/fixed-interpreter-encoding-contract-v1.json",
+      "sha256": "356d2160f3a038260053b3973945e1aa1deb2cbd1bfc0a9d417337e45b36c539"
+    },
+    {
+      "bytes": 36240,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/Sources/basic-tiling-algorithm.md",
+      "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+    }
+  ],
+  "static_metadata_only": {
+    "AST_parses": 6,
+    "research_code_executed": false,
+    "unused_compiles": 6
+  },
+  "status": "SOURCE_AUDIT_COMPLETE_WITH_INTERFACE_COUNTEREXAMPLES",
+  "subject_calls": 0,
+  "subject_imports": 0,
+  "supporting_stdlib_Source": [
+    {
+      "pin": {
+        "bytes": 16075,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/Sources/stdlib-json-encoder.py",
+        "sha256": "52bfb1b66029cc70fa3bd7fe11df9f2e03922d413407a341b387a22c987f24f8"
+      },
+      "reviewed_lines": [
+        48,
+        68
+      ],
+      "scope": "Pure-Python ASCII string encoder Source only; C accelerator not audited or executed."
+    },
+    {
+      "pin": {
+        "bytes": 12525,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/Sources/stdlib-json-decoder.py",
+        "sha256": "382cd02af6f7efede5a6d4abbcda1015e5c7a75794b0016022878f9cf32a24f6"
+      },
+      "reviewed_lines": [
+        118,
+        125
+      ],
+      "scope": "Pure-Python escaped-surrogate combination Source only; C accelerator not audited or executed."
+    }
+  ],
+  "table_generation_calls": 0,
+  "tools_stopped_after_freeze": true,
+  "whole_host_tree_correspondence_qualified": false
+}

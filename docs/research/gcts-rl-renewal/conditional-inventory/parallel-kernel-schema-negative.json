@@ -1,0 +1,175 @@
+{
+  "AST_parses": 2,
+  "G1_adopted": false,
+  "actual_execution_authorized": false,
+  "author": {
+    "bytes": 5718,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/freeze_parent_snapshot_negative_v1.py",
+    "sha256": "2a868e0982f8d8e9fd3124d3284f0ef4c58f0109b06dea5ad335d4aa3518ee26"
+  },
+  "checker_calls": 0,
+  "checks": [
+    {
+      "check": "pin:implicit_wang_point_search_v1.py",
+      "passed": true
+    },
+    {
+      "check": "fresh:implicit_wang_point_search_v1.py",
+      "passed": true
+    },
+    {
+      "check": "pin:validate_linked_evidence_v1.py",
+      "passed": true
+    },
+    {
+      "check": "fresh:validate_linked_evidence_v1.py",
+      "passed": true
+    },
+    {
+      "check": "both14keys",
+      "passed": true
+    },
+    {
+      "check": "exact-single-key-mismatch",
+      "passed": true
+    },
+    {
+      "check": "worker-retains-snapshot-unchanged",
+      "passed": true
+    },
+    {
+      "check": "fresh-negative",
+      "passed": true
+    }
+  ],
+  "compiler_calls": 0,
+  "custody_only_successor_handoff": {
+    "bytes": 2773,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/schema-B/custody-v2/handoff-v2.json",
+    "sha256": "88b6905335dfec7704ec6fb05ac7c0f49f4b4c5e7a5104ae875574a8a7f88171"
+  },
+  "failed_static_metadata_checks": [],
+  "fixture_calls": 0,
+  "frozen_offer": {
+    "bytes": 26901,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/linked-parent-negative-preimages-v1/handoff-v1.json",
+    "sha256": "24fc6d6463bec5935cf92004ba16e3514d983896f212be149d4d3bf62940607b"
+  },
+  "frozen_sources_mutated": false,
+  "full_offer_review_completed": false,
+  "goal_status": "active",
+  "graph_emitter": {
+    "core_keys": [
+      "points",
+      "chosen",
+      "marks",
+      "domains",
+      "exclusions"
+    ],
+    "end": 615,
+    "full_snapshot_keys": [
+      "branch_stack",
+      "chosen",
+      "dependencies",
+      "domains",
+      "exclusions",
+      "marks",
+      "mode",
+      "palette_descriptor",
+      "points",
+      "reason",
+      "rollback_parent",
+      "scheduler",
+      "schema",
+      "work"
+    ],
+    "function": "_observe",
+    "line": 576,
+    "updated_keys": [
+      "schema",
+      "reason",
+      "mode",
+      "palette_descriptor",
+      "dependencies",
+      "branch_stack",
+      "scheduler",
+      "rollback_parent",
+      "work"
+    ]
+  },
+  "helper_calls": 0,
+  "independent_confirmation": "B author reported this separate issue while deriving bounds; reviewer independently read and AST-extracted exact emitted/core and required sets from frozen Sources. No graph observation was regenerated.",
+  "manual_argument": "Every actual complete graph snapshot retains palette_descriptor. Worker stores that snapshot without a rename. Exact-set validation requires descriptor instead, so inspecting any such observation fails even when all graph checking and complete value correspondence succeeded. The custody-onlyv2 leaves this validator unchanged.",
+  "mismatch": {
+    "present_unexpected": "palette_descriptor",
+    "required_absent": "descriptor"
+  },
+  "new_actuals": 0,
+  "new_grants": 0,
+  "old_G0_negative_unchanged": true,
+  "partial_files_opened": 0,
+  "primary_reader_index_active_mutated": false,
+  "raw_preimages": [
+    {
+      "bytes": 36892,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/parent-snapshot-negative-preimages-v1/implicit_wang_point_search_v1.py",
+      "sha256": "1a83c9c59b2e1862d5a2acda69b826ccc3a8e2cf4899e824286f711f8bf25981"
+    },
+    {
+      "bytes": 33471,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/parent-snapshot-negative-preimages-v1/validate_linked_evidence_v1.py",
+      "sha256": "b87dd325e260a0ef57f914f9b3da00519a26bd8bcff0c1e3a4c4e7c96254a95d"
+    }
+  ],
+  "required_successor": "Preserve original emitted palette_descriptor and every descendant; separately named schema successor must require its exact correct field and add a real original-shape/renamed-shape unrun control. Do not rename/trim old graph evidence to satisfy wrong schema.",
+  "review_passed": false,
+  "reviewer_identity": "/root/recovered_batch_review",
+  "schema": "typed-linked-parent-snapshot-schema-negative-v1",
+  "schema_requirement": {
+    "end": 236,
+    "function": "_packet_population",
+    "line": 138,
+    "required_exact_keys": [
+      "branch_stack",
+      "chosen",
+      "dependencies",
+      "descriptor",
+      "domains",
+      "exclusions",
+      "marks",
+      "mode",
+      "points",
+      "reason",
+      "rollback_parent",
+      "scheduler",
+      "schema",
+      "work"
+    ]
+  },
+  "scope": "Encoding/completeness defect in candidate parent schema, not an observed graph failure, false theorem, resource result or G1adoption.",
+  "semantic_replays": 0,
+  "simulator_calls": 0,
+  "sizing_probes": 0,
+  "source_only": true,
+  "status": "FAIL_SOURCE_GRAPH_SNAPSHOT_SCHEMA_MISMATCH",
+  "subject_calls": 0,
+  "subject_imports": 0,
+  "tools_stopped_after_freeze": true,
+  "unrun_recipes": [
+    {
+      "executed": false,
+      "id": "real-original-shape",
+      "recipe": "Future fullparent suppliedwith real complete graph observation whose14keysinclude palette_descriptor must pass this shape gate if all otherobligations hold."
+    },
+    {
+      "executed": false,
+      "id": "incorrect-rename",
+      "recipe": "Rename palette_descriptor to descriptor whilekeepingfullpayload; independentexpectedvalue join and correctschema mustrefuse, notrepair."
+    },
+    {
+      "executed": false,
+      "id": "full-original-graph-population",
+      "recipe": "Retain all10graphcases/everyobservation/rollback/domain/scheduler/output and allold15/33+28/55. A literalone-rowshapecontrol isnotfullqualification."
+    }
+  ]
+}

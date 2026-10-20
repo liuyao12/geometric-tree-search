@@ -1,0 +1,245 @@
+{
+  "G1_adopted": false,
+  "GCTS_RL_advantage_established": false,
+  "actual_execution_authorized": false,
+  "all20_recipes_unrun": true,
+  "author": {
+    "bytes": 6528,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/freeze_named_custody_delta_v2_review.py",
+    "sha256": "55c73e0f17dbe48a8af10f4eb1ea65f3cada5aa936c84e58008f01332723fc71"
+  },
+  "checker_calls": 0,
+  "checks": [
+    {
+      "check": "exact-handoff",
+      "passed": true
+    },
+    {
+      "check": "pin:named_owner_seal_v2.fragment.py",
+      "passed": true
+    },
+    {
+      "check": "fresh:named_owner_seal_v2.fragment.py",
+      "passed": true
+    },
+    {
+      "check": "pin:worker_integration_v2.fragment.py",
+      "passed": true
+    },
+    {
+      "check": "fresh:worker_integration_v2.fragment.py",
+      "passed": true
+    },
+    {
+      "check": "pin:qualify_linked_batch_worker_v2.py",
+      "passed": true
+    },
+    {
+      "check": "fresh:qualify_linked_batch_worker_v2.py",
+      "passed": true
+    },
+    {
+      "check": "pin:manual-delta-v2.json",
+      "passed": true
+    },
+    {
+      "check": "fresh:manual-delta-v2.json",
+      "passed": true
+    },
+    {
+      "check": "pin:unrun-custody-recipes-v2.json",
+      "passed": true
+    },
+    {
+      "check": "fresh:unrun-custody-recipes-v2.json",
+      "passed": true
+    },
+    {
+      "check": "pin:static-audit-v2.json",
+      "passed": true
+    },
+    {
+      "check": "fresh:static-audit-v2.json",
+      "passed": true
+    },
+    {
+      "check": "fresh-handoff",
+      "passed": true
+    },
+    {
+      "check": "worker-exact-seal-and-version-delta",
+      "passed": true
+    },
+    {
+      "check": "fragment-only-exact-seal-delta",
+      "passed": true
+    },
+    {
+      "check": "all20-unrun-controls",
+      "passed": true
+    },
+    {
+      "check": "class-bindings-explicit",
+      "passed": true
+    },
+    {
+      "check": "aliases-not-deduped-before-edge",
+      "passed": true
+    },
+    {
+      "check": "strong-owners-retained",
+      "passed": true
+    },
+    {
+      "check": "main-still-refuses",
+      "passed": true
+    },
+    {
+      "check": "fresh-review",
+      "passed": true
+    }
+  ],
+  "compiler_calls": 0,
+  "failed_checks": [],
+  "fixture_calls": 0,
+  "frozen_v1_mutated": false,
+  "full_VM_qualified": false,
+  "full_offer_review_completed": false,
+  "goal_status": "active",
+  "handoff": {
+    "bytes": 2773,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/named-custody-Sources-v2/handoff-v2.json",
+    "sha256": "88b6905335dfec7704ec6fb05ac7c0f49f4b4c5e7a5104ae875574a8a7f88171"
+  },
+  "helper_calls": 0,
+  "manual_findings": [
+    {
+      "argument": "Everyclassmember recordsname,exactdescriptortypeid,descriptorownerid,target/accessors. SwappingFacade.count_query/select_query changesnamededges evenwithsamefunctionnodeset;66b418counterexample is addressed.",
+      "finding": "Namedclassedges"
+    },
+    {
+      "argument": "Nodes visitedonce buteachprocessednode recordsallordered/namedoutgoingedges beforeworklistvisits. Repeatednamedaliases/default/closureslots retainmultiplicity andassociation.",
+      "finding": "Allaliasedges"
+    },
+    {
+      "argument": "Functionid/code/defaulttuple/kwdefaultdict/closurecellowners included; eachpositionaldefaultindex andnamedkeyword default pluscellindex/availability/contentowner recorded. Emptycell differsfrompresentNone.",
+      "finding": "Functionslots"
+    },
+    {
+      "argument": "Exactstaticmethod/classmethod targets, propertyfget/fset/fdel/docowner, bases andMRO mappings included. Exacttype/functionscope avoidsarbitrarymetaclass/descriptoraccesscallbacks; mutablecontainercontents remainseparate literalguards.",
+      "finding": "Descriptorsandclasses"
+    },
+    {
+      "argument": "Returned_NamedOwnerSeal ownsactualoriginalfunctions/code/defaults/kwdict/cells/contents/classes/descriptors/accessors/bases/MRO. IDsarediagnosticbindings, notruntimeownerreconstruction.",
+      "finding": "Strongcustody"
+    },
+    {
+      "argument": "Rows containonlybuiltinscalars andtuples; comparison nevercomparesarbitraryowners. Explicitnodevisitedset terminatesfinitefunction/classcycles; allaliasedgesstillrecorded.",
+      "finding": "Safeequalityandcycles"
+    },
+    {
+      "argument": "Seal.rows/owners areordinaryRootownedattributes, notimmutableorhostileintrospectionsecurity. Rootmustretainandprotectthebaseline; noarbitrarymutation/concurrency sandbox isclaimed.",
+      "finding": "Baselineprotection"
+    },
+    {
+      "argument": "ThisaddedownergraphtraversalcostsCPU/memory andretention; noRootcallbackcredit, fit, fullG1schema orruntimequalification follows.",
+      "finding": "Costs"
+    }
+  ],
+  "mutation_fixture_calls": 0,
+  "new_actuals": 0,
+  "new_grants": 0,
+  "new_theorem": false,
+  "old_G0_negative_unchanged": true,
+  "partial_files_opened": 0,
+  "pins": [
+    {
+      "bytes": 4195,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/named-custody-Sources-v2/named_owner_seal_v2.fragment.py",
+      "sha256": "43c7792e1a82a78d5a93ac63323f7fc046afe8a88e37f191a189e93cb391abd0"
+    },
+    {
+      "bytes": 15389,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/named-custody-Sources-v2/worker_integration_v2.fragment.py",
+      "sha256": "f3488d985827a8bd60b07644596a8346116a5aa0486e1f9db81c8554d6096a50"
+    },
+    {
+      "bytes": 122173,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/named-custody-Sources-v2/qualify_linked_batch_worker_v2.py",
+      "sha256": "463c2bb80ab5ee5bae2cb58fe635f82c45e812e997a2498dfb5da027632ca932"
+    },
+    {
+      "bytes": 2572,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/named-custody-Sources-v2/manual-delta-v2.json",
+      "sha256": "ee8bce47f92b5d1395b1e3d1673de8c62df7b0df4126c09817fef94547740c7c"
+    },
+    {
+      "bytes": 4673,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/named-custody-Sources-v2/unrun-custody-recipes-v2.json",
+      "sha256": "fe93d80abc027f515f1b8f76dfbaf3e8cfcb58678ce495913dae722915d3e31c"
+    },
+    {
+      "bytes": 1439,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/named-custody-Sources-v2/static-audit-v2.json",
+      "sha256": "6cec2f03a48416bf0c1ab79e0460052a7cd726c5bbe4cc7d6debc7f6df7dd316"
+    }
+  ],
+  "primary_reader_index_active_mutated": false,
+  "retained_negative": {
+    "bytes": 16636,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/typed-linked-parent-Source-custody-negative-v1.json",
+    "sha256": "66b418285700b49d0101bd1449d21607e1976bc4d6decac0bac64695b1a42d90"
+  },
+  "review_passed": true,
+  "reviewer_identity": "/root/recovered_batch_review",
+  "runtime_qualified": false,
+  "schema": "typed-linked-named-custody-v2-Source-delta-review-v1",
+  "semantic_replays": 0,
+  "separate_unfixed_schema_negative": {
+    "bytes": 6027,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/typed-linked-parent-snapshot-schema-negative-v1.json",
+    "sha256": "02aa31a0f65f7b73b7223af3277004d952d54bde7c62db4f2688f612630f7989"
+  },
+  "simulator_calls": 0,
+  "sizing_probes": 0,
+  "source_only": true,
+  "specific_counterexample_fixed_manually": true,
+  "static_metadata": [
+    {
+      "AST_parse": true,
+      "executed": false,
+      "source": {
+        "bytes": 4195,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/named-custody-Sources-v2/named_owner_seal_v2.fragment.py",
+        "sha256": "43c7792e1a82a78d5a93ac63323f7fc046afe8a88e37f191a189e93cb391abd0"
+      },
+      "unused_compile": true
+    },
+    {
+      "AST_parse": true,
+      "executed": false,
+      "source": {
+        "bytes": 15389,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/named-custody-Sources-v2/worker_integration_v2.fragment.py",
+        "sha256": "f3488d985827a8bd60b07644596a8346116a5aa0486e1f9db81c8554d6096a50"
+      },
+      "unused_compile": true
+    },
+    {
+      "AST_parse": true,
+      "executed": false,
+      "source": {
+        "bytes": 122173,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/named-custody-Sources-v2/qualify_linked_batch_worker_v2.py",
+        "sha256": "463c2bb80ab5ee5bae2cb58fe635f82c45e812e997a2498dfb5da027632ca932"
+      },
+      "unused_compile": true
+    }
+  ],
+  "status": "PASS_SPECIFIC_SOURCE_DELTA_ONLY",
+  "subject_calls": 0,
+  "subject_imports": 0,
+  "tools_stopped_after_freeze": true,
+  "unfixed_remaining": "Graphsnapshotshape02aa31negative persists becausev2changesonlyworkerownerfunction/version. Fullproducer/schema/events/outeradmission/resourcefit review remains incomplete/open.",
+  "whole_15_33_28_55_qualification_not_substituted": true
+}

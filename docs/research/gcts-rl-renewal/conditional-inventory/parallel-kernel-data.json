@@ -1,0 +1,3595 @@
+{
+  "findings": [
+    {
+      "changes_made": false,
+      "claim": "Checker.request does not clear the old block registry when replacing its theory.",
+      "executed": false,
+      "id": "F1",
+      "lines": [
+        29,
+        33,
+        217,
+        239
+      ],
+      "manual_counterexample": "Use the same Checker for literal requests first and second below; old empty-premise block proves bot using old axiom, then remains available under empty new theory.",
+      "predicted_reused_low_level_result": "Both requests return normally; second bot has no derivation in the new empty theory.",
+      "requests": [
+        {
+          "blocks": [
+            {
+              "conclusion": [
+                "bot"
+              ],
+              "name": "stale",
+              "premises": [],
+              "proof": [
+                {
+                  "formula": [
+                    "bot"
+                  ],
+                  "name": "old-false",
+                  "rule": "axiom"
+                }
+              ]
+            }
+          ],
+          "proof": [
+            {
+              "formula": [
+                "bot"
+              ],
+              "inputs": [],
+              "name": "stale",
+              "rule": "block"
+            }
+          ],
+          "protocol": "gcts-fol-1",
+          "target": [
+            "bot"
+          ],
+          "theory": {
+            "axioms": {
+              "old-false": [
+                "bot"
+              ]
+            },
+            "functions": {},
+            "predicates": {},
+            "schemas": []
+          }
+        },
+        {
+          "blocks": [],
+          "proof": [
+            {
+              "formula": [
+                "bot"
+              ],
+              "inputs": [],
+              "name": "stale",
+              "rule": "block"
+            }
+          ],
+          "protocol": "gcts-fol-1",
+          "target": [
+            "bot"
+          ],
+          "theory": {
+            "axioms": {},
+            "functions": {},
+            "predicates": {},
+            "schemas": []
+          }
+        }
+      ],
+      "required_invariant": "One fresh Checker per request, or a separately reviewed successor reset of blocks at the request boundary. Never infer safety for arbitrary reusable Checker.request/proof calls.",
+      "safe_entrypoints": "check(payload) constructs a new Checker for each call; tree main starts registryNone. Neither current entrypoint has this reuse bug.",
+      "severity": "HIGH_IF_LOW_LEVEL_CHECKER_IS_REUSED",
+      "source": "serialized_kernel.py"
+    },
+    {
+      "claim": "wire_word accepts arbitrary byte words, including255, not just canonical UTF8-surrogatepass strings.",
+      "executed": false,
+      "id": "F2",
+      "lines": [
+        6,
+        11,
+        27,
+        59
+      ],
+      "logical_effect": "Sound relative to a byte-word name language; not the same current host string language.",
+      "manual_counterexample": "In an otherwise valid refl(eq(var(name),var(name))) request, let the tagged variable-name string body be the single byte255. Full wire/term/formula/proof logic accepts this byte-name reflexivity, but it is outside host str UTF8 encoding image.",
+      "required_invariant": "A faithful text syntax gate must cover every nested string and object key. Qualified lexical routine is not already linked merely because it passed standalone tests.",
+      "severity": "BLOCKS_UNRESTRICTED_HOST_TREE_CORRESPONDENCE",
+      "source": "boundary_syntax.tree"
+    },
+    {
+      "claim": "boundary_words ignores extra request fields, while host check and full semantic_main reject them.",
+      "executed": false,
+      "id": "F3",
+      "lines": [
+        41,
+        43
+      ],
+      "literal_request": {
+        "blocks": [],
+        "extra": null,
+        "proof": [
+          {
+            "formula": [
+              "eq",
+              [
+                "var",
+                "x"
+              ],
+              [
+                "var",
+                "x"
+              ]
+            ],
+            "rule": "refl"
+          }
+        ],
+        "protocol": "gcts-fol-1",
+        "target": [
+          "eq",
+          [
+            "var",
+            "x"
+          ],
+          [
+            "var",
+            "x"
+          ]
+        ],
+        "theory": {
+          "axioms": {},
+          "functions": {},
+          "predicates": {},
+          "schemas": []
+        }
+      },
+      "manual_prediction": "Host check rejects extra field; helper emits the same5 selected values as a valid reflexivity request. No unsound mathematical conclusion follows, but arbitrary-input rejection correspondence is false.",
+      "required_invariant": "Restrict this author utility to already exact-five-field requests or independently validate the full input before encoding; do not silently claim utility is an input validator.",
+      "severity": "INPUT_DOMAIN_CORRESPONDENCE_GAP",
+      "source": "proof_boundary.py"
+    },
+    {
+      "claim": "The checker accepts relative to arbitrary supplied closed axioms and optional nat-induction; no built-in PA/Hilbert context license and no mandatory external full public pin is enforced by the common checker.",
+      "executed": false,
+      "id": "F4",
+      "manual_recipe": "A public theory whose named axiom is bot admits a one-line bot axiom proof. That is legitimate relative-theory derivability, not an absolute mathematical theorem. Changing target/theory when expected_problem_sha256 is None is intentionally not refused by check.",
+      "required_invariant": "Externally license and freeze complete theory/signature/schema/binder formalization and exact protocol/target, then compare full values. Hashes remain custody metadata.",
+      "severity": "PUBLIC_THEORY_LICENSE_AND_BINDING_OPEN",
+      "source": "serialized_kernel.py;fol_checker.tree;proof_boundary.py"
+    },
+    {
+      "claim": "Generic ValueError, including a native decimal integer-digit parser guard failure if enabled, is classified rejected rather than unknown_resource_budget.",
+      "executed": false,
+      "id": "F5",
+      "lines": [
+        252,
+        264
+      ],
+      "manual_recipe": "If the runtime decoder enforces decimal limitD, declare an unused function with a natural arity havingD+1 decimal digits, use an otherwise valid reflexivity proof and sufficient explicit max_bytes. Native json.loads guard can raise ValueError before logical checking; abstract tagged unary signature remains well formed. No guard value or runtime occurrence was probed here.",
+      "required_invariant": "Scope correspondence to successfully decoded admissible values under adequate native resources, or classify such native-limit failures separately in a reviewed successor. Rejection is certificate-relative and never theorem negation.",
+      "severity": "RESOURCE_STATUS_CORRESPONDENCE_GAP",
+      "source": "serialized_kernel.py"
+    },
+    {
+      "claim": "Native all-str tagged-value domain is not automatically the image of UTF8-decoded JSON bytes. Standard ASCII JSON surrogate-pair normalization must be distinguished from surrogatepass encoding.",
+      "evidence_scope": "Static reading of pinned stdlib pure-Python encoder.py lines48-68 and decoder.py lines118-125 only; C accelerator equivalence and an actual observation were not executed or certified here.",
+      "executed": false,
+      "id": "F6",
+      "manual_recipe": "Compare native name codepoints[65536] with native name codepoints[55296,56320]. Pure-Python stdlib ASCII encoder Source emits the same two Unicode escapes; decoder Source combines escaped high/low pair. The tagged UTF8-surrogatepass words differ. Thus canonical hashes alone must not identify all arbitrary native string values.",
+      "required_invariant": "State whether the theorem concerns native Checker.request values or check(payload) JSON-image values; provide a full codec/normalization argument for that domain and full-value public binding. Do not add a smaller selected theorem language silently.",
+      "severity": "SERIALIZATION_DOMAIN_AND_HASH_INJECTIVITY_OPEN",
+      "source": "serialized_kernel.py canonical/check; tree_machine.py encode_json"
+    },
+    {
+      "claim": "decoded_heap is a debug textual decoder, not a canonical or complete proof validator; tree_word assumes valid heap/root and uses internal-1 marker.",
+      "executed": false,
+      "id": "F7",
+      "manual_recipe": "Missing finalsemicolon is removed by split(... )[:-1]; raw root-1 is treated as output cons marker. Those invalid arguments are outside the trusted valid Heap path, not a new checker acceptance counterexample.",
+      "required_invariant": "Never use these helpers as validation of candidate heap records or candidate addresses. Candidate input is only atoms/cons and all actual semantic values must be checked after BOOT.",
+      "severity": "LOW_LEVEL_BOUNDARY_PRECONDITIONS",
+      "source": "proof_boundary.py decoded_heap/tree_word"
+    },
+    {
+      "claim": "Full compiler, immutable image/heap, canonical BOOT semantic values, public binding, all13 opcodes and literal physical linked machine remain distinct obligations.",
+      "executed": false,
+      "id": "F8",
+      "required_invariant": "The reviewed69-function Source is not itself a physical checker. L structural grammar and standalone UTF8 do not establish value construction/controller/linkage. Preserve BOUND/unknown and no extra accept across every interface.",
+      "severity": "FULL_PHYSICAL_CORRESPONDENCE_UNPROVED",
+      "source": "proof_boundary.py;tree_machine.py;fixed-interpreter-encoding-contract-v1.json"
+    }
+  ],
+  "matrix": {
+    "function_count": 128,
+    "functions": [
+      {
+        "end": 21,
+        "line": 19,
+        "manual_argument": "ensure_ascii sorted compact JSON and noNaN; not injective over every arbitrary native surrogate-string sequence. Never substitute a digest for full public-value equality.",
+        "mechanized_correspondence": false,
+        "name": "canonical",
+        "positional_arity": 1,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "serialized_kernel.py",
+        "tree_relation": "No semantic tree equivalent; custody serialization"
+      },
+      {
+        "end": 26,
+        "line": 23,
+        "manual_argument": "Hashes only protocol/theory/target. Proof and block proposals intentionally excluded. Optional hash alone does not certify theory licensing or every native-string distinction.",
+        "mechanized_correspondence": false,
+        "name": "problem_hash",
+        "positional_arity": 1,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "serialized_kernel.py",
+        "tree_relation": "External public problem binding"
+      },
+      {
+        "end": 33,
+        "line": 29,
+        "manual_argument": "Fresh stats and empty blocks establish one-request invariant; required for public check soundness. Reuse across different theories violates it.",
+        "mechanized_correspondence": false,
+        "name": "Checker.__init__",
+        "positional_arity": 2,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "serialized_kernel.py",
+        "tree_relation": "main local initialization"
+      },
+      {
+        "end": 39,
+        "line": 35,
+        "manual_argument": "Work accounting/Resource only; does not decide logical validity. Native memory/parser/recursion and tree VM budgets are distinct.",
+        "mechanized_correspondence": false,
+        "name": "Checker.tick",
+        "positional_arity": 2,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "serialized_kernel.py",
+        "tree_relation": "No exact tree cost equivalence"
+      },
+      {
+        "end": 44,
+        "line": 41,
+        "manual_argument": "Exact native dict and exact key set; parser pairs rejects duplicates before dict construction.",
+        "mechanized_correspondence": false,
+        "name": "Checker.fields",
+        "positional_arity": 3,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "serialized_kernel.py",
+        "tree_relation": "fields"
+      },
+      {
+        "end": 49,
+        "line": 46,
+        "manual_argument": "Exact native str; strings are names, no geometric interpretation or restricted catalogue.",
+        "mechanized_correspondence": false,
+        "name": "Checker.string",
+        "positional_arity": 2,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "serialized_kernel.py",
+        "tree_relation": "is_type2 plus faithful text boundary"
+      },
+      {
+        "end": 54,
+        "line": 51,
+        "manual_argument": "Exact native list excludes tuples and Boolean/integer aliases.",
+        "mechanized_correspondence": false,
+        "name": "Checker.sequence",
+        "positional_arity": 2,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "serialized_kernel.py",
+        "tree_relation": "is_type1 plus wire_value"
+      },
+      {
+        "end": 59,
+        "line": 56,
+        "manual_argument": "Exact int excludes bool, nonnegative; arbitrary finite size abstractly, subject to parser/resource conditions.",
+        "mechanized_correspondence": false,
+        "name": "Checker.natural",
+        "positional_arity": 2,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "serialized_kernel.py",
+        "tree_relation": "is_type3 plus wire_ones"
+      },
+      {
+        "end": 64,
+        "line": 61,
+        "manual_argument": "Exact object, all string keys and natural arities; no special PA or Hilbert symbol meanings.",
+        "mechanized_correspondence": false,
+        "name": "Checker.signature",
+        "positional_arity": 2,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "serialized_kernel.py",
+        "tree_relation": "signature_ok"
+      },
+      {
+        "end": 74,
+        "line": 66,
+        "manual_argument": "Complete exact var/fun grammar and declared arities; native tuple internal AST relation given in representation section.",
+        "mechanized_correspondence": false,
+        "name": "Checker.term",
+        "positional_arity": 2,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "serialized_kernel.py",
+        "tree_relation": "term_ok"
+      },
+      {
+        "end": 91,
+        "line": 76,
+        "manual_argument": "Complete8-form constructor grammar; every term/formula recursive position validated.",
+        "mechanized_correspondence": false,
+        "name": "Checker.formula",
+        "positional_arity": 2,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "serialized_kernel.py",
+        "tree_relation": "formula_ok"
+      },
+      {
+        "end": 96,
+        "line": 93,
+        "manual_argument": "Set of free variable names of complete validated terms.",
+        "mechanized_correspondence": false,
+        "name": "Checker.term_free",
+        "positional_arity": 2,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "serialized_kernel.py",
+        "tree_relation": "term_free"
+      },
+      {
+        "end": 106,
+        "line": 98,
+        "manual_argument": "False free variables / True all variable names, exact binders handled.",
+        "mechanized_correspondence": false,
+        "name": "Checker.free",
+        "positional_arity": 3,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "serialized_kernel.py",
+        "tree_relation": "free"
+      },
+      {
+        "end": 111,
+        "line": 108,
+        "manual_argument": "Exact recursive variable replacement; arguments retain order.",
+        "mechanized_correspondence": false,
+        "name": "Checker.subst_term",
+        "positional_arity": 4,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "serialized_kernel.py",
+        "tree_relation": "subst_term/subst_args"
+      },
+      {
+        "end": 130,
+        "line": 113,
+        "manual_argument": "Capture-avoiding substitution and same freshN generation, including nested shadowing.",
+        "mechanized_correspondence": false,
+        "name": "Checker.subst",
+        "positional_arity": 4,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "serialized_kernel.py",
+        "tree_relation": "subst"
+      },
+      {
+        "end": 151,
+        "line": 132,
+        "manual_argument": "Full Boolean validity, not an arithmetic or FOL decision procedure; atom order and work differ.",
+        "mechanized_correspondence": false,
+        "name": "Checker.tautology",
+        "positional_arity": 2,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "serialized_kernel.py",
+        "tree_relation": "collect_atoms/valuations/tautology"
+      },
+      {
+        "end": 138,
+        "line": 134,
+        "manual_argument": "Complete propositional connective traversal, other formulas atoms and bot false.",
+        "mechanized_correspondence": false,
+        "name": "Checker.tautology.collect",
+        "positional_arity": 1,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "serialized_kernel.py",
+        "tree_relation": "collect_atoms"
+      },
+      {
+        "end": 147,
+        "line": 140,
+        "manual_argument": "Same truth table under complete valuation; host dict lookup and tree association list agree.",
+        "mechanized_correspondence": false,
+        "name": "Checker.tautology.truth",
+        "positional_arity": 2,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "serialized_kernel.py",
+        "tree_relation": "truth"
+      },
+      {
+        "end": 161,
+        "line": 153,
+        "manual_argument": "Only explicit nat-induction license and zero/succ arities; full schema over arbitrary formulas and all other free parameters.",
+        "mechanized_correspondence": false,
+        "name": "Checker.induction",
+        "positional_arity": 3,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "serialized_kernel.py",
+        "tree_relation": "induction plus rule guard"
+      },
+      {
+        "end": 215,
+        "line": 163,
+        "manual_argument": "All11 rules, exact fields, strict prior indices, full assumptions, exact final target; rule matrix gives every side condition.",
+        "mechanized_correspondence": false,
+        "name": "Checker.proof",
+        "positional_arity": 4,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "serialized_kernel.py",
+        "tree_relation": "proof/rule_ok"
+      },
+      {
+        "end": 172,
+        "line": 172,
+        "manual_argument": "Per-line fields include rule/formula and exactly declared parameters.",
+        "mechanized_correspondence": false,
+        "name": "Checker.proof.fields",
+        "positional_arity": 0,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "serialized_kernel.py",
+        "tree_relation": "fields"
+      },
+      {
+        "end": 176,
+        "line": 173,
+        "manual_argument": "Exact natural strictly less than proved count; excludes self/forward/negative/bool.",
+        "mechanized_correspondence": false,
+        "name": "Checker.proof.prior",
+        "positional_arity": 1,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "serialized_kernel.py",
+        "tree_relation": "prior/nth"
+      },
+      {
+        "end": 239,
+        "line": 217,
+        "manual_argument": "Full public problem grammar and complete block checking. Does not reset self.blocks: unsafe across reused instances with changed theories.",
+        "mechanized_correspondence": false,
+        "name": "Checker.request",
+        "positional_arity": 2,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "serialized_kernel.py",
+        "tree_relation": "main/check_blocks"
+      },
+      {
+        "end": 267,
+        "line": 241,
+        "manual_argument": "Fresh Checker, strict bytes, JSON decoder, duplicate and float refusal, optional public hash, status Resource/recursion/memory unknown. Generic ValueError from native decimal parser guard is classified rejected, so unrestricted status equivalence is unavailable.",
+        "mechanized_correspondence": false,
+        "name": "check",
+        "positional_arity": 4,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "serialized_kernel.py",
+        "tree_relation": "Combined main only after separate byte/value/budget boundary"
+      },
+      {
+        "end": 249,
+        "line": 244,
+        "manual_argument": "Reject duplicate JSON keys before collapse; native Unicode key equality differs from raw bytes until text boundary is faithful.",
+        "mechanized_correspondence": false,
+        "name": "check.pairs",
+        "positional_arity": 1,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "serialized_kernel.py",
+        "tree_relation": "wire_key_seen"
+      },
+      {
+        "end": 250,
+        "line": 250,
+        "manual_argument": "All floating/nonfinite JSON number spellings rejected; no float coercion to natural or bool.",
+        "mechanized_correspondence": false,
+        "name": "check.bad_number",
+        "positional_arity": 1,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "serialized_kernel.py",
+        "tree_relation": "No float tag in checker wire_value"
+      },
+      {
+        "end": 33,
+        "host_relation": "Checker.request; check",
+        "line": 3,
+        "manual_argument": "Exact5 root and4 theory fields; strict signature, zero-or-one recognized schema, all axioms closed, fresh local registry, all blocks checked before top proof. Returns only complete proof result. Generic theory is not independently licensed here.",
+        "mechanized_correspondence": false,
+        "name": "main",
+        "positional_arity": 1,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 36,
+        "host_relation": "None/list sentinel",
+        "line": 35,
+        "manual_argument": "Only atom256 denotes nil; Boolean false is atom0, so failed-block marker cannot masquerade as empty registry.",
+        "mechanized_correspondence": false,
+        "name": "nil",
+        "positional_arity": 1,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 40,
+        "host_relation": "Native structural equality after JSON syntax validation",
+        "line": 37,
+        "manual_argument": "Induction on immutable finite cons trees; compare atoms only when either operand is not a pair; pair equality recursively compares both children. Tree tags keep Boolean, integer, list, object and string distinct.",
+        "mechanized_correspondence": false,
+        "name": "same",
+        "positional_arity": 2,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 42,
+        "host_relation": "Native fixed-size tuple/list constructors",
+        "line": 41,
+        "manual_argument": "Each constructor prepends exactly its listed arguments in order and terminates in nil; no arithmetic primitive or semantic shortcut.",
+        "mechanized_correspondence": false,
+        "name": "l1",
+        "positional_arity": 1,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 44,
+        "host_relation": "Native fixed-size tuple/list constructors",
+        "line": 43,
+        "manual_argument": "Each constructor prepends exactly its listed arguments in order and terminates in nil; no arithmetic primitive or semantic shortcut.",
+        "mechanized_correspondence": false,
+        "name": "l2",
+        "positional_arity": 2,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 46,
+        "host_relation": "Native fixed-size tuple/list constructors",
+        "line": 45,
+        "manual_argument": "Each constructor prepends exactly its listed arguments in order and terminates in nil; no arithmetic primitive or semantic shortcut.",
+        "mechanized_correspondence": false,
+        "name": "l3",
+        "positional_arity": 3,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 48,
+        "host_relation": "Native fixed-size tuple/list constructors",
+        "line": 47,
+        "manual_argument": "Each constructor prepends exactly its listed arguments in order and terminates in nil; no arithmetic primitive or semantic shortcut.",
+        "mechanized_correspondence": false,
+        "name": "l4",
+        "positional_arity": 4,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 50,
+        "host_relation": "Native fixed-size tuple/list constructors",
+        "line": 49,
+        "manual_argument": "Each constructor prepends exactly its listed arguments in order and terminates in nil; no arithmetic primitive or semantic shortcut.",
+        "mechanized_correspondence": false,
+        "name": "l5",
+        "positional_arity": 5,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 52,
+        "host_relation": "Native fixed-size tuple/list constructors",
+        "line": 51,
+        "manual_argument": "Each constructor prepends exactly its listed arguments in order and terminates in nil; no arithmetic primitive or semantic shortcut.",
+        "mechanized_correspondence": false,
+        "name": "l6",
+        "positional_arity": 6,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 54,
+        "host_relation": "Exact list lengths1/2/3",
+        "line": 53,
+        "manual_argument": "Pair plus exact nil tail checks distinguish an arity from a prefix; malformed tails cannot pass the valid wire boundary.",
+        "mechanized_correspondence": false,
+        "name": "size1",
+        "positional_arity": 1,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 56,
+        "host_relation": "Exact list lengths1/2/3",
+        "line": 55,
+        "manual_argument": "Pair plus exact nil tail checks distinguish an arity from a prefix; malformed tails cannot pass the valid wire boundary.",
+        "mechanized_correspondence": false,
+        "name": "size2",
+        "positional_arity": 1,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 58,
+        "host_relation": "Exact list lengths1/2/3",
+        "line": 57,
+        "manual_argument": "Pair plus exact nil tail checks distinguish an arity from a prefix; malformed tails cannot pass the valid wire boundary.",
+        "mechanized_correspondence": false,
+        "name": "size3",
+        "positional_arity": 1,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 60,
+        "host_relation": "Native positions1/2",
+        "line": 59,
+        "manual_argument": "head/tail projection agrees with zero-indexed native list positions under caller size checks; invalid data operation is not acceptance.",
+        "mechanized_correspondence": false,
+        "name": "second",
+        "positional_arity": 1,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 62,
+        "host_relation": "Native positions1/2",
+        "line": 61,
+        "manual_argument": "head/tail projection agrees with zero-indexed native list positions under caller size checks; invalid data operation is not acceptance.",
+        "mechanized_correspondence": false,
+        "name": "third",
+        "positional_arity": 1,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 66,
+        "host_relation": "Native ordered list concatenation",
+        "line": 63,
+        "manual_argument": "Recursion on first list preserves every element/order and then shares second immutable list; used to append proved formulas without reversing line indices.",
+        "mechanized_correspondence": false,
+        "name": "append",
+        "positional_arity": 2,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 72,
+        "host_relation": "Native reversed sequence",
+        "line": 67,
+        "manual_argument": "Loop invariant: output is reversed consumed prefix and input is unconsumed suffix; used only where host reversed order is explicit.",
+        "mechanized_correspondence": false,
+        "name": "reverse",
+        "positional_arity": 1,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 78,
+        "host_relation": "Exact natural list length",
+        "line": 73,
+        "manual_argument": "One cons(1,...) per element produces canonical unary nonnegative length; no host integer/Boolean coercion.",
+        "mechanized_correspondence": false,
+        "name": "length",
+        "positional_arity": 1,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 87,
+        "host_relation": "Checker.proof.prior and assumption lookup",
+        "line": 79,
+        "manual_argument": "Unary index consumes one input element per1; out-of-range returns false atom0, never a well-formed formula. Type3 guard at callers excludes negative and Boolean indices.",
+        "mechanized_correspondence": false,
+        "name": "nth",
+        "positional_arity": 2,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 93,
+        "host_relation": "Native set membership with structural equality",
+        "line": 88,
+        "manual_argument": "Linear exact membership of proper finite lists; variable sets have unique sorted entries and formula atom lists have structural rather than name-only equality.",
+        "mechanized_correspondence": false,
+        "name": "member",
+        "positional_arity": 2,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 95,
+        "host_relation": "Exact JSON native-type/tag case split",
+        "line": 94,
+        "manual_argument": "Tagged cons and exact atom tag are required; wire_value supplies the complete representation invariant.",
+        "mechanized_correspondence": false,
+        "name": "is_type",
+        "positional_arity": 2,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 97,
+        "host_relation": "Native exact string equality to fixed rule/protocol names",
+        "line": 96,
+        "manual_argument": "Tag2 plus byte-word equality; equivalent to Unicode names only after a faithful canonical text boundary, which is not supplied by wire_word alone.",
+        "mechanized_correspondence": false,
+        "name": "text_is",
+        "positional_arity": 2,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 107,
+        "host_relation": "Native dict lookup",
+        "line": 98,
+        "manual_argument": "Object row search returns exact matching byte key value, otherwise false. Uniqueness of keys comes from wire_value; absent formula cannot pass formula_ok.",
+        "mechanized_correspondence": false,
+        "name": "get",
+        "positional_arity": 2,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 116,
+        "host_relation": "Checker.fields",
+        "line": 108,
+        "manual_argument": "Equal object and expected-key counts plus membership gives exact key set only under unique-key invariant. Calling this helper without the wrapper is insufficient to reject duplicate keys.",
+        "mechanized_correspondence": false,
+        "name": "fields",
+        "positional_arity": 2,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 125,
+        "host_relation": "Checker.signature/string/natural",
+        "line": 117,
+        "manual_argument": "Object row values all tag3; wire_value already validates byte-word keys and canonical unary naturals. Arbitrary finite arities are permitted, not a selected syntax catalogue.",
+        "mechanized_correspondence": false,
+        "name": "signature_ok",
+        "positional_arity": 1,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 127,
+        "host_relation": "Native AST tag/argument projection",
+        "line": 126,
+        "manual_argument": "Syntax validators establish exact array arities and tag strings before recursive semantic helpers project them.",
+        "mechanized_correspondence": false,
+        "name": "tag",
+        "positional_arity": 1,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 129,
+        "host_relation": "Native AST tag/argument projection",
+        "line": 128,
+        "manual_argument": "Syntax validators establish exact array arities and tag strings before recursive semantic helpers project them.",
+        "mechanized_correspondence": false,
+        "name": "arg1",
+        "positional_arity": 1,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 131,
+        "host_relation": "Native AST tag/argument projection",
+        "line": 130,
+        "manual_argument": "Syntax validators establish exact array arities and tag strings before recursive semantic helpers project them.",
+        "mechanized_correspondence": false,
+        "name": "arg2",
+        "positional_arity": 1,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 133,
+        "host_relation": "Native immutable AST constructors",
+        "line": 132,
+        "manual_argument": "Each constructor emits the same JSON tag/array shape and order as parsed host tuples re-encoded by encode_json; no alpha-equivalence quotient is introduced.",
+        "mechanized_correspondence": false,
+        "name": "jstr",
+        "positional_arity": 1,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 135,
+        "host_relation": "Native immutable AST constructors",
+        "line": 134,
+        "manual_argument": "Each constructor emits the same JSON tag/array shape and order as parsed host tuples re-encoded by encode_json; no alpha-equivalence quotient is introduced.",
+        "mechanized_correspondence": false,
+        "name": "arr",
+        "positional_arity": 1,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 137,
+        "host_relation": "Native immutable AST constructors",
+        "line": 136,
+        "manual_argument": "Each constructor emits the same JSON tag/array shape and order as parsed host tuples re-encoded by encode_json; no alpha-equivalence quotient is introduced.",
+        "mechanized_correspondence": false,
+        "name": "make1",
+        "positional_arity": 1,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 139,
+        "host_relation": "Native immutable AST constructors",
+        "line": 138,
+        "manual_argument": "Each constructor emits the same JSON tag/array shape and order as parsed host tuples re-encoded by encode_json; no alpha-equivalence quotient is introduced.",
+        "mechanized_correspondence": false,
+        "name": "make2",
+        "positional_arity": 2,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 141,
+        "host_relation": "Native immutable AST constructors",
+        "line": 140,
+        "manual_argument": "Each constructor emits the same JSON tag/array shape and order as parsed host tuples re-encoded by encode_json; no alpha-equivalence quotient is introduced.",
+        "mechanized_correspondence": false,
+        "name": "make3",
+        "positional_arity": 3,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 143,
+        "host_relation": "Native immutable AST constructors",
+        "line": 142,
+        "manual_argument": "Each constructor emits the same JSON tag/array shape and order as parsed host tuples re-encoded by encode_json; no alpha-equivalence quotient is introduced.",
+        "mechanized_correspondence": false,
+        "name": "var",
+        "positional_arity": 1,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 145,
+        "host_relation": "Native immutable AST constructors",
+        "line": 144,
+        "manual_argument": "Each constructor emits the same JSON tag/array shape and order as parsed host tuples re-encoded by encode_json; no alpha-equivalence quotient is introduced.",
+        "mechanized_correspondence": false,
+        "name": "fun",
+        "positional_arity": 2,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 147,
+        "host_relation": "Native immutable AST constructors",
+        "line": 146,
+        "manual_argument": "Each constructor emits the same JSON tag/array shape and order as parsed host tuples re-encoded by encode_json; no alpha-equivalence quotient is introduced.",
+        "mechanized_correspondence": false,
+        "name": "all",
+        "positional_arity": 2,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 149,
+        "host_relation": "Native immutable AST constructors",
+        "line": 148,
+        "manual_argument": "Each constructor emits the same JSON tag/array shape and order as parsed host tuples re-encoded by encode_json; no alpha-equivalence quotient is introduced.",
+        "mechanized_correspondence": false,
+        "name": "imp",
+        "positional_arity": 2,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 151,
+        "host_relation": "Native immutable AST constructors",
+        "line": 150,
+        "manual_argument": "Each constructor emits the same JSON tag/array shape and order as parsed host tuples re-encoded by encode_json; no alpha-equivalence quotient is introduced.",
+        "mechanized_correspondence": false,
+        "name": "eq",
+        "positional_arity": 2,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 168,
+        "host_relation": "Checker.term",
+        "line": 152,
+        "manual_argument": "Exact var2/fun3 cases; string names and exact array arguments; declared function arity equals canonical unary list length; recursively all subterms checked.",
+        "mechanized_correspondence": false,
+        "name": "term_ok",
+        "positional_arity": 2,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 197,
+        "host_relation": "Checker.formula",
+        "line": 169,
+        "manual_argument": "Complete bot1/not2/eq3/pred3/all3/imp3/and3/or3 grammar; recursive term/formula validation and signature arities; no exists or higher-order rule is silently accepted.",
+        "mechanized_correspondence": false,
+        "name": "formula_ok",
+        "positional_arity": 3,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 203,
+        "host_relation": "Native variable-name sorting used by free sets/induction",
+        "line": 198,
+        "manual_argument": "byte_less scans finite0..255 to first operand encountered; two valid bytes force termination before attempting successor255. text_less is lexicographic with proper prefix first. UTF8-surrogatepass is monotone by codepoint for valid strings; invalid words are currently a separate byte-name domain.",
+        "mechanized_correspondence": false,
+        "name": "byte_less",
+        "positional_arity": 2,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 205,
+        "host_relation": "Native variable-name sorting used by free sets/induction",
+        "line": 204,
+        "manual_argument": "byte_less scans finite0..255 to first operand encountered; two valid bytes force termination before attempting successor255. text_less is lexicographic with proper prefix first. UTF8-surrogatepass is monotone by codepoint for valid strings; invalid words are currently a separate byte-name domain.",
+        "mechanized_correspondence": false,
+        "name": "next_byte",
+        "positional_arity": 1,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 213,
+        "host_relation": "Native variable-name sorting used by free sets/induction",
+        "line": 206,
+        "manual_argument": "byte_less scans finite0..255 to first operand encountered; two valid bytes force termination before attempting successor255. text_less is lexicographic with proper prefix first. UTF8-surrogatepass is monotone by codepoint for valid strings; invalid words are currently a separate byte-name domain.",
+        "mechanized_correspondence": false,
+        "name": "text_less",
+        "positional_arity": 2,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 221,
+        "host_relation": "Native sorted finite set operations",
+        "line": 214,
+        "manual_argument": "insert preserves uniqueness and strict text order; union repeatedly inserts; remove deletes unique target. Needed for deterministic universal parameter order and fresh-name avoidance.",
+        "mechanized_correspondence": false,
+        "name": "insert",
+        "positional_arity": 2,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 226,
+        "host_relation": "Native sorted finite set operations",
+        "line": 222,
+        "manual_argument": "insert preserves uniqueness and strict text order; union repeatedly inserts; remove deletes unique target. Needed for deterministic universal parameter order and fresh-name avoidance.",
+        "mechanized_correspondence": false,
+        "name": "union",
+        "positional_arity": 2,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 232,
+        "host_relation": "Native sorted finite set operations",
+        "line": 227,
+        "manual_argument": "insert preserves uniqueness and strict text order; union repeatedly inserts; remove deletes unique target. Needed for deterministic universal parameter order and fresh-name avoidance.",
+        "mechanized_correspondence": false,
+        "name": "remove",
+        "positional_arity": 2,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 241,
+        "host_relation": "Checker.term_free",
+        "line": 233,
+        "manual_argument": "Structural term recursion returns exactly variable names; function arguments are unioned; function symbols are not variables.",
+        "mechanized_correspondence": false,
+        "name": "term_free",
+        "positional_arity": 1,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 262,
+        "host_relation": "Checker.free",
+        "line": 242,
+        "manual_argument": "False mode removes binders, True mode includes all bound and free variable names. Both modes traverse every logical connective; True mode is required to avoid capture under shadowing during alpha-renaming.",
+        "mechanized_correspondence": false,
+        "name": "free",
+        "positional_arity": 2,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 266,
+        "host_relation": "Checker.subst_term",
+        "line": 263,
+        "manual_argument": "Substitute exactly free variable occurrences in terms, recurse over every function argument and preserve function name/arity/order.",
+        "mechanized_correspondence": false,
+        "name": "subst_args",
+        "positional_arity": 3,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 272,
+        "host_relation": "Checker.subst_term",
+        "line": 267,
+        "manual_argument": "Substitute exactly free variable occurrences in terms, recurse over every function argument and preserve function name/arity/order.",
+        "mechanized_correspondence": false,
+        "name": "subst_term",
+        "positional_arity": 3,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 278,
+        "host_relation": "Host decimal fresh-name suffix str(j)",
+        "line": 273,
+        "manual_argument": "Little-endian decimal carry maps9 to0 and increments next digit; nil introduces1. decimal starts0 and increments once per unary unit, then reverses. Thus fresh0,fresh1,... including9/10,99/100 transitions match host suffixes.",
+        "mechanized_correspondence": false,
+        "name": "increment_digits",
+        "positional_arity": 1,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 284,
+        "host_relation": "Host decimal fresh-name suffix str(j)",
+        "line": 279,
+        "manual_argument": "Little-endian decimal carry maps9 to0 and increments next digit; nil introduces1. decimal starts0 and increments once per unary unit, then reverses. Thus fresh0,fresh1,... including9/10,99/100 transitions match host suffixes.",
+        "mechanized_correspondence": false,
+        "name": "decimal",
+        "positional_arity": 1,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 310,
+        "host_relation": "Checker.subst",
+        "line": 285,
+        "manual_argument": "Binder equal to substituted variable or absent variable returns unchanged. Capture risk triggers freshN outside all body variable names, replacement free names, x,y; alpha-renames only old binder free occurrences via recursive substitution, then descends. Other cases preserve complete formula grammar.",
+        "mechanized_correspondence": false,
+        "name": "subst",
+        "positional_arity": 3,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 319,
+        "host_relation": "Checker.tautology.collect",
+        "line": 311,
+        "manual_argument": "Decomposes exactly propositional imp/and/or/not; bot contributes no atom; quantifiers, equalities and predicates are whole atoms, each structurally unique. Atom order differs from host repr sort but exhaustive tautology Boolean is invariant.",
+        "mechanized_correspondence": false,
+        "name": "collect_atoms",
+        "positional_arity": 2,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 336,
+        "host_relation": "Checker.tautology.truth",
+        "line": 320,
+        "manual_argument": "Same classical truth clauses including false bot and implication; complete environment binds each collected atom. Absent-atom false default is unreachable for a well-formed collected formula.",
+        "mechanized_correspondence": false,
+        "name": "truth",
+        "positional_arity": 2,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 341,
+        "host_relation": "Checker.tautology",
+        "line": 337,
+        "manual_argument": "Binary recursion covers every assignment to the complete finite atom set, conjunctively; early false is sound. Exponential work remains charged; no time/cost/valuation-order correspondence is claimed.",
+        "mechanized_correspondence": false,
+        "name": "valuations",
+        "positional_arity": 3,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 343,
+        "host_relation": "Checker.tautology",
+        "line": 342,
+        "manual_argument": "Binary recursion covers every assignment to the complete finite atom set, conjunctively; early false is sound. Exponential work remains charged; no time/cost/valuation-order correspondence is claimed.",
+        "mechanized_correspondence": false,
+        "name": "tautology",
+        "positional_arity": 1,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 352,
+        "host_relation": "Checker.induction",
+        "line": 344,
+        "manual_argument": "Full arbitrary well-formed template, capture-avoiding base and successor substitutions, conjunction/implication/universal conclusion, universal closure of every other free parameter in the same ascending name order. Rule guard checks license and exact zero0/succ1 arities.",
+        "mechanized_correspondence": false,
+        "name": "induction",
+        "positional_arity": 2,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 358,
+        "host_relation": "Host tuple(self.formula(...))",
+        "line": 353,
+        "manual_argument": "Every premise is checked using the same complete grammar; no unchecked prefix or selected subset.",
+        "mechanized_correspondence": false,
+        "name": "formulas_ok",
+        "positional_arity": 3,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 364,
+        "host_relation": "Checker.blocks lookup",
+        "line": 359,
+        "manual_argument": "Returns exact earlier registered block interface by full byte name. Valid interfaces are pairs, so atomFalse cleanly denotes absence.",
+        "mechanized_correspondence": false,
+        "name": "lookup",
+        "positional_arity": 2,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 381,
+        "host_relation": "Checker.request block loop",
+        "line": 365,
+        "manual_argument": "Sequentially verify every block, exact4 fields, unique names, every premise/conclusion, nonempty proof under only its premises and prior registry, then register. No self/forward recursion. Source differs from reusable host Checker because tree registry is always fresh.",
+        "mechanized_correspondence": false,
+        "name": "check_blocks",
+        "positional_arity": 3,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 389,
+        "host_relation": "Block-call exact prior references",
+        "line": 382,
+        "manual_argument": "Walk both lists in lockstep, require type3 indices and full formula equality, and require both lists exhausted. Duplicates allowed when premises repeat; out-of-range/forward indices cannot match formulas.",
+        "mechanized_correspondence": false,
+        "name": "references",
+        "positional_arity": 3,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 412,
+        "host_relation": "Checker.proof",
+        "line": 390,
+        "manual_argument": "Nonempty list; forbids generalizing any variable free in any assumption; every line fully syntax checked and validated before appended, strict earlier proof domain, and final formula exactly target. No proof search or hypothesis discharge is invented.",
+        "mechanized_correspondence": false,
+        "name": "proof",
+        "positional_arity": 5,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 417,
+        "host_relation": "Checker.proof.prior",
+        "line": 413,
+        "manual_argument": "Field must be type3; nth over proved prefix means every successful reference strictly precedes this line, including zero. Boolean false is not index0.",
+        "mechanized_correspondence": false,
+        "name": "prior",
+        "positional_arity": 3,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 466,
+        "host_relation": "Checker.proof eleven-way rule dispatch",
+        "line": 418,
+        "manual_argument": "All11 primitive rules are enumerated in separate rule matrix. Exact per-rule field sets; unknown names returnFalse. Relies on fresh registry, sound substitutions and licensed theory boundary.",
+        "mechanized_correspondence": false,
+        "name": "rule_ok",
+        "positional_arity": 8,
+        "precondition": "Complete finite immutable tagged input, valid heap IDs, and well-formed proper-list preconditions at internal helpers.",
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "fol_checker.tree"
+      },
+      {
+        "end": 4,
+        "line": 3,
+        "manual_argument": "Complete wire_value first, then full semantic_main; short-circuit prevents malformed values reaching unguarded structural helpers.",
+        "mechanized_correspondence": false,
+        "name": "main",
+        "positional_arity": 1,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "boundary_syntax.tree"
+      },
+      {
+        "end": 11,
+        "line": 6,
+        "manual_argument": "Proper finite list of byte atoms0..255; excludes pairs and nil atom256 as elements. This is not UTF8 or JSON escape normalization and currently admits byte255.",
+        "mechanized_correspondence": false,
+        "name": "wire_word",
+        "positional_arity": 1,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "boundary_syntax.tree"
+      },
+      {
+        "end": 18,
+        "line": 13,
+        "manual_argument": "Proper finite list consisting only of atom1; canonical unary natural including empty0.",
+        "mechanized_correspondence": false,
+        "name": "wire_ones",
+        "positional_arity": 1,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "boundary_syntax.tree"
+      },
+      {
+        "end": 25,
+        "line": 20,
+        "manual_argument": "Byte-exact prior-key comparison for all object rows; uniqueness only agrees with Unicode keys after text correspondence.",
+        "mechanized_correspondence": false,
+        "name": "wire_key_seen",
+        "positional_arity": 2,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "boundary_syntax.tree"
+      },
+      {
+        "end": 59,
+        "line": 27,
+        "manual_argument": "Complete recursive object/array/string/natural/nonzero-negative/bool/null7-tag grammar. Full object row shape, duplicate keys and all nested values checked. Bool exact0/1 and negative0 forbidden. No float tag. Acyclic heap is separate BOOT premise.",
+        "mechanized_correspondence": false,
+        "name": "wire_value",
+        "positional_arity": 1,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "boundary_syntax.tree"
+      },
+      {
+        "end": 18,
+        "line": 15,
+        "manual_argument": "Literal full wire wrapper concatenated with full FOL Source renamed only main->semantic_main. Exact19325B assembly verified by raw bytes; compiler correctness remains a separate obligation.",
+        "mechanized_correspondence": false,
+        "name": "boundary_program",
+        "positional_arity": 0,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "proof_boundary.py"
+      },
+      {
+        "end": 26,
+        "line": 20,
+        "manual_argument": "Debug utility parses textual heap labels/children; not a complete canonical validator and not an admissible proof boundary. Requires well-framed trusted input; no missing-semicolon or child-order rejection theorem from this function.",
+        "mechanized_correspondence": false,
+        "name": "decoded_heap",
+        "positional_arity": 1,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "proof_boundary.py"
+      },
+      {
+        "end": 36,
+        "line": 28,
+        "manual_argument": "Iterative postorder expansion of valid tree root and valid topological heap to0+9LSB atom/1cons. Internal-1 marker is not a candidate atom. No raw heap address may cross certificate boundary.",
+        "mechanized_correspondence": false,
+        "name": "tree_word",
+        "positional_arity": 2,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "proof_boundary.py"
+      },
+      {
+        "end": 39,
+        "line": 38,
+        "manual_argument": "Host encode_json then tree_word, admitted native JSON-type subset only. Does not independently check public licensing or root request fields; strings encoded surrogatepass.",
+        "mechanized_correspondence": false,
+        "name": "value_word",
+        "positional_arity": 1,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "proof_boundary.py"
+      },
+      {
+        "end": 43,
+        "line": 41,
+        "manual_argument": "Fixed order protocol/theory/target and free blocks/proof; one; per band. Reads only five KEYS and ignores extra root fields: exact request-domain validation is a required precondition, not rejection equivalence for arbitrary dicts.",
+        "mechanized_correspondence": false,
+        "name": "boundary_words",
+        "positional_arity": 1,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "proof_boundary.py"
+      },
+      {
+        "end": 77,
+        "line": 46,
+        "manual_argument": "Builds additional bands and frozen key heap; parses fixed3 then empties stack and parses free2; pops bind values in correct reverse stack order; constructs exact keyed object before old_start. Full lowerer physical refinement not established here.",
+        "mechanized_correspondence": false,
+        "name": "BoundaryLowering.__init__",
+        "positional_arity": 2,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "proof_boundary.py"
+      },
+      {
+        "end": 88,
+        "line": 79,
+        "manual_argument": "Copies a finite reversed value word to stack delimiter; relies on canonical Lowering scan/capacity semantics and region invariants; no BOOT semantic-value theorem from Source inspection alone.",
+        "mechanized_correspondence": false,
+        "name": "BoundaryLowering.push",
+        "positional_arity": 2,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "proof_boundary.py"
+      },
+      {
+        "end": 100,
+        "line": 90,
+        "manual_argument": "Copies exactly one stack word to destination and removes delimiter; requires actual nonempty stack and complete region handling. Underflow cannot be borrowed from fixed public values because stack reset is explicit.",
+        "mechanized_correspondence": false,
+        "name": "BoundaryLowering.pop",
+        "positional_arity": 3,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "proof_boundary.py"
+      },
+      {
+        "end": 125,
+        "line": 102,
+        "manual_argument": "Token0 reads exactly9bits and rejects atom>256; token1 pops right/left and canonical-cons; one; then onlyB tofixedcolon then rewind. It validates structure, not tagged value/UTF8/program semantics; fences must remain BOUND.",
+        "mechanized_correspondence": false,
+        "name": "BoundaryLowering.parse_band",
+        "positional_arity": 3,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "proof_boundary.py"
+      },
+      {
+        "end": 113,
+        "line": 108,
+        "manual_argument": "Full depth9 binary decision tree in Source, valid0..256 leaves assigned; no hand-selected byte subset. Not generated in this audit.",
+        "mechanized_correspondence": false,
+        "name": "BoundaryLowering.parse_band.atom",
+        "positional_arity": 1,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "proof_boundary.py"
+      },
+      {
+        "end": 133,
+        "line": 127,
+        "manual_argument": "Trusted initialization builds full public and free words/capacities with fixedcolon; not itself an immutable public-data licensing check or unknown-certificate selector proof.",
+        "mechanized_correspondence": false,
+        "name": "BoundaryLowering.initial_boundary",
+        "positional_arity": 6,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "proof_boundary.py"
+      },
+      {
+        "end": 140,
+        "line": 135,
+        "manual_argument": "Metadata exposes all bands/keynodes/bootnodes/old_start/wire syntax. Hashes/declared state names alone do not prove linked16band machine acceptance.",
+        "mechanized_correspondence": false,
+        "name": "BoundaryLowering.declaration",
+        "positional_arity": 1,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "proof_boundary.py"
+      },
+      {
+        "end": 21,
+        "line": 17,
+        "manual_argument": "Checks sequential topological seed cons cells and rejects duplicate canonical pairs; frozen initial program heap is a trust boundary.",
+        "mechanized_correspondence": false,
+        "name": "Heap.__init__",
+        "positional_arity": 3,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "tree_machine.py"
+      },
+      {
+        "end": 29,
+        "line": 22,
+        "manual_argument": "Exact existing IDs/atoms and canonical pair interning; values always valid under invariant; heap bound is Resource, not proof rejection.",
+        "mechanized_correspondence": false,
+        "name": "Heap.cons",
+        "positional_arity": 3,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "tree_machine.py"
+      },
+      {
+        "end": 32,
+        "line": 30,
+        "manual_argument": "Exact int existing node required; returns left.",
+        "mechanized_correspondence": false,
+        "name": "Heap.head",
+        "positional_arity": 2,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "tree_machine.py"
+      },
+      {
+        "end": 35,
+        "line": 33,
+        "manual_argument": "Exact int existing node required; returns right.",
+        "mechanized_correspondence": false,
+        "name": "Heap.tail",
+        "positional_arity": 2,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "tree_machine.py"
+      },
+      {
+        "end": 39,
+        "line": 36,
+        "manual_argument": "Reverse-fold preserves list order and endsnil.",
+        "mechanized_correspondence": false,
+        "name": "Heap.word",
+        "positional_arity": 2,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "tree_machine.py"
+      },
+      {
+        "end": 40,
+        "line": 40,
+        "manual_argument": "UTF8-surrogatepass bytes, not JSON decoder semantics.",
+        "mechanized_correspondence": false,
+        "name": "Heap.text",
+        "positional_arity": 2,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "tree_machine.py"
+      },
+      {
+        "end": 44,
+        "line": 41,
+        "manual_argument": "Unary finite natural builder; requires nonnegative caller domain.",
+        "mechanized_correspondence": false,
+        "name": "Heap.natural",
+        "positional_arity": 2,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "tree_machine.py"
+      },
+      {
+        "end": 71,
+        "line": 46,
+        "manual_argument": "All exact dict/list/str/bool/int/None tags with bool checked beforeint; native key strings are a caller premise (Heap.text fails otherwise). Dict order retained, negative0 not native distinct. Full all-str domain exceeds check(payload) JSON-image caveat.",
+        "mechanized_correspondence": false,
+        "name": "encode_json",
+        "positional_arity": 2,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "tree_machine.py"
+      },
+      {
+        "end": 79,
+        "line": 74,
+        "manual_argument": "AST only ordinary function definitions, unique static names and fixed primitives; no dynamic request execution.",
+        "mechanized_correspondence": false,
+        "name": "Compiler.__init__",
+        "positional_arity": 2,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "tree_machine.py"
+      },
+      {
+        "end": 86,
+        "line": 80,
+        "manual_argument": "Arguments then fresh nil locals/fullregisters, explicit function body then false return; no liveness alias allocator.",
+        "mechanized_correspondence": false,
+        "name": "Compiler.function",
+        "positional_arity": 2,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "tree_machine.py"
+      },
+      {
+        "end": 87,
+        "line": 87,
+        "manual_argument": "Monotone register allocation.",
+        "mechanized_correspondence": false,
+        "name": "Compiler.fresh",
+        "positional_arity": 1,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "tree_machine.py"
+      },
+      {
+        "end": 88,
+        "line": 88,
+        "manual_argument": "Literal ordered instruction append.",
+        "mechanized_correspondence": false,
+        "name": "Compiler.emit",
+        "positional_arity": 1,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "tree_machine.py"
+      },
+      {
+        "end": 96,
+        "line": 89,
+        "manual_argument": "Only nil/bool/byte/string literals, canonical seed heap and unique constants; no formula-specific primitive.",
+        "mechanized_correspondence": false,
+        "name": "Compiler.constant",
+        "positional_arity": 2,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "tree_machine.py"
+      },
+      {
+        "end": 118,
+        "line": 97,
+        "manual_argument": "Static Name/Constant/call/not/short-circuit And/Or, left-to-right arguments. All call arguments captured before target return destination write. Invalid AST rejected. Full formal compiler theorem not supplied.",
+        "mechanized_correspondence": false,
+        "name": "Compiler.expression",
+        "positional_arity": 2,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "tree_machine.py"
+      },
+      {
+        "end": 137,
+        "line": 119,
+        "manual_argument": "Assignment/return/if/while/break branch patches preserve Source control structure under valid inputs; no request-dependent Source compilation.",
+        "mechanized_correspondence": false,
+        "name": "Compiler.statement",
+        "positional_arity": 2,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "tree_machine.py"
+      },
+      {
+        "end": 138,
+        "line": 138,
+        "manual_argument": "Complete13-opcode program/heap/constants/functions ordinary data, whole image must be fixed and checked.",
+        "mechanized_correspondence": false,
+        "name": "Compiler.declaration",
+        "positional_arity": 1,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "tree_machine.py"
+      },
+      {
+        "end": 140,
+        "line": 140,
+        "manual_argument": "Digest custody only; no semantic or identity proof.",
+        "mechanized_correspondence": false,
+        "name": "fingerprint",
+        "positional_arity": 1,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "tree_machine.py"
+      },
+      {
+        "end": 167,
+        "line": 142,
+        "manual_argument": "Static grammar/ranges/topological seed and arities, no proof semantics. Does not by itself prove every arbitrary hand-written program avoids fallthrough or that supplied runtime heap equals frozen seed.",
+        "mechanized_correspondence": false,
+        "name": "validate",
+        "positional_arity": 1,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "tree_machine.py"
+      },
+      {
+        "end": 144,
+        "line": 144,
+        "manual_argument": "Exact native int and half-open operand bound excludes Boolean aliases; only metadata grammar, not proof semantics.",
+        "mechanized_correspondence": false,
+        "name": "validate.integer",
+        "positional_arity": 3,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "tree_machine.py"
+      },
+      {
+        "end": 215,
+        "line": 169,
+        "manual_argument": "Operational abstract interpreter, not literal physical TM. Requires validated fixed image, matched seeded heap and valid input ID; pair/atom validity relies on those invariants. Call copies all inputs, frames preserve registers, invalid operations reject, step/heap caps unknown. No call executed here.",
+        "mechanized_correspondence": false,
+        "name": "run",
+        "positional_arity": 5,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "tree_machine.py"
+      },
+      {
+        "end": 174,
+        "line": 172,
+        "manual_argument": "Saved operational status/cost/profile/trace metadata only; no further proof check or mathematical assertion is performed by receipt construction.",
+        "mechanized_correspondence": false,
+        "name": "run.finish",
+        "positional_arity": 2,
+        "review": "MANUAL_SOURCE_ONLY",
+        "runtime_tested_here": false,
+        "source": "tree_machine.py"
+      }
+    ],
+    "representation": [
+      "One host native JSON dict maps to tag0 plus ordered proper list of cons(keyByteWord,value); list tag1; string tag2; nonnegative exactint tag3 unaryones; negative nonzero tag4 unaryabs; bool tag5 atom0/1; None tag6nil. Host internal tuple AST is represented by the same JSON array constructors.",
+      "Whole wrapper rejects duplicate keys and malformed taggedvalues before semantic_main. This makes fields count+membership equivalent to exact host key set and all type distinctions strict. Direct unwrapped semantic_main has weaker preconditions and is not the admitted arbitrary-value entrypoint.",
+      "Unicode/string equivalence needs a domain theorem, not only byte validation. Successful native JSON parse, direct Checker.request values, canonical ensure_ascii bytes and surrogatepass tagged bytewords are distinct boundary layers. F2/F6 specify remaining gaps.",
+      "Resource/status and exact traces are intentionally outside acceptance Boolean correspondence. Host repr-sorted tautology order differs from tree collection order; host work counters/native recursion/parser limits differ from finite treeVM limits.",
+      "No scalar float or nonfinite value is part of this FOL checker language; new strict value DAG codec may preserve wider evidence types but does not change checker semantics."
+    ],
+    "rule_count": 11,
+    "rules": [
+      {
+        "exact_fields": [
+          "rule",
+          "formula",
+          "name"
+        ],
+        "executed": false,
+        "form": "\\(A\\) equals the named declared closed axiom.",
+        "manual_soundness_argument": "Every model of the licensed theory satisfies it; checker does not establish external license.",
+        "prospective_variants": [
+          "unknown-name",
+          "formula-mismatch",
+          "open-theory-axiom",
+          "axiom-context-changed"
+        ],
+        "rule": "axiom",
+        "status": "MANUAL_RELATIVE_THEORY_ARGUMENT_NOT_MECHANIZED"
+      },
+      {
+        "exact_fields": [
+          "rule",
+          "formula"
+        ],
+        "executed": false,
+        "form": "\\(A\\) is true in every propositional valuation of complete atomic subformulas.",
+        "manual_soundness_argument": "The actual FOL interpretation induces one such valuation; treating quantified formulas as atoms is sound but incomplete.",
+        "prospective_variants": [
+          "one-false-valuation",
+          "bot-alone",
+          "quantified-atoms-distinct",
+          "repeated-identical-atom"
+        ],
+        "rule": "tautology",
+        "status": "MANUAL_RELATIVE_THEORY_ARGUMENT_NOT_MECHANIZED"
+      },
+      {
+        "exact_fields": [
+          "rule",
+          "formula"
+        ],
+        "executed": false,
+        "form": "\\(A\\) is exactly \\(t=t\\).",
+        "manual_soundness_argument": "Identity equality is reflexive for every term valuation; both sides must be syntactically equal.",
+        "prospective_variants": [
+          "different-terms",
+          "predicate-instead-of-equality",
+          "malformed-term"
+        ],
+        "rule": "refl",
+        "status": "MANUAL_RELATIVE_THEORY_ARGUMENT_NOT_MECHANIZED"
+      },
+      {
+        "exact_fields": [
+          "rule",
+          "formula",
+          "universal",
+          "term"
+        ],
+        "executed": false,
+        "form": "\\(A=(\\forall x\\,P)\\to P[t/x]\\).",
+        "manual_soundness_argument": "Capture-avoiding substitution lemma establishes all structures/assignments; u and t must themselves be well formed.",
+        "prospective_variants": [
+          "capture-requires-fresh",
+          "shadowed-variable",
+          "x-absent",
+          "universal-not-all",
+          "wrong-instance"
+        ],
+        "rule": "instantiate",
+        "status": "MANUAL_RELATIVE_THEORY_ARGUMENT_NOT_MECHANIZED"
+      },
+      {
+        "exact_fields": [
+          "rule",
+          "formula",
+          "variable",
+          "antecedent",
+          "consequent"
+        ],
+        "executed": false,
+        "form": "\\(A=\\forall x(P\\to Q)\\to(P\\to\\forall x\\,Q)\\), with \\(x\\notin FV(P)\\).",
+        "manual_soundness_argument": "Independence of antecedent from x is essential and explicitly checked.",
+        "prospective_variants": [
+          "x-free-in-antecedent",
+          "x-bound-only-in-antecedent",
+          "wrong-binder",
+          "wrong-consequent"
+        ],
+        "rule": "distribute",
+        "status": "MANUAL_RELATIVE_THEORY_ARGUMENT_NOT_MECHANIZED"
+      },
+      {
+        "exact_fields": [
+          "rule",
+          "formula",
+          "variable",
+          "template",
+          "left",
+          "right"
+        ],
+        "executed": false,
+        "form": "\\(A=(s=t)\\to(P[s/x]\\to P[t/x])\\).",
+        "manual_soundness_argument": "Equality replacement plus capture-avoiding substitution; arbitrary complete formula template, no selected term positions.",
+        "prospective_variants": [
+          "nested-binder-capture",
+          "x-absent",
+          "multiple-occurrences",
+          "left-right-mismatch",
+          "wrong-template"
+        ],
+        "rule": "eq_subst",
+        "status": "MANUAL_RELATIVE_THEORY_ARGUMENT_NOT_MECHANIZED"
+      },
+      {
+        "exact_fields": [
+          "rule",
+          "formula",
+          "antecedent",
+          "implication"
+        ],
+        "executed": false,
+        "form": "From earlier \\(P\\) and \\(P\\to A\\), infer \\(A\\).",
+        "manual_soundness_argument": "Both indices refer to proved prefix; semantic modus ponens preserves every current-assumption model.",
+        "prospective_variants": [
+          "self-reference",
+          "future-reference",
+          "bool-index",
+          "negative-index",
+          "out-of-range",
+          "antecedent-mismatch"
+        ],
+        "rule": "mp",
+        "status": "MANUAL_RELATIVE_THEORY_ARGUMENT_NOT_MECHANIZED"
+      },
+      {
+        "exact_fields": [
+          "rule",
+          "formula",
+          "variable",
+          "source"
+        ],
+        "executed": false,
+        "form": "From earlier \\(P\\), infer \\(\\forall x\\,P\\), with \\(x\\notin FV(\\Gamma)\\).",
+        "manual_soundness_argument": "Forbid free x in all block premises, even unused ones; since all theory axioms are closed and earlier blocks are sound sequents, this is sufficient. No existential eigenvariable rule is implemented.",
+        "prospective_variants": [
+          "free-in-used-premise",
+          "free-in-unused-premise",
+          "bound-only-in-premise",
+          "source-self-reference"
+        ],
+        "rule": "generalize",
+        "status": "MANUAL_RELATIVE_THEORY_ARGUMENT_NOT_MECHANIZED"
+      },
+      {
+        "exact_fields": [
+          "rule",
+          "formula",
+          "variable",
+          "template"
+        ],
+        "executed": false,
+        "form": "\\((P[0/x]\\land\\forall x(P\\to P[Sx/x]))\\to\\forall x\\,P\\), universally closed over other free variables.",
+        "manual_soundness_argument": "Only with enabled nat-induction and exact zero0/succ1 signature. This is a licensed schema, not valid in arbitrary equality structures without the license.",
+        "prospective_variants": [
+          "disabled-schema",
+          "zero-wrong-arity",
+          "succ-wrong-arity",
+          "arbitrary-template",
+          "multiple-parameters-order",
+          "nested-capture",
+          "missing-parameter-closure"
+        ],
+        "rule": "induction",
+        "status": "MANUAL_RELATIVE_THEORY_ARGUMENT_NOT_MECHANIZED"
+      },
+      {
+        "exact_fields": [
+          "rule",
+          "formula",
+          "index"
+        ],
+        "executed": false,
+        "form": "\\(A\\) equals one current block premise.",
+        "manual_soundness_argument": "Current assumptions are supplied only by checked block interface; top-level list is empty.",
+        "prospective_variants": [
+          "top-level-assumption",
+          "bool-index",
+          "negative-index",
+          "out-of-range",
+          "formula-mismatch"
+        ],
+        "rule": "assumption",
+        "status": "MANUAL_RELATIVE_THEORY_ARGUMENT_NOT_MECHANIZED"
+      },
+      {
+        "exact_fields": [
+          "rule",
+          "formula",
+          "name",
+          "inputs"
+        ],
+        "executed": false,
+        "form": "Use an earlier verified sequent \\(\\Gamma\\vdash A\\) with exact earlier lines for every premise.",
+        "manual_soundness_argument": "Induction on registry order and proof line order; exact premise multiplicity/order and conclusion, no self/forward recursion or hidden substitution.",
+        "prospective_variants": [
+          "unknown-name",
+          "self-recursion",
+          "forward-block",
+          "too-few-inputs",
+          "too-many-inputs",
+          "reordered-distinct-premises",
+          "duplicate-premises",
+          "stale-theory-registry"
+        ],
+        "rule": "block",
+        "status": "MANUAL_RELATIVE_THEORY_ARGUMENT_NOT_MECHANIZED"
+      }
+    ],
+    "schema": "common-kernel-complete-function-rule-obligation-matrix-v1",
+    "source_only": true,
+    "static_metadata": [
+      {
+        "AST_parse": true,
+        "code_executed": false,
+        "function_inventory": [
+          {
+            "end": 21,
+            "line": 19,
+            "name": "canonical",
+            "positional_arity": 1
+          },
+          {
+            "end": 26,
+            "line": 23,
+            "name": "problem_hash",
+            "positional_arity": 1
+          },
+          {
+            "end": 33,
+            "line": 29,
+            "name": "Checker.__init__",
+            "positional_arity": 2
+          },
+          {
+            "end": 39,
+            "line": 35,
+            "name": "Checker.tick",
+            "positional_arity": 2
+          },
+          {
+            "end": 44,
+            "line": 41,
+            "name": "Checker.fields",
+            "positional_arity": 3
+          },
+          {
+            "end": 49,
+            "line": 46,
+            "name": "Checker.string",
+            "positional_arity": 2
+          },
+          {
+            "end": 54,
+            "line": 51,
+            "name": "Checker.sequence",
+            "positional_arity": 2
+          },
+          {
+            "end": 59,
+            "line": 56,
+            "name": "Checker.natural",
+            "positional_arity": 2
+          },
+          {
+            "end": 64,
+            "line": 61,
+            "name": "Checker.signature",
+            "positional_arity": 2
+          },
+          {
+            "end": 74,
+            "line": 66,
+            "name": "Checker.term",
+            "positional_arity": 2
+          },
+          {
+            "end": 91,
+            "line": 76,
+            "name": "Checker.formula",
+            "positional_arity": 2
+          },
+          {
+            "end": 96,
+            "line": 93,
+            "name": "Checker.term_free",
+            "positional_arity": 2
+          },
+          {
+            "end": 106,
+            "line": 98,
+            "name": "Checker.free",
+            "positional_arity": 3
+          },
+          {
+            "end": 111,
+            "line": 108,
+            "name": "Checker.subst_term",
+            "positional_arity": 4
+          },
+          {
+            "end": 130,
+            "line": 113,
+            "name": "Checker.subst",
+            "positional_arity": 4
+          },
+          {
+            "end": 151,
+            "line": 132,
+            "name": "Checker.tautology",
+            "positional_arity": 2
+          },
+          {
+            "end": 138,
+            "line": 134,
+            "name": "Checker.tautology.collect",
+            "positional_arity": 1
+          },
+          {
+            "end": 147,
+            "line": 140,
+            "name": "Checker.tautology.truth",
+            "positional_arity": 2
+          },
+          {
+            "end": 161,
+            "line": 153,
+            "name": "Checker.induction",
+            "positional_arity": 3
+          },
+          {
+            "end": 215,
+            "line": 163,
+            "name": "Checker.proof",
+            "positional_arity": 4
+          },
+          {
+            "end": 172,
+            "line": 172,
+            "name": "Checker.proof.fields",
+            "positional_arity": 0
+          },
+          {
+            "end": 176,
+            "line": 173,
+            "name": "Checker.proof.prior",
+            "positional_arity": 1
+          },
+          {
+            "end": 239,
+            "line": 217,
+            "name": "Checker.request",
+            "positional_arity": 2
+          },
+          {
+            "end": 267,
+            "line": 241,
+            "name": "check",
+            "positional_arity": 4
+          },
+          {
+            "end": 249,
+            "line": 244,
+            "name": "check.pairs",
+            "positional_arity": 1
+          },
+          {
+            "end": 250,
+            "line": 250,
+            "name": "check.bad_number",
+            "positional_arity": 1
+          }
+        ],
+        "source": {
+          "bytes": 13977,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/Sources/serialized_kernel.py",
+          "sha256": "045cdba67ead9f12e91c702736fa09a5ae4d9796aea86831d65b245031a261f4"
+        },
+        "unused_compile": true
+      },
+      {
+        "AST_parse": true,
+        "code_executed": false,
+        "function_inventory": [
+          {
+            "end": 33,
+            "line": 3,
+            "name": "main",
+            "positional_arity": 1
+          },
+          {
+            "end": 36,
+            "line": 35,
+            "name": "nil",
+            "positional_arity": 1
+          },
+          {
+            "end": 40,
+            "line": 37,
+            "name": "same",
+            "positional_arity": 2
+          },
+          {
+            "end": 42,
+            "line": 41,
+            "name": "l1",
+            "positional_arity": 1
+          },
+          {
+            "end": 44,
+            "line": 43,
+            "name": "l2",
+            "positional_arity": 2
+          },
+          {
+            "end": 46,
+            "line": 45,
+            "name": "l3",
+            "positional_arity": 3
+          },
+          {
+            "end": 48,
+            "line": 47,
+            "name": "l4",
+            "positional_arity": 4
+          },
+          {
+            "end": 50,
+            "line": 49,
+            "name": "l5",
+            "positional_arity": 5
+          },
+          {
+            "end": 52,
+            "line": 51,
+            "name": "l6",
+            "positional_arity": 6
+          },
+          {
+            "end": 54,
+            "line": 53,
+            "name": "size1",
+            "positional_arity": 1
+          },
+          {
+            "end": 56,
+            "line": 55,
+            "name": "size2",
+            "positional_arity": 1
+          },
+          {
+            "end": 58,
+            "line": 57,
+            "name": "size3",
+            "positional_arity": 1
+          },
+          {
+            "end": 60,
+            "line": 59,
+            "name": "second",
+            "positional_arity": 1
+          },
+          {
+            "end": 62,
+            "line": 61,
+            "name": "third",
+            "positional_arity": 1
+          },
+          {
+            "end": 66,
+            "line": 63,
+            "name": "append",
+            "positional_arity": 2
+          },
+          {
+            "end": 72,
+            "line": 67,
+            "name": "reverse",
+            "positional_arity": 1
+          },
+          {
+            "end": 78,
+            "line": 73,
+            "name": "length",
+            "positional_arity": 1
+          },
+          {
+            "end": 87,
+            "line": 79,
+            "name": "nth",
+            "positional_arity": 2
+          },
+          {
+            "end": 93,
+            "line": 88,
+            "name": "member",
+            "positional_arity": 2
+          },
+          {
+            "end": 95,
+            "line": 94,
+            "name": "is_type",
+            "positional_arity": 2
+          },
+          {
+            "end": 97,
+            "line": 96,
+            "name": "text_is",
+            "positional_arity": 2
+          },
+          {
+            "end": 107,
+            "line": 98,
+            "name": "get",
+            "positional_arity": 2
+          },
+          {
+            "end": 116,
+            "line": 108,
+            "name": "fields",
+            "positional_arity": 2
+          },
+          {
+            "end": 125,
+            "line": 117,
+            "name": "signature_ok",
+            "positional_arity": 1
+          },
+          {
+            "end": 127,
+            "line": 126,
+            "name": "tag",
+            "positional_arity": 1
+          },
+          {
+            "end": 129,
+            "line": 128,
+            "name": "arg1",
+            "positional_arity": 1
+          },
+          {
+            "end": 131,
+            "line": 130,
+            "name": "arg2",
+            "positional_arity": 1
+          },
+          {
+            "end": 133,
+            "line": 132,
+            "name": "jstr",
+            "positional_arity": 1
+          },
+          {
+            "end": 135,
+            "line": 134,
+            "name": "arr",
+            "positional_arity": 1
+          },
+          {
+            "end": 137,
+            "line": 136,
+            "name": "make1",
+            "positional_arity": 1
+          },
+          {
+            "end": 139,
+            "line": 138,
+            "name": "make2",
+            "positional_arity": 2
+          },
+          {
+            "end": 141,
+            "line": 140,
+            "name": "make3",
+            "positional_arity": 3
+          },
+          {
+            "end": 143,
+            "line": 142,
+            "name": "var",
+            "positional_arity": 1
+          },
+          {
+            "end": 145,
+            "line": 144,
+            "name": "fun",
+            "positional_arity": 2
+          },
+          {
+            "end": 147,
+            "line": 146,
+            "name": "all",
+            "positional_arity": 2
+          },
+          {
+            "end": 149,
+            "line": 148,
+            "name": "imp",
+            "positional_arity": 2
+          },
+          {
+            "end": 151,
+            "line": 150,
+            "name": "eq",
+            "positional_arity": 2
+          },
+          {
+            "end": 168,
+            "line": 152,
+            "name": "term_ok",
+            "positional_arity": 2
+          },
+          {
+            "end": 197,
+            "line": 169,
+            "name": "formula_ok",
+            "positional_arity": 3
+          },
+          {
+            "end": 203,
+            "line": 198,
+            "name": "byte_less",
+            "positional_arity": 2
+          },
+          {
+            "end": 205,
+            "line": 204,
+            "name": "next_byte",
+            "positional_arity": 1
+          },
+          {
+            "end": 213,
+            "line": 206,
+            "name": "text_less",
+            "positional_arity": 2
+          },
+          {
+            "end": 221,
+            "line": 214,
+            "name": "insert",
+            "positional_arity": 2
+          },
+          {
+            "end": 226,
+            "line": 222,
+            "name": "union",
+            "positional_arity": 2
+          },
+          {
+            "end": 232,
+            "line": 227,
+            "name": "remove",
+            "positional_arity": 2
+          },
+          {
+            "end": 241,
+            "line": 233,
+            "name": "term_free",
+            "positional_arity": 1
+          },
+          {
+            "end": 262,
+            "line": 242,
+            "name": "free",
+            "positional_arity": 2
+          },
+          {
+            "end": 266,
+            "line": 263,
+            "name": "subst_args",
+            "positional_arity": 3
+          },
+          {
+            "end": 272,
+            "line": 267,
+            "name": "subst_term",
+            "positional_arity": 3
+          },
+          {
+            "end": 278,
+            "line": 273,
+            "name": "increment_digits",
+            "positional_arity": 1
+          },
+          {
+            "end": 284,
+            "line": 279,
+            "name": "decimal",
+            "positional_arity": 1
+          },
+          {
+            "end": 310,
+            "line": 285,
+            "name": "subst",
+            "positional_arity": 3
+          },
+          {
+            "end": 319,
+            "line": 311,
+            "name": "collect_atoms",
+            "positional_arity": 2
+          },
+          {
+            "end": 336,
+            "line": 320,
+            "name": "truth",
+            "positional_arity": 2
+          },
+          {
+            "end": 341,
+            "line": 337,
+            "name": "valuations",
+            "positional_arity": 3
+          },
+          {
+            "end": 343,
+            "line": 342,
+            "name": "tautology",
+            "positional_arity": 1
+          },
+          {
+            "end": 352,
+            "line": 344,
+            "name": "induction",
+            "positional_arity": 2
+          },
+          {
+            "end": 358,
+            "line": 353,
+            "name": "formulas_ok",
+            "positional_arity": 3
+          },
+          {
+            "end": 364,
+            "line": 359,
+            "name": "lookup",
+            "positional_arity": 2
+          },
+          {
+            "end": 381,
+            "line": 365,
+            "name": "check_blocks",
+            "positional_arity": 3
+          },
+          {
+            "end": 389,
+            "line": 382,
+            "name": "references",
+            "positional_arity": 3
+          },
+          {
+            "end": 412,
+            "line": 390,
+            "name": "proof",
+            "positional_arity": 5
+          },
+          {
+            "end": 417,
+            "line": 413,
+            "name": "prior",
+            "positional_arity": 3
+          },
+          {
+            "end": 466,
+            "line": 418,
+            "name": "rule_ok",
+            "positional_arity": 8
+          }
+        ],
+        "source": {
+          "bytes": 17577,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/Sources/fol_checker.tree",
+          "sha256": "8c86a24231d9c7d1777d7998b747a8cfd07087c168da64db6c5dff0820c802ed"
+        },
+        "unused_compile": true
+      },
+      {
+        "AST_parse": true,
+        "code_executed": false,
+        "function_inventory": [
+          {
+            "end": 4,
+            "line": 3,
+            "name": "main",
+            "positional_arity": 1
+          },
+          {
+            "end": 11,
+            "line": 6,
+            "name": "wire_word",
+            "positional_arity": 1
+          },
+          {
+            "end": 18,
+            "line": 13,
+            "name": "wire_ones",
+            "positional_arity": 1
+          },
+          {
+            "end": 25,
+            "line": 20,
+            "name": "wire_key_seen",
+            "positional_arity": 2
+          },
+          {
+            "end": 59,
+            "line": 27,
+            "name": "wire_value",
+            "positional_arity": 1
+          }
+        ],
+        "source": {
+          "bytes": 1739,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/Sources/boundary_syntax.tree",
+          "sha256": "b19efd9bb2b599c1eefb7a62b5b92257483c809e63a81431f683064acd60c25c"
+        },
+        "unused_compile": true
+      },
+      {
+        "AST_parse": true,
+        "code_executed": false,
+        "function_inventory": [
+          {
+            "end": 18,
+            "line": 15,
+            "name": "boundary_program",
+            "positional_arity": 0
+          },
+          {
+            "end": 26,
+            "line": 20,
+            "name": "decoded_heap",
+            "positional_arity": 1
+          },
+          {
+            "end": 36,
+            "line": 28,
+            "name": "tree_word",
+            "positional_arity": 2
+          },
+          {
+            "end": 39,
+            "line": 38,
+            "name": "value_word",
+            "positional_arity": 1
+          },
+          {
+            "end": 43,
+            "line": 41,
+            "name": "boundary_words",
+            "positional_arity": 1
+          },
+          {
+            "end": 77,
+            "line": 46,
+            "name": "BoundaryLowering.__init__",
+            "positional_arity": 2
+          },
+          {
+            "end": 88,
+            "line": 79,
+            "name": "BoundaryLowering.push",
+            "positional_arity": 2
+          },
+          {
+            "end": 100,
+            "line": 90,
+            "name": "BoundaryLowering.pop",
+            "positional_arity": 3
+          },
+          {
+            "end": 125,
+            "line": 102,
+            "name": "BoundaryLowering.parse_band",
+            "positional_arity": 3
+          },
+          {
+            "end": 113,
+            "line": 108,
+            "name": "BoundaryLowering.parse_band.atom",
+            "positional_arity": 1
+          },
+          {
+            "end": 133,
+            "line": 127,
+            "name": "BoundaryLowering.initial_boundary",
+            "positional_arity": 6
+          },
+          {
+            "end": 140,
+            "line": 135,
+            "name": "BoundaryLowering.declaration",
+            "positional_arity": 1
+          }
+        ],
+        "source": {
+          "bytes": 6992,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/Sources/proof_boundary.py",
+          "sha256": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f"
+        },
+        "unused_compile": true
+      },
+      {
+        "AST_parse": true,
+        "code_executed": false,
+        "function_inventory": [
+          {
+            "end": 21,
+            "line": 17,
+            "name": "Heap.__init__",
+            "positional_arity": 3
+          },
+          {
+            "end": 29,
+            "line": 22,
+            "name": "Heap.cons",
+            "positional_arity": 3
+          },
+          {
+            "end": 32,
+            "line": 30,
+            "name": "Heap.head",
+            "positional_arity": 2
+          },
+          {
+            "end": 35,
+            "line": 33,
+            "name": "Heap.tail",
+            "positional_arity": 2
+          },
+          {
+            "end": 39,
+            "line": 36,
+            "name": "Heap.word",
+            "positional_arity": 2
+          },
+          {
+            "end": 40,
+            "line": 40,
+            "name": "Heap.text",
+            "positional_arity": 2
+          },
+          {
+            "end": 44,
+            "line": 41,
+            "name": "Heap.natural",
+            "positional_arity": 2
+          },
+          {
+            "end": 71,
+            "line": 46,
+            "name": "encode_json",
+            "positional_arity": 2
+          },
+          {
+            "end": 79,
+            "line": 74,
+            "name": "Compiler.__init__",
+            "positional_arity": 2
+          },
+          {
+            "end": 86,
+            "line": 80,
+            "name": "Compiler.function",
+            "positional_arity": 2
+          },
+          {
+            "end": 87,
+            "line": 87,
+            "name": "Compiler.fresh",
+            "positional_arity": 1
+          },
+          {
+            "end": 88,
+            "line": 88,
+            "name": "Compiler.emit",
+            "positional_arity": 1
+          },
+          {
+            "end": 96,
+            "line": 89,
+            "name": "Compiler.constant",
+            "positional_arity": 2
+          },
+          {
+            "end": 118,
+            "line": 97,
+            "name": "Compiler.expression",
+            "positional_arity": 2
+          },
+          {
+            "end": 137,
+            "line": 119,
+            "name": "Compiler.statement",
+            "positional_arity": 2
+          },
+          {
+            "end": 138,
+            "line": 138,
+            "name": "Compiler.declaration",
+            "positional_arity": 1
+          },
+          {
+            "end": 140,
+            "line": 140,
+            "name": "fingerprint",
+            "positional_arity": 1
+          },
+          {
+            "end": 167,
+            "line": 142,
+            "name": "validate",
+            "positional_arity": 1
+          },
+          {
+            "end": 144,
+            "line": 144,
+            "name": "validate.integer",
+            "positional_arity": 3
+          },
+          {
+            "end": 215,
+            "line": 169,
+            "name": "run",
+            "positional_arity": 5
+          },
+          {
+            "end": 174,
+            "line": 172,
+            "name": "run.finish",
+            "positional_arity": 2
+          }
+        ],
+        "source": {
+          "bytes": 13290,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/Sources/tree_machine.py",
+          "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257"
+        },
+        "unused_compile": true
+      },
+      {
+        "AST_parse": true,
+        "code_executed": false,
+        "function_inventory": [
+          {
+            "end": 4,
+            "line": 3,
+            "name": "main",
+            "positional_arity": 1
+          },
+          {
+            "end": 11,
+            "line": 6,
+            "name": "wire_word",
+            "positional_arity": 1
+          },
+          {
+            "end": 18,
+            "line": 13,
+            "name": "wire_ones",
+            "positional_arity": 1
+          },
+          {
+            "end": 25,
+            "line": 20,
+            "name": "wire_key_seen",
+            "positional_arity": 2
+          },
+          {
+            "end": 59,
+            "line": 27,
+            "name": "wire_value",
+            "positional_arity": 1
+          },
+          {
+            "end": 92,
+            "line": 62,
+            "name": "semantic_main",
+            "positional_arity": 1
+          },
+          {
+            "end": 95,
+            "line": 94,
+            "name": "nil",
+            "positional_arity": 1
+          },
+          {
+            "end": 99,
+            "line": 96,
+            "name": "same",
+            "positional_arity": 2
+          },
+          {
+            "end": 101,
+            "line": 100,
+            "name": "l1",
+            "positional_arity": 1
+          },
+          {
+            "end": 103,
+            "line": 102,
+            "name": "l2",
+            "positional_arity": 2
+          },
+          {
+            "end": 105,
+            "line": 104,
+            "name": "l3",
+            "positional_arity": 3
+          },
+          {
+            "end": 107,
+            "line": 106,
+            "name": "l4",
+            "positional_arity": 4
+          },
+          {
+            "end": 109,
+            "line": 108,
+            "name": "l5",
+            "positional_arity": 5
+          },
+          {
+            "end": 111,
+            "line": 110,
+            "name": "l6",
+            "positional_arity": 6
+          },
+          {
+            "end": 113,
+            "line": 112,
+            "name": "size1",
+            "positional_arity": 1
+          },
+          {
+            "end": 115,
+            "line": 114,
+            "name": "size2",
+            "positional_arity": 1
+          },
+          {
+            "end": 117,
+            "line": 116,
+            "name": "size3",
+            "positional_arity": 1
+          },
+          {
+            "end": 119,
+            "line": 118,
+            "name": "second",
+            "positional_arity": 1
+          },
+          {
+            "end": 121,
+            "line": 120,
+            "name": "third",
+            "positional_arity": 1
+          },
+          {
+            "end": 125,
+            "line": 122,
+            "name": "append",
+            "positional_arity": 2
+          },
+          {
+            "end": 131,
+            "line": 126,
+            "name": "reverse",
+            "positional_arity": 1
+          },
+          {
+            "end": 137,
+            "line": 132,
+            "name": "length",
+            "positional_arity": 1
+          },
+          {
+            "end": 146,
+            "line": 138,
+            "name": "nth",
+            "positional_arity": 2
+          },
+          {
+            "end": 152,
+            "line": 147,
+            "name": "member",
+            "positional_arity": 2
+          },
+          {
+            "end": 154,
+            "line": 153,
+            "name": "is_type",
+            "positional_arity": 2
+          },
+          {
+            "end": 156,
+            "line": 155,
+            "name": "text_is",
+            "positional_arity": 2
+          },
+          {
+            "end": 166,
+            "line": 157,
+            "name": "get",
+            "positional_arity": 2
+          },
+          {
+            "end": 175,
+            "line": 167,
+            "name": "fields",
+            "positional_arity": 2
+          },
+          {
+            "end": 184,
+            "line": 176,
+            "name": "signature_ok",
+            "positional_arity": 1
+          },
+          {
+            "end": 186,
+            "line": 185,
+            "name": "tag",
+            "positional_arity": 1
+          },
+          {
+            "end": 188,
+            "line": 187,
+            "name": "arg1",
+            "positional_arity": 1
+          },
+          {
+            "end": 190,
+            "line": 189,
+            "name": "arg2",
+            "positional_arity": 1
+          },
+          {
+            "end": 192,
+            "line": 191,
+            "name": "jstr",
+            "positional_arity": 1
+          },
+          {
+            "end": 194,
+            "line": 193,
+            "name": "arr",
+            "positional_arity": 1
+          },
+          {
+            "end": 196,
+            "line": 195,
+            "name": "make1",
+            "positional_arity": 1
+          },
+          {
+            "end": 198,
+            "line": 197,
+            "name": "make2",
+            "positional_arity": 2
+          },
+          {
+            "end": 200,
+            "line": 199,
+            "name": "make3",
+            "positional_arity": 3
+          },
+          {
+            "end": 202,
+            "line": 201,
+            "name": "var",
+            "positional_arity": 1
+          },
+          {
+            "end": 204,
+            "line": 203,
+            "name": "fun",
+            "positional_arity": 2
+          },
+          {
+            "end": 206,
+            "line": 205,
+            "name": "all",
+            "positional_arity": 2
+          },
+          {
+            "end": 208,
+            "line": 207,
+            "name": "imp",
+            "positional_arity": 2
+          },
+          {
+            "end": 210,
+            "line": 209,
+            "name": "eq",
+            "positional_arity": 2
+          },
+          {
+            "end": 227,
+            "line": 211,
+            "name": "term_ok",
+            "positional_arity": 2
+          },
+          {
+            "end": 256,
+            "line": 228,
+            "name": "formula_ok",
+            "positional_arity": 3
+          },
+          {
+            "end": 262,
+            "line": 257,
+            "name": "byte_less",
+            "positional_arity": 2
+          },
+          {
+            "end": 264,
+            "line": 263,
+            "name": "next_byte",
+            "positional_arity": 1
+          },
+          {
+            "end": 272,
+            "line": 265,
+            "name": "text_less",
+            "positional_arity": 2
+          },
+          {
+            "end": 280,
+            "line": 273,
+            "name": "insert",
+            "positional_arity": 2
+          },
+          {
+            "end": 285,
+            "line": 281,
+            "name": "union",
+            "positional_arity": 2
+          },
+          {
+            "end": 291,
+            "line": 286,
+            "name": "remove",
+            "positional_arity": 2
+          },
+          {
+            "end": 300,
+            "line": 292,
+            "name": "term_free",
+            "positional_arity": 1
+          },
+          {
+            "end": 321,
+            "line": 301,
+            "name": "free",
+            "positional_arity": 2
+          },
+          {
+            "end": 325,
+            "line": 322,
+            "name": "subst_args",
+            "positional_arity": 3
+          },
+          {
+            "end": 331,
+            "line": 326,
+            "name": "subst_term",
+            "positional_arity": 3
+          },
+          {
+            "end": 337,
+            "line": 332,
+            "name": "increment_digits",
+            "positional_arity": 1
+          },
+          {
+            "end": 343,
+            "line": 338,
+            "name": "decimal",
+            "positional_arity": 1
+          },
+          {
+            "end": 369,
+            "line": 344,
+            "name": "subst",
+            "positional_arity": 3
+          },
+          {
+            "end": 378,
+            "line": 370,
+            "name": "collect_atoms",
+            "positional_arity": 2
+          },
+          {
+            "end": 395,
+            "line": 379,
+            "name": "truth",
+            "positional_arity": 2
+          },
+          {
+            "end": 400,
+            "line": 396,
+            "name": "valuations",
+            "positional_arity": 3
+          },
+          {
+            "end": 402,
+            "line": 401,
+            "name": "tautology",
+            "positional_arity": 1
+          },
+          {
+            "end": 411,
+            "line": 403,
+            "name": "induction",
+            "positional_arity": 2
+          },
+          {
+            "end": 417,
+            "line": 412,
+            "name": "formulas_ok",
+            "positional_arity": 3
+          },
+          {
+            "end": 423,
+            "line": 418,
+            "name": "lookup",
+            "positional_arity": 2
+          },
+          {
+            "end": 440,
+            "line": 424,
+            "name": "check_blocks",
+            "positional_arity": 3
+          },
+          {
+            "end": 448,
+            "line": 441,
+            "name": "references",
+            "positional_arity": 3
+          },
+          {
+            "end": 471,
+            "line": 449,
+            "name": "proof",
+            "positional_arity": 5
+          },
+          {
+            "end": 476,
+            "line": 472,
+            "name": "prior",
+            "positional_arity": 3
+          },
+          {
+            "end": 525,
+            "line": 477,
+            "name": "rule_ok",
+            "positional_arity": 8
+          }
+        ],
+        "source": {
+          "bytes": 19325,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/Sources/combined_source.tree",
+          "sha256": "8b3b0af5a4f36a6eb01c8ad080b420bb014af84f647e8e95d0f61832edbb4623"
+        },
+        "unused_compile": true
+      }
+    ],
+    "subject_calls": 0,
+    "subject_imports": 0
+  },
+  "new_actuals": 0,
+  "notes": {
+    "G1_adopted": false,
+    "additional_evidence_html": "<p><a href=\"parallel-kernel-value-review.json\">Tagged-value body review</a> \u00b7 <a href=\"parallel-kernel-builder-review.json\">Shared builder review</a> \u00b7 <a href=\"parallel-kernel-register-review.json\">Register review</a> \u00b7 <a href=\"parallel-kernel-frame-review.json\">Caller-frame review</a> \u00b7 <a href=\"parallel-kernel-request-guard-review.json\">One-request guard delta</a></p><p><a href=\"parallel-kernel-binding-negative.json\">Original binding negative</a> \u00b7 <a href=\"parallel-kernel-binding-review.json\">Named-binding correction</a> \u00b7 <a href=\"parallel-kernel-schema-negative.json\">Original snapshot-schema negative</a> \u00b7 <a href=\"parallel-kernel-schema-review.json\">Snapshot correction</a> \u00b7 <a href=\"parallel-kernel-work-bound.json\">Author\u2019s full bound package</a> \u00b7 <a href=\"parallel-kernel-work-review.json\">Independent primary-only work review</a></p>",
+    "all_current_diagnostics_unrun": true,
+    "broader_goals_open": [
+      "practical unmarked Turtle regions and movable boundaries",
+      "certified geometric failure markings with actual candidate effects",
+      "unrestricted validated RL clusters and multiscale receptor families",
+      "exact Penrose",
+      "complete fixed translation-only proof encoding",
+      "automatically discovered arithmetic and symbolic Hilbert proofs with matched conventional controls"
+    ],
+    "conditional_work_bound_offered": true,
+    "conditional_work_bound_reviewed": true,
+    "conditional_work_lower": 403220376,
+    "conformance": {
+      "new_GCTS_conformance_claim": false,
+      "observation_layer_Source_changed": true,
+      "observation_successor_qualified": false,
+      "point_graph_Source_changed": false,
+      "scope": "Physical and logical prerequisites; existing graph hook evidence successor remains unqualified. Full point-domain/frontier/generation/marking/RL obligations remain for search integration."
+    },
+    "copied_reviews": {
+      "parallel-kernel-binding-negative.json": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/typed-linked-parent-Source-custody-negative-v1.json",
+      "parallel-kernel-binding-review.json": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/typed-linked-named-custody-v2-Source-delta-review-v1.json",
+      "parallel-kernel-builder-review.json": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/typed-shared-builder-v2-Source-review-v1.json",
+      "parallel-kernel-frame-review.json": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/typed-runtime-call-frames-v1-Source-review-v1.json",
+      "parallel-kernel-interface-negatives.json": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/common-kernel-source-interface-negatives-v1.json",
+      "parallel-kernel-kernel-review.json": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/independent-full-common-kernel-Source-audit-v1.json",
+      "parallel-kernel-register-review.json": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/typed-runtime-register-records-v1-Source-review-v1.json",
+      "parallel-kernel-request-guard-review.json": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/typed-kernel-one-request-Source-delta-review-v1.json",
+      "parallel-kernel-schema-negative.json": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/typed-linked-parent-snapshot-schema-negative-v1.json",
+      "parallel-kernel-schema-review.json": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/typed-linked-snapshot-schema-v2-Source-delta-review-v1.json",
+      "parallel-kernel-value-review.json": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/typed-linked-tagged-value-BOOT-v2-Source-review-v1.json",
+      "parallel-kernel-work-bound.json": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/bounds-B/full-cohort-count-and-work-bound-v1.json",
+      "parallel-kernel-work-review.json": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/typed-primary-copying-journal-work-bound-Source-review-v1.json"
+    },
+    "evidence_html": "<p>The separate named-binding successor passes a specific Source delta review. It restores the named method and descriptor associations, ordered alias edges and strong owner retention. Its \\(20\\) controls remain unrun. A second Source delta preserves the actual <code>palette_descriptor</code> graph field and all other snapshot fields; its \\(5\\) controls also remain unrun. Neither delta is a complete parent-schema qualification.</p>\n<h3>A conditional work obstruction</h3><p>Independent review supports the primary lower bound</p>\n\\[324\\,859\\,964+78\\,360\\,412=403\\,220\\,376>400\\,000\\,000.\\]\n<p>The first term is a lower bound derived from the complete historical failure metadata and preserved qualification Source. The second is the additional copying and scope-check work required by the proposed journal on the small-query portion alone. The argument assumes a complete successor preserves the original full query and callback path. Under that premise, this copying representation exceeds the unchanged callback ceiling by at least \\(3\\,220\\,376\\), before codec and final validation work.</p>\n<p>This is a reviewed conditional Source argument, with no new measured invocation. The review does not cover the author\u2019s optional graph-trace, solution or DAG-byte estimates. Memory, bytes and elapsed-time fit remain unresolved. The historical negative is unchanged.</p>\n<p>The cost concerns collection of complete experimental evidence; proof checking and tile matching still need their own matched measurements. The proposed next representation seals each complete immutable value once and records every distinct event through charged references. That redesign is not implemented or proved to fit. It must preserve all values, versions, ordered occurrences and live owner checks.</p>",
+    "external_sources": {
+      "bound-custody_v2_offer.json": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/schema-B/custody-v2/handoff-v2.json",
+      "bound-custody_v2_worker.py": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/schema-B/custody-v2/qualify_linked_batch_worker_v2.py",
+      "bound-frozen_hook.py": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/schema-B/implicit_wang_linked_v1.py",
+      "bound-frozen_parent_offer.json": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/schema-B/handoff-v1.json",
+      "bound-frozen_producer.py": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/schema-B/linked_evidence_v1.py",
+      "bound-frozen_worker_v1.py": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/schema-B/qualify_linked_batch_worker_v1.py",
+      "bound-json_encoder.py": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/encoder.py",
+      "bound-old_closure.json": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/batch-runtime-closure-v2.json",
+      "bound-old_complete_failure.json": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/actual-batch-v2/worker-failure.json",
+      "bound-old_cutoff_metadata.json": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/bounds-B/cutoff-metadata-v1.json",
+      "bound-old_plan.json": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/batch-plan-authorized-v2.json",
+      "bound-old_retirement.json": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/ROOT-grant-retirement-v2.json",
+      "bound-selector.py": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/recovered/inherited-Source/wang_unknown_certificate_initializer_v1.py",
+      "codec-API.json": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/schema-B/API-v1.json",
+      "codec-complete-unrun-bank.json": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/schema-B/diagnostic-bank-v1.json",
+      "codec.py": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/schema-B/strict_value_dag_v1.py",
+      "codec_review.json": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/review-C/typed-strict-value-dag-Source-review-v1.json",
+      "field_map.json": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/bounds-B/one-owner-field-map-v1.json",
+      "fixed-vm-codec-v2.py": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/recovered-checker/CodecV2/fixed_vm_codec_v2.py",
+      "graph.py": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/recovered/L/implicit_wang_point_search_v1.py",
+      "master.md": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/basic-tiling-algorithm.md",
+      "milestone.json": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/ROOT-final-milestone-v1.json",
+      "new_diagnostic_bank.json": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/diagnostics-L/new-diagnostic-bank-v1.json",
+      "obligations.json": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/review-C/independent-G1-obligations-v1.json",
+      "original_bank.json": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/recovered/ROOT/implicit-inputs-v1.json",
+      "predecessor_component.py": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/components-B/implicit_wang_batch_v2.py",
+      "predecessor_worker.py": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/qualify_complete_batch_worker_v2.py",
+      "utf8-residual-source.py": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/root/utf8_residual_machine_v1.py",
+      "writer-complete-unrun-bank.json": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/budget-L/diagnostic-bank-v2.json",
+      "writer.py": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/budget-L/aggregate_byte_budget_v2.py",
+      "writer_api.json": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/budget-L/API-v2.json",
+      "writer_review.json": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/review-C/typed-aggregate-budget-Source-review-v2.json"
+    },
+    "goal_status": "active",
+    "input_pins": [
+      {
+        "bytes": 29343,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/independent-full-common-kernel-Source-audit-v1.json",
+        "sha256": "7f7e1046c60251905fc656295ec78521118d59403054fa1eeaa1a1359cce0f69"
+      },
+      {
+        "bytes": 9877,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/common-kernel-source-interface-negatives-v1.json",
+        "sha256": "a6696af08ff4fa5699a865c492d4d1a928aa68b99e4bfbfcef534939b7a70f8b"
+      },
+      {
+        "bytes": 16963,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/typed-shared-builder-v2-Source-review-v1.json",
+        "sha256": "86f80c8045573bca2d63318ea522ca19358f24a414b744fee115b9cfb8650375"
+      },
+      {
+        "bytes": 9321,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/typed-runtime-register-records-v1-Source-review-v1.json",
+        "sha256": "713ce3f8d044a6dbf45d13a42c8d31d951b24b582377a950dd50f8b55e2448fa"
+      },
+      {
+        "bytes": 7896,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/typed-runtime-call-frames-v1-Source-review-v1.json",
+        "sha256": "dad118e93226fe5e218b4d3aa84ad422fa92a9825d7faef79e2948d299ca79c7"
+      },
+      {
+        "bytes": 5030,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/typed-kernel-one-request-Source-delta-review-v1.json",
+        "sha256": "a3cf27965ca9a91b465013088432ebf1f3bb646a943947b09b10194d2f4a61f8"
+      },
+      {
+        "bytes": 35032,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/typed-linked-tagged-value-BOOT-v2-Source-review-v1.json",
+        "sha256": "6a1d4b8a8af4fcbe1a34a96cfd15cb59a258842ea7d3cda93d85be42b2cde217"
+      },
+      {
+        "bytes": 16636,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/typed-linked-parent-Source-custody-negative-v1.json",
+        "sha256": "66b418285700b49d0101bd1449d21607e1976bc4d6decac0bac64695b1a42d90"
+      },
+      {
+        "bytes": 6027,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/typed-linked-parent-snapshot-schema-negative-v1.json",
+        "sha256": "02aa31a0f65f7b73b7223af3277004d952d54bde7c62db4f2688f612630f7989"
+      },
+      {
+        "bytes": 36240,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/basic-tiling-algorithm.md",
+        "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+      },
+      {
+        "bytes": 116476,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/qualify_complete_batch_worker_v2.py",
+        "sha256": "9ea014de87d5af2ed3017442f690699a0ef54750c8d8be12890e373936b65a03"
+      },
+      {
+        "bytes": 38513,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/components-B/implicit_wang_batch_v2.py",
+        "sha256": "2dd3269a96bbe8db63afdffc3b175830dad5dea7cc94555024a7aac95ef088e7"
+      },
+      {
+        "bytes": 36892,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/recovered/L/implicit_wang_point_search_v1.py",
+        "sha256": "1a83c9c59b2e1862d5a2acda69b826ccc3a8e2cf4899e824286f711f8bf25981"
+      },
+      {
+        "bytes": 740651,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/recovered/ROOT/implicit-inputs-v1.json",
+        "sha256": "10fe60d005a2f586a76bf69ae30317b8dae538ba9f126714b9f71ffa474a89b4"
+      },
+      {
+        "bytes": 38883,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/diagnostics-L/new-diagnostic-bank-v1.json",
+        "sha256": "6e579fa58384188b5444606c87dbdee92a86f5771a983a36fbf6904192e669ab"
+      },
+      {
+        "bytes": 58581,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/review-C/independent-G1-obligations-v1.json",
+        "sha256": "11133fef322621608f924f3368750b4e39aa2ae11f38fe1f4aa04fc3b815a17a"
+      },
+      {
+        "bytes": 18747,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/bounds-B/one-owner-field-map-v1.json",
+        "sha256": "3d34e2572390a44b40e12d0ead9c110f5c6e30ae0079c3d617ff080da61a4020"
+      },
+      {
+        "bytes": 20200,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/schema-B/strict_value_dag_v1.py",
+        "sha256": "0f0cdf59ca7b676dd0bb86a7ff18be4ea6ca9a681d47b740d53db4e885e300b5"
+      },
+      {
+        "bytes": 13232,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/review-C/typed-strict-value-dag-Source-review-v1.json",
+        "sha256": "d6b2a271cd358bf51a13294f1a9f4532c129e02c914d68176445c2473dd5a54c"
+      },
+      {
+        "bytes": 23530,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/budget-L/aggregate_byte_budget_v2.py",
+        "sha256": "cc85059ef049315a8fb340a87ec9dd26c0cb99e0d2dfe28463caa14d509dd1b8"
+      },
+      {
+        "bytes": 7890,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/budget-L/API-v2.json",
+        "sha256": "1fab6ced56cb5862dd4a9373b9b49f9b4d8cace914462f8a06f6a35713796659"
+      },
+      {
+        "bytes": 9952,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/review-C/typed-aggregate-budget-Source-review-v2.json",
+        "sha256": "4fe6737878a1d35fd32b633a48f435fdbe59dd0fdccb7432707a6c513b48aa83"
+      },
+      {
+        "bytes": 7715,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/ROOT-final-milestone-v1.json",
+        "sha256": "82a88706458cedf46ce680ce461753f17d63e5d4a699fcc3934ed9d6270c4fb3"
+      },
+      {
+        "bytes": 8265,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/root/utf8_residual_machine_v1.py",
+        "sha256": "08f9472acb2042e398997cc0dddd6ddc2487c866a3b683b42f53852bee26a088"
+      },
+      {
+        "bytes": 16425,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/schema-B/diagnostic-bank-v1.json",
+        "sha256": "754e6385879eabac6544be25d5ddddfa95a42cbc824a45810e1fe6aab9653b6b"
+      },
+      {
+        "bytes": 9079,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/schema-B/API-v1.json",
+        "sha256": "0a5fc08067a486a9a41cecf67c382406e9f43a1186e552f37858ee865d779677"
+      },
+      {
+        "bytes": 41926,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/budget-L/diagnostic-bank-v2.json",
+        "sha256": "e5085155f6280bf2618ba49ec4ee345a133c457d5b8b8ad7266be61ab237458c"
+      },
+      {
+        "bytes": 28213,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/recovered-checker/CodecV2/fixed_vm_codec_v2.py",
+        "sha256": "427b274efd755bbd58f3f37d34aed1c45581ecf7a591d48394672a05158f4182"
+      },
+      {
+        "bytes": 9495,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/typed-linked-named-custody-v2-Source-delta-review-v1.json",
+        "sha256": "acf8ad91e28605a3a7e3d72b6d840a95693ac09b19745319b5463336d81e0df1"
+      },
+      {
+        "bytes": 27193,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/recovered/inherited-Source/wang_unknown_certificate_initializer_v1.py",
+        "sha256": "02cf1718e09c1eadb4eda4811436e1c7139cb2e1c255f9d73894e0e3b5d21b43"
+      },
+      {
+        "bytes": 513516,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/actual-batch-v2/worker-failure.json",
+        "sha256": "081ce0625607fa82ebd8957314b990fa26eb880c5715cc09e220863d4bfa2685"
+      },
+      {
+        "bytes": 7396,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/bounds-B/cutoff-metadata-v1.json",
+        "sha256": "f3482f22b0c968914f51ee41887726660d25d1ca5c302be65792f2cf50dff439"
+      },
+      {
+        "bytes": 3562,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/batch-plan-authorized-v2.json",
+        "sha256": "5ad547859e7a1092a36e9f715c9cf521aeb8748f0aba3f34248b15bd1705d378"
+      },
+      {
+        "bytes": 12465,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/batch-runtime-closure-v2.json",
+        "sha256": "8138c744d1b8b301029db6391f21c7fdaf49b39b4355390d85a92412fff925c0"
+      },
+      {
+        "bytes": 5051,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/ROOT-grant-retirement-v2.json",
+        "sha256": "d724f817dca900ce1e02bde46ae2a1b644344f12ca27b1de42173d3d1f4ab74d"
+      },
+      {
+        "bytes": 26901,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/schema-B/handoff-v1.json",
+        "sha256": "24fc6d6463bec5935cf92004ba16e3514d983896f212be149d4d3bf62940607b"
+      },
+      {
+        "bytes": 14589,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/schema-B/linked_evidence_v1.py",
+        "sha256": "d62f6ecc21ae1e471dd43482e67db9681ad5c2c83c346524e880bdd23402e18b"
+      },
+      {
+        "bytes": 119048,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/schema-B/qualify_linked_batch_worker_v1.py",
+        "sha256": "0246bae88d9ed51b6b0cfde350b37e9e8cd7703baaee03b988aad38f89e37349"
+      },
+      {
+        "bytes": 40502,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/schema-B/implicit_wang_linked_v1.py",
+        "sha256": "413c0e001d66dd18ba87c10ccba2ba9c0e82c8bb17a3db4b1e2058775b09b4d2"
+      },
+      {
+        "bytes": 2773,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/schema-B/custody-v2/handoff-v2.json",
+        "sha256": "88b6905335dfec7704ec6fb05ac7c0f49f4b4c5e7a5104ae875574a8a7f88171"
+      },
+      {
+        "bytes": 122173,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/schema-B/custody-v2/qualify_linked_batch_worker_v2.py",
+        "sha256": "463c2bb80ab5ee5bae2cb58fe635f82c45e812e997a2498dfb5da027632ca932"
+      },
+      {
+        "bytes": 16075,
+        "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/encoder.py",
+        "sha256": "52bfb1b66029cc70fa3bd7fe11df9f2e03922d413407a341b387a22c987f24f8"
+      },
+      {
+        "bytes": 25326,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/bounds-B/full-cohort-count-and-work-bound-v1.json",
+        "sha256": "b12129c0aa6de86de33875772d1071e931f97b5ccc83cf51210685b943fb213a"
+      },
+      {
+        "bytes": 34083,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/typed-primary-copying-journal-work-bound-Source-review-v1.json",
+        "sha256": "ac89a05cc0a62255cf90ed5cc90325a20c7137b735b734edc355dee3dd592893"
+      },
+      {
+        "bytes": 7662,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/typed-linked-snapshot-schema-v2-Source-delta-review-v1.json",
+        "sha256": "7b97a0d8efba2328c37ae922f487cb43d34a0dffeda038e3cb7556cd87c866f0"
+      }
+    ],
+    "logical_audit": {
+      "findings": 8,
+      "functions": 128,
+      "mechanized": false,
+      "rules": 11,
+      "runtime_qualified": false
+    },
+    "named_binding_successor_status": "PASS_SPECIFIC_SOURCE_DELTA_ONLY",
+    "new_actuals": 0,
+    "new_grants": 0,
+    "no_new_proof_search": true,
+    "old_G0_negative_unchanged": true,
+    "optional_graph_and_DAG_byte_estimates_reviewed": false,
+    "physical_html": "<p>The complete tagged-value body passes conditional Source review across all \\(41\\) functions. It implements every tagged value family, physical UTF-8 traversal, nested object-key uniqueness, retention of the three public roots, and exact request assembly. All \\(23\\) new diagnostic cohorts and the preserved prior bank remain unrun.</p><p>This is a complete value subbody under its documented intake conditions. It requires a valid canonical seed heap, the fixed layout and boundary pins, and future fresh generation of the entire qualified UTF-8 table. Those conditions are not implemented by this subbody, and the full BOOT and interpreter remain incomplete.</p>",
+    "physical_value_body": {
+      "full_BOOT": false,
+      "full_VM": false,
+      "functions": 41,
+      "new_unrun_cohorts": 23,
+      "status": "PASS_CONDITIONAL_VALUE_BODY_SOURCE_ONLY"
+    },
+    "publication_ready_for_asset_binding_review": true,
+    "schema": "parallel-kernel-publication-notes-v1",
+    "snapshot_successor_status": "PASS_SPECIFIC_SOURCE_DELTA_ONLY",
+    "source_only": true,
+    "subject_calls": 0,
+    "work_bound_status": "PASS_CONDITIONAL_PRIMARY_WORK_OBSTRUCTION_ONLY",
+    "work_excess_lower": 3220376,
+    "work_limit": 400000000
+  },
+  "schema": "parallel-common-kernel-report-data-v1",
+  "source_audit_status": "SOURCE_AUDIT_COMPLETE_WITH_INTERFACE_COUNTEREXAMPLES",
+  "source_only": true
+}

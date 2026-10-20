@@ -1,0 +1,121 @@
+{
+  "AST_parse": true,
+  "actual_execution_authorized": false,
+  "all_recipes_unrun": true,
+  "argument": "Exactly two insertions add one-shot guard. New instance begins false; first request sets true before any validation/work. Every later request refuses before consulting or replacing theory. This closes the stale-block request-reuse recipe under ordinary API use. Public check is fresh already; first-call semantic body is byte-identical.",
+  "author": {
+    "bytes": 18360,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/freeze_request_scope_and_builder_reviews_v1.py",
+    "sha256": "7e0c2b1fd4a382e2b39a913fc3145afcfb7007490ce984f83318bb88024f2971"
+  },
+  "checker_calls": 0,
+  "checks": [
+    {
+      "check": "pin:serialized_kernel_request_scope_v2.py",
+      "passed": true
+    },
+    {
+      "check": "fresh-copy:serialized_kernel_request_scope_v2.py",
+      "passed": true
+    },
+    {
+      "check": "kernel:metadata-pin",
+      "passed": true
+    },
+    {
+      "check": "fresh-kernel-metadata",
+      "passed": true
+    },
+    {
+      "check": "kernel:only-exact-two-insertions",
+      "passed": true
+    },
+    {
+      "check": "kernel:same26-functions",
+      "passed": true
+    },
+    {
+      "check": "kernel:latch-first-before-validation",
+      "passed": true
+    }
+  ],
+  "failed_checks": [],
+  "fixture_calls": 0,
+  "frozen_original_mutated": false,
+  "metadata": {
+    "bytes": 1230,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/request-builder-Sources-v1/kernel-request-scope-Source-v2.json",
+    "sha256": "d2c7f9847b42c8d9b1e2496086c5745129981d7ab9c9c78dbc15b5becbdf4790"
+  },
+  "new_actuals": 0,
+  "new_grants": 0,
+  "original": {
+    "bytes": 13977,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/Sources/serialized_kernel.py",
+    "sha256": "045cdba67ead9f12e91c702736fa09a5ae4d9796aea86831d65b245031a261f4"
+  },
+  "original_audit": {
+    "bytes": 29343,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/independent-full-common-kernel-Source-audit-v1.json",
+    "sha256": "7f7e1046c60251905fc656295ec78521118d59403054fa1eeaa1a1359cce0f69"
+  },
+  "preconditions": [
+    "Ordinary trusted API calls, no direct attribute tampering/reset or hostile introspection.",
+    "Low-level proof/term methods are not newly certified independently of an initialized bound context."
+  ],
+  "prospective_recipes": [
+    {
+      "executed": false,
+      "id": "accepted-first-then-foreign-theory",
+      "recipe": "Use the two full literal requests in auditF1 with the same v2Checker. First accepts relative to oldbotaxiom; second raises Invalid before new theory validation or block lookup."
+    },
+    {
+      "executed": false,
+      "id": "same-request-twice",
+      "recipe": "Even identical secondrequest is refused; inventories do not carry implicitly."
+    },
+    {
+      "executed": false,
+      "id": "failed-first-fields",
+      "recipe": "First malformed rootfields attempt consumes latch; corrected secondrequest still refused."
+    },
+    {
+      "executed": false,
+      "id": "failed-first-rule",
+      "recipe": "First has a valid earlierblock but laterproof fails; laterrequest cannot reuse retained partialregistry."
+    },
+    {
+      "executed": false,
+      "id": "failed-first-resource",
+      "recipe": "First raises work Resource during request tick; secondattempt Invalid before tick."
+    },
+    {
+      "executed": false,
+      "id": "fresh-public-check",
+      "recipe": "Two separate public check(payload) calls each construct a new Checker and keep first-call control flow of old public entrypoint."
+    },
+    {
+      "executed": false,
+      "id": "complete-old-rule-bank",
+      "recipe": "Every11rule branch, full type/quantifier/equality/induction/block bank remains required; delta does not shrink checker. No runtime regression claim here."
+    }
+  ],
+  "review_passed": true,
+  "reviewer_identity": "/root/recovered_batch_review",
+  "runtime_qualified": false,
+  "schema": "typed-kernel-one-request-Source-delta-review-v1",
+  "scope_remaining": "Original F2-F8 byte/string/boundary/license/status/full-physical obligations remain. This does not certify all-input/status host/tree correspondence, any native parser change, or a full VM.",
+  "semantic_replays": 0,
+  "simulator_calls": 0,
+  "sizing_probes": 0,
+  "source": {
+    "bytes": 14241,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/request-builder-Sources-v1/serialized_kernel_request_scope_v2.py",
+    "sha256": "bb291445dbf02669d025fa6f3723b4ceea2ba96613e1d1bad4bfef82cbf02839"
+  },
+  "source_only": true,
+  "status": "PASS_SOURCE_DELTA_ONLY",
+  "subject_calls": 0,
+  "subject_imports": 0,
+  "unused_compile": true
+}

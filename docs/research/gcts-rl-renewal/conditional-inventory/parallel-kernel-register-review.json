@@ -1,0 +1,225 @@
+{
+  "AST_parse": true,
+  "G1_adopted": false,
+  "GCTS_RL_advantage_established": false,
+  "actual_execution_authorized": false,
+  "additional_unrun_recipes": [
+    {
+      "executed": false,
+      "id": "absent-index-empty-and-end",
+      "recipe": "Emptyvector withINDEX0/1; lengthNvector withINDEXN/N+1 and verylongcanonicalINDEX. Matchatcolon still reachesnonemptycheckinvalid, nonmatchskipcoloninvalid. No inventedregister returned."
+    },
+    {
+      "executed": false,
+      "id": "read-full-values-and-preservation",
+      "recipe": "Selectedrefs0,1,255,256,257 andlargeractualnodeID atfirst/middle/lastfield; compareallVALUEbits andentireINDEX/REGISTERS/allotherpreservedbandpayloads; headsallowedtomove."
+    },
+    {
+      "executed": false,
+      "id": "write-grow-shrink-and-suffix",
+      "recipe": "Replace eachfield of length0..3validvectors withallwordlengthrelations, includingfirst/last; staleBUFFERlongerthannextbuffer; compareentirevector, onechangedfieldonly, allpreservedVALUE/INDEX/otherpayloads and blankBUFFERaftercompletion."
+    },
+    {
+      "executed": false,
+      "id": "copy-commit-boundaries",
+      "recipe": "FenceeveryneededCOUNTcarry/BUFFERcopy/REGcommitwrite. Failurebeforecommit leavesoldREGpayload; failureduringcommit maydestroyoldvector andmustretainrawprefixwithoutadmission/repair."
+    },
+    {
+      "executed": false,
+      "id": "valid-domain-versus-malformation",
+      "recipe": "Canonicalref/vector/INDEX preconditions are fullclientobligations. Emptyfields, noncanonicalhighzeros, earlyB or missingdelimiters maynotallberefusedhere; do not labelroutineageneralvalidator."
+    },
+    {
+      "executed": false,
+      "id": "Root-firstfault-and-raw-prefix",
+      "recipe": "Retainexactbuilderrawowners/callbackexception and firstRootfault; completeprospectiveforeign/ownedcutoffcontrols beforeanyfutureactual; noresumedfailedconstruction."
+    }
+  ],
+  "all_recipes_unrun": true,
+  "author": {
+    "bytes": 8823,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/freeze_register_records_review_v1.py",
+    "sha256": "f8329c2fd5ef2bc0a39d6e3af0eba96e1828e365405ea4b6b5db71b831acfeca"
+  },
+  "checks": [
+    {
+      "check": "offered-pin:runtime_register_records_v1.py",
+      "passed": true
+    },
+    {
+      "check": "fresh-copy:runtime_register_records_v1.py",
+      "passed": true
+    },
+    {
+      "check": "offered-pin:runtime-register-records-API-v1.json",
+      "passed": true
+    },
+    {
+      "check": "fresh-copy:runtime-register-records-API-v1.json",
+      "passed": true
+    },
+    {
+      "check": "no-import-nodes",
+      "passed": true
+    },
+    {
+      "check": "Builder-v2-exact",
+      "passed": true
+    },
+    {
+      "check": "all-five-functions",
+      "passed": true
+    },
+    {
+      "check": "all-four-unrun-families",
+      "passed": true
+    },
+    {
+      "check": "Source-only-no-VM-claim",
+      "passed": true
+    },
+    {
+      "check": "manual-read24",
+      "passed": true
+    },
+    {
+      "check": "manual-write46",
+      "passed": true
+    },
+    {
+      "check": "fresh-review",
+      "passed": true
+    }
+  ],
+  "compiler_calls": 0,
+  "failed_checks": [],
+  "fixture_calls": 0,
+  "frozen_files_mutated": false,
+  "full_Source_and_API_read": true,
+  "full_VM_qualified": false,
+  "function_matrix": [
+    {
+      "argument": "Allocate literalwrite0 thenclear_word; leavescanonicalCOUNT0 and countcursoratfirstbit. Four allocatedmicrostates including sharedclear3.",
+      "end": 16,
+      "line": 14,
+      "name": "_zero"
+    },
+    {
+      "argument": "From registerfieldstart/currentbits, scanbits throughsemicolon andadvance to nextfield. Colon beforesemicolon choosesinvalid. On malformedemptyfield it can skip, so caller mustalreadyvalidate vector; not a global malformedinputvalidator.",
+      "end": 21,
+      "line": 18,
+      "name": "_skip_field"
+    },
+    {
+      "argument": "Rewind, erase0/1/semicolon untilcolon orB, erasecolon andrewind. Supports blankBUFFER and validrecordvector; successful exit leavesblank payload, not an emptycolonrecord. No arbitrarysuffixsanitization beyondfirstB.",
+      "end": 28,
+      "line": 23,
+      "name": "_clear_records"
+    },
+    {
+      "argument": "InitializeCOUNT0 andREGcursorfirstfield; compareCOUNTtoINDEX using fullbinarywords. Onmismatch skip exactlyonefield andincrementCOUNT; onmatch clearVALUE, requirefirstbit (colonabsentinvalid), copyallbits tosemicolon, rewindVALUE. Exact selectedref returned, allREGpayload andINDEXpreserved.",
+      "end": 52,
+      "line": 30,
+      "name": "register_read"
+    },
+    {
+      "argument": "ClearBUFFER then searchCOUNT0 upward, copying entire unmatchedprefix fields. Onmatch skipoldfield then copyentire preservedVALUE andappendsemicolon, then exact untouchedsuffix tocolon. Only aftercompletebuffer produced eraseoldREGwholevector, commitfullbuffer andnewcolon, clearBUFFER, rewindREG. No atomicrollback onfailure.",
+      "end": 111,
+      "line": 54,
+      "name": "register_write"
+    }
+  ],
+  "goal_status": "active",
+  "helper_calls": 0,
+  "manual_allocations": {
+    "read_terms": {
+      "clear_value": 3,
+      "compare_entry": 1,
+      "compare_words": 6,
+      "field_loop": 1,
+      "increment_word": 3,
+      "nonempty_row": 1,
+      "register_rewind": 1,
+      "skip_field": 1,
+      "two_bit_writers": 2,
+      "value_rewind": 1,
+      "zero_count": 4
+    },
+    "read_total": 24,
+    "scope": "Allocatedmicrostate callsites excluding sharedhalts and suppliedcontinuationbodies; no actualmachine/table/census generated.",
+    "write_terms": {
+      "buffer_rewind": 1,
+      "clear_buffer_after": 3,
+      "clear_buffer_before": 3,
+      "close_buffer": 1,
+      "commit_end": 1,
+      "commit_loop": 1,
+      "commit_writers": 3,
+      "compare_entry": 1,
+      "compare_words": 6,
+      "erase_old_vector": 3,
+      "increment_word": 3,
+      "prefix_delimiter": 1,
+      "prefix_loop": 1,
+      "prefix_writers": 2,
+      "register_done_rewind": 1,
+      "register_rewind": 1,
+      "replacement_delimiter": 1,
+      "replacement_loop": 1,
+      "replacement_rewind": 1,
+      "replacement_writers": 2,
+      "skip_old": 1,
+      "suffix_loop": 1,
+      "suffix_writers": 3,
+      "zero_count": 4
+    },
+    "write_total": 46
+  },
+  "manual_argument_not_mechanized": true,
+  "manual_control_argument": "InductonCOUNT forprefixsearch; every unselected field is copied/skipped exactlyonce. Atmatch, read copies the completeword orwrite replaces exactlyonecompletefield. Write preserves prefix/suffix by streaming into full BUFFER beforedestructivecommit. Canonical validatedvector andavailablecapacity are essential preconditions.",
+  "new_actuals": 0,
+  "new_grants": 0,
+  "new_theorem": false,
+  "old_G0_negative_unchanged": true,
+  "partial_files_opened": 0,
+  "pins": [
+    {
+      "bytes": 5357,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/register-records-Sources-v1/runtime_register_records_v1.py",
+      "sha256": "280d0a1acaa8111bcd6f8ac30291d805a313f7a9498e9a434bdbacbd19386a98"
+    },
+    {
+      "bytes": 3495,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/register-records-Sources-v1/runtime-register-records-API-v1.json",
+      "sha256": "87d2fc6e6bb1c2f15ec5ca7e2228781cdc7b6e7372a35f8d45706c1181aecbcc"
+    }
+  ],
+  "primary_reader_index_active_mutated": false,
+  "remaining_obligations": [
+    "Fullprogram/registerinitialization andvalidrefchecking; no candidate may supply an unvalidated registervector or executablecontrol/address.",
+    "BUFFER14is sharedPARSER_STACK. Its priorcontents are intentionallyclobbered; fullcall/frame/BOOTclient mustschedule lifetime andsaveanythingneeded. No aliasing withINDEX8/VALUE11/COUNT12/REG4 permitted.",
+    "Builder fixedlayout and canonicalwordpadding, Source/function/closure/argument/callback custody and firstRootfault precedence remain required. Malformedlayoutchecks cannot be a hiddenhostproofgate.",
+    "Everyopcode mustcaptureallsourceoperandsbeforewritingdestinations; these primitives alone do not establish instructionalias semantics or frame restoration.",
+    "Full13opcodefetch/programparser/controller/rootACCEPT, public/Wangselector, noextraaccept refinement and whole-resourcefit remain absent. Fourunrunfamilies andSourcecount24/46 are not qualification."
+  ],
+  "review_passed": true,
+  "reviewer_identity": "/root/recovered_batch_review",
+  "runtime_qualified": false,
+  "schema": "typed-runtime-register-records-v1-Source-review-v1",
+  "semantic_replays": 0,
+  "shared_builder_review": {
+    "bytes": 16963,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/typed-shared-builder-v2-Source-review-v1.json",
+    "sha256": "86f80c8045573bca2d63318ea522ca19358f24a414b744fee115b9cfb8650375"
+  },
+  "simulator_calls": 0,
+  "sizing_probes": 0,
+  "source_only": true,
+  "status": "PASS_CONDITIONAL_COMPONENT_SOURCE_ONLY",
+  "subject_calls": 0,
+  "subject_imports": 0,
+  "table_generation_calls": 0,
+  "tools_stopped_after_freeze": true,
+  "unused_compile": true,
+  "whole_four_family_bank_read": true
+}

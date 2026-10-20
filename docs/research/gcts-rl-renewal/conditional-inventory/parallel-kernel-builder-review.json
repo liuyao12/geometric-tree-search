@@ -1,0 +1,381 @@
+{
+  "ABI": {
+    "bytes": 4319,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/request-builder-Sources-v1/shared-builder-ABI-v2.json",
+    "sha256": "42f113591d92c4dd3098d7f5a6d83ce7434b5f4f146ff52cd4c925f283370040"
+  },
+  "AST_parse": true,
+  "BOOT_qualified": false,
+  "G1_adopted": false,
+  "GCTS_RL_advantage_established": false,
+  "actual_execution_authorized": false,
+  "additional_unrun_recipes": [
+    {
+      "executed": false,
+      "id": "first-root-fault-before-local-quota",
+      "recipe": "Latch genuine Rootfault, then encounter local _step quota; future wrapper must preserve original Rootexception even though inner quota check precedes callback."
+    },
+    {
+      "executed": false,
+      "id": "raw-row-before-slot-record",
+      "recipe": "Raise exactforeign sentinel at first physical-row callback; rawdelta includes producedrow and active while slots omits it. Project both whole values rather than force equality or trim."
+    },
+    {
+      "executed": false,
+      "id": "failure-lifetime-no-resume",
+      "recipe": "After constructionerror, retain raw Builder/rows/check/limits/error traceback; a proposed retry on sameinstance must not mutate previously frozen evidence or bypass original oncegate."
+    },
+    {
+      "executed": false,
+      "id": "public-owner-impostors",
+      "recipe": "Fresh public DeclarationError/ConstructionLimit with omitted owner remain foreign; callbacks throwing them must be retained exactidentity, not treated as owned quotas."
+    },
+    {
+      "executed": false,
+      "id": "invalid-word-precondition",
+      "recipe": "Noncanonical highzero and garbageafterfirstB are outside canonical binaryhelper theorem; do not falsely require every helper to be an arbitrary-payload validator. Full BOOT mustvalidate before use."
+    }
+  ],
+  "all_functions": [
+    {
+      "end": 17,
+      "executed": false,
+      "line": 17,
+      "manual_argument": "Default ownerNone makes a public callback-constructed ordinary instance foreign. Explicit private owner is convention only, not a hostile introspection security boundary.",
+      "name": "DeclarationError.__init__",
+      "status": "SOURCE_ONLY_CONDITIONAL"
+    },
+    {
+      "end": 19,
+      "executed": false,
+      "line": 19,
+      "manual_argument": "Same owner distinction for limits; original public auto-owner bug preserved in v1 negative.",
+      "name": "ConstructionLimit.__init__",
+      "status": "SOURCE_ONLY_CONDITIONAL"
+    },
+    {
+      "end": 20,
+      "executed": false,
+      "line": 20,
+      "manual_argument": "Exact class plus private token identity; foreign error identity and Root firstfault must be checked before classification.",
+      "name": "is_owned_declaration",
+      "status": "SOURCE_ONLY_CONDITIONAL"
+    },
+    {
+      "end": 21,
+      "executed": false,
+      "line": 21,
+      "manual_argument": "Exact class plus token; not a generic isinstance test. Caller must not infer Resource authority from type alone.",
+      "name": "is_owned_limit",
+      "status": "SOURCE_ONLY_CONDITIONAL"
+    },
+    {
+      "end": 23,
+      "executed": false,
+      "line": 22,
+      "manual_argument": "All actual Sourceowned declaration failures explicitly pass token.",
+      "name": "require",
+      "status": "SOURCE_ONLY_CONDITIONAL"
+    },
+    {
+      "end": 37,
+      "executed": false,
+      "line": 26,
+      "manual_argument": "Raw owners/containers installed before guarded validation; exact six-key positive bounded-int limits copied; explicit callback; halt allocation starts at IDs0..3.",
+      "name": "Builder.__init__",
+      "status": "SOURCE_ONLY_CONDITIONAL"
+    },
+    {
+      "end": 46,
+      "executed": false,
+      "line": 38,
+      "manual_argument": "Best-effort raw partial prefix, preserving exception identity via bare raise in callers; raw lists/sets remain owned, not automatically literal or immutable JSON evidence.",
+      "name": "Builder._attach",
+      "status": "SOURCE_ONLY_CONDITIONAL"
+    },
+    {
+      "end": 54,
+      "executed": false,
+      "line": 47,
+      "manual_argument": "Counts before callback and owned limit checks, exactforeign exceptions bare-raised. FirstRootfault precedence requires future outer latch before classifying local-limit exceptions.",
+      "name": "Builder._step",
+      "status": "SOURCE_ONLY_CONDITIONAL"
+    },
+    {
+      "end": 61,
+      "executed": false,
+      "line": 55,
+      "manual_argument": "Appends raw state/name and rowplaceholder before quota callback. Names unique and bounded; all working placeholders must later close.",
+      "name": "Builder.state",
+      "status": "SOURCE_ONLY_CONDITIONAL"
+    },
+    {
+      "end": 84,
+      "executed": false,
+      "line": 62,
+      "manual_argument": "Exact workingstate/band/dict/action types, nofence reads/writes, unitmoves, unchanged uncrossed^ and immutable0..2writes; raw producedchoice retained beforecallback. Full missingrawread MALFORMED completion after validation.",
+      "name": "Builder.put",
+      "status": "SOURCE_ONLY_CONDITIONAL"
+    },
+    {
+      "end": 86,
+      "executed": false,
+      "line": 85,
+      "manual_argument": "Allocation then put; partial failure leaves raw placeholder retained, never a complete table.",
+      "name": "Builder.row",
+      "status": "SOURCE_ONLY_CONDITIONAL"
+    },
+    {
+      "end": 90,
+      "executed": false,
+      "line": 87,
+      "manual_argument": "Leftscan finite valid band until^ then moveone right; noleftcross; invariant assumes unique leftdelimiter and reachable finite cursor.",
+      "name": "Builder.rewind",
+      "status": "SOURCE_ONLY_CONDITIONAL"
+    },
+    {
+      "end": 95,
+      "executed": false,
+      "line": 91,
+      "manual_argument": "Rewind, erase finite0/1word to firstB, rewind. Binary scratchword domain and blank padding are caller invariants; it is not arbitrary RAW payload sanitizer.",
+      "name": "Builder.clear_word",
+      "status": "SOURCE_ONLY_CONDITIONAL"
+    },
+    {
+      "end": 105,
+      "executed": false,
+      "line": 96,
+      "manual_argument": "Distinct bands; clear destination, rewind source, read eachbit carry in finite Source state, write intoB, sourcehead endsB and destinationhead rewound. Destination must mutable and capacity sufficient else declaration/BOUND.",
+      "name": "Builder.copy_word",
+      "status": "SOURCE_ONLY_CONDITIONAL"
+    },
+    {
+      "end": 116,
+      "executed": false,
+      "line": 106,
+      "manual_argument": "Distinct band word heads rewound; compare fullbits and commonB terminator; yes/no preserve raw words but heads may remain inside. Does not certify arbitrary noncanonical words.",
+      "name": "Builder.compare_words",
+      "status": "SOURCE_ONLY_CONDITIONAL"
+    },
+    {
+      "end": 120,
+      "executed": false,
+      "line": 117,
+      "manual_argument": "Nonempty canonicalLSB input; carry1->0, first0/B->1 then rewind. Allones extends onecell. Fence yieldsBOUND. Invalid/noncanonical input not promised rejected.",
+      "name": "Builder.increment_word",
+      "status": "SOURCE_ONLY_CONDITIONAL"
+    },
+    {
+      "end": 137,
+      "executed": false,
+      "line": 121,
+      "manual_argument": "Distinct source/count/output; source starts currentcursor; clears scratchcount/output. Count unaryprefix1s then0, consume exactlycount bits; lastbit must1 for positive; prefix0 outputsbinary0. Continuation source remains afterencodedU; output rewound. Count andoutput mutable/capacity invariants.",
+      "name": "Builder.decode_U",
+      "status": "SOURCE_ONLY_CONDITIONAL"
+    },
+    {
+      "end": 219,
+      "executed": false,
+      "line": 138,
+      "manual_argument": "Full microclosure, alphabet and physicalphases; all live38readslots assigned, halts allundefined; fixed layout is an external initialization obligation. Completeclient and rootreturn1-onlyACCEPT invariant absent.",
+      "name": "Builder.lower",
+      "status": "SOURCE_ONLY_CONDITIONAL"
+    },
+    {
+      "end": 167,
+      "executed": false,
+      "line": 167,
+      "manual_argument": "Halts mapdirect IDs0..3; workingmicrocontinuations mapto selectphase. No data-dependent runtime address.",
+      "name": "Builder.lower.entry",
+      "status": "SOURCE_ONLY_CONDITIONAL"
+    },
+    {
+      "end": 173,
+      "executed": false,
+      "line": 169,
+      "manual_argument": "Raw physical5-field row appended and active before callback; then slotuniqueness recorded. A cutoff at this callback may have produced row not yet reflected in slots; retain both honestly.",
+      "name": "Builder.lower.put",
+      "status": "SOURCE_ONLY_CONDITIONAL"
+    }
+  ],
+  "all_seven_families_unrun": true,
+  "author": {
+    "bytes": 18360,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/freeze_request_scope_and_builder_reviews_v1.py",
+    "sha256": "7e0c2b1fd4a382e2b39a913fc3145afcfb7007490ce984f83318bb88024f2971"
+  },
+  "checks": [
+    {
+      "check": "fresh:typed-kernel-one-request-Source-delta-review-v1.json",
+      "passed": true
+    },
+    {
+      "check": "pin:literal_machine_builder_v2.py",
+      "passed": true
+    },
+    {
+      "check": "fresh-copy:literal_machine_builder_v2.py",
+      "passed": true
+    },
+    {
+      "check": "pin:shared-builder-ABI-v2.json",
+      "passed": true
+    },
+    {
+      "check": "fresh-copy:shared-builder-ABI-v2.json",
+      "passed": true
+    },
+    {
+      "check": "pin:shared-builder-manual-v2.json",
+      "passed": true
+    },
+    {
+      "check": "fresh-copy:shared-builder-manual-v2.json",
+      "passed": true
+    },
+    {
+      "check": "pin:shared-builder-prospective-bank-v2.json",
+      "passed": true
+    },
+    {
+      "check": "fresh-copy:shared-builder-prospective-bank-v2.json",
+      "passed": true
+    },
+    {
+      "check": "fresh-predecessor:literal_machine_builder_v1.py",
+      "passed": true
+    },
+    {
+      "check": "fresh-predecessor:literal-builder-static-negative-v1.json",
+      "passed": true
+    },
+    {
+      "check": "builder:v1-v2-only-owner-fix-and-version",
+      "passed": true
+    },
+    {
+      "check": "builder:fixed16bands-and4halts",
+      "passed": true
+    },
+    {
+      "check": "builder:38-symbols-by-literal-count",
+      "passed": true
+    },
+    {
+      "check": "builder:bank-seven-full-families-unrun",
+      "passed": true
+    },
+    {
+      "check": "builder:every-authored-function-reviewed",
+      "passed": true
+    }
+  ],
+  "compiler_calls": 0,
+  "failed_checks": [],
+  "fixture_calls": 0,
+  "frozen_files_mutated": false,
+  "full_VM_qualified": false,
+  "goal_status": "active",
+  "helper_calls": 0,
+  "limits": "Original400m/180/210/1GiB/128MiBstored-expanded-physical/9MiBreserve/4MiBlogs unchanged. No fulloutput fit claim.",
+  "manual": {
+    "bytes": 2597,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/request-builder-Sources-v1/shared-builder-manual-v2.json",
+    "sha256": "3910b9719859ab6312e25696fae02657b4b8b1b6821ea4d95c6bb52b176dbb2a"
+  },
+  "manual_argument_not_mechanized": true,
+  "manual_census": {
+    "actual_M": null,
+    "alphabet": 38,
+    "argument": "Fourmicrohalts +4phases for eachM-4workingmicrostates +Mmarkerstates =5M-12. Each physicalnonhalt state has every38reads assigned;4physicalhalts have none. Alphabet2global+10raw+10marked+16headers=38.",
+    "assigned_rows_latex": "\\(D=38(Q-4)\\)",
+    "formula_only": true,
+    "full_client_fit_proved": false,
+    "generated": false,
+    "microstates_symbol": "M",
+    "physical_states_latex": "\\(Q=5M-12\\)",
+    "undefined_halt_slots": 152
+  },
+  "new_actuals": 0,
+  "new_grants": 0,
+  "new_theorem": false,
+  "old_G0_negative_unchanged": true,
+  "partial_files_opened": 0,
+  "phase_case_argument": {
+    "find": "Seek within selectedband toitsone@raw cursor; rawnonfence passes; raw# orheader/wrongsentinel givesMALFORMED. @# goesREAD thenBOUND.",
+    "header": "Seekright to exactfixed bandheader; L/R beforeit givesMALFORMED. Data cannot supply a header under validlayout.",
+    "invariants": "Immutable0..2underlyingrawpayload unchanged; ^neverforged/written/leftcrossed; no#construction; exactlyonecursor persists on successful nonhalt boundary. A BOUND partial may lack a restored cursor and is not admitted.",
+    "mark": "Neighbor rawinsideband becomes@raw thenmappedcontinuation; #givesBOUND; headers/markers/L/R giveMALFORMED. Thus logicalbandcursor movement is simulated, with extra physicalseeksteps.",
+    "precondition": "UniqueL then16 ordered h:WORKSPACE headers, each^payload# with exactlyone@raw cursor, thenuniqueR; payload has onlyRAW and no forgedheader/sentinel; microboundary physicalhead is at current bandcursor.",
+    "read": "Apply exactly one Source literal action. Stationarymove writes@write and enters mapped continuation/halt. Unitmove removes oldmarker, movesone physicalcell thenMARK.",
+    "scope": "Conditional microstep stuttering argument only; not a proof that every arbitrary layout is refused or that any declared clientACCEPT is justified by the FOL checker.",
+    "select": "Seekleft toL preserving every symbol; R givesMALFORMED. Under validlayout it reachesL in finite time."
+  },
+  "predecessor_negative": {
+    "bytes": 1281,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/request-builder-Sources-v1/literal-builder-static-negative-v1.json",
+    "sha256": "388a95575f4a4b0d7d43f42c19df54fce1201696d03bcae4c225c538bc918e95"
+  },
+  "predecessor_source": {
+    "bytes": 13719,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/request-builder-Sources-v1/literal_machine_builder_v1.py",
+    "sha256": "8a310271932a065eb461ae8399616352f4e6877ecf2082962a8d754c76c765f6"
+  },
+  "primary_reader_index_active_mutated": false,
+  "proof_checker_qualified": false,
+  "prospective_bank": {
+    "bytes": 2806,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/request-builder-Sources-v1/shared-builder-prospective-bank-v2.json",
+    "sha256": "64079cee3e712001d1a56d05557847a348b5fe8034ae06493e30f3fc7d14de85"
+  },
+  "remaining_obligations": [
+    {
+      "id": "B1",
+      "remaining": "Exact initialization tiles enforce layout and immutable program/public/certificate/full unknowncertificate selector. Valid-layout hostpredicate cannot silently replace t/m initialization."
+    },
+    {
+      "id": "B2",
+      "remaining": "FullSourcefixed client handles all69 checker functions via all13VMopcodes, BOOT semantic taggedvalues/keyuniqueness/text/publicbinding, heap/register/frame/controller. Only justified rootreturn1 maytargetACCEPT."
+    },
+    {
+      "id": "B3",
+      "remaining": "Future Root harness checks Source/function/default/closure/argument/Builder/rawcallback/error custody at entry, everycallback andexit; exact firstRootfault dominates localownedlimit and foreignclassification."
+    },
+    {
+      "id": "B4",
+      "remaining": "Failures are terminal to that construction lifetime or snapshots frozen before any resumed mutation. Builder itself has no fail-stop latch; rawprefix references can change if caller improperly resumes/reuses Builder. No such lifetime claim is certified here."
+    },
+    {
+      "id": "B5",
+      "remaining": "Complete ordinary projection for rawsets/aliases/callbacks/tracebacks plus fullmanifest and allnormal/diagnostic counts; a prefix name/hash is not complete proof or evidence. Stateaccounting can lead slotindex at a failedcallback honestly."
+    },
+    {
+      "id": "B6",
+      "remaining": "Manual clientM and complete output/work/time/heap envelopes before prospective onceoffer. Q=5M-12 does not establish size/fit or uniform practical speed; fullclientM remainsnull."
+    },
+    {
+      "id": "B7",
+      "remaining": "Run whole seven-family bank only after exact Source/prospective review and fresh Rootgrant; no generation/census/simulation is authorized by this review."
+    }
+  ],
+  "review_passed": true,
+  "reviewer_identity": "/root/recovered_batch_review",
+  "runtime_qualified": false,
+  "schema": "typed-shared-builder-v2-Source-review-v1",
+  "semantic_replays": 0,
+  "simulator_calls": 0,
+  "sizing_probes": 0,
+  "source": {
+    "bytes": 13782,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/request-builder-Sources-v1/literal_machine_builder_v2.py",
+    "sha256": "4d13b99f90e9658508dcd4a289ece2d93bd21d862e4153a431a91ce17d78da20"
+  },
+  "source_only": true,
+  "status": "PASS_CONDITIONAL_COMPONENT_SOURCE_ONLY",
+  "subject_calls": 0,
+  "subject_imports": 0,
+  "table_generation_calls": 0,
+  "tools_stopped_after_freeze": true,
+  "unused_compile": true,
+  "whole_offered_bank_read": true
+}
