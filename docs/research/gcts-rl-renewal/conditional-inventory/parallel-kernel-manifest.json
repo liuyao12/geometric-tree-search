@@ -72,9 +72,9 @@
       "sha256": "848dfc999075c5803a6d0c66baf96e0f0a55a84ca7fb46f8dcfc12faaae740cf"
     },
     {
-      "bytes": 22867,
+      "bytes": 22881,
       "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/parallel-kernel.html",
-      "sha256": "d97392d220a5e1a0a76841ff5812c8c3dbd5f8622c1800877ca4a5173acf2ab1"
+      "sha256": "0f9ffcf83220e7ab0c87a3f20bbe0b0c451d40c503a76f53e42500272849a364"
     },
     {
       "bytes": 1281309,
@@ -90,11 +90,27 @@
       "bytes": 106389,
       "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/reader.html",
       "sha256": "08f3efd2fa4fd80054f4c5164d888b9656e54c7e0ed9b475f3c05be6463ec393"
+    },
+    {
+      "bytes": 1391785,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/parallel-kernel-responsive-v2.tar.gz",
+      "sha256": "ba6142ac3648e1624d3f5cc7ad0c606e08ea57adc571870303e2f507d69100f3"
     }
   ],
+  "display_delta": {
+    "bytes": 885,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/root/responsive-v2/display-delta-v2.json",
+    "sha256": "4c99bd3c02687fe3a688574187461047e494b20116584566a7651f7394d91c31"
+  },
+  "display_only_successor": true,
   "goal_status": "active",
   "new_actuals": 0,
   "pending_separate_asset": "parallel-kernel-publication-review.json",
+  "predecessor_manifest": {
+    "bytes": 6607,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/root/responsive-v2/publication-v1-preimages/parallel-kernel-manifest.json",
+    "sha256": "851d12c5e2c6fe0b4fc5eeb76412b1f44816ed381f1bdb90d9a894cd8ee18651"
+  },
   "reader_card_bytes": 722,
   "reader_card_sha256": "1356c74c1f5fe381336cf2a29da4c5b233945697223a785f99c2a6ba6f0db81c",
   "reader_preimage": {
@@ -102,7 +118,10 @@
     "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/root/reader-preimage-v1.html",
     "sha256": "cc59def2227bf3597fdeb8a0168cb62947eb4d38f0a3a24af8c1f3bd4ad13e4e"
   },
-  "schema": "parallel-kernel-publication-manifest-v1",
+  "responsive_archive_URL": "https://liuyao12.github.io/geometric-tree-search/docs/research/gcts-rl-renewal/conditional-inventory/parallel-kernel-responsive-v2.tar.gz",
+  "responsive_archive_members": 27,
+  "schema": "parallel-kernel-publication-manifest-v2",
+  "scientific_Source_changed": false,
   "scientific_execution_authorized": false,
   "source_only": true
 }
