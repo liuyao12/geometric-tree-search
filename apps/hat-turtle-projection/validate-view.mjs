@@ -40,7 +40,8 @@ for(const ids of data.tiles){
  }
 }
 // An exact rank witness using translations between identically oriented reflected
-// tiles: these differences are independent of the chosen point inside each tile.
+// tiles: these differences are independent of a COMMON local reference point.
+// Different local points in different copies are not covered by this witness.
 function rank(rows){const a=rows.map(r=>r.slice());let rank=0;for(let k=0;k<4&&rank<a.length;k++){let p=rank;while(p<a.length&&Math.abs(a[p][k])<1e-8)p++;if(p===a.length)continue;[a[p],a[rank]]=[a[rank],a[p]];const x=a[rank][k];for(let j=k;j<4;j++)a[rank][j]/=x;for(let i=0;i<a.length;i++)if(i!==rank){const x=a[i][k];for(let j=k;j<4;j++)a[i][j]-=x*a[rank][j];}rank++;}return rank;}
 function determinant(rows){let a=rows.map(r=>r.map(BigInt)),sign=1n,previous=1n;for(let k=0;k<3;k++){let p=k;while(p<4&&a[p][k]===0n)p++;assert.ok(p<4);if(p!==k){[a[p],a[k]]=[a[k],a[p]];sign=-sign;}const pivot=a[k][k];for(let i=k+1;i<4;i++)for(let j=k+1;j<4;j++)a[i][j]=(a[i][j]*pivot-a[i][k]*a[k][j])/previous;for(let i=k+1;i<4;i++)a[i][k]=0n;previous=pivot;}return sign*a[3][3];}
 const reflected=data.labels.map((label,i)=>label==='H1'?i:-1).filter(i=>i>=0),first=data.tiles[reflected[0]],origin=data.vertices[first[0]];

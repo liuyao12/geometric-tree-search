@@ -1,0 +1,12 @@
+{
+  "reflectedTiles": 1009,
+  "parameterSamples": 101,
+  "coordinateFrames": [
+    "raw",
+    "mean-centered"
+  ],
+  "maxDrift": 1.0247593068766007e-13,
+  "maxBarycentricError": 3.126388037344441e-12,
+  "minWeight": 0.08413680311318927,
+  "scope": "Numerical rendering check; continuum proof is research/hat-turtle-fixed-points/certify.py"
+}

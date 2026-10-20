@@ -1,34 +1,35 @@
-import {HALFROOT3, latticeToCartesian, relativeTile, reflectedFrameStats, steadyFrame, IDENTITY_FRAME, projectVertex} from './projection.js?v=2';
+import {HALFROOT3, latticeToCartesian, relativeTile, reflectedFrameStats, steadyFrame, IDENTITY_FRAME, projectVertex, fixedMarkFrame} from './projection.js?v=3';
 const $ = id => document.getElementById(id);
 const canvas = $('scene'), ctx = canvas.getContext('2d', {alpha:false});
 const TAU = 2*Math.PI;
 const colors={H1:'#355e69',H:'#a7c5c1',T:'#ecd8ae',P:'#c4d3b7',F:'#e3b99d'};
-const state={morph:0,phase:0,playing:!matchMedia('(prefers-reduced-motion: reduce)').matches,lifted:false,zoom:16,panX:0,panY:0,speed:1,selected:0,highlight:true,steady:true,single:false};
-let data, model, screenX, screenY, screenZ, centers, fitScale=1, width=1, height=1, dpr=1, lastTime=0, lastDraw=0, visible=[];
-let drag=null, dirty=true, frameStats, tileCoordinates, tileModel, tileSides, tileRadius=3;
+const state={morph:0,phase:0,playing:!matchMedia('(prefers-reduced-motion: reduce)').matches,lifted:false,zoom:16,panX:0,panY:0,speed:1,selected:0,highlight:true,steady:true,single:false,framing:'marks'};
+let data, marks, markModels, modelMean=[0,0,0,0], model, screenX, screenY, screenZ, centers, fitScale=1, width=1, height=1, dpr=1, lastTime=0, lastDraw=0, visible=[];
+let drag=null, dirty=true, frameStats, tileCoordinates, tileModel, tileSides, tileRadius=3, selectedAnchor=null;
 const viewer=document.querySelector('.viewer');
 const theta = () => Math.PI/3-state.morph*Math.PI/6;
-function currentFrame(c,s){return state.steady&&frameStats?steadyFrame(frameStats,c,s):IDENTITY_FRAME;}
+function currentFrame(c,s){if(state.framing==='marks')return fixedMarkFrame(c,s,modelMean);return state.framing==='steady'&&frameStats?steadyFrame(frameStats,c,s):IDENTITY_FRAME;}
 function project4(u,v,s,t,c,si,lift){return projectVertex(u,v,s,t,c,si,lift,activeFrame);}
 let activeFrame=IDENTITY_FRAME;
 
 function setMorph(value){state.morph=Math.max(0,Math.min(1,value));state.phase=Math.acos(1-2*state.morph);dirty=true;updateLabels();}
 function setPlaying(value){state.playing=value;$('play-icon').textContent=value?'Ⅱ':'▶';$('play-text').textContent=value?'Pause':'Play';$('play').setAttribute('aria-label',value?'Pause animation':'Play animation');updateLabels();dirty=true;}
-function setMode(value){state.lifted=value;$('plane').setAttribute('aria-pressed',!value);$('lift').setAttribute('aria-pressed',value);$('view-note').textContent=value?'A tilted view of the fixed lifted patch.':'Same tiles. Same neighbors.';dirty=true;}
+function setMode(value){state.lifted=value;updateFrameNote();$('plane').setAttribute('aria-pressed',!value);$('lift').setAttribute('aria-pressed',value);$('view-note').textContent=value?'A tilted view of the fixed lifted patch.':'Same tiles. Same neighbors.';dirty=true;}
 function updateLabels(){const m=state.morph,shape=m<.015?'Hat':m>.985?'Turtle':Math.abs(m-.5)<.015?'Equal edges':'Hat → Turtle';$('shape-label').textContent=shape;$('morph').value=Math.round(m*1000);$('morph').style.setProperty('--progress',`${100*m}%`);$('morph').setAttribute('aria-valuetext',`${Math.round(m*100)} percent from Hat to Turtle`);$('position-label').textContent=state.playing?(Math.sin(state.phase)>=0?'Moving toward Turtle':'Moving toward Hat'):(shape==='Hat → Turtle'?'Paused between Hat and Turtle':shape);}
 function prepare(){
  const n=data.vertices.length;model=new Float64Array(n*4);screenX=new Float64Array(n);screenY=new Float64Array(n);screenZ=new Float64Array(n);
  const mean=[0,0,0,0];
  for(let i=0;i<n;i++){const [p,q,r,s]=data.vertices[i],v=[p+q/2,HALFROOT3*q,HALFROOT3*r,r/2+s];for(let k=0;k<4;k++){model[4*i+k]=v[k];mean[k]+=v[k]/n;}}
- for(let i=0;i<n;i++)for(let k=0;k<4;k++)model[4*i+k]-=mean[k];
+ modelMean=mean;for(let i=0;i<n;i++)for(let k=0;k<4;k++)model[4*i+k]-=mean[k];
+ markModels=new Map(marks.anchors.map(a=>[a.tile,latticeToCartesian(a.coordinates).map((x,k)=>x-mean[k])]));
  centers=new Float64Array(data.tiles.length*4);let best=Infinity;
  for(let j=0;j<data.tiles.length;j++){for(const id of data.tiles[j])for(let k=0;k<4;k++)centers[4*j+k]+=model[4*id+k]/14;
- const v=project4(...centers.subarray(4*j,4*j+4),.5,HALFROOT3,false),dist=v[0]*v[0]+v[1]*v[1];if(dist<best){best=dist;state.selected=j;}}
+ const v=project4(...centers.subarray(4*j,4*j+4),.5,HALFROOT3,false),dist=v[0]*v[0]+v[1]*v[1];if(data.labels[j]==='H1'&&dist<best){best=dist;state.selected=j;}}
  $('patch-info').textContent=`${data.tiles.length.toLocaleString()} tiles · drag to pan · scroll to zoom`;
- frameStats=reflectedFrameStats(centers,data.labels); prepareSingleTile(); resize(); $('loading').hidden=true; if(new URLSearchParams(location.search).get('view')==='tile')setDisplay(true);
+ frameStats=reflectedFrameStats(centers,data.labels); updateFrameNote();prepareSingleTile(); resize(); $('loading').hidden=true; if(new URLSearchParams(location.search).get('view')==='tile')setDisplay(true);
 }
 function resize(){const r=canvas.getBoundingClientRect();width=r.width;height=r.height;dpr=Math.min(devicePixelRatio||1,2);canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);
- if(model){let maxX=0,maxY=0;for(const angle of [Math.PI/6,Math.PI/4,Math.PI/3])for(let i=0;i<model.length;i+=4){const p=project4(...model.subarray(i,i+4),Math.cos(angle),Math.sin(angle),false);maxX=Math.max(maxX,Math.abs(p[0]));maxY=Math.max(maxY,Math.abs(p[1]));}fitScale=Math.min((width-40)/(2*maxX),(height-40)/(2*maxY));}dirty=true;}
+ if(model){let maxX=0,maxY=0;for(const angle of [Math.PI/6,Math.PI/4,Math.PI/3])for(let i=0;i<model.length;i+=4){const c=Math.cos(angle),s=Math.sin(angle),p=projectVertex(...model.subarray(i,i+4),c,s,false,currentFrame(c,s));maxX=Math.max(maxX,Math.abs(p[0]));maxY=Math.max(maxY,Math.abs(p[1]));}fitScale=Math.min((width-40)/(2*maxX),(height-40)/(2*maxY));}dirty=true;}
 function polygonPath(ids){ctx.beginPath();ctx.moveTo(screenX[ids[0]],screenY[ids[0]]);for(let i=1;i<14;i++)ctx.lineTo(screenX[ids[i]],screenY[ids[i]]);ctx.closePath();}
 function draw(){if(!model)return; if(state.single){drawSingleTile();dirty=false;lastDraw=performance.now();return;}const angle=theta(),c=Math.cos(angle),s=Math.sin(angle),scale=fitScale*state.zoom,ox=width/2+state.panX,oy=height/2+state.panY;
  activeFrame=currentFrame(c,s);
@@ -41,6 +42,7 @@ function draw(){if(!model)return; if(state.single){drawSingleTile();dirty=false;
  if(state.lifted)visible.sort((a,b)=>a.z-b.z);
  ctx.lineJoin='round';ctx.lineWidth=Math.max(.4,Math.min(.85,scale*.055));ctx.strokeStyle='#365650a0';
  for(const tile of visible){polygonPath(data.tiles[tile.id]);ctx.fillStyle=colors[data.labels[tile.id]];ctx.fill();ctx.stroke();}
+ if(state.framing==='marks'){for(const item of visible){const anchor=markModels.get(item.id);if(!anchor)continue;const p=project4(...anchor,c,s,state.lifted);ctx.beginPath();ctx.arc(ox+p[0]*scale,oy-p[1]*scale,2.6,0,TAU);ctx.fillStyle='#fffaf0';ctx.fill();ctx.lineWidth=.8;ctx.strokeStyle='#294c48';ctx.stroke();}}
  if(state.highlight){polygonPath(data.tiles[state.selected]);ctx.lineWidth=3;ctx.strokeStyle='#c45430';ctx.stroke();ctx.lineWidth=1;ctx.strokeStyle='#fff8e6';ctx.stroke();}
  // Orientation guide in lifted view, kept separate from the tiling geometry.
  if(state.lifted){ctx.font='10px ui-sans-serif, system-ui';ctx.fillStyle='#49665d';ctx.textAlign='left';ctx.fillText('Lifted view · projected tiles can overlap',18,89);}
@@ -53,8 +55,9 @@ function frame(time){const dt=lastTime?Math.min(time-lastTime,100):0;lastTime=ti
 function zoomBy(factor,x=width/2,y=height/2){const old=state.zoom;state.zoom=Math.max(.25,Math.min(80,old*factor));factor=state.zoom/old;state.panX=x-width/2-(x-width/2-state.panX)*factor;state.panY=y-height/2-(y-height/2-state.panY)*factor;dirty=true;}
 function contains(ids,x,y){let inside=false;for(let i=0,j=13;i<14;j=i++){const ax=screenX[ids[i]],ay=screenY[ids[i]],bx=screenX[ids[j]],by=screenY[ids[j]];if((ay>y)!==(by>y)&&x<(bx-ax)*(y-ay)/(by-ay)+ax)inside=!inside;}return inside;}
 function updateFrameNote(){
- $('frame-note').textContent=state.steady?'Overall rotation and spacing stabilized; small local shifts remain.':'Fixed edge directions; the patch is free to turn and change spacing.';
+ $('frame-note').textContent=state.framing==='marks'?(state.lifted?'Marks lock in Plane view; this tilted view adds depth.':'A different interior mark in each reflected tile; all 1,009 marks stay fixed.'):(state.framing==='steady'?'Overall rotation and spacing stabilized; small local shifts remain.':'Fixed edge directions; the patch is free to turn and change spacing.');
 }
+
 function setDisplay(single){
  state.single=single;
  $('patch-view').setAttribute('aria-pressed',!single);$('tile-view').setAttribute('aria-pressed',single);
@@ -72,7 +75,7 @@ function prepareSingleTile(){
  if(!data)return;
  const host=$('coordinate-labels');
  window.MathJax?.typesetClear?.([host]);host.replaceChildren();
- tileCoordinates=relativeTile(data.vertices,data.tiles[state.selected]);
+ selectedAnchor=markModels.get(state.selected)||null;tileCoordinates=relativeTile(data.vertices,data.tiles[state.selected]);
  tileModel=tileCoordinates.map(latticeToCartesian);
  const average=[0,0,0,0];tileModel.forEach(p=>p.forEach((x,k)=>average[k]+=x/14));
  tileModel=tileModel.map(p=>p.map((x,k)=>x-average[k]));
@@ -89,7 +92,7 @@ function prepareSingleTile(){
   const point=document.createElementNS(NS,'circle');point.id=`vertex-${i}`;point.setAttribute('r',i===0?'4.5':'3.2');$('single-points').append(point);
  }
  tileRadius=0;
- for(let j=0;j<=20;j++){const a=Math.PI/6+j/20*Math.PI/6,c=Math.cos(a),s=Math.sin(a),f=currentFrame(c,s);for(const p of tileModel){const q=projectVertex(...p,c,s,false,{...f,tx:0,ty:0});tileRadius=Math.max(tileRadius,Math.hypot(q[0],q[1]));}}
+ for(let j=0;j<=20;j++){const a=Math.PI/6+j/20*Math.PI/6,c=Math.cos(a),s=Math.sin(a),f=currentFrame(c,s);for(const p of tileModel){const local=state.framing==='marks'&&selectedAnchor?p.map((x,k)=>x-(selectedAnchor[k]-centers[state.selected*4+k])):p;const q=projectVertex(...local,c,s,false,{...f,tx:0,ty:0});tileRadius=Math.max(tileRadius,Math.hypot(q[0],q[1]));}}
  typesetCoordinates();dirty=true;
 }
 function drawSingleTile(){
@@ -97,10 +100,13 @@ function drawSingleTile(){
  const labelWidth=w<500?76:150,gutter=labelWidth+(w<500?23:30);
  const sc=Math.min(Math.max(60,w-2*gutter)/(2*tileRadius),(h-150)/(2*tileRadius))*.91;
  const c=Math.cos(theta()),s=Math.sin(theta()),f={...currentFrame(c,s),tx:0,ty:0};
- const points=tileModel.map(p=>{const q=projectVertex(...p,c,s,state.lifted,f);return [w/2+q[0]*sc,h/2+25-q[1]*sc];});
+ const anchorOffset=selectedAnchor?selectedAnchor.map((v,k)=>v-centers[state.selected*4+k]):[0,0,0,0];
+ const lock=state.framing==='marks'&&selectedAnchor;
+ const points=tileModel.map(p=>{const local=lock?p.map((x,k)=>x-anchorOffset[k]):p;const q=projectVertex(...local,c,s,state.lifted,f);return [w/2+q[0]*sc,h/2+25-q[1]*sc];});
  $('single-svg').setAttribute('viewBox',`0 0 ${w} ${h}`);
  $('single-path').setAttribute('d',points.map((p,i)=>`${i?'L':'M'}${p[0]},${p[1]}`).join(' ')+' Z');
  $('single-path').style.fill=colors[data.labels[state.selected]];
+ $('single-anchor').style.display=lock?'':'none';$('single-anchor').setAttribute('cx',w/2);$('single-anchor').setAttribute('cy',h/2+25);
  tileSides.forEach((side,k)=>side.forEach((i,row)=>{
   const y=88+row*(h-128)/6,inside=k===0?gutter-13:w-gutter+13;
   const label=$('coordinate-labels').children[i];label.style.top=`${y}px`;label.style.width=`${labelWidth}px`;label.style.left=k===0?'12px':'auto';label.style.right=k===1?'12px':'auto';label.style.textAlign=k===0?'right':'left';
@@ -113,7 +119,7 @@ $('morph').addEventListener('input',e=>{const value=Number(e.target.value)/1000;
 $('hat').onclick=()=>{setPlaying(false);setMorph(0);};$('turtle').onclick=()=>{setPlaying(false);setMorph(1);};$('midpoint').onclick=()=>{setPlaying(false);setMorph(.5);};
 $('plane').onclick=()=>setMode(false);$('lift').onclick=()=>setMode(true);
 $('patch-view').onclick=()=>setDisplay(false);$('tile-view').onclick=()=>setDisplay(true);
-$('steady').onchange=e=>{state.steady=e.target.checked;updateFrameNote();dirty=true;};
+$('framing').onchange=e=>{state.framing=e.target.value;state.steady=state.framing!=='edges';updateFrameNote();prepareSingleTile();resize();dirty=true;};
 $('speed').onchange=e=>{state.speed=Number(e.target.value);};$('highlight').onchange=e=>{state.highlight=e.target.checked;dirty=true;};
 $('zoom-in').onclick=()=>zoomBy(1.35);$('zoom-out').onclick=()=>zoomBy(1/1.35);
 $('fit').onclick=()=>{state.zoom=1;state.panX=0;state.panY=0;dirty=true;};$('reset').onclick=()=>{state.zoom=16;state.panX=0;state.panY=0;dirty=true;};
@@ -126,6 +132,6 @@ canvas.addEventListener('pointercancel',()=>{drag=null;});
 window.addEventListener('keydown',e=>{if(['INPUT','SELECT','BUTTON','A'].includes(document.activeElement.tagName))return;if(e.code==='Space'){e.preventDefault();setPlaying(!state.playing);}if(e.key==='ArrowLeft'){setPlaying(false);setMorph(state.morph-.025);}if(e.key==='ArrowRight'){setPlaying(false);setMorph(state.morph+.025);}});
 new ResizeObserver(resize).observe(canvas);
 // Expose only the visualization state for reproducible inspection.
-window.projectionDemo={state,setMorph,setMode,setPlaying,get metadata(){return data?.metadata;},get visibleCount(){return visible.length;},get tileCoordinates(){return tileCoordinates;},get frame(){return currentFrame(Math.cos(theta()),Math.sin(theta()));},setDisplay};
+window.projectionDemo={state,setMorph,setMode,setPlaying,get metadata(){return data?.metadata;},get visibleCount(){return visible.length;},get tileCoordinates(){return tileCoordinates;},get fixedMarkCount(){return marks?.anchors.length;},get frame(){return currentFrame(Math.cos(theta()),Math.sin(theta()));},setDisplay};
 setPlaying(state.playing);requestAnimationFrame(frame);
-try{const response=await fetch('patch.json');if(!response.ok)throw Error(`Patch download failed (${response.status})`);data=await response.json();prepare();}catch(error){$('loading').textContent='The tiling could not load. Please reload the page.';console.error(error);}
+try{const responses=await Promise.all([fetch('patch.json'),fetch('fixed-marks.json')]);if(responses.some(r=>!r.ok))throw Error('Tiling data download failed');[data,marks]=await Promise.all(responses.map(r=>r.json()));prepare();}catch(error){$('loading').textContent='The tiling could not load. Please reload the page.';console.error(error);}

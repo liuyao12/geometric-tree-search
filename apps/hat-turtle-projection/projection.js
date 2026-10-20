@@ -51,3 +51,16 @@ export function projectVertex(u, v, a, b, c, s, lifted, frame=IDENTITY_FRAME) {
   const tilt = .54;
   return [rx, Math.cos(tilt)*ry - Math.sin(tilt)*z, Math.sin(tilt)*ry + Math.cos(tilt)*z];
 }
+
+// Camera for the affine complex plane V = alpha U + beta. Every point on
+// this plane is fixed relative to its hat projection, for the whole interval.
+export function fixedMarkFrame(c, s, mean=[0,0,0,0]) {
+  const ar=Math.sqrt(3)/4, ai=-Math.sqrt(5)/4;
+  const nr=.5+HALFROOT3*ar, ni=HALFROOT3*ai;
+  const dr=c+s*ar, di=s*ai, denominator=dr*dr+di*di;
+  const re=(nr*dr+ni*di)/denominator, im=(ni*dr-nr*di)/denominator;
+  const br=HALFROOT3-mean[2]+ar*mean[0]-ai*mean[1];
+  const bi=1.75-mean[3]+ai*mean[0]+ar*mean[1];
+  const kr=HALFROOT3-s*re, ki=-s*im;
+  return {re,im,tx:br*kr-bi*ki,ty:bi*kr+br*ki,scale:Math.hypot(re,im),rms:0};
+}

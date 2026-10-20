@@ -56,4 +56,14 @@ The fit minimizes
 
 The reference points are used only to choose the camera. There is no claim that vertex averages or area centroids are a privileged geometric center.
 
-`validate-view.mjs` independently checks all relative coordinate labels against the original patch, compares the reported residual to the actual full-patch residual, and checks that camera correction preserves edge-length ratios. It also records an exact integer determinant witnessing four independent translations between reflected tiles of the same orientation. This last check is independent of the point chosen inside each such tile: translations between identically oriented copies do not change when that reference point changes. For this deformation, whose hat and turtle projection matrices together have rank four, those translations cannot all be made stationary by one global planar similarity. This is a statement about this family and framing, not a claim that no other visualization or deformation is possible.
+`validate-view.mjs` independently checks all relative coordinate labels, the residual of the least-squares camera, and preservation of edge-length ratios. Its rank witness rules out using the **same local point** in every identically oriented reflected copy. It does not rule out choosing different local points in different copies.
+
+## Exact stationary interior marks
+
+The default framing now uses a different fixed material point in each reflected tile's four-dimensional triangulated surface. All 1,009 marks in this finite patch lie in one affine plane. A single similarity of the screen then keeps every mark stationary throughout the plane-view animation. Shared edges remain shared. This is exact geometry, with floating-point rendering.
+
+The choice of surface matters: a non-planar boundary does not define a unique interior. We fix twelve triangles spanning each reflected tile's boundary, then keep each point's barycentric coordinates in its triangle constant. The exact verifier checks that all triangles remain oriented without degenerating throughout the entire hat–turtle interval, and that each mark is strictly interior to its triangle. The lift stays fixed; its image changes.
+
+See [the construction and exact finite-patch certificate](../../research/hat-turtle-fixed-points/README.md). No assertion about every tile of an infinite tiling is made. Lifted view includes an additional varying depth coordinate and does not lock these marks on screen.
+
+Run `node validate-fixed-marks.mjs` for a numerical rendering check. Run `python3 ../../research/hat-turtle-fixed-points/certify.py` for the exact certificate (standard Python library only). The exploratory `check.py` additionally requires NumPy.
