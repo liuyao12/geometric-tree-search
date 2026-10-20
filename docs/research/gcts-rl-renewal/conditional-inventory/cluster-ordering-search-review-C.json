@@ -1,0 +1,3225 @@
+{
+  "schema": "typed-ordering-only-actual-scientific-review-v1",
+  "reviewer_identity": "/root/recovered_batch_review",
+  "review_passed": true,
+  "status": "PASS_PASSIVE_SAVED_OUTCOME_SCOPE_NEW_SIX_ARM_ORDERING_PILOT_COMPLETE_NO_BENEFIT_ESTABLISHED",
+  "passive_complete_saved_data_only": true,
+  "scientific_calls": 0,
+  "logical_replays": 0,
+  "actual_execution_authorized": false,
+  "check_count": 8,
+  "failed_checks": 0,
+  "checks": [
+    {
+      "id": "complete-fresh-pinned-records",
+      "passed": true,
+      "finding": "All43 offered pins and42 complete actual/observer files revalidated. Three distinct consumed once grants join exact plans and four reviews; all three terminal tool/observer/parent/worker exits are0. No partials observed or parsed. This audit only joins saved data; no scientific/Host/Native replay."
+    },
+    {
+      "id": "all-three-whole-jobs-and-new-protocol-complete",
+      "passed": true,
+      "finding": "All three whole jobs qualify at856,686,592/815,841,280/844,562,432B. All18 arms SEARCH_RETURNED with six records/case; no prerequisite skips. scientific_complete denotes the new ordering-only protocol, not registry qualification, all targets solved or superiority. Inner resource_accepted=False remains a placeholder; outer complete custody gates supply admission."
+    },
+    {
+      "id": "Native-registry-and-donor-authority",
+      "passed": true,
+      "finding": "All287 Native request/stage/digest/last-raw-output joins reconcile:75accepted/209rejected/3unknown. All three aggregate registry queries exhaust1e9 steps, remain unknown/unadmitted with old usable=[], and expose7/11/7 separate ordering instances. Eighteen whole/essential donor requests qualify fresh3/5/5 proofs. No registered inference was used; final recipient requests have blocks=[]."
+    },
+    {
+      "id": "full-controls-model-and-pruning",
+      "passed": true,
+      "finding": "All48 unchanged word controls/case returned PASSED,144 total, plus49 tiny byteword pairs/case and original scheduler/rollback diagnostics. Full model dictionary/target/placement/dependency counts and complete reference/overlay/certificate receipts join. All36 local first-row failure certificates retain full mandatory-root candidate support. Marked first Graph audits have12 fewer incidences in both point pairs; second audited states agree. No high-level lemma or universal-state claim follows."
+    },
+    {
+      "id": "point-search-full-fallback-rollback-and-audits",
+      "passed": true,
+      "finding": "All12 point searches remain UNKNOWN,205 placement events and24 completed initial independent audits. All saved orders preserve full original alternatives and event keys/counters/kinds/cutoffs/root-restored flags join. Point-cluster calls have zero successful proposal/activated packets. Only firsttwo states/call are independently audited; later rollback/fallback relies additionally on exact reviewed Source, not an exhaustive per-node mathematical replay."
+    },
+    {
+      "id": "actual-symbolic-ordering-observed-without-proof-benefit",
+      "passed": true,
+      "finding": "SC saved80 successful context-checked packets:33first/0equality/47negative. Each packet literal prefix, primitive suffix, instance and accepted Host receipt joins the actual trace context. Saved candidate arrays change order at30first/0equality/42negative decisions, preserving every alternative; these are passive trace comparisons, not the unavailable realized-choice metric. All SC arms hit600attempts UNKNOWN. First S0 succeeds14attempts while SC does not; no positive cluster or GCTS benefit is established by this designed single-run pilot."
+    },
+    {
+      "id": "repeated-conventional-certificate-and-negative-scope",
+      "passed": true,
+      "finding": "Only first S0 returns14 primitive rows/28 exact placements with Host/full-region/freshNative query89 accepted. Its saved proof equals D10 and the theorem was already admitted earlier; this is a repeated conventional baseline certificate, not a new theorem or point-search success. Other17 searches return bounded UNKNOWN, not unprovability. The authored external negative model remains separate from search."
+    },
+    {
+      "id": "costs-policy-and-historical-boundaries",
+      "passed": true,
+      "finding": "All cold donors/mining/compile/model/reference/word evidence/actual registry query and six arms are charged in the new records. Cooperative2s point clocks include initialization/audits/proposals and overshoot checkpoints; setup dominates practical cost. D10 had a different prerequisite and9skips, so no same-policy/statistical/causal speedup follows. Original D10 raw pins remain exact. No trainedRL, registered-inference, fullVM/physicalWang or broader research-goal completion is inferred."
+    }
+  ],
+  "complete_pilot_comparison": true,
+  "resource_admitted_case_ids": [
+    "pilot-fork-join-positive",
+    "pilot-quantifier-equality-positive",
+    "pilot-fork-join-missing-Pa"
+  ],
+  "resource_rejected_case_ids": [],
+  "registered_inference_admitted": false,
+  "GCTS_point_proofs_admitted": 0,
+  "conventional_recipient_proofs": 1,
+  "novel_mathematical_theorem": false,
+  "GCTS_or_RL_advantage_established": false,
+  "totals": {
+    "searches": 18,
+    "skips": 0,
+    "point_searches": 12,
+    "point_placements": 205,
+    "point_domain_audits": 24,
+    "Native_queries": 287,
+    "Native_status_counts": {
+      "accepted": 75,
+      "rejected": 209,
+      "unknown_step_budget": 3
+    },
+    "donor_whole_essential_acceptances": 18,
+    "word_control_returns": 144,
+    "symbolic_successful_proposal_packets": 80,
+    "passive_decisions_with_changed_symbolic_order": 72,
+    "point_successful_proposal_packets": 0,
+    "point_activated_packets": 0
+  },
+  "cases": [
+    {
+      "case_id": "pilot-fork-join-positive",
+      "resource_admitted": true,
+      "packet": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/actual/pilot-fork-join-positive/result.json",
+        "bytes": 31802290,
+        "sha256": "22d06dfd1769d68919cb28fdb4d51384c7d22e7a14f4a9e363c62afa4d5580a7"
+      },
+      "whole_peak_bytes": 856686592,
+      "observer_gate_seconds": 115.65860158300347,
+      "plan": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/root/plan-pilot-fork-join-positive-v1.json",
+        "bytes": 16555,
+        "sha256": "8841b76ca8ea3e3a7af2de621b7deb3fba5358f019b7ccccb19aab194fc4e72e"
+      },
+      "grant": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/root/grant-pilot-fork-join-positive-v1.json",
+        "bytes": 2154,
+        "sha256": "2372d6a338af393165285c83fca6cd947f33a059895b9af579f68b519766953b"
+      },
+      "consumed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/actual/pilot-fork-join-positive/CONSUMED.json",
+        "bytes": 261,
+        "sha256": "f6406761e9ff961c7cf4cb3878050729e37f98a98674d4ff46a5290b4deec5e9"
+      },
+      "Native_queries": 90,
+      "Native_status_counts": {
+        "accepted": 23,
+        "rejected": 66,
+        "unknown_step_budget": 1
+      },
+      "donors": [
+        {
+          "id": "train-propositional-application",
+          "rows": 3,
+          "whole_query": 4,
+          "essential_query": 5
+        },
+        {
+          "id": "train-propositional-chain",
+          "rows": 5,
+          "whole_query": 12,
+          "essential_query": 13
+        },
+        {
+          "id": "train-propositional-curried",
+          "rows": 5,
+          "whole_query": 20,
+          "essential_query": 21
+        }
+      ],
+      "library_family_ids": [
+        "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+        "68fc85fd778d3ed2abb50f4c6f694d980ef9acdce6b756b308824907a444117b",
+        "e9b268c1fd1ead1078954a62c37b5df26bfa76b514a5a044e06f80a1b11206d9"
+      ],
+      "registry_native_admitted": false,
+      "registry_status": "unknown_step_budget",
+      "registry_usable": 0,
+      "ordering_instances": 7,
+      "registry_binding_work": 20003,
+      "scientific_complete": true,
+      "word_reference_controls": 48,
+      "full_shared_setup_seconds": 87.16617487499752,
+      "compile_and_model_seconds": 72.5861028329964,
+      "arms": [
+        {
+          "id": "S0",
+          "status": "symbolic_proof_candidate",
+          "metrics": {
+            "attempts": 14,
+            "nodes": 15,
+            "skeleton_tests": 47209
+          },
+          "trace_event_counts": {
+            "decision": 14,
+            "extend": 14,
+            "return": 14
+          },
+          "seconds": 0.1303220420013531,
+          "full_arm_seconds": 5.292008875003376,
+          "root_restored": true,
+          "ordering_observations": {
+            "available_instances": 0,
+            "enabled": false,
+            "outcome": "DISABLED",
+            "point_activated_proposal_packets": null,
+            "realized_primitive_choice_count": null,
+            "scope": "Existing successful proposal packets and point ordering activations only; no claim of realised cluster execution. No recorded proposal can also mean budget stopped before scanning. Symbolic activation and realised-choice counts are unavailable.",
+            "successful_proposals": 0,
+            "symbolic_activation_count": null
+          },
+          "proof_verification_status": "HOST_REGION_NATIVE_ACCEPTED",
+          "passive_trace_successful_proposal_packets": 0,
+          "passive_trace_decisions_with_changed_order": 0,
+          "passive_trace_metric_scope": "Literal saved decision-array comparisons; not realized primitive-choice or completed-cluster counts.",
+          "qualified_conventional_proof": {
+            "rows": 14,
+            "selected_placements": 28,
+            "Native_query": 89,
+            "Native_status": "accepted",
+            "rules": {
+              "axiom": 4,
+              "instantiate": 3,
+              "mp": 7
+            },
+            "repeated_D10_certificate": true,
+            "novel_theorem": false,
+            "GCTS_point_proof": false
+          }
+        },
+        {
+          "id": "P11",
+          "status": "unknown_search_budget",
+          "metrics": {
+            "attempts": 19,
+            "auxiliary_removed_incidences": 0,
+            "auxiliary_removed_incidences_total": 12,
+            "branch": 10,
+            "cluster_proposals": 0,
+            "forced": 9,
+            "initial_auxiliary_removed_incidences": 12,
+            "nodes": 19
+          },
+          "trace_event_counts": {
+            "decision": 19,
+            "cluster_proposals": 10,
+            "order": 19,
+            "place": 19,
+            "cutoff": 1
+          },
+          "seconds": 2.706920832999458,
+          "full_arm_seconds": 2.7182959170022514,
+          "root_restored": true,
+          "ordering_observations": {
+            "available_instances": 7,
+            "enabled": true,
+            "outcome": "NO_SUCCESSFUL_PROPOSAL_RECORDED",
+            "point_activated_proposal_packets": 0,
+            "realized_primitive_choice_count": null,
+            "scope": "Existing successful proposal packets and point ordering activations only; no claim of realised cluster execution. No recorded proposal can also mean budget stopped before scanning. Symbolic activation and realised-choice counts are unavailable.",
+            "successful_proposals": 0,
+            "symbolic_activation_count": null
+          },
+          "proof_verification_status": "NO_PROOF_CANDIDATE",
+          "completed_audits": [
+            {
+              "complete": true,
+              "decision": [
+                "branch",
+                [
+                  0,
+                  1
+                ],
+                [
+                  [
+                    0,
+                    1,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    5,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    10,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    127,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    212,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    213,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    214,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    215,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    216,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    217,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    218,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    219,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    220,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    221,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    222,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    223,
+                    0
+                  ]
+                ]
+              ],
+              "frontier_points": 28,
+              "incidences": 63811
+            },
+            {
+              "complete": true,
+              "decision": [
+                "forced",
+                [
+                  0,
+                  0
+                ],
+                [
+                  [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                ]
+              ],
+              "frontier_points": 27,
+              "incidences": 59986
+            }
+          ],
+          "initial_auxiliary_witnesses": 12
+        },
+        {
+          "id": "P00",
+          "status": "unknown_search_budget",
+          "metrics": {
+            "attempts": 21,
+            "auxiliary_removed_incidences": 0,
+            "auxiliary_removed_incidences_total": 0,
+            "backtracks": 2,
+            "branch": 10,
+            "dead": 2,
+            "forced": 9,
+            "initial_auxiliary_removed_incidences": 0,
+            "nodes": 21
+          },
+          "trace_event_counts": {
+            "decision": 21,
+            "order": 19,
+            "place": 21,
+            "return": 2,
+            "cutoff": 1
+          },
+          "seconds": 2.1659237920030137,
+          "full_arm_seconds": 2.1760820420022355,
+          "root_restored": true,
+          "ordering_observations": {
+            "available_instances": 0,
+            "enabled": false,
+            "outcome": "DISABLED",
+            "point_activated_proposal_packets": null,
+            "realized_primitive_choice_count": null,
+            "scope": "Existing successful proposal packets and point ordering activations only; no claim of realised cluster execution. No recorded proposal can also mean budget stopped before scanning. Symbolic activation and realised-choice counts are unavailable.",
+            "successful_proposals": 0,
+            "symbolic_activation_count": null
+          },
+          "proof_verification_status": "NO_PROOF_CANDIDATE",
+          "completed_audits": [
+            {
+              "complete": true,
+              "decision": [
+                "branch",
+                [
+                  0,
+                  1
+                ],
+                [
+                  [
+                    0,
+                    1,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    5,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    10,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    127,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    212,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    213,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    214,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    215,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    216,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    217,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    218,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    219,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    220,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    221,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    222,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    223,
+                    0
+                  ]
+                ]
+              ],
+              "frontier_points": 28,
+              "incidences": 63823
+            },
+            {
+              "complete": true,
+              "decision": [
+                "forced",
+                [
+                  0,
+                  0
+                ],
+                [
+                  [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                ]
+              ],
+              "frontier_points": 27,
+              "incidences": 59986
+            }
+          ],
+          "initial_auxiliary_witnesses": 0
+        },
+        {
+          "id": "SC",
+          "status": "unknown_search_budget",
+          "metrics": {
+            "attempts": 600,
+            "backtracks": 588,
+            "cluster_proposals": 33,
+            "nodes": 601,
+            "skeleton_tests": 363922
+          },
+          "trace_event_counts": {
+            "decision": 601,
+            "extend": 600,
+            "return": 588,
+            "cutoff": 1
+          },
+          "seconds": 1.2897600830037845,
+          "full_arm_seconds": 1.2897730830009095,
+          "root_restored": true,
+          "ordering_observations": {
+            "available_instances": 7,
+            "enabled": true,
+            "outcome": "SUCCESSFUL_PROPOSALS_RECORDED",
+            "point_activated_proposal_packets": null,
+            "realized_primitive_choice_count": null,
+            "scope": "Existing successful proposal packets and point ordering activations only; no claim of realised cluster execution. No recorded proposal can also mean budget stopped before scanning. Symbolic activation and realised-choice counts are unavailable.",
+            "successful_proposals": 33,
+            "symbolic_activation_count": null
+          },
+          "proof_verification_status": "NO_PROOF_CANDIDATE",
+          "passive_trace_successful_proposal_packets": 33,
+          "passive_trace_decisions_with_changed_order": 30,
+          "passive_trace_metric_scope": "Literal saved decision-array comparisons; not realized primitive-choice or completed-cluster counts."
+        },
+        {
+          "id": "P10",
+          "status": "unknown_search_budget",
+          "metrics": {
+            "attempts": 22,
+            "auxiliary_removed_incidences": 0,
+            "auxiliary_removed_incidences_total": 12,
+            "backtracks": 3,
+            "branch": 10,
+            "dead": 3,
+            "forced": 9,
+            "initial_auxiliary_removed_incidences": 12,
+            "nodes": 22
+          },
+          "trace_event_counts": {
+            "decision": 22,
+            "order": 19,
+            "place": 22,
+            "return": 3,
+            "cutoff": 1
+          },
+          "seconds": 2.208485415998439,
+          "full_arm_seconds": 2.2184043749948614,
+          "root_restored": true,
+          "ordering_observations": {
+            "available_instances": 0,
+            "enabled": false,
+            "outcome": "DISABLED",
+            "point_activated_proposal_packets": null,
+            "realized_primitive_choice_count": null,
+            "scope": "Existing successful proposal packets and point ordering activations only; no claim of realised cluster execution. No recorded proposal can also mean budget stopped before scanning. Symbolic activation and realised-choice counts are unavailable.",
+            "successful_proposals": 0,
+            "symbolic_activation_count": null
+          },
+          "proof_verification_status": "NO_PROOF_CANDIDATE",
+          "completed_audits": [
+            {
+              "complete": true,
+              "decision": [
+                "branch",
+                [
+                  0,
+                  1
+                ],
+                [
+                  [
+                    0,
+                    1,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    5,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    10,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    127,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    212,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    213,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    214,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    215,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    216,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    217,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    218,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    219,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    220,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    221,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    222,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    223,
+                    0
+                  ]
+                ]
+              ],
+              "frontier_points": 28,
+              "incidences": 63811
+            },
+            {
+              "complete": true,
+              "decision": [
+                "forced",
+                [
+                  0,
+                  0
+                ],
+                [
+                  [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                ]
+              ],
+              "frontier_points": 27,
+              "incidences": 59986
+            }
+          ],
+          "initial_auxiliary_witnesses": 12
+        },
+        {
+          "id": "P01",
+          "status": "unknown_search_budget",
+          "metrics": {
+            "attempts": 21,
+            "auxiliary_removed_incidences": 0,
+            "auxiliary_removed_incidences_total": 0,
+            "backtracks": 2,
+            "branch": 10,
+            "cluster_proposals": 0,
+            "dead": 2,
+            "forced": 9,
+            "initial_auxiliary_removed_incidences": 0,
+            "nodes": 21
+          },
+          "trace_event_counts": {
+            "decision": 21,
+            "cluster_proposals": 10,
+            "order": 19,
+            "place": 21,
+            "return": 2,
+            "cutoff": 1
+          },
+          "seconds": 2.9350990840030136,
+          "full_arm_seconds": 2.9462105839993455,
+          "root_restored": true,
+          "ordering_observations": {
+            "available_instances": 7,
+            "enabled": true,
+            "outcome": "NO_SUCCESSFUL_PROPOSAL_RECORDED",
+            "point_activated_proposal_packets": 0,
+            "realized_primitive_choice_count": null,
+            "scope": "Existing successful proposal packets and point ordering activations only; no claim of realised cluster execution. No recorded proposal can also mean budget stopped before scanning. Symbolic activation and realised-choice counts are unavailable.",
+            "successful_proposals": 0,
+            "symbolic_activation_count": null
+          },
+          "proof_verification_status": "NO_PROOF_CANDIDATE",
+          "completed_audits": [
+            {
+              "complete": true,
+              "decision": [
+                "branch",
+                [
+                  0,
+                  1
+                ],
+                [
+                  [
+                    0,
+                    1,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    5,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    10,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    127,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    212,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    213,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    214,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    215,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    216,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    217,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    218,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    219,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    220,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    221,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    222,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    223,
+                    0
+                  ]
+                ]
+              ],
+              "frontier_points": 28,
+              "incidences": 63823
+            },
+            {
+              "complete": true,
+              "decision": [
+                "forced",
+                [
+                  0,
+                  0
+                ],
+                [
+                  [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                ]
+              ],
+              "frontier_points": 27,
+              "incidences": 59986
+            }
+          ],
+          "initial_auxiliary_witnesses": 0
+        }
+      ]
+    },
+    {
+      "case_id": "pilot-quantifier-equality-positive",
+      "resource_admitted": true,
+      "packet": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/result.json",
+        "bytes": 31165367,
+        "sha256": "2801115c496666659bab6420611ce8a54c0c4fcb9b2ac3735a5ff13ce58eeae2"
+      },
+      "whole_peak_bytes": 815841280,
+      "observer_gate_seconds": 120.56974229200569,
+      "plan": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/root/plan-pilot-quantifier-equality-positive-v1.json",
+        "bytes": 16575,
+        "sha256": "5401d04cf7d9ca121bfce2848e06fd928f6666c429e0d534b724eeac0547b527"
+      },
+      "grant": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/root/grant-pilot-quantifier-equality-positive-v1.json",
+        "bytes": 2174,
+        "sha256": "76b0dd9bbe1518ce2d69451d842f825ab5fbb6d90489eb34bc377ad48ec6206a"
+      },
+      "consumed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/CONSUMED.json",
+        "bytes": 271,
+        "sha256": "457d2d30c76a409b8ea33383d0ee20e0a54026c3edd9b51cdf832a2f5b895e03"
+      },
+      "Native_queries": 108,
+      "Native_status_counts": {
+        "accepted": 30,
+        "rejected": 77,
+        "unknown_step_budget": 1
+      },
+      "donors": [
+        {
+          "id": "train-propositional-application",
+          "rows": 3,
+          "whole_query": 4,
+          "essential_query": 5
+        },
+        {
+          "id": "train-propositional-chain",
+          "rows": 5,
+          "whole_query": 12,
+          "essential_query": 13
+        },
+        {
+          "id": "train-propositional-curried",
+          "rows": 5,
+          "whole_query": 20,
+          "essential_query": 21
+        }
+      ],
+      "library_family_ids": [
+        "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+        "68fc85fd778d3ed2abb50f4c6f694d980ef9acdce6b756b308824907a444117b",
+        "e9b268c1fd1ead1078954a62c37b5df26bfa76b514a5a044e06f80a1b11206d9"
+      ],
+      "registry_native_admitted": false,
+      "registry_status": "unknown_step_budget",
+      "registry_usable": 0,
+      "ordering_instances": 11,
+      "registry_binding_work": 20003,
+      "scientific_complete": true,
+      "word_reference_controls": 48,
+      "full_shared_setup_seconds": 95.08835270899726,
+      "compile_and_model_seconds": 80.5125007089955,
+      "arms": [
+        {
+          "id": "P01",
+          "status": "unknown_search_budget",
+          "metrics": {
+            "attempts": 17,
+            "auxiliary_removed_incidences": 0,
+            "auxiliary_removed_incidences_total": 0,
+            "branch": 9,
+            "cluster_proposals": 0,
+            "forced": 8,
+            "initial_auxiliary_removed_incidences": 0,
+            "nodes": 17
+          },
+          "trace_event_counts": {
+            "decision": 17,
+            "cluster_proposals": 9,
+            "order": 17,
+            "place": 17,
+            "cutoff": 1
+          },
+          "seconds": 2.2171067079980276,
+          "full_arm_seconds": 2.2296569579993957,
+          "root_restored": true,
+          "ordering_observations": {
+            "available_instances": 11,
+            "enabled": true,
+            "outcome": "NO_SUCCESSFUL_PROPOSAL_RECORDED",
+            "point_activated_proposal_packets": 0,
+            "realized_primitive_choice_count": null,
+            "scope": "Existing successful proposal packets and point ordering activations only; no claim of realised cluster execution. No recorded proposal can also mean budget stopped before scanning. Symbolic activation and realised-choice counts are unavailable.",
+            "successful_proposals": 0,
+            "symbolic_activation_count": null
+          },
+          "proof_verification_status": "NO_PROOF_CANDIDATE",
+          "completed_audits": [
+            {
+              "complete": true,
+              "decision": [
+                "branch",
+                [
+                  0,
+                  1
+                ],
+                [
+                  [
+                    0,
+                    1,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    5,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    14,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    175,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    260,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    261,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    262,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    263,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    264,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    265,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    266,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    267,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    268,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    269,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    270,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    271,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    272,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    273,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    274,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    275,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    276,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    277,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    278,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    281,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    283,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    361,
+                    0
+                  ]
+                ]
+              ],
+              "frontier_points": 26,
+              "incidences": 63980
+            },
+            {
+              "complete": true,
+              "decision": [
+                "forced",
+                [
+                  0,
+                  0
+                ],
+                [
+                  [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                ]
+              ],
+              "frontier_points": 25,
+              "incidences": 59575
+            }
+          ],
+          "initial_auxiliary_witnesses": 0
+        },
+        {
+          "id": "P10",
+          "status": "unknown_search_budget",
+          "metrics": {
+            "attempts": 14,
+            "auxiliary_removed_incidences": 0,
+            "auxiliary_removed_incidences_total": 12,
+            "branch": 7,
+            "forced": 7,
+            "initial_auxiliary_removed_incidences": 12,
+            "nodes": 14
+          },
+          "trace_event_counts": {
+            "decision": 14,
+            "order": 14,
+            "place": 14,
+            "cutoff": 1
+          },
+          "seconds": 2.694503375001659,
+          "full_arm_seconds": 2.7062397920017247,
+          "root_restored": true,
+          "ordering_observations": {
+            "available_instances": 0,
+            "enabled": false,
+            "outcome": "DISABLED",
+            "point_activated_proposal_packets": null,
+            "realized_primitive_choice_count": null,
+            "scope": "Existing successful proposal packets and point ordering activations only; no claim of realised cluster execution. No recorded proposal can also mean budget stopped before scanning. Symbolic activation and realised-choice counts are unavailable.",
+            "successful_proposals": 0,
+            "symbolic_activation_count": null
+          },
+          "proof_verification_status": "NO_PROOF_CANDIDATE",
+          "completed_audits": [
+            {
+              "complete": true,
+              "decision": [
+                "branch",
+                [
+                  0,
+                  1
+                ],
+                [
+                  [
+                    0,
+                    1,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    5,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    14,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    175,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    260,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    261,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    262,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    263,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    264,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    265,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    266,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    267,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    268,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    269,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    270,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    271,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    272,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    273,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    274,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    275,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    276,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    277,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    278,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    281,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    283,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    361,
+                    0
+                  ]
+                ]
+              ],
+              "frontier_points": 26,
+              "incidences": 63968
+            },
+            {
+              "complete": true,
+              "decision": [
+                "forced",
+                [
+                  0,
+                  0
+                ],
+                [
+                  [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                ]
+              ],
+              "frontier_points": 25,
+              "incidences": 59575
+            }
+          ],
+          "initial_auxiliary_witnesses": 12
+        },
+        {
+          "id": "SC",
+          "status": "unknown_search_budget",
+          "metrics": {
+            "attempts": 600,
+            "backtracks": 589,
+            "cluster_proposals": 0,
+            "nodes": 601,
+            "skeleton_tests": 329934
+          },
+          "trace_event_counts": {
+            "decision": 601,
+            "extend": 600,
+            "return": 589,
+            "cutoff": 1
+          },
+          "seconds": 1.5967750829950091,
+          "full_arm_seconds": 1.5968086250068154,
+          "root_restored": true,
+          "ordering_observations": {
+            "available_instances": 11,
+            "enabled": true,
+            "outcome": "NO_SUCCESSFUL_PROPOSAL_RECORDED",
+            "point_activated_proposal_packets": null,
+            "realized_primitive_choice_count": null,
+            "scope": "Existing successful proposal packets and point ordering activations only; no claim of realised cluster execution. No recorded proposal can also mean budget stopped before scanning. Symbolic activation and realised-choice counts are unavailable.",
+            "successful_proposals": 0,
+            "symbolic_activation_count": null
+          },
+          "proof_verification_status": "NO_PROOF_CANDIDATE",
+          "passive_trace_successful_proposal_packets": 0,
+          "passive_trace_decisions_with_changed_order": 0,
+          "passive_trace_metric_scope": "Literal saved decision-array comparisons; not realized primitive-choice or completed-cluster counts."
+        },
+        {
+          "id": "P00",
+          "status": "unknown_search_budget",
+          "metrics": {
+            "attempts": 14,
+            "auxiliary_removed_incidences": 0,
+            "auxiliary_removed_incidences_total": 0,
+            "branch": 7,
+            "forced": 7,
+            "initial_auxiliary_removed_incidences": 0,
+            "nodes": 14
+          },
+          "trace_event_counts": {
+            "decision": 14,
+            "order": 14,
+            "place": 14,
+            "cutoff": 1
+          },
+          "seconds": 2.4262258329981705,
+          "full_arm_seconds": 2.4419323750043986,
+          "root_restored": true,
+          "ordering_observations": {
+            "available_instances": 0,
+            "enabled": false,
+            "outcome": "DISABLED",
+            "point_activated_proposal_packets": null,
+            "realized_primitive_choice_count": null,
+            "scope": "Existing successful proposal packets and point ordering activations only; no claim of realised cluster execution. No recorded proposal can also mean budget stopped before scanning. Symbolic activation and realised-choice counts are unavailable.",
+            "successful_proposals": 0,
+            "symbolic_activation_count": null
+          },
+          "proof_verification_status": "NO_PROOF_CANDIDATE",
+          "completed_audits": [
+            {
+              "complete": true,
+              "decision": [
+                "branch",
+                [
+                  0,
+                  1
+                ],
+                [
+                  [
+                    0,
+                    1,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    5,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    14,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    175,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    260,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    261,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    262,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    263,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    264,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    265,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    266,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    267,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    268,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    269,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    270,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    271,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    272,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    273,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    274,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    275,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    276,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    277,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    278,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    281,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    283,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    361,
+                    0
+                  ]
+                ]
+              ],
+              "frontier_points": 26,
+              "incidences": 63980
+            },
+            {
+              "complete": true,
+              "decision": [
+                "forced",
+                [
+                  0,
+                  0
+                ],
+                [
+                  [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                ]
+              ],
+              "frontier_points": 25,
+              "incidences": 59575
+            }
+          ],
+          "initial_auxiliary_witnesses": 0
+        },
+        {
+          "id": "P11",
+          "status": "unknown_search_budget",
+          "metrics": {
+            "attempts": 15,
+            "auxiliary_removed_incidences": 0,
+            "auxiliary_removed_incidences_total": 12,
+            "branch": 8,
+            "cluster_proposals": 0,
+            "forced": 7,
+            "initial_auxiliary_removed_incidences": 12,
+            "nodes": 15
+          },
+          "trace_event_counts": {
+            "decision": 15,
+            "cluster_proposals": 8,
+            "order": 15,
+            "place": 15,
+            "cutoff": 1
+          },
+          "seconds": 2.257653583001229,
+          "full_arm_seconds": 2.279069874995912,
+          "root_restored": true,
+          "ordering_observations": {
+            "available_instances": 11,
+            "enabled": true,
+            "outcome": "NO_SUCCESSFUL_PROPOSAL_RECORDED",
+            "point_activated_proposal_packets": 0,
+            "realized_primitive_choice_count": null,
+            "scope": "Existing successful proposal packets and point ordering activations only; no claim of realised cluster execution. No recorded proposal can also mean budget stopped before scanning. Symbolic activation and realised-choice counts are unavailable.",
+            "successful_proposals": 0,
+            "symbolic_activation_count": null
+          },
+          "proof_verification_status": "NO_PROOF_CANDIDATE",
+          "completed_audits": [
+            {
+              "complete": true,
+              "decision": [
+                "branch",
+                [
+                  0,
+                  1
+                ],
+                [
+                  [
+                    0,
+                    1,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    5,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    14,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    175,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    260,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    261,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    262,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    263,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    264,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    265,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    266,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    267,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    268,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    269,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    270,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    271,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    272,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    273,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    274,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    275,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    276,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    277,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    278,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    281,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    283,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    361,
+                    0
+                  ]
+                ]
+              ],
+              "frontier_points": 26,
+              "incidences": 63968
+            },
+            {
+              "complete": true,
+              "decision": [
+                "forced",
+                [
+                  0,
+                  0
+                ],
+                [
+                  [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                ]
+              ],
+              "frontier_points": 25,
+              "incidences": 59575
+            }
+          ],
+          "initial_auxiliary_witnesses": 12
+        },
+        {
+          "id": "S0",
+          "status": "unknown_search_budget",
+          "metrics": {
+            "attempts": 600,
+            "backtracks": 589,
+            "nodes": 601,
+            "skeleton_tests": 329934
+          },
+          "trace_event_counts": {
+            "decision": 601,
+            "extend": 600,
+            "return": 589,
+            "cutoff": 1
+          },
+          "seconds": 0.9089670419998583,
+          "full_arm_seconds": 0.9090012909946381,
+          "root_restored": true,
+          "ordering_observations": {
+            "available_instances": 0,
+            "enabled": false,
+            "outcome": "DISABLED",
+            "point_activated_proposal_packets": null,
+            "realized_primitive_choice_count": null,
+            "scope": "Existing successful proposal packets and point ordering activations only; no claim of realised cluster execution. No recorded proposal can also mean budget stopped before scanning. Symbolic activation and realised-choice counts are unavailable.",
+            "successful_proposals": 0,
+            "symbolic_activation_count": null
+          },
+          "proof_verification_status": "NO_PROOF_CANDIDATE",
+          "passive_trace_successful_proposal_packets": 0,
+          "passive_trace_decisions_with_changed_order": 0,
+          "passive_trace_metric_scope": "Literal saved decision-array comparisons; not realized primitive-choice or completed-cluster counts."
+        }
+      ]
+    },
+    {
+      "case_id": "pilot-fork-join-missing-Pa",
+      "resource_admitted": true,
+      "packet": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/result.json",
+        "bytes": 31656541,
+        "sha256": "3a6904b95270495f83707c65169a9e4fb966c739f0e1a0c9b20fd51d0309e0b0"
+      },
+      "whole_peak_bytes": 844562432,
+      "observer_gate_seconds": 111.93240991699713,
+      "plan": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/root/plan-pilot-fork-join-missing-Pa-v1.json",
+        "bytes": 16559,
+        "sha256": "7c9a4b6869f0d10752e363973c4bacc40f4ea2db6edcb8842d3ed00a2f57206a"
+      },
+      "grant": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/root/grant-pilot-fork-join-missing-Pa-v1.json",
+        "bytes": 2158,
+        "sha256": "e1d0eb6811bc2b1efa3e0acabd5d4121d7ad1e03af9ac1c91311626cd20d0f28"
+      },
+      "consumed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/CONSUMED.json",
+        "bytes": 263,
+        "sha256": "d4c3d38ed60387c11d0ccd26ecd9ec2f15bd7942a667f84ea64146698806f4a8"
+      },
+      "Native_queries": 89,
+      "Native_status_counts": {
+        "accepted": 22,
+        "rejected": 66,
+        "unknown_step_budget": 1
+      },
+      "donors": [
+        {
+          "id": "train-propositional-application",
+          "rows": 3,
+          "whole_query": 4,
+          "essential_query": 5
+        },
+        {
+          "id": "train-propositional-chain",
+          "rows": 5,
+          "whole_query": 12,
+          "essential_query": 13
+        },
+        {
+          "id": "train-propositional-curried",
+          "rows": 5,
+          "whole_query": 20,
+          "essential_query": 21
+        }
+      ],
+      "library_family_ids": [
+        "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+        "68fc85fd778d3ed2abb50f4c6f694d980ef9acdce6b756b308824907a444117b",
+        "e9b268c1fd1ead1078954a62c37b5df26bfa76b514a5a044e06f80a1b11206d9"
+      ],
+      "registry_native_admitted": false,
+      "registry_status": "unknown_step_budget",
+      "registry_usable": 0,
+      "ordering_instances": 7,
+      "registry_binding_work": 20003,
+      "scientific_complete": true,
+      "word_reference_controls": 48,
+      "full_shared_setup_seconds": 86.96557008299715,
+      "compile_and_model_seconds": 72.70165437500691,
+      "arms": [
+        {
+          "id": "P00",
+          "status": "unknown_search_budget",
+          "metrics": {
+            "attempts": 19,
+            "auxiliary_removed_incidences": 0,
+            "auxiliary_removed_incidences_total": 0,
+            "branch": 10,
+            "forced": 9,
+            "initial_auxiliary_removed_incidences": 0,
+            "nodes": 19
+          },
+          "trace_event_counts": {
+            "decision": 19,
+            "order": 19,
+            "place": 19,
+            "cutoff": 1
+          },
+          "seconds": 2.239615333994152,
+          "full_arm_seconds": 2.252161625001463,
+          "root_restored": true,
+          "ordering_observations": {
+            "available_instances": 0,
+            "enabled": false,
+            "outcome": "DISABLED",
+            "point_activated_proposal_packets": null,
+            "realized_primitive_choice_count": null,
+            "scope": "Existing successful proposal packets and point ordering activations only; no claim of realised cluster execution. No recorded proposal can also mean budget stopped before scanning. Symbolic activation and realised-choice counts are unavailable.",
+            "successful_proposals": 0,
+            "symbolic_activation_count": null
+          },
+          "proof_verification_status": "NO_PROOF_CANDIDATE",
+          "completed_audits": [
+            {
+              "complete": true,
+              "decision": [
+                "branch",
+                [
+                  0,
+                  1
+                ],
+                [
+                  [
+                    0,
+                    1,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    4,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    8,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    159,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    160,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    161,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    162,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    163,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    164,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    165,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    166,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    167,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    168,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    169,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    170,
+                    0
+                  ]
+                ]
+              ],
+              "frontier_points": 28,
+              "incidences": 63120
+            },
+            {
+              "complete": true,
+              "decision": [
+                "forced",
+                [
+                  0,
+                  0
+                ],
+                [
+                  [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                ]
+              ],
+              "frontier_points": 27,
+              "incidences": 59337
+            }
+          ],
+          "initial_auxiliary_witnesses": 0
+        },
+        {
+          "id": "SC",
+          "status": "unknown_search_budget",
+          "metrics": {
+            "attempts": 600,
+            "backtracks": 588,
+            "cluster_proposals": 47,
+            "nodes": 601,
+            "skeleton_tests": 458967
+          },
+          "trace_event_counts": {
+            "decision": 601,
+            "extend": 600,
+            "return": 588,
+            "cutoff": 1
+          },
+          "seconds": 1.6726733750037965,
+          "full_arm_seconds": 1.6726943750036298,
+          "root_restored": true,
+          "ordering_observations": {
+            "available_instances": 7,
+            "enabled": true,
+            "outcome": "SUCCESSFUL_PROPOSALS_RECORDED",
+            "point_activated_proposal_packets": null,
+            "realized_primitive_choice_count": null,
+            "scope": "Existing successful proposal packets and point ordering activations only; no claim of realised cluster execution. No recorded proposal can also mean budget stopped before scanning. Symbolic activation and realised-choice counts are unavailable.",
+            "successful_proposals": 47,
+            "symbolic_activation_count": null
+          },
+          "proof_verification_status": "NO_PROOF_CANDIDATE",
+          "passive_trace_successful_proposal_packets": 47,
+          "passive_trace_decisions_with_changed_order": 42,
+          "passive_trace_metric_scope": "Literal saved decision-array comparisons; not realized primitive-choice or completed-cluster counts."
+        },
+        {
+          "id": "P10",
+          "status": "unknown_search_budget",
+          "metrics": {
+            "attempts": 11,
+            "auxiliary_removed_incidences": 0,
+            "auxiliary_removed_incidences_total": 12,
+            "branch": 6,
+            "forced": 5,
+            "initial_auxiliary_removed_incidences": 12,
+            "nodes": 11
+          },
+          "trace_event_counts": {
+            "decision": 11,
+            "order": 11,
+            "place": 11,
+            "cutoff": 1
+          },
+          "seconds": 2.7093116249961895,
+          "full_arm_seconds": 2.723722250004357,
+          "root_restored": true,
+          "ordering_observations": {
+            "available_instances": 0,
+            "enabled": false,
+            "outcome": "DISABLED",
+            "point_activated_proposal_packets": null,
+            "realized_primitive_choice_count": null,
+            "scope": "Existing successful proposal packets and point ordering activations only; no claim of realised cluster execution. No recorded proposal can also mean budget stopped before scanning. Symbolic activation and realised-choice counts are unavailable.",
+            "successful_proposals": 0,
+            "symbolic_activation_count": null
+          },
+          "proof_verification_status": "NO_PROOF_CANDIDATE",
+          "completed_audits": [
+            {
+              "complete": true,
+              "decision": [
+                "branch",
+                [
+                  0,
+                  1
+                ],
+                [
+                  [
+                    0,
+                    1,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    4,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    8,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    159,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    160,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    161,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    162,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    163,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    164,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    165,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    166,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    167,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    168,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    169,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    170,
+                    0
+                  ]
+                ]
+              ],
+              "frontier_points": 28,
+              "incidences": 63108
+            },
+            {
+              "complete": true,
+              "decision": [
+                "forced",
+                [
+                  0,
+                  0
+                ],
+                [
+                  [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                ]
+              ],
+              "frontier_points": 27,
+              "incidences": 59337
+            }
+          ],
+          "initial_auxiliary_witnesses": 12
+        },
+        {
+          "id": "P01",
+          "status": "unknown_search_budget",
+          "metrics": {
+            "attempts": 16,
+            "auxiliary_removed_incidences": 0,
+            "auxiliary_removed_incidences_total": 0,
+            "branch": 8,
+            "cluster_proposals": 0,
+            "forced": 8,
+            "initial_auxiliary_removed_incidences": 0,
+            "nodes": 16
+          },
+          "trace_event_counts": {
+            "decision": 16,
+            "cluster_proposals": 8,
+            "order": 16,
+            "place": 16,
+            "cutoff": 1
+          },
+          "seconds": 2.1935472499972093,
+          "full_arm_seconds": 2.2054852080036653,
+          "root_restored": true,
+          "ordering_observations": {
+            "available_instances": 7,
+            "enabled": true,
+            "outcome": "NO_SUCCESSFUL_PROPOSAL_RECORDED",
+            "point_activated_proposal_packets": 0,
+            "realized_primitive_choice_count": null,
+            "scope": "Existing successful proposal packets and point ordering activations only; no claim of realised cluster execution. No recorded proposal can also mean budget stopped before scanning. Symbolic activation and realised-choice counts are unavailable.",
+            "successful_proposals": 0,
+            "symbolic_activation_count": null
+          },
+          "proof_verification_status": "NO_PROOF_CANDIDATE",
+          "completed_audits": [
+            {
+              "complete": true,
+              "decision": [
+                "branch",
+                [
+                  0,
+                  1
+                ],
+                [
+                  [
+                    0,
+                    1,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    4,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    8,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    159,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    160,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    161,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    162,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    163,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    164,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    165,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    166,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    167,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    168,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    169,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    170,
+                    0
+                  ]
+                ]
+              ],
+              "frontier_points": 28,
+              "incidences": 63120
+            },
+            {
+              "complete": true,
+              "decision": [
+                "forced",
+                [
+                  0,
+                  0
+                ],
+                [
+                  [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                ]
+              ],
+              "frontier_points": 27,
+              "incidences": 59337
+            }
+          ],
+          "initial_auxiliary_witnesses": 0
+        },
+        {
+          "id": "S0",
+          "status": "unknown_search_budget",
+          "metrics": {
+            "attempts": 600,
+            "backtracks": 588,
+            "nodes": 601,
+            "skeleton_tests": 405081
+          },
+          "trace_event_counts": {
+            "decision": 601,
+            "extend": 600,
+            "return": 588,
+            "cutoff": 1
+          },
+          "seconds": 1.2628912079962902,
+          "full_arm_seconds": 1.2629354579985375,
+          "root_restored": true,
+          "ordering_observations": {
+            "available_instances": 0,
+            "enabled": false,
+            "outcome": "DISABLED",
+            "point_activated_proposal_packets": null,
+            "realized_primitive_choice_count": null,
+            "scope": "Existing successful proposal packets and point ordering activations only; no claim of realised cluster execution. No recorded proposal can also mean budget stopped before scanning. Symbolic activation and realised-choice counts are unavailable.",
+            "successful_proposals": 0,
+            "symbolic_activation_count": null
+          },
+          "proof_verification_status": "NO_PROOF_CANDIDATE",
+          "passive_trace_successful_proposal_packets": 0,
+          "passive_trace_decisions_with_changed_order": 0,
+          "passive_trace_metric_scope": "Literal saved decision-array comparisons; not realized primitive-choice or completed-cluster counts."
+        },
+        {
+          "id": "P11",
+          "status": "unknown_search_budget",
+          "metrics": {
+            "attempts": 16,
+            "auxiliary_removed_incidences": 0,
+            "auxiliary_removed_incidences_total": 12,
+            "branch": 8,
+            "cluster_proposals": 0,
+            "forced": 8,
+            "initial_auxiliary_removed_incidences": 12,
+            "nodes": 16
+          },
+          "trace_event_counts": {
+            "decision": 16,
+            "cluster_proposals": 8,
+            "order": 16,
+            "place": 16,
+            "cutoff": 1
+          },
+          "seconds": 2.199076832999708,
+          "full_arm_seconds": 2.211743917003332,
+          "root_restored": true,
+          "ordering_observations": {
+            "available_instances": 7,
+            "enabled": true,
+            "outcome": "NO_SUCCESSFUL_PROPOSAL_RECORDED",
+            "point_activated_proposal_packets": 0,
+            "realized_primitive_choice_count": null,
+            "scope": "Existing successful proposal packets and point ordering activations only; no claim of realised cluster execution. No recorded proposal can also mean budget stopped before scanning. Symbolic activation and realised-choice counts are unavailable.",
+            "successful_proposals": 0,
+            "symbolic_activation_count": null
+          },
+          "proof_verification_status": "NO_PROOF_CANDIDATE",
+          "completed_audits": [
+            {
+              "complete": true,
+              "decision": [
+                "branch",
+                [
+                  0,
+                  1
+                ],
+                [
+                  [
+                    0,
+                    1,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    4,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    8,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    159,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    160,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    161,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    162,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    163,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    164,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    165,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    166,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    167,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    168,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    169,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    170,
+                    0
+                  ]
+                ]
+              ],
+              "frontier_points": 28,
+              "incidences": 63108
+            },
+            {
+              "complete": true,
+              "decision": [
+                "forced",
+                [
+                  0,
+                  0
+                ],
+                [
+                  [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                ]
+              ],
+              "frontier_points": 27,
+              "incidences": 59337
+            }
+          ],
+          "initial_auxiliary_witnesses": 12
+        }
+      ]
+    }
+  ],
+  "complete_input_pins": [
+    {
+      "bytes": 18058560,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+      "sha256": "b6ea0c2a9bfce48dbf181a53f1ca4f0562d40658b85bf47258e2a88d8f9e3933"
+    },
+    {
+      "bytes": 6828,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/implementation-B/API-v1.json",
+      "sha256": "b648e84913ead5efc7cdbc4bff2259f1f3164baf00c8e7614c525119b106dfd2"
+    },
+    {
+      "bytes": 3162,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/implementation-B/handoff-v1.json",
+      "sha256": "d1422340052ad8822923996b00346d7cf693908b6219d54931b4cb69ea1fa14a"
+    },
+    {
+      "bytes": 4841,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/implementation-B/ordering-policy-v1.json",
+      "sha256": "57ee2d9d253fd8d6cb30c54a2c8bdfda8ce76be99d02b019390cd7948f5025db"
+    },
+    {
+      "bytes": 53464,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/implementation-B/proof_search_pilot_v9.py",
+      "sha256": "9c734a91f77c6714d0ed7201dbefcf4e263603a2007261b2667a0ef5b47136a8"
+    },
+    {
+      "bytes": 12236,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/root/case_worker_v1.py",
+      "sha256": "0be1c1602c5de75d2e34115981abf70cded421c4144327cd587f51dc904318b1"
+    },
+    {
+      "bytes": 3367,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/root/independent_countermodel_v1.py",
+      "sha256": "d16d781f2740c658cc841873032d0eda445f619d0f9a7db3ce8b3fba20843ce3"
+    },
+    {
+      "bytes": 10113,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/root/observe_case_once_v2.py",
+      "sha256": "24804c7d4558d8df511942d9e6b2e4d8d2cfd88ce7df6f5b5f775f87d0c20ca9"
+    },
+    {
+      "bytes": 12973,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/root/run_case_once_v3.py",
+      "sha256": "98c55321bb87a8c04b2c6d56b357aba9c3a8f5fc98660474ae3ac1c9d00b0aca"
+    },
+    {
+      "bytes": 20424,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/runtime/bounded_request_oracle.py",
+      "sha256": "606e790f4ba3ecc976877cbe52ccfd64519262f2ea07214c80d989f58e4f7637"
+    },
+    {
+      "bytes": 7089,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/runtime/certificate_boundary_search.py",
+      "sha256": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a"
+    },
+    {
+      "bytes": 18396,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/runtime/compact_point_model_v1.py",
+      "sha256": "a0d91692f50ab196013177669f8808f624c197ce5e3c1051ab0146a9c1616368"
+    },
+    {
+      "bytes": 30365,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/runtime/compact_reference_verifier_v1.py",
+      "sha256": "c4b5f719014245acb2a8e05a7375b2c2fa44e27a8a748777d5b559f83eea687f"
+    },
+    {
+      "bytes": 4311,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/runtime/interned_quantified_family_points_v1.py",
+      "sha256": "fb37663b4c0c3de4e9f3c28564678af833857f7ebe761cd83275d62f123b9a8e"
+    },
+    {
+      "bytes": 4705,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/runtime/interned_result_reader_v2.py",
+      "sha256": "cd06c8372b6edd05774cf5974c5b6265bbc196afdc68d47507e54a2044dec836"
+    },
+    {
+      "bytes": 10808,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/runtime/logic.py",
+      "sha256": "5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011"
+    },
+    {
+      "bytes": 10594,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/runtime/native_inference_inventory.py",
+      "sha256": "89979f6be8f422ea293c2f0b6c0e966fc9a0710a8e15cbe58437f868cbf75091"
+    },
+    {
+      "bytes": 2746,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/runtime/native_inventory_policy.py",
+      "sha256": "8721a361f4a97e5311f8ed944431d49d08592ed102f50ed333d1ad2b9ff01591"
+    },
+    {
+      "bytes": 8962,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/runtime/native_receptor_points.py",
+      "sha256": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888"
+    },
+    {
+      "bytes": 6992,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/runtime/proof_boundary.py",
+      "sha256": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f"
+    },
+    {
+      "bytes": 6472,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/runtime/quantified_family_points_v2.py",
+      "sha256": "f65eb38269db74ff5db0d9eb2096a38d7f07bbd6a579aa564acc692f84e4437c"
+    },
+    {
+      "bytes": 11060,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/runtime/quantified_receptors_v1.py",
+      "sha256": "d1c4afa10d58abbcf473cb3da8ee8768c974dd05d03ea00b988d574b2441af5a"
+    },
+    {
+      "bytes": 26238,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/runtime/quantified_symbolic_control_v2.py",
+      "sha256": "740319d243cc2fd2eefe1d7ef1611d8bcfe6f0ff70a2ce2ed72771e78f64a391"
+    },
+    {
+      "bytes": 16868,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/runtime/receptor_support_ordering_v1.py",
+      "sha256": "18cf90ebd75d746db3eb251eaffa92cd6a25432b70f34653b57f3d58ef5d8adc"
+    },
+    {
+      "bytes": 6942,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/runtime/semantic_inventory_guidance.py",
+      "sha256": "744948b67e2870ae24737469aceb920624b59d616e8a48f91b99d39f56c14a79"
+    },
+    {
+      "bytes": 2180,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/runtime/semantic_inventory_oracle.py",
+      "sha256": "f41bfd56829b89b015fcf7a4dbd41dabd36110156e345353059980a66f6a4400"
+    },
+    {
+      "bytes": 15936,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/runtime/semantic_inventory_search_v2.py",
+      "sha256": "35443c958f2115efa18cc923fb4a4f1070e6e03ccf1d1adf2bb56ce1f7bab28b"
+    },
+    {
+      "bytes": 7196,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/runtime/semantic_lemma_inventory.py",
+      "sha256": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad"
+    },
+    {
+      "bytes": 4593,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/runtime/semantic_point_smt.py",
+      "sha256": "6bcb3fb60529f6888836a1ca0c613b772cea192c9549620f968dbdf7cb9be74a"
+    },
+    {
+      "bytes": 53725,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/runtime/semantic_receiver_driver.py",
+      "sha256": "5f73835dfc9219f06f01206ebf6bbac5744eea582cbfb03deed42105f2ccacd0"
+    },
+    {
+      "bytes": 7409,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/runtime/semantic_receptor_points.py",
+      "sha256": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207"
+    },
+    {
+      "bytes": 3756,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/runtime/tape_binary.py",
+      "sha256": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247"
+    },
+    {
+      "bytes": 19188,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/runtime/tape_tree_machine.py",
+      "sha256": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f"
+    },
+    {
+      "bytes": 13290,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/runtime/tree_machine.py",
+      "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257"
+    },
+    {
+      "bytes": 28533,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/runtime/turtle.py",
+      "sha256": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a"
+    },
+    {
+      "bytes": 17663,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/runtime/word_point_model_v1.py",
+      "sha256": "4acf64cde5aa12966688cbd41c6918ba6604931483518ed5a5dc938d661b262a"
+    },
+    {
+      "bytes": 35387,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/runtime/word_point_reference_verifier_v1.py",
+      "sha256": "3acf80c6d40acaa277ed9a51eb33d1959c25ec23c6300ce5f144c9c670e229da"
+    },
+    {
+      "bytes": 11376,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/corpus-L/acquisition-and-comparison-v2.json",
+      "sha256": "7d55cdd85d44228bed4e452b8bdf82f29ea6275284540b32eeb1ae957871d928"
+    },
+    {
+      "bytes": 14901,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/corpus-L/pilot-inputs-v2.json",
+      "sha256": "2f206ef004c4d723f862ee36f08355816c5264a5809340be9787331d82d33cd6"
+    },
+    {
+      "bytes": 41808,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/implementation-B/recovered/and-support/Native-runtime/boundary-oracle-v2",
+      "sha256": "2b6bf8bb09a4e03d0cb1b4595dea1fe6d4432aa93d8f7eed72c30077fd9941a4"
+    },
+    {
+      "bytes": 3547,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/implementation-B/recovered/and-support/Native-runtime/boundary_oracle.cpp",
+      "sha256": "f0965f08fc9e8272d0fdd1ab3233c3a308267a4fc3b2e1a928c39dbeaaec31be"
+    },
+    {
+      "bytes": 1494417,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/implementation-B/recovered/and-support/fixed-native-inputs/proof-boundary-001.json",
+      "sha256": "977ceac5504ad3d712c7fa2d46d20494b42e30820f77eb2bffbeea313d07ee54"
+    },
+    {
+      "bytes": 1114802,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/implementation-B/recovered/and-support/fixed-native-inputs/proof-boundary-microcode-001.json.gz",
+      "sha256": "23e2b54cc8365fa42f05148885dc7da671f525f8cb24b154f5c69aeeb3180336"
+    }
+  ],
+  "actual_file_pins": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/actual/pilot-fork-join-positive/CONSUMED.json",
+      "bytes": 261,
+      "sha256": "f6406761e9ff961c7cf4cb3878050729e37f98a98674d4ff46a5290b4deec5e9"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/actual/pilot-fork-join-positive/native/boundary-oracle",
+      "bytes": 41808,
+      "sha256": "2b6bf8bb09a4e03d0cb1b4595dea1fe6d4432aa93d8f7eed72c30077fd9941a4"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/actual/pilot-fork-join-positive/native/code.bin",
+      "bytes": 7558192,
+      "sha256": "97f0b600cffd83552c4e0f0c4fb1f5d26cfdb76e3e74b267bbaebeddc836e7ed"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/actual/pilot-fork-join-positive/native/input.bin",
+      "bytes": 682164,
+      "sha256": "11af34b9d1c50b2228504b83da142597692ca8b68b00b86faa77336b81f29409"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/actual/pilot-fork-join-positive/native/output.bin",
+      "bytes": 682168,
+      "sha256": "9e903e18627706581107004526e907830a109b2a211a715d9426f517a66d67fd"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/actual/pilot-fork-join-positive/owned-child.json",
+      "bytes": 238,
+      "sha256": "d8ad063c9f9d434f3491a34de1eee61b5c7c4e5cb145ef4316240d5df6b0c22c"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/actual/pilot-fork-join-positive/result.json",
+      "bytes": 31802290,
+      "sha256": "22d06dfd1769d68919cb28fdb4d51384c7d22e7a14f4a9e363c62afa4d5580a7"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/actual/pilot-fork-join-positive/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/actual/pilot-fork-join-positive/stdout.bin",
+      "bytes": 116,
+      "sha256": "542d6cdec68e1d04fc6dd9707e2f1765111717a53f9f9bfe8d1cc09a3d04dac2"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/actual/pilot-fork-join-positive/terminal.json",
+      "bytes": 2015,
+      "sha256": "6bd75fec1bca4b0d4a9a556accfdf55862b51c5f5574b8e45db460a20b10a932"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/actual/pilot-fork-join-positive/worker-header.json",
+      "bytes": 575,
+      "sha256": "ae2035714bb71822d634b915af64f65ee60ca9faf40260168f2f470a58166a49"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/actual/pilot-fork-join-positive.observer/observer.json",
+      "bytes": 1498,
+      "sha256": "b9ff3d9900bd7c81f250a609b8dfc00ff2f13f2cfeba4922386fb7b4b45bfd8b"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/actual/pilot-fork-join-positive.observer/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/actual/pilot-fork-join-positive.observer/stdout.bin",
+      "bytes": 1791,
+      "sha256": "0843883acf65ef08bff7fdde4b7691319ce8e415aaa49d240215042c1c538ea2"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/CONSUMED.json",
+      "bytes": 271,
+      "sha256": "457d2d30c76a409b8ea33383d0ee20e0a54026c3edd9b51cdf832a2f5b895e03"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/native/boundary-oracle",
+      "bytes": 41808,
+      "sha256": "2b6bf8bb09a4e03d0cb1b4595dea1fe6d4432aa93d8f7eed72c30077fd9941a4"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/native/code.bin",
+      "bytes": 7558192,
+      "sha256": "97f0b600cffd83552c4e0f0c4fb1f5d26cfdb76e3e74b267bbaebeddc836e7ed"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/native/input.bin",
+      "bytes": 900052,
+      "sha256": "f2432fb8ac10022fe24de0e42d9ddeda8fc1426e973948fd699c6136a6e12ce8"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/native/output.bin",
+      "bytes": 900056,
+      "sha256": "8ffed28c4da3ce93bfaf6c7faec40dd3d25b68c0d2614f3d8334066ae6ac1404"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/owned-child.json",
+      "bytes": 248,
+      "sha256": "3ad8f6523981f5ba1bbffe8cae44eff7717da79bf1d8b5f405d18f3f98b2109b"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/result.json",
+      "bytes": 31165367,
+      "sha256": "2801115c496666659bab6420611ce8a54c0c4fcb9b2ac3735a5ff13ce58eeae2"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/stdout.bin",
+      "bytes": 125,
+      "sha256": "4ede6d1dfc000d36a913dae4b80ad801d9077155ee2fcb623743b9c03bfe3582"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/terminal.json",
+      "bytes": 2055,
+      "sha256": "3c26fa03eb5af1f1c805687953d11f10bb7308597636c64673a22db1743cdfad"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/worker-header.json",
+      "bytes": 595,
+      "sha256": "5d96934921ee4066314e262ed5d2107f620295b8cd684936d5fb52211b14a10f"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/actual/pilot-quantifier-equality-positive.observer/observer.json",
+      "bytes": 1518,
+      "sha256": "1df8d7218be0cd69acf16d0af8dacf1cf5e68a657dbcd66d51d3de039a39a515"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/actual/pilot-quantifier-equality-positive.observer/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/actual/pilot-quantifier-equality-positive.observer/stdout.bin",
+      "bytes": 1831,
+      "sha256": "964329605dd5f1d520c0ee32d05bdf7897605e48a5856d78a6743677892d421d"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/CONSUMED.json",
+      "bytes": 263,
+      "sha256": "d4c3d38ed60387c11d0ccd26ecd9ec2f15bd7942a667f84ea64146698806f4a8"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/native/boundary-oracle",
+      "bytes": 41808,
+      "sha256": "2b6bf8bb09a4e03d0cb1b4595dea1fe6d4432aa93d8f7eed72c30077fd9941a4"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/native/code.bin",
+      "bytes": 7558192,
+      "sha256": "97f0b600cffd83552c4e0f0c4fb1f5d26cfdb76e3e74b267bbaebeddc836e7ed"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/native/input.bin",
+      "bytes": 817244,
+      "sha256": "a66951150278d8e1fe075dd9488e2218932ba1de1f18f3eec96c3479d5962047"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/native/output.bin",
+      "bytes": 817248,
+      "sha256": "f34eb85eaeda13507a0772cddbb551789b1acbdeeb64133eae24d74d3983b146"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/owned-child.json",
+      "bytes": 240,
+      "sha256": "d32e908a21a7dfde8e8e6eea3f8f21df66c9adb30197d11fdc2943579b43bbda"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/result.json",
+      "bytes": 31656541,
+      "sha256": "3a6904b95270495f83707c65169a9e4fb966c739f0e1a0c9b20fd51d0309e0b0"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/stdout.bin",
+      "bytes": 118,
+      "sha256": "4ec9a31bddea52758e9cbfeaf6eb284d1a98bffd2d494baf0ca0adfd93ac8ba8"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/terminal.json",
+      "bytes": 2023,
+      "sha256": "70d0a0d1f2e6e78eb9f72913c77f6344e92b836156ac57582a6e6211c5890a84"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/worker-header.json",
+      "bytes": 579,
+      "sha256": "e0d72561f256c7ee1d7dab85894a89e370950f8bdc5043dcb7985b861ecd90b5"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa.observer/observer.json",
+      "bytes": 1502,
+      "sha256": "3c4116af5692bbf8ef79b80d8e2fe1e327a20056258dc7b5cb066ae6226a7881"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa.observer/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa.observer/stdout.bin",
+      "bytes": 1799,
+      "sha256": "5be45db630b3fe4a9b730b4cca606c11ed2430a03ff511035a76121c670e90a6"
+    }
+  ],
+  "grant_pins": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/root/grant-pilot-fork-join-positive-v1.json",
+      "bytes": 2154,
+      "sha256": "2372d6a338af393165285c83fca6cd947f33a059895b9af579f68b519766953b"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/root/grant-pilot-quantifier-equality-positive-v1.json",
+      "bytes": 2174,
+      "sha256": "76b0dd9bbe1518ce2d69451d842f825ab5fbb6d90489eb34bc377ad48ec6206a"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/root/grant-pilot-fork-join-missing-Pa-v1.json",
+      "bytes": 2158,
+      "sha256": "e1d0eb6811bc2b1efa3e0acabd5d4121d7ad1e03af9ac1c91311626cd20d0f28"
+    }
+  ],
+  "whole_offer": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/root/prospective-whole-offer-v1.json",
+    "bytes": 22011,
+    "sha256": "36ed81b32ea85efcdce840542bcaba1bb81a3a57b1727732f0fc51f14e8bc648"
+  },
+  "protocol": {
+    "bytes": 8492,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/root/protocol-v1.json",
+    "sha256": "32590ed04d0377fa81a48b46481d622908cb0a5bec1d0a19c43eafd263c0557c"
+  },
+  "scientific_Source_delta_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/review-C/typed-scientific-delta-Source-review-v1.json",
+    "bytes": 14194,
+    "sha256": "3ab3ffa3db815cb30f69e080f09d0ebe5319f80282197a5aa2e5cf4da9d5ac94"
+  },
+  "whole_Source_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/review-C/typed-whole-prospective-Source-review-v1.json",
+    "bytes": 31862,
+    "sha256": "b7c549a72e4334a3b3e50a1668ca6e5310cb2619cb34a2569ca439a7f8e9441d"
+  },
+  "external_tool_observer": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/root/external-tool-observer-v1.json",
+    "bytes": 2389,
+    "sha256": "89179fa6480f5854fcb71358aaa4404033dd905d00e708a5fd28fd6e6bae63de"
+  },
+  "Root_initial_passive_join": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/root/initial-passive-actual-join-v1.json",
+    "bytes": 20062,
+    "sha256": "3f5bb08d0fa78250aa312b7b4f4158ed80abec49454b784ee3fa180b5fc4fae8"
+  },
+  "D10_historical_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/review-C/typed-owned-cutoff-actual-scientific-review-v1.json",
+    "bytes": 48728,
+    "sha256": "8d963077bd5461a93f6972ee9df2026009d139fc642dfefc3208020b9409009c"
+  },
+  "partial_policy": "No partial content read/projected/adopted. Earlier policies/results/failures/skips remain unchanged.",
+  "remaining": "All18 arms now returned under the explicit ordering-only policy, but useful point/cluster/RL advantage and broader proof/tiling goals remain open.",
+  "tools_stopped": true,
+  "review_author_correction": {
+    "preimage": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-ordering-proof-pilot-20261020/review-C/review-author-symbolic-goal-leaf-preimage-v1.py",
+      "bytes": 25614,
+      "sha256": "da953b8569eb148d72c707e5c8ea93b5fee14056b99b50569645770da03a42fd"
+    },
+    "finding": "Initial reviewer metadata asserted symbolic decision rows equal all visited nodes. The assertion refused before receipt creation. Exact Source counts the successful final length node before returning without a decision record; first S0 therefore has15nodes/14decisions/14extensions. The corrected assertion accounts for that one goal leaf. All five UNKNOWN symbolic records have601nodes/601decisions/600extensions. No offered Source, saved result or prior PASS changed."
+  }
+}

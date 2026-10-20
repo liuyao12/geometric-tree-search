@@ -1,0 +1,80 @@
+{
+  "archive_scan": {
+    "all_members_byte_checked": true,
+    "archive": {
+      "bytes": 10289333,
+      "file": "cluster-ordering-search-evidence.tar.gz",
+      "sha256": "be8df0d6e096dfe6d4265a5b0cb149deed0a8da2d28567baffdcd3c84f0471de"
+    },
+    "members": 141,
+    "omitted_trusted_runtime": [
+      {
+        "pin": {
+          "bytes": 18058560,
+          "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+          "sha256": "b6ea0c2a9bfce48dbf181a53f1ca4f0562d40658b85bf47258e2a88d8f9e3933"
+        },
+        "reason": "Pinned isolated trusted CPython binary not redistributed; all research Sources and Native assets are included."
+      }
+    ],
+    "partial_raw_metadata_only": [],
+    "payload_bytes": 126652205,
+    "schema": "cluster-ordering-archive-complete-byte-scan-v1"
+  },
+  "conclusion": "Three fresh resource-admitted jobs;205 placements/24 audits/144 word controls. All18 bounded searches returned, zero skips. SC80 packets and72 literal order changes lose the first S0 proof; point cluster arms0 proposals. One repeated conventional S0 certificate; no new theorem, point proof or GCTS/RL advantage.",
+  "files": [
+    {
+      "bytes": 565713,
+      "file": "cluster-ordering-search-data.json",
+      "sha256": "d808efeb6281dce9d7c2a5d6376cfba1b3dcfa86b2597fe3d55f7ef09e733f5f"
+    },
+    {
+      "bytes": 52747,
+      "file": "cluster-ordering-search-engineering.json",
+      "sha256": "eaa5fefd832578bd048018e383a9153ed40623270a5cfa271376976eee184be5"
+    },
+    {
+      "bytes": 10289333,
+      "file": "cluster-ordering-search-evidence.tar.gz",
+      "sha256": "be8df0d6e096dfe6d4265a5b0cb149deed0a8da2d28567baffdcd3c84f0471de"
+    },
+    {
+      "bytes": 109497,
+      "file": "cluster-ordering-search-review-C.json",
+      "sha256": "3cf59e5a1d7f0d3906fd9dbd265d8e7b61a6e6bd56e12876b93591118c9c6648"
+    },
+    {
+      "bytes": 62051,
+      "file": "cluster-ordering-search-review-L.json",
+      "sha256": "9de871b9f2ac7291160ada38e05e7667b216e0ba235df114c7103a0396bd15f6"
+    },
+    {
+      "bytes": 31378,
+      "file": "cluster-ordering-search.html",
+      "sha256": "90dcabe15cf8b806d0de0fe7e9227dff2b7b4aafe8093f1996c3ea95829624e4"
+    },
+    {
+      "bytes": 111355,
+      "file": "reader.html",
+      "sha256": "b92f5d1d1fd7a6c7959c70b4e9d57a337f39a1868f693d9d3b504143052d1514"
+    }
+  ],
+  "reader_delta": {
+    "after": {
+      "bytes": 111355,
+      "sha256": "b92f5d1d1fd7a6c7959c70b4e9d57a337f39a1868f693d9d3b504143052d1514"
+    },
+    "before": {
+      "bytes": 110777,
+      "sha256": "97a58fbc063ff8b629393cdf21fe1d08436e3cded8b0237b1287ee06dd669b8c"
+    },
+    "deleting_exact_insertion_recovers_prior_body": true,
+    "inserted_bytes": 578,
+    "inserted_text": "<section id=\"cluster-ordering-update\" class=\"panel\"><h2>First complete cluster comparison: the present heuristic does not help</h2><p><a href=\"cluster-ordering-search.html#ordering\">Read the cluster-ordering experiment</a>. All eighteen bounded searches return in three resource-admitted jobs. Symbolic hints change ordering but lose the first proof found by the conventional control; point cluster arms produce no successful proposals. Inspect the trace diagnosis, the fourteen-line conventional proof, its colored point markings, and the full reviewed evidence.</p></section>\n",
+    "offset": 1331,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/reader.html",
+    "schema": "cluster-ordering-reader-exact-insertion-v1"
+  },
+  "schema": "cluster-ordering-search-publication-manifest-v1",
+  "source_parent_commit": "60bf9c6e980e7d069d94e224ae1324901f23fe6a"
+}
