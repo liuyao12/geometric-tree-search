@@ -1,0 +1,80 @@
+{
+  "archive_scan": {
+    "all_members_byte_checked": true,
+    "archive": {
+      "bytes": 10170012,
+      "file": "proof-memory-search-evidence.tar.gz",
+      "sha256": "b0761572e65e554731ec386109ab38ab20a4b579f71f1ad95d86fb24430920a6"
+    },
+    "members": 129,
+    "omitted_trusted_runtime": [
+      {
+        "pin": {
+          "bytes": 18058560,
+          "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+          "sha256": "b6ea0c2a9bfce48dbf181a53f1ca4f0562d40658b85bf47258e2a88d8f9e3933"
+        },
+        "reason": "Pinned trusted isolated CPython binary not redistributed; research Sources and fixed Native assets are included."
+      }
+    ],
+    "partial_raw_metadata_only": [],
+    "payload_bytes": 125352462,
+    "schema": "proof-memory-archive-complete-byte-scan-v1"
+  },
+  "conclusion": "Three actuals: one rejected memory job, equality and negative admitted. Observed99placements/12audits; admitted65/8.0newadmittedrecipientproofs; no complete6armcomparison orGCTS/RLgain.",
+  "files": [
+    {
+      "bytes": 350136,
+      "file": "proof-memory-search-data.json",
+      "sha256": "6e1bb5464d62a71db7d365334806235a9b80117e52c8055df1c8959622b62125"
+    },
+    {
+      "bytes": 31490,
+      "file": "proof-memory-search-engineering.json",
+      "sha256": "c4de923699a27f5c9acc78d19f42cbb7b57bafdf55a818ae93fa6346aa72becb"
+    },
+    {
+      "bytes": 10170012,
+      "file": "proof-memory-search-evidence.tar.gz",
+      "sha256": "b0761572e65e554731ec386109ab38ab20a4b579f71f1ad95d86fb24430920a6"
+    },
+    {
+      "bytes": 47921,
+      "file": "proof-memory-search-review-C.json",
+      "sha256": "8c2132d32b257b6589a6f2dc5cd157d10441cf7dea23ac0982845f9a3253d6e2"
+    },
+    {
+      "bytes": 31554,
+      "file": "proof-memory-search-review-L.json",
+      "sha256": "d2dea6e7264f8e1876b265be178ffa778b6532dfd87ca212330a3b24021cfe62"
+    },
+    {
+      "bytes": 28661,
+      "file": "proof-memory-search.html",
+      "sha256": "5c2346418670dc8b9fe43d9aa23e4227a250153a3d3d06543fe0b7b24877275a"
+    },
+    {
+      "bytes": 110180,
+      "file": "reader.html",
+      "sha256": "057807e0ae64e3f6a1d95fd0596eaeed894d407d2e69b565b58756db0e14c018"
+    }
+  ],
+  "reader_delta": {
+    "after": {
+      "bytes": 110180,
+      "sha256": "057807e0ae64e3f6a1d95fd0596eaeed894d407d2e69b565b58756db0e14c018"
+    },
+    "before": {
+      "bytes": 109567,
+      "sha256": "47e046a2b360576bdd3d09c1423c05269f8e9e5cc4326ec20a82e6905679cf04"
+    },
+    "deleting_exact_insertion_recovers_prior_body": true,
+    "inserted_bytes": 613,
+    "inserted_text": "<section id=\"proof-memory-update\" class=\"panel\"><h2>Memory experiment: two whole cases admitted</h2><p><a href=\"proof-memory-search.html#outcome\">Read the isolated candidate-domain copy experiment</a>. The equality and missing-premise jobs passed the unchanged whole-job resource gate, returning sixty-five point placements and eight complete graph audits. The first positive job still exceeded memory. No new recipient proof or GCTS/RL advantage is claimed. The report compares every case with its previous run, preserves the rejected attempt, and keeps all proof and marking inspectors available.</p></section>\n",
+    "offset": 1331,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/reader.html",
+    "schema": "proof-memory-reader-exact-insertion-v1"
+  },
+  "schema": "proof-memory-search-publication-manifest-v1",
+  "source_parent_commit": "bb60f00fa250b01a7860f228cf7d801e7c07ff23"
+}

@@ -1,0 +1,1087 @@
+{
+  "schema": "typed-parent-domain-actual-scientific-review-v1",
+  "reviewer_identity": "/root/recovered_batch_review",
+  "review_passed": true,
+  "status": "PASS_PASSIVE_OUTCOME_CLASSIFICATION_FIRST_CASE_EXPLICITLY_RESOURCE_REJECTED",
+  "passive_complete_saved_data_only": true,
+  "scientific_calls": 0,
+  "logical_replays": 0,
+  "actual_execution_authorized": false,
+  "check_count": 8,
+  "failed_checks": 0,
+  "checks": [
+    {
+      "id": "complete-pins-and-fresh-attempts",
+      "passed": true,
+      "finding": "All41 offered Source/runtime/input pins remain exact.42 complete actual/observer files and three unique consumed once grants join exact plans and prior independent reviews. No partials observed/parsed. This audit invokes no research code, Native/Host checker, model constructor, generator, fixture, sizing or semantic replay."
+    },
+    {
+      "id": "whole-resource-classification",
+      "passed": true,
+      "finding": "All three worker packets are COMPLETE and child0; first still fails parent/observer whole memory1,109,278,720B. Equality882,720,768B and missing-Pa880,361,472B qualify. Tool exits2/0/0 reconcile. Child completeness or raw checker acceptance is never promoted past the first resource rejection."
+    },
+    {
+      "id": "full-arm-population-and-query-joins",
+      "passed": true,
+      "finding": "Nine raw searches/nine Native-UNKNOWN prerequisite skips; qualified six/six. All287 Native request digests, complete stages and terminal input/output hashes join; statuses75accepted/209rejected/3unknown. Ground batches each exhaust1e9 microsteps and expose no usable inventory. Eighteen donor whole/essential requests accepted3/5/5, twelve inside qualified jobs; no cluster recipient arm executes."
+    },
+    {
+      "id": "actual-reduction-and-existing-controls",
+      "passed": true,
+      "finding": "All48 unchanged independent word-reference controls returned per case; only two qualified jobs contribute96 admitted returns. Full target reduction, literal evidence, overlay and existing Tiny scheduler/rollback diagnostics returned. These are saved observations linked to the prior Source argument, not a fresh checker replay or a proof about arbitrary partial-byte states."
+    },
+    {
+      "id": "recipient-point-progress-and-rollback",
+      "passed": true,
+      "finding": "All six raw point calls completed two full independent domain/inverse/scheduler audits,99 placement events total; qualified jobs contribute65 events/eight audits. Every saved order preserves the complete decision alternatives, placement/return keys join those orders, and counters/cutoffs/root fingerprints reconcile. Equality P10 reaches3 dead decisions/5 backtracks and negative P00 one dead/one backtrack. Only the initial two states per call are independently audited; Source copying supports parent preservation beyond them, not an exhaustive runtime audit at every later node."
+    },
+    {
+      "id": "real-marking-effect-with-local-scope",
+      "passed": true,
+      "finding": "All12 certificates per case exhaust the full recorded first-row guard support for a trial first-row command. Actual P10 initial Graph audit has12 fewer incidences than P00 at the same frontier/first decision; second audited state agrees. This is observed ordinary marking-based initial pruning, with no additional during-placement auxiliary removals. It is shallow local plumbing and does not establish useful theorem/lemma discovery or faster solving."
+    },
+    {
+      "id": "no-new-admitted-recipient-proof",
+      "passed": true,
+      "finding": "First raw S0 again returns14 primitive rows/28 exact command+guard placements and exact Host/full-region/Native acceptance request89; the whole job is rejected, so this is a diagnostic observation only. Both qualified cases end bounded UNKNOWN with no recipient proof. UNKNOWN is not disproof; the separately machine-evaluated authored one-element negative control was not supplied to search."
+    },
+    {
+      "id": "alias-change-and-historical-comparison-scope",
+      "passed": true,
+      "finding": "The sole D9 scientific Source delta remains parent-domain read-only view plus VERSION/comment;28runtime/fourcustodians and all clocks/quotas/gates unchanged. Equality now fits where D8 failed, negative still fits, first still fails. Allocation savings and timer/GC variation may alter finite prefixes; these three observations cannot attribute measured phase peaks or establish causal/statistical speedup. Shared setup remains roughly79–89s. No complete six-arm comparison, trainedRL, GCTS superiority, physical universal Wang or full research goal completion follows."
+    }
+  ],
+  "resource_admitted_case_ids": [
+    "pilot-quantifier-equality-positive",
+    "pilot-fork-join-missing-Pa"
+  ],
+  "resource_rejected_case_ids": [
+    "pilot-fork-join-positive"
+  ],
+  "new_recipient_proof_admitted": false,
+  "complete_pilot_comparison": false,
+  "GCTS_or_RL_advantage_established": false,
+  "raw_totals": {
+    "searches": 9,
+    "skips": 9,
+    "point_placements": 99,
+    "point_domain_audits": 12,
+    "Native_queries": 287,
+    "Native_status_counts": {
+      "accepted": 75,
+      "rejected": 209,
+      "unknown_step_budget": 3
+    },
+    "donor_whole_essential_acceptances": 18,
+    "word_control_returns": 144
+  },
+  "admitted_totals": {
+    "searches": 6,
+    "skips": 6,
+    "point_placements": 65,
+    "point_domain_audits": 8,
+    "Native_queries": 197,
+    "donor_whole_essential_acceptances": 12,
+    "word_control_returns": 96,
+    "recipient_proofs": 0
+  },
+  "cases": [
+    {
+      "case_id": "pilot-fork-join-positive",
+      "resource_admitted": false,
+      "packet": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/actual/pilot-fork-join-positive/result.json",
+        "bytes": 31536786,
+        "sha256": "46105de680d98c54d3333b20ad19fbaa0a41ae7073e1543d313e383b0749374a"
+      },
+      "worker_status": "COMPLETE",
+      "worker_exit": 0,
+      "observer_tool_exit": 2,
+      "whole_peak_bytes": 1109278720,
+      "observer_gate_seconds": 106.15139737499703,
+      "plan": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/root/plan-pilot-fork-join-positive-v1.json",
+        "bytes": 15272,
+        "sha256": "3b76725f5f267fe4c95ed7a1f514bf2bbb5a08b37c3a407ca33c170fec2a8390"
+      },
+      "grant": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/root/grant-pilot-fork-join-positive-v1.json",
+        "bytes": 1834,
+        "sha256": "9adfb06118b5c999bd697c33a7a07a64aefa350742aa32b79244b86f7ae15763"
+      },
+      "consumed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/actual/pilot-fork-join-positive/CONSUMED.json",
+        "bytes": 261,
+        "sha256": "3344b63f0719405ff5ad20c5f38f9ea1766f22b61de515fa90aa08f5a2f17f87"
+      },
+      "Native_queries": 90,
+      "Native_status_counts": {
+        "accepted": 23,
+        "rejected": 66,
+        "unknown_step_budget": 1
+      },
+      "Native_request_stage_joins": 90,
+      "donors": [
+        {
+          "id": "train-propositional-application",
+          "rows": 3,
+          "whole_query": 4,
+          "essential_query": 5
+        },
+        {
+          "id": "train-propositional-chain",
+          "rows": 5,
+          "whole_query": 12,
+          "essential_query": 13
+        },
+        {
+          "id": "train-propositional-curried",
+          "rows": 5,
+          "whole_query": 20,
+          "essential_query": 21
+        }
+      ],
+      "library_family_ids": [
+        "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+        "68fc85fd778d3ed2abb50f4c6f694d980ef9acdce6b756b308824907a444117b",
+        "e9b268c1fd1ead1078954a62c37b5df26bfa76b514a5a044e06f80a1b11206d9"
+      ],
+      "job_record_complete": true,
+      "scientific_complete": false,
+      "recipient_proofs_admitted": 0,
+      "word_reference_controls_returned": 48,
+      "word_reference_controls_qualified": false,
+      "reference_check": {
+        "accepted_placements": 63823,
+        "affected_scope": "Each whole-word port update represents all bytes of a complete aligned occurrence. Every occurrence contains its common origin, so union of all original byte dependencies equals the checked port dependency set. Scalar/t-support dependencies are unchanged; finite unions preserve all affected candidate sets.",
+        "attempted_placements": 66020,
+        "complete": true,
+        "dependency_memberships": 287870,
+        "dependency_points": 70,
+        "distinct_complete_words": 9314,
+        "internal_conflicts": 2197,
+        "pointwise_identity": false,
+        "port_scalar_occurrences": 224047,
+        "reduction_scope": "Only states reached from the checked boundary by the complete checked placements: aligned complete canonical JSON words with nonbyte terminator256; scalar namespaces disjoint. Equal IDs iff equal full terminated words; unequal words conflict at first differing byte or shorter terminator. Partial/shifted words and arbitrary byte states are excluded.",
+        "schema": "aligned-complete-word-reference-v1",
+        "storage_scope": "Full canonical payload compared once per distinct dictionary word, small independently derived occurrence records per candidate, bidirectional port incidence without a reverse byte map. No old Model or Host/Native acceptance invoked."
+      },
+      "marking_certificates": 12,
+      "marking_scope": "All12 are first-row command/guard support exhaustion, shallow local failures rather than learned high-level lemmas.",
+      "initial_audited_incidence_difference": 12,
+      "second_audits_identical": true,
+      "compile_and_model_seconds": 70.07335545899696,
+      "full_shared_setup_seconds": 83.66596495799604,
+      "word_evidence_seconds": 5.894834791994072,
+      "ground_Native_status": "unknown_step_budget",
+      "ground_binding_work": 20003,
+      "arms": [
+        {
+          "id": "S0",
+          "status": "symbolic_proof_candidate",
+          "metrics": {
+            "attempts": 14,
+            "nodes": 15,
+            "skeleton_tests": 47209
+          },
+          "trace_event_counts": {
+            "decision": 14,
+            "extend": 14,
+            "return": 14
+          },
+          "seconds": 0.11483849999785889,
+          "full_arm_seconds": 4.983240833993477,
+          "root_restored": true,
+          "proof_verification_status": "HOST_REGION_NATIVE_ACCEPTED",
+          "nonadmitted_proof_observation": {
+            "rows": 14,
+            "selected_placements": 28,
+            "Host": {
+              "accepted": true,
+              "rows": 14,
+              "scope": "independent flat Host Kernel; syntax helpers also used by compiler; exact case theory, no extra premises",
+              "target": [
+                "pred",
+                "S",
+                [
+                  [
+                    "fun",
+                    "f",
+                    [
+                      [
+                        "fun",
+                        "a",
+                        []
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            },
+            "region": {
+              "complete": true,
+              "decoded_rows": 14,
+              "mark_points": 42,
+              "required_points": 28,
+              "selected_placements": 28
+            },
+            "Native_query": 89,
+            "Native_status": "accepted",
+            "rule_counts": {
+              "axiom": 4,
+              "instantiate": 3,
+              "mp": 7
+            },
+            "admitted_proof": false
+          }
+        },
+        {
+          "id": "P11",
+          "status": "SKIPPED_UNKNOWN_PREREQUISITE",
+          "search": null
+        },
+        {
+          "id": "P00",
+          "status": "unknown_search_budget",
+          "metrics": {
+            "attempts": 19,
+            "auxiliary_removed_incidences": 0,
+            "auxiliary_removed_incidences_total": 0,
+            "branch": 10,
+            "forced": 9,
+            "initial_auxiliary_removed_incidences": 0,
+            "nodes": 19
+          },
+          "trace_event_counts": {
+            "decision": 19,
+            "order": 19,
+            "place": 19,
+            "cutoff": 1
+          },
+          "seconds": 2.2686646660004044,
+          "full_arm_seconds": 2.2686811669991584,
+          "root_restored": true,
+          "proof_verification_status": "NO_PROOF_CANDIDATE",
+          "initial_auxiliary_witnesses": 0,
+          "completed_audits": [
+            {
+              "frontier_points": 28,
+              "incidences": 63823,
+              "decision_kind": "branch",
+              "decision_point": [
+                0,
+                1
+              ],
+              "decision_candidate_count": 16
+            },
+            {
+              "frontier_points": 27,
+              "incidences": 59986,
+              "decision_kind": "forced",
+              "decision_point": [
+                0,
+                0
+              ],
+              "decision_candidate_count": 1
+            }
+          ]
+        },
+        {
+          "id": "SC",
+          "status": "SKIPPED_UNKNOWN_PREREQUISITE",
+          "search": null
+        },
+        {
+          "id": "P10",
+          "status": "unknown_search_budget",
+          "metrics": {
+            "attempts": 15,
+            "auxiliary_removed_incidences": 0,
+            "auxiliary_removed_incidences_total": 12,
+            "branch": 8,
+            "forced": 7,
+            "initial_auxiliary_removed_incidences": 12,
+            "nodes": 15
+          },
+          "trace_event_counts": {
+            "decision": 15,
+            "order": 15,
+            "place": 15,
+            "cutoff": 1
+          },
+          "seconds": 2.1192286660007085,
+          "full_arm_seconds": 2.119237750004686,
+          "root_restored": true,
+          "proof_verification_status": "NO_PROOF_CANDIDATE",
+          "initial_auxiliary_witnesses": 12,
+          "completed_audits": [
+            {
+              "frontier_points": 28,
+              "incidences": 63811,
+              "decision_kind": "branch",
+              "decision_point": [
+                0,
+                1
+              ],
+              "decision_candidate_count": 16
+            },
+            {
+              "frontier_points": 27,
+              "incidences": 59986,
+              "decision_kind": "forced",
+              "decision_point": [
+                0,
+                0
+              ],
+              "decision_candidate_count": 1
+            }
+          ]
+        },
+        {
+          "id": "P01",
+          "status": "SKIPPED_UNKNOWN_PREREQUISITE",
+          "search": null
+        }
+      ]
+    },
+    {
+      "case_id": "pilot-quantifier-equality-positive",
+      "resource_admitted": true,
+      "packet": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/actual/pilot-quantifier-equality-positive/result.json",
+        "bytes": 30981074,
+        "sha256": "162fac10bb1051a6ad07edf0523bf85fd155fe9bd046909b12d2bb40c68a6113"
+      },
+      "worker_status": "COMPLETE",
+      "worker_exit": 0,
+      "observer_tool_exit": 0,
+      "whole_peak_bytes": 882720768,
+      "observer_gate_seconds": 107.46676108400425,
+      "plan": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/root/plan-pilot-quantifier-equality-positive-v1.json",
+        "bytes": 15292,
+        "sha256": "f7b54aeaaf39f6f301b665198ba51064b1d3bc111d47a01db2c548a86cd6b2e9"
+      },
+      "grant": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/root/grant-pilot-quantifier-equality-positive-v1.json",
+        "bytes": 1854,
+        "sha256": "d43a7bb08cbc87ea791bbf965a8c8bc00fc5b922e95f8aca8d1e64be6e0f6276"
+      },
+      "consumed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/actual/pilot-quantifier-equality-positive/CONSUMED.json",
+        "bytes": 271,
+        "sha256": "c8f8d7569965727961374ba002cc75eb15913f9d702356a0b89ea07969359a67"
+      },
+      "Native_queries": 108,
+      "Native_status_counts": {
+        "accepted": 30,
+        "rejected": 77,
+        "unknown_step_budget": 1
+      },
+      "Native_request_stage_joins": 108,
+      "donors": [
+        {
+          "id": "train-propositional-application",
+          "rows": 3,
+          "whole_query": 4,
+          "essential_query": 5
+        },
+        {
+          "id": "train-propositional-chain",
+          "rows": 5,
+          "whole_query": 12,
+          "essential_query": 13
+        },
+        {
+          "id": "train-propositional-curried",
+          "rows": 5,
+          "whole_query": 20,
+          "essential_query": 21
+        }
+      ],
+      "library_family_ids": [
+        "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+        "68fc85fd778d3ed2abb50f4c6f694d980ef9acdce6b756b308824907a444117b",
+        "e9b268c1fd1ead1078954a62c37b5df26bfa76b514a5a044e06f80a1b11206d9"
+      ],
+      "job_record_complete": true,
+      "scientific_complete": false,
+      "recipient_proofs_admitted": 0,
+      "word_reference_controls_returned": 48,
+      "word_reference_controls_qualified": true,
+      "reference_check": {
+        "accepted_placements": 63980,
+        "affected_scope": "Each whole-word port update represents all bytes of a complete aligned occurrence. Every occurrence contains its common origin, so union of all original byte dependencies equals the checked port dependency set. Scalar/t-support dependencies are unchanged; finite unions preserve all affected candidate sets.",
+        "attempted_placements": 66512,
+        "complete": true,
+        "dependency_memberships": 290020,
+        "dependency_points": 65,
+        "distinct_complete_words": 9794,
+        "internal_conflicts": 2532,
+        "pointwise_identity": false,
+        "port_scalar_occurrences": 226040,
+        "reduction_scope": "Only states reached from the checked boundary by the complete checked placements: aligned complete canonical JSON words with nonbyte terminator256; scalar namespaces disjoint. Equal IDs iff equal full terminated words; unequal words conflict at first differing byte or shorter terminator. Partial/shifted words and arbitrary byte states are excluded.",
+        "schema": "aligned-complete-word-reference-v1",
+        "storage_scope": "Full canonical payload compared once per distinct dictionary word, small independently derived occurrence records per candidate, bidirectional port incidence without a reverse byte map. No old Model or Host/Native acceptance invoked."
+      },
+      "marking_certificates": 12,
+      "marking_scope": "All12 are first-row command/guard support exhaustion, shallow local failures rather than learned high-level lemmas.",
+      "initial_audited_incidence_difference": 12,
+      "second_audits_identical": true,
+      "compile_and_model_seconds": 75.7699684170002,
+      "full_shared_setup_seconds": 88.96429008300038,
+      "word_evidence_seconds": 5.634025667000969,
+      "ground_Native_status": "unknown_step_budget",
+      "ground_binding_work": 20003,
+      "arms": [
+        {
+          "id": "P01",
+          "status": "SKIPPED_UNKNOWN_PREREQUISITE",
+          "search": null
+        },
+        {
+          "id": "P10",
+          "status": "unknown_search_budget",
+          "metrics": {
+            "attempts": 22,
+            "auxiliary_removed_incidences": 0,
+            "auxiliary_removed_incidences_total": 12,
+            "backtracks": 5,
+            "branch": 10,
+            "dead": 3,
+            "forced": 9,
+            "initial_auxiliary_removed_incidences": 12,
+            "nodes": 22
+          },
+          "trace_event_counts": {
+            "decision": 22,
+            "order": 19,
+            "place": 22,
+            "return": 5,
+            "cutoff": 1
+          },
+          "seconds": 2.1398500829964178,
+          "full_arm_seconds": 2.1398749169966322,
+          "root_restored": true,
+          "proof_verification_status": "NO_PROOF_CANDIDATE",
+          "initial_auxiliary_witnesses": 12,
+          "completed_audits": [
+            {
+              "frontier_points": 26,
+              "incidences": 63968,
+              "decision_kind": "branch",
+              "decision_point": [
+                0,
+                1
+              ],
+              "decision_candidate_count": 26
+            },
+            {
+              "frontier_points": 25,
+              "incidences": 59575,
+              "decision_kind": "forced",
+              "decision_point": [
+                0,
+                0
+              ],
+              "decision_candidate_count": 1
+            }
+          ]
+        },
+        {
+          "id": "SC",
+          "status": "SKIPPED_UNKNOWN_PREREQUISITE",
+          "search": null
+        },
+        {
+          "id": "P00",
+          "status": "unknown_search_budget",
+          "metrics": {
+            "attempts": 12,
+            "auxiliary_removed_incidences": 0,
+            "auxiliary_removed_incidences_total": 0,
+            "branch": 6,
+            "forced": 6,
+            "initial_auxiliary_removed_incidences": 0,
+            "nodes": 12
+          },
+          "trace_event_counts": {
+            "decision": 12,
+            "order": 12,
+            "place": 12,
+            "cutoff": 1
+          },
+          "seconds": 2.519794625004579,
+          "full_arm_seconds": 2.51980624999851,
+          "root_restored": true,
+          "proof_verification_status": "NO_PROOF_CANDIDATE",
+          "initial_auxiliary_witnesses": 0,
+          "completed_audits": [
+            {
+              "frontier_points": 26,
+              "incidences": 63980,
+              "decision_kind": "branch",
+              "decision_point": [
+                0,
+                1
+              ],
+              "decision_candidate_count": 26
+            },
+            {
+              "frontier_points": 25,
+              "incidences": 59575,
+              "decision_kind": "forced",
+              "decision_point": [
+                0,
+                0
+              ],
+              "decision_candidate_count": 1
+            }
+          ]
+        },
+        {
+          "id": "P11",
+          "status": "SKIPPED_UNKNOWN_PREREQUISITE",
+          "search": null
+        },
+        {
+          "id": "S0",
+          "status": "unknown_search_budget",
+          "metrics": {
+            "attempts": 600,
+            "backtracks": 589,
+            "nodes": 601,
+            "skeleton_tests": 329934
+          },
+          "trace_event_counts": {
+            "decision": 601,
+            "extend": 600,
+            "return": 589,
+            "cutoff": 1
+          },
+          "seconds": 0.763691749998543,
+          "full_arm_seconds": 0.763699249997444,
+          "root_restored": true,
+          "proof_verification_status": "NO_PROOF_CANDIDATE"
+        }
+      ]
+    },
+    {
+      "case_id": "pilot-fork-join-missing-Pa",
+      "resource_admitted": true,
+      "packet": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/actual/pilot-fork-join-missing-Pa/result.json",
+        "bytes": 31352349,
+        "sha256": "f16a2ecf41638f23f1982e7ee85d880f11461a60964334a2105619b70546f758"
+      },
+      "worker_status": "COMPLETE",
+      "worker_exit": 0,
+      "observer_tool_exit": 0,
+      "whole_peak_bytes": 880361472,
+      "observer_gate_seconds": 97.46448083400173,
+      "plan": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/root/plan-pilot-fork-join-missing-Pa-v1.json",
+        "bytes": 15276,
+        "sha256": "64e0c0a1f0bd8e96262d7a84b77b94d4a44a8888f9fd18446f2d22aeeae19365"
+      },
+      "grant": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/root/grant-pilot-fork-join-missing-Pa-v1.json",
+        "bytes": 1838,
+        "sha256": "147bb86c1378184eaf906bac243994cbc79423eb8d63c4d900397afa5a5433bf"
+      },
+      "consumed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/actual/pilot-fork-join-missing-Pa/CONSUMED.json",
+        "bytes": 263,
+        "sha256": "502bc0cd1c262bb79c05721f53065d04494b1a10de02f7a88c287d0ee3f22f11"
+      },
+      "Native_queries": 89,
+      "Native_status_counts": {
+        "accepted": 22,
+        "rejected": 66,
+        "unknown_step_budget": 1
+      },
+      "Native_request_stage_joins": 89,
+      "donors": [
+        {
+          "id": "train-propositional-application",
+          "rows": 3,
+          "whole_query": 4,
+          "essential_query": 5
+        },
+        {
+          "id": "train-propositional-chain",
+          "rows": 5,
+          "whole_query": 12,
+          "essential_query": 13
+        },
+        {
+          "id": "train-propositional-curried",
+          "rows": 5,
+          "whole_query": 20,
+          "essential_query": 21
+        }
+      ],
+      "library_family_ids": [
+        "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+        "68fc85fd778d3ed2abb50f4c6f694d980ef9acdce6b756b308824907a444117b",
+        "e9b268c1fd1ead1078954a62c37b5df26bfa76b514a5a044e06f80a1b11206d9"
+      ],
+      "job_record_complete": true,
+      "scientific_complete": false,
+      "recipient_proofs_admitted": 0,
+      "word_reference_controls_returned": 48,
+      "word_reference_controls_qualified": true,
+      "reference_check": {
+        "accepted_placements": 63120,
+        "affected_scope": "Each whole-word port update represents all bytes of a complete aligned occurrence. Every occurrence contains its common origin, so union of all original byte dependencies equals the checked port dependency set. Scalar/t-support dependencies are unchanged; finite unions preserve all affected candidate sets.",
+        "attempted_placements": 65317,
+        "complete": true,
+        "dependency_memberships": 285058,
+        "dependency_points": 70,
+        "distinct_complete_words": 9261,
+        "internal_conflicts": 2197,
+        "pointwise_identity": false,
+        "port_scalar_occurrences": 221938,
+        "reduction_scope": "Only states reached from the checked boundary by the complete checked placements: aligned complete canonical JSON words with nonbyte terminator256; scalar namespaces disjoint. Equal IDs iff equal full terminated words; unequal words conflict at first differing byte or shorter terminator. Partial/shifted words and arbitrary byte states are excluded.",
+        "schema": "aligned-complete-word-reference-v1",
+        "storage_scope": "Full canonical payload compared once per distinct dictionary word, small independently derived occurrence records per candidate, bidirectional port incidence without a reverse byte map. No old Model or Host/Native acceptance invoked."
+      },
+      "marking_certificates": 12,
+      "marking_scope": "All12 are first-row command/guard support exhaustion, shallow local failures rather than learned high-level lemmas.",
+      "initial_audited_incidence_difference": 12,
+      "second_audits_identical": true,
+      "compile_and_model_seconds": 65.41429345800134,
+      "full_shared_setup_seconds": 78.6787735830003,
+      "word_evidence_seconds": 5.754326249996666,
+      "ground_Native_status": "unknown_step_budget",
+      "ground_binding_work": 20003,
+      "arms": [
+        {
+          "id": "P00",
+          "status": "unknown_search_budget",
+          "metrics": {
+            "attempts": 20,
+            "auxiliary_removed_incidences": 0,
+            "auxiliary_removed_incidences_total": 0,
+            "backtracks": 1,
+            "branch": 10,
+            "dead": 1,
+            "forced": 9,
+            "initial_auxiliary_removed_incidences": 0,
+            "nodes": 20
+          },
+          "trace_event_counts": {
+            "decision": 20,
+            "order": 19,
+            "place": 20,
+            "return": 1,
+            "cutoff": 1
+          },
+          "seconds": 2.1615066250014934,
+          "full_arm_seconds": 2.1615196669954457,
+          "root_restored": true,
+          "proof_verification_status": "NO_PROOF_CANDIDATE",
+          "initial_auxiliary_witnesses": 0,
+          "completed_audits": [
+            {
+              "frontier_points": 28,
+              "incidences": 63120,
+              "decision_kind": "branch",
+              "decision_point": [
+                0,
+                1
+              ],
+              "decision_candidate_count": 15
+            },
+            {
+              "frontier_points": 27,
+              "incidences": 59337,
+              "decision_kind": "forced",
+              "decision_point": [
+                0,
+                0
+              ],
+              "decision_candidate_count": 1
+            }
+          ]
+        },
+        {
+          "id": "SC",
+          "status": "SKIPPED_UNKNOWN_PREREQUISITE",
+          "search": null
+        },
+        {
+          "id": "P10",
+          "status": "unknown_search_budget",
+          "metrics": {
+            "attempts": 11,
+            "auxiliary_removed_incidences": 0,
+            "auxiliary_removed_incidences_total": 12,
+            "branch": 6,
+            "forced": 5,
+            "initial_auxiliary_removed_incidences": 12,
+            "nodes": 11
+          },
+          "trace_event_counts": {
+            "decision": 11,
+            "order": 11,
+            "place": 11,
+            "cutoff": 1
+          },
+          "seconds": 2.6230060829984723,
+          "full_arm_seconds": 2.623019790997205,
+          "root_restored": true,
+          "proof_verification_status": "NO_PROOF_CANDIDATE",
+          "initial_auxiliary_witnesses": 12,
+          "completed_audits": [
+            {
+              "frontier_points": 28,
+              "incidences": 63108,
+              "decision_kind": "branch",
+              "decision_point": [
+                0,
+                1
+              ],
+              "decision_candidate_count": 15
+            },
+            {
+              "frontier_points": 27,
+              "incidences": 59337,
+              "decision_kind": "forced",
+              "decision_point": [
+                0,
+                0
+              ],
+              "decision_candidate_count": 1
+            }
+          ]
+        },
+        {
+          "id": "P01",
+          "status": "SKIPPED_UNKNOWN_PREREQUISITE",
+          "search": null
+        },
+        {
+          "id": "S0",
+          "status": "unknown_search_budget",
+          "metrics": {
+            "attempts": 600,
+            "backtracks": 588,
+            "nodes": 601,
+            "skeleton_tests": 405081
+          },
+          "trace_event_counts": {
+            "decision": 601,
+            "extend": 600,
+            "return": 588,
+            "cutoff": 1
+          },
+          "seconds": 1.1262928330033901,
+          "full_arm_seconds": 1.1263032920032856,
+          "root_restored": true,
+          "proof_verification_status": "NO_PROOF_CANDIDATE"
+        },
+        {
+          "id": "P11",
+          "status": "SKIPPED_UNKNOWN_PREREQUISITE",
+          "search": null
+        }
+      ]
+    }
+  ],
+  "actual_file_pins": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/actual/pilot-fork-join-positive/CONSUMED.json",
+      "bytes": 261,
+      "sha256": "3344b63f0719405ff5ad20c5f38f9ea1766f22b61de515fa90aa08f5a2f17f87"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/actual/pilot-fork-join-positive/native/boundary-oracle",
+      "bytes": 41808,
+      "sha256": "2b6bf8bb09a4e03d0cb1b4595dea1fe6d4432aa93d8f7eed72c30077fd9941a4"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/actual/pilot-fork-join-positive/native/code.bin",
+      "bytes": 7558192,
+      "sha256": "97f0b600cffd83552c4e0f0c4fb1f5d26cfdb76e3e74b267bbaebeddc836e7ed"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/actual/pilot-fork-join-positive/native/input.bin",
+      "bytes": 682164,
+      "sha256": "11af34b9d1c50b2228504b83da142597692ca8b68b00b86faa77336b81f29409"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/actual/pilot-fork-join-positive/native/output.bin",
+      "bytes": 682168,
+      "sha256": "9e903e18627706581107004526e907830a109b2a211a715d9426f517a66d67fd"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/actual/pilot-fork-join-positive/owned-child.json",
+      "bytes": 238,
+      "sha256": "fda8248f8e20ac7141720dcb02b4d2ddabfea83ea1f9d868a1cbb1a9abd3d051"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/actual/pilot-fork-join-positive/result.json",
+      "bytes": 31536786,
+      "sha256": "46105de680d98c54d3333b20ad19fbaa0a41ae7073e1543d313e383b0749374a"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/actual/pilot-fork-join-positive/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/actual/pilot-fork-join-positive/stdout.bin",
+      "bytes": 116,
+      "sha256": "0c500d85d2a10865f16c900ade7bb6ed1f961679264ac933db9c1a3bb8394a71"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/actual/pilot-fork-join-positive/terminal.json",
+      "bytes": 2008,
+      "sha256": "b300864c74e16dcd5df524fadc4cfc26613618c62bf5b7d68786b3d0099299dc"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/actual/pilot-fork-join-positive/worker-header.json",
+      "bytes": 573,
+      "sha256": "d36d8a0ce01889117bbf6b876613ec9d0fbedc92bc31c537a82c0d184e81274d"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/actual/pilot-fork-join-positive.observer/observer.json",
+      "bytes": 1501,
+      "sha256": "fb458ffed225cc908c70028c3be26d75f26bf794165c080902da215cbefaa3b0"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/actual/pilot-fork-join-positive.observer/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/actual/pilot-fork-join-positive.observer/stdout.bin",
+      "bytes": 1784,
+      "sha256": "25ad6e561f3864ad98c23f28846eb2343a73b08e9f6e81986fcf26eec93b5689"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/actual/pilot-quantifier-equality-positive/CONSUMED.json",
+      "bytes": 271,
+      "sha256": "c8f8d7569965727961374ba002cc75eb15913f9d702356a0b89ea07969359a67"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/actual/pilot-quantifier-equality-positive/native/boundary-oracle",
+      "bytes": 41808,
+      "sha256": "2b6bf8bb09a4e03d0cb1b4595dea1fe6d4432aa93d8f7eed72c30077fd9941a4"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/actual/pilot-quantifier-equality-positive/native/code.bin",
+      "bytes": 7558192,
+      "sha256": "97f0b600cffd83552c4e0f0c4fb1f5d26cfdb76e3e74b267bbaebeddc836e7ed"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/actual/pilot-quantifier-equality-positive/native/input.bin",
+      "bytes": 900052,
+      "sha256": "f2432fb8ac10022fe24de0e42d9ddeda8fc1426e973948fd699c6136a6e12ce8"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/actual/pilot-quantifier-equality-positive/native/output.bin",
+      "bytes": 900056,
+      "sha256": "8ffed28c4da3ce93bfaf6c7faec40dd3d25b68c0d2614f3d8334066ae6ac1404"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/actual/pilot-quantifier-equality-positive/owned-child.json",
+      "bytes": 248,
+      "sha256": "397952f0f75f1a115f7b5575dc8cb8dbe8d89e570180504f247b667249f104cb"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/actual/pilot-quantifier-equality-positive/result.json",
+      "bytes": 30981074,
+      "sha256": "162fac10bb1051a6ad07edf0523bf85fd155fe9bd046909b12d2bb40c68a6113"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/actual/pilot-quantifier-equality-positive/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/actual/pilot-quantifier-equality-positive/stdout.bin",
+      "bytes": 125,
+      "sha256": "0b6023aea254fac6e70cf16584278375c9ba404c7e07898f1d2ee0f8281d3f64"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/actual/pilot-quantifier-equality-positive/terminal.json",
+      "bytes": 2051,
+      "sha256": "93ec7c70a4dadb7aa6a6ebb59bab0f3805c25221695ef33fb79322dd73c84ca0"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/actual/pilot-quantifier-equality-positive/worker-header.json",
+      "bytes": 593,
+      "sha256": "c982d10bd85ea09a6fec2c54b1a09c1c25c80687dd4b4c2d807296bd0ec99495"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/actual/pilot-quantifier-equality-positive.observer/observer.json",
+      "bytes": 1517,
+      "sha256": "a9f770160a067cc67ea6e3f98e2c904fb925dc081295e3e984a45c855b89a51c"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/actual/pilot-quantifier-equality-positive.observer/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/actual/pilot-quantifier-equality-positive.observer/stdout.bin",
+      "bytes": 1827,
+      "sha256": "10b1ed44276920f1670c6e1d1d580c8990c59904e268ee0d4ef486341567004c"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/actual/pilot-fork-join-missing-Pa/CONSUMED.json",
+      "bytes": 263,
+      "sha256": "502bc0cd1c262bb79c05721f53065d04494b1a10de02f7a88c287d0ee3f22f11"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/actual/pilot-fork-join-missing-Pa/native/boundary-oracle",
+      "bytes": 41808,
+      "sha256": "2b6bf8bb09a4e03d0cb1b4595dea1fe6d4432aa93d8f7eed72c30077fd9941a4"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/actual/pilot-fork-join-missing-Pa/native/code.bin",
+      "bytes": 7558192,
+      "sha256": "97f0b600cffd83552c4e0f0c4fb1f5d26cfdb76e3e74b267bbaebeddc836e7ed"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/actual/pilot-fork-join-missing-Pa/native/input.bin",
+      "bytes": 817244,
+      "sha256": "a66951150278d8e1fe075dd9488e2218932ba1de1f18f3eec96c3479d5962047"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/actual/pilot-fork-join-missing-Pa/native/output.bin",
+      "bytes": 817248,
+      "sha256": "f34eb85eaeda13507a0772cddbb551789b1acbdeeb64133eae24d74d3983b146"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/actual/pilot-fork-join-missing-Pa/owned-child.json",
+      "bytes": 240,
+      "sha256": "af2ef02ef8c8673aa7810c3eb99d093449089d843fae4dae58fba149cdfe1fb0"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/actual/pilot-fork-join-missing-Pa/result.json",
+      "bytes": 31352349,
+      "sha256": "f16a2ecf41638f23f1982e7ee85d880f11461a60964334a2105619b70546f758"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/actual/pilot-fork-join-missing-Pa/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/actual/pilot-fork-join-missing-Pa/stdout.bin",
+      "bytes": 117,
+      "sha256": "fbb9f9a19fe57bef0c531ae4c1ef1c6a9af85432038cf96ce6f919b0834c5b33"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/actual/pilot-fork-join-missing-Pa/terminal.json",
+      "bytes": 2014,
+      "sha256": "e70b27029be97f8ed764abaa9dc9e2a2cec6fed6740aa050ce7312d025960fd3"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/actual/pilot-fork-join-missing-Pa/worker-header.json",
+      "bytes": 576,
+      "sha256": "8de0d406bc43bd85cb929fd7f023d55921c6de8f1c0283a99011104592ef0068"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/actual/pilot-fork-join-missing-Pa.observer/observer.json",
+      "bytes": 1499,
+      "sha256": "4dadd92ac4d28689b9c3e5b9408db83f56ab569f76d21e0f7ead1c5ec9d254e0"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/actual/pilot-fork-join-missing-Pa.observer/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/actual/pilot-fork-join-missing-Pa.observer/stdout.bin",
+      "bytes": 1790,
+      "sha256": "ff9a732f95e8c4cff15aa6306dc2b04c5f6367c7faf3fb65997f4cfed5aeb181"
+    }
+  ],
+  "whole_offer": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/root/prospective-whole-offer-v1.json",
+    "bytes": 20184,
+    "sha256": "4673a4511c4d4058671cb0ab95173bae6c03ccdd00167352dfb2a5ad287e4c25"
+  },
+  "scientific_Source_delta_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/review-C/typed-scientific-delta-Source-review-v1.json",
+    "bytes": 10597,
+    "sha256": "27e25146437317d5397214a80b3926f8b247c0a32c584b904c39944829dcbe32"
+  },
+  "whole_Source_preflight": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/review-C/typed-whole-prospective-Source-review-v1.json",
+    "bytes": 17488,
+    "sha256": "e1dbc39e8b63a310550461184504e4d676bede9382dc5f0b1a66a3f17f0e45ee"
+  },
+  "external_tool_observer": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/root/external-tool-observer-v1.json",
+    "bytes": 2609,
+    "sha256": "11d5304f7c709f7f132ae370272e1c5957623c777731162dfe5dad40d34528cb"
+  },
+  "D8_historical_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/review-C/typed-word-point-actual-scientific-review-v1.json",
+    "bytes": 90866,
+    "sha256": "bfcb46aaa5aae8808c77508fe4821ca6553db08635c9b10bb3ca3c5dfcad74d7"
+  },
+  "historical_comparison": [
+    {
+      "case_id": "pilot-fork-join-positive",
+      "D8_resource_admitted": false,
+      "D9_resource_admitted": false,
+      "D8_whole_peak_bytes": null,
+      "D9_whole_peak_bytes": 1109278720,
+      "D8_point_attempts": {
+        "P00": 19,
+        "P10": 15
+      },
+      "D9_point_attempts": {
+        "P00": 19,
+        "P10": 15
+      },
+      "interpretation": "Historical single cold development observations only; no identical timed-prefix, phase-memory attribution, statistical inference or causal speedup claim."
+    },
+    {
+      "case_id": "pilot-quantifier-equality-positive",
+      "D8_resource_admitted": false,
+      "D9_resource_admitted": true,
+      "D8_whole_peak_bytes": 1153777664,
+      "D9_whole_peak_bytes": 882720768,
+      "D8_point_attempts": {
+        "P10": 25,
+        "P00": 16
+      },
+      "D9_point_attempts": {
+        "P10": 22,
+        "P00": 12
+      },
+      "interpretation": "Historical single cold development observations only; no identical timed-prefix, phase-memory attribution, statistical inference or causal speedup claim."
+    },
+    {
+      "case_id": "pilot-fork-join-missing-Pa",
+      "D8_resource_admitted": true,
+      "D9_resource_admitted": true,
+      "D8_whole_peak_bytes": 860045312,
+      "D9_whole_peak_bytes": 880361472,
+      "D8_point_attempts": {
+        "P00": 4,
+        "P10": 10
+      },
+      "D9_point_attempts": {
+        "P00": 20,
+        "P10": 11
+      },
+      "interpretation": "Historical single cold development observations only; no identical timed-prefix, phase-memory attribution, statistical inference or causal speedup claim."
+    }
+  ],
+  "partial_policy": "No partial contents read/projected/adopted. Complete failed first packet retained; no prefix rescue or grant reuse.",
+  "remaining": "Full six-arm comparison and admitted positive recipient result remain absent; all original broader mathematical/tiling/RL goals active. No further experiment authorized by this review.",
+  "tools_stopped": true,
+  "independent_resource_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/verification-L/typed-parent-domain-resource-custody-review-v1.json",
+    "bytes": 31554,
+    "sha256": "d2dea6e7264f8e1876b265be178ffa778b6532dfd87ca212330a3b24021cfe62"
+  }
+}
