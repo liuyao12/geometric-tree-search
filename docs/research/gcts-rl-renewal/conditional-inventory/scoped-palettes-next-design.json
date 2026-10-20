@@ -1,0 +1,64 @@
+{
+  "schema": "complete-evidence-output-Source-design-v1",
+  "author": "/root/recovered_batch_integration",
+  "status": "UNIMPLEMENTED_SOURCE_ONLY_DESIGN_NOT_A_FITTING_BOUND",
+  "scope": "Future output ownership and resource protocol for the complete unchanged calibration cohort. This note does not change a frozen source, grant, input, negative result or limit.",
+  "evidence_used": {
+    "frozen_worker": "root/qualify_complete_batch_worker_v2.py",
+    "permitted_saved_metadata": "root/actual-batch-v2/worker-failure.json: stage FULL_PACKET_WRITE, fault PolicyFailure/whole JSON packet cap, outputs empty, early_failure_summary null, prefix_retention_error whole JSON packet cap.",
+    "partial_files": "Only directory byte lengths and raw cryptographic pins are used. No partial JSON, including the new124780541-byte canonical fragment or historical49135-byte fragment, was parsed, projected, completed or replayed.",
+    "negative_scope": "Saved diagnostic/internal completion fields are failure-prefix observations. They do not qualify the cohort, prove mathematical results or establish resource acceptance. The canonical packet/result/header never completed."
+  },
+  "provable_Source_duplication": [
+    {"site": "qualify_small_palette and qualify/profile_rows", "fact": "Each independent literal tile is selected once under every one of sixteen edge-mask subsets. The complete selected point tile is retained in original small-case queries and again in each profile lifetime raw select receipt. Each raw receipt also has a complete typed preimage. These are full value traversals, not shared JSON object aliases."},
+    {"site": "profile_call compact row and expanded_subtree_delta", "fact": "The compact profile row avoids physically repeating its return sequences, but its explicit reconstruction charge adds the full-return duplicate receipt/preimage/request sequences to expanded bytes. Disk interning alone therefore does not make those logical copies free."},
+    {"site": "run_new_diagnostics plus qualify", "fact": "Each completed diagnostic row is reachable both from batch_diagnostics and from batch_diagnostic_progress.groups[].variants. Canonical JSON unfolds both paths. Each owner projection additionally contains state, prefix and result views that can repeat full receipts/preimages. An in-memory alias is serialized as another complete value occurrence."},
+    {"site": "qualify_graph and L search result", "fact": "The observer retains full snapshots and independently enumerated domain values while graph results retain journals, query receipts and solutions. Complete states can recur across observation and result structures. This inspection establishes recurrence, not a measured byte share."},
+    {"site": "Root Session ownership", "fact": "Raw objects deliberately remain reachable through owner lists until final custody. Retaining those originals is an integrity requirement; serializing every reachable owner/view as a separate certificate field is a distinct format choice."}
+  ],
+  "feasibility_assessment": {
+    "unchanged_current_packet": "The saved cap rejection at the Source's canonical write proves that the unchanged packet could not complete in its declared canonical payload allotment. The write cap is128MiB minus9MiB, before other actual files and result/header consume their shares. Repeating that identical whole subject is not justified.",
+    "duplication_alone": "No isolated lower bound for duplicate bytes alone was proved here. Source identifies mandatory duplicate structures, but neither the complete intended packet size nor their individual byte shares was measured. It would be incorrect to claim that a particular duplicate structure alone exceeds128MiB, or that removing one will suffice.",
+    "expanded_limit": "A dictionary/reference encoding that still promises the complete v2 field-by-field unfolded packet must continue charging that unfolding. If its unfolded size exceeds the original expanded ceiling, such compression cannot repair infeasibility. No passing bound for that unfolding is available.",
+    "no_fit_claim": "The proposed ownership normalization may reduce redundant certificate views. It has no proven stored-byte, expanded-byte, Root-work or time bound for the complete cohort. All limits and the full cohort remain requirements; no projected success is reported."
+  },
+  "future_representation_proposal": {
+    "principle": "One canonical evidence owner per actual query, graph observation, independent-oracle comparison and diagnostic run. Keep every event in original order; do not deduplicate events or omit equal-result calls. Separate that certificate from progress and reader views.",
+    "complete_event_data": "Each query event keeps operation, full arguments, complete actual old-schema receipt, full typed preimage, stage/custody/counter populations and work availability. Every graph decision, dependency/domain comparison, rollback observation, solution and required diagnostic remains inspectable. Whole15normal/33legacy-diagnostic/28new-group/55new-variant coverage is unchanged.",
+    "owner_registry": "An optional explicit registry may share full literal payload values between views. Registry joins require full strict typed comparison, including dict order, tuple/list, bool/int, assignedzero/absence and exact string bytes. A hash is only an index; it never substitutes for full values. Preserve event multiplicity, value provenance and both pre-mutation and post-mutation states. Raw callback/error/Work/source owners remain alive through final custody and are not claimed reconstructable from type metadata.",
+    "views": "Completed progress should contain scalar stage/IDs/counts and the one active diagnostic prefix, while full completed runs occur once in the evidence collection. Reader tables and original small-query grouped presentations should be derived views over those full event records. Removing a redundant presentation field requires an explicit successor schema and complete reconstruction/semantic-equivalence argument; it is not permission to remove evidence or tests.",
+    "expansion_contract": "Before implementation, declare exactly which logical certificate is expanded and how every reference occurrence contributes. For literal v2 reconstruction, charge every unfolded copy. A successor one-owner certificate needs an explicit review proving that it retains all required evidence without covertly redefining the old expanded gate. Do not silently relabel duplicate data as a cache to avoid charging it.",
+    "streaming": "A future append-only evidence writer may avoid giant monolithic JSON and repeated in-memory projection. It must have complete ordering, typed schema, counts, joins and a terminal manifest. Every stored and expanded part still shares the original aggregate cap. Streaming cannot admit prefixes or make an oversized logical certificate fit.",
+    "precondition_for_another_actual": "A fresh full Source/declaration review must establish a conservative whole-cohort representation bound or expose a genuine unresolved infeasibility. No semantic sizing probe, subject execution, cap increase, sample trimming, old-grant reuse or partial rescue is authorized by this note."
+  },
+  "early_summary_budget_gap": {
+    "Source": "write_json is given128MiB minus9MiB for the canonical packet. It does not first subtract existing actual-directory files or reserve FAILURE_SUMMARY_BYTES. _write_failure_summary later requires prior + summary_bytes +9MiB <=128MiB; its exception is suppressed without a cause record.",
+    "integer_inequality": {
+      "total_bytes": 134217728,
+      "outer_reserve_bytes": 9437184,
+      "canonical_payload_cap_bytes": 124780544,
+      "observed_raw_partial_length_bytes": 124780541,
+      "consumed_file_lengths_bytes": [592, 320],
+      "minimum_prior_bytes": 124781453,
+      "minimum_prior_plus_outer_reserve_bytes": 134218637,
+      "excess_even_for_empty_summary_bytes": 909
+    },
+    "assumptions": "The frozen Source's exclusive actual-directory ownership holds; the two consumed files and the canonical fragment are not deleted or truncated between write failure and summary census; their raw lengths are the observed lengths. Source performs no such deletion/truncation. Additional files only strengthen the inequality.",
+    "what_is_proved": "Under those assumptions the summary physical-budget predicate cannot pass even for a zero-byte summary. This is a Source-plus-raw-size infeasibility result, not a directly recorded exception from the summary attempt. early_failure_summary=null alone does not identify its runtime exception because that attempt suppresses errors.",
+    "other_gap": "The later fixed1MiB worker-failure write has its own per-file cap but no shared physical-budget lease. A locally permitted failure file can consume storage intended for the outer reserve. No complete positive or resource result may be inferred from its existence.",
+    "future_protocol": "Use one conservative aggregate byte allocator covering preexisting files, open partials, logs, result/header, outer metadata and any summary reservation. Reserve a bounded negative-only summary allotment inside the existing total before bulk writing, and subtract it from bulk capacity. Do not assume the9MiB outer reserve is unused or add another allowance. Count failed writes and partial files permanently; do not delete/rewrite them to manufacture a passing ledger.",
+    "writer_tests_needed": "Current four summary groups exercise only the pure scalar builder. A future reviewed full cohort must separately cover writer-budget refusal, prior-file accounting, exact reserve exhaustion, partial-file preservation, disk write/flush/rename failures and time cutoffs. Even with a reservation, ENOSPC, external interference or termination may prevent a summary; report unavailable diagnostics honestly. No writer test is executed or newly authorized here."
+  },
+  "limits_and_open_questions": {
+    "unchanged_limits": "One fresh Root-reviewed actual only if separately granted;180s complete positive;210s negative custody;1GiB worker HWM;128MiB stored and expanded data;128MiB physical including9MiB reserve;400m cumulative Root callbacks. Current actual grant is consumed and retired.",
+    "open": ["Can an explicitly reviewed one-owner certificate preserve every evidence obligation within both128MiB gates?", "If literal v2 unfolding remains mandatory, is it infeasible even with perfect physical compression?", "What conservative Source-derived bound covers all graph observations and all diagnostic variants without a semantic sizing probe?", "Can strict registry comparisons, complete custody and all outputs finish under the remaining original Root/time limits?", "Which reserved-byte allocation guarantees room for bounded negative metadata while every parent/worker writer remains independently capped?"]
+  },
+  "implementation_authorized": false,
+  "subject_execution_authorized": false,
+  "sizing_probe_authorized": false,
+  "partial_admission_authorized": false,
+  "runtime_qualified": false,
+  "mathematical_authority": false,
+  "proof_discovery": false,
+  "performance_advantage_established": false
+}

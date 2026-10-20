@@ -1,0 +1,1300 @@
+{
+  "actual_directory_absent": true,
+  "actual_execution_authorized": false,
+  "checker_calls": 0,
+  "compiler_calls": 0,
+  "component_calls": 0,
+  "current_master": {
+    "bytes": 36240,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/basic-tiling-algorithm.md",
+    "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+  },
+  "declaration": {
+    "bytes": 57051,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/batch-declaration-v2.json",
+    "sha256": "280808b5a397461bf9cce60aa36c051d53b13a11f68803c3ad9acaa67f6b9226"
+  },
+  "failed_checks": [],
+  "finite_encoding_accepted": false,
+  "fixture_calls": 0,
+  "full_pipeline_qualified": false,
+  "helper_calls": 0,
+  "input_pins": [
+    {
+      "id": "whole-implicit-palette-point-graph-bank",
+      "pin": {
+        "bytes": 740651,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/recovered/ROOT/implicit-inputs-v1.json",
+        "sha256": "10fe60d005a2f586a76bf69ae30317b8dae538ba9f126714b9f71ffa474a89b4"
+      }
+    },
+    {
+      "id": "complete-new-batch-summary-diagnostic-bank",
+      "pin": {
+        "bytes": 38883,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/diagnostics-L/new-diagnostic-bank-v1.json",
+        "sha256": "6e579fa58384188b5444606c87dbdee92a86f5771a983a36fbf6904192e669ab"
+      }
+    }
+  ],
+  "manual_Source_findings": [
+    {
+      "finding": "All recovered legacy definitions retain exact ASTs except _query: its postdescriptor body is exactly extracted into _query_owned, while standalone _query still prepares the complete descriptor before delegating. Families partition head count/location and all defined transition rows without reachability, bound or target trimming. No-head step population is b(b+1)^2; left/right families each Db(b+1); center Db(b+1)+D0(b+1). Collectors/frames add3b+2b(Q+1)+2; full initializer adds9b+16. Semantic kind/origin identity and all full color constructors agree with literal construction; numeric intern order is not claimed preserved.",
+      "id": "SEMANTIC_FULL_PALETTE"
+    },
+    {
+      "finding": "Outer None alone is missing. Assigned0 is a literal with no palette match. Exact types reject bool-as-int and nested None. Each family intersection simultaneously constrains shared parameters; product counts and mixed-radix selection cover every matching origin once. No full large-palette materialization or proof-kernel/VM qualification follows.",
+      "id": "MASKS_AND_UNRANKING"
+    },
+    {
+      "finding": "Every scope prepares the entire immutable descriptor anew. Full raw receipt and produced counter are retained before preimage callbacks; complete typed preimage precedes the next callback, and delivery is tracked independently. First query fault stays latched even if body swallows it. Closed or reentrant queries refuse. Cleanup preserves primary and retains secondary metadata/object where available.",
+      "id": "PROFILE_LIFETIME"
+    },
+    {
+      "finding": "The prior identity-only blocker is resolved in this exact successor by retaining the graph-owned descriptor argument, then accepting original identity or complete strict typed serialization equality under s.policy. L retains its detached immutable descriptor and no semantic color comparison is relaxed. Exact inverse to previous subject is recorded; the previous negative remains authoritative for its own subject.",
+      "id": "DETACHED_DESCRIPTOR_FIX"
+    },
+    {
+      "finding": "Each dynamic graph query temporarily routes every B work tick through L charged_check, restoring the previous Root dispatcher on both returns and faults. Preparation/reconciliation are Root costs. An L quota caught inside graph does not clear the B query fault: that scope fails unknown/refusal, never UNSAT. Original work1 UNKNOWN occurs before a query and remains distinct.",
+      "id": "GRAPH_CALLBACK_COSTS"
+    },
+    {
+      "finding": "Profile entry/exit check whole Source pins, worker/module function/code/default/closure owners, and strict full descriptor/declared input/limit bytes. All callback/query/Work/error/return owners remain retained. This is ordinary exclusive ownership with read-only callbacks and named controlled mutations, not a hostile concurrent/deep mutable-global/default-content seal. Every real independently latched Root fault dominates expected refusal classification.",
+      "id": "CUSTODY_TRUST"
+    },
+    {
+      "finding": "The unchanged L adapter represents singleton center t=1 with all four midpoint marks and every palette ID at every admissible center. It globally checks dead, then forced, then earliest explicit root generation with degree tie-break. Immutable complete cores restore parent/root state; first-mode exclusions carry parent support, all-mode uses stable parent rank cursors. No fractional/shared-positive support, remote extra tile marks or fair unbounded activation claim.",
+      "id": "SCHEDULER_AND_ROLLBACK"
+    },
+    {
+      "finding": "All four complete literal inventories feed every16-subset projected nonempty mask and every independently determined rank, plus declared zero cross-splices. 128-request scopes only partition this unchanged stream. The large full7936-row case receives exact old-cardinality and selected/all-family membership checks, not exhaustive large unranking. All10 finite graph cases compare observed live/parent domains, marking refcounts, scheduler, exact rollback and complete first/all-solution semantics against independent fixed-site-order literal enumeration.",
+      "id": "INDEPENDENT_FINITE_ORACLES"
+    },
+    {
+      "finding": "The separate literal28-group55-variant bank preserves all old15/33 cases. It tests ordered dynamic/static scopes, exact foreign identity at named stages, private same-class ownership, cumulative work/query/receipt quotas, bool/int0-versus-False, list/tuple and absent/zero mutation, swallowed/reentrant faults, closed queries, custody return and secondary nonmasking. Planned sentinels fire only after genuine Root gates. Four pure scalar-summary groups run no filesystem writer.",
+      "id": "NEW_DIAGNOSTICS"
+    },
+    {
+      "finding": "Normal profile canonical rows contain the full ordinary lifetime and every raw receipt/request/typed preimage once, plus full-return nonduplicate metadata and explicit field bindings. The actual full return remains owned. Inside the sole actual, canonical(full row)-canonical(compact row), floored at0, is charged once per row to the unchanged expanded-byte ceiling; adding the charge field makes this conservative. q is a distinct admission summary, while canonical retains full actual diagnostic data and all successful/failed profile accounting. No fit claim is inferred.",
+      "id": "FULL_OUTPUT_AND_EXPANSION"
+    },
+    {
+      "finding": "Whole scope cumulative work is kernel+overhead; overhead is preparation+postpreparation. Successful profile populations alone feed completed metrics. Every failed scope retains its distinct produced/copied/delivered counters and known/unavailable costs. Constructor prefix gaps increment unavailable, never fabricatedzero. Root invocation400m is a callback ceiling rather than CPU-work measure; every attempted phase and output cost remains in the180/210 epoch.",
+      "id": "PRIVATE_WORK"
+    },
+    {
+      "finding": "The six bounded scalar helpers exactly match the independently reviewed recovered Source. Summary is attempted before full bulk retention, stores capped exact metadata and no subject prefix traversal/exception formatting, and cannot replace the selected primary. Its hard64KiB writer remains within original physical reserve/210 custody checks. TERM at180 or storage failure may still prevent persistence; no grace or universal retention guarantee.",
+      "id": "FAILURE_SUMMARY"
+    },
+    {
+      "finding": "Runner exact-subject separate review and Root max-one grant are required; consumed marker precedes one Popen. Positive header, full packet/result bytes and known worker exit must precede180 from runner Source entry. Worker standalone Darwin HWM, complete source/input/runtime/log/group/physical ledger and observer terminal must meet original1GiB/128MiB/210 bounds. Observer225 only supplies failed fallback observation. Startup/OS/transitive loader trust and worker-only memory scope are explicit.",
+      "id": "OUTER_ADMISSION"
+    },
+    {
+      "finding": "This review qualifies only Source/prospective readiness for a fresh complete finite representation/search calibration. It proves neither runtime completion/correctness/fit nor a full physical interpreter/FOL proof system, mathematical theorem discovery, learned GCTS markings, RL, receptor lemmas, Turtle/Penrose practical tiling, plane tiling or comparative speed advantage. All those research obligations remain open.",
+      "id": "RESEARCH_LIMITS"
+    }
+  ],
+  "mathematical_authority": false,
+  "mechanical_checks": [
+    {
+      "detail": null,
+      "label": "exact nine-field subject",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "exact six Source roles",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "ASCII exact subject avoids formatter ambiguity",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "no execution authority in offer",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "current Python whole pin",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "whole pinned raw preimage: graph.py",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "AST/unused compile: graph",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "whole pinned raw preimage: implicit.py",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "AST/unused compile: implicit",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "whole pinned raw preimage: observer.py",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "AST/unused compile: observer",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "whole pinned raw preimage: runner.py",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "AST/unused compile: runner",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "whole pinned raw preimage: selector.py",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "AST/unused compile: selector",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "whole pinned raw preimage: worker.py",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "AST/unused compile: worker",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "whole pinned raw preimage: declaration.json",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "whole pinned raw preimage: closure.json",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "whole pinned raw preimage: prospective-plan.json",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "whole pinned raw preimage: false-authorization.json",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "whole pinned raw preimage: input-original.json",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "whole pinned raw preimage: input-new.json",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "whole pinned raw preimage: master.md",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "whole pinned raw preimage: assembly-v2.json",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "handoff component Source exact",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "handoff new bank exact",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "entire current master explicit tracked copy",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "prospective subject exact plan minus authorization",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "prospective false auth exact pin",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "false authorization has maximum0",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "false authorization subject join",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "fresh actual path absent",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "fresh prospective observation path absent",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "all old grants explicitly retired",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "whole exact original bank preserved",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "two exact declared banks",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "full original15 normal cases/order",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "full original33 diagnostic declarations/order",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "all7936 large transition rows retained",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "new exact bank schema agreed",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "new bank pins original whole descriptor",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "all28 groups55 variants in exact declaration",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "all declared group/variant identities distinct",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "24batch and4summary group split",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "summary writer/persistence explicitly outside coverage",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "closure subject joins",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "parser provenance exact current executable/version",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "six-role import census exact",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "AST digest exact: graph",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "whole direct-import census: graph",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "AST digest exact: implicit",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "whole direct-import census: implicit",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "AST digest exact: observer",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "whole direct-import census: observer",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "AST digest exact: runner",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "whole direct-import census: runner",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "AST digest exact: selector",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "whole direct-import census: selector",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "AST digest exact: worker",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "whole direct-import census: worker",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "declared stdlib raw custody: hashlib.py",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "declared stdlib raw custody: __init__.py",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "declared stdlib raw custody: _abc.py",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "declared stdlib raw custody: machinery.py",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "declared stdlib raw custody: util.py",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "declared stdlib raw custody: __init__.py",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "declared stdlib raw custody: decoder.py",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "declared stdlib raw custody: encoder.py",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "declared stdlib raw custody: scanner.py",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "declared stdlib raw custody: os.py",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "declared stdlib raw custody: pathlib.py",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "declared stdlib raw custody: signal.py",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "declared stdlib raw custody: subprocess.py",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "declared stdlib raw custody: types.py",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "declared stdlib raw custody: ast.py",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "declared stdlib raw custody: __init__.py",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "declared stdlib raw custody: enum.py",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "declared stdlib raw custody: contextlib.py",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "declared stdlib raw custody: functools.py",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "declared stdlib raw custody: operator.py",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "declared stdlib raw custody: keyword.py",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "declared stdlib raw custody: reprlib.py",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "declared stdlib raw custody: warnings.py",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "stdlib loader scope explicitly trusted",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "closure owners not claimed as hostile deep seal",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "exact inverse v2 descriptor-only correction",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "current guard retains descriptor copy before strict guard",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "strict detached descriptor guard is independently latched",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "detached graph descriptor remains unchanged",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "original identity negative preserved raw",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "exact Root B+L raw Source assembly",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "no refusing diagnostics stub in current worker",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "exact frozen diagnostics definitions inserted",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "unchanged legacy palette definition: Invalid",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "unchanged legacy palette definition: Limit",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "unchanged legacy palette definition: is_own_invalid",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "unchanged legacy palette definition: is_own_limit",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "unchanged legacy palette definition: _bad",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "unchanged legacy palette definition: _Work",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "unchanged legacy palette definition: _run",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "unchanged legacy palette definition: _int",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "unchanged legacy palette definition: _sorted_rows",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "unchanged legacy palette definition: _machine_record",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "unchanged legacy palette definition: _wire_record",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "unchanged legacy palette definition: _descriptor",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "unchanged legacy palette definition: _masks",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "unchanged legacy palette definition: _Ref",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "unchanged legacy palette definition: _size",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "unchanged legacy palette definition: _rank",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "unchanged legacy palette definition: _unrank",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "unchanged legacy palette definition: _intersect",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "unchanged legacy palette definition: _fill",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "unchanged legacy palette definition: _families",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "unchanged legacy palette definition: build_palette_query",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "unchanged legacy palette definition: build_palette",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "unchanged legacy palette definition: count_query",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "unchanged legacy palette definition: select_query",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "unchanged legacy palette definition: count",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "unchanged legacy palette definition: select",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "unchanged legacy palette definition: describe",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "unchanged legacy palette definition: export_descriptor",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "prepared query kernel is exact old postdescriptor AST",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "standalone query retains exact descriptor preparation before extracted kernel",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "implicit component has no imports",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "graph/selector exact recovered Source pins",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "all original outer limits exact",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "unchanged private component limits: implicit",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "unchanged private component limits: graph",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "unchanged private component limits: selector",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "ten exact declared profile limit units",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "profile Source limits derived from original8 plus2",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "explicit deterministic128 custody partition",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "explicit profile entry/exit granularity",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "original cumulative400m Root limit",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "original9MiB reserve unchanged",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "raw receipt retained before callback-capable typed copy",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "preimage retained before next callback",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "separate production/preimage/delivery fields",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "exact query first-fault latch",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "no callback-bearing generators in batch extension",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "dynamic graph check exact route and restoration",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "full Source/worker callable custody",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "Root first fault only initialized and conditionally latched",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "expected diagnostics always inspect independent latch",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "profile raw owners persist on success and fault",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "full query stream and independent all ranks",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "complete finite graph/root restoration comparator",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "global dead/forced/generation scheduler remains",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "compact return values have full lifetime bindings",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "full reconstruction charged to original expanded ceiling",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "complete data in canonical; result summary distinct",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "known/unavailable costs distinct",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "inside-query graph quota behavior honestly scoped",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "no new scalar writer calls in diagnostic fragment",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "first receipt and reconciliation diagnostics name actual callback frames",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "bool/int test covers equal Python values",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "all normal bodies require caller-owned None result",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "failure summary precedes bulk and cannot replace primary",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "summary helpers identical to recovered reviewed version",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "failure prefix never authorizes partial admission",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "runner consumes one before worker Popen",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "runner demands separate exact current reviewer",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "worker max-one exact subject Root grant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "positive180 covers whole bytes and known worker exit",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "Darwin worker highwater1GiB checked",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "original physical cap includes reserve",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "failure cleanup bounded and owned-group verified",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "negative complete raw/log/ledger checks remain before210",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "observer225 is fallback only",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "observer joins known worker exit180 and rootterminal210",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "all broad scientific/proof claims remain false",
+      "passed": true
+    }
+  ],
+  "metadata_author": {
+    "bytes": 33059,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/review-C/audit_complete_batch_offer_v2.py",
+    "sha256": "8eaff2fabc9809d8ee788150d12b5a22a3908a18919c22996743301e866c94d2"
+  },
+  "no_grant_issued_by_review": true,
+  "offer": {
+    "bytes": 7051,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/batch-Source-only-offer-v2.json",
+    "sha256": "a8010f211e5f3fd9852d43195d6b562c7ae1c88ad046040bb0f8439f374f6f5d"
+  },
+  "parser": {
+    "dump": "ast.dump(annotate_fields=True,include_attributes=False).encode(utf8)",
+    "flags": [
+      "-I",
+      "-S",
+      "-B"
+    ],
+    "implementation": "cpython",
+    "no_returned_code_object_evaluated": true,
+    "parse": "ast.parse(mode=exec,type_comments=False,feature_version=None)",
+    "python": {
+      "bytes": 18058560,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+      "sha256": "b6ea0c2a9bfce48dbf181a53f1ca4f0562d40658b85bf47258e2a88d8f9e3933"
+    },
+    "unused_compile_count": 6,
+    "version": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]"
+  },
+  "preserved_predecessor_negative": {
+    "bytes": 17520,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/review-C/typed-complete-batch-Source-prospective-negative-v1.json",
+    "sha256": "585baf548c89bed938cfcd0ed65fdf66a54b9f218567591cef970303275396ea"
+  },
+  "prior_negative_repaired_only_for_current_successor": true,
+  "raw_preimages": [
+    {
+      "original": {
+        "bytes": 36892,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/recovered/L/implicit_wang_point_search_v1.py",
+        "sha256": "1a83c9c59b2e1862d5a2acda69b826ccc3a8e2cf4899e824286f711f8bf25981"
+      },
+      "preserved": {
+        "bytes": 36892,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/review-C/prospective-5c41-review-preimages-v2/graph.py",
+        "sha256": "1a83c9c59b2e1862d5a2acda69b826ccc3a8e2cf4899e824286f711f8bf25981"
+      }
+    },
+    {
+      "original": {
+        "bytes": 38513,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/components-B/implicit_wang_batch_v2.py",
+        "sha256": "2dd3269a96bbe8db63afdffc3b175830dad5dea7cc94555024a7aac95ef088e7"
+      },
+      "preserved": {
+        "bytes": 38513,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/review-C/prospective-5c41-review-preimages-v2/implicit.py",
+        "sha256": "2dd3269a96bbe8db63afdffc3b175830dad5dea7cc94555024a7aac95ef088e7"
+      }
+    },
+    {
+      "original": {
+        "bytes": 5620,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/observe_batch_once_v1.py",
+        "sha256": "51a0385fb85f7715e01789d0ebcd2d5f7e806d7258cdd7db4fef4ca8d56219ab"
+      },
+      "preserved": {
+        "bytes": 5620,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/review-C/prospective-5c41-review-preimages-v2/observer.py",
+        "sha256": "51a0385fb85f7715e01789d0ebcd2d5f7e806d7258cdd7db4fef4ca8d56219ab"
+      }
+    },
+    {
+      "original": {
+        "bytes": 34355,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/run_batch_once_v1.py",
+        "sha256": "9f5a2a31acdc03d94b4e89842af2606f405ddb4ba933f1d5099f6b4280af3090"
+      },
+      "preserved": {
+        "bytes": 34355,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/review-C/prospective-5c41-review-preimages-v2/runner.py",
+        "sha256": "9f5a2a31acdc03d94b4e89842af2606f405ddb4ba933f1d5099f6b4280af3090"
+      }
+    },
+    {
+      "original": {
+        "bytes": 27193,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/recovered/inherited-Source/wang_unknown_certificate_initializer_v1.py",
+        "sha256": "02cf1718e09c1eadb4eda4811436e1c7139cb2e1c255f9d73894e0e3b5d21b43"
+      },
+      "preserved": {
+        "bytes": 27193,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/review-C/prospective-5c41-review-preimages-v2/selector.py",
+        "sha256": "02cf1718e09c1eadb4eda4811436e1c7139cb2e1c255f9d73894e0e3b5d21b43"
+      }
+    },
+    {
+      "original": {
+        "bytes": 116476,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/qualify_complete_batch_worker_v2.py",
+        "sha256": "9ea014de87d5af2ed3017442f690699a0ef54750c8d8be12890e373936b65a03"
+      },
+      "preserved": {
+        "bytes": 116476,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/review-C/prospective-5c41-review-preimages-v2/worker.py",
+        "sha256": "9ea014de87d5af2ed3017442f690699a0ef54750c8d8be12890e373936b65a03"
+      }
+    },
+    {
+      "original": {
+        "bytes": 57051,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/batch-declaration-v2.json",
+        "sha256": "280808b5a397461bf9cce60aa36c051d53b13a11f68803c3ad9acaa67f6b9226"
+      },
+      "preserved": {
+        "bytes": 57051,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/review-C/prospective-5c41-review-preimages-v2/declaration.json",
+        "sha256": "280808b5a397461bf9cce60aa36c051d53b13a11f68803c3ad9acaa67f6b9226"
+      }
+    },
+    {
+      "original": {
+        "bytes": 12465,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/batch-runtime-closure-v2.json",
+        "sha256": "8138c744d1b8b301029db6391f21c7fdaf49b39b4355390d85a92412fff925c0"
+      },
+      "preserved": {
+        "bytes": 12465,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/review-C/prospective-5c41-review-preimages-v2/closure.json",
+        "sha256": "8138c744d1b8b301029db6391f21c7fdaf49b39b4355390d85a92412fff925c0"
+      }
+    },
+    {
+      "original": {
+        "bytes": 4105,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/batch-plan-prospective-v2.json",
+        "sha256": "020d23870c2b195ac690c7066211b9cffefad1a94ae205700892a177bf72f7a4"
+      },
+      "preserved": {
+        "bytes": 4105,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/review-C/prospective-5c41-review-preimages-v2/prospective-plan.json",
+        "sha256": "020d23870c2b195ac690c7066211b9cffefad1a94ae205700892a177bf72f7a4"
+      }
+    },
+    {
+      "original": {
+        "bytes": 335,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/batch-authorization-prospective-false-v2.json",
+        "sha256": "2f95c2bfd582d5e515adc857d05c7cff581369e8eafc749511948fcbb7887000"
+      },
+      "preserved": {
+        "bytes": 335,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/review-C/prospective-5c41-review-preimages-v2/false-authorization.json",
+        "sha256": "2f95c2bfd582d5e515adc857d05c7cff581369e8eafc749511948fcbb7887000"
+      }
+    },
+    {
+      "original": {
+        "bytes": 740651,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/recovered/ROOT/implicit-inputs-v1.json",
+        "sha256": "10fe60d005a2f586a76bf69ae30317b8dae538ba9f126714b9f71ffa474a89b4"
+      },
+      "preserved": {
+        "bytes": 740651,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/review-C/prospective-5c41-review-preimages-v2/input-original.json",
+        "sha256": "10fe60d005a2f586a76bf69ae30317b8dae538ba9f126714b9f71ffa474a89b4"
+      }
+    },
+    {
+      "original": {
+        "bytes": 38883,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/diagnostics-L/new-diagnostic-bank-v1.json",
+        "sha256": "6e579fa58384188b5444606c87dbdee92a86f5771a983a36fbf6904192e669ab"
+      },
+      "preserved": {
+        "bytes": 38883,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/review-C/prospective-5c41-review-preimages-v2/input-new.json",
+        "sha256": "6e579fa58384188b5444606c87dbdee92a86f5771a983a36fbf6904192e669ab"
+      }
+    },
+    {
+      "original": {
+        "bytes": 36240,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/basic-tiling-algorithm.md",
+        "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+      },
+      "preserved": {
+        "bytes": 36240,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/review-C/prospective-5c41-review-preimages-v2/master.md",
+        "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+      }
+    },
+    {
+      "original": {
+        "bytes": 2214,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/Root-Source-assembly-v2.json",
+        "sha256": "8d34c1aefc40c3f736bde9aeba39fdf8b96acdadf5fd319c4cde5b96e0b0ceea"
+      },
+      "preserved": {
+        "bytes": 2214,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/review-C/prospective-5c41-review-preimages-v2/assembly-v2.json",
+        "sha256": "8d34c1aefc40c3f736bde9aeba39fdf8b96acdadf5fd319c4cde5b96e0b0ceea"
+      }
+    }
+  ],
+  "required_next": "Root exact-subject max-one grant and final delta review, then all-peer idle/current-raw/fresh-path barrier. One actual only; no retry, bank trim, cap raise or failed-prefix rescue.",
+  "resource_accepted": false,
+  "review_passed": true,
+  "reviewer_identity": "/root/recovered_batch_review",
+  "runtime_closure": {
+    "bytes": 12465,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/batch-runtime-closure-v2.json",
+    "sha256": "8138c744d1b8b301029db6391f21c7fdaf49b39b4355390d85a92412fff925c0"
+  },
+  "runtime_qualified": false,
+  "schema": "wang-encoding-Source-prospective-review-v1",
+  "scientific_acceptance": false,
+  "semantic_replays": 0,
+  "simulator_calls": 0,
+  "source_only": true,
+  "source_pins": {
+    "graph": {
+      "bytes": 36892,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/recovered/L/implicit_wang_point_search_v1.py",
+      "sha256": "1a83c9c59b2e1862d5a2acda69b826ccc3a8e2cf4899e824286f711f8bf25981"
+    },
+    "implicit": {
+      "bytes": 38513,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/components-B/implicit_wang_batch_v2.py",
+      "sha256": "2dd3269a96bbe8db63afdffc3b175830dad5dea7cc94555024a7aac95ef088e7"
+    },
+    "observer": {
+      "bytes": 5620,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/observe_batch_once_v1.py",
+      "sha256": "51a0385fb85f7715e01789d0ebcd2d5f7e806d7258cdd7db4fef4ca8d56219ab"
+    },
+    "runner": {
+      "bytes": 34355,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/run_batch_once_v1.py",
+      "sha256": "9f5a2a31acdc03d94b4e89842af2606f405ddb4ba933f1d5099f6b4280af3090"
+    },
+    "selector": {
+      "bytes": 27193,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/recovered/inherited-Source/wang_unknown_certificate_initializer_v1.py",
+      "sha256": "02cf1718e09c1eadb4eda4811436e1c7139cb2e1c255f9d73894e0e3b5d21b43"
+    },
+    "worker": {
+      "bytes": 116476,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/qualify_complete_batch_worker_v2.py",
+      "sha256": "9ea014de87d5af2ed3017442f690699a0ef54750c8d8be12890e373936b65a03"
+    }
+  },
+  "status": "PASS_SOURCE_PROSPECTIVE_ONLY_NOT_GRANTED",
+  "subject": {
+    "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/actual-batch-v2",
+    "declaration": {
+      "bytes": 57051,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/batch-declaration-v2.json",
+      "sha256": "280808b5a397461bf9cce60aa36c051d53b13a11f68803c3ad9acaa67f6b9226"
+    },
+    "inputs": [
+      {
+        "id": "whole-implicit-palette-point-graph-bank",
+        "pin": {
+          "bytes": 740651,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/recovered/ROOT/implicit-inputs-v1.json",
+          "sha256": "10fe60d005a2f586a76bf69ae30317b8dae538ba9f126714b9f71ffa474a89b4"
+        }
+      },
+      {
+        "id": "complete-new-batch-summary-diagnostic-bank",
+        "pin": {
+          "bytes": 38883,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/diagnostics-L/new-diagnostic-bank-v1.json",
+          "sha256": "6e579fa58384188b5444606c87dbdee92a86f5771a983a36fbf6904192e669ab"
+        }
+      }
+    ],
+    "invocation_id": "complete-batched-implicit-palette-point-graph-v2",
+    "limits": {
+      "expanded_bytes": 134217728,
+      "memory_bytes": 1073741824,
+      "observer_bytes": 1048576,
+      "overall_seconds": 210,
+      "result_bytes": 134217728,
+      "runner_metadata_bytes": 8388608,
+      "stderr_bytes": 4194304,
+      "stdout_bytes": 4194304,
+      "work_seconds": 180,
+      "worker_receipt_bytes": 4194304
+    },
+    "python": {
+      "bytes": 18058560,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+      "sha256": "b6ea0c2a9bfce48dbf181a53f1ca4f0562d40658b85bf47258e2a88d8f9e3933"
+    },
+    "runtime_closure": {
+      "bytes": 12465,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/batch-runtime-closure-v2.json",
+      "sha256": "8138c744d1b8b301029db6391f21c7fdaf49b39b4355390d85a92412fff925c0"
+    },
+    "schema": "ROOT-wang-encoding-qualification-plan-v1",
+    "sources": {
+      "graph": {
+        "bytes": 36892,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/recovered/L/implicit_wang_point_search_v1.py",
+        "sha256": "1a83c9c59b2e1862d5a2acda69b826ccc3a8e2cf4899e824286f711f8bf25981"
+      },
+      "implicit": {
+        "bytes": 38513,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/components-B/implicit_wang_batch_v2.py",
+        "sha256": "2dd3269a96bbe8db63afdffc3b175830dad5dea7cc94555024a7aac95ef088e7"
+      },
+      "observer": {
+        "bytes": 5620,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/observe_batch_once_v1.py",
+        "sha256": "51a0385fb85f7715e01789d0ebcd2d5f7e806d7258cdd7db4fef4ca8d56219ab"
+      },
+      "runner": {
+        "bytes": 34355,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/run_batch_once_v1.py",
+        "sha256": "9f5a2a31acdc03d94b4e89842af2606f405ddb4ba933f1d5099f6b4280af3090"
+      },
+      "selector": {
+        "bytes": 27193,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/recovered/inherited-Source/wang_unknown_certificate_initializer_v1.py",
+        "sha256": "02cf1718e09c1eadb4eda4811436e1c7139cb2e1c255f9d73894e0e3b5d21b43"
+      },
+      "worker": {
+        "bytes": 116476,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/qualify_complete_batch_worker_v2.py",
+        "sha256": "9ea014de87d5af2ed3017442f690699a0ef54750c8d8be12890e373936b65a03"
+      }
+    }
+  },
+  "subject_function_calls": 0,
+  "subject_imports": 0,
+  "subject_sha256": "5c41ecdc77f6f88296614dff482c6187de13301a178c745a6b12e903de66467c",
+  "unexecuted": true
+}

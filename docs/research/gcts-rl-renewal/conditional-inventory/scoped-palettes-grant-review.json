@@ -1,0 +1,332 @@
+{
+  "Root_issuance": {
+    "bytes": 1656,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/ROOT-grant-issuance-v2.json",
+    "sha256": "c0875bce59eb846944ce2331295aac9d488f0c114d683fbdda241f1c560f5e61"
+  },
+  "Source_or_AST_execution": false,
+  "actual_absent": true,
+  "actual_execution_authorized": false,
+  "authorization": {
+    "bytes": 885,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/batch-authorization-once-v2.json",
+    "sha256": "912e15bd8e88451f1a157b292edff34fe0a4a29e1ff89395983ebdffaa03c1c1"
+  },
+  "authorized_observation_absent": true,
+  "authorized_plan": {
+    "bytes": 3562,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/batch-plan-authorized-v2.json",
+    "sha256": "5ad547859e7a1092a36e9f715c9cf521aeb8748f0aba3f34248b15bd1705d378"
+  },
+  "checker_calls": 0,
+  "compiler_calls": 0,
+  "component_calls": 0,
+  "failed_checks": 0,
+  "fixture_calls": 0,
+  "full_Source_review": {
+    "bytes": 46044,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/review-C/typed-complete-batch-Source-prospective-review-v2.json",
+    "sha256": "ffb0fca9b2628b470cf4f635b64b24b114fe41675be283d7d7f036da47f0b0d5"
+  },
+  "helper_calls": 0,
+  "mechanical_checks": [
+    {
+      "label": "exact whole Source review preserved",
+      "passed": true
+    },
+    {
+      "label": "independent explicit current PASS",
+      "passed": true
+    },
+    {
+      "label": "whole manual and mechanical review complete",
+      "passed": true
+    },
+    {
+      "label": "exact authorized plan pin",
+      "passed": true
+    },
+    {
+      "label": "authorization only plan-field delta",
+      "passed": true
+    },
+    {
+      "label": "unchanged full reviewed subject",
+      "passed": true
+    },
+    {
+      "label": "unchanged exact subject digest",
+      "passed": true
+    },
+    {
+      "label": "exact fresh once authorization pin",
+      "passed": true
+    },
+    {
+      "label": "exact grant fields and Root author",
+      "passed": true
+    },
+    {
+      "label": "exact true maximum1 and subject",
+      "passed": true
+    },
+    {
+      "label": "grant pins exact separate full review",
+      "passed": true
+    },
+    {
+      "label": "exact issuance raw pin",
+      "passed": true
+    },
+    {
+      "label": "current exact complete raw custody: python",
+      "passed": true
+    },
+    {
+      "label": "current exact complete raw custody: declaration",
+      "passed": true
+    },
+    {
+      "label": "current exact complete raw custody: runtime_closure",
+      "passed": true
+    },
+    {
+      "label": "current exact complete raw custody: Source-graph",
+      "passed": true
+    },
+    {
+      "label": "current exact complete raw custody: Source-implicit",
+      "passed": true
+    },
+    {
+      "label": "current exact complete raw custody: Source-observer",
+      "passed": true
+    },
+    {
+      "label": "current exact complete raw custody: Source-runner",
+      "passed": true
+    },
+    {
+      "label": "current exact complete raw custody: Source-selector",
+      "passed": true
+    },
+    {
+      "label": "current exact complete raw custody: Source-worker",
+      "passed": true
+    },
+    {
+      "label": "current exact complete raw custody: input-0",
+      "passed": true
+    },
+    {
+      "label": "current exact complete raw custody: input-1",
+      "passed": true
+    },
+    {
+      "label": "current exact complete raw custody: stdlib-0",
+      "passed": true
+    },
+    {
+      "label": "current exact complete raw custody: stdlib-1",
+      "passed": true
+    },
+    {
+      "label": "current exact complete raw custody: stdlib-2",
+      "passed": true
+    },
+    {
+      "label": "current exact complete raw custody: stdlib-3",
+      "passed": true
+    },
+    {
+      "label": "current exact complete raw custody: stdlib-4",
+      "passed": true
+    },
+    {
+      "label": "current exact complete raw custody: stdlib-5",
+      "passed": true
+    },
+    {
+      "label": "current exact complete raw custody: stdlib-6",
+      "passed": true
+    },
+    {
+      "label": "current exact complete raw custody: stdlib-7",
+      "passed": true
+    },
+    {
+      "label": "current exact complete raw custody: stdlib-8",
+      "passed": true
+    },
+    {
+      "label": "current exact complete raw custody: stdlib-9",
+      "passed": true
+    },
+    {
+      "label": "current exact complete raw custody: stdlib-10",
+      "passed": true
+    },
+    {
+      "label": "current exact complete raw custody: stdlib-11",
+      "passed": true
+    },
+    {
+      "label": "current exact complete raw custody: stdlib-12",
+      "passed": true
+    },
+    {
+      "label": "current exact complete raw custody: stdlib-13",
+      "passed": true
+    },
+    {
+      "label": "current exact complete raw custody: stdlib-14",
+      "passed": true
+    },
+    {
+      "label": "current exact complete raw custody: stdlib-15",
+      "passed": true
+    },
+    {
+      "label": "current exact complete raw custody: stdlib-16",
+      "passed": true
+    },
+    {
+      "label": "current exact complete raw custody: stdlib-17",
+      "passed": true
+    },
+    {
+      "label": "current exact complete raw custody: stdlib-18",
+      "passed": true
+    },
+    {
+      "label": "current exact complete raw custody: stdlib-19",
+      "passed": true
+    },
+    {
+      "label": "current exact complete raw custody: stdlib-20",
+      "passed": true
+    },
+    {
+      "label": "current exact complete raw custody: stdlib-21",
+      "passed": true
+    },
+    {
+      "label": "current exact complete raw custody: stdlib-22",
+      "passed": true
+    },
+    {
+      "label": "closure subjects unchanged",
+      "passed": true
+    },
+    {
+      "label": "fresh actual absent",
+      "passed": true
+    },
+    {
+      "label": "fresh authorized observation folder absent",
+      "passed": true
+    },
+    {
+      "label": "prospective false authorization not overwritten",
+      "passed": true
+    }
+  ],
+  "metadata_author": {
+    "bytes": 6794,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/review-C/freeze_grant_delta_v2.py",
+    "sha256": "8311a462aed7314722ffdd0c058370eb27faf7400815f257da4ebecedc3ea093"
+  },
+  "required_next": "Root final all-peers-idle/current-raw/fresh-path barrier, then Root may consume the single exact existing grant. Any failure leaves all historical/current failed prefixes unadmitted.",
+  "review_passed": true,
+  "reviewer_identity": "/root/recovered_batch_review",
+  "schema": "independent-complete-batch-final-grant-delta-review-v2",
+  "scope": "Only authorization pin changed. Exact already reviewed6Sources/2banks/declaration/closure/current Python and all declared stdlib raw pins rechecked. No subject/helper/fixture import, call, sizing, warmup, simulation or replay. This review does not issue an additional grant, establish runtime/resource/mathematical acceptance, or permit a repeat.",
+  "semantic_replays": 0,
+  "source_only": true,
+  "status": "PASS_GRANT_ONLY_DELTA_SOURCE_CUSTODY_NOT_EXPERIMENT_RESULT",
+  "subject": {
+    "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/actual-batch-v2",
+    "declaration": {
+      "bytes": 57051,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/batch-declaration-v2.json",
+      "sha256": "280808b5a397461bf9cce60aa36c051d53b13a11f68803c3ad9acaa67f6b9226"
+    },
+    "inputs": [
+      {
+        "id": "whole-implicit-palette-point-graph-bank",
+        "pin": {
+          "bytes": 740651,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/recovered/ROOT/implicit-inputs-v1.json",
+          "sha256": "10fe60d005a2f586a76bf69ae30317b8dae538ba9f126714b9f71ffa474a89b4"
+        }
+      },
+      {
+        "id": "complete-new-batch-summary-diagnostic-bank",
+        "pin": {
+          "bytes": 38883,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/diagnostics-L/new-diagnostic-bank-v1.json",
+          "sha256": "6e579fa58384188b5444606c87dbdee92a86f5771a983a36fbf6904192e669ab"
+        }
+      }
+    ],
+    "invocation_id": "complete-batched-implicit-palette-point-graph-v2",
+    "limits": {
+      "expanded_bytes": 134217728,
+      "memory_bytes": 1073741824,
+      "observer_bytes": 1048576,
+      "overall_seconds": 210,
+      "result_bytes": 134217728,
+      "runner_metadata_bytes": 8388608,
+      "stderr_bytes": 4194304,
+      "stdout_bytes": 4194304,
+      "work_seconds": 180,
+      "worker_receipt_bytes": 4194304
+    },
+    "python": {
+      "bytes": 18058560,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+      "sha256": "b6ea0c2a9bfce48dbf181a53f1ca4f0562d40658b85bf47258e2a88d8f9e3933"
+    },
+    "runtime_closure": {
+      "bytes": 12465,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/batch-runtime-closure-v2.json",
+      "sha256": "8138c744d1b8b301029db6391f21c7fdaf49b39b4355390d85a92412fff925c0"
+    },
+    "schema": "ROOT-wang-encoding-qualification-plan-v1",
+    "sources": {
+      "graph": {
+        "bytes": 36892,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/recovered/L/implicit_wang_point_search_v1.py",
+        "sha256": "1a83c9c59b2e1862d5a2acda69b826ccc3a8e2cf4899e824286f711f8bf25981"
+      },
+      "implicit": {
+        "bytes": 38513,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/components-B/implicit_wang_batch_v2.py",
+        "sha256": "2dd3269a96bbe8db63afdffc3b175830dad5dea7cc94555024a7aac95ef088e7"
+      },
+      "observer": {
+        "bytes": 5620,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/observe_batch_once_v1.py",
+        "sha256": "51a0385fb85f7715e01789d0ebcd2d5f7e806d7258cdd7db4fef4ca8d56219ab"
+      },
+      "runner": {
+        "bytes": 34355,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/run_batch_once_v1.py",
+        "sha256": "9f5a2a31acdc03d94b4e89842af2606f405ddb4ba933f1d5099f6b4280af3090"
+      },
+      "selector": {
+        "bytes": 27193,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/recovered/inherited-Source/wang_unknown_certificate_initializer_v1.py",
+        "sha256": "02cf1718e09c1eadb4eda4811436e1c7139cb2e1c255f9d73894e0e3b5d21b43"
+      },
+      "worker": {
+        "bytes": 116476,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/qualify_complete_batch_worker_v2.py",
+        "sha256": "9ea014de87d5af2ed3017442f690699a0ef54750c8d8be12890e373936b65a03"
+      }
+    }
+  },
+  "subject_imports": 0,
+  "subject_sha256": "5c41ecdc77f6f88296614dff482c6187de13301a178c745a6b12e903de66467c",
+  "tools_stopped_after_this_receipt": true
+}

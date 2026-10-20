@@ -1,0 +1,100 @@
+{
+  "actual_invocations": 1,
+  "canonical_partial": {
+    "bytes": 124780541,
+    "handling": "Raw bytes/hash only; never parse, complete or admit.",
+    "sha256": "49baf9b389b81f710893f6d88754e86dead98184394332fb8ae1637b669a4231"
+  },
+  "complete_physical_interpreter": false,
+  "completed_component_call_counts": {
+    "compiler_calls": null,
+    "oracle_calls": null,
+    "search_calls": null,
+    "verifier_calls": null
+  },
+  "conservative_physical_ledger_bytes": 134732153,
+  "finite_encoding_accepted": false,
+  "full_pipeline_qualified": false,
+  "gcts_rl_advantage_established": false,
+  "grant_retirement": {
+    "bytes": 5051,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/ROOT-grant-retirement-v2.json",
+    "sha256": "d724f817dca900ce1e02bde46ae2a1b644344f12ca27b1de42173d3d1f4ab74d"
+  },
+  "limits": {
+    "expanded_bytes": 134217728,
+    "memory_bytes": 1073741824,
+    "observer_bytes": 1048576,
+    "overall_seconds": 210,
+    "result_bytes": 134217728,
+    "runner_metadata_bytes": 8388608,
+    "stderr_bytes": 4194304,
+    "stdout_bytes": 4194304,
+    "work_seconds": 180,
+    "worker_receipt_bytes": 4194304
+  },
+  "mathematical_proof_accepted": false,
+  "missing": [
+    "canonical completed packet",
+    "result",
+    "worker header",
+    "scalar failure summary",
+    "full available prefix"
+  ],
+  "no_new_mathematical_result": true,
+  "original_physical_cap_bytes": 134217728,
+  "proof_discovery": false,
+  "remaining_actual_invocations": 0,
+  "reported_before_write": {
+    "authority": "Diagnostic reports only; no complete canonical experiment packet.",
+    "new_diagnostic_groups": 28,
+    "new_diagnostic_variants": 55,
+    "normal_case_ids": [
+      "palette-empty-transition",
+      "palette-all-stationary",
+      "palette-mixed-holes",
+      "palette-five-symbols",
+      "palette-large-logical-universe",
+      "connected-failed-children-first",
+      "connected-failed-children-all",
+      "distant-DEAD-before-FORCED",
+      "distant-FORCED-before-BRANCH",
+      "earliest-before-lower-degree-TEST-VARIANT",
+      "off-support-zero-pin",
+      "whole-board-capacity1-head-prefix",
+      "whole-board-capacity1-head-suffix",
+      "whole-board-capacity2-head-prefix",
+      "whole-board-capacity2-head-suffix"
+    ],
+    "old_diagnostic_records": 33,
+    "stage": "FULL_PACKET_WRITE"
+  },
+  "resource_accepted": false,
+  "root_adoption": {
+    "bytes": 2127,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/ROOT-negative-adoption-v2.json",
+    "sha256": "5f3b1052e3b0936ca57270b3115cce94f2e1b0b6160c2e881b6dd92b39c2564d"
+  },
+  "root_callback_cutoff": 324982843,
+  "root_callback_scope": "Failure-record snapshot; not terminal callback census or CPU work.",
+  "runner": {
+    "bytes": 5235,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/actual-batch-v2/runner-receipt.json",
+    "sha256": "bd2dd0c76e057534ea27888832459dc843e12f32e531d739f3e6bc02eb09e0db"
+  },
+  "runner_to_terminal_seconds": 148.885128167,
+  "schema": "scoped-palette-public-negative-summary-v1",
+  "status": "OUTPUT_CAP_REJECTED_UNQUALIFIED",
+  "terminal": {
+    "bytes": 1855,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/batch-plan-authorized-v2-terminal-observation/terminal.json",
+    "sha256": "b39afcf33124f60001f03a9abe4d73ffab7fd344d6860c466ed2e095d3f034a4"
+  },
+  "trained_RL": false,
+  "worker_failure": {
+    "bytes": 513516,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/actual-batch-v2/worker-failure.json",
+    "sha256": "081ce0625607fa82ebd8957314b990fa26eb880c5715cc09e220863d4bfa2685"
+  },
+  "worker_peak_bytes": 937689088
+}

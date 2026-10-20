@@ -1,0 +1,1340 @@
+{
+  "RL_qualification": false,
+  "actual_execution_authorized": false,
+  "authorization": {
+    "bytes": 885,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/batch-authorization-once-v2.json",
+    "sha256": "912e15bd8e88451f1a157b292edff34fe0a4a29e1ff89395983ebdffaa03c1c1"
+  },
+  "canonical_partial_policy": "Raw bytes/hash only. Never decoded, projected, completed or admitted.",
+  "checker_calls": 0,
+  "compiler_calls": 0,
+  "failed_checks": 0,
+  "failed_prefix_partial_policy": "Empty raw bytes only. Never treated as a complete JSON prefix.",
+  "findings": [
+    "One existing Root grant was consumed for this exact subject; no repeat or rescue authority follows.",
+    "The complete worker failure record exposes a new output-byte failure after its reported full cohort progress. Earlier timeout-stage uncertainty is not retroactively repaired.",
+    "Whole canonical JSON serialization exceeded its gate. The raw partial has no mathematical, verifier or census authority and was only hashed.",
+    "The saved final conservative physical ledger independently exceeds the original128MiB ceiling. Earlier exit/time and worker-memory observations do not override the rejected whole-resource gate.",
+    "No complete canonical packet, result/header or summary exists. Complete profile costs, expanded bytes and positive call aggregates remain unavailable; diagnostic statuses are not qualified component or theorem results.",
+    "No cause is assigned to the absent early summary beyond its saved null/unavailable status. No subject helper was replayed to explain it.",
+    "Root must retire the consumed grant with0remaining and publish this negative without trimming banks, raising caps, rescuing partials or claiming proof/RL/tiling advantage."
+  ],
+  "finite_encoding_accepted": false,
+  "fixture_calls": 0,
+  "full_Source_review": {
+    "bytes": 46044,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/review-C/typed-complete-batch-Source-prospective-review-v2.json",
+    "sha256": "ffb0fca9b2628b470cf4f635b64b24b114fe41675be283d7d7f036da47f0b0d5"
+  },
+  "full_pipeline_qualified": false,
+  "helper_calls": 0,
+  "historical_partial_policy": "Historical failed partials were not accessed or admitted.",
+  "mathematical_proof_accepted": false,
+  "mathematical_results_replayed": false,
+  "mechanical_checks": [
+    {
+      "detail": null,
+      "label": "exact authorized once-plan",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "exact reviewed subject",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "exact existing max-one Root authorization",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "exact full prior Source review join",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "exact saved8-file actual root",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "exact saved4-file observer root",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "stable regular raw file: actual/CONSUMED.json",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "stable regular raw file: actual/WORKER_CONSUMED.json",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "stable regular raw file: actual/canonical-implicit-palette-calibration.json.partial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "stable regular raw file: actual/failed-prefix.json.partial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "stable regular raw file: actual/runner-receipt.json",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "stable regular raw file: actual/stderr.bin",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "stable regular raw file: actual/stdout.bin",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "stable regular raw file: actual/worker-failure.json",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "stable regular raw file: observer/CONSUMED.json",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "stable regular raw file: observer/stderr.bin",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "stable regular raw file: observer/stdout.bin",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "stable regular raw file: observer/terminal.json",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "canonical partial raw pin and size",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "failed-prefix partial is empty raw artifact",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "complete worker-failure raw pin and size",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "complete runner raw pin",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "one worker consumption marker and same plan",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "one worker launch and one observer runner launch",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "all saved plan joins exact",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "all saved invocation joins exact",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "absolute180 and210 same Source-entry epoch",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved runner subject and grant joins",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "worker/runner exact PID relationship",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "worker known terminal exit2 without signal",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "runner external exit2 and failed terminal gate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "worker/group/log closure explicit",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "cleanup complete before original210 without diagnostic losses",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "negative raw closure complete before original210",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "whole stable logs closed/custodied before original210",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "actual logs exact stable pins and empty",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "terminal clock148.885128167seconds from runner Source entry",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "known worker exit before180 and external terminal before210",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "outer resource/finite/scientific/math admissions all false",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "unavailable admitted-call counts remain null",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "no positive result/header/canonical or complete summary",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "complete negative worker schema and no admission",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved first fault is whole packet byte cap",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "failed-prefix retention also recorded packet cap",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "summary unavailable and no positive outputs",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "available Root counter explicit cutoff only",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "failure reports all15 declared case/component IDs",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "failure retains all33 old diagnostic metadata rows/order",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved old diagnostic status only: build-bool-symbol",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved old diagnostic status only: build-duplicate-transition",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved old diagnostic status only: build-accept-outgoing",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved old diagnostic status only: build-wire-blank",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved old diagnostic status only: build-initial-accept",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved old diagnostic status only: count-bool-mask",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved old diagnostic status only: count-list-mask",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved old diagnostic status only: count-nested-none",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved old diagnostic status only: select-bool-index",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved old diagnostic status only: select-negative-index",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved old diagnostic status only: select-past-end",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved old diagnostic status only: count-invalid-descriptor",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved old diagnostic status only: implicit-work-limit",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved old diagnostic status only: implicit-integer-limit",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved old diagnostic status only: implicit-data-limit",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved old diagnostic status only: implicit-foreign-entry",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved old diagnostic status only: implicit-foreign-wire",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved old diagnostic status only: implicit-foreign-fill",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved old diagnostic status only: implicit-foreign-same-invalid",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved old diagnostic status only: implicit-foreign-same-limit",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved old diagnostic status only: graph-empty-target",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved old diagnostic status only: graph-odd-center",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved old diagnostic status only: graph-duplicate-center",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved old diagnostic status only: graph-origin-mismatch",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved old diagnostic status only: graph-duplicate-pin",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved old diagnostic status only: graph-none-pin",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved old diagnostic status only: graph-bool-generation",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved old diagnostic status only: graph-bad-mode",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved old diagnostic status only: graph-work-unknown",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved old diagnostic status only: graph-foreign-entry",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved old diagnostic status only: graph-foreign-inside",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved old diagnostic status only: graph-foreign-same-invalid",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved old diagnostic status only: graph-foreign-same-limit",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "new diagnostic progress reports COMPLETE",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "all28 new groups exact saved IDs/order",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new group metadata: batch-ordered-dynamic",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: ordered-dynamic",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new group metadata: batch-ordered-static",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: ordered-static",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new group metadata: batch-foreign-entry",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: foreign-entry-RuntimeError",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: foreign-entry-ValueError",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: foreign-entry-StopIteration",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new group metadata: batch-foreign-preparation",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: foreign-preparation-RuntimeError",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: foreign-preparation-ValueError",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: foreign-preparation-StopIteration",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new group metadata: batch-foreign-query-kernel",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: foreign-query-kernel-RuntimeError",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: foreign-query-kernel-ValueError",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: foreign-query-kernel-StopIteration",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new group metadata: batch-foreign-first-receipt-tree",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: foreign-first-receipt-tree-RuntimeError",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: foreign-first-receipt-tree-ValueError",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: foreign-first-receipt-tree-StopIteration",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new group metadata: batch-foreign-reconciliation",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: foreign-reconciliation-RuntimeError",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: foreign-reconciliation-ValueError",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: foreign-reconciliation-StopIteration",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new group metadata: batch-foreign-body",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: foreign-body-RuntimeError",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: foreign-body-ValueError",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: foreign-body-StopIteration",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new group metadata: batch-foreign-retain",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: foreign-retain-RuntimeError",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: foreign-retain-ValueError",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: foreign-retain-StopIteration",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new group metadata: batch-foreign-custody-entry",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: foreign-custody-entry-RuntimeError",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: foreign-custody-entry-ValueError",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: foreign-custody-entry-StopIteration",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new group metadata: batch-foreign-custody-exit",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: foreign-custody-exit-RuntimeError",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: foreign-custody-exit-ValueError",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: foreign-custody-exit-StopIteration",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new group metadata: batch-foreign-public-class",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: foreign-public-Invalid",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: foreign-public-Limit",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new group metadata: batch-work-cumulative",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: work-cumulative",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new group metadata: batch-queries-cumulative",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: queries-cumulative",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new group metadata: batch-receipt-items-cumulative",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: receipt-items-cumulative",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new group metadata: batch-swallowed-query",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: swallowed-query",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new group metadata: batch-reentrant-query",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: reentrant-query",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new group metadata: batch-closed-success",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: closed-success",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new group metadata: batch-closed-failure",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: closed-failure",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new group metadata: batch-mutation-bool-int",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: mutation-bool-int-single",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new group metadata: batch-mutation-list-tuple",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: mutation-list-tuple-single",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new group metadata: batch-mutation-absent-zero",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: mutation-absent-zero-absent",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: mutation-absent-zero-assignedzero",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new group metadata: batch-custody-return",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: custody-return-entry",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: custody-return-exit",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new group metadata: batch-secondary-nonmasking",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: secondary-ValueError",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: secondary-StopIteration",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: secondary-Limit",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new group metadata: summary-hostile-exception",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: summary-hostile",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new group metadata: summary-scalar-unavailable",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: summary-scalar-bool",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: summary-scalar-negative",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: summary-scalar-huge",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: summary-scalar-unavailable",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new group metadata: summary-counter-caps",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: summary-counters",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new group metadata: summary-active-fault-metadata",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: summary-active-string",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved complete new variant metadata: summary-active-dict",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "all55 saved variants retained in complete diagnostic JSON",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved cutoff call map exact nonnegative ints: call_started",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved cutoff call map exact nonnegative ints: call_completed",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved cutoff call map exact nonnegative ints: call_raised",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "saved pre-receipt raw physical ledger exact",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "original9MiB conservative ledger exceeds128MiB",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "negative ledger complete/stable before210",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "worker highwater saved below1GiB but no total-fit authority",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "current complete raw closure matches saved subject: python",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "current complete raw closure matches saved subject: declaration",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "current complete raw closure matches saved subject: closure",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "current complete raw closure matches saved subject: Source-graph",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "current complete raw closure matches saved subject: Source-implicit",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "current complete raw closure matches saved subject: Source-observer",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "current complete raw closure matches saved subject: Source-runner",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "current complete raw closure matches saved subject: Source-selector",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "current complete raw closure matches saved subject: Source-worker",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "current complete raw closure matches saved subject: input-0",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "current complete raw closure matches saved subject: input-1",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "current complete raw closure matches saved subject: stdlib-0",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "current complete raw closure matches saved subject: stdlib-1",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "current complete raw closure matches saved subject: stdlib-2",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "current complete raw closure matches saved subject: stdlib-3",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "current complete raw closure matches saved subject: stdlib-4",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "current complete raw closure matches saved subject: stdlib-5",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "current complete raw closure matches saved subject: stdlib-6",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "current complete raw closure matches saved subject: stdlib-7",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "current complete raw closure matches saved subject: stdlib-8",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "current complete raw closure matches saved subject: stdlib-9",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "current complete raw closure matches saved subject: stdlib-10",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "current complete raw closure matches saved subject: stdlib-11",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "current complete raw closure matches saved subject: stdlib-12",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "current complete raw closure matches saved subject: stdlib-13",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "current complete raw closure matches saved subject: stdlib-14",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "current complete raw closure matches saved subject: stdlib-15",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "current complete raw closure matches saved subject: stdlib-16",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "current complete raw closure matches saved subject: stdlib-17",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "current complete raw closure matches saved subject: stdlib-18",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "current complete raw closure matches saved subject: stdlib-19",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "current complete raw closure matches saved subject: stdlib-20",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "current complete raw closure matches saved subject: stdlib-21",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "label": "current complete raw closure matches saved subject: stdlib-22",
+      "passed": true
+    }
+  ],
+  "metadata_author": {
+    "bytes": 20128,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/review-C/audit_saved_actual_negative_v2.py",
+    "sha256": "216c5bae9f18c25f8f8993e28f18db6ef2d04efba55a6ca946f07d8b1a6d2629"
+  },
+  "missing_complete_artifacts": [
+    "canonical-implicit-palette-calibration.json",
+    "result.json",
+    "worker-receipt.json",
+    "worker-failure-summary.json",
+    "failed-prefix.json"
+  ],
+  "no_failed_prefix_admission": true,
+  "plan": {
+    "bytes": 3562,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/batch-plan-authorized-v2.json",
+    "sha256": "5ad547859e7a1092a36e9f715c9cf521aeb8748f0aba3f34248b15bd1705d378"
+  },
+  "process_and_resources": {
+    "conservative_physical_including_original_reserve_bytes": 134732153,
+    "current_raw_actual_bytes_including_runner_receipt": 125300204,
+    "known_reaped": true,
+    "logs_closed": true,
+    "memory_scope": "Standalone worker saved wait4 highwater only.",
+    "negative_raw_log_group_ledger_terminal_before210": true,
+    "no_group_reappearance": true,
+    "original_cap_exceeded_by_bytes": 514425,
+    "original_physical_cap_bytes": 134217728,
+    "owned_group_absent": true,
+    "physical_before_runner_receipt_bytes": 125294969,
+    "runner_Source_entry_to_terminal_ns": 148885128167,
+    "runner_exit_code": 2,
+    "worker_HWM_bytes": 937689088,
+    "worker_exit_code": 2
+  },
+  "raw_manifest": [
+    {
+      "category": "actual",
+      "custody": "COMPLETE_SAVED_BYTES",
+      "name": "CONSUMED.json",
+      "pin": {
+        "bytes": 592,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/actual-batch-v2/CONSUMED.json",
+        "sha256": "28e4ab90281ec7d0d43ca5cacfcb4ee1f9a97452fa23e28d032efcc51cfa1220"
+      }
+    },
+    {
+      "category": "actual",
+      "custody": "COMPLETE_SAVED_BYTES",
+      "name": "WORKER_CONSUMED.json",
+      "pin": {
+        "bytes": 320,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/actual-batch-v2/WORKER_CONSUMED.json",
+        "sha256": "2a0de26c20717957f417ee52afdb43a46d7ca5bfbd59d7e8b7f8e70217df7353"
+      }
+    },
+    {
+      "category": "actual",
+      "custody": "RAW_BYTES_HASH_ONLY_NEVER_DECODED",
+      "name": "canonical-implicit-palette-calibration.json.partial",
+      "pin": {
+        "bytes": 124780541,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/actual-batch-v2/canonical-implicit-palette-calibration.json.partial",
+        "sha256": "49baf9b389b81f710893f6d88754e86dead98184394332fb8ae1637b669a4231"
+      }
+    },
+    {
+      "category": "actual",
+      "custody": "RAW_BYTES_HASH_ONLY_NEVER_DECODED",
+      "name": "failed-prefix.json.partial",
+      "pin": {
+        "bytes": 0,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/actual-batch-v2/failed-prefix.json.partial",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "category": "actual",
+      "custody": "COMPLETE_SAVED_BYTES",
+      "name": "runner-receipt.json",
+      "pin": {
+        "bytes": 5235,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/actual-batch-v2/runner-receipt.json",
+        "sha256": "bd2dd0c76e057534ea27888832459dc843e12f32e531d739f3e6bc02eb09e0db"
+      }
+    },
+    {
+      "category": "actual",
+      "custody": "COMPLETE_SAVED_BYTES",
+      "name": "stderr.bin",
+      "pin": {
+        "bytes": 0,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/actual-batch-v2/stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "category": "actual",
+      "custody": "COMPLETE_SAVED_BYTES",
+      "name": "stdout.bin",
+      "pin": {
+        "bytes": 0,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/actual-batch-v2/stdout.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "category": "actual",
+      "custody": "COMPLETE_SAVED_BYTES",
+      "name": "worker-failure.json",
+      "pin": {
+        "bytes": 513516,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/actual-batch-v2/worker-failure.json",
+        "sha256": "081ce0625607fa82ebd8957314b990fa26eb880c5715cc09e220863d4bfa2685"
+      }
+    },
+    {
+      "category": "observer",
+      "custody": "COMPLETE_SAVED_BYTES",
+      "name": "CONSUMED.json",
+      "pin": {
+        "bytes": 337,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/batch-plan-authorized-v2-terminal-observation/CONSUMED.json",
+        "sha256": "fa41477bd14c11caa3380621d6525ae45af1ca2c3cca753399896bb32e325579"
+      }
+    },
+    {
+      "category": "observer",
+      "custody": "COMPLETE_SAVED_BYTES",
+      "name": "stderr.bin",
+      "pin": {
+        "bytes": 0,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/batch-plan-authorized-v2-terminal-observation/stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "category": "observer",
+      "custody": "COMPLETE_SAVED_BYTES",
+      "name": "stdout.bin",
+      "pin": {
+        "bytes": 204,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/batch-plan-authorized-v2-terminal-observation/stdout.bin",
+        "sha256": "ecc42fe8f68813057a828b2c554af36f1d04e246ce1e622ff0ccef65d42aec0a"
+      }
+    },
+    {
+      "category": "observer",
+      "custody": "COMPLETE_SAVED_BYTES",
+      "name": "terminal.json",
+      "pin": {
+        "bytes": 1855,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/batch-plan-authorized-v2-terminal-observation/terminal.json",
+        "sha256": "b39afcf33124f60001f03a9abe4d73ffab7fd344d6860c466ed2e095d3f034a4"
+      }
+    }
+  ],
+  "resource_accepted": false,
+  "review_passed": true,
+  "reviewer_identity": "/root/recovered_batch_review",
+  "saved_negative_census": {
+    "case_count": 15,
+    "case_ids": [
+      "palette-empty-transition",
+      "palette-all-stationary",
+      "palette-mixed-holes",
+      "palette-five-symbols",
+      "palette-large-logical-universe",
+      "connected-failed-children-first",
+      "connected-failed-children-all",
+      "distant-DEAD-before-FORCED",
+      "distant-FORCED-before-BRANCH",
+      "earliest-before-lower-degree-TEST-VARIANT",
+      "off-support-zero-pin",
+      "whole-board-capacity1-head-prefix",
+      "whole-board-capacity1-head-suffix",
+      "whole-board-capacity2-head-prefix",
+      "whole-board-capacity2-head-suffix"
+    ],
+    "first_available_fault": {
+      "message": "whole JSON packet cap",
+      "type": "PolicyFailure"
+    },
+    "new_group_count": 28,
+    "new_progress_stage": "COMPLETE",
+    "new_variant_count": 55,
+    "observed_status": "All saved declared diagnostic statuses PASSED/COMPLETE; not independently replayed or promoted.",
+    "old_diagnostic_count": 33,
+    "root_callback_scope": "Available worker failure cutoff; not completed total/private CPU work or a positive result.",
+    "root_callbacks_at_failure_cutoff": 324982843,
+    "scope": "Worker-failure diagnostic metadata only; no complete canonical packet or result/header admission.",
+    "worker_call_completed": {
+      "graph.search": 11,
+      "implicit.batch_diagnostic_profile": 4,
+      "implicit.batch_diagnostic_reference_count_query": 4,
+      "implicit.batch_diagnostic_reference_select_query": 2,
+      "implicit.batch_diagnostic_static": 1,
+      "implicit.build_palette_query": 5,
+      "implicit.count_query": 1,
+      "implicit.describe": 5,
+      "implicit.is_own_invalid": 29,
+      "implicit.is_own_limit": 13,
+      "implicit.profile_count_query": 12209,
+      "implicit.profile_select_query": 31904,
+      "implicit.with_profile": 333,
+      "selector.compile_unknown_palette": 4,
+      "selector.compile_unknown_problem": 4,
+      "selector.describe_unknown_palette_cardinality": 1,
+      "worker.failure_summary_record_diagnostic": 8
+    },
+    "worker_call_map_scope": "Saved wrapper cutoff metadata. No admitted compiler/search/verifier/oracle aggregate is reconstructed.",
+    "worker_call_raised": {
+      "graph.search": 12,
+      "implicit.batch_diagnostic_closed_query": 2,
+      "implicit.batch_diagnostic_profile": 44,
+      "implicit.build_palette_query": 6,
+      "implicit.count_query": 10,
+      "implicit.select_query": 4,
+      "implicit.with_profile": 12
+    },
+    "worker_call_started": {
+      "graph.search": 23,
+      "implicit.batch_diagnostic_closed_query": 2,
+      "implicit.batch_diagnostic_profile": 48,
+      "implicit.batch_diagnostic_reference_count_query": 4,
+      "implicit.batch_diagnostic_reference_select_query": 2,
+      "implicit.batch_diagnostic_static": 1,
+      "implicit.build_palette_query": 11,
+      "implicit.count_query": 11,
+      "implicit.describe": 5,
+      "implicit.is_own_invalid": 29,
+      "implicit.is_own_limit": 13,
+      "implicit.profile_count_query": 12209,
+      "implicit.profile_select_query": 31904,
+      "implicit.select_query": 4,
+      "implicit.with_profile": 345,
+      "selector.compile_unknown_palette": 4,
+      "selector.compile_unknown_problem": 4,
+      "selector.describe_unknown_palette_cardinality": 1,
+      "worker.failure_summary_record_diagnostic": 8
+    },
+    "worker_stage": "FULL_PACKET_WRITE"
+  },
+  "schema": "independent-complete-batch-saved-negative-review-v2",
+  "scientific_acceptance": false,
+  "semantic_replays": 0,
+  "sizing_oracle_calls": 0,
+  "source_only_or_saved_data": true,
+  "status": "PASS_PASSIVE_NEGATIVE_CONSISTENCY_ONLY",
+  "subject_function_calls": 0,
+  "subject_imports": 0,
+  "subject_sha256": "5c41ecdc77f6f88296614dff482c6187de13301a178c745a6b12e903de66467c",
+  "terminal_gate_passed": false,
+  "theorem_discovery": false,
+  "tools_stopped_after_freeze": true,
+  "unavailable_admitted_counts": {
+    "compiler_calls": null,
+    "oracle_calls": null,
+    "search_calls": null,
+    "verifier_calls": null
+  },
+  "unavailable_admitted_profile_metrics": null,
+  "unavailable_expanded_packet_bytes": null
+}

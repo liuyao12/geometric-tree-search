@@ -1,0 +1,78 @@
+{
+  "actual_invocations_unchanged": 1,
+  "after_html": {
+    "bytes": 16790,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/scoped-palettes.html",
+    "sha256": "6f155b81efeaecb9fa67a5608d4d8667259d4b9c81f967e0ab3e3fe6e4b97a03"
+  },
+  "after_reader": {
+    "bytes": 104135,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/reader.html",
+    "sha256": "2c3e0dfdb4a29708e6d5a42e727a90db9d0d15924fd2e4a1bc67a4593d13607d"
+  },
+  "author_identity": "/root",
+  "before_html": {
+    "bytes": 16651,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/scoped-palettes.html",
+    "sha256": "444416037f76d8fabff278c0244568c9a0a4149e84c968c49dc7dff379fec82e"
+  },
+  "before_reader": {
+    "bytes": 104127,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/reader.html",
+    "sha256": "f4621e9e2a9811f84cb07dbadb331def47b1dada559644c2509b5ffe3937289b"
+  },
+  "evidence_archive_unchanged": {
+    "bytes": 6086737,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/scoped-palettes-evidence.tar.gz",
+    "sha256": "87f0b9ca11ee47999b78f1e1343b5836ace4023d5d1a147f86e91aec1d7b69e8"
+  },
+  "exact_html_replacements": [
+    {
+      "after": "148.885\\,\\mathrm{s}",
+      "before": "148.885\\\\,\\mathrm{s}"
+    },
+    {
+      "after": "894.25\\,\\mathrm{MiB}",
+      "before": "894.25\\\\,\\mathrm{MiB}"
+    },
+    {
+      "after": "<time datetime=\"2026-10-20\">20 October 2026</time> \u00b7 UTC date",
+      "before": "20 October 2026 UTC"
+    },
+    {
+      "after": "mjx-container[display=\"true\"]{max-width:100%;overflow-x:auto;overflow-y:hidden;padding-bottom:4px}footer{border-top:",
+      "before": "footer{border-top:"
+    }
+  ],
+  "exact_reader_replacement": {
+    "after": "20 OCTOBER 2026 \u00b7 UTC DATE \u00b7 LATEST WHOLE-COHORT ATTEMPT",
+    "before": "20 OCTOBER 2026 UTC \u00b7 LATEST WHOLE-COHORT ATTEMPT"
+  },
+  "full_html_inverse_verified": true,
+  "grant_remaining": 0,
+  "metadata_correction": {
+    "prior_incorrect_reader_replacement": {
+      "after": "148.885\\,\\mathrm{s}",
+      "before": "148.885\\\\,\\mathrm{s}"
+    },
+    "prior_metadata": {
+      "bytes": 2477,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/scoped-palettes-publication-delta.json",
+      "sha256": "4342a5f9cf6581739fb7afac7aea1d634d0151a829ac18531d777a4b62e536b9"
+    },
+    "reason": "Inverse-verification loop variables shadowed the reader replacement metadata pair; the actual reader bytes and exact HTML inverse were correct and unchanged. Corrected literal pair now matches preserved reader preimage."
+  },
+  "reason": "Correct two LaTeX thin-space commands; separate UTC date label from year to avoid browser time-recognition ambiguity. No claim, experiment data or raw evidence change.",
+  "responsive_correction": {
+    "before_html": {
+      "bytes": 16692,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/scoped-palettes.html",
+      "sha256": "e97eb5e8ebe3e24958cf04c9437a9db770711ddadd4819bac9215f7e056ac61f"
+    },
+    "previous_document_scroll_width": 548,
+    "reason": "Phone QA identified overflow from display-math children; constrain only the display container and permit internal scrolling.",
+    "viewport_width_css_pixels": 375
+  },
+  "schema": "ROOT-publication-rendering-correction-v1",
+  "subject_calls": 0
+}
