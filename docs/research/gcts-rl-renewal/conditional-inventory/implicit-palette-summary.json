@@ -1,0 +1,31 @@
+{
+  "Source_scope": "Reviewed generic construction only; runtime equivalence remains unqualified.",
+  "actual_invocations": 1,
+  "complete_positive_packet": false,
+  "completed_case_counts": "UNAVAILABLE",
+  "component_counts": {
+    "compiler_calls": null,
+    "oracle_calls": null,
+    "search_calls": null,
+    "verifier_calls": null
+  },
+  "conservative_negative_ledger_bytes": 9487125,
+  "finite_component_qualified": false,
+  "fragment_bytes": 49135,
+  "fragment_handling": "Raw archive bytes only; not parsed, repaired or admitted.",
+  "full_pipeline_qualified": false,
+  "goal_status": "active_not_complete",
+  "mathematical_proof_admitted": false,
+  "planned_diagnostics": 33,
+  "planned_normal_cases": 15,
+  "remaining_invocations": 0,
+  "resource_qualified": false,
+  "runner_epoch_to_terminal_seconds": 180.140972541,
+  "runner_exit_code": 2,
+  "saved_negative_checks": 111,
+  "schema": "implicit-palette-negative-summary-v1",
+  "stage": "UNAVAILABLE",
+  "status": "WORK_DEADLINE_REJECTED_UNQUALIFIED",
+  "worker_exit_code": -15,
+  "worker_peak_bytes": 211124224
+}

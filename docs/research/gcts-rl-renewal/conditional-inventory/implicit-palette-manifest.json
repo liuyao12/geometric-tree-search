@@ -1,0 +1,708 @@
+{
+  "Root_disposition": {
+    "bytes": 1898,
+    "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/ROOT-negative-disposition-v3.json",
+    "sha256": "1666225443396d93e6fdde0b35800b0cbf4364c2b228a7e0d03fa07dcac3f4b7"
+  },
+  "Source_and_future_scopes": "Source argument is conditional; actual timed out and all mathematical outputs unqualified. Future Sources archived only, no execution or measured advantage.",
+  "archive_files": [
+    {
+      "bytes": 1183,
+      "member": "ROOT/ROOT-Source-scope-adoption-v2.json",
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/ROOT-Source-scope-adoption-v2.json",
+      "sha256": "b8fd8835be00313c48574d5cccf721dc5bf1142870da1b98f69e4cbcc3b60adc"
+    },
+    {
+      "bytes": 1140,
+      "member": "ROOT/ROOT-all-idle-fresh-barrier-v2.json",
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/ROOT-all-idle-fresh-barrier-v2.json",
+      "sha256": "07793788e5738bfe89026a487ab1234a62068bb4e7df970000b6e978118a2ad2"
+    },
+    {
+      "bytes": 2618,
+      "member": "ROOT/ROOT-grant-retirement-v2.json",
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/ROOT-grant-retirement-v2.json",
+      "sha256": "ce39c4f52d53f9d59691c2dcf1755df928ddef954e7738ebbe23c223047c8890"
+    },
+    {
+      "bytes": 1504,
+      "member": "ROOT/ROOT-negative-disposition-v2.json",
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/ROOT-negative-disposition-v2.json",
+      "sha256": "d112d6a6e5783d98e717f9e9fd99d4943d51c8d76e0f31a05148643bb9907390"
+    },
+    {
+      "bytes": 1898,
+      "member": "ROOT/ROOT-negative-disposition-v3.json",
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/ROOT-negative-disposition-v3.json",
+      "sha256": "1666225443396d93e6fdde0b35800b0cbf4364c2b228a7e0d03fa07dcac3f4b7"
+    },
+    {
+      "bytes": 3276,
+      "member": "ROOT/ROOT-next-workpackages-v1.json",
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/ROOT-next-workpackages-v1.json",
+      "sha256": "fe1f4f6e15253c5f1710d2f2e11734ce42d6330dd4e7b0b1a5bd5b0a4f59cdab"
+    },
+    {
+      "bytes": 960,
+      "member": "ROOT/ROOT-previous-turn-assessment-v1.json",
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/ROOT-previous-turn-assessment-v1.json",
+      "sha256": "7b6a4edede1094ec557521fd852d3b07ed87c6e21f9f318ebbee5520dbae0f15"
+    },
+    {
+      "bytes": 822,
+      "member": "ROOT/ROOT-prospective-v1-retirement.json",
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/ROOT-prospective-v1-retirement.json",
+      "sha256": "6a798cc46232f8d5c06b401e71af97c2aa34589c6fe8d294102157e9e94229cf"
+    },
+    {
+      "bytes": 297,
+      "member": "ROOT/ROOT-storage-observation-v1.json",
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/ROOT-storage-observation-v1.json",
+      "sha256": "3dbab464a94a852bbb448eb9a21f2e82a8ee46d304ff02133cc43db7b86b3c5f"
+    },
+    {
+      "bytes": 537,
+      "member": "ROOT/actual-implicit-v2/CONSUMED.json",
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/actual-implicit-v2/CONSUMED.json",
+      "sha256": "6a7edd39740664f89f3403a5a88c6c00d8a3418b00fc5d782e0e7c212a541aa8"
+    },
+    {
+      "bytes": 269,
+      "member": "ROOT/actual-implicit-v2/WORKER_CONSUMED.json",
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/actual-implicit-v2/WORKER_CONSUMED.json",
+      "sha256": "f3e0c667cc51f4f093d141e4c2a3d705dbf7b264ea32169b182659a7abe04f96"
+    },
+    {
+      "bytes": 49135,
+      "member": "ROOT/actual-implicit-v2/failed-prefix.json.partial",
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/actual-implicit-v2/failed-prefix.json.partial",
+      "sha256": "7db7a42e49d472ab902f9cac77106fc1b286586aa691630ffebeb23939151407"
+    },
+    {
+      "bytes": 5635,
+      "member": "ROOT/actual-implicit-v2/runner-receipt.json",
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/actual-implicit-v2/runner-receipt.json",
+      "sha256": "4cd2ff55b81d2c0488da788edf2d5cd6a73136a39526fbc5d2e978b7ab2365e4"
+    },
+    {
+      "bytes": 0,
+      "member": "ROOT/actual-implicit-v2/stderr.bin",
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/actual-implicit-v2/stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 0,
+      "member": "ROOT/actual-implicit-v2/stdout.bin",
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/actual-implicit-v2/stdout.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 21657,
+      "member": "ROOT/basic-tiling-algorithm-current.md",
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/basic-tiling-algorithm-current.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    {
+      "bytes": 9545,
+      "member": "ROOT/build_negative_report_v1.py",
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/build_negative_report_v1.py",
+      "sha256": "f49ecc97e67dcfd2ab711b6c6471a6eed5fb6f747ea0d44605f4abaf496fe267"
+    },
+    {
+      "bytes": 5966,
+      "member": "ROOT/implicit-Source-only-offer-v1.json",
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/implicit-Source-only-offer-v1.json",
+      "sha256": "2df91713aee7c1fa77411aa2e24954f023f7e36e18c907b4b481704dcf4cf5ee"
+    },
+    {
+      "bytes": 6393,
+      "member": "ROOT/implicit-Source-only-offer-v2.json",
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/implicit-Source-only-offer-v2.json",
+      "sha256": "9d7f60650d0295dfa71cb0ee607ee43aa14336a83f6f583432b9fb6a20604586"
+    },
+    {
+      "bytes": 330,
+      "member": "ROOT/implicit-authorization-false-v1.json",
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/implicit-authorization-false-v1.json",
+      "sha256": "cea144084bf6b4c01b9f16ebac31f6c06b432dc122cf5dfa290850cfb9e7bd31"
+    },
+    {
+      "bytes": 345,
+      "member": "ROOT/implicit-authorization-false-v2.json",
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/implicit-authorization-false-v2.json",
+      "sha256": "c9fd36eec2174f256dda34ed0655fdb0f7fb21457fdd7e70d88fb0c6638cef48"
+    },
+    {
+      "bytes": 759,
+      "member": "ROOT/implicit-authorization-once-v2.json",
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/implicit-authorization-once-v2.json",
+      "sha256": "cd15a2bdbab981810633bdc43c4b79bc6d04b590a2a70e884d239d8060cfa9d2"
+    },
+    {
+      "bytes": 15454,
+      "member": "ROOT/implicit-declaration-v1.json",
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/implicit-declaration-v1.json",
+      "sha256": "a61b8acfda79664fb50b2acd15535cac411d3a1352a278a322f8d21af24788f5"
+    },
+    {
+      "bytes": 713527,
+      "member": "ROOT/implicit-inputs-DRAFT-v1.json",
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/implicit-inputs-DRAFT-v1.json",
+      "sha256": "7d0f5981d8b129724351e1b800e1ece88ce00871876ae36ab9b9ad51feb21b30"
+    },
+    {
+      "bytes": 732948,
+      "member": "ROOT/implicit-inputs-DRAFT-v2.json",
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/implicit-inputs-DRAFT-v2.json",
+      "sha256": "9ac9dfa9e63e42b0e9d3a5a9e9f2d3082f8c3e84cfb5ec0b85ba3278a8ea5afa"
+    },
+    {
+      "bytes": 740651,
+      "member": "ROOT/implicit-inputs-v1.json",
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/implicit-inputs-v1.json",
+      "sha256": "10fe60d005a2f586a76bf69ae30317b8dae538ba9f126714b9f71ffa474a89b4"
+    },
+    {
+      "bytes": 11285,
+      "member": "ROOT/implicit-negative-template.html",
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/implicit-negative-template.html",
+      "sha256": "b7db1eded4dd0febf0934b86ac9cb05b0df2445913687e43f9d41511b49821bf"
+    },
+    {
+      "bytes": 286,
+      "member": "ROOT/implicit-plan-authorized-v2-terminal-observation/CONSUMED.json",
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/implicit-plan-authorized-v2-terminal-observation/CONSUMED.json",
+      "sha256": "aec4a544903f801ebdc1fa9c4be37bb56af3a31639e31e9c3b0dc40660d788cc"
+    },
+    {
+      "bytes": 0,
+      "member": "ROOT/implicit-plan-authorized-v2-terminal-observation/stderr.bin",
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/implicit-plan-authorized-v2-terminal-observation/stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 151,
+      "member": "ROOT/implicit-plan-authorized-v2-terminal-observation/stdout.bin",
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/implicit-plan-authorized-v2-terminal-observation/stdout.bin",
+      "sha256": "5635c16328e6c43dd57bb23f0dea3054b250022ad602e096a9b7d62c2dbb2b9c"
+    },
+    {
+      "bytes": 1608,
+      "member": "ROOT/implicit-plan-authorized-v2-terminal-observation/terminal.json",
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/implicit-plan-authorized-v2-terminal-observation/terminal.json",
+      "sha256": "e5ef20aaa8a449aca991e7034a015d9d3bd586576027a1bd81d0f8e9e52ad9ce"
+    },
+    {
+      "bytes": 3089,
+      "member": "ROOT/implicit-plan-authorized-v2.json",
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/implicit-plan-authorized-v2.json",
+      "sha256": "df6ceb94019c9520af7b9ff2d65dc85880d883c2848f119f105e0eb84ca16317"
+    },
+    {
+      "bytes": 3090,
+      "member": "ROOT/implicit-plan-false-v1.json",
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/implicit-plan-false-v1.json",
+      "sha256": "543a36b74bc69bedb5a78af5684fa77d86cf64397a8197e603f01975de775f83"
+    },
+    {
+      "bytes": 3090,
+      "member": "ROOT/implicit-plan-false-v2.json",
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/implicit-plan-false-v2.json",
+      "sha256": "45a45834371095a1c9cda9b9fe28d7c92c077e1b0c702310fb6d577a625d87a9"
+    },
+    {
+      "bytes": 14857,
+      "member": "ROOT/implicit-report-template.html",
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/implicit-report-template.html",
+      "sha256": "70474d5be090aaa58f90c99e14033727bc91c062fc573316d151eac9fe2bbff9"
+    },
+    {
+      "bytes": 10714,
+      "member": "ROOT/implicit-runtime-closure-v1.json",
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/implicit-runtime-closure-v1.json",
+      "sha256": "0caa07018fa127bed5cf402942dd6d125537502b91704305fa52fd312fe23450"
+    },
+    {
+      "bytes": 11719,
+      "member": "ROOT/implicit-runtime-closure-v2.json",
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/implicit-runtime-closure-v2.json",
+      "sha256": "e1760a6529df6fc1a6dbd8789432bd007e10064b9ea098bd696dba8f28a119a5"
+    },
+    {
+      "bytes": 5579,
+      "member": "ROOT/observe_implicit_once_v1.py",
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/observe_implicit_once_v1.py",
+      "sha256": "8d6b0e177b9c7236d9e12fc31d5c786e5aa395e2dfed8fc48adcd5b005df0dcf"
+    },
+    {
+      "bytes": 56779,
+      "member": "ROOT/qualify_implicit_worker_v1.py",
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/qualify_implicit_worker_v1.py",
+      "sha256": "88dbad5fdd008777bb47de8cbed48742f93ee319a27c2ab1354f9178684176ca"
+    },
+    {
+      "bytes": 427,
+      "member": "ROOT/reader-append-custody-v1.json",
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/reader-append-custody-v1.json",
+      "sha256": "991057d8c615bbb05c4d1f3f350530ee7f15421231a676b902805d3b3d38bbe9"
+    },
+    {
+      "bytes": 103002,
+      "member": "ROOT/reader-preimage-v1.html",
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/reader-preimage-v1.html",
+      "sha256": "da7649d1234bac45dace2b40c1ac9f37e89df00b45db64181d4d03e271c8f309"
+    },
+    {
+      "bytes": 31634,
+      "member": "ROOT/run_implicit_once_v1.py",
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/run_implicit_once_v1.py",
+      "sha256": "080db97068bca25c5ef2cddaa704c65961398617f1727981ef53efc19a3085b7"
+    },
+    {
+      "bytes": 9441,
+      "member": "ROOT/worker-custody-prefix-DRAFT.py",
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/worker-custody-prefix-DRAFT.py",
+      "sha256": "845a3cb8590f5acc96592b63ccf8e3fae7bdf5c4bee4bed91ddef6c6f1e36a98"
+    },
+    {
+      "bytes": 6792,
+      "member": "ROOT/worker-diagnostics-DRAFT.py",
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/worker-diagnostics-DRAFT.py",
+      "sha256": "7daeae4c5b07ebe08dbc571babfe64193dfc6b4270d411de5caa3a706bfd0c38"
+    },
+    {
+      "bytes": 29602,
+      "member": "ROOT/worker-reference-DRAFT.py",
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/worker-reference-DRAFT.py",
+      "sha256": "366fad0ab33f961af72d09ed2e1cdb0e2697bd084a655892a5637d8dd42b2377"
+    },
+    {
+      "bytes": 6522,
+      "member": "Bv1/API-v1.json",
+      "path": "/private/tmp/gcts-implicit-wang-B-20261020-v1/API-v1.json",
+      "sha256": "fe85f8a844f3ccd471f3582bc279b73d231b461fd9b15cb67218e9fa7d6dfad0"
+    },
+    {
+      "bytes": 4252,
+      "member": "Bv1/conformance-v1.json",
+      "path": "/private/tmp/gcts-implicit-wang-B-20261020-v1/conformance-v1.json",
+      "sha256": "1e1b309dfccb8be02ead5a7e1c75f18bb92f1c00032497e90e5af60355b3e095"
+    },
+    {
+      "bytes": 6825,
+      "member": "Bv1/correspondence-v1.html",
+      "path": "/private/tmp/gcts-implicit-wang-B-20261020-v1/correspondence-v1.html",
+      "sha256": "357e6883367182c19d044d93a39234ec354790438390f3c397bad0a97b128aef"
+    },
+    {
+      "bytes": 2317,
+      "member": "Bv1/handoff-v1.json",
+      "path": "/private/tmp/gcts-implicit-wang-B-20261020-v1/handoff-v1.json",
+      "sha256": "c687934e61d58e0b7d891d40f465e5189b80eda77dda40f45e34c1ea53381eda"
+    },
+    {
+      "bytes": 22565,
+      "member": "Bv1/implicit_wang_palette_v1.py",
+      "path": "/private/tmp/gcts-implicit-wang-B-20261020-v1/implicit_wang_palette_v1.py",
+      "sha256": "fa6a6a122fffe88111fe010a6af5b9676684caeddf62678b5d2ec0d9bc77e7ae"
+    },
+    {
+      "bytes": 7122,
+      "member": "Bv2/API-v2.json",
+      "path": "/private/tmp/gcts-implicit-wang-B-20261020-v2/API-v2.json",
+      "sha256": "1b0c833c88cc23a76c0b3289de4097bf03ac62ab72340f02456eb13f8d47d18c"
+    },
+    {
+      "bytes": 4925,
+      "member": "Bv2/conformance-v2.json",
+      "path": "/private/tmp/gcts-implicit-wang-B-20261020-v2/conformance-v2.json",
+      "sha256": "5a90a1e61e8a21f6e42a501249315e261b0c5eccd7464860405ceb92bc556b40"
+    },
+    {
+      "bytes": 7097,
+      "member": "Bv2/correspondence-v2.html",
+      "path": "/private/tmp/gcts-implicit-wang-B-20261020-v2/correspondence-v2.html",
+      "sha256": "a542fc2a6b80a2d487b2d82502626f5b04d265bb3c516d486099ca25887516a0"
+    },
+    {
+      "bytes": 2150,
+      "member": "Bv2/handoff-v2.json",
+      "path": "/private/tmp/gcts-implicit-wang-B-20261020-v2/handoff-v2.json",
+      "sha256": "3859aea82cc47a545f6b55aba6b3db762b23d28551fd509cb4e9c2c27a43c30e"
+    },
+    {
+      "bytes": 22683,
+      "member": "Bv2/implicit_wang_palette_v2.py",
+      "path": "/private/tmp/gcts-implicit-wang-B-20261020-v2/implicit_wang_palette_v2.py",
+      "sha256": "9ba1bd5ea53c899a24488ff474ed77f88ab4d9f159c3d4131a6c8c3d1cad73cf"
+    },
+    {
+      "bytes": 4499,
+      "member": "Bv2/proof-delta-v2.json",
+      "path": "/private/tmp/gcts-implicit-wang-B-20261020-v2/proof-delta-v2.json",
+      "sha256": "e4fe5e82f981b793c997f4ec7b264ae8a0bce495be70fea62f94082c463558ff"
+    },
+    {
+      "bytes": 5424,
+      "member": "L/API-v1.json",
+      "path": "/private/tmp/gcts-implicit-graph-L-20261020-v1/API-v1.json",
+      "sha256": "a7bb26fa6c5d0b1432dd34df80a0edc09b1350283a74dfcdc05cd5251a9c8103"
+    },
+    {
+      "bytes": 5777,
+      "member": "L/Source-contract-v1.json",
+      "path": "/private/tmp/gcts-implicit-graph-L-20261020-v1/Source-contract-v1.json",
+      "sha256": "d63363fe2850aa1d201d56bbd002025e9ad6e115e4b0f6c058419073e1085212"
+    },
+    {
+      "bytes": 2969,
+      "member": "L/author-static-audit-v1.json",
+      "path": "/private/tmp/gcts-implicit-graph-L-20261020-v1/author-static-audit-v1.json",
+      "sha256": "65e1878582704ad5ed9485dd43477c9e10b112bb3bf5bb6bef1449062e0d4baa"
+    },
+    {
+      "bytes": 5048,
+      "member": "L/conformance-and-obligations-v1.json",
+      "path": "/private/tmp/gcts-implicit-graph-L-20261020-v1/conformance-and-obligations-v1.json",
+      "sha256": "a52086b6f92ce5a203d96a4f5f50a8df693077f0311190e39d5ebe92c5c05321"
+    },
+    {
+      "bytes": 18376,
+      "member": "L/freeze_source_packet_PREFLIGHT_v1.py",
+      "path": "/private/tmp/gcts-implicit-graph-L-20261020-v1/freeze_source_packet_PREFLIGHT_v1.py",
+      "sha256": "405cdc0bf5dca1e9a2b76b49384087c76ae1fc686836596fe2723a139ff60530"
+    },
+    {
+      "bytes": 19202,
+      "member": "L/freeze_source_packet_v1.py",
+      "path": "/private/tmp/gcts-implicit-graph-L-20261020-v1/freeze_source_packet_v1.py",
+      "sha256": "f1df0d919b1c5c586005d20e3a60b5cc27df8f9784625ff24c20e7197557b549"
+    },
+    {
+      "bytes": 2885,
+      "member": "L/handoff-v1.json",
+      "path": "/private/tmp/gcts-implicit-graph-L-20261020-v1/handoff-v1.json",
+      "sha256": "ef10ce57b2444c9c4e1de400d9d15589b2de48f80f2efe87ab61bb762368e622"
+    },
+    {
+      "bytes": 36892,
+      "member": "L/implicit_wang_point_search_v1.py",
+      "path": "/private/tmp/gcts-implicit-graph-L-20261020-v1/implicit_wang_point_search_v1.py",
+      "sha256": "1a83c9c59b2e1862d5a2acda69b826ccc3a8e2cf4899e824286f711f8bf25981"
+    },
+    {
+      "bytes": 3202,
+      "member": "L/prospective-fixtures-v1.json",
+      "path": "/private/tmp/gcts-implicit-graph-L-20261020-v1/prospective-fixtures-v1.json",
+      "sha256": "1f751096e01c2436c830fdc7fc749b9923f1653e1496dd778fa707ee8ed97817"
+    },
+    {
+      "bytes": 4810,
+      "member": "L/snapshot-API-v1.json",
+      "path": "/private/tmp/gcts-implicit-graph-L-20261020-v1/snapshot-API-v1.json",
+      "sha256": "d02b9ff7d3659e05db04b85764d5e73807b9cf89f7e0c246112b6859ffdc2a9d"
+    },
+    {
+      "bytes": 17387,
+      "member": "C/audit_full_offer_v1.py",
+      "path": "/private/tmp/gcts-implicit-review-C-20261020-v1/audit_full_offer_v1.py",
+      "sha256": "ce492d537e62e47cecc7702189697282f5c7e5f70b87163a3c43cfcf95ac1bd8"
+    },
+    {
+      "bytes": 12805,
+      "member": "C/audit_full_offer_v2.py",
+      "path": "/private/tmp/gcts-implicit-review-C-20261020-v1/audit_full_offer_v2.py",
+      "sha256": "70ccba69dcfd5a6386291869085aea7ed5b32531334caa07d41ffa4a8cf0c3ef"
+    },
+    {
+      "bytes": 16257,
+      "member": "C/audit_saved_negative_v2.py",
+      "path": "/private/tmp/gcts-implicit-review-C-20261020-v1/audit_saved_negative_v2.py",
+      "sha256": "3414b119eba1b85b4d0e8ae462d784dffaedded779e0e37031449652c9840694"
+    },
+    {
+      "bytes": 6527,
+      "member": "C/freeze_final_grant_delta_v2.py",
+      "path": "/private/tmp/gcts-implicit-review-C-20261020-v1/freeze_final_grant_delta_v2.py",
+      "sha256": "f829ab8a378dd8c39410e6439331ea5bd1cba411996886e33dcaec42941c65a6"
+    },
+    {
+      "bytes": 16198,
+      "member": "C/freeze_obligations_v1.py",
+      "path": "/private/tmp/gcts-implicit-review-C-20261020-v1/freeze_obligations_v1.py",
+      "sha256": "26334c98481ece653ba702e1e5f49cdfe2fdfbeef23a41dd176fb7cd276efdf6"
+    },
+    {
+      "bytes": 5564,
+      "member": "C/freeze_palette_Source_negative_v1.py",
+      "path": "/private/tmp/gcts-implicit-review-C-20261020-v1/freeze_palette_Source_negative_v1.py",
+      "sha256": "3347188543ac9d4bff0c39ac8c7a5e1d766e956a7d1db52b385a79feb92da61b"
+    },
+    {
+      "bytes": 9447,
+      "member": "C/freeze_palette_Source_review_v2.py",
+      "path": "/private/tmp/gcts-implicit-review-C-20261020-v1/freeze_palette_Source_review_v2.py",
+      "sha256": "e18d39da8588bcb3f8454b1e8c839ebbec83a5176a799417cc947055eea2cb2e"
+    },
+    {
+      "bytes": 1433,
+      "member": "C/freeze_palette_Source_review_v2b.py",
+      "path": "/private/tmp/gcts-implicit-review-C-20261020-v1/freeze_palette_Source_review_v2b.py",
+      "sha256": "db9069381c6469c15b32169ecbf074dd2274aaa886c3f2d8f43be73cf9cc1ddb"
+    },
+    {
+      "bytes": 16806,
+      "member": "C/independent-implicit-obligations-v1.json",
+      "path": "/private/tmp/gcts-implicit-review-C-20261020-v1/independent-implicit-obligations-v1.json",
+      "sha256": "8cb6e257638ec78463b5b7542f928d7b4a6d6f885cb5ba5a8aee4f5fd5321b06"
+    },
+    {
+      "bytes": 330,
+      "member": "C/prospective-v1-negative-preimages/authorization.json",
+      "path": "/private/tmp/gcts-implicit-review-C-20261020-v1/prospective-v1-negative-preimages/authorization.json",
+      "sha256": "cea144084bf6b4c01b9f16ebac31f6c06b432dc122cf5dfa290850cfb9e7bd31"
+    },
+    {
+      "bytes": 10714,
+      "member": "C/prospective-v1-negative-preimages/closure.json",
+      "path": "/private/tmp/gcts-implicit-review-C-20261020-v1/prospective-v1-negative-preimages/closure.json",
+      "sha256": "0caa07018fa127bed5cf402942dd6d125537502b91704305fa52fd312fe23450"
+    },
+    {
+      "bytes": 15454,
+      "member": "C/prospective-v1-negative-preimages/declaration.json",
+      "path": "/private/tmp/gcts-implicit-review-C-20261020-v1/prospective-v1-negative-preimages/declaration.json",
+      "sha256": "a61b8acfda79664fb50b2acd15535cac411d3a1352a278a322f8d21af24788f5"
+    },
+    {
+      "bytes": 36892,
+      "member": "C/prospective-v1-negative-preimages/graph.py",
+      "path": "/private/tmp/gcts-implicit-review-C-20261020-v1/prospective-v1-negative-preimages/graph.py",
+      "sha256": "1a83c9c59b2e1862d5a2acda69b826ccc3a8e2cf4899e824286f711f8bf25981"
+    },
+    {
+      "bytes": 22683,
+      "member": "C/prospective-v1-negative-preimages/implicit.py",
+      "path": "/private/tmp/gcts-implicit-review-C-20261020-v1/prospective-v1-negative-preimages/implicit.py",
+      "sha256": "9ba1bd5ea53c899a24488ff474ed77f88ab4d9f159c3d4131a6c8c3d1cad73cf"
+    },
+    {
+      "bytes": 740651,
+      "member": "C/prospective-v1-negative-preimages/input.json",
+      "path": "/private/tmp/gcts-implicit-review-C-20261020-v1/prospective-v1-negative-preimages/input.json",
+      "sha256": "10fe60d005a2f586a76bf69ae30317b8dae538ba9f126714b9f71ffa474a89b4"
+    },
+    {
+      "bytes": 5579,
+      "member": "C/prospective-v1-negative-preimages/observer.py",
+      "path": "/private/tmp/gcts-implicit-review-C-20261020-v1/prospective-v1-negative-preimages/observer.py",
+      "sha256": "8d6b0e177b9c7236d9e12fc31d5c786e5aa395e2dfed8fc48adcd5b005df0dcf"
+    },
+    {
+      "bytes": 5966,
+      "member": "C/prospective-v1-negative-preimages/offer.json",
+      "path": "/private/tmp/gcts-implicit-review-C-20261020-v1/prospective-v1-negative-preimages/offer.json",
+      "sha256": "2df91713aee7c1fa77411aa2e24954f023f7e36e18c907b4b481704dcf4cf5ee"
+    },
+    {
+      "bytes": 3090,
+      "member": "C/prospective-v1-negative-preimages/plan.json",
+      "path": "/private/tmp/gcts-implicit-review-C-20261020-v1/prospective-v1-negative-preimages/plan.json",
+      "sha256": "543a36b74bc69bedb5a78af5684fa77d86cf64397a8197e603f01975de775f83"
+    },
+    {
+      "bytes": 31634,
+      "member": "C/prospective-v1-negative-preimages/runner.py",
+      "path": "/private/tmp/gcts-implicit-review-C-20261020-v1/prospective-v1-negative-preimages/runner.py",
+      "sha256": "080db97068bca25c5ef2cddaa704c65961398617f1727981ef53efc19a3085b7"
+    },
+    {
+      "bytes": 27193,
+      "member": "C/prospective-v1-negative-preimages/selector.py",
+      "path": "/private/tmp/gcts-implicit-review-C-20261020-v1/prospective-v1-negative-preimages/selector.py",
+      "sha256": "02cf1718e09c1eadb4eda4811436e1c7139cb2e1c255f9d73894e0e3b5d21b43"
+    },
+    {
+      "bytes": 56779,
+      "member": "C/prospective-v1-negative-preimages/worker.py",
+      "path": "/private/tmp/gcts-implicit-review-C-20261020-v1/prospective-v1-negative-preimages/worker.py",
+      "sha256": "88dbad5fdd008777bb47de8cbed48742f93ee319a27c2ab1354f9178684176ca"
+    },
+    {
+      "bytes": 27075,
+      "member": "C/typed-final-grant-delta-review-v2.json",
+      "path": "/private/tmp/gcts-implicit-review-C-20261020-v1/typed-final-grant-delta-review-v2.json",
+      "sha256": "7dad06d4a9d52c760256de1dd1511bacb8444deb40ab6d50d8879139ab8e06ef"
+    },
+    {
+      "bytes": 53079,
+      "member": "C/typed-implicit-Source-prospective-negative-v1.json",
+      "path": "/private/tmp/gcts-implicit-review-C-20261020-v1/typed-implicit-Source-prospective-negative-v1.json",
+      "sha256": "dd655c779e1790c3152c629a0857c416d4b0981c0266025f4205dfdee62f383e"
+    },
+    {
+      "bytes": 46330,
+      "member": "C/typed-implicit-Source-prospective-review-v2.json",
+      "path": "/private/tmp/gcts-implicit-review-C-20261020-v1/typed-implicit-Source-prospective-review-v2.json",
+      "sha256": "c3be3652e2b75a49239b096c8728cedf796100b74ec194b19db405c63b821672"
+    },
+    {
+      "bytes": 5007,
+      "member": "C/typed-implicit-palette-Source-negative-v1.json",
+      "path": "/private/tmp/gcts-implicit-review-C-20261020-v1/typed-implicit-palette-Source-negative-v1.json",
+      "sha256": "479c5abd74a92543d925881791db9a7bd995f948a9e73f910b369ddf204ce77e"
+    },
+    {
+      "bytes": 8853,
+      "member": "C/typed-implicit-palette-Source-review-v2.json",
+      "path": "/private/tmp/gcts-implicit-review-C-20261020-v1/typed-implicit-palette-Source-review-v2.json",
+      "sha256": "a442b84a8bcc16ecbe9f83a89abfb2a39343223103505fea009454f91d708ae2"
+    },
+    {
+      "bytes": 9336,
+      "member": "C/typed-implicit-palette-Source-review-v2b.json",
+      "path": "/private/tmp/gcts-implicit-review-C-20261020-v1/typed-implicit-palette-Source-review-v2b.json",
+      "sha256": "1a493194569895bbba73d84be2e85419b7810c3ae0958bd1cd7a675ab224d122"
+    },
+    {
+      "bytes": 41478,
+      "member": "C/typed-saved-actual-negative-review-v2.json",
+      "path": "/private/tmp/gcts-implicit-review-C-20261020-v1/typed-saved-actual-negative-review-v2.json",
+      "sha256": "8788110f3cba84b889ec4ec870f1f894e02b640f14e8edd1160326c9e909bd98"
+    },
+    {
+      "bytes": 8735,
+      "member": "future-B/API-v1.json",
+      "path": "/private/tmp/gcts-implicit-batch-B-20261020-v1/API-v1.json",
+      "sha256": "99eaedf0c32a6f3baabde77e2de6f25bca1c1c6e2c729a5a049c08cb6d54617a"
+    },
+    {
+      "bytes": 3169,
+      "member": "future-B/handoff-v1.json",
+      "path": "/private/tmp/gcts-implicit-batch-B-20261020-v1/handoff-v1.json",
+      "sha256": "43134e49bccdb15dddaf6e406408b22942ccf720501ed27dda8c08d2e12cff5e"
+    },
+    {
+      "bytes": 36818,
+      "member": "future-B/implicit_wang_batch_v1.py",
+      "path": "/private/tmp/gcts-implicit-batch-B-20261020-v1/implicit_wang_batch_v1.py",
+      "sha256": "70d065a3c9067773ffdcb4c30f1ba8e33467ffc31683127ba4f4bb25756f97bb"
+    },
+    {
+      "bytes": 6293,
+      "member": "future-B/proof-delta-v1.json",
+      "path": "/private/tmp/gcts-implicit-batch-B-20261020-v1/proof-delta-v1.json",
+      "sha256": "24bc03d1d6de3dfcaab89297058c1e91a2200abe60b64b2e047e83e4aba0638a"
+    },
+    {
+      "bytes": 3070,
+      "member": "future-L/API-v1.json",
+      "path": "/private/tmp/gcts-implicit-retention-L-20261020-v1/API-v1.json",
+      "sha256": "b4cb1a6b8f9a8cd1b079f3c7351bf22bb7bf4a8f211d091548668c5b81f999f4"
+    },
+    {
+      "bytes": 6372,
+      "member": "future-L/Source-contract-v1.json",
+      "path": "/private/tmp/gcts-implicit-retention-L-20261020-v1/Source-contract-v1.json",
+      "sha256": "02a03c3d829e1071ed8c766ef9b0137f9bb850a7b7d6019ba74114073b47a8ac"
+    },
+    {
+      "bytes": 2729,
+      "member": "future-L/author-static-audit-v1.json",
+      "path": "/private/tmp/gcts-implicit-retention-L-20261020-v1/author-static-audit-v1.json",
+      "sha256": "06bc4a0fc617f9df4da17ddcbca41d81d0343abacd01c2ec3469f5b4a909893f"
+    },
+    {
+      "bytes": 13989,
+      "member": "future-L/freeze_retention_source_v1.py",
+      "path": "/private/tmp/gcts-implicit-retention-L-20261020-v1/freeze_retention_source_v1.py",
+      "sha256": "fcd4c43cd03de377f98336263f75ad2eebba65a2599bcfb8bc3b546bd9d19a9b"
+    },
+    {
+      "bytes": 3189,
+      "member": "future-L/handoff-v1.json",
+      "path": "/private/tmp/gcts-implicit-retention-L-20261020-v1/handoff-v1.json",
+      "sha256": "60dcb6740edaf5298b262cfb2fc24c7cdc3f6b871abe3b08a9ad492b10d64296"
+    },
+    {
+      "bytes": 8960,
+      "member": "future-L/parent-to-summary-first.patch",
+      "path": "/private/tmp/gcts-implicit-retention-L-20261020-v1/parent-to-summary-first.patch",
+      "sha256": "88daf2e4b2127e58338a9553861b65a044b52ea4398f56db16cbcb3fe79845d1"
+    },
+    {
+      "bytes": 2393,
+      "member": "future-L/prospective-fault-cases-v1.json",
+      "path": "/private/tmp/gcts-implicit-retention-L-20261020-v1/prospective-fault-cases-v1.json",
+      "sha256": "648aaf98b15ac73cf95835cf2581d6340d01a872db2ffe0d51013cdc01ce5ef8"
+    },
+    {
+      "bytes": 63902,
+      "member": "future-L/qualify_implicit_worker_v2_summary_first.py",
+      "path": "/private/tmp/gcts-implicit-retention-L-20261020-v1/qualify_implicit_worker_v2_summary_first.py",
+      "sha256": "1eb8eb968a415c4120f1266883babad9b9c1631e3ab0e2e1b30fede5ecffa21a"
+    },
+    {
+      "bytes": 8960,
+      "member": "future-L/summary-first-to-parent.patch",
+      "path": "/private/tmp/gcts-implicit-retention-L-20261020-v1/summary-first-to-parent.patch",
+      "sha256": "b8f5c748a6923b26f288654ebfbbd3cddf3135d2302d3e657ae9ea06c16aed04"
+    },
+    {
+      "bytes": 6803,
+      "member": "future-L/summary_helpers.fragment.py",
+      "path": "/private/tmp/gcts-implicit-retention-L-20261020-v1/summary_helpers.fragment.py",
+      "sha256": "5d3cccda96a767baa206e22807b38a77a2672924b563d9f83756fffe01258778"
+    },
+    {
+      "bytes": 27193,
+      "member": "inherited-Source/wang_unknown_certificate_initializer_v1.py",
+      "path": "/private/tmp/gcts-fixed-initializer-ROOT-20261020-v1/wang_unknown_certificate_initializer_v1.py",
+      "sha256": "02cf1718e09c1eadb4eda4811436e1c7139cb2e1c255f9d73894e0e3b5d21b43"
+    }
+  ],
+  "archive_members": 110,
+  "archive_raw_bytes": 4268658,
+  "assets": [
+    {
+      "bytes": 12933,
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/publication/implicit-palette.html",
+      "sha256": "eba5eaa144bdd61d951ff0e41ee679b9e86220650ca47dcdee561f2094b20c7d"
+    },
+    {
+      "bytes": 19700,
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/publication/implicit-palette-data.json",
+      "sha256": "3b65e405f09ed08b35d33248d1e89b6b0944e764da46ea0b0a35a79bd5ec6b17"
+    },
+    {
+      "bytes": 1077,
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/publication/implicit-palette-summary.json",
+      "sha256": "4eeb59b99728bbe541b97ae02e9963c36a1d19e5ec0496529f9b3943433ca121"
+    },
+    {
+      "bytes": 507784,
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/publication/implicit-palette-evidence.tar.gz",
+      "sha256": "e63809c5b9760981714ad44eee29e280738728071717431ee7e98be277f1ee58"
+    },
+    {
+      "bytes": 103506,
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/publication/reader.html",
+      "sha256": "fc9ca318443e201a42c60aaaa0bc087de47cb87e3815af14301dc9ac76830e5e"
+    }
+  ],
+  "detached_review": "implicit-palette-review.json excluded to avoid self-hash cycle",
+  "index_accessed_or_modified": false,
+  "negative_review": {
+    "bytes": 41478,
+    "path": "/private/tmp/gcts-implicit-review-C-20261020-v1/typed-saved-actual-negative-review-v2.json",
+    "sha256": "8788110f3cba84b889ec4ec870f1f894e02b640f14e8edd1160326c9e909bd98"
+  },
+  "parent_commit": "281116a44c128d5fb44693329e61e8d0db597e32",
+  "reader_append_custody": {
+    "bytes": 427,
+    "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/reader-append-custody-v1.json",
+    "sha256": "991057d8c615bbb05c4d1f3f350530ee7f15421231a676b902805d3b3d38bbe9"
+  },
+  "schema": "implicit-palette-negative-publication-manifest-v1",
+  "status": "WORK_DEADLINE_REJECTED_UNQUALIFIED"
+}

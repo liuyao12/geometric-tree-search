@@ -1,0 +1,522 @@
+{
+  "Root_disposition": {
+    "Source_scope": "The manual Source argument remains conditional; the current subject was attempted and produced no complete runtime-equivalence qualification. No new equivalence or proof-search claim follows.",
+    "UTC": "2026-10-20T04:51:56.882817+00:00",
+    "author_identity": "/root",
+    "finite_component_qualified": false,
+    "fragment_use": "Raw byte custody only; not parsed, completed or used as mathematical evidence.",
+    "full_pipeline_qualified": false,
+    "independent_saved_negative_review": {
+      "bytes": 41478,
+      "path": "/private/tmp/gcts-implicit-review-C-20261020-v1/typed-saved-actual-negative-review-v2.json",
+      "sha256": "8788110f3cba84b889ec4ec870f1f894e02b640f14e8edd1160326c9e909bd98"
+    },
+    "known_scope": "One parent180s positive-gate rejection with TERM/reaped/groupabsence/stablelogs/negativecustody/ledger/terminal before210. HWM is standalone recorded usage, not fullresourcequalification.",
+    "mathematical_proof_accepted": false,
+    "metadata_delta": "Clarify attempted execution versus unqualified runtime equivalence; all outcomes, grants, raw data and Sources unchanged.",
+    "no_rescue": true,
+    "observer_literal_ROOT_resource_accepted": false,
+    "one_actual_only": true,
+    "predecessor": {
+      "bytes": 1504,
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/ROOT-negative-disposition-v2.json",
+      "sha256": "d112d6a6e5783d98e717f9e9fd99d4943d51c8d76e0f31a05148643bb9907390"
+    },
+    "program_goal_status": "active_not_complete",
+    "remaining_invocations": 0,
+    "resource_qualified": false,
+    "retired_grant": {
+      "bytes": 2618,
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/ROOT-grant-retirement-v2.json",
+      "sha256": "ce39c4f52d53f9d59691c2dcf1755df928ddef954e7738ebbe23c223047c8890"
+    },
+    "schema": "ROOT-implicit-negative-disposition-v3",
+    "stage_and_case_counts": "UNAVAILABLE",
+    "status": "WORK_DEADLINE_REJECTED_UNQUALIFIED"
+  },
+  "Source_handoffs": [
+    {
+      "authority": false,
+      "cost_boundary": "Whole ordered old-schema count/select receipts retained; perquery kernel delta plus complete cumulative preparation/retention/reconciliation/custody work. External Root/body/sourceIO costs remain independently charged. New exact private keys queries,receipt_items; no numeric adoption or cap increase.",
+      "durability": "New Source/API/proof/handoff and directory fsynced after complete writes",
+      "files": [
+        {
+          "bytes": 36818,
+          "path": "/private/tmp/gcts-implicit-batch-B-20261020-v1/implicit_wang_batch_v1.py",
+          "sha256": "70d065a3c9067773ffdcb4c30f1ba8e33467ffc31683127ba4f4bb25756f97bb"
+        },
+        {
+          "bytes": 8735,
+          "path": "/private/tmp/gcts-implicit-batch-B-20261020-v1/API-v1.json",
+          "sha256": "99eaedf0c32a6f3baabde77e2de6f25bca1c1c6e2c729a5a049c08cb6d54617a"
+        },
+        {
+          "bytes": 6293,
+          "path": "/private/tmp/gcts-implicit-batch-B-20261020-v1/proof-delta-v1.json",
+          "sha256": "24bc03d1d6de3dfcaab89297058c1e91a2200abe60b64b2e047e83e4aba0638a"
+        }
+      ],
+      "limitations": [
+        "No timeout stage/bottleneck inference",
+        "No executed correctness/performance/full-cohort-fit evidence",
+        "No current or future actual grant",
+        "Future complete Source/prospective/custody/whole-input review required",
+        "No graph/VM/FOL/proof/RL or mathematical admission"
+      ],
+      "old_sources_or_grants_changed": false,
+      "ordinary_metadata_parse": true,
+      "public_API": [
+        "with_profile(descriptor,body,*,check,limits,custody,retain)",
+        "batch_query(descriptor,requests,*,check,limits,custody,retain)"
+      ],
+      "references": [
+        {
+          "bytes": 22683,
+          "path": "/private/tmp/gcts-implicit-wang-B-20261020-v2/implicit_wang_palette_v2.py",
+          "sha256": "9ba1bd5ea53c899a24488ff474ed77f88ab4d9f159c3d4131a6c8c3d1cad73cf"
+        },
+        {
+          "bytes": 56779,
+          "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/qualify_implicit_worker_v1.py",
+          "sha256": "88dbad5fdd008777bb47de8cbed48742f93ee319a27c2ab1354f9178684176ca"
+        },
+        {
+          "bytes": 2618,
+          "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/ROOT-grant-retirement-v2.json",
+          "sha256": "ce39c4f52d53f9d59691c2dcf1755df928ddef954e7738ebbe23c223047c8890"
+        },
+        {
+          "bytes": 740651,
+          "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/implicit-inputs-v1.json",
+          "sha256": "10fe60d005a2f586a76bf69ae30317b8dae538ba9f126714b9f71ffa474a89b4"
+        },
+        {
+          "bytes": 21657,
+          "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/basic-tiling-algorithm-current.md",
+          "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+        }
+      ],
+      "schema": "implicit-wang-batch-handoff-v1",
+      "source_ast_unused_compile": true,
+      "static_generator_audit": [
+        {
+          "calls": [
+            "type"
+          ],
+          "line": 164
+        },
+        {
+          "calls": [
+            "type"
+          ],
+          "line": 206
+        },
+        {
+          "calls": [
+            "type"
+          ],
+          "line": 559
+        },
+        {
+          "calls": [
+            "type"
+          ],
+          "line": 47
+        }
+      ],
+      "status": "UNEXECUTED_UNINTEGRATED_UNGRANTED_UNQUALIFIED",
+      "subject_execution": false
+    },
+    {
+      "API": {
+        "bytes": 3070,
+        "path": "/private/tmp/gcts-implicit-retention-L-20261020-v1/API-v1.json",
+        "sha256": "b4cb1a6b8f9a8cd1b079f3c7351bf22bb7bf4a8f211d091548668c5b81f999f4"
+      },
+      "actual_execution_authorized": false,
+      "author_identity": "/root/conventional_library",
+      "author_static_audit": {
+        "bytes": 2729,
+        "path": "/private/tmp/gcts-implicit-retention-L-20261020-v1/author-static-audit-v1.json",
+        "sha256": "06bc4a0fc617f9df4da17ddcbca41d81d0343abacd01c2ec3469f5b4a909893f"
+      },
+      "checker_calls": 0,
+      "compiler_calls": 0,
+      "current_failed_actual_changed": false,
+      "current_master": {
+        "bytes": 21657,
+        "path": "/private/tmp/gcts-fixed-initializer-ROOT-20261020-v1/basic-tiling-algorithm-current.md",
+        "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+      },
+      "driver_calls": 0,
+      "fixture_calls": 0,
+      "forward_patch": {
+        "bytes": 8960,
+        "path": "/private/tmp/gcts-implicit-retention-L-20261020-v1/parent-to-summary-first.patch",
+        "sha256": "88daf2e4b2127e58338a9553861b65a044b52ea4398f56db16cbcb3fe79845d1"
+      },
+      "fragment": {
+        "bytes": 6803,
+        "path": "/private/tmp/gcts-implicit-retention-L-20261020-v1/summary_helpers.fragment.py",
+        "sha256": "5d3cccda96a767baa206e22807b38a77a2672924b563d9f83756fffe01258778"
+      },
+      "future_worker": {
+        "bytes": 63902,
+        "path": "/private/tmp/gcts-implicit-retention-L-20261020-v1/qualify_implicit_worker_v2_summary_first.py",
+        "sha256": "1eb8eb968a415c4120f1266883babad9b9c1631e3ab0e2e1b30fede5ecffa21a"
+      },
+      "helper_calls": 0,
+      "inverse_patch": {
+        "bytes": 8960,
+        "path": "/private/tmp/gcts-implicit-retention-L-20261020-v1/summary-first-to-parent.patch",
+        "sha256": "b8f5c748a6923b26f288654ebfbbd3cddf3135d2302d3e657ae9ea06c16aed04"
+      },
+      "metadata_author": {
+        "bytes": 13989,
+        "path": "/private/tmp/gcts-implicit-retention-L-20261020-v1/freeze_retention_source_v1.py",
+        "sha256": "fcd4c43cd03de377f98336263f75ad2eebba65a2599bcfb8bc3b546bd9d19a9b"
+      },
+      "parent_worker": {
+        "bytes": 56779,
+        "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/qualify_implicit_worker_v1.py",
+        "sha256": "88dbad5fdd008777bb47de8cbed48742f93ee319a27c2ab1354f9178684176ca"
+      },
+      "prospective_fault_cases": {
+        "bytes": 2393,
+        "path": "/private/tmp/gcts-implicit-retention-L-20261020-v1/prospective-fault-cases-v1.json",
+        "sha256": "648aaf98b15ac73cf95835cf2581d6340d01a872db2ffe0d51013cdc01ce5ef8"
+      },
+      "runtime_qualified": false,
+      "schema": "implicit-summary-first-retention-handoff-v1",
+      "scientific_calls": 0,
+      "simulator_calls": 0,
+      "source_contract": {
+        "bytes": 6372,
+        "path": "/private/tmp/gcts-implicit-retention-L-20261020-v1/Source-contract-v1.json",
+        "sha256": "02a03c3d829e1071ed8c766ef9b0137f9bb850a7b7d6019ba74114073b47a8ac"
+      },
+      "source_only": true,
+      "status": "SOURCE_ONLY_FUTURE_PATCH",
+      "subject_function_calls": 0,
+      "subject_imports": 0,
+      "tools_stop_after_handoff": true,
+      "unchanged_runner": {
+        "bytes": 31634,
+        "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/run_implicit_once_v1.py",
+        "sha256": "080db97068bca25c5ef2cddaa704c65961398617f1727981ef53efc19a3085b7"
+      }
+    }
+  ],
+  "fragment_content_included_or_parsed": false,
+  "runner": {
+    "FOL_kernel_calls": 0,
+    "FOL_proof_search_calls": 0,
+    "Model_calls": 0,
+    "Native_calls": 0,
+    "Reader_calls": 0,
+    "authorization": {
+      "bytes": 759,
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/implicit-authorization-once-v2.json",
+      "sha256": "cd15a2bdbab981810633bdc43c4b79bc6d04b590a2a70e884d239d8060cfa9d2"
+    },
+    "began_ns": 811216286294000,
+    "cleanup": {
+      "attempted": true,
+      "completed_before_deadline": true,
+      "completed_ns": 811396322620083,
+      "counts": {
+        "group_probe:ABSENT": 2,
+        "group_probe:PRESENT": 3,
+        "log_close_stderr:CLOSED": 1,
+        "log_close_stdout:CLOSED": 1,
+        "signal_TERM:SENT": 1,
+        "wait4:CACHED_REAPED": 1,
+        "wait4:REAPED": 1,
+        "wait4:RUNNING": 2
+      },
+      "diagnostics_incomplete": false,
+      "dropped_events": 0,
+      "ended_ns": 811396322621791,
+      "error_summaries": {},
+      "event_limit": 32,
+      "events": [
+        {
+          "observed_ns": 811396301345625,
+          "operation": "wait4",
+          "outcome": "RUNNING",
+          "worker_pid": 21847
+        },
+        {
+          "observed_ns": 811396301378666,
+          "operation": "group_probe",
+          "outcome": "PRESENT",
+          "worker_pid": 21847
+        },
+        {
+          "observed_ns": 811396301389041,
+          "operation": "group_probe",
+          "outcome": "PRESENT",
+          "worker_pid": 21847
+        },
+        {
+          "observed_ns": 811396301399666,
+          "operation": "signal_TERM",
+          "outcome": "SENT",
+          "worker_pid": 21847
+        },
+        {
+          "observed_ns": 811396301404708,
+          "operation": "wait4",
+          "outcome": "RUNNING",
+          "worker_pid": 21847
+        },
+        {
+          "observed_ns": 811396301406958,
+          "operation": "group_probe",
+          "outcome": "PRESENT",
+          "worker_pid": 21847
+        },
+        {
+          "observed_ns": 811396322507833,
+          "operation": "wait4",
+          "outcome": "REAPED",
+          "worker_pid": 21847
+        },
+        {
+          "observed_ns": 811396322603958,
+          "operation": "group_probe",
+          "outcome": "ABSENT",
+          "worker_pid": 21847
+        },
+        {
+          "observed_ns": 811396322612375,
+          "operation": "wait4",
+          "outcome": "CACHED_REAPED",
+          "worker_pid": 21847
+        },
+        {
+          "observed_ns": 811396322619458,
+          "operation": "group_probe",
+          "outcome": "ABSENT",
+          "worker_pid": 21847
+        },
+        {
+          "observed_ns": 811396322776625,
+          "operation": "log_close_stdout",
+          "outcome": "CLOSED",
+          "worker_pid": 21847
+        },
+        {
+          "observed_ns": 811396322787666,
+          "operation": "log_close_stderr",
+          "outcome": "CLOSED",
+          "worker_pid": 21847
+        }
+      ],
+      "group_reappeared": false,
+      "group_seen_absent": true,
+      "group_state": "ABSENT",
+      "poll_cycles": 3,
+      "poll_limit": 2048,
+      "started_ns": 811396301294458
+    },
+    "closed_ns": 811396322831250,
+    "closed_ns_scope": "Early wait4/status and parent-close snapshot; raw/log/ledger/receipt work follows. Full closure requires external terminal join.",
+    "command": [
+      "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+      "-I",
+      "-S",
+      "-B",
+      "/private/tmp/gcts-implicit-ROOT-20261020-v1/qualify_implicit_worker_v1.py",
+      "/private/tmp/gcts-implicit-ROOT-20261020-v1/implicit-plan-authorized-v2.json"
+    ],
+    "compiler_calls": null,
+    "consumed_marker": {
+      "bytes": 537,
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/actual-implicit-v2/CONSUMED.json",
+      "sha256": "6a7edd39740664f89f3403a5a88c6c00d8a3418b00fc5d782e0e7c212a541aa8"
+    },
+    "errors": [
+      {
+        "errno": null,
+        "message": "complete positive result/header/bytes/known-exit before180",
+        "type": "ValueError"
+      }
+    ],
+    "final_physical_ledger": {
+      "before_receipt_bytes": 49941,
+      "completed_before_deadline": true,
+      "completed_ns": 811396355900500,
+      "conservative_bytes": 9487125,
+      "enumeration_complete": true,
+      "stable_writer_quiescence": true,
+      "within_original_cap": true
+    },
+    "finalization_errors": [],
+    "finite_encoding_candidate": false,
+    "full_pipeline_qualified": false,
+    "inverse_calls": 0,
+    "invocation_id": "complete-implicit-palette-point-graph-v2",
+    "limits": {
+      "expanded_bytes": 134217728,
+      "memory_bytes": 1073741824,
+      "observer_bytes": 1048576,
+      "overall_seconds": 210,
+      "result_bytes": 134217728,
+      "runner_metadata_bytes": 8388608,
+      "stderr_bytes": 4194304,
+      "stdout_bytes": 4194304,
+      "work_seconds": 180,
+      "worker_receipt_bytes": 4194304
+    },
+    "log_close_observations": {
+      "stderr": {
+        "close_attempts": 1,
+        "closed": true,
+        "closed_ns": 811396322788541,
+        "opened": true,
+        "opened_ns": 811216430046000
+      },
+      "stdout": {
+        "close_attempts": 1,
+        "closed": true,
+        "closed_ns": 811396322778958,
+        "opened": true,
+        "opened_ns": 811216429999958
+      }
+    },
+    "mathematical_proof_accepted": false,
+    "oracle_calls": null,
+    "overall_deadline_ns": 811426286294000,
+    "owned_group_absent": true,
+    "owned_pgid": 21847,
+    "plan": {
+      "bytes": 3089,
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/implicit-plan-authorized-v2.json",
+      "sha256": "df6ceb94019c9520af7b9ff2d65dc85880d883c2848f119f105e0eb84ca16317"
+    },
+    "post_child_raw_custody": {
+      "checked": true,
+      "completed_before_deadline": true,
+      "completed_ns": 811396355414541,
+      "scope": "negative complete raw closure"
+    },
+    "primary_failure": {
+      "errno": null,
+      "message": "complete positive result/header/bytes/known-exit before180",
+      "type": "ValueError"
+    },
+    "profile": "complete-implicit-palette-point-graph-calibration",
+    "regular_logs_closed": true,
+    "resource_candidate_accepted": false,
+    "schema": "wang-encoding-qualification-once-receipt-v1",
+    "scientific_acceptance": false,
+    "search_calls": null,
+    "signals": [
+      {
+        "sent_ns": 811396301398958,
+        "signal": 15
+      }
+    ],
+    "stderr": {
+      "bytes": 0,
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/actual-implicit-v2/stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 0,
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/actual-implicit-v2/stdout.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "subject_sha256": "f7200a04eac8186ef00875982019c318bde68d30b17062cc1ee360fbc099a499",
+    "verifier_calls": null,
+    "version": "implicit-palette-point-graph-once-runner-v1",
+    "whole_log_custody": {
+      "complete": true,
+      "completed_before_deadline": true,
+      "completed_ns": 811396355648833,
+      "scope": "known wait4 exit and owned group absence; parent close is separate",
+      "stable": true
+    },
+    "work_deadline_ns": 811396286294000,
+    "worker_exit_code": -15,
+    "worker_launch_attempts": 1,
+    "worker_pid": 21847,
+    "worker_reaped": true,
+    "worker_terminal_observed_ns": 811396322500500,
+    "worker_wait4_status": 15,
+    "worker_wait4_usage": {
+      "ru_majflt": 2,
+      "ru_maxrss": 211124224,
+      "ru_minflt": 226984,
+      "ru_stime": 31.104167,
+      "ru_utime": 108.300547
+    }
+  },
+  "schema": "implicit-palette-negative-reader-data-v1",
+  "summary": {
+    "Source_scope": "Reviewed generic construction only; runtime equivalence remains unqualified.",
+    "actual_invocations": 1,
+    "complete_positive_packet": false,
+    "completed_case_counts": "UNAVAILABLE",
+    "component_counts": {
+      "compiler_calls": null,
+      "oracle_calls": null,
+      "search_calls": null,
+      "verifier_calls": null
+    },
+    "conservative_negative_ledger_bytes": 9487125,
+    "finite_component_qualified": false,
+    "fragment_bytes": 49135,
+    "fragment_handling": "Raw archive bytes only; not parsed, repaired or admitted.",
+    "full_pipeline_qualified": false,
+    "goal_status": "active_not_complete",
+    "mathematical_proof_admitted": false,
+    "planned_diagnostics": 33,
+    "planned_normal_cases": 15,
+    "remaining_invocations": 0,
+    "resource_qualified": false,
+    "runner_epoch_to_terminal_seconds": 180.140972541,
+    "runner_exit_code": 2,
+    "saved_negative_checks": 111,
+    "schema": "implicit-palette-negative-summary-v1",
+    "stage": "UNAVAILABLE",
+    "status": "WORK_DEADLINE_REJECTED_UNQUALIFIED",
+    "worker_exit_code": -15,
+    "worker_peak_bytes": 211124224
+  },
+  "terminal": {
+    "ROOT_resource_accepted": false,
+    "command": [
+      "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+      "-I",
+      "-S",
+      "-B",
+      "/private/tmp/gcts-implicit-ROOT-20261020-v1/run_implicit_once_v1.py",
+      "/private/tmp/gcts-implicit-ROOT-20261020-v1/implicit-plan-authorized-v2.json"
+    ],
+    "full_pipeline_qualified": false,
+    "mathematical_proof_accepted": false,
+    "observed_instrument_elapsed_seconds": 180.201170875,
+    "observer_started_ns": 811216226095666,
+    "plan": {
+      "bytes": 3089,
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/implicit-plan-authorized-v2.json",
+      "sha256": "df6ceb94019c9520af7b9ff2d65dc85880d883c2848f119f105e0eb84ca16317"
+    },
+    "runner_clock_elapsed_seconds": 180.140972541,
+    "runner_exit_code": 2,
+    "runner_pid": 21846,
+    "runner_receipt": {
+      "bytes": 5635,
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/actual-implicit-v2/runner-receipt.json",
+      "sha256": "4cd2ff55b81d2c0488da788edf2d5cd6a73136a39526fbc5d2e978b7ab2365e4"
+    },
+    "schema": "wang-encoding-terminal-observation-v1",
+    "scientific_acceptance": false,
+    "scope": "Finite implicit-palette and singleton-center point-graph calibration only; no full literal expansion, physical interpreter, FOL kernel/proof search or advantage qualification. Runner Source-entry epoch excludes observer/interpreter prelude. Standalone worker highwater has no Native/full-production fit authority.",
+    "terminal_gate_passed": false,
+    "terminal_observed_ns": 811396427266541,
+    "version": "implicit-palette-point-graph-terminal-observer-v1"
+  }
+}

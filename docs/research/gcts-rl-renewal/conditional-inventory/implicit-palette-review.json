@@ -1,0 +1,3095 @@
+{
+  "schema": "implicit-palette-passive-publication-review-v1",
+  "reviewer_identity": "/root/conventional_control_review",
+  "publication_review_passed": true,
+  "saved_data_only": true,
+  "scientific_calls": 0,
+  "reviewer_component_calls": 0,
+  "artifact_JS_executed": false,
+  "rendered_UI_verified_by_reviewer": false,
+  "network_verified_by_reviewer": false,
+  "actual_execution_authorized": false,
+  "scientific_acceptance": false,
+  "resource_qualification": false,
+  "finite_component_qualification": false,
+  "mathematical_proof_admitted": false,
+  "full_pipeline_qualified": false,
+  "offer": {
+    "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/publication-Source-only-offer-v1.json",
+    "bytes": 1923,
+    "sha256": "21ac014a2e5cd5677c62f7b9c7ddede1f189637ea43a167e97ae1000cacb7fb8"
+  },
+  "payloads": [
+    {
+      "bytes": 19700,
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/publication/implicit-palette-data.json",
+      "sha256": "3b65e405f09ed08b35d33248d1e89b6b0944e764da46ea0b0a35a79bd5ec6b17"
+    },
+    {
+      "bytes": 507784,
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/publication/implicit-palette-evidence.tar.gz",
+      "sha256": "e63809c5b9760981714ad44eee29e280738728071717431ee7e98be277f1ee58"
+    },
+    {
+      "bytes": 31773,
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/publication/implicit-palette-manifest.json",
+      "sha256": "0106bc3ec0ea0703b91c958e1cf154adc731fb0268637c04d3e2a6d88f06427e"
+    },
+    {
+      "bytes": 1077,
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/publication/implicit-palette-summary.json",
+      "sha256": "4eeb59b99728bbe541b97ae02e9963c36a1d19e5ec0496529f9b3943433ca121"
+    },
+    {
+      "bytes": 12933,
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/publication/implicit-palette.html",
+      "sha256": "eba5eaa144bdd61d951ff0e41ee679b9e86220650ca47dcdee561f2094b20c7d"
+    },
+    {
+      "bytes": 103506,
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/publication/reader.html",
+      "sha256": "fc9ca318443e201a42c60aaaa0bc087de47cb87e3815af14301dc9ac76830e5e"
+    }
+  ],
+  "manifest": {
+    "bytes": 31773,
+    "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/publication/implicit-palette-manifest.json",
+    "sha256": "0106bc3ec0ea0703b91c958e1cf154adc731fb0268637c04d3e2a6d88f06427e"
+  },
+  "saved_negative_review": {
+    "path": "/private/tmp/gcts-implicit-review-C-20261020-v1/typed-saved-actual-negative-review-v2.json",
+    "bytes": 41478,
+    "sha256": "8788110f3cba84b889ec4ec870f1f894e02b640f14e8edd1160326c9e909bd98"
+  },
+  "current_disposition": {
+    "bytes": 1898,
+    "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/ROOT-negative-disposition-v3.json",
+    "sha256": "1666225443396d93e6fdde0b35800b0cbf4364c2b228a7e0d03fa07dcac3f4b7"
+  },
+  "Source_prospective_review": {
+    "bytes": 46330,
+    "path": "/private/tmp/gcts-implicit-review-C-20261020-v1/typed-implicit-Source-prospective-review-v2.json",
+    "sha256": "c3be3652e2b75a49239b096c8728cedf796100b74ec194b19db405c63b821672"
+  },
+  "grant_delta_review": {
+    "path": "/private/tmp/gcts-implicit-review-C-20261020-v1/typed-final-grant-delta-review-v2.json",
+    "bytes": 27075,
+    "sha256": "7dad06d4a9d52c760256de1dd1511bacb8444deb40ab6d50d8879139ab8e06ef"
+  },
+  "outcome": "WORK_DEADLINE_REJECTED_UNQUALIFIED",
+  "archive_verification": {
+    "archive": {
+      "bytes": 507784,
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/publication/implicit-palette-evidence.tar.gz",
+      "sha256": "e63809c5b9760981714ad44eee29e280738728071717431ee7e98be277f1ee58"
+    },
+    "members": 110,
+    "raw_evidence_files": 109,
+    "raw_evidence_bytes": 4268658,
+    "PATHMAP_bytes": 29709,
+    "PATHMAP_sha256": "a268d1bed4102e6aa400e61daaa96fe23c21dbff02cb83d9bce78baa02ded04a",
+    "every_member_full_byte_pin_checked": true,
+    "every_original_raw_file_checked": true,
+    "fragment_raw_only_not_parsed": true,
+    "runtime_binary_stdlib": "Externally pinned, not archived as runtime binaries; no new integrity certification."
+  },
+  "reader_custody": {
+    "record": {
+      "bytes": 427,
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/reader-append-custody-v1.json",
+      "sha256": "991057d8c615bbb05c4d1f3f350530ee7f15421231a676b902805d3b3d38bbe9"
+    },
+    "parent_commit": "281116a44c128d5fb44693329e61e8d0db597e32",
+    "parent": {
+      "bytes": 103002,
+      "path": "/private/tmp/gcts-implicit-ROOT-20261020-v1/reader-preimage-v1.html",
+      "sha256": "da7649d1234bac45dace2b40c1ac9f37e89df00b45db64181d4d03e271c8f309"
+    },
+    "added_bytes": 504,
+    "exact_inverse_restores_parent": true,
+    "isolated_Git_object_exact": true,
+    "scope": "Read isolated saved/Git object only; no primary reader/index access by C. No assertion about unobserved incidental OS metadata access by others."
+  },
+  "future_handoffs": [
+    {
+      "path": "/private/tmp/gcts-implicit-batch-B-20261020-v1/handoff-v1.json",
+      "bytes": 3169,
+      "sha256": "43134e49bccdb15dddaf6e406408b22942ccf720501ed27dda8c08d2e12cff5e"
+    },
+    {
+      "path": "/private/tmp/gcts-implicit-retention-L-20261020-v1/handoff-v1.json",
+      "bytes": 3189,
+      "sha256": "60dcb6740edaf5298b262cfb2fc24c7cdc3f6b871abe3b08a9ad492b10d64296"
+    }
+  ],
+  "checks": [
+    {
+      "id": "raw:/private/tmp/gcts-implicit-ROOT-20261020-v1/publication-Source-only-offer-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "exact_six_payloads",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "raw:/private/tmp/gcts-implicit-ROOT-20261020-v1/publication/implicit-palette-data.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "isolated_publisher_exact_copy:implicit-palette-data.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "raw:/private/tmp/gcts-implicit-ROOT-20261020-v1/publication/implicit-palette-evidence.tar.gz",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "isolated_publisher_exact_copy:implicit-palette-evidence.tar.gz",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "raw:/private/tmp/gcts-implicit-ROOT-20261020-v1/publication/implicit-palette-manifest.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "isolated_publisher_exact_copy:implicit-palette-manifest.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "raw:/private/tmp/gcts-implicit-ROOT-20261020-v1/publication/implicit-palette-summary.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "isolated_publisher_exact_copy:implicit-palette-summary.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "raw:/private/tmp/gcts-implicit-ROOT-20261020-v1/publication/implicit-palette.html",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "isolated_publisher_exact_copy:implicit-palette.html",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "raw:/private/tmp/gcts-implicit-ROOT-20261020-v1/publication/reader.html",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "isolated_publisher_exact_copy:reader.html",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "detached_sidecar_name",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "offered_negative_flags",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "raw:/private/tmp/gcts-implicit-ROOT-20261020-v1/publication/implicit-palette-manifest.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "raw:/private/tmp/gcts-implicit-ROOT-20261020-v1/publication/implicit-palette-data.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "raw:/private/tmp/gcts-implicit-ROOT-20261020-v1/publication/implicit-palette-summary.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "raw:/private/tmp/gcts-implicit-ROOT-20261020-v1/publication/implicit-palette.html",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "raw:/private/tmp/gcts-implicit-ROOT-20261020-v1/publication/reader.html",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "raw:/private/tmp/gcts-implicit-review-C-20261020-v1/typed-saved-actual-negative-review-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "raw:/private/tmp/gcts-implicit-ROOT-20261020-v1/actual-implicit-v2/runner-receipt.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "raw:/private/tmp/gcts-implicit-ROOT-20261020-v1/implicit-plan-authorized-v2-terminal-observation/terminal.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "saved_negative_exact",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "data_full_saved_runner_join",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "data_full_saved_terminal_join",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "data_exact_summary",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "fragment_not_in_data",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "raw:/private/tmp/gcts-implicit-ROOT-20261020-v1/ROOT-negative-disposition-v3.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "data_full_disposition_join",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "disposition_independent_review",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "disposition_attempted_Source_clarified",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "raw:/private/tmp/gcts-implicit-ROOT-20261020-v1/ROOT-negative-disposition-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "disposition_unchanged:author_identity",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "disposition_unchanged:full_pipeline_qualified",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "disposition_unchanged:observer_literal_ROOT_resource_accepted",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "disposition_unchanged:known_scope",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "disposition_unchanged:fragment_use",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "disposition_unchanged:stage_and_case_counts",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "disposition_unchanged:retired_grant",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "disposition_unchanged:one_actual_only",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "disposition_unchanged:program_goal_status",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "disposition_unchanged:resource_qualified",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "disposition_unchanged:status",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "disposition_unchanged:remaining_invocations",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "disposition_unchanged:independent_saved_negative_review",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "disposition_unchanged:finite_component_qualified",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "disposition_unchanged:mathematical_proof_accepted",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "disposition_unchanged:UTC",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "disposition_unchanged:no_rescue",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "summary_negative_exact",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "summary_clock_and_memory",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "summary_recorded_ledger",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "summary_unavailable_fields",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "summary_no_admission",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "summary_planned_not_passed_counts",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "manifest_assets_exact",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "manifest_saved_review_exact",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "manifest_negative_status",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "manifest_parent_exact",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "raw:/private/tmp/gcts-implicit-ROOT-20261020-v1/publication/implicit-palette-evidence.tar.gz",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:ROOT/ROOT-Source-scope-adoption-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:ROOT/ROOT-Source-scope-adoption-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:ROOT/ROOT-all-idle-fresh-barrier-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:ROOT/ROOT-all-idle-fresh-barrier-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:ROOT/ROOT-grant-retirement-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:ROOT/ROOT-grant-retirement-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:ROOT/ROOT-negative-disposition-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:ROOT/ROOT-negative-disposition-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:ROOT/ROOT-negative-disposition-v3.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:ROOT/ROOT-negative-disposition-v3.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:ROOT/ROOT-next-workpackages-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:ROOT/ROOT-next-workpackages-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:ROOT/ROOT-previous-turn-assessment-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:ROOT/ROOT-previous-turn-assessment-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:ROOT/ROOT-prospective-v1-retirement.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:ROOT/ROOT-prospective-v1-retirement.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:ROOT/ROOT-storage-observation-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:ROOT/ROOT-storage-observation-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:ROOT/actual-implicit-v2/CONSUMED.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:ROOT/actual-implicit-v2/CONSUMED.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:ROOT/actual-implicit-v2/WORKER_CONSUMED.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:ROOT/actual-implicit-v2/WORKER_CONSUMED.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:ROOT/actual-implicit-v2/failed-prefix.json.partial",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:ROOT/actual-implicit-v2/failed-prefix.json.partial",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:ROOT/actual-implicit-v2/runner-receipt.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:ROOT/actual-implicit-v2/runner-receipt.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:ROOT/actual-implicit-v2/stderr.bin",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:ROOT/actual-implicit-v2/stderr.bin",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:ROOT/actual-implicit-v2/stdout.bin",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:ROOT/actual-implicit-v2/stdout.bin",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:ROOT/basic-tiling-algorithm-current.md",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:ROOT/basic-tiling-algorithm-current.md",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:ROOT/build_negative_report_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:ROOT/build_negative_report_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:ROOT/implicit-Source-only-offer-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:ROOT/implicit-Source-only-offer-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:ROOT/implicit-Source-only-offer-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:ROOT/implicit-Source-only-offer-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:ROOT/implicit-authorization-false-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:ROOT/implicit-authorization-false-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:ROOT/implicit-authorization-false-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:ROOT/implicit-authorization-false-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:ROOT/implicit-authorization-once-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:ROOT/implicit-authorization-once-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:ROOT/implicit-declaration-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:ROOT/implicit-declaration-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:ROOT/implicit-inputs-DRAFT-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:ROOT/implicit-inputs-DRAFT-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:ROOT/implicit-inputs-DRAFT-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:ROOT/implicit-inputs-DRAFT-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:ROOT/implicit-inputs-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:ROOT/implicit-inputs-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:ROOT/implicit-negative-template.html",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:ROOT/implicit-negative-template.html",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:ROOT/implicit-plan-authorized-v2-terminal-observation/CONSUMED.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:ROOT/implicit-plan-authorized-v2-terminal-observation/CONSUMED.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:ROOT/implicit-plan-authorized-v2-terminal-observation/stderr.bin",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:ROOT/implicit-plan-authorized-v2-terminal-observation/stderr.bin",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:ROOT/implicit-plan-authorized-v2-terminal-observation/stdout.bin",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:ROOT/implicit-plan-authorized-v2-terminal-observation/stdout.bin",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:ROOT/implicit-plan-authorized-v2-terminal-observation/terminal.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:ROOT/implicit-plan-authorized-v2-terminal-observation/terminal.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:ROOT/implicit-plan-authorized-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:ROOT/implicit-plan-authorized-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:ROOT/implicit-plan-false-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:ROOT/implicit-plan-false-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:ROOT/implicit-plan-false-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:ROOT/implicit-plan-false-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:ROOT/implicit-report-template.html",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:ROOT/implicit-report-template.html",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:ROOT/implicit-runtime-closure-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:ROOT/implicit-runtime-closure-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:ROOT/implicit-runtime-closure-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:ROOT/implicit-runtime-closure-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:ROOT/observe_implicit_once_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:ROOT/observe_implicit_once_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:ROOT/qualify_implicit_worker_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:ROOT/qualify_implicit_worker_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:ROOT/reader-append-custody-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:ROOT/reader-append-custody-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:ROOT/reader-preimage-v1.html",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:ROOT/reader-preimage-v1.html",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:ROOT/run_implicit_once_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:ROOT/run_implicit_once_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:ROOT/worker-custody-prefix-DRAFT.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:ROOT/worker-custody-prefix-DRAFT.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:ROOT/worker-diagnostics-DRAFT.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:ROOT/worker-diagnostics-DRAFT.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:ROOT/worker-reference-DRAFT.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:ROOT/worker-reference-DRAFT.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:Bv1/API-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:Bv1/API-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:Bv1/conformance-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:Bv1/conformance-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:Bv1/correspondence-v1.html",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:Bv1/correspondence-v1.html",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:Bv1/handoff-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:Bv1/handoff-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:Bv1/implicit_wang_palette_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:Bv1/implicit_wang_palette_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:Bv2/API-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:Bv2/API-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:Bv2/conformance-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:Bv2/conformance-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:Bv2/correspondence-v2.html",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:Bv2/correspondence-v2.html",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:Bv2/handoff-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:Bv2/handoff-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:Bv2/implicit_wang_palette_v2.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:Bv2/implicit_wang_palette_v2.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:Bv2/proof-delta-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:Bv2/proof-delta-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:L/API-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:L/API-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:L/Source-contract-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:L/Source-contract-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:L/author-static-audit-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:L/author-static-audit-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:L/conformance-and-obligations-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:L/conformance-and-obligations-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:L/freeze_source_packet_PREFLIGHT_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:L/freeze_source_packet_PREFLIGHT_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:L/freeze_source_packet_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:L/freeze_source_packet_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:L/handoff-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:L/handoff-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:L/implicit_wang_point_search_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:L/implicit_wang_point_search_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:L/prospective-fixtures-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:L/prospective-fixtures-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:L/snapshot-API-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:L/snapshot-API-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:C/audit_full_offer_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:C/audit_full_offer_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:C/audit_full_offer_v2.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:C/audit_full_offer_v2.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:C/audit_saved_negative_v2.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:C/audit_saved_negative_v2.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:C/freeze_final_grant_delta_v2.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:C/freeze_final_grant_delta_v2.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:C/freeze_obligations_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:C/freeze_obligations_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:C/freeze_palette_Source_negative_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:C/freeze_palette_Source_negative_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:C/freeze_palette_Source_review_v2.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:C/freeze_palette_Source_review_v2.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:C/freeze_palette_Source_review_v2b.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:C/freeze_palette_Source_review_v2b.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:C/independent-implicit-obligations-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:C/independent-implicit-obligations-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:C/prospective-v1-negative-preimages/authorization.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:C/prospective-v1-negative-preimages/authorization.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:C/prospective-v1-negative-preimages/closure.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:C/prospective-v1-negative-preimages/closure.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:C/prospective-v1-negative-preimages/declaration.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:C/prospective-v1-negative-preimages/declaration.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:C/prospective-v1-negative-preimages/graph.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:C/prospective-v1-negative-preimages/graph.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:C/prospective-v1-negative-preimages/implicit.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:C/prospective-v1-negative-preimages/implicit.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:C/prospective-v1-negative-preimages/input.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:C/prospective-v1-negative-preimages/input.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:C/prospective-v1-negative-preimages/observer.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:C/prospective-v1-negative-preimages/observer.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:C/prospective-v1-negative-preimages/offer.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:C/prospective-v1-negative-preimages/offer.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:C/prospective-v1-negative-preimages/plan.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:C/prospective-v1-negative-preimages/plan.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:C/prospective-v1-negative-preimages/runner.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:C/prospective-v1-negative-preimages/runner.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:C/prospective-v1-negative-preimages/selector.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:C/prospective-v1-negative-preimages/selector.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:C/prospective-v1-negative-preimages/worker.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:C/prospective-v1-negative-preimages/worker.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:C/typed-final-grant-delta-review-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:C/typed-final-grant-delta-review-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:C/typed-implicit-Source-prospective-negative-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:C/typed-implicit-Source-prospective-negative-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:C/typed-implicit-Source-prospective-review-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:C/typed-implicit-Source-prospective-review-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:C/typed-implicit-palette-Source-negative-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:C/typed-implicit-palette-Source-negative-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:C/typed-implicit-palette-Source-review-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:C/typed-implicit-palette-Source-review-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:C/typed-implicit-palette-Source-review-v2b.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:C/typed-implicit-palette-Source-review-v2b.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:C/typed-saved-actual-negative-review-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:C/typed-saved-actual-negative-review-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:future-B/API-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:future-B/API-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:future-B/handoff-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:future-B/handoff-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:future-B/implicit_wang_batch_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:future-B/implicit_wang_batch_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:future-B/proof-delta-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:future-B/proof-delta-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:future-L/API-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:future-L/API-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:future-L/Source-contract-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:future-L/Source-contract-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:future-L/author-static-audit-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:future-L/author-static-audit-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:future-L/freeze_retention_source_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:future-L/freeze_retention_source_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:future-L/handoff-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:future-L/handoff-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:future-L/parent-to-summary-first.patch",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:future-L/parent-to-summary-first.patch",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:future-L/prospective-fault-cases-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:future-L/prospective-fault-cases-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:future-L/qualify_implicit_worker_v2_summary_first.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:future-L/qualify_implicit_worker_v2_summary_first.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:future-L/summary-first-to-parent.patch",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:future-L/summary-first-to-parent.patch",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:future-L/summary_helpers.fragment.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:future-L/summary_helpers.fragment.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:inherited-Source/wang_unknown_certificate_initializer_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:inherited-Source/wang_unknown_certificate_initializer_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_regular_safe_unique:PATHMAP.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_header_size:PATHMAP.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_exact_member_count",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "one_PATHMAP",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "PATHMAP_full_descriptor_join",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_member_names_exact",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_raw_total_exact",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:ROOT/ROOT-Source-scope-adoption-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:ROOT/ROOT-Source-scope-adoption-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:ROOT/ROOT-all-idle-fresh-barrier-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:ROOT/ROOT-all-idle-fresh-barrier-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:ROOT/ROOT-grant-retirement-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:ROOT/ROOT-grant-retirement-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:ROOT/ROOT-negative-disposition-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:ROOT/ROOT-negative-disposition-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:ROOT/ROOT-negative-disposition-v3.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:ROOT/ROOT-negative-disposition-v3.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:ROOT/ROOT-next-workpackages-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:ROOT/ROOT-next-workpackages-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:ROOT/ROOT-previous-turn-assessment-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:ROOT/ROOT-previous-turn-assessment-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:ROOT/ROOT-prospective-v1-retirement.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:ROOT/ROOT-prospective-v1-retirement.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:ROOT/ROOT-storage-observation-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:ROOT/ROOT-storage-observation-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:ROOT/actual-implicit-v2/CONSUMED.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:ROOT/actual-implicit-v2/CONSUMED.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:ROOT/actual-implicit-v2/WORKER_CONSUMED.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:ROOT/actual-implicit-v2/WORKER_CONSUMED.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:ROOT/actual-implicit-v2/failed-prefix.json.partial",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:ROOT/actual-implicit-v2/failed-prefix.json.partial",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:ROOT/actual-implicit-v2/runner-receipt.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:ROOT/actual-implicit-v2/runner-receipt.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:ROOT/actual-implicit-v2/stderr.bin",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:ROOT/actual-implicit-v2/stderr.bin",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:ROOT/actual-implicit-v2/stdout.bin",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:ROOT/actual-implicit-v2/stdout.bin",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:ROOT/basic-tiling-algorithm-current.md",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:ROOT/basic-tiling-algorithm-current.md",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:ROOT/build_negative_report_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:ROOT/build_negative_report_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:ROOT/implicit-Source-only-offer-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:ROOT/implicit-Source-only-offer-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:ROOT/implicit-Source-only-offer-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:ROOT/implicit-Source-only-offer-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:ROOT/implicit-authorization-false-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:ROOT/implicit-authorization-false-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:ROOT/implicit-authorization-false-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:ROOT/implicit-authorization-false-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:ROOT/implicit-authorization-once-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:ROOT/implicit-authorization-once-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:ROOT/implicit-declaration-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:ROOT/implicit-declaration-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:ROOT/implicit-inputs-DRAFT-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:ROOT/implicit-inputs-DRAFT-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:ROOT/implicit-inputs-DRAFT-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:ROOT/implicit-inputs-DRAFT-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:ROOT/implicit-inputs-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:ROOT/implicit-inputs-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:ROOT/implicit-negative-template.html",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:ROOT/implicit-negative-template.html",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:ROOT/implicit-plan-authorized-v2-terminal-observation/CONSUMED.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:ROOT/implicit-plan-authorized-v2-terminal-observation/CONSUMED.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:ROOT/implicit-plan-authorized-v2-terminal-observation/stderr.bin",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:ROOT/implicit-plan-authorized-v2-terminal-observation/stderr.bin",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:ROOT/implicit-plan-authorized-v2-terminal-observation/stdout.bin",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:ROOT/implicit-plan-authorized-v2-terminal-observation/stdout.bin",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:ROOT/implicit-plan-authorized-v2-terminal-observation/terminal.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:ROOT/implicit-plan-authorized-v2-terminal-observation/terminal.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:ROOT/implicit-plan-authorized-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:ROOT/implicit-plan-authorized-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:ROOT/implicit-plan-false-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:ROOT/implicit-plan-false-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:ROOT/implicit-plan-false-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:ROOT/implicit-plan-false-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:ROOT/implicit-report-template.html",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:ROOT/implicit-report-template.html",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:ROOT/implicit-runtime-closure-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:ROOT/implicit-runtime-closure-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:ROOT/implicit-runtime-closure-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:ROOT/implicit-runtime-closure-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:ROOT/observe_implicit_once_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:ROOT/observe_implicit_once_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:ROOT/qualify_implicit_worker_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:ROOT/qualify_implicit_worker_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:ROOT/reader-append-custody-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:ROOT/reader-append-custody-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:ROOT/reader-preimage-v1.html",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:ROOT/reader-preimage-v1.html",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:ROOT/run_implicit_once_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:ROOT/run_implicit_once_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:ROOT/worker-custody-prefix-DRAFT.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:ROOT/worker-custody-prefix-DRAFT.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:ROOT/worker-diagnostics-DRAFT.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:ROOT/worker-diagnostics-DRAFT.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:ROOT/worker-reference-DRAFT.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:ROOT/worker-reference-DRAFT.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:Bv1/API-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:Bv1/API-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:Bv1/conformance-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:Bv1/conformance-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:Bv1/correspondence-v1.html",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:Bv1/correspondence-v1.html",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:Bv1/handoff-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:Bv1/handoff-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:Bv1/implicit_wang_palette_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:Bv1/implicit_wang_palette_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:Bv2/API-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:Bv2/API-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:Bv2/conformance-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:Bv2/conformance-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:Bv2/correspondence-v2.html",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:Bv2/correspondence-v2.html",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:Bv2/handoff-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:Bv2/handoff-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:Bv2/implicit_wang_palette_v2.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:Bv2/implicit_wang_palette_v2.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:Bv2/proof-delta-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:Bv2/proof-delta-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:L/API-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:L/API-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:L/Source-contract-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:L/Source-contract-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:L/author-static-audit-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:L/author-static-audit-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:L/conformance-and-obligations-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:L/conformance-and-obligations-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:L/freeze_source_packet_PREFLIGHT_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:L/freeze_source_packet_PREFLIGHT_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:L/freeze_source_packet_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:L/freeze_source_packet_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:L/handoff-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:L/handoff-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:L/implicit_wang_point_search_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:L/implicit_wang_point_search_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:L/prospective-fixtures-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:L/prospective-fixtures-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:L/snapshot-API-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:L/snapshot-API-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:C/audit_full_offer_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:C/audit_full_offer_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:C/audit_full_offer_v2.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:C/audit_full_offer_v2.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:C/audit_saved_negative_v2.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:C/audit_saved_negative_v2.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:C/freeze_final_grant_delta_v2.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:C/freeze_final_grant_delta_v2.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:C/freeze_obligations_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:C/freeze_obligations_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:C/freeze_palette_Source_negative_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:C/freeze_palette_Source_negative_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:C/freeze_palette_Source_review_v2.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:C/freeze_palette_Source_review_v2.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:C/freeze_palette_Source_review_v2b.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:C/freeze_palette_Source_review_v2b.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:C/independent-implicit-obligations-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:C/independent-implicit-obligations-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:C/prospective-v1-negative-preimages/authorization.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:C/prospective-v1-negative-preimages/authorization.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:C/prospective-v1-negative-preimages/closure.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:C/prospective-v1-negative-preimages/closure.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:C/prospective-v1-negative-preimages/declaration.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:C/prospective-v1-negative-preimages/declaration.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:C/prospective-v1-negative-preimages/graph.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:C/prospective-v1-negative-preimages/graph.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:C/prospective-v1-negative-preimages/implicit.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:C/prospective-v1-negative-preimages/implicit.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:C/prospective-v1-negative-preimages/input.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:C/prospective-v1-negative-preimages/input.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:C/prospective-v1-negative-preimages/observer.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:C/prospective-v1-negative-preimages/observer.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:C/prospective-v1-negative-preimages/offer.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:C/prospective-v1-negative-preimages/offer.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:C/prospective-v1-negative-preimages/plan.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:C/prospective-v1-negative-preimages/plan.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:C/prospective-v1-negative-preimages/runner.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:C/prospective-v1-negative-preimages/runner.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:C/prospective-v1-negative-preimages/selector.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:C/prospective-v1-negative-preimages/selector.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:C/prospective-v1-negative-preimages/worker.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:C/prospective-v1-negative-preimages/worker.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:C/typed-final-grant-delta-review-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:C/typed-final-grant-delta-review-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:C/typed-implicit-Source-prospective-negative-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:C/typed-implicit-Source-prospective-negative-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:C/typed-implicit-Source-prospective-review-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:C/typed-implicit-Source-prospective-review-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:C/typed-implicit-palette-Source-negative-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:C/typed-implicit-palette-Source-negative-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:C/typed-implicit-palette-Source-review-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:C/typed-implicit-palette-Source-review-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:C/typed-implicit-palette-Source-review-v2b.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:C/typed-implicit-palette-Source-review-v2b.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:C/typed-saved-actual-negative-review-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:C/typed-saved-actual-negative-review-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:future-B/API-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:future-B/API-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:future-B/handoff-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:future-B/handoff-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:future-B/implicit_wang_batch_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:future-B/implicit_wang_batch_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:future-B/proof-delta-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:future-B/proof-delta-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:future-L/API-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:future-L/API-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:future-L/Source-contract-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:future-L/Source-contract-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:future-L/author-static-audit-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:future-L/author-static-audit-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:future-L/freeze_retention_source_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:future-L/freeze_retention_source_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:future-L/handoff-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:future-L/handoff-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:future-L/parent-to-summary-first.patch",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:future-L/parent-to-summary-first.patch",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:future-L/prospective-fault-cases-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:future-L/prospective-fault-cases-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:future-L/qualify_implicit_worker_v2_summary_first.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:future-L/qualify_implicit_worker_v2_summary_first.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:future-L/summary-first-to-parent.patch",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:future-L/summary-first-to-parent.patch",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:future-L/summary_helpers.fragment.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:future-L/summary_helpers.fragment.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_full_byte_pin:inherited-Source/wang_unknown_certificate_initializer_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "archive_original_current_raw:inherited-Source/wang_unknown_certificate_initializer_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "no_recursive_pub_archive_or_sidecar",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "detached_review_excluded",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "required_full_evidence_archived:/private/tmp/gcts-implicit-review-C-20261020-v1/typed-saved-actual-negative-review-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "required_full_evidence_archived:/private/tmp/gcts-implicit-ROOT-20261020-v1/actual-implicit-v2/runner-receipt.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "required_full_evidence_archived:/private/tmp/gcts-implicit-ROOT-20261020-v1/implicit-plan-authorized-v2-terminal-observation/terminal.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "required_full_evidence_archived:/private/tmp/gcts-implicit-ROOT-20261020-v1/implicit-plan-authorized-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "required_full_evidence_archived:/private/tmp/gcts-implicit-ROOT-20261020-v1/implicit-authorization-once-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "required_full_evidence_archived:/private/tmp/gcts-implicit-review-C-20261020-v1/typed-implicit-Source-prospective-review-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "required_full_evidence_archived:/private/tmp/gcts-implicit-review-C-20261020-v1/typed-final-grant-delta-review-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "required_full_evidence_archived:/private/tmp/gcts-implicit-ROOT-20261020-v1/ROOT-grant-retirement-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "required_full_evidence_archived:/private/tmp/gcts-implicit-ROOT-20261020-v1/implicit-declaration-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "required_full_evidence_archived:/private/tmp/gcts-implicit-ROOT-20261020-v1/implicit-runtime-closure-v2.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "required_full_evidence_archived:/private/tmp/gcts-implicit-ROOT-20261020-v1/ROOT-negative-disposition-v3.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "required_full_evidence_archived:/private/tmp/gcts-implicit-graph-L-20261020-v1/implicit_wang_point_search_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "required_full_evidence_archived:/private/tmp/gcts-implicit-wang-B-20261020-v2/implicit_wang_palette_v2.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "required_full_evidence_archived:/private/tmp/gcts-implicit-ROOT-20261020-v1/observe_implicit_once_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "required_full_evidence_archived:/private/tmp/gcts-implicit-ROOT-20261020-v1/run_implicit_once_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "required_full_evidence_archived:/private/tmp/gcts-fixed-initializer-ROOT-20261020-v1/wang_unknown_certificate_initializer_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "required_full_evidence_archived:/private/tmp/gcts-implicit-ROOT-20261020-v1/qualify_implicit_worker_v1.py",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "required_full_evidence_archived:/private/tmp/gcts-implicit-ROOT-20261020-v1/implicit-inputs-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "required_full_evidence_archived:/private/tmp/gcts-implicit-ROOT-20261020-v1/actual-implicit-v2/CONSUMED.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "required_full_evidence_archived:/private/tmp/gcts-implicit-ROOT-20261020-v1/actual-implicit-v2/WORKER_CONSUMED.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "required_full_evidence_archived:/private/tmp/gcts-implicit-ROOT-20261020-v1/actual-implicit-v2/failed-prefix.json.partial",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "required_full_evidence_archived:/private/tmp/gcts-implicit-ROOT-20261020-v1/actual-implicit-v2/runner-receipt.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "required_full_evidence_archived:/private/tmp/gcts-implicit-ROOT-20261020-v1/actual-implicit-v2/stderr.bin",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "required_full_evidence_archived:/private/tmp/gcts-implicit-ROOT-20261020-v1/actual-implicit-v2/stdout.bin",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "required_full_evidence_archived:/private/tmp/gcts-implicit-ROOT-20261020-v1/implicit-plan-authorized-v2-terminal-observation/CONSUMED.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "required_full_evidence_archived:/private/tmp/gcts-implicit-ROOT-20261020-v1/implicit-plan-authorized-v2-terminal-observation/stderr.bin",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "required_full_evidence_archived:/private/tmp/gcts-implicit-ROOT-20261020-v1/implicit-plan-authorized-v2-terminal-observation/stdout.bin",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "required_full_evidence_archived:/private/tmp/gcts-implicit-ROOT-20261020-v1/implicit-plan-authorized-v2-terminal-observation/terminal.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "fragment_raw_only_exact",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "both_negative_ancestors_archived",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "retired_V1_record_archived",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "trusted_runtime_external_labeled",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "future_handoffs_exact_data",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "future_archived_separately:gcts-implicit-batch-B-20261020-v1",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "future_archived_separately:gcts-implicit-retention-L-20261020-v1",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "future_not_in_consumed_Source_tuple",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "raw:/private/tmp/gcts-implicit-ROOT-20261020-v1/reader-append-custody-v1.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "raw:/private/tmp/gcts-implicit-ROOT-20261020-v1/reader-preimage-v1.html",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "reader_parent_full_pin",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "reader_append_504",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "reader_exact_one_insert",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "reader_task_append_only",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "reader_matches_exact_isolated_Git_object",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "task_payloads_no_index_target",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "HTML_unique_ids",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "all_local_fragments_exist",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "relative_link_exists:reader.html",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "relative_link_exists:fixed-checker.html",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "relative_link_exists:implicit-palette-summary.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "relative_link_exists:implicit-palette-data.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "relative_link_exists:implicit-palette-manifest.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "relative_link_exists:implicit-palette-review.json",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "relative_link_exists:implicit-palette-evidence.tar.gz",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "only_existing_MathJax_script",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "MathJax_config_preserved",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "no_executable_data_projection",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "formula_partition_six_rows",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "full_count_and_mask_formulas_LaTeX",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "no_unicode_or_HTML_script_math_shortcuts",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "rounded_elapsed_literal",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "exact_usage_and_ledger_literals",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "manual_claim_anchor:0",
+      "passed": true,
+      "evidence": "Work-deadline rejection. No result admitted."
+    },
+    {
+      "id": "manual_claim_anchor:1",
+      "passed": true,
+      "evidence": "runtime correctness remains unqualified"
+    },
+    {
+      "id": "manual_claim_anchor:2",
+      "passed": true,
+      "evidence": "completed component counters remain literal <code>null</code>"
+    },
+    {
+      "id": "manual_claim_anchor:3",
+      "passed": true,
+      "evidence": "exact failing stage, callback count, completed-case population and mathematical results are unavailable"
+    },
+    {
+      "id": "manual_claim_anchor:4",
+      "passed": true,
+      "evidence": "planned populations, not passed counts"
+    },
+    {
+      "id": "manual_claim_anchor:5",
+      "passed": true,
+      "evidence": "specific unminimized Source foundation"
+    },
+    {
+      "id": "manual_claim_anchor:6",
+      "passed": true,
+      "evidence": "manually reviewed conditional count"
+    },
+    {
+      "id": "manual_claim_anchor:7",
+      "passed": true,
+      "evidence": "not a necessary size bound for every interpreter"
+    },
+    {
+      "id": "manual_claim_anchor:8",
+      "passed": true,
+      "evidence": "Schematic Source architecture; not a saved tiling or proof"
+    },
+    {
+      "id": "manual_claim_anchor:9",
+      "passed": true,
+      "evidence": "No case population is claimed passed here"
+    },
+    {
+      "id": "manual_claim_anchor:10",
+      "passed": true,
+      "evidence": "missing failure summary prevents attributing the timeout"
+    },
+    {
+      "id": "manual_claim_anchor:11",
+      "passed": true,
+      "evidence": "unexecuted design, with no measured speedup"
+    },
+    {
+      "id": "manual_claim_anchor:12",
+      "passed": true,
+      "evidence": "not been imported, run, integrated into the frozen subject, or granted an experiment"
+    },
+    {
+      "id": "manual_claim_anchor:13",
+      "passed": true,
+      "evidence": "correctness, custody equivalence and performance remain unqualified"
+    },
+    {
+      "id": "manual_claim_anchor:14",
+      "passed": true,
+      "evidence": "111 consistency checks with no mismatches"
+    },
+    {
+      "id": "reader_section_exact_start",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "reader_exact_one_section",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "reader_exact_section_end",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "id": "reader_negative_sentence_present",
+      "passed": true,
+      "evidence": null
+    }
+  ],
+  "manual_claim_review": [
+    "Lead/outcome accurately separate implemented and reviewed Source from this failed full-cohort runtime qualification; no positive subset/count/result is invented.",
+    "The only measured time is the whole saved runner-epoch to terminal interval; CPU/HWM and negative ledger labels are standalone observations, not phase attribution, fit, speedup or admission.",
+    "Both deadlines are exact: positive work/full result/known exit before180, later custody/terminal before210. Early stable cleanup never promotes the rejected actual.",
+    "Specific foundation count is explicitly conditional/manual/unminimized, not a lower bound for every interpreter. Schematic boxes and six family formulas restate previously reviewed Source reasoning, not executed tilings.",
+    "Four small, one large, ten graph and33 diagnostic populations are planned only. All-nonempty-mask coverage differs from every zero-result Cartesian query, and large full unranking is not claimed.",
+    "Current explicit wildcard versus assigned0, semantic IDs, full machine/wire versus target/horizon, and singleton-center/four-midpoint graph specialization are correctly stated.",
+    "No theorem, learned receptor/RL, fixed physical interpreter, exact public theory/target bridge, universal plane/Turtle/Penrose or practical benefit follows from the rejected run.",
+    "Future batch/profile and small failure-summary Sources are archived only, unexecuted/unintegrated/ungranted/unqualified. This publication audit does not review their algorithmic correctness or qualify them.",
+    "No partial parse/completion/projection or posthoc result repair occurred. Failure-summary ordering is explained by static Source only; the exact original worker cause/stage remains unavailable.",
+    "Six offered payloads and selected task evidence are passive bytes. The detached review intentionally remains outside archive/manifest recursion. No publisher mutation, deployment, browser/JS execution or network validation by C."
+  ],
+  "scope_limits": [
+    "PASS means exact passive publication consistency only; current runtime remains rejected, without any finite-component/resource/proof/fullVM adoption.",
+    "Same reviewer covers Source/prospective/authdelta/saved/publication with disclosed historical control/review ancestry overlap; not independent formal kernel certification.",
+    "No mathematical replay or target/checker/compiler/graph/oracle/fixture call occurred, and no opaque fragment was decoded.",
+    "No GUI/layout/MathJax rendered result is claimed by this review; Root owns separate rendering/deployment/live checks.",
+    "Original180/210/1GiB/128MiB/400m protocol and all retired grants remain unchanged; no retry, new grant or cap change authorized.",
+    "Detached implicit-palette-review.json may be copied byte-exact after freeze; it is intentionally absent from its own archive/manifest to avoid a circular hash."
+  ],
+  "summary": {
+    "checks": 587,
+    "failed": 0,
+    "manual_claim_items": 10
+  },
+  "reviewer_self_check_correction": {
+    "scope": "Reviewer metadata only; no publication byte changed. Original reader_task_append_only expression accidentally selected its last negative-sentence predicate via a constant conditional. The full inverse/Git-object checks were independent and passed. Four explicit assertions above now verify the intended conjunction.",
+    "preserved_predecessor": {
+      "path": "/private/tmp/gcts-implicit-review-C-20261020-v1/typed-publication-review-v1.json",
+      "bytes": 86972,
+      "sha256": "8ad0bf3f2a56b8f7f23e67979683e39490d5d9bcf604dc351a1cff84423ed521"
+    }
+  }
+}
