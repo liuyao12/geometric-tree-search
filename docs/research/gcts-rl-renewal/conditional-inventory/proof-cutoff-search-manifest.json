@@ -1,0 +1,80 @@
+{
+  "archive_scan": {
+    "all_members_byte_checked": true,
+    "archive": {
+      "bytes": 10169287,
+      "file": "proof-cutoff-search-evidence.tar.gz",
+      "sha256": "ce2e2243aa0dfc67d841872b1cba2d82dece1a6ee1450f4b5e0a51775b648a8e"
+    },
+    "members": 129,
+    "omitted_trusted_runtime": [
+      {
+        "pin": {
+          "bytes": 18058560,
+          "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+          "sha256": "b6ea0c2a9bfce48dbf181a53f1ca4f0562d40658b85bf47258e2a88d8f9e3933"
+        },
+        "reason": "Pinned isolated trusted CPython binary not redistributed; all research Sources and Native assets are included."
+      }
+    ],
+    "partial_raw_metadata_only": [],
+    "payload_bytes": 125354969,
+    "schema": "proof-cutoff-archive-complete-byte-scan-v1"
+  },
+  "conclusion": "Three fresh resource-admitted jobs;112qualified placements/12audits/144wordcontrols. One repeated conventionalS0 certificate, no point proof or GCTS/RL advantage;9searches+9skips, incomplete6armcomparison.",
+  "files": [
+    {
+      "bytes": 347717,
+      "file": "proof-cutoff-search-data.json",
+      "sha256": "49f39ab980fc670a054a11dfd71584e1dfd7d3650ca627bd7a383f7d38b9d777"
+    },
+    {
+      "bytes": 31756,
+      "file": "proof-cutoff-search-engineering.json",
+      "sha256": "d423aa3c96a2c2e23f421d374687c47f2217c298e82294b6462b13e51e13bd21"
+    },
+    {
+      "bytes": 10169287,
+      "file": "proof-cutoff-search-evidence.tar.gz",
+      "sha256": "ce2e2243aa0dfc67d841872b1cba2d82dece1a6ee1450f4b5e0a51775b648a8e"
+    },
+    {
+      "bytes": 48728,
+      "file": "proof-cutoff-search-review-C.json",
+      "sha256": "8d963077bd5461a93f6972ee9df2026009d139fc642dfefc3208020b9409009c"
+    },
+    {
+      "bytes": 31114,
+      "file": "proof-cutoff-search-review-L.json",
+      "sha256": "38f607259a8d5fe3076f41590995baac3f3772cd2cc681a30135727cbb575cc9"
+    },
+    {
+      "bytes": 28645,
+      "file": "proof-cutoff-search.html",
+      "sha256": "4daf50b99c90ffdface839b8a311602937762928401b07598f448207eafc87d8"
+    },
+    {
+      "bytes": 110777,
+      "file": "reader.html",
+      "sha256": "97a58fbc063ff8b629393cdf21fe1d08436e3cded8b0237b1287ee06dd669b8c"
+    }
+  ],
+  "reader_delta": {
+    "after": {
+      "bytes": 110777,
+      "sha256": "97a58fbc063ff8b629393cdf21fe1d08436e3cded8b0237b1287ee06dd669b8c"
+    },
+    "before": {
+      "bytes": 110180,
+      "sha256": "057807e0ae64e3f6a1d95fd0596eaeed894d407d2e69b565b58756db0e14c018"
+    },
+    "deleting_exact_insertion_recovers_prior_body": true,
+    "inserted_bytes": 597,
+    "inserted_text": "<section id=\"proof-cutoff-update\" class=\"panel\"><h2>All three case jobs fit; comparison still incomplete</h2><p><a href=\"proof-cutoff-search.html#outcome\">Read the owned-cutoff lifecycle experiment</a>. Three fresh cold jobs pass the unchanged resource gates, with 112 point placements and twelve complete graph audits. The conventional symbolic control qualifies its 14-line proof; point searches remain budget-unknown and cluster arms remain skipped. The report preserves the earlier failures, compares all cases, and links every recipient proof row to its colored point markings.</p></section>\n",
+    "offset": 1331,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/reader.html",
+    "schema": "proof-cutoff-reader-exact-insertion-v1"
+  },
+  "schema": "proof-cutoff-search-publication-manifest-v1",
+  "source_parent_commit": "e7053c96fe3f16d6c923bdeb5c3646dfce694ca3"
+}

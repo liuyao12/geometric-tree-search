@@ -1,0 +1,1114 @@
+{
+  "assessment": {
+    "accepted_recipient_proofs": 1,
+    "admitted_cluster_arms_skipped": 9,
+    "admitted_complete_point_domain_audits": 12,
+    "admitted_point_placement_attempts": 112,
+    "admitted_searches_returned": 9,
+    "cases": [
+      {
+        "accepted_recipient_proofs": [
+          {
+            "arm": "S0",
+            "full_arm_seconds": 4.990564957995957,
+            "query": 89,
+            "rows": 14,
+            "search_seconds": 0.11604266599897528
+          }
+        ],
+        "case_id": "pilot-fork-join-positive",
+        "certified_exclusions": 12,
+        "checker_accepted_candidates": [
+          {
+            "arm": "S0",
+            "full_arm_seconds": 4.990564957995957,
+            "query": 89,
+            "rows": 14,
+            "search_seconds": 0.11604266599897528
+          }
+        ],
+        "compile_and_model_seconds": 69.39426350000576,
+        "dictionary_words": 9314,
+        "display_peak_bytes": 839303168,
+        "full_shared_setup_seconds": 82.93034437499591,
+        "ground_instances": 7,
+        "ground_native_status": "unknown_step_budget",
+        "ground_query_seconds": 7.427141041996947,
+        "initial_audit_incidence_difference": 12,
+        "job_admission_label": "Whole job resource-admitted",
+        "known_exit_seconds": 105.52026770800148,
+        "marking_seconds": 0.00439029199333163,
+        "memory_label": "Whole peak: 800.4 MiB",
+        "model_placements": 63823,
+        "native_peak_bytes": 12910592,
+        "native_queries": 90,
+        "observer": {
+          "bytes": 1498,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-fork-join-positive.observer/observer.json",
+          "sha256": "125a08f718e7bad34e60736e9f7a55776ef3c5f59491c185a5c0a99fb66d6ed1"
+        },
+        "observer_seconds": 105.59183270799986,
+        "point_attempts": 34,
+        "point_domain_audits": 4,
+        "point_status": "34 point placements; 4 complete audits",
+        "resource_candidate_accepted": true,
+        "result": {
+          "bytes": 31536770,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-fork-join-positive/result.json",
+          "sha256": "22a36c42ee0e4c08e2dd605b8bad34080f29b74fbff1fa5b2f19ae719c74e158"
+        },
+        "scientific_complete": false,
+        "searches_returned": 3,
+        "skipped_cluster_arms": 3,
+        "terminal": {
+          "bytes": 2010,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-fork-join-positive/terminal.json",
+          "sha256": "aa82f8f86afd6c38c6c660c7527499ad3cd9b114b992e0f0fcb014cba9e4dc4f"
+        },
+        "training_and_acquisition_seconds": 9.338855082998634,
+        "whole_peak_bytes": 839303168,
+        "word_model_seconds": 5.897098916000687,
+        "worker_peak_bytes": 718422016
+      },
+      {
+        "accepted_recipient_proofs": [],
+        "case_id": "pilot-quantifier-equality-positive",
+        "certified_exclusions": 12,
+        "checker_accepted_candidates": [],
+        "compile_and_model_seconds": 76.74673083299422,
+        "dictionary_words": 9794,
+        "display_peak_bytes": 812433408,
+        "full_shared_setup_seconds": 90.06058337500144,
+        "ground_instances": 11,
+        "ground_native_status": "unknown_step_budget",
+        "ground_query_seconds": 7.309756250004284,
+        "initial_audit_incidence_difference": 12,
+        "job_admission_label": "Whole job resource-admitted",
+        "known_exit_seconds": 109.39418908399966,
+        "marking_seconds": 0.005135624996910337,
+        "memory_label": "Whole peak: 774.8 MiB",
+        "model_placements": 63980,
+        "native_peak_bytes": 13041664,
+        "native_queries": 108,
+        "observer": {
+          "bytes": 1518,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-quantifier-equality-positive.observer/observer.json",
+          "sha256": "88e9dadffb8a310515f399dc9066c542c697b110733b35a133d6a6be97448833"
+        },
+        "observer_seconds": 109.47852525000053,
+        "point_attempts": 33,
+        "point_domain_audits": 4,
+        "point_status": "33 point placements; 4 complete audits",
+        "resource_candidate_accepted": true,
+        "result": {
+          "bytes": 30981329,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/result.json",
+          "sha256": "1493ec353c0ec6316afde6468bbb141782012b891bb16522d741b468283c33a6"
+        },
+        "scientific_complete": false,
+        "searches_returned": 3,
+        "skipped_cluster_arms": 3,
+        "terminal": {
+          "bytes": 2050,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/terminal.json",
+          "sha256": "99dd9a93411f6c3ae3324cd88874324843f68ea405496947460b19b5867a4a0a"
+        },
+        "training_and_acquisition_seconds": 9.964747125006397,
+        "whole_peak_bytes": 812433408,
+        "word_model_seconds": 5.7900965000008,
+        "worker_peak_bytes": 691765248
+      },
+      {
+        "accepted_recipient_proofs": [],
+        "case_id": "pilot-fork-join-missing-Pa",
+        "certified_exclusions": 12,
+        "checker_accepted_candidates": [],
+        "compile_and_model_seconds": 66.04533362499933,
+        "dictionary_words": 9261,
+        "display_peak_bytes": 852721664,
+        "full_shared_setup_seconds": 79.30841129199689,
+        "ground_instances": 7,
+        "ground_native_status": "unknown_step_budget",
+        "ground_query_seconds": 7.321068584002205,
+        "initial_audit_incidence_difference": 12,
+        "job_admission_label": "Whole job resource-admitted",
+        "known_exit_seconds": 98.92990624999948,
+        "marking_seconds": 0.0038305830021272413,
+        "memory_label": "Whole peak: 813.2 MiB",
+        "model_placements": 63120,
+        "native_peak_bytes": 12910592,
+        "native_queries": 89,
+        "observer": {
+          "bytes": 1499,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa.observer/observer.json",
+          "sha256": "14ef0e16c13c94e62a79dc532cea4b81ee8f3354eb0f6209315431e6a298d5c7"
+        },
+        "observer_seconds": 99.02991241699783,
+        "point_attempts": 45,
+        "point_domain_audits": 4,
+        "point_status": "45 point placements; 4 complete audits",
+        "resource_candidate_accepted": true,
+        "result": {
+          "bytes": 31357262,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/result.json",
+          "sha256": "f6bc5558131175a3b13fc853ef972ca4b77eaede712bfbda79e310649dcaa4cd"
+        },
+        "scientific_complete": false,
+        "searches_returned": 3,
+        "skipped_cluster_arms": 3,
+        "terminal": {
+          "bytes": 2015,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/terminal.json",
+          "sha256": "b2d1903199115e83a41e72abed7037320f5814e5033762371261065955f6cfa4"
+        },
+        "training_and_acquisition_seconds": 9.53356058299687,
+        "whole_peak_bytes": 852721664,
+        "word_model_seconds": 5.732517459000519,
+        "worker_peak_bytes": 731660288
+      }
+    ],
+    "checker_accepted_candidates_in_nonadmitted_jobs": 0,
+    "cluster_arms_skipped": 9,
+    "complete_point_domain_audits": 12,
+    "new_actual_case_jobs": 3,
+    "partial_files_parsed": false,
+    "point_placement_attempts": 112,
+    "point_searches": [
+      {
+        "arm": "P00",
+        "attempts": 19,
+        "auxiliary_removal_incidences_total": 0,
+        "backtracks": 0,
+        "branch_decisions": 10,
+        "case_id": "pilot-fork-join-positive",
+        "completed_domain_audits": 2,
+        "forced_decisions": 9,
+        "initial_audit": {
+          "complete": true,
+          "decision": [
+            "branch",
+            [
+              0,
+              1
+            ],
+            [
+              [
+                0,
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                5,
+                0
+              ],
+              [
+                0,
+                1,
+                10,
+                0
+              ],
+              [
+                0,
+                1,
+                127,
+                0
+              ],
+              [
+                0,
+                1,
+                212,
+                0
+              ],
+              [
+                0,
+                1,
+                213,
+                0
+              ],
+              [
+                0,
+                1,
+                214,
+                0
+              ],
+              [
+                0,
+                1,
+                215,
+                0
+              ],
+              [
+                0,
+                1,
+                216,
+                0
+              ],
+              [
+                0,
+                1,
+                217,
+                0
+              ],
+              [
+                0,
+                1,
+                218,
+                0
+              ],
+              [
+                0,
+                1,
+                219,
+                0
+              ],
+              [
+                0,
+                1,
+                220,
+                0
+              ],
+              [
+                0,
+                1,
+                221,
+                0
+              ],
+              [
+                0,
+                1,
+                222,
+                0
+              ],
+              [
+                0,
+                1,
+                223,
+                0
+              ]
+            ]
+          ],
+          "frontier_points": 28,
+          "incidences": 63823
+        },
+        "initial_auxiliary_removal_witnesses": 0,
+        "nodes": 19,
+        "placed_events": 19,
+        "root_restored": true,
+        "search_seconds": 3.1757751670011203,
+        "status": "unknown_search_budget",
+        "whole_job_admitted": true
+      },
+      {
+        "arm": "P10",
+        "attempts": 15,
+        "auxiliary_removal_incidences_total": 12,
+        "backtracks": 0,
+        "branch_decisions": 8,
+        "case_id": "pilot-fork-join-positive",
+        "completed_domain_audits": 2,
+        "forced_decisions": 7,
+        "initial_audit": {
+          "complete": true,
+          "decision": [
+            "branch",
+            [
+              0,
+              1
+            ],
+            [
+              [
+                0,
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                5,
+                0
+              ],
+              [
+                0,
+                1,
+                10,
+                0
+              ],
+              [
+                0,
+                1,
+                127,
+                0
+              ],
+              [
+                0,
+                1,
+                212,
+                0
+              ],
+              [
+                0,
+                1,
+                213,
+                0
+              ],
+              [
+                0,
+                1,
+                214,
+                0
+              ],
+              [
+                0,
+                1,
+                215,
+                0
+              ],
+              [
+                0,
+                1,
+                216,
+                0
+              ],
+              [
+                0,
+                1,
+                217,
+                0
+              ],
+              [
+                0,
+                1,
+                218,
+                0
+              ],
+              [
+                0,
+                1,
+                219,
+                0
+              ],
+              [
+                0,
+                1,
+                220,
+                0
+              ],
+              [
+                0,
+                1,
+                221,
+                0
+              ],
+              [
+                0,
+                1,
+                222,
+                0
+              ],
+              [
+                0,
+                1,
+                223,
+                0
+              ]
+            ]
+          ],
+          "frontier_points": 28,
+          "incidences": 63811
+        },
+        "initial_auxiliary_removal_witnesses": 12,
+        "nodes": 15,
+        "placed_events": 15,
+        "root_restored": true,
+        "search_seconds": 2.577999542001635,
+        "status": "unknown_search_budget",
+        "whole_job_admitted": true
+      },
+      {
+        "arm": "P10",
+        "attempts": 20,
+        "auxiliary_removal_incidences_total": 12,
+        "backtracks": 1,
+        "branch_decisions": 10,
+        "case_id": "pilot-quantifier-equality-positive",
+        "completed_domain_audits": 2,
+        "forced_decisions": 9,
+        "initial_audit": {
+          "complete": true,
+          "decision": [
+            "branch",
+            [
+              0,
+              1
+            ],
+            [
+              [
+                0,
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                5,
+                0
+              ],
+              [
+                0,
+                1,
+                14,
+                0
+              ],
+              [
+                0,
+                1,
+                175,
+                0
+              ],
+              [
+                0,
+                1,
+                260,
+                0
+              ],
+              [
+                0,
+                1,
+                261,
+                0
+              ],
+              [
+                0,
+                1,
+                262,
+                0
+              ],
+              [
+                0,
+                1,
+                263,
+                0
+              ],
+              [
+                0,
+                1,
+                264,
+                0
+              ],
+              [
+                0,
+                1,
+                265,
+                0
+              ],
+              [
+                0,
+                1,
+                266,
+                0
+              ],
+              [
+                0,
+                1,
+                267,
+                0
+              ],
+              [
+                0,
+                1,
+                268,
+                0
+              ],
+              [
+                0,
+                1,
+                269,
+                0
+              ],
+              [
+                0,
+                1,
+                270,
+                0
+              ],
+              [
+                0,
+                1,
+                271,
+                0
+              ],
+              [
+                0,
+                1,
+                272,
+                0
+              ],
+              [
+                0,
+                1,
+                273,
+                0
+              ],
+              [
+                0,
+                1,
+                274,
+                0
+              ],
+              [
+                0,
+                1,
+                275,
+                0
+              ],
+              [
+                0,
+                1,
+                276,
+                0
+              ],
+              [
+                0,
+                1,
+                277,
+                0
+              ],
+              [
+                0,
+                1,
+                278,
+                0
+              ],
+              [
+                0,
+                1,
+                281,
+                0
+              ],
+              [
+                0,
+                1,
+                283,
+                0
+              ],
+              [
+                0,
+                1,
+                361,
+                0
+              ]
+            ]
+          ],
+          "frontier_points": 26,
+          "incidences": 63968
+        },
+        "initial_auxiliary_removal_witnesses": 12,
+        "nodes": 20,
+        "placed_events": 20,
+        "root_restored": true,
+        "search_seconds": 2.2362284580012783,
+        "status": "unknown_search_budget",
+        "whole_job_admitted": true
+      },
+      {
+        "arm": "P00",
+        "attempts": 13,
+        "auxiliary_removal_incidences_total": 0,
+        "backtracks": 0,
+        "branch_decisions": 7,
+        "case_id": "pilot-quantifier-equality-positive",
+        "completed_domain_audits": 2,
+        "forced_decisions": 6,
+        "initial_audit": {
+          "complete": true,
+          "decision": [
+            "branch",
+            [
+              0,
+              1
+            ],
+            [
+              [
+                0,
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                5,
+                0
+              ],
+              [
+                0,
+                1,
+                14,
+                0
+              ],
+              [
+                0,
+                1,
+                175,
+                0
+              ],
+              [
+                0,
+                1,
+                260,
+                0
+              ],
+              [
+                0,
+                1,
+                261,
+                0
+              ],
+              [
+                0,
+                1,
+                262,
+                0
+              ],
+              [
+                0,
+                1,
+                263,
+                0
+              ],
+              [
+                0,
+                1,
+                264,
+                0
+              ],
+              [
+                0,
+                1,
+                265,
+                0
+              ],
+              [
+                0,
+                1,
+                266,
+                0
+              ],
+              [
+                0,
+                1,
+                267,
+                0
+              ],
+              [
+                0,
+                1,
+                268,
+                0
+              ],
+              [
+                0,
+                1,
+                269,
+                0
+              ],
+              [
+                0,
+                1,
+                270,
+                0
+              ],
+              [
+                0,
+                1,
+                271,
+                0
+              ],
+              [
+                0,
+                1,
+                272,
+                0
+              ],
+              [
+                0,
+                1,
+                273,
+                0
+              ],
+              [
+                0,
+                1,
+                274,
+                0
+              ],
+              [
+                0,
+                1,
+                275,
+                0
+              ],
+              [
+                0,
+                1,
+                276,
+                0
+              ],
+              [
+                0,
+                1,
+                277,
+                0
+              ],
+              [
+                0,
+                1,
+                278,
+                0
+              ],
+              [
+                0,
+                1,
+                281,
+                0
+              ],
+              [
+                0,
+                1,
+                283,
+                0
+              ],
+              [
+                0,
+                1,
+                361,
+                0
+              ]
+            ]
+          ],
+          "frontier_points": 26,
+          "incidences": 63980
+        },
+        "initial_auxiliary_removal_witnesses": 0,
+        "nodes": 13,
+        "placed_events": 13,
+        "root_restored": true,
+        "search_seconds": 2.7885562919982476,
+        "status": "unknown_search_budget",
+        "whole_job_admitted": true
+      },
+      {
+        "arm": "P00",
+        "attempts": 22,
+        "auxiliary_removal_incidences_total": 0,
+        "backtracks": 3,
+        "branch_decisions": 10,
+        "case_id": "pilot-fork-join-missing-Pa",
+        "completed_domain_audits": 2,
+        "forced_decisions": 9,
+        "initial_audit": {
+          "complete": true,
+          "decision": [
+            "branch",
+            [
+              0,
+              1
+            ],
+            [
+              [
+                0,
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                4,
+                0
+              ],
+              [
+                0,
+                1,
+                8,
+                0
+              ],
+              [
+                0,
+                1,
+                159,
+                0
+              ],
+              [
+                0,
+                1,
+                160,
+                0
+              ],
+              [
+                0,
+                1,
+                161,
+                0
+              ],
+              [
+                0,
+                1,
+                162,
+                0
+              ],
+              [
+                0,
+                1,
+                163,
+                0
+              ],
+              [
+                0,
+                1,
+                164,
+                0
+              ],
+              [
+                0,
+                1,
+                165,
+                0
+              ],
+              [
+                0,
+                1,
+                166,
+                0
+              ],
+              [
+                0,
+                1,
+                167,
+                0
+              ],
+              [
+                0,
+                1,
+                168,
+                0
+              ],
+              [
+                0,
+                1,
+                169,
+                0
+              ],
+              [
+                0,
+                1,
+                170,
+                0
+              ]
+            ]
+          ],
+          "frontier_points": 28,
+          "incidences": 63120
+        },
+        "initial_auxiliary_removal_witnesses": 0,
+        "nodes": 22,
+        "placed_events": 22,
+        "root_restored": true,
+        "search_seconds": 2.892011249998177,
+        "status": "unknown_search_budget",
+        "whole_job_admitted": true
+      },
+      {
+        "arm": "P10",
+        "attempts": 23,
+        "auxiliary_removal_incidences_total": 12,
+        "backtracks": 4,
+        "branch_decisions": 10,
+        "case_id": "pilot-fork-join-missing-Pa",
+        "completed_domain_audits": 2,
+        "forced_decisions": 9,
+        "initial_audit": {
+          "complete": true,
+          "decision": [
+            "branch",
+            [
+              0,
+              1
+            ],
+            [
+              [
+                0,
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                4,
+                0
+              ],
+              [
+                0,
+                1,
+                8,
+                0
+              ],
+              [
+                0,
+                1,
+                159,
+                0
+              ],
+              [
+                0,
+                1,
+                160,
+                0
+              ],
+              [
+                0,
+                1,
+                161,
+                0
+              ],
+              [
+                0,
+                1,
+                162,
+                0
+              ],
+              [
+                0,
+                1,
+                163,
+                0
+              ],
+              [
+                0,
+                1,
+                164,
+                0
+              ],
+              [
+                0,
+                1,
+                165,
+                0
+              ],
+              [
+                0,
+                1,
+                166,
+                0
+              ],
+              [
+                0,
+                1,
+                167,
+                0
+              ],
+              [
+                0,
+                1,
+                168,
+                0
+              ],
+              [
+                0,
+                1,
+                169,
+                0
+              ],
+              [
+                0,
+                1,
+                170,
+                0
+              ]
+            ]
+          ],
+          "frontier_points": 28,
+          "incidences": 63108
+        },
+        "initial_auxiliary_removal_witnesses": 12,
+        "nodes": 23,
+        "placed_events": 23,
+        "root_restored": true,
+        "search_seconds": 2.2507047499966575,
+        "status": "unknown_search_budget",
+        "whole_job_admitted": true
+      }
+    ],
+    "remaining_once_grants": 0,
+    "resource_admitted_case_jobs": 3,
+    "resource_rejected_case_jobs": 0,
+    "schema": "Root-passive-proof-cutoff-search-assessment-v1",
+    "scientific_calls": 0,
+    "scientific_complete": false,
+    "scope": "Passive complete saved-file joins and literal word-dictionary display decoding; no scientific Source execution/replay. Aggregate observation counts include any explicitly NONADMITTED failed attempts; separate admitted counts follow.",
+    "searches_returned": 9,
+    "trained_RL": false,
+    "whole_goal_complete": false,
+    "word_reference_controls_per_case": 48
+  },
+  "partial_files_parsed": false,
+  "protocol": {
+    "baseline_scope": "Same matched symbolic control, not strongest ATP. Shared point setup is experimental correspondence/reporting overhead, not intrinsically necessary for symbolic proof search. D9 is an authored historical development comparator, not controlled statistical speedup evidence.",
+    "change": "Only in search_points, after the exact owned-cutoff identity guard and the existing cutoff trace append, clear budget.stop.__traceback__ to None. VERSION is the only other text change. Symbolic search, budget checks, Graph copies and the read-only parent domain view remain unchanged.",
+    "completion": "Six explicit outcomes give job_record_complete. Any skipped arm prevents all_six_searched/scientific_complete. Whole resource/custody acceptance is separate, and bounded failure is unknown, never theorem falsity or a plane non-tiling claim.",
+    "correspondence": "The assignment occurs only after point recursion has unwound and the exception has been identified as this budget.stop. Returned evidence does not retain that traceback. Foreign _Cutoff objects re-raise before cleanup; Root/transport/Native faults do not enter this handler. Root fingerprint restoration, Graph audits and all48 word-reference controls remain. Clearing the retained traceback cannot undo an active-recursion or earlier high-water peak and does not predict RSS reduction or fit.",
+    "costs": "All donor acquisition, compilation/model/reference checks, wire encoding, markings, unknown ground query, real searches/final proof checks, serialization and custody remain charged once per case. Nested timers are not disjoint. S0 needs no unused learned inventory; no cluster method gets free acquisition.",
+    "execution": "Three fresh sequential cold case jobs; all agents idle during timed actuals. Exact fully reviewed Source/plan and fresh one-use Root grants required. No old result/library/prefix/grant rescue.",
+    "input": {
+      "bytes": 14901,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/corpus-L/pilot-inputs-v2.json",
+      "sha256": "2f206ef004c4d723f862ee36f08355816c5264a5809340be9787331d82d33cd6"
+    },
+    "limits": {
+      "custody_seconds": 210,
+      "log_bytes": 4194304,
+      "memory_bytes": 1073741824,
+      "observer_fallback_seconds": 225,
+      "physical_bytes": 134217728,
+      "positive_seconds": 180,
+      "reserved_outer_bytes": 9437184,
+      "result_bytes": 50331648,
+      "root_callbacks": 400000000,
+      "work_seconds": 160
+    },
+    "new_actuals": 0,
+    "new_grants": 0,
+    "observer": "Unchanged fixed-dependency nonhostile custodian:160s work/180s positive/210s custody/225s independent fallback,1GiB memory/128MiB physical output including9MiB reserve and400m callbacks. Live file census is non-atomic; final census after known child exit. No adversarial or OSreal-time guarantee.",
+    "old_grants_remaining": 0,
+    "partial_rule": "Every.partial raw length/hash only, never parsed/projected/reconstructed/admitted.",
+    "prerequisites": "Unchanged D8 per-arm gate: Native unknown_step_budget/unknown_space_budget ground registry explicitly skips SC/P01/P11 only; S0/P00/P10 run. Rejected/foreign status and Root/transport faults are not skips. Clusters only reorder original primitive alternatives, with complete fallback.",
+    "proof_acceptance": "Every candidate retains exact case Host, full finite point region and final primitive Native checks. Native UNKNOWN is candidate-only. Old memory-failed packets are not adopted; only fresh whole-accepted jobs enter qualified comparisons.",
+    "schema": "owned-point-cutoff-search-protocol-v1",
+    "scientific_limits": {
+      "cluster_binding_work": 20000,
+      "cluster_instances": 12,
+      "cluster_proposals": 16,
+      "compile_queries": 512,
+      "domain_audits": 2,
+      "marking_certificates": 12,
+      "marking_proposals": 48,
+      "marking_work": 200000,
+      "native_steps": 1000000000,
+      "search_attempts": 600,
+      "search_seconds": 2.0
+    },
+    "scope": "Aligned complete-word Native/point adaptation; arbitrary shifted/partial byte assignments and physical nearest-neighbor Wang qualification remain outside scope. No fullPA/Hilbertgeometry, practical Turtle/Penrose plane coverage, trainedRL, broad proof-search superiority or wholeprogram completion.",
+    "search_time": "Original cooperative2s includes Graph construction, snapshots, initial audits and active search. Cleanup/operations may overshoot checkpoints. No timer moved, audit omitted, attempt count increased or ordering tuned.",
+    "source": "All28 runtime and4 custodian Sources are exact D9 copies. Only the new entry owned-cutoff traceback assignment/version differ. Original D8 L handoff binds its unchanged verifier Source; D10 caller and whole-plan reviews separately bind the new entry. No new model, RL, forced GC, active Graph representation or admission-policy change.",
+    "unchanged": "All D8 corpus/theories/3fresh cold3-5-5donors/14-13-14primitive bounds; exact candidate identities, word carrier/reduction verifier, t roots, initial boundary, frontier/generations/global scheduler/rollback, six-arm order,2s clock, all quotas, Native ground gates and final proof gates."
+  },
+  "schema": "proof-cutoff-search-method-v1",
+  "scientific_calls": 0,
+  "verification_scope": "Independent full model reduction/occurrence checks and actual returned tiny controls; literal evidence-owner joins; unchanged primitive Host/full-region/final Native gates. C/L subsequent reviews are passive joins and Source arguments."
+}

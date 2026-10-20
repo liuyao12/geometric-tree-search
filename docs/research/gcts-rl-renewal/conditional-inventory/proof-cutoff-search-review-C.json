@@ -1,0 +1,1090 @@
+{
+  "schema": "typed-owned-cutoff-actual-scientific-review-v1",
+  "reviewer_identity": "/root/recovered_batch_review",
+  "review_passed": true,
+  "status": "PASS_PASSIVE_COMPLETE_SAVED_OUTCOME_SCOPE_ALL_THREE_RESOURCE_JOBS_QUALIFIED",
+  "passive_complete_saved_data_only": true,
+  "scientific_calls": 0,
+  "logical_replays": 0,
+  "actual_execution_authorized": false,
+  "check_count": 8,
+  "failed_checks": 0,
+  "checks": [
+    {
+      "id": "complete-pins-and-fresh-attempts",
+      "passed": true,
+      "finding": "All41 offered Source/runtime/input pins remain exact.42 complete actual/observer files and three unique consumed once grants join exact plans and prior independent reviews. No partials observed/parsed. This audit invokes no research code, Native/Host checker, model constructor, generator, fixture, sizing or semantic replay."
+    },
+    {
+      "id": "whole-resource-classification",
+      "passed": true,
+      "finding": "All three worker packets COMPLETE/child0 and parent/observer/tool0 reconcile; conservative whole peaks839,303,168/812,433,408/852,721,664B are below unchanged1GiB. All three whole jobs now qualify. Resource completion remains distinct from proof acceptance and scientific comparison completion; prior failed jobs are not rescued or relabeled."
+    },
+    {
+      "id": "full-arm-population-and-query-joins",
+      "passed": true,
+      "finding": "Nine searches/nine explicit Native-UNKNOWN prerequisite skips are all within qualified jobs. All287 Native request digests, complete stages and terminal input/output hashes join; statuses75accepted/209rejected/3unknown. Ground batches each exhaust1e9 microsteps and expose no usable inventory. Eighteen donor whole/essential requests accepted3/5/5 inside fresh cold qualified jobs; no cluster recipient arm executes."
+    },
+    {
+      "id": "actual-reduction-and-existing-controls",
+      "passed": true,
+      "finding": "All48 unchanged independent word-reference controls returned per case,144 qualified control rows total. Full target reduction, literal evidence, overlay and existing Tiny scheduler/rollback diagnostics returned. These are saved observations linked to the prior Source argument, not a fresh checker replay, universal correctness proof or arbitrary partial-byte-state claim."
+    },
+    {
+      "id": "recipient-point-progress-and-rollback",
+      "passed": true,
+      "finding": "All six point calls completed two full independent domain/inverse/scheduler audits,112 placement events total. Counts P00/P10 are19/15,13/20,22/23. Every saved order preserves the complete decision alternatives; placement/return keys, counters, cutoffs and restored root fingerprints reconcile. Equality P10 reaches one dead/backtrack; negative P00 three and P10 four. Only the initial two states per call are independently audited; Source ownership supports parent preservation beyond them, not an exhaustive runtime audit at every later node."
+    },
+    {
+      "id": "real-marking-effect-with-local-scope",
+      "passed": true,
+      "finding": "All12 certificates per case exhaust the full recorded first-row guard support for a trial first-row command. Actual P10 initial Graph audit has12 fewer incidences than P00 at the same frontier/first decision; second audited state agrees. This is observed ordinary marking-based initial pruning, with no additional during-placement auxiliary removals. It is shallow local plumbing and does not establish high-level lemma discovery or faster solving."
+    },
+    {
+      "id": "qualified-conventional-proof-not-GCTS-or-novel-theorem",
+      "passed": true,
+      "finding": "First S0 returns14 primitive rows/28 exact command+guard placements and exact Host/full-region/Native acceptance request89 inside a now-qualified whole job. The complete saved proof equals the prior D9 conventional S0 proof, and its theorem was already separately admitted in D7. Thus D10 has one qualified conventional baseline certificate, no new mathematical theorem or GCTS point proof. Both remaining S0 runs and all six point runs remain bounded UNKNOWN; the authored external negative model was not supplied to search."
+    },
+    {
+      "id": "owned-cutoff-Source-inference-and-historical-scope",
+      "passed": true,
+      "finding": "Exact v8 Source plus returned owned-cutoff events and post-handler fingerprints support passage through the guarded traceback clear in point searches. No direct traceback snapshot, live-object census or phase-memory instrumentation was saved. All runtime/custodian Sources, clocks and gates remain unchanged apart from the reviewed point-only cleanup/VERSION. D9 actual raw pins revalidate unchanged. All three D10 cases fit where D9 first failed, but clearing cannot reverse an earlier HWM and single timed runs cannot prove causal/statistical memory or speed benefit. Shared setup remains roughly79–90s. Nine cluster skips prevent a full six-arm comparison; trainedRL/GCTS advantage/fullWang/general proof-search progress remain open."
+    }
+  ],
+  "resource_admitted_case_ids": [
+    "pilot-fork-join-positive",
+    "pilot-quantifier-equality-positive",
+    "pilot-fork-join-missing-Pa"
+  ],
+  "resource_rejected_case_ids": [],
+  "recipient_proofs_admitted": 1,
+  "recipient_proof_engine": "unchanged conventional symbolic S0 baseline",
+  "GCTS_point_proofs_admitted": 0,
+  "novel_mathematical_theorem": false,
+  "complete_pilot_comparison": false,
+  "GCTS_or_RL_advantage_established": false,
+  "raw_and_admitted_totals": {
+    "searches": 9,
+    "skips": 9,
+    "point_placements": 112,
+    "point_domain_audits": 12,
+    "Native_queries": 287,
+    "Native_status_counts": {
+      "accepted": 75,
+      "rejected": 209,
+      "unknown_step_budget": 3
+    },
+    "donor_whole_essential_acceptances": 18,
+    "word_control_returns": 144,
+    "conventional_recipient_proofs": 1
+  },
+  "cases": [
+    {
+      "case_id": "pilot-fork-join-positive",
+      "resource_admitted": true,
+      "packet": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-fork-join-positive/result.json",
+        "bytes": 31536770,
+        "sha256": "22a36c42ee0e4c08e2dd605b8bad34080f29b74fbff1fa5b2f19ae719c74e158"
+      },
+      "worker_status": "COMPLETE",
+      "worker_exit": 0,
+      "observer_tool_exit": 0,
+      "whole_peak_bytes": 839303168,
+      "observer_gate_seconds": 105.59237804100121,
+      "plan": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/root/plan-pilot-fork-join-positive-v1.json",
+        "bytes": 15266,
+        "sha256": "d370111533e41a1d949d275386313d68e486dfa6ea64501db5a606e159922d7a"
+      },
+      "grant": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/root/grant-pilot-fork-join-positive-v1.json",
+        "bytes": 1838,
+        "sha256": "360c5d36b0ada075c90753f6f146e4dc5b4eda4c836a8178e604e2549d05b0a9"
+      },
+      "consumed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-fork-join-positive/CONSUMED.json",
+        "bytes": 261,
+        "sha256": "1abd23639bde347043856a608d980e97a886e60a53f57591586de10d50ef8f2c"
+      },
+      "Native_queries": 90,
+      "Native_status_counts": {
+        "accepted": 23,
+        "rejected": 66,
+        "unknown_step_budget": 1
+      },
+      "Native_request_stage_joins": 90,
+      "donors": [
+        {
+          "id": "train-propositional-application",
+          "rows": 3,
+          "whole_query": 4,
+          "essential_query": 5
+        },
+        {
+          "id": "train-propositional-chain",
+          "rows": 5,
+          "whole_query": 12,
+          "essential_query": 13
+        },
+        {
+          "id": "train-propositional-curried",
+          "rows": 5,
+          "whole_query": 20,
+          "essential_query": 21
+        }
+      ],
+      "library_family_ids": [
+        "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+        "68fc85fd778d3ed2abb50f4c6f694d980ef9acdce6b756b308824907a444117b",
+        "e9b268c1fd1ead1078954a62c37b5df26bfa76b514a5a044e06f80a1b11206d9"
+      ],
+      "job_record_complete": true,
+      "scientific_complete": false,
+      "recipient_proofs_admitted": 1,
+      "word_reference_controls_returned": 48,
+      "word_reference_controls_qualified": true,
+      "reference_check": {
+        "accepted_placements": 63823,
+        "affected_scope": "Each whole-word port update represents all bytes of a complete aligned occurrence. Every occurrence contains its common origin, so union of all original byte dependencies equals the checked port dependency set. Scalar/t-support dependencies are unchanged; finite unions preserve all affected candidate sets.",
+        "attempted_placements": 66020,
+        "complete": true,
+        "dependency_memberships": 287870,
+        "dependency_points": 70,
+        "distinct_complete_words": 9314,
+        "internal_conflicts": 2197,
+        "pointwise_identity": false,
+        "port_scalar_occurrences": 224047,
+        "reduction_scope": "Only states reached from the checked boundary by the complete checked placements: aligned complete canonical JSON words with nonbyte terminator256; scalar namespaces disjoint. Equal IDs iff equal full terminated words; unequal words conflict at first differing byte or shorter terminator. Partial/shifted words and arbitrary byte states are excluded.",
+        "schema": "aligned-complete-word-reference-v1",
+        "storage_scope": "Full canonical payload compared once per distinct dictionary word, small independently derived occurrence records per candidate, bidirectional port incidence without a reverse byte map. No old Model or Host/Native acceptance invoked."
+      },
+      "marking_certificates": 12,
+      "marking_scope": "All12 are first-row command/guard support exhaustion, shallow local failures rather than learned high-level lemmas.",
+      "initial_audited_incidence_difference": 12,
+      "second_audits_identical": true,
+      "compile_and_model_seconds": 69.39426350000576,
+      "full_shared_setup_seconds": 82.93034437499591,
+      "word_evidence_seconds": 5.897098916000687,
+      "ground_Native_status": "unknown_step_budget",
+      "ground_binding_work": 20003,
+      "arms": [
+        {
+          "id": "S0",
+          "status": "symbolic_proof_candidate",
+          "metrics": {
+            "attempts": 14,
+            "nodes": 15,
+            "skeleton_tests": 47209
+          },
+          "trace_event_counts": {
+            "decision": 14,
+            "extend": 14,
+            "return": 14
+          },
+          "seconds": 0.11601508300373098,
+          "full_arm_seconds": 4.990564957995957,
+          "root_restored": true,
+          "proof_verification_status": "HOST_REGION_NATIVE_ACCEPTED",
+          "admitted_conventional_proof_observation": {
+            "rows": 14,
+            "selected_placements": 28,
+            "Host": {
+              "accepted": true,
+              "rows": 14,
+              "scope": "independent flat Host Kernel; syntax helpers also used by compiler; exact case theory, no extra premises",
+              "target": [
+                "pred",
+                "S",
+                [
+                  [
+                    "fun",
+                    "f",
+                    [
+                      [
+                        "fun",
+                        "a",
+                        []
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            },
+            "region": {
+              "complete": true,
+              "decoded_rows": 14,
+              "mark_points": 42,
+              "required_points": 28,
+              "selected_placements": 28
+            },
+            "Native_query": 89,
+            "Native_status": "accepted",
+            "rule_counts": {
+              "axiom": 4,
+              "instantiate": 3,
+              "mp": 7
+            },
+            "admitted_proof": true,
+            "novel_mathematical_theorem": false,
+            "GCTS_point_search_proof": false
+          }
+        },
+        {
+          "id": "P11",
+          "status": "SKIPPED_UNKNOWN_PREREQUISITE",
+          "search": null
+        },
+        {
+          "id": "P00",
+          "status": "unknown_search_budget",
+          "metrics": {
+            "attempts": 19,
+            "auxiliary_removed_incidences": 0,
+            "auxiliary_removed_incidences_total": 0,
+            "branch": 10,
+            "forced": 9,
+            "initial_auxiliary_removed_incidences": 0,
+            "nodes": 19
+          },
+          "trace_event_counts": {
+            "decision": 19,
+            "order": 19,
+            "place": 19,
+            "cutoff": 1
+          },
+          "seconds": 3.164382625000144,
+          "full_arm_seconds": 3.175799292002921,
+          "root_restored": true,
+          "proof_verification_status": "NO_PROOF_CANDIDATE",
+          "initial_auxiliary_witnesses": 0,
+          "completed_audits": [
+            {
+              "frontier_points": 28,
+              "incidences": 63823,
+              "decision_kind": "branch",
+              "decision_point": [
+                0,
+                1
+              ],
+              "decision_candidate_count": 16
+            },
+            {
+              "frontier_points": 27,
+              "incidences": 59986,
+              "decision_kind": "forced",
+              "decision_point": [
+                0,
+                0
+              ],
+              "decision_candidate_count": 1
+            }
+          ]
+        },
+        {
+          "id": "SC",
+          "status": "SKIPPED_UNKNOWN_PREREQUISITE",
+          "search": null
+        },
+        {
+          "id": "P10",
+          "status": "unknown_search_budget",
+          "metrics": {
+            "attempts": 15,
+            "auxiliary_removed_incidences": 0,
+            "auxiliary_removed_incidences_total": 12,
+            "branch": 8,
+            "forced": 7,
+            "initial_auxiliary_removed_incidences": 12,
+            "nodes": 15
+          },
+          "trace_event_counts": {
+            "decision": 15,
+            "order": 15,
+            "place": 15,
+            "cutoff": 1
+          },
+          "seconds": 2.5661591250027413,
+          "full_arm_seconds": 2.5780152910010656,
+          "root_restored": true,
+          "proof_verification_status": "NO_PROOF_CANDIDATE",
+          "initial_auxiliary_witnesses": 12,
+          "completed_audits": [
+            {
+              "frontier_points": 28,
+              "incidences": 63811,
+              "decision_kind": "branch",
+              "decision_point": [
+                0,
+                1
+              ],
+              "decision_candidate_count": 16
+            },
+            {
+              "frontier_points": 27,
+              "incidences": 59986,
+              "decision_kind": "forced",
+              "decision_point": [
+                0,
+                0
+              ],
+              "decision_candidate_count": 1
+            }
+          ]
+        },
+        {
+          "id": "P01",
+          "status": "SKIPPED_UNKNOWN_PREREQUISITE",
+          "search": null
+        }
+      ]
+    },
+    {
+      "case_id": "pilot-quantifier-equality-positive",
+      "resource_admitted": true,
+      "packet": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/result.json",
+        "bytes": 30981329,
+        "sha256": "1493ec353c0ec6316afde6468bbb141782012b891bb16522d741b468283c33a6"
+      },
+      "worker_status": "COMPLETE",
+      "worker_exit": 0,
+      "observer_tool_exit": 0,
+      "whole_peak_bytes": 812433408,
+      "observer_gate_seconds": 109.47896762500022,
+      "plan": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/root/plan-pilot-quantifier-equality-positive-v1.json",
+        "bytes": 15286,
+        "sha256": "107630120e0a900bc7b229fa16c504abcadb1046d458daf5a3ec21dc73cce72a"
+      },
+      "grant": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/root/grant-pilot-quantifier-equality-positive-v1.json",
+        "bytes": 1858,
+        "sha256": "2417f56624b9da540c5ec3a415580245a42b1c30478cd484b820ac09b99a7984"
+      },
+      "consumed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/CONSUMED.json",
+        "bytes": 271,
+        "sha256": "b2a47259249dc7188378dc52e6c44f05f8400fdda8a45a0938db3504290cd55b"
+      },
+      "Native_queries": 108,
+      "Native_status_counts": {
+        "accepted": 30,
+        "rejected": 77,
+        "unknown_step_budget": 1
+      },
+      "Native_request_stage_joins": 108,
+      "donors": [
+        {
+          "id": "train-propositional-application",
+          "rows": 3,
+          "whole_query": 4,
+          "essential_query": 5
+        },
+        {
+          "id": "train-propositional-chain",
+          "rows": 5,
+          "whole_query": 12,
+          "essential_query": 13
+        },
+        {
+          "id": "train-propositional-curried",
+          "rows": 5,
+          "whole_query": 20,
+          "essential_query": 21
+        }
+      ],
+      "library_family_ids": [
+        "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+        "68fc85fd778d3ed2abb50f4c6f694d980ef9acdce6b756b308824907a444117b",
+        "e9b268c1fd1ead1078954a62c37b5df26bfa76b514a5a044e06f80a1b11206d9"
+      ],
+      "job_record_complete": true,
+      "scientific_complete": false,
+      "recipient_proofs_admitted": 0,
+      "word_reference_controls_returned": 48,
+      "word_reference_controls_qualified": true,
+      "reference_check": {
+        "accepted_placements": 63980,
+        "affected_scope": "Each whole-word port update represents all bytes of a complete aligned occurrence. Every occurrence contains its common origin, so union of all original byte dependencies equals the checked port dependency set. Scalar/t-support dependencies are unchanged; finite unions preserve all affected candidate sets.",
+        "attempted_placements": 66512,
+        "complete": true,
+        "dependency_memberships": 290020,
+        "dependency_points": 65,
+        "distinct_complete_words": 9794,
+        "internal_conflicts": 2532,
+        "pointwise_identity": false,
+        "port_scalar_occurrences": 226040,
+        "reduction_scope": "Only states reached from the checked boundary by the complete checked placements: aligned complete canonical JSON words with nonbyte terminator256; scalar namespaces disjoint. Equal IDs iff equal full terminated words; unequal words conflict at first differing byte or shorter terminator. Partial/shifted words and arbitrary byte states are excluded.",
+        "schema": "aligned-complete-word-reference-v1",
+        "storage_scope": "Full canonical payload compared once per distinct dictionary word, small independently derived occurrence records per candidate, bidirectional port incidence without a reverse byte map. No old Model or Host/Native acceptance invoked."
+      },
+      "marking_certificates": 12,
+      "marking_scope": "All12 are first-row command/guard support exhaustion, shallow local failures rather than learned high-level lemmas.",
+      "initial_audited_incidence_difference": 12,
+      "second_audits_identical": true,
+      "compile_and_model_seconds": 76.74673083299422,
+      "full_shared_setup_seconds": 90.06058337500144,
+      "word_evidence_seconds": 5.7900965000008,
+      "ground_Native_status": "unknown_step_budget",
+      "ground_binding_work": 20003,
+      "arms": [
+        {
+          "id": "P01",
+          "status": "SKIPPED_UNKNOWN_PREREQUISITE",
+          "search": null
+        },
+        {
+          "id": "P10",
+          "status": "unknown_search_budget",
+          "metrics": {
+            "attempts": 20,
+            "auxiliary_removed_incidences": 0,
+            "auxiliary_removed_incidences_total": 12,
+            "backtracks": 1,
+            "branch": 10,
+            "dead": 1,
+            "forced": 9,
+            "initial_auxiliary_removed_incidences": 12,
+            "nodes": 20
+          },
+          "trace_event_counts": {
+            "decision": 20,
+            "order": 19,
+            "place": 20,
+            "return": 1,
+            "cutoff": 1
+          },
+          "seconds": 2.2236845000006724,
+          "full_arm_seconds": 2.2362529579986585,
+          "root_restored": true,
+          "proof_verification_status": "NO_PROOF_CANDIDATE",
+          "initial_auxiliary_witnesses": 12,
+          "completed_audits": [
+            {
+              "frontier_points": 26,
+              "incidences": 63968,
+              "decision_kind": "branch",
+              "decision_point": [
+                0,
+                1
+              ],
+              "decision_candidate_count": 26
+            },
+            {
+              "frontier_points": 25,
+              "incidences": 59575,
+              "decision_kind": "forced",
+              "decision_point": [
+                0,
+                0
+              ],
+              "decision_candidate_count": 1
+            }
+          ]
+        },
+        {
+          "id": "SC",
+          "status": "SKIPPED_UNKNOWN_PREREQUISITE",
+          "search": null
+        },
+        {
+          "id": "P00",
+          "status": "unknown_search_budget",
+          "metrics": {
+            "attempts": 13,
+            "auxiliary_removed_incidences": 0,
+            "auxiliary_removed_incidences_total": 0,
+            "branch": 7,
+            "forced": 6,
+            "initial_auxiliary_removed_incidences": 0,
+            "nodes": 13
+          },
+          "trace_event_counts": {
+            "decision": 13,
+            "order": 13,
+            "place": 13,
+            "cutoff": 1
+          },
+          "seconds": 2.7741624580012285,
+          "full_arm_seconds": 2.788577040999371,
+          "root_restored": true,
+          "proof_verification_status": "NO_PROOF_CANDIDATE",
+          "initial_auxiliary_witnesses": 0,
+          "completed_audits": [
+            {
+              "frontier_points": 26,
+              "incidences": 63980,
+              "decision_kind": "branch",
+              "decision_point": [
+                0,
+                1
+              ],
+              "decision_candidate_count": 26
+            },
+            {
+              "frontier_points": 25,
+              "incidences": 59575,
+              "decision_kind": "forced",
+              "decision_point": [
+                0,
+                0
+              ],
+              "decision_candidate_count": 1
+            }
+          ]
+        },
+        {
+          "id": "P11",
+          "status": "SKIPPED_UNKNOWN_PREREQUISITE",
+          "search": null
+        },
+        {
+          "id": "S0",
+          "status": "unknown_search_budget",
+          "metrics": {
+            "attempts": 600,
+            "backtracks": 589,
+            "nodes": 601,
+            "skeleton_tests": 329934
+          },
+          "trace_event_counts": {
+            "decision": 601,
+            "extend": 600,
+            "return": 589,
+            "cutoff": 1
+          },
+          "seconds": 0.8239248749960097,
+          "full_arm_seconds": 0.8239370840019546,
+          "root_restored": true,
+          "proof_verification_status": "NO_PROOF_CANDIDATE"
+        }
+      ]
+    },
+    {
+      "case_id": "pilot-fork-join-missing-Pa",
+      "resource_admitted": true,
+      "packet": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/result.json",
+        "bytes": 31357262,
+        "sha256": "f6bc5558131175a3b13fc853ef972ca4b77eaede712bfbda79e310649dcaa4cd"
+      },
+      "worker_status": "COMPLETE",
+      "worker_exit": 0,
+      "observer_tool_exit": 0,
+      "whole_peak_bytes": 852721664,
+      "observer_gate_seconds": 99.03989712499606,
+      "plan": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/root/plan-pilot-fork-join-missing-Pa-v1.json",
+        "bytes": 15270,
+        "sha256": "b39d4a3e7b942925cb5104e79b68ed82259b73a417b115629e2d7adf30ad2a36"
+      },
+      "grant": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/root/grant-pilot-fork-join-missing-Pa-v1.json",
+        "bytes": 1842,
+        "sha256": "66171b5ec568c86b355befd59632ef486550e8a4436d53c8f305c22525e15aba"
+      },
+      "consumed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/CONSUMED.json",
+        "bytes": 263,
+        "sha256": "3cb8f2d0ef809827326e8d9ace4b81961fda569acb713512835fbe4170e74a00"
+      },
+      "Native_queries": 89,
+      "Native_status_counts": {
+        "accepted": 22,
+        "rejected": 66,
+        "unknown_step_budget": 1
+      },
+      "Native_request_stage_joins": 89,
+      "donors": [
+        {
+          "id": "train-propositional-application",
+          "rows": 3,
+          "whole_query": 4,
+          "essential_query": 5
+        },
+        {
+          "id": "train-propositional-chain",
+          "rows": 5,
+          "whole_query": 12,
+          "essential_query": 13
+        },
+        {
+          "id": "train-propositional-curried",
+          "rows": 5,
+          "whole_query": 20,
+          "essential_query": 21
+        }
+      ],
+      "library_family_ids": [
+        "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+        "68fc85fd778d3ed2abb50f4c6f694d980ef9acdce6b756b308824907a444117b",
+        "e9b268c1fd1ead1078954a62c37b5df26bfa76b514a5a044e06f80a1b11206d9"
+      ],
+      "job_record_complete": true,
+      "scientific_complete": false,
+      "recipient_proofs_admitted": 0,
+      "word_reference_controls_returned": 48,
+      "word_reference_controls_qualified": true,
+      "reference_check": {
+        "accepted_placements": 63120,
+        "affected_scope": "Each whole-word port update represents all bytes of a complete aligned occurrence. Every occurrence contains its common origin, so union of all original byte dependencies equals the checked port dependency set. Scalar/t-support dependencies are unchanged; finite unions preserve all affected candidate sets.",
+        "attempted_placements": 65317,
+        "complete": true,
+        "dependency_memberships": 285058,
+        "dependency_points": 70,
+        "distinct_complete_words": 9261,
+        "internal_conflicts": 2197,
+        "pointwise_identity": false,
+        "port_scalar_occurrences": 221938,
+        "reduction_scope": "Only states reached from the checked boundary by the complete checked placements: aligned complete canonical JSON words with nonbyte terminator256; scalar namespaces disjoint. Equal IDs iff equal full terminated words; unequal words conflict at first differing byte or shorter terminator. Partial/shifted words and arbitrary byte states are excluded.",
+        "schema": "aligned-complete-word-reference-v1",
+        "storage_scope": "Full canonical payload compared once per distinct dictionary word, small independently derived occurrence records per candidate, bidirectional port incidence without a reverse byte map. No old Model or Host/Native acceptance invoked."
+      },
+      "marking_certificates": 12,
+      "marking_scope": "All12 are first-row command/guard support exhaustion, shallow local failures rather than learned high-level lemmas.",
+      "initial_audited_incidence_difference": 12,
+      "second_audits_identical": true,
+      "compile_and_model_seconds": 66.04533362499933,
+      "full_shared_setup_seconds": 79.30841129199689,
+      "word_evidence_seconds": 5.732517459000519,
+      "ground_Native_status": "unknown_step_budget",
+      "ground_binding_work": 20003,
+      "arms": [
+        {
+          "id": "P00",
+          "status": "unknown_search_budget",
+          "metrics": {
+            "attempts": 22,
+            "auxiliary_removed_incidences": 0,
+            "auxiliary_removed_incidences_total": 0,
+            "backtracks": 3,
+            "branch": 10,
+            "dead": 3,
+            "forced": 9,
+            "initial_auxiliary_removed_incidences": 0,
+            "nodes": 22
+          },
+          "trace_event_counts": {
+            "decision": 22,
+            "order": 19,
+            "place": 22,
+            "return": 3,
+            "cutoff": 1
+          },
+          "seconds": 2.880770666997705,
+          "full_arm_seconds": 2.8920362919961917,
+          "root_restored": true,
+          "proof_verification_status": "NO_PROOF_CANDIDATE",
+          "initial_auxiliary_witnesses": 0,
+          "completed_audits": [
+            {
+              "frontier_points": 28,
+              "incidences": 63120,
+              "decision_kind": "branch",
+              "decision_point": [
+                0,
+                1
+              ],
+              "decision_candidate_count": 15
+            },
+            {
+              "frontier_points": 27,
+              "incidences": 59337,
+              "decision_kind": "forced",
+              "decision_point": [
+                0,
+                0
+              ],
+              "decision_candidate_count": 1
+            }
+          ]
+        },
+        {
+          "id": "SC",
+          "status": "SKIPPED_UNKNOWN_PREREQUISITE",
+          "search": null
+        },
+        {
+          "id": "P10",
+          "status": "unknown_search_budget",
+          "metrics": {
+            "attempts": 23,
+            "auxiliary_removed_incidences": 0,
+            "auxiliary_removed_incidences_total": 12,
+            "backtracks": 4,
+            "branch": 10,
+            "dead": 4,
+            "forced": 9,
+            "initial_auxiliary_removed_incidences": 12,
+            "nodes": 23
+          },
+          "trace_event_counts": {
+            "decision": 23,
+            "order": 19,
+            "place": 23,
+            "return": 4,
+            "cutoff": 1
+          },
+          "seconds": 2.24036150000029,
+          "full_arm_seconds": 2.2507255829987116,
+          "root_restored": true,
+          "proof_verification_status": "NO_PROOF_CANDIDATE",
+          "initial_auxiliary_witnesses": 12,
+          "completed_audits": [
+            {
+              "frontier_points": 28,
+              "incidences": 63108,
+              "decision_kind": "branch",
+              "decision_point": [
+                0,
+                1
+              ],
+              "decision_candidate_count": 15
+            },
+            {
+              "frontier_points": 27,
+              "incidences": 59337,
+              "decision_kind": "forced",
+              "decision_point": [
+                0,
+                0
+              ],
+              "decision_candidate_count": 1
+            }
+          ]
+        },
+        {
+          "id": "P01",
+          "status": "SKIPPED_UNKNOWN_PREREQUISITE",
+          "search": null
+        },
+        {
+          "id": "S0",
+          "status": "unknown_search_budget",
+          "metrics": {
+            "attempts": 600,
+            "backtracks": 588,
+            "nodes": 601,
+            "skeleton_tests": 405081
+          },
+          "trace_event_counts": {
+            "decision": 601,
+            "extend": 600,
+            "return": 588,
+            "cutoff": 1
+          },
+          "seconds": 1.3588361660004011,
+          "full_arm_seconds": 1.3588523330035969,
+          "root_restored": true,
+          "proof_verification_status": "NO_PROOF_CANDIDATE"
+        },
+        {
+          "id": "P11",
+          "status": "SKIPPED_UNKNOWN_PREREQUISITE",
+          "search": null
+        }
+      ]
+    }
+  ],
+  "actual_file_pins": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-fork-join-positive/CONSUMED.json",
+      "bytes": 261,
+      "sha256": "1abd23639bde347043856a608d980e97a886e60a53f57591586de10d50ef8f2c"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-fork-join-positive/native/boundary-oracle",
+      "bytes": 41808,
+      "sha256": "2b6bf8bb09a4e03d0cb1b4595dea1fe6d4432aa93d8f7eed72c30077fd9941a4"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-fork-join-positive/native/code.bin",
+      "bytes": 7558192,
+      "sha256": "97f0b600cffd83552c4e0f0c4fb1f5d26cfdb76e3e74b267bbaebeddc836e7ed"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-fork-join-positive/native/input.bin",
+      "bytes": 682164,
+      "sha256": "11af34b9d1c50b2228504b83da142597692ca8b68b00b86faa77336b81f29409"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-fork-join-positive/native/output.bin",
+      "bytes": 682168,
+      "sha256": "9e903e18627706581107004526e907830a109b2a211a715d9426f517a66d67fd"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-fork-join-positive/owned-child.json",
+      "bytes": 238,
+      "sha256": "aae92d297d96b0d22f71b16311082a4a7a745935c1b7ca2ebd2b043508b6000e"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-fork-join-positive/result.json",
+      "bytes": 31536770,
+      "sha256": "22a36c42ee0e4c08e2dd605b8bad34080f29b74fbff1fa5b2f19ae719c74e158"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-fork-join-positive/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-fork-join-positive/stdout.bin",
+      "bytes": 116,
+      "sha256": "dda0e2122f4b08d1bcc3b4aef81449ebe3b389a1332cdf5b22acb06300308510"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-fork-join-positive/terminal.json",
+      "bytes": 2010,
+      "sha256": "aa82f8f86afd6c38c6c660c7527499ad3cd9b114b992e0f0fcb014cba9e4dc4f"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-fork-join-positive/worker-header.json",
+      "bytes": 573,
+      "sha256": "eaecc722bc4f61003e16f4982ad2dd66c0217dd021cd9c95b80e9892e1e1747e"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-fork-join-positive.observer/observer.json",
+      "bytes": 1498,
+      "sha256": "125a08f718e7bad34e60736e9f7a55776ef3c5f59491c185a5c0a99fb66d6ed1"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-fork-join-positive.observer/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-fork-join-positive.observer/stdout.bin",
+      "bytes": 1786,
+      "sha256": "0630cb5b80b7d9593bc608b49f0cc51127a269a5d3cf67514cfb8f7a4499aaf9"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/CONSUMED.json",
+      "bytes": 271,
+      "sha256": "b2a47259249dc7188378dc52e6c44f05f8400fdda8a45a0938db3504290cd55b"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/native/boundary-oracle",
+      "bytes": 41808,
+      "sha256": "2b6bf8bb09a4e03d0cb1b4595dea1fe6d4432aa93d8f7eed72c30077fd9941a4"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/native/code.bin",
+      "bytes": 7558192,
+      "sha256": "97f0b600cffd83552c4e0f0c4fb1f5d26cfdb76e3e74b267bbaebeddc836e7ed"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/native/input.bin",
+      "bytes": 900052,
+      "sha256": "f2432fb8ac10022fe24de0e42d9ddeda8fc1426e973948fd699c6136a6e12ce8"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/native/output.bin",
+      "bytes": 900056,
+      "sha256": "8ffed28c4da3ce93bfaf6c7faec40dd3d25b68c0d2614f3d8334066ae6ac1404"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/owned-child.json",
+      "bytes": 248,
+      "sha256": "6ea0ab55d712466d502774d4955d43f700c1861ea71525e41d0abaee6ead258d"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/result.json",
+      "bytes": 30981329,
+      "sha256": "1493ec353c0ec6316afde6468bbb141782012b891bb16522d741b468283c33a6"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/stdout.bin",
+      "bytes": 126,
+      "sha256": "a7a5196a2382e2f87648abfb54f529e2d61d41bb36920a446bd4f55b834d259d"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/terminal.json",
+      "bytes": 2050,
+      "sha256": "99dd9a93411f6c3ae3324cd88874324843f68ea405496947460b19b5867a4a0a"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/worker-header.json",
+      "bytes": 592,
+      "sha256": "ebbcca80d36f43eb2c620ab00af1610700a7392a41747a4caef7d7e2cd6a13c7"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-quantifier-equality-positive.observer/observer.json",
+      "bytes": 1518,
+      "sha256": "88e9dadffb8a310515f399dc9066c542c697b110733b35a133d6a6be97448833"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-quantifier-equality-positive.observer/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-quantifier-equality-positive.observer/stdout.bin",
+      "bytes": 1826,
+      "sha256": "74e3845fa3d2559d86a258e756f78c669df6f3838048834273031ffd3f3aa87a"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/CONSUMED.json",
+      "bytes": 263,
+      "sha256": "3cb8f2d0ef809827326e8d9ace4b81961fda569acb713512835fbe4170e74a00"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/native/boundary-oracle",
+      "bytes": 41808,
+      "sha256": "2b6bf8bb09a4e03d0cb1b4595dea1fe6d4432aa93d8f7eed72c30077fd9941a4"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/native/code.bin",
+      "bytes": 7558192,
+      "sha256": "97f0b600cffd83552c4e0f0c4fb1f5d26cfdb76e3e74b267bbaebeddc836e7ed"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/native/input.bin",
+      "bytes": 817244,
+      "sha256": "a66951150278d8e1fe075dd9488e2218932ba1de1f18f3eec96c3479d5962047"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/native/output.bin",
+      "bytes": 817248,
+      "sha256": "f34eb85eaeda13507a0772cddbb551789b1acbdeeb64133eae24d74d3983b146"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/owned-child.json",
+      "bytes": 240,
+      "sha256": "b08d068cf6764af2cd4abbd1df4a0d66301c2db8a8980f990f19b3b553d588bf"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/result.json",
+      "bytes": 31357262,
+      "sha256": "f6bc5558131175a3b13fc853ef972ca4b77eaede712bfbda79e310649dcaa4cd"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/stdout.bin",
+      "bytes": 117,
+      "sha256": "c8f2f7be94b12cb91b89799295eecb05d30084674331398c77de4a3e5a531db0"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/terminal.json",
+      "bytes": 2015,
+      "sha256": "b2d1903199115e83a41e72abed7037320f5814e5033762371261065955f6cfa4"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/worker-header.json",
+      "bytes": 576,
+      "sha256": "e929cd36d703f995ed48a21a7ef1d731432a47b8fbde57172595692ffc0642f3"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa.observer/observer.json",
+      "bytes": 1499,
+      "sha256": "14ef0e16c13c94e62a79dc532cea4b81ee8f3354eb0f6209315431e6a298d5c7"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa.observer/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa.observer/stdout.bin",
+      "bytes": 1791,
+      "sha256": "4b4b6a1be7c1dd4de097c3a70f9a012950e959a176a3c10296ec00372c6f7097"
+    }
+  ],
+  "whole_offer": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/root/prospective-whole-offer-v1.json",
+    "bytes": 20178,
+    "sha256": "1c7b4b562b265b5fae367180005ca4f297aa1bee4c0d0f8f3f389a4c977f70ef"
+  },
+  "scientific_Source_delta_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/review-C/typed-scientific-delta-Source-review-v1.json",
+    "bytes": 9827,
+    "sha256": "2a6d903c9212d696192cb25b0fb2cee22ce38c9b8f7c92f33c3b0fa160e24efc"
+  },
+  "whole_Source_preflight": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/review-C/typed-whole-prospective-Source-review-v1.json",
+    "bytes": 19155,
+    "sha256": "8d3eb5979477f9422375f110c30a3d9b3e408a4a3808dca83cbaf8c8de85522f"
+  },
+  "external_tool_observer": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/root/external-tool-observer-v1.json",
+    "bytes": 2383,
+    "sha256": "b9e712f3d35c0546d2ddc972e13f085b38f44cf9d69cc19e9f867738c63d0d76"
+  },
+  "Root_passive_assessment": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/root/passive-actual-assessment-v1.json",
+    "bytes": 23969,
+    "sha256": "c62c71afd9c9896f03c3421b0ccba5c23f67392a44a9ab943d0cf9f55ebc54ad"
+  },
+  "D9_historical_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-memory-pilot-20261020/review-C/typed-parent-domain-actual-scientific-review-v1.json",
+    "bytes": 47921,
+    "sha256": "8c2132d32b257b6589a6f2dc5cd157d10441cf7dea23ac0982845f9a3253d6e2"
+  },
+  "historical_comparison": [
+    {
+      "case_id": "pilot-fork-join-positive",
+      "D9_resource_admitted": false,
+      "D10_resource_admitted": true,
+      "D9_whole_peak_bytes": 1109278720,
+      "D10_whole_peak_bytes": 839303168,
+      "D9_point_attempts": {
+        "P00": 19,
+        "P10": 15
+      },
+      "D10_point_attempts": {
+        "P00": 19,
+        "P10": 15
+      },
+      "interpretation": "Historical single cold development observations only; no identical timed-prefix, phase-memory attribution, statistical inference or causal speedup claim."
+    },
+    {
+      "case_id": "pilot-quantifier-equality-positive",
+      "D9_resource_admitted": true,
+      "D10_resource_admitted": true,
+      "D9_whole_peak_bytes": 882720768,
+      "D10_whole_peak_bytes": 812433408,
+      "D9_point_attempts": {
+        "P10": 22,
+        "P00": 12
+      },
+      "D10_point_attempts": {
+        "P10": 20,
+        "P00": 13
+      },
+      "interpretation": "Historical single cold development observations only; no identical timed-prefix, phase-memory attribution, statistical inference or causal speedup claim."
+    },
+    {
+      "case_id": "pilot-fork-join-missing-Pa",
+      "D9_resource_admitted": true,
+      "D10_resource_admitted": true,
+      "D9_whole_peak_bytes": 880361472,
+      "D10_whole_peak_bytes": 852721664,
+      "D9_point_attempts": {
+        "P00": 20,
+        "P10": 11
+      },
+      "D10_point_attempts": {
+        "P00": 22,
+        "P10": 23
+      },
+      "interpretation": "Historical single cold development observations only; no identical timed-prefix, phase-memory attribution, statistical inference or causal speedup claim."
+    }
+  ],
+  "partial_policy": "No partial contents read/projected/adopted. Earlier rejected jobs remain rejected; no prefix rescue or grant reuse.",
+  "remaining": "One repeated conventional certificate qualifies; full six-arm comparison, GCTS point/cluster/RL benefit and all broader mathematical/tiling goals remain open. No further experiment authorized by this review.",
+  "tools_stopped": true,
+  "independent_resource_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-cutoff-proof-pilot-20261020/verification-L/typed-owned-cutoff-resource-custody-review-v1.json",
+    "bytes": 31114,
+    "sha256": "38f607259a8d5fe3076f41590995baac3f3772cd2cc681a30135727cbb575cc9"
+  }
+}
