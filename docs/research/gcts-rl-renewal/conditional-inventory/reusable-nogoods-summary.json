@@ -1,0 +1,2542 @@
+{
+  "actual_invocations": 2,
+  "all_actuals_closed": true,
+  "classification": "PROGRESS",
+  "comparison_scope": "Fresh V3 off then on, single observation each. Same original680+55, order, caps and Sources except declared mode. Diagnostic prefixes are not admitted results and cannot rescue a failed whole run.",
+  "created_utc": "2026-10-20T00:08:23.594273+00:00",
+  "fixed_FOL_palette_qualified": false,
+  "full_pipeline_qualified": false,
+  "gcts_rl_advantage_established": false,
+  "geometric_marking_implementation": false,
+  "goal_status": "active",
+  "marking_construction": "Separate finite unexecuted instance-specific projection argument",
+  "new_automatically_discovered_theorems": 0,
+  "no_target_execution_in_projection": true,
+  "original_diagnostic_groups": 30,
+  "original_diagnostic_variants": 55,
+  "per_API_time_scope": "Inclusive action intervals only, wrapper/guard costs outside intervals; nested oracle/certificate time lies inside search. Interrupted actions may have no interval. Do not sum as exclusive cost.",
+  "preserved_prior_failures": true,
+  "rows": [
+    {
+      "complete_calibration_candidate": false,
+      "diagnostic_only_API_inclusive_wall_ns": {
+        "compiler.compile_finite_problem": 22545956,
+        "compiler.compile_palette": 999043,
+        "oracle.audit_snapshot": 69059067209,
+        "search.search": 179157485668,
+        "verifier._Budget": 352836,
+        "verifier._configuration": 205796,
+        "verifier._global_transition": 207163,
+        "verifier._machine": 484297,
+        "verifier._palette": 3468124,
+        "verifier.verify": 49960917
+      },
+      "diagnostic_only_active_case": "right_scan-w3-s001-p0-h3",
+      "diagnostic_only_call_completed": {
+        "compiler.compile_finite_problem": 69,
+        "compiler.compile_palette": 4,
+        "oracle.audit_snapshot": 10737,
+        "search.search": 68,
+        "verifier._Budget": 72,
+        "verifier._configuration": 113,
+        "verifier._global_transition": 45,
+        "verifier._machine": 68,
+        "verifier._palette": 4,
+        "verifier.verify": 10
+      },
+      "diagnostic_only_call_raised": {
+        "search.search": 1,
+        "verifier._global_transition": 42
+      },
+      "diagnostic_only_call_started": {
+        "compiler.compile_finite_problem": 69,
+        "compiler.compile_palette": 4,
+        "oracle.audit_snapshot": 10737,
+        "search.search": 69,
+        "verifier._Budget": 72,
+        "verifier._configuration": 113,
+        "verifier._global_transition": 87,
+        "verifier._machine": 68,
+        "verifier._palette": 4,
+        "verifier.verify": 10
+      },
+      "diagnostic_only_completed_case_ids": [
+        "right_scan-w1-s0-p0-h0",
+        "right_scan-w1-s0-p0-h1",
+        "right_scan-w1-s0-p0-h2",
+        "right_scan-w1-s0-p0-h3",
+        "right_scan-w1-s0-p0-h4",
+        "right_scan-w1-s1-p0-h0",
+        "right_scan-w1-s1-p0-h1",
+        "right_scan-w1-s1-p0-h2",
+        "right_scan-w1-s1-p0-h3",
+        "right_scan-w1-s1-p0-h4",
+        "right_scan-w2-s00-p0-h0",
+        "right_scan-w2-s00-p0-h1",
+        "right_scan-w2-s00-p0-h2",
+        "right_scan-w2-s00-p0-h3",
+        "right_scan-w2-s00-p0-h4",
+        "right_scan-w2-s00-p1-h0",
+        "right_scan-w2-s00-p1-h1",
+        "right_scan-w2-s00-p1-h2",
+        "right_scan-w2-s00-p1-h3",
+        "right_scan-w2-s00-p1-h4",
+        "right_scan-w2-s01-p0-h0",
+        "right_scan-w2-s01-p0-h1",
+        "right_scan-w2-s01-p0-h2",
+        "right_scan-w2-s01-p0-h3",
+        "right_scan-w2-s01-p0-h4",
+        "right_scan-w2-s01-p1-h0",
+        "right_scan-w2-s01-p1-h1",
+        "right_scan-w2-s01-p1-h2",
+        "right_scan-w2-s01-p1-h3",
+        "right_scan-w2-s01-p1-h4",
+        "right_scan-w2-s10-p0-h0",
+        "right_scan-w2-s10-p0-h1",
+        "right_scan-w2-s10-p0-h2",
+        "right_scan-w2-s10-p0-h3",
+        "right_scan-w2-s10-p0-h4",
+        "right_scan-w2-s10-p1-h0",
+        "right_scan-w2-s10-p1-h1",
+        "right_scan-w2-s10-p1-h2",
+        "right_scan-w2-s10-p1-h3",
+        "right_scan-w2-s10-p1-h4",
+        "right_scan-w2-s11-p0-h0",
+        "right_scan-w2-s11-p0-h1",
+        "right_scan-w2-s11-p0-h2",
+        "right_scan-w2-s11-p0-h3",
+        "right_scan-w2-s11-p0-h4",
+        "right_scan-w2-s11-p1-h0",
+        "right_scan-w2-s11-p1-h1",
+        "right_scan-w2-s11-p1-h2",
+        "right_scan-w2-s11-p1-h3",
+        "right_scan-w2-s11-p1-h4",
+        "right_scan-w3-s000-p0-h0",
+        "right_scan-w3-s000-p0-h1",
+        "right_scan-w3-s000-p0-h2",
+        "right_scan-w3-s000-p0-h3",
+        "right_scan-w3-s000-p0-h4",
+        "right_scan-w3-s000-p1-h0",
+        "right_scan-w3-s000-p1-h1",
+        "right_scan-w3-s000-p1-h2",
+        "right_scan-w3-s000-p1-h3",
+        "right_scan-w3-s000-p1-h4",
+        "right_scan-w3-s000-p2-h0",
+        "right_scan-w3-s000-p2-h1",
+        "right_scan-w3-s000-p2-h2",
+        "right_scan-w3-s000-p2-h3",
+        "right_scan-w3-s000-p2-h4",
+        "right_scan-w3-s001-p0-h0",
+        "right_scan-w3-s001-p0-h1",
+        "right_scan-w3-s001-p0-h2"
+      ],
+      "diagnostic_only_phase_receipts": [
+        {
+          "active": "right_scan-w1-s0-p0-h0",
+          "completed_cases": 0,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 92908208,
+          "event": "CASE_STARTED",
+          "root_check_calls": 12631,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w1-s0-p0-h0",
+          "completed_cases": 1,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 117376041,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 35178,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w1-s0-p0-h1",
+          "completed_cases": 1,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 117377875,
+          "event": "CASE_STARTED",
+          "root_check_calls": 35179,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w1-s0-p0-h1",
+          "completed_cases": 2,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 265023666,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 139861,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w1-s0-p0-h2",
+          "completed_cases": 2,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 265025041,
+          "event": "CASE_STARTED",
+          "root_check_calls": 139862,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w1-s0-p0-h2",
+          "completed_cases": 3,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 528083916,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 310482,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w1-s0-p0-h3",
+          "completed_cases": 3,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 528085250,
+          "event": "CASE_STARTED",
+          "root_check_calls": 310483,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w1-s0-p0-h3",
+          "completed_cases": 4,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 923367958,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 581226,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w1-s0-p0-h4",
+          "completed_cases": 4,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 923369208,
+          "event": "CASE_STARTED",
+          "root_check_calls": 581227,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w1-s0-p0-h4",
+          "completed_cases": 5,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 1401715833,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 915492,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w1-s1-p0-h0",
+          "completed_cases": 5,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 1401717000,
+          "event": "CASE_STARTED",
+          "root_check_calls": 915493,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w1-s1-p0-h0",
+          "completed_cases": 6,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 1428439666,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 938034,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w1-s1-p0-h1",
+          "completed_cases": 6,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 1428441166,
+          "event": "CASE_STARTED",
+          "root_check_calls": 938035,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w1-s1-p0-h1",
+          "completed_cases": 7,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 1502855541,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 986760,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w1-s1-p0-h2",
+          "completed_cases": 7,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 1502856791,
+          "event": "CASE_STARTED",
+          "root_check_calls": 986761,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w1-s1-p0-h2",
+          "completed_cases": 8,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 1724222500,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 1124974,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w1-s1-p0-h3",
+          "completed_cases": 8,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 1724223708,
+          "event": "CASE_STARTED",
+          "root_check_calls": 1124975,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w1-s1-p0-h3",
+          "completed_cases": 9,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 1996418458,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 1304518,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w1-s1-p0-h4",
+          "completed_cases": 9,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 1996420375,
+          "event": "CASE_STARTED",
+          "root_check_calls": 1304519,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w1-s1-p0-h4",
+          "completed_cases": 10,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 2302352500,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 1524149,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s00-p0-h0",
+          "completed_cases": 10,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 2302354000,
+          "event": "CASE_STARTED",
+          "root_check_calls": 1524150,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s00-p0-h0",
+          "completed_cases": 11,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 2327961500,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 1548859,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s00-p0-h1",
+          "completed_cases": 11,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 2327963125,
+          "event": "CASE_STARTED",
+          "root_check_calls": 1548860,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s00-p0-h1",
+          "completed_cases": 12,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 2534387208,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 1696688,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s00-p0-h2",
+          "completed_cases": 12,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 2534388583,
+          "event": "CASE_STARTED",
+          "root_check_calls": 1696689,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s00-p0-h2",
+          "completed_cases": 13,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 3845915958,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 2544009,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s00-p0-h3",
+          "completed_cases": 13,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 3845917416,
+          "event": "CASE_STARTED",
+          "root_check_calls": 2544010,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s00-p0-h3",
+          "completed_cases": 14,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 6196206291,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 4098518,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s00-p0-h4",
+          "completed_cases": 14,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 6196207541,
+          "event": "CASE_STARTED",
+          "root_check_calls": 4098519,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s00-p0-h4",
+          "completed_cases": 15,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 9235189708,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 6122810,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s00-p1-h0",
+          "completed_cases": 15,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 9235190916,
+          "event": "CASE_STARTED",
+          "root_check_calls": 6122811,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s00-p1-h0",
+          "completed_cases": 16,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 9261325833,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 6147520,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s00-p1-h1",
+          "completed_cases": 16,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 9261326958,
+          "event": "CASE_STARTED",
+          "root_check_calls": 6147521,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s00-p1-h1",
+          "completed_cases": 17,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 9445468708,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 6283181,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s00-p1-h2",
+          "completed_cases": 17,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 9445470166,
+          "event": "CASE_STARTED",
+          "root_check_calls": 6283182,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s00-p1-h2",
+          "completed_cases": 18,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 11014076958,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 7257996,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s00-p1-h3",
+          "completed_cases": 18,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 11014078375,
+          "event": "CASE_STARTED",
+          "root_check_calls": 7257997,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s00-p1-h3",
+          "completed_cases": 19,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 13241898250,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 8748648,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s00-p1-h4",
+          "completed_cases": 19,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 13241899833,
+          "event": "CASE_STARTED",
+          "root_check_calls": 8748649,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s00-p1-h4",
+          "completed_cases": 20,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 16577745208,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 10773108,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s01-p0-h0",
+          "completed_cases": 20,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 16577746833,
+          "event": "CASE_STARTED",
+          "root_check_calls": 10773109,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s01-p0-h0",
+          "completed_cases": 21,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 16607582958,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 10797818,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s01-p0-h1",
+          "completed_cases": 21,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 16607584041,
+          "event": "CASE_STARTED",
+          "root_check_calls": 10797819,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s01-p0-h1",
+          "completed_cases": 22,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 16856635375,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 10970065,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s01-p0-h2",
+          "completed_cases": 22,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 16856636625,
+          "event": "CASE_STARTED",
+          "root_check_calls": 10970066,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s01-p0-h2",
+          "completed_cases": 23,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 18197654833,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 11817386,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s01-p0-h3",
+          "completed_cases": 23,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 18197656125,
+          "event": "CASE_STARTED",
+          "root_check_calls": 11817387,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s01-p0-h3",
+          "completed_cases": 24,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 20517728750,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 13307930,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s01-p0-h4",
+          "completed_cases": 24,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 20517730083,
+          "event": "CASE_STARTED",
+          "root_check_calls": 13307931,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s01-p0-h4",
+          "completed_cases": 25,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 23785920583,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 15332222,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s01-p1-h0",
+          "completed_cases": 25,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 23785922000,
+          "event": "CASE_STARTED",
+          "root_check_calls": 15332223,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s01-p1-h0",
+          "completed_cases": 26,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 23817963083,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 15356926,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s01-p1-h1",
+          "completed_cases": 26,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 23817964541,
+          "event": "CASE_STARTED",
+          "root_check_calls": 15356927,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s01-p1-h1",
+          "completed_cases": 27,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 23999232791,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 15457176,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s01-p1-h2",
+          "completed_cases": 27,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 23999234083,
+          "event": "CASE_STARTED",
+          "root_check_calls": 15457177,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s01-p1-h2",
+          "completed_cases": 28,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 24978293000,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 16038176,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s01-p1-h3",
+          "completed_cases": 28,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 24978295041,
+          "event": "CASE_STARTED",
+          "root_check_calls": 16038177,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s01-p1-h3",
+          "completed_cases": 29,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 26319755041,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 16813421,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s01-p1-h4",
+          "completed_cases": 29,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 26319756250,
+          "event": "CASE_STARTED",
+          "root_check_calls": 16813422,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s01-p1-h4",
+          "completed_cases": 30,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 27831879833,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 17778635,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s10-p0-h0",
+          "completed_cases": 30,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 27831881208,
+          "event": "CASE_STARTED",
+          "root_check_calls": 17778636,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s10-p0-h0",
+          "completed_cases": 31,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 27865859833,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 17803339,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s10-p0-h1",
+          "completed_cases": 31,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 27865860958,
+          "event": "CASE_STARTED",
+          "root_check_calls": 17803340,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s10-p0-h1",
+          "completed_cases": 32,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 28028872125,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 17903479,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s10-p0-h2",
+          "completed_cases": 32,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 28028873375,
+          "event": "CASE_STARTED",
+          "root_check_calls": 17903480,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s10-p0-h2",
+          "completed_cases": 33,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 29169909250,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 18618196,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s10-p0-h3",
+          "completed_cases": 33,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 29169910541,
+          "event": "CASE_STARTED",
+          "root_check_calls": 18618197,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s10-p0-h3",
+          "completed_cases": 34,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 32393659875,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 20601387,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s10-p0-h4",
+          "completed_cases": 34,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 32393661833,
+          "event": "CASE_STARTED",
+          "root_check_calls": 20601388,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s10-p0-h4",
+          "completed_cases": 35,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 36945663291,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 23459827,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s10-p1-h0",
+          "completed_cases": 35,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 36945664416,
+          "event": "CASE_STARTED",
+          "root_check_calls": 23459828,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s10-p1-h0",
+          "completed_cases": 36,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 36972199833,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 23484537,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s10-p1-h1",
+          "completed_cases": 36,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 36972201291,
+          "event": "CASE_STARTED",
+          "root_check_calls": 23484538,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s10-p1-h1",
+          "completed_cases": 37,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 37232810666,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 23656865,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s10-p1-h2",
+          "completed_cases": 37,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 37232811833,
+          "event": "CASE_STARTED",
+          "root_check_calls": 23656866,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s10-p1-h2",
+          "completed_cases": 38,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 38787988166,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 24547654,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s10-p1-h3",
+          "completed_cases": 38,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 38787989625,
+          "event": "CASE_STARTED",
+          "root_check_calls": 24547655,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s10-p1-h3",
+          "completed_cases": 39,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 41230232458,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 26038198,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s10-p1-h4",
+          "completed_cases": 39,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 41230233708,
+          "event": "CASE_STARTED",
+          "root_check_calls": 26038199,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s10-p1-h4",
+          "completed_cases": 40,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 44609043375,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 28062712,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s11-p0-h0",
+          "completed_cases": 40,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 44609044583,
+          "event": "CASE_STARTED",
+          "root_check_calls": 28062713,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s11-p0-h0",
+          "completed_cases": 41,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 44635698541,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 28087416,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s11-p0-h1",
+          "completed_cases": 41,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 44635700000,
+          "event": "CASE_STARTED",
+          "root_check_calls": 28087417,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s11-p0-h1",
+          "completed_cases": 42,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 44791008500,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 28187556,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s11-p0-h2",
+          "completed_cases": 42,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 44791009916,
+          "event": "CASE_STARTED",
+          "root_check_calls": 28187557,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s11-p0-h2",
+          "completed_cases": 43,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 45837289583,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 28817688,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s11-p0-h3",
+          "completed_cases": 43,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 45837291083,
+          "event": "CASE_STARTED",
+          "root_check_calls": 28817689,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s11-p0-h3",
+          "completed_cases": 44,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 48536745916,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 30396170,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s11-p0-h4",
+          "completed_cases": 44,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 48536747375,
+          "event": "CASE_STARTED",
+          "root_check_calls": 30396171,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s11-p0-h4",
+          "completed_cases": 45,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 51689868208,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 32374029,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s11-p1-h0",
+          "completed_cases": 45,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 51689869583,
+          "event": "CASE_STARTED",
+          "root_check_calls": 32374030,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s11-p1-h0",
+          "completed_cases": 46,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 51715897458,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 32398733,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s11-p1-h1",
+          "completed_cases": 46,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 51715898583,
+          "event": "CASE_STARTED",
+          "root_check_calls": 32398734,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s11-p1-h1",
+          "completed_cases": 47,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 51873735291,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 32498991,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s11-p1-h2",
+          "completed_cases": 47,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 51873736458,
+          "event": "CASE_STARTED",
+          "root_check_calls": 32498992,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s11-p1-h2",
+          "completed_cases": 48,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 52791582708,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 33079991,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s11-p1-h3",
+          "completed_cases": 48,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 52791583958,
+          "event": "CASE_STARTED",
+          "root_check_calls": 33079992,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s11-p1-h3",
+          "completed_cases": 49,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 53996803333,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 33855236,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s11-p1-h4",
+          "completed_cases": 49,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 53996804625,
+          "event": "CASE_STARTED",
+          "root_check_calls": 33855237,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s11-p1-h4",
+          "completed_cases": 50,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 55494048666,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 34820450,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w3-s000-p0-h0",
+          "completed_cases": 50,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 55494049916,
+          "event": "CASE_STARTED",
+          "root_check_calls": 34820451,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w3-s000-p0-h0",
+          "completed_cases": 51,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 55523529291,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 34847322,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w3-s000-p0-h1",
+          "completed_cases": 51,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 55523530541,
+          "event": "CASE_STARTED",
+          "root_check_calls": 34847323,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w3-s000-p0-h1",
+          "completed_cases": 52,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 55851142000,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 35062733,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w3-s000-p0-h2",
+          "completed_cases": 52,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 55851143458,
+          "event": "CASE_STARTED",
+          "root_check_calls": 35062734,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w3-s000-p0-h2",
+          "completed_cases": 53,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 61119276875,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 38194677,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w3-s000-p0-h3",
+          "completed_cases": 53,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 61119278041,
+          "event": "CASE_STARTED",
+          "root_check_calls": 38194678,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w3-s000-p0-h3",
+          "completed_cases": 54,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 72183039958,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 44940189,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w3-s000-p0-h4",
+          "completed_cases": 54,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 72183041208,
+          "event": "CASE_STARTED",
+          "root_check_calls": 44940190,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w3-s000-p0-h4",
+          "completed_cases": 55,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 86719692166,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 53990163,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w3-s000-p1-h0",
+          "completed_cases": 55,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 86719693500,
+          "event": "CASE_STARTED",
+          "root_check_calls": 53990164,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w3-s000-p1-h0",
+          "completed_cases": 56,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 86753456291,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 54017035,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w3-s000-p1-h1",
+          "completed_cases": 56,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 86753457541,
+          "event": "CASE_STARTED",
+          "root_check_calls": 54017036,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w3-s000-p1-h1",
+          "completed_cases": 57,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 87030821208,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 54202590,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w3-s000-p1-h2",
+          "completed_cases": 57,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 87030822375,
+          "event": "CASE_STARTED",
+          "root_check_calls": 54202591,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w3-s000-p1-h2",
+          "completed_cases": 58,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 93553987250,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 57877504,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w3-s000-p1-h3",
+          "completed_cases": 58,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 93553988708,
+          "event": "CASE_STARTED",
+          "root_check_calls": 57877505,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w3-s000-p1-h3",
+          "completed_cases": 59,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 105014372666,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 64325608,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w3-s000-p1-h4",
+          "completed_cases": 59,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 105014373916,
+          "event": "CASE_STARTED",
+          "root_check_calls": 64325609,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w3-s000-p1-h4",
+          "completed_cases": 60,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 121672734750,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 73375918,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w3-s000-p2-h0",
+          "completed_cases": 60,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 121672736583,
+          "event": "CASE_STARTED",
+          "root_check_calls": 73375919,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w3-s000-p2-h0",
+          "completed_cases": 61,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 121702733416,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 73402790,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w3-s000-p2-h1",
+          "completed_cases": 61,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 121702734916,
+          "event": "CASE_STARTED",
+          "root_check_calls": 73402791,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w3-s000-p2-h1",
+          "completed_cases": 62,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 121998933000,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 73573135,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w3-s000-p2-h2",
+          "completed_cases": 62,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 121998935000,
+          "event": "CASE_STARTED",
+          "root_check_calls": 73573136,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w3-s000-p2-h2",
+          "completed_cases": 63,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 129788340666,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 77406801,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w3-s000-p2-h3",
+          "completed_cases": 63,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 129788342250,
+          "event": "CASE_STARTED",
+          "root_check_calls": 77406802,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w3-s000-p2-h3",
+          "completed_cases": 64,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 142618203375,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 83993593,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w3-s000-p2-h4",
+          "completed_cases": 64,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 142618204750,
+          "event": "CASE_STARTED",
+          "root_check_calls": 83993594,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w3-s000-p2-h4",
+          "completed_cases": 65,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 160142817875,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 93044239,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w3-s001-p0-h0",
+          "completed_cases": 65,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 160142819208,
+          "event": "CASE_STARTED",
+          "root_check_calls": 93044240,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w3-s001-p0-h0",
+          "completed_cases": 66,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 160171508041,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 93071111,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w3-s001-p0-h1",
+          "completed_cases": 66,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 160171509291,
+          "event": "CASE_STARTED",
+          "root_check_calls": 93071112,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w3-s001-p0-h1",
+          "completed_cases": 67,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 160590679958,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 93316695,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w3-s001-p0-h2",
+          "completed_cases": 67,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 160590681291,
+          "event": "CASE_STARTED",
+          "root_check_calls": 93316696,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w3-s001-p0-h2",
+          "completed_cases": 68,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 166940240666,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 96448639,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w3-s001-p0-h3",
+          "completed_cases": 68,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 166940242000,
+          "event": "CASE_STARTED",
+          "root_check_calls": 96448640,
+          "stage": "COMPLETE_CASE"
+        }
+      ],
+      "diagnostic_only_prefix": [],
+      "elapsed_seconds": 180.078285208,
+      "failure": {
+        "bytes": 31014,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/actual-off-680-v1/worker-failure.json",
+        "sha256": "4d2c4558d2289afac58541582790fbdeabb58ed624a858f8641e59733c6abbcd"
+      },
+      "mathematical_proof_accepted": false,
+      "mode": "off",
+      "physical_ledger": {
+        "before_receipt_bytes": 31813,
+        "completed_before_deadline": true,
+        "completed_ns": 794499837581750,
+        "conservative_bytes": 9468997,
+        "enumeration_complete": true,
+        "stable_writer_quiescence": true,
+        "within_original_cap": true
+      },
+      "plan": {
+        "bytes": 3320,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/plan-authorized-off-v1.json",
+        "sha256": "09f4907dd39fcd04e68076b654ccc988c30084327726cd76960d4f65d92b016c"
+      },
+      "primary_failure": {
+        "errno": null,
+        "message": "complete positive result/header/bytes/known-exit before180",
+        "type": "ValueError"
+      },
+      "qualification": null,
+      "resource_candidate_accepted": false,
+      "runner": {
+        "bytes": 6195,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/actual-off-680-v1/runner-receipt.json",
+        "sha256": "bab25deaedc1ef0b6c6dc4f860f00d17184e1ab8dadec4afa457fef641c30019"
+      },
+      "scientific_acceptance": false,
+      "terminal": {
+        "bytes": 1526,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/plan-authorized-off-v1-terminal-observation/terminal.json",
+        "sha256": "2ba49060eae63a9e8e5e9bdc838f05a23384c134234f410ac9df7035588ea45f"
+      },
+      "terminal_closed_before210": true,
+      "terminal_gate_passed": false,
+      "worker_exit_code": -15,
+      "worker_wait4_usage": {
+        "ru_majflt": 0,
+        "ru_maxrss": 72056832,
+        "ru_minflt": 11664,
+        "ru_stime": 5.989643,
+        "ru_utime": 170.665828
+      }
+    },
+    {
+      "complete_calibration_candidate": false,
+      "diagnostic_only_API_inclusive_wall_ns": {
+        "compiler.compile_finite_problem": 18345004,
+        "compiler.compile_palette": 1048750,
+        "oracle.audit_snapshot": 58866208217,
+        "oracle.certify": 851470346,
+        "search.search": 179083892457,
+        "verifier._Budget": 345500,
+        "verifier._configuration": 179792,
+        "verifier._global_transition": 188839,
+        "verifier._machine": 420249,
+        "verifier._palette": 3671624,
+        "verifier.verify": 36964000
+      },
+      "diagnostic_only_active_case": "right_scan-w3-s000-p0-h3",
+      "diagnostic_only_call_completed": {
+        "compiler.compile_finite_problem": 54,
+        "compiler.compile_palette": 4,
+        "oracle.audit_snapshot": 5226,
+        "oracle.certify": 842,
+        "search.search": 53,
+        "verifier._Budget": 57,
+        "verifier._configuration": 86,
+        "verifier._global_transition": 33,
+        "verifier._machine": 53,
+        "verifier._palette": 4,
+        "verifier.verify": 7
+      },
+      "diagnostic_only_call_raised": {
+        "search.search": 1,
+        "verifier._global_transition": 33
+      },
+      "diagnostic_only_call_started": {
+        "compiler.compile_finite_problem": 54,
+        "compiler.compile_palette": 4,
+        "oracle.audit_snapshot": 5226,
+        "oracle.certify": 842,
+        "search.search": 54,
+        "verifier._Budget": 57,
+        "verifier._configuration": 86,
+        "verifier._global_transition": 66,
+        "verifier._machine": 53,
+        "verifier._palette": 4,
+        "verifier.verify": 7
+      },
+      "diagnostic_only_completed_case_ids": [
+        "right_scan-w1-s0-p0-h0",
+        "right_scan-w1-s0-p0-h1",
+        "right_scan-w1-s0-p0-h2",
+        "right_scan-w1-s0-p0-h3",
+        "right_scan-w1-s0-p0-h4",
+        "right_scan-w1-s1-p0-h0",
+        "right_scan-w1-s1-p0-h1",
+        "right_scan-w1-s1-p0-h2",
+        "right_scan-w1-s1-p0-h3",
+        "right_scan-w1-s1-p0-h4",
+        "right_scan-w2-s00-p0-h0",
+        "right_scan-w2-s00-p0-h1",
+        "right_scan-w2-s00-p0-h2",
+        "right_scan-w2-s00-p0-h3",
+        "right_scan-w2-s00-p0-h4",
+        "right_scan-w2-s00-p1-h0",
+        "right_scan-w2-s00-p1-h1",
+        "right_scan-w2-s00-p1-h2",
+        "right_scan-w2-s00-p1-h3",
+        "right_scan-w2-s00-p1-h4",
+        "right_scan-w2-s01-p0-h0",
+        "right_scan-w2-s01-p0-h1",
+        "right_scan-w2-s01-p0-h2",
+        "right_scan-w2-s01-p0-h3",
+        "right_scan-w2-s01-p0-h4",
+        "right_scan-w2-s01-p1-h0",
+        "right_scan-w2-s01-p1-h1",
+        "right_scan-w2-s01-p1-h2",
+        "right_scan-w2-s01-p1-h3",
+        "right_scan-w2-s01-p1-h4",
+        "right_scan-w2-s10-p0-h0",
+        "right_scan-w2-s10-p0-h1",
+        "right_scan-w2-s10-p0-h2",
+        "right_scan-w2-s10-p0-h3",
+        "right_scan-w2-s10-p0-h4",
+        "right_scan-w2-s10-p1-h0",
+        "right_scan-w2-s10-p1-h1",
+        "right_scan-w2-s10-p1-h2",
+        "right_scan-w2-s10-p1-h3",
+        "right_scan-w2-s10-p1-h4",
+        "right_scan-w2-s11-p0-h0",
+        "right_scan-w2-s11-p0-h1",
+        "right_scan-w2-s11-p0-h2",
+        "right_scan-w2-s11-p0-h3",
+        "right_scan-w2-s11-p0-h4",
+        "right_scan-w2-s11-p1-h0",
+        "right_scan-w2-s11-p1-h1",
+        "right_scan-w2-s11-p1-h2",
+        "right_scan-w2-s11-p1-h3",
+        "right_scan-w2-s11-p1-h4",
+        "right_scan-w3-s000-p0-h0",
+        "right_scan-w3-s000-p0-h1",
+        "right_scan-w3-s000-p0-h2"
+      ],
+      "diagnostic_only_phase_receipts": [
+        {
+          "active": "right_scan-w1-s0-p0-h0",
+          "completed_cases": 0,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 99804583,
+          "event": "CASE_STARTED",
+          "root_check_calls": 12631,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w1-s0-p0-h0",
+          "completed_cases": 1,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 148470875,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 99392,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w1-s0-p0-h1",
+          "completed_cases": 1,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 148472791,
+          "event": "CASE_STARTED",
+          "root_check_calls": 99393,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w1-s0-p0-h1",
+          "completed_cases": 2,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 495136250,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 720555,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w1-s0-p0-h2",
+          "completed_cases": 2,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 495137875,
+          "event": "CASE_STARTED",
+          "root_check_calls": 720556,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w1-s0-p0-h2",
+          "completed_cases": 3,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 1275413541,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 2169714,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w1-s0-p0-h3",
+          "completed_cases": 3,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 1275414833,
+          "event": "CASE_STARTED",
+          "root_check_calls": 2169715,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w1-s0-p0-h3",
+          "completed_cases": 4,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 2471985583,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 4465886,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w1-s0-p0-h4",
+          "completed_cases": 4,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 2471986958,
+          "event": "CASE_STARTED",
+          "root_check_calls": 4465887,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w1-s0-p0-h4",
+          "completed_cases": 5,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 4012863000,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 7274752,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w1-s1-p0-h0",
+          "completed_cases": 5,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 4012864250,
+          "event": "CASE_STARTED",
+          "root_check_calls": 7274753,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w1-s1-p0-h0",
+          "completed_cases": 6,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 4068003166,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 7361490,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w1-s1-p0-h1",
+          "completed_cases": 6,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 4068004583,
+          "event": "CASE_STARTED",
+          "root_check_calls": 7361491,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w1-s1-p0-h1",
+          "completed_cases": 7,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 4219681541,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 7637008,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w1-s1-p0-h2",
+          "completed_cases": 7,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 4219683000,
+          "event": "CASE_STARTED",
+          "root_check_calls": 7637009,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w1-s1-p0-h2",
+          "completed_cases": 8,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 4855947166,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 8691046,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w1-s1-p0-h3",
+          "completed_cases": 8,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 4855948541,
+          "event": "CASE_STARTED",
+          "root_check_calls": 8691047,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w1-s1-p0-h3",
+          "completed_cases": 9,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 5699833083,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 10046447,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w1-s1-p0-h4",
+          "completed_cases": 9,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 5699834916,
+          "event": "CASE_STARTED",
+          "root_check_calls": 10046448,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w1-s1-p0-h4",
+          "completed_cases": 10,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 6677780791,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 11704399,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s00-p0-h0",
+          "completed_cases": 10,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 6677782333,
+          "event": "CASE_STARTED",
+          "root_check_calls": 11704400,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s00-p0-h0",
+          "completed_cases": 11,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 6774700416,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 11802625,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s00-p0-h1",
+          "completed_cases": 11,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 6774703208,
+          "event": "CASE_STARTED",
+          "root_check_calls": 11802626,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s00-p0-h1",
+          "completed_cases": 12,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 7410436708,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 12756563,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s00-p0-h2",
+          "completed_cases": 12,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 7410438083,
+          "event": "CASE_STARTED",
+          "root_check_calls": 12756564,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s00-p0-h2",
+          "completed_cases": 13,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 12736181791,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 19320155,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s00-p0-h3",
+          "completed_cases": 13,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 12736183250,
+          "event": "CASE_STARTED",
+          "root_check_calls": 19320156,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s00-p0-h3",
+          "completed_cases": 14,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 23377104666,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 31434128,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s00-p0-h4",
+          "completed_cases": 14,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 23377109875,
+          "event": "CASE_STARTED",
+          "root_check_calls": 31434129,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s00-p0-h4",
+          "completed_cases": 15,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 33261508208,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 47076260,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s00-p1-h0",
+          "completed_cases": 15,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 33261509416,
+          "event": "CASE_STARTED",
+          "root_check_calls": 47076261,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s00-p1-h0",
+          "completed_cases": 16,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 33321849083,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 47174486,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s00-p1-h1",
+          "completed_cases": 16,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 33321850416,
+          "event": "CASE_STARTED",
+          "root_check_calls": 47174487,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s00-p1-h1",
+          "completed_cases": 17,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 33980369875,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 47994390,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s00-p1-h2",
+          "completed_cases": 17,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 33980371833,
+          "event": "CASE_STARTED",
+          "root_check_calls": 47994391,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s00-p1-h2",
+          "completed_cases": 18,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 39243088750,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 55527079,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s00-p1-h3",
+          "completed_cases": 18,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 39243090291,
+          "event": "CASE_STARTED",
+          "root_check_calls": 55527080,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s00-p1-h3",
+          "completed_cases": 19,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 46414410291,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 66277044,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s00-p1-h4",
+          "completed_cases": 19,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 46414411791,
+          "event": "CASE_STARTED",
+          "root_check_calls": 66277045,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s00-p1-h4",
+          "completed_cases": 20,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 56573227333,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 81919680,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s01-p0-h0",
+          "completed_cases": 20,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 56573228666,
+          "event": "CASE_STARTED",
+          "root_check_calls": 81919681,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s01-p0-h0",
+          "completed_cases": 21,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 56625534458,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 82017906,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s01-p0-h1",
+          "completed_cases": 21,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 56625535916,
+          "event": "CASE_STARTED",
+          "root_check_calls": 82017907,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s01-p0-h1",
+          "completed_cases": 22,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 57305683333,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 83237178,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s01-p0-h2",
+          "completed_cases": 22,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 57305684500,
+          "event": "CASE_STARTED",
+          "root_check_calls": 83237179,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s01-p0-h2",
+          "completed_cases": 23,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 61718788708,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 89800770,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s01-p0-h3",
+          "completed_cases": 23,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 61718790250,
+          "event": "CASE_STARTED",
+          "root_check_calls": 89800771,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s01-p0-h3",
+          "completed_cases": 24,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 69582672375,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 100548579,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s01-p0-h4",
+          "completed_cases": 24,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 69582674583,
+          "event": "CASE_STARTED",
+          "root_check_calls": 100548580,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s01-p0-h4",
+          "completed_cases": 25,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 80667562875,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 116190711,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s01-p1-h0",
+          "completed_cases": 25,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 80667564041,
+          "event": "CASE_STARTED",
+          "root_check_calls": 116190712,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s01-p1-h0",
+          "completed_cases": 26,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 80719985666,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 116288913,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s01-p1-h1",
+          "completed_cases": 26,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 80719986666,
+          "event": "CASE_STARTED",
+          "root_check_calls": 116288914,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s01-p1-h1",
+          "completed_cases": 27,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 81157294458,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 117069456,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s01-p1-h2",
+          "completed_cases": 27,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 81157295625,
+          "event": "CASE_STARTED",
+          "root_check_calls": 117069457,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s01-p1-h2",
+          "completed_cases": 28,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 81967236625,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 118553510,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s01-p1-h3",
+          "completed_cases": 28,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 81967237833,
+          "event": "CASE_STARTED",
+          "root_check_calls": 118553511,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s01-p1-h3",
+          "completed_cases": 29,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 83015181125,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 120493439,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s01-p1-h4",
+          "completed_cases": 29,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 83015182625,
+          "event": "CASE_STARTED",
+          "root_check_calls": 120493440,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s01-p1-h4",
+          "completed_cases": 30,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 84328999875,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 122890447,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s10-p0-h0",
+          "completed_cases": 30,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 84329001041,
+          "event": "CASE_STARTED",
+          "root_check_calls": 122890448,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s10-p0-h0",
+          "completed_cases": 31,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 84381371958,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 122988649,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s10-p0-h1",
+          "completed_cases": 31,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 84381373333,
+          "event": "CASE_STARTED",
+          "root_check_calls": 122988650,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s10-p0-h1",
+          "completed_cases": 32,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 84811471500,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 123747349,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s10-p0-h2",
+          "completed_cases": 32,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 84811472791,
+          "event": "CASE_STARTED",
+          "root_check_calls": 123747350,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s10-p0-h2",
+          "completed_cases": 33,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 86811959166,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 127077494,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s10-p0-h3",
+          "completed_cases": 33,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 86811960333,
+          "event": "CASE_STARTED",
+          "root_check_calls": 127077495,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s10-p0-h3",
+          "completed_cases": 34,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 95365825833,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 138331008,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s10-p0-h4",
+          "completed_cases": 34,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 95365832875,
+          "event": "CASE_STARTED",
+          "root_check_calls": 138331009,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s10-p0-h4",
+          "completed_cases": 35,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 106626554583,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 154255325,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s10-p1-h0",
+          "completed_cases": 35,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 106626558541,
+          "event": "CASE_STARTED",
+          "root_check_calls": 154255326,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s10-p1-h0",
+          "completed_cases": 36,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 106680941083,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 154353551,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s10-p1-h1",
+          "completed_cases": 36,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 106680942250,
+          "event": "CASE_STARTED",
+          "root_check_calls": 154353552,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s10-p1-h1",
+          "completed_cases": 37,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 107370372541,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 155572789,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s10-p1-h2",
+          "completed_cases": 37,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 107370373541,
+          "event": "CASE_STARTED",
+          "root_check_calls": 155572790,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s10-p1-h2",
+          "completed_cases": 38,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 112046941000,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 162564080,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s10-p1-h3",
+          "completed_cases": 38,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 112046942416,
+          "event": "CASE_STARTED",
+          "root_check_calls": 162564081,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s10-p1-h3",
+          "completed_cases": 39,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 118889881958,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 173311886,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s10-p1-h4",
+          "completed_cases": 39,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 118889883083,
+          "event": "CASE_STARTED",
+          "root_check_calls": 173311887,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s10-p1-h4",
+          "completed_cases": 40,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 129553968750,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 188957651,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s11-p0-h0",
+          "completed_cases": 40,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 129553969916,
+          "event": "CASE_STARTED",
+          "root_check_calls": 188957652,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s11-p0-h0",
+          "completed_cases": 41,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 129629239458,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 189055853,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s11-p0-h1",
+          "completed_cases": 41,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 129629242291,
+          "event": "CASE_STARTED",
+          "root_check_calls": 189055854,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s11-p0-h1",
+          "completed_cases": 42,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 130160217125,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 189814553,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s11-p0-h2",
+          "completed_cases": 42,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 130160218875,
+          "event": "CASE_STARTED",
+          "root_check_calls": 189814554,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s11-p0-h2",
+          "completed_cases": 43,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 132005490541,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 192485052,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s11-p0-h3",
+          "completed_cases": 43,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 132005495541,
+          "event": "CASE_STARTED",
+          "root_check_calls": 192485053,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s11-p0-h3",
+          "completed_cases": 44,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 134876476916,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 196634099,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s11-p0-h4",
+          "completed_cases": 44,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 134876481833,
+          "event": "CASE_STARTED",
+          "root_check_calls": 196634100,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s11-p0-h4",
+          "completed_cases": 45,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 138199113791,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 201767951,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s11-p1-h0",
+          "completed_cases": 45,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 138199115166,
+          "event": "CASE_STARTED",
+          "root_check_calls": 201767952,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s11-p1-h0",
+          "completed_cases": 46,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 138251882541,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 201866153,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s11-p1-h1",
+          "completed_cases": 46,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 138251883750,
+          "event": "CASE_STARTED",
+          "root_check_calls": 201866154,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s11-p1-h1",
+          "completed_cases": 47,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 138653437166,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 202624927,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s11-p1-h2",
+          "completed_cases": 47,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 138653438458,
+          "event": "CASE_STARTED",
+          "root_check_calls": 202624928,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s11-p1-h2",
+          "completed_cases": 48,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 139543959041,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 204108981,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s11-p1-h3",
+          "completed_cases": 48,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 139543960291,
+          "event": "CASE_STARTED",
+          "root_check_calls": 204108982,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s11-p1-h3",
+          "completed_cases": 49,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 140680832375,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 206048910,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s11-p1-h4",
+          "completed_cases": 49,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 140680834541,
+          "event": "CASE_STARTED",
+          "root_check_calls": 206048911,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w2-s11-p1-h4",
+          "completed_cases": 50,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 142205629791,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 208445918,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w3-s000-p0-h0",
+          "completed_cases": 50,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 142205631166,
+          "event": "CASE_STARTED",
+          "root_check_calls": 208445919,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w3-s000-p0-h0",
+          "completed_cases": 51,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 142272985333,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 208555608,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w3-s000-p0-h1",
+          "completed_cases": 51,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 142272987000,
+          "event": "CASE_STARTED",
+          "root_check_calls": 208555609,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w3-s000-p0-h1",
+          "completed_cases": 52,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 143322418458,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 210073790,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w3-s000-p0-h2",
+          "completed_cases": 52,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 143322420208,
+          "event": "CASE_STARTED",
+          "root_check_calls": 210073791,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w3-s000-p0-h2",
+          "completed_cases": 53,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 149606617166,
+          "event": "CASE_COMPLETED",
+          "root_check_calls": 218867930,
+          "stage": "COMPLETE_CASE"
+        },
+        {
+          "active": "right_scan-w3-s000-p0-h3",
+          "completed_cases": 53,
+          "diagnostic_groups": 0,
+          "elapsed_from_runner_entry_ns": 149606618333,
+          "event": "CASE_STARTED",
+          "root_check_calls": 218867931,
+          "stage": "COMPLETE_CASE"
+        }
+      ],
+      "diagnostic_only_prefix": [],
+      "elapsed_seconds": 180.11353225,
+      "failure": {
+        "bytes": 24814,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/actual-on-680-v1/worker-failure.json",
+        "sha256": "f20b48b3083aa62cb6daa37e81e612a3228b54b9efc3f7189a6f860c48051e02"
+      },
+      "mathematical_proof_accepted": false,
+      "mode": "on",
+      "physical_ledger": {
+        "before_receipt_bytes": 25610,
+        "completed_before_deadline": true,
+        "completed_ns": 794707700904125,
+        "conservative_bytes": 9462794,
+        "enumeration_complete": true,
+        "stable_writer_quiescence": true,
+        "within_original_cap": true
+      },
+      "plan": {
+        "bytes": 3315,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/plan-authorized-on-v1.json",
+        "sha256": "c4bf985623f58fb4b15f87ed4f0929519579bbdd66a017f3f69729e1cce986ee"
+      },
+      "primary_failure": {
+        "errno": null,
+        "message": "complete positive result/header/bytes/known-exit before180",
+        "type": "ValueError"
+      },
+      "qualification": null,
+      "resource_candidate_accepted": false,
+      "runner": {
+        "bytes": 5618,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/actual-on-680-v1/runner-receipt.json",
+        "sha256": "a381394c22068afe7304d4cfd67105f48bfd6efc49071052b0d9c9b06d26c1e4"
+      },
+      "scientific_acceptance": false,
+      "terminal": {
+        "bytes": 1522,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/plan-authorized-on-v1-terminal-observation/terminal.json",
+        "sha256": "459ebddf3c86ffc664b73ffa16f1b1f2589f8d0218c7f772fb22c59c3e32311a"
+      },
+      "terminal_closed_before210": true,
+      "terminal_gate_passed": false,
+      "worker_exit_code": -15,
+      "worker_wait4_usage": {
+        "ru_majflt": 0,
+        "ru_maxrss": 147062784,
+        "ru_minflt": 175657,
+        "ru_stime": 5.180286,
+        "ru_utime": 169.42258
+      }
+    }
+  ],
+  "schema": "ROOT-reusable-nogood-saved-comparison-v1",
+  "trained_RL": false,
+  "whole_case_count": 680
+}

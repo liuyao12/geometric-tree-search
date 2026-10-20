@@ -1,0 +1,784 @@
+{
+  "all_raw_members": [
+    {
+      "member": "root/ROOT-idle-barrier-off-v1.json",
+      "source": {
+        "bytes": 702,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/ROOT-idle-barrier-off-v1.json",
+        "sha256": "1c9b8ca398b7d73e38df73785297dff261318287d018be7ce034dc5c8fb0c6f5"
+      }
+    },
+    {
+      "member": "root/ROOT-idle-barrier-on-v1.json",
+      "source": {
+        "bytes": 674,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/ROOT-idle-barrier-on-v1.json",
+        "sha256": "73786ce26cfe03e3c9a3075a37e4aeba15e08d0635b4d2de2cdd76eefcd02774"
+      }
+    },
+    {
+      "member": "root/ROOT-previous-turn-assessment-v1.json",
+      "source": {
+        "bytes": 690,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/ROOT-previous-turn-assessment-v1.json",
+        "sha256": "1fd6bfc96d46332dcac0b719837b8e3432f4be297f098555d271b03e8eb6eb2d"
+      }
+    },
+    {
+      "member": "root/ROOT-retirement-v1.json",
+      "source": {
+        "bytes": 2101,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/ROOT-retirement-v1.json",
+        "sha256": "d797e71e1894bef5b855537aad99dcb58233a5e3d5e4d4a6fe1720613c5d78aa"
+      }
+    },
+    {
+      "member": "root/ROOT-saved-comparison-v1.json",
+      "source": {
+        "bytes": 86201,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/ROOT-saved-comparison-v1.json",
+        "sha256": "730cb7826de5743430af8f23b2947eabdfdfeedcf0df58dcd952cb1c9793a85f"
+      }
+    },
+    {
+      "member": "root/Source-only-offer-off-v1.json",
+      "source": {
+        "bytes": 5273,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/Source-only-offer-off-v1.json",
+        "sha256": "c90d1012651683b2fe02c4de6eea821f86beba6aee0d38f2c5478d86812045c5"
+      }
+    },
+    {
+      "member": "root/Source-only-offer-on-v1.json",
+      "source": {
+        "bytes": 5268,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/Source-only-offer-on-v1.json",
+        "sha256": "9caafd4143f0b08efcd7b9f11e39df0dcdb02b5840cbc80a1060215858743aa5"
+      }
+    },
+    {
+      "member": "root/actual-off-680-v1/CONSUMED.json",
+      "source": {
+        "bytes": 530,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/actual-off-680-v1/CONSUMED.json",
+        "sha256": "c37c240292f3b5a1485110225776f71e137800889c54e77d81b086667d26025c"
+      }
+    },
+    {
+      "member": "root/actual-off-680-v1/WORKER_CONSUMED.json",
+      "source": {
+        "bytes": 269,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/actual-off-680-v1/WORKER_CONSUMED.json",
+        "sha256": "ac0d66893b167c30a5ea3aa20a640e76a8fce22501720b765b63e1690dd4ccf2"
+      }
+    },
+    {
+      "member": "root/actual-off-680-v1/runner-receipt.json",
+      "source": {
+        "bytes": 6195,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/actual-off-680-v1/runner-receipt.json",
+        "sha256": "bab25deaedc1ef0b6c6dc4f860f00d17184e1ab8dadec4afa457fef641c30019"
+      }
+    },
+    {
+      "member": "root/actual-off-680-v1/stderr.bin",
+      "source": {
+        "bytes": 0,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/actual-off-680-v1/stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "member": "root/actual-off-680-v1/stdout.bin",
+      "source": {
+        "bytes": 0,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/actual-off-680-v1/stdout.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "member": "root/actual-off-680-v1/worker-failure.json",
+      "source": {
+        "bytes": 31014,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/actual-off-680-v1/worker-failure.json",
+        "sha256": "4d2c4558d2289afac58541582790fbdeabb58ed624a858f8641e59733c6abbcd"
+      }
+    },
+    {
+      "member": "root/actual-on-680-v1/CONSUMED.json",
+      "source": {
+        "bytes": 528,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/actual-on-680-v1/CONSUMED.json",
+        "sha256": "ab3ffc69e053297f7ec9a8909cc4d45e6b016e0d52bd39bb2cdaabf83ce1ae75"
+      }
+    },
+    {
+      "member": "root/actual-on-680-v1/WORKER_CONSUMED.json",
+      "source": {
+        "bytes": 268,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/actual-on-680-v1/WORKER_CONSUMED.json",
+        "sha256": "95bb6036e416eb13e0e3827523cbe87ea999328efa4f1eefdbb93fd5e9fec806"
+      }
+    },
+    {
+      "member": "root/actual-on-680-v1/runner-receipt.json",
+      "source": {
+        "bytes": 5618,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/actual-on-680-v1/runner-receipt.json",
+        "sha256": "a381394c22068afe7304d4cfd67105f48bfd6efc49071052b0d9c9b06d26c1e4"
+      }
+    },
+    {
+      "member": "root/actual-on-680-v1/stderr.bin",
+      "source": {
+        "bytes": 0,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/actual-on-680-v1/stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "member": "root/actual-on-680-v1/stdout.bin",
+      "source": {
+        "bytes": 0,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/actual-on-680-v1/stdout.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "member": "root/actual-on-680-v1/worker-failure.json",
+      "source": {
+        "bytes": 24814,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/actual-on-680-v1/worker-failure.json",
+        "sha256": "f20b48b3083aa62cb6daa37e81e612a3228b54b9efc3f7189a6f860c48051e02"
+      }
+    },
+    {
+      "member": "root/author_comparison_offers_v1.py",
+      "source": {
+        "bytes": 7341,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/author_comparison_offers_v1.py",
+        "sha256": "bba9a078b04e6c12ef776f23c8413d6ded971b32d4b73b6138c0e515bdcdbe83"
+      }
+    },
+    {
+      "member": "root/authorization-false-off-v1.json",
+      "source": {
+        "bytes": 332,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/authorization-false-off-v1.json",
+        "sha256": "74a5b69ff20c52a749cfd0ef778bf1c9692e265f3c26be16d48e8c7fd55028ef"
+      }
+    },
+    {
+      "member": "root/authorization-false-on-v1.json",
+      "source": {
+        "bytes": 332,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/authorization-false-on-v1.json",
+        "sha256": "433c443373abb3b61e55a99444bb70481f862cca85f4e20d8a06e851737fb095"
+      }
+    },
+    {
+      "member": "root/authorization-off-v1.json",
+      "source": {
+        "bytes": 775,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/authorization-off-v1.json",
+        "sha256": "4e280b8fc6fd65ee4aa4082f3e09810737e5b35d8df5da77c12ed54b327027ff"
+      }
+    },
+    {
+      "member": "root/authorization-on-v1.json",
+      "source": {
+        "bytes": 774,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/authorization-on-v1.json",
+        "sha256": "aeb80f02c0baa33976a21d953da27082d8152618cee839f0d4a10ff9245d0956"
+      }
+    },
+    {
+      "member": "root/authorize_reviewed_comparison_v1.py",
+      "source": {
+        "bytes": 2542,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/authorize_reviewed_comparison_v1.py",
+        "sha256": "2d43d5cefcda9ba7a2c8c54ef11fa41de3af5075ea7f7aba356bd696fc275aa9"
+      }
+    },
+    {
+      "member": "root/basic-tiling-algorithm-current.md",
+      "source": {
+        "bytes": 36240,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/basic-tiling-algorithm-current.md",
+        "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+      }
+    },
+    {
+      "member": "root/build_report_v1.py",
+      "source": {
+        "bytes": 15676,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/build_report_v1.py",
+        "sha256": "ed9d8171762f368a7ef9bea98dfe955b4992954c876bbf24407fdae680ad8c54"
+      }
+    },
+    {
+      "member": "root/close_saved_comparison_v1.py",
+      "source": {
+        "bytes": 4824,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/close_saved_comparison_v1.py",
+        "sha256": "e511c744d5bedfd98f86846e08459ac183a28c6a906867f8cb237fca7341ba29"
+      }
+    },
+    {
+      "member": "root/cohort-inputs-v1.json",
+      "source": {
+        "bytes": 232943,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/cohort-inputs-v1.json",
+        "sha256": "60ced7c79f91fd475ef88e90cace3ce5fffe15b0c8450d4b3e934d3764ffb80e"
+      }
+    },
+    {
+      "member": "root/comparison-offers-v1.json",
+      "source": {
+        "bytes": 841,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/comparison-offers-v1.json",
+        "sha256": "6fdb4a3678c02c85ff2e81c6c96e50695ddc9c50471da44b369709a891c22272"
+      }
+    },
+    {
+      "member": "root/declaration-off-v1.json",
+      "source": {
+        "bytes": 63687,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/declaration-off-v1.json",
+        "sha256": "4337030dc198eaf759237d0dd60db8348cf28cbdb640373475154ba6996b91fb"
+      }
+    },
+    {
+      "member": "root/declaration-on-v1.json",
+      "source": {
+        "bytes": 63707,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/declaration-on-v1.json",
+        "sha256": "bf25082b07bbde2402b207a0a798116d9ccc9e4f777a4179e754b6a95674cd5b"
+      }
+    },
+    {
+      "member": "root/finish_worker_source_v1.py",
+      "source": {
+        "bytes": 2901,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/finish_worker_source_v1.py",
+        "sha256": "120a8ea4779487b74cfb8017c9376e0f589a1c4f4c7315f97ac959bb36bcab1d"
+      }
+    },
+    {
+      "member": "root/next-research-steps-v1.json",
+      "source": {
+        "bytes": 2025,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/next-research-steps-v1.json",
+        "sha256": "f3315e02d3372f301d699b008dd8b1ef0c000943762ab73138d82f923771bd2a"
+      }
+    },
+    {
+      "member": "root/nogood-marking-construction.html",
+      "source": {
+        "bytes": 14137,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/nogood-marking-construction.html",
+        "sha256": "16d3f538ff47aa112046aa6c780b94c7fdc69ffe127cf183c4e10f6ffb755f0d"
+      }
+    },
+    {
+      "member": "root/observe_wang_encoding_once_v1.py",
+      "source": {
+        "bytes": 5483,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/observe_wang_encoding_once_v1.py",
+        "sha256": "587b3ab980b60ad81d479957b28478185a6f459ae1270b447613e6fed5d32fa5"
+      }
+    },
+    {
+      "member": "root/plan-authorized-off-v1-terminal-observation/CONSUMED.json",
+      "source": {
+        "bytes": 286,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/plan-authorized-off-v1-terminal-observation/CONSUMED.json",
+        "sha256": "f4b637dc0d35516985bce5be3a72e0a7322def57455620a4e9d43840e378c139"
+      }
+    },
+    {
+      "member": "root/plan-authorized-off-v1-terminal-observation/stderr.bin",
+      "source": {
+        "bytes": 0,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/plan-authorized-off-v1-terminal-observation/stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "member": "root/plan-authorized-off-v1-terminal-observation/stdout.bin",
+      "source": {
+        "bytes": 155,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/plan-authorized-off-v1-terminal-observation/stdout.bin",
+        "sha256": "74e7d509f56da92eae8bdf06a6a6c3c7b1f4be3f56eb1d8f8bd4482fba843d00"
+      }
+    },
+    {
+      "member": "root/plan-authorized-off-v1-terminal-observation/terminal.json",
+      "source": {
+        "bytes": 1526,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/plan-authorized-off-v1-terminal-observation/terminal.json",
+        "sha256": "2ba49060eae63a9e8e5e9bdc838f05a23384c134234f410ac9df7035588ea45f"
+      }
+    },
+    {
+      "member": "root/plan-authorized-off-v1.json",
+      "source": {
+        "bytes": 3320,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/plan-authorized-off-v1.json",
+        "sha256": "09f4907dd39fcd04e68076b654ccc988c30084327726cd76960d4f65d92b016c"
+      }
+    },
+    {
+      "member": "root/plan-authorized-on-v1-terminal-observation/CONSUMED.json",
+      "source": {
+        "bytes": 285,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/plan-authorized-on-v1-terminal-observation/CONSUMED.json",
+        "sha256": "87fb3e77d8ec22f6ab1e3b03ccdad8cba6d7309847470bb5d6caf91d7c7df33b"
+      }
+    },
+    {
+      "member": "root/plan-authorized-on-v1-terminal-observation/stderr.bin",
+      "source": {
+        "bytes": 0,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/plan-authorized-on-v1-terminal-observation/stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "member": "root/plan-authorized-on-v1-terminal-observation/stdout.bin",
+      "source": {
+        "bytes": 154,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/plan-authorized-on-v1-terminal-observation/stdout.bin",
+        "sha256": "e1e58d5f9dd423c4fb3f2e5f6ac688073851f2081340a57459ba37ef8fac9d10"
+      }
+    },
+    {
+      "member": "root/plan-authorized-on-v1-terminal-observation/terminal.json",
+      "source": {
+        "bytes": 1522,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/plan-authorized-on-v1-terminal-observation/terminal.json",
+        "sha256": "459ebddf3c86ffc664b73ffa16f1b1f2589f8d0218c7f772fb22c59c3e32311a"
+      }
+    },
+    {
+      "member": "root/plan-authorized-on-v1.json",
+      "source": {
+        "bytes": 3315,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/plan-authorized-on-v1.json",
+        "sha256": "c4bf985623f58fb4b15f87ed4f0929519579bbdd66a017f3f69729e1cce986ee"
+      }
+    },
+    {
+      "member": "root/plan-false-off-v1.json",
+      "source": {
+        "bytes": 3326,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/plan-false-off-v1.json",
+        "sha256": "14c7b3978fb7abd6a62d539f2e31c590eaa96f7dea08d6d4499c48ca28580156"
+      }
+    },
+    {
+      "member": "root/plan-false-on-v1.json",
+      "source": {
+        "bytes": 3321,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/plan-false-on-v1.json",
+        "sha256": "c209b6a9a261c78aa9c1383fc2cae3642b782cf9c9973b5bf828efdc42e6b6a3"
+      }
+    },
+    {
+      "member": "root/prepare_outer_sources_v1.py",
+      "source": {
+        "bytes": 1602,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/prepare_outer_sources_v1.py",
+        "sha256": "cee991b0acbf1bb818a8faae048045d8425a6adebf90785ac0aabb25fd744f89"
+      }
+    },
+    {
+      "member": "root/prepare_publication_v1.py",
+      "source": {
+        "bytes": 4170,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/prepare_publication_v1.py",
+        "sha256": "0778abe91a8be4d6668d2465e872fbd855dda633c47c0c40601b7ef7de23f214"
+      }
+    },
+    {
+      "member": "root/prepare_worker_draft_v1.py",
+      "source": {
+        "bytes": 12198,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/prepare_worker_draft_v1.py",
+        "sha256": "512f9f170c2e6f9a88fe3b898cde7e0932f28a878cf87cc0bc9e1bc52fdbd58e"
+      }
+    },
+    {
+      "member": "root/qualify_wang_reusable_worker_DRAFT_v1.py",
+      "source": {
+        "bytes": 51008,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/qualify_wang_reusable_worker_DRAFT_v1.py",
+        "sha256": "fac9d0cbecb5af23d7c0c53fbd0c035cb3a1a363418d51811f2dd92b3595cc7b"
+      }
+    },
+    {
+      "member": "root/qualify_wang_reusable_worker_DRAFT_v2.py",
+      "source": {
+        "bytes": 52320,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/qualify_wang_reusable_worker_DRAFT_v2.py",
+        "sha256": "306d107927026ba10aab9120c128959ef3c7dcfea8bc14daad9a150b0428df92"
+      }
+    },
+    {
+      "member": "root/qualify_wang_reusable_worker_v1.py",
+      "source": {
+        "bytes": 53092,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/qualify_wang_reusable_worker_v1.py",
+        "sha256": "dc0206c5871bb7628b72075dd435857e42be0f514ceddbd6bfb065b130cf6290"
+      }
+    },
+    {
+      "member": "root/refine_worker_draft_v1.py",
+      "source": {
+        "bytes": 3620,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/refine_worker_draft_v1.py",
+        "sha256": "4a88a3772be26f2d52b7d3501649099e95068f9c7023abc6fa038d16628e1cc8"
+      }
+    },
+    {
+      "member": "root/run_wang_reusable_once_v1.py",
+      "source": {
+        "bytes": 34050,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/run_wang_reusable_once_v1.py",
+        "sha256": "c58514e9b43b420bd641863c864ba4ec034a10ddec6e1c4078ca4c19aaf68b50"
+      }
+    },
+    {
+      "member": "root/runtime-closure-off-v1.json",
+      "source": {
+        "bytes": 9293,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/runtime-closure-off-v1.json",
+        "sha256": "1e653f1fc0f9c058d3a9db43ed0e93a44151ce0109b2c807bd95ed270aa3a223"
+      }
+    },
+    {
+      "member": "root/runtime-closure-on-v1.json",
+      "source": {
+        "bytes": 9292,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/runtime-closure-on-v1.json",
+        "sha256": "106b92a0d94118231332a7645a8e9f54ffba2c68284e91b2740f067558f03f58"
+      }
+    },
+    {
+      "member": "root/worker-source-freeze-v1.json",
+      "source": {
+        "bytes": 822,
+        "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/worker-source-freeze-v1.json",
+        "sha256": "35a1d11ca446a2761721d6c4a8800403ab7160429ee1eb5e2fd5946b9f2a7ae3"
+      }
+    },
+    {
+      "member": "search/API-v1.json",
+      "source": {
+        "bytes": 3751,
+        "path": "/private/tmp/gcts-wang-nogood-search-library-20261019/API-v1.json",
+        "sha256": "c1ea4e242323712dab2bf9f876b255a4abf0c5bd0a08ad17b552395d4cd084e6"
+      }
+    },
+    {
+      "member": "search/Source-contract-v1.json",
+      "source": {
+        "bytes": 3629,
+        "path": "/private/tmp/gcts-wang-nogood-search-library-20261019/Source-contract-v1.json",
+        "sha256": "3a9329599977b06cdcb22cb3ba23d64768d699033af561d770862313b50417f9"
+      }
+    },
+    {
+      "member": "search/author-static-audit-v1.json",
+      "source": {
+        "bytes": 3898,
+        "path": "/private/tmp/gcts-wang-nogood-search-library-20261019/author-static-audit-v1.json",
+        "sha256": "77d487594d6d37e2a30c168e0b3d1e4fc237385cea05a2a886bf4cdc97f37612"
+      }
+    },
+    {
+      "member": "search/freeze_source_packet_v1.py",
+      "source": {
+        "bytes": 15524,
+        "path": "/private/tmp/gcts-wang-nogood-search-library-20261019/freeze_source_packet_v1.py",
+        "sha256": "24aad27b80ff714684259b3e21dc46b269fc3b497c39aab94dde2d67d34dd688"
+      }
+    },
+    {
+      "member": "search/handoff-v1.json",
+      "source": {
+        "bytes": 2119,
+        "path": "/private/tmp/gcts-wang-nogood-search-library-20261019/handoff-v1.json",
+        "sha256": "90f4a07ff25fefa481318ebc352f0d8d4946d055484c3b3aec7294fc389aecf9"
+      }
+    },
+    {
+      "member": "search/nogood-extension-source.txt",
+      "source": {
+        "bytes": 24355,
+        "path": "/private/tmp/gcts-wang-nogood-search-library-20261019/nogood-extension-source.txt",
+        "sha256": "d035985aa8e064ec4ce8d1645a2c33ccf82ecbe177207d2f00d191ae9dba1a8b"
+      }
+    },
+    {
+      "member": "search/search-v2-to-v3.patch",
+      "source": {
+        "bytes": 25367,
+        "path": "/private/tmp/gcts-wang-nogood-search-library-20261019/search-v2-to-v3.patch",
+        "sha256": "e2375282f6ca4aaca3fb52163e8edd158c352610a1e5df02c25bc82b7153e456"
+      }
+    },
+    {
+      "member": "search/search-v3-to-v2.patch",
+      "source": {
+        "bytes": 25367,
+        "path": "/private/tmp/gcts-wang-nogood-search-library-20261019/search-v3-to-v2.patch",
+        "sha256": "47245172344fa4c500065320e1f7f68bda372a133c3ed09b538bf7fe0746bca7"
+      }
+    },
+    {
+      "member": "search/snapshot-API-v2.json",
+      "source": {
+        "bytes": 4349,
+        "path": "/private/tmp/gcts-wang-nogood-search-library-20261019/snapshot-API-v2.json",
+        "sha256": "d2429e4fdae09d45d99e052254c6a33fcb14f081f6fef17eabcf5ae9544b75b7"
+      }
+    },
+    {
+      "member": "search/wang_point_search_v3.py",
+      "source": {
+        "bytes": 49058,
+        "path": "/private/tmp/gcts-wang-nogood-search-library-20261019/wang_point_search_v3.py",
+        "sha256": "3f1448f67994e50da8442c674aba6184027f362c3693014b940562654489fa51"
+      }
+    },
+    {
+      "member": "oracle/API-v1.json",
+      "source": {
+        "bytes": 7349,
+        "path": "/private/tmp/gcts-wang-nogood-oracle-20261019/API-v1.json",
+        "sha256": "f6a7c74ba172fa94f3ba909ac303c6505ffc88f313c5837acf817008c3366eb4"
+      }
+    },
+    {
+      "member": "oracle/Source-contract-v1.json",
+      "source": {
+        "bytes": 3507,
+        "path": "/private/tmp/gcts-wang-nogood-oracle-20261019/Source-contract-v1.json",
+        "sha256": "023c8330b8d662cee73fa162d45a62ca0515853e441a50749ecc0caf8e6552ea"
+      }
+    },
+    {
+      "member": "oracle/author-static-check-v1.json",
+      "source": {
+        "bytes": 1723,
+        "path": "/private/tmp/gcts-wang-nogood-oracle-20261019/author-static-check-v1.json",
+        "sha256": "cb4069f34a35a0ae0e68005c93b237ac926632deececc77344605cf6e73eb286"
+      }
+    },
+    {
+      "member": "oracle/basic-tiling-algorithm-current.md",
+      "source": {
+        "bytes": 36240,
+        "path": "/private/tmp/gcts-wang-nogood-oracle-20261019/basic-tiling-algorithm-current.md",
+        "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+      }
+    },
+    {
+      "member": "oracle/geometry-Source-draft.txt",
+      "source": {
+        "bytes": 6704,
+        "path": "/private/tmp/gcts-wang-nogood-oracle-20261019/geometry-Source-draft.txt",
+        "sha256": "190e42093b105d29214e6f524e5d11665738f1b728c913546927bcb154cf0e5b"
+      }
+    },
+    {
+      "member": "oracle/handoff-v1.json",
+      "source": {
+        "bytes": 2256,
+        "path": "/private/tmp/gcts-wang-nogood-oracle-20261019/handoff-v1.json",
+        "sha256": "69f9a7a31612deffdeb3d12acb624500a8b9a808550ec36d07141f115e4e05df"
+      }
+    },
+    {
+      "member": "oracle/input-context-v1.json",
+      "source": {
+        "bytes": 1217,
+        "path": "/private/tmp/gcts-wang-nogood-oracle-20261019/input-context-v1.json",
+        "sha256": "45c4c27ee60f23120cc97505762185f1d485823687864f57922af970ed0589f2"
+      }
+    },
+    {
+      "member": "oracle/supplemental-diagnostics-proposal-v1.json",
+      "source": {
+        "bytes": 6475,
+        "path": "/private/tmp/gcts-wang-nogood-oracle-20261019/supplemental-diagnostics-proposal-v1.json",
+        "sha256": "ed9acd6b0bf6131a4c3463cbb8c3842abac59c744287754b9345cc7c13576c3b"
+      }
+    },
+    {
+      "member": "oracle/wang_nogood_oracle_v1.py",
+      "source": {
+        "bytes": 27259,
+        "path": "/private/tmp/gcts-wang-nogood-oracle-20261019/wang_nogood_oracle_v1.py",
+        "sha256": "20f3309c8a1bf99fc0a6e8b56b7e9f101493c3de33079d40c68ca515e1b1e031"
+      }
+    },
+    {
+      "member": "review/freeze_current_reviews_v1.py",
+      "source": {
+        "bytes": 25484,
+        "path": "/private/tmp/gcts-wang-nogood-review-20261019/freeze_current_reviews_v1.py",
+        "sha256": "9355457488e9a9257270459b8f675d562866e46602f18a75cc20ee640c7034fb"
+      }
+    },
+    {
+      "member": "review/freeze_current_reviews_v2.py",
+      "source": {
+        "bytes": 25576,
+        "path": "/private/tmp/gcts-wang-nogood-review-20261019/freeze_current_reviews_v2.py",
+        "sha256": "bf3cf096804622749e5d039e0045203d409b990a42f7a6aa6fea969bbd89800b"
+      }
+    },
+    {
+      "member": "review/freeze_design_obligations_v1.py",
+      "source": {
+        "bytes": 12448,
+        "path": "/private/tmp/gcts-wang-nogood-review-20261019/freeze_design_obligations_v1.py",
+        "sha256": "9606c9f7275352b25deaa397033b75a8dff56e2e5e2fa37396554c80139a49f4"
+      }
+    },
+    {
+      "member": "review/freeze_gadget_review_v1.py",
+      "source": {
+        "bytes": 7651,
+        "path": "/private/tmp/gcts-wang-nogood-review-20261019/freeze_gadget_review_v1.py",
+        "sha256": "c02d5f989c8a5aaeee18ba169b621cc95b4cadc9c68140836727f86c3818695f"
+      }
+    },
+    {
+      "member": "review/freeze_grant_delta_v1.py",
+      "source": {
+        "bytes": 6435,
+        "path": "/private/tmp/gcts-wang-nogood-review-20261019/freeze_grant_delta_v1.py",
+        "sha256": "c8e9ee3bdfe633d8ecfedb5412f9d159cc7fdba01faaac1b08751d8b2f2244e3"
+      }
+    },
+    {
+      "member": "review/freeze_saved_review_v1.py",
+      "source": {
+        "bytes": 21356,
+        "path": "/private/tmp/gcts-wang-nogood-review-20261019/freeze_saved_review_v1.py",
+        "sha256": "192185f67dbc3b97f9c296f9f169074f4c625dc84b92360080c378c08bdcec89"
+      }
+    },
+    {
+      "member": "review/reviewer-helper-correction-v1.json",
+      "source": {
+        "bytes": 583,
+        "path": "/private/tmp/gcts-wang-nogood-review-20261019/reviewer-helper-correction-v1.json",
+        "sha256": "dec8c4d7615d4605b23ec37076de89869d43b4af02cd273dc21d66baf1cae191"
+      }
+    },
+    {
+      "member": "review/typed-combined-Source-prospective-review-off-v1.json",
+      "source": {
+        "bytes": 30062,
+        "path": "/private/tmp/gcts-wang-nogood-review-20261019/typed-combined-Source-prospective-review-off-v1.json",
+        "sha256": "c289a699e09372f9412c11f47739b302e87027f60aaaf4afbd8986b9cb46d5d3"
+      }
+    },
+    {
+      "member": "review/typed-combined-Source-prospective-review-on-v1.json",
+      "source": {
+        "bytes": 30074,
+        "path": "/private/tmp/gcts-wang-nogood-review-20261019/typed-combined-Source-prospective-review-on-v1.json",
+        "sha256": "b6f570daa9f95ed691609509dc53965ec0524f10cbf32b66f0b80f910a1340ac"
+      }
+    },
+    {
+      "member": "review/typed-design-obligations-v1.json",
+      "source": {
+        "bytes": 12267,
+        "path": "/private/tmp/gcts-wang-nogood-review-20261019/typed-design-obligations-v1.json",
+        "sha256": "7ed825e8ff5f2ef7d309717bac45f93218b9f97267628cf2be244001b43bf249"
+      }
+    },
+    {
+      "member": "review/typed-final-grant-delta-review-v1.json",
+      "source": {
+        "bytes": 17602,
+        "path": "/private/tmp/gcts-wang-nogood-review-20261019/typed-final-grant-delta-review-v1.json",
+        "sha256": "aee6067bdebac65c3080ec792379b7b1252a8af47f8b445b1ca1889e5575ec63"
+      }
+    },
+    {
+      "member": "review/typed-gadget-argument-review-v1.json",
+      "source": {
+        "bytes": 7654,
+        "path": "/private/tmp/gcts-wang-nogood-review-20261019/typed-gadget-argument-review-v1.json",
+        "sha256": "57a26e45ec9456b8448912b1905a33ec9e80f6cdda3f621cded1542eb3e96a34"
+      }
+    },
+    {
+      "member": "review/typed-gadget-argument-review-v2.json",
+      "source": {
+        "bytes": 6110,
+        "path": "/private/tmp/gcts-wang-nogood-review-20261019/typed-gadget-argument-review-v2.json",
+        "sha256": "f812ea78602c8ba7353cc83531dfecc4d940c85fb9194d1e7b72704d7d89cedb"
+      }
+    },
+    {
+      "member": "review/typed-saved-comparison-review-v1.json",
+      "source": {
+        "bytes": 51049,
+        "path": "/private/tmp/gcts-wang-nogood-review-20261019/typed-saved-comparison-review-v1.json",
+        "sha256": "55676a3c664a752ba6928a067c3005935a4bd9a426c4b91b72faf6d3b6288f91"
+      }
+    },
+    {
+      "member": "unchanged/compiler.py",
+      "source": {
+        "bytes": 13084,
+        "path": "/private/tmp/gcts-wang-spacetime-library-20261019/wang_spacetime_compiler_v1.py",
+        "sha256": "92a8c49bd9be346faf9e6472c588140d3844c4e52c1f0a18fef24409e7ff20ba"
+      }
+    },
+    {
+      "member": "unchanged/verifier.py",
+      "source": {
+        "bytes": 23707,
+        "path": "/private/tmp/gcts-wang-search-library-20261019/wang_history_verifier_v2.py",
+        "sha256": "136d9306b2389576b38ffd6c60350514835583f625a5f45467cefc044fa3908d"
+      }
+    }
+  ],
+  "archive": {
+    "bytes": 258135,
+    "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/publication/reusable-nogoods-evidence.tar.gz",
+    "sha256": "a0034a0995009dc165b26a00205d9dcf47cdc88cbd2fc711044bc2d2694dcd04"
+  },
+  "goal_status": "active",
+  "raw_members": 94,
+  "raw_source_bytes": 1414671,
+  "reports": [
+    {
+      "bytes": 13445,
+      "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/publication/reusable-nogoods.html",
+      "sha256": "f3c5eee01f8f8504a3019994f74b90c61cd4597156b869514d819cd8623bd809"
+    },
+    {
+      "bytes": 86201,
+      "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/publication/reusable-nogoods-summary.json",
+      "sha256": "730cb7826de5743430af8f23b2947eabdfdfeedcf0df58dcd952cb1c9793a85f"
+    },
+    {
+      "bytes": 14137,
+      "path": "/private/tmp/gcts-wang-receptor-ROOT-20261019-v1/publication/nogood-marking-construction.html",
+      "sha256": "16d3f538ff47aa112046aa6c780b94c7fdc69ffe127cf183c4e10f6ffb755f0d"
+    }
+  ],
+  "schema": "reusable-nogood-publication-manifest-v1",
+  "scientific_acceptance": false,
+  "target_execution_in_assembly": false
+}
