@@ -1,0 +1,78 @@
+{
+  "archive_scan": {
+    "all_members_byte_checked": true,
+    "archive": {
+      "bytes": 8916819,
+      "file": "recipient-proof-search-evidence.tar.gz",
+      "sha256": "de49a26b76aeee302702def9d8fbbacd9ade60ed4d299ad8a2bb5a25d938f058"
+    },
+    "members": 119,
+    "omitted_trusted_runtime": [
+      {
+        "pin": {
+          "bytes": 18058560,
+          "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+          "sha256": "b6ea0c2a9bfce48dbf181a53f1ca4f0562d40658b85bf47258e2a88d8f9e3933"
+        },
+        "reason": "Trusted pinned isolated CPython binary not redistributed. Research Sources and fixed Native assets included."
+      }
+    ],
+    "partial_raw_metadata_only": [],
+    "payload_bytes": 121099281,
+    "schema": "recipient-archive-complete-byte-scan-v1"
+  },
+  "conclusion": "S0 automatically found one14lineHost/region/Nativeacceptedrecipientproof.9primitivecallsreturned/9clusterarmsskipped.6pointcalls cutoffinfirstauditbeforeanyplacement. No GCTS/RLgain/fullcomparison.",
+  "files": [
+    {
+      "bytes": 1213808,
+      "file": "recipient-proof-search-data.json",
+      "sha256": "743d428dd9a905c11dfb1a7c9d336f735dc2db7e4a4e311ef973a4197d6b555d"
+    },
+    {
+      "bytes": 14728,
+      "file": "recipient-proof-search-engineering.json",
+      "sha256": "001b00bc5e02741a951aa2b033967e75f2820f8995aab97657b2c64498f9a30b"
+    },
+    {
+      "bytes": 8916819,
+      "file": "recipient-proof-search-evidence.tar.gz",
+      "sha256": "de49a26b76aeee302702def9d8fbbacd9ade60ed4d299ad8a2bb5a25d938f058"
+    },
+    {
+      "bytes": 48001,
+      "file": "recipient-proof-search-review-C.json",
+      "sha256": "51cd00578eb94b95397320b642008bb05399b97c28b3717296849b6044fd7041"
+    },
+    {
+      "bytes": 30552,
+      "file": "recipient-proof-search-review-L.json",
+      "sha256": "4b09a77ea99ad2142fc8972e198dc60072df442ce4a2b2b1c6dbf749f2dc83ee"
+    },
+    {
+      "bytes": 24560,
+      "file": "recipient-proof-search.html",
+      "sha256": "2a555c3d2d7b0e8d3af35e77d38606fe1838d0779f4e154f53a09b248933f8a0"
+    },
+    {
+      "bytes": 108864,
+      "file": "reader.html",
+      "sha256": "8f234f403e48da3468a771c0a25706442db59bdb99ae64ad5d0b4b4a88c1c5f4"
+    }
+  ],
+  "reader_delta": {
+    "after": {
+      "bytes": 108864,
+      "sha256": "8f234f403e48da3468a771c0a25706442db59bdb99ae64ad5d0b4b4a88c1c5f4"
+    },
+    "before": {
+      "bytes": 108073,
+      "sha256": "c147b2c8436dfce72d1b381db8400f5ce4bb8e65eefc2f4636e256e708be587c"
+    },
+    "inserted_bytes": 791,
+    "only_exact_insertion": true,
+    "schema": "recipient-reader-insertion-v1",
+    "unrelated_bytes_preserved": true
+  },
+  "schema": "recipient-proof-search-publication-manifest-v1",
+  "source_parent_commit": "449218fd6c850477acea0dcb8fe935b1ea36e467"
+}

@@ -1,0 +1,261 @@
+{
+  "assessment": {
+    "accepted_recipient_proofs": 1,
+    "cases": [
+      {
+        "accepted_recipient_proofs": [
+          {
+            "arm": "S0",
+            "full_arm_seconds": 4.860065250002663,
+            "query": 89,
+            "rows": 14,
+            "search_seconds": 0.10531095800251933
+          }
+        ],
+        "case_id": "pilot-fork-join-positive",
+        "certified_exclusions": 12,
+        "compile_and_model_seconds": 86.19094058399787,
+        "full_shared_setup_seconds": 97.50472329100012,
+        "ground_instances": 7,
+        "ground_micro_steps": 1000000000,
+        "ground_query_seconds": 7.133563832998334,
+        "indexed_model_seconds": 4.092582582998148,
+        "known_exit_seconds": 121.78920783399371,
+        "marking_seconds": 0.009286542001063935,
+        "model_placements": 63823,
+        "native_queries": 90,
+        "observer": {
+          "bytes": 1498,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-recipient-proof-pilot-20261020/actual/pilot-fork-join-positive.observer/observer.json",
+          "sha256": "bcf0368fdbc8b4b8b135891cb6dd5b75af081fcbc78b3a5708d21170faa1860d"
+        },
+        "observer_seconds": 121.86816904100124,
+        "resource_candidate_accepted": true,
+        "result": {
+          "bytes": 30187840,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-recipient-proof-pilot-20261020/actual/pilot-fork-join-positive/result.json",
+          "sha256": "8795ddc6f7a991d966f8bea68b557f1b0f9e836307d51d4f6e4fed2d17a6c457"
+        },
+        "scientific_complete": false,
+        "searches_returned": 3,
+        "skipped_cluster_arms": 3,
+        "terminal": {
+          "bytes": 2015,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-recipient-proof-pilot-20261020/actual/pilot-fork-join-positive/terminal.json",
+          "sha256": "d315a70a7d479b45011fe9f2ece5d900e5f383d85b8a3dbfd829cb7e0f0e0f44"
+        },
+        "training_and_acquisition_seconds": 9.421657917002449,
+        "whole_peak_bytes": 775700480,
+        "worker_pre_output_peak_bytes": 592871424
+      },
+      {
+        "accepted_recipient_proofs": [],
+        "case_id": "pilot-quantifier-equality-positive",
+        "certified_exclusions": 12,
+        "compile_and_model_seconds": 92.80077841699676,
+        "full_shared_setup_seconds": 104.26516587499646,
+        "ground_instances": 11,
+        "ground_micro_steps": 1000000000,
+        "ground_query_seconds": 7.345652999996673,
+        "indexed_model_seconds": 4.026123916999495,
+        "known_exit_seconds": 124.55860774999746,
+        "marking_seconds": 0.008596333005698398,
+        "model_placements": 63980,
+        "native_queries": 108,
+        "observer": {
+          "bytes": 1517,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-recipient-proof-pilot-20261020/actual/pilot-quantifier-equality-positive.observer/observer.json",
+          "sha256": "c099e2645e59c2cba85dff92ec5403a831aa8f516271eed630dc686f0457c9c9"
+        },
+        "observer_seconds": 124.64187949999905,
+        "resource_candidate_accepted": true,
+        "result": {
+          "bytes": 29586347,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-recipient-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/result.json",
+          "sha256": "e81fd3f7ab44e87da0df0838b78852c33820997a6d8e186e02e61c836405f900"
+        },
+        "scientific_complete": false,
+        "searches_returned": 3,
+        "skipped_cluster_arms": 3,
+        "terminal": {
+          "bytes": 2054,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-recipient-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/terminal.json",
+          "sha256": "0a2be65a5bec2186802102b6b66c71752dc363028815da541f89d43499bad635"
+        },
+        "training_and_acquisition_seconds": 9.426553167002567,
+        "whole_peak_bytes": 611483648,
+        "worker_pre_output_peak_bytes": 372801536
+      },
+      {
+        "accepted_recipient_proofs": [],
+        "case_id": "pilot-fork-join-missing-Pa",
+        "certified_exclusions": 12,
+        "compile_and_model_seconds": 84.18691687499813,
+        "full_shared_setup_seconds": 95.83458129200153,
+        "ground_instances": 7,
+        "ground_micro_steps": 1000000000,
+        "ground_query_seconds": 7.231292541997391,
+        "indexed_model_seconds": 4.320214040999417,
+        "known_exit_seconds": 117.16048545800004,
+        "marking_seconds": 0.011048125001252629,
+        "model_placements": 63120,
+        "native_queries": 89,
+        "observer": {
+          "bytes": 1502,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-recipient-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa.observer/observer.json",
+          "sha256": "50773f3ad908182d8d8379b3b183c4508495b838e18ff9c68d2c5098e3982a63"
+        },
+        "observer_seconds": 117.24828904199967,
+        "resource_candidate_accepted": true,
+        "result": {
+          "bytes": 30032175,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-recipient-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/result.json",
+          "sha256": "779969604854553a2d609d01b235d41083af246fd3847b540edd3c42661e70fa"
+        },
+        "scientific_complete": false,
+        "searches_returned": 3,
+        "skipped_cluster_arms": 3,
+        "terminal": {
+          "bytes": 2024,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-recipient-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/terminal.json",
+          "sha256": "c06c30a6c25433494e4c0a7ae2c3200e7040eb33caa22eed55ef88682f641735"
+        },
+        "training_and_acquisition_seconds": 9.237862665999273,
+        "whole_peak_bytes": 605159424,
+        "worker_pre_output_peak_bytes": 444071936
+      }
+    ],
+    "cluster_arms_skipped": 9,
+    "complete_point_domain_audits": 0,
+    "new_actual_case_jobs": 3,
+    "partial_files_parsed": false,
+    "point_initial_auxiliary_removals": 36,
+    "point_placement_attempts": 0,
+    "point_searches": [
+      {
+        "arm": "P00",
+        "attempts": 0,
+        "case_id": "pilot-fork-join-positive",
+        "completed_domain_audits": 0,
+        "initial_auxiliary_removals": 0,
+        "nodes": 1,
+        "search_seconds": 3.3450197919955826,
+        "source_interpretation": "Graph initialization and initial decision completed; cutoff inside first full-domain audit before decision trace or placement. Timer includes setup and post-cutoff work; stage attribution is unavailable."
+      },
+      {
+        "arm": "P10",
+        "attempts": 0,
+        "case_id": "pilot-fork-join-positive",
+        "completed_domain_audits": 0,
+        "initial_auxiliary_removals": 12,
+        "nodes": 1,
+        "search_seconds": 3.3950501250001253,
+        "source_interpretation": "Graph initialization and initial decision completed; cutoff inside first full-domain audit before decision trace or placement. Timer includes setup and post-cutoff work; stage attribution is unavailable."
+      },
+      {
+        "arm": "P10",
+        "attempts": 0,
+        "case_id": "pilot-quantifier-equality-positive",
+        "completed_domain_audits": 0,
+        "initial_auxiliary_removals": 12,
+        "nodes": 1,
+        "search_seconds": 3.38836425000045,
+        "source_interpretation": "Graph initialization and initial decision completed; cutoff inside first full-domain audit before decision trace or placement. Timer includes setup and post-cutoff work; stage attribution is unavailable."
+      },
+      {
+        "arm": "P00",
+        "attempts": 0,
+        "case_id": "pilot-quantifier-equality-positive",
+        "completed_domain_audits": 0,
+        "initial_auxiliary_removals": 0,
+        "nodes": 1,
+        "search_seconds": 3.307862625006237,
+        "source_interpretation": "Graph initialization and initial decision completed; cutoff inside first full-domain audit before decision trace or placement. Timer includes setup and post-cutoff work; stage attribution is unavailable."
+      },
+      {
+        "arm": "P00",
+        "attempts": 0,
+        "case_id": "pilot-fork-join-missing-Pa",
+        "completed_domain_audits": 0,
+        "initial_auxiliary_removals": 0,
+        "nodes": 1,
+        "search_seconds": 3.3798603329996695,
+        "source_interpretation": "Graph initialization and initial decision completed; cutoff inside first full-domain audit before decision trace or placement. Timer includes setup and post-cutoff work; stage attribution is unavailable."
+      },
+      {
+        "arm": "P10",
+        "attempts": 0,
+        "case_id": "pilot-fork-join-missing-Pa",
+        "completed_domain_audits": 0,
+        "initial_auxiliary_removals": 12,
+        "nodes": 1,
+        "search_seconds": 3.957250416999159,
+        "source_interpretation": "Graph initialization and initial decision completed; cutoff inside first full-domain audit before decision trace or placement. Timer includes setup and post-cutoff work; stage attribution is unavailable."
+      }
+    ],
+    "recipient_proof_discovery_engine": "S0 conventional symbolic control",
+    "remaining_once_grants": 0,
+    "schema": "Root-passive-recipient-search-assessment-v1",
+    "scientific_calls": 0,
+    "scientific_complete": false,
+    "scope": "Passive complete saved-file joins and literal wire display decoding, not scientific Source execution or mathematical replay.",
+    "searches_returned": 9,
+    "trained_RL": false,
+    "whole_goal_complete": false
+  },
+  "change": "Only per-arm cluster prerequisites and explicit searched/skipped/proof/completion labels changed from D6. Exact search functions and26 runtime/4custodian Sources are unchanged.",
+  "conformance_gap": "No recipient full-domain audit completed in point search. Tiny controls and independent target representation checks returned but cannot substitute for those missing search audits.",
+  "partial_files_parsed": false,
+  "proof_rows": "Each selected command and guard is a fixed-role high-level point placement, with full literal word marks and unit12 occupancy. The saved S0 proof fills every finite required root and decoded proof matches. No generated nearest-neighbor Wang or universal interpreter qualification.",
+  "protocol": {
+    "baseline_scope": "Matched existing symbolic control, not best-known ATP or state-of-art benchmark. It shares full model/setup for point correspondence; that overhead is not intrinsically necessary for symbolic proof search.",
+    "change": "Ground-cluster Native UNKNOWN skips only cluster-dependent SC/P01/P11. S0/P00/P10 still run. Rejected/foreign statuses or errors are not unknown skips. Every skipped arm has explicit null search/metrics and prerequisite provenance.",
+    "completion": "A job_record_complete includes six explicit searched/skipped arm outcomes and complete Native/cost records. All_six_searched and scientific_complete are separate; skipped arms prevent complete six-arm comparison. Bounded unsuccessful search is unknown, not theorem false.",
+    "costs": "All acquisition, compilation, model/reference, encoding, marking, grounding/admission, each arm and final custody physically included once per case. Baseline method allocation does not charge unused learned-library work, and no cluster method receives free acquisition. Nested timers are not disjoint.",
+    "execution": "Three fresh serial cold jobs. No adoption of old prefix/results/library/grants. All six arm outcomes and whole gates required for complete comparison; per-arm gates are deliberately different from immutable D6 shared gate.",
+    "input": {
+      "bytes": 14901,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/corpus-L/pilot-inputs-v2.json",
+      "sha256": "2f206ef004c4d723f862ee36f08355816c5264a5809340be9787331d82d33cd6"
+    },
+    "limits": {
+      "custody_seconds": 210,
+      "log_bytes": 4194304,
+      "memory_bytes": 1073741824,
+      "observer_fallback_seconds": 225,
+      "physical_bytes": 134217728,
+      "positive_seconds": 180,
+      "reserved_outer_bytes": 9437184,
+      "result_bytes": 50331648,
+      "root_callbacks": 400000000,
+      "work_seconds": 160
+    },
+    "new_actuals": 0,
+    "new_grants": 0,
+    "observer": "Unchanged separate225second fallback; actual180positive/210custody/1GiB/128MiBwhole gates. Live physical census is non-atomic; positive final census follows owned-process exit. No adversarial or OSrealtime guarantee.",
+    "old_grants_remaining": 0,
+    "partial_rule": "Every.partial raw length/hash only, never parsed/admitted.",
+    "proof_acceptance": "Every found candidate retains exact case Host, full finite-region and final primitive Native gates. Native UNKNOWN after Host/region acceptance is candidate-only, not a proved Native theorem.",
+    "reference": "All26 runtime Sources and4 Rootcustodian Sources are bytecopies of frozenD6. Reused L handoff binds the original verifier; D7 scientificdelta reviews bind the changed caller, not a fictional old handoff for newentry.",
+    "schema": "per-arm-recipient-search-protocol-v1",
+    "scientific_limits": {
+      "cluster_binding_work": 20000,
+      "cluster_instances": 12,
+      "cluster_proposals": 16,
+      "compile_queries": 512,
+      "domain_audits": 2,
+      "marking_certificates": 12,
+      "marking_proposals": 48,
+      "marking_work": 200000,
+      "native_steps": 1000000000,
+      "search_attempts": 600,
+      "search_seconds": 2.0
+    },
+    "scope": "Native/point adaptation. No RL trained, physicalWang qualification, fullprogram completion or predicted fit. All historical gates/negatives remain unchanged.",
+    "search_time": "Same cooperative2second local budget. Graph construction/audit/update and cleanup can overshoot before checkpoints; all measured search/arm/job times reported. Symbolic row and point-placement attempts differ.",
+    "unchanged": "Same three cold donor searches and full target theories/14-13-14 primitive bounds, exact candidate words and storage, scheduler, rollback, markings, six-arm relative schedules and numeric limits."
+  },
+  "schema": "recipient-proof-search-method-v1",
+  "scientific_calls": 0,
+  "verification_scope": "Source reviewed; actual full point-region proof receipt accepted; Native final request accepted. Independent reviewers join complete saved data and inspect Source, without invoking research checkers outside Root actuals."
+}
