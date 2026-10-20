@@ -1,0 +1,349 @@
+{
+  "GCTS_advantage": false,
+  "RL_training": false,
+  "author_new_resource_estimate_reviewed": false,
+  "evidence_author_handoff": {
+    "bytes": 15266,
+    "file": "parallel-linkage-evidence-handoff.json",
+    "fit": false,
+    "full_review": false,
+    "scope": {
+      "declarative_unrun_recipes": 88,
+      "legacy_diagnostics": 33,
+      "new_groups": 28,
+      "new_profiles": 49,
+      "new_variants": 55,
+      "normal_cases": 15,
+      "old_full_topfields": 24
+    },
+    "sha256": "07386c55a88d2031e5ae92e21104289105c7185bbec63b369448173c6401f250",
+    "status": "FROZEN_SOURCE_ONLY_FULL_REVIEW_AND_FULL_FIT_OPEN"
+  },
+  "evidence_findings": [
+    {
+      "bytes": 8357,
+      "file": "parallel-linkage-evidence-negative.json",
+      "sha256": "abfc12f4daeb7f7aa35459dd42827e5e021d1319ffde169fcef08afcae2427f1",
+      "status": "Specific provenance predicate gap; no execution"
+    },
+    {
+      "bytes": 5201,
+      "file": "parallel-linkage-resource-finding.json",
+      "sha256": "a3d56bc945f01c8d7f6e0642eaf8bc3363d17cc284a6f6edcf3e0b6874f14b5e",
+      "status": "Generic Source resource obligation; no fixed-cohort infeasibility claim"
+    }
+  ],
+  "evidence_specific_delta_reviews": [
+    {
+      "bytes": 3165,
+      "file": "parallel-linkage-route-negative.json",
+      "sha256": "927483631a346f35e43ac97300f3832444e0d944440d728071d78d69e01bc5c8",
+      "status": "BLOCKING_EXPECTED_ROUTE_PARAMETER_OVERWRITTEN"
+    },
+    {
+      "bytes": 5275,
+      "file": "parallel-linkage-route-review.json",
+      "sha256": "b84647c128176c1780e9af0e1b5ad0235c46e38c76564a2206bd7476ca4dcdfd",
+      "status": "PASS_SPECIFIC_ROUTE_SHADOW_CORRECTION_ONLY"
+    },
+    {
+      "bytes": 7864,
+      "file": "parallel-linkage-key-review.json",
+      "sha256": "93de4198992a32be48a9bb36c07e3568d1ebfea91bd477ec8b1f5ebe4c2067d5",
+      "status": "PASS_SPECIFIC_NESTED_TUPLE_HASH_REMOVAL_SOURCE_ONLY"
+    }
+  ],
+  "new_theorems": 0,
+  "original_limits_unchanged": true,
+  "partial_files_parsed": 0,
+  "report_reviews": [
+    {
+      "claim": "Conditional Source review passes across every program field, all twenty-seven functions and the twenty-three unrun diagnostic cohorts.",
+      "component": "Program intake",
+      "open": "Initialization tiles, full Source/image correspondence, whole-machine generation and qualification."
+    },
+    {
+      "claim": "Conditional Source review passes across all thirteen runtime instructions, the complete Source join and the twelve unrun interface families.",
+      "component": "Runtime and join",
+      "open": "Full accepted-language simulation, physical initialization and resource fit."
+    },
+    {
+      "claim": "Three precise evidence findings are preserved. The route-name and key-normal-form corrections pass their specific Source delta reviews; the complete evidence parent has no PASS.",
+      "component": "Evidence successor",
+      "open": "Complete provenance/lifecycle, store/cursor/worker integration, original full bank, outer Root linkage and resource fit remain open."
+    }
+  ],
+  "review_files": [
+    {
+      "bytes": 29296,
+      "file": "parallel-linkage-runtime-review.json",
+      "sha256": "203c4de3d6d59f0b20498db3065de0347497efc12cd7e483146e5ee2f35f188a"
+    },
+    {
+      "bytes": 54684,
+      "file": "parallel-linkage-program-review.json",
+      "sha256": "171fe4c320b640d347dcc94fea4c114e626162a9b8cd04fb9223fbd22a0d94e6"
+    }
+  ],
+  "runtime": {
+    "current_independent_Source_review": {
+      "accepted_language_proved": false,
+      "executed": false,
+      "file": "parallel-linkage-runtime-review.json",
+      "qualified": false,
+      "sha256": "203c4de3d6d59f0b20498db3065de0347497efc12cd7e483146e5ee2f35f188a",
+      "status": "PASS_CONDITIONAL_COMPLETE_RUNTIME_SOURCE_ONLY"
+    },
+    "historical_author_manual_at_freeze": {
+      "all_cases_unrun": true,
+      "files": [
+        {
+          "bytes": 19140,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/root/physical_runtime_v1.py",
+          "sha256": "0bb9f194673d6bb128531e49da497ec9ac5729cc5a25928aa20c8f26b35333c8"
+        },
+        {
+          "bytes": 2596,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/root/physical_join_v1.py",
+          "sha256": "82da73bb5f78d649e084d9c5c55dcffeb0a6018ec2fcc04820a8797e2884f7c1"
+        }
+      ],
+      "independently_reviewed": false,
+      "limitations": [
+        "No table or tiles generated",
+        "No physical program execution",
+        "No discovered theorem or RL training",
+        "No empirical GCTS advantage",
+        "No new general conformance claim",
+        "No partial opened or parsed"
+      ],
+      "new_actuals": 0,
+      "new_grants": 0,
+      "proposed_simulation_invariant": [
+        "Atoms0..256 map identically. Seed nodes are loaded first, exactly and without duplicates.",
+        "Physical HEAP additionally stores immutable program metadata and captured argument lists. The proposed injection maps each original value to its canonical structural representative, preserving pair constructors and both children.",
+        "Each instruction sees corresponding semantic register values, program instruction, next PC and full call frames. No opcode observes numeric pair IDs as integers.",
+        "Canonical cons may reuse a node created for metadata or argument storage without changing its mathematical value.",
+        "A finite accepting trace would require root return exactly atom1, not merely a halted helper or empty caller stack."
+      ],
+      "remaining_proof_obligations": [
+        "Independent complete Source review of parser, runtime and join, including cursor positions and all scratch lifetime dependencies.",
+        "Prove the injection and simulation for the entire accepted language; this note is an invariant proposal, not a checked proof.",
+        "Construct actual fixed initialization tiles and bind exact immutable program, theory, goal, legal public/free data domain and postcolon blank pins.",
+        "Establish full compiled common-checker Source/image correspondence and licenses for arithmetic and symbolic Hilbert geometry.",
+        "Preserve the original complete cohort and caps. Prove fit before a fresh reviewed once; generate and simulate only inside it.",
+        "Resource costs/heap budgets and statuses are not preserved just because mathematical values are preserved. Old generic falloff fetch lies outside its exception handler.",
+        "Actual unknown-certificate search, learned certified markings, inventory/receptor family learning, and matched conventional/GCTS/RL comparisons remain open."
+      ],
+      "schema": "Root-whole-runtime-manual-obligations-v1",
+      "scientific_calls": 0,
+      "scratch_contract": {
+        "call": "S14 destination;FnMeta;|captured values;: while original R4 is intact; after capture all argument values are retained in canonical HEAP before frame save and whole-vector rewrite.",
+        "decrement": "Only selected band contents change; in CALL vector construction RIGHT10 tail and RETURN11 are preserved.",
+        "inverse": "V11 bit-list -> T13 binary, clobber9..12 but preserve4..8/14/15.",
+        "ordinary": "S14 complete operands before any register_write; that write may destroy S14.",
+        "permanent": "O15 wholeMeta, F6 active FnMeta, PC7 binary index, R4 full vector, FRAMES5 full saved frames"
+      },
+      "source_only": true,
+      "unrun_families": [
+        {
+          "cases": [
+            "atom1 accept",
+            "atom0 reject",
+            "nil256 reject",
+            "byte2 reject",
+            "pair whose children are1 reject"
+          ],
+          "id": "root-return-values"
+        },
+        {
+          "cases": [
+            "move same source and destination",
+            "cons destination equals left",
+            "cons destination equals right",
+            "head/tail destination equals source",
+            "atom equal pair references returns0"
+          ],
+          "id": "ordinary-aliases"
+        },
+        {
+          "cases": [
+            "[0] accepts0",
+            "[1] accepts1",
+            "[0,1] accepts2",
+            "empty rejects",
+            "[0,0] rejects",
+            "[1,0] rejects",
+            "non-bit head rejects",
+            "improper tail rejects"
+          ],
+          "id": "canonical-nat-decoder"
+        },
+        {
+          "cases": [
+            "succ0 gives1",
+            "succ254 gives255",
+            "succ255 refuses",
+            "succ256 refuses",
+            "succ pair refuses",
+            "not0/1 succeeds",
+            "not2 and nil refuse"
+          ],
+          "id": "scalar-boundaries"
+        },
+        {
+          "cases": [
+            "false selects first target",
+            "true selects second target",
+            "non-Boolean refuses",
+            "loop preserves PC increment convention"
+          ],
+          "id": "branch-targets"
+        },
+        {
+          "cases": [
+            "destination aliases first argument source",
+            "repeated argument index",
+            "arguments in reverse register order",
+            "last caller register as early argument",
+            "callee has fewer registers than caller",
+            "zero-argument callee",
+            "maximum validated arity equals register count"
+          ],
+          "id": "call-caller-capture"
+        },
+        {
+          "cases": [
+            "two nested calls restore entire register vectors",
+            "recursive self call",
+            "forward call",
+            "return destination written once",
+            "return PCs distinguish call instruction from continuation"
+          ],
+          "id": "frames"
+        },
+        {
+          "cases": [
+            "program metadata pair equals subsequently constructed mathematical pair",
+            "captured argument list equals later CONS value",
+            "same seed constants retain exact references",
+            "same structural request with shifted later IDs"
+          ],
+          "id": "metadata-embedding"
+        },
+        {
+          "cases": [
+            "clear old nonempty R then erase reinstated colon before byte copy",
+            "zero-argument CALL bar adjacent to colon",
+            "pop first argument after bar",
+            "empty S at ordinary write",
+            "empty frames never imply unconditional accept"
+          ],
+          "id": "record-word-boundaries"
+        },
+        {
+          "cases": [
+            "selected fence gives BOUND2",
+            "malformed program gives MALFORMED3",
+            "semantic data failure REJECT1",
+            "generic image falls off code: physical nonaccepting but old host can raise outside handler"
+          ],
+          "id": "capacity-and-status"
+        },
+        {
+          "cases": [
+            "fresh whole UTF8 table only",
+            "full immutable seed before metadata",
+            "full intake then public/free BOOT then main",
+            "exact public target and theory pins",
+            "complete checker compiler image binding"
+          ],
+          "id": "whole-linkage"
+        },
+        {
+          "cases": [
+            "all original normal and legacy cases preserved",
+            "all original diagnostic groups and variants preserved",
+            "all callbacks and complete evidence events charged",
+            "genuine Root fault exact identity",
+            "no partial reconstruction",
+            "no cap increase or early-success prefix"
+          ],
+          "id": "qualification-custody"
+        }
+      ]
+    },
+    "historical_flags_are_not_current_review_status": true,
+    "opcodes": [
+      {
+        "manual_argument": "Capture destination and constant index, select complete immutable constants list by physical index; write actual constant reference after all operands are captured.",
+        "name": "const",
+        "opcode": 0
+      },
+      {
+        "manual_argument": "Read source register before destructive register write; source and destination may coincide.",
+        "name": "move",
+        "opcode": 1
+      },
+      {
+        "manual_argument": "Read both source references before any write; canonical_cons preserves both and returns canonical node reference.",
+        "name": "cons",
+        "opcode": 2
+      },
+      {
+        "manual_argument": "Read source; heap lookup rejects atom/nil and returns the actual left child; destination may alias source.",
+        "name": "head",
+        "opcode": 3
+      },
+      {
+        "manual_argument": "Read source; heap lookup rejects atom/nil and returns the actual right child.",
+        "name": "tail",
+        "opcode": 4
+      },
+      {
+        "manual_argument": "Canonical references at most \\(256\\) are atoms, including nil. Greater references are nodes under the complete register and heap invariant.",
+        "name": "pair",
+        "opcode": 5
+      },
+      {
+        "manual_argument": "Both references must be atoms including nil, then exact equality; equal node references return false.",
+        "name": "atom",
+        "opcode": 6
+      },
+      {
+        "manual_argument": "Require a byte atom in \\(\\{0,\\ldots,254\\}\\), then add \\(1\\). Byte \\(255\\), nil \\(256\\) and pairs are refused.",
+        "name": "succ",
+        "opcode": 7
+      },
+      {
+        "manual_argument": "Require exactly Boolean atom \\(0\\) or \\(1\\), then invert it. Every other value is refused.",
+        "name": "not",
+        "opcode": 8
+      },
+      {
+        "manual_argument": "Capture both target instructions before reading the condition register. Exactly \\(0\\) selects the first target and exactly \\(1\\) selects the second.",
+        "name": "branch",
+        "opcode": 9
+      },
+      {
+        "manual_argument": "Set PC to captured validated instruction index; fetch handles subsequent instruction.",
+        "name": "jump",
+        "opcode": 10
+      },
+      {
+        "manual_argument": "Capture destination/target and every caller argument value first, including duplicate indices. Turn the captured values into a canonical immutable list, pop FnMeta and destination, push full caller frame with already incremented PC, then build complete callee vector with nil padding and commit once.",
+        "name": "call",
+        "opcode": 11
+      },
+      {
+        "manual_argument": "Read the result before restoring a frame. A nonempty frame restores the complete caller and writes its saved destination once. With no caller, accept exactly atom \\(1\\).",
+        "name": "return",
+        "opcode": 12
+      }
+    ]
+  },
+  "schema": "parallel-whole-linkage-report-v1",
+  "scientific_invocations": 0,
+  "source_only": true,
+  "status": "conditional_Source_reviews_pass; evidence_successor_challenge_open"
+}

@@ -1,0 +1,177 @@
+{
+  "AST_parse": true,
+  "G1_adopted": false,
+  "GCTS_RL_advantage_established": false,
+  "Root_custody_limit": "Current verify_live_custody calls final raw Source/function/callback-owner guards. It does not compare these wire owner metadata rows against a separate expected live owner row sequence. Thus it does not repair the stated independent predicate gap.",
+  "actual_execution_authorized": false,
+  "author": {
+    "bytes": 6433,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/freeze_owner_provenance_negative_v1.py",
+    "sha256": "306ef7d48003c14ce58ad17e1ee864ee5712b3c73d61875d1b51902c3e7615d5"
+  },
+  "checker_calls": 0,
+  "checks": [
+    {
+      "check": "Exact frozen Source immutable_event_store_v1.py",
+      "passed": true
+    },
+    {
+      "check": "Fresh raw Source immutable_event_store_v1.py",
+      "passed": true
+    },
+    {
+      "check": "Exact frozen Source owner_cursor_v1.py",
+      "passed": true
+    },
+    {
+      "check": "Fresh raw Source owner_cursor_v1.py",
+      "passed": true
+    },
+    {
+      "check": "Exact frozen Source validate_owner_parent_v1.py",
+      "passed": true
+    },
+    {
+      "check": "Fresh raw Source validate_owner_parent_v1.py",
+      "passed": true
+    },
+    {
+      "check": "Exact frozen Source qualify_owner_batch_worker_v1.py",
+      "passed": true
+    },
+    {
+      "check": "Fresh raw Source qualify_owner_batch_worker_v1.py",
+      "passed": true
+    },
+    {
+      "check": "Exact frozen Source worker_owner_integration_v1.fragment.py",
+      "passed": true
+    },
+    {
+      "check": "Fresh raw Source worker_owner_integration_v1.fragment.py",
+      "passed": true
+    },
+    {
+      "check": "Fresh offer",
+      "passed": true
+    },
+    {
+      "check": "Expected frozen checker",
+      "passed": true
+    },
+    {
+      "check": "Only numeric earlier owner scope guard",
+      "passed": true
+    },
+    {
+      "check": "Owner lookup returns only value",
+      "passed": true
+    },
+    {
+      "check": "Events separately require actual scope",
+      "passed": true
+    },
+    {
+      "check": "Current native comparisons exclude owner metadata",
+      "passed": true
+    },
+    {
+      "check": "Fresh negative",
+      "passed": true
+    }
+  ],
+  "code_executed": false,
+  "compiler_calls": 0,
+  "correction_obligations": [
+    "Every scoped owner names a real earlier scope owner; scope owners themselves have no recursive scope.",
+    "Every argument/result/error/profile-state/receipt/preimage/reconciliation reference has exact permitted role, event scope, route/version and phase provenance.",
+    "Request/production/preimage/delivery ordering, duplicate stage occurrences, counters and final profile receipt/preimage sequences remain exact, with negative mutation versions retained.",
+    "Preserve complete original values and occurrence rows; do not trim metadata or weaken provenance to pass the checker."
+  ],
+  "failed_checks": [
+    "Independent owner provenance predicate incomplete"
+  ],
+  "finding": {
+    "condition": "An owner scope may be any earlier numeric owner ordinal. Only actual event scope is required to name a role=scope owner. owned(ref) returns the value cursor, dropping owner role/scope/version/route for reference validation.",
+    "consequence": "The independent certificate predicate does not establish complete owner provenance even if complete packet/bank/manifest/catalog values and all event values are unchanged. Genuine producer behavior does not supply this missing independent check.",
+    "location": "_live owner scope guard and owned(ref) event-reference lookup",
+    "nonclaim": "No forged wire was generated, no checker called, no false mathematical theorem or admitted actual shown.",
+    "origin": "Author-reported then independently confirmed on exact frozen Source."
+  },
+  "fit_proved": false,
+  "fixture_calls": 0,
+  "full_VM_qualified": false,
+  "full_offer_review_completed": false,
+  "generator_calls": 0,
+  "goal_status": "active",
+  "helper_calls": 0,
+  "manual_counterexample_recipes": [
+    {
+      "expected": "Successor must refuse: owner scope is not an actual earlier scope owner.",
+      "id": "earlier non-scope owner",
+      "recipe": "Take a full valid intended certificate with an owner row after an earlier argument/value owner. Keep row role/value/version/route and every event unchanged; retarget only that owner.scope_owner to the earlier nonscope owner. Re-encode full canonical DAG/root tape coherently inside a future authorized diagnostic. Numeric guard passes; owned(ref) ignores that metadata; actual event scope remains valid."
+    },
+    {
+      "expected": "Successor must refuse exact operation/phase role mismatch, even if values happen to be equal.",
+      "id": "role substitution with same full value",
+      "recipe": "For an event-referenced produced receipt or argument/result owner, keep full value/ordinal and all native original comparisons identical, but replace its nonempty role string by another role; coherent complete tape as above."
+    },
+    {
+      "expected": "Successor must bind owner scope/version and lifecycle counters to the actual query/profile event.",
+      "id": "cross-scope or version relabel",
+      "recipe": "Retain full receipt/preimage owner value and event scope, but change owner metadata to another earlier genuine scope or wrong nonnegative lifecycle version; no data omission or value change."
+    }
+  ],
+  "new_actuals": 0,
+  "new_grants": 0,
+  "new_theorem": false,
+  "offer": {
+    "bytes": 1824,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/owner-provenance-negative-Sources-v1/Source-offer-v1-pins.json",
+    "sha256": "5e738510edf89ef623207161b8967595c306c7d589678a3004b8cfff0c076d1a"
+  },
+  "offered_v1_mutated": false,
+  "old_G0_negative_unchanged": true,
+  "partial_files_opened": 0,
+  "primary_reader_index_active_mutated": false,
+  "review_passed": false,
+  "reviewer_identity": "/root/recovered_batch_review",
+  "runtime_qualified": false,
+  "schema": "typed-owner-provenance-Source-negative-v1",
+  "semantic_replays": 0,
+  "separate_observation": "Public Store/Document/schema Invalid constructors and Store Limit set owner to their module private sentinel automatically. No class/owner classification path has yet been found in this worker, so this review does not claim private-fault laundering. Any future public-impostor/private-ownership claim must resolve that distinction.",
+  "simulator_calls": 0,
+  "sizing_probes": 0,
+  "source_copies": [
+    {
+      "bytes": 21275,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/owner-provenance-negative-Sources-v1/immutable_event_store_v1.py",
+      "sha256": "898a687bcb81f1456a26978841a1e9710acf72a20a23c5bdfe39c18607d26843"
+    },
+    {
+      "bytes": 10430,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/owner-provenance-negative-Sources-v1/owner_cursor_v1.py",
+      "sha256": "276aec8a8c98b3dee7f0b5bb17ca49522c511d0880181f1f858246c7e7e4e426"
+    },
+    {
+      "bytes": 42803,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/owner-provenance-negative-Sources-v1/validate_owner_parent_v1.py",
+      "sha256": "600e4a93a5f959d91556ee85f60be0118057a1a99d8915e7f3aa71476a5fe20f"
+    },
+    {
+      "bytes": 125472,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/owner-provenance-negative-Sources-v1/qualify_owner_batch_worker_v1.py",
+      "sha256": "f6c28c149261274eaa133527c3bd3a306de47b45afa38e48daf5313436f0bacc"
+    },
+    {
+      "bytes": 14337,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/owner-provenance-negative-Sources-v1/worker_owner_integration_v1.fragment.py",
+      "sha256": "d5f9ce95a12962f2b7ca013737410dc607e54c5c812cfa543ac9fcb41b8ca0fa"
+    }
+  ],
+  "source_only": true,
+  "status": "BLOCKING_SPECIFIC_PROVENANCE_PREDICATE_GAP",
+  "subject_calls": 0,
+  "subject_imports": 0,
+  "unused_compile": true
+}

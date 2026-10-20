@@ -1,0 +1,785 @@
+{
+  "G1_adopted": false,
+  "GCTS_RL_advantage_established": false,
+  "accepted_language_proved": false,
+  "actual_execution_authorized": false,
+  "all12_author_families_unrun": true,
+  "all13_opcodes_manually_reviewed": true,
+  "author": {
+    "bytes": 19096,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/freeze_runtime_intake_Source_reviews_v1.py",
+    "sha256": "0d13ad0adc9372ee7385996e034c6aab6d91e0f294e945a3dd287323e0bef7c0"
+  },
+  "checker_calls": 0,
+  "checks": [
+    {
+      "check": "Frozen L handoff",
+      "passed": true
+    },
+    {
+      "check": "Exact pin immutable_program_intake_v1.py",
+      "passed": true
+    },
+    {
+      "check": "No partial path immutable_program_intake_v1.py",
+      "passed": true
+    },
+    {
+      "check": "Fresh copy L-immutable_program_intake_v1.py",
+      "passed": true
+    },
+    {
+      "check": "Exact pin API-v1.json",
+      "passed": true
+    },
+    {
+      "check": "No partial path API-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Fresh copy L-API-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Exact pin manual-correspondence-v1.json",
+      "passed": true
+    },
+    {
+      "check": "No partial path manual-correspondence-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Fresh copy L-manual-correspondence-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Exact pin prospective-whole-bank-v1.json",
+      "passed": true
+    },
+    {
+      "check": "No partial path prospective-whole-bank-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Fresh copy L-prospective-whole-bank-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Exact pin lineage-pins-v1.json",
+      "passed": true
+    },
+    {
+      "check": "No partial path lineage-pins-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Fresh copy L-lineage-pins-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Exact pin author-static-audit-v1.json",
+      "passed": true
+    },
+    {
+      "check": "No partial path author-static-audit-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Fresh copy L-author-static-audit-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Exact pin freeze-manifest-v1.json",
+      "passed": true
+    },
+    {
+      "check": "No partial path freeze-manifest-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Fresh copy L-freeze-manifest-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Lineage pin basic-tiling-algorithm.md",
+      "passed": true
+    },
+    {
+      "check": "Lineage pin whole-program-linkage-open-contract-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Lineage pin literal_machine_builder_v2.py",
+      "passed": true
+    },
+    {
+      "check": "Lineage pin shared-builder-ABI-v2.json",
+      "passed": true
+    },
+    {
+      "check": "Lineage pin linked_boot_values_v2.py",
+      "passed": true
+    },
+    {
+      "check": "Lineage pin API-v2.json",
+      "passed": true
+    },
+    {
+      "check": "Lineage pin prospective-whole-bank-v2.json",
+      "passed": true
+    },
+    {
+      "check": "Lineage pin typed-linked-tagged-value-BOOT-v2-Source-review-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Lineage pin fixed_vm_codec_v2.py",
+      "passed": true
+    },
+    {
+      "check": "Lineage pin fixed-interpreter-encoding-contract-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Lineage pin utf8_residual_machine_v1.py",
+      "passed": true
+    },
+    {
+      "check": "Lineage pin ROOT-utf8-component-admission-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Lineage pin implicit-inputs-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Lineage pin new-diagnostic-bank-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Lineage pin physical_runtime_v1.py",
+      "passed": true
+    },
+    {
+      "check": "Lineage pin physical_join_v1.py",
+      "passed": true
+    },
+    {
+      "check": "Exact pin physical_runtime_v1.py",
+      "passed": true
+    },
+    {
+      "check": "No partial path physical_runtime_v1.py",
+      "passed": true
+    },
+    {
+      "check": "Fresh copy Root-physical_runtime_v1.py",
+      "passed": true
+    },
+    {
+      "check": "Exact pin physical_join_v1.py",
+      "passed": true
+    },
+    {
+      "check": "No partial path physical_join_v1.py",
+      "passed": true
+    },
+    {
+      "check": "Fresh copy Root-physical_join_v1.py",
+      "passed": true
+    },
+    {
+      "check": "Root full manual exact pin",
+      "passed": true
+    },
+    {
+      "check": "Exact pin runtime-manual-obligations-and-unrun-bank-v1.json",
+      "passed": true
+    },
+    {
+      "check": "No partial path runtime-manual-obligations-and-unrun-bank-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Fresh copy Root-runtime-manual-obligations-and-unrun-bank-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Root complete unrun bank",
+      "passed": true
+    },
+    {
+      "check": "L complete unrun bank",
+      "passed": true
+    },
+    {
+      "check": "All thirteen Root opcodes",
+      "passed": true
+    },
+    {
+      "check": "All functions Root-physical_runtime_v1.py",
+      "passed": true
+    },
+    {
+      "check": "No import nodes Root-physical_runtime_v1.py",
+      "passed": true
+    },
+    {
+      "check": "All functions Root-physical_join_v1.py",
+      "passed": true
+    },
+    {
+      "check": "No import nodes Root-physical_join_v1.py",
+      "passed": true
+    },
+    {
+      "check": "All functions L-immutable_program_intake_v1.py",
+      "passed": true
+    },
+    {
+      "check": "No import nodes L-immutable_program_intake_v1.py",
+      "passed": true
+    },
+    {
+      "check": "Full fixed magic bytes",
+      "passed": true
+    },
+    {
+      "check": "Full main wire bytes",
+      "passed": true
+    },
+    {
+      "check": "Fixed register upper bound",
+      "passed": true
+    },
+    {
+      "check": "Complete opcode literal words",
+      "passed": true
+    },
+    {
+      "check": "Complete Root manual function matrix",
+      "passed": true
+    },
+    {
+      "check": "Complete L manual function matrix",
+      "passed": true
+    },
+    {
+      "check": "Fresh review typed-whole-runtime-and-join-Source-review-v1.json",
+      "passed": true
+    }
+  ],
+  "compiler_calls": 0,
+  "dependency_pins": [
+    {
+      "bytes": 36240,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/basic-tiling-algorithm.md",
+      "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+    },
+    {
+      "bytes": 4863,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/root/whole-program-linkage-open-contract-v1.json",
+      "sha256": "5daf9529c06de118e4581e012568e86c43660c3b2ec1363bbb72d4008cd07fbe"
+    },
+    {
+      "bytes": 13782,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/root/literal_machine_builder_v2.py",
+      "sha256": "4d13b99f90e9658508dcd4a289ece2d93bd21d862e4153a431a91ce17d78da20"
+    },
+    {
+      "bytes": 4319,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/root/shared-builder-ABI-v2.json",
+      "sha256": "42f113591d92c4dd3098d7f5a6d83ce7434b5f4f146ff52cd4c925f283370040"
+    },
+    {
+      "bytes": 38636,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/physical-L/linked_boot_values_v2.py",
+      "sha256": "af383eb8dad6e19285f43602325fa3db78123a472d6a73ce59c51c507cd8ca2d"
+    },
+    {
+      "bytes": 10837,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/physical-L/API-v2.json",
+      "sha256": "cf3ab122a0d70c16acb65d9924e09d48bca117459170d6706dedbab5d8654b4d"
+    },
+    {
+      "bytes": 34920,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/physical-L/prospective-whole-bank-v2.json",
+      "sha256": "8868be162b2c99a3e9b588beca16f1a018f9f3fe573b84a9166c12422fe593c1"
+    },
+    {
+      "bytes": 35032,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/typed-linked-tagged-value-BOOT-v2-Source-review-v1.json",
+      "sha256": "6a1d4b8a8af4fcbe1a34a96cfd15cb59a258842ea7d3cda93d85be42b2cde217"
+    },
+    {
+      "bytes": 28213,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/recovered-checker/CodecV2/fixed_vm_codec_v2.py",
+      "sha256": "427b274efd755bbd58f3f37d34aed1c45581ecf7a591d48394672a05158f4182"
+    },
+    {
+      "bytes": 22116,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/recovered-checker/EarlierDesign/fixed-interpreter-encoding-contract-v1.json",
+      "sha256": "356d2160f3a038260053b3973945e1aa1deb2cbd1bfc0a9d417337e45b36c539"
+    },
+    {
+      "bytes": 8265,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/root/utf8_residual_machine_v1.py",
+      "sha256": "08f9472acb2042e398997cc0dddd6ddc2487c866a3b683b42f53852bee26a088"
+    },
+    {
+      "bytes": 3621,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/ROOT-utf8-component-admission-v1.json",
+      "sha256": "2fc8c28431aaec130234aff55ff39a64bbc2ee42bb1dff66185c5a31c753d68a"
+    },
+    {
+      "bytes": 740651,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/recovered/ROOT/implicit-inputs-v1.json",
+      "sha256": "10fe60d005a2f586a76bf69ae30317b8dae538ba9f126714b9f71ffa474a89b4"
+    },
+    {
+      "bytes": 38883,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/diagnostics-L/new-diagnostic-bank-v1.json",
+      "sha256": "6e579fa58384188b5444606c87dbdee92a86f5771a983a36fbf6904192e669ab"
+    },
+    {
+      "bytes": 19140,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/root/physical_runtime_v1.py",
+      "sha256": "0bb9f194673d6bb128531e49da497ec9ac5729cc5a25928aa20c8f26b35333c8"
+    },
+    {
+      "bytes": 2596,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/root/physical_join_v1.py",
+      "sha256": "82da73bb5f78d649e084d9c5c55dcffeb0a6018ec2fcc04820a8797e2884f7c1"
+    }
+  ],
+  "failed_checks": [],
+  "fit_proved": false,
+  "fixed_public_initialization": false,
+  "fixture_calls": 0,
+  "frozen_offered_sources_mutated": false,
+  "full_VM_qualified": false,
+  "full_checker_image_attributed": false,
+  "full_machine_review_completed": false,
+  "function_matrix": [
+    {
+      "argument": "Scans last S colon, replaces final semicolon by temporary colon, backtracks to prior semicolon/bar/header, erases exactly last binary field into destination and restores prefix colon. Bar is preserved in an untouched prefix but cannot be popped as a word. Zero-argument CALL removes its bar before popping function/destination.",
+      "end_line": 64,
+      "function": "_pop",
+      "line": 35
+    },
+    {
+      "argument": "Starts T empty; follows proper V bitlist with heap_lookup, which actually preserves T in pinned af383 Source. Every bit appends physically; finite-control tags reject empty/highzero/nonbit/improper lists, accept single0 or positive final1. RIGHT tail is copied toV; all outer metadata/record payloads survive.",
+      "end_line": 94,
+      "function": "nat_list_to_word",
+      "line": 67
+    },
+    {
+      "argument": "For fixed opcode arity, save complete tail inD, decode head bitlist throughV intoT, appendT toS and restoreV tail. D is not clobbered by decoder; generated reverse Source loop executes operands in original order.",
+      "end_line": 112,
+      "function": "_capture",
+      "line": 97
+    },
+    {
+      "argument": "Clear old R records then erase its reinstated colon before copying full S vector. Copy every bit/semicolon and close with one colon, then clear S. Failures may be destructive but cannot produce admission.",
+      "end_line": 133,
+      "function": "_commit_vector",
+      "line": 115
+    },
+    {
+      "argument": "T is remaining register count. Exact0 exits; otherwise append exact nil256 record and decrementT. The selected-band decrement preserves all other payloads.",
+      "end_line": 144,
+      "function": "_pad_vector",
+      "line": 136
+    },
+    {
+      "argument": "V holds complete immutable argument-value list, T callee register count. Real pair lookup yields argumentL and tailRIGHT; appendL before decrementT, whose only selected-word writes preserve RIGHT. Tail\u2192V follows. Too many args fails; nil switches to exact padding, retaining duplicates/order.",
+      "end_line": 163,
+      "function": "_argument_vector",
+      "line": 147
+    },
+    {
+      "argument": "Walk full FnMeta name/rest/arity-rest/register-code through three heap lookups, select register bitlist and decodeT. S and permanent metadata payloads remain intact.",
+      "end_line": 175,
+      "function": "_nregs",
+      "line": 166
+    },
+    {
+      "argument": "Read wholeMeta inO, select its right functions list, then invoke p.list_index with full Tindex. p consumesT/V and clobbers9..13 but preserves O/F/PC/D/S/frames/register payloads.",
+      "end_line": 182,
+      "function": "_functions_index",
+      "line": 178
+    },
+    {
+      "argument": "Copy full instruction operand list from RIGHT intoV, capture exactly fixed arity, require final nil. No extra operand is silently ignored.",
+      "end_line": 188,
+      "function": "_ordinary",
+      "line": 185
+    },
+    {
+      "argument": "Pop source index, read source before pop destination and write. Register read preserves S and all nonCOUNT scratch exceptV, so self-alias is valid.",
+      "end_line": 194,
+      "function": "_unary",
+      "line": 191
+    },
+    {
+      "argument": "Read right source then retainV inRIGHT; read left source then retainV inL; pop destination after both reads. Register read preserves L/RIGHT and pop changes only its destination/S, so all destination/source equality patterns retain both original values.",
+      "end_line": 204,
+      "function": "_binary",
+      "line": 197
+    },
+    {
+      "argument": "Capture destination and target indices, retain full argument-list root inD while resolving FnMeta, then append bar. Each caller arg index is decoded, its unused tail cached inL, register read keepsR intact and appends actualV toS. Reverse-pop actual values into canonical heap list inRIGHT. Remove bar/oldcolon; pop fnT/destD whileVarglist survives. Frame push preserves V/T and caller R/F/nextPC. SetcalleeF, retain arglist inS during nregs decode, restore it, build full callee vector before one commit. All caller reads precede frame/register rewrite.",
+      "end_line": 267,
+      "function": "_call",
+      "line": 207
+    },
+    {
+      "argument": "Construct finite dispatch for exactly opcodes0..12. Fetch resolves active FnMeta code and PC, reads instruction pair, incrementsPC before dispatch, preserving opcodeL/operandsRIGHT. Branch/jump overwritePC; CALL saves already incremented continuation. Main keeps request inS while moving wholeMeta F\u2192O after BOOT output cleanup, indexes main, pads request vector with nil and enters fetch.",
+      "end_line": 379,
+      "function": "install_runtime",
+      "line": 270
+    },
+    {
+      "argument": "Retains actual dependency owners/UTF8 table before first check; constructs runtime, valueBOOT with runtime working success, then program intake with valueBOOT working success. Returns entry map, no lowering/table generation. Every supplied module identity and fresh UTF8 provenance remains external genuine Root custody, never inferred from table shape. Exact exception/prefix retained best effort; no runtime/admission flag asserted.",
+      "end_line": 50,
+      "function": "install_linkage",
+      "line": 10
+    }
+  ],
+  "generator_calls": 0,
+  "goal_status": "active",
+  "helper_calls": 0,
+  "intake_dependency": {
+    "bytes": 29596,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/runtime-intake-Sources-v1/L-immutable_program_intake_v1.py",
+    "sha256": "2826b0ac25606876f5584c5f6055e2217ed8d43fbe224a14d984207b4a19bc74"
+  },
+  "manual": {
+    "bytes": 9789,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/runtime-intake-Sources-v1/Root-runtime-manual-obligations-and-unrun-bank-v1.json",
+    "sha256": "727e3908be01bb658fac86ee1a862d42a4a9824f81b7385befe11dfcb27264d3"
+  },
+  "new_actuals": 0,
+  "new_grants": 0,
+  "new_theorem": false,
+  "offer": {
+    "bytes": 1441,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/runtime-intake-Sources-v1/Root-physical-runtime-Source-offer-v1.json",
+    "sha256": "fcb7a9ed68b233e0472117ffcb51bf06f0c6460e10225a6c4dc12b0cefcc07e8"
+  },
+  "old_G0_negative_unchanged": true,
+  "opcode_matrix": [
+    {
+      "manual_argument": "Capture destination and constant index, select complete immutable constants list by physical index; write actual constant reference after all operands are captured.",
+      "name": "const",
+      "opcode": 0
+    },
+    {
+      "manual_argument": "Read source register before destructive register write; source and destination may coincide.",
+      "name": "move",
+      "opcode": 1
+    },
+    {
+      "manual_argument": "Read both source references before any write; canonical_cons preserves both and returns canonical node reference.",
+      "name": "cons",
+      "opcode": 2
+    },
+    {
+      "manual_argument": "Read source; heap lookup rejects atom/nil and returns the actual left child; destination may alias source.",
+      "name": "head",
+      "opcode": 3
+    },
+    {
+      "manual_argument": "Read source; heap lookup rejects atom/nil and returns the actual right child.",
+      "name": "tail",
+      "opcode": 4
+    },
+    {
+      "manual_argument": "Canonical reference at most256 is atom including nil; greater values are nodes by full register/heap invariant.",
+      "name": "pair",
+      "opcode": 5
+    },
+    {
+      "manual_argument": "Both references must be atoms including nil, then exact equality; equal node references return false.",
+      "name": "atom",
+      "opcode": 6
+    },
+    {
+      "manual_argument": "Classify atom, refuse nil256 and byte255, increment remaining byte; output is at most255.",
+      "name": "succ",
+      "opcode": 7
+    },
+    {
+      "manual_argument": "Require exact atom0 or1; invert, reject every other value.",
+      "name": "not",
+      "opcode": 8
+    },
+    {
+      "manual_argument": "Capture both target PCs before condition register read; only exact0 or1 selects the corresponding target.",
+      "name": "branch",
+      "opcode": 9
+    },
+    {
+      "manual_argument": "Set PC to captured validated instruction index; fetch handles subsequent instruction.",
+      "name": "jump",
+      "opcode": 10
+    },
+    {
+      "manual_argument": "Capture destination/target and every caller argument value first, including duplicate indices. Turn the captured values into a canonical immutable list, pop FnMeta and destination, push full caller frame with already incremented PC, then build complete callee vector with nil padding and commit once.",
+      "name": "call",
+      "opcode": 11
+    },
+    {
+      "manual_argument": "Read result before frame restoration. Nonempty frame restores complete caller and writes exactly its saved destination. Empty frame accepts exactly atom1.",
+      "name": "return",
+      "opcode": 12
+    }
+  ],
+  "partial_files_opened": 0,
+  "primary_reader_index_active_mutated": false,
+  "review_passed": true,
+  "reviewer_identity": "/root/recovered_batch_review",
+  "runtime_qualified": false,
+  "schema": "typed-whole-runtime-and-join-Source-review-v1",
+  "scope_and_remaining": [
+    "Manual full Source/correspondence argument under initialized layout, exact immutable full program/public/licensing, canonical seed/metadata and genuine dependency ownership preconditions. These are obligations to implement/bind, not a hidden runtime host acceptance filter.",
+    "Structural heap embedding remains open: atoms fixed, original seed exact, later metadata/call cache pair IDs may differ while canonical structural values coincide. No numeric-ID/allocation/cost/status/heap-budget equivalence is established.",
+    "Old generic host out-of-range fetch can raise before try; physical fetch fails nonacceptingly. No exact generic all-error trajectory/status claim. Full accepted-language/canonical compiled-checker refinement is proposed, not proved.",
+    "No generated table, physical execution, complete initialized Wang acceptance bridge, useful resource bound or whole-cohort qualification follows. Every inherited full program/value/UTF8/15normal33legacy28group55variant obligation remains required, not replaced by these unrun recipes.",
+    "All previous128-function/common11-rule logical audit findings and native/rawJSON/protocol/theory/target license/domain distinctions remain applicable. Source component completeness does not establish automated theorem discovery or GCTS/RL contribution."
+  ],
+  "semantic_replays": 0,
+  "simulator_calls": 0,
+  "sizing_probes": 0,
+  "source_only": true,
+  "source_pins": [
+    {
+      "bytes": 19140,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/runtime-intake-Sources-v1/Root-physical_runtime_v1.py",
+      "sha256": "0bb9f194673d6bb128531e49da497ec9ac5729cc5a25928aa20c8f26b35333c8"
+    },
+    {
+      "bytes": 2596,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/runtime-intake-Sources-v1/Root-physical_join_v1.py",
+      "sha256": "82da73bb5f78d649e084d9c5c55dcffeb0a6018ec2fcc04820a8797e2884f7c1"
+    }
+  ],
+  "specific_material_checks": [
+    "Every scalar source operand read before register_write clearsS14.",
+    "All CALL reads finish with callerR intact; immutable argumentlist survives frame push and callee nregs decode.",
+    "Zeroargc bar adjacent to colon is removed before function/destination header pop.",
+    "Fetch incrementsPC before dispatch; return continuation is saved/restored and destination written once.",
+    "Root return tests exact atom1; succ rejects255/256/pairs, atom rejects equal pairs, branch/not Boolean only.",
+    "Record\u2192word conversion removes colon before main wholeMeta copy; vector commit clears old R colon before replacement."
+  ],
+  "static_metadata": [
+    {
+      "AST_parse": true,
+      "executed": false,
+      "function_names": [
+        "_pop",
+        "nat_list_to_word",
+        "_capture",
+        "_commit_vector",
+        "_pad_vector",
+        "_argument_vector",
+        "_nregs",
+        "_functions_index",
+        "_ordinary",
+        "_unary",
+        "_binary",
+        "_call",
+        "install_runtime"
+      ],
+      "source": {
+        "bytes": 19140,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/runtime-intake-Sources-v1/Root-physical_runtime_v1.py",
+        "sha256": "0bb9f194673d6bb128531e49da497ec9ac5729cc5a25928aa20c8f26b35333c8"
+      },
+      "unused_compile": true
+    },
+    {
+      "AST_parse": true,
+      "executed": false,
+      "function_names": [
+        "install_linkage"
+      ],
+      "source": {
+        "bytes": 2596,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/runtime-intake-Sources-v1/Root-physical_join_v1.py",
+        "sha256": "82da73bb5f78d649e084d9c5c55dcffeb0a6018ec2fcc04820a8797e2884f7c1"
+      },
+      "unused_compile": true
+    },
+    {
+      "AST_parse": true,
+      "executed": false,
+      "function_names": [
+        "_put",
+        "_row",
+        "word_less",
+        "decrement_word",
+        "nat_word_to_list",
+        "list_index",
+        "_u",
+        "_push",
+        "_pop",
+        "_copy_field",
+        "_skip_field",
+        "_global",
+        "_field",
+        "_pack",
+        "_reverse_list",
+        "_match",
+        "_fixed_main",
+        "_read_byte",
+        "_name",
+        "_unique_name",
+        "_opcode_wrap",
+        "_call",
+        "_instruction",
+        "_function",
+        "_compare_obligation_field",
+        "_validate_calls",
+        "install_program_intake"
+      ],
+      "source": {
+        "bytes": 29596,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/runtime-intake-Sources-v1/L-immutable_program_intake_v1.py",
+        "sha256": "2826b0ac25606876f5584c5f6055e2217ed8d43fbe224a14d984207b4a19bc74"
+      },
+      "unused_compile": true
+    }
+  ],
+  "status": "PASS_CONDITIONAL_COMPLETE_RUNTIME_SOURCE_ONLY",
+  "structural_heap_embedding_proved": false,
+  "subject_calls": 0,
+  "subject_imports": 0,
+  "whole_author_bank": [
+    {
+      "cases": [
+        "atom1 accept",
+        "atom0 reject",
+        "nil256 reject",
+        "byte2 reject",
+        "pair whose children are1 reject"
+      ],
+      "id": "root-return-values"
+    },
+    {
+      "cases": [
+        "move same source and destination",
+        "cons destination equals left",
+        "cons destination equals right",
+        "head/tail destination equals source",
+        "atom equal pair references returns0"
+      ],
+      "id": "ordinary-aliases"
+    },
+    {
+      "cases": [
+        "[0] accepts0",
+        "[1] accepts1",
+        "[0,1] accepts2",
+        "empty rejects",
+        "[0,0] rejects",
+        "[1,0] rejects",
+        "non-bit head rejects",
+        "improper tail rejects"
+      ],
+      "id": "canonical-nat-decoder"
+    },
+    {
+      "cases": [
+        "succ0 gives1",
+        "succ254 gives255",
+        "succ255 refuses",
+        "succ256 refuses",
+        "succ pair refuses",
+        "not0/1 succeeds",
+        "not2 and nil refuse"
+      ],
+      "id": "scalar-boundaries"
+    },
+    {
+      "cases": [
+        "false selects first target",
+        "true selects second target",
+        "non-Boolean refuses",
+        "loop preserves PC increment convention"
+      ],
+      "id": "branch-targets"
+    },
+    {
+      "cases": [
+        "destination aliases first argument source",
+        "repeated argument index",
+        "arguments in reverse register order",
+        "last caller register as early argument",
+        "callee has fewer registers than caller",
+        "zero-argument callee",
+        "maximum validated arity equals register count"
+      ],
+      "id": "call-caller-capture"
+    },
+    {
+      "cases": [
+        "two nested calls restore entire register vectors",
+        "recursive self call",
+        "forward call",
+        "return destination written once",
+        "return PCs distinguish call instruction from continuation"
+      ],
+      "id": "frames"
+    },
+    {
+      "cases": [
+        "program metadata pair equals subsequently constructed mathematical pair",
+        "captured argument list equals later CONS value",
+        "same seed constants retain exact references",
+        "same structural request with shifted later IDs"
+      ],
+      "id": "metadata-embedding"
+    },
+    {
+      "cases": [
+        "clear old nonempty R then erase reinstated colon before byte copy",
+        "zero-argument CALL bar adjacent to colon",
+        "pop first argument after bar",
+        "empty S at ordinary write",
+        "empty frames never imply unconditional accept"
+      ],
+      "id": "record-word-boundaries"
+    },
+    {
+      "cases": [
+        "selected fence gives BOUND2",
+        "malformed program gives MALFORMED3",
+        "semantic data failure REJECT1",
+        "generic image falls off code: physical nonaccepting but old host can raise outside handler"
+      ],
+      "id": "capacity-and-status"
+    },
+    {
+      "cases": [
+        "fresh whole UTF8 table only",
+        "full immutable seed before metadata",
+        "full intake then public/free BOOT then main",
+        "exact public target and theory pins",
+        "complete checker compiler image binding"
+      ],
+      "id": "whole-linkage"
+    },
+    {
+      "cases": [
+        "all original normal and legacy cases preserved",
+        "all original diagnostic groups and variants preserved",
+        "all callbacks and complete evidence events charged",
+        "genuine Root fault exact identity",
+        "no partial reconstruction",
+        "no cap increase or early-success prefix"
+      ],
+      "id": "qualification-custody"
+    }
+  ]
+}

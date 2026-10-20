@@ -1,0 +1,75 @@
+{
+  "G1_adopted": false,
+  "GCTS_RL_advantage_established": false,
+  "actual_execution_authorized": false,
+  "all_recipes_unrun": true,
+  "author": {
+    "bytes": 5148,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/freeze_tuple_key_resource_negative_v1.py",
+    "sha256": "74d9bdd54d12c4cc7a2f6bf0956120231502689d31e2ccc8f706a902882a3ea3"
+  },
+  "checker_calls": 0,
+  "compiler_calls": 0,
+  "correction_controls": [
+    "Shared nested tuple key at successive depths below declared depth/key_items bounds.",
+    "Native-equal bool/int/finite-float keys and nested tuple variants, preserving collisions/refusals.",
+    "Rejected key preflight retains exact raw Document/work/wire/first fault and full available prefix without repair or retry."
+  ],
+  "cursor": {
+    "bytes": 10430,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/owner-provenance-negative-Sources-v1/owner_cursor_v1.py",
+    "sha256": "276aec8a8c98b3dee7f0b5bb17ca49522c511d0880181f1f858246c7e7e4e426"
+  },
+  "finding": {
+    "argument": "The parser caches one native tuple per unique key node, then passes that tuple to ordinary dictionary membership/insertion. Those operations invoke native tuple hashing. Unique-node key_items and interval-128 Work steps do not count the recursively repeated child hash occurrences. Thus the proposed generic bounded-work argument lacks a bound or checkpoints for this native operation.",
+    "location": "Document._key and Document._parse native dictionary collision validation",
+    "scope": "This is a generic accepted-wire/input resource obligation. It does not prove that the fixed original cohort contains such keys or that every shared-owner design fails."
+  },
+  "fit_proved": false,
+  "fixture_calls": 0,
+  "full_offer_review_completed": false,
+  "generator_calls": 0,
+  "goal_status": "active",
+  "helper_calls": 0,
+  "new_actuals": 0,
+  "new_grants": 0,
+  "new_theorem": false,
+  "no_fixed_cohort_infeasibility_claim": true,
+  "offered_v1_mutated": false,
+  "old_G0_negative_unchanged": true,
+  "partial_files_opened": 0,
+  "primary_reader_index_active_mutated": false,
+  "primary_source": {
+    "quoted_excerpt": "Py_uhash_t lane = PyObject_Hash(item[i]);",
+    "read_method": "Read-only official upstream Source via web open; no code executed.",
+    "relevant_lines": "294-304: no tuple-hash cache and hash loop invokes child PyObject_Hash.",
+    "runtime_scope": "This is upstream CPython3.12.14 Source evidence. It does not independently prove that the pinned custom runtime binary contains an unmodified tuplehash; no binary or runtime probe was made. The implementation must discharge its actual runtime resource obligation.",
+    "url": "https://raw.githubusercontent.com/python/cpython/v3.12.14/Objects/tupleobject.c"
+  },
+  "prospective_unrun_recipe": {
+    "expected_successor": "Either preflight and charge a conservative expanded-key occurrence bound before any native tuple hash/equality, or implement complete charged canonical key equality without recursive native tuple hashing. Preserve exact bool/int/float/tuple collision semantics.",
+    "family": "Shared binary tuple key",
+    "hash_argument": "Upstream CPython tuplehash recursively invokes PyObject_Hash for every child and does not cache a tuple hash. For this shared family the recursive hash work obeys \\(H(k+1)\\geq 2H(k)\\), despite linear DAG size. No Work.step is called by that builtin recursion.",
+    "mathematical_definition": "\\(t_0=(),\\quad t_{i+1}=(t_i,t_i).\\) Use the full hashable tuple \\(t_k\\) as one dictionary key in a complete strict canonical DAG.",
+    "quota_requirement": "Use a declared depth/key_items/node limit permitting the selected finite depth; the wire and all ordinary grammar remain complete. No fixture, wire generation, hashing, timing or simulator was performed here.",
+    "structural_size": "The DAG has linearly many unique tuple nodes and two child references per positive level. Document._key preserves sharing and counts only those unique keys, so materializing the tuple graph is linear in the depth."
+  },
+  "retained_provenance_negative": {
+    "bytes": 8357,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/typed-owner-provenance-Source-negative-v1.json",
+    "sha256": "abfc12f4daeb7f7aa35459dd42827e5e021d1319ffde169fcef08afcae2427f1"
+  },
+  "review_passed": false,
+  "reviewer_identity": "/root/recovered_batch_review",
+  "runtime_qualified": false,
+  "schema": "typed-tuple-key-cursor-resource-Source-negative-v1",
+  "semantic_replays": 0,
+  "separate_runtime_limits": "External180/210 termination can still stop a failed invocation; this finding is not a claim of escaping the outer process gate. It challenges complete internal work accounting/checkpoint and prospective fit claims, and does not authorize execution.",
+  "simulator_calls": 0,
+  "sizing_probes": 0,
+  "source_only": true,
+  "status": "ADDITIONAL_GENERIC_KEY_RESOURCE_OBLIGATION",
+  "subject_calls": 0,
+  "subject_imports": 0,
+  "tuple_hash_probes": 0
+}

@@ -1,0 +1,136 @@
+{
+  "G1_adopted": false,
+  "GCTS_RL_advantage_established": false,
+  "actual_execution_authorized": false,
+  "all_counterexample_recipes_unrun": true,
+  "author": {
+    "bytes": 10328,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/freeze_owner_specific_successor_reviews_v1.py",
+    "sha256": "cb7a009e4acc6a8ab0fc1d1ab779b91effd83c39adb59dde127e61ac52598bf7"
+  },
+  "checker_calls": 0,
+  "checks": [
+    {
+      "check": "Exact validate_owner_parent_v2.py",
+      "passed": true
+    },
+    {
+      "check": "Fresh raw validate_owner_parent_v2.py",
+      "passed": true
+    },
+    {
+      "check": "Exact owner_cursor_v2.py",
+      "passed": true
+    },
+    {
+      "check": "Fresh raw owner_cursor_v2.py",
+      "passed": true
+    },
+    {
+      "check": "Expected route parameter shadowed",
+      "passed": true
+    },
+    {
+      "check": "Fresh v2 negative",
+      "passed": true
+    },
+    {
+      "check": "Exact validate_owner_parent_v3.py",
+      "passed": true
+    },
+    {
+      "check": "Fresh raw validate_owner_parent_v3.py",
+      "passed": true
+    },
+    {
+      "check": "Exact v3 three-site raw inverse",
+      "passed": true
+    },
+    {
+      "check": "Fresh route review",
+      "passed": true
+    }
+  ],
+  "compiler_calls": 0,
+  "delta": {
+    "bytes": 1175,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/owner-specific-successor-Sources-v1/Source-delta-v3.json",
+    "sha256": "e7edecfb1a21f2efd9d4c6ccdcc262b63ebe30dfd72e7abd61014efb7cda9eab"
+  },
+  "explicit_limit": "This passes only the exact route-shadow delta. Complete v2/v3 provenance/lifecycle/diagnostic correspondence and full parent/store/worker/bank review remain incomplete; a local bug fix is not a whole-offer PASS.",
+  "failed_checks": [],
+  "fit_proved": false,
+  "fixture_calls": 0,
+  "full_VM_qualified": false,
+  "full_offer_review_completed": false,
+  "generator_calls": 0,
+  "goal_status": "active",
+  "helper_calls": 0,
+  "manual_argument": "The expected route parameter remains intact; actual_route is taken from the actual owner row. A supplied non-None expected route now compares directly with actual_route. The exact previously stated route substitution changes one side only and therefore refuses under this predicate. No other schema predicate or full value is changed.",
+  "native_key_hash_probes": 0,
+  "new_actuals": 0,
+  "new_grants": 0,
+  "new_theorem": false,
+  "offered_sources_mutated": false,
+  "old_G0_negative_unchanged": true,
+  "partial_files_opened": 0,
+  "predecessor": {
+    "bytes": 51055,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/owner-specific-successor-Sources-v1/validate_owner_parent_v2.py",
+    "sha256": "35223e80407bec14e568618748d0311a07ca67363486e27bda125032551b8cab"
+  },
+  "primary_reader_index_active_mutated": false,
+  "retained_negative": {
+    "bytes": 3165,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/typed-owner-route-shadow-Source-negative-v2.json",
+    "sha256": "927483631a346f35e43ac97300f3832444e0d944440d728071d78d69e01bc5c8"
+  },
+  "review_passed": true,
+  "reviewer_identity": "/root/recovered_batch_review",
+  "runtime_qualified": false,
+  "schema": "typed-owner-route-v3-specific-Source-delta-review-v1",
+  "semantic_replays": 0,
+  "simulator_calls": 0,
+  "sizing_probes": 0,
+  "source": {
+    "bytes": 51068,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/owner-specific-successor-Sources-v1/validate_owner_parent_v3.py",
+    "sha256": "923230b512dabb3eb57127e42d06cff88106887921fd598a0226ff2ad69b1701"
+  },
+  "source_only": true,
+  "static_metadata": [
+    {
+      "AST_parse": true,
+      "executed": false,
+      "source": {
+        "bytes": 51055,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/owner-specific-successor-Sources-v1/validate_owner_parent_v2.py",
+        "sha256": "35223e80407bec14e568618748d0311a07ca67363486e27bda125032551b8cab"
+      },
+      "unused_compile": true
+    },
+    {
+      "AST_parse": true,
+      "executed": false,
+      "source": {
+        "bytes": 51068,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/owner-specific-successor-Sources-v1/validate_owner_parent_v3.py",
+        "sha256": "923230b512dabb3eb57127e42d06cff88106887921fd598a0226ff2ad69b1701"
+      },
+      "unused_compile": true
+    },
+    {
+      "AST_parse": true,
+      "executed": false,
+      "source": {
+        "bytes": 12786,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/owner-specific-successor-Sources-v1/owner_cursor_v2.py",
+        "sha256": "93eb21f8bde51051cd5a7c913cd03732252bb5b6aa22cea2c42f5511e61323f0"
+      },
+      "unused_compile": true
+    }
+  ],
+  "status": "PASS_SPECIFIC_ROUTE_SHADOW_CORRECTION_ONLY",
+  "subject_calls": 0,
+  "subject_imports": 0
+}

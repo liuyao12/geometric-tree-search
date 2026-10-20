@@ -1,0 +1,60 @@
+{
+  "G1_adopted": false,
+  "GCTS_RL_advantage_established": false,
+  "actual_execution_authorized": false,
+  "author": {
+    "bytes": 10328,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/freeze_owner_specific_successor_reviews_v1.py",
+    "sha256": "cb7a009e4acc6a8ab0fc1d1ab779b91effd83c39adb59dde127e61ac52598bf7"
+  },
+  "checker_calls": 0,
+  "compiler_calls": 0,
+  "correction_obligation": "Keep expected route parameter distinct from actual row route and compare them directly at every existing bound_owner callsite; preserve exact v2 raw preimage.",
+  "entire_provenance_successor_review_complete": false,
+  "failed_checks": [
+    "Independent expected-versus-actual Source route equality is tautological"
+  ],
+  "finding": "bound_owner overwrites its expected route parameter while unpacking the actual owner row. Its subsequent equality compares the actual route with itself, so every nonempty actual route passes that asserted join.",
+  "fit_proved": false,
+  "fixture_calls": 0,
+  "full_VM_qualified": false,
+  "full_offer_review_completed": false,
+  "generator_calls": 0,
+  "goal_status": "active",
+  "helper_calls": 0,
+  "manual_counterexample_recipe": "Within a coherent intended complete owner/event/tape certificate, preserve owner role, scope, version, ordinal and full value, but replace source_route by a different nonempty string. Calling bound_owner conceptually with expected implicit.query still compares the changed actual row route to that same changed local variable. No wire, fixture or schema call was made.",
+  "native_key_hash_probes": 0,
+  "new_actuals": 0,
+  "new_grants": 0,
+  "new_theorem": false,
+  "offer": {
+    "bytes": 940,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/owner-specific-successor-Sources-v1/successor-Source-offer-v2-pins.json",
+    "sha256": "68984e000d48dd3a1bc94f4b65ff196a39ec6a5f3253c75fa0ecd252fe8e7269"
+  },
+  "offered_sources_mutated": false,
+  "old_G0_negative_unchanged": true,
+  "partial_files_opened": 0,
+  "primary_reader_index_active_mutated": false,
+  "retained_v1_negative": {
+    "bytes": 8357,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/typed-owner-provenance-Source-negative-v1.json",
+    "sha256": "abfc12f4daeb7f7aa35459dd42827e5e021d1319ffde169fcef08afcae2427f1"
+  },
+  "review_passed": false,
+  "reviewer_identity": "/root/recovered_batch_review",
+  "runtime_qualified": false,
+  "schema": "typed-owner-route-shadow-Source-negative-v2",
+  "semantic_replays": 0,
+  "simulator_calls": 0,
+  "sizing_probes": 0,
+  "source": {
+    "bytes": 51055,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/owner-specific-successor-Sources-v1/validate_owner_parent_v2.py",
+    "sha256": "35223e80407bec14e568618748d0311a07ca67363486e27bda125032551b8cab"
+  },
+  "source_only": true,
+  "status": "BLOCKING_EXPECTED_ROUTE_PARAMETER_OVERWRITTEN",
+  "subject_calls": 0,
+  "subject_imports": 0
+}

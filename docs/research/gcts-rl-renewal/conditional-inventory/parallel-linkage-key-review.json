@@ -1,0 +1,187 @@
+{
+  "G1_adopted": false,
+  "GCTS_RL_advantage_established": false,
+  "actual_execution_authorized": false,
+  "all_controls_unrun": true,
+  "author": {
+    "bytes": 10328,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/freeze_owner_specific_successor_reviews_v1.py",
+    "sha256": "cb7a009e4acc6a8ab0fc1d1ab779b91effd83c39adb59dde127e61ac52598bf7"
+  },
+  "checker_calls": 0,
+  "checks": [
+    {
+      "check": "Exact validate_owner_parent_v2.py",
+      "passed": true
+    },
+    {
+      "check": "Fresh raw validate_owner_parent_v2.py",
+      "passed": true
+    },
+    {
+      "check": "Exact owner_cursor_v2.py",
+      "passed": true
+    },
+    {
+      "check": "Fresh raw owner_cursor_v2.py",
+      "passed": true
+    },
+    {
+      "check": "Expected route parameter shadowed",
+      "passed": true
+    },
+    {
+      "check": "Fresh v2 negative",
+      "passed": true
+    },
+    {
+      "check": "Exact validate_owner_parent_v3.py",
+      "passed": true
+    },
+    {
+      "check": "Fresh raw validate_owner_parent_v3.py",
+      "passed": true
+    },
+    {
+      "check": "Exact v3 three-site raw inverse",
+      "passed": true
+    },
+    {
+      "check": "Fresh route review",
+      "passed": true
+    },
+    {
+      "check": "Exact changed cursor methods",
+      "passed": true
+    },
+    {
+      "check": "Only added cursor entries method",
+      "passed": true
+    },
+    {
+      "check": "No native nested tuple key construction",
+      "passed": true
+    },
+    {
+      "check": "Scalar numeric equality normalization",
+      "passed": true
+    },
+    {
+      "check": "Tuple class encoding finite",
+      "passed": true
+    },
+    {
+      "check": "Fresh key review",
+      "passed": true
+    }
+  ],
+  "compiler_calls": 0,
+  "failed_checks": [],
+  "fit_proved": false,
+  "fixture_calls": 0,
+  "full_VM_qualified": false,
+  "full_offer_review_completed": false,
+  "generator_calls": 0,
+  "goal_status": "active",
+  "helper_calls": 0,
+  "manual_findings": [
+    {
+      "argument": "Each hashable key node receives a scalar equality-class integer. A tuple key record encodes arity and ordered child equality-class integers, never the native child tuples. Dictionary collision membership hashes only those scalar class IDs. Repeated tuple descendants reuse one class, removing the stated recursive native tuplehash path.",
+      "id": "No tuple unfolding in collision hash"
+    },
+    {
+      "argument": "None uses a disjoint marker. False/True and integers normalize to exact ratios0/1 or1/1 or n/1; finite floats use the builtin exact reduced ratio. Thus bool/int/equal finite float keys collide as native keys should; signed zero normalizes together, while strict original value nodes retain their own type/hex. The manually reviewed claim assumes documented exact finite scalar conversion, not a runtime float probe.",
+      "id": "Exact native numeric equivalence"
+    },
+    {
+      "argument": "Strings use exact surrogatepass bytes and explicit length, disjoint from ratio/None/tuple markers. Tuple records contain minimal unsigned arity and child class encodings. Induction over earlier child references makes exact class equality equivalent to native finite hashable-key equality; ordered multiplicity is preserved.",
+      "id": "String and tuple classes"
+    },
+    {
+      "argument": "String-only dictionary fields preserve original ordered names. Other dictionaries use entries returning complete typed key/value cursors; no unsupported native tuple materialization is hidden in fields. Full native matches remains strict type/container/order correspondence.",
+      "id": "General key access"
+    },
+    {
+      "argument": "The particular exponential tuplehash recurrence is removed. This is not a useful whole resource bound: recursion depth, bytes/integers/hash-table operations, canonicalization/parser/checker/native-original traversals and all worker/outer custody costs still require full analysis. No400m/128MiB/180s/RSS fit or complete generic resource theorem follows.",
+      "id": "Remaining resource scope"
+    }
+  ],
+  "native_key_hash_probes": 0,
+  "new_actuals": 0,
+  "new_grants": 0,
+  "new_theorem": false,
+  "offered_sources_mutated": false,
+  "old_G0_negative_unchanged": true,
+  "partial_files_opened": 0,
+  "predecessor": {
+    "bytes": 10430,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/owner-provenance-negative-Sources-v1/owner_cursor_v1.py",
+    "sha256": "276aec8a8c98b3dee7f0b5bb17ca49522c511d0880181f1f858246c7e7e4e426"
+  },
+  "primary_reader_index_active_mutated": false,
+  "prospective_unrun_controls": [
+    "Shared binary tuple DAG keys across allowed depths; no native tuple hash is invoked.",
+    "False/0/0.0 and True/1/1.0 collision controls, signed zero and finite nonintegral/large ratio boundaries.",
+    "Nested tuple numeric-equivalent keys, order/multiplicity differences and tuple/string/None disjointness.",
+    "Mixed general-key dictionaries via entries plus strict complete native matching; malformed/unhashable key refusal.",
+    "Quota/fault cutoffs retain actual parser/work/wire/error and complete available prefix."
+  ],
+  "raw_diff": {
+    "bytes": 5939,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/owner-specific-successor-Sources-v1/cursor-v1-to-v2-raw.diff",
+    "sha256": "7754b14ebb19e45afc47c5176615fef5e8affb536c42b739dbc93754f4af7a5b"
+  },
+  "retained_negative": {
+    "bytes": 5201,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/typed-tuple-key-cursor-resource-Source-negative-v1.json",
+    "sha256": "a3d56bc945f01c8d7f6e0642eaf8bc3363d17cc284a6f6edcf3e0b6874f14b5e"
+  },
+  "review_passed": true,
+  "reviewer_identity": "/root/recovered_batch_review",
+  "runtime_qualified": false,
+  "schema": "typed-owner-key-normal-form-v2-specific-Source-delta-review-v1",
+  "semantic_replays": 0,
+  "simulator_calls": 0,
+  "sizing_probes": 0,
+  "source": {
+    "bytes": 12786,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/owner-specific-successor-Sources-v1/owner_cursor_v2.py",
+    "sha256": "93eb21f8bde51051cd5a7c913cd03732252bb5b6aa22cea2c42f5511e61323f0"
+  },
+  "source_only": true,
+  "static_metadata": [
+    {
+      "AST_parse": true,
+      "executed": false,
+      "source": {
+        "bytes": 51055,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/owner-specific-successor-Sources-v1/validate_owner_parent_v2.py",
+        "sha256": "35223e80407bec14e568618748d0311a07ca67363486e27bda125032551b8cab"
+      },
+      "unused_compile": true
+    },
+    {
+      "AST_parse": true,
+      "executed": false,
+      "source": {
+        "bytes": 51068,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/owner-specific-successor-Sources-v1/validate_owner_parent_v3.py",
+        "sha256": "923230b512dabb3eb57127e42d06cff88106887921fd598a0226ff2ad69b1701"
+      },
+      "unused_compile": true
+    },
+    {
+      "AST_parse": true,
+      "executed": false,
+      "source": {
+        "bytes": 12786,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/owner-specific-successor-Sources-v1/owner_cursor_v2.py",
+        "sha256": "93eb21f8bde51051cd5a7c913cd03732252bb5b6aa22cea2c42f5511e61323f0"
+      },
+      "unused_compile": true
+    }
+  ],
+  "status": "PASS_SPECIFIC_NESTED_TUPLE_HASH_REMOVAL_SOURCE_ONLY",
+  "subject_calls": 0,
+  "subject_imports": 0
+}

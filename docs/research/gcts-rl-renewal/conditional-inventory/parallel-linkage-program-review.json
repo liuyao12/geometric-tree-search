@@ -1,0 +1,1431 @@
+{
+  "G1_adopted": false,
+  "GCTS_RL_advantage_established": false,
+  "accepted_language_proved": false,
+  "actual_execution_authorized": false,
+  "all23_author_cohorts_unrun": true,
+  "all27_functions_manually_reviewed": true,
+  "author": {
+    "bytes": 19096,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/freeze_runtime_intake_Source_reviews_v1.py",
+    "sha256": "0d13ad0adc9372ee7385996e034c6aab6d91e0f294e945a3dd287323e0bef7c0"
+  },
+  "checker_calls": 0,
+  "checks": [
+    {
+      "check": "Frozen L handoff",
+      "passed": true
+    },
+    {
+      "check": "Exact pin immutable_program_intake_v1.py",
+      "passed": true
+    },
+    {
+      "check": "No partial path immutable_program_intake_v1.py",
+      "passed": true
+    },
+    {
+      "check": "Fresh copy L-immutable_program_intake_v1.py",
+      "passed": true
+    },
+    {
+      "check": "Exact pin API-v1.json",
+      "passed": true
+    },
+    {
+      "check": "No partial path API-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Fresh copy L-API-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Exact pin manual-correspondence-v1.json",
+      "passed": true
+    },
+    {
+      "check": "No partial path manual-correspondence-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Fresh copy L-manual-correspondence-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Exact pin prospective-whole-bank-v1.json",
+      "passed": true
+    },
+    {
+      "check": "No partial path prospective-whole-bank-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Fresh copy L-prospective-whole-bank-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Exact pin lineage-pins-v1.json",
+      "passed": true
+    },
+    {
+      "check": "No partial path lineage-pins-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Fresh copy L-lineage-pins-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Exact pin author-static-audit-v1.json",
+      "passed": true
+    },
+    {
+      "check": "No partial path author-static-audit-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Fresh copy L-author-static-audit-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Exact pin freeze-manifest-v1.json",
+      "passed": true
+    },
+    {
+      "check": "No partial path freeze-manifest-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Fresh copy L-freeze-manifest-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Lineage pin basic-tiling-algorithm.md",
+      "passed": true
+    },
+    {
+      "check": "Lineage pin whole-program-linkage-open-contract-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Lineage pin literal_machine_builder_v2.py",
+      "passed": true
+    },
+    {
+      "check": "Lineage pin shared-builder-ABI-v2.json",
+      "passed": true
+    },
+    {
+      "check": "Lineage pin linked_boot_values_v2.py",
+      "passed": true
+    },
+    {
+      "check": "Lineage pin API-v2.json",
+      "passed": true
+    },
+    {
+      "check": "Lineage pin prospective-whole-bank-v2.json",
+      "passed": true
+    },
+    {
+      "check": "Lineage pin typed-linked-tagged-value-BOOT-v2-Source-review-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Lineage pin fixed_vm_codec_v2.py",
+      "passed": true
+    },
+    {
+      "check": "Lineage pin fixed-interpreter-encoding-contract-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Lineage pin utf8_residual_machine_v1.py",
+      "passed": true
+    },
+    {
+      "check": "Lineage pin ROOT-utf8-component-admission-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Lineage pin implicit-inputs-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Lineage pin new-diagnostic-bank-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Lineage pin physical_runtime_v1.py",
+      "passed": true
+    },
+    {
+      "check": "Lineage pin physical_join_v1.py",
+      "passed": true
+    },
+    {
+      "check": "Exact pin physical_runtime_v1.py",
+      "passed": true
+    },
+    {
+      "check": "No partial path physical_runtime_v1.py",
+      "passed": true
+    },
+    {
+      "check": "Fresh copy Root-physical_runtime_v1.py",
+      "passed": true
+    },
+    {
+      "check": "Exact pin physical_join_v1.py",
+      "passed": true
+    },
+    {
+      "check": "No partial path physical_join_v1.py",
+      "passed": true
+    },
+    {
+      "check": "Fresh copy Root-physical_join_v1.py",
+      "passed": true
+    },
+    {
+      "check": "Root full manual exact pin",
+      "passed": true
+    },
+    {
+      "check": "Exact pin runtime-manual-obligations-and-unrun-bank-v1.json",
+      "passed": true
+    },
+    {
+      "check": "No partial path runtime-manual-obligations-and-unrun-bank-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Fresh copy Root-runtime-manual-obligations-and-unrun-bank-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Root complete unrun bank",
+      "passed": true
+    },
+    {
+      "check": "L complete unrun bank",
+      "passed": true
+    },
+    {
+      "check": "All thirteen Root opcodes",
+      "passed": true
+    },
+    {
+      "check": "All functions Root-physical_runtime_v1.py",
+      "passed": true
+    },
+    {
+      "check": "No import nodes Root-physical_runtime_v1.py",
+      "passed": true
+    },
+    {
+      "check": "All functions Root-physical_join_v1.py",
+      "passed": true
+    },
+    {
+      "check": "No import nodes Root-physical_join_v1.py",
+      "passed": true
+    },
+    {
+      "check": "All functions L-immutable_program_intake_v1.py",
+      "passed": true
+    },
+    {
+      "check": "No import nodes L-immutable_program_intake_v1.py",
+      "passed": true
+    },
+    {
+      "check": "Full fixed magic bytes",
+      "passed": true
+    },
+    {
+      "check": "Full main wire bytes",
+      "passed": true
+    },
+    {
+      "check": "Fixed register upper bound",
+      "passed": true
+    },
+    {
+      "check": "Complete opcode literal words",
+      "passed": true
+    },
+    {
+      "check": "Complete Root manual function matrix",
+      "passed": true
+    },
+    {
+      "check": "Complete L manual function matrix",
+      "passed": true
+    },
+    {
+      "check": "Fresh review typed-whole-runtime-and-join-Source-review-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Fresh review typed-complete-program-intake-Source-review-v1.json",
+      "passed": true
+    }
+  ],
+  "compiler_calls": 0,
+  "dependency_pins": [
+    {
+      "bytes": 36240,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/basic-tiling-algorithm.md",
+      "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+    },
+    {
+      "bytes": 4863,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/root/whole-program-linkage-open-contract-v1.json",
+      "sha256": "5daf9529c06de118e4581e012568e86c43660c3b2ec1363bbb72d4008cd07fbe"
+    },
+    {
+      "bytes": 13782,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/root/literal_machine_builder_v2.py",
+      "sha256": "4d13b99f90e9658508dcd4a289ece2d93bd21d862e4153a431a91ce17d78da20"
+    },
+    {
+      "bytes": 4319,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/root/shared-builder-ABI-v2.json",
+      "sha256": "42f113591d92c4dd3098d7f5a6d83ce7434b5f4f146ff52cd4c925f283370040"
+    },
+    {
+      "bytes": 38636,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/physical-L/linked_boot_values_v2.py",
+      "sha256": "af383eb8dad6e19285f43602325fa3db78123a472d6a73ce59c51c507cd8ca2d"
+    },
+    {
+      "bytes": 10837,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/physical-L/API-v2.json",
+      "sha256": "cf3ab122a0d70c16acb65d9924e09d48bca117459170d6706dedbab5d8654b4d"
+    },
+    {
+      "bytes": 34920,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/physical-L/prospective-whole-bank-v2.json",
+      "sha256": "8868be162b2c99a3e9b588beca16f1a018f9f3fe573b84a9166c12422fe593c1"
+    },
+    {
+      "bytes": 35032,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/typed-linked-tagged-value-BOOT-v2-Source-review-v1.json",
+      "sha256": "6a1d4b8a8af4fcbe1a34a96cfd15cb59a258842ea7d3cda93d85be42b2cde217"
+    },
+    {
+      "bytes": 28213,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/recovered-checker/CodecV2/fixed_vm_codec_v2.py",
+      "sha256": "427b274efd755bbd58f3f37d34aed1c45581ecf7a591d48394672a05158f4182"
+    },
+    {
+      "bytes": 22116,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/recovered-checker/EarlierDesign/fixed-interpreter-encoding-contract-v1.json",
+      "sha256": "356d2160f3a038260053b3973945e1aa1deb2cbd1bfc0a9d417337e45b36c539"
+    },
+    {
+      "bytes": 8265,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/root/utf8_residual_machine_v1.py",
+      "sha256": "08f9472acb2042e398997cc0dddd6ddc2487c866a3b683b42f53852bee26a088"
+    },
+    {
+      "bytes": 3621,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/ROOT-utf8-component-admission-v1.json",
+      "sha256": "2fc8c28431aaec130234aff55ff39a64bbc2ee42bb1dff66185c5a31c753d68a"
+    },
+    {
+      "bytes": 740651,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/recovered/ROOT/implicit-inputs-v1.json",
+      "sha256": "10fe60d005a2f586a76bf69ae30317b8dae538ba9f126714b9f71ffa474a89b4"
+    },
+    {
+      "bytes": 38883,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/diagnostics-L/new-diagnostic-bank-v1.json",
+      "sha256": "6e579fa58384188b5444606c87dbdee92a86f5771a983a36fbf6904192e669ab"
+    },
+    {
+      "bytes": 19140,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/root/physical_runtime_v1.py",
+      "sha256": "0bb9f194673d6bb128531e49da497ec9ac5729cc5a25928aa20c8f26b35333c8"
+    },
+    {
+      "bytes": 2596,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/root/physical_join_v1.py",
+      "sha256": "82da73bb5f78d649e084d9c5c55dcffeb0a6018ec2fcc04820a8797e2884f7c1"
+    }
+  ],
+  "failed_checks": [],
+  "field_matrix": [
+    {
+      "Source": "_match over MAGIC_BITS",
+      "argument": "Exactly seven fixed eight-bit LSB byte words are consumed in immutable PROGRAM0. A bit mismatch or unexpected visible delimiter enters MALFORMED3; a selected capacity fence enters BOUND2. No host string match executes as a transition.",
+      "field": "magic/version"
+    },
+    {
+      "Source": "shared Builder.decode_U",
+      "argument": "Unary prefix length is stored physically in COUNT; exactly that many low-first bits enter RETURN. Zero has its sole0 code; positive final bit must1. Every field gets a canonical nonempty binary word, not an address-specific state. Invalid/truncated delimiters refuse; fences are capacity exits.",
+      "field": "all U naturals"
+    },
+    {
+      "Source": "install_program_intake STRICT_CANONICAL_SEED",
+      "argument": "F6 counts remaining rows, PC starts257 and increments once per successful row. Decode both children, require each strictly less than PC, and execute actual canonical_cons. Its return must equal PC; an existing duplicate pair necessarily returns an earlierID and refuses. Thus no metadata appears before all original pairs are checked, and the HEAP prefix equals exactly the original ordered seed records.",
+      "field": "seed count and each ordered pair"
+    },
+    {
+      "Source": "ALL_CONSTANTS loop",
+      "argument": "D8 saves the first ID beyond the original seed before metadata append. Each decoded constant is strictly below D8, even when a list node has since extended HEAP. All constants become a reversed proper list then are physically reversed, retaining exact order/multiplicity and original refs.",
+      "field": "constants count and every ref"
+    },
+    {
+      "Source": "nonempty-functions, first-function",
+      "argument": "Zero functions refuses. A fixed first-function Source branch requires canonical length4, exact32bits of ASCII main, and arity1; other functions use the generic name parser. Exactly the declared count of complete function records is consumed; every code list is nonempty.",
+      "field": "function count and root"
+    },
+    {
+      "Source": "_fixed_main, _name, _read_byte, _unique_name",
+      "argument": "For generic names F6 controls byte reads and D8 retains byte count. Each exact8bit byte is copied to the full BUFFER and saved as an actual word record. The complete fresh UTF8 table checks the entire byte buffer. Popping exactly D8 byte records and consing reconstructs the original byte order. All previous complete name refs are compared at exact word boundaries; equal canonical byteword ref refuses. Empty names, NUL and native surrogatepass strings are not silently excluded outside the mandatory main rule.",
+      "field": "all function names"
+    },
+    {
+      "Source": "_function arity/register gates",
+      "argument": "Raw arity stays in F6 while register count is decoded. Register count must be positive and strictly below the fixed canonical10000000 word; comparing registers less than arity refuses. Arity and register count are independently encoded as canonical proper bit lists, preserving arbitrary allowed natural values without Boolean coercion.",
+      "field": "arity/register count"
+    },
+    {
+      "Source": "_instruction and code loop",
+      "argument": "PC retains full positive code length; F6 counts remaining instructions. A fixed four-bit decision tree chooses exactly0..12;13..15 refuse. Each opcode's exact operand width matches CodecV2. A reversed proper code list is formed and reversed before FnMeta construction; no instruction or occurrence is dropped.",
+      "field": "instruction count/all opcodes"
+    },
+    {
+      "Source": "_field fixed bound callsites",
+      "argument": "All register operands compare against D8, const pool index against the complete saved count, branch/jump indices against PC full code length. Each canonical U operand becomes its full proper LSB bitlist. No low bits, projected address class or selected witness replaces the full number.",
+      "field": "all register/constant/branch/jump operands"
+    },
+    {
+      "Source": "_call, _validate_calls",
+      "argument": "Destination/args use caller D8 bound and target uses full global function count. Each call appends its raw target word and canonical argc bitlist ref to FRAMES. Saved F6/PC are restored after exactly argc argument fields; packing preserves argument order/multiplicity. After the entire function list exists, every recorded target is physically indexed; its arity bitlist ref is compared exactly to that occurrence's argc ref. Forward/self calls are treated identically to earlier targets.",
+      "field": "CALL destination/target/argc/arguments"
+    },
+    {
+      "Source": "Fn pair assembly, reverse-functions, whole-meta-cons",
+      "argument": "The locals stack saves every enclosing loop word and parsed field. Fixed three pair constructions produce precisely name,(arity,(registers,code)); top-level ordered functions and original constants produce wholeMeta. Metadata natural fields are proper bit lists, opcode is an atom, constant values retain their actual original seed refs. These types are not conflated.",
+      "field": "function/global metadata"
+    },
+    {
+      "Source": "exact-image-end",
+      "argument": "After exactly all declared functions, the next selected PROGRAM symbol must be the fixed colon. A remaining binary bit, B padding before it or any other delimiter refuses. The colon is outside the projected binary image; Root actual initialization pins all later physical cells blank. Arbitrary unpinned postcolon payload rejection is not claimed. P/F/C data are unchanged throughout.",
+      "field": "exact projected EOF/immutability"
+    },
+    {
+      "Source": "CLEANUP_AND_METADATA",
+      "argument": "Only after complete forward-call validation is wholeMeta formed, copied to F6, PC/D8 made0, locals checked empty and FRAMES/NAMES/BUFFER cleaned to empty colon. RETURN remains wholeMeta. The supplied continuation is a working state, not ACCEPT; valueBOOT may now use and clean its own records while preserving F6/PC/D8.",
+      "field": "cleanup/success"
+    }
+  ],
+  "fit_proved": false,
+  "fixed_public_initialization": false,
+  "fixture_calls": 0,
+  "frozen_offered_sources_mutated": false,
+  "full_VM_qualified": false,
+  "full_checker_image_attributed": false,
+  "full_machine_review_completed": false,
+  "function_matrix": [
+    {
+      "argument": "Provides explicit invalid continuation for each nonfence raw symbol; common lowerer handles fence asBOUND.",
+      "end_line": 32,
+      "function": "_put",
+      "line": 31
+    },
+    {
+      "argument": "Reserves static state and installs exactly its raw transition row; no runtime Source specialization.",
+      "end_line": 38,
+      "function": "_row",
+      "line": 35
+    },
+    {
+      "argument": "Canonical words compared by length, then matching-length most significant differing bit; equality goesno. Both payloads unchanged, cursors may move; not an arbitrary-word validator.",
+      "end_line": 65,
+      "function": "word_less",
+      "line": 41
+    },
+    {
+      "argument": "Physically validates canonical positive input; borrow flips low zeros and firstone, then scans high end and erases only trailing highzeros, yielding single0 when required. Changes only selected band, which is material to runtime RIGHT-tail survival.",
+      "end_line": 83,
+      "function": "decrement_word",
+      "line": 68
+    },
+    {
+      "argument": "Preserve TEMP word, scan backwards and cons bits into RIGHT accumulator; canonical_cons preservesTEMP. Exact LSB list order and nil ending, no host conversion.",
+      "end_line": 106,
+      "function": "nat_word_to_list",
+      "line": 86
+    },
+    {
+      "argument": "Canonical TEMPindex drives real pair/tail lookup and selected-word decrement; atzero return actualhead. Nil/nonpair before requested item refuses; unused suffix validity comes from construction. Clobbers9..13 only.",
+      "end_line": 125,
+      "function": "list_index",
+      "line": 109
+    },
+    {
+      "argument": "Uses common physical canonical U decoder on PROGRAM/COUNT/RETURN; strict positive highbit and zero-code rules inherited.",
+      "end_line": 129,
+      "function": "_u",
+      "line": 128
+    },
+    {
+      "argument": "Actual record append to R4; full word and prefix retained.",
+      "end_line": 133,
+      "function": "_push",
+      "line": 132
+    },
+    {
+      "argument": "Actual last R4 record pop with destination copy and exact prefix-colon restoration.",
+      "end_line": 137,
+      "function": "_pop",
+      "line": 136
+    },
+    {
+      "argument": "Copies full obligation field through semicolon into selected scratch word and advances obligation cursor.",
+      "end_line": 148,
+      "function": "_copy_field",
+      "line": 140
+    },
+    {
+      "argument": "Skips exactly one nonempty binary obligation record through semicolon; no obligation order change.",
+      "end_line": 155,
+      "function": "_skip_field",
+      "line": 151
+    },
+    {
+      "argument": "Only two static header field positions are allowed; reads full constants/functions count without overwriting enclosing PC/D bounds.",
+      "end_line": 163,
+      "function": "_global",
+      "line": 158
+    },
+    {
+      "argument": "Decode complete U number, compare against fixed full local bound or saved global count before metadata encoding; optional CALL target rawword is appended as a distinct obligation, then full number becomes proper bitlist.",
+      "end_line": 179,
+      "function": "_field",
+      "line": 166
+    },
+    {
+      "argument": "Reverse-pop fixed atmost3 operands and cons them to nil. LIFO pop plus prepend preserves declared original order and multiplicity.",
+      "end_line": 191,
+      "function": "_pack",
+      "line": 182
+    },
+    {
+      "argument": "Walk proper source list inFUNCTION, keep reverse accumulatorPC, canonical_cons each head and follow saved tail; touches only declared counters/scratch. Enclosing counts/list accumulators must be saved by callers.",
+      "end_line": 207,
+      "function": "_reverse_list",
+      "line": 194
+    },
+    {
+      "argument": "Consumes fixed Source bit string from immutable PROGRAM; every mismatch is invalid, selected fenceBOUND; no host runtime matching.",
+      "end_line": 215,
+      "function": "_match",
+      "line": 210
+    },
+    {
+      "argument": "Read canonical length4 and exact four ASCII main bytes; build exact main byteword in correct order. First-function arity guard is separate.",
+      "end_line": 227,
+      "function": "_fixed_main",
+      "line": 218
+    },
+    {
+      "argument": "Read all8 LSB bits into RETURN and BUFFER, then trim only RETURN highzeros to canonical scalar byte, retaining full8bit BUFFER payload for UTF8.",
+      "end_line": 246,
+      "function": "_read_byte",
+      "line": 230
+    },
+    {
+      "argument": "Count all bytes inFUNCTION, retain exact original lengthD, save each byte record and full buffer. Fresh complete UTF8 routine validates buffer. Pop exactly original length byte records into canonical byteword; empty later names are allowed by generic domain.",
+      "end_line": 270,
+      "function": "_name",
+      "line": 249
+    },
+    {
+      "argument": "Compare full canonical name-ref words against every prior record, checking exact end; prefixes or differing refs are not equal. Complete native UTF8 and canonical heap make byteword equality ref equality. Append only after exhausting prior names.",
+      "end_line": 293,
+      "function": "_unique_name",
+      "line": 273
+    },
+    {
+      "argument": "Construct actual pair of fixed opcodeatom and complete operand list; all thirteen literal opcode words statically checked.",
+      "end_line": 299,
+      "function": "_opcode_wrap",
+      "line": 296
+    },
+    {
+      "argument": "Parse destination and target bounds, save target rawword obligation and metadata bits, preserve outer instruction count/code bound, read exact argc register fields. Build proper ordered argList, restore outer counters in reverse stack order, pack destination/target/argList and instruction. Every occurrence retains argc bitlist obligation.",
+      "end_line": 333,
+      "function": "_call",
+      "line": 302
+    },
+    {
+      "argument": "Finite four-bit decision tree accepts0..12 and rejects13..15. All register/constant/PC operand position widths match CodecV2; CALL separately handles counted args. Every complete code field consumed.",
+      "end_line": 363,
+      "function": "_instruction",
+      "line": 336
+    },
+    {
+      "argument": "First-main or full generic name path plus uniqueness; arity rawword retained while register count is read. Require positive registers below10000000 and arity<=registers; positive code length saved as fullPC bound. Build reverse code list while preserving enclosing locals then reverse and construct exact name,(arity,(registers,code)) shape.",
+      "end_line": 413,
+      "function": "_function",
+      "line": 366
+    },
+    {
+      "argument": "Complete word/field equality requires exact two endpoints and consumes one semicolon. No prefix equality or hash shortcut.",
+      "end_line": 425,
+      "function": "_compare_obligation_field",
+      "line": 416
+    },
+    {
+      "argument": "Skip exactly global constant/function headers, then process each target/argc pair in order. Index completed functions including forward/self targets; access actual arity bitlist and compare full canonical refword to argc record. No call is omitted because unreachable or repeated.",
+      "end_line": 441,
+      "function": "_validate_calls",
+      "line": 428
+    },
+    {
+      "argument": "Check initialized empty private records, convert buffer record to raw word, consume complete magic/seed/constants/functions/EOF. SeedPC begins257 and each child isstrictlyprior; canonical_cons must return exact expected newID, rejecting duplicates before metadata. Save original seed upper bound for every constant even after metadata appends. Validate all calls, form wholeMeta, clean locals/obligations/names/buffer and zeroPC/D, return working continuation. Postcolon blanks/layout/public/source image attribution remain actual initialization obligations.",
+      "end_line": 552,
+      "function": "install_program_intake",
+      "line": 444
+    }
+  ],
+  "generator_calls": 0,
+  "goal_status": "active",
+  "handoff": {
+    "bytes": 6694,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/runtime-intake-Sources-v1/L-handoff-v1.json",
+    "sha256": "b669aceca3dbfae0bb0b004585ed2abd68a61c8ba1cc16a9ee3f28013f57a5b8"
+  },
+  "helper_calls": 0,
+  "manifest": {
+    "bytes": 2428,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/runtime-intake-Sources-v1/L-freeze-manifest-v1.json",
+    "sha256": "177b089400ad51e1b3811fe36fb29f98217b8a32138996d790246f65161e308c"
+  },
+  "new_actuals": 0,
+  "new_grants": 0,
+  "new_theorem": false,
+  "old_G0_negative_unchanged": true,
+  "partial_files_opened": 0,
+  "primary_reader_index_active_mutated": false,
+  "review_passed": true,
+  "reviewed_native_domain": "Generic CodecV2 canonical UTF8_SURROGATEPASS names and canonical program grammar, not JSON-native normalization equivalence or full_checker_69 body attribution.",
+  "reviewer_identity": "/root/recovered_batch_review",
+  "reviewer_metadata_note": "One attempted read used non-existent AST-callgraph-v1.json and returned exit1. It was corrected to the offered author-static-audit-v1.json; no source, output or scientific operation was performed by that failed read. It is not a scientific negative.",
+  "runtime_qualified": false,
+  "schema": "typed-complete-program-intake-Source-review-v1",
+  "scope_and_remaining": [
+    "Manual full Source/correspondence argument under initialized layout, exact immutable full program/public/licensing, canonical seed/metadata and genuine dependency ownership preconditions. These are obligations to implement/bind, not a hidden runtime host acceptance filter.",
+    "Structural heap embedding remains open: atoms fixed, original seed exact, later metadata/call cache pair IDs may differ while canonical structural values coincide. No numeric-ID/allocation/cost/status/heap-budget equivalence is established.",
+    "Old generic host out-of-range fetch can raise before try; physical fetch fails nonacceptingly. No exact generic all-error trajectory/status claim. Full accepted-language/canonical compiled-checker refinement is proposed, not proved.",
+    "No generated table, physical execution, complete initialized Wang acceptance bridge, useful resource bound or whole-cohort qualification follows. Every inherited full program/value/UTF8/15normal33legacy28group55variant obligation remains required, not replaced by these unrun recipes.",
+    "All previous128-function/common11-rule logical audit findings and native/rawJSON/protocol/theory/target license/domain distinctions remain applicable. Source component completeness does not establish automated theorem discovery or GCTS/RL contribution."
+  ],
+  "semantic_replays": 0,
+  "simulator_calls": 0,
+  "sizing_probes": 0,
+  "source_only": true,
+  "source_pins": [
+    {
+      "bytes": 29596,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/runtime-intake-Sources-v1/L-immutable_program_intake_v1.py",
+      "sha256": "2826b0ac25606876f5584c5f6055e2217ed8d43fbe224a14d984207b4a19bc74"
+    },
+    {
+      "bytes": 11552,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/runtime-intake-Sources-v1/L-API-v1.json",
+      "sha256": "82aef337d4baf2ba846f74ae2e2adec3eb56c43de9b13d5238ae19d3f03e291e"
+    },
+    {
+      "bytes": 12803,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/runtime-intake-Sources-v1/L-manual-correspondence-v1.json",
+      "sha256": "bfb74a08b88bc674ba8c721f3b72f2f4b102d9d38f8af3d148a01fbb8884acc5"
+    },
+    {
+      "bytes": 20697,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/runtime-intake-Sources-v1/L-prospective-whole-bank-v1.json",
+      "sha256": "3fcb5cdc4ab1fd5415ae33c0dc5041dc9ac08012f996a39876fbf6a1bdd70da7"
+    },
+    {
+      "bytes": 4933,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/runtime-intake-Sources-v1/L-lineage-pins-v1.json",
+      "sha256": "a314846d76276f26b4a403fc90f39554822c2d894a4140e16f64f63d34a47c82"
+    },
+    {
+      "bytes": 8180,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/runtime-intake-Sources-v1/L-author-static-audit-v1.json",
+      "sha256": "b8651b31b3d3fa1d86b003e10ddbefe18d691d1cca5585e32dc61aeed8cb577f"
+    }
+  ],
+  "static_metadata": [
+    {
+      "AST_parse": true,
+      "executed": false,
+      "function_names": [
+        "_pop",
+        "nat_list_to_word",
+        "_capture",
+        "_commit_vector",
+        "_pad_vector",
+        "_argument_vector",
+        "_nregs",
+        "_functions_index",
+        "_ordinary",
+        "_unary",
+        "_binary",
+        "_call",
+        "install_runtime"
+      ],
+      "source": {
+        "bytes": 19140,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/runtime-intake-Sources-v1/Root-physical_runtime_v1.py",
+        "sha256": "0bb9f194673d6bb128531e49da497ec9ac5729cc5a25928aa20c8f26b35333c8"
+      },
+      "unused_compile": true
+    },
+    {
+      "AST_parse": true,
+      "executed": false,
+      "function_names": [
+        "install_linkage"
+      ],
+      "source": {
+        "bytes": 2596,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/runtime-intake-Sources-v1/Root-physical_join_v1.py",
+        "sha256": "82da73bb5f78d649e084d9c5c55dcffeb0a6018ec2fcc04820a8797e2884f7c1"
+      },
+      "unused_compile": true
+    },
+    {
+      "AST_parse": true,
+      "executed": false,
+      "function_names": [
+        "_put",
+        "_row",
+        "word_less",
+        "decrement_word",
+        "nat_word_to_list",
+        "list_index",
+        "_u",
+        "_push",
+        "_pop",
+        "_copy_field",
+        "_skip_field",
+        "_global",
+        "_field",
+        "_pack",
+        "_reverse_list",
+        "_match",
+        "_fixed_main",
+        "_read_byte",
+        "_name",
+        "_unique_name",
+        "_opcode_wrap",
+        "_call",
+        "_instruction",
+        "_function",
+        "_compare_obligation_field",
+        "_validate_calls",
+        "install_program_intake"
+      ],
+      "source": {
+        "bytes": 29596,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/runtime-intake-Sources-v1/L-immutable_program_intake_v1.py",
+        "sha256": "2826b0ac25606876f5584c5f6055e2217ed8d43fbe224a14d984207b4a19bc74"
+      },
+      "unused_compile": true
+    }
+  ],
+  "status": "PASS_CONDITIONAL_COMPLETE_GENERIC_INTAKE_SOURCE_ONLY",
+  "structural_heap_embedding_proved": false,
+  "subject_calls": 0,
+  "subject_imports": 0,
+  "whole_author_bank": {
+    "actual_execution_authorized": false,
+    "cohorts": [
+      {
+        "expected": "Whole proper metadata/image correspondence, including entire seed/constants/names/arities/registers/code/operands/callargs/EOF. Full69 names are not body attribution; exact fixed Source/image binding remains independently required.",
+        "id": "complete-image-all-fields",
+        "parameters": {
+          "all_original_images_and_banks": true,
+          "full69_checker_functions_retained": true,
+          "opcodes_max": 12,
+          "opcodes_min": 0
+        },
+        "recipe": "future independently encode/decode every complete fixed original compiled checker image plus generic full-field declarations"
+      },
+      {
+        "expected": "Exact literal magic only; mismatch is MALFORMED3, selected fence BOUND2. No Source specialization.",
+        "id": "magic-all-bit-and-byte-controls",
+        "parameters": {
+          "bits_per_byte": 8,
+          "magic_bytes": [
+            71,
+            67,
+            84,
+            83,
+            86,
+            77,
+            49
+          ],
+          "positions_max": 55,
+          "positions_min": 0
+        },
+        "recipe": "each fixed magic bit plus missing/extra/reordered magic byte"
+      },
+      {
+        "expected": "Exact canonical U numbers decoded physically; immutable grammar violations MALFORMED, fences BOUND. Arbitrary bit mutations that instead form a different valid complete program must be compared to full independent decoding and fail original fixed-image pins, not automatically called syntactically invalid.",
+        "id": "canonical-U-every-field",
+        "parameters": {
+          "malformations": [
+            "positive-final-highbit0",
+            "too-few-payload-bits",
+            "delimiter-in-prefix",
+            "delimiter-in-payload",
+            "fence-in-prefix",
+            "fence-in-payload"
+          ],
+          "naturals": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            7,
+            8,
+            255,
+            256,
+            257,
+            511,
+            512,
+            9999999,
+            10000000
+          ],
+          "positions": [
+            "seed-count",
+            "seed-left",
+            "seed-right",
+            "constant-count",
+            "constant-ref",
+            "function-count",
+            "name-byte-length",
+            "arity",
+            "register-count",
+            "code-length",
+            "every-operand",
+            "call-argc",
+            "every-call-arg"
+          ]
+        },
+        "recipe": "canonical small naturals and malformed highbit/truncation/delimiter controls at every natural field"
+      },
+      {
+        "expected": "New pair gets exact next257ID and preserves operand order. No metadata node precedes or replaces seed.",
+        "id": "seed-all-atom-operand-positions",
+        "parameters": {
+          "atoms_max": 256,
+          "atoms_min": 0,
+          "positions": [
+            "left",
+            "right"
+          ]
+        },
+        "recipe": "complete atom range in each seed operand with empty original heap and nil companion"
+      },
+      {
+        "expected": "All children strictly precede currentID; exact expected newID check rejects duplicates. Reversed distinct pairs remain distinct. Entire original prefix/IDs exact before metadata append.",
+        "id": "seed-prior-ID-and-uniqueness",
+        "parameters": {
+          "mutations": [
+            "left-selfID",
+            "right-selfID",
+            "left-forwardID",
+            "right-forwardID",
+            "duplicate-original-pair",
+            "pair-swapped-distinct",
+            "truncated-pair"
+          ],
+          "seeds": [
+            [],
+            [
+              [
+                0,
+                1
+              ]
+            ],
+            [
+              [
+                0,
+                1
+              ],
+              [
+                257,
+                256
+              ]
+            ],
+            [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                257,
+                258
+              ]
+            ]
+          ]
+        },
+        "recipe": "topological seeds and one strict-prior/duplicate mutation per record"
+      },
+      {
+        "expected": "Only atoms/actual original seed refs below saved original bound accepted; metadata-created IDs never become valid original constants. Original order/multiplicity unchanged.",
+        "id": "original-seed-constant-bound",
+        "parameters": {
+          "list_lengths": [
+            0,
+            1,
+            2,
+            4
+          ],
+          "refs": [
+            "0",
+            "255",
+            "256",
+            "first-original-node",
+            "last-original-node",
+            "first-ID-after-seed",
+            "new-metadata-ID"
+          ],
+          "repeated_refs": true,
+          "seed_sizes": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        "recipe": "constants at atom/seed boundary before and after list metadata allocations"
+      },
+      {
+        "expected": "Complete nonempty functions; first exact4byte main and arity1 only. Other names are not silently restricted to ASCII or catalogue.",
+        "id": "function-count-main-and-first-arity",
+        "parameters": {
+          "first_arities": [
+            0,
+            1,
+            2
+          ],
+          "function_counts": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "main_controls": [
+            "exact-main",
+            "empty",
+            "Main",
+            "main-NUL",
+            "prefix-mai",
+            "suffix-mains",
+            "nonASCII-name"
+          ]
+        },
+        "recipe": "zero/nonzero count and every first-main field mutation"
+      },
+      {
+        "expected": "Canonical native surrogatepass bytewords exactly; malformed names MALFORMED, capacity BOUND. Native codepoint lists remain distinct without JSON escape normalization. Fresh entire fixed UTF8 Source table required.",
+        "id": "full-name-UTF8",
+        "parameters": {
+          "UTF8_cases": 5378,
+          "all_single_bytes_max": 255,
+          "all_single_bytes_min": 0,
+          "names": [
+            "empty",
+            "ASCII",
+            "embedded-NUL",
+            "multibyte",
+            "surrogatepass",
+            "overlong",
+            "continuation-leading",
+            "truncated",
+            "above-U10FFFF"
+          ],
+          "native_name_codepoint_sequences": [
+            [
+              65536
+            ],
+            [
+              55296,
+              56320
+            ],
+            [
+              128512
+            ],
+            [
+              55357,
+              56832
+            ]
+          ]
+        },
+        "recipe": "transport complete5378dependency words/mode controls plus all single-byte values through generic function-name path"
+      },
+      {
+        "expected": "Exactly equal complete native names reject; prefixes/different native names accepted. Canonical ref equality is complete only under validated unique heap and UTF8 invariant.",
+        "id": "function-name-uniqueness-and-prefixes",
+        "parameters": {
+          "ASCII_names": [
+            "",
+            "a",
+            "aa",
+            "ab",
+            "main",
+            "x"
+          ],
+          "names_reuse_existing_seed_byteword": true,
+          "native_codepoint_sequences": [
+            [
+              65536
+            ],
+            [
+              55296,
+              56320
+            ],
+            [
+              233
+            ]
+          ],
+          "positions": [
+            "adjacent",
+            "separated",
+            "first-vs-later"
+          ]
+        },
+        "recipe": "all pairs/triples over fixed complete native name vocabulary in later functions"
+      },
+      {
+        "expected": "Registers positive and below10000000; arity at most registers. Equality allowed, oversize/zero refused. No bool alias or finite machine word truncation.",
+        "id": "arity-register-boundaries",
+        "parameters": {
+          "arities_max": 4,
+          "arities_min": 0,
+          "first_function_arity_fixed": 1,
+          "registers": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            9999999,
+            10000000,
+            10000001
+          ]
+        },
+        "recipe": "all small arity/register pairs plus fixed high endpoints"
+      },
+      {
+        "expected": "Exactly0..12 admitted, full declared widths/lengths consumed. Reserved13..15 and malformed shapes fail; a different valid full image is distinguished from fixed-image binding.",
+        "id": "code-count-all13-opcode-widths",
+        "parameters": {
+          "code_lengths": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "opcodes_max": 15,
+          "opcodes_min": 0,
+          "record_changes": [
+            "missing-field",
+            "extra-natural",
+            "truncated-arglist",
+            "wrong-delimiter"
+          ],
+          "widths": [
+            3,
+            3,
+            4,
+            3,
+            3,
+            3,
+            4,
+            3,
+            3,
+            4,
+            2,
+            4,
+            2
+          ]
+        },
+        "recipe": "zero/nonempty code and complete record width/control for each opcode"
+      },
+      {
+        "expected": "Exactly each operand below caller register count; allowed aliases structurally accepted. Runtime alias semantics remain Root controller obligations.",
+        "id": "all-register-operand-boundaries",
+        "parameters": {
+          "alias_patterns": [
+            "distinct",
+            "all-equal",
+            "destination-is-source",
+            "two-source-alias"
+          ],
+          "operands": [
+            "0",
+            "last-valid",
+            "equal-bound",
+            "above-bound"
+          ],
+          "register_counts": [
+            1,
+            2,
+            3
+          ]
+        },
+        "recipe": "each actual register operand position for all13opcodes"
+      },
+      {
+        "expected": "Every complete global/local bound enforced, not remaining-count bound; empty constant pool admits no const index.",
+        "id": "constant-and-PC-operand-boundaries",
+        "parameters": {
+          "code_lengths": [
+            1,
+            2,
+            3
+          ],
+          "constant_counts": [
+            0,
+            1,
+            2
+          ],
+          "positions": [
+            "const-k",
+            "jump-PC",
+            "branch-falsePC",
+            "branch-truePC"
+          ],
+          "values": [
+            "0",
+            "last-valid",
+            "equal-bound",
+            "above-bound"
+          ]
+        },
+        "recipe": "const index and all jump/branch target positions"
+      },
+      {
+        "expected": "All target bounds checked at parse; every occurrence checked against actual completed target arity afterward. Recursive/forward equal-arity calls accepted, mismatches refused. No omission of unused/unreached functions/calls.",
+        "id": "all-call-target-arity-directions",
+        "parameters": {
+          "argc_changes": [
+            -1,
+            0,
+            1
+          ],
+          "directions": [
+            "earlier",
+            "self",
+            "later",
+            "first-main",
+            "last-function"
+          ],
+          "function_counts": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "target_arities": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "target_boundaries": [
+            "0",
+            "last-valid",
+            "equal-function-count",
+            "above-function-count"
+          ]
+        },
+        "recipe": "every source/target order including forward,self,backward with exact/under/over argc"
+      },
+      {
+        "expected": "Exact argc physical fields, order/multiplicity in argList, each caller-register bound; restored F6remaining/PCfullbound after call parse. No dropped duplicate occurrence.",
+        "id": "call-argument-order-multiplicity",
+        "parameters": {
+          "argument_lengths": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "invalid_position": [
+            "first",
+            "middle",
+            "last"
+          ],
+          "register_counts": [
+            1,
+            2,
+            3
+          ],
+          "sequences": [
+            "empty",
+            "distinct-forward",
+            "distinct-reverse",
+            "all-same",
+            "alternating"
+          ]
+        },
+        "recipe": "all fixed small argument index sequences including duplicates and zero-arity"
+      },
+      {
+        "expected": "Exact agreed pair/list schemas; nonempty canonical LSB bitlists with final1 except zero; constants are actual original refs. No raw natural mistaken for heapref, no hidden type projection.",
+        "id": "metadata-shapes-and-bitword-types",
+        "parameters": {
+          "fields": [
+            "wholeMeta",
+            "constantsList",
+            "functionsList",
+            "nameByteword",
+            "arityBitList",
+            "registerBitList",
+            "codeList",
+            "opcodeAtom",
+            "ordinaryOperandList",
+            "CALLargList"
+          ],
+          "natural_examples": [
+            0,
+            1,
+            2,
+            256,
+            257,
+            9999999
+          ]
+        },
+        "recipe": "independent full metadata decode/field census after all valid complete declarations"
+      },
+      {
+        "expected": "SeedIDs exact and canonical structural equality/atom-pair observations preserved; later numeric IDs may differ. Full all-opcode embedding remains proof obligation, never inferred from a successful finite control.",
+        "id": "seed-metadata-structural-embedding",
+        "parameters": {
+          "coincidences": [
+            "none",
+            "bitlist-seed",
+            "name-suffix-seed",
+            "instruction-seed",
+            "constant-list-seed",
+            "later-postfix-value",
+            "later-call-arg-cache"
+          ]
+        },
+        "recipe": "program metadata pairs coincide with existing/later value/call-cache pairs"
+      },
+      {
+        "expected": "Correct head at requested prefix; encountered nil/nonpair/out-of-range refuses. Unvisited improper suffix is outside caller proper-list invariant, not newly rejected by utility. HEAP/F6/PC7/D8/R4/FRAMES5/BUFFER14/OUTPUT15 payloads preserved, TEMP clobber explicit.",
+        "id": "proper-list-index-utility",
+        "parameters": {
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "list_lengths": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "tail_controls": [
+            "proper",
+            "nil-before-index",
+            "atom-before-index",
+            "improper-after-selected-item"
+          ]
+        },
+        "recipe": "all indices around finite list lengths and encountered improper-prefix controls"
+      },
+      {
+        "expected": "Manual numeric relation and exact proper bitlists; decrement0 refuses and high-zero trim exact; forward codec preserves TEMP and declared bands. word_less assumes canonical input; malformed controls apply to its caller gate, not an invented full utility validator.",
+        "id": "natural-utility-exhaustive-small",
+        "parameters": {
+          "malformed_words": [
+            "empty",
+            "00",
+            "10",
+            "highzero",
+            "punctuation"
+          ],
+          "naturals_max": 32,
+          "naturals_min": 0,
+          "operations": [
+            "word_less-all-pairs",
+            "decrement",
+            "nat_word_to_list"
+          ],
+          "word_lengths": [
+            1,
+            2,
+            8,
+            9,
+            17
+          ]
+        },
+        "recipe": "all fixed small canonical word values plus malformed/zero/carry controls"
+      },
+      {
+        "expected": "No stale bits/colon or stacklocals, exact declared clobbers; wholeMeta preserved across subsequent valueBOOT then moved to OUTPUT15 only afterward. No scientific joined run performed.",
+        "id": "parser-scratch-and-cursor-composition",
+        "parameters": {
+          "mixes": [
+            "short-long-short-name",
+            "zero-many-zero-callargs",
+            "mixed-opcode-widths",
+            "many-forward-calls",
+            "empty-constants-long-code"
+          ],
+          "success": [
+            "F6wholeMeta",
+            "PC0",
+            "D80",
+            "RETURNwholeMeta",
+            "R4colon",
+            "FRAMES5colon",
+            "BUFFER14colon",
+            "OUTPUT15colon"
+          ]
+        },
+        "recipe": "complete varied-length names/code/calls and full band census"
+      },
+      {
+        "expected": "P/F/C exact payloads; only immediate projected EOF succeeds. Unpinned postcolon payload lies outside explicit Root initialization and cannot be claimed rejected by scanning to #. Selected # is BOUND.",
+        "id": "immutable-input-and-exact-EOF",
+        "parameters": {
+          "EOF_controls": [
+            "immediate-fixed-colon",
+            "extra-binary",
+            "B-before-colon",
+            "other-delimiter",
+            "missing-colon",
+            "fence-before-colon",
+            "unpinned-postcolon-data"
+          ],
+          "bands": [
+            "PROGRAM",
+            "PUBLIC",
+            "CERTIFICATE"
+          ]
+        },
+        "recipe": "complete payload equality and controlled before/after-colon variants"
+      },
+      {
+        "expected": "BOUND2 with full raw failed prefix; no partial heap/metadata admission, repair, increased cap or guessed adequate width. Malformed3 is distinct from proofREJECT1.",
+        "id": "all-needed-write-fences",
+        "parameters": {
+          "no_actual_trace_exists": true,
+          "operations": [
+            "seed-append",
+            "binary-U",
+            "locals-push-pop",
+            "byte-buffer",
+            "name-cons",
+            "name-registry",
+            "bitlist-cons",
+            "argument-list",
+            "instruction-list",
+            "function-list",
+            "call-obligation",
+            "metadata-root",
+            "cleanup"
+          ]
+        },
+        "recipe": "every actually needed selected-band output cell from future complete traces"
+      },
+      {
+        "expected": "Exact primary/traceback/full available owners, genuine Root firstfault dominance, no class-based ownership laundering, no replay/retry/completed prefix or silent Source narrowing. All cases unrun.",
+        "id": "construction-foreign-and-owner-custody",
+        "parameters": {
+          "declaration_bool_controls": [
+            "out",
+            "invalid",
+            "word-band",
+            "fixed-width-count"
+          ],
+          "foreign": [
+            "RuntimeError",
+            "ValueError",
+            "StopIteration",
+            "unowned-public-DeclarationError",
+            "unowned-public-ConstructionLimit"
+          ],
+          "phases": [
+            "entry",
+            "seed-body",
+            "constant-body",
+            "opcode-allocation",
+            "UTF8-linkage",
+            "forward-call-body",
+            "final-check",
+            "lowerer-closure"
+          ],
+          "quotas": [
+            "work",
+            "microstates",
+            "states",
+            "symbols",
+            "transitions",
+            "undefined_slots"
+          ]
+        },
+        "recipe": "exact foreign and genuine Root firstfault at every static construction phase"
+      }
+    ],
+    "fit": false,
+    "fixtures": 0,
+    "full_BOOT": false,
+    "full_VM": false,
+    "generators": 0,
+    "inheritance": "Retain the complete original program/image, native tagged value/UTF8, all69function/full13opcode and original15normal33legacy28newgroup55variant research banks at their exact saved pins. The linked-values prior bank (11component/6gap records plus23new cohorts) and entire5378UTF8dependency population remain separate complete inherited obligations; these additions are not a replacement or a selected theorem/fixture language.",
+    "limits": {
+      "Root_callbacks": 400000000,
+      "each_log_header_bytes": 4194304,
+      "memory_bytes": 1073741824,
+      "outer_reserved_bytes": 9437184,
+      "positive_seconds": 180,
+      "stored_full_expanded_physical_gate_bytes": 134217728,
+      "terminal_seconds": 210
+    },
+    "no_cap_raise_or_old_grant_reuse": true,
+    "open_whole_obligations": [
+      "Root physical layout/public/program/free-selector/postcolon initialization pins",
+      "entire69function Source/compiled-image attribution and public licensing",
+      "Root full13opcode controller and exact root1 acceptance",
+      "structural heap embedding including metadata/call cache",
+      "complete Source/banks/fresh whole generation/census/resource/expansion/custody qualification",
+      "rawJSON/native/codepoint domain correspondence",
+      "fixed translation-only Wang/point acceptance and matched unknown-proof search"
+    ],
+    "partial_rule": "All .partial are raw bytes/len/hash only; never open/decode/parse/project/complete/admit. No subject/helper/compiler/checker/fixture/simulator/sizer/probe calls/imports outside a fresh separately reviewed Root once actual.",
+    "runtime_qualified": false,
+    "schema": "immutable-program-intake-prospective-whole-bank-v1",
+    "scientific_calls": 0,
+    "simulators": 0,
+    "sizing_probes": 0,
+    "status": "DECLARATIVE_ALL_UNRUN_NO_ACTUAL_AUTHORITY"
+  }
+}
