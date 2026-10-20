@@ -1,0 +1,620 @@
+{
+  "archive": {
+    "bytes": 314967,
+    "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/publication/marking-gadgets-evidence.tar.gz",
+    "sha256": "4bc64d556165d0c29081a7ee7eff65022d008b2a0e518e83064cb2152c3a348a"
+  },
+  "archive_members": 70,
+  "archive_members_verified": true,
+  "claimed_authority": "Finite declared component only; no learned redundancy/search/scheduler/fullFOL/performance/plane theorem authority.",
+  "grant_delta_review": {
+    "bytes": 9696,
+    "path": "/private/tmp/gcts-geometric-nogood-review-20261019/typed-marking-final-grant-delta-review-v1.json",
+    "sha256": "7a70b8af02ff3193be8edb96df537e0948fbf2d76556b24986433920431ddf19"
+  },
+  "no_overview_index_read_or_edit": true,
+  "outputs": {
+    "marking-gadgets-data.json": {
+      "bytes": 3603943,
+      "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/publication/marking-gadgets-data.json",
+      "sha256": "4dbeb4a748bb43ab29d3b87e50f055616d467fa78cb52ccac63fe3b2733a4d24"
+    },
+    "marking-gadgets-summary.json": {
+      "bytes": 5067,
+      "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/publication/marking-gadgets-summary.json",
+      "sha256": "d6981a49e9305be5ca11aa88300e7287af042d5c5222047cfa0cc3ddbab5fda9"
+    },
+    "marking-gadgets.html": {
+      "bytes": 17679,
+      "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/publication/marking-gadgets.html",
+      "sha256": "1104f5ad6d349529e9747b7a0ccb50798b83b0e9aba953e1a6a3181943827298"
+    },
+    "reader.html": {
+      "bytes": 100439,
+      "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/publication/reader.html",
+      "sha256": "d880ad2d223c882c32ceb57c3e4b7336cc1c568f95b88e280b7f886240c59fdc"
+    }
+  },
+  "pathmap": {
+    "members": [
+      {
+        "member": "evidence/000-ROOT-all-idle-fresh-barrier-v1.json",
+        "original": {
+          "bytes": 1119,
+          "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/ROOT-all-idle-fresh-barrier-v1.json",
+          "sha256": "675d9a0f89ed8afef1eb4cf37ca4724f8e4034a7305324f2349649302c8f1d6f"
+        }
+      },
+      {
+        "member": "evidence/001-ROOT-finite-component-adoption-v1.json",
+        "original": {
+          "bytes": 771,
+          "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/ROOT-finite-component-adoption-v1.json",
+          "sha256": "ad2103cac863f6cbf4bc04d5986d26c92750a14e3a2ed4c1ceb275ab6a05c5ae"
+        }
+      },
+      {
+        "member": "evidence/002-ROOT-grant-retirement-v1.json",
+        "original": {
+          "bytes": 1753,
+          "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/ROOT-grant-retirement-v1.json",
+          "sha256": "f4d7a334a272d307e6170b960d0c05fae1b0305632bfd582818ad3ce0790a8ac"
+        }
+      },
+      {
+        "member": "evidence/003-ROOT-previous-turn-assessment-v1.json",
+        "original": {
+          "bytes": 874,
+          "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/ROOT-previous-turn-assessment-v1.json",
+          "sha256": "78b1b53ccf08a0271a61036502a0d45335207d95ef34dd4831766f6327aeae91"
+        }
+      },
+      {
+        "member": "evidence/004-Source-only-offer-v1.json",
+        "original": {
+          "bytes": 4532,
+          "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/Source-only-offer-v1.json",
+          "sha256": "0b79f56b76b60beaf1f5b93a123fc66d85c5155017493ec27dd967b8b89289f9"
+        }
+      },
+      {
+        "member": "evidence/005-author_input_cohort_v1.py",
+        "original": {
+          "bytes": 5277,
+          "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/author_input_cohort_v1.py",
+          "sha256": "625c6782ac15fcde94f7db9eda974b1b8876d914857d96f8535dba17051ad0fc"
+        }
+      },
+      {
+        "member": "evidence/006-author_prospective_plan_v1.py",
+        "original": {
+          "bytes": 8615,
+          "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/author_prospective_plan_v1.py",
+          "sha256": "fc868d2765e0d568bbe540988a44afb56ce9d9e1eede808649ee4f92b511310e"
+        }
+      },
+      {
+        "member": "evidence/007-author_root_grant_v1.py",
+        "original": {
+          "bytes": 1544,
+          "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/author_root_grant_v1.py",
+          "sha256": "8fe58f935b8a4bbaf251e59c6234cebfdcde65ead5f659e664d855d426be02af"
+        }
+      },
+      {
+        "member": "evidence/008-authorization-false-v1.json",
+        "original": {
+          "bytes": 351,
+          "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/authorization-false-v1.json",
+          "sha256": "ccc0e4c445b368bc171d1ffc85862a3db168d4a0210ab13908228c996a80750e"
+        }
+      },
+      {
+        "member": "evidence/009-authorization-once-v1.json",
+        "original": {
+          "bytes": 816,
+          "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/authorization-once-v1.json",
+          "sha256": "11056c28c36784f3d3dcfb6f8950ba51fc210a55d5839342464d5fbfa21bb2b0"
+        }
+      },
+      {
+        "member": "evidence/010-basic-tiling-algorithm-current.md",
+        "original": {
+          "bytes": 36240,
+          "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/basic-tiling-algorithm-current.md",
+          "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+        }
+      },
+      {
+        "member": "evidence/011-build_archive_v1.py",
+        "original": {
+          "bytes": 3797,
+          "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/build_archive_v1.py",
+          "sha256": "34961cac2b1d42fe3fb98bdedc00119b039a12a7d05da939b3d3ade00c7e0ff1"
+        }
+      },
+      {
+        "member": "evidence/012-build_report_v1.py",
+        "original": {
+          "bytes": 9337,
+          "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/build_report_v1.py",
+          "sha256": "944f4acc1a7f41d1bae990d4d38df0b95a9ed4fbe46ce247070b58631d9baece"
+        }
+      },
+      {
+        "member": "evidence/013-cohort-inputs-v1.json",
+        "original": {
+          "bytes": 234761,
+          "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/cohort-inputs-v1.json",
+          "sha256": "155280e0539b36b9a7afc9e885edcf12fac8c9fe24ec5ec74ea040e5506782ec"
+        }
+      },
+      {
+        "member": "evidence/014-declaration-v1.json",
+        "original": {
+          "bytes": 11980,
+          "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/declaration-v1.json",
+          "sha256": "19a841e07ce43cfb52fc2d27dd2e88e5aa08f6f5a92dc53610fc010428214b89"
+        }
+      },
+      {
+        "member": "evidence/015-freeze_worker_source_v1.py",
+        "original": {
+          "bytes": 2004,
+          "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/freeze_worker_source_v1.py",
+          "sha256": "0e5fda0aac6b068665f2f0bf9757edaed09ebabf509589bceb6da28a9d2737f3"
+        }
+      },
+      {
+        "member": "evidence/016-marking-gadgets-template.html",
+        "original": {
+          "bytes": 15781,
+          "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/marking-gadgets-template.html",
+          "sha256": "23ad948617b1be841bb32dd0266bb841a71a5ca1455b3a6bc7bdfe57cd3711ad"
+        }
+      },
+      {
+        "member": "evidence/017-observe_marking_qualification_once_v1.py",
+        "original": {
+          "bytes": 5506,
+          "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/observe_marking_qualification_once_v1.py",
+          "sha256": "ab210fca4716861f1dda5cc26be1ba55126c7ae46747f1a40253f1e6775a2fd5"
+        }
+      },
+      {
+        "member": "evidence/018-physical_wang_adapter_v1.py",
+        "original": {
+          "bytes": 9421,
+          "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/physical_wang_adapter_v1.py",
+          "sha256": "5e85cd213960632d7b1cfc6632d5799098b76e59f282443be5a3ea603cdffbac"
+        }
+      },
+      {
+        "member": "evidence/019-plan-authorized-v1.json",
+        "original": {
+          "bytes": 2986,
+          "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/plan-authorized-v1.json",
+          "sha256": "cc1ef4710c5692ad30e738fe0ca435740a257d6d64f1afe2b7d15cb257cbe2c9"
+        }
+      },
+      {
+        "member": "evidence/020-plan-false-v1.json",
+        "original": {
+          "bytes": 2987,
+          "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/plan-false-v1.json",
+          "sha256": "f54aa744f9288eca5640fce0f97b4bc6834ecd483af31269fdc8f300efef72ac"
+        }
+      },
+      {
+        "member": "evidence/021-prepare_outer_sources_v1.py",
+        "original": {
+          "bytes": 3967,
+          "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/prepare_outer_sources_v1.py",
+          "sha256": "65eb772a984f8a8e0e2a11492b61deb1ff0e8a25078ccc47c14be64cf90f3c60"
+        }
+      },
+      {
+        "member": "evidence/022-prepare_worker_source_v1.py",
+        "original": {
+          "bytes": 1910,
+          "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/prepare_worker_source_v1.py",
+          "sha256": "7b80d78e69b6b02afcd1b2235e4ba0e171d88816a60e5e1bf2db01110d515761"
+        }
+      },
+      {
+        "member": "evidence/023-qualify_marking_worker_DRAFT_v1.py",
+        "original": {
+          "bytes": 32801,
+          "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/qualify_marking_worker_DRAFT_v1.py",
+          "sha256": "45ee4778c3518804740a5f4f0aa8c2cdc3ab7d71885d12cfb055dba638caf89b"
+        }
+      },
+      {
+        "member": "evidence/024-qualify_marking_worker_v1.py",
+        "original": {
+          "bytes": 32842,
+          "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/qualify_marking_worker_v1.py",
+          "sha256": "7e792c80e26ba9759b7ea86782f76f93b5bab70326a641197658086c4ec99f8c"
+        }
+      },
+      {
+        "member": "evidence/025-run_marking_qualification_once_v1.py",
+        "original": {
+          "bytes": 31737,
+          "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/run_marking_qualification_once_v1.py",
+          "sha256": "d16c3d5ea7d655665202788800c423a5582cde74b4399f56df108faadf13b76c"
+        }
+      },
+      {
+        "member": "evidence/026-runtime-closure-v1.json",
+        "original": {
+          "bytes": 8215,
+          "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/runtime-closure-v1.json",
+          "sha256": "b1e8a55ce1db3a7661b3ae353bf6345ad9a90df47e04cc3ab01940574e8276cb"
+        }
+      },
+      {
+        "member": "evidence/027-worker-source-freeze-v1.json",
+        "original": {
+          "bytes": 787,
+          "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/worker-source-freeze-v1.json",
+          "sha256": "fb7d0288e6eca3959370b9c9d9aa6fd782adf83862dde9c46c6f8dc7491a892b"
+        }
+      },
+      {
+        "member": "evidence/028-worker_body_v1.py.txt",
+        "original": {
+          "bytes": 15148,
+          "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/worker_body_v1.py.txt",
+          "sha256": "18f4da1080a7343a5bac266890c42ae54c050a222696263bbd2e1da90ca9391a"
+        }
+      },
+      {
+        "member": "evidence/029-worker_main_v1.py.txt",
+        "original": {
+          "bytes": 8593,
+          "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/worker_main_v1.py.txt",
+          "sha256": "7c231160f02b691081a4e264bc59a098d7f3b76a164f6f21b17107da9dff4aa7"
+        }
+      },
+      {
+        "member": "evidence/030-CONSUMED.json",
+        "original": {
+          "bytes": 535,
+          "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/actual-component-v1/CONSUMED.json",
+          "sha256": "fa35eca1c02675cc51491a080529ef74ffb91ca22147f9242a20fad960592e34"
+        }
+      },
+      {
+        "member": "evidence/031-WORKER_CONSUMED.json",
+        "original": {
+          "bytes": 274,
+          "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/actual-component-v1/WORKER_CONSUMED.json",
+          "sha256": "5fded97fa7b0964e152d0ae144fccc9b12b8732df0b5c1799a2a03c82ee56970"
+        }
+      },
+      {
+        "member": "evidence/032-canonical-finite-marking-qualification.json",
+        "original": {
+          "bytes": 4559832,
+          "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/actual-component-v1/canonical-finite-marking-qualification.json",
+          "sha256": "831aa981709ba2bf75dd009849e0cb6171106377a871925445d566f4da9e0472"
+        }
+      },
+      {
+        "member": "evidence/033-result.json",
+        "original": {
+          "bytes": 57020,
+          "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/actual-component-v1/result.json",
+          "sha256": "1412fb1fae8cc34b8c72de7d5097cafa89dfc3590431f48a470e81c4c75d9845"
+        }
+      },
+      {
+        "member": "evidence/034-runner-receipt.json",
+        "original": {
+          "bytes": 5197,
+          "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/actual-component-v1/runner-receipt.json",
+          "sha256": "dbcdd1a28f97838d0f4db7178549fa0f2a037fd93c6f4c3e74c49d191dcf1fe8"
+        }
+      },
+      {
+        "member": "evidence/035-stderr.bin",
+        "original": {
+          "bytes": 0,
+          "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/actual-component-v1/stderr.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "member": "evidence/036-stdout.bin",
+        "original": {
+          "bytes": 0,
+          "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/actual-component-v1/stdout.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "member": "evidence/037-worker-receipt.json",
+        "original": {
+          "bytes": 2160,
+          "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/actual-component-v1/worker-receipt.json",
+          "sha256": "0f866d7544de909848a60d5543cb42c8b59a988e5d6bbfee9eccb39aa4bd8409"
+        }
+      },
+      {
+        "member": "evidence/038-CONSUMED.json",
+        "original": {
+          "bytes": 291,
+          "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/plan-authorized-v1-terminal-observation/CONSUMED.json",
+          "sha256": "f2bfea1c8ccda15868fe088e04af826223d30ef0472f2c1931bde924e040b671"
+        }
+      },
+      {
+        "member": "evidence/039-stderr.bin",
+        "original": {
+          "bytes": 0,
+          "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/plan-authorized-v1-terminal-observation/stderr.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "member": "evidence/040-stdout.bin",
+        "original": {
+          "bytes": 164,
+          "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/plan-authorized-v1-terminal-observation/stdout.bin",
+          "sha256": "97874b7bc29bb7f7812546780a6fb8708d7e8a842527ccfe48bdcd7188188cd0"
+        }
+      },
+      {
+        "member": "evidence/041-terminal.json",
+        "original": {
+          "bytes": 1584,
+          "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/plan-authorized-v1-terminal-observation/terminal.json",
+          "sha256": "cc12322894bcf4c041783a2406d832fddf445741834ee1b362f2e23ec3680590"
+        }
+      },
+      {
+        "member": "evidence/042-API-v1.json",
+        "original": {
+          "bytes": 5496,
+          "path": "/private/tmp/gcts-unit-center-receptor-library-20261019/API-v1.json",
+          "sha256": "6f04d46afeaf1e0f025f5344cae960fd8b6343dee9b1b175f34faae10af79364"
+        }
+      },
+      {
+        "member": "evidence/043-Source-contract-v1.json",
+        "original": {
+          "bytes": 2824,
+          "path": "/private/tmp/gcts-unit-center-receptor-library-20261019/Source-contract-v1.json",
+          "sha256": "ab4045a8c31c15bdaba5c8fbae9805a6333108bd22a917c1be1fed61f0a4944d"
+        }
+      },
+      {
+        "member": "evidence/044-author-static-audit-v1.json",
+        "original": {
+          "bytes": 1583,
+          "path": "/private/tmp/gcts-unit-center-receptor-library-20261019/author-static-audit-v1.json",
+          "sha256": "bc5d944ff1fbc531ddd493373858261239f76d9ae270aa9972dda1e05b714755"
+        }
+      },
+      {
+        "member": "evidence/045-freeze_source_packet_v1.py",
+        "original": {
+          "bytes": 12609,
+          "path": "/private/tmp/gcts-unit-center-receptor-library-20261019/freeze_source_packet_v1.py",
+          "sha256": "0f0625b20c7bd81816c09ace6f60c83a389334476335c56f388a723a3ade77da"
+        }
+      },
+      {
+        "member": "evidence/046-handoff-v1.json",
+        "original": {
+          "bytes": 1925,
+          "path": "/private/tmp/gcts-unit-center-receptor-library-20261019/handoff-v1.json",
+          "sha256": "fe98ced9d4415833dd7743a41ce867a89174f378d9860aef1fa5d88c3df259bf"
+        }
+      },
+      {
+        "member": "evidence/047-layout-and-correspondence-v1.json",
+        "original": {
+          "bytes": 3773,
+          "path": "/private/tmp/gcts-unit-center-receptor-library-20261019/layout-and-correspondence-v1.json",
+          "sha256": "ca33158a133052b29a26bb17aebf0b035c6ccf482b31c483c7421c2956aa041a"
+        }
+      },
+      {
+        "member": "evidence/048-unit_center_marking_compiler_v1.py",
+        "original": {
+          "bytes": 20653,
+          "path": "/private/tmp/gcts-unit-center-receptor-library-20261019/unit_center_marking_compiler_v1.py",
+          "sha256": "9a07bd4afbfd7b4c95edd8d9e2a3ea489a025a53e1b18014ca5b429d09291eb9"
+        }
+      },
+      {
+        "member": "evidence/049-API-v1.json",
+        "original": {
+          "bytes": 6233,
+          "path": "/private/tmp/gcts-finite-marking-verifier-20261019-v1/API-v1.json",
+          "sha256": "72640d0ef9af4159e51f537f698e2cd59a3b75b5c10ba37a2f9b05b2c0af8b66"
+        }
+      },
+      {
+        "member": "evidence/050-Source-proof-obligations-v1.json",
+        "original": {
+          "bytes": 4043,
+          "path": "/private/tmp/gcts-finite-marking-verifier-20261019-v1/Source-proof-obligations-v1.json",
+          "sha256": "4eb47dfcf8b7849ed1c53fb05b6a68cd7498827b80305a138d3480d953a2f07f"
+        }
+      },
+      {
+        "member": "evidence/051-author-static-audit-v1.json",
+        "original": {
+          "bytes": 1431,
+          "path": "/private/tmp/gcts-finite-marking-verifier-20261019-v1/author-static-audit-v1.json",
+          "sha256": "4d74ab8cc1d1127075b0864bb397e1f2b780827da406ef2febcaf05d8137f0a9"
+        }
+      },
+      {
+        "member": "evidence/052-basic-tiling-algorithm-b820acaf.md",
+        "original": {
+          "bytes": 36240,
+          "path": "/private/tmp/gcts-finite-marking-verifier-20261019-v1/basic-tiling-algorithm-b820acaf.md",
+          "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+        }
+      },
+      {
+        "member": "evidence/053-finite-cohort-specification-v1.json",
+        "original": {
+          "bytes": 7079,
+          "path": "/private/tmp/gcts-finite-marking-verifier-20261019-v1/finite-cohort-specification-v1.json",
+          "sha256": "57fca6ab726c5d4ce96e8c1e912139066ba6bee91bdcd0a5cac5296aaa528a6a"
+        }
+      },
+      {
+        "member": "evidence/054-finite_marking_verifier_v1.py",
+        "original": {
+          "bytes": 24281,
+          "path": "/private/tmp/gcts-finite-marking-verifier-20261019-v1/finite_marking_verifier_v1.py",
+          "sha256": "eaee3b1681fcd8c5783d82c40f4225271a1a5ed350d6c8d7ac3baed8c7153b8f"
+        }
+      },
+      {
+        "member": "evidence/055-handoff-v1.json",
+        "original": {
+          "bytes": 2119,
+          "path": "/private/tmp/gcts-finite-marking-verifier-20261019-v1/handoff-v1.json",
+          "sha256": "9c2e713c27a9178ea9bff703f6105cb0c0dbacd008871c66982b1203baa2004f"
+        }
+      },
+      {
+        "member": "evidence/056-input-context-v1.json",
+        "original": {
+          "bytes": 737,
+          "path": "/private/tmp/gcts-finite-marking-verifier-20261019-v1/input-context-v1.json",
+          "sha256": "82cd35ec55d02241e2431fe9e6e4a707b133b711640cc9f69e5c0ff034d81424"
+        }
+      },
+      {
+        "member": "evidence/057-basic-tiling-algorithm-isolated-current.md",
+        "original": {
+          "bytes": 36240,
+          "path": "/private/tmp/gcts-geometric-nogood-review-20261019/basic-tiling-algorithm-isolated-current.md",
+          "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+        }
+      },
+      {
+        "member": "evidence/058-freeze_adapter_review_v1.py",
+        "original": {
+          "bytes": 9036,
+          "path": "/private/tmp/gcts-geometric-nogood-review-20261019/freeze_adapter_review_v1.py",
+          "sha256": "69e5cd6a5a24b8e18024d2483000f9cab8a178b5795e27b7b478aedd70ee4e61"
+        }
+      },
+      {
+        "member": "evidence/059-freeze_component_review_v1.py",
+        "original": {
+          "bytes": 22655,
+          "path": "/private/tmp/gcts-geometric-nogood-review-20261019/freeze_component_review_v1.py",
+          "sha256": "03bee339bfff7ed246a13b9048dad7de81b52da8cc0bf974e62022bfced1cb74"
+        }
+      },
+      {
+        "member": "evidence/060-freeze_marking_grant_delta_v1.py",
+        "original": {
+          "bytes": 6006,
+          "path": "/private/tmp/gcts-geometric-nogood-review-20261019/freeze_marking_grant_delta_v1.py",
+          "sha256": "e881335a13697c9ed9e97b93e7992953ac16635407a49f526fe6ed166bbfbb13"
+        }
+      },
+      {
+        "member": "evidence/061-freeze_marking_saved_review_v1.py",
+        "original": {
+          "bytes": 27041,
+          "path": "/private/tmp/gcts-geometric-nogood-review-20261019/freeze_marking_saved_review_v1.py",
+          "sha256": "aeea9389584e023361ce5fed9429812db24550f88170f05cb4d183fbf49696b2"
+        }
+      },
+      {
+        "member": "evidence/062-freeze_obligations_v1.py",
+        "original": {
+          "bytes": 12313,
+          "path": "/private/tmp/gcts-geometric-nogood-review-20261019/freeze_obligations_v1.py",
+          "sha256": "74f630e198a8ddcbb91429ec7a1d0f255a781e98cdc929de6104033fff46cb25"
+        }
+      },
+      {
+        "member": "evidence/063-typed-component-qualification-obligations-v1.json",
+        "original": {
+          "bytes": 12447,
+          "path": "/private/tmp/gcts-geometric-nogood-review-20261019/typed-component-qualification-obligations-v1.json",
+          "sha256": "dfb938fb49a6cac1a3d6b3da53f1274152ccd51acd0f0e5f0777e19d563f8f13"
+        }
+      },
+      {
+        "member": "evidence/064-typed-marking-component-Source-prospective-review-v1.json",
+        "original": {
+          "bytes": 25170,
+          "path": "/private/tmp/gcts-geometric-nogood-review-20261019/typed-marking-component-Source-prospective-review-v1.json",
+          "sha256": "23998c9237bac994523dba67146ef44e933a5537b043ea65790a2f08d99648ee"
+        }
+      },
+      {
+        "member": "evidence/065-typed-marking-final-grant-delta-review-v1.json",
+        "original": {
+          "bytes": 9696,
+          "path": "/private/tmp/gcts-geometric-nogood-review-20261019/typed-marking-final-grant-delta-review-v1.json",
+          "sha256": "7a70b8af02ff3193be8edb96df537e0948fbf2d76556b24986433920431ddf19"
+        }
+      },
+      {
+        "member": "evidence/066-typed-marking-saved-actual-review-v1.json",
+        "original": {
+          "bytes": 204919,
+          "path": "/private/tmp/gcts-geometric-nogood-review-20261019/typed-marking-saved-actual-review-v1.json",
+          "sha256": "63e2be3fc2f23521148e67a5a7daf19db71f2b67ad9a42dff7231694ee8f37f2"
+        }
+      },
+      {
+        "member": "evidence/067-typed-physical-wang-adapter-Source-review-v1.json",
+        "original": {
+          "bytes": 7931,
+          "path": "/private/tmp/gcts-geometric-nogood-review-20261019/typed-physical-wang-adapter-Source-review-v1.json",
+          "sha256": "1dea83a406b25772fd47be64db5dd12236588417c38b10333478bb0a0f7e329f"
+        }
+      },
+      {
+        "member": "evidence/068-tape_tree_machine.py",
+        "original": {
+          "bytes": 19188,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/tape_tree_machine.py",
+          "sha256": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f"
+        }
+      }
+    ],
+    "schema": "ROOT-marking-archive-pathmap-v1",
+    "scope": "Exact raw Sources/ordinary inputs/once actual/independent scopes. No interpreter, credentials, private overview, primary checkout state or opaque program."
+  },
+  "publication_review": "Separate detached sidecar after this manifest, avoiding a recursive self-hash.",
+  "raw_evidence_bytes": 5647177,
+  "raw_evidence_members": 69,
+  "reader_append": {
+    "bytes": 1384,
+    "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/publication/reader-append-custody.json",
+    "sha256": "529778ec94e7a1d8363327b2aa7a299050a78b611991c01b975efb5911b37916"
+  },
+  "saved_review": {
+    "bytes": 204919,
+    "path": "/private/tmp/gcts-geometric-nogood-review-20261019/typed-marking-saved-actual-review-v1.json",
+    "sha256": "63e2be3fc2f23521148e67a5a7daf19db71f2b67ad9a42dff7231694ee8f37f2"
+  },
+  "schema": "ROOT-marking-publication-manifest-v1",
+  "separate_adapter_Source_review": {
+    "bytes": 7931,
+    "path": "/private/tmp/gcts-geometric-nogood-review-20261019/typed-physical-wang-adapter-Source-review-v1.json",
+    "sha256": "1dea83a406b25772fd47be64db5dd12236588417c38b10333478bb0a0f7e329f"
+  },
+  "source_review": {
+    "bytes": 25170,
+    "path": "/private/tmp/gcts-geometric-nogood-review-20261019/typed-marking-component-Source-prospective-review-v1.json",
+    "sha256": "23998c9237bac994523dba67146ef44e933a5537b043ea65790a2f08d99648ee"
+  }
+}

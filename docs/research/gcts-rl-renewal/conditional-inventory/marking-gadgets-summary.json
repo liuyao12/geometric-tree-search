@@ -1,0 +1,122 @@
+{
+  "GCTS_advantage_established": false,
+  "base_assignments": 697,
+  "call_completed": {
+    "compiler.GadgetLimit": 1,
+    "compiler.compile_marking_gadget": 163,
+    "compiler.extend": 394,
+    "compiler.project": 394,
+    "verifier.is_own_invalid": 4218,
+    "verifier.is_own_limit": 1,
+    "verifier.verify_extension": 685,
+    "verifier.verify_tiling": 1484,
+    "verifier.verify_translation": 162
+  },
+  "call_raised": {
+    "compiler.compile_marking_gadget": 9,
+    "compiler.extend": 303,
+    "verifier.verify_tiling": 4217,
+    "verifier.verify_translation": 3
+  },
+  "call_started": {
+    "compiler.GadgetLimit": 1,
+    "compiler.compile_marking_gadget": 172,
+    "compiler.extend": 697,
+    "compiler.project": 394,
+    "verifier.is_own_invalid": 4218,
+    "verifier.is_own_limit": 1,
+    "verifier.verify_extension": 685,
+    "verifier.verify_tiling": 5701,
+    "verifier.verify_translation": 165
+  },
+  "compiler_API_entries": 1264,
+  "conservative_physical_bytes": 14057005,
+  "cost_aggregate_unexported": "unavailable; no fabricated zero",
+  "diagnostics": 15,
+  "diagnostics_all_passed": true,
+  "dispositions": {
+    "FORBIDDEN_BY_DECLARED_CLAUSE": 291,
+    "INVALID_ORIGINAL_ASSIGNMENT": 12,
+    "UNIQUE_ALLOWED_EXTENSION": 394
+  },
+  "expanded_logical_bytes": 4616852,
+  "external_terminal_gate": true,
+  "full_palette_artifacts": 12,
+  "full_palette_assignments": 4214,
+  "full_pipeline_qualified": false,
+  "grant_delta_review": {
+    "bytes": 9696,
+    "path": "/private/tmp/gcts-geometric-nogood-review-20261019/typed-marking-final-grant-delta-review-v1.json",
+    "sha256": "7a70b8af02ff3193be8edb96df537e0948fbf2d76556b24986433920431ddf19"
+  },
+  "learned_markings": false,
+  "limits": {
+    "expanded_bytes": 134217728,
+    "memory_bytes": 1073741824,
+    "observer_bytes": 1048576,
+    "overall_seconds": 210,
+    "result_bytes": 134217728,
+    "runner_metadata_bytes": 8388608,
+    "stderr_bytes": 4194304,
+    "stdout_bytes": 4194304,
+    "work_seconds": 180,
+    "worker_receipt_bytes": 4194304
+  },
+  "logical_bytes": 4616852,
+  "mathematical_proof_accepted": false,
+  "outcome": "COMPLETE_FINITE_COMPONENT_CANDIDATE",
+  "owned_group_absent": true,
+  "positive_complete_result_seconds": 17.39698025,
+  "proof_search": false,
+  "raw_packet": {
+    "bytes": 4559832,
+    "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/actual-component-v1/canonical-finite-marking-qualification.json",
+    "sha256": "831aa981709ba2bf75dd009849e0cb6171106377a871925445d566f4da9e0472"
+  },
+  "reader_data": {
+    "bytes": 3603943,
+    "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/publication/marking-gadgets-data.json",
+    "sha256": "4dbeb4a748bb43ab29d3b87e50f055616d467fa78cb52ccac63fe3b2733a4d24"
+  },
+  "regular_logs_closed": true,
+  "remaining": [
+    "Supplied clauses are problem-defining, no redundancy certificate.",
+    "No full frontier/candidate graph, generation scheduler or rollback engine qualification.",
+    "No learned marking, trained RL, discovered theorem, proof-search gain, universal fixed palette or plane tiling proof.",
+    "15 diagnostics are selected controls, not all fault/interruption classes.",
+    "Separate physical table adapter remains Source-only and was not loaded by this actual.",
+    "All earlier whole680+55 deadline negatives remain failed."
+  ],
+  "root_callback_count": 16511575,
+  "runner_clock_terminal_seconds": 17.447299458,
+  "runner_receipt": {
+    "bytes": 5197,
+    "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/actual-component-v1/runner-receipt.json",
+    "sha256": "dbcdd1a28f97838d0f4db7178549fa0f2a037fd93c6f4c3e74c49d191dcf1fe8"
+  },
+  "runner_resource_candidate_accepted": true,
+  "saved_review": {
+    "bytes": 204919,
+    "path": "/private/tmp/gcts-geometric-nogood-review-20261019/typed-marking-saved-actual-review-v1.json",
+    "sha256": "63e2be3fc2f23521148e67a5a7daf19db71f2b67ad9a42dff7231694ee8f37f2"
+  },
+  "schema": "ROOT-saved-marking-component-summary-v1",
+  "scope": "Finite nonempty even-origin unit-center translations, general finite m channels/offsets/assigned0; full palette at all origins. Twelve small artifacts exhaust expanded assignments; other uniqueness is independent linear prefix correspondence.",
+  "source_review": {
+    "bytes": 25170,
+    "path": "/private/tmp/gcts-geometric-nogood-review-20261019/typed-marking-component-Source-prospective-review-v1.json",
+    "sha256": "23998c9237bac994523dba67146ef44e933a5537b043ea65790a2f08d99648ee"
+  },
+  "terminal": {
+    "bytes": 1584,
+    "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/plan-authorized-v1-terminal-observation/terminal.json",
+    "sha256": "cc12322894bcf4c041783a2406d832fddf445741834ee1b362f2e23ec3680590"
+  },
+  "trained_RL": false,
+  "translations": 162,
+  "verifier_API_entries": 10770,
+  "work_units": "Root callbacks cumulative; private component work separate per call; not CPU steps or prior Arena units.",
+  "worker_known_exit_seconds": 17.393982167,
+  "worker_peak_bytes": 46170112,
+  "worker_reaped": true
+}
