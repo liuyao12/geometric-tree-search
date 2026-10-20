@@ -1,0 +1,515 @@
+{
+  "all_decompressed_member_hashes_verified": true,
+  "archive_member_count": 78,
+  "archive_members": [
+    {
+      "archive_member": "Root/basic-tiling-algorithm-current.md",
+      "bytes": 36240,
+      "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/basic-tiling-algorithm-current.md",
+      "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+    },
+    {
+      "archive_member": "Root/cohort-inputs-v1.json",
+      "bytes": 19278,
+      "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/cohort-inputs-v1.json",
+      "sha256": "73f8425e274e075293a858bf7d3ea4d3b6bcfc6f0bc95c3bdca9e90ac81a92a9"
+    },
+    {
+      "archive_member": "Root/qualify_certified_point_search_worker_v1.py",
+      "bytes": 42227,
+      "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/qualify_certified_point_search_worker_v1.py",
+      "sha256": "fbb7194ac95c677c09d802285973d6f2f3187a5571f8a4c45ac23d385ecf734f"
+    },
+    {
+      "archive_member": "Root/run_certified_point_search_once_v1.py",
+      "bytes": 32053,
+      "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/run_certified_point_search_once_v1.py",
+      "sha256": "1fb0fcf870bf509a274576e37292492eb06c6db857ee5fa9c7f1255c84bff7d8"
+    },
+    {
+      "archive_member": "Root/observe_certified_point_search_once_v1.py",
+      "bytes": 5522,
+      "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/observe_certified_point_search_once_v1.py",
+      "sha256": "9aae2c7ce2dacfc3c9b155c56a5f8824718e4a1f96d25e71356d8bec57930cbf"
+    },
+    {
+      "archive_member": "Root/author_inputs_v1.py",
+      "bytes": 4109,
+      "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/author_inputs_v1.py",
+      "sha256": "d330f73562111a0e41359521873ed1d30a17a621cf833257c9d3cae290732582"
+    },
+    {
+      "archive_member": "Root/author_prospective_plan_v1.py",
+      "bytes": 12841,
+      "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/author_prospective_plan_v1.py",
+      "sha256": "f9baa47218a5b6fd52707f28e8be2a8f30f860cc56f7417f543b323c3ebebe5a"
+    },
+    {
+      "archive_member": "Root/author_root_grant_v1.py",
+      "bytes": 1579,
+      "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/author_root_grant_v1.py",
+      "sha256": "d1c95825ce3acef40abaf833d1b0d168995b94cfc61433da14d53abd7a3310be"
+    },
+    {
+      "archive_member": "Root/prepare_worker_prefix_v1.py",
+      "bytes": 2092,
+      "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/prepare_worker_prefix_v1.py",
+      "sha256": "88891686cf02cdacb3fb97b284c29827dc4e545dbcd4a979e55c24c554d7114d"
+    },
+    {
+      "archive_member": "Root/worker_prefix_v1.py.txt",
+      "bytes": 8709,
+      "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/worker_prefix_v1.py.txt",
+      "sha256": "61881e485887d84b4a2f4762f6a9feba504589fb90e032ffbd3a007cff400d7c"
+    },
+    {
+      "archive_member": "Root/worker_body_v1.py.txt",
+      "bytes": 24186,
+      "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/worker_body_v1.py.txt",
+      "sha256": "72b9491eac4f346339b7d2a2d4c22270ab8bbc46b5b828141538d19b0ef0eadc"
+    },
+    {
+      "archive_member": "Root/worker_main_v1.py.txt",
+      "bytes": 8668,
+      "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/worker_main_v1.py.txt",
+      "sha256": "aef6bd5add764a76f0e680be614dbfbcd27b6a01fa65d55e6808821350d261e0"
+    },
+    {
+      "archive_member": "Root/freeze_worker_v1.py",
+      "bytes": 2157,
+      "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/freeze_worker_v1.py",
+      "sha256": "06245e07cecf31b3173d3757a143b83cf11c84c90f16d068ea2b9dc3a8de71d7"
+    },
+    {
+      "archive_member": "Root/prepare_outer_sources_v1.py",
+      "bytes": 4389,
+      "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/prepare_outer_sources_v1.py",
+      "sha256": "01aef32593548af0ca9aa65f586f5667cab27c158a58b23ed0deae1d2c2ceb03"
+    },
+    {
+      "archive_member": "Root/worker-Source-freeze-v1.json",
+      "bytes": 1864,
+      "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/worker-Source-freeze-v1.json",
+      "sha256": "2648cefb4858e82c77e8e92dc4baa4810d0f31cf499c15e37183ccbc009a7356"
+    },
+    {
+      "archive_member": "Root/Source-only-offer-v1.json",
+      "bytes": 5533,
+      "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/Source-only-offer-v1.json",
+      "sha256": "c725cad9037d1d343bbc7d9b3ca9770ceb9f8108642fd94d2e245d76bc789593"
+    },
+    {
+      "archive_member": "Root/plan-false-v1.json",
+      "bytes": 3483,
+      "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/plan-false-v1.json",
+      "sha256": "081daf81d0cab6ee42ba4956fa1a5224143cf1edb6117c870084dcd4d4999194"
+    },
+    {
+      "archive_member": "Root/authorization-false-v1.json",
+      "bytes": 351,
+      "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/authorization-false-v1.json",
+      "sha256": "86600ec2a9fa4e60d57e2cfb004619385067f1fbe45e33dd4caaee3792d81ea2"
+    },
+    {
+      "archive_member": "Root/plan-authorized-v1.json",
+      "bytes": 3482,
+      "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/plan-authorized-v1.json",
+      "sha256": "c88aae649ff7aa6d37a78d62ec7d28526ffb589f5a825d3b6306d5f0f8a7e61b"
+    },
+    {
+      "archive_member": "Root/authorization-once-v1.json",
+      "bytes": 851,
+      "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/authorization-once-v1.json",
+      "sha256": "f666a9afb8fe3a46fa0f972e4a1fd25536b865e5bbddaa27872dfe6b6c6592c4"
+    },
+    {
+      "archive_member": "Root/declaration-v1.json",
+      "bytes": 13277,
+      "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/declaration-v1.json",
+      "sha256": "f71b4baf6d18865ecb4e03b566e936dd0d0a56574d1900795f7fabe646060ad3"
+    },
+    {
+      "archive_member": "Root/runtime-closure-v1.json",
+      "bytes": 9706,
+      "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/runtime-closure-v1.json",
+      "sha256": "b8fb043b4a216b5c886e34338fde28ef89a28d2c4919f7713fe2a8c58e2e5d66"
+    },
+    {
+      "archive_member": "Root/ROOT-all-idle-fresh-barrier-v1.json",
+      "bytes": 1133,
+      "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/ROOT-all-idle-fresh-barrier-v1.json",
+      "sha256": "8121d51d3a768dd4060f1b7c6262dfab284333474da77841dae953c8b968e024"
+    },
+    {
+      "archive_member": "Root/ROOT-grant-retirement-v1.json",
+      "bytes": 1738,
+      "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/ROOT-grant-retirement-v1.json",
+      "sha256": "11642189d48826581d957f9eed9bfaceed0c65ed8abdcaa41cb561a647268859"
+    },
+    {
+      "archive_member": "Root/ROOT-passive-saved-results-v1.json",
+      "bytes": 66765,
+      "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/ROOT-passive-saved-results-v1.json",
+      "sha256": "ca5324adecfa748ad706380ce05770e144f9292ab5460cbcc73f31b7de9aa541"
+    },
+    {
+      "archive_member": "Root/ROOT-finite-integration-adoption-v1.json",
+      "bytes": 1003,
+      "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/ROOT-finite-integration-adoption-v1.json",
+      "sha256": "2cf7243468c7792fc59a6bfb9ca15896fa4169f28f99b97f11c907395e195ded"
+    },
+    {
+      "archive_member": "Root/ROOT-previous-turn-assessment-v1.json",
+      "bytes": 730,
+      "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/ROOT-previous-turn-assessment-v1.json",
+      "sha256": "1121654503b808de49a24955e67b363b6f6e774cb743d3858a11ac31a2861a4c"
+    },
+    {
+      "archive_member": "Root/project_saved_results_v1.py",
+      "bytes": 5913,
+      "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/project_saved_results_v1.py",
+      "sha256": "a2edf784f7a410e98f643f3707179c43d2d58592cfdbb00fb76028ed12984bdc"
+    },
+    {
+      "archive_member": "Root/build_saved_report_v1.py",
+      "bytes": 20320,
+      "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/build_saved_report_v1.py",
+      "sha256": "4f1645d7a8d3960689afe3a284604977b5608af8e1df2cf8126b6dcdda934c55"
+    },
+    {
+      "archive_member": "Root/certified-failures-template.html",
+      "bytes": 15032,
+      "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/certified-failures-template.html",
+      "sha256": "5cfeea07fbf7386a522c583d92830574bd3b331daf6f8c11e087ca65ca9ce4c0"
+    },
+    {
+      "archive_member": "Root/reader-preimage.html",
+      "bytes": 100439,
+      "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/reader-preimage.html",
+      "sha256": "d880ad2d223c882c32ceb57c3e4b7336cc1c568f95b88e280b7f886240c59fdc"
+    },
+    {
+      "archive_member": "Root/actual-integration-v1/CONSUMED.json",
+      "bytes": 542,
+      "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/actual-integration-v1/CONSUMED.json",
+      "sha256": "ab674d471d4d3e7ac95bce5c77c8599a3a418bcfd29ed04d8cc207200e831265"
+    },
+    {
+      "archive_member": "Root/actual-integration-v1/WORKER_CONSUMED.json",
+      "bytes": 274,
+      "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/actual-integration-v1/WORKER_CONSUMED.json",
+      "sha256": "25b94251701f7976087e027e3f94d84713bba9b49c1f7f5dca36ef42176b3295"
+    },
+    {
+      "archive_member": "Root/actual-integration-v1/canonical-certified-point-search-integration.json",
+      "bytes": 4104703,
+      "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/actual-integration-v1/canonical-certified-point-search-integration.json",
+      "sha256": "0ad27844c0bda9378bb603c1009eff671c730042abcf177875710805e106840e"
+    },
+    {
+      "archive_member": "Root/actual-integration-v1/result.json",
+      "bytes": 38265,
+      "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/actual-integration-v1/result.json",
+      "sha256": "029b033765c88c11b115f9a17095d5ef5e4a8f292706baee45b7690495019f95"
+    },
+    {
+      "archive_member": "Root/actual-integration-v1/runner-receipt.json",
+      "bytes": 5242,
+      "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/actual-integration-v1/runner-receipt.json",
+      "sha256": "6603e3ad1839ef74c2503478669402e8980cd283c0de21f82f56658f0b693a18"
+    },
+    {
+      "archive_member": "Root/actual-integration-v1/stderr.bin",
+      "bytes": 0,
+      "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/actual-integration-v1/stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_member": "Root/actual-integration-v1/stdout.bin",
+      "bytes": 0,
+      "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/actual-integration-v1/stdout.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_member": "Root/actual-integration-v1/worker-receipt.json",
+      "bytes": 2190,
+      "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/actual-integration-v1/worker-receipt.json",
+      "sha256": "7395dfb83dad8b5b33057db08610b4d60ca0249de8ea094cc52fb1e7e7e96a37"
+    },
+    {
+      "archive_member": "Root/plan-authorized-v1-terminal-observation/CONSUMED.json",
+      "bytes": 291,
+      "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/plan-authorized-v1-terminal-observation/CONSUMED.json",
+      "sha256": "d5983d98c514d993ce6e3513fc39898f8c0cb3ef2576dd30b8c10f32894f52b4"
+    },
+    {
+      "archive_member": "Root/plan-authorized-v1-terminal-observation/stderr.bin",
+      "bytes": 0,
+      "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/plan-authorized-v1-terminal-observation/stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_member": "Root/plan-authorized-v1-terminal-observation/stdout.bin",
+      "bytes": 166,
+      "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/plan-authorized-v1-terminal-observation/stdout.bin",
+      "sha256": "bc659db75cb4ab48d2fa0359bf01bceea5f686e424bf7073b81d42c6d47c4bb3"
+    },
+    {
+      "archive_member": "Root/plan-authorized-v1-terminal-observation/terminal.json",
+      "bytes": 1603,
+      "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/plan-authorized-v1-terminal-observation/terminal.json",
+      "sha256": "612f361bc3baa8350f3122fa4baeb12076d7ef2f62ce0f97912012b3f45354fa"
+    },
+    {
+      "archive_member": "marking-compiler/unit_center_marking_compiler_v1.py",
+      "bytes": 20653,
+      "path": "/private/tmp/gcts-unit-center-receptor-library-20261019/unit_center_marking_compiler_v1.py",
+      "sha256": "9a07bd4afbfd7b4c95edd8d9e2a3ea489a025a53e1b18014ca5b429d09291eb9"
+    },
+    {
+      "archive_member": "marking-compiler/API-v1.json",
+      "bytes": 5496,
+      "path": "/private/tmp/gcts-unit-center-receptor-library-20261019/API-v1.json",
+      "sha256": "6f04d46afeaf1e0f025f5344cae960fd8b6343dee9b1b175f34faae10af79364"
+    },
+    {
+      "archive_member": "marking-compiler/handoff-v1.json",
+      "bytes": 1925,
+      "path": "/private/tmp/gcts-unit-center-receptor-library-20261019/handoff-v1.json",
+      "sha256": "fe98ced9d4415833dd7743a41ce867a89174f378d9860aef1fa5d88c3df259bf"
+    },
+    {
+      "archive_member": "point-verifier/finite_marking_verifier_v1.py",
+      "bytes": 24281,
+      "path": "/private/tmp/gcts-finite-marking-verifier-20261019-v1/finite_marking_verifier_v1.py",
+      "sha256": "eaee3b1681fcd8c5783d82c40f4225271a1a5ed350d6c8d7ac3baed8c7153b8f"
+    },
+    {
+      "archive_member": "point-search/unit_center_point_search_v1.py",
+      "bytes": 29335,
+      "path": "/private/tmp/gcts-unit-center-point-search-20261019-v1/unit_center_point_search_v1.py",
+      "sha256": "198c0ae0300f01b507f0c17e6a573b58f9d986f105468a1756fa77106416b1c8"
+    },
+    {
+      "archive_member": "point-search/API-v1.json",
+      "bytes": 4869,
+      "path": "/private/tmp/gcts-unit-center-point-search-20261019-v1/API-v1.json",
+      "sha256": "29e44c9e775bae3135d3737162fc42a06407fe723f325a01820755164e93c7ff"
+    },
+    {
+      "archive_member": "point-search/snapshot-API-v1.json",
+      "bytes": 3929,
+      "path": "/private/tmp/gcts-unit-center-point-search-20261019-v1/snapshot-API-v1.json",
+      "sha256": "52930c41d61fe5bcccc35224d81b085e34df17e93bcfba737aa7f6ced0b737c0"
+    },
+    {
+      "archive_member": "point-search/deadpoint-API-v1.json",
+      "bytes": 2457,
+      "path": "/private/tmp/gcts-unit-center-point-search-20261019-v1/deadpoint-API-v1.json",
+      "sha256": "0ae62a5d8e180bd91605981e7cca2658e676cbf5ae2c0e38a4caa2e79a72dfc5"
+    },
+    {
+      "archive_member": "point-search/handoff-v1.json",
+      "bytes": 1928,
+      "path": "/private/tmp/gcts-unit-center-point-search-20261019-v1/handoff-v1.json",
+      "sha256": "065b0b2018b63759d9f8ea0f1889db58d8c1ee2ca0fb2c0e140736ac7f866231"
+    },
+    {
+      "archive_member": "search-verifier/unit_center_search_verifier_v1.py",
+      "bytes": 24791,
+      "path": "/private/tmp/gcts-unit-center-search-verifier-20261019-v1/unit_center_search_verifier_v1.py",
+      "sha256": "7b11424eaa6efa6619bfedf9f6af15f48683343f534c014470b6e6307fcfe399"
+    },
+    {
+      "archive_member": "search-verifier/API-v1.json",
+      "bytes": 8624,
+      "path": "/private/tmp/gcts-unit-center-search-verifier-20261019-v1/API-v1.json",
+      "sha256": "1915167fd8e0ae4962e6c600a1184c5dda4a9ba354f15147dde90fccec4e15fd"
+    },
+    {
+      "archive_member": "search-verifier/handoff-v1.json",
+      "bytes": 2437,
+      "path": "/private/tmp/gcts-unit-center-search-verifier-20261019-v1/handoff-v1.json",
+      "sha256": "ba2aad6120d555042e9f9cf2fe6fe4f8bb21a81be06aa88975b12d6e8271e47a"
+    },
+    {
+      "archive_member": "peer-reviews/typed-certified-point-search-design-obligations-v1.json",
+      "bytes": 9140,
+      "path": "/private/tmp/gcts-certified-point-search-peer-20261019-v1/typed-certified-point-search-design-obligations-v1.json",
+      "sha256": "65fff7ce1f6ea45b098273931620b76747123f0f0f6c9cd5920fbdcb235d466e"
+    },
+    {
+      "archive_member": "peer-reviews/typed-point-search-component-Source-review-v1.json",
+      "bytes": 9674,
+      "path": "/private/tmp/gcts-certified-point-search-peer-20261019-v1/typed-point-search-component-Source-review-v1.json",
+      "sha256": "99726852227961dac88f0e89ed9967170ed40283d61f10fc1c299aab0bcf7328"
+    },
+    {
+      "archive_member": "peer-reviews/typed-certified-point-search-Source-prospective-review-v1.json",
+      "bytes": 38681,
+      "path": "/private/tmp/gcts-certified-point-search-peer-20261019-v1/typed-certified-point-search-Source-prospective-review-v1.json",
+      "sha256": "cab089043cd5823f8df9f9a583eab0996b8c83dbe77bcaf7ec4c035e1c01b353"
+    },
+    {
+      "archive_member": "peer-reviews/typed-final-grant-delta-review-v1.json",
+      "bytes": 20139,
+      "path": "/private/tmp/gcts-certified-point-search-peer-20261019-v1/typed-final-grant-delta-review-v1.json",
+      "sha256": "4cfe58046365634e1d17f2a9540b971f9702bf48ad455531b9c4e0ecc2db9cf0"
+    },
+    {
+      "archive_member": "peer-reviews/typed-saved-actual-review-v1.json",
+      "bytes": 277503,
+      "path": "/private/tmp/gcts-certified-point-search-peer-20261019-v1/typed-saved-actual-review-v1.json",
+      "sha256": "e7f00e25a5f9dbcf95f936b0680268ac1dc4b4faa5734eadc6e1fdd4c4fefe1d"
+    },
+    {
+      "archive_member": "model-correspondence/source-note-v1.json",
+      "bytes": 5523,
+      "path": "/private/tmp/gcts-propositional-point-correspondence-peer-20261019-v1/source-note-v1.json",
+      "sha256": "2cd41ac28cbb3b1a838fdb4f2808752285982b7dd03c818aa7067cd7faa7ebde"
+    },
+    {
+      "archive_member": "selectivity-proposal/assessment-v1.json",
+      "bytes": 5051,
+      "path": "/private/tmp/gcts-receptor-selectivity-next-library-20261019-v1/assessment-v1.json",
+      "sha256": "40b52940153cfde75d80ab78c970f0d629871124b8571693daae4ed679bd9900"
+    },
+    {
+      "archive_member": "selectivity-proposal/handoff-v1.json",
+      "bytes": 340,
+      "path": "/private/tmp/gcts-receptor-selectivity-next-library-20261019-v1/handoff-v1.json",
+      "sha256": "9cd439e39df5ae037edf4b833a32c7743d1e92f9744e9a6de7ab5063377fd7c8"
+    },
+    {
+      "archive_member": "fixed-checker-feasibility/handoff-v1.json",
+      "bytes": 2074,
+      "path": "/private/tmp/gcts-fixed-checker-feasibility-20261019-v1/handoff-v1.json",
+      "sha256": "8e6e69bc89121fa1c1c91bf34ec06c7cb800949314f4e2880d6eb25bb6ad8746"
+    },
+    {
+      "archive_member": "fixed-checker-feasibility/feasibility-note-v1.html",
+      "bytes": 16966,
+      "path": "/private/tmp/gcts-fixed-checker-feasibility-20261019-v1/feasibility-note-v1.html",
+      "sha256": "bf899264692365fdf13f10450ab3d2ff149297c2f0e5521d150988beaa574690"
+    },
+    {
+      "archive_member": "fixed-checker-feasibility/source-metadata-v1.json",
+      "bytes": 6465,
+      "path": "/private/tmp/gcts-fixed-checker-feasibility-20261019-v1/source-metadata-v1.json",
+      "sha256": "82325f419cd653e6814ad8403ce4884ca88c098e1234b3353a579477e7b8c6d3"
+    },
+    {
+      "archive_member": "fixed-checker-feasibility/fixed-checker-combined-plaintext-v1.tree",
+      "bytes": 19325,
+      "path": "/private/tmp/gcts-fixed-checker-feasibility-20261019-v1/fixed-checker-combined-plaintext-v1.tree",
+      "sha256": "8b3b0af5a4f36a6eb01c8ad080b420bb014af84f647e8e95d0f61832edbb4623"
+    },
+    {
+      "archive_member": "fixed-checker-Sources/boundary_lowering/proof_boundary.py",
+      "bytes": 6992,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/proof_boundary.py",
+      "sha256": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f"
+    },
+    {
+      "archive_member": "fixed-checker-Sources/bytecode_compiler/tree_machine.py",
+      "bytes": 13290,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/tree_machine.py",
+      "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257"
+    },
+    {
+      "archive_member": "fixed-checker-Sources/combined_plaintext/fixed-checker-combined-plaintext-v1.tree",
+      "bytes": 19325,
+      "path": "/private/tmp/gcts-fixed-checker-feasibility-20261019-v1/fixed-checker-combined-plaintext-v1.tree",
+      "sha256": "8b3b0af5a4f36a6eb01c8ad080b420bb014af84f647e8e95d0f61832edbb4623"
+    },
+    {
+      "archive_member": "fixed-checker-Sources/fol_checker/fol_checker.tree",
+      "bytes": 17577,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/fol_checker.tree",
+      "sha256": "8c86a24231d9c7d1777d7998b747a8cfd07087c168da64db6c5dff0820c802ed"
+    },
+    {
+      "archive_member": "fixed-checker-Sources/host_kernel/serialized_kernel.py",
+      "bytes": 13977,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/serialized_kernel.py",
+      "sha256": "045cdba67ead9f12e91c702736fa09a5ae4d9796aea86831d65b245031a261f4"
+    },
+    {
+      "archive_member": "fixed-checker-Sources/master/basic-tiling-algorithm-current.md",
+      "bytes": 36240,
+      "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/basic-tiling-algorithm-current.md",
+      "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+    },
+    {
+      "archive_member": "fixed-checker-Sources/microcode_lowering/tape_tree_machine.py",
+      "bytes": 19188,
+      "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/tape_tree_machine.py",
+      "sha256": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f"
+    },
+    {
+      "archive_member": "fixed-checker-Sources/physical_adapter/physical_wang_adapter_v1.py",
+      "bytes": 9421,
+      "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/physical_wang_adapter_v1.py",
+      "sha256": "5e85cd213960632d7b1cfc6632d5799098b76e59f282443be5a3ea603cdffbac"
+    },
+    {
+      "archive_member": "fixed-checker-Sources/wang_compiler/wang_spacetime_compiler_v1.py",
+      "bytes": 13084,
+      "path": "/private/tmp/gcts-wang-spacetime-library-20261019/wang_spacetime_compiler_v1.py",
+      "sha256": "92a8c49bd9be346faf9e6472c588140d3844c4e52c1f0a18fef24409e7ff20ba"
+    },
+    {
+      "archive_member": "fixed-checker-Sources/wire_wrapper/boundary_syntax.tree",
+      "bytes": 1739,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/boundary_syntax.tree",
+      "sha256": "b19efd9bb2b599c1eefb7a62b5b92257483c809e63a81431f683064acd60c25c"
+    }
+  ],
+  "evidence_archive": {
+    "bytes": 714566,
+    "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/publication/certified-failures-evidence.tar.gz",
+    "sha256": "573025697cf50224b37d064b714721f72655c7f39b0eaf56b629bb6785ee6726"
+  },
+  "notebook": {
+    "bytes": 101409,
+    "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/publication/reader.html",
+    "sha256": "ec0e74216eac6526fa9ecbe319a958e571af340c59e4606e3a47a8c473aab739"
+  },
+  "publication_review_scope": "Detached exact review receipt is intentionally excluded to avoid recursive hashing. No subject code executed during report/archive projection.",
+  "raw_packet": {
+    "bytes": 4104703,
+    "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/actual-integration-v1/canonical-certified-point-search-integration.json",
+    "sha256": "0ad27844c0bda9378bb603c1009eff671c730042abcf177875710805e106840e"
+  },
+  "reader_append_custody": {
+    "append_bytes": 970,
+    "append_only_before_single_main_close": true,
+    "append_sha256": "8f08315539d53ff1c40e75b89deef92cde5f2157c5eeb35164c1cecfe6014a09",
+    "postimage": {
+      "bytes": 101409,
+      "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/publication/reader.html",
+      "sha256": "ec0e74216eac6526fa9ecbe319a958e571af340c59e4606e3a47a8c473aab739"
+    },
+    "preimage": {
+      "bytes": 100439,
+      "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/reader-preimage.html",
+      "sha256": "d880ad2d223c882c32ceb57c3e4b7336cc1c568f95b88e280b7f886240c59fdc"
+    }
+  },
+  "reader_data": {
+    "bytes": 2944196,
+    "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/publication/certified-failures-data.json",
+    "sha256": "d56d24e8742c31222b3e16cadc1a72ed20a70e2c281a936a1997999a2591a898"
+  },
+  "report": {
+    "bytes": 20510,
+    "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/publication/certified-failures.html",
+    "sha256": "bb9a80049d22434a26605eb394c87c0cc3662e77344ff0a61fba16d514b33894"
+  },
+  "schema": "certified-point-publication-manifest-v1",
+  "summary": {
+    "bytes": 68575,
+    "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/publication/certified-failures-summary.json",
+    "sha256": "78e1e3107d8cb4c559dfeaadc3c68f47d436b8face73f04ca52a5633c8b94477"
+  }
+}

@@ -1,0 +1,2136 @@
+{
+  "adoption": {
+    "all23_case_solution_populations_preserved": true,
+    "all_limitations_adopted": true,
+    "branch_efficacy": "No reduction:54plain=54markedbasebranch attempts;0loggedbase removals fromauxplacements.",
+    "declared_finite_integration_qualified": true,
+    "grant_retired": true,
+    "observer_ROOT_resource_accepted_literal": false,
+    "review": {
+      "bytes": 277503,
+      "path": "/private/tmp/gcts-certified-point-search-peer-20261019-v1/typed-saved-actual-review-v1.json",
+      "sha256": "e7f00e25a5f9dbcf95f936b0680268ac1dc4b4faa5734eadc6e1fdd4c4fefe1d"
+    },
+    "runner_resource_candidate_accepted_literal": true,
+    "same_exact_finite_instance_redundancy_supported": true,
+    "schema": "ROOT-certified-point-narrow-adoption-v1",
+    "scope": "This actual23/18unit-center all-root0 generalfinitepointintegration only, no first-mode history/kernel/fractional/mixedgen/universalFOL/pairlearning/RL/generalproof/performance/plane authority.",
+    "subject_calls_outside_actual": 0,
+    "terminal_gate_literal": true
+  },
+  "all_diagnostics_passed": true,
+  "call_completed": {
+    "census.audit_snapshot": 844,
+    "census.certify_deadpoint": 13,
+    "census.is_own_invalid": 9,
+    "census.is_own_limit": 1,
+    "compiler.compile_marking_gadget": 23,
+    "compiler.project": 37,
+    "search.search": 70,
+    "verifier.is_own_invalid": 4,
+    "verifier.verify_tiling": 185,
+    "verifier.verify_translation": 23
+  },
+  "call_raised": {
+    "census.audit_snapshot": 7,
+    "census.certify_deadpoint": 5,
+    "search.search": 5,
+    "verifier.verify_tiling": 4
+  },
+  "call_started": {
+    "census.audit_snapshot": 851,
+    "census.certify_deadpoint": 18,
+    "census.is_own_invalid": 9,
+    "census.is_own_limit": 1,
+    "compiler.compile_marking_gadget": 23,
+    "compiler.project": 37,
+    "search.search": 75,
+    "verifier.is_own_invalid": 4,
+    "verifier.verify_tiling": 189,
+    "verifier.verify_translation": 23
+  },
+  "cases": 23,
+  "certified_clauses": 13,
+  "claims": {
+    "RL_trained": false,
+    "Turtle_or_Penrose_search_in_this_run": false,
+    "finite_integration_qualified": true,
+    "search_benefit_observed": false,
+    "serialized_FOL_proof_kernel_calls": 0,
+    "single_fixed_FOL_palette": false
+  },
+  "cold_certified_pipeline_seconds_sum": 7.95198058,
+  "conservative_pre_receipt_plus_reserve_bytes": 13583158,
+  "diagnostics": 18,
+  "exhausted_negative_cases": 5,
+  "literal_observer_ROOT_resource_accepted": false,
+  "literal_runner_resource_candidate_accepted": true,
+  "live_censuses": 829,
+  "logged_base_removals_on_auxiliary_placements": 0,
+  "marked_auxiliary_branch_attempts": 0,
+  "marked_base_branch_attempts": 54,
+  "original_solutions": 37,
+  "parallel_roles": {
+    "implementation": "conventional_library",
+    "independent_census_and_certification": "benchmark_design",
+    "independent_saved_data_and_publication_review": "conventional_control_review",
+    "once_run_custody_and_report": "root"
+  },
+  "plain_base_branch_attempts": 54,
+  "plain_complete_seconds_sum": 1.423067874,
+  "positive_cases": 18,
+  "projection_scope": "Only saved JSON, event-ID classification, display formatting, raw file copying/hashing and archive verification. No search, mathematical checker or truth-table procedure is executed by the publication builder.",
+  "raw_packet": {
+    "bytes": 4104703,
+    "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/actual-integration-v1/canonical-certified-point-search-integration.json",
+    "sha256": "0ad27844c0bda9378bb603c1009eff671c730042abcf177875710805e106840e"
+  },
+  "root_callbacks_cutoff": 5130755,
+  "rows": [
+    {
+      "acquisition": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 6,
+        "base_forced_placements": 0,
+        "event_counts": {
+          "branch": 6,
+          "census": 7,
+          "enumeration_subtree_exhausted": 3,
+          "rollback": 6,
+          "rollback_census": 6,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 4
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 8,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 6,
+          "mark_dependency_keys": 5,
+          "solutions": 4,
+          "trace_rows": 33,
+          "witness_rows": 0
+        }
+      },
+      "all_original_solutions_preserved": true,
+      "certified_clause_count": 0,
+      "cold_certified_pipeline_seconds": 0.137958208,
+      "compile_and_translation_seconds": 0.004869208,
+      "id": "two-variable-cnf-mask-00",
+      "live_census_count": 45,
+      "marked": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 6,
+        "base_forced_placements": 0,
+        "event_counts": {
+          "branch": 6,
+          "census": 7,
+          "enumeration_subtree_exhausted": 3,
+          "rollback": 6,
+          "rollback_census": 6,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 4
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 8,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 6,
+          "mark_dependency_keys": 9,
+          "solutions": 4,
+          "trace_rows": 33,
+          "witness_rows": 0
+        }
+      },
+      "model_reference_seconds": 0.006922417,
+      "original_solution_count": 4,
+      "plain": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 6,
+        "base_forced_placements": 0,
+        "event_counts": {
+          "branch": 6,
+          "census": 7,
+          "enumeration_subtree_exhausted": 3,
+          "rollback": 6,
+          "rollback_census": 6,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 4
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 8,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 6,
+          "mark_dependency_keys": 5,
+          "solutions": 4,
+          "trace_rows": 33,
+          "witness_rows": 0
+        }
+      },
+      "plain_complete_seconds": 0.056269833,
+      "total_case_seconds": 0.201150542
+    },
+    {
+      "acquisition": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 4,
+        "base_forced_placements": 4,
+        "event_counts": {
+          "branch": 4,
+          "census": 9,
+          "enumeration_subtree_exhausted": 2,
+          "forced": 4,
+          "rollback": 4,
+          "rollback_census": 4,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 3
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 21,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 4,
+          "mark_dependency_keys": 9,
+          "solutions": 3,
+          "trace_rows": 31,
+          "witness_rows": 0
+        }
+      },
+      "all_original_solutions_preserved": true,
+      "certified_clause_count": 0,
+      "cold_certified_pipeline_seconds": 0.197474791,
+      "compile_and_translation_seconds": 0.00765325,
+      "id": "two-variable-cnf-mask-01",
+      "live_census_count": 45,
+      "marked": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 4,
+        "base_forced_placements": 4,
+        "event_counts": {
+          "branch": 4,
+          "census": 9,
+          "enumeration_subtree_exhausted": 2,
+          "forced": 4,
+          "rollback": 4,
+          "rollback_census": 4,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 3
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 21,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 4,
+          "mark_dependency_keys": 15,
+          "solutions": 3,
+          "trace_rows": 31,
+          "witness_rows": 0
+        }
+      },
+      "model_reference_seconds": 0.013079791,
+      "original_solution_count": 3,
+      "plain": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 4,
+        "base_forced_placements": 4,
+        "event_counts": {
+          "branch": 4,
+          "census": 9,
+          "enumeration_subtree_exhausted": 2,
+          "forced": 4,
+          "rollback": 4,
+          "rollback_census": 4,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 3
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 21,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 4,
+          "mark_dependency_keys": 9,
+          "solutions": 3,
+          "trace_rows": 31,
+          "witness_rows": 0
+        }
+      },
+      "plain_complete_seconds": 0.080275292,
+      "total_case_seconds": 0.290830041
+    },
+    {
+      "acquisition": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 4,
+        "base_forced_placements": 4,
+        "event_counts": {
+          "branch": 4,
+          "census": 9,
+          "enumeration_subtree_exhausted": 2,
+          "forced": 4,
+          "rollback": 4,
+          "rollback_census": 4,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 3
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 21,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 4,
+          "mark_dependency_keys": 9,
+          "solutions": 3,
+          "trace_rows": 31,
+          "witness_rows": 0
+        }
+      },
+      "all_original_solutions_preserved": true,
+      "certified_clause_count": 0,
+      "cold_certified_pipeline_seconds": 0.168070791,
+      "compile_and_translation_seconds": 0.005332333,
+      "id": "two-variable-cnf-mask-02",
+      "live_census_count": 45,
+      "marked": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 4,
+        "base_forced_placements": 4,
+        "event_counts": {
+          "branch": 4,
+          "census": 9,
+          "enumeration_subtree_exhausted": 2,
+          "forced": 4,
+          "rollback": 4,
+          "rollback_census": 4,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 3
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 21,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 4,
+          "mark_dependency_keys": 15,
+          "solutions": 3,
+          "trace_rows": 31,
+          "witness_rows": 0
+        }
+      },
+      "model_reference_seconds": 0.005042458,
+      "original_solution_count": 3,
+      "plain": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 4,
+        "base_forced_placements": 4,
+        "event_counts": {
+          "branch": 4,
+          "census": 9,
+          "enumeration_subtree_exhausted": 2,
+          "forced": 4,
+          "rollback": 4,
+          "rollback_census": 4,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 3
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 21,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 4,
+          "mark_dependency_keys": 9,
+          "solutions": 3,
+          "trace_rows": 31,
+          "witness_rows": 0
+        }
+      },
+      "plain_complete_seconds": 0.071879541,
+      "total_case_seconds": 0.244992916
+    },
+    {
+      "acquisition": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 4,
+        "base_forced_placements": 5,
+        "event_counts": {
+          "branch": 4,
+          "census": 10,
+          "enumeration_subtree_exhausted": 2,
+          "forced": 5,
+          "raw_deadpoint_candidate": 1,
+          "rollback": 4,
+          "rollback_census": 4,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 2
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 40,
+          "deadpoint_candidates": 1,
+          "decision_attempts": 4,
+          "mark_dependency_keys": 12,
+          "solutions": 2,
+          "trace_rows": 33,
+          "witness_rows": 10
+        }
+      },
+      "all_original_solutions_preserved": true,
+      "certified_clause_count": 1,
+      "cold_certified_pipeline_seconds": 0.540807375,
+      "compile_and_translation_seconds": 0.019075833,
+      "id": "two-variable-cnf-mask-03",
+      "live_census_count": 51,
+      "marked": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 3,
+        "base_branch_attempts": 4,
+        "base_forced_placements": 5,
+        "event_counts": {
+          "branch": 4,
+          "census": 13,
+          "enumeration_subtree_exhausted": 2,
+          "forced": 8,
+          "raw_deadpoint_acquisition_disabled": 1,
+          "rollback": 4,
+          "rollback_census": 4,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 2
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 300,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 4,
+          "mark_dependency_keys": 45,
+          "solutions": 2,
+          "trace_rows": 39,
+          "witness_rows": 0
+        }
+      },
+      "model_reference_seconds": 0.005409125,
+      "original_solution_count": 2,
+      "plain": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 4,
+        "base_forced_placements": 5,
+        "event_counts": {
+          "branch": 4,
+          "census": 10,
+          "enumeration_subtree_exhausted": 2,
+          "forced": 5,
+          "raw_deadpoint_acquisition_disabled": 1,
+          "rollback": 4,
+          "rollback_census": 4,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 2
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 40,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 4,
+          "mark_dependency_keys": 12,
+          "solutions": 2,
+          "trace_rows": 33,
+          "witness_rows": 0
+        }
+      },
+      "plain_complete_seconds": 0.091160209,
+      "total_case_seconds": 0.637376791
+    },
+    {
+      "acquisition": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 4,
+        "base_forced_placements": 4,
+        "event_counts": {
+          "branch": 4,
+          "census": 9,
+          "enumeration_subtree_exhausted": 2,
+          "forced": 4,
+          "rollback": 4,
+          "rollback_census": 4,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 3
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 21,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 4,
+          "mark_dependency_keys": 9,
+          "solutions": 3,
+          "trace_rows": 31,
+          "witness_rows": 0
+        }
+      },
+      "all_original_solutions_preserved": true,
+      "certified_clause_count": 0,
+      "cold_certified_pipeline_seconds": 0.178381958,
+      "compile_and_translation_seconds": 0.005743,
+      "id": "two-variable-cnf-mask-04",
+      "live_census_count": 45,
+      "marked": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 4,
+        "base_forced_placements": 4,
+        "event_counts": {
+          "branch": 4,
+          "census": 9,
+          "enumeration_subtree_exhausted": 2,
+          "forced": 4,
+          "rollback": 4,
+          "rollback_census": 4,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 3
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 21,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 4,
+          "mark_dependency_keys": 15,
+          "solutions": 3,
+          "trace_rows": 31,
+          "witness_rows": 0
+        }
+      },
+      "model_reference_seconds": 0.005167208,
+      "original_solution_count": 3,
+      "plain": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 4,
+        "base_forced_placements": 4,
+        "event_counts": {
+          "branch": 4,
+          "census": 9,
+          "enumeration_subtree_exhausted": 2,
+          "forced": 4,
+          "rollback": 4,
+          "rollback_census": 4,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 3
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 21,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 4,
+          "mark_dependency_keys": 9,
+          "solutions": 3,
+          "trace_rows": 31,
+          "witness_rows": 0
+        }
+      },
+      "plain_complete_seconds": 0.056554875,
+      "total_case_seconds": 0.240104125
+    },
+    {
+      "acquisition": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 2,
+        "base_forced_placements": 6,
+        "event_counts": {
+          "branch": 2,
+          "census": 9,
+          "enumeration_subtree_exhausted": 1,
+          "forced": 6,
+          "rollback": 2,
+          "rollback_census": 2,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 2
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 40,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 2,
+          "mark_dependency_keys": 12,
+          "solutions": 2,
+          "trace_rows": 25,
+          "witness_rows": 0
+        }
+      },
+      "all_original_solutions_preserved": true,
+      "certified_clause_count": 0,
+      "cold_certified_pipeline_seconds": 0.21531025,
+      "compile_and_translation_seconds": 0.009602916,
+      "id": "two-variable-cnf-mask-05",
+      "live_census_count": 39,
+      "marked": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 2,
+        "base_forced_placements": 6,
+        "event_counts": {
+          "branch": 2,
+          "census": 9,
+          "enumeration_subtree_exhausted": 1,
+          "forced": 6,
+          "rollback": 2,
+          "rollback_census": 2,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 2
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 40,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 2,
+          "mark_dependency_keys": 20,
+          "solutions": 2,
+          "trace_rows": 25,
+          "witness_rows": 0
+        }
+      },
+      "model_reference_seconds": 0.003647,
+      "original_solution_count": 2,
+      "plain": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 2,
+        "base_forced_placements": 6,
+        "event_counts": {
+          "branch": 2,
+          "census": 9,
+          "enumeration_subtree_exhausted": 1,
+          "forced": 6,
+          "rollback": 2,
+          "rollback_census": 2,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 2
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 40,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 2,
+          "mark_dependency_keys": 12,
+          "solutions": 2,
+          "trace_rows": 25,
+          "witness_rows": 0
+        }
+      },
+      "plain_complete_seconds": 0.063189958,
+      "total_case_seconds": 0.282147333
+    },
+    {
+      "acquisition": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 2,
+        "base_forced_placements": 6,
+        "event_counts": {
+          "branch": 2,
+          "census": 9,
+          "enumeration_subtree_exhausted": 1,
+          "forced": 6,
+          "rollback": 2,
+          "rollback_census": 2,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 2
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 40,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 2,
+          "mark_dependency_keys": 12,
+          "solutions": 2,
+          "trace_rows": 25,
+          "witness_rows": 0
+        }
+      },
+      "all_original_solutions_preserved": true,
+      "certified_clause_count": 0,
+      "cold_certified_pipeline_seconds": 0.188172,
+      "compile_and_translation_seconds": 0.013651667,
+      "id": "two-variable-cnf-mask-06",
+      "live_census_count": 39,
+      "marked": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 2,
+        "base_forced_placements": 6,
+        "event_counts": {
+          "branch": 2,
+          "census": 9,
+          "enumeration_subtree_exhausted": 1,
+          "forced": 6,
+          "rollback": 2,
+          "rollback_census": 2,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 2
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 40,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 2,
+          "mark_dependency_keys": 20,
+          "solutions": 2,
+          "trace_rows": 25,
+          "witness_rows": 0
+        }
+      },
+      "model_reference_seconds": 0.004975041,
+      "original_solution_count": 2,
+      "plain": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 2,
+        "base_forced_placements": 6,
+        "event_counts": {
+          "branch": 2,
+          "census": 9,
+          "enumeration_subtree_exhausted": 1,
+          "forced": 6,
+          "rollback": 2,
+          "rollback_census": 2,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 2
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 40,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 2,
+          "mark_dependency_keys": 12,
+          "solutions": 2,
+          "trace_rows": 25,
+          "witness_rows": 0
+        }
+      },
+      "plain_complete_seconds": 0.06673925,
+      "total_case_seconds": 0.259886666
+    },
+    {
+      "acquisition": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 2,
+        "base_forced_placements": 5,
+        "event_counts": {
+          "branch": 2,
+          "census": 8,
+          "enumeration_subtree_exhausted": 1,
+          "forced": 5,
+          "raw_deadpoint_candidate": 1,
+          "rollback": 2,
+          "rollback_census": 2,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 1
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 65,
+          "deadpoint_candidates": 1,
+          "decision_attempts": 2,
+          "mark_dependency_keys": 15,
+          "solutions": 1,
+          "trace_rows": 23,
+          "witness_rows": 13
+        }
+      },
+      "all_original_solutions_preserved": true,
+      "certified_clause_count": 1,
+      "cold_certified_pipeline_seconds": 0.584292,
+      "compile_and_translation_seconds": 0.015215708,
+      "id": "two-variable-cnf-mask-07",
+      "live_census_count": 38,
+      "marked": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 2,
+        "base_branch_attempts": 2,
+        "base_forced_placements": 5,
+        "event_counts": {
+          "branch": 2,
+          "census": 10,
+          "enumeration_subtree_exhausted": 1,
+          "forced": 7,
+          "raw_deadpoint_acquisition_disabled": 1,
+          "rollback": 2,
+          "rollback_census": 2,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 1
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 455,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 2,
+          "mark_dependency_keys": 53,
+          "solutions": 1,
+          "trace_rows": 27,
+          "witness_rows": 0
+        }
+      },
+      "model_reference_seconds": 0.002032958,
+      "original_solution_count": 1,
+      "plain": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 2,
+        "base_forced_placements": 5,
+        "event_counts": {
+          "branch": 2,
+          "census": 8,
+          "enumeration_subtree_exhausted": 1,
+          "forced": 5,
+          "raw_deadpoint_acquisition_disabled": 1,
+          "rollback": 2,
+          "rollback_census": 2,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 1
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 65,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 2,
+          "mark_dependency_keys": 15,
+          "solutions": 1,
+          "trace_rows": 23,
+          "witness_rows": 0
+        }
+      },
+      "plain_complete_seconds": 0.076618042,
+      "total_case_seconds": 0.662943083
+    },
+    {
+      "acquisition": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 4,
+        "base_forced_placements": 4,
+        "event_counts": {
+          "branch": 4,
+          "census": 9,
+          "enumeration_subtree_exhausted": 2,
+          "forced": 4,
+          "rollback": 4,
+          "rollback_census": 4,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 3
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 21,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 4,
+          "mark_dependency_keys": 9,
+          "solutions": 3,
+          "trace_rows": 31,
+          "witness_rows": 0
+        }
+      },
+      "all_original_solutions_preserved": true,
+      "certified_clause_count": 0,
+      "cold_certified_pipeline_seconds": 0.161754875,
+      "compile_and_translation_seconds": 0.005761834,
+      "id": "two-variable-cnf-mask-08",
+      "live_census_count": 45,
+      "marked": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 4,
+        "base_forced_placements": 4,
+        "event_counts": {
+          "branch": 4,
+          "census": 9,
+          "enumeration_subtree_exhausted": 2,
+          "forced": 4,
+          "rollback": 4,
+          "rollback_census": 4,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 3
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 21,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 4,
+          "mark_dependency_keys": 15,
+          "solutions": 3,
+          "trace_rows": 31,
+          "witness_rows": 0
+        }
+      },
+      "model_reference_seconds": 0.006079959,
+      "original_solution_count": 3,
+      "plain": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 4,
+        "base_forced_placements": 4,
+        "event_counts": {
+          "branch": 4,
+          "census": 9,
+          "enumeration_subtree_exhausted": 2,
+          "forced": 4,
+          "rollback": 4,
+          "rollback_census": 4,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 3
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 21,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 4,
+          "mark_dependency_keys": 9,
+          "solutions": 3,
+          "trace_rows": 31,
+          "witness_rows": 0
+        }
+      },
+      "plain_complete_seconds": 0.05493575,
+      "total_case_seconds": 0.222770667
+    },
+    {
+      "acquisition": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 2,
+        "base_forced_placements": 6,
+        "event_counts": {
+          "branch": 2,
+          "census": 9,
+          "enumeration_subtree_exhausted": 1,
+          "forced": 6,
+          "rollback": 2,
+          "rollback_census": 2,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 2
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 40,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 2,
+          "mark_dependency_keys": 12,
+          "solutions": 2,
+          "trace_rows": 25,
+          "witness_rows": 0
+        }
+      },
+      "all_original_solutions_preserved": true,
+      "certified_clause_count": 0,
+      "cold_certified_pipeline_seconds": 0.179362584,
+      "compile_and_translation_seconds": 0.006562375,
+      "id": "two-variable-cnf-mask-09",
+      "live_census_count": 39,
+      "marked": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 2,
+        "base_forced_placements": 6,
+        "event_counts": {
+          "branch": 2,
+          "census": 9,
+          "enumeration_subtree_exhausted": 1,
+          "forced": 6,
+          "rollback": 2,
+          "rollback_census": 2,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 2
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 40,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 2,
+          "mark_dependency_keys": 20,
+          "solutions": 2,
+          "trace_rows": 25,
+          "witness_rows": 0
+        }
+      },
+      "model_reference_seconds": 0.005680084,
+      "original_solution_count": 2,
+      "plain": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 2,
+        "base_forced_placements": 6,
+        "event_counts": {
+          "branch": 2,
+          "census": 9,
+          "enumeration_subtree_exhausted": 1,
+          "forced": 6,
+          "rollback": 2,
+          "rollback_census": 2,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 2
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 40,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 2,
+          "mark_dependency_keys": 12,
+          "solutions": 2,
+          "trace_rows": 25,
+          "witness_rows": 0
+        }
+      },
+      "plain_complete_seconds": 0.063057958,
+      "total_case_seconds": 0.248100709
+    },
+    {
+      "acquisition": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 2,
+        "base_forced_placements": 6,
+        "event_counts": {
+          "branch": 2,
+          "census": 9,
+          "enumeration_subtree_exhausted": 1,
+          "forced": 6,
+          "rollback": 2,
+          "rollback_census": 2,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 2
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 40,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 2,
+          "mark_dependency_keys": 12,
+          "solutions": 2,
+          "trace_rows": 25,
+          "witness_rows": 0
+        }
+      },
+      "all_original_solutions_preserved": true,
+      "certified_clause_count": 0,
+      "cold_certified_pipeline_seconds": 0.174137166,
+      "compile_and_translation_seconds": 0.007660958,
+      "id": "two-variable-cnf-mask-10",
+      "live_census_count": 39,
+      "marked": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 2,
+        "base_forced_placements": 6,
+        "event_counts": {
+          "branch": 2,
+          "census": 9,
+          "enumeration_subtree_exhausted": 1,
+          "forced": 6,
+          "rollback": 2,
+          "rollback_census": 2,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 2
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 40,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 2,
+          "mark_dependency_keys": 20,
+          "solutions": 2,
+          "trace_rows": 25,
+          "witness_rows": 0
+        }
+      },
+      "model_reference_seconds": 0.004217417,
+      "original_solution_count": 2,
+      "plain": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 2,
+        "base_forced_placements": 6,
+        "event_counts": {
+          "branch": 2,
+          "census": 9,
+          "enumeration_subtree_exhausted": 1,
+          "forced": 6,
+          "rollback": 2,
+          "rollback_census": 2,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 2
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 40,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 2,
+          "mark_dependency_keys": 12,
+          "solutions": 2,
+          "trace_rows": 25,
+          "witness_rows": 0
+        }
+      },
+      "plain_complete_seconds": 0.101064667,
+      "total_case_seconds": 0.279419333
+    },
+    {
+      "acquisition": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 2,
+        "base_forced_placements": 5,
+        "event_counts": {
+          "branch": 2,
+          "census": 8,
+          "enumeration_subtree_exhausted": 1,
+          "forced": 5,
+          "raw_deadpoint_candidate": 1,
+          "rollback": 2,
+          "rollback_census": 2,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 1
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 65,
+          "deadpoint_candidates": 1,
+          "decision_attempts": 2,
+          "mark_dependency_keys": 15,
+          "solutions": 1,
+          "trace_rows": 23,
+          "witness_rows": 13
+        }
+      },
+      "all_original_solutions_preserved": true,
+      "certified_clause_count": 1,
+      "cold_certified_pipeline_seconds": 0.438943875,
+      "compile_and_translation_seconds": 0.017609958,
+      "id": "two-variable-cnf-mask-11",
+      "live_census_count": 38,
+      "marked": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 2,
+        "base_branch_attempts": 2,
+        "base_forced_placements": 5,
+        "event_counts": {
+          "branch": 2,
+          "census": 10,
+          "enumeration_subtree_exhausted": 1,
+          "forced": 7,
+          "raw_deadpoint_acquisition_disabled": 1,
+          "rollback": 2,
+          "rollback_census": 2,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 1
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 455,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 2,
+          "mark_dependency_keys": 53,
+          "solutions": 1,
+          "trace_rows": 27,
+          "witness_rows": 0
+        }
+      },
+      "model_reference_seconds": 0.0021815,
+      "original_solution_count": 1,
+      "plain": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 2,
+        "base_forced_placements": 5,
+        "event_counts": {
+          "branch": 2,
+          "census": 8,
+          "enumeration_subtree_exhausted": 1,
+          "forced": 5,
+          "raw_deadpoint_acquisition_disabled": 1,
+          "rollback": 2,
+          "rollback_census": 2,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 1
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 65,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 2,
+          "mark_dependency_keys": 15,
+          "solutions": 1,
+          "trace_rows": 23,
+          "witness_rows": 0
+        }
+      },
+      "plain_complete_seconds": 0.063706833,
+      "total_case_seconds": 0.504832292
+    },
+    {
+      "acquisition": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 4,
+        "base_forced_placements": 5,
+        "event_counts": {
+          "branch": 4,
+          "census": 10,
+          "enumeration_subtree_exhausted": 2,
+          "forced": 5,
+          "raw_deadpoint_candidate": 1,
+          "rollback": 4,
+          "rollback_census": 4,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 2
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 40,
+          "deadpoint_candidates": 1,
+          "decision_attempts": 4,
+          "mark_dependency_keys": 12,
+          "solutions": 2,
+          "trace_rows": 33,
+          "witness_rows": 10
+        }
+      },
+      "all_original_solutions_preserved": true,
+      "certified_clause_count": 1,
+      "cold_certified_pipeline_seconds": 0.532629084,
+      "compile_and_translation_seconds": 0.014707458,
+      "id": "two-variable-cnf-mask-12",
+      "live_census_count": 51,
+      "marked": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 3,
+        "base_branch_attempts": 4,
+        "base_forced_placements": 5,
+        "event_counts": {
+          "branch": 4,
+          "census": 13,
+          "enumeration_subtree_exhausted": 2,
+          "forced": 8,
+          "raw_deadpoint_acquisition_disabled": 1,
+          "rollback": 4,
+          "rollback_census": 4,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 2
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 300,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 4,
+          "mark_dependency_keys": 45,
+          "solutions": 2,
+          "trace_rows": 39,
+          "witness_rows": 0
+        }
+      },
+      "model_reference_seconds": 0.003713833,
+      "original_solution_count": 2,
+      "plain": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 4,
+        "base_forced_placements": 5,
+        "event_counts": {
+          "branch": 4,
+          "census": 10,
+          "enumeration_subtree_exhausted": 2,
+          "forced": 5,
+          "raw_deadpoint_acquisition_disabled": 1,
+          "rollback": 4,
+          "rollback_census": 4,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 2
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 40,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 4,
+          "mark_dependency_keys": 12,
+          "solutions": 2,
+          "trace_rows": 33,
+          "witness_rows": 0
+        }
+      },
+      "plain_complete_seconds": 0.082625,
+      "total_case_seconds": 0.618968
+    },
+    {
+      "acquisition": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 2,
+        "base_forced_placements": 5,
+        "event_counts": {
+          "branch": 2,
+          "census": 8,
+          "enumeration_subtree_exhausted": 1,
+          "forced": 5,
+          "raw_deadpoint_candidate": 1,
+          "rollback": 2,
+          "rollback_census": 2,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 1
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 65,
+          "deadpoint_candidates": 1,
+          "decision_attempts": 2,
+          "mark_dependency_keys": 15,
+          "solutions": 1,
+          "trace_rows": 23,
+          "witness_rows": 13
+        }
+      },
+      "all_original_solutions_preserved": true,
+      "certified_clause_count": 1,
+      "cold_certified_pipeline_seconds": 0.481602458,
+      "compile_and_translation_seconds": 0.014150167,
+      "id": "two-variable-cnf-mask-13",
+      "live_census_count": 38,
+      "marked": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 2,
+        "base_branch_attempts": 2,
+        "base_forced_placements": 5,
+        "event_counts": {
+          "branch": 2,
+          "census": 10,
+          "enumeration_subtree_exhausted": 1,
+          "forced": 7,
+          "raw_deadpoint_acquisition_disabled": 1,
+          "rollback": 2,
+          "rollback_census": 2,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 1
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 455,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 2,
+          "mark_dependency_keys": 54,
+          "solutions": 1,
+          "trace_rows": 27,
+          "witness_rows": 0
+        }
+      },
+      "model_reference_seconds": 0.002153375,
+      "original_solution_count": 1,
+      "plain": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 2,
+        "base_forced_placements": 5,
+        "event_counts": {
+          "branch": 2,
+          "census": 8,
+          "enumeration_subtree_exhausted": 1,
+          "forced": 5,
+          "raw_deadpoint_acquisition_disabled": 1,
+          "rollback": 2,
+          "rollback_census": 2,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 1
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 65,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 2,
+          "mark_dependency_keys": 15,
+          "solutions": 1,
+          "trace_rows": 23,
+          "witness_rows": 0
+        }
+      },
+      "plain_complete_seconds": 0.0670585,
+      "total_case_seconds": 0.550814417
+    },
+    {
+      "acquisition": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 2,
+        "base_forced_placements": 5,
+        "event_counts": {
+          "branch": 2,
+          "census": 8,
+          "enumeration_subtree_exhausted": 1,
+          "forced": 5,
+          "raw_deadpoint_candidate": 1,
+          "rollback": 2,
+          "rollback_census": 2,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 1
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 65,
+          "deadpoint_candidates": 1,
+          "decision_attempts": 2,
+          "mark_dependency_keys": 15,
+          "solutions": 1,
+          "trace_rows": 23,
+          "witness_rows": 13
+        }
+      },
+      "all_original_solutions_preserved": true,
+      "certified_clause_count": 1,
+      "cold_certified_pipeline_seconds": 0.449717708,
+      "compile_and_translation_seconds": 0.016454167,
+      "id": "two-variable-cnf-mask-14",
+      "live_census_count": 38,
+      "marked": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 2,
+        "base_branch_attempts": 2,
+        "base_forced_placements": 5,
+        "event_counts": {
+          "branch": 2,
+          "census": 10,
+          "enumeration_subtree_exhausted": 1,
+          "forced": 7,
+          "raw_deadpoint_acquisition_disabled": 1,
+          "rollback": 2,
+          "rollback_census": 2,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 1
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 455,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 2,
+          "mark_dependency_keys": 54,
+          "solutions": 1,
+          "trace_rows": 27,
+          "witness_rows": 0
+        }
+      },
+      "model_reference_seconds": 0.00244525,
+      "original_solution_count": 1,
+      "plain": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 2,
+        "base_forced_placements": 5,
+        "event_counts": {
+          "branch": 2,
+          "census": 8,
+          "enumeration_subtree_exhausted": 1,
+          "forced": 5,
+          "raw_deadpoint_acquisition_disabled": 1,
+          "rollback": 2,
+          "rollback_census": 2,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 1
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 65,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 2,
+          "mark_dependency_keys": 15,
+          "solutions": 1,
+          "trace_rows": 23,
+          "witness_rows": 0
+        }
+      },
+      "plain_complete_seconds": 0.060328291,
+      "total_case_seconds": 0.512491333
+    },
+    {
+      "acquisition": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 2,
+        "base_forced_placements": 2,
+        "event_counts": {
+          "branch": 2,
+          "census": 5,
+          "enumeration_subtree_exhausted": 1,
+          "forced": 2,
+          "raw_deadpoint_candidate": 2,
+          "rollback": 2,
+          "rollback_census": 2,
+          "root_cleanup_complete": 1
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 96,
+          "deadpoint_candidates": 2,
+          "decision_attempts": 2,
+          "mark_dependency_keys": 18,
+          "solutions": 0,
+          "trace_rows": 17,
+          "witness_rows": 32
+        }
+      },
+      "all_original_solutions_preserved": true,
+      "certified_clause_count": 2,
+      "cold_certified_pipeline_seconds": 0.695162208,
+      "compile_and_translation_seconds": 0.030282833,
+      "id": "two-variable-cnf-mask-15",
+      "live_census_count": 27,
+      "marked": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 2,
+        "base_forced_placements": 2,
+        "event_counts": {
+          "branch": 2,
+          "census": 5,
+          "enumeration_subtree_exhausted": 1,
+          "forced": 2,
+          "raw_deadpoint_acquisition_disabled": 2,
+          "rollback": 2,
+          "rollback_census": 2,
+          "root_cleanup_complete": 1
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 1440,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 2,
+          "mark_dependency_keys": 80,
+          "solutions": 0,
+          "trace_rows": 17,
+          "witness_rows": 0
+        }
+      },
+      "model_reference_seconds": 5.7042e-05,
+      "original_solution_count": 0,
+      "plain": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 2,
+        "base_forced_placements": 2,
+        "event_counts": {
+          "branch": 2,
+          "census": 5,
+          "enumeration_subtree_exhausted": 1,
+          "forced": 2,
+          "raw_deadpoint_acquisition_disabled": 2,
+          "rollback": 2,
+          "rollback_census": 2,
+          "root_cleanup_complete": 1
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 96,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 2,
+          "mark_dependency_keys": 18,
+          "solutions": 0,
+          "trace_rows": 17,
+          "witness_rows": 0
+        }
+      },
+      "plain_complete_seconds": 0.056089417,
+      "total_case_seconds": 0.75130875
+    },
+    {
+      "acquisition": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 0,
+        "base_forced_placements": 5,
+        "event_counts": {
+          "census": 6,
+          "forced": 5,
+          "raw_deadpoint_candidate": 1,
+          "root_cleanup_complete": 1
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 98,
+          "deadpoint_candidates": 1,
+          "decision_attempts": 0,
+          "mark_dependency_keys": 21,
+          "solutions": 0,
+          "trace_rows": 13,
+          "witness_rows": 14
+        }
+      },
+      "all_original_solutions_preserved": true,
+      "certified_clause_count": 1,
+      "cold_certified_pipeline_seconds": 0.692133792,
+      "compile_and_translation_seconds": 0.029446667,
+      "id": "implication-transitivity",
+      "live_census_count": 24,
+      "marked": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 0,
+        "base_forced_placements": 5,
+        "event_counts": {
+          "census": 6,
+          "forced": 5,
+          "raw_deadpoint_acquisition_disabled": 1,
+          "root_cleanup_complete": 1
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 1848,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 0,
+          "mark_dependency_keys": 84,
+          "solutions": 0,
+          "trace_rows": 13,
+          "witness_rows": 0
+        }
+      },
+      "model_reference_seconds": 7.5458e-05,
+      "original_solution_count": 0,
+      "plain": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 0,
+        "base_forced_placements": 5,
+        "event_counts": {
+          "census": 6,
+          "forced": 5,
+          "raw_deadpoint_acquisition_disabled": 1,
+          "root_cleanup_complete": 1
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 98,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 0,
+          "mark_dependency_keys": 21,
+          "solutions": 0,
+          "trace_rows": 13,
+          "witness_rows": 0
+        }
+      },
+      "plain_complete_seconds": 0.05865125,
+      "total_case_seconds": 0.750860625
+    },
+    {
+      "acquisition": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 0,
+        "base_forced_placements": 5,
+        "event_counts": {
+          "census": 6,
+          "forced": 5,
+          "raw_deadpoint_candidate": 1,
+          "root_cleanup_complete": 1
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 112,
+          "deadpoint_candidates": 1,
+          "decision_attempts": 0,
+          "mark_dependency_keys": 20,
+          "solutions": 0,
+          "trace_rows": 13,
+          "witness_rows": 16
+        }
+      },
+      "all_original_solutions_preserved": true,
+      "certified_clause_count": 1,
+      "cold_certified_pipeline_seconds": 0.804379458,
+      "compile_and_translation_seconds": 0.046764,
+      "id": "disjunction-cases",
+      "live_census_count": 24,
+      "marked": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 0,
+        "base_forced_placements": 5,
+        "event_counts": {
+          "census": 6,
+          "forced": 5,
+          "raw_deadpoint_acquisition_disabled": 1,
+          "root_cleanup_complete": 1
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 2112,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 0,
+          "mark_dependency_keys": 83,
+          "solutions": 0,
+          "trace_rows": 13,
+          "witness_rows": 0
+        }
+      },
+      "model_reference_seconds": 8.1167e-05,
+      "original_solution_count": 0,
+      "plain": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 0,
+        "base_forced_placements": 5,
+        "event_counts": {
+          "census": 6,
+          "forced": 5,
+          "raw_deadpoint_acquisition_disabled": 1,
+          "root_cleanup_complete": 1
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 112,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 0,
+          "mark_dependency_keys": 20,
+          "solutions": 0,
+          "trace_rows": 13,
+          "witness_rows": 0
+        }
+      },
+      "plain_complete_seconds": 0.054930042,
+      "total_case_seconds": 0.85939075
+    },
+    {
+      "acquisition": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 0,
+        "base_forced_placements": 3,
+        "event_counts": {
+          "census": 4,
+          "forced": 3,
+          "raw_deadpoint_candidate": 1,
+          "root_cleanup_complete": 1
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 45,
+          "deadpoint_candidates": 1,
+          "decision_attempts": 0,
+          "mark_dependency_keys": 15,
+          "solutions": 0,
+          "trace_rows": 9,
+          "witness_rows": 9
+        }
+      },
+      "all_original_solutions_preserved": true,
+      "certified_clause_count": 1,
+      "cold_certified_pipeline_seconds": 0.339946,
+      "compile_and_translation_seconds": 0.016387375,
+      "id": "contraposition",
+      "live_census_count": 18,
+      "marked": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 0,
+        "base_forced_placements": 3,
+        "event_counts": {
+          "census": 4,
+          "forced": 3,
+          "raw_deadpoint_acquisition_disabled": 1,
+          "root_cleanup_complete": 1
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 504,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 0,
+          "mark_dependency_keys": 57,
+          "solutions": 0,
+          "trace_rows": 9,
+          "witness_rows": 0
+        }
+      },
+      "model_reference_seconds": 5.7459e-05,
+      "original_solution_count": 0,
+      "plain": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 0,
+        "base_forced_placements": 3,
+        "event_counts": {
+          "census": 4,
+          "forced": 3,
+          "raw_deadpoint_acquisition_disabled": 1,
+          "root_cleanup_complete": 1
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 45,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 0,
+          "mark_dependency_keys": 15,
+          "solutions": 0,
+          "trace_rows": 9,
+          "witness_rows": 0
+        }
+      },
+      "plain_complete_seconds": 0.033912417,
+      "total_case_seconds": 0.373916
+    },
+    {
+      "acquisition": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 0,
+        "base_forced_placements": 1,
+        "event_counts": {
+          "census": 2,
+          "forced": 1,
+          "raw_deadpoint_candidate": 1,
+          "root_cleanup_complete": 1
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 12,
+          "deadpoint_candidates": 1,
+          "decision_attempts": 0,
+          "mark_dependency_keys": 8,
+          "solutions": 0,
+          "trace_rows": 5,
+          "witness_rows": 4
+        }
+      },
+      "all_original_solutions_preserved": true,
+      "certified_clause_count": 1,
+      "cold_certified_pipeline_seconds": 0.05811225,
+      "compile_and_translation_seconds": 0.010506916,
+      "id": "excluded-middle",
+      "live_census_count": 12,
+      "marked": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 0,
+        "base_forced_placements": 1,
+        "event_counts": {
+          "census": 2,
+          "forced": 1,
+          "raw_deadpoint_acquisition_disabled": 1,
+          "root_cleanup_complete": 1
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 48,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 0,
+          "mark_dependency_keys": 29,
+          "solutions": 0,
+          "trace_rows": 5,
+          "witness_rows": 0
+        }
+      },
+      "model_reference_seconds": 3.8417e-05,
+      "original_solution_count": 0,
+      "plain": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 0,
+        "base_forced_placements": 1,
+        "event_counts": {
+          "census": 2,
+          "forced": 1,
+          "raw_deadpoint_acquisition_disabled": 1,
+          "root_cleanup_complete": 1
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 12,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 0,
+          "mark_dependency_keys": 8,
+          "solutions": 0,
+          "trace_rows": 5,
+          "witness_rows": 0
+        }
+      },
+      "plain_complete_seconds": 0.011851708,
+      "total_case_seconds": 0.070002417
+    },
+    {
+      "acquisition": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 2,
+        "base_forced_placements": 5,
+        "event_counts": {
+          "branch": 2,
+          "census": 8,
+          "enumeration_subtree_exhausted": 1,
+          "forced": 5,
+          "raw_deadpoint_candidate": 1,
+          "rollback": 2,
+          "rollback_census": 2,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 1
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 65,
+          "deadpoint_candidates": 1,
+          "decision_attempts": 2,
+          "mark_dependency_keys": 39,
+          "solutions": 1,
+          "trace_rows": 23,
+          "witness_rows": 13
+        }
+      },
+      "all_original_solutions_preserved": true,
+      "certified_clause_count": 1,
+      "cold_certified_pipeline_seconds": 0.601375833,
+      "compile_and_translation_seconds": 0.01684025,
+      "id": "negative-nonrectangular-origins",
+      "live_census_count": 38,
+      "marked": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 2,
+        "base_branch_attempts": 2,
+        "base_forced_placements": 5,
+        "event_counts": {
+          "branch": 2,
+          "census": 10,
+          "enumeration_subtree_exhausted": 1,
+          "forced": 7,
+          "raw_deadpoint_acquisition_disabled": 1,
+          "rollback": 2,
+          "rollback_census": 2,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 1
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 455,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 2,
+          "mark_dependency_keys": 94,
+          "solutions": 1,
+          "trace_rows": 27,
+          "witness_rows": 0
+        }
+      },
+      "model_reference_seconds": 0.002825875,
+      "original_solution_count": 1,
+      "plain": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 2,
+        "base_forced_placements": 5,
+        "event_counts": {
+          "branch": 2,
+          "census": 8,
+          "enumeration_subtree_exhausted": 1,
+          "forced": 5,
+          "raw_deadpoint_acquisition_disabled": 1,
+          "rollback": 2,
+          "rollback_census": 2,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 1
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 65,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 2,
+          "mark_dependency_keys": 39,
+          "solutions": 1,
+          "trace_rows": 23,
+          "witness_rows": 0
+        }
+      },
+      "plain_complete_seconds": 0.107775208,
+      "total_case_seconds": 0.711977
+    },
+    {
+      "acquisition": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 2,
+        "base_forced_placements": 1,
+        "event_counts": {
+          "branch": 2,
+          "census": 4,
+          "enumeration_subtree_exhausted": 1,
+          "forced": 1,
+          "rollback": 2,
+          "rollback_census": 2,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 2
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 4,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 2,
+          "mark_dependency_keys": 2,
+          "solutions": 2,
+          "trace_rows": 15,
+          "witness_rows": 0
+        }
+      },
+      "all_original_solutions_preserved": true,
+      "certified_clause_count": 0,
+      "cold_certified_pipeline_seconds": 0.068211541,
+      "compile_and_translation_seconds": 0.004033917,
+      "id": "assigned-zero-and-absence",
+      "live_census_count": 24,
+      "marked": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 2,
+        "base_forced_placements": 1,
+        "event_counts": {
+          "branch": 2,
+          "census": 4,
+          "enumeration_subtree_exhausted": 1,
+          "forced": 1,
+          "rollback": 2,
+          "rollback_census": 2,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 2
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 4,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 2,
+          "mark_dependency_keys": 6,
+          "solutions": 2,
+          "trace_rows": 15,
+          "witness_rows": 0
+        }
+      },
+      "model_reference_seconds": 0.00799075,
+      "original_solution_count": 2,
+      "plain": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 2,
+        "base_forced_placements": 1,
+        "event_counts": {
+          "branch": 2,
+          "census": 4,
+          "enumeration_subtree_exhausted": 1,
+          "forced": 1,
+          "rollback": 2,
+          "rollback_census": 2,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 2
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 4,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 2,
+          "mark_dependency_keys": 2,
+          "solutions": 2,
+          "trace_rows": 15,
+          "witness_rows": 0
+        }
+      },
+      "plain_complete_seconds": 0.019133958,
+      "total_case_seconds": 0.095336375
+    },
+    {
+      "acquisition": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 2,
+        "base_forced_placements": 2,
+        "event_counts": {
+          "branch": 2,
+          "census": 5,
+          "enumeration_subtree_exhausted": 1,
+          "forced": 2,
+          "rollback": 2,
+          "rollback_census": 2,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 2
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 4,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 2,
+          "mark_dependency_keys": 3,
+          "solutions": 2,
+          "trace_rows": 17,
+          "witness_rows": 0
+        }
+      },
+      "all_original_solutions_preserved": true,
+      "certified_clause_count": 0,
+      "cold_certified_pipeline_seconds": 0.064044375,
+      "compile_and_translation_seconds": 0.003668125,
+      "id": "remote-only-overlap",
+      "live_census_count": 27,
+      "marked": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 2,
+        "base_forced_placements": 2,
+        "event_counts": {
+          "branch": 2,
+          "census": 5,
+          "enumeration_subtree_exhausted": 1,
+          "forced": 2,
+          "rollback": 2,
+          "rollback_census": 2,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 2
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 4,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 2,
+          "mark_dependency_keys": 7,
+          "solutions": 2,
+          "trace_rows": 17,
+          "witness_rows": 0
+        }
+      },
+      "model_reference_seconds": 0.009456709,
+      "original_solution_count": 2,
+      "plain": {
+        "auxiliary_branch_attempts": 0,
+        "auxiliary_forced_placements": 0,
+        "base_branch_attempts": 2,
+        "base_forced_placements": 2,
+        "event_counts": {
+          "branch": 2,
+          "census": 5,
+          "enumeration_subtree_exhausted": 1,
+          "forced": 2,
+          "rollback": 2,
+          "rollback_census": 2,
+          "root_cleanup_complete": 1,
+          "solution_candidate": 2
+        },
+        "logged_base_candidate_removals_on_auxiliary_placements": [],
+        "statistics": {
+          "candidate_universe": 4,
+          "deadpoint_candidates": 0,
+          "decision_attempts": 2,
+          "mark_dependency_keys": 3,
+          "solutions": 2,
+          "trace_rows": 17,
+          "witness_rows": 0
+        }
+      },
+      "plain_complete_seconds": 0.025259875,
+      "total_case_seconds": 0.098761167
+    }
+  ],
+  "runner_clock_terminal_seconds": 10.357021584,
+  "schema": "ROOT-passive-certified-point-results-v1",
+  "scope": "Passive reading/counting of saved values/event IDs only; no point checker, theorem predicate, search, simulator or code from subject files executed. Counters reflect event occurrences, not unique clauses/reuses, general proof or speed benefit.",
+  "stored_expanded_bytes": 4142968,
+  "worker_peak_bytes": 82837504
+}
