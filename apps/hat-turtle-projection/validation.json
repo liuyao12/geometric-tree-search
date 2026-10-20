@@ -1,0 +1,54 @@
+{
+  "geometry": {
+    "integerVertices": 49246,
+    "tiles": 7921,
+    "sharedEdges": 53728,
+    "eulerCharacteristic": 1,
+    "samples": [
+      {
+        "fraction": 0,
+        "tileArea": 3.464101615137755,
+        "properCrossingsOrOverlaps": 0,
+        "edgePairsChecked": 342576
+      },
+      {
+        "fraction": 0.25,
+        "tileArea": 3.822821082744905,
+        "properCrossingsOrOverlaps": 0,
+        "edgePairsChecked": 307284
+      },
+      {
+        "fraction": 0.5,
+        "tileArea": 4.098076211353316,
+        "properCrossingsOrOverlaps": 0,
+        "edgePairsChecked": 286633
+      },
+      {
+        "fraction": 0.75,
+        "tileArea": 4.271108818828933,
+        "properCrossingsOrOverlaps": 0,
+        "edgePairsChecked": 274329
+      },
+      {
+        "fraction": 1,
+        "tileArea": 4.330127018922193,
+        "properCrossingsOrOverlaps": 0,
+        "edgePairsChecked": 273554
+      }
+    ]
+  },
+  "browser": {
+    "status": "passed",
+    "surface": "Codex in-app browser",
+    "checks": [
+      "Rendered hat, turtle, and equal-edge endpoints",
+      "Projection slider seeks to exact midpoint and pauses playback",
+      "Playback advances the projection continuously",
+      "Plane and lifted view toggle",
+      "Whole-patch fit and reset",
+      "Desktop visual inspection",
+      "390-pixel phone-width visual inspection",
+      "Stable selected tile outline across endpoints"
+    ]
+  }
+}
