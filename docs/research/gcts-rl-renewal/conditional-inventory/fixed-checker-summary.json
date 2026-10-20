@@ -1,0 +1,23 @@
+{
+  "canonical_packet": {
+    "bytes": 2175732,
+    "path": "/private/tmp/gcts-fixed-initializer-ROOT-20261020-v1/actual-components-v2/canonical-codec-initializer-calibration.json",
+    "sha256": "a79e1877f21ea816cc6bd2da93185fa695687c6b9fa8f6c84ae86378edc2c775"
+  },
+  "case_rows": 288,
+  "checker_functions": 69,
+  "checker_instructions": 2158,
+  "diagnostics": 28,
+  "elapsed_seconds": 2.887547792,
+  "logical_bytes": 2201363,
+  "malformed_words": 10,
+  "physical_bytes_with_reserve": 11642204,
+  "program_image_symbols": 79040,
+  "root_callbacks_scope": "Result qualification cutoff; not final callback count or CPU-work measurement.",
+  "root_check_calls": 662628,
+  "runner_exit": 0,
+  "scope": "Passive saved JSON/count projection only; no component import or replay.",
+  "selector_rows": 104,
+  "terminal_gate_passed": true,
+  "worker_peak_bytes": 73039872
+}
