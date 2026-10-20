@@ -1,0 +1,72 @@
+{
+  "sameOrientationTranslations": {
+    "rank": 4,
+    "integerWitness": [
+      [
+        4,
+        1,
+        3,
+        -3
+      ],
+      [
+        9,
+        3,
+        7,
+        -8
+      ],
+      [
+        -8,
+        10,
+        4,
+        4
+      ],
+      [
+        1,
+        34,
+        28,
+        -11
+      ]
+    ],
+    "determinant": "-36"
+  },
+  "reflectedTiles": 1009,
+  "coordinateLabelsChecked": 110894,
+  "uniformCamera": true,
+  "samples": [
+    {
+      "fraction": 0,
+      "rotationDegrees": -2.671296847210219e-14,
+      "scale": 1.0000000000000013,
+      "rmsLocalDrift": 1.0477831098280727e-13,
+      "uncorrectedRmsDrift": 9.695310933657322e-15
+    },
+    {
+      "fraction": 0.25,
+      "rotationDegrees": -3.9844882855457446,
+      "scale": 0.951862246667257,
+      "rmsLocalDrift": 0.0380870014712751,
+      "uncorrectedRmsDrift": 6.147837024094942
+    },
+    {
+      "fraction": 0.5,
+      "rotationDegrees": -7.646893901657926,
+      "scale": 0.9192798512631477,
+      "rmsLocalDrift": 0.0729372111972958,
+      "uncorrectedRmsDrift": 11.572618948664434
+    },
+    {
+      "fraction": 0.75,
+      "rotationDegrees": -11.111084753010232,
+      "scale": 0.9004088885807172,
+      "rmsLocalDrift": 0.10562941439914311,
+      "uncorrectedRmsDrift": 16.328829174176864
+    },
+    {
+      "fraction": 1,
+      "rotationDegrees": -14.48064663119794,
+      "scale": 0.8941954327192378,
+      "rmsLocalDrift": 0.13705920999290336,
+      "uncorrectedRmsDrift": 20.517805797230892
+    }
+  ]
+}

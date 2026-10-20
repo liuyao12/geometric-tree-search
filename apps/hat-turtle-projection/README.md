@@ -40,3 +40,20 @@ This direction is orthogonal to both screen-plane directions. A fixed camera til
 The lift follows Nan Ma and Arnaud Chéritat: https://www.math.univ-toulouse.fr/~cheritat/2023-monotile/4D-lift/index.html
 
 Serve this directory over HTTP and open `index.html`. No compilation or package installation is needed. Browser controls include playback, endpoints and midpoint, dragging, zoom, whole-patch fit, tile selection, and a lifted view. Reduced-motion preferences pause playback initially.
+
+## Single tile and steadier framing
+
+The single-tile view labels all fourteen vertices with their integer triangular-basis coordinates, relative to the selected tile's first vertex. MathJax typesets the labels and coordinate explanation. Labels are constant through the animation. The lattice coefficient basis is explicitly distinguished from orthonormal Cartesian coordinates.
+
+Steady reflected layout is a global, orientation-preserving similarity fitted to the reflected tiles' vertex-average reference points over the entire patch. It removes overall rotation, translation and scale change; it does not move tiles separately. This keeps the main spacing visually steady while preserving congruence and shared edges. Residual local motion is disclosed in the UI. It is not an exact locking of every reflected tile.
+
+The fit minimizes
+
+\[
+\sum_i\left|g\,z_i(\theta)+t-z_i(\pi/3)\right|^2,
+\qquad g,t\in\mathbb C.
+\]
+
+The reference points are used only to choose the camera. There is no claim that vertex averages or area centroids are a privileged geometric center.
+
+`validate-view.mjs` independently checks all relative coordinate labels against the original patch, compares the reported residual to the actual full-patch residual, and checks that camera correction preserves edge-length ratios. It also records an exact integer determinant witnessing four independent translations between reflected tiles of the same orientation. This last check is independent of the point chosen inside each such tile: translations between identically oriented copies do not change when that reference point changes. For this deformation, whose hat and turtle projection matrices together have rank four, those translations cannot all be made stationary by one global planar similarity. This is a statement about this family and framing, not a claim that no other visualization or deformation is possible.

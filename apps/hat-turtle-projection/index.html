@@ -5,17 +5,22 @@
 <meta name="description" content="Watch one fixed four-dimensional tiling patch project continuously from hats to turtles.">
 <meta name="theme-color" content="#f3f0e8">
 <title>Hat to Turtle · A changing view</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=2">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']]},options:{enableMenu:false}};</script>
+<script defer id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 </head>
 <body>
 <header><a class="back" href="../../">Geometric tree search <span aria-hidden="true">/</span></a><span class="eyebrow">A projection experiment</span></header>
 <main>
 <section class="intro"><div><h1>One tiling.<br><span>A changing view.</span></h1><p>Watch hats become turtles, with every neighbor staying joined.</p></div><button id="about-toggle" class="quiet" aria-expanded="false" aria-controls="about">What am I seeing? <span aria-hidden="true">↗</span></button></section>
+<div class="display-toolbar"><div class="content-picker" role="group" aria-label="Display"><button id="patch-view" aria-pressed="true">Tiling patch</button><button id="tile-view" aria-pressed="false">Single tile + coordinates</button></div><label class="steady-option"><input type="checkbox" id="steady" checked> Steady reflected layout</label></div>
+<p id="frame-note" class="frame-note">Overall rotation and spacing stabilized; small local shifts remain.</p>
 <section class="viewer" aria-label="Animated hat to turtle tiling projection">
 <canvas id="scene" aria-label="An interactive tiling patch continuously projected from hats to turtles. Drag to pan, scroll to zoom, or use the controls below."></canvas>
+<div id="single-tile" hidden><svg id="single-svg" aria-label="A single tile with fourteen labeled four-coordinate vertices"><g id="single-leaders"></g><path id="single-path"/><g id="single-points"></g></svg><div id="coordinate-labels"></div></div>
 <div class="view-top"><div class="mode-picker" role="group" aria-label="View"><button id="plane" aria-pressed="true">Plane view</button><button id="lift" aria-pressed="false">Lifted view</button></div><span id="shape-label" class="shape-label">Hat</span></div>
-<div class="view-note"><span class="live-dot"></span><span id="view-note">Same tiles. Same neighbors.</span></div>
-<div class="canvas-tools" role="group" aria-label="Camera"><button id="zoom-in" aria-label="Zoom in">+</button><button id="zoom-out" aria-label="Zoom out">−</button><button id="fit">Whole patch</button><button id="reset">Reset view</button></div>
+<div class="view-note" id="patch-note"><span class="live-dot"></span><span id="view-note">Same tiles. Same neighbors.</span></div>
+<div class="canvas-tools" id="camera-tools" role="group" aria-label="Camera"><button id="zoom-in" aria-label="Zoom in">+</button><button id="zoom-out" aria-label="Zoom out">−</button><button id="fit">Whole patch</button><button id="reset">Reset view</button></div>
 <div id="loading" role="status">Preparing the tiling…</div>
 </section>
 <section class="controls" aria-label="Animation controls">
@@ -24,12 +29,13 @@
 <label class="speed-control">Speed<select id="speed" aria-label="Animation speed"><option value="0.5">Slow</option><option value="1" selected>Normal</option><option value="2">Fast</option></select></label>
 </section>
 <div class="under-controls"><p id="patch-info">A fixed tiling patch · drag to pan · scroll to zoom</p><label><input id="highlight" type="checkbox" checked> Highlight a tile <span class="hint">· click any tile</span></label></div>
+<div id="coordinate-note" class="coordinate-note" hidden><p><strong>One fixed tile, fourteen fixed coordinate labels.</strong> Coordinates are relative to the first vertex. Click a tile in the patch to inspect that tile here.</p><p>The integer tuple \( (p,q,r,s) \) uses two triangular lattice bases. It is not a tuple of distances along four perpendicular axes.</p><details><summary>How these coordinates produce the drawing</summary><p>Each tuple represents the Cartesian point</p><div class="formula">\[ (u_x,u_y,v_x,v_y)=\left(p+\frac q2,\frac{\sqrt3 q}{2},\frac{\sqrt3 r}{2},\frac r2+s\right). \]</div><p>The moving plane uses \( \cos\theta\,u+\sin\theta\,v \), from \( \theta=\pi/3 \) for the hat to \( \theta=\pi/6 \) for the turtle. The coordinate labels stay fixed.</p></details></div>
 <section id="about" hidden>
 <div><h2>The object stays fixed.</h2><p>Every corner has a fixed position in four dimensions. This animation changes the viewing plane. The entire patch moves together, so shared corners and edges remain shared.</p><p>Use <strong>Plane view</strong> to see the tiling. <strong>Lifted view</strong> adds a third projected direction and tilts the camera, making the folded patch visible. Overlaps in that view are an effect of the projection.</p></div>
-<div><h2>Follow the orange outline.</h2><p>The outlined tile is the same tile throughout. Colors stay attached to individual tiles. Dark blue tiles are reflected copies; the remaining colors distinguish groups in the construction.</p><p>At the equal-edge midpoint, the polygon also admits periodic tilings. The particular patch shown here continues smoothly through that point.</p></div>
+<div><h2>A steadier reflected layout.</h2><p><strong>Steady reflected layout</strong> applies one rotation, uniform scaling and translation to the entire patch. It matches the dark tiles’ overall arrangement to its hat view. No tile is moved separately, so shared edges still agree. Small local shifts remain; this does not freeze every dark tile exactly.</p><h2>Follow the orange outline.</h2><p>The outlined tile is the same tile throughout. Colors stay attached to individual tiles. Dark blue tiles are reflected copies; the remaining colors distinguish groups in the construction.</p><p>At the equal-edge midpoint, the polygon also admits periodic tilings. The particular patch shown here continues smoothly through that point.</p></div>
 <div class="credits"><h2>Sources</h2><p>The patch uses the substitution construction of Smith, Myers, Kaplan and Goodman-Strauss, via Craig S. Kaplan’s <a href="https://github.com/isohedral/hatviz">hatviz</a> (<a href="LICENSE-hatviz.txt">BSD license</a>). The lift follows <a href="https://www.math.univ-toulouse.fr/~cheritat/2023-monotile/4D-lift/index.html">Nan Ma and Arnaud Chéritat</a>.</p><p>This is a visualization of a known tiling construction. No tiling search or learned constraints run here.</p></div>
 </section>
 </main>
 <footer><span>Hat → Turtle</span><span>One patch, viewed continuously.</span></footer>
-<script type="module" src="app.js"></script>
+<script type="module" src="app.js?v=2"></script>
 </body></html>
