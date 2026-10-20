@@ -1,0 +1,558 @@
+{
+  "schema": "typed-physical-Wang-initialization-Source-review-v1",
+  "reviewer_identity": "/root/recovered_batch_review",
+  "review_passed": true,
+  "status": "CONDITIONAL_COMPLETE_LAYOUT_GENERIC_WANG_CONSTRUCTOR_SOURCE_PASS_ONLY",
+  "source_only": true,
+  "handoff": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/init-L/handoff-v1.json",
+    "bytes": 5927,
+    "sha256": "dad1acffed871a3130b31fd5d055bd81fc90306e1496b2d66b5f31a81ae93232"
+  },
+  "manifest": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/init-L/freeze-manifest-v1.json",
+    "bytes": 9189,
+    "sha256": "c393caabc154abea55fdb25161ed6fe5f45a81531761117d39fce36fee77a320"
+  },
+  "source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/init-L/physical_wang_initialization_v1.py",
+    "bytes": 17557,
+    "sha256": "2e8f8a1b7accc875dbc8d73e4b21d24fe50fc9b635daa0a001b1fabe6e54ba72"
+  },
+  "API": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/init-L/API-v1.json",
+    "bytes": 9588,
+    "sha256": "4d2a81902ffe4633444e1c5ddaae8e7c5a6b314fa1600cd9258d466c904963a3"
+  },
+  "manual": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/init-L/manual-correspondence-v1.json",
+    "bytes": 11743,
+    "sha256": "5af181ae0f7c0567accae4fbcc8d6bb994863fa20a8d78f908a19ebd374daf1a"
+  },
+  "whole_unrun_bank": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/init-L/declarative-whole-bank-v1.json",
+    "bytes": 24598,
+    "sha256": "9dc8e30af210e60a5eb897eadf54bce5c1637e5b70e5f2b8d7d1b7e9c889a3d8"
+  },
+  "direct_legacy_compiler": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/recovered/inherited-Source/wang_unknown_certificate_initializer_v1.py",
+    "bytes": 27193,
+    "sha256": "02cf1718e09c1eadb4eda4811436e1c7139cb2e1c255f9d73894e0e3b5d21b43"
+  },
+  "all_manifest_pin_checks": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/init-L/physical_wang_initialization_v1.py",
+      "exact_pin": true
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/init-L/API-v1.json",
+      "exact_pin": true
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/init-L/manual-correspondence-v1.json",
+      "exact_pin": true
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/init-L/declarative-whole-bank-v1.json",
+      "exact_pin": true
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/init-L/author-static-audit-v1.json",
+      "exact_pin": true
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/basic-tiling-algorithm.md",
+      "exact_pin": true
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/recovered/inherited-Source/wang_unknown_certificate_initializer_v1.py",
+      "exact_pin": true
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/root/literal_machine_builder_v2.py",
+      "exact_pin": true
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/root/physical_join_v1.py",
+      "exact_pin": true
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/root/physical_runtime_v1.py",
+      "exact_pin": true
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/physical-L/immutable_program_intake_v1.py",
+      "exact_pin": true
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/physical-L/linked_boot_values_v2.py",
+      "exact_pin": true
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/root/runtime_register_records_v1.py",
+      "exact_pin": true
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/root/runtime_call_frames_v1.py",
+      "exact_pin": true
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/root/utf8_residual_machine_v1.py",
+      "exact_pin": true
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/recovered-checker/CodecV2/fixed_vm_codec_v2.py",
+      "exact_pin": true
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/typed-whole-runtime-and-join-Source-review-v1.json",
+      "exact_pin": true
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/typed-complete-program-intake-Source-review-v1.json",
+      "exact_pin": true
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-linked-evidence-20261020/review-C/typed-linked-tagged-value-BOOT-v2-Source-review-v1.json",
+      "exact_pin": true
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/recovered/ROOT/implicit-inputs-v1.json",
+      "exact_pin": true
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/diagnostics-L/new-diagnostic-bank-v1.json",
+      "exact_pin": true
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/root/ROOT-final-milestone-v1.json",
+      "exact_pin": true
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/root/ROOT-next-stage-handoff-v1.json",
+      "exact_pin": true
+    }
+  ],
+  "independent_exact_raw_copies": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/review-C/initialization-reviewed-Sources-v1/handoff-v1.json",
+      "bytes": 5927,
+      "sha256": "dad1acffed871a3130b31fd5d055bd81fc90306e1496b2d66b5f31a81ae93232"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/review-C/initialization-reviewed-Sources-v1/freeze-manifest-v1.json",
+      "bytes": 9189,
+      "sha256": "c393caabc154abea55fdb25161ed6fe5f45a81531761117d39fce36fee77a320"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/review-C/initialization-reviewed-Sources-v1/physical_wang_initialization_v1.py",
+      "bytes": 17557,
+      "sha256": "2e8f8a1b7accc875dbc8d73e4b21d24fe50fc9b635daa0a001b1fabe6e54ba72"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/review-C/initialization-reviewed-Sources-v1/API-v1.json",
+      "bytes": 9588,
+      "sha256": "4d2a81902ffe4633444e1c5ddaae8e7c5a6b314fa1600cd9258d466c904963a3"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/review-C/initialization-reviewed-Sources-v1/manual-correspondence-v1.json",
+      "bytes": 11743,
+      "sha256": "5af181ae0f7c0567accae4fbcc8d6bb994863fa20a8d78f908a19ebd374daf1a"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/review-C/initialization-reviewed-Sources-v1/declarative-whole-bank-v1.json",
+      "bytes": 24598,
+      "sha256": "9dc8e30af210e60a5eb897eadf54bce5c1637e5b70e5f2b8d7d1b7e9c889a3d8"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/review-C/initialization-reviewed-Sources-v1/author-static-audit-v1.json",
+      "bytes": 4796,
+      "sha256": "25ffc5a4ffb1991397b2f56faa8261836a72122c1d9cf2481ec267049d9a217e"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/review-C/initialization-reviewed-Sources-v1/wang_unknown_certificate_initializer_v1.py",
+      "bytes": 27193,
+      "sha256": "02cf1718e09c1eadb4eda4811436e1c7139cb2e1c255f9d73894e0e3b5d21b43"
+    }
+  ],
+  "full_read_scope": [
+    "All14 initializer functions, complete API/manual/handoff/manifest and all36 declarative unrun cohorts.",
+    "Complete preserved generic unknown-certificate compiler Source, including full local rule/palette/cardinality, selector phase tiles, frame/collector colors, problem boundary pins, all required/admissible points and final literal reconciliation.",
+    "Exact prior reviewed Builderv2 rewind/lower ABI, joined program/value parser initialization requirements and previously reviewed runtime/register/frame Source pins. No generation or simulation was used."
+  ],
+  "all_functions": [
+    {
+      "function": "DeclarationError.__init__",
+      "first_line": 32,
+      "last_line": 35
+    },
+    {
+      "function": "ConstructionLimit.__init__",
+      "first_line": 39,
+      "last_line": 42
+    },
+    {
+      "function": "is_owned_declaration",
+      "first_line": 45,
+      "last_line": 46
+    },
+    {
+      "function": "is_owned_limit",
+      "first_line": 49,
+      "last_line": 50
+    },
+    {
+      "function": "_need",
+      "first_line": 53,
+      "last_line": 55
+    },
+    {
+      "function": "_Work.__init__",
+      "first_line": 59,
+      "last_line": 76
+    },
+    {
+      "function": "_Work.step",
+      "first_line": 78,
+      "last_line": 84
+    },
+    {
+      "function": "_Work.bound",
+      "first_line": 86,
+      "last_line": 89
+    },
+    {
+      "function": "_integer",
+      "first_line": 92,
+      "last_line": 94
+    },
+    {
+      "function": "_bits",
+      "first_line": 97,
+      "last_line": 103
+    },
+    {
+      "function": "_machine",
+      "first_line": 106,
+      "last_line": 197
+    },
+    {
+      "function": "_layout",
+      "first_line": 200,
+      "last_line": 294
+    },
+    {
+      "function": "_layout.emit",
+      "first_line": 229,
+      "last_line": 237
+    },
+    {
+      "function": "construct_initialized_problem",
+      "first_line": 297,
+      "last_line": 382
+    }
+  ],
+  "AST_parsed": true,
+  "unused_compile": true,
+  "manual_findings": [
+    {
+      "topic": "Full fixed literal adapter",
+      "finding": "Exact ordered38-symbol alphabet/16workspace/4halts and every working read slot are checked. Count/domain/duplicate checks imply all38*(Q-4) working rows; all152 halt slots are undefined. The bijection to integer symbols preserves each next/read/write/move. Shape checks alone intentionally do not establish genuine fixed Source provenance."
+    },
+    {
+      "topic": "All complete initial bands",
+      "finding": "The layout fixes unique global L/R, sixteen ordered headers, one @^ cursor and one raw# fence per band. It initializes HEAP3/R4/FRAMES5/STACK14/OUTPUT15 as empty colon records and6..13 as canonical zero words, each with positive blank tail. A single actual TM head is at global L in the physical PROGRAM entry. The sixteen marked band cursors are plain TM cells."
+    },
+    {
+      "topic": "Rewind compatibility",
+      "finding": "Builder rewind accepts raw^ beneath the marked @^, preserves it and advances to the first payload. All PROGRAM/value entry rewinds therefore compose with the chosen initial cursor convention under the exact prior helper ABI."
+    },
+    {
+      "topic": "Fixed program and public boundary",
+      "finding": "PROGRAM is pinned entirely, followed immediately by colon and positive blank tail. PUBLIC pins all supplied bits, exactly one fixed semicolon and precolon blanks, then a fixed colon and positive postcolon tail. Binary shape validation does not decode or approve semantic program/public data."
+    },
+    {
+      "topic": "Genuinely unknown certificate",
+      "finding": "Exactly one contiguous interval is omitted from fixed prefix/suffix, with its following colon and entire later tape fixed. PRE/ACTIVE can emit only bits or one semicolon into PAD; PAD emits only blank, and only PAD can exit into fixed POST. Thus exactly binary-star semicolon blank-star of the interval length can occur, with no free head/cursor/header/colon/fence."
+    },
+    {
+      "topic": "Full palette independence",
+      "finding": "The actual preserved generic compiler is called with the complete adapted machine and fixed wire mapping. Program/public bits/capacities/horizon only enter boundary construction. Every generic step/initializer/frame/collector tile remains in the palette and is admissible at every required origin. No reachability or target-specific trim is introduced."
+    },
+    {
+      "topic": "Full local spacetime argument",
+      "finding": "Matching pair colors force adjacent step triples to overlap on identical cells. Vertical cell colors preserve configurations. From the single initial head, the partial radius-one update is a deterministic machine step and rejects wall-crossing/undefined-head transitions. Frame exterior colors force frames to the board sides. Distinct initializer/step/seen color constructors prevent row mixing."
+    },
+    {
+      "topic": "Exact finite acceptance horizon",
+      "finding": "The board has one initializer row, exactly T step rows and one collector row. The collector seen-chain starts0 and ends1; only an accepting head changes it. Collection emits stop and done side colors that cannot begin another row, so an earlier accepting prefix cannot fill a longer board. This is conditional finite machine-history correctness of the literal generic construction, not checker/proof soundness."
+    },
+    {
+      "topic": "Exact point-model reduction",
+      "finding": "A tile has t=1 only at its center. Allowed origins are all required even-coordinate board centers, so exact t requires one tile per center. Adjacent m overlaps are precisely shared edge midpoints and exact color equality; exterior midpoint pins impose the boundary. No corner or geometric/rotation predicate is needed. This supplies a finite translation-only point problem, not a qualified GCTS frontier scheduler."
+    },
+    {
+      "topic": "Cardinality and dimensions",
+      "finding": "The manual full retained tile formula agrees with the complete Source family counts. The layout width is50 plus the16 payload capacities, and board dimensions are W+2 by T+2. The generic triple-product generator is still potentially very expensive. No state/tile/color/work/byte/RSS fit is proved or inferred from the formula."
+    },
+    {
+      "topic": "Raw failures and budgets",
+      "finding": "Actual produced adapter rows/cells/layout/problem are retained in state; BaseException uses bare raise and best-effort nonmasking attachment. A failure in Work construction or legacy internals relies on retained actual traceback locals, as the API explicitly requires. Original legacy private-limit-before-callback order is unchanged; Root must check its genuine first-fault/clock before classifying any planned sentinel. Adapter+legacy private work is summed; both use the same cumulative Root callback."
+    }
+  ],
+  "important_scope_conditions": [
+    "The table and legacy compiler must be genuine freshly constructed exact pinned dependency outputs; a shape-compatible malicious object has no authority.",
+    "Inputs are exclusively owned and callbacks read-only. Whole module/callback binding and first-fault custody are separate Root obligations.",
+    "The program and public data are exact literal pins only; compiled common-kernel Source/image, native/rawJSON and licensed theory/target correspondence are not established.",
+    "The generic finite history argument is manual and Source-conditional. There is no generated full table/palette, initialized control history, tiling or execution result in this milestone.",
+    "No full physical macro-step/initial BOOT/structural heap embedding or full accepted-language theorem follows from this constructor review.",
+    "Original15/33+28/55 cohort, previous negatives and unchanged limits remain; new36 cohorts are supplementary and entirely unrun."
+  ],
+  "all36_unrun_cohorts": [
+    {
+      "index": 0,
+      "id": "fixed-alphabet",
+      "level": "declaration",
+      "status": "UNRUN"
+    },
+    {
+      "index": 1,
+      "id": "complete-transition-table",
+      "level": "declaration",
+      "status": "UNRUN"
+    },
+    {
+      "index": 2,
+      "id": "undefined-and-entries",
+      "level": "declaration",
+      "status": "UNRUN"
+    },
+    {
+      "index": 3,
+      "id": "program-carrier",
+      "level": "declaration_and_row",
+      "status": "UNRUN"
+    },
+    {
+      "index": 4,
+      "id": "public-carrier",
+      "level": "declaration_and_row",
+      "status": "UNRUN"
+    },
+    {
+      "index": 5,
+      "id": "capacity-types",
+      "level": "declaration",
+      "status": "UNRUN"
+    },
+    {
+      "index": 6,
+      "id": "positive-postcolon-tails",
+      "level": "initialization_row_only",
+      "status": "UNRUN"
+    },
+    {
+      "index": 7,
+      "id": "program-immediate-colon",
+      "level": "initialization_row_only",
+      "status": "UNRUN"
+    },
+    {
+      "index": 8,
+      "id": "public-fixed-colon",
+      "level": "initialization_row_only",
+      "status": "UNRUN"
+    },
+    {
+      "index": 9,
+      "id": "certificate-selector-exhaustive",
+      "level": "initialization_row_only",
+      "status": "UNRUN"
+    },
+    {
+      "index": 10,
+      "id": "free-colon-and-tail-pins",
+      "level": "initialization_row_only",
+      "status": "UNRUN"
+    },
+    {
+      "index": 11,
+      "id": "sixteen-header-order",
+      "level": "initialization_row_only",
+      "status": "UNRUN"
+    },
+    {
+      "index": 12,
+      "id": "cursor-and-TM-head-distinction",
+      "level": "initialization_row_only",
+      "status": "UNRUN"
+    },
+    {
+      "index": 13,
+      "id": "global-and-band-fences",
+      "level": "initialization_row_only",
+      "status": "UNRUN"
+    },
+    {
+      "index": 14,
+      "id": "empty-record-bands",
+      "level": "initialization_row_only",
+      "status": "UNRUN"
+    },
+    {
+      "index": 15,
+      "id": "scratch-zero-bands",
+      "level": "initialization_row_only",
+      "status": "UNRUN"
+    },
+    {
+      "index": 16,
+      "id": "physical-program-refusals",
+      "level": "whole_linkage_unrun",
+      "status": "UNRUN"
+    },
+    {
+      "index": 17,
+      "id": "physical-public-free-rootcounts",
+      "level": "whole_linkage_unrun",
+      "status": "UNRUN"
+    },
+    {
+      "index": 18,
+      "id": "palette-input-independence",
+      "level": "whole_palette_unrun",
+      "status": "UNRUN"
+    },
+    {
+      "index": 19,
+      "id": "all-candidates-retained",
+      "level": "point_problem",
+      "status": "UNRUN"
+    },
+    {
+      "index": 20,
+      "id": "frame-and-corner-boundaries",
+      "level": "full_generic_tiling_unrun",
+      "status": "UNRUN"
+    },
+    {
+      "index": 21,
+      "id": "exact-time-acceptance",
+      "level": "full_generic_tiling_unrun",
+      "status": "UNRUN"
+    },
+    {
+      "index": 22,
+      "id": "translation-point-equivalence",
+      "level": "point_problem_unrun",
+      "status": "UNRUN"
+    },
+    {
+      "index": 23,
+      "id": "every-required-center",
+      "level": "point_problem",
+      "status": "UNRUN"
+    },
+    {
+      "index": 24,
+      "id": "foreign-exception-identity",
+      "level": "construction_fault_unrun",
+      "status": "UNRUN"
+    },
+    {
+      "index": 25,
+      "id": "owned-vs-foreign-public-errors",
+      "level": "construction_fault_unrun",
+      "status": "UNRUN"
+    },
+    {
+      "index": 26,
+      "id": "input-owner-mutation",
+      "level": "custody_fault_unrun",
+      "status": "UNRUN"
+    },
+    {
+      "index": 27,
+      "id": "partial-production-custody",
+      "level": "construction_fault_unrun",
+      "status": "UNRUN"
+    },
+    {
+      "index": 28,
+      "id": "nonmasking-secondary-failure",
+      "level": "construction_fault_unrun",
+      "status": "UNRUN"
+    },
+    {
+      "index": 29,
+      "id": "combined-work-and-clock",
+      "level": "resource_fault_unrun",
+      "status": "UNRUN"
+    },
+    {
+      "index": 30,
+      "id": "dimensions-and-total-physical-cap",
+      "level": "resource_fault_unrun",
+      "status": "UNRUN"
+    },
+    {
+      "index": 31,
+      "id": "literal-problem-license",
+      "level": "outer_Root_obligation_unrun",
+      "status": "UNRUN"
+    },
+    {
+      "index": 32,
+      "id": "entire-original-bank",
+      "level": "whole_original_qualification_unrun",
+      "status": "UNRUN"
+    },
+    {
+      "index": 33,
+      "id": "partial-file-prohibition",
+      "level": "outer_Root_obligation_unrun",
+      "status": "UNRUN"
+    },
+    {
+      "index": 34,
+      "id": "frozen-source-provenance",
+      "level": "outer_Root_obligation_unrun",
+      "status": "UNRUN"
+    },
+    {
+      "index": 35,
+      "id": "search-and-learning-nonclaim",
+      "level": "reporting_control",
+      "status": "UNRUN"
+    }
+  ],
+  "remaining": [
+    "Fresh complete fixed join/lowering/palette construction and full component/whole-bank qualification only in a separately reviewed Root once.",
+    "Full source/image/public-license/native-domain attribution and all13physical opcode/BOOT/initialization accepted-language bridge.",
+    "Corrected inner evidence/lifecycle/module-custody predicates and complete outer/resource closure; current B selected composition remains negative.",
+    "A useful complete machine/palette/output/work/HWM/deadline bound under unchanged limits.",
+    "Actual theorem proof search, certified learned markings, receptor/lemma inventory discovery, RL and matched baseline evidence."
+  ],
+  "failed_checks": [],
+  "authority": {
+    "research_imports": 0,
+    "component_calls": 0,
+    "compiler_calls": 0,
+    "table_generation": 0,
+    "tiles_emitted": 0,
+    "fixture_calls": 0,
+    "simulator_calls": 0,
+    "sizing_calls": 0,
+    "partial_content_reads": 0,
+    "new_actuals": 0,
+    "new_grants": 0,
+    "actual_execution_authorized": false,
+    "runtime_qualified": false,
+    "full_VM_qualified": false,
+    "full_initialized_Wang_acceptance_bridge_admitted": false,
+    "G1_adopted": false,
+    "fit_proved": false,
+    "proof_discovery": false,
+    "GCTS_RL_advantage_established": false
+  }
+}

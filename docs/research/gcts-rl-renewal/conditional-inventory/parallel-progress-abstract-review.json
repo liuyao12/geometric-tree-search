@@ -1,0 +1,473 @@
+{
+  "schema": "typed-abstract-heap-relation-Source-and-manual-review-v1",
+  "reviewer_identity": "/root/recovered_batch_review",
+  "review_passed": true,
+  "status": "CONDITIONAL_MANUAL_ABSTRACT_ARGUMENT_AND_FINITE_RELATION_SOURCE_PASS_ONLY",
+  "source_only": true,
+  "offer": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/root/abstract-relation-Source-offer-v1.json",
+    "bytes": 758,
+    "sha256": "681a27692669f718b818ccaeffc6ab51952f37e1fd7b0c86915b03f768efa39a"
+  },
+  "source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/root/abstract_heap_relation_v1.py",
+    "bytes": 10027,
+    "sha256": "db67b9d9ddb5a657b5836c39c73ab87dad0d95fdb8df302f946e10f3316b3721"
+  },
+  "manual": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/root/manual-abstract-refinement-and-unrun-bank-v1.json",
+    "bytes": 14922,
+    "sha256": "ec20db69640e28e2baf3f59925adaba198ef29620caa22043c59b4c0a269cc8f"
+  },
+  "independent_raw_copies": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/review-C/abstract-relation-reviewed-abstract_heap_relation_v1.py",
+      "bytes": 10027,
+      "sha256": "db67b9d9ddb5a657b5836c39c73ab87dad0d95fdb8df302f946e10f3316b3721"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/review-C/abstract-relation-reviewed-manual-abstract-refinement-and-unrun-bank-v1.json",
+      "bytes": 14922,
+      "sha256": "ec20db69640e28e2baf3f59925adaba198ef29620caa22043c59b4c0a269cc8f"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/review-C/abstract-relation-reviewed-abstract-relation-Source-offer-v1.json",
+      "bytes": 758,
+      "sha256": "681a27692669f718b818ccaeffc6ab51952f37e1fd7b0c86915b03f768efa39a"
+    }
+  ],
+  "all_functions": [
+    {
+      "function": "Invalid.__init__",
+      "first_line": 17,
+      "last_line": 20
+    },
+    {
+      "function": "Limit.__init__",
+      "first_line": 24,
+      "last_line": 27
+    },
+    {
+      "function": "is_owned_invalid",
+      "first_line": 30,
+      "last_line": 31
+    },
+    {
+      "function": "is_owned_limit",
+      "first_line": 34,
+      "last_line": 35
+    },
+    {
+      "function": "_need",
+      "first_line": 38,
+      "last_line": 40
+    },
+    {
+      "function": "_Work.__init__",
+      "first_line": 44,
+      "last_line": 53
+    },
+    {
+      "function": "_Work.start",
+      "first_line": 54,
+      "last_line": 65
+    },
+    {
+      "function": "_Work.step",
+      "first_line": 67,
+      "last_line": 76
+    },
+    {
+      "function": "_attach",
+      "first_line": 79,
+      "last_line": 85
+    },
+    {
+      "function": "_integer",
+      "first_line": 88,
+      "last_line": 89
+    },
+    {
+      "function": "_heap",
+      "first_line": 92,
+      "last_line": 104
+    },
+    {
+      "function": "_image",
+      "first_line": 107,
+      "last_line": 108
+    },
+    {
+      "function": "_embedding",
+      "first_line": 111,
+      "last_line": 135
+    },
+    {
+      "function": "_shapes",
+      "first_line": 138,
+      "last_line": 147
+    },
+    {
+      "function": "_vector",
+      "first_line": 150,
+      "last_line": 154
+    },
+    {
+      "function": "_control",
+      "first_line": 157,
+      "last_line": 163
+    },
+    {
+      "function": "_state",
+      "first_line": 166,
+      "last_line": 176
+    },
+    {
+      "function": "_vectors_correspond",
+      "first_line": 179,
+      "last_line": 183
+    },
+    {
+      "function": "_finish",
+      "first_line": 186,
+      "last_line": 193
+    },
+    {
+      "function": "check_heap_embedding",
+      "first_line": 196,
+      "last_line": 213
+    },
+    {
+      "function": "check_decoded_state_relation",
+      "first_line": 216,
+      "last_line": 250
+    }
+  ],
+  "all_function_bodies_inspected": true,
+  "AST_parsed": true,
+  "unused_compile": true,
+  "manual_findings": [
+    {
+      "topic": "Complete canonical heap domain",
+      "finding": "Exact tuple pair records and exact prior integer child references make structural values well-founded. Rejecting duplicate ordered reference pairs makes representation injective by induction on maximum structural height. Atoms and pairs are disjoint."
+    },
+    {
+      "topic": "Complete embedding",
+      "finding": "Every source node has an actual target pair image; every image is distinct; both child equations are checked for every source pair. Atoms map identically by definition. The declared seed prefix is compared record-by-record and must have the identity image. No source node is replaced by a selected subset."
+    },
+    {
+      "topic": "Mathematical extension",
+      "finding": "If the target contains every source structural value, uniqueness provides the embedding. Appending canonical nodes preserves old values and old images; canonical cons either reuses a pair or extends the embedding. The inclusion premise is explicit and is not established for the real initialized machine by this Source."
+    },
+    {
+      "topic": "Complete decoded state",
+      "finding": "The finite checker inspects active function/PC, every register and every bottom-to-top saved frame, including saved function/continuation/destination and every register. Exact shapes are externally attributed to the same program. One-past-end PC is a related nonfetchable state, not an acceptance claim."
+    },
+    {
+      "topic": "All thirteen opcodes",
+      "finding": "The manual covers const/move/cons/head/tail/pair/atom/succ/not/branch/jump/call/return. It agrees with the pinned abstract tree VM: operands precede destination writes, pair-kind is preserved, atom equality includes nil but excludes pairs, succ requires a byte below 255, Boolean operations require 0/1, CALL saves advanced PC/all caller registers and reads all arguments before rewrite, root return accepts exactly 1."
+    },
+    {
+      "topic": "Finite simulation theorem scope",
+      "finding": "Under the same validated immutable program, complete initial structural inclusion/state relation, correct abstract opcode semantics and finite successful administrative work, induction on a finite valid execution preserves the relation and root decision. This is a defensible conditional manual theorem. It is not an all-input status/cost equivalence or physical macro-step proof."
+    },
+    {
+      "topic": "Types and invalid carriers",
+      "finding": "The checker uses exact int/tuple tests for reference/control/state carriers; booleans and subclasses are not references. Invalid mapping/shape/vector/frame paths refuse. Heap dictionaries hash only flat exact pairs of integer references; this Source does not construct recursive native value tuples as hash keys."
+    },
+    {
+      "topic": "Fault and raw ownership",
+      "finding": "The entry holds full raw input owners and actual Work before start invokes the Root callback. Work calls genuine Root before private limit classification. Public exceptions default owner=None; genuine owned raises supply the private owner. Foreign exceptions are reraised without replacement and attachment is best-effort. This remains a nonhostile/read-only callback baseline, not a security sandbox."
+    }
+  ],
+  "functions_by_obligation": {
+    "errors_work": [
+      "Invalid.__init__",
+      "Limit.__init__",
+      "is_owned_invalid",
+      "is_owned_limit",
+      "_need",
+      "_Work.__init__",
+      "_Work.start",
+      "_Work.step",
+      "_attach"
+    ],
+    "heaps": [
+      "_integer",
+      "_heap",
+      "_image",
+      "_embedding"
+    ],
+    "states": [
+      "_shapes",
+      "_vector",
+      "_control",
+      "_state",
+      "_vectors_correspond"
+    ],
+    "entries": [
+      "_finish",
+      "check_heap_embedding",
+      "check_decoded_state_relation"
+    ]
+  },
+  "manual_sections": [
+    {
+      "formula": "\\[\\nu_H(a)=a\\ (a\\in A),\\qquad\\nu_H(257+i)=\\langle\\nu_H(a_i),\\nu_H(b_i)\\rangle.\\]",
+      "id": "domain",
+      "proof": [
+        "Prior references make the child relation well founded.",
+        "Define a structural value for each atom and then for each ordered pair, in increasing node order."
+      ],
+      "statement": "Let \\(A=\\{0,\\ldots,256\\}\\). A finite heap \\(H\\) has node references \\(257+i\\), with record \\(H_i=(a_i,b_i)\\) satisfying \\(a_i,b_i<257+i\\). Distinct node records have distinct ordered child-reference pairs. The atom \\(256\\) is nil.",
+      "title": "Canonical value heaps"
+    },
+    {
+      "formula": "\\[\\nu_H(r)=\\nu_H(s)\\Longrightarrow r=s.\\]",
+      "id": "injective",
+      "proof": [
+        "Atoms and constructed pairs have disjoint value forms; different atoms have different values.",
+        "For two pairs with equal structural values, their corresponding children have equal structural values. Induction on the maximum structural height makes both child references equal.",
+        "Canonical uniqueness of the ordered child-reference pair then makes the two parent references equal. This covers every finite structural height."
+      ],
+      "statement": "The structural-value map \\(\\nu_H\\) is injective.",
+      "title": "Lemma: each value has one reference"
+    },
+    {
+      "formula": "\\[e(a)=a,\\qquad K[e(r)]=\\bigl(e(H[r]_0),e(H[r]_1)\\bigr).\\]",
+      "id": "embedding",
+      "proof": [
+        "Define \\(e_{H,K}(r)\\) to be the unique reference in \\(K\\) with value \\(\\nu_H(r)\\). Existence is the stated inclusion assumption; uniqueness is the preceding lemma.",
+        "The map fixes atoms because atom and pair values are disjoint. If two images agree, their source values agree, so source references agree.",
+        "For a source pair, the target representative has exactly the images of its two children: applying \\(\\nu_K\\) to both children and using injectivity proves the two reference equalities."
+      ],
+      "statement": "Let \\(K\\) be another canonical heap containing a structural representative of every value represented in \\(H\\). There is a unique injective map \\(e_{H,K}\\) preserving every value, fixing atoms and commuting with both children.",
+      "title": "Lemma: extra nodes preserve values"
+    },
+    {
+      "formula": "\\[e^+(r)=e(r)\\qquad(r\\in\\operatorname{Ref}(H)).\\]",
+      "id": "extension",
+      "proof": [
+        "Appending prior-reference nodes cannot change any earlier structural value.",
+        "An existing target representative keeps its reference; canonical uniqueness prevents a later distinct representative of that value.",
+        "Therefore any extended embedding \\(e^+\\) satisfies \\(e^+|_H=e\\). Extra program metadata and captured argument-list nodes may be inserted in the target heap."
+      ],
+      "statement": "If canonical heaps \\(H\\) and \\(K\\) extend without modifying existing records, the value-preserving embedding of old references does not change.",
+      "title": "Lemma: appending metadata keeps old images"
+    },
+    {
+      "formula": "\\[e^+(\\operatorname{cons}_H(x,y))=\\operatorname{cons}_K(e(x),e(y)).\\]",
+      "id": "cons",
+      "proof": [
+        "If the source pair already exists, its image is the unique target representative with those image children.",
+        "If it is new in the source, add it there. The target either reuses its existing pair or adds a fresh pair with the corresponding children.",
+        "In either case the heaps remain canonical, previous images remain fixed, and the embedding extends by exactly the source result when necessary. No equal allocation count or result identifier is required."
+      ],
+      "statement": "Given corresponding child references, canonical pair construction produces corresponding results. The target may already contain the pair as metadata or a cached argument list.",
+      "title": "Lemma: canonical pair construction commutes"
+    },
+    {
+      "formula": "\\[R\\sim_eR^\\prime\\iff\\forall i\\;R_i^\\prime=e(R_i).\\]",
+      "id": "relation",
+      "proof": [
+        "Active function and next instruction indices must be identical; both complete register vectors have the declared register count.",
+        "Every target register contains \\(e\\) of its source value.",
+        "The complete bottom-to-top frame sequences have equal length. Corresponding saved functions, return instructions and destinations agree, and every saved register value corresponds under \\(e\\).",
+        "The target may contain extra heap nodes, but those nodes are not additional program instructions, axioms or certificate choices."
+      ],
+      "statement": "For the same valid immutable program, relate active function index, next instruction index, complete register vector and every saved caller frame. Functions, instruction indices and destinations are control data; the embedding acts on value references.",
+      "title": "Complete machine-state relation"
+    },
+    {
+      "formula": "\\[v=1\\iff e(v)=1.\\]",
+      "id": "simulation",
+      "proof": [
+        "Proceed by induction on the number of executed instructions. The base is the complete initial relation, which must be supplied rather than inferred from a matching root identifier.",
+        "Both sides fetch the same instruction and advance the next-instruction counter before executing it. Apply the exhaustive opcode cases below.",
+        "Canonical pair construction extends the embedding; every other value operation preserves it. Frame operations preserve the complete relation, including aliases, repeated arguments and untouched registers.",
+        "Administrative extra allocation is finite and canonical and cannot change an earlier value. It therefore preserves the relation between instruction boundaries.",
+        "At a root return, acceptance is exactly return value \\(1\\). The embedding fixes \\(1\\) and is injective, so both decisions agree. A nonaccepting stuck fetch is not converted into acceptance."
+      ],
+      "statement": "Assume the same validated immutable program, corresponding initial heaps/input states, correct abstract opcode semantics and finite successful administrative work between instruction boundaries. Ignore resource cutoffs. Then every finite valid opcode execution has a corresponding execution under canonical extra-node allocation, preserving the complete state relation and the root acceptance decision.",
+      "title": "Conditional abstract-machine simulation theorem"
+    },
+    {
+      "formula": null,
+      "id": "scope",
+      "proof": [
+        "It does not prove that the physical tape controller implements each abstract transition; that requires a complete macro-step refinement and decoding argument.",
+        "It does not prove that a Wang tiling is an initialized accepting tape history; the full initializer and spacetime construction need their own proof.",
+        "It does not establish full compiled common-checker image attribution, exact public theory/goal licensing, or native-string/raw-JSON correspondence.",
+        "It does not preserve physical heap size, allocation counts, running time, budgets or all error statuses. A fixed finite region may run out of capacity on one representation.",
+        "The old generic host fetch can raise outside its data-operation handler. The theorem concerns valid finite executions and root acceptance, not equality of all failure trajectories.",
+        "The finite certificate checker checks complete immutable heap and decoded-state relations only. It validates neither a transition nor the origin of the decoded state.",
+        "There has been no checker call, generated tile table, new actual, proof-search run, learned marking or RL training in this milestone."
+      ],
+      "statement": "This is a manual conditional mathematical argument about abstract machines, not a theorem discovered by GCTS or RL.",
+      "title": "What this theorem does not establish"
+    }
+  ],
+  "all13_opcode_cases": [
+    {
+      "argument": "Constants are the same exact original seed values, so their embeddings are the same fixed seed references. Write only the selected destination.",
+      "name": "const",
+      "opcode": 0
+    },
+    {
+      "argument": "Reading a source register and copying its value commutes with \\(e\\), including a destination that aliases the source.",
+      "name": "move",
+      "opcode": 1
+    },
+    {
+      "argument": "Both source operands are read before the destination write. Apply the canonical-construction lemma and preserve the other registers.",
+      "name": "cons",
+      "opcode": 2
+    },
+    {
+      "argument": "Pair/atom kind is preserved. For a pair, the target left child is the image of the source left child; atom inputs fail nonacceptingly.",
+      "name": "head",
+      "opcode": 3
+    },
+    {
+      "argument": "The right-child equation gives the same argument for tail. No numeric pair identifier is observed.",
+      "name": "tail",
+      "opcode": 4
+    },
+    {
+      "argument": "Atoms \\(0,\\ldots,256\\) stay atoms and every pair reference maps to a pair reference. The Boolean result is unchanged.",
+      "name": "pair",
+      "opcode": 5
+    },
+    {
+      "argument": "The operation tests that both operands are atoms and equal. Atoms are fixed; pairs fail the test even when their references are equal.",
+      "name": "atom",
+      "opcode": 6
+    },
+    {
+      "argument": "The operation is defined only on byte atoms \\(0,\\ldots,254\\). These operands and their successors are fixed. Byte \\(255\\), nil and pair operands fail nonacceptingly.",
+      "name": "succ",
+      "opcode": 7
+    },
+    {
+      "argument": "Only exact atoms \\(0\\) and \\(1\\) are valid. They are fixed, so inversion and invalid-data decisions agree.",
+      "name": "not",
+      "opcode": 8
+    },
+    {
+      "argument": "The condition is exactly \\(0\\) or \\(1\\); both the value and the statically validated target instruction indices agree.",
+      "name": "branch",
+      "opcode": 9
+    },
+    {
+      "argument": "Both sides assign the same statically validated target instruction index; the value embedding is unaffected.",
+      "name": "jump",
+      "opcode": 10
+    },
+    {
+      "argument": "Read the full ordered caller-argument vector before replacing registers. Repeated/aliased indices correspond pointwise. Save the complete caller, already advanced return instruction and destination; initialize the same callee with corresponding arguments and nil padding. Target-only cached list nodes are administrative extra allocation.",
+      "name": "call",
+      "opcode": 11
+    },
+    {
+      "argument": "Read the result before restoring a frame. With a caller, restore every saved register and write its one saved destination. With no caller, accept exactly atom \\(1\\), which is preserved and reflected by the embedding.",
+      "name": "return",
+      "opcode": 12
+    }
+  ],
+  "whole_unrun_bank": [
+    {
+      "executed": false,
+      "id": "atom-domain",
+      "recipe": "All atoms, nil and atom/pair separation; Source booleans are rejected as integer references."
+    },
+    {
+      "executed": false,
+      "id": "canonical-heaps",
+      "recipe": "Duplicate pair, forward/negative/out-of-range child, mutable or truncated pair record."
+    },
+    {
+      "executed": false,
+      "id": "mapping",
+      "recipe": "Missing/extra image, atom image for node, nonexistent node image, duplicate image, wrong left or right child."
+    },
+    {
+      "executed": false,
+      "id": "seed",
+      "recipe": "Incorrect declared prefix length, changed seed pair or nonidentity seed image."
+    },
+    {
+      "executed": false,
+      "id": "extra-nodes",
+      "recipe": "Metadata before later semantic pairs, cached argument lists and reuse of already-present target pair."
+    },
+    {
+      "executed": false,
+      "id": "state-values",
+      "recipe": "Complete active register correspondence, aliases/repeated values, differing values outside the selected destination."
+    },
+    {
+      "executed": false,
+      "id": "frames",
+      "recipe": "Changed lower frame, frame omission/reordering, changed destination/nextPC/function or an untouched saved register."
+    },
+    {
+      "executed": false,
+      "id": "control",
+      "recipe": "Out-of-range functions/registers, nonempty main arity, one-past-end saved continuation is a related nonaccepting state, not an accepted execution."
+    },
+    {
+      "executed": false,
+      "id": "immutability",
+      "recipe": "Reject mutable outer/inner carriers and nonexact integer subclasses; callbacks are separately owned immutable declarations."
+    },
+    {
+      "executed": false,
+      "id": "limits-faults",
+      "recipe": "Every private limit, first genuine Root callback failure, foreign exception identity and available raw owner/work prefixes."
+    },
+    {
+      "executed": false,
+      "id": "nonclaims",
+      "recipe": "A related but unreachable state pair must not become an execution or a proof-acceptance claim."
+    },
+    {
+      "executed": false,
+      "id": "full-linkage",
+      "recipe": "Actual tape/macro decoder, all13physical opcode refinements, fresh complete UTF8/program/body binding and full original qualification remain required."
+    }
+  ],
+  "remaining_bridge_obligations": [
+    "Complete source program/shapes/constant and public theory/target licensing attribution.",
+    "Actual BOOT/program initialization establishes structural inclusion of every source heap node and corresponding input state.",
+    "Full physical state decoder and all thirteen physical macro-step refinements, including helper scratch/administrative canonical allocation.",
+    "Complete Wang initialization/spacetime/collector history-to-acceptance bridge.",
+    "Full controller/evidence/custody/resource/once qualification and original full bank.",
+    "Actual proof search, discovered theorems, learned markings and RL remain absent."
+  ],
+  "failed_checks": [],
+  "not_implied_by_pass": {
+    "program_validated": false,
+    "physical_decoder": false,
+    "transition_checker": false,
+    "physical_trace_verified": false,
+    "execution_verified": false,
+    "proof_checked": false,
+    "whole_accepted_language_refinement": false,
+    "cost_or_status_equivalence": false,
+    "resource_fit": false
+  },
+  "authority": {
+    "research_imports": 0,
+    "component_calls": 0,
+    "fixtures": 0,
+    "simulation": 0,
+    "generation": 0,
+    "sizing": 0,
+    "partial_content_reads": 0,
+    "actual_execution_authorized": false,
+    "new_actuals": 0,
+    "new_grants": 0,
+    "G1_adopted": false,
+    "mathematical_proof_discovery": false
+  }
+}

@@ -1,0 +1,360 @@
+{
+  "GCTS_advantage_established": false,
+  "argument": [
+    {
+      "formula": "\\[\\nu_H(a)=a\\ (a\\in A),\\qquad\\nu_H(257+i)=\\langle\\nu_H(a_i),\\nu_H(b_i)\\rangle.\\]",
+      "id": "domain",
+      "proof": [
+        "Prior references make the child relation well founded.",
+        "Define a structural value for each atom and then for each ordered pair, in increasing node order."
+      ],
+      "statement": "Let \\(A=\\{0,\\ldots,256\\}\\). A finite heap \\(H\\) has node references \\(257+i\\), with record \\(H_i=(a_i,b_i)\\) satisfying \\(a_i,b_i<257+i\\). Distinct node records have distinct ordered child-reference pairs. The atom \\(256\\) is nil.",
+      "title": "Canonical value heaps"
+    },
+    {
+      "formula": "\\[\\nu_H(r)=\\nu_H(s)\\Longrightarrow r=s.\\]",
+      "id": "injective",
+      "proof": [
+        "Atoms and constructed pairs have disjoint value forms; different atoms have different values.",
+        "For two pairs with equal structural values, their corresponding children have equal structural values. Induction on the maximum structural height makes both child references equal.",
+        "Canonical uniqueness of the ordered child-reference pair then makes the two parent references equal. This covers every finite structural height."
+      ],
+      "statement": "The structural-value map \\(\\nu_H\\) is injective.",
+      "title": "Lemma: each value has one reference"
+    },
+    {
+      "formula": "\\[e(a)=a,\\qquad K[e(r)]=\\bigl(e(H[r]_0),e(H[r]_1)\\bigr).\\]",
+      "id": "embedding",
+      "proof": [
+        "Define \\(e_{H,K}(r)\\) to be the unique reference in \\(K\\) with value \\(\\nu_H(r)\\). Existence is the stated inclusion assumption; uniqueness is the preceding lemma.",
+        "The map fixes atoms because atom and pair values are disjoint. If two images agree, their source values agree, so source references agree.",
+        "For a source pair, the target representative has exactly the images of its two children: applying \\(\\nu_K\\) to both children and using injectivity proves the two reference equalities."
+      ],
+      "statement": "Let \\(K\\) be another canonical heap containing a structural representative of every value represented in \\(H\\). There is a unique injective map \\(e_{H,K}\\) preserving every value, fixing atoms and commuting with both children.",
+      "title": "Lemma: extra nodes preserve values"
+    },
+    {
+      "formula": "\\[e^+(r)=e(r)\\qquad(r\\in\\operatorname{Ref}(H)).\\]",
+      "id": "extension",
+      "proof": [
+        "Appending prior-reference nodes cannot change any earlier structural value.",
+        "An existing target representative keeps its reference; canonical uniqueness prevents a later distinct representative of that value.",
+        "Therefore any extended embedding \\(e^+\\) satisfies \\(e^+|_H=e\\). Extra program metadata and captured argument-list nodes may be inserted in the target heap."
+      ],
+      "statement": "If canonical heaps \\(H\\) and \\(K\\) extend without modifying existing records, the value-preserving embedding of old references does not change.",
+      "title": "Lemma: appending metadata keeps old images"
+    },
+    {
+      "formula": "\\[e^+(\\operatorname{cons}_H(x,y))=\\operatorname{cons}_K(e(x),e(y)).\\]",
+      "id": "cons",
+      "proof": [
+        "If the source pair already exists, its image is the unique target representative with those image children.",
+        "If it is new in the source, add it there. The target either reuses its existing pair or adds a fresh pair with the corresponding children.",
+        "In either case the heaps remain canonical, previous images remain fixed, and the embedding extends by exactly the source result when necessary. No equal allocation count or result identifier is required."
+      ],
+      "statement": "Given corresponding child references, canonical pair construction produces corresponding results. The target may already contain the pair as metadata or a cached argument list.",
+      "title": "Lemma: canonical pair construction commutes"
+    },
+    {
+      "formula": "\\[R\\sim_eR^\\prime\\iff\\forall i\\;R_i^\\prime=e(R_i).\\]",
+      "id": "relation",
+      "proof": [
+        "Active function and next instruction indices must be identical; both complete register vectors have the declared register count.",
+        "Every target register contains \\(e\\) of its source value.",
+        "The complete bottom-to-top frame sequences have equal length. Corresponding saved functions, return instructions and destinations agree, and every saved register value corresponds under \\(e\\).",
+        "The target may contain extra heap nodes, but those nodes are not additional program instructions, axioms or certificate choices."
+      ],
+      "statement": "For the same valid immutable program, relate active function index, next instruction index, complete register vector and every saved caller frame. Functions, instruction indices and destinations are control data; the embedding acts on value references.",
+      "title": "Complete machine-state relation"
+    },
+    {
+      "formula": "\\[v=1\\iff e(v)=1.\\]",
+      "id": "simulation",
+      "proof": [
+        "Proceed by induction on the number of executed instructions. The base is the complete initial relation, which must be supplied rather than inferred from a matching root identifier.",
+        "Both sides fetch the same instruction and advance the next-instruction counter before executing it. Apply the exhaustive opcode cases below.",
+        "Canonical pair construction extends the embedding; every other value operation preserves it. Frame operations preserve the complete relation, including aliases, repeated arguments and untouched registers.",
+        "Administrative extra allocation is finite and canonical and cannot change an earlier value. It therefore preserves the relation between instruction boundaries.",
+        "At a root return, acceptance is exactly return value \\(1\\). The embedding fixes \\(1\\) and is injective, so both decisions agree. A nonaccepting stuck fetch is not converted into acceptance."
+      ],
+      "statement": "Assume the same validated immutable program, corresponding initial heaps/input states, correct abstract opcode semantics and finite successful administrative work between instruction boundaries. Ignore resource cutoffs. Then every finite valid opcode execution has a corresponding execution under canonical extra-node allocation, preserving the complete state relation and the root acceptance decision.",
+      "title": "Conditional abstract-machine simulation theorem"
+    },
+    {
+      "formula": null,
+      "id": "scope",
+      "proof": [
+        "It does not prove that the physical tape controller implements each abstract transition; that requires a complete macro-step refinement and decoding argument.",
+        "It does not prove that a Wang tiling is an initialized accepting tape history; the full initializer and spacetime construction need their own proof.",
+        "It does not establish full compiled common-checker image attribution, exact public theory/goal licensing, or native-string/raw-JSON correspondence.",
+        "It does not preserve physical heap size, allocation counts, running time, budgets or all error statuses. A fixed finite region may run out of capacity on one representation.",
+        "The old generic host fetch can raise outside its data-operation handler. The theorem concerns valid finite executions and root acceptance, not equality of all failure trajectories.",
+        "The finite certificate checker checks complete immutable heap and decoded-state relations only. It validates neither a transition nor the origin of the decoded state.",
+        "There has been no checker call, generated tile table, new actual, proof-search run, learned marking or RL training in this milestone."
+      ],
+      "statement": "This is a manual conditional mathematical argument about abstract machines, not a theorem discovered by GCTS or RL.",
+      "title": "What this theorem does not establish"
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "parallel-progress-argument.json",
+      "label": "Full manual argument"
+    },
+    {
+      "file": "parallel-progress-abstract-review.json",
+      "label": "Abstract correspondence review"
+    },
+    {
+      "file": "parallel-progress-initializer.json",
+      "label": "Full initializer argument"
+    },
+    {
+      "file": "parallel-progress-initializer-review.json",
+      "label": "Initializer review"
+    },
+    {
+      "file": "parallel-progress-evidence-review.json",
+      "label": "Evidence composition review"
+    },
+    {
+      "file": "parallel-progress-science.json",
+      "label": "Saved proof-search evidence assessment"
+    },
+    {
+      "file": "parallel-progress-outer-handoff.json",
+      "label": "Unreviewed outer source handoff"
+    },
+    {
+      "file": "parallel-progress-data.json",
+      "label": "Complete report data"
+    },
+    {
+      "file": "parallel-progress-manifest.json",
+      "label": "Published asset hashes"
+    },
+    {
+      "file": "parallel-progress-publication-review.json",
+      "label": "Publication review"
+    },
+    {
+      "file": "parallel-progress-evidence.tar.gz",
+      "label": "Frozen sources and reviews"
+    }
+  ],
+  "goal_status": "active",
+  "new_RL_training": false,
+  "new_discovered_proofs": 0,
+  "new_scientific_executions": 0,
+  "next_experiment": [
+    "Use the existing small first-order Native/point adaptation before waiting for the universal physical Wang bridge. Freeze two new structural targets before training: a composed two-premise implication task and an equality/quantifier transport task, plus one missing-premise negative control. New structural holdouts must not be mere symbol renamings or the development curried assertion.",
+    "Run one small six-arm factorial pilot: conventional symbolic with automatically acquired clusters off/on; the same complete point search with actual certified markings off/on crossed with clusters off/on. Give the conventional cluster arm the identical admitted library. Acquire candidate clusters automatically only from separate checked training proofs, expand every used cluster to primitive steps, freeze before test, and keep full primitive fallback. Freeze certified markings separately; never turn a learned hypothesis into proved pruning.",
+    "Keep identical theorem inputs, axioms, primitive alternatives, maximum certificate length, checker and original wall/memory/output budgets. Use the reference point graph order for the point arms. Compare total time and admitted solves, not raw node counts across unlike engines; separately report branches, forced moves, eliminated base candidates, cluster proposals/rejections/reuses, proof length, peak memory and all training, certification, checking and evidence costs.",
+    "Two positive targets across six arms make twelve pilot attempts, with the negative control checked under the same semantics. Preregister a stopping rule and preserve every failure. This pilot tests selectivity and reuse; repeat on more independent targets/seeds before claiming a speed advantage. Do not call this RL until a policy is actually trained and its acquisition cost and matched control are included. No experiment is authorized or executed by this assessment."
+  ],
+  "pattern_readings": [
+    "One computation step. West and east carry overlapping pairs of preceding cells. North names the old center; south names its deterministic updated cell.",
+    "An ordinary tape cell in the accepting collector. It passes along whether the accepting head has already been seen.",
+    "The collector encounters the accepting head and changes the scan from unseen to seen. Other terminal head states have no such tile.",
+    "The left boundary of a computation row supplies the outside wall and the first center cell.",
+    "The right boundary closes a computation row against its outside wall.",
+    "The left boundary begins acceptance collection with no accepting head seen.",
+    "The right boundary closes acceptance collection only after an accepting head was seen.",
+    "A fixed ordinary cell in the initial tape. Its north marking pins its exact symbol; its south marking passes that cell to the computation.",
+    "The unique actual machine head in the initial tape. Its horizontal markings change the head count from zero to one.",
+    "A free certificate bit. Its north marking permits a choice of zero or one; its horizontal phase retains the active bit-word interval.",
+    "The sole certificate terminator changes the free interval to its blank-padding phase.",
+    "Blank padding after the terminator. The phase prevents any later bit or second terminator.",
+    "The left initial frame begins the fixed prefix, before a head has been encountered.",
+    "The right initial frame requires the complete fixed suffix and exactly one head."
+  ],
+  "reviews": [
+    [
+      "Wang initializer",
+      "Conditional source-level pass: complete fixed layout, local free certificate selector, full generic finite history construction and point reduction.",
+      "Genuine full machine generation, physical refinement, licensed checker and goal binding, qualification and useful resource fit."
+    ],
+    [
+      "Structural values and abstract execution",
+      "Conditional manual argument and finite relation-checker source pass. All thirteen abstract instruction cases were inspected.",
+      "Corresponding actual initialized states and physical macro-step implementation; the checker does not validate transitions or proof acceptance."
+    ],
+    [
+      "Complete evidence implementation",
+      "Negative: four reconciliation, event-completeness and descriptor-binding checks remain missing.",
+      "A corrected complete implementation and independent review. The new outer sources are unreviewed and launch-disabled."
+    ]
+  ],
+  "saved_document_pins": [
+    {
+      "bytes": 14922,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/root/manual-abstract-refinement-and-unrun-bank-v1.json",
+      "sha256": "ec20db69640e28e2baf3f59925adaba198ef29620caa22043c59b4c0a269cc8f"
+    },
+    {
+      "bytes": 22844,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/review-C/typed-abstract-heap-relation-Source-and-manual-review-v1.json",
+      "sha256": "bed1f104af64b3c1cf0c301317d1baaebc41f2490843203262f0a5dbf7a80819"
+    },
+    {
+      "bytes": 11743,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/init-L/manual-correspondence-v1.json",
+      "sha256": "5af181ae0f7c0567accae4fbcc8d6bb994863fa20a8d78f908a19ebd374daf1a"
+    },
+    {
+      "bytes": 23438,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/review-C/typed-physical-Wang-initialization-Source-review-v1.json",
+      "sha256": "b945e27e8ff72b3df74d6658f7ba76236b2a10ce14600c2fc1539085d4aa0444"
+    },
+    {
+      "bytes": 16501,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/review-C/typed-selected-complete-owner-composition-Source-review-v1.json",
+      "sha256": "e914a9c13c2eddaa85fbe03e88841b26e2711603d933c286fc28b82972f8fbf8"
+    },
+    {
+      "bytes": 29294,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/init-L/proof-search-assessment-v1.json",
+      "sha256": "2064303cd534f7b047a3d150779ee659c9ce3ae549cb8e75cd994249b573d218"
+    },
+    {
+      "bytes": 9113,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/outer-B/handoff-v1.json",
+      "sha256": "fc73dc9a2dfb550edb98d53099e9c3a0c6195dc08e4c3a8d415cf8f2ace3b451"
+    }
+  ],
+  "schema": "parallel-initialization-and-science-report-v1",
+  "science_review_limit": "Historical acceptances are reported by the complete published result summaries and saved independent-audit metadata. Their theorem formulas and selected proof rows were inspected as literal data. No underlying FOL/native certificate archive was freshly independently rechecked or replayed in this milestone; no historical acceptance is upgraded.",
+  "science_rows": [
+    [
+      "Arithmetic: \\(\\forall n\\;\\operatorname{add}(n,S(0))=S(n)\\) and \\(\\forall n\\;\\operatorname{add}(n,S(S(0)))=S(S(n))\\).",
+      "Automatic conventional equational search; respectively two/three queue expansions and twelve/twenty checked primitive commands. Logical proofs and independent saved-data reviews accepted.",
+      "arithmetic-baseline-summary.json; arithmetic-right-two-summary.json. Point tiles compiled after search; not GCTS-selected full boards, fullPA/induction or matched speed results."
+    ],
+    [
+      "First-order: \\(a=b,P(a)\\vdash P(b)\\); \\(\\forall x(P(x)\\to Q(f(x))),P(a)\\vdash Q(f(a))\\).",
+      "Forty complete runs, twelve admitted proof instances. Fixed point/symbolic, each legacy/AND-support: all solve the same two of eight primary groups; sixteen inventory and twelve search-budget stops.",
+      "first-order-suite-summary.json and fol-001/004 proof readers. Synthetic, one run per arm; correlated renaming is not independent transfer. No solve-rate gain."
+    ],
+    [
+      "Curried: \\(\\forall xP(x),\\forall xQ(x),\\forall x(P(x)\\to(Q(x)\\to R(x)))\\vdash\\forall xR(x)\\).",
+      "Shared AND-support finds both proofs: symbolic search \\(0.175\\,\\mathrm{s}\\), whole worker \\(51.85\\,\\mathrm{s}\\); point search \\(1.560\\,\\mathrm{s}\\), whole worker \\(60.03\\,\\mathrm{s}\\). Both legacy arms UNKNOWN; all four within profile.",
+      "and-support-ordering-summary.json and both actual proof readers. Shared guidance, not GCTS-only or RL; symbolic is faster on this familiar case."
+    ],
+    [
+      "Hilbert incidence: transfer \\(\\operatorname{Incident}(C,u)\\) to \\(\\operatorname{Incident}(C,v)\\) from guarded I.2 and two distinct common points.",
+      "E searches automatically; four independently checked derivations across theory/library and two repeats, one distinct positive theorem; twenty-six/theory versus twenty-five/library steps.",
+      "external_hilbert_control_summary.json and complete data.json.gz. External first-order proof certificates, not native Wang acceptance or evidence of GCTS gain."
+    ],
+    [
+      "Actual certified failure markings on small finite point instances.",
+      "Saved record: twenty-three cases, eighteen diagnostics, thirteen certified clauses, all thirty-seven original solutions retained; base attempts fifty-four off/on and zero auxiliary-caused base removals. Cold pipeline \\(7.952\\,\\mathrm{s}\\), plain \\(1.423\\,\\mathrm{s}\\).",
+      "certified-failures-summary.json; correctness integration scope as recorded, not arithmetic/Hilbert theorem discovery. The marking selectivity gap is measured; observer/resource substatus remains separately reported."
+    ]
+  ],
+  "science_summary": "There are real automatically discovered and independently checked proofs in the saved record: two small AS/AZ arithmetic results, several elementary first-order assertions, and an external Hilbert-incidence control. The best admitted matched first-order cohort has equal solve outcomes across all four methods. No demonstrated GCTS-specific or trained-RL proof-search advantage is established; the current physical initialization milestone is Source progress, not a new proof-search result.",
+  "tile_patterns": [
+    {
+      "E": "pair(center,right)",
+      "N": "cell(center)",
+      "S": "cell(local_update(left,center,right))",
+      "W": "pair(left,center)",
+      "condition": "The complete fixed finite machine transition table defines local_update at construction. No host semantic operation is a transition callback. Wall is permitted only as an outside neighbor.",
+      "pattern": "STEP(left,center,right)"
+    },
+    {
+      "E": "seen(seen)",
+      "N": "cell(plain(symbol))",
+      "S": "stop",
+      "W": "seen(seen)",
+      "pattern": "COLLECT_PLAIN(symbol,seen)"
+    },
+    {
+      "E": "seen(1)",
+      "N": "cell(head(ACCEPT,symbol))",
+      "S": "stop",
+      "W": "seen(0)",
+      "pattern": "COLLECT_ACCEPT(symbol)"
+    },
+    {
+      "E": "pair(wall,center)",
+      "N": "side(left,run)",
+      "S": "side(left,run)",
+      "W": "exterior(left)",
+      "pattern": "LEFT_STEP(center)"
+    },
+    {
+      "E": "exterior(right)",
+      "N": "side(right,run)",
+      "S": "side(right,run)",
+      "W": "pair(center,wall)",
+      "pattern": "RIGHT_STEP(center)"
+    },
+    {
+      "E": "seen(0)",
+      "N": "side(left,run)",
+      "S": "side(left,done)",
+      "W": "exterior(left)",
+      "pattern": "LEFT_COLLECT"
+    },
+    {
+      "E": "exterior(right)",
+      "N": "side(right,run)",
+      "S": "side(right,done)",
+      "W": "seen(1)",
+      "pattern": "RIGHT_COLLECT"
+    },
+    {
+      "E": "init_horizontal(after,head_seen)",
+      "N": "init_north(plain,symbol)",
+      "S": "cell(plain(symbol))",
+      "W": "init_horizontal(before,head_seen)",
+      "condition": "Exactly PRE->PRE, PAD->POST or POST->POST.",
+      "pattern": "INIT_FIXED_PLAIN(symbol,before,after,head_seen)"
+    },
+    {
+      "E": "init_horizontal(after,1)",
+      "N": "init_north(head,PROGRAM_entry,symbol)",
+      "S": "cell(head(PROGRAM_entry,symbol))",
+      "W": "init_horizontal(before,0)",
+      "condition": "Same three fixed phase edges; no second TM head can pass.",
+      "pattern": "INIT_FIXED_HEAD(symbol,before,after)"
+    },
+    {
+      "E": "init_horizontal(ACTIVE,head_seen)",
+      "N": "init_north(free)",
+      "S": "cell(plain(bit))",
+      "W": "init_horizontal(before,head_seen)",
+      "condition": "bit is zero/one; before is PRE or ACTIVE.",
+      "pattern": "INIT_FREE_BIT(bit,head_seen,before)"
+    },
+    {
+      "E": "init_horizontal(PAD,head_seen)",
+      "N": "init_north(free)",
+      "S": "cell(plain(terminator))",
+      "W": "init_horizontal(before,head_seen)",
+      "condition": "before is PRE or ACTIVE.",
+      "pattern": "INIT_FREE_SEMICOLON(head_seen,before)"
+    },
+    {
+      "E": "init_horizontal(PAD,head_seen)",
+      "N": "init_north(free)",
+      "S": "cell(plain(blank))",
+      "W": "init_horizontal(PAD,head_seen)",
+      "pattern": "INIT_FREE_B(head_seen)"
+    },
+    {
+      "E": "init_horizontal(PRE,0)",
+      "N": "init_north(frame,left)",
+      "S": "side(left,run)",
+      "W": "exterior(left)",
+      "pattern": "INIT_LEFT_FRAME"
+    },
+    {
+      "E": "exterior(right)",
+      "N": "init_north(frame,right)",
+      "S": "side(right,run)",
+      "W": "init_horizontal(POST,1)",
+      "pattern": "INIT_RIGHT_FRAME"
+    }
+  ]
+}

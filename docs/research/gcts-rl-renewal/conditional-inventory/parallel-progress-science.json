@@ -1,0 +1,603 @@
+{
+  "schema": "passive-proof-search-progress-assessment-v1",
+  "science_summary": "There are real automatically discovered and independently checked proofs in the saved record: two small AS/AZ arithmetic results, several elementary first-order assertions, and an external Hilbert-incidence control. The best admitted matched first-order cohort has equal solve outcomes across all four methods. No demonstrated GCTS-specific or trained-RL proof-search advantage is established; the current physical initialization milestone is Source progress, not a new proof-search result.",
+  "science_rows": [
+    [
+      "Arithmetic: \\(\\forall n\\;\\operatorname{add}(n,S(0))=S(n)\\) and \\(\\forall n\\;\\operatorname{add}(n,S(S(0)))=S(S(n))\\).",
+      "Automatic conventional equational search; respectively two/three queue expansions and twelve/twenty checked primitive commands. Logical proofs and independent saved-data reviews accepted.",
+      "arithmetic-baseline-summary.json; arithmetic-right-two-summary.json. Point tiles compiled after search; not GCTS-selected full boards, fullPA/induction or matched speed results."
+    ],
+    [
+      "First-order: \\(a=b,P(a)\\vdash P(b)\\); \\(\\forall x(P(x)\\to Q(f(x))),P(a)\\vdash Q(f(a))\\).",
+      "Forty complete runs, twelve admitted proof instances. Fixed point/symbolic, each legacy/AND-support: all solve the same two of eight primary groups; sixteen inventory and twelve search-budget stops.",
+      "first-order-suite-summary.json and fol-001/004 proof readers. Synthetic, one run per arm; correlated renaming is not independent transfer. No solve-rate gain."
+    ],
+    [
+      "Curried: \\(\\forall xP(x),\\forall xQ(x),\\forall x(P(x)\\to(Q(x)\\to R(x)))\\vdash\\forall xR(x)\\).",
+      "Shared AND-support finds both proofs: symbolic search \\(0.175\\,\\mathrm{s}\\), whole worker \\(51.85\\,\\mathrm{s}\\); point search \\(1.560\\,\\mathrm{s}\\), whole worker \\(60.03\\,\\mathrm{s}\\). Both legacy arms UNKNOWN; all four within profile.",
+      "and-support-ordering-summary.json and both actual proof readers. Shared guidance, not GCTS-only or RL; symbolic is faster on this familiar case."
+    ],
+    [
+      "Hilbert incidence: transfer \\(\\operatorname{Incident}(C,u)\\) to \\(\\operatorname{Incident}(C,v)\\) from guarded I.2 and two distinct common points.",
+      "E searches automatically; four independently checked derivations across theory/library and two repeats, one distinct positive theorem; twenty-six/theory versus twenty-five/library steps.",
+      "external_hilbert_control_summary.json and complete data.json.gz. External first-order proof certificates, not native Wang acceptance or evidence of GCTS gain."
+    ],
+    [
+      "Actual certified failure markings on small finite point instances.",
+      "Saved record: twenty-three cases, eighteen diagnostics, thirteen certified clauses, all thirty-seven original solutions retained; base attempts fifty-four off/on and zero auxiliary-caused base removals. Cold pipeline \\(7.952\\,\\mathrm{s}\\), plain \\(1.423\\,\\mathrm{s}\\).",
+      "certified-failures-summary.json; correctness integration scope as recorded, not arithmetic/Hilbert theorem discovery. The marking selectivity gap is measured; observer/resource substatus remains separately reported."
+    ]
+  ],
+  "theorem_records": [
+    {
+      "domain": "Arithmetic AS/AZ fragment",
+      "formula_latex": "\\forall n\\;\\operatorname{add}(n,S(0))=S(n)",
+      "method": "Automatic conventional rooted forward FIFO equational rewriting; no supplied proof/route.",
+      "metrics": {
+        "queue_expansions": 2,
+        "match_attempts": 10,
+        "native_primitive_checks": 12,
+        "essential_commands": 12,
+        "external_launch_to_postprobe_seconds": 2.607985,
+        "owned_peak_bytes": 28180480
+      },
+      "artifact": "docs/research/gcts-rl-renewal/conditional-inventory/arithmetic-baseline-summary.json",
+      "reader": "docs/research/gcts-rl-renewal/conditional-inventory/arithmetic-baseline.html",
+      "accepted": "Summary records logical proof acceptance, closed independent saved-data review and whole partial point-union checking.",
+      "limitation": "Compiled into marked point rows after search. Not a selected GCTS DAG, full24 board, fullPA/induction qualification, matched performance result or useful family transfer."
+    },
+    {
+      "domain": "Arithmetic AS/AZ fragment",
+      "formula_latex": "\\forall n\\;\\operatorname{add}(n,S(S(0)))=S(S(n))",
+      "method": "Same automatic conventional rooted forward equational search.",
+      "metrics": {
+        "queue_expansions": 3,
+        "match_attempts": 22,
+        "native_primitive_checks": 20,
+        "essential_commands": 20,
+        "external_launch_to_postprobe_seconds": 0.733776,
+        "owned_peak_bytes": 22921216
+      },
+      "artifact": "docs/research/gcts-rl-renewal/conditional-inventory/arithmetic-right-two-summary.json",
+      "reader": "docs/research/gcts-rl-renewal/conditional-inventory/arithmetic-right-two.html",
+      "accepted": "Logical proof and independent saved-data review accepted in the exact AS/AZ theory and empty Gamma.",
+      "limitation": "Point rows compiled afterwards; four required rows remain unfilled. No fullPA/induction, GCTS/RL or matched performance claim."
+    },
+    {
+      "domain": "First-order equality transport",
+      "formula_latex": "a=b,\\;P(a)\\;\\vdash P(b)",
+      "method": "Fixed point search and conventional symbolic prefix search, each with legacy or shared AND-support ordering.",
+      "metrics": {
+        "proof_rows": 12,
+        "fixed_legacy_search_seconds": 1.1085529580013826,
+        "fixed_legacy_worker_seconds": 48.782521458,
+        "fixed_legacy_outer_terminal_seconds": 50.404493292,
+        "fixed_legacy_attempts": 63,
+        "fixed_legacy_branches": 14,
+        "fixed_legacy_forced": 47
+      },
+      "artifact": "docs/research/gcts-rl-renewal/conditional-inventory/first-order-suite-summary.json",
+      "reader": "docs/research/gcts-rl-renewal/conditional-inventory/fol-001-fixed-legacy-proof.html",
+      "accepted": "All four arms report admitted independently Native-checked discovered proofs for case001. Case009 is a correlated renaming, not another structural family.",
+      "result_pin_from_complete_summary": {
+        "bytes": 36281386,
+        "sha256": "9129a608ae6e86487f3ed54456142d07393c77ed5186a0dfdac1df039285c3dd"
+      },
+      "limitation": "Authored synthetic corpus, one run per arm; neither official TPTP nor blind benchmark."
+    },
+    {
+      "domain": "First-order quantified implication",
+      "formula_latex": "\\forall x(P(x)\\to Q(f(x))),\\;P(a)\\;\\vdash Q(f(a))",
+      "method": "Same four-arm cohort.",
+      "metrics": {
+        "proof_rows": 12,
+        "fixed_AND_search_seconds": 1.294121582992375,
+        "fixed_AND_worker_seconds": 50.760227083,
+        "fixed_AND_attempts": 48,
+        "fixed_AND_branches": 12,
+        "fixed_AND_forced": 36
+      },
+      "artifact": "docs/research/gcts-rl-renewal/conditional-inventory/first-order-suite-summary.json",
+      "reader": "docs/research/gcts-rl-renewal/conditional-inventory/fol-004-fixed-and-support-proof.html",
+      "accepted": "Case004 is the second solved primary group. Entire cohort has forty completed within-profile runs and twelve admitted proof instances, including renaming repetitions.",
+      "limitation": "Every method solves the same two of eight primary groups; sixteen inventory stops and twelve search-budget stops. No solve-rate advantage."
+    },
+    {
+      "domain": "Curried quantified two-premise implication",
+      "formula_latex": "\\forall xP(x),\\;\\forall xQ(x),\\;\\forall x(P(x)\\to(Q(x)\\to R(x)))\\;\\vdash\\forall xR(x)",
+      "method": "Generic joint-premise AND-support ordering in both point and symbolic engines.",
+      "metrics": {
+        "symbolic_AND_search_seconds": 0.17472675000317395,
+        "symbolic_AND_worker_seconds": 51.852133708,
+        "symbolic_AND_outer_terminal_seconds": 53.454528416,
+        "fixed_AND_search_seconds": 1.5600635000737384,
+        "fixed_AND_worker_seconds": 60.029159334,
+        "fixed_AND_outer_terminal_seconds": 61.904551709,
+        "fixed_AND_attempts": 60,
+        "fixed_AND_branches": 18,
+        "fixed_AND_forced": 42,
+        "legacy_fixed_search_unknown_seconds": 30.02054520905949,
+        "legacy_symbolic_unknown_prefix_extensions": 5000
+      },
+      "artifact": "docs/research/gcts-rl-renewal/conditional-inventory/and-support-ordering-summary.json",
+      "readers": [
+        "docs/research/gcts-rl-renewal/conditional-inventory/and-support-symbolic-and-support-proof.html",
+        "docs/research/gcts-rl-renewal/conditional-inventory/and-support-fixed-and-support-proof.html"
+      ],
+      "accepted": "Two discovered Native-checked proofs; all four runs pass their original resource profile.",
+      "limitation": "Both legacy variants are UNKNOWN; shared heuristic helps both, symbolic is faster here. Different work units and one familiar development assertion do not establish GCTS-specific gain. No new RL training."
+    },
+    {
+      "domain": "Hilbert incidence fragment",
+      "formula_latex": "\\operatorname{Incident}(C,u)\\;\\vdash\\operatorname{Incident}(C,v)",
+      "assumptions_latex": "\\operatorname{Point}(A)\\land\\operatorname{Point}(B)\\land\\operatorname{Line}(u)\\land\\operatorname{Line}(v)\\land A\\ne B\\land\\operatorname{Incident}(A,u)\\land\\operatorname{Incident}(B,u)\\land\\operatorname{Incident}(A,v)\\land\\operatorname{Incident}(B,v),\\quad\\text{and guarded Hilbert I.2 uniqueness}.",
+      "method": "E3.5.1 automatic first-order proof search, theory-only versus full admitted ground-lemma library, two repetitions.",
+      "metrics": {
+        "distinct_positive_theorems": 1,
+        "checked_complete_derivations": 4,
+        "theory_only_proof_steps": 26,
+        "library_proof_steps": 25,
+        "theory_only_E_wall_seconds": [
+          0.004861040999999998,
+          0.0035525829999999998
+        ],
+        "library_E_wall_seconds": [
+          0.004755374999999999,
+          0.004688417000000002
+        ],
+        "total_checking_seconds": 10.968219793,
+        "all_eight_external_search_seconds": 0.032217582,
+        "whole_control_total_seconds": 17.176400417
+      },
+      "artifact": "docs/research/gcts-rl-renewal/external_hilbert_control_data.json.gz",
+      "summary": "docs/research/gcts-rl-renewal/external_hilbert_control_summary.json",
+      "accepted": "Summary reports four checked complete derivations using independent finite Herbrand/EUF validation, not SZS status alone. Removing uniqueness gives CounterSatisfiable observations, not a proved countermodel merely from that label.",
+      "limitation": "External first-order certificates; not native Wang acceptance, a matched GCTS comparison or four distinct theorems. Full native replay and exact public-theory attribution retain their separate historical scopes.",
+      "exact_saved_statement": {
+        "id": "incidence-transport",
+        "title": "Transport a further incident point after line uniqueness",
+        "theory": {
+          "functions": {
+            "A": 0,
+            "B": 0,
+            "C": 0,
+            "u": 0,
+            "v": 0
+          },
+          "predicates": {
+            "Point": 1,
+            "Line": 1,
+            "Incident": 2
+          },
+          "axioms": {
+            "I.2-uniqueness": [
+              "all",
+              "point0",
+              [
+                "all",
+                "point1",
+                [
+                  "all",
+                  "line0",
+                  [
+                    "all",
+                    "line1",
+                    [
+                      "imp",
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Point",
+                          [
+                            [
+                              "var",
+                              "point0"
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "pred",
+                            "Point",
+                            [
+                              [
+                                "var",
+                                "point1"
+                              ]
+                            ]
+                          ],
+                          [
+                            "and",
+                            [
+                              "pred",
+                              "Line",
+                              [
+                                [
+                                  "var",
+                                  "line0"
+                                ]
+                              ]
+                            ],
+                            [
+                              "and",
+                              [
+                                "pred",
+                                "Line",
+                                [
+                                  [
+                                    "var",
+                                    "line1"
+                                  ]
+                                ]
+                              ],
+                              [
+                                "and",
+                                [
+                                  "not",
+                                  [
+                                    "eq",
+                                    [
+                                      "var",
+                                      "point0"
+                                    ],
+                                    [
+                                      "var",
+                                      "point1"
+                                    ]
+                                  ]
+                                ],
+                                [
+                                  "and",
+                                  [
+                                    "pred",
+                                    "Incident",
+                                    [
+                                      [
+                                        "var",
+                                        "point0"
+                                      ],
+                                      [
+                                        "var",
+                                        "line0"
+                                      ]
+                                    ]
+                                  ],
+                                  [
+                                    "and",
+                                    [
+                                      "pred",
+                                      "Incident",
+                                      [
+                                        [
+                                          "var",
+                                          "point1"
+                                        ],
+                                        [
+                                          "var",
+                                          "line0"
+                                        ]
+                                      ]
+                                    ],
+                                    [
+                                      "and",
+                                      [
+                                        "pred",
+                                        "Incident",
+                                        [
+                                          [
+                                            "var",
+                                            "point0"
+                                          ],
+                                          [
+                                            "var",
+                                            "line1"
+                                          ]
+                                        ]
+                                      ],
+                                      [
+                                        "pred",
+                                        "Incident",
+                                        [
+                                          [
+                                            "var",
+                                            "point1"
+                                          ],
+                                          [
+                                            "var",
+                                            "line1"
+                                          ]
+                                        ]
+                                      ]
+                                    ]
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "eq",
+                        [
+                          "var",
+                          "line0"
+                        ],
+                        [
+                          "var",
+                          "line1"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "common-distinct-points": [
+              "and",
+              [
+                "pred",
+                "Point",
+                [
+                  [
+                    "fun",
+                    "A",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "and",
+                [
+                  "pred",
+                  "Point",
+                  [
+                    [
+                      "fun",
+                      "B",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "and",
+                  [
+                    "pred",
+                    "Line",
+                    [
+                      [
+                        "fun",
+                        "u",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "and",
+                    [
+                      "pred",
+                      "Line",
+                      [
+                        [
+                          "fun",
+                          "v",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "and",
+                      [
+                        "not",
+                        [
+                          "eq",
+                          [
+                            "fun",
+                            "A",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "B",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Incident",
+                          [
+                            [
+                              "fun",
+                              "A",
+                              []
+                            ],
+                            [
+                              "fun",
+                              "u",
+                              []
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "pred",
+                            "Incident",
+                            [
+                              [
+                                "fun",
+                                "B",
+                                []
+                              ],
+                              [
+                                "fun",
+                                "u",
+                                []
+                              ]
+                            ]
+                          ],
+                          [
+                            "and",
+                            [
+                              "pred",
+                              "Incident",
+                              [
+                                [
+                                  "fun",
+                                  "A",
+                                  []
+                                ],
+                                [
+                                  "fun",
+                                  "v",
+                                  []
+                                ]
+                              ]
+                            ],
+                            [
+                              "pred",
+                              "Incident",
+                              [
+                                [
+                                  "fun",
+                                  "B",
+                                  []
+                                ],
+                                [
+                                  "fun",
+                                  "v",
+                                  []
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "extra-incidence": [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "C",
+                  []
+                ],
+                [
+                  "fun",
+                  "u",
+                  []
+                ]
+              ]
+            ]
+          },
+          "schemas": []
+        },
+        "target": [
+          "pred",
+          "Incident",
+          [
+            [
+              "fun",
+              "C",
+              []
+            ],
+            [
+              "fun",
+              "v",
+              []
+            ]
+          ]
+        ]
+      },
+      "independent_audit_saved_status": "passed",
+      "independent_audit_scope": "Exact statement/library/source/output binding, fresh complete logical checks and corrupted-proof rejection. Reused geometry native acceptances are bound to exact requests; native computations and GCTS graphs are not reexecuted here."
+    }
+  ],
+  "next_experiment": [
+    "Use the existing small first-order Native/point adaptation before waiting for the universal physical Wang bridge. Freeze two new structural targets before training: a composed two-premise implication task and an equality/quantifier transport task, plus one missing-premise negative control. New structural holdouts must not be mere symbol renamings or the development curried assertion.",
+    "Run one small six-arm factorial pilot: conventional symbolic with automatically acquired clusters off/on; the same complete point search with actual certified markings off/on crossed with clusters off/on. Give the conventional cluster arm the identical admitted library. Acquire candidate clusters automatically only from separate checked training proofs, expand every used cluster to primitive steps, freeze before test, and keep full primitive fallback. Freeze certified markings separately; never turn a learned hypothesis into proved pruning.",
+    "Keep identical theorem inputs, axioms, primitive alternatives, maximum certificate length, checker and original wall/memory/output budgets. Use the reference point graph order for the point arms. Compare total time and admitted solves, not raw node counts across unlike engines; separately report branches, forced moves, eliminated base candidates, cluster proposals/rejections/reuses, proof length, peak memory and all training, certification, checking and evidence costs.",
+    "Two positive targets across six arms make twelve pilot attempts, with the negative control checked under the same semantics. Preregister a stopping rule and preserve every failure. This pilot tests selectivity and reuse; repeat on more independent targets/seeds before claiming a speed advantage. Do not call this RL until a policy is actually trained and its acquisition cost and matched control are included. No experiment is authorized or executed by this assessment."
+  ],
+  "artifact_pins": [
+    {
+      "repository_path": "docs/research/gcts-rl-renewal/conditional-inventory/arithmetic-baseline-summary.json",
+      "url": "https://liuyao12.github.io/geometric-tree-search/docs/research/gcts-rl-renewal/conditional-inventory/arithmetic-baseline-summary.json",
+      "bytes": 516936,
+      "sha256": "f10b12adc1a8ab04e8ab2ad105a8b74cd78bdee50c1cf90227d0624019f30260",
+      "complete_published_body_read": true,
+      "local_primary_bytes_verified": false
+    },
+    {
+      "repository_path": "docs/research/gcts-rl-renewal/conditional-inventory/arithmetic-right-two-summary.json",
+      "url": "https://liuyao12.github.io/geometric-tree-search/docs/research/gcts-rl-renewal/conditional-inventory/arithmetic-right-two-summary.json",
+      "bytes": 716857,
+      "sha256": "e3758459eda85f8ecd372d65cc1d15409573de73a74c40b89e6fe0b3510b027d",
+      "complete_published_body_read": true,
+      "local_primary_bytes_verified": false
+    },
+    {
+      "repository_path": "docs/research/gcts-rl-renewal/conditional-inventory/first-order-suite-summary.json",
+      "url": "https://liuyao12.github.io/geometric-tree-search/docs/research/gcts-rl-renewal/conditional-inventory/first-order-suite-summary.json",
+      "bytes": 2469912,
+      "sha256": "83240fc304822b686fd5c4d38d856d876ef12edf3898789e4eb928b487fdce4a",
+      "complete_published_body_read": true,
+      "local_primary_bytes_verified": false
+    },
+    {
+      "repository_path": "docs/research/gcts-rl-renewal/conditional-inventory/and-support-ordering-summary.json",
+      "url": "https://liuyao12.github.io/geometric-tree-search/docs/research/gcts-rl-renewal/conditional-inventory/and-support-ordering-summary.json",
+      "bytes": 398240,
+      "sha256": "3df1a8a89f810d91f45d0f411da6361bf390218d7759a76bbe07be1043e85e71",
+      "complete_published_body_read": true,
+      "local_primary_bytes_verified": false
+    },
+    {
+      "repository_path": "docs/research/gcts-rl-renewal/external_hilbert_control_summary.json",
+      "url": "https://liuyao12.github.io/geometric-tree-search/docs/research/gcts-rl-renewal/external_hilbert_control_summary.json",
+      "bytes": 17354,
+      "sha256": "bc52d47b85d6503290c51c3c34b07e3231167c84d9fccf690fb31a8e45bc1aac",
+      "complete_published_body_read": true,
+      "local_primary_bytes_verified": false
+    },
+    {
+      "repository_path": "docs/research/gcts-rl-renewal/external_hilbert_control_data.json.gz",
+      "url": "https://liuyao12.github.io/geometric-tree-search/docs/research/gcts-rl-renewal/external_hilbert_control_data.json.gz",
+      "bytes": 430023,
+      "sha256": "7701bd185e63948fcab17ddb6a1e724a0ab129d85582c49b171bba7513f66d2c",
+      "complete_published_body_read": true,
+      "local_primary_bytes_verified": false
+    },
+    {
+      "repository_path": "docs/research/gcts-rl-renewal/conditional-inventory/certified-failures-summary.json",
+      "url": "https://liuyao12.github.io/geometric-tree-search/docs/research/gcts-rl-renewal/conditional-inventory/certified-failures-summary.json",
+      "bytes": 68575,
+      "sha256": "78e1e3107d8cb4c559dfeaadc3c68f47d436b8face73f04ca52a5633c8b94477",
+      "complete_published_body_read": true,
+      "local_primary_bytes_verified": false
+    }
+  ],
+  "read_scope": "Complete existing published JSON/gzip bodies only; native formula ASTs inspected as literal saved data. No scientific Sources imported/called, proofs replayed or experiments executed. Primary reader/index/.gcts-active untouched; blocked dataless metadata read was stopped, with no scientific conclusion drawn from missing local bytes.",
+  "historical_limits": "This is a selective evidence assessment, not a new full audit or sum of distinct theorem discoveries. Resource-gate, logical-proof, point-trajectory, native-Wang and publication statuses remain distinct; complete per-artifact historical records control.",
+  "new_scientific_imports": 0,
+  "new_scientific_calls": 0,
+  "new_experiments": 0,
+  "partial_files_opened_or_parsed": 0,
+  "new_grants": 0,
+  "new_actuals": 0,
+  "actual_execution_authorized": false,
+  "new_infrastructure": false,
+  "GCTS_RL_advantage_established": false,
+  "goal_status": "active",
+  "underlying_certificate_archives_rechecked_this_assessment": false,
+  "evidence_review_limit": "Historical acceptances are reported by the complete published result summaries and saved independent-audit metadata. Their theorem formulas and selected proof rows were inspected as literal data. No underlying FOL/native certificate archive was freshly independently rechecked or replayed in this milestone; no historical acceptance is upgraded."
+}

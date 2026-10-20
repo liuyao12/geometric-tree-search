@@ -1,0 +1,331 @@
+{
+  "schema": "typed-selected-complete-owner-composition-Source-review-v1",
+  "reviewer_identity": "/root/recovered_batch_review",
+  "source_only": true,
+  "review_passed": false,
+  "status": "COMPLETE_SELECTED_SOURCE_COVERAGE_WITH_BLOCKING_INDEPENDENT_LIFECYCLE_AND_CUSTODY_GAPS",
+  "handoff": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/schema-B/handoff-v1.json",
+    "sha256": "07386c55a88d2031e5ae92e21104289105c7185bbec63b369448173c6401f250",
+    "bytes": 15266
+  },
+  "sources": {
+    "store": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/schema-B/immutable_event_store_v1.py",
+      "sha256": "898a687bcb81f1456a26978841a1e9710acf72a20a23c5bdfe39c18607d26843",
+      "bytes": 21275
+    },
+    "cursor": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/schema-B/cursor-v2/owner_cursor_v2.py",
+      "sha256": "93eb21f8bde51051cd5a7c913cd03732252bb5b6aa22cea2c42f5511e61323f0",
+      "bytes": 12786
+    },
+    "checker": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/schema-B/schema-v3/validate_owner_parent_v3.py",
+      "sha256": "923230b512dabb3eb57127e42d06cff88106887921fd598a0226ff2ad69b1701",
+      "bytes": 51068
+    },
+    "worker": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/schema-B/qualify_owner_batch_worker_v1.py",
+      "sha256": "f6c28c149261274eaa133527c3bd3a306de47b45afa38e48daf5313436f0bacc",
+      "bytes": 125472
+    },
+    "integration": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/schema-B/worker_owner_integration_v1.fragment.py",
+      "sha256": "d5f9ce95a12962f2b7ca013737410dc607e54c5c812cfa543ac9fcb41b8ca0fa",
+      "bytes": 14337
+    },
+    "native_rules": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/schema-B/native_schema_rules_v1.py",
+      "sha256": "8f696885ffb066b7229d42fecb6a2fc4ba4eb670657dc42ad08803e9182dfa0c",
+      "bytes": 21906
+    },
+    "catalog": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/schema-B/owner_catalog_v1.py",
+      "sha256": "6c20439614a07c9f5be6da67aa1da50bd20760a665526eeb81c1d6e4dc6750af",
+      "bytes": 3772
+    }
+  },
+  "master": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/basic-tiling-algorithm.md",
+    "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4",
+    "bytes": 36240
+  },
+  "python": {
+    "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+    "sha256": "b6ea0c2a9bfce48dbf181a53f1ca4f0562d40658b85bf47258e2a88d8f9e3933",
+    "bytes": 18058560
+  },
+  "raw_custody": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/review-C/selected-owner-Source-custody-v1.json",
+    "sha256": "fa0ca1f54c7d6f024490ec936ef11d43c571c7a3a9bc8177abe66bd5eaad8804",
+    "bytes": 43528
+  },
+  "coverage_matrix": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/review-C/selected-owner-complete-function-and-preservation-matrix-v1.json",
+    "sha256": "dcf3833f2d71afc31d4df12859a56697d60e47dfbf31dfc7613f123061695091",
+    "bytes": 172320
+  },
+  "conditional_node_bound_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/review-C/typed-selected-owner-conditional-node-lower-bound-Source-review-v1.json",
+    "sha256": "093263fa09e2b3fcb62b50867f1b980580d5a8b44327219dfab84a2bb106a91e",
+    "bytes": 6596
+  },
+  "prior_lineage_preserved": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/typed-owner-provenance-Source-negative-v1.json",
+      "sha256": "abfc12f4daeb7f7aa35459dd42827e5e021d1319ffde169fcef08afcae2427f1",
+      "bytes": 8357
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/typed-tuple-key-cursor-resource-Source-negative-v1.json",
+      "sha256": "a3d56bc945f01c8d7f6e0642eaf8bc3363d17cc284a6f6edcf3e0b6874f14b5e",
+      "bytes": 5201
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/typed-owner-route-shadow-Source-negative-v2.json",
+      "sha256": "927483631a346f35e43ac97300f3832444e0d944440d728071d78d69e01bc5c8",
+      "bytes": 3165
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/typed-owner-route-v3-specific-Source-delta-review-v1.json",
+      "sha256": "b84647c128176c1780e9af0e1b5ad0235c46e38c76564a2206bd7476ca4dcdfd",
+      "bytes": 5275
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-whole-linkage-20261020/review-C/typed-owner-key-normal-form-v2-specific-Source-delta-review-v1.json",
+      "sha256": "93de4198992a32be48a9bb36c07e3568d1ebfea91bd477ec8b1f5ebe4c2067d5",
+      "bytes": 7864
+    }
+  ],
+  "new_frozen_negatives": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/review-C/typed-selected-owner-lifecycle-Source-negative-v1.json",
+      "sha256": "b1c3868f9e9aca7ca888892cef6c45d6061edf78e01d6a0627bfcf0b59ac2395",
+      "bytes": 7284
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/review-C/typed-selected-module-descriptor-custody-Source-negative-v1.json",
+      "sha256": "ec29e6302af14b4a96cbf5f8f7ba816b4882e093a2bbd203cc36c765ed843ef4",
+      "bytes": 5923
+    }
+  ],
+  "full_scope_inspected": [
+    "All four selected core Sources: store, independent cursor-v2, schema-v3 and complete worker; all 199 nested function definitions inventoried.",
+    "Complete native rules/catalog and exact integration suffix; all 24 original packet fields/descendants, both raw/decoded banks and all literal population declarations.",
+    "All 15 normal cases, 33 original diagnostics, 28 new groups/55 variants, failed profile lifetime/progress accounting, complete graph snapshots/catalog and all 88 unrun new-format recipes.",
+    "Cumulative Work, mutable capture versions, immutable cache/raw owners, event/owner scopes/routes/LIFO/call maps, query production/preimage/delivery/reconciliation, error metadata/private-origin scope and final real callback custody."
+  ],
+  "manual_findings": [
+    {
+      "topic": "Full original data preservation",
+      "finding": "The selected producer carries the full original native packet and both complete raw/decoded input banks; the strict cursor compares complete ordered descendants before and after verification callbacks. The complete catalog is reconstructed independently. The producer does not replace original proof/search/oracle outputs with summaries."
+    },
+    {
+      "topic": "Strict value canonicalization",
+      "finding": "Distinct scalar/list/tuple/dict tags, canonical exact finite floats, integer magnitudes, surrogatepass strings and all child edge occurrences are retained. Independent parsing checks canonical level/record order, prior children, minimal encodings, dictionary key equality, reachability and trailing data. This is a manual conditional correspondence argument, not a mechanized theorem."
+    },
+    {
+      "topic": "Mutable and immutable ownership",
+      "finding": "Each mutable capture has a fresh memo. Cross-call tuple reuse requires recursively exact immutability and retained actual owners. Every owner/event occurrence has its own ordinal even when complete value nodes share. Raw state/value/error owners and event placeholders are retained before new callbacks."
+    },
+    {
+      "topic": "Cursor key correction",
+      "finding": "Selected cursor-v2 removes the specifically reviewed nested native tuple hashing recurrence. Numeric key classes use exact rational equality and tuple key classes use child class IDs. Whole CPU/byte/RSS fit is not thereby established."
+    },
+    {
+      "topic": "Provenance and query joins",
+      "finding": "Selected schema-v3 fixes the previously reviewed route shadow and requires real earlier scope owners, owner role/scope/version/route joins, event LIFO/call maps, query registration, production/preimage typed equality and exact delivered owner. These do not discharge the separately frozen reconciliation/custody completeness negatives."
+    },
+    {
+      "topic": "Reconciliation-to-final-receipt missing join",
+      "finding": "The after-tree is only retained in reconciled state and compared to the original before-tree for its boolean equality result. It is not independently joined to the final mutated raw receipt in negative diagnostics."
+    },
+    {
+      "topic": "Reconciliation occurrence conservation missing",
+      "finding": "No final required-position assertion demands RECONCILE_VERSION and RECONCILE_RESULT exactly once per reconciled receipt in the correct phase/order. Coherent omission is not rejected by this predicate."
+    },
+    {
+      "topic": "Custody phase occurrence conservation missing",
+      "finding": "CUSTODY events are validated when present, but their entry/exit attempts and completions are not conserved against the corresponding final lifetime flags. Coherent omission of empty custody pairs can leave all counted calls/queries intact."
+    },
+    {
+      "topic": "Whole module descriptor binding gap",
+      "finding": "Session module seals erase staticmethod/classmethod wrappers before comparison. The strong named callback seal covers reachable callback-captured classes but does not constitute a complete loaded-module/class binding seal."
+    },
+    {
+      "topic": "Fault ownership and counts",
+      "finding": "Original private owner classifiers and genuine Root first-fault policy remain. New public Invalid/Limit annotations are explicitly not private-origin credentials; no new expected classifier relies on them. Actual exceptions/Work/callback owners remain separate from nonreplayable serialized IDs. Unknown failed constructor costs stay unavailable."
+    },
+    {
+      "topic": "Original controls preserved",
+      "finding": "104 current worker functions have exact predecessor ASTs. The changed six and new ten definitions were reviewed in full context. Original graph/oracle/dynamic Root dispatcher and complete bank semantics remain preserved Source dependencies; that is not a new all-engine correctness proof or GCTS/RL performance result."
+    },
+    {
+      "topic": "Changed evidence gate",
+      "finding": "G1 charges unique complete canonical wire including occurrence metadata and banks. This is an explicit changed, unadopted independent predicate. It is not compression satisfying old G0 unfolding and cannot rescue historical negatives."
+    }
+  ],
+  "failed_checks": [
+    "Independent post-reconciliation typed tree to final mutated raw receipt correspondence is missing.",
+    "Independent per-position reconciliation pair occurrence/completeness/order conservation is missing.",
+    "Independent custody entry/exit phase occurrence conservation against full lifetime flags is missing.",
+    "Exact whole loaded-module descriptor binding is not enforced by the selected callable_seal."
+  ],
+  "metadata_AST_checks": [
+    {
+      "check": "exact Source store",
+      "passed": true
+    },
+    {
+      "check": "AST parsed and compiled without execution store",
+      "passed": true
+    },
+    {
+      "check": "exact Source cursor",
+      "passed": true
+    },
+    {
+      "check": "AST parsed and compiled without execution cursor",
+      "passed": true
+    },
+    {
+      "check": "exact Source checker",
+      "passed": true
+    },
+    {
+      "check": "AST parsed and compiled without execution checker",
+      "passed": true
+    },
+    {
+      "check": "exact Source worker",
+      "passed": true
+    },
+    {
+      "check": "AST parsed and compiled without execution worker",
+      "passed": true
+    },
+    {
+      "check": "exact Source integration",
+      "passed": true
+    },
+    {
+      "check": "AST parsed and compiled without execution integration",
+      "passed": true
+    },
+    {
+      "check": "exact Source native_rules",
+      "passed": true
+    },
+    {
+      "check": "AST parsed and compiled without execution native_rules",
+      "passed": true
+    },
+    {
+      "check": "exact Source catalog",
+      "passed": true
+    },
+    {
+      "check": "AST parsed and compiled without execution catalog",
+      "passed": true
+    },
+    {
+      "check": "current Python pin",
+      "passed": true
+    },
+    {
+      "check": "fully read master pin unchanged",
+      "passed": true
+    },
+    {
+      "check": "whole worker exact integration suffix",
+      "passed": true
+    },
+    {
+      "check": "whole store exact catalog suffix",
+      "passed": true
+    },
+    {
+      "check": "whole checker exact native-rules suffix",
+      "passed": true
+    },
+    {
+      "check": "exact named-custody predecessor",
+      "passed": true
+    },
+    {
+      "check": "complete nested function inventory",
+      "passed": true
+    },
+    {
+      "check": "104 exact retained 6 changed 10 new worker functions",
+      "passed": true
+    },
+    {
+      "check": "exact full first bank",
+      "passed": true
+    },
+    {
+      "check": "exact full second bank",
+      "passed": true
+    },
+    {
+      "check": "EVERY literal population catalog row equals full saved bank declarations",
+      "passed": true
+    },
+    {
+      "check": "population 15/33/28/55",
+      "passed": true
+    },
+    {
+      "check": "24 full topfield mapping exact order/path",
+      "passed": true
+    },
+    {
+      "check": "88 declarative recipes all retained",
+      "passed": true
+    },
+    {
+      "check": "complete saved cutoff exact pin",
+      "passed": true
+    },
+    {
+      "check": "all original wrapper queries completed at saved cutoff",
+      "passed": true
+    }
+  ],
+  "metadata_failed_checks": [],
+  "additional_unrun_recipes_required": [
+    "Coherently omitted reconciliation pairs, not merely malformed retained pairs.",
+    "A right reconciliation tree changed consistently with its boolean but inconsistent with final mutated raw receipt.",
+    "Coherently omitted custody entry/exit events with unchanged lifetime flags.",
+    "Loaded module plain/static/class descriptor replacement with the same function object."
+  ],
+  "unresolved_outer_and_resource_obligations": [
+    "Fresh exact Root Source/runtime/stdlib/plan/declaration/epoch/grant/controller bindings; no outer offer has been qualified by this inner review.",
+    "Corrected complete independent lifecycle and callable module predicates, with separately frozen successor Source/reviews.",
+    "Aggregate physical/G1 logical output/header/result/log/failure-summary/reserve closure under original unchanged caps.",
+    "Whole new work/reference/node/wire/HWM/deadline upper bounds; the reviewed node lower bound is not fit.",
+    "Fresh complete reviewed once qualification only after all separate readiness requirements, never historical grant reuse or partial admission."
+  ],
+  "meaning": "The complete selected composition has been assessed, and is not ready for whole evidence admission. A full source coverage matrix and specific positive manual findings do not override the explicit blocking predicates.",
+  "authority": {
+    "research_imports": 0,
+    "component_calls": 0,
+    "checker_calls": 0,
+    "fixture_calls": 0,
+    "generator_calls": 0,
+    "sizing_calls": 0,
+    "semantic_replays": 0,
+    "partial_content_reads": 0,
+    "new_actuals": 0,
+    "new_grants": 0,
+    "actual_execution_authorized": false,
+    "G1_adopted": false,
+    "runtime_qualified": false,
+    "resource_accepted": false,
+    "full_pipeline_qualified": false,
+    "proof_discovery": false,
+    "mathematical_authority": false
+  }
+}

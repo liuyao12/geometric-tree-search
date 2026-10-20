@@ -1,0 +1,1622 @@
+{
+  "schema": "typed-parallel-progress-publication-review-v1",
+  "reviewer_identity": "/root/recovered_batch_review",
+  "review_passed": true,
+  "status": "PASS_PASSIVE_FROZEN_CORE_PUBLICATION_ONLY",
+  "source_only_scientific_scope": true,
+  "publication_core": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/root/publication-core-assets-v1.json",
+    "bytes": 4943,
+    "sha256": "12d130b00123f30750e04463163c7778e83693537e81c13b97294b5179bbab3d"
+  },
+  "all_eleven_assets": [
+    {
+      "bytes": 22844,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/parallel-progress-abstract-review.json",
+      "relative_path": "docs/research/gcts-rl-renewal/conditional-inventory/parallel-progress-abstract-review.json",
+      "sha256": "bed1f104af64b3c1cf0c301317d1baaebc41f2490843203262f0a5dbf7a80819"
+    },
+    {
+      "bytes": 14922,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/parallel-progress-argument.json",
+      "relative_path": "docs/research/gcts-rl-renewal/conditional-inventory/parallel-progress-argument.json",
+      "sha256": "ec20db69640e28e2baf3f59925adaba198ef29620caa22043c59b4c0a269cc8f"
+    },
+    {
+      "bytes": 22899,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/parallel-progress-data.json",
+      "relative_path": "docs/research/gcts-rl-renewal/conditional-inventory/parallel-progress-data.json",
+      "sha256": "afd34518678b4930922a5a9251d5346007d549942172c5cd094057d45e0a044a"
+    },
+    {
+      "bytes": 16501,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/parallel-progress-evidence-review.json",
+      "relative_path": "docs/research/gcts-rl-renewal/conditional-inventory/parallel-progress-evidence-review.json",
+      "sha256": "e914a9c13c2eddaa85fbe03e88841b26e2711603d933c286fc28b82972f8fbf8"
+    },
+    {
+      "bytes": 598436,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/parallel-progress-evidence.tar.gz",
+      "relative_path": "docs/research/gcts-rl-renewal/conditional-inventory/parallel-progress-evidence.tar.gz",
+      "sha256": "5694f01837ae61706fe590ff785289581b2fb6e4a2b01a719177295826dc5cef"
+    },
+    {
+      "bytes": 23438,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/parallel-progress-initializer-review.json",
+      "relative_path": "docs/research/gcts-rl-renewal/conditional-inventory/parallel-progress-initializer-review.json",
+      "sha256": "b945e27e8ff72b3df74d6658f7ba76236b2a10ce14600c2fc1539085d4aa0444"
+    },
+    {
+      "bytes": 11743,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/parallel-progress-initializer.json",
+      "relative_path": "docs/research/gcts-rl-renewal/conditional-inventory/parallel-progress-initializer.json",
+      "sha256": "5af181ae0f7c0567accae4fbcc8d6bb994863fa20a8d78f908a19ebd374daf1a"
+    },
+    {
+      "bytes": 9113,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/parallel-progress-outer-handoff.json",
+      "relative_path": "docs/research/gcts-rl-renewal/conditional-inventory/parallel-progress-outer-handoff.json",
+      "sha256": "fc73dc9a2dfb550edb98d53099e9c3a0c6195dc08e4c3a8d415cf8f2ace3b451"
+    },
+    {
+      "bytes": 29294,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/parallel-progress-science.json",
+      "relative_path": "docs/research/gcts-rl-renewal/conditional-inventory/parallel-progress-science.json",
+      "sha256": "2064303cd534f7b047a3d150779ee659c9ce3ae549cb8e75cd994249b573d218"
+    },
+    {
+      "bytes": 17813,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/parallel-progress.html",
+      "relative_path": "docs/research/gcts-rl-renewal/conditional-inventory/parallel-progress.html",
+      "sha256": "10a4f8261b21753e3ee8a00b7cf639d8b3b1343d845425b0d1713a07a1d2b7dd"
+    },
+    {
+      "bytes": 106558,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/reader.html",
+      "relative_path": "docs/research/gcts-rl-renewal/conditional-inventory/reader.html",
+      "sha256": "2b9c2d0000bee116c4ba1283ec6d5b358e76e794047ffb228209e8171e3625c3"
+    }
+  ],
+  "reader_insertion": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/root/reader-insertion-v1.json",
+    "bytes": 578,
+    "sha256": "e4eed14881198a144ca7012513e4c98d5ae1a7b0f122bb70cc107c85eabecfc5"
+  },
+  "archive_members": [
+    {
+      "bytes": 9588,
+      "member": "evidence/init-L/API-v1.json",
+      "sha256": "4d2a81902ffe4633444e1c5ddaae8e7c5a6b314fa1600cd9258d466c904963a3"
+    },
+    {
+      "bytes": 4796,
+      "member": "evidence/init-L/author-static-audit-v1.json",
+      "sha256": "25ffc5a4ffb1991397b2f56faa8261836a72122c1d9cf2481ec267049d9a217e"
+    },
+    {
+      "bytes": 24598,
+      "member": "evidence/init-L/declarative-whole-bank-v1.json",
+      "sha256": "9dc8e30af210e60a5eb897eadf54bce5c1637e5b70e5f2b8d7d1b7e9c889a3d8"
+    },
+    {
+      "bytes": 9189,
+      "member": "evidence/init-L/freeze-manifest-v1.json",
+      "sha256": "c393caabc154abea55fdb25161ed6fe5f45a81531761117d39fce36fee77a320"
+    },
+    {
+      "bytes": 5927,
+      "member": "evidence/init-L/handoff-v1.json",
+      "sha256": "dad1acffed871a3130b31fd5d055bd81fc90306e1496b2d66b5f31a81ae93232"
+    },
+    {
+      "bytes": 11743,
+      "member": "evidence/init-L/manual-correspondence-v1.json",
+      "sha256": "5af181ae0f7c0567accae4fbcc8d6bb994863fa20a8d78f908a19ebd374daf1a"
+    },
+    {
+      "bytes": 17557,
+      "member": "evidence/init-L/physical_wang_initialization_v1.py",
+      "sha256": "2e8f8a1b7accc875dbc8d73e4b21d24fe50fc9b635daa0a001b1fabe6e54ba72"
+    },
+    {
+      "bytes": 29294,
+      "member": "evidence/init-L/proof-search-assessment-v1.json",
+      "sha256": "2064303cd534f7b047a3d150779ee659c9ce3ae549cb8e75cd994249b573d218"
+    },
+    {
+      "bytes": 5737,
+      "member": "evidence/outer-B/API-v1.json",
+      "sha256": "43a25cf9512ab602f83d5fcecea0b20f2126ff0e32423f342b8667df19d1dc8e"
+    },
+    {
+      "bytes": 2819,
+      "member": "evidence/outer-B/Source-offer-v1.json",
+      "sha256": "e5c1d3e239493d71195c73d9cb6015d269543092c5f6e5e50a88e84714bb0c9e"
+    },
+    {
+      "bytes": 9113,
+      "member": "evidence/outer-B/handoff-v1.json",
+      "sha256": "fc73dc9a2dfb550edb98d53099e9c3a0c6195dc08e4c3a8d415cf8f2ace3b451"
+    },
+    {
+      "bytes": 6194,
+      "member": "evidence/outer-B/lineage-v1.json",
+      "sha256": "7679e07918f2c755baddec15861645a467de1d4102719a84e288d254e474e8a3"
+    },
+    {
+      "bytes": 2161,
+      "member": "evidence/outer-B/module_named_custody_v1.fragment.py",
+      "sha256": "f9ac4d38e40c228ce696bb6193f240e0bafde2cc9e11500a431891295f192ad7"
+    },
+    {
+      "bytes": 25293,
+      "member": "evidence/outer-B/observe_owner_once_v1.py",
+      "sha256": "fe0c6c31b50da93591c3000a305069bcd9319e6bc54d15225869d8b87bbb51e6"
+    },
+    {
+      "bytes": 9584,
+      "member": "evidence/outer-B/observer_main_v1.fragment.py",
+      "sha256": "02556b281ade22d36c165dd615e7069e92a2e9745e6efe133b43ee490a4e11b5"
+    },
+    {
+      "bytes": 15417,
+      "member": "evidence/outer-B/outer_protocol_v1.fragment.py",
+      "sha256": "85fec58d526674a2a167127684cb64712e1528bc2c1afc74a56d10c123c894aa"
+    },
+    {
+      "bytes": 4836,
+      "member": "evidence/outer-B/predecessors/R3-final-milestone.json",
+      "sha256": "663c10d21ce94c6ed601cc88e31692aaaa3744a97f93eade7b79b8b16f1039b5"
+    },
+    {
+      "bytes": 15266,
+      "member": "evidence/outer-B/predecessors/R3-handoff.json",
+      "sha256": "07386c55a88d2031e5ae92e21104289105c7185bbec63b369448173c6401f250"
+    },
+    {
+      "bytes": 125472,
+      "member": "evidence/outer-B/predecessors/R3-worker.py",
+      "sha256": "f6c28c149261274eaa133527c3bd3a306de47b45afa38e48daf5313436f0bacc"
+    },
+    {
+      "bytes": 12786,
+      "member": "evidence/outer-B/predecessors/inner-cursor2.py",
+      "sha256": "93eb21f8bde51051cd5a7c913cd03732252bb5b6aa22cea2c42f5511e61323f0"
+    },
+    {
+      "bytes": 51068,
+      "member": "evidence/outer-B/predecessors/inner-schema3.py",
+      "sha256": "923230b512dabb3eb57127e42d06cff88106887921fd598a0226ff2ad69b1701"
+    },
+    {
+      "bytes": 21275,
+      "member": "evidence/outer-B/predecessors/inner-store.py",
+      "sha256": "898a687bcb81f1456a26978841a1e9710acf72a20a23c5bdfe39c18607d26843"
+    },
+    {
+      "bytes": 36240,
+      "member": "evidence/outer-B/predecessors/master.md",
+      "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+    },
+    {
+      "bytes": 5620,
+      "member": "evidence/outer-B/predecessors/old-observer.py",
+      "sha256": "51a0385fb85f7715e01789d0ebcd2d5f7e806d7258cdd7db4fef4ca8d56219ab"
+    },
+    {
+      "bytes": 34355,
+      "member": "evidence/outer-B/predecessors/old-runner.py",
+      "sha256": "9f5a2a31acdc03d94b4e89842af2606f405ddb4ba933f1d5099f6b4280af3090"
+    },
+    {
+      "bytes": 23530,
+      "member": "evidence/outer-B/predecessors/writer-v2.py",
+      "sha256": "cc85059ef049315a8fb340a87ec9dd26c0cb99e0d2dfe28463caa14d509dd1b8"
+    },
+    {
+      "bytes": 3046,
+      "member": "evidence/outer-B/preservation-and-OPEN-v1.json",
+      "sha256": "3bd4066c542c11383fbc81dcc472d007c21bf94467acfced1b373a160fcb0d13"
+    },
+    {
+      "bytes": 154857,
+      "member": "evidence/outer-B/qualify_owner_outer_worker_v1.py",
+      "sha256": "3a4227090b82c61e1355a653a650abd82d825f68d439ce27da7659b31f755388"
+    },
+    {
+      "bytes": 32594,
+      "member": "evidence/outer-B/run_owner_once_v1.py",
+      "sha256": "205fc049bbe70455be4740ca53f0571b5d1bcc97f0de6d3da784b56aed9e6be3"
+    },
+    {
+      "bytes": 11956,
+      "member": "evidence/outer-B/runner_main_v1.fragment.py",
+      "sha256": "ab4e7f09e5b639670d544a2a1c97f2c8fd4b12ba1734ffaf700c493a42ae7276"
+    },
+    {
+      "bytes": 2588,
+      "member": "evidence/outer-B/static-audit-v1.json",
+      "sha256": "7aca1365ff8eacc32db33b2e55c4203a17051b9880efdb27d74dea8b2dcea6c0"
+    },
+    {
+      "bytes": 4527,
+      "member": "evidence/outer-B/unrun-cases-v1.json",
+      "sha256": "fa7119919a912c3a3261c9c5b70235465bb2c332e98b6fb23ab56c7f377e3b9d"
+    },
+    {
+      "bytes": 13339,
+      "member": "evidence/outer-B/worker_outer_main_v1.fragment.py",
+      "sha256": "717db2a920a0ad473c750d7d836125d90e7440b3167242c8c2f7f86a054824e2"
+    },
+    {
+      "bytes": 758,
+      "member": "evidence/review-C/abstract-relation-reviewed-abstract-relation-Source-offer-v1.json",
+      "sha256": "681a27692669f718b818ccaeffc6ab51952f37e1fd7b0c86915b03f768efa39a"
+    },
+    {
+      "bytes": 10027,
+      "member": "evidence/review-C/abstract-relation-reviewed-abstract_heap_relation_v1.py",
+      "sha256": "db67b9d9ddb5a657b5836c39c73ab87dad0d95fdb8df302f946e10f3316b3721"
+    },
+    {
+      "bytes": 14922,
+      "member": "evidence/review-C/abstract-relation-reviewed-manual-abstract-refinement-and-unrun-bank-v1.json",
+      "sha256": "ec20db69640e28e2baf3f59925adaba198ef29620caa22043c59b4c0a269cc8f"
+    },
+    {
+      "bytes": 2330,
+      "member": "evidence/review-C/capture_selected_owner_Source_v1.py",
+      "sha256": "f5fbd9eefa0682f56c0cba6bb638dea886afb01ddc8b2d47f103a29b18683ea5"
+    },
+    {
+      "bytes": 7672,
+      "member": "evidence/review-C/freeze_abstract_relation_review_v1.py",
+      "sha256": "4a560d2e5cbddaad87c64c945862baac3af0277f2a4749bf914b7eaf1401421d"
+    },
+    {
+      "bytes": 11280,
+      "member": "evidence/review-C/freeze_initialization_review_v1.py",
+      "sha256": "8bd7947273e692532662e0309b6f6d2fc5914ec97db4534b1ed81c4a82b7f718"
+    },
+    {
+      "bytes": 5922,
+      "member": "evidence/review-C/freeze_module_descriptor_negative_v1.py",
+      "sha256": "60748fa2ef07d585c7a96f4472b9dae677ef2d838574a6a3b0a9ddbb7931adb8"
+    },
+    {
+      "bytes": 23850,
+      "member": "evidence/review-C/freeze_selected_owner_full_review_v1.py",
+      "sha256": "b45db8cb5bf7163eecac3d64d0e8a2e5595a11c8fdc03ee7d66a1cdfe9732412"
+    },
+    {
+      "bytes": 6547,
+      "member": "evidence/review-C/freeze_selected_owner_lifecycle_negative_v1.py",
+      "sha256": "4ce783801b08ac8e015602faf2967cc8df0a9f85a05e1c82fdab6c154ee36e04"
+    },
+    {
+      "bytes": 9588,
+      "member": "evidence/review-C/initialization-reviewed-Sources-v1/API-v1.json",
+      "sha256": "4d2a81902ffe4633444e1c5ddaae8e7c5a6b314fa1600cd9258d466c904963a3"
+    },
+    {
+      "bytes": 4796,
+      "member": "evidence/review-C/initialization-reviewed-Sources-v1/author-static-audit-v1.json",
+      "sha256": "25ffc5a4ffb1991397b2f56faa8261836a72122c1d9cf2481ec267049d9a217e"
+    },
+    {
+      "bytes": 24598,
+      "member": "evidence/review-C/initialization-reviewed-Sources-v1/declarative-whole-bank-v1.json",
+      "sha256": "9dc8e30af210e60a5eb897eadf54bce5c1637e5b70e5f2b8d7d1b7e9c889a3d8"
+    },
+    {
+      "bytes": 9189,
+      "member": "evidence/review-C/initialization-reviewed-Sources-v1/freeze-manifest-v1.json",
+      "sha256": "c393caabc154abea55fdb25161ed6fe5f45a81531761117d39fce36fee77a320"
+    },
+    {
+      "bytes": 5927,
+      "member": "evidence/review-C/initialization-reviewed-Sources-v1/handoff-v1.json",
+      "sha256": "dad1acffed871a3130b31fd5d055bd81fc90306e1496b2d66b5f31a81ae93232"
+    },
+    {
+      "bytes": 11743,
+      "member": "evidence/review-C/initialization-reviewed-Sources-v1/manual-correspondence-v1.json",
+      "sha256": "5af181ae0f7c0567accae4fbcc8d6bb994863fa20a8d78f908a19ebd374daf1a"
+    },
+    {
+      "bytes": 17557,
+      "member": "evidence/review-C/initialization-reviewed-Sources-v1/physical_wang_initialization_v1.py",
+      "sha256": "2e8f8a1b7accc875dbc8d73e4b21d24fe50fc9b635daa0a001b1fabe6e54ba72"
+    },
+    {
+      "bytes": 27193,
+      "member": "evidence/review-C/initialization-reviewed-Sources-v1/wang_unknown_certificate_initializer_v1.py",
+      "sha256": "02cf1718e09c1eadb4eda4811436e1c7139cb2e1c255f9d73894e0e3b5d21b43"
+    },
+    {
+      "bytes": 5574,
+      "member": "evidence/review-C/review-stage-handoff-v1.json",
+      "sha256": "ee0e968fa9405e04eb832bd10175c771ebb9e95068426d19ca0827b81ceba1e8"
+    },
+    {
+      "bytes": 125472,
+      "member": "evidence/review-C/selected-module-descriptor-negative-preimage-v1.py",
+      "sha256": "f6c28c149261274eaa133527c3bd3a306de47b45afa38e48daf5313436f0bacc"
+    },
+    {
+      "bytes": 43528,
+      "member": "evidence/review-C/selected-owner-Source-custody-v1.json",
+      "sha256": "fa0ca1f54c7d6f024490ec936ef11d43c571c7a3a9bc8177abe66bd5eaad8804"
+    },
+    {
+      "bytes": 7411,
+      "member": "evidence/review-C/selected-owner-Sources-v1/author/API-v1.json",
+      "sha256": "981351fa82f0c81708b3cfd354b4163da3a5bdbf7707242ee90841daf9de6fac"
+    },
+    {
+      "bytes": 1824,
+      "member": "evidence/review-C/selected-owner-Sources-v1/author/Source-offer-v1-pins.json",
+      "sha256": "5e738510edf89ef623207161b8967595c306c7d589678a3004b8cfff0c076d1a"
+    },
+    {
+      "bytes": 948,
+      "member": "evidence/review-C/selected-owner-Sources-v1/author/Source-preservation-audit-v1.json",
+      "sha256": "87301a4b036b0be10c4628ccff7c50ffa7889a282465c5239cade922ff0698f0"
+    },
+    {
+      "bytes": 52917,
+      "member": "evidence/review-C/selected-owner-Sources-v1/author/complete-preservation-map-v1.json",
+      "sha256": "b1150bd49cd601443abd68f3fc1a0f0f29a5f5f53089207179b71f854dfb7c66"
+    },
+    {
+      "bytes": 12786,
+      "member": "evidence/review-C/selected-owner-Sources-v1/author/cursor-v2/owner_cursor_v2.py",
+      "sha256": "93eb21f8bde51051cd5a7c913cd03732252bb5b6aa22cea2c42f5511e61323f0"
+    },
+    {
+      "bytes": 14089,
+      "member": "evidence/review-C/selected-owner-Sources-v1/author/diagnostic-bank-v1.json",
+      "sha256": "e71818cdbfe95d23afd308e131c574efe6bc2b3bc9e8d08f1ac0f01cbefa7b64"
+    },
+    {
+      "bytes": 3187,
+      "member": "evidence/review-C/selected-owner-Sources-v1/author/early-API-v1.json",
+      "sha256": "c07a47189c2f81df4215574b3e1a1c64ef5d34c0295db54b742942ec155dc91d"
+    },
+    {
+      "bytes": 3964,
+      "member": "evidence/review-C/selected-owner-Sources-v1/author/final-static-audit-v1.json",
+      "sha256": "cfd1def9df21a6cbf8d989b55aabca2aa0c73e80a8249a529ff8ad615c831dd1"
+    },
+    {
+      "bytes": 9711,
+      "member": "evidence/review-C/selected-owner-Sources-v1/author/full-cohort-resource-obligations-v1.json",
+      "sha256": "c1adc9a96c52668c75834777763b11e77fcbfa52e1ff59f26e3d31bf9a48b087"
+    },
+    {
+      "bytes": 21275,
+      "member": "evidence/review-C/selected-owner-Sources-v1/author/immutable_event_store_v1.py",
+      "sha256": "898a687bcb81f1456a26978841a1e9710acf72a20a23c5bdfe39c18607d26843"
+    },
+    {
+      "bytes": 5660,
+      "member": "evidence/review-C/selected-owner-Sources-v1/author/manual-correspondence-and-status-v1.json",
+      "sha256": "7d5e82739237ebf8807d8294b25a52408b8e94a336e2403175479388cd94adbc"
+    },
+    {
+      "bytes": 21906,
+      "member": "evidence/review-C/selected-owner-Sources-v1/author/native_schema_rules_v1.py",
+      "sha256": "8f696885ffb066b7229d42fecb6a2fc4ba4eb670657dc42ad08803e9182dfa0c"
+    },
+    {
+      "bytes": 3772,
+      "member": "evidence/review-C/selected-owner-Sources-v1/author/owner_catalog_v1.py",
+      "sha256": "6c20439614a07c9f5be6da67aa1da50bd20760a665526eeb81c1d6e4dc6750af"
+    },
+    {
+      "bytes": 10430,
+      "member": "evidence/review-C/selected-owner-Sources-v1/author/owner_cursor_v1.py",
+      "sha256": "276aec8a8c98b3dee7f0b5bb17ca49522c511d0880181f1f858246c7e7e4e426"
+    },
+    {
+      "bytes": 125472,
+      "member": "evidence/review-C/selected-owner-Sources-v1/author/qualify_owner_batch_worker_v1.py",
+      "sha256": "f6c28c149261274eaa133527c3bd3a306de47b45afa38e48daf5313436f0bacc"
+    },
+    {
+      "bytes": 51055,
+      "member": "evidence/review-C/selected-owner-Sources-v1/author/schema-v2/validate_owner_parent_v2.py",
+      "sha256": "35223e80407bec14e568618748d0311a07ca67363486e27bda125032551b8cab"
+    },
+    {
+      "bytes": 1175,
+      "member": "evidence/review-C/selected-owner-Sources-v1/author/schema-v3/Source-delta-v3.json",
+      "sha256": "e7edecfb1a21f2efd9d4c6ccdcc262b63ebe30dfd72e7abd61014efb7cda9eab"
+    },
+    {
+      "bytes": 51068,
+      "member": "evidence/review-C/selected-owner-Sources-v1/author/schema-v3/validate_owner_parent_v3.py",
+      "sha256": "923230b512dabb3eb57127e42d06cff88106887921fd598a0226ff2ad69b1701"
+    },
+    {
+      "bytes": 1930,
+      "member": "evidence/review-C/selected-owner-Sources-v1/author/static-draft-v1.json",
+      "sha256": "8e1624b844d32406a3facc5c836e772c47655f47c07042745c564c2fbbcaad19"
+    },
+    {
+      "bytes": 940,
+      "member": "evidence/review-C/selected-owner-Sources-v1/author/successor-Source-offer-v2-pins.json",
+      "sha256": "68984e000d48dd3a1bc94f4b65ff196a39ec6a5f3253c75fa0ecd252fe8e7269"
+    },
+    {
+      "bytes": 42803,
+      "member": "evidence/review-C/selected-owner-Sources-v1/author/validate_owner_parent_v1.py",
+      "sha256": "600e4a93a5f959d91556ee85f60be0118057a1a99d8915e7f3aa71476a5fe20f"
+    },
+    {
+      "bytes": 14337,
+      "member": "evidence/review-C/selected-owner-Sources-v1/author/worker_owner_integration_v1.fragment.py",
+      "sha256": "d5f9ce95a12962f2b7ca013737410dc607e54c5c812cfa543ac9fcb41b8ca0fa"
+    },
+    {
+      "bytes": 36240,
+      "member": "evidence/review-C/selected-owner-Sources-v1/dependencies/22-basic-tiling-algorithm.md",
+      "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+    },
+    {
+      "bytes": 116476,
+      "member": "evidence/review-C/selected-owner-Sources-v1/dependencies/23-qualify_complete_batch_worker_v2.py",
+      "sha256": "9ea014de87d5af2ed3017442f690699a0ef54750c8d8be12890e373936b65a03"
+    },
+    {
+      "bytes": 40502,
+      "member": "evidence/review-C/selected-owner-Sources-v1/dependencies/24-implicit_wang_linked_v1.py",
+      "sha256": "413c0e001d66dd18ba87c10ccba2ba9c0e82c8bb17a3db4b1e2058775b09b4d2"
+    },
+    {
+      "bytes": 36892,
+      "member": "evidence/review-C/selected-owner-Sources-v1/dependencies/25-implicit_wang_point_search_v1.py",
+      "sha256": "1a83c9c59b2e1862d5a2acda69b826ccc3a8e2cf4899e824286f711f8bf25981"
+    },
+    {
+      "bytes": 27193,
+      "member": "evidence/review-C/selected-owner-Sources-v1/dependencies/26-wang_unknown_certificate_initializer_v1.py",
+      "sha256": "02cf1718e09c1eadb4eda4811436e1c7139cb2e1c255f9d73894e0e3b5d21b43"
+    },
+    {
+      "bytes": 23530,
+      "member": "evidence/review-C/selected-owner-Sources-v1/dependencies/27-aggregate_byte_budget_v2.py",
+      "sha256": "cc85059ef049315a8fb340a87ec9dd26c0cb99e0d2dfe28463caa14d509dd1b8"
+    },
+    {
+      "bytes": 740651,
+      "member": "evidence/review-C/selected-owner-Sources-v1/dependencies/28-implicit-inputs-v1.json",
+      "sha256": "10fe60d005a2f586a76bf69ae30317b8dae538ba9f126714b9f71ffa474a89b4"
+    },
+    {
+      "bytes": 38883,
+      "member": "evidence/review-C/selected-owner-Sources-v1/dependencies/29-new-diagnostic-bank-v1.json",
+      "sha256": "6e579fa58384188b5444606c87dbdee92a86f5771a983a36fbf6904192e669ab"
+    },
+    {
+      "bytes": 7396,
+      "member": "evidence/review-C/selected-owner-Sources-v1/dependencies/30-cutoff-metadata-v1.json",
+      "sha256": "f3482f22b0c968914f51ee41887726660d25d1ca5c302be65792f2cf50dff439"
+    },
+    {
+      "bytes": 25326,
+      "member": "evidence/review-C/selected-owner-Sources-v1/dependencies/31-full-cohort-count-and-work-bound-v1.json",
+      "sha256": "b12129c0aa6de86de33875772d1071e931f97b5ccc83cf51210685b943fb213a"
+    },
+    {
+      "bytes": 34083,
+      "member": "evidence/review-C/selected-owner-Sources-v1/dependencies/32-typed-primary-copying-journal-work-bound-Source-review-v1.json",
+      "sha256": "ac89a05cc0a62255cf90ed5cc90325a20c7137b735b734edc355dee3dd592893"
+    },
+    {
+      "bytes": 8357,
+      "member": "evidence/review-C/selected-owner-Sources-v1/dependencies/33-typed-owner-provenance-Source-negative-v1.json",
+      "sha256": "abfc12f4daeb7f7aa35459dd42827e5e021d1319ffde169fcef08afcae2427f1"
+    },
+    {
+      "bytes": 5201,
+      "member": "evidence/review-C/selected-owner-Sources-v1/dependencies/34-typed-tuple-key-cursor-resource-Source-negative-v1.json",
+      "sha256": "a3d56bc945f01c8d7f6e0642eaf8bc3363d17cc284a6f6edcf3e0b6874f14b5e"
+    },
+    {
+      "bytes": 3165,
+      "member": "evidence/review-C/selected-owner-Sources-v1/dependencies/35-typed-owner-route-shadow-Source-negative-v2.json",
+      "sha256": "927483631a346f35e43ac97300f3832444e0d944440d728071d78d69e01bc5c8"
+    },
+    {
+      "bytes": 5275,
+      "member": "evidence/review-C/selected-owner-Sources-v1/dependencies/36-typed-owner-route-v3-specific-Source-delta-review-v1.json",
+      "sha256": "b84647c128176c1780e9af0e1b5ad0235c46e38c76564a2206bd7476ca4dcdfd"
+    },
+    {
+      "bytes": 7864,
+      "member": "evidence/review-C/selected-owner-Sources-v1/dependencies/37-typed-owner-key-normal-form-v2-specific-Source-delta-review-v1.json",
+      "sha256": "93de4198992a32be48a9bb36c07e3568d1ebfea91bd477ec8b1f5ebe4c2067d5"
+    },
+    {
+      "bytes": 15266,
+      "member": "evidence/review-C/selected-owner-Sources-v1/handoff-v1.json",
+      "sha256": "07386c55a88d2031e5ae92e21104289105c7185bbec63b369448173c6401f250"
+    },
+    {
+      "bytes": 172320,
+      "member": "evidence/review-C/selected-owner-complete-function-and-preservation-matrix-v1.json",
+      "sha256": "dcf3833f2d71afc31d4df12859a56697d60e47dfbf31dfc7613f123061695091"
+    },
+    {
+      "bytes": 22844,
+      "member": "evidence/review-C/typed-abstract-heap-relation-Source-and-manual-review-v1.json",
+      "sha256": "bed1f104af64b3c1cf0c301317d1baaebc41f2490843203262f0a5dbf7a80819"
+    },
+    {
+      "bytes": 23438,
+      "member": "evidence/review-C/typed-physical-Wang-initialization-Source-review-v1.json",
+      "sha256": "b945e27e8ff72b3df74d6658f7ba76236b2a10ce14600c2fc1539085d4aa0444"
+    },
+    {
+      "bytes": 16501,
+      "member": "evidence/review-C/typed-selected-complete-owner-composition-Source-review-v1.json",
+      "sha256": "e914a9c13c2eddaa85fbe03e88841b26e2711603d933c286fc28b82972f8fbf8"
+    },
+    {
+      "bytes": 5923,
+      "member": "evidence/review-C/typed-selected-module-descriptor-custody-Source-negative-v1.json",
+      "sha256": "ec29e6302af14b4a96cbf5f8f7ba816b4882e093a2bbd203cc36c765ed843ef4"
+    },
+    {
+      "bytes": 6596,
+      "member": "evidence/review-C/typed-selected-owner-conditional-node-lower-bound-Source-review-v1.json",
+      "sha256": "093263fa09e2b3fcb62b50867f1b980580d5a8b44327219dfab84a2bb106a91e"
+    },
+    {
+      "bytes": 7284,
+      "member": "evidence/review-C/typed-selected-owner-lifecycle-Source-negative-v1.json",
+      "sha256": "b1c3868f9e9aca7ca888892cef6c45d6061edf78e01d6a0627bfcf0b59ac2395"
+    },
+    {
+      "bytes": 1091,
+      "member": "evidence/root/ROOT-continuation-assessment-v1.json",
+      "sha256": "8f2cce3af80ae5e40105850792a2d8ed08ee3eeafcdfcd38631292835ea6b7ce"
+    },
+    {
+      "bytes": 758,
+      "member": "evidence/root/abstract-relation-Source-offer-v1.json",
+      "sha256": "681a27692669f718b818ccaeffc6ab51952f37e1fd7b0c86915b03f768efa39a"
+    },
+    {
+      "bytes": 10027,
+      "member": "evidence/root/abstract_heap_relation_v1.py",
+      "sha256": "db67b9d9ddb5a657b5836c39c73ab87dad0d95fdb8df302f946e10f3316b3721"
+    },
+    {
+      "bytes": 14922,
+      "member": "evidence/root/manual-abstract-refinement-and-unrun-bank-v1.json",
+      "sha256": "ec20db69640e28e2baf3f59925adaba198ef29620caa22043c59b4c0a269cc8f"
+    }
+  ],
+  "checks": [
+    {
+      "check": "exact latest CSS-successor core freeze",
+      "passed": true
+    },
+    {
+      "check": "eleven exact offered assets",
+      "passed": true
+    },
+    {
+      "check": "asset docs/research/gcts-rl-renewal/conditional-inventory/parallel-progress-abstract-review.json",
+      "passed": true
+    },
+    {
+      "check": "asset docs/research/gcts-rl-renewal/conditional-inventory/parallel-progress-argument.json",
+      "passed": true
+    },
+    {
+      "check": "asset docs/research/gcts-rl-renewal/conditional-inventory/parallel-progress-data.json",
+      "passed": true
+    },
+    {
+      "check": "asset docs/research/gcts-rl-renewal/conditional-inventory/parallel-progress-evidence-review.json",
+      "passed": true
+    },
+    {
+      "check": "asset docs/research/gcts-rl-renewal/conditional-inventory/parallel-progress-evidence.tar.gz",
+      "passed": true
+    },
+    {
+      "check": "asset docs/research/gcts-rl-renewal/conditional-inventory/parallel-progress-initializer-review.json",
+      "passed": true
+    },
+    {
+      "check": "asset docs/research/gcts-rl-renewal/conditional-inventory/parallel-progress-initializer.json",
+      "passed": true
+    },
+    {
+      "check": "asset docs/research/gcts-rl-renewal/conditional-inventory/parallel-progress-outer-handoff.json",
+      "passed": true
+    },
+    {
+      "check": "asset docs/research/gcts-rl-renewal/conditional-inventory/parallel-progress-science.json",
+      "passed": true
+    },
+    {
+      "check": "asset docs/research/gcts-rl-renewal/conditional-inventory/parallel-progress.html",
+      "passed": true
+    },
+    {
+      "check": "asset docs/research/gcts-rl-renewal/conditional-inventory/reader.html",
+      "passed": true
+    },
+    {
+      "check": "fourteen exact complete symbolic tile families",
+      "passed": true
+    },
+    {
+      "check": "eight exact reviewed manual sections",
+      "passed": true
+    },
+    {
+      "check": "exact saved assessment projection science_summary",
+      "passed": true
+    },
+    {
+      "check": "exact saved assessment projection science_rows",
+      "passed": true
+    },
+    {
+      "check": "exact saved assessment projection next_experiment",
+      "passed": true
+    },
+    {
+      "check": "explicit historical certificate nonreplay limit",
+      "passed": true
+    },
+    {
+      "check": "current stage no new scientific outcomes",
+      "passed": true
+    },
+    {
+      "check": "literal saved-document copy parallel-progress-argument.json",
+      "passed": true
+    },
+    {
+      "check": "literal saved-document copy parallel-progress-abstract-review.json",
+      "passed": true
+    },
+    {
+      "check": "literal saved-document copy parallel-progress-initializer.json",
+      "passed": true
+    },
+    {
+      "check": "literal saved-document copy parallel-progress-initializer-review.json",
+      "passed": true
+    },
+    {
+      "check": "literal saved-document copy parallel-progress-evidence-review.json",
+      "passed": true
+    },
+    {
+      "check": "literal saved-document copy parallel-progress-science.json",
+      "passed": true
+    },
+    {
+      "check": "literal saved-document copy parallel-progress-outer-handoff.json",
+      "passed": true
+    },
+    {
+      "check": "all seven saved source pins",
+      "passed": true
+    },
+    {
+      "check": "one exact reader insertion",
+      "passed": true
+    },
+    {
+      "check": "reader exact inverse preimage hash and length",
+      "passed": true
+    },
+    {
+      "check": "isolated publisher changes ONLY the eleven offered paths",
+      "passed": true
+    },
+    {
+      "check": "exact frozen archive",
+      "passed": true
+    },
+    {
+      "check": "archive 104 unique safe regular members no partials",
+      "passed": true
+    },
+    {
+      "check": "full103body manifest population",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/init-L/API-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/init-L/API-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/init-L/author-static-audit-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/init-L/author-static-audit-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/init-L/declarative-whole-bank-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/init-L/declarative-whole-bank-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/init-L/freeze-manifest-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/init-L/freeze-manifest-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/init-L/handoff-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/init-L/handoff-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/init-L/manual-correspondence-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/init-L/manual-correspondence-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/init-L/physical_wang_initialization_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/init-L/physical_wang_initialization_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/init-L/proof-search-assessment-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/init-L/proof-search-assessment-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/outer-B/API-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/outer-B/API-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/outer-B/Source-offer-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/outer-B/Source-offer-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/outer-B/handoff-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/outer-B/handoff-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/outer-B/lineage-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/outer-B/lineage-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/outer-B/module_named_custody_v1.fragment.py",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/outer-B/module_named_custody_v1.fragment.py",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/outer-B/observe_owner_once_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/outer-B/observe_owner_once_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/outer-B/observer_main_v1.fragment.py",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/outer-B/observer_main_v1.fragment.py",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/outer-B/outer_protocol_v1.fragment.py",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/outer-B/outer_protocol_v1.fragment.py",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/outer-B/predecessors/R3-final-milestone.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/outer-B/predecessors/R3-final-milestone.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/outer-B/predecessors/R3-handoff.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/outer-B/predecessors/R3-handoff.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/outer-B/predecessors/R3-worker.py",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/outer-B/predecessors/R3-worker.py",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/outer-B/predecessors/inner-cursor2.py",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/outer-B/predecessors/inner-cursor2.py",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/outer-B/predecessors/inner-schema3.py",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/outer-B/predecessors/inner-schema3.py",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/outer-B/predecessors/inner-store.py",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/outer-B/predecessors/inner-store.py",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/outer-B/predecessors/master.md",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/outer-B/predecessors/master.md",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/outer-B/predecessors/old-observer.py",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/outer-B/predecessors/old-observer.py",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/outer-B/predecessors/old-runner.py",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/outer-B/predecessors/old-runner.py",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/outer-B/predecessors/writer-v2.py",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/outer-B/predecessors/writer-v2.py",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/outer-B/preservation-and-OPEN-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/outer-B/preservation-and-OPEN-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/outer-B/qualify_owner_outer_worker_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/outer-B/qualify_owner_outer_worker_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/outer-B/run_owner_once_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/outer-B/run_owner_once_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/outer-B/runner_main_v1.fragment.py",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/outer-B/runner_main_v1.fragment.py",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/outer-B/static-audit-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/outer-B/static-audit-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/outer-B/unrun-cases-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/outer-B/unrun-cases-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/outer-B/worker_outer_main_v1.fragment.py",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/outer-B/worker_outer_main_v1.fragment.py",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/abstract-relation-reviewed-abstract-relation-Source-offer-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/abstract-relation-reviewed-abstract-relation-Source-offer-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/abstract-relation-reviewed-abstract_heap_relation_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/abstract-relation-reviewed-abstract_heap_relation_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/abstract-relation-reviewed-manual-abstract-refinement-and-unrun-bank-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/abstract-relation-reviewed-manual-abstract-refinement-and-unrun-bank-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/capture_selected_owner_Source_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/capture_selected_owner_Source_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/freeze_abstract_relation_review_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/freeze_abstract_relation_review_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/freeze_initialization_review_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/freeze_initialization_review_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/freeze_module_descriptor_negative_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/freeze_module_descriptor_negative_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/freeze_selected_owner_full_review_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/freeze_selected_owner_full_review_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/freeze_selected_owner_lifecycle_negative_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/freeze_selected_owner_lifecycle_negative_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/initialization-reviewed-Sources-v1/API-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/initialization-reviewed-Sources-v1/API-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/initialization-reviewed-Sources-v1/author-static-audit-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/initialization-reviewed-Sources-v1/author-static-audit-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/initialization-reviewed-Sources-v1/declarative-whole-bank-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/initialization-reviewed-Sources-v1/declarative-whole-bank-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/initialization-reviewed-Sources-v1/freeze-manifest-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/initialization-reviewed-Sources-v1/freeze-manifest-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/initialization-reviewed-Sources-v1/handoff-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/initialization-reviewed-Sources-v1/handoff-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/initialization-reviewed-Sources-v1/manual-correspondence-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/initialization-reviewed-Sources-v1/manual-correspondence-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/initialization-reviewed-Sources-v1/physical_wang_initialization_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/initialization-reviewed-Sources-v1/physical_wang_initialization_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/initialization-reviewed-Sources-v1/wang_unknown_certificate_initializer_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/initialization-reviewed-Sources-v1/wang_unknown_certificate_initializer_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/review-stage-handoff-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/review-stage-handoff-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/selected-module-descriptor-negative-preimage-v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/selected-module-descriptor-negative-preimage-v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/selected-owner-Source-custody-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/selected-owner-Source-custody-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/selected-owner-Sources-v1/author/API-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/selected-owner-Sources-v1/author/API-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/selected-owner-Sources-v1/author/Source-offer-v1-pins.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/selected-owner-Sources-v1/author/Source-offer-v1-pins.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/selected-owner-Sources-v1/author/Source-preservation-audit-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/selected-owner-Sources-v1/author/Source-preservation-audit-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/selected-owner-Sources-v1/author/complete-preservation-map-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/selected-owner-Sources-v1/author/complete-preservation-map-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/selected-owner-Sources-v1/author/cursor-v2/owner_cursor_v2.py",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/selected-owner-Sources-v1/author/cursor-v2/owner_cursor_v2.py",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/selected-owner-Sources-v1/author/diagnostic-bank-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/selected-owner-Sources-v1/author/diagnostic-bank-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/selected-owner-Sources-v1/author/early-API-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/selected-owner-Sources-v1/author/early-API-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/selected-owner-Sources-v1/author/final-static-audit-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/selected-owner-Sources-v1/author/final-static-audit-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/selected-owner-Sources-v1/author/full-cohort-resource-obligations-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/selected-owner-Sources-v1/author/full-cohort-resource-obligations-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/selected-owner-Sources-v1/author/immutable_event_store_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/selected-owner-Sources-v1/author/immutable_event_store_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/selected-owner-Sources-v1/author/manual-correspondence-and-status-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/selected-owner-Sources-v1/author/manual-correspondence-and-status-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/selected-owner-Sources-v1/author/native_schema_rules_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/selected-owner-Sources-v1/author/native_schema_rules_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/selected-owner-Sources-v1/author/owner_catalog_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/selected-owner-Sources-v1/author/owner_catalog_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/selected-owner-Sources-v1/author/owner_cursor_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/selected-owner-Sources-v1/author/owner_cursor_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/selected-owner-Sources-v1/author/qualify_owner_batch_worker_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/selected-owner-Sources-v1/author/qualify_owner_batch_worker_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/selected-owner-Sources-v1/author/schema-v2/validate_owner_parent_v2.py",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/selected-owner-Sources-v1/author/schema-v2/validate_owner_parent_v2.py",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/selected-owner-Sources-v1/author/schema-v3/Source-delta-v3.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/selected-owner-Sources-v1/author/schema-v3/Source-delta-v3.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/selected-owner-Sources-v1/author/schema-v3/validate_owner_parent_v3.py",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/selected-owner-Sources-v1/author/schema-v3/validate_owner_parent_v3.py",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/selected-owner-Sources-v1/author/static-draft-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/selected-owner-Sources-v1/author/static-draft-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/selected-owner-Sources-v1/author/successor-Source-offer-v2-pins.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/selected-owner-Sources-v1/author/successor-Source-offer-v2-pins.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/selected-owner-Sources-v1/author/validate_owner_parent_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/selected-owner-Sources-v1/author/validate_owner_parent_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/selected-owner-Sources-v1/author/worker_owner_integration_v1.fragment.py",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/selected-owner-Sources-v1/author/worker_owner_integration_v1.fragment.py",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/selected-owner-Sources-v1/dependencies/22-basic-tiling-algorithm.md",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/selected-owner-Sources-v1/dependencies/22-basic-tiling-algorithm.md",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/selected-owner-Sources-v1/dependencies/23-qualify_complete_batch_worker_v2.py",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/selected-owner-Sources-v1/dependencies/23-qualify_complete_batch_worker_v2.py",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/selected-owner-Sources-v1/dependencies/24-implicit_wang_linked_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/selected-owner-Sources-v1/dependencies/24-implicit_wang_linked_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/selected-owner-Sources-v1/dependencies/25-implicit_wang_point_search_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/selected-owner-Sources-v1/dependencies/25-implicit_wang_point_search_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/selected-owner-Sources-v1/dependencies/26-wang_unknown_certificate_initializer_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/selected-owner-Sources-v1/dependencies/26-wang_unknown_certificate_initializer_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/selected-owner-Sources-v1/dependencies/27-aggregate_byte_budget_v2.py",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/selected-owner-Sources-v1/dependencies/27-aggregate_byte_budget_v2.py",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/selected-owner-Sources-v1/dependencies/28-implicit-inputs-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/selected-owner-Sources-v1/dependencies/28-implicit-inputs-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/selected-owner-Sources-v1/dependencies/29-new-diagnostic-bank-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/selected-owner-Sources-v1/dependencies/29-new-diagnostic-bank-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/selected-owner-Sources-v1/dependencies/30-cutoff-metadata-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/selected-owner-Sources-v1/dependencies/30-cutoff-metadata-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/selected-owner-Sources-v1/dependencies/31-full-cohort-count-and-work-bound-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/selected-owner-Sources-v1/dependencies/31-full-cohort-count-and-work-bound-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/selected-owner-Sources-v1/dependencies/32-typed-primary-copying-journal-work-bound-Source-review-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/selected-owner-Sources-v1/dependencies/32-typed-primary-copying-journal-work-bound-Source-review-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/selected-owner-Sources-v1/dependencies/33-typed-owner-provenance-Source-negative-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/selected-owner-Sources-v1/dependencies/33-typed-owner-provenance-Source-negative-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/selected-owner-Sources-v1/dependencies/34-typed-tuple-key-cursor-resource-Source-negative-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/selected-owner-Sources-v1/dependencies/34-typed-tuple-key-cursor-resource-Source-negative-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/selected-owner-Sources-v1/dependencies/35-typed-owner-route-shadow-Source-negative-v2.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/selected-owner-Sources-v1/dependencies/35-typed-owner-route-shadow-Source-negative-v2.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/selected-owner-Sources-v1/dependencies/36-typed-owner-route-v3-specific-Source-delta-review-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/selected-owner-Sources-v1/dependencies/36-typed-owner-route-v3-specific-Source-delta-review-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/selected-owner-Sources-v1/dependencies/37-typed-owner-key-normal-form-v2-specific-Source-delta-review-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/selected-owner-Sources-v1/dependencies/37-typed-owner-key-normal-form-v2-specific-Source-delta-review-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/selected-owner-Sources-v1/handoff-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/selected-owner-Sources-v1/handoff-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/selected-owner-complete-function-and-preservation-matrix-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/selected-owner-complete-function-and-preservation-matrix-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/typed-abstract-heap-relation-Source-and-manual-review-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/typed-abstract-heap-relation-Source-and-manual-review-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/typed-physical-Wang-initialization-Source-review-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/typed-physical-Wang-initialization-Source-review-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/typed-selected-complete-owner-composition-Source-review-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/typed-selected-complete-owner-composition-Source-review-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/typed-selected-module-descriptor-custody-Source-negative-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/typed-selected-module-descriptor-custody-Source-negative-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/typed-selected-owner-conditional-node-lower-bound-Source-review-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/typed-selected-owner-conditional-node-lower-bound-Source-review-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/review-C/typed-selected-owner-lifecycle-Source-negative-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/review-C/typed-selected-owner-lifecycle-Source-negative-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/root/ROOT-continuation-assessment-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/root/ROOT-continuation-assessment-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/root/abstract-relation-Source-offer-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/root/abstract-relation-Source-offer-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/root/abstract_heap_relation_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/root/abstract_heap_relation_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive raw body evidence/root/manual-abstract-refinement-and-unrun-bank-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive body exact complete staged source evidence/root/manual-abstract-refinement-and-unrun-bank-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive complete declared saved tree not hand-picked fragments",
+      "passed": true
+    },
+    {
+      "check": "both current blocking negatives preserved in full",
+      "passed": true
+    },
+    {
+      "check": "visible historical limitation actually rendered",
+      "passed": true
+    },
+    {
+      "check": "manual pilot positive and negative labels retained",
+      "passed": true
+    },
+    {
+      "check": "tile viewer Source-only and translation-only labels",
+      "passed": true
+    },
+    {
+      "check": "no premature self manifest/review files",
+      "passed": true
+    }
+  ],
+  "failed_checks": [],
+  "human_claim_findings": [
+    "The report accurately distinguishes a conditional complete initializer Source pass, a conditional manual abstract correspondence pass, and the negative full selected evidence review. It grants no broad physical interpreter or evidence admission.",
+    "All14visible tile entries are exact symbolic families from the preserved compiler/manual, not generated or selected tiles. Translation-only orientation, color namespace vs complete-label equality and problem-defining rather than learned markings are explicit.",
+    "The full eight-section mathematical argument is copied exactly and identified as manual, not discovered by GCTS or RL. Initial inclusion/program and physical refinement/licensing/resource gaps remain visible.",
+    "Historical automatically found arithmetic/FOL/Hilbert proofs are explicitly reported from saved summaries and audit metadata. The report does not upgrade those acceptances or claim a fresh underlying certificate replay. This reviewer checked this scope qualification and literal publication binding, not the historical scientific certificates.",
+    "The science assessment separates arithmetic post-search tile compilation, first-order matched solve outcomes, shared AND guidance, external Hilbert checks and small certified-marking controls; it explicitly finds no established GCTS-specific or trained-RL search advantage.",
+    "The two proposed positive pilot assertions are mathematically valid by implication instantiation/composition and equality congruence/substitution. For the first target with P(a) removed, the supplied one-element all-predicates-false model satisfies the remaining implications and falsifies the goal. These are manual synthetic proposals; no pilot or countermodel discovery ran.",
+    "The proposed six arms comprise two symbolic cluster variants plus four point marking/cluster variants; the two positives give twelve planned positive attempts, with negative controls additional. Complete primitive fallback, identical admitted cluster library, acquisition/checking costs and independent structural holdouts are explicitly required.",
+    "The archive contains all103declared complete raw Source/document bodies plus its manifest, including negative receipts/preimages. No partial content or unsafe/nested archive member is included. Earlier complete dependencies are linked as a separate previous archive, not represented as freshly rechecked here.",
+    "The isolated notebook reader has exactly the stated94byte insertion and exact inverse preimage hash. Git status contains only the eleven offered paths; no primary reader/index/.gcts-active or unrelated publication edit was made by this audit."
+  ],
+  "conditional_future_publication_items": [
+    "Root still must create the public asset manifest and copy this receipt under the advertised review URL, excluding self-hash cycles, then publish and verify live bodies.",
+    "Browser visual/MathJax/responsive QA is handled separately by Root; this is a passive bytes/claims/packaging audit, not an independent browser execution result."
+  ],
+  "authority": {
+    "research_imports": 0,
+    "scientific_calls": 0,
+    "certificate_replays": 0,
+    "fixtures": 0,
+    "generation": 0,
+    "simulation": 0,
+    "sizing": 0,
+    "partial_content_reads": 0,
+    "new_actuals": 0,
+    "new_grants": 0,
+    "actual_execution_authorized": false,
+    "G1_adopted": false,
+    "full_VM_qualified": false,
+    "fit_proved": false,
+    "proof_discovery": false
+  },
+  "tools_stop": "All tools stop after this receipt. Offered assets and archive were never modified by the reviewer."
+}

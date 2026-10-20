@@ -1,0 +1,173 @@
+{
+  "schema": "whole-owner-complete-outer-author-handoff-v1",
+  "status": "FROZEN_SOURCE_ONLY_LAUNCH_BLOCKED",
+  "Source_offer": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/outer-B/Source-offer-v1.json",
+    "sha256": "e5c1d3e239493d71195c73d9cb6015d269543092c5f6e5e50a88e84714bb0c9e",
+    "bytes": 2819
+  },
+  "API": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/outer-B/API-v1.json",
+    "sha256": "43a25cf9512ab602f83d5fcecea0b20f2126ff0e32423f342b8667df19d1dc8e",
+    "bytes": 5737
+  },
+  "preservation_and_OPEN": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/outer-B/preservation-and-OPEN-v1.json",
+    "sha256": "3bd4066c542c11383fbc81dcc472d007c21bf94467acfced1b373a160fcb0d13",
+    "bytes": 3046
+  },
+  "unrun_cases": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/outer-B/unrun-cases-v1.json",
+    "sha256": "fa7119919a912c3a3261c9c5b70235465bb2c332e98b6fb23ab56c7f377e3b9d",
+    "bytes": 4527
+  },
+  "lineage": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/outer-B/lineage-v1.json",
+    "sha256": "7679e07918f2c755baddec15861645a467de1d4102719a84e288d254e474e8a3",
+    "bytes": 6194
+  },
+  "static_audit": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/outer-B/static-audit-v1.json",
+    "sha256": "7aca1365ff8eacc32db33b2e55c4203a17051b9880efdb27d74dea8b2dcea6c0",
+    "bytes": 2588
+  },
+  "author_snapshot": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/outer-B/API-v1.json",
+      "sha256": "43a25cf9512ab602f83d5fcecea0b20f2126ff0e32423f342b8667df19d1dc8e",
+      "bytes": 5737
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/outer-B/Source-offer-v1.json",
+      "sha256": "e5c1d3e239493d71195c73d9cb6015d269543092c5f6e5e50a88e84714bb0c9e",
+      "bytes": 2819
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/outer-B/lineage-v1.json",
+      "sha256": "7679e07918f2c755baddec15861645a467de1d4102719a84e288d254e474e8a3",
+      "bytes": 6194
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/outer-B/module_named_custody_v1.fragment.py",
+      "sha256": "f9ac4d38e40c228ce696bb6193f240e0bafde2cc9e11500a431891295f192ad7",
+      "bytes": 2161
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/outer-B/observe_owner_once_v1.py",
+      "sha256": "fe0c6c31b50da93591c3000a305069bcd9319e6bc54d15225869d8b87bbb51e6",
+      "bytes": 25293
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/outer-B/observer_main_v1.fragment.py",
+      "sha256": "02556b281ade22d36c165dd615e7069e92a2e9745e6efe133b43ee490a4e11b5",
+      "bytes": 9584
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/outer-B/outer_protocol_v1.fragment.py",
+      "sha256": "85fec58d526674a2a167127684cb64712e1528bc2c1afc74a56d10c123c894aa",
+      "bytes": 15417
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/outer-B/predecessors/R3-final-milestone.json",
+      "sha256": "663c10d21ce94c6ed601cc88e31692aaaa3744a97f93eade7b79b8b16f1039b5",
+      "bytes": 4836
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/outer-B/predecessors/R3-handoff.json",
+      "sha256": "07386c55a88d2031e5ae92e21104289105c7185bbec63b369448173c6401f250",
+      "bytes": 15266
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/outer-B/predecessors/R3-worker.py",
+      "sha256": "f6c28c149261274eaa133527c3bd3a306de47b45afa38e48daf5313436f0bacc",
+      "bytes": 125472
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/outer-B/predecessors/inner-cursor2.py",
+      "sha256": "93eb21f8bde51051cd5a7c913cd03732252bb5b6aa22cea2c42f5511e61323f0",
+      "bytes": 12786
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/outer-B/predecessors/inner-schema3.py",
+      "sha256": "923230b512dabb3eb57127e42d06cff88106887921fd598a0226ff2ad69b1701",
+      "bytes": 51068
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/outer-B/predecessors/inner-store.py",
+      "sha256": "898a687bcb81f1456a26978841a1e9710acf72a20a23c5bdfe39c18607d26843",
+      "bytes": 21275
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/outer-B/predecessors/master.md",
+      "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4",
+      "bytes": 36240
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/outer-B/predecessors/old-observer.py",
+      "sha256": "51a0385fb85f7715e01789d0ebcd2d5f7e806d7258cdd7db4fef4ca8d56219ab",
+      "bytes": 5620
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/outer-B/predecessors/old-runner.py",
+      "sha256": "9f5a2a31acdc03d94b4e89842af2606f405ddb4ba933f1d5099f6b4280af3090",
+      "bytes": 34355
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/outer-B/predecessors/writer-v2.py",
+      "sha256": "cc85059ef049315a8fb340a87ec9dd26c0cb99e0d2dfe28463caa14d509dd1b8",
+      "bytes": 23530
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/outer-B/preservation-and-OPEN-v1.json",
+      "sha256": "3bd4066c542c11383fbc81dcc472d007c21bf94467acfced1b373a160fcb0d13",
+      "bytes": 3046
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/outer-B/qualify_owner_outer_worker_v1.py",
+      "sha256": "3a4227090b82c61e1355a653a650abd82d825f68d439ce27da7659b31f755388",
+      "bytes": 154857
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/outer-B/run_owner_once_v1.py",
+      "sha256": "205fc049bbe70455be4740ca53f0571b5d1bcc97f0de6d3da784b56aed9e6be3",
+      "bytes": 32594
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/outer-B/runner_main_v1.fragment.py",
+      "sha256": "ab4e7f09e5b639670d544a2a1c97f2c8fd4b12ba1734ffaf700c493a42ae7276",
+      "bytes": 11956
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/outer-B/static-audit-v1.json",
+      "sha256": "7aca1365ff8eacc32db33b2e55c4203a17051b9880efdb27d74dea8b2dcea6c0",
+      "bytes": 2588
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/outer-B/unrun-cases-v1.json",
+      "sha256": "fa7119919a912c3a3261c9c5b70235465bb2c332e98b6fb23ab56c7f377e3b9d",
+      "bytes": 4527
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-initialized-bridge-20261020/outer-B/worker_outer_main_v1.fragment.py",
+      "sha256": "717db2a920a0ad473c750d7d836125d90e7440b3167242c8c2f7f86a054824e2",
+      "bytes": 13339
+    }
+  ],
+  "required_before_launch": [
+    "Corrected full inner composition review; current selected Sources remain negative",
+    "Complete outer Source review",
+    "Root policy/declaration/complete subject closure and exact runtime corpus",
+    "Whole-fitting store/allocation maps and full resource bounds",
+    "Fresh Root exact-subject max-one grant; none authored here"
+  ],
+  "authority": {
+    "scientific_calls": 0,
+    "new_grants": 0,
+    "new_actuals": 0,
+    "G1_adopted": false,
+    "full_parent_pass": false,
+    "resource_fit_proved": false,
+    "mathematical_authority": false
+  },
+  "stop": "Tools stopped after this handoff; parent continuation required."
+}

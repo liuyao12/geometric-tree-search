@@ -1,0 +1,206 @@
+{
+  "schema": "physical-Wang-initialization-manual-v1",
+  "status": "MANUAL_SOURCE_ARGUMENT_UNEXECUTED_NOT_ADMISSION",
+  "literal_symbols": {
+    "physical_alphabet_size": 38,
+    "machine_halts": {
+      "ACCEPT": 0,
+      "REJECT": 1,
+      "BOUND": 2,
+      "MALFORMED": 3
+    },
+    "selector_symbols": {
+      "zero": 4,
+      "one": 5,
+      "terminator": 8,
+      "blank": 2
+    },
+    "cursor": "@^"
+  },
+  "literal_tile_patterns": [
+    {
+      "pattern": "STEP(left,center,right)",
+      "N": "cell(center)",
+      "E": "pair(center,right)",
+      "S": "cell(local_update(left,center,right))",
+      "W": "pair(left,center)",
+      "condition": "The complete fixed finite machine transition table defines local_update at construction. No host semantic operation is a transition callback. Wall is permitted only as an outside neighbor."
+    },
+    {
+      "pattern": "COLLECT_PLAIN(symbol,seen)",
+      "N": "cell(plain(symbol))",
+      "E": "seen(seen)",
+      "S": "stop",
+      "W": "seen(seen)"
+    },
+    {
+      "pattern": "COLLECT_ACCEPT(symbol)",
+      "N": "cell(head(ACCEPT,symbol))",
+      "E": "seen(1)",
+      "S": "stop",
+      "W": "seen(0)"
+    },
+    {
+      "pattern": "LEFT_STEP(center)",
+      "N": "side(left,run)",
+      "E": "pair(wall,center)",
+      "S": "side(left,run)",
+      "W": "exterior(left)"
+    },
+    {
+      "pattern": "RIGHT_STEP(center)",
+      "N": "side(right,run)",
+      "E": "exterior(right)",
+      "S": "side(right,run)",
+      "W": "pair(center,wall)"
+    },
+    {
+      "pattern": "LEFT_COLLECT",
+      "N": "side(left,run)",
+      "E": "seen(0)",
+      "S": "side(left,done)",
+      "W": "exterior(left)"
+    },
+    {
+      "pattern": "RIGHT_COLLECT",
+      "N": "side(right,run)",
+      "E": "exterior(right)",
+      "S": "side(right,done)",
+      "W": "seen(1)"
+    },
+    {
+      "pattern": "INIT_FIXED_PLAIN(symbol,before,after,head_seen)",
+      "N": "init_north(plain,symbol)",
+      "E": "init_horizontal(after,head_seen)",
+      "S": "cell(plain(symbol))",
+      "W": "init_horizontal(before,head_seen)",
+      "condition": "Exactly PRE->PRE, PAD->POST or POST->POST."
+    },
+    {
+      "pattern": "INIT_FIXED_HEAD(symbol,before,after)",
+      "N": "init_north(head,PROGRAM_entry,symbol)",
+      "E": "init_horizontal(after,1)",
+      "S": "cell(head(PROGRAM_entry,symbol))",
+      "W": "init_horizontal(before,0)",
+      "condition": "Same three fixed phase edges; no second TM head can pass."
+    },
+    {
+      "pattern": "INIT_FREE_BIT(bit,head_seen,before)",
+      "N": "init_north(free)",
+      "E": "init_horizontal(ACTIVE,head_seen)",
+      "S": "cell(plain(bit))",
+      "W": "init_horizontal(before,head_seen)",
+      "condition": "bit is zero/one; before is PRE or ACTIVE."
+    },
+    {
+      "pattern": "INIT_FREE_SEMICOLON(head_seen,before)",
+      "N": "init_north(free)",
+      "E": "init_horizontal(PAD,head_seen)",
+      "S": "cell(plain(terminator))",
+      "W": "init_horizontal(before,head_seen)",
+      "condition": "before is PRE or ACTIVE."
+    },
+    {
+      "pattern": "INIT_FREE_B(head_seen)",
+      "N": "init_north(free)",
+      "E": "init_horizontal(PAD,head_seen)",
+      "S": "cell(plain(blank))",
+      "W": "init_horizontal(PAD,head_seen)"
+    },
+    {
+      "pattern": "INIT_LEFT_FRAME",
+      "N": "init_north(frame,left)",
+      "E": "init_horizontal(PRE,0)",
+      "S": "side(left,run)",
+      "W": "exterior(left)"
+    },
+    {
+      "pattern": "INIT_RIGHT_FRAME",
+      "N": "init_north(frame,right)",
+      "E": "exterior(right)",
+      "S": "side(right,run)",
+      "W": "init_horizontal(POST,1)"
+    }
+  ],
+  "patterns_status": "These are exact symbolic readings of literal add calls in pinned legacy Source, not an emitted palette or saved table. All flags/finite symbols are fully enumerated there; nothing is a runtime pseudo-macro.",
+  "argument": [
+    {
+      "id": "machine adapter",
+      "reason": "The ordered physical alphabet is the fixed complete list of thirty-eight symbols. All working slots are required exactly once by count, state/symbol domain checks and duplicate refusal; all halt slots are undefined. Symbols are mapped bijectively to integer IDs and all literal read/write/move/next values are preserved. Root genuine fixed Source/table provenance is separate from shape."
+    },
+    {
+      "id": "no input specialization",
+      "reason": "The palette compiler receives only the fixed complete machine and fixed zero/one/semicolon mapping. Program/public strings, band capacities and step horizon enter only its boundary construction. It always calls the full old generic palette; it never prunes by reachable states, target, width, seed, certificate, accepting trace or known proof."
+    },
+    {
+      "id": "complete first row",
+      "reason": "Every top edge is pinned to an initializer-only color. The left frame starts PRE with no head. Complete fixed prefix pins exactly one head atL, all ordered headers/cursors and fixed data before CERT. The sole free interval can emit only bits until one semicolon, then blanks. ACTIVE cannot leave through a fixed tile, so missing semicolon is impossible; PAD crosses the first fixed suffix cell into POST. The right frame requires POST and exactly one head. All remaining suffix cells, fences andR are fixed. No initialization color is emitted south, so initialization cannot appear again below."
+    },
+    {
+      "id": "layout invariants",
+      "reason": "The fixed prefix/suffix are built in order with globalL/R only once. Each of sixteen fixed headers is followed by exactly one@^ and no other marked symbol. Payloads contain no header/sentinel/cursor. Raw# fences occur once perband; payload lengths are exact. All nonfree locations are pinned, including every postcolonB and fence. Positive tails are physically present, not a hidden layout predicate."
+    },
+    {
+      "id": "no host semantic filter",
+      "reason": "The adapter only checks literal machine declarations, binary carrier characters, exact integers and dimensions. It neither parses the program image/seed nor interprets public/postfix tags. An empty/semantically malformed pinned image remains a declared tiling instance whose actual parser takes a nonaccepting path. Certificate syntax, tagged values, exact public3/free2 root counts and request construction remain physical BOOT operations."
+    },
+    {
+      "id": "spacetime local composition",
+      "reason": "Shared pair colors force neighboring STEP triples to overlap on the identical complete cells; vertical cell colors carry the whole preceding/current configuration. With the unique initial head, the finite local update implements one deterministic unit TM step and cannot lose a head at a wall. Undefined or nonaccepting terminal heads have no next step. Pair colors and seen colors are disjoint, so a row cannot mix transitions with collection."
+    },
+    {
+      "id": "exact horizon and acceptance",
+      "reason": "Left/right side run colors persist through every STEP row. Collection changes both to done, emits stop below every inner cell, and its seen chain starts0/ends1; only an exact accepting head changes0to1. An early collection cannot be followed by another row because no frame has north side done. The bottom pins therefore force exactly the declared number of STEP rows then one accepting collection row. This is a finite machine-history statement under the literal dependencies, not full mathematical checker refinement."
+    },
+    {
+      "id": "point equivalence",
+      "reason": "Every square tile has exact t-value1 only at its center; its four m-values lie at edge midpoints on one edge channel. Origins are all finite required even-coordinate centers and translations only. Distinct centers never overlap t; exact tiling chooses one tile at each required center. Adjacent tiles overlap m exactly at their common midpoint; equality is precisely Wang color matching. Exterior background midpoint pins impose the boundary; odd-odd corners carry no constraints. No geometric overlap/rotation test is used."
+    },
+    {
+      "id": "problem versus witness",
+      "reason": "The returned finite board and all north/south/side m-pins define the search problem. They are not a tiled initialization row, a chosen certificate, a spacetime history or an acceptance witness. A future complete tiling would select free certificate symbols. Public program/theory/goal binding is to complete fixed literal wire data; external Source/image/native-domain/license attribution remains open."
+    },
+    {
+      "id": "failure and resource custody",
+      "reason": "Actual owners and current produced rows/cells/problem stay reachable in state/traceback. Bare raise preserves the exact primary, including foreign public-class or StopIteration faults. Root must check genuine firstfault before classifying component sentinels, retain raw traceback and run final custody. No full result or mathematical assertion can be reconstructed from an unfinished owner prefix."
+    }
+  ],
+  "point_model": {
+    "domain": "\\(\\mathbb Z^2\\)",
+    "exact_arithmetic": "integer coordinates, t capacities one, exact interned color IDs by complete immutable tuple equality",
+    "translations": "even integer displacements only; no rotations/reflections",
+    "tile_t": "Exact value one at local center \\((0,0)\\).",
+    "tile_m": "Channel edge at \\((0,-1),(1,0),(0,1),(-1,0)\\) in NESW order.",
+    "required_target": "All board centers \\((2x,2y)\\), including untouched points.",
+    "board_width": "\\(W+2\\)",
+    "board_height": "\\(T+2\\)",
+    "all_root_generations": 0,
+    "candidate_universe": "every full palette tile ID at every required origin",
+    "inventory": "each tile type reusable at distinct origins; each type/origin placement at most once",
+    "marking_role": "problem-defining, not learned and not claimed redundant for an unmarked problem"
+  },
+  "bounds": {
+    "notation": "In the following formulas, all notation uses LaTeX when rendered as a document; JSON identifiers are literal API metadata.",
+    "tape_width": "\\(W=50+\\sum_{i=0}^{15}c_i\\).",
+    "board_cells": "\\((W+2)(T+2)\\).",
+    "full_cell_alphabet": "\\(C=38(Q+1)\\).",
+    "legacy_retained_tile_count": "\\(S=38\\cdot39^2+3D\\cdot38\\cdot39+D_0\\cdot39,\\quad K=S+3\\cdot38+2C+2+9\\cdot38+16.\\)",
+    "scope": "Inherited full palette cardinality formula, not a sizing call or useful fit result. The legacy generator still iterates its complete local cell product. All source construction and whole evidence/physical expansion must fit the unchanged original gates before a fresh reviewed actual."
+  },
+  "remaining": [
+    "Independent review of this exact Source/dependency composition and whole unrun bank.",
+    "Fresh authenticated complete join/lower/palette generation, exact closure/counts and finite execution/tiling qualification, only in a separately reviewed Root actual.",
+    "Complete compiled69 checker Source/image attribution, exact licensed public theory/goal and rawJSON/native-domain refinement.",
+    "Structural heap embedding and full physical microcode accepted-language argument including metadata/call-cache nodes; no raw numeric-ID/cost/status equality assumed.",
+    "Complete evidence/provenance/lifecycle/store/cursor/worker/outer-root resource/custody review and original full cohort; no gate changes.",
+    "Unknown-proof search, learned certified markings/inventory/receptor families and matched conventional/GCTS/RL controls; all learning/validation costs."
+  ],
+  "scientific_calls": 0,
+  "table_generation": false,
+  "actual_execution_authorized": false,
+  "runtime_qualified": false,
+  "full_VM_qualified": false,
+  "fit": false,
+  "G1_adopted": false,
+  "goal_status": "active"
+}
