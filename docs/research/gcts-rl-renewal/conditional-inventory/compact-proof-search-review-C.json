@@ -1,0 +1,2593 @@
+{
+  "actual_execution_authorized": false,
+  "aggregate_census": {
+    "accepted_ground_libraries": 0,
+    "case_jobs_with_complete_records": 3,
+    "distinct_elementary_donor_proofs": 3,
+    "donor_occurrences": 9,
+    "native_queries": 286,
+    "native_status_counts": {
+      "accepted": 74,
+      "rejected": 209,
+      "unknown_step_budget": 3
+    },
+    "proposed_ground_instances": 25,
+    "recipient_search_arms_preregistered": 18,
+    "recipient_search_arms_reached": 0,
+    "reference_control_occurrences": 84,
+    "target_certificates": 36,
+    "whole_and_essential_native_accepted_donor_requests": 18
+  },
+  "case_results": [
+    {
+      "case_id": "pilot-fork-join-positive",
+      "certificate_exhausted_roots": [
+        [
+          0,
+          1
+        ]
+      ],
+      "certificate_full_candidate_witness_count": 192,
+      "donors": [
+        {
+          "essential_native_query": 5,
+          "essential_rows": 3,
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "id": "train-propositional-application",
+          "primitive_rules": [
+            "axiom",
+            "axiom",
+            "mp"
+          ],
+          "proof_rows": 3,
+          "search_seconds": 0.00019558299754862674,
+          "whole_native_query": 4
+        },
+        {
+          "essential_native_query": 13,
+          "essential_rows": 5,
+          "family": "68fc85fd778d3ed2abb50f4c6f694d980ef9acdce6b756b308824907a444117b",
+          "id": "train-propositional-chain",
+          "primitive_rules": [
+            "axiom",
+            "axiom",
+            "axiom",
+            "mp",
+            "mp"
+          ],
+          "proof_rows": 5,
+          "search_seconds": 0.00039191700125229545,
+          "whole_native_query": 12
+        },
+        {
+          "essential_native_query": 21,
+          "essential_rows": 5,
+          "family": "e9b268c1fd1ead1078954a62c37b5df26bfa76b514a5a044e06f80a1b11206d9",
+          "id": "train-propositional-curried",
+          "primitive_rules": [
+            "axiom",
+            "axiom",
+            "axiom",
+            "mp",
+            "mp"
+          ],
+          "proof_rows": 5,
+          "search_seconds": 0.00043154199738637544,
+          "whole_native_query": 20
+        }
+      ],
+      "grant": {
+        "bytes": 1833,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/root/grant-pilot-fork-join-positive-v2.json",
+        "sha256": "bd45842e1c85cc251a0a6956a2cc97b05be57658000ee3d62b94bb7bcba3ea13"
+      },
+      "ground_admission_query": 88,
+      "ground_admission_result": {
+        "micro_fnv64": "8408750883533122048",
+        "micro_steps": 1000000000,
+        "peak_native_memory_bytes": 12894208,
+        "physical_head": 8792,
+        "physical_steps": 14523610633032,
+        "seconds": 7.29761,
+        "start": 88986,
+        "state": 33667,
+        "status": "unknown_step_budget"
+      },
+      "ground_binding_work_raw": 20003,
+      "ground_family_counts": {
+        "68fc85fd778d3ed2abb50f4c6f694d980ef9acdce6b756b308824907a444117b": 2,
+        "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93": 4,
+        "e9b268c1fd1ead1078954a62c37b5df26bfa76b514a5a044e06f80a1b11206d9": 1
+      },
+      "ground_native_query_seconds": 7.315948957999353,
+      "ground_specialization_count": 7,
+      "indexed_model_check": {
+        "complete": true,
+        "payloads": 9315,
+        "placements": 63823,
+        "scope": "full exact wire/actual owner join",
+        "segments": 47913,
+        "sequences": 63615
+      },
+      "marked_extension_check": {
+        "auxiliary_points": 12,
+        "changed_placements": 12,
+        "complete": true,
+        "schema": "compact-marked-extension-reference-v1",
+        "scope": "Exact point-value/storage extension of the already reference-verified base. Proved redundancy is owned by the separate unchanged marking-certificate verifier; no new proof rule or pruning certificate here."
+      },
+      "marking_certificate_check": {
+        "authority": "finite point-support theorem only",
+        "certificates": 12,
+        "complete": true
+      },
+      "marking_proposals": 15,
+      "marking_work": 315,
+      "native_query_count": 89,
+      "native_query_status_counts": {
+        "accepted": 22,
+        "rejected": 66,
+        "unknown_step_budget": 1
+      },
+      "plan": {
+        "bytes": 14784,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/root/plan-pilot-fork-join-positive-v2.json",
+        "sha256": "5227560dc2754933bf6737c4f6aacbdb16f7c23ff748f4dd9bb1209610a3881b"
+      },
+      "recipient_arms_reached": 0,
+      "reference_check": {
+        "accepted_placements": 63823,
+        "attempted_placements": 66020,
+        "complete": true,
+        "dependency_groups": 2081,
+        "dependency_memberships": 287870,
+        "exact_t_and_m_pairs_compared": 17820591,
+        "internal_conflicts": 2197,
+        "lookup_partition_probes": 3285,
+        "lookup_scope": "Complete literal group/index join plus interval-class representatives; pinned get Source uses only x and half-open interval membership, so representatives and the Source argument cover every integer point.",
+        "schema": "compact-original-reference-audit-v1",
+        "storage_scope": "One independently expanded placement and one expected dependency union at a time; compact outer interval references only. No old Model, byte reverse dictionary, hash equality or scientific proof oracle."
+      },
+      "reference_controls_passed": 28,
+      "resource_evidence": {
+        "actual_and_observer_complete_stored_bytes": 39406419,
+        "complete_stored_plus_same_outer_reserve_bytes": 48843603,
+        "native_peak_bytes": 12894208,
+        "observer_final_conservative_whole_peak_bytes": 479100928,
+        "outer_resource_candidate_accepted": true,
+        "parent_conservative_peak_bytes": 447823872,
+        "python_peak_after_output_bytes": 359317504,
+        "root_callbacks_at_result_boundary": 9274809,
+        "tool_exit": 0,
+        "tool_session": 43650
+      },
+      "result": {
+        "bytes": 30162683,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/actual/pilot-fork-join-positive-scan-v2/result.json",
+        "sha256": "7284b47c01c9235b0e7ca9ca57d2737dc48ed791d0342e3fa762d239172d97bd"
+      },
+      "scientific_complete": false,
+      "scientific_status": "GROUND_CLUSTER_ADMISSION_INCOMPLETE",
+      "successful_actual_file_count_including_observer": 14,
+      "timings": {
+        "compile_model_and_reference_seconds": 92.64306616700196,
+        "full_shared_setup_seconds": 104.582107000002,
+        "ground_specialization_and_admission_seconds": 7.333736416003376,
+        "indexed_model_and_check_seconds": 4.526778542000102,
+        "known_worker_exit_seconds": 117.11414904200137,
+        "marking_and_certificate_check_seconds": 0.00958691599953454,
+        "observer_final_gate_seconds": 117.16688133299976,
+        "parent_final_gate_seconds": 117.1394328330025,
+        "scientific_seconds": 114.30722445800347,
+        "training_and_acquisition_seconds": 9.685648165999737,
+        "worker_header_seconds": 116.79466500000126
+      },
+      "tiny_domain_audits": 9,
+      "worker_status": "COMPLETE"
+    },
+    {
+      "case_id": "pilot-quantifier-equality-positive",
+      "certificate_exhausted_roots": [
+        [
+          0,
+          1
+        ]
+      ],
+      "certificate_full_candidate_witness_count": 312,
+      "donors": [
+        {
+          "essential_native_query": 5,
+          "essential_rows": 3,
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "id": "train-propositional-application",
+          "primitive_rules": [
+            "axiom",
+            "axiom",
+            "mp"
+          ],
+          "proof_rows": 3,
+          "search_seconds": 0.00018287499915459193,
+          "whole_native_query": 4
+        },
+        {
+          "essential_native_query": 13,
+          "essential_rows": 5,
+          "family": "68fc85fd778d3ed2abb50f4c6f694d980ef9acdce6b756b308824907a444117b",
+          "id": "train-propositional-chain",
+          "primitive_rules": [
+            "axiom",
+            "axiom",
+            "axiom",
+            "mp",
+            "mp"
+          ],
+          "proof_rows": 5,
+          "search_seconds": 0.0004149170017626602,
+          "whole_native_query": 12
+        },
+        {
+          "essential_native_query": 21,
+          "essential_rows": 5,
+          "family": "e9b268c1fd1ead1078954a62c37b5df26bfa76b514a5a044e06f80a1b11206d9",
+          "id": "train-propositional-curried",
+          "primitive_rules": [
+            "axiom",
+            "axiom",
+            "axiom",
+            "mp",
+            "mp"
+          ],
+          "proof_rows": 5,
+          "search_seconds": 0.0014289589998952579,
+          "whole_native_query": 20
+        }
+      ],
+      "grant": {
+        "bytes": 1853,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/root/grant-pilot-quantifier-equality-positive-v2.json",
+        "sha256": "04fb2257de4cb6862cc7ba83e2ac97ca4e8f76edaf9c3bc614e38b1941a044d5"
+      },
+      "ground_admission_query": 107,
+      "ground_admission_result": {
+        "micro_fnv64": "13005334584593240662",
+        "micro_steps": 1000000000,
+        "peak_native_memory_bytes": 13090816,
+        "physical_head": 1524,
+        "physical_steps": 16030411821238,
+        "seconds": 7.69407,
+        "start": 88986,
+        "state": 39808,
+        "status": "unknown_step_budget"
+      },
+      "ground_binding_work_raw": 20003,
+      "ground_family_counts": {
+        "68fc85fd778d3ed2abb50f4c6f694d980ef9acdce6b756b308824907a444117b": 4,
+        "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93": 4,
+        "e9b268c1fd1ead1078954a62c37b5df26bfa76b514a5a044e06f80a1b11206d9": 3
+      },
+      "ground_native_query_seconds": 7.717691917001503,
+      "ground_specialization_count": 11,
+      "indexed_model_check": {
+        "complete": true,
+        "payloads": 9795,
+        "placements": 63980,
+        "scope": "full exact wire/actual owner join",
+        "segments": 47346,
+        "sequences": 63668
+      },
+      "marked_extension_check": {
+        "auxiliary_points": 12,
+        "changed_placements": 12,
+        "complete": true,
+        "schema": "compact-marked-extension-reference-v1",
+        "scope": "Exact point-value/storage extension of the already reference-verified base. Proved redundancy is owned by the separate unchanged marking-certificate verifier; no new proof rule or pruning certificate here."
+      },
+      "marking_certificate_check": {
+        "authority": "finite point-support theorem only",
+        "certificates": 12,
+        "complete": true
+      },
+      "marking_proposals": 14,
+      "marking_work": 411,
+      "native_query_count": 108,
+      "native_query_status_counts": {
+        "accepted": 30,
+        "rejected": 77,
+        "unknown_step_budget": 1
+      },
+      "plan": {
+        "bytes": 14804,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/root/plan-pilot-quantifier-equality-positive-v2.json",
+        "sha256": "155fa11d0e9a19d95bd6edb94a4a7005df8b86ac816639383898d2b0eae5decd"
+      },
+      "recipient_arms_reached": 0,
+      "reference_check": {
+        "accepted_placements": 63980,
+        "attempted_placements": 66512,
+        "complete": true,
+        "dependency_groups": 2059,
+        "dependency_memberships": 290020,
+        "exact_t_and_m_pairs_compared": 16470054,
+        "internal_conflicts": 2532,
+        "lookup_partition_probes": 2991,
+        "lookup_scope": "Complete literal group/index join plus interval-class representatives; pinned get Source uses only x and half-open interval membership, so representatives and the Source argument cover every integer point.",
+        "schema": "compact-original-reference-audit-v1",
+        "storage_scope": "One independently expanded placement and one expected dependency union at a time; compact outer interval references only. No old Model, byte reverse dictionary, hash equality or scientific proof oracle."
+      },
+      "reference_controls_passed": 28,
+      "resource_evidence": {
+        "actual_and_observer_complete_stored_bytes": 38839096,
+        "complete_stored_plus_same_outer_reserve_bytes": 48276280,
+        "native_peak_bytes": 13090816,
+        "observer_final_conservative_whole_peak_bytes": 462995456,
+        "outer_resource_candidate_accepted": true,
+        "parent_conservative_peak_bytes": 431652864,
+        "python_peak_after_output_bytes": 343867392,
+        "root_callbacks_at_result_boundary": 8927610,
+        "tool_exit": 0,
+        "tool_session": 59457
+      },
+      "result": {
+        "bytes": 29432321,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/actual/pilot-quantifier-equality-positive-scan-v2/result.json",
+        "sha256": "970844c17855a52ffb0edebd06a03497ed5722ce609c914f04126fb628649bc3"
+      },
+      "scientific_complete": false,
+      "scientific_status": "GROUND_CLUSTER_ADMISSION_INCOMPLETE",
+      "successful_actual_file_count_including_observer": 14,
+      "timings": {
+        "compile_model_and_reference_seconds": 97.82605550000153,
+        "full_shared_setup_seconds": 110.32599791599932,
+        "ground_specialization_and_admission_seconds": 7.742165416999342,
+        "indexed_model_and_check_seconds": 4.668908083000133,
+        "known_worker_exit_seconds": 124.11509833300079,
+        "marking_and_certificate_check_seconds": 0.009803249999094987,
+        "observer_final_gate_seconds": 124.21729958400101,
+        "parent_final_gate_seconds": 124.14382037500036,
+        "scientific_seconds": 120.5604952499998,
+        "training_and_acquisition_seconds": 10.191763333998097,
+        "worker_header_seconds": 123.61840395800027
+      },
+      "tiny_domain_audits": 9,
+      "worker_status": "COMPLETE"
+    },
+    {
+      "case_id": "pilot-fork-join-missing-Pa",
+      "certificate_exhausted_roots": [
+        [
+          0,
+          1
+        ]
+      ],
+      "certificate_full_candidate_witness_count": 180,
+      "donors": [
+        {
+          "essential_native_query": 5,
+          "essential_rows": 3,
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "id": "train-propositional-application",
+          "primitive_rules": [
+            "axiom",
+            "axiom",
+            "mp"
+          ],
+          "proof_rows": 3,
+          "search_seconds": 0.00018287499915459193,
+          "whole_native_query": 4
+        },
+        {
+          "essential_native_query": 13,
+          "essential_rows": 5,
+          "family": "68fc85fd778d3ed2abb50f4c6f694d980ef9acdce6b756b308824907a444117b",
+          "id": "train-propositional-chain",
+          "primitive_rules": [
+            "axiom",
+            "axiom",
+            "axiom",
+            "mp",
+            "mp"
+          ],
+          "proof_rows": 5,
+          "search_seconds": 0.0004216250017634593,
+          "whole_native_query": 12
+        },
+        {
+          "essential_native_query": 21,
+          "essential_rows": 5,
+          "family": "e9b268c1fd1ead1078954a62c37b5df26bfa76b514a5a044e06f80a1b11206d9",
+          "id": "train-propositional-curried",
+          "primitive_rules": [
+            "axiom",
+            "axiom",
+            "axiom",
+            "mp",
+            "mp"
+          ],
+          "proof_rows": 5,
+          "search_seconds": 0.00042049999683513306,
+          "whole_native_query": 20
+        }
+      ],
+      "grant": {
+        "bytes": 1837,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/root/grant-pilot-fork-join-missing-Pa-v2.json",
+        "sha256": "4e7572e14acc9d194780c4f852987121dc1a587e38e1a360fc4d69bf4b6a38cd"
+      },
+      "ground_admission_query": 88,
+      "ground_admission_result": {
+        "micro_fnv64": "14077714067771256020",
+        "micro_steps": 1000000000,
+        "peak_native_memory_bytes": 12910592,
+        "physical_head": 4216,
+        "physical_steps": 14575007859924,
+        "seconds": 7.2801,
+        "start": 88986,
+        "state": 29924,
+        "status": "unknown_step_budget"
+      },
+      "ground_binding_work_raw": 20003,
+      "ground_family_counts": {
+        "68fc85fd778d3ed2abb50f4c6f694d980ef9acdce6b756b308824907a444117b": 2,
+        "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93": 4,
+        "e9b268c1fd1ead1078954a62c37b5df26bfa76b514a5a044e06f80a1b11206d9": 1
+      },
+      "ground_native_query_seconds": 7.299370667002222,
+      "ground_specialization_count": 7,
+      "indexed_model_check": {
+        "complete": true,
+        "payloads": 9262,
+        "placements": 63120,
+        "scope": "full exact wire/actual owner join",
+        "segments": 47223,
+        "sequences": 62925
+      },
+      "marked_extension_check": {
+        "auxiliary_points": 12,
+        "changed_placements": 12,
+        "complete": true,
+        "schema": "compact-marked-extension-reference-v1",
+        "scope": "Exact point-value/storage extension of the already reference-verified base. Proved redundancy is owned by the separate unchanged marking-certificate verifier; no new proof rule or pruning certificate here."
+      },
+      "marking_certificate_check": {
+        "authority": "finite point-support theorem only",
+        "certificates": 12,
+        "complete": true
+      },
+      "marking_proposals": 15,
+      "marking_work": 303,
+      "native_query_count": 89,
+      "native_query_status_counts": {
+        "accepted": 22,
+        "rejected": 66,
+        "unknown_step_budget": 1
+      },
+      "plan": {
+        "bytes": 14788,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/root/plan-pilot-fork-join-missing-Pa-v2.json",
+        "sha256": "adc395b10b3893d8c3ab4287cd86d3dc842bfeaecd168f7a93cbbd0c0b30cf78"
+      },
+      "recipient_arms_reached": 0,
+      "reference_check": {
+        "accepted_placements": 63120,
+        "attempted_placements": 65317,
+        "complete": true,
+        "dependency_groups": 1882,
+        "dependency_memberships": 285058,
+        "exact_t_and_m_pairs_compared": 17662093,
+        "internal_conflicts": 2197,
+        "lookup_partition_probes": 3090,
+        "lookup_scope": "Complete literal group/index join plus interval-class representatives; pinned get Source uses only x and half-open interval membership, so representatives and the Source argument cover every integer point.",
+        "schema": "compact-original-reference-audit-v1",
+        "storage_scope": "One independently expanded placement and one expected dependency union at a time; compact outer interval references only. No old Model, byte reverse dictionary, hash equality or scientific proof oracle."
+      },
+      "reference_controls_passed": 28,
+      "resource_evidence": {
+        "actual_and_observer_complete_stored_bytes": 39120954,
+        "complete_stored_plus_same_outer_reserve_bytes": 48558138,
+        "native_peak_bytes": 12910592,
+        "observer_final_conservative_whole_peak_bytes": 560988160,
+        "outer_resource_candidate_accepted": true,
+        "parent_conservative_peak_bytes": 529956864,
+        "python_peak_after_output_bytes": 441827328,
+        "root_callbacks_at_result_boundary": 9063174,
+        "tool_exit": 0,
+        "tool_session": 46630
+      },
+      "result": {
+        "bytes": 29879915,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa-scan-v2/result.json",
+        "sha256": "41e5f680d7cac1e9e458ff60138e2e8e766b39eed31ef478d6e877058a8b6b06"
+      },
+      "scientific_complete": false,
+      "scientific_status": "GROUND_CLUSTER_ADMISSION_INCOMPLETE",
+      "successful_actual_file_count_including_observer": 14,
+      "timings": {
+        "compile_model_and_reference_seconds": 102.72399337499883,
+        "full_shared_setup_seconds": 114.75721412500206,
+        "ground_specialization_and_admission_seconds": 7.317853665997973,
+        "indexed_model_and_check_seconds": 4.631826749999163,
+        "known_worker_exit_seconds": 127.2513466249984,
+        "marking_and_certificate_check_seconds": 0.01140333399962401,
+        "observer_final_gate_seconds": 127.31202254100208,
+        "parent_final_gate_seconds": 127.27626366699769,
+        "scientific_seconds": 124.43227108399878,
+        "training_and_acquisition_seconds": 9.634901207999064,
+        "worker_header_seconds": 126.94540183299978
+      },
+      "tiny_domain_audits": 9,
+      "worker_status": "COMPLETE"
+    }
+  ],
+  "checks": [
+    {
+      "id": "three-known-tool-exits-and-no-remaining-grants",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:14-complete-files-no-partial",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:plan-grant-consumption-exact",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:all-source-runtime-input-pins-current",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:grant-reviewed-closure",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:complete-header-result-terminal-exact",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:known-owned-worker-observer-and-tool-exits",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:saved-resource-gates",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:all-four-log-streams-complete-and-bounded",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:scientific-incomplete-before-every-arm",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:exact-selected-theorem-statement",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-full-records-transport",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-0",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-1",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-2",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-3",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-4",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-5",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-6",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-7",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-8",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-9",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-10",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-11",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-12",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-13",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-14",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-15",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-16",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-17",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-18",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-19",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-20",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-21",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-22",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-23",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-24",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-25",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-26",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-27",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-28",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-29",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-30",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-31",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-32",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-33",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-34",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-35",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-36",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-37",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-38",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-39",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-40",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-41",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-42",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-43",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-44",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-45",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-46",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-47",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-48",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-49",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-50",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-51",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-52",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-53",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-54",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-55",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-56",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-57",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-58",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-59",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-60",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-61",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-62",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-63",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-64",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-65",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-66",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-67",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-68",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-69",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-70",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-71",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-72",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-73",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-74",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-75",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-76",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-77",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-78",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-79",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-80",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-81",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-82",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-83",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-84",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-85",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-86",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-87",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:native-request-record-88",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:last-native-raw-bytes-join",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:all-three-cold-donors-and-library",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:accepted-discovered-donor-train-propositional-application",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:accepted-discovered-donor-train-propositional-chain",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:accepted-discovered-donor-train-propositional-curried",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:full-literal-index-tables-structural-joins",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:complete-root-alignment-census",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:12-complete-certified-auxiliary-extensions",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:certificate-saved-full-domain-and-fresh-point-0",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:certificate-saved-full-domain-and-fresh-point-1",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:certificate-saved-full-domain-and-fresh-point-2",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:certificate-saved-full-domain-and-fresh-point-3",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:certificate-saved-full-domain-and-fresh-point-4",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:certificate-saved-full-domain-and-fresh-point-5",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:certificate-saved-full-domain-and-fresh-point-6",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:certificate-saved-full-domain-and-fresh-point-7",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:certificate-saved-full-domain-and-fresh-point-8",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:certificate-saved-full-domain-and-fresh-point-9",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:certificate-saved-full-domain-and-fresh-point-10",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:certificate-saved-full-domain-and-fresh-point-11",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:all28-reference-controls-returned",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:original-tiny-controls-returned",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:full-ground-library-unknown-not-admitted",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-positive:independent-fixed-negative-control-returned",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:14-complete-files-no-partial",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:plan-grant-consumption-exact",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:all-source-runtime-input-pins-current",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:grant-reviewed-closure",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:complete-header-result-terminal-exact",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:known-owned-worker-observer-and-tool-exits",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:saved-resource-gates",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:all-four-log-streams-complete-and-bounded",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:scientific-incomplete-before-every-arm",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:exact-selected-theorem-statement",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-full-records-transport",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-0",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-1",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-2",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-3",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-4",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-5",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-6",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-7",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-8",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-9",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-10",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-11",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-12",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-13",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-14",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-15",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-16",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-17",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-18",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-19",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-20",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-21",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-22",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-23",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-24",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-25",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-26",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-27",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-28",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-29",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-30",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-31",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-32",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-33",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-34",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-35",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-36",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-37",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-38",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-39",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-40",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-41",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-42",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-43",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-44",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-45",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-46",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-47",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-48",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-49",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-50",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-51",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-52",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-53",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-54",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-55",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-56",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-57",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-58",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-59",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-60",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-61",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-62",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-63",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-64",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-65",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-66",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-67",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-68",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-69",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-70",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-71",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-72",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-73",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-74",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-75",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-76",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-77",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-78",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-79",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-80",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-81",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-82",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-83",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-84",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-85",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-86",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-87",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-88",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-89",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-90",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-91",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-92",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-93",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-94",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-95",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-96",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-97",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-98",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-99",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-100",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-101",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-102",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-103",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-104",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-105",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-106",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:native-request-record-107",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:last-native-raw-bytes-join",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:all-three-cold-donors-and-library",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:accepted-discovered-donor-train-propositional-application",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:accepted-discovered-donor-train-propositional-chain",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:accepted-discovered-donor-train-propositional-curried",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:full-literal-index-tables-structural-joins",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:complete-root-alignment-census",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:12-complete-certified-auxiliary-extensions",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:certificate-saved-full-domain-and-fresh-point-0",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:certificate-saved-full-domain-and-fresh-point-1",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:certificate-saved-full-domain-and-fresh-point-2",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:certificate-saved-full-domain-and-fresh-point-3",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:certificate-saved-full-domain-and-fresh-point-4",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:certificate-saved-full-domain-and-fresh-point-5",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:certificate-saved-full-domain-and-fresh-point-6",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:certificate-saved-full-domain-and-fresh-point-7",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:certificate-saved-full-domain-and-fresh-point-8",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:certificate-saved-full-domain-and-fresh-point-9",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:certificate-saved-full-domain-and-fresh-point-10",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:certificate-saved-full-domain-and-fresh-point-11",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:all28-reference-controls-returned",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:original-tiny-controls-returned",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:full-ground-library-unknown-not-admitted",
+      "passed": true
+    },
+    {
+      "id": "pilot-quantifier-equality-positive:independent-fixed-negative-control-returned",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:14-complete-files-no-partial",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:plan-grant-consumption-exact",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:all-source-runtime-input-pins-current",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:grant-reviewed-closure",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:complete-header-result-terminal-exact",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:known-owned-worker-observer-and-tool-exits",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:saved-resource-gates",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:all-four-log-streams-complete-and-bounded",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:scientific-incomplete-before-every-arm",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:exact-selected-theorem-statement",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-full-records-transport",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-0",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-1",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-2",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-3",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-4",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-5",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-6",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-7",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-8",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-9",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-10",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-11",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-12",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-13",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-14",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-15",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-16",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-17",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-18",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-19",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-20",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-21",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-22",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-23",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-24",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-25",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-26",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-27",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-28",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-29",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-30",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-31",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-32",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-33",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-34",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-35",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-36",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-37",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-38",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-39",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-40",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-41",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-42",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-43",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-44",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-45",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-46",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-47",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-48",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-49",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-50",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-51",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-52",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-53",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-54",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-55",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-56",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-57",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-58",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-59",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-60",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-61",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-62",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-63",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-64",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-65",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-66",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-67",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-68",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-69",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-70",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-71",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-72",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-73",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-74",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-75",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-76",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-77",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-78",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-79",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-80",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-81",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-82",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-83",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-84",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-85",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-86",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-87",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:native-request-record-88",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:last-native-raw-bytes-join",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:all-three-cold-donors-and-library",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:accepted-discovered-donor-train-propositional-application",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:accepted-discovered-donor-train-propositional-chain",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:accepted-discovered-donor-train-propositional-curried",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:full-literal-index-tables-structural-joins",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:complete-root-alignment-census",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:12-complete-certified-auxiliary-extensions",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:certificate-saved-full-domain-and-fresh-point-0",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:certificate-saved-full-domain-and-fresh-point-1",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:certificate-saved-full-domain-and-fresh-point-2",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:certificate-saved-full-domain-and-fresh-point-3",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:certificate-saved-full-domain-and-fresh-point-4",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:certificate-saved-full-domain-and-fresh-point-5",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:certificate-saved-full-domain-and-fresh-point-6",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:certificate-saved-full-domain-and-fresh-point-7",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:certificate-saved-full-domain-and-fresh-point-8",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:certificate-saved-full-domain-and-fresh-point-9",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:certificate-saved-full-domain-and-fresh-point-10",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:certificate-saved-full-domain-and-fresh-point-11",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:all28-reference-controls-returned",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:original-tiny-controls-returned",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:full-ground-library-unknown-not-admitted",
+      "passed": true
+    },
+    {
+      "id": "pilot-fork-join-missing-Pa:independent-fixed-negative-control-returned",
+      "passed": true
+    },
+    {
+      "id": "all-three-identical-acquired-family-libraries",
+      "passed": true
+    },
+    {
+      "id": "42-exact-successful-actual-files",
+      "passed": true
+    },
+    {
+      "id": "nine-donor-occurrences-three-unique-proofs-3-5-5",
+      "passed": true
+    }
+  ],
+  "current_source_runtime_and_input_pins": [
+    {
+      "bytes": 18058560,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+      "sha256": "b6ea0c2a9bfce48dbf181a53f1ca4f0562d40658b85bf47258e2a88d8f9e3933"
+    },
+    {
+      "bytes": 4872,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/implementation-B/API-v2.json",
+      "sha256": "24b20c1e92b49c95e9f5824fbd3f460e5e2a209786eb1c5f1614fa07d8c4946d"
+    },
+    {
+      "bytes": 48960,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/implementation-B/proof_search_pilot_v4.py",
+      "sha256": "58855b95494630a1d926c48580af4e520d2dc00f8e3450d8e3f94d4a2a3c86fe"
+    },
+    {
+      "bytes": 12236,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/root/case_worker_v1.py",
+      "sha256": "0be1c1602c5de75d2e34115981abf70cded421c4144327cd587f51dc904318b1"
+    },
+    {
+      "bytes": 3367,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/root/independent_countermodel_v1.py",
+      "sha256": "d16d781f2740c658cc841873032d0eda445f619d0f9a7db3ce8b3fba20843ce3"
+    },
+    {
+      "bytes": 10113,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/root/observe_case_once_v2.py",
+      "sha256": "24804c7d4558d8df511942d9e6b2e4d8d2cfd88ce7df6f5b5f775f87d0c20ca9"
+    },
+    {
+      "bytes": 12973,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/root/run_case_once_v3.py",
+      "sha256": "98c55321bb87a8c04b2c6d56b357aba9c3a8f5fc98660474ae3ac1c9d00b0aca"
+    },
+    {
+      "bytes": 20424,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/runtime/bounded_request_oracle.py",
+      "sha256": "606e790f4ba3ecc976877cbe52ccfd64519262f2ea07214c80d989f58e4f7637"
+    },
+    {
+      "bytes": 7089,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/runtime/certificate_boundary_search.py",
+      "sha256": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a"
+    },
+    {
+      "bytes": 18396,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/runtime/compact_point_model_v1.py",
+      "sha256": "a0d91692f50ab196013177669f8808f624c197ce5e3c1051ab0146a9c1616368"
+    },
+    {
+      "bytes": 30365,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/runtime/compact_reference_verifier_v1.py",
+      "sha256": "c4b5f719014245acb2a8e05a7375b2c2fa44e27a8a748777d5b559f83eea687f"
+    },
+    {
+      "bytes": 4311,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/runtime/interned_quantified_family_points_v1.py",
+      "sha256": "fb37663b4c0c3de4e9f3c28564678af833857f7ebe761cd83275d62f123b9a8e"
+    },
+    {
+      "bytes": 4705,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/runtime/interned_result_reader_v2.py",
+      "sha256": "cd06c8372b6edd05774cf5974c5b6265bbc196afdc68d47507e54a2044dec836"
+    },
+    {
+      "bytes": 10808,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/runtime/logic.py",
+      "sha256": "5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011"
+    },
+    {
+      "bytes": 10594,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/runtime/native_inference_inventory.py",
+      "sha256": "89979f6be8f422ea293c2f0b6c0e966fc9a0710a8e15cbe58437f868cbf75091"
+    },
+    {
+      "bytes": 2746,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/runtime/native_inventory_policy.py",
+      "sha256": "8721a361f4a97e5311f8ed944431d49d08592ed102f50ed333d1ad2b9ff01591"
+    },
+    {
+      "bytes": 8962,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/runtime/native_receptor_points.py",
+      "sha256": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888"
+    },
+    {
+      "bytes": 6992,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/runtime/proof_boundary.py",
+      "sha256": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f"
+    },
+    {
+      "bytes": 6472,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/runtime/quantified_family_points_v2.py",
+      "sha256": "f65eb38269db74ff5db0d9eb2096a38d7f07bbd6a579aa564acc692f84e4437c"
+    },
+    {
+      "bytes": 11060,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/runtime/quantified_receptors_v1.py",
+      "sha256": "d1c4afa10d58abbcf473cb3da8ee8768c974dd05d03ea00b988d574b2441af5a"
+    },
+    {
+      "bytes": 26238,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/runtime/quantified_symbolic_control_v2.py",
+      "sha256": "740319d243cc2fd2eefe1d7ef1611d8bcfe6f0ff70a2ce2ed72771e78f64a391"
+    },
+    {
+      "bytes": 16868,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/runtime/receptor_support_ordering_v1.py",
+      "sha256": "18cf90ebd75d746db3eb251eaffa92cd6a25432b70f34653b57f3d58ef5d8adc"
+    },
+    {
+      "bytes": 6942,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/runtime/semantic_inventory_guidance.py",
+      "sha256": "744948b67e2870ae24737469aceb920624b59d616e8a48f91b99d39f56c14a79"
+    },
+    {
+      "bytes": 2180,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/runtime/semantic_inventory_oracle.py",
+      "sha256": "f41bfd56829b89b015fcf7a4dbd41dabd36110156e345353059980a66f6a4400"
+    },
+    {
+      "bytes": 15936,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/runtime/semantic_inventory_search_v2.py",
+      "sha256": "35443c958f2115efa18cc923fb4a4f1070e6e03ccf1d1adf2bb56ce1f7bab28b"
+    },
+    {
+      "bytes": 7196,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/runtime/semantic_lemma_inventory.py",
+      "sha256": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad"
+    },
+    {
+      "bytes": 4593,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/runtime/semantic_point_smt.py",
+      "sha256": "6bcb3fb60529f6888836a1ca0c613b772cea192c9549620f968dbdf7cb9be74a"
+    },
+    {
+      "bytes": 53725,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/runtime/semantic_receiver_driver.py",
+      "sha256": "5f73835dfc9219f06f01206ebf6bbac5744eea582cbfb03deed42105f2ccacd0"
+    },
+    {
+      "bytes": 7409,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/runtime/semantic_receptor_points.py",
+      "sha256": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207"
+    },
+    {
+      "bytes": 3756,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/runtime/tape_binary.py",
+      "sha256": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247"
+    },
+    {
+      "bytes": 19188,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/runtime/tape_tree_machine.py",
+      "sha256": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f"
+    },
+    {
+      "bytes": 13290,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/runtime/tree_machine.py",
+      "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257"
+    },
+    {
+      "bytes": 28533,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/runtime/turtle.py",
+      "sha256": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a"
+    },
+    {
+      "bytes": 2889,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/verification-L/handoff-v1.json",
+      "sha256": "1ff258bc59226176aa108631f6ddae93704250f664791e139c2ad13a0aaba7be"
+    },
+    {
+      "bytes": 14901,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/corpus-L/pilot-inputs-v2.json",
+      "sha256": "2f206ef004c4d723f862ee36f08355816c5264a5809340be9787331d82d33cd6"
+    },
+    {
+      "bytes": 41808,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/implementation-B/recovered/and-support/Native-runtime/boundary-oracle-v2",
+      "sha256": "2b6bf8bb09a4e03d0cb1b4595dea1fe6d4432aa93d8f7eed72c30077fd9941a4"
+    },
+    {
+      "bytes": 3547,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/implementation-B/recovered/and-support/Native-runtime/boundary_oracle.cpp",
+      "sha256": "f0965f08fc9e8272d0fdd1ab3233c3a308267a4fc3b2e1a928c39dbeaaec31be"
+    },
+    {
+      "bytes": 1494417,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/implementation-B/recovered/and-support/fixed-native-inputs/proof-boundary-001.json",
+      "sha256": "977ceac5504ad3d712c7fa2d46d20494b42e30820f77eb2bffbeea313d07ee54"
+    },
+    {
+      "bytes": 1114802,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/implementation-B/recovered/and-support/fixed-native-inputs/proof-boundary-microcode-001.json.gz",
+      "sha256": "23e2b54cc8365fa42f05148885dc7da671f525f8cb24b154f5c69aeeb3180336"
+    }
+  ],
+  "failed_checks": [],
+  "findings": [
+    "All three fresh scan-v2 processes returned complete records and have saved resource-candidate gates plus Root-reported final tool exit0/EOF. The scientific comparison remains incomplete: each stopped at the preregistered ground-cluster admission gate before every recipient arm.",
+    "Each cold job actually searched the same three elementary nullary propositional donors, with 3/5/5 primitive rows. Complete searched proofs, essential proofs, traces, exact theory/target requests, Host receipts and eighteen accepted Native whole/essential requests are retained. Nine occurrences are three distinct elementary proofs, not nine new theorems or proofs of the larger recipients.",
+    "The full target segmented models, original-reference checks, indexed-wire/actual-owner joins and marked-overlay checks returned. These are finite runtime observations for the exact corpus and pinned Sources, not a mechanized all-input equivalence proof.",
+    "Each target has twelve certified unary dead-extension exclusions with the full original exhausted-root candidate list and differing-value witnesses. In these runs all exhausted roots are the first-row guard. The actual recipient GCTS graph/search did not run, so graph removals, forced propagation, search speed or proof discovery from these markings were not measured.",
+    "The 7/11/7 ground proposals are primitive expansions instantiated from the actually acquired families, but each batch Native validation returned unknown_step_budget at exactly one billion microsteps. Unknown is neither rejection nor acceptance. No usable ground library, recipient-context receptor applicability, expansion use or cluster speed benefit is established.",
+    "All twenty-eight independent compact-reference controls and the original Tiny mechanism controls returned in each job. The Tiny result preserves both solutions and reports complete-domain/rollback/scheduler and auxiliary-marking controls; this does not substitute for the absent recipient comparison.",
+    "The manually supplied singleton countermodel was evaluated independently and was not passed to proof search. It concerns the missing-premise control only; no recipient UNSAT proof or automated model-discovery claim follows.",
+    "compile_and_model_seconds includes Native compilation/admission work, compact Model construction and the full independent reference check. It must not be presented as Model construction time alone. Local two-second search quotas are cooperative; no recipient search-time outcome exists.",
+    "Saved binding_work is 20003 against a 20000 proposal-work threshold. The reviewed Source increments stop-check counters while unwinding recursive proposal loops; every unification call is guarded before work exceeds the threshold. Preserve the raw counter and this cooperative-count scope; no hidden cap increase or claim that the raw counter is at most20000.",
+    "The earlier no-scan-v2 monitor race and all D5 memory failures remain separate immutable negative results. This fresh successful process/setup evidence does not rescue an older grant, full VM cohort, G0 gate or G1 qualification; G1 remains unadopted.",
+    "Resource success applies to the actually completed setup/control work and complete returned artifacts, not to the absent six-arm workload. Repeated cold runs support a representation-feasibility observation for these target models; they provide no paired runtime or memory speedup estimate.",
+    "No reinforcement learning, physical Wang interpreter acceptance, general theorem-search advantage, complete comparison or proof of either larger positive target was demonstrated by this actual."
+  ],
+  "metadata_pins": [
+    {
+      "bytes": 8086,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/root/external-tool-observer-v2.json",
+      "sha256": "622dec87745738cc9613273c2a817613f4106121635e7fecc508984659541051"
+    },
+    {
+      "bytes": 12991,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/root/passive-actual-assessment-v1.json",
+      "sha256": "38468e734a7717d28d45475a2276ffc9eb334ef870b320cd785051d0ea82b286"
+    },
+    {
+      "bytes": 19249,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/root/prospective-whole-offer-v2.json",
+      "sha256": "b97c3cf772f6a1673fa72b5ea95790f5fd3d74cfa674a32622d85c0849d3a538"
+    },
+    {
+      "bytes": 2992,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/root/protocol-v2.json",
+      "sha256": "7ebec0cdcdce801e001e4e012c40475e8f5b0855bbfbae593bf5a48afb811fee"
+    },
+    {
+      "bytes": 14901,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/corpus-L/pilot-inputs-v2.json",
+      "sha256": "2f206ef004c4d723f862ee36f08355816c5264a5809340be9787331d82d33cd6"
+    },
+    {
+      "bytes": 15171,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/review-C/typed-scientific-composition-Source-review-v1.json",
+      "sha256": "d90fac1d1d2d5169bffcdc2a5576f72e73ac0efdb52a3858fbf0b0ed1865fff0"
+    },
+    {
+      "bytes": 9650,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/review-C/typed-scanner-successor-preflight-review-v1.json",
+      "sha256": "b1e95a23e236f304ccdd1dde48acb9310ed51a61825f74c263c38cd30e2c7ec1"
+    },
+    {
+      "bytes": 6824,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/review-C/monitor-race-negative-review-v1.json",
+      "sha256": "4bfe80e0aec1c335757f03f4fbf03312bb00c7456a5881c5d004fb88c531f1a6"
+    },
+    {
+      "bytes": 1950,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/root/monitor-race-negative-and-retired-grants-v1.json",
+      "sha256": "f4776a7ba61ae66af162f8108c5054dcad02555897ea4dbe51eb30d05411bcce"
+    }
+  ],
+  "new_grants_issued": 0,
+  "old_negative_results_changed": false,
+  "overall_comparison_complete": false,
+  "partial_files_parsed": false,
+  "passive_audit_limits": [
+    "Research verification/decoding functions were never called by this reviewer. Literal saved table indices, request hashes, exact corpus/proof/request joins, output hashes and complete populations were checked; value correspondence and certificate validity rely on the returned independently authored runtime verifier receipts and previously reviewed Source argument.",
+    "Only the last Native input/output binary files remain physically in each directory; every request and its binary hashes and complete Native response are retained in the JSON record. Earlier request binaries were not recreated.",
+    "Root tool session exits are recorded by the complete external-tool-observer metadata and parent message. No session was relaunched or scientifically replayed.",
+    "Live filesystem scans are sampled and non-atomic; the narrow disappeared-file fix and a final closed-process census support this nonhostile finite resource review, not an OS/adversarial resource theorem."
+  ],
+  "review_passed": true,
+  "review_scope": "Passive complete saved-result, provenance, population and scientific-interpretation review; no semantic replay.",
+  "reviewer_identity": "/root/recovered_batch_review",
+  "schema": "typed-compact-actual-scientific-review-v1",
+  "scientific_component_calls": 0,
+  "scientific_imports": 0,
+  "search_advantage_demonstrated": false,
+  "successful_actual_raw_file_count": 42,
+  "successful_actual_raw_files": [
+    {
+      "bytes": 261,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/actual/pilot-fork-join-positive-scan-v2/CONSUMED.json",
+      "sha256": "7500e0feee7813b3c4079e984e3e3620b3a917770de64dba34d96d594c854031"
+    },
+    {
+      "bytes": 41808,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/actual/pilot-fork-join-positive-scan-v2/native/boundary-oracle",
+      "sha256": "2b6bf8bb09a4e03d0cb1b4595dea1fe6d4432aa93d8f7eed72c30077fd9941a4"
+    },
+    {
+      "bytes": 7558192,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/actual/pilot-fork-join-positive-scan-v2/native/code.bin",
+      "sha256": "97f0b600cffd83552c4e0f0c4fb1f5d26cfdb76e3e74b267bbaebeddc836e7ed"
+    },
+    {
+      "bytes": 818608,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/actual/pilot-fork-join-positive-scan-v2/native/input.bin",
+      "sha256": "55c92f8eae9224ea8541a78de1e6019e864dea704b7a028d0b72bcd12aeee308"
+    },
+    {
+      "bytes": 818612,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/actual/pilot-fork-join-positive-scan-v2/native/output.bin",
+      "sha256": "9a6f01c6cf08580a01a27470be03791b6217d9a0af7a7d69edd6e33a185d56ee"
+    },
+    {
+      "bytes": 235,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/actual/pilot-fork-join-positive-scan-v2/owned-child.json",
+      "sha256": "9911e695092a5f419b478380c49dc1c3a0d9da9ea58502ac3439d4fea2270df7"
+    },
+    {
+      "bytes": 30162683,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/actual/pilot-fork-join-positive-scan-v2/result.json",
+      "sha256": "7284b47c01c9235b0e7ca9ca57d2737dc48ed791d0342e3fa762d239172d97bd"
+    },
+    {
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/actual/pilot-fork-join-positive-scan-v2/stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 115,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/actual/pilot-fork-join-positive-scan-v2/stdout.bin",
+      "sha256": "5fc2978a4574e40fe477ef56b5ee1f3b1f92a6f076868913356229f8166eebe2"
+    },
+    {
+      "bytes": 2027,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/actual/pilot-fork-join-positive-scan-v2/terminal.json",
+      "sha256": "101d485867f59f593792f0eb0e73519494dd9c4a8c34e2e42cfbc0c64cfc751f"
+    },
+    {
+      "bytes": 581,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/actual/pilot-fork-join-positive-scan-v2/worker-header.json",
+      "sha256": "d3a7a32d7b08b8d39cd3ce5937cebf14c0b3478f3c9bdcdf6d6ce91ec4a5149e"
+    },
+    {
+      "bytes": 1494,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/actual/pilot-fork-join-positive-scan-v2.observer/observer.json",
+      "sha256": "a55d4c19ea928f1f7529a62fb97ae85230f7208932eaad9b5bff032ef79c4aee"
+    },
+    {
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/actual/pilot-fork-join-positive-scan-v2.observer/stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 1803,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/actual/pilot-fork-join-positive-scan-v2.observer/stdout.bin",
+      "sha256": "21b4a7dc0945f28d8752b678a43709224f18f5cc924fee9870b0ba0259c38796"
+    },
+    {
+      "bytes": 271,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/actual/pilot-quantifier-equality-positive-scan-v2/CONSUMED.json",
+      "sha256": "cc65cd62156ce0e9de24be126937e7664974c4a65fb83b7390ff0831d009cb90"
+    },
+    {
+      "bytes": 41808,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/actual/pilot-quantifier-equality-positive-scan-v2/native/boundary-oracle",
+      "sha256": "2b6bf8bb09a4e03d0cb1b4595dea1fe6d4432aa93d8f7eed72c30077fd9941a4"
+    },
+    {
+      "bytes": 7558192,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/actual/pilot-quantifier-equality-positive-scan-v2/native/code.bin",
+      "sha256": "97f0b600cffd83552c4e0f0c4fb1f5d26cfdb76e3e74b267bbaebeddc836e7ed"
+    },
+    {
+      "bytes": 900052,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/actual/pilot-quantifier-equality-positive-scan-v2/native/input.bin",
+      "sha256": "f2432fb8ac10022fe24de0e42d9ddeda8fc1426e973948fd699c6136a6e12ce8"
+    },
+    {
+      "bytes": 900056,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/actual/pilot-quantifier-equality-positive-scan-v2/native/output.bin",
+      "sha256": "8ffed28c4da3ce93bfaf6c7faec40dd3d25b68c0d2614f3d8334066ae6ac1404"
+    },
+    {
+      "bytes": 245,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/actual/pilot-quantifier-equality-positive-scan-v2/owned-child.json",
+      "sha256": "3ccd0029127461a6d52dd422e65d25918336704a40cd63b5ebbc925923f31f1d"
+    },
+    {
+      "bytes": 29432321,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/actual/pilot-quantifier-equality-positive-scan-v2/result.json",
+      "sha256": "970844c17855a52ffb0edebd06a03497ed5722ce609c914f04126fb628649bc3"
+    },
+    {
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/actual/pilot-quantifier-equality-positive-scan-v2/stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 125,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/actual/pilot-quantifier-equality-positive-scan-v2/stdout.bin",
+      "sha256": "9780cd0570a833322631c6d8965cc1c480415919256524986c9983dcd333fc0a"
+    },
+    {
+      "bytes": 2067,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/actual/pilot-quantifier-equality-positive-scan-v2/terminal.json",
+      "sha256": "a941689f8bac1892ba0989b796dfc9ce5c27cb1c33c14456c69ea94e1e8bac5e"
+    },
+    {
+      "bytes": 601,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/actual/pilot-quantifier-equality-positive-scan-v2/worker-header.json",
+      "sha256": "753763981a66e7c9ed2c4fd58ff10ed26c76bcc6ae03e067bf4e2710aff5acd2"
+    },
+    {
+      "bytes": 1515,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/actual/pilot-quantifier-equality-positive-scan-v2.observer/observer.json",
+      "sha256": "b992e98a8c378345a4897229aad4b38c1208b35f16d47d87fa13dcfa00997696"
+    },
+    {
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/actual/pilot-quantifier-equality-positive-scan-v2.observer/stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 1843,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/actual/pilot-quantifier-equality-positive-scan-v2.observer/stdout.bin",
+      "sha256": "ff9563e25073421ac5a1ecdee6703a94dae5e7e2d1963e90262cfeb083bc2ae3"
+    },
+    {
+      "bytes": 263,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa-scan-v2/CONSUMED.json",
+      "sha256": "b2b341b61fba46b3ce8723e615d0047a42ff19a3aa43cc3bc132d980a6f7b28f"
+    },
+    {
+      "bytes": 41808,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa-scan-v2/native/boundary-oracle",
+      "sha256": "2b6bf8bb09a4e03d0cb1b4595dea1fe6d4432aa93d8f7eed72c30077fd9941a4"
+    },
+    {
+      "bytes": 7558192,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa-scan-v2/native/code.bin",
+      "sha256": "97f0b600cffd83552c4e0f0c4fb1f5d26cfdb76e3e74b267bbaebeddc836e7ed"
+    },
+    {
+      "bytes": 817244,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa-scan-v2/native/input.bin",
+      "sha256": "a66951150278d8e1fe075dd9488e2218932ba1de1f18f3eec96c3479d5962047"
+    },
+    {
+      "bytes": 817248,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa-scan-v2/native/output.bin",
+      "sha256": "f34eb85eaeda13507a0772cddbb551789b1acbdeeb64133eae24d74d3983b146"
+    },
+    {
+      "bytes": 237,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa-scan-v2/owned-child.json",
+      "sha256": "74b81023f5187db47121bf9b88f24d5f9038e9c112eccad1bea2c169359639a7"
+    },
+    {
+      "bytes": 29879915,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa-scan-v2/result.json",
+      "sha256": "41e5f680d7cac1e9e458ff60138e2e8e766b39eed31ef478d6e877058a8b6b06"
+    },
+    {
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa-scan-v2/stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 117,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa-scan-v2/stdout.bin",
+      "sha256": "2ae2593c1e79c42a3bc1f1a5da50ec5bd1c30c4202ace052bfce28b4daa4ae80"
+    },
+    {
+      "bytes": 2035,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa-scan-v2/terminal.json",
+      "sha256": "808fe9ccf39168e1f6bf3f2675e43632c79d91671ab6ba96064ef7657d661af0"
+    },
+    {
+      "bytes": 585,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa-scan-v2/worker-header.json",
+      "sha256": "971be2b3bfedcd261fd4110309ba62f7c3cd2b8c774268ce7b44c5f492109250"
+    },
+    {
+      "bytes": 1499,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa-scan-v2.observer/observer.json",
+      "sha256": "8cb663018ce125814c7965371fa16eb55d87191c574926f8d6fdc4d303f5c0b0"
+    },
+    {
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa-scan-v2.observer/stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 1811,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-compact-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa-scan-v2.observer/stdout.bin",
+      "sha256": "89787ebd8ad9a49820a0465df59fb2c44c3a6f6744ffd5bf8c1c34b790d122e2"
+    }
+  ],
+  "tools_stopped_after_freeze": true
+}

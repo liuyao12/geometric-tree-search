@@ -1,0 +1,79 @@
+{
+  "archive_scan": {
+    "all_members_byte_checked": true,
+    "archive": {
+      "bytes": 10092499,
+      "file": "compact-proof-search-evidence.tar.gz",
+      "sha256": "39a0d5095c246522d2e0f3b5058772d6fb1c1f8c17e23c77ced1239c192d973a"
+    },
+    "members": 172,
+    "omitted_trusted_runtime": [
+      {
+        "pin": {
+          "bytes": 18058560,
+          "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+          "sha256": "b6ea0c2a9bfce48dbf181a53f1ca4f0562d40658b85bf47258e2a88d8f9e3933"
+        },
+        "reason": "Trusted pinned isolated CPython runtime; binary not redistributed. Research Sources and fixed Native assets included."
+      }
+    ],
+    "partial_raw_metadata_only": [],
+    "payload_bytes": 129733370,
+    "schema": "compact-complete-archive-byte-scan-v1"
+  },
+  "conclusion": "Three new compact case processes fit the fixed whole resource gates but stop at Native ground-cluster admission unknown. All18recipientarmsunreached, noGCTS/RLadvantage.",
+  "counts": "42 complete scan-v2 actual+observer files,14 per job;11 separate files preserve the first compact monitor failure. Three new case grants consumed, all v1 grants consumed/retired, zero remaining.",
+  "files": [
+    {
+      "bytes": 303343,
+      "file": "compact-proof-search-data.json",
+      "sha256": "36e28d78704da056a7d141bb0c595bc616d704619f3efc712f6db34211af0ce6"
+    },
+    {
+      "bytes": 18728,
+      "file": "compact-proof-search-engineering.json",
+      "sha256": "46163533dc544954336fc0f988282675bc0550ff2be300e23aba85a6ba037073"
+    },
+    {
+      "bytes": 10092499,
+      "file": "compact-proof-search-evidence.tar.gz",
+      "sha256": "39a0d5095c246522d2e0f3b5058772d6fb1c1f8c17e23c77ced1239c192d973a"
+    },
+    {
+      "bytes": 95236,
+      "file": "compact-proof-search-review-C.json",
+      "sha256": "cc525baee1d05bdf6446a2248e1e1f7f30f2c3a037caf698b99c50291fd80c40"
+    },
+    {
+      "bytes": 50237,
+      "file": "compact-proof-search-review-L.json",
+      "sha256": "9c2453e6abd36d1879e7d2393e74853219c1954db9f091fe9bbbb0c1cc81db34"
+    },
+    {
+      "bytes": 22405,
+      "file": "compact-proof-search.html",
+      "sha256": "8b0a074c53c29b716d260a9030d7378f556aeee90c1ae66a5f1b38d31444dfff"
+    },
+    {
+      "bytes": 108073,
+      "file": "reader.html",
+      "sha256": "c147b2c8436dfce72d1b381db8400f5ce4bb8e65eefc2f4636e256e708be587c"
+    }
+  ],
+  "reader_change": {
+    "after": {
+      "bytes": 108073,
+      "sha256": "c147b2c8436dfce72d1b381db8400f5ce4bb8e65eefc2f4636e256e708be587c"
+    },
+    "before": {
+      "bytes": 107270,
+      "sha256": "0ba55bb83bc26a67ceb70fcb29c8e524f69524615c2d8bc120aa6fca8c2f63e0"
+    },
+    "inserted_bytes": 803,
+    "only_exact_insertion": true,
+    "schema": "compact-reader-insertion-v1",
+    "unrelated_bytes_preserved": true
+  },
+  "schema": "compact-proof-search-publication-manifest-v1",
+  "source_parent_commit": "f39a6c8fa76927a1e7c90699781cd36562831f95"
+}
