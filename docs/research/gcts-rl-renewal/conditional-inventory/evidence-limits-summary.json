@@ -1,0 +1,85 @@
+{
+  "G0": "Unchanged old expanded reconstruction gate; rejection remains.",
+  "G1": {
+    "adopted": false,
+    "fitting_bound_established": false,
+    "gate_changed": true,
+    "numeric_caps_unchanged": true,
+    "status": "UNIMPLEMENTED_PROPOSAL",
+    "whole_banks_retained": true
+  },
+  "GCTS_RL_advantage_established": false,
+  "RL_trained_here": false,
+  "accepted_new_theorems": 0,
+  "all_partials": "Raw length/hash only; never parsed, projected, completed or admitted.",
+  "checker_calls": 0,
+  "compiler_calls": 0,
+  "conditional_manual_lower_bound": {
+    "assumptions": [
+      "Pinned Source and complete saved counter/trace joins truthful.",
+      "Fresh exclusively owned canonical writer with no deletion/truncation.",
+      "Unchanged literal v2 reconstruction convention."
+    ],
+    "exact_packet_size": false,
+    "excess_lower_bytes": 639805,
+    "expanded_delta_lower_bytes": 10076992,
+    "mathematical_authority": false,
+    "old_expanded_lower_bytes": 134857533,
+    "overhead_per_scope_upper_bytes": 2048,
+    "raw_partial_length_only": 124780541,
+    "review": "typed-expanded-lower-bound-review-v1.json",
+    "selected_receipts": 31904,
+    "started_profiles_subtracted": 345,
+    "typed_disjoint_subtrees_lower_bytes": 338,
+    "unchanged_limit_bytes": 134217728
+  },
+  "date": "2026-10-20",
+  "fixture_calls": 0,
+  "full_goal_open": [
+    "Practical fixed/movable-region Turtle tiling on A2 from no supplied marking",
+    "Certified failure markings and operational graph effects",
+    "Unrestricted validated RL cluster proposals and multiscale receptor/lemma families",
+    "Substitution/infinite-construction investigation with separate finite and plane-proof statuses",
+    "Exact Penrose work over Z[zeta5]",
+    "One expressive translation-only proof tile set with arithmetic and symbolic Hilbert geometry",
+    "Automatically discovered inspectable proofs and matched conventional proof-search comparisons"
+  ],
+  "goal_status": "active",
+  "lexical": {
+    "full_interpreter": false,
+    "old_unshared_working_states": 1785,
+    "runtime_qualified": false,
+    "scope": "New completed lexical specification; old accepted-word language with stuck treated nonaccepting. No old full physical trajectory correspondence.",
+    "source": "utf8_residual_machine_v1.py",
+    "source_pin": {
+      "bytes": 8265,
+      "sha256": "08f9472acb2042e398997cc0dddd6ddc2487c866a3b683b42f53852bee26a088"
+    },
+    "table_generation_calls": 0,
+    "total_states_manual_upper": 317,
+    "transitions_manual_upper": 1256,
+    "undefined_halt_slots": 12,
+    "whole_palette_fit": false,
+    "working_states_manual_upper": 314
+  },
+  "new_actual_invocations": 0,
+  "new_grants": 0,
+  "old_grant_remaining": 0,
+  "partial_JSON_parses": 0,
+  "partial_content_reads": 0,
+  "predecessor_live": "scoped-palettes.html",
+  "schema": "ROOT-parallel-evidence-limits-milestone-v1",
+  "semantic_replays": 0,
+  "simulator_calls": 0,
+  "sizing_probes": 0,
+  "status": "PROGRESS_SOURCE_AND_METADATA_ONLY",
+  "subject_function_calls": 0,
+  "subject_imports": 0,
+  "writer": {
+    "diagnostic_bank": "Read exact successor bank in archive; declarative only.",
+    "negative_predecessor_preserved": true,
+    "review": "typed-aggregate-budget-Source-review-v2.json",
+    "review_passed": true,
+    "status": "SOURCE_ONLY_UNEXECUTED_UNINTEGRATED"
+  }
+}

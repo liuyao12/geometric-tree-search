@@ -1,0 +1,4779 @@
+{
+  "G1_adopted": false,
+  "actual_execution_authorized": false,
+  "archive": {
+    "bytes": 1772567,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/evidence-limits-source.tar.gz",
+    "sha256": "8b18d800865643d0c19f19c8fe9cac516093587336eb1af85535d4f5858fd13c"
+  },
+  "archive_census": [
+    {
+      "container": {
+        "bytes": 1772567,
+        "sha256": "8b18d800865643d0c19f19c8fe9cac516093587336eb1af85535d4f5858fd13c"
+      },
+      "label": "final-outer",
+      "metadata_members": [
+        "README.txt",
+        "MANIFEST.json"
+      ],
+      "partial_members": 0,
+      "pinned_members": 114,
+      "regular_members": 116
+    },
+    {
+      "container": {
+        "bytes": 890717,
+        "sha256": "8dff6518e641315d9e2cd9eb6a1305126ef706944f76c9926057670515f32136"
+      },
+      "label": "superseded-wording-predecessor",
+      "metadata_members": [
+        "README.txt",
+        "MANIFEST.json"
+      ],
+      "partial_members": 0,
+      "pinned_members": 109,
+      "regular_members": 111
+    },
+    {
+      "container": {
+        "bytes": 517751,
+        "sha256": "579426fa041a60548f9039854c04a051f8b736474d84b24b8efe617443f725b6"
+      },
+      "label": "current-fixed-checker",
+      "metadata_members": [
+        "PATHMAP.json"
+      ],
+      "partial_members": 0,
+      "pinned_members": 120,
+      "regular_members": 121
+    },
+    {
+      "container": {
+        "bytes": 517751,
+        "sha256": "579426fa041a60548f9039854c04a051f8b736474d84b24b8efe617443f725b6"
+      },
+      "label": "predecessor-fixed-checker",
+      "metadata_members": [
+        "PATHMAP.json"
+      ],
+      "partial_members": 0,
+      "pinned_members": 120,
+      "regular_members": 121
+    }
+  ],
+  "assets": [
+    {
+      "bytes": 11278,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/evidence-limits-bound-review.json",
+      "sha256": "b75be9752672ce878c67d8b9f85fafa557359b91c33de0ad65a203dcff162dba"
+    },
+    {
+      "bytes": 2722,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/evidence-limits-publication-negative.json",
+      "sha256": "2e396a28c7278b54e921d5480a27bcbbddbe7de82065eddc1fa38549cc96bf3e"
+    },
+    {
+      "bytes": 1875,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/evidence-limits-residual.svg",
+      "sha256": "a94d6c2c30c66ba5762a4b8e183475d3f8fde54a73f4de529db2dbdb6587e694"
+    },
+    {
+      "bytes": 1772567,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/evidence-limits-source.tar.gz",
+      "sha256": "8b18d800865643d0c19f19c8fe9cac516093587336eb1af85535d4f5858fd13c"
+    },
+    {
+      "bytes": 3350,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/evidence-limits-summary.json",
+      "sha256": "396cc454cd676d6319b8bbd4910903cd20fe99532507532fc88f5bfdc7b74fa0"
+    },
+    {
+      "bytes": 9777,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/evidence-limits-utf8-negative.json",
+      "sha256": "7dbf64796033a903a580a192b0c989294b37e1c31789aad78c518aee82604913"
+    },
+    {
+      "bytes": 5121,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/evidence-limits-utf8-review.json",
+      "sha256": "70fb5dd264a016faa1def9b0043bf2a3e4540fb6868bdd4f1635a3564f484abe"
+    },
+    {
+      "bytes": 6637,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/evidence-limits-writer-negative.json",
+      "sha256": "f303ce159c347a040cef077d5577ecfd3784e4526765eb585de7363f68380362"
+    },
+    {
+      "bytes": 9952,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/evidence-limits-writer-review.json",
+      "sha256": "4fe6737878a1d35fd32b633a48f435fdbe59dd0fdccb7432707a6c513b48aa83"
+    },
+    {
+      "bytes": 16287,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/evidence-limits.html",
+      "sha256": "c7ac818533e8c7655fae9f9ad324a90bb4e8407928d64d3f82c5c43aca84d0a1"
+    },
+    {
+      "bytes": 104888,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/reader.html",
+      "sha256": "36464e865a25d30b17ee3e728cdae96edf295340b4df632d4eb84b0cee951894"
+    }
+  ],
+  "checker_calls": 0,
+  "checks": [
+    {
+      "id": "exact-final-manifest",
+      "passed": true
+    },
+    {
+      "id": "exact-final-archive",
+      "passed": true
+    },
+    {
+      "id": "114-source-pins",
+      "passed": true
+    },
+    {
+      "id": "safe-flat-asset-evidence-limits-bound-review.json",
+      "passed": true
+    },
+    {
+      "id": "asset-pin-evidence-limits-bound-review.json",
+      "passed": true
+    },
+    {
+      "id": "safe-flat-asset-evidence-limits-publication-negative.json",
+      "passed": true
+    },
+    {
+      "id": "asset-pin-evidence-limits-publication-negative.json",
+      "passed": true
+    },
+    {
+      "id": "safe-flat-asset-evidence-limits-residual.svg",
+      "passed": true
+    },
+    {
+      "id": "asset-pin-evidence-limits-residual.svg",
+      "passed": true
+    },
+    {
+      "id": "safe-flat-asset-evidence-limits-source.tar.gz",
+      "passed": true
+    },
+    {
+      "id": "asset-pin-evidence-limits-source.tar.gz",
+      "passed": true
+    },
+    {
+      "id": "safe-flat-asset-evidence-limits-summary.json",
+      "passed": true
+    },
+    {
+      "id": "asset-pin-evidence-limits-summary.json",
+      "passed": true
+    },
+    {
+      "id": "safe-flat-asset-evidence-limits-utf8-negative.json",
+      "passed": true
+    },
+    {
+      "id": "asset-pin-evidence-limits-utf8-negative.json",
+      "passed": true
+    },
+    {
+      "id": "safe-flat-asset-evidence-limits-utf8-review.json",
+      "passed": true
+    },
+    {
+      "id": "asset-pin-evidence-limits-utf8-review.json",
+      "passed": true
+    },
+    {
+      "id": "safe-flat-asset-evidence-limits-writer-negative.json",
+      "passed": true
+    },
+    {
+      "id": "asset-pin-evidence-limits-writer-negative.json",
+      "passed": true
+    },
+    {
+      "id": "safe-flat-asset-evidence-limits-writer-review.json",
+      "passed": true
+    },
+    {
+      "id": "asset-pin-evidence-limits-writer-review.json",
+      "passed": true
+    },
+    {
+      "id": "safe-flat-asset-evidence-limits.html",
+      "passed": true
+    },
+    {
+      "id": "asset-pin-evidence-limits.html",
+      "passed": true
+    },
+    {
+      "id": "safe-flat-asset-reader.html",
+      "passed": true
+    },
+    {
+      "id": "asset-pin-reader.html",
+      "passed": true
+    },
+    {
+      "id": "review-self-reference-deliberately-excluded",
+      "passed": true
+    },
+    {
+      "id": "final-outer-pin-uniqueness",
+      "passed": true
+    },
+    {
+      "id": "final-outer-unique-members",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/bounds-B/cutoff-metadata-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/bounds-B/freeze_notes_v1.py",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/bounds-B/handoff-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/bounds-B/manual-expanded-lower-bound-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/bounds-B/one-owner-field-map-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/budget-L/API-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/budget-L/API-v2.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/budget-L/aggregate_byte_budget_v1.py",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/budget-L/aggregate_byte_budget_v2.py",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/budget-L/author-static-audit-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/budget-L/author-static-audit-v2.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/budget-L/author-static-audit-v3.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/budget-L/diagnostic-bank-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/budget-L/diagnostic-bank-v2.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/budget-L/fixed-completion-Source-delta-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/budget-L/fixed-completion-Source-v1-to-v2.patch",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/budget-L/freeze-manifest-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/budget-L/freeze-manifest-v2.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/budget-L/handoff-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/budget-L/handoff-v2.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/budget-L/manual-reasoning-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/budget-L/manual-reasoning-v2.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/budget-L/review-preimage-24ebfb53.py",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/recovered-checker/CodecV2/API-v2.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/recovered-checker/CodecV2/Source-static-audit-v2.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/recovered-checker/CodecV2/Source-v1-to-v2.patch",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/recovered-checker/CodecV2/fixed_vm_codec_v2.py",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/recovered-checker/CodecV2/handoff-v2.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/recovered-checker/CodecV2/proof-delta-v2.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/recovered-checker/CodecV2/prospective-quota-diagnostics-v2.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/recovered-checker/EarlierDesign/fixed-interpreter-encoding-contract-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/recovered-checker/IndependentReview/selector-VM-obligations-v2.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/recovered-checker/IndependentReview/typed-foundation-Source-review-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/recovered-checker/PhysicalFoundation/API-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/recovered-checker/PhysicalFoundation/Source-contract-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/recovered-checker/PhysicalFoundation/author-static-audit-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/recovered-checker/PhysicalFoundation/fixed_vm_physical_foundation_v1.py",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/recovered-checker/PhysicalFoundation/freeze_source_packet_v1.py",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/recovered-checker/PhysicalFoundation/handoff-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/recovered-checker/PhysicalFoundation/next-architecture-options-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/recovered-checker/PhysicalFoundation/physical-arguments-and-census-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/recovered-checker/PhysicalFoundation/unexpanded-controller-obligations-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/recovered-checker/RuntimeSource/combined_source.tree",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/recovered-checker/RuntimeSource/fol_source.tree",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/recovered-checker/RuntimeSource/legacy_wang.py",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/recovered-checker/RuntimeSource/tree.py",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/recovered-checker/RuntimeSource/wire_source.tree",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/review-C/budget-negative-preimages-v1/API-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/review-C/budget-negative-preimages-v1/aggregate_byte_budget_v1.py",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/review-C/budget-negative-preimages-v1/author-static-audit-v2.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/review-C/budget-negative-preimages-v1/diagnostic-bank-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/review-C/budget-negative-preimages-v1/freeze-manifest-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/review-C/budget-negative-preimages-v1/handoff-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/review-C/budget-negative-preimages-v1/manual-reasoning-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/review-C/evidence-expansion-contract-findings-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/review-C/freeze_budget_negative_v1.py",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/review-C/freeze_budget_review_v2.py",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/review-C/freeze_contract_findings_v1.py",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/review-C/freeze_expanded_bound_review_v1.py",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/review-C/freeze_utf8_scope_negative_v1.py",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/review-C/freeze_utf8_scope_review_v2.py",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/review-C/typed-aggregate-budget-Source-negative-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/review-C/typed-aggregate-budget-Source-review-v2.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/review-C/typed-expanded-lower-bound-review-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/review-C/typed-utf8-residual-Source-negative-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/review-C/typed-utf8-residual-Source-review-v2.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/review-C/utf8-negative-preimages-v1/bank.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/review-C/utf8-negative-preimages-v1/contract.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/review-C/utf8-negative-preimages-v1/foundation.py",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/review-C/utf8-negative-preimages-v1/handoff.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/review-C/utf8-negative-preimages-v1/master.md",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/review-C/utf8-negative-preimages-v1/source.py",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/root/ROOT-continuation-assessment-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/root/build_report_assets_v1.py",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/root/checker-source-recovery-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/root/fixed-checker-evidence-preimage.tar.gz",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/root/fixed-checker-manifest-preimage.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/root/isolated-reader-preimage.html",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/root/research-direction-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/root/residual-sharing.svg",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/root/utf8-Source-handoff-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/root/utf8-Source-handoff-v2.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/root/utf8-prospective-bank-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/root/utf8-prospective-bank-v2.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/root/utf8-residual-contract-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/root/utf8-residual-contract-v2.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/root/utf8-static-audit-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Current/root/utf8_residual_machine_v1.py",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-HistoricalContext/AGENTS.md",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-HistoricalContext/basic-tiling-algorithm.md",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-HistoricalContext/batch-component.py",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-HistoricalContext/batch-plan-authorized.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-HistoricalContext/complete-worker-failure.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-HistoricalContext/final-milestone.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-HistoricalContext/grant-retirement.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-HistoricalContext/implicit-inputs.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-HistoricalContext/negative-adoption.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-HistoricalContext/new-diagnostic-bank.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-HistoricalContext/point-search.py",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-HistoricalContext/worker.py",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-MANIFEST.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Publication/evidence-limits-bound-review.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Publication/evidence-limits-publication-negative.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Publication/evidence-limits-residual.svg",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Publication/evidence-limits-summary.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Publication/evidence-limits-utf8-negative.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Publication/evidence-limits-utf8-review.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Publication/evidence-limits-writer-negative.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Publication/evidence-limits-writer-review.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Publication/evidence-limits.html",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-Publication/reader.html",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-PublicationWordingPredecessor/build_report_assets_v1.py",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-PublicationWordingPredecessor/evidence-limits-manifest.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-PublicationWordingPredecessor/evidence-limits-source.tar.gz",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-PublicationWordingPredecessor/pins.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-safe-regular-README.txt",
+      "passed": true
+    },
+    {
+      "id": "final-outer-exact-membership",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/bounds-B/cutoff-metadata-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/bounds-B/freeze_notes_v1.py",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/bounds-B/handoff-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/bounds-B/manual-expanded-lower-bound-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/bounds-B/one-owner-field-map-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/budget-L/API-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/budget-L/API-v2.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/budget-L/aggregate_byte_budget_v1.py",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/budget-L/aggregate_byte_budget_v2.py",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/budget-L/author-static-audit-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/budget-L/author-static-audit-v2.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/budget-L/author-static-audit-v3.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/budget-L/diagnostic-bank-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/budget-L/diagnostic-bank-v2.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/budget-L/fixed-completion-Source-delta-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/budget-L/fixed-completion-Source-v1-to-v2.patch",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/budget-L/freeze-manifest-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/budget-L/freeze-manifest-v2.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/budget-L/handoff-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/budget-L/handoff-v2.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/budget-L/manual-reasoning-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/budget-L/manual-reasoning-v2.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/budget-L/review-preimage-24ebfb53.py",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/recovered-checker/CodecV2/API-v2.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/recovered-checker/CodecV2/Source-static-audit-v2.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/recovered-checker/CodecV2/Source-v1-to-v2.patch",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/recovered-checker/CodecV2/fixed_vm_codec_v2.py",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/recovered-checker/CodecV2/handoff-v2.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/recovered-checker/CodecV2/proof-delta-v2.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/recovered-checker/CodecV2/prospective-quota-diagnostics-v2.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/recovered-checker/EarlierDesign/fixed-interpreter-encoding-contract-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/recovered-checker/IndependentReview/selector-VM-obligations-v2.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/recovered-checker/IndependentReview/typed-foundation-Source-review-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/recovered-checker/PhysicalFoundation/API-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/recovered-checker/PhysicalFoundation/Source-contract-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/recovered-checker/PhysicalFoundation/author-static-audit-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/recovered-checker/PhysicalFoundation/fixed_vm_physical_foundation_v1.py",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/recovered-checker/PhysicalFoundation/freeze_source_packet_v1.py",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/recovered-checker/PhysicalFoundation/handoff-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/recovered-checker/PhysicalFoundation/next-architecture-options-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/recovered-checker/PhysicalFoundation/physical-arguments-and-census-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/recovered-checker/PhysicalFoundation/unexpanded-controller-obligations-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/recovered-checker/RuntimeSource/combined_source.tree",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/recovered-checker/RuntimeSource/fol_source.tree",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/recovered-checker/RuntimeSource/legacy_wang.py",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/recovered-checker/RuntimeSource/tree.py",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/recovered-checker/RuntimeSource/wire_source.tree",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/review-C/budget-negative-preimages-v1/API-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/review-C/budget-negative-preimages-v1/aggregate_byte_budget_v1.py",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/review-C/budget-negative-preimages-v1/author-static-audit-v2.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/review-C/budget-negative-preimages-v1/diagnostic-bank-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/review-C/budget-negative-preimages-v1/freeze-manifest-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/review-C/budget-negative-preimages-v1/handoff-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/review-C/budget-negative-preimages-v1/manual-reasoning-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/review-C/evidence-expansion-contract-findings-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/review-C/freeze_budget_negative_v1.py",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/review-C/freeze_budget_review_v2.py",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/review-C/freeze_contract_findings_v1.py",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/review-C/freeze_expanded_bound_review_v1.py",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/review-C/freeze_utf8_scope_negative_v1.py",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/review-C/freeze_utf8_scope_review_v2.py",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/review-C/typed-aggregate-budget-Source-negative-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/review-C/typed-aggregate-budget-Source-review-v2.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/review-C/typed-expanded-lower-bound-review-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/review-C/typed-utf8-residual-Source-negative-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/review-C/typed-utf8-residual-Source-review-v2.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/review-C/utf8-negative-preimages-v1/bank.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/review-C/utf8-negative-preimages-v1/contract.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/review-C/utf8-negative-preimages-v1/foundation.py",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/review-C/utf8-negative-preimages-v1/handoff.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/review-C/utf8-negative-preimages-v1/master.md",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/review-C/utf8-negative-preimages-v1/source.py",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/root/ROOT-continuation-assessment-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/root/build_report_assets_v1.py",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/root/checker-source-recovery-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/root/fixed-checker-evidence-preimage.tar.gz",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/root/fixed-checker-manifest-preimage.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/root/isolated-reader-preimage.html",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/root/research-direction-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/root/residual-sharing.svg",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/root/utf8-Source-handoff-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/root/utf8-Source-handoff-v2.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/root/utf8-prospective-bank-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/root/utf8-prospective-bank-v2.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/root/utf8-residual-contract-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/root/utf8-residual-contract-v2.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/root/utf8-static-audit-v1.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Current/root/utf8_residual_machine_v1.py",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-HistoricalContext/AGENTS.md",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-HistoricalContext/basic-tiling-algorithm.md",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-HistoricalContext/batch-component.py",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-HistoricalContext/batch-plan-authorized.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-HistoricalContext/complete-worker-failure.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-HistoricalContext/final-milestone.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-HistoricalContext/grant-retirement.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-HistoricalContext/implicit-inputs.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-HistoricalContext/negative-adoption.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-HistoricalContext/new-diagnostic-bank.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-HistoricalContext/point-search.py",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-HistoricalContext/worker.py",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Publication/evidence-limits-bound-review.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Publication/evidence-limits-publication-negative.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Publication/evidence-limits-residual.svg",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Publication/evidence-limits-summary.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Publication/evidence-limits-utf8-negative.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Publication/evidence-limits-utf8-review.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Publication/evidence-limits-writer-negative.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Publication/evidence-limits-writer-review.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Publication/evidence-limits.html",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-Publication/reader.html",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-PublicationWordingPredecessor/build_report_assets_v1.py",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-PublicationWordingPredecessor/evidence-limits-manifest.json",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-PublicationWordingPredecessor/evidence-limits-source.tar.gz",
+      "passed": true
+    },
+    {
+      "id": "final-outer-raw-pin-PublicationWordingPredecessor/pins.json",
+      "passed": true
+    },
+    {
+      "id": "embedded-manifest-exact",
+      "passed": true
+    },
+    {
+      "id": "README-correct-prospective-scope",
+      "passed": true
+    },
+    {
+      "id": "README-superseded-predecessor-labeled",
+      "passed": true
+    },
+    {
+      "id": "README-old-broad-claim-removed",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/bounds-B/cutoff-metadata-v1.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/bounds-B/freeze_notes_v1.py",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/bounds-B/handoff-v1.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/bounds-B/manual-expanded-lower-bound-v1.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/bounds-B/one-owner-field-map-v1.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/budget-L/API-v1.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/budget-L/API-v2.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/budget-L/aggregate_byte_budget_v1.py",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/budget-L/aggregate_byte_budget_v2.py",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/budget-L/author-static-audit-v1.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/budget-L/author-static-audit-v2.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/budget-L/author-static-audit-v3.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/budget-L/diagnostic-bank-v1.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/budget-L/diagnostic-bank-v2.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/budget-L/fixed-completion-Source-delta-v1.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/budget-L/fixed-completion-Source-v1-to-v2.patch",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/budget-L/freeze-manifest-v1.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/budget-L/freeze-manifest-v2.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/budget-L/handoff-v1.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/budget-L/handoff-v2.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/budget-L/manual-reasoning-v1.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/budget-L/manual-reasoning-v2.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/budget-L/review-preimage-24ebfb53.py",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/recovered-checker/CodecV2/API-v2.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/recovered-checker/CodecV2/Source-static-audit-v2.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/recovered-checker/CodecV2/Source-v1-to-v2.patch",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/recovered-checker/CodecV2/fixed_vm_codec_v2.py",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/recovered-checker/CodecV2/handoff-v2.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/recovered-checker/CodecV2/proof-delta-v2.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/recovered-checker/CodecV2/prospective-quota-diagnostics-v2.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/recovered-checker/EarlierDesign/fixed-interpreter-encoding-contract-v1.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/recovered-checker/IndependentReview/selector-VM-obligations-v2.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/recovered-checker/IndependentReview/typed-foundation-Source-review-v1.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/recovered-checker/PhysicalFoundation/API-v1.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/recovered-checker/PhysicalFoundation/Source-contract-v1.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/recovered-checker/PhysicalFoundation/author-static-audit-v1.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/recovered-checker/PhysicalFoundation/fixed_vm_physical_foundation_v1.py",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/recovered-checker/PhysicalFoundation/freeze_source_packet_v1.py",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/recovered-checker/PhysicalFoundation/handoff-v1.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/recovered-checker/PhysicalFoundation/next-architecture-options-v1.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/recovered-checker/PhysicalFoundation/physical-arguments-and-census-v1.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/recovered-checker/PhysicalFoundation/unexpanded-controller-obligations-v1.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/recovered-checker/RuntimeSource/combined_source.tree",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/recovered-checker/RuntimeSource/fol_source.tree",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/recovered-checker/RuntimeSource/legacy_wang.py",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/recovered-checker/RuntimeSource/tree.py",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/recovered-checker/RuntimeSource/wire_source.tree",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/review-C/budget-negative-preimages-v1/API-v1.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/review-C/budget-negative-preimages-v1/aggregate_byte_budget_v1.py",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/review-C/budget-negative-preimages-v1/author-static-audit-v2.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/review-C/budget-negative-preimages-v1/diagnostic-bank-v1.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/review-C/budget-negative-preimages-v1/freeze-manifest-v1.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/review-C/budget-negative-preimages-v1/handoff-v1.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/review-C/budget-negative-preimages-v1/manual-reasoning-v1.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/review-C/evidence-expansion-contract-findings-v1.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/review-C/freeze_budget_negative_v1.py",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/review-C/freeze_budget_review_v2.py",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/review-C/freeze_contract_findings_v1.py",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/review-C/freeze_expanded_bound_review_v1.py",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/review-C/freeze_utf8_scope_negative_v1.py",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/review-C/freeze_utf8_scope_review_v2.py",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/review-C/typed-aggregate-budget-Source-negative-v1.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/review-C/typed-aggregate-budget-Source-review-v2.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/review-C/typed-expanded-lower-bound-review-v1.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/review-C/typed-utf8-residual-Source-negative-v1.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/review-C/typed-utf8-residual-Source-review-v2.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/review-C/utf8-negative-preimages-v1/bank.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/review-C/utf8-negative-preimages-v1/contract.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/review-C/utf8-negative-preimages-v1/foundation.py",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/review-C/utf8-negative-preimages-v1/handoff.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/review-C/utf8-negative-preimages-v1/master.md",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/review-C/utf8-negative-preimages-v1/source.py",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/root/ROOT-continuation-assessment-v1.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/root/build_report_assets_v1.py",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/root/checker-source-recovery-v1.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/root/fixed-checker-evidence-preimage.tar.gz",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/root/fixed-checker-manifest-preimage.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/root/isolated-reader-preimage.html",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/root/research-direction-v1.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/root/residual-sharing.svg",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/root/utf8-Source-handoff-v1.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/root/utf8-Source-handoff-v2.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/root/utf8-prospective-bank-v1.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/root/utf8-prospective-bank-v2.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/root/utf8-residual-contract-v1.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/root/utf8-residual-contract-v2.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/root/utf8-static-audit-v1.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Current/root/utf8_residual_machine_v1.py",
+      "passed": true
+    },
+    {
+      "id": "historical-prefix-HistoricalContext/AGENTS.md",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-HistoricalContext/AGENTS.md",
+      "passed": true
+    },
+    {
+      "id": "historical-prefix-HistoricalContext/basic-tiling-algorithm.md",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-HistoricalContext/basic-tiling-algorithm.md",
+      "passed": true
+    },
+    {
+      "id": "historical-prefix-HistoricalContext/batch-component.py",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-HistoricalContext/batch-component.py",
+      "passed": true
+    },
+    {
+      "id": "historical-prefix-HistoricalContext/batch-plan-authorized.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-HistoricalContext/batch-plan-authorized.json",
+      "passed": true
+    },
+    {
+      "id": "historical-prefix-HistoricalContext/complete-worker-failure.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-HistoricalContext/complete-worker-failure.json",
+      "passed": true
+    },
+    {
+      "id": "historical-prefix-HistoricalContext/final-milestone.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-HistoricalContext/final-milestone.json",
+      "passed": true
+    },
+    {
+      "id": "historical-prefix-HistoricalContext/grant-retirement.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-HistoricalContext/grant-retirement.json",
+      "passed": true
+    },
+    {
+      "id": "historical-prefix-HistoricalContext/implicit-inputs.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-HistoricalContext/implicit-inputs.json",
+      "passed": true
+    },
+    {
+      "id": "historical-prefix-HistoricalContext/negative-adoption.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-HistoricalContext/negative-adoption.json",
+      "passed": true
+    },
+    {
+      "id": "historical-prefix-HistoricalContext/new-diagnostic-bank.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-HistoricalContext/new-diagnostic-bank.json",
+      "passed": true
+    },
+    {
+      "id": "historical-prefix-HistoricalContext/point-search.py",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-HistoricalContext/point-search.py",
+      "passed": true
+    },
+    {
+      "id": "historical-prefix-HistoricalContext/worker.py",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-HistoricalContext/worker.py",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Publication/evidence-limits-bound-review.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Publication/evidence-limits-publication-negative.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Publication/evidence-limits-residual.svg",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Publication/evidence-limits-summary.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Publication/evidence-limits-utf8-negative.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Publication/evidence-limits-utf8-review.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Publication/evidence-limits-writer-negative.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Publication/evidence-limits-writer-review.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Publication/evidence-limits.html",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-Publication/reader.html",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-PublicationWordingPredecessor/build_report_assets_v1.py",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-PublicationWordingPredecessor/evidence-limits-manifest.json",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-PublicationWordingPredecessor/evidence-limits-source.tar.gz",
+      "passed": true
+    },
+    {
+      "id": "archive-to-local-raw-join-PublicationWordingPredecessor/pins.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-pin-uniqueness",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-unique-members",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/bounds-B/cutoff-metadata-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/bounds-B/freeze_notes_v1.py",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/bounds-B/handoff-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/bounds-B/manual-expanded-lower-bound-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/bounds-B/one-owner-field-map-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/budget-L/API-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/budget-L/API-v2.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/budget-L/aggregate_byte_budget_v1.py",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/budget-L/aggregate_byte_budget_v2.py",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/budget-L/author-static-audit-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/budget-L/author-static-audit-v2.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/budget-L/author-static-audit-v3.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/budget-L/diagnostic-bank-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/budget-L/diagnostic-bank-v2.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/budget-L/fixed-completion-Source-delta-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/budget-L/fixed-completion-Source-v1-to-v2.patch",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/budget-L/freeze-manifest-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/budget-L/freeze-manifest-v2.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/budget-L/handoff-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/budget-L/handoff-v2.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/budget-L/manual-reasoning-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/budget-L/manual-reasoning-v2.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/budget-L/review-preimage-24ebfb53.py",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/recovered-checker/CodecV2/API-v2.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/recovered-checker/CodecV2/Source-static-audit-v2.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/recovered-checker/CodecV2/Source-v1-to-v2.patch",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/recovered-checker/CodecV2/fixed_vm_codec_v2.py",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/recovered-checker/CodecV2/handoff-v2.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/recovered-checker/CodecV2/proof-delta-v2.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/recovered-checker/CodecV2/prospective-quota-diagnostics-v2.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/recovered-checker/EarlierDesign/fixed-interpreter-encoding-contract-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/recovered-checker/IndependentReview/selector-VM-obligations-v2.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/recovered-checker/IndependentReview/typed-foundation-Source-review-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/recovered-checker/PhysicalFoundation/API-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/recovered-checker/PhysicalFoundation/Source-contract-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/recovered-checker/PhysicalFoundation/author-static-audit-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/recovered-checker/PhysicalFoundation/fixed_vm_physical_foundation_v1.py",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/recovered-checker/PhysicalFoundation/freeze_source_packet_v1.py",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/recovered-checker/PhysicalFoundation/handoff-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/recovered-checker/PhysicalFoundation/next-architecture-options-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/recovered-checker/PhysicalFoundation/physical-arguments-and-census-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/recovered-checker/PhysicalFoundation/unexpanded-controller-obligations-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/recovered-checker/RuntimeSource/combined_source.tree",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/recovered-checker/RuntimeSource/fol_source.tree",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/recovered-checker/RuntimeSource/legacy_wang.py",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/recovered-checker/RuntimeSource/tree.py",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/recovered-checker/RuntimeSource/wire_source.tree",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/review-C/budget-negative-preimages-v1/API-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/review-C/budget-negative-preimages-v1/aggregate_byte_budget_v1.py",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/review-C/budget-negative-preimages-v1/author-static-audit-v2.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/review-C/budget-negative-preimages-v1/diagnostic-bank-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/review-C/budget-negative-preimages-v1/freeze-manifest-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/review-C/budget-negative-preimages-v1/handoff-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/review-C/budget-negative-preimages-v1/manual-reasoning-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/review-C/evidence-expansion-contract-findings-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/review-C/freeze_budget_negative_v1.py",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/review-C/freeze_budget_review_v2.py",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/review-C/freeze_contract_findings_v1.py",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/review-C/freeze_expanded_bound_review_v1.py",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/review-C/freeze_utf8_scope_negative_v1.py",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/review-C/freeze_utf8_scope_review_v2.py",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/review-C/typed-aggregate-budget-Source-negative-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/review-C/typed-aggregate-budget-Source-review-v2.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/review-C/typed-expanded-lower-bound-review-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/review-C/typed-utf8-residual-Source-negative-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/review-C/typed-utf8-residual-Source-review-v2.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/review-C/utf8-negative-preimages-v1/bank.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/review-C/utf8-negative-preimages-v1/contract.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/review-C/utf8-negative-preimages-v1/foundation.py",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/review-C/utf8-negative-preimages-v1/handoff.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/review-C/utf8-negative-preimages-v1/master.md",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/review-C/utf8-negative-preimages-v1/source.py",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/root/ROOT-continuation-assessment-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/root/build_report_assets_v1.py",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/root/checker-source-recovery-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/root/fixed-checker-evidence-preimage.tar.gz",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/root/fixed-checker-manifest-preimage.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/root/isolated-reader-preimage.html",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/root/research-direction-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/root/residual-sharing.svg",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/root/utf8-Source-handoff-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/root/utf8-Source-handoff-v2.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/root/utf8-prospective-bank-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/root/utf8-prospective-bank-v2.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/root/utf8-residual-contract-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/root/utf8-residual-contract-v2.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/root/utf8-static-audit-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Current/root/utf8_residual_machine_v1.py",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-HistoricalContext/AGENTS.md",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-HistoricalContext/basic-tiling-algorithm.md",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-HistoricalContext/batch-component.py",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-HistoricalContext/batch-plan-authorized.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-HistoricalContext/complete-worker-failure.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-HistoricalContext/final-milestone.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-HistoricalContext/grant-retirement.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-HistoricalContext/implicit-inputs.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-HistoricalContext/negative-adoption.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-HistoricalContext/new-diagnostic-bank.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-HistoricalContext/point-search.py",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-HistoricalContext/worker.py",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-MANIFEST.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Publication/evidence-limits-bound-review.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Publication/evidence-limits-residual.svg",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Publication/evidence-limits-summary.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Publication/evidence-limits-utf8-negative.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Publication/evidence-limits-utf8-review.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Publication/evidence-limits-writer-negative.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Publication/evidence-limits-writer-review.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Publication/evidence-limits.html",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-Publication/reader.html",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-safe-regular-README.txt",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-exact-membership",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/bounds-B/cutoff-metadata-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/bounds-B/freeze_notes_v1.py",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/bounds-B/handoff-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/bounds-B/manual-expanded-lower-bound-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/bounds-B/one-owner-field-map-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/budget-L/API-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/budget-L/API-v2.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/budget-L/aggregate_byte_budget_v1.py",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/budget-L/aggregate_byte_budget_v2.py",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/budget-L/author-static-audit-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/budget-L/author-static-audit-v2.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/budget-L/author-static-audit-v3.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/budget-L/diagnostic-bank-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/budget-L/diagnostic-bank-v2.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/budget-L/fixed-completion-Source-delta-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/budget-L/fixed-completion-Source-v1-to-v2.patch",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/budget-L/freeze-manifest-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/budget-L/freeze-manifest-v2.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/budget-L/handoff-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/budget-L/handoff-v2.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/budget-L/manual-reasoning-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/budget-L/manual-reasoning-v2.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/budget-L/review-preimage-24ebfb53.py",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/recovered-checker/CodecV2/API-v2.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/recovered-checker/CodecV2/Source-static-audit-v2.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/recovered-checker/CodecV2/Source-v1-to-v2.patch",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/recovered-checker/CodecV2/fixed_vm_codec_v2.py",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/recovered-checker/CodecV2/handoff-v2.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/recovered-checker/CodecV2/proof-delta-v2.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/recovered-checker/CodecV2/prospective-quota-diagnostics-v2.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/recovered-checker/EarlierDesign/fixed-interpreter-encoding-contract-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/recovered-checker/IndependentReview/selector-VM-obligations-v2.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/recovered-checker/IndependentReview/typed-foundation-Source-review-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/recovered-checker/PhysicalFoundation/API-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/recovered-checker/PhysicalFoundation/Source-contract-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/recovered-checker/PhysicalFoundation/author-static-audit-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/recovered-checker/PhysicalFoundation/fixed_vm_physical_foundation_v1.py",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/recovered-checker/PhysicalFoundation/freeze_source_packet_v1.py",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/recovered-checker/PhysicalFoundation/handoff-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/recovered-checker/PhysicalFoundation/next-architecture-options-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/recovered-checker/PhysicalFoundation/physical-arguments-and-census-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/recovered-checker/PhysicalFoundation/unexpanded-controller-obligations-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/recovered-checker/RuntimeSource/combined_source.tree",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/recovered-checker/RuntimeSource/fol_source.tree",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/recovered-checker/RuntimeSource/legacy_wang.py",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/recovered-checker/RuntimeSource/tree.py",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/recovered-checker/RuntimeSource/wire_source.tree",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/review-C/budget-negative-preimages-v1/API-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/review-C/budget-negative-preimages-v1/aggregate_byte_budget_v1.py",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/review-C/budget-negative-preimages-v1/author-static-audit-v2.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/review-C/budget-negative-preimages-v1/diagnostic-bank-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/review-C/budget-negative-preimages-v1/freeze-manifest-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/review-C/budget-negative-preimages-v1/handoff-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/review-C/budget-negative-preimages-v1/manual-reasoning-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/review-C/evidence-expansion-contract-findings-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/review-C/freeze_budget_negative_v1.py",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/review-C/freeze_budget_review_v2.py",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/review-C/freeze_contract_findings_v1.py",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/review-C/freeze_expanded_bound_review_v1.py",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/review-C/freeze_utf8_scope_negative_v1.py",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/review-C/freeze_utf8_scope_review_v2.py",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/review-C/typed-aggregate-budget-Source-negative-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/review-C/typed-aggregate-budget-Source-review-v2.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/review-C/typed-expanded-lower-bound-review-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/review-C/typed-utf8-residual-Source-negative-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/review-C/typed-utf8-residual-Source-review-v2.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/review-C/utf8-negative-preimages-v1/bank.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/review-C/utf8-negative-preimages-v1/contract.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/review-C/utf8-negative-preimages-v1/foundation.py",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/review-C/utf8-negative-preimages-v1/handoff.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/review-C/utf8-negative-preimages-v1/master.md",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/review-C/utf8-negative-preimages-v1/source.py",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/root/ROOT-continuation-assessment-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/root/build_report_assets_v1.py",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/root/checker-source-recovery-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/root/fixed-checker-evidence-preimage.tar.gz",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/root/fixed-checker-manifest-preimage.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/root/isolated-reader-preimage.html",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/root/research-direction-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/root/residual-sharing.svg",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/root/utf8-Source-handoff-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/root/utf8-Source-handoff-v2.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/root/utf8-prospective-bank-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/root/utf8-prospective-bank-v2.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/root/utf8-residual-contract-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/root/utf8-residual-contract-v2.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/root/utf8-static-audit-v1.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Current/root/utf8_residual_machine_v1.py",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-HistoricalContext/AGENTS.md",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-HistoricalContext/basic-tiling-algorithm.md",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-HistoricalContext/batch-component.py",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-HistoricalContext/batch-plan-authorized.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-HistoricalContext/complete-worker-failure.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-HistoricalContext/final-milestone.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-HistoricalContext/grant-retirement.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-HistoricalContext/implicit-inputs.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-HistoricalContext/negative-adoption.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-HistoricalContext/new-diagnostic-bank.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-HistoricalContext/point-search.py",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-HistoricalContext/worker.py",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Publication/evidence-limits-bound-review.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Publication/evidence-limits-residual.svg",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Publication/evidence-limits-summary.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Publication/evidence-limits-utf8-negative.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Publication/evidence-limits-utf8-review.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Publication/evidence-limits-writer-negative.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Publication/evidence-limits-writer-review.json",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Publication/evidence-limits.html",
+      "passed": true
+    },
+    {
+      "id": "superseded-wording-predecessor-raw-pin-Publication/reader.html",
+      "passed": true
+    },
+    {
+      "id": "predecessor-embedded-manifest-exact",
+      "passed": true
+    },
+    {
+      "id": "rejected-README-preserved",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-pin-uniqueness",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-unique-members",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-CodecV1/API-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-CodecV1/Source-static-audit-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-CodecV1/basic-tiling-algorithm-current.md",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-CodecV1/codec-reasoning-v1.html",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-CodecV1/fixed_vm_codec_v1.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-CodecV1/handoff-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-CodecV1/prospective-calibration-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-CodecV1/whole-checker-manifest-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-CodecV2/API-v2.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-CodecV2/Source-static-audit-v2.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-CodecV2/Source-v1-to-v2.patch",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-CodecV2/fixed_vm_codec_v2.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-CodecV2/handoff-v2.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-CodecV2/proof-delta-v2.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-CodecV2/prospective-quota-diagnostics-v2.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-EarlierDesign/fixed-interpreter-encoding-contract-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-IndependentReview/freeze_codec_Source_review_v2.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-IndependentReview/freeze_codec_negative_correction_v1b.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-IndependentReview/freeze_codec_negative_v1.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-IndependentReview/freeze_component_prospective_negative_v1.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-IndependentReview/freeze_component_prospective_review_v2.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-IndependentReview/freeze_current_master_obligations_v2.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-IndependentReview/freeze_design_obligations_v1.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-IndependentReview/freeze_final_grant_delta_v2.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-IndependentReview/freeze_foundation_Source_review_v1.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-IndependentReview/freeze_initializer_Source_review_v1.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-IndependentReview/freeze_saved_actual_review_v2.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-IndependentReview/freeze_saved_summary_amendment_v3.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-IndependentReview/selector-VM-obligations-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-IndependentReview/selector-VM-obligations-v2.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-IndependentReview/typed-codec-Source-negative-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-IndependentReview/typed-codec-Source-negative-v1b.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-IndependentReview/typed-codec-Source-review-v2.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-IndependentReview/typed-component-Source-prospective-negative-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-IndependentReview/typed-component-Source-prospective-review-v2.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-IndependentReview/typed-final-grant-delta-review-v2.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-IndependentReview/typed-foundation-Source-review-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-IndependentReview/typed-initializer-Source-review-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-IndependentReview/typed-saved-actual-review-v2.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-IndependentReview/typed-saved-actual-review-v3.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-PhysicalFoundation/API-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-PhysicalFoundation/Source-contract-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-PhysicalFoundation/author-static-audit-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-PhysicalFoundation/fixed_vm_physical_foundation_v1.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-PhysicalFoundation/freeze_source_packet_v1.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-PhysicalFoundation/handoff-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-PhysicalFoundation/next-architecture-options-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-PhysicalFoundation/physical-arguments-and-census-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-PhysicalFoundation/unexpanded-controller-obligations-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/ROOT-all-idle-fresh-barrier-v2.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/ROOT-component-adoption-v2.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/ROOT-grant-retirement-v2.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/ROOT-passive-actual-summary-v2.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/ROOT-previous-turn-assessment-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/ROOT-prospective-v1-retirement.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/actual-components-v2/CONSUMED.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/actual-components-v2/WORKER_CONSUMED.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/actual-components-v2/canonical-codec-initializer-calibration.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/actual-components-v2/result.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/actual-components-v2/runner-receipt.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/actual-components-v2/stderr.bin",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/actual-components-v2/stdout.bin",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/actual-components-v2/worker-receipt.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/author_component_grant_v2.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/author_component_inputs_v1.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/author_component_inputs_v2.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/author_component_plan_v1.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/author_component_plan_v2.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/author_outer_stem_v1.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/author_worker_stem_v1.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/basic-tiling-algorithm-current.md",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/build_saved_report_v2.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/component-Source-only-offer-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/component-Source-only-offer-v2.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/component-authorization-false-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/component-authorization-false-v2.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/component-authorization-once-v2.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/component-declaration-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/component-declaration-v2.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/component-inputs-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/component-inputs-v2.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/component-plan-authorized-v2-terminal-observation/CONSUMED.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/component-plan-authorized-v2-terminal-observation/stderr.bin",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/component-plan-authorized-v2-terminal-observation/stdout.bin",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/component-plan-authorized-v2-terminal-observation/terminal.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/component-plan-authorized-v2.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/component-plan-false-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/component-plan-false-v2.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/component-runtime-closure-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/component-runtime-closure-v2.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/fixed-checker-template.html",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/initializer-API-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/master-conformance-v2.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/observe_codec_initializer_once_v1.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/observe_codec_initializer_once_v2.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/prefreeze-reconstruction-custody-v0.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/preserve_prefreeze_source_v0.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/prospective-v1-retired/component-Source-only-offer-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/prospective-v1-retired/component-authorization-false-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/prospective-v1-retired/component-declaration-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/prospective-v1-retired/component-inputs-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/prospective-v1-retired/component-plan-false-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/prospective-v1-retired/component-runtime-closure-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/prospective-v1-retired/observe_codec_initializer_once_v1.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/prospective-v1-retired/qualify_codec_initializer_worker_v1.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/prospective-v1-retired/run_codec_initializer_once_v1.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/qualify_codec_initializer_worker_v1.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/qualify_codec_initializer_worker_v2.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/reader-append-custody-v2.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/reader-preimage.html",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/retire_prospective_v1.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/run_codec_initializer_once_v1.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/run_codec_initializer_once_v2.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/wang_unknown_certificate_initializer_PREFREEZE_v0.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-Root/wang_unknown_certificate_initializer_v1.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-RuntimeSource/combined_source.tree",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-RuntimeSource/fol_source.tree",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-RuntimeSource/legacy_wang.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-RuntimeSource/tree.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-RuntimeSource/wire_source.tree",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-safe-regular-PATHMAP.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-exact-membership",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-CodecV1/API-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-CodecV1/Source-static-audit-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-CodecV1/basic-tiling-algorithm-current.md",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-CodecV1/codec-reasoning-v1.html",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-CodecV1/fixed_vm_codec_v1.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-CodecV1/handoff-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-CodecV1/prospective-calibration-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-CodecV1/whole-checker-manifest-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-CodecV2/API-v2.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-CodecV2/Source-static-audit-v2.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-CodecV2/Source-v1-to-v2.patch",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-CodecV2/fixed_vm_codec_v2.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-CodecV2/handoff-v2.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-CodecV2/proof-delta-v2.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-CodecV2/prospective-quota-diagnostics-v2.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-EarlierDesign/fixed-interpreter-encoding-contract-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-IndependentReview/freeze_codec_Source_review_v2.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-IndependentReview/freeze_codec_negative_correction_v1b.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-IndependentReview/freeze_codec_negative_v1.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-IndependentReview/freeze_component_prospective_negative_v1.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-IndependentReview/freeze_component_prospective_review_v2.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-IndependentReview/freeze_current_master_obligations_v2.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-IndependentReview/freeze_design_obligations_v1.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-IndependentReview/freeze_final_grant_delta_v2.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-IndependentReview/freeze_foundation_Source_review_v1.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-IndependentReview/freeze_initializer_Source_review_v1.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-IndependentReview/freeze_saved_actual_review_v2.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-IndependentReview/freeze_saved_summary_amendment_v3.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-IndependentReview/selector-VM-obligations-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-IndependentReview/selector-VM-obligations-v2.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-IndependentReview/typed-codec-Source-negative-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-IndependentReview/typed-codec-Source-negative-v1b.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-IndependentReview/typed-codec-Source-review-v2.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-IndependentReview/typed-component-Source-prospective-negative-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-IndependentReview/typed-component-Source-prospective-review-v2.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-IndependentReview/typed-final-grant-delta-review-v2.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-IndependentReview/typed-foundation-Source-review-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-IndependentReview/typed-initializer-Source-review-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-IndependentReview/typed-saved-actual-review-v2.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-IndependentReview/typed-saved-actual-review-v3.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-PhysicalFoundation/API-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-PhysicalFoundation/Source-contract-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-PhysicalFoundation/author-static-audit-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-PhysicalFoundation/fixed_vm_physical_foundation_v1.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-PhysicalFoundation/freeze_source_packet_v1.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-PhysicalFoundation/handoff-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-PhysicalFoundation/next-architecture-options-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-PhysicalFoundation/physical-arguments-and-census-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-PhysicalFoundation/unexpanded-controller-obligations-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/ROOT-all-idle-fresh-barrier-v2.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/ROOT-component-adoption-v2.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/ROOT-grant-retirement-v2.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/ROOT-passive-actual-summary-v2.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/ROOT-previous-turn-assessment-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/ROOT-prospective-v1-retirement.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/actual-components-v2/CONSUMED.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/actual-components-v2/WORKER_CONSUMED.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/actual-components-v2/canonical-codec-initializer-calibration.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/actual-components-v2/result.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/actual-components-v2/runner-receipt.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/actual-components-v2/stderr.bin",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/actual-components-v2/stdout.bin",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/actual-components-v2/worker-receipt.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/author_component_grant_v2.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/author_component_inputs_v1.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/author_component_inputs_v2.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/author_component_plan_v1.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/author_component_plan_v2.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/author_outer_stem_v1.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/author_worker_stem_v1.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/basic-tiling-algorithm-current.md",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/build_saved_report_v2.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/component-Source-only-offer-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/component-Source-only-offer-v2.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/component-authorization-false-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/component-authorization-false-v2.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/component-authorization-once-v2.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/component-declaration-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/component-declaration-v2.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/component-inputs-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/component-inputs-v2.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/component-plan-authorized-v2-terminal-observation/CONSUMED.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/component-plan-authorized-v2-terminal-observation/stderr.bin",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/component-plan-authorized-v2-terminal-observation/stdout.bin",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/component-plan-authorized-v2-terminal-observation/terminal.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/component-plan-authorized-v2.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/component-plan-false-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/component-plan-false-v2.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/component-runtime-closure-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/component-runtime-closure-v2.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/fixed-checker-template.html",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/initializer-API-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/master-conformance-v2.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/observe_codec_initializer_once_v1.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/observe_codec_initializer_once_v2.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/prefreeze-reconstruction-custody-v0.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/preserve_prefreeze_source_v0.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/prospective-v1-retired/component-Source-only-offer-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/prospective-v1-retired/component-authorization-false-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/prospective-v1-retired/component-declaration-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/prospective-v1-retired/component-inputs-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/prospective-v1-retired/component-plan-false-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/prospective-v1-retired/component-runtime-closure-v1.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/prospective-v1-retired/observe_codec_initializer_once_v1.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/prospective-v1-retired/qualify_codec_initializer_worker_v1.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/prospective-v1-retired/run_codec_initializer_once_v1.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/qualify_codec_initializer_worker_v1.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/qualify_codec_initializer_worker_v2.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/reader-append-custody-v2.json",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/reader-preimage.html",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/retire_prospective_v1.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/run_codec_initializer_once_v1.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/run_codec_initializer_once_v2.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/wang_unknown_certificate_initializer_PREFREEZE_v0.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-Root/wang_unknown_certificate_initializer_v1.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-RuntimeSource/combined_source.tree",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-RuntimeSource/fol_source.tree",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-RuntimeSource/legacy_wang.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-RuntimeSource/tree.py",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-raw-pin-RuntimeSource/wire_source.tree",
+      "passed": true
+    },
+    {
+      "id": "current-fixed-checker-complete-historical-actual-members",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-pin-uniqueness",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-unique-members",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-CodecV1/API-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-CodecV1/Source-static-audit-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-CodecV1/basic-tiling-algorithm-current.md",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-CodecV1/codec-reasoning-v1.html",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-CodecV1/fixed_vm_codec_v1.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-CodecV1/handoff-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-CodecV1/prospective-calibration-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-CodecV1/whole-checker-manifest-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-CodecV2/API-v2.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-CodecV2/Source-static-audit-v2.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-CodecV2/Source-v1-to-v2.patch",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-CodecV2/fixed_vm_codec_v2.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-CodecV2/handoff-v2.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-CodecV2/proof-delta-v2.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-CodecV2/prospective-quota-diagnostics-v2.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-EarlierDesign/fixed-interpreter-encoding-contract-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-IndependentReview/freeze_codec_Source_review_v2.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-IndependentReview/freeze_codec_negative_correction_v1b.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-IndependentReview/freeze_codec_negative_v1.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-IndependentReview/freeze_component_prospective_negative_v1.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-IndependentReview/freeze_component_prospective_review_v2.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-IndependentReview/freeze_current_master_obligations_v2.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-IndependentReview/freeze_design_obligations_v1.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-IndependentReview/freeze_final_grant_delta_v2.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-IndependentReview/freeze_foundation_Source_review_v1.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-IndependentReview/freeze_initializer_Source_review_v1.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-IndependentReview/freeze_saved_actual_review_v2.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-IndependentReview/freeze_saved_summary_amendment_v3.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-IndependentReview/selector-VM-obligations-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-IndependentReview/selector-VM-obligations-v2.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-IndependentReview/typed-codec-Source-negative-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-IndependentReview/typed-codec-Source-negative-v1b.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-IndependentReview/typed-codec-Source-review-v2.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-IndependentReview/typed-component-Source-prospective-negative-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-IndependentReview/typed-component-Source-prospective-review-v2.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-IndependentReview/typed-final-grant-delta-review-v2.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-IndependentReview/typed-foundation-Source-review-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-IndependentReview/typed-initializer-Source-review-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-IndependentReview/typed-saved-actual-review-v2.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-IndependentReview/typed-saved-actual-review-v3.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-PhysicalFoundation/API-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-PhysicalFoundation/Source-contract-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-PhysicalFoundation/author-static-audit-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-PhysicalFoundation/fixed_vm_physical_foundation_v1.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-PhysicalFoundation/freeze_source_packet_v1.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-PhysicalFoundation/handoff-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-PhysicalFoundation/next-architecture-options-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-PhysicalFoundation/physical-arguments-and-census-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-PhysicalFoundation/unexpanded-controller-obligations-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/ROOT-all-idle-fresh-barrier-v2.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/ROOT-component-adoption-v2.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/ROOT-grant-retirement-v2.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/ROOT-passive-actual-summary-v2.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/ROOT-previous-turn-assessment-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/ROOT-prospective-v1-retirement.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/actual-components-v2/CONSUMED.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/actual-components-v2/WORKER_CONSUMED.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/actual-components-v2/canonical-codec-initializer-calibration.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/actual-components-v2/result.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/actual-components-v2/runner-receipt.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/actual-components-v2/stderr.bin",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/actual-components-v2/stdout.bin",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/actual-components-v2/worker-receipt.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/author_component_grant_v2.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/author_component_inputs_v1.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/author_component_inputs_v2.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/author_component_plan_v1.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/author_component_plan_v2.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/author_outer_stem_v1.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/author_worker_stem_v1.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/basic-tiling-algorithm-current.md",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/build_saved_report_v2.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/component-Source-only-offer-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/component-Source-only-offer-v2.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/component-authorization-false-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/component-authorization-false-v2.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/component-authorization-once-v2.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/component-declaration-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/component-declaration-v2.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/component-inputs-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/component-inputs-v2.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/component-plan-authorized-v2-terminal-observation/CONSUMED.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/component-plan-authorized-v2-terminal-observation/stderr.bin",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/component-plan-authorized-v2-terminal-observation/stdout.bin",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/component-plan-authorized-v2-terminal-observation/terminal.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/component-plan-authorized-v2.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/component-plan-false-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/component-plan-false-v2.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/component-runtime-closure-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/component-runtime-closure-v2.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/fixed-checker-template.html",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/initializer-API-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/master-conformance-v2.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/observe_codec_initializer_once_v1.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/observe_codec_initializer_once_v2.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/prefreeze-reconstruction-custody-v0.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/preserve_prefreeze_source_v0.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/prospective-v1-retired/component-Source-only-offer-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/prospective-v1-retired/component-authorization-false-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/prospective-v1-retired/component-declaration-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/prospective-v1-retired/component-inputs-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/prospective-v1-retired/component-plan-false-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/prospective-v1-retired/component-runtime-closure-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/prospective-v1-retired/observe_codec_initializer_once_v1.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/prospective-v1-retired/qualify_codec_initializer_worker_v1.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/prospective-v1-retired/run_codec_initializer_once_v1.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/qualify_codec_initializer_worker_v1.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/qualify_codec_initializer_worker_v2.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/reader-append-custody-v2.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/reader-preimage.html",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/retire_prospective_v1.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/run_codec_initializer_once_v1.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/run_codec_initializer_once_v2.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/wang_unknown_certificate_initializer_PREFREEZE_v0.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-Root/wang_unknown_certificate_initializer_v1.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-RuntimeSource/combined_source.tree",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-RuntimeSource/fol_source.tree",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-RuntimeSource/legacy_wang.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-RuntimeSource/tree.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-RuntimeSource/wire_source.tree",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-safe-regular-PATHMAP.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-exact-membership",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-CodecV1/API-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-CodecV1/Source-static-audit-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-CodecV1/basic-tiling-algorithm-current.md",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-CodecV1/codec-reasoning-v1.html",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-CodecV1/fixed_vm_codec_v1.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-CodecV1/handoff-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-CodecV1/prospective-calibration-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-CodecV1/whole-checker-manifest-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-CodecV2/API-v2.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-CodecV2/Source-static-audit-v2.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-CodecV2/Source-v1-to-v2.patch",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-CodecV2/fixed_vm_codec_v2.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-CodecV2/handoff-v2.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-CodecV2/proof-delta-v2.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-CodecV2/prospective-quota-diagnostics-v2.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-EarlierDesign/fixed-interpreter-encoding-contract-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-IndependentReview/freeze_codec_Source_review_v2.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-IndependentReview/freeze_codec_negative_correction_v1b.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-IndependentReview/freeze_codec_negative_v1.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-IndependentReview/freeze_component_prospective_negative_v1.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-IndependentReview/freeze_component_prospective_review_v2.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-IndependentReview/freeze_current_master_obligations_v2.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-IndependentReview/freeze_design_obligations_v1.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-IndependentReview/freeze_final_grant_delta_v2.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-IndependentReview/freeze_foundation_Source_review_v1.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-IndependentReview/freeze_initializer_Source_review_v1.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-IndependentReview/freeze_saved_actual_review_v2.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-IndependentReview/freeze_saved_summary_amendment_v3.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-IndependentReview/selector-VM-obligations-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-IndependentReview/selector-VM-obligations-v2.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-IndependentReview/typed-codec-Source-negative-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-IndependentReview/typed-codec-Source-negative-v1b.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-IndependentReview/typed-codec-Source-review-v2.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-IndependentReview/typed-component-Source-prospective-negative-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-IndependentReview/typed-component-Source-prospective-review-v2.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-IndependentReview/typed-final-grant-delta-review-v2.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-IndependentReview/typed-foundation-Source-review-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-IndependentReview/typed-initializer-Source-review-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-IndependentReview/typed-saved-actual-review-v2.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-IndependentReview/typed-saved-actual-review-v3.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-PhysicalFoundation/API-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-PhysicalFoundation/Source-contract-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-PhysicalFoundation/author-static-audit-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-PhysicalFoundation/fixed_vm_physical_foundation_v1.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-PhysicalFoundation/freeze_source_packet_v1.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-PhysicalFoundation/handoff-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-PhysicalFoundation/next-architecture-options-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-PhysicalFoundation/physical-arguments-and-census-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-PhysicalFoundation/unexpanded-controller-obligations-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/ROOT-all-idle-fresh-barrier-v2.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/ROOT-component-adoption-v2.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/ROOT-grant-retirement-v2.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/ROOT-passive-actual-summary-v2.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/ROOT-previous-turn-assessment-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/ROOT-prospective-v1-retirement.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/actual-components-v2/CONSUMED.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/actual-components-v2/WORKER_CONSUMED.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/actual-components-v2/canonical-codec-initializer-calibration.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/actual-components-v2/result.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/actual-components-v2/runner-receipt.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/actual-components-v2/stderr.bin",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/actual-components-v2/stdout.bin",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/actual-components-v2/worker-receipt.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/author_component_grant_v2.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/author_component_inputs_v1.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/author_component_inputs_v2.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/author_component_plan_v1.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/author_component_plan_v2.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/author_outer_stem_v1.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/author_worker_stem_v1.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/basic-tiling-algorithm-current.md",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/build_saved_report_v2.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/component-Source-only-offer-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/component-Source-only-offer-v2.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/component-authorization-false-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/component-authorization-false-v2.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/component-authorization-once-v2.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/component-declaration-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/component-declaration-v2.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/component-inputs-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/component-inputs-v2.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/component-plan-authorized-v2-terminal-observation/CONSUMED.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/component-plan-authorized-v2-terminal-observation/stderr.bin",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/component-plan-authorized-v2-terminal-observation/stdout.bin",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/component-plan-authorized-v2-terminal-observation/terminal.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/component-plan-authorized-v2.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/component-plan-false-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/component-plan-false-v2.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/component-runtime-closure-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/component-runtime-closure-v2.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/fixed-checker-template.html",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/initializer-API-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/master-conformance-v2.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/observe_codec_initializer_once_v1.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/observe_codec_initializer_once_v2.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/prefreeze-reconstruction-custody-v0.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/preserve_prefreeze_source_v0.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/prospective-v1-retired/component-Source-only-offer-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/prospective-v1-retired/component-authorization-false-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/prospective-v1-retired/component-declaration-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/prospective-v1-retired/component-inputs-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/prospective-v1-retired/component-plan-false-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/prospective-v1-retired/component-runtime-closure-v1.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/prospective-v1-retired/observe_codec_initializer_once_v1.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/prospective-v1-retired/qualify_codec_initializer_worker_v1.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/prospective-v1-retired/run_codec_initializer_once_v1.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/qualify_codec_initializer_worker_v1.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/qualify_codec_initializer_worker_v2.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/reader-append-custody-v2.json",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/reader-preimage.html",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/retire_prospective_v1.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/run_codec_initializer_once_v1.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/run_codec_initializer_once_v2.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/wang_unknown_certificate_initializer_PREFREEZE_v0.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-Root/wang_unknown_certificate_initializer_v1.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-RuntimeSource/combined_source.tree",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-RuntimeSource/fol_source.tree",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-RuntimeSource/legacy_wang.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-RuntimeSource/tree.py",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-raw-pin-RuntimeSource/wire_source.tree",
+      "passed": true
+    },
+    {
+      "id": "predecessor-fixed-checker-complete-historical-actual-members",
+      "passed": true
+    },
+    {
+      "id": "HTML-only-evidence-disclosure-delta",
+      "passed": true
+    },
+    {
+      "id": "HTML-rejected-wording-disclosure",
+      "passed": true
+    },
+    {
+      "id": "exactly-one-reader-card",
+      "passed": true
+    },
+    {
+      "id": "reader-raw-inverse-exact",
+      "passed": true
+    },
+    {
+      "id": "reader-original-preimage-pin",
+      "passed": true
+    },
+    {
+      "id": "SVG-no-active-or-external-content",
+      "passed": true
+    },
+    {
+      "id": "SVG-only-two-shortened-labels",
+      "passed": true
+    },
+    {
+      "id": "reviewed-bound-constant-selected_receipts",
+      "passed": true
+    },
+    {
+      "id": "reviewed-bound-constant-typed_disjoint_subtrees_lower_bytes",
+      "passed": true
+    },
+    {
+      "id": "reviewed-bound-constant-started_profiles_subtracted",
+      "passed": true
+    },
+    {
+      "id": "reviewed-bound-constant-overhead_per_scope_upper_bytes",
+      "passed": true
+    },
+    {
+      "id": "reviewed-bound-constant-expanded_delta_lower_bytes",
+      "passed": true
+    },
+    {
+      "id": "reviewed-bound-constant-raw_partial_length_only",
+      "passed": true
+    },
+    {
+      "id": "reviewed-bound-constant-old_expanded_lower_bytes",
+      "passed": true
+    },
+    {
+      "id": "reviewed-bound-constant-unchanged_limit_bytes",
+      "passed": true
+    },
+    {
+      "id": "reviewed-bound-constant-excess_lower_bytes",
+      "passed": true
+    },
+    {
+      "id": "manual-bound-arithmetic",
+      "passed": true
+    },
+    {
+      "id": "explicit-zero-new_actual_invocations",
+      "passed": true
+    },
+    {
+      "id": "explicit-zero-new_grants",
+      "passed": true
+    },
+    {
+      "id": "explicit-zero-old_grant_remaining",
+      "passed": true
+    },
+    {
+      "id": "explicit-zero-subject_imports",
+      "passed": true
+    },
+    {
+      "id": "explicit-zero-subject_function_calls",
+      "passed": true
+    },
+    {
+      "id": "explicit-zero-compiler_calls",
+      "passed": true
+    },
+    {
+      "id": "explicit-zero-checker_calls",
+      "passed": true
+    },
+    {
+      "id": "explicit-zero-simulator_calls",
+      "passed": true
+    },
+    {
+      "id": "explicit-zero-fixture_calls",
+      "passed": true
+    },
+    {
+      "id": "explicit-zero-sizing_probes",
+      "passed": true
+    },
+    {
+      "id": "explicit-zero-semantic_replays",
+      "passed": true
+    },
+    {
+      "id": "explicit-zero-partial_content_reads",
+      "passed": true
+    },
+    {
+      "id": "explicit-zero-partial_JSON_parses",
+      "passed": true
+    },
+    {
+      "id": "explicit-zero-accepted_new_theorems",
+      "passed": true
+    },
+    {
+      "id": "goal-active",
+      "passed": true
+    },
+    {
+      "id": "no-GCTS-RL-advantage",
+      "passed": true
+    },
+    {
+      "id": "G1-proposal-only",
+      "passed": true
+    },
+    {
+      "id": "lexical-manual-bound-old_unshared_working_states",
+      "passed": true
+    },
+    {
+      "id": "lexical-manual-bound-working_states_manual_upper",
+      "passed": true
+    },
+    {
+      "id": "lexical-manual-bound-total_states_manual_upper",
+      "passed": true
+    },
+    {
+      "id": "lexical-manual-bound-transitions_manual_upper",
+      "passed": true
+    },
+    {
+      "id": "lexical-manual-bound-undefined_halt_slots",
+      "passed": true
+    },
+    {
+      "id": "lexical-no-runtime-or-palette-fit",
+      "passed": true
+    },
+    {
+      "id": "independent-review-copy-evidence-limits-bound-review.json",
+      "passed": true
+    },
+    {
+      "id": "independent-review-copy-evidence-limits-writer-negative.json",
+      "passed": true
+    },
+    {
+      "id": "independent-review-copy-evidence-limits-writer-review.json",
+      "passed": true
+    },
+    {
+      "id": "independent-review-copy-evidence-limits-utf8-negative.json",
+      "passed": true
+    },
+    {
+      "id": "independent-review-copy-evidence-limits-utf8-review.json",
+      "passed": true
+    },
+    {
+      "id": "independent-review-copy-evidence-limits-publication-negative.json",
+      "passed": true
+    },
+    {
+      "id": "unchanged-caps-and-bank-source",
+      "passed": true
+    }
+  ],
+  "compiler_calls": 0,
+  "failed_checks": [],
+  "fixture_calls": 0,
+  "helper_calls": 0,
+  "manifest": {
+    "bytes": 23486,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/evidence-limits-manifest.json",
+    "sha256": "5e2ab812c3c9303628fab8270ccfd4d80a2079115c3978d9f9ce174fe90b33fb"
+  },
+  "manual_findings": [
+    "The conditional arithmetic and its assumptions agree with the independently reviewed338-byte/2048-byte Source/counter argument. It remains a negative resource bound; it is not an exact packet size, new run or mathematical admission.",
+    "The proposed one-owner evidence contract explicitly changes the logical gate. G1 is unimplemented/unadopted, with no complete fitting bound or execution authority; oldG0 rejection remains.",
+    "Writer successor correction and preserved negative are accurately described. All49groups70variants remain declarative and unrun; reservations do not guarantee persistence or process survival.",
+    "UTF8 accepted-language/byte-mode scope is distinguished from old physical trajectories and costs.314/317/1256 are manual Source bounds, not generated counts or whole-VM/palette fit.",
+    "Exact writer, UTF8, bound and publication-wording review bytes are copied. The overbroad README and exact prior archive/manifest/author are preserved and explicitly superseded; the current README correctly scopes new prospective banks.",
+    "Every outer and nested archive member is a safe unique regular-file path. All declared raw member pins match. No partial-file member occurs in any archive level; no partial was opened or parsed.",
+    "Every current outer archive member matches its explicitly mapped durable source or publication bytes. Historical complete metadata is retained with historical execution status, including complete fixed-checker actual records.",
+    "Reader raw inverse is exactly one new card; other reader bytes match the pinned isolated preimage. No primary reader/index/.gcts-active was opened or written for this review.",
+    "The full HTML/SVG, summary, manifest, reader card and the sole successor evidence-section delta were read. Browser rendering and deployment verification belong to Root and are outside this passive review.",
+    "The full research goal remains active. The report establishes no new theorem, trainedRL policy, GCTS operational gain or proof-search advantage."
+  ],
+  "mathematical_admission": false,
+  "negative_predecessor": {
+    "bytes": 2722,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/review-C/typed-evidence-limits-publication-negative-v1.json",
+    "sha256": "2e396a28c7278b54e921d5480a27bcbbddbe7de82065eddc1fa38549cc96bf3e"
+  },
+  "no_assets_modified": true,
+  "partial_files_opened": 0,
+  "passive_only": true,
+  "reader_delta": {
+    "card_bytes": 753,
+    "one_card_only": true,
+    "preimage": {
+      "bytes": 104135,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/root/isolated-reader-preimage.html",
+      "sha256": "2c3e0dfdb4a29708e6d5a42e727a90db9d0d15924fd2e4a1bc67a4593d13607d"
+    },
+    "raw_inverse_exact": true
+  },
+  "resource_admission": false,
+  "reviewer_identity": "/root/recovered_batch_review",
+  "schema": "evidence-limits-passive-publication-review-v1",
+  "semantic_replays": 0,
+  "sizing_probes": 0,
+  "source_only": true,
+  "status": "PASS_PASSIVE_PUBLICATION_ONLY",
+  "subject_calls": 0,
+  "subject_imports": 0,
+  "tools_stopped_after_freeze": true
+}

@@ -1,0 +1,305 @@
+{
+  "G1_adopted": false,
+  "actual_execution_authorized": false,
+  "bank_census": {
+    "filesystem_groups": 31,
+    "groups": 49,
+    "pure_metadata_groups": 18,
+    "variants": 70
+  },
+  "checks": [
+    {
+      "id": "frozen-independent-negative",
+      "passed": true
+    },
+    {
+      "id": "v1-unchanged-API-v1.json",
+      "passed": true
+    },
+    {
+      "id": "v1-unchanged-aggregate_byte_budget_v1.py",
+      "passed": true
+    },
+    {
+      "id": "v1-unchanged-author-static-audit-v2.json",
+      "passed": true
+    },
+    {
+      "id": "v1-unchanged-diagnostic-bank-v1.json",
+      "passed": true
+    },
+    {
+      "id": "v1-unchanged-freeze-manifest-v1.json",
+      "passed": true
+    },
+    {
+      "id": "v1-unchanged-handoff-v1.json",
+      "passed": true
+    },
+    {
+      "id": "v1-unchanged-manual-reasoning-v1.json",
+      "passed": true
+    },
+    {
+      "id": "v2-pin-handoff-v2.json",
+      "passed": true
+    },
+    {
+      "id": "v2-pin-aggregate_byte_budget_v2.py",
+      "passed": true
+    },
+    {
+      "id": "v2-pin-API-v2.json",
+      "passed": true
+    },
+    {
+      "id": "v2-pin-diagnostic-bank-v2.json",
+      "passed": true
+    },
+    {
+      "id": "v2-pin-manual-reasoning-v2.json",
+      "passed": true
+    },
+    {
+      "id": "v2-pin-fixed-completion-Source-delta-v1.json",
+      "passed": true
+    },
+    {
+      "id": "v2-pin-fixed-completion-Source-v1-to-v2.patch",
+      "passed": true
+    },
+    {
+      "id": "v2-pin-author-static-audit-v3.json",
+      "passed": true
+    },
+    {
+      "id": "v2-pin-freeze-manifest-v2.json",
+      "passed": true
+    },
+    {
+      "id": "exact-independent-three-hunk-inverse",
+      "passed": true
+    },
+    {
+      "id": "AST-and-unused-compile-only",
+      "passed": true
+    },
+    {
+      "id": "API-preserved-status",
+      "passed": true
+    },
+    {
+      "id": "API-preserved-metadata_API",
+      "passed": true
+    },
+    {
+      "id": "API-preserved-writer_API",
+      "passed": true
+    },
+    {
+      "id": "API-preserved-original_caps",
+      "passed": true
+    },
+    {
+      "id": "API-preserved-reservation",
+      "passed": true
+    },
+    {
+      "id": "API-preserved-aggregate_formula",
+      "passed": true
+    },
+    {
+      "id": "API-preserved-prior_entries",
+      "passed": true
+    },
+    {
+      "id": "API-preserved-ownership",
+      "passed": true
+    },
+    {
+      "id": "API-preserved-portable_rename",
+      "passed": true
+    },
+    {
+      "id": "API-preserved-producer",
+      "passed": true
+    },
+    {
+      "id": "API-preserved-expanded_scope",
+      "passed": true
+    },
+    {
+      "id": "API-preserved-failure",
+      "passed": true
+    },
+    {
+      "id": "API-preserved-primary",
+      "passed": true
+    },
+    {
+      "id": "API-preserved-time",
+      "passed": true
+    },
+    {
+      "id": "API-preserved-negative_summary",
+      "passed": true
+    },
+    {
+      "id": "API-preserved-protocol",
+      "passed": true
+    },
+    {
+      "id": "API-preserved-qualification",
+      "passed": true
+    },
+    {
+      "id": "API-preserved-diagnostics",
+      "passed": true
+    },
+    {
+      "id": "API-only-scoped-new-fields",
+      "passed": true
+    },
+    {
+      "id": "original-bank-full-typed-JSON-preserved",
+      "passed": true
+    },
+    {
+      "id": "complete-bank-census",
+      "passed": true
+    },
+    {
+      "id": "three-appended-groups",
+      "passed": true
+    },
+    {
+      "id": "eight-unrun-new-variants",
+      "passed": true
+    },
+    {
+      "id": "growth-shrink-identity-both-downstreams",
+      "passed": true
+    },
+    {
+      "id": "original-manual-invariants-preserved",
+      "passed": true
+    },
+    {
+      "id": "current-parser-runtime-pin",
+      "passed": true
+    }
+  ],
+  "component_calls": 0,
+  "failed_checks": [],
+  "filesystem_fixture_calls": 0,
+  "helper_calls": 0,
+  "manual_findings": [
+    {
+      "finding": "The exact three-hunk inverse reconstructs the frozen v1 bytes. The only behavioral correction snapshots completed physical bytes and identity, then compares later completed-file census with that snapshot instead of the retained ceiling.",
+      "id": "fixed-size-correction"
+    },
+    {
+      "finding": "Under the declared normal writer flow, the identity is observed before finish. An unchanged short fixed header now passes the later completion comparison; full fixed reservations remain held.",
+      "id": "unchanged-short-header"
+    },
+    {
+      "finding": "Growth is detected by exact completion-size comparison; shrinking is refused by monotone observation; replacement is refused by existing and completed identity checks; disappearance is refused by existing complete-file checks.",
+      "id": "tamper-refusals"
+    },
+    {
+      "finding": "The fixed ceiling branch is unchanged. Dynamic clean success releases unused capacity only; failed leases remain held. No written-byte refund, deletion, overwrite or output retry was introduced.",
+      "id": "no-budget-refund"
+    },
+    {
+      "finding": "The full v1 Source/API/manual/all46groups62variants were independently read before the sole blocker was frozen. All v1 bytes are revalidated unchanged; the exact successor Source delta and all new recipes were read.",
+      "id": "independent-full-review"
+    },
+    {
+      "finding": "All49groups70variants are declarative. The three new groups add short-header continuation and both downstream tamper recipes. No fixture exists or was executed; these are not passing test results.",
+      "id": "diagnostics-unrun"
+    },
+    {
+      "finding": "The previously reviewed exact primary selection, cleanup ownership, negative one-attempt path, cooperative ownership, separate physical/expanded ceilings and original absolute time limits are byte-unchanged.",
+      "id": "firstfault-and-reservations"
+    },
+    {
+      "finding": "Full occurrence expansion remains an independent upstream obligation. This helper is unintegrated, grants no oldG0 pass, G1 adoption, complete certificate fit, VM linkage or proof/search acceptance.",
+      "id": "scope-limits"
+    }
+  ],
+  "mathematical_admission": false,
+  "metadata_runtime": {
+    "bytes": 18058560,
+    "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+    "sha256": "b6ea0c2a9bfce48dbf181a53f1ca4f0562d40658b85bf47258e2a88d8f9e3933"
+  },
+  "negative_predecessor": {
+    "bytes": 6637,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/review-C/typed-aggregate-budget-Source-negative-v1.json",
+    "sha256": "f303ce159c347a040cef077d5577ecfd3784e4526765eb585de7363f68380362"
+  },
+  "partial_files_opened": 0,
+  "pins": {
+    "API-v2.json": {
+      "bytes": 7890,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/budget-L/API-v2.json",
+      "sha256": "1fab6ced56cb5862dd4a9373b9b49f9b4d8cace914462f8a06f6a35713796659"
+    },
+    "aggregate_byte_budget_v2.py": {
+      "bytes": 23530,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/budget-L/aggregate_byte_budget_v2.py",
+      "sha256": "cc85059ef049315a8fb340a87ec9dd26c0cb99e0d2dfe28463caa14d509dd1b8"
+    },
+    "author-static-audit-v3.json": {
+      "bytes": 1408,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/budget-L/author-static-audit-v3.json",
+      "sha256": "7322b2b2f46a29ebfceaf2eb5012064c185b48e3152aef67a90662954c81c39b"
+    },
+    "diagnostic-bank-v2.json": {
+      "bytes": 41926,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/budget-L/diagnostic-bank-v2.json",
+      "sha256": "e5085155f6280bf2618ba49ec4ee345a133c457d5b8b8ad7266be61ab237458c"
+    },
+    "fixed-completion-Source-delta-v1.json": {
+      "bytes": 1712,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/budget-L/fixed-completion-Source-delta-v1.json",
+      "sha256": "fddba9501a600c4bd62f619adb468907480350c3d67e6e4b193b9c5ed590b182"
+    },
+    "fixed-completion-Source-v1-to-v2.patch": {
+      "bytes": 1452,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/budget-L/fixed-completion-Source-v1-to-v2.patch",
+      "sha256": "e86af91f918689c1cce7e6fc72c77b9c7f4e0d0d8d03030febfb7ef7e6d6d2aa"
+    },
+    "freeze-manifest-v2.json": {
+      "bytes": 4613,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/budget-L/freeze-manifest-v2.json",
+      "sha256": "72a2f9995ecb41da7601081828ba762f42f3a720c622f3dd1ac26d3f997c4836"
+    },
+    "handoff-v2.json": {
+      "bytes": 3730,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/budget-L/handoff-v2.json",
+      "sha256": "8298d0c3904195ea86aaedb6b1bf38aedf23a086cb8295f4d39cf5721ac1e1d5"
+    },
+    "manual-reasoning-v2.json": {
+      "bytes": 4143,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/budget-L/manual-reasoning-v2.json",
+      "sha256": "c921be6b2bd2c43034dbe9cadc4bf766a8b7dbcc3f566d7b404a9c027baaadf8"
+    }
+  },
+  "resource_admission": false,
+  "reviewer_identity": "/root/recovered_batch_review",
+  "runtime_qualified": false,
+  "schema": "aggregate-byte-budget-Source-review-v2",
+  "semantic_replays": 0,
+  "sizing_probes": 0,
+  "source_only": true,
+  "source_review_complete": true,
+  "static_metadata": {
+    "AST_parse": true,
+    "compiled_code_executed": false,
+    "unused_compile": true
+  },
+  "status": "PASS_SOURCE_ONLY_CONDITIONAL_CONTRACT_NO_RUNTIME_AUTHORITY",
+  "subject_imports": 0,
+  "tools_stopped_after_freeze": true
+}

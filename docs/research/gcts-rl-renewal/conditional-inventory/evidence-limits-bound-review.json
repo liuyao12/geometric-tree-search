@@ -1,0 +1,293 @@
+{
+  "AST_metadata_parses": 1,
+  "G1_adopted": false,
+  "actual_execution_authorized": false,
+  "bound_note": {
+    "bytes": 11010,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/bounds-B/manual-expanded-lower-bound-v1.json",
+    "sha256": "08494385ce1979077c2407f4c4516c16a5de35c3d2b0c99e270e2263bcc78e5f"
+  },
+  "checker_calls": 0,
+  "compiler_calls": 0,
+  "conditional_claim": {
+    "assumptions": [
+      "Pinned Source/canonical formatting and complete saved wrapper-counter/trace joins are truthful.",
+      "Fresh exclusive writer and unchanged emitted raw file length; no deleted/truncated prefix.",
+      "Retain the exact v2 expanded reconstruction convention."
+    ],
+    "excess_lower_bound_bytes": 639805,
+    "old_expanded_limit_bytes": 134217728,
+    "old_expanded_lower_bound_bytes": 134857533
+  },
+  "cutoff": {
+    "bytes": 7396,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/bounds-B/cutoff-metadata-v1.json",
+    "sha256": "f3482f22b0c968914f51ee41887726660d25d1ca5c302be65792f2cf50dff439"
+  },
+  "failed_checks": 0,
+  "field_map": {
+    "bytes": 18747,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/bounds-B/one-owner-field-map-v1.json",
+    "sha256": "3d34e2572390a44b40e12d0ead9c110f5c6e30ae0079c3d617ff080da61a4020"
+  },
+  "finite_encoding_accepted": false,
+  "fitting_bound_established": false,
+  "fixture_calls": 0,
+  "handoff": {
+    "bytes": 4898,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/bounds-B/handoff-v1.json",
+    "sha256": "babdda769b92af053e9306decf9f3701d439a7488749469bacf7d2394acf2c6d"
+  },
+  "helper_calls": 0,
+  "manual_findings": [
+    "Each full typed select preimage contains disjoint fixed t and m subtrees. Typed scalar/list literal character bounds give t62 and m276, hence at least338ASCIIbytes, ignoring all other positive terms. This is manual character reasoning, not serialization or subject sizing.",
+    "In each complete profile full_row and compact row have the same id/complete/lifetime and common metadata values. Those values cancel in lengths. Only fixed binding/key/scope/punctuation overhead can favor compact representation; the documented768byte envelope is conservative and2048looser. Existing full-return delta therefore is at least338times selections minus2048 for that scope.",
+    "The membership join is essential and supported here: all normal phases report completion and normal profile faults are uncaught. The12 failed Root profiles are exactly8old admission-invalid plus4foreign graph diagnostics, all before any oracle by admission flow and the callback1/10 traces. The one work1 UNKNOWN also occurs before the first oracle. New batch diagnostic scopes and standalone queries use different counters. Thus31904completed profile_select calls contribute to successful Root-profile preimages. Using345started scopes rather than333completed scopes over-subtracts overhead conservatively.",
+    "The canonical fragment is only statted for its raw byte length124780541; no partial byte was opened/parsed/projected/completed. A complete serialization of the same fresh exclusive append-only packet, if it existed, cannot be shorter than the bytes already emitted.",
+    "Under these pinned Source and complete cutoff-metadata assumptions, old expanded data is at least134857533bytes, exceeding134217728by639805, even before ignored remainder/result bytes. This rules out mere physical sharing of that same old logical reconstruction; it does not rule out every changed certificate or admit any mathematical result.",
+    "The field map covers all required event/value/custody provenance categories and explicitly labels the proposed one-owner logical certificate as a changed gate. It is not an implemented schema, fitting bound, adoption of G1 or authority to run a successor."
+  ],
+  "mathematical_authority": false,
+  "mechanical_checks": [
+    {
+      "label": "exact Source worker/component/graph pins",
+      "passed": true
+    },
+    {
+      "label": "old grant remains retired0",
+      "passed": true
+    },
+    {
+      "label": "complete negative metadata scope",
+      "passed": true
+    },
+    {
+      "label": "cutoff copy exact: call_started",
+      "passed": true
+    },
+    {
+      "label": "cutoff copy exact: call_completed",
+      "passed": true
+    },
+    {
+      "label": "cutoff copy exact: call_raised",
+      "passed": true
+    },
+    {
+      "label": "cutoff copy exact: completed_case_ids",
+      "passed": true
+    },
+    {
+      "label": "cutoff copy exact: root_check_calls",
+      "passed": true
+    },
+    {
+      "label": "cutoff copy exact: first_available_fault",
+      "passed": true
+    },
+    {
+      "label": "completed profile selections31904",
+      "passed": true
+    },
+    {
+      "label": "started345/completed333/failed12 profiles",
+      "passed": true
+    },
+    {
+      "label": "all13 original graph diagnostics present",
+      "passed": true
+    },
+    {
+      "label": "12 failed diagnostic profiles comprise8invalid4foreign",
+      "passed": true
+    },
+    {
+      "label": "graph cutoff declaration/trace join: graph-empty-target",
+      "passed": true
+    },
+    {
+      "label": "graph cutoff declaration/trace join: graph-odd-center",
+      "passed": true
+    },
+    {
+      "label": "graph cutoff declaration/trace join: graph-duplicate-center",
+      "passed": true
+    },
+    {
+      "label": "graph cutoff declaration/trace join: graph-origin-mismatch",
+      "passed": true
+    },
+    {
+      "label": "graph cutoff declaration/trace join: graph-duplicate-pin",
+      "passed": true
+    },
+    {
+      "label": "graph cutoff declaration/trace join: graph-none-pin",
+      "passed": true
+    },
+    {
+      "label": "graph cutoff declaration/trace join: graph-bool-generation",
+      "passed": true
+    },
+    {
+      "label": "graph cutoff declaration/trace join: graph-bad-mode",
+      "passed": true
+    },
+    {
+      "label": "graph cutoff declaration/trace join: graph-work-unknown",
+      "passed": true
+    },
+    {
+      "label": "graph cutoff declaration/trace join: graph-foreign-entry",
+      "passed": true
+    },
+    {
+      "label": "graph cutoff declaration/trace join: graph-foreign-inside",
+      "passed": true
+    },
+    {
+      "label": "graph cutoff declaration/trace join: graph-foreign-same-invalid",
+      "passed": true
+    },
+    {
+      "label": "graph cutoff declaration/trace join: graph-foreign-same-limit",
+      "passed": true
+    },
+    {
+      "label": "all3inside foreign traces at initial freeze before domains",
+      "passed": true
+    },
+    {
+      "label": "saved foreign init line221 is initial input freeze",
+      "passed": true
+    },
+    {
+      "label": "all domain construction follows declared input/pin/generation checks",
+      "passed": true
+    },
+    {
+      "label": "normal failure propagates before completed case append",
+      "passed": true
+    },
+    {
+      "label": "new diagnostics bypass profile_query counter",
+      "passed": true
+    },
+    {
+      "label": "select raw support and mark shapes fixed by Source",
+      "passed": true
+    },
+    {
+      "label": "four fixed binding entries",
+      "passed": true
+    },
+    {
+      "label": "binding key/inner-value literal envelope: receipts",
+      "passed": true
+    },
+    {
+      "label": "binding key/inner-value literal envelope: attempted_requests",
+      "passed": true
+    },
+    {
+      "label": "binding key/inner-value literal envelope: exact_receipt_preimages",
+      "passed": true
+    },
+    {
+      "label": "binding key/inner-value literal envelope: body_result",
+      "passed": true
+    },
+    {
+      "label": "fixed unescaped ASCII scope envelope",
+      "passed": true
+    },
+    {
+      "label": "full and compact rows share identical ordinary lifetime",
+      "passed": true
+    },
+    {
+      "label": "exact old delta computed before added charge field",
+      "passed": true
+    },
+    {
+      "label": "old expanded predicate still includes all deltas",
+      "passed": true
+    },
+    {
+      "label": "manual t and m arithmetic",
+      "passed": true
+    },
+    {
+      "label": "manual compact extra envelope768 below2048",
+      "passed": true
+    },
+    {
+      "label": "RAW LENGTH ONLY canonical fragment base",
+      "passed": true
+    },
+    {
+      "label": "conservative old expanded lower arithmetic",
+      "passed": true
+    },
+    {
+      "label": "field map explicitly changes gate/no fit",
+      "passed": true
+    },
+    {
+      "label": "mapping preserves all declared event/case/variant multiplicity",
+      "passed": true
+    }
+  ],
+  "metadata_author": {
+    "bytes": 11315,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/review-C/freeze_expanded_bound_review_v1.py",
+    "sha256": "e196e17f7163aa57d118acdeec54b3f2a4b548486aea875319ecb5bbf456c39b"
+  },
+  "old_grant_remaining": 0,
+  "partial_JSON_parses": 0,
+  "partial_content_reads": 0,
+  "partial_stat_only": true,
+  "review_passed": true,
+  "reviewer_identity": "/root/recovered_batch_review",
+  "runtime_qualified": false,
+  "saved_failure": {
+    "bytes": 513516,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/actual-batch-v2/worker-failure.json",
+    "sha256": "081ce0625607fa82ebd8957314b990fa26eb880c5715cc09e220863d4bfa2685"
+  },
+  "schema": "independent-v2-expanded-lower-bound-review-v1",
+  "semantic_replays": 0,
+  "simulator_calls": 0,
+  "sizing_probes": 0,
+  "sources": [
+    {
+      "bytes": 116476,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/qualify_complete_batch_worker_v2.py",
+      "sha256": "9ea014de87d5af2ed3017442f690699a0ef54750c8d8be12890e373936b65a03"
+    },
+    {
+      "bytes": 38513,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/components-B/implicit_wang_batch_v2.py",
+      "sha256": "2dd3269a96bbe8db63afdffc3b175830dad5dea7cc94555024a7aac95ef088e7"
+    },
+    {
+      "bytes": 36892,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/recovered/L/implicit_wang_point_search_v1.py",
+      "sha256": "1a83c9c59b2e1862d5a2acda69b826ccc3a8e2cf4899e824286f711f8bf25981"
+    },
+    {
+      "bytes": 36240,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/basic-tiling-algorithm.md",
+      "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+    },
+    {
+      "bytes": 740651,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/recovered/ROOT/implicit-inputs-v1.json",
+      "sha256": "10fe60d005a2f586a76bf69ae30317b8dae538ba9f126714b9f71ffa474a89b4"
+    }
+  ],
+  "status": "PASS_MANUAL_CONDITIONAL_NEGATIVE_RESOURCE_ARGUMENT",
+  "subject_function_calls": 0,
+  "subject_imports": 0,
+  "tools_stopped_for_this_review": true
+}

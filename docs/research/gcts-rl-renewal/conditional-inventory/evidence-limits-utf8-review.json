@@ -1,0 +1,134 @@
+{
+  "actual_execution_authorized": false,
+  "checker_calls": 0,
+  "compiler_calls": 0,
+  "complete_interpreter": false,
+  "contract": {
+    "bytes": 9593,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/root/utf8-residual-contract-v2.json",
+    "sha256": "66b6bc3926693b1353a4781557bbe6bf5988794297244f9b9d721c4eb329690d"
+  },
+  "failed_checks": 0,
+  "fitting_bound_established": false,
+  "fixture_calls": 0,
+  "handoff": {
+    "bytes": 3388,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/root/utf8-Source-handoff-v2.json",
+    "sha256": "342b087399cebbfbc320b3e4854051d407d876a65672b003b2688670082d6d47"
+  },
+  "manual_findings": [
+    "The new lexical routine has an unchanged correct full-byte classifier and equal-depth residual construction under its declared own specification. Mid-byte B->REJECT is an explicit completion of old undefined/stuck behavior, not exact old partial trajectory correspondence.",
+    "With undefined/stuck interpreted as nonaccepting, byte/mode projection and induction on byte count preserve the accepted-word language. New B/#/bit rows and halted aliases define the separate new routine; old sixteen-band head/scan/step equivalence is not claimed.",
+    "Manual314assigned/317total/1256row upper bounds and the complete declarative unrun bank remain supported by the v1 Source inspection. These are not generated counts, experimental verification or fit.",
+    "ConstructionLimit/DeclarationError are public. Future exact actual harness must preserve foreign identity and Root first-fault priority and cannot infer private ownership by class. No executable harness, generated table, controller/linkage or full VM proof is supplied."
+  ],
+  "mathematical_authority": false,
+  "mechanical_checks": [
+    {
+      "label": "Source unchanged exact08f947 pin",
+      "passed": true
+    },
+    {
+      "label": "prior scope negative preserved",
+      "passed": true
+    },
+    {
+      "label": "manual state/row upper bounds unchanged",
+      "passed": true
+    },
+    {
+      "label": "all existing API fields unchanged",
+      "passed": true
+    },
+    {
+      "label": "classifier and complete-byte induction unchanged",
+      "passed": true
+    },
+    {
+      "label": "representation unchanged",
+      "passed": true
+    },
+    {
+      "label": "exact old partial equivalence withdrawn",
+      "passed": true
+    },
+    {
+      "label": "new completion explicitly distinguished",
+      "passed": true
+    },
+    {
+      "label": "old band scans/head/cost equality not claimed",
+      "passed": true
+    },
+    {
+      "label": "public exception ownership caution explicit",
+      "passed": true
+    },
+    {
+      "label": "all16 explicit word controls unchanged",
+      "passed": true
+    },
+    {
+      "label": "all original normal groups retained in order",
+      "passed": true
+    },
+    {
+      "label": "existing normal recipes/counts unchanged",
+      "passed": true
+    },
+    {
+      "label": "mid-byte own-spec scope explicit",
+      "passed": true
+    },
+    {
+      "label": "all five diagnostics retained",
+      "passed": true
+    },
+    {
+      "label": "foreign public class impostors added",
+      "passed": true
+    },
+    {
+      "label": "unchanged other diagnostic recipes",
+      "passed": true
+    },
+    {
+      "label": "no authority or generation from scope delta",
+      "passed": true
+    }
+  ],
+  "metadata_author": {
+    "bytes": 6759,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/review-C/freeze_utf8_scope_review_v2.py",
+    "sha256": "2b8a5991fe578269066f375064073d56f2251040862ba45d5990f7b16ac8a923"
+  },
+  "partial_JSON_parses": 0,
+  "preserved_predecessor_negative": {
+    "bytes": 9777,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/review-C/typed-utf8-residual-Source-negative-v1.json",
+    "sha256": "7dbf64796033a903a580a192b0c989294b37e1c31789aad78c518aee82604913"
+  },
+  "review_passed": true,
+  "reviewer_identity": "/root/recovered_batch_review",
+  "runtime_qualified": false,
+  "schema": "independent-utf8-residual-Source-review-v2",
+  "semantic_replays": 0,
+  "simulator_calls": 0,
+  "sizing_probes": 0,
+  "source": {
+    "bytes": 8265,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/root/utf8_residual_machine_v1.py",
+    "sha256": "08f9472acb2042e398997cc0dddd6ddc2487c866a3b683b42f53852bee26a088"
+  },
+  "source_only": true,
+  "status": "PASS_MANUAL_SOURCE_AND_SCOPE_ONLY_UNEXECUTED",
+  "subject_function_calls": 0,
+  "subject_imports": 0,
+  "table_generation_calls": 0,
+  "tools_stopped_for_this_review": true,
+  "unrun_bank": {
+    "bytes": 6402,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/root/utf8-prospective-bank-v2.json",
+    "sha256": "081b2eb3344d56b10a3399e8bf9826248011bc8faedbc5065d26129c27939f88"
+  }
+}

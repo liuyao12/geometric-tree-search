@@ -1,0 +1,115 @@
+{
+  "G1_adopted": false,
+  "actual_execution_authorized": false,
+  "blocking_findings": [
+    {
+      "contract": "Fixed reservations retain full original ceiling, while clean completion and subsequent full census must accept unchanged successful files and preserve room for a later negative summary.",
+      "id": "FIXED_COMPLETION_SIZE_CONFUSED_WITH_RESERVED_CEILING",
+      "remedy": "Store and check exact successful completion size independently of the fixed reservation ceiling; retain all reserved unused fixed capacity. Continue rejecting deletion, replacement, growth and shrinking of completed files.",
+      "required_unrun_bank_extensions": [
+        "Short successful fixed header followed by a different successful record, with unchanged reserved fixed ceiling.",
+        "Short successful fixed header followed by genuine Root failure and one reserved negative summary attempt.",
+        "Completed short fixed header mutated in size or identity before later census; refusal required."
+      ],
+      "source_lines": [
+        164,
+        173,
+        329,
+        343
+      ],
+      "static_argument": [
+        "AggregateLedger.finish sets complete=True but intentionally does not replace physical_limit for a FIXED name.",
+        "A successful short worker-receipt.json therefore has complete=True and physical smaller than its retained 4194304-byte reservation.",
+        "The first writer census precedes finish, so this short header can complete normally under the Source's own protocol.",
+        "Every later writer census visits that complete header and demands physical == physical_limit, even when the exact identity and bytes are unchanged.",
+        "The later writer is consequently refused by closed successful file changed. This includes a separately reserved negative summary after a later genuine Root fault.",
+        "No API precondition requires header contents to fill 4194304 bytes or makes a completed header prohibit every later record. The failure is a Source/contract mismatch, not an observed runtime event."
+      ]
+    }
+  ],
+  "component_calls": 0,
+  "filesystem_fixture_calls": 0,
+  "full_read": [
+    "Source",
+    "API",
+    "manual argument",
+    "all declarative bank groups and variants",
+    "handoff"
+  ],
+  "helper_calls": 0,
+  "mathematical_admission": false,
+  "metadata_runtime": {
+    "bytes": 18058560,
+    "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+    "sha256": "b6ea0c2a9bfce48dbf181a53f1ca4f0562d40658b85bf47258e2a88d8f9e3933"
+  },
+  "nonblocking_static_findings": [
+    "Original stored/expanded128MiB, outer9MiB, log/header4MiB and summary64KiB reservations are explicit and do not create a later capacity grant.",
+    "Expanded charges remain caller supplied and require independent original-occurrence verification; the helper does not claim proof or originalG0 qualification.",
+    "Failed writers retain their full lease, names remain spent, short writes are not retried, metadata observation failure marks exactness unavailable.",
+    "Cooperative exclusive ownership, caller-read-only state, bounded parent logs and portable check-then-rename assumptions are explicit.",
+    "All candidate/negative receipts deny mathematical and resource admission; all46groups/62variants are declarative and unexecuted.",
+    "The previous fdopen cleanup correction preserves the exact primary if descriptor cleanup raises; no operation was run for this review."
+  ],
+  "partial_files_opened": 0,
+  "pins": {
+    "API-v1.json": {
+      "bytes": 6634,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/budget-L/API-v1.json",
+      "sha256": "135b17e587854346faab312530d408f1ed4a1111df6cb0d284fece51ba2f79c0"
+    },
+    "aggregate_byte_budget_v1.py": {
+      "bytes": 23299,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/budget-L/aggregate_byte_budget_v1.py",
+      "sha256": "392771c596b6b15e0d234d328ebc16ad8b4ae428f1f3d80e7fa26e76cdebdade"
+    },
+    "author-static-audit-v2.json": {
+      "bytes": 1324,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/budget-L/author-static-audit-v2.json",
+      "sha256": "27ff8a307cecd359a4be2273e69cbf8457e72a970df37c47672b53f3813c402e"
+    },
+    "diagnostic-bank-v1.json": {
+      "bytes": 35588,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/budget-L/diagnostic-bank-v1.json",
+      "sha256": "739ddc5aaff09d157e71b9c29419b09763d00484e315e969ceb8996e377f861a"
+    },
+    "freeze-manifest-v1.json": {
+      "bytes": 2071,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/budget-L/freeze-manifest-v1.json",
+      "sha256": "24d405afda00c46e3c2b5ffe568c0d52df959999ba7d1e67c9be569af844956e"
+    },
+    "handoff-v1.json": {
+      "bytes": 3877,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/budget-L/handoff-v1.json",
+      "sha256": "dd0f58ee310bd0f75b62e291ac4ddf8272a036dec76bf2e3567e81ee3e6bd449"
+    },
+    "manual-reasoning-v1.json": {
+      "bytes": 2990,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/budget-L/manual-reasoning-v1.json",
+      "sha256": "c740fbfea0ddf50bd0b3819f10bc0df33a2fc7c6656a409f5cf7e53ed1e5f3aa"
+    }
+  },
+  "preimage_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/review-C/budget-negative-preimages-v1",
+  "resource_admission": false,
+  "reviewer_identity": "/root/recovered_batch_review",
+  "runtime_qualified": false,
+  "schema": "aggregate-byte-budget-Source-review-v1",
+  "scope": "Static Source/API/manual/declarative-bank review only. Frozen negative predecessor preserved; correction requires exact successor review. No change to retired grants, oldG0 negative, limits, proof/search results or runtime authority.",
+  "semantic_replays": 0,
+  "sizing_probes": 0,
+  "source_only": true,
+  "static_metadata": {
+    "AST_parse": true,
+    "compiled_code_executed": false,
+    "full_bank_census": {
+      "filesystem_groups": 28,
+      "groups": 46,
+      "pure_metadata_groups": 18,
+      "variants": 62
+    },
+    "unused_compile": true
+  },
+  "status": "NEGATIVE_SOURCE_BLOCKER_NOT_RUNTIME_EVIDENCE",
+  "subject_imports": 0,
+  "tools_stopped_for_this_frozen_negative": true
+}

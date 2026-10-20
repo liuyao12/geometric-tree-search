@@ -1,0 +1,154 @@
+{
+  "API_caution": "ConstructionLimit has no private owner predicate. The generator performs no normalization, so exact foreign propagation is sound; future diagnostic harnesses must not infer private ownership merely from this public class. The phrase owned limit type should be defined or narrowed before runtime admission.",
+  "AST_parses": 2,
+  "actual_execution_authorized": false,
+  "blocking_findings": [
+    {
+      "conflicting_claims": [
+        "manual_correspondence_argument claims every full/partial byte trajectory is preserved.",
+        "manual_correspondence_argument says other blank positions reject as original behavior."
+      ],
+      "consequence": "Complete-byte classifier behavior agrees, and the new recognizer can validly define explicit mid-byte rejection. Exact old partial trajectory/terminal correspondence is false. Do not use that claim to justify unimplemented physical linkage.",
+      "id": "MIDBYTE_BLANK_UNDEFINED_VERSUS_REJECT",
+      "new_Source_fact": "New assign(q,zero,one,1) gives every interior residual row an explicit stationary B-to-REJECT transition. This is the new declared lexical policy.",
+      "old_Source_fact": "Frozen _utf8_word only assigns its B choice when prefix is empty. Mid-byte B has no micro choice; the physical foundation therefore has no read transition on @B at those states. Its undefined slots are distinct from the explicit REJECT terminal.",
+      "required_delta": "Preserve this predecessor. Clarify a successor manual contract: new mid-byte REJECT explicitly completes/refines old undefined/stuck behavior; classifier/full-byte outcomes match, and accepted-word language correspondence needs its stated interpretation. Do not claim identical full partial trajectories or whole-foundation physical equivalence."
+    }
+  ],
+  "checker_calls": 0,
+  "compiler_calls": 0,
+  "complete_interpreter": false,
+  "fixture_calls": 0,
+  "handoff": {
+    "bytes": 2739,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/root/utf8-Source-handoff-v1.json",
+    "sha256": "4a8b3040298b204b08ebc23d4a5f294e93ce2f3e12f53ac75e7e731deb1d1d20"
+  },
+  "mathematical_authority": false,
+  "metadata_author": {
+    "bytes": 9633,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/review-C/freeze_utf8_scope_negative_v1.py",
+    "sha256": "bb774ea014f8f615b5c3e2cb58e7d2de163ffa9827bce705fdf6ff863dbea304"
+  },
+  "metadata_probe_negative": {
+    "correction": "Read exact pinned utf8_residual_machine_v1.py from handoff.",
+    "operation": "cat guessed fixed_utf8_lexical_v1.py after reading handoff",
+    "result": "No such file; no subject execution or file mutation."
+  },
+  "no_scope_narrowing": "This is a lexical prerequisite only. Sixteen-band linkage, BOOT and full VM/register/frame/heap controller, semantic correspondence and actual proof search remain absent.",
+  "parser": {
+    "AST": "ast.parse default exec; ast.dump(annotate_fields=True,include_attributes=False)",
+    "python": {
+      "bytes": 18058560,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+      "sha256": "b6ea0c2a9bfce48dbf181a53f1ca4f0562d40658b85bf47258e2a88d8f9e3933"
+    },
+    "unused_compile": "compile(AST,...,dont_inherit=True,optimize=0); never evaluated",
+    "version": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]"
+  },
+  "partial_JSON_parses": 0,
+  "positive_Source_observations": [
+    "Classifier AST matches the frozen _utf8_next exactly after function-name/docstring normalization; no classifier, generator or simulator was called.",
+    "LSB-first depth induction gives the correct complete-byte next mode or explicit REJECT after exactly eight bit moves. Memo key retains depth and both literal successor IDs; roots are separately allocated, preserving boundary B policy.",
+    "LEAD covers ASCII, C2..DF, E0, E1..EF, F0,F1..F3,F4; continuation restrictions exclude overlong forms and values above10FFFF while ED accepts surrogatepass encodings. This is manual Source reasoning, not generated-table validation.",
+    "Every assigned new row writes its input symbol unchanged; bit rows move right, B/# exits stay. Every assigned row explicitly maps # to BOUND. Three halt states have twelve undefined slots. The new routine is independent of input/image/word length/width/horizon.",
+    "Manual per-mode bounds255/9/9/9/10/11/11 sum314assigned,317includinghalts,1256rows. Low-bit interval residual explanations are valid as upper bounds; cross-mode memo sharing can only reduce assigned rows. No actual census, memory, time, palette or full-VM fit follows.",
+    "Active raw choices are assigned to the retained state and appended before each transition callback. Failure attaches available raw owner state best effort and rethrows the exact exception without callback/formatting/retry/prefix admission.",
+    "The declarative bank includes every mode-byte transition, every prefix fence, all boundary/mid-byte blanks,16 explicit word controls and five diagnostic recipes. Counts1792/1785/7/1778 are correct manual enumeration counts; no enumeration or fixture execution occurred. A concrete executable independent oracle/harness and fresh exact review/grant are still absent."
+  ],
+  "raw_preimages": [
+    {
+      "original": {
+        "bytes": 8265,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/root/utf8_residual_machine_v1.py",
+        "sha256": "08f9472acb2042e398997cc0dddd6ddc2487c866a3b683b42f53852bee26a088"
+      },
+      "preserved": {
+        "bytes": 8265,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/review-C/utf8-negative-preimages-v1/source.py",
+        "sha256": "08f9472acb2042e398997cc0dddd6ddc2487c866a3b683b42f53852bee26a088"
+      },
+      "role": "source"
+    },
+    {
+      "original": {
+        "bytes": 6815,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/root/utf8-residual-contract-v1.json",
+        "sha256": "7aee2526f5205c08e198beef09b7d2b463d6172738075ec19d1ea8b32c3bab97"
+      },
+      "preserved": {
+        "bytes": 6815,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/review-C/utf8-negative-preimages-v1/contract.json",
+        "sha256": "7aee2526f5205c08e198beef09b7d2b463d6172738075ec19d1ea8b32c3bab97"
+      },
+      "role": "contract"
+    },
+    {
+      "original": {
+        "bytes": 4022,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/root/utf8-prospective-bank-v1.json",
+        "sha256": "dab80284ae403a24ba4e80f1fefb291b7fdce2ca7b11513054eee1ecb8582d1e"
+      },
+      "preserved": {
+        "bytes": 4022,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/review-C/utf8-negative-preimages-v1/bank.json",
+        "sha256": "dab80284ae403a24ba4e80f1fefb291b7fdce2ca7b11513054eee1ecb8582d1e"
+      },
+      "role": "bank"
+    },
+    {
+      "original": {
+        "bytes": 16645,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/recovered-checker/PhysicalFoundation/fixed_vm_physical_foundation_v1.py",
+        "sha256": "93d400f9178d5b0f9396c5ff2ad3561ebf53c85fe2ff87679a81babd3bac2e0b"
+      },
+      "preserved": {
+        "bytes": 16645,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/review-C/utf8-negative-preimages-v1/foundation.py",
+        "sha256": "93d400f9178d5b0f9396c5ff2ad3561ebf53c85fe2ff87679a81babd3bac2e0b"
+      },
+      "role": "foundation"
+    },
+    {
+      "original": {
+        "bytes": 36240,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/basic-tiling-algorithm.md",
+        "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+      },
+      "preserved": {
+        "bytes": 36240,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/review-C/utf8-negative-preimages-v1/master.md",
+        "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+      },
+      "role": "master"
+    },
+    {
+      "original": {
+        "bytes": 2739,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/root/utf8-Source-handoff-v1.json",
+        "sha256": "4a8b3040298b204b08ebc23d4a5f294e93ce2f3e12f53ac75e7e731deb1d1d20"
+      },
+      "preserved": {
+        "bytes": 2739,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/review-C/utf8-negative-preimages-v1/handoff.json",
+        "sha256": "4a8b3040298b204b08ebc23d4a5f294e93ce2f3e12f53ac75e7e731deb1d1d20"
+      },
+      "role": "handoff"
+    }
+  ],
+  "returned_code_objects_evaluated": false,
+  "review_passed": false,
+  "reviewer_identity": "/root/recovered_batch_review",
+  "runtime_qualified": false,
+  "schema": "independent-utf8-residual-Source-negative-review-v1",
+  "semantic_replays": 0,
+  "simulator_calls": 0,
+  "sizing_probes": 0,
+  "source_only": true,
+  "status": "SOURCE_SCOPE_NEGATIVE_PARTIAL_TRAJECTORY_EQUIVALENCE_OVERCLAIM",
+  "subject_function_calls": 0,
+  "subject_imports": 0,
+  "table_generation_calls": 0,
+  "tools_stopped_after_freeze": true,
+  "unused_compiles": 2
+}

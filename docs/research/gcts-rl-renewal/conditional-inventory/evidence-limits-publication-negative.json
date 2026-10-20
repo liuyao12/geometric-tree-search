@@ -1,0 +1,47 @@
+{
+  "actual_execution_authorized": false,
+  "finding": {
+    "explanation": "The same archive includes HistoricalContext/implicit-inputs.json, its complete historical failure metadata and a nested historical fixed-checker archive with complete actual component records. The unexecuted statement must be scoped to new prospective banks. This does not challenge the new unrun-bank status or any mathematical constant.",
+    "id": "README_UNRUN_SCOPE_INCLUDES_EXECUTED_HISTORICAL_BANKS",
+    "quoted_claim": "All banks are declarative and unexecuted.",
+    "remedy": "All new prospective banks are declarative and unexecuted; historical banks retain their recorded execution statuses."
+  },
+  "fixture_calls": 0,
+  "helper_calls": 0,
+  "limitations": "This frozen negative pins the exact preserved predecessor. It does not claim those preimage bytes remain at the live asset paths. Scientific Source and claim review remains reusable, but the final successor archive/manifest must be revalidated.",
+  "mathematical_admission": false,
+  "partial_files_opened": 0,
+  "passive_only": true,
+  "preserved_root_pin_manifest": {
+    "bytes": 428,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/root/publication-wording-predecessor-v1/pins.json",
+    "sha256": "43aa6ec59ad30e392a864400e92c383f28d765de831dc4fbf23bc4f15095394e"
+  },
+  "preserved_root_preimages": [
+    {
+      "bytes": 9398,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/root/publication-wording-predecessor-v1/build_report_assets_v1.py",
+      "sha256": "52be33eb4756f331923652a037fbae591d77a3b75bcec620d75bbfa4320fd831"
+    },
+    {
+      "bytes": 22367,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/root/publication-wording-predecessor-v1/evidence-limits-manifest.json",
+      "sha256": "89086b7863138162fd9ce199e148022a093d3c41bb1bf22a2878c49161ec086a"
+    },
+    {
+      "bytes": 890717,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/root/publication-wording-predecessor-v1/evidence-limits-source.tar.gz",
+      "sha256": "8dff6518e641315d9e2cd9eb6a1305126ef706944f76c9926057670515f32136"
+    }
+  ],
+  "resource_admission": false,
+  "reviewer_identity": "/root/recovered_batch_review",
+  "schema": "evidence-limits-passive-publication-review-v1",
+  "semantic_replays": 0,
+  "sizing_probes": 0,
+  "source_only": true,
+  "status": "NEGATIVE_README_WORDING_ONLY_NOT_SCIENTIFIC_SOURCE",
+  "subject_calls": 0,
+  "subject_imports": 0,
+  "tools_stopped_for_frozen_negative": true
+}
