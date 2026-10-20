@@ -1,0 +1,80 @@
+{
+  "archive_scan": {
+    "all_members_byte_checked": true,
+    "archive": {
+      "bytes": 10327532,
+      "file": "novel-cluster-search-evidence.tar.gz",
+      "sha256": "d91d73e8635384f95c6414bebc364304ee719450ec375d687cc15eef0d629ee9"
+    },
+    "members": 149,
+    "omitted_trusted_runtime": [
+      {
+        "pin": {
+          "bytes": 18058560,
+          "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+          "sha256": "b6ea0c2a9bfce48dbf181a53f1ca4f0562d40658b85bf47258e2a88d8f9e3933"
+        },
+        "reason": "Pinned isolated trusted CPython binary not redistributed; all research Sources and Native assets are included."
+      }
+    ],
+    "partial_raw_metadata_only": [],
+    "payload_bytes": 126999178,
+    "schema": "novel-cluster-archive-complete-byte-scan-v1"
+  },
+  "conclusion": "Three admitted jobs,18 searches/zero skips,169 point placements/24 audits/144 controls. S0 and SC produce the same14row known proof with identical positive candidate ordering and paths. SC8 packets/2 negative ordering changes, no point packets. Repair recovers baseline; no new theorem, useful ordering acceleration or trainedRL.",
+  "files": [
+    {
+      "bytes": 771980,
+      "file": "novel-cluster-search-data.json",
+      "sha256": "ea6c978c442eefe332e03c6a1dc9a59cbc9a7b53d563b27c02754301e133ee2b"
+    },
+    {
+      "bytes": 54560,
+      "file": "novel-cluster-search-engineering.json",
+      "sha256": "a5c2951960b55029b5cc386bf1eeb79e029b562cfa070c8def411bc4dcc1fc2d"
+    },
+    {
+      "bytes": 10327532,
+      "file": "novel-cluster-search-evidence.tar.gz",
+      "sha256": "d91d73e8635384f95c6414bebc364304ee719450ec375d687cc15eef0d629ee9"
+    },
+    {
+      "bytes": 111001,
+      "file": "novel-cluster-search-review-C.json",
+      "sha256": "770cf6d03f4c835716a3e77a64d4b8844fdd0b0137da557015c9b8bb9a3143e9"
+    },
+    {
+      "bytes": 64892,
+      "file": "novel-cluster-search-review-L.json",
+      "sha256": "b17e8d799344ed8f3bbc613f051fa499705336d8a89c3add99d3be01d252b9d1"
+    },
+    {
+      "bytes": 32346,
+      "file": "novel-cluster-search.html",
+      "sha256": "0b4a21a17865235ab3db7332196ad7e3743ce3b197e3a7a017d653a64257eddb"
+    },
+    {
+      "bytes": 111956,
+      "file": "reader.html",
+      "sha256": "522059cfb30e309138772748d9853f235576909077e1c738782398c80280c982"
+    }
+  ],
+  "reader_delta": {
+    "after": {
+      "bytes": 111956,
+      "sha256": "522059cfb30e309138772748d9853f235576909077e1c738782398c80280c982"
+    },
+    "before": {
+      "bytes": 111355,
+      "sha256": "b92f5d1d1fd7a6c7959c70b4e9d57a337f39a1868f693d9d3b504143052d1514"
+    },
+    "deleting_exact_insertion_recovers_prior_body": true,
+    "inserted_bytes": 601,
+    "inserted_text": "<section id=\"novel-cluster-update\" class=\"panel\"><h2>Declining redundant hints recovers the conventional proof</h2><p><a href=\"novel-cluster-search.html#ordering\">Read the exact-prefix novelty experiment</a>. All eighteen bounded searches return in three resource-admitted jobs. S0 and SC find the same fourteen-line proof through identical candidate ordering and primitive steps. This repairs the earlier regression without demonstrating useful cluster acceleration; all point searches remain budget unknown. Inspect both certificates, their colored markings and the reviewed evidence.</p></section>\n",
+    "offset": 1331,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/reader.html",
+    "schema": "novel-cluster-reader-exact-insertion-v1"
+  },
+  "schema": "novel-cluster-search-publication-manifest-v1",
+  "source_parent_commit": "5d3887b5eef3e2fbd16ff6f3585f33d663bcac6b"
+}
