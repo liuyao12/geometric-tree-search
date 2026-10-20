@@ -1,0 +1,646 @@
+{
+  "Root_assessment_snapshot": {
+    "original": {
+      "bytes": 10297,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/root/passive-actual-assessment-v1.json",
+      "sha256": "206ae7b8f0eac068a291bab5bfd56913c901e5d472924f1a67b500289d477ebc"
+    },
+    "retained": {
+      "bytes": 10297,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/review-L/resource-audit-Root-assessment-preimage-v1.json",
+      "sha256": "206ae7b8f0eac068a291bab5bfd56913c901e5d472924f1a67b500289d477ebc"
+    }
+  },
+  "Root_preflight": {
+    "bytes": 3212,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/root/Root-preflight-v1.json",
+    "sha256": "4f5e49fa9ef06efc8caeed4c8dcc17d4aaedc9e80df44d27276c36356dc2bed5"
+  },
+  "accepted_cases": 0,
+  "actual_artifact_pins": [
+    {
+      "bytes": 261,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-fork-join-positive/CONSUMED.json",
+      "sha256": "6b35321e7fbfd3dc51bff13335520608b69e34ed96115689d69aff7f339a4472"
+    },
+    {
+      "bytes": 152115,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-fork-join-positive/failure.json",
+      "sha256": "3f259eb33f6e86d626a33a27663a6b9bed9d195d638655bb1287acbe8aab162f"
+    },
+    {
+      "bytes": 41808,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-fork-join-positive/native/boundary-oracle",
+      "sha256": "2b6bf8bb09a4e03d0cb1b4595dea1fe6d4432aa93d8f7eed72c30077fd9941a4"
+    },
+    {
+      "bytes": 7558192,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-fork-join-positive/native/code.bin",
+      "sha256": "97f0b600cffd83552c4e0f0c4fb1f5d26cfdb76e3e74b267bbaebeddc836e7ed"
+    },
+    {
+      "bytes": 605164,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-fork-join-positive/native/input.bin",
+      "sha256": "572e285ee58c3447b41be144a54ac73ab5c11bcb5f853cbb3928cb3c1ddb4041"
+    },
+    {
+      "bytes": 605168,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-fork-join-positive/native/output.bin",
+      "sha256": "2017d7a69d6c40b71d50f565a7eefdd2f9ab2e67569f297e9c407bf2ca8d571f"
+    },
+    {
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-fork-join-positive/stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 128,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-fork-join-positive/stdout.bin",
+      "sha256": "f6fbe7cee251960b62d3f5e2b4ca7e2ed2be2e922ab8144689e51129b0bee3ae"
+    },
+    {
+      "bytes": 1743,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-fork-join-positive/terminal.json",
+      "sha256": "b1cc3013fac038de1b889fbfe2fd5fd45639143bde816427587785bfaa3db622"
+    },
+    {
+      "bytes": 584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-fork-join-positive/worker-header.json",
+      "sha256": "d631e9fe857df6b14bbb0a3798435aa14a89ad317d72899f34ecf809005fb21c"
+    },
+    {
+      "bytes": 271,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-quantifier-equality-positive/CONSUMED.json",
+      "sha256": "ed576f2638312860a7912ce60ea6789976297a69ba173a9eedf558f9a284c250"
+    },
+    {
+      "bytes": 175703,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-quantifier-equality-positive/failure.json",
+      "sha256": "6762f1f95c68f5e9a000ce75c75f3965083cae0198a1adeb990f448d56070b4c"
+    },
+    {
+      "bytes": 41808,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-quantifier-equality-positive/native/boundary-oracle",
+      "sha256": "2b6bf8bb09a4e03d0cb1b4595dea1fe6d4432aa93d8f7eed72c30077fd9941a4"
+    },
+    {
+      "bytes": 7558192,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-quantifier-equality-positive/native/code.bin",
+      "sha256": "97f0b600cffd83552c4e0f0c4fb1f5d26cfdb76e3e74b267bbaebeddc836e7ed"
+    },
+    {
+      "bytes": 594868,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-quantifier-equality-positive/native/input.bin",
+      "sha256": "49618e17e3cf8f4748d6a82925c6c8b43c1ef7e07c1e2e9e0eedbfac873b7720"
+    },
+    {
+      "bytes": 594872,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-quantifier-equality-positive/native/output.bin",
+      "sha256": "3a5297b4d4e825d0368668e7c6ddc0595ea6945316566511fb6a7f4debc1ce63"
+    },
+    {
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-quantifier-equality-positive/stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 140,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-quantifier-equality-positive/stdout.bin",
+      "sha256": "4509bcd585568b2477caeb8f379574c2faf69f209c1502bfb37dbecdfa469038"
+    },
+    {
+      "bytes": 1775,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-quantifier-equality-positive/terminal.json",
+      "sha256": "d970de879f79f2a8b4d20526bf0aa6d82d30c3b7abf723edac967bcad9ce1772"
+    },
+    {
+      "bytes": 606,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-quantifier-equality-positive/worker-header.json",
+      "sha256": "d1ecb9dfd446f64b9f5ca820de19912ca967511bc4c58c3b0f8d647d833956f2"
+    },
+    {
+      "bytes": 263,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-fork-join-missing-Pa/CONSUMED.json",
+      "sha256": "af2ed34c3d01fd89e312cbc83ca432ed5e360e5ed4c2bd5dad19242a0a7b3598"
+    },
+    {
+      "bytes": 149820,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-fork-join-missing-Pa/failure.json",
+      "sha256": "5db6915f083e8ff5084f5d7c4e81dd107e58da4a5b80312f10010d6d2863562e"
+    },
+    {
+      "bytes": 41808,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-fork-join-missing-Pa/native/boundary-oracle",
+      "sha256": "2b6bf8bb09a4e03d0cb1b4595dea1fe6d4432aa93d8f7eed72c30077fd9941a4"
+    },
+    {
+      "bytes": 7558192,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-fork-join-missing-Pa/native/code.bin",
+      "sha256": "97f0b600cffd83552c4e0f0c4fb1f5d26cfdb76e3e74b267bbaebeddc836e7ed"
+    },
+    {
+      "bytes": 603800,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-fork-join-missing-Pa/native/input.bin",
+      "sha256": "b8e3156b7618e58e125d513aaa08c823a6659da54b7ddf6b828d90217a7b23d2"
+    },
+    {
+      "bytes": 603804,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-fork-join-missing-Pa/native/output.bin",
+      "sha256": "636ba8f8418fb0b3509dbb7e14330763456fc973546231068d083b4d26281b4f"
+    },
+    {
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-fork-join-missing-Pa/stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 132,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-fork-join-missing-Pa/stdout.bin",
+      "sha256": "dd5e349763d43f1313de9baf8ed33ecbf6841691c79109ee2345eafb7e9f484e"
+    },
+    {
+      "bytes": 1751,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-fork-join-missing-Pa/terminal.json",
+      "sha256": "ada9ea16e4f4a3f3039ae45e2b390cf9a0f2b5409d07e93e4d060ebe246ba297"
+    },
+    {
+      "bytes": 590,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-fork-join-missing-Pa/worker-header.json",
+      "sha256": "b0d851b3a958e1d8e57f0e4b0f926463febe22744639550724016478b5c9cdd5"
+    }
+  ],
+  "actual_case_attempts": 3,
+  "actual_resource_accepted": false,
+  "all_original_offer_file_pins_revalidated": 35,
+  "attestation": {
+    "compiler_or_generator_calls": 0,
+    "fixture_or_simulator_calls": 0,
+    "new_actuals": 0,
+    "new_grants": 0,
+    "old_grants_reused": false,
+    "partial_content_reads": 0,
+    "positive_case_admission": false,
+    "scientific_calls": 0,
+    "scientific_checker_replays": 0,
+    "scientific_imports": 0,
+    "sizing_or_resource_probes": 0
+  },
+  "case_rows": [
+    {
+      "Native_custody": {
+        "all_reaped": true,
+        "cleanup_errors": [],
+        "closed": true,
+        "exit_code": -15,
+        "native_pid": 89238,
+        "parent_pid": 89235,
+        "pending_stdout_bytes": 0,
+        "same_owned_process_group": true,
+        "stderr_complete": true,
+        "stdout_eof": true,
+        "termination_signals": [
+          15
+        ],
+        "wait4_status": 15
+      },
+      "Native_queries": {
+        "all_request_stages_completed": true,
+        "all_stage_record_ids_and_hash_fields_join": true,
+        "complete_records": 88,
+        "last_raw_input_output_hashes_match": true,
+        "query_seconds_sum": 72.85812637399431,
+        "reply_status_counts": {
+          "accepted": 22,
+          "rejected": 66
+        },
+        "scope": "Complete saved query carriers and metadata joins only; no logical replay and no claim all past binary input/output bodies are archived."
+      },
+      "Root_callbacks": 14934,
+      "Root_reported_parent_tool_exit_code": 2,
+      "admitted_combined_memory_bound": null,
+      "case_admitted": false,
+      "case_id": "pilot-fork-join-positive",
+      "combined_memory_bound_note": "Terminal leaves this unavailable because the success header is invalid; the worker high-water mark alone already exceeds the unchanged ceiling. No null-to-zero replacement.",
+      "consumed": {
+        "bytes": 261,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-fork-join-positive/CONSUMED.json",
+        "sha256": "6b35321e7fbfd3dc51bff13335520608b69e34ed96115689d69aff7f339a4472"
+      },
+      "external_observer_as_Root_reported": {
+        "case_id": "pilot-fork-join-positive",
+        "parent_tool_exit": 2,
+        "reported_approximate_elapsed_seconds": 136,
+        "start_UTC": "2026-10-20 13:01:32",
+        "terminal_observed_UTC": "2026-10-20 13:03:48",
+        "tool_session": 5988
+      },
+      "failure": {
+        "bytes": 152115,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-fork-join-positive/failure.json",
+        "sha256": "3f259eb33f6e86d626a33a27663a6b9bed9d195d638655bb1287acbe8aab162f"
+      },
+      "failure_stage_as_reported": "the check immediately after recipient Model construction",
+      "final_stored_regular_file_bytes": 8965163,
+      "grant": {
+        "bytes": 1995,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/root/grant-pilot-fork-join-positive-v1.json",
+        "sha256": "8627a615ded203fa39b917298f27e0a2afc81fadc7c8e8f800691202f808251c"
+      },
+      "header": {
+        "bytes": 584,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-fork-join-positive/worker-header.json",
+        "sha256": "d631e9fe857df6b14bbb0a3798435aa14a89ad317d72899f34ecf809005fb21c"
+      },
+      "known_worker_exit_seconds": 86.20183412500046,
+      "last_worker_stage": {
+        "began": 1.5954046249971725,
+        "name": "RUN complete six-arm case",
+        "status": "STARTED"
+      },
+      "log_bytes": {
+        "stderr": 0,
+        "stdout": 128
+      },
+      "memory_ceiling_bytes": 1073741824,
+      "native_high_water_bytes": 13025280,
+      "parent_high_water_bytes": 41828352,
+      "physical_ceiling_bytes": 134217728,
+      "plan": {
+        "bytes": 14550,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/root/plan-pilot-fork-join-positive-v1.json",
+        "sha256": "19ad02b0b6431c0de866be59e548f5f90b595ceaa20112fee25223f3708f694a"
+      },
+      "recipient_arms_reached": 0,
+      "recipient_arms_unreached": 6,
+      "resource_status": "FAILED_PYTHON_HIGH_WATER_MEMORY",
+      "scientific_result_returned": false,
+      "source_pins_still_match": true,
+      "stored_before_terminal_bytes": 8963420,
+      "terminal": {
+        "bytes": 1743,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-fork-join-positive/terminal.json",
+        "sha256": "b1cc3013fac038de1b889fbfe2fd5fd45639143bde816427587785bfaa3db622"
+      },
+      "terminal_custody_gate_seconds": 86.21449587499956,
+      "waited_child_high_water_bytes": 1425637376,
+      "worker_exit_code": 2,
+      "worker_high_water_after_output_bytes": 1374814208,
+      "worker_high_water_before_output_bytes": 1374814208,
+      "worker_packet_seconds": 85.52379254199695
+    },
+    {
+      "Native_custody": {
+        "all_reaped": true,
+        "cleanup_errors": [],
+        "closed": true,
+        "exit_code": -15,
+        "native_pid": 89435,
+        "parent_pid": 89434,
+        "pending_stdout_bytes": 0,
+        "same_owned_process_group": true,
+        "stderr_complete": true,
+        "stdout_eof": true,
+        "termination_signals": [
+          15
+        ],
+        "wait4_status": 15
+      },
+      "Native_queries": {
+        "all_request_stages_completed": true,
+        "all_stage_record_ids_and_hash_fields_join": true,
+        "complete_records": 107,
+        "last_raw_input_output_hashes_match": true,
+        "query_seconds_sum": 78.29887396101549,
+        "reply_status_counts": {
+          "accepted": 30,
+          "rejected": 77
+        },
+        "scope": "Complete saved query carriers and metadata joins only; no logical replay and no claim all past binary input/output bodies are archived."
+      },
+      "Root_callbacks": 1290871,
+      "Root_reported_parent_tool_exit_code": 2,
+      "admitted_combined_memory_bound": null,
+      "case_admitted": false,
+      "case_id": "pilot-quantifier-equality-positive",
+      "combined_memory_bound_note": "Terminal leaves this unavailable because the success header is invalid; the worker high-water mark alone already exceeds the unchanged ceiling. No null-to-zero replacement.",
+      "consumed": {
+        "bytes": 271,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-quantifier-equality-positive/CONSUMED.json",
+        "sha256": "ed576f2638312860a7912ce60ea6789976297a69ba173a9eedf558f9a284c250"
+      },
+      "external_observer_as_Root_reported": {
+        "case_id": "pilot-quantifier-equality-positive",
+        "parent_tool_exit": 2,
+        "reported_approximate_elapsed_seconds": 138,
+        "start_UTC": "2026-10-20 13:04:14",
+        "terminal_observed_UTC": "2026-10-20 13:06:32",
+        "tool_session": 6294
+      },
+      "failure": {
+        "bytes": 175703,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-quantifier-equality-positive/failure.json",
+        "sha256": "6762f1f95c68f5e9a000ce75c75f3965083cae0198a1adeb990f448d56070b4c"
+      },
+      "failure_stage_as_reported": "indexed model evidence construction",
+      "final_stored_regular_file_bytes": 8968235,
+      "grant": {
+        "bytes": 2015,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/root/grant-pilot-quantifier-equality-positive-v1.json",
+        "sha256": "c041e774d4c51e7b50d55e19f89d166242dfd0e1708a984f3d5d11a107061ce5"
+      },
+      "header": {
+        "bytes": 606,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-quantifier-equality-positive/worker-header.json",
+        "sha256": "d1ecb9dfd446f64b9f5ca820de19912ca967511bc4c58c3b0f8d647d833956f2"
+      },
+      "known_worker_exit_seconds": 93.19624408299933,
+      "last_worker_stage": {
+        "began": 1.3985775830005878,
+        "name": "RUN complete six-arm case",
+        "status": "STARTED"
+      },
+      "log_bytes": {
+        "stderr": 0,
+        "stdout": 140
+      },
+      "memory_ceiling_bytes": 1073741824,
+      "native_high_water_bytes": 12877824,
+      "parent_high_water_bytes": 41713664,
+      "physical_ceiling_bytes": 134217728,
+      "plan": {
+        "bytes": 14570,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/root/plan-pilot-quantifier-equality-positive-v1.json",
+        "sha256": "12cd4d2174384cfeaa4ab4a73758b7b399a6384018a7dfd227ee5ecdad43eafb"
+      },
+      "recipient_arms_reached": 0,
+      "recipient_arms_unreached": 6,
+      "resource_status": "FAILED_PYTHON_HIGH_WATER_MEMORY",
+      "scientific_result_returned": false,
+      "source_pins_still_match": true,
+      "stored_before_terminal_bytes": 8966460,
+      "terminal": {
+        "bytes": 1775,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-quantifier-equality-positive/terminal.json",
+        "sha256": "d970de879f79f2a8b4d20526bf0aa6d82d30c3b7abf723edac967bcad9ce1772"
+      },
+      "terminal_custody_gate_seconds": 93.20921179200013,
+      "waited_child_high_water_bytes": 1314717696,
+      "worker_exit_code": 2,
+      "worker_high_water_after_output_bytes": 1313964032,
+      "worker_high_water_before_output_bytes": 1313259520,
+      "worker_packet_seconds": 92.3220643329987
+    },
+    {
+      "Native_custody": {
+        "all_reaped": true,
+        "cleanup_errors": [],
+        "closed": true,
+        "exit_code": -15,
+        "native_pid": 89874,
+        "parent_pid": 89872,
+        "pending_stdout_bytes": 0,
+        "same_owned_process_group": true,
+        "stderr_complete": true,
+        "stdout_eof": true,
+        "termination_signals": [
+          15
+        ],
+        "wait4_status": 15
+      },
+      "Native_queries": {
+        "all_request_stages_completed": true,
+        "all_stage_record_ids_and_hash_fields_join": true,
+        "complete_records": 88,
+        "last_raw_input_output_hashes_match": true,
+        "query_seconds_sum": 72.80768921000708,
+        "reply_status_counts": {
+          "accepted": 22,
+          "rejected": 66
+        },
+        "scope": "Complete saved query carriers and metadata joins only; no logical replay and no claim all past binary input/output bodies are archived."
+      },
+      "Root_callbacks": 1846999,
+      "Root_reported_parent_tool_exit_code": 2,
+      "admitted_combined_memory_bound": null,
+      "case_admitted": false,
+      "case_id": "pilot-fork-join-missing-Pa",
+      "combined_memory_bound_note": "Terminal leaves this unavailable because the success header is invalid; the worker high-water mark alone already exceeds the unchanged ceiling. No null-to-zero replacement.",
+      "consumed": {
+        "bytes": 263,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-fork-join-missing-Pa/CONSUMED.json",
+        "sha256": "af2ed34c3d01fd89e312cbc83ca432ed5e360e5ed4c2bd5dad19242a0a7b3598"
+      },
+      "external_observer_as_Root_reported": {
+        "case_id": "pilot-fork-join-missing-Pa",
+        "parent_tool_exit": 2,
+        "reported_approximate_elapsed_seconds": 140,
+        "start_UTC": "2026-10-20 13:06:54",
+        "terminal_observed_UTC": "2026-10-20 13:09:14",
+        "tool_session": 59087
+      },
+      "failure": {
+        "bytes": 149820,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-fork-join-missing-Pa/failure.json",
+        "sha256": "5db6915f083e8ff5084f5d7c4e81dd107e58da4a5b80312f10010d6d2863562e"
+      },
+      "failure_stage_as_reported": "indexed model evidence construction",
+      "final_stored_regular_file_bytes": 8960160,
+      "grant": {
+        "bytes": 1999,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/root/grant-pilot-fork-join-missing-Pa-v1.json",
+        "sha256": "cbe32ddbc2fc28a73ccd01bf9813d859fd0d0d4abceb264f852aae6f33697763"
+      },
+      "header": {
+        "bytes": 590,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-fork-join-missing-Pa/worker-header.json",
+        "sha256": "b0d851b3a958e1d8e57f0e4b0f926463febe22744639550724016478b5c9cdd5"
+      },
+      "known_worker_exit_seconds": 89.68469924999954,
+      "last_worker_stage": {
+        "began": 2.295754416998534,
+        "name": "RUN complete six-arm case",
+        "status": "STARTED"
+      },
+      "log_bytes": {
+        "stderr": 0,
+        "stdout": 132
+      },
+      "memory_ceiling_bytes": 1073741824,
+      "native_high_water_bytes": 12877824,
+      "parent_high_water_bytes": 41910272,
+      "physical_ceiling_bytes": 134217728,
+      "plan": {
+        "bytes": 14554,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/root/plan-pilot-fork-join-missing-Pa-v1.json",
+        "sha256": "296fad644588a52f464d83b02ae65944fc0e591964a13cef22b4302a204a643b"
+      },
+      "recipient_arms_reached": 0,
+      "recipient_arms_unreached": 6,
+      "resource_status": "FAILED_PYTHON_HIGH_WATER_MEMORY",
+      "scientific_result_returned": false,
+      "source_pins_still_match": true,
+      "stored_before_terminal_bytes": 8958409,
+      "terminal": {
+        "bytes": 1751,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-fork-join-missing-Pa/terminal.json",
+        "sha256": "ada9ea16e4f4a3f3039ae45e2b390cf9a0f2b5409d07e93e4d060ebe246ba297"
+      },
+      "terminal_custody_gate_seconds": 89.69722912499856,
+      "waited_child_high_water_bytes": 1402109952,
+      "worker_exit_code": 2,
+      "worker_high_water_after_output_bytes": 1400537088,
+      "worker_high_water_before_output_bytes": 1399799808,
+      "worker_packet_seconds": 89.03010891699887
+    }
+  ],
+  "check_count": 10,
+  "checks": [
+    {
+      "finding": "All three distinct complete CONSUMED records join the exact plan/grant hashes, selected cases, actual directories, one-use grants and four frozen preflight reviews. All 35 original Source/input/runtime pins still match.",
+      "id": "exact_three_consumptions"
+    },
+    {
+      "finding": "Each complete failure matches the header pin and embedded terminal header. Worker exit is 2, failure status and first Root fault are explicit, no result.json exists, success header_valid is false, and no scientific_result was returned.",
+      "id": "complete_failure_headers_and_terminals"
+    },
+    {
+      "finding": "All three original first faults are RootBudget with Python high-water memory limit. Each worker high-water mark alone exceeds 1 GiB; after-output and waited-child peaks do not lower that observation. This establishes three resource refusals, not successful cap enforcement that kept resident use below the ceiling.",
+      "id": "memory_refusal"
+    },
+    {
+      "finding": "Every complete Native receipt records its exact owned group, constructor completion, close/reap, wait4 usage, SIGTERM15/exit-15, empty cleanup errors and complete drained EOF. This is cleanup following refusal, not Native exit-zero success.",
+      "id": "failure_cleanup"
+    },
+    {
+      "finding": "All 283 query stage/record ordinals, purposes and hash fields join exactly with no started incomplete request stage. Last raw input/output file hashes match their last complete record. Saved query requests/results are complete JSON carriers; their mathematical validity was not replayed in this resource audit.",
+      "id": "Native_record_completeness"
+    },
+    {
+      "finding": "Known worker exits are below 180 seconds; terminal custody fields are below 210 seconds; callbacks are below 400 million. These observations do not repair memory failure or establish scientific completion.",
+      "id": "internal_clock_and_callback_observations"
+    },
+    {
+      "finding": "All 30 current actual files were raw-hashed and sized. Per-case final stored bytes equal the saved pre-terminal census plus the exact terminal body, remain below the physical ceiling, and logs exactly match their byte counts with EOF and no overflow.",
+      "id": "physical_output_and_logs"
+    },
+    {
+      "finding": "No partial filenames are present. No partial file was decoded, parsed, projected, completed or admitted; Native binary files were raw-hashed only.",
+      "id": "partial_boundary"
+    },
+    {
+      "finding": "Complete current Root assessment reports terminal tool observations at approximately136/138/140 seconds, all below225. These are Root-reported UTC/transcript observations, not an independently retained monotonic observer log or installed hard watchdog. First two polling gaps exceeded the intended60 seconds; no general polling-cadence or hard-watchdog PASS is claimed.",
+      "id": "external_observer_limits"
+    },
+    {
+      "finding": "No case is resource-admitted; all 18 recipient arms are unreached. Setup refusal is neither an unsuccessful proof search in an arm nor a result about target provability, marked-vs-unmarked search, reusable clusters or RL. Any retained donor query observations require separate scientific assessment and do not admit a failed case.",
+      "id": "no_recipient_comparison"
+    }
+  ],
+  "consumed_new_grants": 3,
+  "evidence_audit_passed": true,
+  "evidence_inconsistencies": [],
+  "external_observer_record": {
+    "all_actual_processes_terminal": true,
+    "all_cases_resource_failed": true,
+    "cases": [
+      {
+        "case_id": "pilot-fork-join-positive",
+        "parent_tool_exit": 2,
+        "reported_approximate_elapsed_seconds": 136,
+        "start_UTC": "2026-10-20 13:01:32",
+        "terminal_observed_UTC": "2026-10-20 13:03:48",
+        "tool_session": 5988
+      },
+      {
+        "case_id": "pilot-quantifier-equality-positive",
+        "parent_tool_exit": 2,
+        "reported_approximate_elapsed_seconds": 138,
+        "start_UTC": "2026-10-20 13:04:14",
+        "terminal_observed_UTC": "2026-10-20 13:06:32",
+        "tool_session": 6294
+      },
+      {
+        "case_id": "pilot-fork-join-missing-Pa",
+        "parent_tool_exit": 2,
+        "reported_approximate_elapsed_seconds": 140,
+        "start_UTC": "2026-10-20 13:06:54",
+        "terminal_observed_UTC": "2026-10-20 13:09:14",
+        "tool_session": 59087
+      }
+    ],
+    "observer_polling_deviation": "First two cases had observer gaps longer than the intended60seconds while Root authored report files. Third case was checked at shorter intervals. No hard external225second watchdog was installed; terminal observations below225seconds are reported UTC observations, not a general bound or security guarantee.",
+    "partial_files_parsed": false,
+    "positive_admission": false,
+    "schema": "Root-external-tool-observer-v1",
+    "source": "Root-reported tool transcript observations; no independent monotonic observer log",
+    "terminal_observations_below_225_seconds": true
+  },
+  "grant_pins": [
+    {
+      "bytes": 1995,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/root/grant-pilot-fork-join-positive-v1.json",
+      "sha256": "8627a615ded203fa39b917298f27e0a2afc81fadc7c8e8f800691202f808251c"
+    },
+    {
+      "bytes": 2015,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/root/grant-pilot-quantifier-equality-positive-v1.json",
+      "sha256": "c041e774d4c51e7b50d55e19f89d166242dfd0e1708a984f3d5d11a107061ce5"
+    },
+    {
+      "bytes": 1999,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/root/grant-pilot-fork-join-missing-Pa-v1.json",
+      "sha256": "cbe32ddbc2fc28a73ccd01bf9813d859fd0d0d4abceb264f852aae6f33697763"
+    }
+  ],
+  "limitations": [
+    "This audit does not reconstruct in-memory object identity, replay proofs or search, rerun controls, or newly observe operating-system wait4/EOF; it assesses the complete pinned receipts from the reviewed fixed nonhostile Sources.",
+    "The terminal admitted combined-memory field is unavailable for failed success headers; memory refusal follows directly from the retained worker high-water values and is never normalized to zero.",
+    "Complete binary images for older overwritten Native input/output queries are not inferred from their saved hashes. Full request/result JSON carriers remain in the complete failure packets.",
+    "No successful full case, resource-qualified recipient proof, complete inventory comparison, marking effect, proof-search speedup or RL result is established."
+  ],
+  "prior_whole_offer": {
+    "bytes": 20061,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/root/prospective-whole-offer-v1.json",
+    "sha256": "d0b189a7ff425472bc9b1960e3dcbb8fa992c601ac82eee972215eb2eabac471"
+  },
+  "protocol_deviations": [
+    {
+      "cases": [
+        "pilot-fork-join-positive",
+        "pilot-quantifier-equality-positive"
+      ],
+      "finding": "Root reports observer gaps longer than the intended60 seconds. No claim of full adherence to that prospective polling policy.",
+      "id": "external_observer_polling"
+    },
+    {
+      "finding": "No hard external225-second watchdog was installed. The below225 terminal observations are reported observations only; no general fallback guarantee or independent monotonic timing record is inferred.",
+      "id": "external_watchdog_authority"
+    }
+  ],
+  "recipient_arms_reached": 0,
+  "recipient_arms_unreached": 18,
+  "remaining_grants": 0,
+  "resource_failures": [
+    {
+      "accepted": false,
+      "case_id": "pilot-fork-join-positive",
+      "gate": "unchanged 1 GiB resident high-water memory ceiling"
+    },
+    {
+      "accepted": false,
+      "case_id": "pilot-quantifier-equality-positive",
+      "gate": "unchanged 1 GiB resident high-water memory ceiling"
+    },
+    {
+      "accepted": false,
+      "case_id": "pilot-fork-join-missing-Pa",
+      "gate": "unchanged 1 GiB resident high-water memory ceiling"
+    }
+  ],
+  "reviewer_identity": "/root/recovered_batch_diagnostics",
+  "schema": "typed-proof-search-pilot-actual-resource-custody-review-v1",
+  "science_comparison_complete": false,
+  "scope": "Passive complete saved-file resource/custody and exact metadata joins for the three already terminal new pilot attempts. No scientific replay, imports, proof checking, Source generation or new experiment. No old qualification adoption.",
+  "status": "THREE_MEMORY_REFUSALS_CONFIRMED_WITH_OBSERVER_PROTOCOL_DEVIATION",
+  "whole_protocol_passed": false
+}

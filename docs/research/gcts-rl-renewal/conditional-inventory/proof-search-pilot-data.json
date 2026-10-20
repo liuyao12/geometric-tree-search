@@ -1,0 +1,1403 @@
+{
+  "actual_summary": {
+    "cases": [
+      {
+        "arms_reached": 0,
+        "case_accepted": false,
+        "case_id": "pilot-fork-join-positive",
+        "complete_failure_evidence": {
+          "bytes": 152115,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-fork-join-positive/failure.json",
+          "sha256": "3f259eb33f6e86d626a33a27663a6b9bed9d195d638655bb1287acbe8aab162f"
+        },
+        "custodian_seconds": 86.21449587499956,
+        "failure_stage": "the check immediately after recipient Model construction",
+        "header": {
+          "bytes": 584,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-fork-join-positive/worker-header.json",
+          "sha256": "d631e9fe857df6b14bbb0a3798435aa14a89ad317d72899f34ecf809005fb21c"
+        },
+        "known_exit_seconds": 86.20183412500046,
+        "native_peak_bytes": 13025280,
+        "native_queries": 88,
+        "native_query_wall_sum_seconds": 72.85812637399431,
+        "parent_exit_code": 2,
+        "parent_peak_bytes": 41828352,
+        "physical_bytes_before_terminal": 8963420,
+        "python_peak_bytes": 1374814208,
+        "root_callbacks": 14934,
+        "terminal": {
+          "bytes": 1743,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-fork-join-positive/terminal.json",
+          "sha256": "b1cc3013fac038de1b889fbfe2fd5fd45639143bde816427587785bfaa3db622"
+        },
+        "waited_child_peak_bytes": 1425637376,
+        "worker_seconds": 85.52379254199695
+      },
+      {
+        "arms_reached": 0,
+        "case_accepted": false,
+        "case_id": "pilot-quantifier-equality-positive",
+        "complete_failure_evidence": {
+          "bytes": 175703,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-quantifier-equality-positive/failure.json",
+          "sha256": "6762f1f95c68f5e9a000ce75c75f3965083cae0198a1adeb990f448d56070b4c"
+        },
+        "custodian_seconds": 93.20921179200013,
+        "failure_stage": "indexed model evidence construction",
+        "header": {
+          "bytes": 606,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-quantifier-equality-positive/worker-header.json",
+          "sha256": "d1ecb9dfd446f64b9f5ca820de19912ca967511bc4c58c3b0f8d647d833956f2"
+        },
+        "known_exit_seconds": 93.19624408299933,
+        "native_peak_bytes": 12877824,
+        "native_queries": 107,
+        "native_query_wall_sum_seconds": 78.29887396101549,
+        "parent_exit_code": 2,
+        "parent_peak_bytes": 41713664,
+        "physical_bytes_before_terminal": 8966460,
+        "python_peak_bytes": 1313259520,
+        "root_callbacks": 1290871,
+        "terminal": {
+          "bytes": 1775,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-quantifier-equality-positive/terminal.json",
+          "sha256": "d970de879f79f2a8b4d20526bf0aa6d82d30c3b7abf723edac967bcad9ce1772"
+        },
+        "waited_child_peak_bytes": 1314717696,
+        "worker_seconds": 92.3220643329987
+      },
+      {
+        "arms_reached": 0,
+        "case_accepted": false,
+        "case_id": "pilot-fork-join-missing-Pa",
+        "complete_failure_evidence": {
+          "bytes": 149820,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-fork-join-missing-Pa/failure.json",
+          "sha256": "5db6915f083e8ff5084f5d7c4e81dd107e58da4a5b80312f10010d6d2863562e"
+        },
+        "custodian_seconds": 89.69722912499856,
+        "failure_stage": "indexed model evidence construction",
+        "header": {
+          "bytes": 590,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-fork-join-missing-Pa/worker-header.json",
+          "sha256": "b0d851b3a958e1d8e57f0e4b0f926463febe22744639550724016478b5c9cdd5"
+        },
+        "known_exit_seconds": 89.68469924999954,
+        "native_peak_bytes": 12877824,
+        "native_queries": 88,
+        "native_query_wall_sum_seconds": 72.80768921000708,
+        "parent_exit_code": 2,
+        "parent_peak_bytes": 41910272,
+        "physical_bytes_before_terminal": 8958409,
+        "python_peak_bytes": 1399799808,
+        "root_callbacks": 1846999,
+        "terminal": {
+          "bytes": 1751,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-fork-join-missing-Pa/terminal.json",
+          "sha256": "ada9ea16e4f4a3f3039ae45e2b390cf9a0f2b5409d07e93e4d060ebe246ba297"
+        },
+        "waited_child_peak_bytes": 1402109952,
+        "worker_seconds": 89.03010891699887
+      }
+    ],
+    "comparison": "INCOMPLETE_THREE_CASE_SETUP_MEMORY_FAILURES",
+    "conclusions": [
+      "Three cold donor searches per case left Native-accepted3/5/5line proof requests.",
+      "All three jobs fail memory during recipient setup (Model or indexed evidence construction), before markings, grounding or arm launch.",
+      "This is concrete feasibility evidence against the current eager representation under these limits, not evidence against theorem provability or the broader GCTS idea.",
+      "No successful six-arm comparison, resource-qualified new proof, target search advantage or RL result."
+    ],
+    "consumed_one_use_grants": 3,
+    "logical_observations": [
+      {
+        "accepted": true,
+        "case_id": "pilot-fork-join-positive",
+        "donor_id": "train-propositional-application",
+        "essential_query": 5,
+        "primitive_rows": 3,
+        "status": "LOGICAL_OBSERVATION_FROM_COMPLETE_FAILED_JOB_NOT_CASE_ADMISSION",
+        "whole_query": 4
+      },
+      {
+        "accepted": true,
+        "case_id": "pilot-fork-join-positive",
+        "donor_id": "train-propositional-chain",
+        "essential_query": 13,
+        "primitive_rows": 5,
+        "status": "LOGICAL_OBSERVATION_FROM_COMPLETE_FAILED_JOB_NOT_CASE_ADMISSION",
+        "whole_query": 12
+      },
+      {
+        "accepted": true,
+        "case_id": "pilot-fork-join-positive",
+        "donor_id": "train-propositional-curried",
+        "essential_query": 21,
+        "primitive_rows": 5,
+        "status": "LOGICAL_OBSERVATION_FROM_COMPLETE_FAILED_JOB_NOT_CASE_ADMISSION",
+        "whole_query": 20
+      },
+      {
+        "accepted": true,
+        "case_id": "pilot-quantifier-equality-positive",
+        "donor_id": "train-propositional-application",
+        "essential_query": 5,
+        "primitive_rows": 3,
+        "status": "LOGICAL_OBSERVATION_FROM_COMPLETE_FAILED_JOB_NOT_CASE_ADMISSION",
+        "whole_query": 4
+      },
+      {
+        "accepted": true,
+        "case_id": "pilot-quantifier-equality-positive",
+        "donor_id": "train-propositional-chain",
+        "essential_query": 13,
+        "primitive_rows": 5,
+        "status": "LOGICAL_OBSERVATION_FROM_COMPLETE_FAILED_JOB_NOT_CASE_ADMISSION",
+        "whole_query": 12
+      },
+      {
+        "accepted": true,
+        "case_id": "pilot-quantifier-equality-positive",
+        "donor_id": "train-propositional-curried",
+        "essential_query": 21,
+        "primitive_rows": 5,
+        "status": "LOGICAL_OBSERVATION_FROM_COMPLETE_FAILED_JOB_NOT_CASE_ADMISSION",
+        "whole_query": 20
+      },
+      {
+        "accepted": true,
+        "case_id": "pilot-fork-join-missing-Pa",
+        "donor_id": "train-propositional-application",
+        "essential_query": 5,
+        "primitive_rows": 3,
+        "status": "LOGICAL_OBSERVATION_FROM_COMPLETE_FAILED_JOB_NOT_CASE_ADMISSION",
+        "whole_query": 4
+      },
+      {
+        "accepted": true,
+        "case_id": "pilot-fork-join-missing-Pa",
+        "donor_id": "train-propositional-chain",
+        "essential_query": 13,
+        "primitive_rows": 5,
+        "status": "LOGICAL_OBSERVATION_FROM_COMPLETE_FAILED_JOB_NOT_CASE_ADMISSION",
+        "whole_query": 12
+      },
+      {
+        "accepted": true,
+        "case_id": "pilot-fork-join-missing-Pa",
+        "donor_id": "train-propositional-curried",
+        "essential_query": 21,
+        "primitive_rows": 5,
+        "status": "LOGICAL_OBSERVATION_FROM_COMPLETE_FAILED_JOB_NOT_CASE_ADMISSION",
+        "whole_query": 20
+      }
+    ],
+    "new_actuals": 3,
+    "observer": {
+      "all_actual_processes_terminal": true,
+      "all_cases_resource_failed": true,
+      "cases": [
+        {
+          "case_id": "pilot-fork-join-positive",
+          "parent_tool_exit": 2,
+          "reported_approximate_elapsed_seconds": 136,
+          "start_UTC": "2026-10-20 13:01:32",
+          "terminal_observed_UTC": "2026-10-20 13:03:48",
+          "tool_session": 5988
+        },
+        {
+          "case_id": "pilot-quantifier-equality-positive",
+          "parent_tool_exit": 2,
+          "reported_approximate_elapsed_seconds": 138,
+          "start_UTC": "2026-10-20 13:04:14",
+          "terminal_observed_UTC": "2026-10-20 13:06:32",
+          "tool_session": 6294
+        },
+        {
+          "case_id": "pilot-fork-join-missing-Pa",
+          "parent_tool_exit": 2,
+          "reported_approximate_elapsed_seconds": 140,
+          "start_UTC": "2026-10-20 13:06:54",
+          "terminal_observed_UTC": "2026-10-20 13:09:14",
+          "tool_session": 59087
+        }
+      ],
+      "observer_polling_deviation": "First two cases had observer gaps longer than the intended60seconds while Root authored report files. Third case was checked at shorter intervals. No hard external225second watchdog was installed; terminal observations below225seconds are reported UTC observations, not a general bound or security guarantee.",
+      "partial_files_parsed": false,
+      "positive_admission": false,
+      "schema": "Root-external-tool-observer-v1",
+      "source": "Root-reported tool transcript observations; no independent monotonic observer log",
+      "terminal_observations_below_225_seconds": true
+    },
+    "partial_files_parsed": false,
+    "recipient_arms_reached": 0,
+    "recipient_arms_unreached": 18,
+    "recipient_proofs": 0,
+    "remaining_one_use_grants": 0,
+    "schema": "Root-passive-complete-failed-pilot-assessment-v1",
+    "scientific_result_returned": false,
+    "scope": "Passive complete-file field and equality joins only; no research code imports/calls or independent mathematical replay.",
+    "trained_RL_policies": 0
+  },
+  "assessment": [
+    "Parallel work produced an executed, reproducible feasibility result and independent review. It also exposed an integration bottleneck that source inspection alone could not establish.",
+    "There is no current evidence here that GCTS matches or surpasses conventional automated proof search. The methods never reached their recipient searches; numerical speed comparisons would be misleading.",
+    "The immediate technical question is whether a compact or lazy exact candidate representation can fit the same frozen targets, grammar, scheduler and limits. Any successor must preserve complete incidence and exact checks; it must be a separately reviewed experiment, preserving these failures.",
+    "Root missed the intended one-minute polling cadence in the first two case jobs. All three terminal tool observations were below the external225second fallback, but no hard external watchdog was installed. This observer deviation is preserved; none of the cases is admitted.",
+    "Lemma families remain a plausible multiscale interface, but acquisition, applicability, expansion and validation must all be counted. This run does not establish useful recipient reuse."
+  ],
+  "cases": [
+    {
+      "arms": [
+        {
+          "attempts": null,
+          "aux_removals": null,
+          "cluster_proposals": null,
+          "forced_branches": "\u2014",
+          "id": "S0",
+          "outcome": "UNREACHED \u2014 setup memory failure",
+          "times": "\u2014"
+        },
+        {
+          "attempts": null,
+          "aux_removals": null,
+          "cluster_proposals": null,
+          "forced_branches": "\u2014",
+          "id": "SC",
+          "outcome": "UNREACHED \u2014 setup memory failure",
+          "times": "\u2014"
+        },
+        {
+          "attempts": null,
+          "aux_removals": null,
+          "cluster_proposals": null,
+          "forced_branches": "\u2014",
+          "id": "P00",
+          "outcome": "UNREACHED \u2014 setup memory failure",
+          "times": "\u2014"
+        },
+        {
+          "attempts": null,
+          "aux_removals": null,
+          "cluster_proposals": null,
+          "forced_branches": "\u2014",
+          "id": "P01",
+          "outcome": "UNREACHED \u2014 setup memory failure",
+          "times": "\u2014"
+        },
+        {
+          "attempts": null,
+          "aux_removals": null,
+          "cluster_proposals": null,
+          "forced_branches": "\u2014",
+          "id": "P10",
+          "outcome": "UNREACHED \u2014 setup memory failure",
+          "times": "\u2014"
+        },
+        {
+          "attempts": null,
+          "aux_removals": null,
+          "cluster_proposals": null,
+          "forced_branches": "\u2014",
+          "id": "P11",
+          "outcome": "UNREACHED \u2014 setup memory failure",
+          "times": "\u2014"
+        }
+      ],
+      "control": {
+        "P_true": {
+          "goal_truth": false,
+          "premise_truths": [
+            false,
+            false,
+            true
+          ]
+        },
+        "S_true": {
+          "goal_truth": true,
+          "premise_truths": [
+            true,
+            true,
+            true
+          ]
+        },
+        "base": {
+          "goal_truth": false,
+          "premise_truths": [
+            true,
+            true,
+            true
+          ]
+        },
+        "domain": [
+          0
+        ],
+        "functions": "all declared functions return0",
+        "machine_evaluated": true,
+        "manual_model": true,
+        "removed_premise_restored": {
+          "goal_truth": false,
+          "premise_truths": [
+            true,
+            true,
+            true,
+            false
+          ]
+        },
+        "schema": "independent-one-element-model-control-v1",
+        "scope": "One explicit finite model for the frozen missing-premise control; not an automated model finder or a proof-search result.",
+        "supplied_to_proof_search": false
+      },
+      "cost_notes": [
+        "The failed cold case reached known child exit in 86.201834 seconds; the custodian final receipt clock was 86.214496 seconds. This is wasted experimental cost, not a successful proof latency.",
+        "The complete record contains 88 Native queries; their recorded wall durations sum to 72.858126 seconds. This sum excludes Python compilation/model construction and is not the whole pipeline cost.",
+        "The exception prevented run_pilot from returning its scientific result. Per-donor search clocks, mined family bodies, tiny diagnostic results, target model, marking certificates and arm clocks are unavailable; they are not reconstructed from implementation intent.",
+        "No per-method cold total or amortized speedup can be calculated. Training was physically repeated in each case; no free acquired library is assigned to a method."
+      ],
+      "failure": "The case exceeded the unchanged memory allowance before its search arms. It is not admitted. Complete failure evidence and Native query records are retained.",
+      "marking_notes": [
+        "Recipient marking discovery and every search arm were unreached. The target model was not returned. There is no measured recipient candidate-removal count or reusable target tile witness.",
+        "No trained RL policy or recipient cluster realization was produced. The preserved Native donor proof checks are logical observations inside a resource-failed experiment."
+      ],
+      "metrics": [
+        "Known child exit: 86.202 s",
+        "Python peak: 1,374,814,208 bytes",
+        "Waited child peak: 1,425,637,376 bytes",
+        "Native queries: 88"
+      ],
+      "outcome": "Memory failure during the check immediately after recipient Model construction. No arm reached; no recipient proof found or rejected.",
+      "spec": {
+        "id": "pilot-fork-join-positive",
+        "instantiation_rounds": 2,
+        "length": 14,
+        "scope": "Exact public authored positive1 from parallel-progress.html. Complete closed theory axioms only; no proof, block, supplied route or family binding.",
+        "target": [
+          "pred",
+          "S",
+          [
+            [
+              "fun",
+              "f",
+              [
+                [
+                  "fun",
+                  "a",
+                  []
+                ]
+              ]
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {
+            "a0_P_to_Qf": [
+              "all",
+              "x",
+              [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "Q",
+                  [
+                    [
+                      "fun",
+                      "f",
+                      [
+                        [
+                          "var",
+                          "x"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "a1_P_to_Rf": [
+              "all",
+              "x",
+              [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "R",
+                  [
+                    [
+                      "fun",
+                      "f",
+                      [
+                        [
+                          "var",
+                          "x"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "a2_Q_to_R_to_S": [
+              "all",
+              "y",
+              [
+                "imp",
+                [
+                  "pred",
+                  "Q",
+                  [
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ],
+                [
+                  "imp",
+                  [
+                    "pred",
+                    "R",
+                    [
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ],
+                  [
+                    "pred",
+                    "S",
+                    [
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "a3_Pa": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "a",
+                  []
+                ]
+              ]
+            ]
+          },
+          "functions": {
+            "a": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 1,
+            "S": 1
+          },
+          "schemas": []
+        },
+        "title": "Compose two independently needed consequences"
+      },
+      "title": "Compose two independently needed consequences"
+    },
+    {
+      "arms": [
+        {
+          "attempts": null,
+          "aux_removals": null,
+          "cluster_proposals": null,
+          "forced_branches": "\u2014",
+          "id": "S0",
+          "outcome": "UNREACHED \u2014 setup memory failure",
+          "times": "\u2014"
+        },
+        {
+          "attempts": null,
+          "aux_removals": null,
+          "cluster_proposals": null,
+          "forced_branches": "\u2014",
+          "id": "SC",
+          "outcome": "UNREACHED \u2014 setup memory failure",
+          "times": "\u2014"
+        },
+        {
+          "attempts": null,
+          "aux_removals": null,
+          "cluster_proposals": null,
+          "forced_branches": "\u2014",
+          "id": "P00",
+          "outcome": "UNREACHED \u2014 setup memory failure",
+          "times": "\u2014"
+        },
+        {
+          "attempts": null,
+          "aux_removals": null,
+          "cluster_proposals": null,
+          "forced_branches": "\u2014",
+          "id": "P01",
+          "outcome": "UNREACHED \u2014 setup memory failure",
+          "times": "\u2014"
+        },
+        {
+          "attempts": null,
+          "aux_removals": null,
+          "cluster_proposals": null,
+          "forced_branches": "\u2014",
+          "id": "P10",
+          "outcome": "UNREACHED \u2014 setup memory failure",
+          "times": "\u2014"
+        },
+        {
+          "attempts": null,
+          "aux_removals": null,
+          "cluster_proposals": null,
+          "forced_branches": "\u2014",
+          "id": "P11",
+          "outcome": "UNREACHED \u2014 setup memory failure",
+          "times": "\u2014"
+        }
+      ],
+      "control": {
+        "P_true": {
+          "goal_truth": false,
+          "premise_truths": [
+            false,
+            false,
+            true
+          ]
+        },
+        "S_true": {
+          "goal_truth": true,
+          "premise_truths": [
+            true,
+            true,
+            true
+          ]
+        },
+        "base": {
+          "goal_truth": false,
+          "premise_truths": [
+            true,
+            true,
+            true
+          ]
+        },
+        "domain": [
+          0
+        ],
+        "functions": "all declared functions return0",
+        "machine_evaluated": true,
+        "manual_model": true,
+        "removed_premise_restored": {
+          "goal_truth": false,
+          "premise_truths": [
+            true,
+            true,
+            true,
+            false
+          ]
+        },
+        "schema": "independent-one-element-model-control-v1",
+        "scope": "One explicit finite model for the frozen missing-premise control; not an automated model finder or a proof-search result.",
+        "supplied_to_proof_search": false
+      },
+      "cost_notes": [
+        "The failed cold case reached known child exit in 93.196244 seconds; the custodian final receipt clock was 93.209212 seconds. This is wasted experimental cost, not a successful proof latency.",
+        "The complete record contains 107 Native queries; their recorded wall durations sum to 78.298874 seconds. This sum excludes Python compilation/model construction and is not the whole pipeline cost.",
+        "The exception prevented run_pilot from returning its scientific result. Per-donor search clocks, mined family bodies, tiny diagnostic results, target model, marking certificates and arm clocks are unavailable; they are not reconstructed from implementation intent.",
+        "No per-method cold total or amortized speedup can be calculated. Training was physically repeated in each case; no free acquired library is assigned to a method."
+      ],
+      "failure": "The case exceeded the unchanged memory allowance before its search arms. It is not admitted. Complete failure evidence and Native query records are retained.",
+      "marking_notes": [
+        "Recipient marking discovery and every search arm were unreached. The target model was not returned. There is no measured recipient candidate-removal count or reusable target tile witness.",
+        "No trained RL policy or recipient cluster realization was produced. The preserved Native donor proof checks are logical observations inside a resource-failed experiment."
+      ],
+      "metrics": [
+        "Known child exit: 93.196 s",
+        "Python peak: 1,313,259,520 bytes",
+        "Waited child peak: 1,314,717,696 bytes",
+        "Native queries: 107"
+      ],
+      "outcome": "Memory failure during indexed model evidence construction. No arm reached; no recipient proof found or rejected.",
+      "spec": {
+        "id": "pilot-quantifier-equality-positive",
+        "instantiation_rounds": 2,
+        "length": 13,
+        "scope": "Exact public authored positive2 from parallel-progress.html. Complete closed theory axioms only; no proof, block, supplied route or family binding.",
+        "target": [
+          "pred",
+          "R",
+          [
+            [
+              "fun",
+              "f",
+              [
+                [
+                  "fun",
+                  "b",
+                  []
+                ]
+              ]
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {
+            "a0_P_to_Qf": [
+              "all",
+              "x",
+              [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "Q",
+                  [
+                    [
+                      "fun",
+                      "f",
+                      [
+                        [
+                          "var",
+                          "x"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "a1_Q_to_R": [
+              "all",
+              "y",
+              [
+                "imp",
+                [
+                  "pred",
+                  "Q",
+                  [
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "R",
+                  [
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "a2_a_eq_b": [
+              "eq",
+              [
+                "fun",
+                "a",
+                []
+              ],
+              [
+                "fun",
+                "b",
+                []
+              ]
+            ],
+            "a3_Pa": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "a",
+                  []
+                ]
+              ]
+            ]
+          },
+          "functions": {
+            "a": 0,
+            "b": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 1
+          },
+          "schemas": []
+        },
+        "title": "Combine quantified implication and equality transport"
+      },
+      "title": "Combine quantified implication and equality transport"
+    },
+    {
+      "arms": [
+        {
+          "attempts": null,
+          "aux_removals": null,
+          "cluster_proposals": null,
+          "forced_branches": "\u2014",
+          "id": "S0",
+          "outcome": "UNREACHED \u2014 setup memory failure",
+          "times": "\u2014"
+        },
+        {
+          "attempts": null,
+          "aux_removals": null,
+          "cluster_proposals": null,
+          "forced_branches": "\u2014",
+          "id": "SC",
+          "outcome": "UNREACHED \u2014 setup memory failure",
+          "times": "\u2014"
+        },
+        {
+          "attempts": null,
+          "aux_removals": null,
+          "cluster_proposals": null,
+          "forced_branches": "\u2014",
+          "id": "P00",
+          "outcome": "UNREACHED \u2014 setup memory failure",
+          "times": "\u2014"
+        },
+        {
+          "attempts": null,
+          "aux_removals": null,
+          "cluster_proposals": null,
+          "forced_branches": "\u2014",
+          "id": "P01",
+          "outcome": "UNREACHED \u2014 setup memory failure",
+          "times": "\u2014"
+        },
+        {
+          "attempts": null,
+          "aux_removals": null,
+          "cluster_proposals": null,
+          "forced_branches": "\u2014",
+          "id": "P10",
+          "outcome": "UNREACHED \u2014 setup memory failure",
+          "times": "\u2014"
+        },
+        {
+          "attempts": null,
+          "aux_removals": null,
+          "cluster_proposals": null,
+          "forced_branches": "\u2014",
+          "id": "P11",
+          "outcome": "UNREACHED \u2014 setup memory failure",
+          "times": "\u2014"
+        }
+      ],
+      "control": {
+        "P_true": {
+          "goal_truth": false,
+          "premise_truths": [
+            false,
+            false,
+            true
+          ]
+        },
+        "S_true": {
+          "goal_truth": true,
+          "premise_truths": [
+            true,
+            true,
+            true
+          ]
+        },
+        "base": {
+          "goal_truth": false,
+          "premise_truths": [
+            true,
+            true,
+            true
+          ]
+        },
+        "domain": [
+          0
+        ],
+        "functions": "all declared functions return0",
+        "machine_evaluated": true,
+        "manual_model": true,
+        "removed_premise_restored": {
+          "goal_truth": false,
+          "premise_truths": [
+            true,
+            true,
+            true,
+            false
+          ]
+        },
+        "schema": "independent-one-element-model-control-v1",
+        "scope": "One explicit finite model for the frozen missing-premise control; not an automated model finder or a proof-search result.",
+        "supplied_to_proof_search": false
+      },
+      "cost_notes": [
+        "The failed cold case reached known child exit in 89.684699 seconds; the custodian final receipt clock was 89.697229 seconds. This is wasted experimental cost, not a successful proof latency.",
+        "The complete record contains 88 Native queries; their recorded wall durations sum to 72.807689 seconds. This sum excludes Python compilation/model construction and is not the whole pipeline cost.",
+        "The exception prevented run_pilot from returning its scientific result. Per-donor search clocks, mined family bodies, tiny diagnostic results, target model, marking certificates and arm clocks are unavailable; they are not reconstructed from implementation intent.",
+        "No per-method cold total or amortized speedup can be calculated. Training was physically repeated in each case; no free acquired library is assigned to a method."
+      ],
+      "failure": "The case exceeded the unchanged memory allowance before its search arms. It is not admitted. Complete failure evidence and Native query records are retained.",
+      "marking_notes": [
+        "Recipient marking discovery and every search arm were unreached. The target model was not returned. There is no measured recipient candidate-removal count or reusable target tile witness.",
+        "No trained RL policy or recipient cluster realization was produced. The preserved Native donor proof checks are logical observations inside a resource-failed experiment."
+      ],
+      "metrics": [
+        "Known child exit: 89.685 s",
+        "Python peak: 1,399,799,808 bytes",
+        "Waited child peak: 1,402,109,952 bytes",
+        "Native queries: 88"
+      ],
+      "outcome": "Memory failure during indexed model evidence construction. No arm reached; no recipient proof found or rejected.",
+      "spec": {
+        "id": "pilot-fork-join-missing-Pa",
+        "instantiation_rounds": 2,
+        "length": 14,
+        "scope": "Exact negative control from parallel-progress.html: only the P(a) axiom is removed from positive1. A supplied one-element countermodel is licensed separately as a manual control, never used to guide proof search.",
+        "target": [
+          "pred",
+          "S",
+          [
+            [
+              "fun",
+              "f",
+              [
+                [
+                  "fun",
+                  "a",
+                  []
+                ]
+              ]
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {
+            "a0_P_to_Qf": [
+              "all",
+              "x",
+              [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "Q",
+                  [
+                    [
+                      "fun",
+                      "f",
+                      [
+                        [
+                          "var",
+                          "x"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "a1_P_to_Rf": [
+              "all",
+              "x",
+              [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "R",
+                  [
+                    [
+                      "fun",
+                      "f",
+                      [
+                        [
+                          "var",
+                          "x"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "a2_Q_to_R_to_S": [
+              "all",
+              "y",
+              [
+                "imp",
+                [
+                  "pred",
+                  "Q",
+                  [
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ],
+                [
+                  "imp",
+                  [
+                    "pred",
+                    "R",
+                    [
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ],
+                  [
+                    "pred",
+                    "S",
+                    [
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          },
+          "functions": {
+            "a": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 1,
+            "S": 1
+          },
+          "schemas": []
+        },
+        "title": "Missing-premise control for the first target"
+      },
+      "title": "Missing-premise control for the first target"
+    }
+  ],
+  "conclusion": "The eager point model or its indexed evidence construction exceeded the fixed memory allowance in every case. Automatically searched elementary donor proofs have Native acceptance records, but no recipient arm ran and no GCTS or RL advantage was measured.",
+  "headline": "All three jobs stopped during recipient setup; no six-arm comparison ran.",
+  "proof_scope": "Three distinct elementary donor proofs are visible below. Each was searched again in all three jobs, with both whole-proof and essential-proof Native checks accepted. These are logical observations from resource-failed jobs; the complete experiment did not pass.",
+  "proofs": [
+    {
+      "essential_query": 5,
+      "proof": [
+        {
+          "formula": [
+            "imp",
+            [
+              "pred",
+              "U",
+              []
+            ],
+            [
+              "pred",
+              "V",
+              []
+            ]
+          ],
+          "name": "t1_U_to_V",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "pred",
+            "U",
+            []
+          ],
+          "name": "t0_U",
+          "rule": "axiom"
+        },
+        {
+          "antecedent": 1,
+          "formula": [
+            "pred",
+            "V",
+            []
+          ],
+          "implication": 0,
+          "rule": "mp"
+        }
+      ],
+      "query_id": 4,
+      "source": {
+        "bytes": 152115,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-fork-join-positive/failure.json",
+        "sha256": "3f259eb33f6e86d626a33a27663a6b9bed9d195d638655bb1287acbe8aab162f"
+      },
+      "spec": {
+        "id": "train-propositional-application",
+        "instantiation_rounds": 2,
+        "length": 3,
+        "scope": "Separate nullary propositional training statement only. Actual primitive proof must be discovered and independently checked before mining.",
+        "target": [
+          "pred",
+          "V",
+          []
+        ],
+        "theory": {
+          "axioms": {
+            "t0_U": [
+              "pred",
+              "U",
+              []
+            ],
+            "t1_U_to_V": [
+              "imp",
+              [
+                "pred",
+                "U",
+                []
+              ],
+              [
+                "pred",
+                "V",
+                []
+              ]
+            ]
+          },
+          "functions": {},
+          "predicates": {
+            "U": 0,
+            "V": 0
+          },
+          "schemas": []
+        },
+        "title": "A single implication application"
+      },
+      "status": "Automatically searched donor; whole and essential primitive requests Native-accepted. The containing case failed its memory gate. No recipient proof or whole-case qualification is inferred.",
+      "title": "A single implication application"
+    },
+    {
+      "essential_query": 13,
+      "proof": [
+        {
+          "formula": [
+            "imp",
+            [
+              "pred",
+              "V",
+              []
+            ],
+            [
+              "pred",
+              "W",
+              []
+            ]
+          ],
+          "name": "t2_V_to_W",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "pred",
+              "U",
+              []
+            ],
+            [
+              "pred",
+              "V",
+              []
+            ]
+          ],
+          "name": "t1_U_to_V",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "pred",
+            "U",
+            []
+          ],
+          "name": "t0_U",
+          "rule": "axiom"
+        },
+        {
+          "antecedent": 2,
+          "formula": [
+            "pred",
+            "V",
+            []
+          ],
+          "implication": 1,
+          "rule": "mp"
+        },
+        {
+          "antecedent": 3,
+          "formula": [
+            "pred",
+            "W",
+            []
+          ],
+          "implication": 0,
+          "rule": "mp"
+        }
+      ],
+      "query_id": 12,
+      "source": {
+        "bytes": 152115,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-fork-join-positive/failure.json",
+        "sha256": "3f259eb33f6e86d626a33a27663a6b9bed9d195d638655bb1287acbe8aab162f"
+      },
+      "spec": {
+        "id": "train-propositional-chain",
+        "instantiation_rounds": 2,
+        "length": 5,
+        "scope": "Separate nullary propositional training statement. No quantified/equality or held-out fork-consequence premises; no supplied proof.",
+        "target": [
+          "pred",
+          "W",
+          []
+        ],
+        "theory": {
+          "axioms": {
+            "t0_U": [
+              "pred",
+              "U",
+              []
+            ],
+            "t1_U_to_V": [
+              "imp",
+              [
+                "pred",
+                "U",
+                []
+              ],
+              [
+                "pred",
+                "V",
+                []
+              ]
+            ],
+            "t2_V_to_W": [
+              "imp",
+              [
+                "pred",
+                "V",
+                []
+              ],
+              [
+                "pred",
+                "W",
+                []
+              ]
+            ]
+          },
+          "functions": {},
+          "predicates": {
+            "U": 0,
+            "V": 0,
+            "W": 0
+          },
+          "schemas": []
+        },
+        "title": "A two-link implication chain"
+      },
+      "status": "Automatically searched donor; whole and essential primitive requests Native-accepted. The containing case failed its memory gate. No recipient proof or whole-case qualification is inferred.",
+      "title": "A two-link implication chain"
+    },
+    {
+      "essential_query": 21,
+      "proof": [
+        {
+          "formula": [
+            "pred",
+            "V",
+            []
+          ],
+          "name": "t1_V",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "pred",
+              "U",
+              []
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "V",
+                []
+              ],
+              [
+                "pred",
+                "W",
+                []
+              ]
+            ]
+          ],
+          "name": "t2_U_to_V_to_W",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "pred",
+            "U",
+            []
+          ],
+          "name": "t0_U",
+          "rule": "axiom"
+        },
+        {
+          "antecedent": 2,
+          "formula": [
+            "imp",
+            [
+              "pred",
+              "V",
+              []
+            ],
+            [
+              "pred",
+              "W",
+              []
+            ]
+          ],
+          "implication": 1,
+          "rule": "mp"
+        },
+        {
+          "antecedent": 0,
+          "formula": [
+            "pred",
+            "W",
+            []
+          ],
+          "implication": 3,
+          "rule": "mp"
+        }
+      ],
+      "query_id": 20,
+      "source": {
+        "bytes": 152115,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-fork-join-positive/failure.json",
+        "sha256": "3f259eb33f6e86d626a33a27663a6b9bed9d195d638655bb1287acbe8aab162f"
+      },
+      "spec": {
+        "id": "train-propositional-curried",
+        "instantiation_rounds": 2,
+        "length": 5,
+        "scope": "Separate nullary propositional training statement. Shares an intended proper propositional subproof motif with positive1; no quantified fork construction, proof commands or held-out full sequent supplied.",
+        "target": [
+          "pred",
+          "W",
+          []
+        ],
+        "theory": {
+          "axioms": {
+            "t0_U": [
+              "pred",
+              "U",
+              []
+            ],
+            "t1_V": [
+              "pred",
+              "V",
+              []
+            ],
+            "t2_U_to_V_to_W": [
+              "imp",
+              [
+                "pred",
+                "U",
+                []
+              ],
+              [
+                "imp",
+                [
+                  "pred",
+                  "V",
+                  []
+                ],
+                [
+                  "pred",
+                  "W",
+                  []
+                ]
+              ]
+            ]
+          },
+          "functions": {},
+          "predicates": {
+            "U": 0,
+            "V": 0,
+            "W": 0
+          },
+          "schemas": []
+        },
+        "title": "Apply a curried implication to two supplied premises"
+      },
+      "status": "Automatically searched donor; whole and essential primitive requests Native-accepted. The containing case failed its memory gate. No recipient proof or whole-case qualification is inferred.",
+      "title": "Apply a curried implication to two supplied premises"
+    }
+  ],
+  "review_summary": "Independent reviewers passed the frozen scientific sources and prospective custodian/plan design within their stated scopes. Runtime evidence has separate admission and review; a source pass did not predict memory fit.",
+  "schema": "gcts-matched-proof-search-pilot-report-v1",
+  "tiles": []
+}

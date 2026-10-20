@@ -1,0 +1,128 @@
+{
+  "schema": "pilot-representation-engineering-assessment-v1",
+  "status": "SOURCE_ONLY_PROPOSAL_NOT_IMPLEMENTED_UNRUN_NO_GRANT",
+  "sources": {
+    "pilot": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/implementation-B/proof_search_pilot_v2.py",
+      "sha256": "0a78e3fbc69ea4cda415202a5e4dfc6a74adeb7cf085a5d1d06fc3404d96b7c5",
+      "bytes": 57979
+    },
+    "interned_model": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/implementation-B/recovered/and-support/complete-runtime-Source/interned_quantified_family_points_v1.py",
+      "sha256": "fb37663b4c0c3de4e9f3c28564678af833857f7ebe761cd83275d62f123b9a8e",
+      "bytes": 4311
+    },
+    "logical_model": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/implementation-B/recovered/and-support/complete-runtime-Source/quantified_family_points_v2.py",
+      "sha256": "f65eb38269db74ff5db0d9eb2096a38d7f07bbd6a579aa564acc692f84e4437c",
+      "bytes": 6472
+    },
+    "point_encoding": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/implementation-B/recovered/and-support/complete-runtime-Source/native_receptor_points.py",
+      "sha256": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888",
+      "bytes": 8962
+    },
+    "graph_state": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/implementation-B/recovered/and-support/complete-runtime-Source/turtle.py",
+      "sha256": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a",
+      "bytes": 28533
+    },
+    "worker": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/root/case_worker_v1.py",
+      "sha256": "0be1c1602c5de75d2e34115981abf70cded421c4144327cd587f51dc904318b1",
+      "bytes": 12236
+    }
+  },
+  "complete_saved_evidence": {
+    "assessment": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/root/passive-actual-assessment-v1.json",
+      "sha256": "206ae7b8f0eac068a291bab5bfd56913c901e5d472924f1a67b500289d477ebc",
+      "bytes": 10297
+    },
+    "failures": [
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-fork-join-positive/failure.json",
+        "sha256": "3f259eb33f6e86d626a33a27663a6b9bed9d195d638655bb1287acbe8aab162f",
+        "bytes": 152115
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-quantifier-equality-positive/failure.json",
+        "sha256": "6762f1f95c68f5e9a000ce75c75f3965083cae0198a1adeb990f448d56070b4c",
+        "bytes": 175703
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/actual/pilot-fork-join-missing-Pa/failure.json",
+        "sha256": "5db6915f083e8ff5084f5d7c4e81dd107e58da4a5b80312f10010d6d2863562e",
+        "bytes": 149820
+      }
+    ]
+  },
+  "observed_scope": {
+    "all_three": "All3 fresh jobs failed Python HWM before every target arm; scientific_result is None. Complete Native records contain accepted whole+essential3/5/5line donor requests in each failed job. No target comparison/resource-qualified proof/RL result.",
+    "fork_positive": "Failure traceback firstfault at pilot compile_case check immediately after recipient Model construction returns. Therefore optimizing only indexed_model cannot repair all3 observations.",
+    "other_two": "Failure tracebacks firstfault inside indexed_model.sequence while traversing tile.marks. Encoder had started, but final literal(JSON roundtrip) and verify_indexed_model had not been reached. Removing those later allocations alone cannot fix the observed stop point.",
+    "limits_of_attribution": "HWM is cumulative peak, not a live heap snapshot. Tracebacks identify the detecting check and completed Source stages, not allocation byte shares. No per-object sizes, cardinality-derived memory amounts, retained heap inventory or fitting bound was measured here."
+  },
+  "source_structures": [
+    {
+      "where": "quantified_family_points_v2.Model.__init__ / interned Model.add",
+      "allocation": "Every original row command is retained in domains. Each C/guard gets a Placement, metadata, full sorted merged mark sequence, and every occupancy/mark point inserts its key in dependencies[point].",
+      "reason": "Point/pair interning shares literal objects, but full mark-sequence tuples retain one reference per byte-position occurrence. A guard repeats its command/formula words and adds prior-row formula words. Per-byte dependency sets repeat candidate membership across every word coordinate."
+    },
+    {
+      "where": "interned Model._sequence",
+      "allocation": "Full sequence tuple is interned as a whole; dictionaries for points, pairs and sequences stay live on the Model.",
+      "reason": "Whole-sequence interning does not share proper word segments between distinct full sequences. Existing literal reuse is not a proven peak-memory bound."
+    },
+    {
+      "where": "pilot indexed_model.sequence and placement loop",
+      "allocation": "Model remains live while encoder constructs fresh pair_index/pairs and integer-index sequence_index/sequences, plus placement row dicts and copied metadata. sorted(model.cache.items()) also creates a complete temporary ordering list.",
+      "reason": "This is a second ownership/indexing layer for values already held by Model; two failure checks occur during this rebuild."
+    },
+    {
+      "where": "indexed_model return literal(...) and verify_indexed_model",
+      "allocation": "Later Source would hold the original Model and encoder tables during a full JSON string/parse roundtrip; decoder then builds a new native pair list, uniqueness sets and complete reverse dependency map.",
+      "reason": "These later overlapping allocations are genuine Source obligations, but neither observed encoder failure reached them. Do not attribute measured peaks to stages not reached."
+    },
+    {
+      "where": "_MarkedModel.__init__",
+      "allocation": "A later on-model would shallow-copy the placement cache and independently copy every dependency set.",
+      "reason": "Marking/setup stage was not reached. Any successor must avoid reintroducing the same full reverse-index duplication after initial construction."
+    }
+  ],
+  "concrete_minimal_successor": {
+    "name": "Fresh single-owner segmented literal-mark model and streamed evidence view",
+    "implementation_boundary": "Version only the Model storage/dependency representation, indexed evidence writer/decoder, and tiny marking overlay adapters. Keep exact current compiler outputs, every primitive key/domain/metadata field, t roots, byte-coordinate m values, Graph decision/update semantics, target bounds and whole gates.",
+    "steps": [
+      "During fresh Model construction, normalize each one-tile mark support exactly as old merge; retain shared immutable literal word segments rather than a separate full pair-reference tuple for every candidate. A segment stores exact coordinate run and all exact integer values, with a declared full decoder; no hashes substitute for equality. Candidate sequences retain ordered segment references. Intermediate merge data lives for one candidate only.",
+      "Replace eager per-byte dependencies[point] membership sets by an exact grouped dependency index: full word/run assignment group to all assigning candidate keys, plus complete run coordinate coverage. dependencies.get(point) returns the exact union of every group covering that coordinate. It may enumerate more slowly, but must neither omit candidates nor change root degrees. No query result/proof answer comes from evidence storage.",
+      "Make that construction store the sole owner of literal mark segments and sequence references. Build the canonical explicit evidence view directly from it, rather than rebuilding pair/sequence maps in indexed_model. Construct declared JSON wire arrays directly or stream a lossless versioned run table; eliminate the full literal(JSON dumps/loads) conversion. This is a newly reviewed pilot representation contract, not an old G0/G1 gate rescue.",
+      "Independently reconcile every original placement/coordinate/value/metadata/command and every dependency point->candidate relation by streaming one tile or one point at a time. Do not materialize a second complete native pair store or reverse dependency dictionary.",
+      "Represent certified fresh m decorations as a tiny overlay on the original immutable storage/dependency view; do not copy all base dependency sets. State/Graph primitive placement and rollback remain unchanged. Keep complete domains/exact inverse frontier incidence.",
+      "Root retains full cold inputs, Native query records, learned library, failure certificates, compact trace and final full primitive/point checks under the same physical/uncompressed output/wall/HWM/callback caps. No warm reuse between jobs, no easier targets, no skipped arms or changed primitive length accounting."
+    ],
+    "exact_correspondence_obligations": [
+      "Decoded sequence must equal the old sorted merged point/value support at every original key, including terminator256, explicit0, missing coordinates and all distant reads.",
+      "Grouped dependency lookup must equal the old complete set for every occupied/marked coordinate; duplicate edges retain original set semantics. Root and reverse graph incidence remain complete.",
+      "All allowed fixed positional transforms, C/G keys, guard variants and requirements remain; no proof-level quotient, new axiom, candidate pruning or scheduler shortcut.",
+      "Source review plus fresh actual tiny/full-stream correspondence diagnostics and whole original14/13/14case jobs required before claims. No full predecessor heap need be built merely for comparison; use per-placement reference construction and a complete correspondence argument."
+    ],
+    "fit_status": "OPEN. Segmentation targets occurrence-pointer and per-byte-membership duplication by Source structure only. Candidate/metadata/domain/Graph storage and grouped enumeration time remain. No byte share, HWM bound, speedup or guarantee of finishing under unchanged limits follows.",
+    "not_sufficient_alone": [
+      "Removing indexed_model JSON roundtrip.",
+      "Replacing only encoder dictionaries while leaving eager Model/dependencies unchanged.",
+      "Dropping evidence fields/candidates/rows or raising any cap."
+    ]
+  },
+  "preservation": "All frozen Sources,3 consumed grants, complete failed cohorts and negative assessments remain unchanged. This note is not implementation or permission to rerun. Root publication reports failure outcomes as failures.",
+  "activity": {
+    "scientific_calls": 0,
+    "imports_of_research_code": 0,
+    "fixture_calls": 0,
+    "sizing_or_heap_probes": 0,
+    "partial_reads": 0,
+    "new_actuals": 0,
+    "new_grants": 0
+  },
+  "stop_tools": true
+}

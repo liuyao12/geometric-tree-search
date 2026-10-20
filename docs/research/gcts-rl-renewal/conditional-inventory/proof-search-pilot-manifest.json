@@ -1,0 +1,69 @@
+{
+  "archive_scan": {
+    "all_complete_members_byte_checked": true,
+    "archive": {
+      "bytes": 4789231,
+      "file": "proof-search-pilot-evidence.tar.gz",
+      "sha256": "a32088719b53cda25fc0ca9b7c0d4a0c05b24e960d53a873463e103b549bb706"
+    },
+    "members": 125,
+    "omitted_trusted_runtime": [
+      {
+        "pin": {
+          "bytes": 18058560,
+          "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+          "sha256": "b6ea0c2a9bfce48dbf181a53f1ca4f0562d40658b85bf47258e2a88d8f9e3933"
+        },
+        "reason": "Declared trusted CPython runtime; binary not redistributed. All research Sources and fixed Native assets are included."
+      }
+    ],
+    "partial_raw_metadata_only": [],
+    "payload_bytes": 30729839,
+    "schema": "pilot-complete-archive-scan-v1"
+  },
+  "conclusions": "All three case jobs fail memory admission before recipient search. No completed comparison or GCTS/RL advantage.",
+  "files": [
+    {
+      "bytes": 45242,
+      "file": "proof-search-pilot-data.json",
+      "sha256": "6ad3ea41649cdbbdb4145bfb743917de9d34342fb49cb76dd816b5173e11b432"
+    },
+    {
+      "bytes": 11419,
+      "file": "proof-search-pilot-engineering.json",
+      "sha256": "e740a73d73e2830f297483806c965bc181b3b43470e5b3acc4f5bf18da7ebb5b"
+    },
+    {
+      "bytes": 4789231,
+      "file": "proof-search-pilot-evidence.tar.gz",
+      "sha256": "a32088719b53cda25fc0ca9b7c0d4a0c05b24e960d53a873463e103b549bb706"
+    },
+    {
+      "bytes": 22989,
+      "file": "proof-search-pilot-review-C.json",
+      "sha256": "a35d64a2d067419f19a392fa8d3b73a37b46c8099ddfca822ce1b8ae1ffe4f74"
+    },
+    {
+      "bytes": 33258,
+      "file": "proof-search-pilot-review-L.json",
+      "sha256": "730c3f37343b1266ac0924cbe2d442da1a042c195f2b928d2cb7200e341a8937"
+    },
+    {
+      "bytes": 17761,
+      "file": "proof-search-pilot.html",
+      "sha256": "852b7087209d4df9e9d8924bc3e096d9de2c64db0907ab983a8e52b7c3cecf45"
+    },
+    {
+      "bytes": 107270,
+      "file": "reader.html",
+      "sha256": "0ba55bb83bc26a67ceb70fcb29c8e524f69524615c2d8bc120aa6fca8c2f63e0"
+    }
+  ],
+  "reader_change": "One exact712byte task-owned insertion; unchanged prior bytes retained locally and in archive.",
+  "reviewer_erratum": {
+    "correction": "The preserved C actual-review receipt has33 in two count/prose fields. Its complete raw_actual_files array and the archive enumerate30 actual files:10 percase. Correct total30. Full byte joins and experimental conclusions are unchanged; the original receipt is preserved.",
+    "receipt_sha256": "a35d64a2d067419f19a392fa8d3b73a37b46c8099ddfca822ce1b8ae1ffe4f74"
+  },
+  "schema": "proof-search-pilot-publication-manifest-v1",
+  "source_parent_commit": "9ce8626fde64f9d7f17b11e378b91414d6d4a7dc"
+}
