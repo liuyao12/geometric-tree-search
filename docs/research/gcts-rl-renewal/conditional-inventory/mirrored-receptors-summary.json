@@ -1,0 +1,3540 @@
+{
+  "DPLL_certified_Boolean_branch_attempts": 54,
+  "DPLL_certified_cold_seconds_sum": 1.776663249,
+  "DPLL_plain_Boolean_branch_attempts": 54,
+  "DPLL_plain_seconds_sum": 0.41203075299999997,
+  "call_completed": {
+    "census.audit_snapshot": 1672,
+    "census.certify_deadpoint": 39,
+    "census.is_own_invalid": 9,
+    "census.is_own_limit": 1,
+    "compiler.compile_marking_gadget": 23,
+    "compiler.project": 37,
+    "dpll.Limit": 1,
+    "dpll.is_own_invalid": 3,
+    "dpll.solve": 47,
+    "mirror_compiler.GadgetLimit": 1,
+    "mirror_compiler.compile_marking_gadget": 186,
+    "mirror_compiler.extend": 394,
+    "mirror_compiler.project": 431,
+    "mirror_verifier.is_own_invalid": 4223,
+    "mirror_verifier.is_own_limit": 1,
+    "mirror_verifier.verify_extension": 685,
+    "mirror_verifier.verify_tiling": 1484,
+    "mirror_verifier.verify_translation": 185,
+    "search.search": 139,
+    "verifier.is_own_invalid": 4,
+    "verifier.verify_tiling": 407,
+    "verifier.verify_translation": 23
+  },
+  "call_raised": {
+    "census.audit_snapshot": 7,
+    "census.certify_deadpoint": 5,
+    "dpll.solve": 5,
+    "mirror_compiler.compile_marking_gadget": 9,
+    "mirror_compiler.extend": 304,
+    "mirror_compiler.project": 1,
+    "mirror_verifier.verify_tiling": 4217,
+    "mirror_verifier.verify_translation": 8,
+    "search.search": 5,
+    "verifier.verify_tiling": 4
+  },
+  "call_started": {
+    "census.audit_snapshot": 1679,
+    "census.certify_deadpoint": 44,
+    "census.is_own_invalid": 9,
+    "census.is_own_limit": 1,
+    "compiler.compile_marking_gadget": 23,
+    "compiler.project": 37,
+    "dpll.Limit": 1,
+    "dpll.is_own_invalid": 3,
+    "dpll.solve": 52,
+    "mirror_compiler.GadgetLimit": 1,
+    "mirror_compiler.compile_marking_gadget": 195,
+    "mirror_compiler.extend": 698,
+    "mirror_compiler.project": 432,
+    "mirror_verifier.is_own_invalid": 4223,
+    "mirror_verifier.is_own_limit": 1,
+    "mirror_verifier.verify_extension": 685,
+    "mirror_verifier.verify_tiling": 5701,
+    "mirror_verifier.verify_translation": 193,
+    "search.search": 144,
+    "verifier.is_own_invalid": 4,
+    "verifier.verify_tiling": 411,
+    "verifier.verify_translation": 23
+  },
+  "certified_clauses_per_arm_reported": 13,
+  "cleanup_closed_before210": true,
+  "component_base_assignments_reported": 697,
+  "component_cases_reported": 162,
+  "component_diagnostics_reported": 15,
+  "component_raw_products_reported": 4214,
+  "conservative_physical_bytes": 25145124,
+  "mathematical_adoption": false,
+  "mirror_aux_to_base_removal_occurrences": 0,
+  "mirror_base_branch_attempts": 54,
+  "mirror_cold_seconds_sum": 8.607860542,
+  "old_aux_to_base_removal_occurrences": 0,
+  "old_base_branch_attempts": 54,
+  "old_cold_seconds_sum": 7.384261082,
+  "original_solutions_reported": 37,
+  "outer_failure": {
+    "errno": null,
+    "message": "component exact foreign callback object",
+    "type": "ValueError"
+  },
+  "plain_base_branch_attempts": 54,
+  "qualification_status": "OUTER_GATE_REJECTED_UNQUALIFIED",
+  "raw_packet": {
+    "bytes": 15525671,
+    "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/actual-comparison-v2/canonical-mirrored-receptor-comparison.json",
+    "sha256": "43b432d287434e59a157a094116595f6b9b5e32a5851485373a38f946035e0a5"
+  },
+  "root_callbacks_header_cutoff": 27910321,
+  "root_callbacks_result_cutoff": 27910276,
+  "rows": [
+    {
+      "DPLL": {
+        "dpll_certified": {
+          "branch_attempts": 6,
+          "branch_decisions": 3,
+          "clauses": 20,
+          "conflicts": 0,
+          "literal_visits": 501,
+          "literals": 40,
+          "unit_assignments": 10,
+          "variables": 8,
+          "work": 2160
+        },
+        "dpll_plain": {
+          "branch_attempts": 6,
+          "branch_decisions": 3,
+          "clauses": 20,
+          "conflicts": 0,
+          "literal_visits": 501,
+          "literals": 40,
+          "unit_assignments": 10,
+          "variables": 8,
+          "work": 2160
+        }
+      },
+      "certified_clause_count_per_arm": 0,
+      "dpll_certified_reuse_seconds": 0.008889458,
+      "dpll_plain_complete_seconds": 0.008633584,
+      "id": "two-variable-cnf-mask-00",
+      "lanes": {
+        "acquisition": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 6,
+          "base_forced": 0,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 6,
+            "census": 7,
+            "enumeration_subtree_exhausted": 3,
+            "rollback": 6,
+            "rollback_census": 6,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 4
+          },
+          "initial_active_candidates": 4,
+          "statistics": {
+            "candidate_universe": 8,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 6,
+            "mark_dependency_keys": 5,
+            "solutions": 4,
+            "trace_rows": 33,
+            "witness_rows": 0
+          }
+        },
+        "marked": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 6,
+          "base_forced": 0,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 6,
+            "census": 7,
+            "enumeration_subtree_exhausted": 3,
+            "rollback": 6,
+            "rollback_census": 6,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 4
+          },
+          "initial_active_candidates": 4,
+          "statistics": {
+            "candidate_universe": 8,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 6,
+            "mark_dependency_keys": 9,
+            "solutions": 4,
+            "trace_rows": 33,
+            "witness_rows": 0
+          }
+        },
+        "mirrored": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 6,
+          "base_forced": 0,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 6,
+            "census": 7,
+            "enumeration_subtree_exhausted": 3,
+            "rollback": 6,
+            "rollback_census": 6,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 4
+          },
+          "initial_active_candidates": 4,
+          "statistics": {
+            "candidate_universe": 8,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 6,
+            "mark_dependency_keys": 9,
+            "solutions": 4,
+            "trace_rows": 33,
+            "witness_rows": 0
+          }
+        },
+        "plain": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 6,
+          "base_forced": 0,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 6,
+            "census": 7,
+            "enumeration_subtree_exhausted": 3,
+            "rollback": 6,
+            "rollback_census": 6,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 4
+          },
+          "initial_active_candidates": 4,
+          "statistics": {
+            "candidate_universe": 8,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 6,
+            "mark_dependency_keys": 5,
+            "solutions": 4,
+            "trace_rows": 33,
+            "witness_rows": 0
+          }
+        }
+      },
+      "original_solution_count_reported": 4,
+      "timings": {
+        "cold_certified_pipeline_seconds": 0.132884833,
+        "dpll_certified_cold_seconds": 0.059224,
+        "mirror_cold_seconds": 0.133020917,
+        "mirror_reuse_seconds": 0.084901125,
+        "old_reuse_seconds": 0.084544,
+        "plain_complete_seconds": 0.048688666,
+        "total_comparison_case_seconds": 0.389164166
+      },
+      "worker_preservation_claim": true
+    },
+    {
+      "DPLL": {
+        "dpll_certified": {
+          "branch_attempts": 4,
+          "branch_decisions": 2,
+          "clauses": 97,
+          "conflicts": 0,
+          "literal_visits": 4791,
+          "literals": 195,
+          "unit_assignments": 28,
+          "variables": 21,
+          "work": 11071
+        },
+        "dpll_plain": {
+          "branch_attempts": 4,
+          "branch_decisions": 2,
+          "clauses": 97,
+          "conflicts": 0,
+          "literal_visits": 4791,
+          "literals": 195,
+          "unit_assignments": 28,
+          "variables": 21,
+          "work": 11071
+        }
+      },
+      "certified_clause_count_per_arm": 0,
+      "dpll_certified_reuse_seconds": 0.008543834,
+      "dpll_plain_complete_seconds": 0.008836875,
+      "id": "two-variable-cnf-mask-01",
+      "lanes": {
+        "acquisition": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 4,
+          "base_forced": 4,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 4,
+            "census": 9,
+            "enumeration_subtree_exhausted": 2,
+            "forced": 4,
+            "rollback": 4,
+            "rollback_census": 4,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 3
+          },
+          "initial_active_candidates": 7,
+          "statistics": {
+            "candidate_universe": 21,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 4,
+            "mark_dependency_keys": 9,
+            "solutions": 3,
+            "trace_rows": 31,
+            "witness_rows": 0
+          }
+        },
+        "marked": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 4,
+          "base_forced": 4,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 4,
+            "census": 9,
+            "enumeration_subtree_exhausted": 2,
+            "forced": 4,
+            "rollback": 4,
+            "rollback_census": 4,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 3
+          },
+          "initial_active_candidates": 7,
+          "statistics": {
+            "candidate_universe": 21,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 4,
+            "mark_dependency_keys": 15,
+            "solutions": 3,
+            "trace_rows": 31,
+            "witness_rows": 0
+          }
+        },
+        "mirrored": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 4,
+          "base_forced": 4,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 4,
+            "census": 9,
+            "enumeration_subtree_exhausted": 2,
+            "forced": 4,
+            "rollback": 4,
+            "rollback_census": 4,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 3
+          },
+          "initial_active_candidates": 7,
+          "statistics": {
+            "candidate_universe": 21,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 4,
+            "mark_dependency_keys": 15,
+            "solutions": 3,
+            "trace_rows": 31,
+            "witness_rows": 0
+          }
+        },
+        "plain": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 4,
+          "base_forced": 4,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 4,
+            "census": 9,
+            "enumeration_subtree_exhausted": 2,
+            "forced": 4,
+            "rollback": 4,
+            "rollback_census": 4,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 3
+          },
+          "initial_active_candidates": 7,
+          "statistics": {
+            "candidate_universe": 21,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 4,
+            "mark_dependency_keys": 9,
+            "solutions": 3,
+            "trace_rows": 31,
+            "witness_rows": 0
+          }
+        }
+      },
+      "original_solution_count_reported": 3,
+      "timings": {
+        "cold_certified_pipeline_seconds": 0.153730042,
+        "dpll_certified_cold_seconds": 0.065053959,
+        "mirror_cold_seconds": 0.150623291,
+        "mirror_reuse_seconds": 0.094485583,
+        "old_reuse_seconds": 0.096520208,
+        "plain_complete_seconds": 0.059089084,
+        "total_comparison_case_seconds": 0.443156334
+      },
+      "worker_preservation_claim": true
+    },
+    {
+      "DPLL": {
+        "dpll_certified": {
+          "branch_attempts": 4,
+          "branch_decisions": 2,
+          "clauses": 98,
+          "conflicts": 0,
+          "literal_visits": 4826,
+          "literals": 197,
+          "unit_assignments": 28,
+          "variables": 21,
+          "work": 11142
+        },
+        "dpll_plain": {
+          "branch_attempts": 4,
+          "branch_decisions": 2,
+          "clauses": 98,
+          "conflicts": 0,
+          "literal_visits": 4826,
+          "literals": 197,
+          "unit_assignments": 28,
+          "variables": 21,
+          "work": 11142
+        }
+      },
+      "certified_clause_count_per_arm": 0,
+      "dpll_certified_reuse_seconds": 0.008751208,
+      "dpll_plain_complete_seconds": 0.008899833,
+      "id": "two-variable-cnf-mask-02",
+      "lanes": {
+        "acquisition": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 4,
+          "base_forced": 4,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 4,
+            "census": 9,
+            "enumeration_subtree_exhausted": 2,
+            "forced": 4,
+            "rollback": 4,
+            "rollback_census": 4,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 3
+          },
+          "initial_active_candidates": 7,
+          "statistics": {
+            "candidate_universe": 21,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 4,
+            "mark_dependency_keys": 9,
+            "solutions": 3,
+            "trace_rows": 31,
+            "witness_rows": 0
+          }
+        },
+        "marked": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 4,
+          "base_forced": 4,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 4,
+            "census": 9,
+            "enumeration_subtree_exhausted": 2,
+            "forced": 4,
+            "rollback": 4,
+            "rollback_census": 4,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 3
+          },
+          "initial_active_candidates": 7,
+          "statistics": {
+            "candidate_universe": 21,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 4,
+            "mark_dependency_keys": 15,
+            "solutions": 3,
+            "trace_rows": 31,
+            "witness_rows": 0
+          }
+        },
+        "mirrored": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 4,
+          "base_forced": 4,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 4,
+            "census": 9,
+            "enumeration_subtree_exhausted": 2,
+            "forced": 4,
+            "rollback": 4,
+            "rollback_census": 4,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 3
+          },
+          "initial_active_candidates": 7,
+          "statistics": {
+            "candidate_universe": 21,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 4,
+            "mark_dependency_keys": 15,
+            "solutions": 3,
+            "trace_rows": 31,
+            "witness_rows": 0
+          }
+        },
+        "plain": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 4,
+          "base_forced": 4,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 4,
+            "census": 9,
+            "enumeration_subtree_exhausted": 2,
+            "forced": 4,
+            "rollback": 4,
+            "rollback_census": 4,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 3
+          },
+          "initial_active_candidates": 7,
+          "statistics": {
+            "candidate_universe": 21,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 4,
+            "mark_dependency_keys": 9,
+            "solutions": 3,
+            "trace_rows": 31,
+            "witness_rows": 0
+          }
+        }
+      },
+      "original_solution_count_reported": 3,
+      "timings": {
+        "cold_certified_pipeline_seconds": 0.15059425,
+        "dpll_certified_cold_seconds": 0.064615625,
+        "mirror_cold_seconds": 0.168041791,
+        "mirror_reuse_seconds": 0.110235416,
+        "old_reuse_seconds": 0.094058167,
+        "plain_complete_seconds": 0.055733291,
+        "total_comparison_case_seconds": 0.453625834
+      },
+      "worker_preservation_claim": true
+    },
+    {
+      "DPLL": {
+        "dpll_certified": {
+          "branch_attempts": 4,
+          "branch_decisions": 2,
+          "clauses": 315,
+          "conflicts": 1,
+          "literal_visits": 23948,
+          "literals": 632,
+          "unit_assignments": 47,
+          "variables": 40,
+          "work": 47101
+        },
+        "dpll_plain": {
+          "branch_attempts": 4,
+          "branch_decisions": 2,
+          "clauses": 314,
+          "conflicts": 1,
+          "literal_visits": 24982,
+          "literals": 630,
+          "unit_assignments": 50,
+          "variables": 40,
+          "work": 48934
+        }
+      },
+      "certified_clause_count_per_arm": 1,
+      "dpll_certified_reuse_seconds": 0.0119605,
+      "dpll_plain_complete_seconds": 0.011474084,
+      "id": "two-variable-cnf-mask-03",
+      "lanes": {
+        "acquisition": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 4,
+          "base_forced": 5,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 4,
+            "census": 10,
+            "enumeration_subtree_exhausted": 2,
+            "forced": 5,
+            "raw_deadpoint_candidate": 1,
+            "rollback": 4,
+            "rollback_census": 4,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 2
+          },
+          "initial_active_candidates": 10,
+          "statistics": {
+            "candidate_universe": 40,
+            "deadpoint_candidates": 1,
+            "decision_attempts": 4,
+            "mark_dependency_keys": 12,
+            "solutions": 2,
+            "trace_rows": 33,
+            "witness_rows": 10
+          }
+        },
+        "marked": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 3,
+          "base_branch_attempts": 4,
+          "base_forced": 5,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 4,
+            "census": 13,
+            "enumeration_subtree_exhausted": 2,
+            "forced": 8,
+            "raw_deadpoint_acquisition_disabled": 1,
+            "rollback": 4,
+            "rollback_census": 4,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 2
+          },
+          "initial_active_candidates": 39,
+          "statistics": {
+            "candidate_universe": 300,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 4,
+            "mark_dependency_keys": 45,
+            "solutions": 2,
+            "trace_rows": 39,
+            "witness_rows": 0
+          }
+        },
+        "mirrored": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 3,
+          "base_branch_attempts": 4,
+          "base_forced": 5,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 4,
+            "census": 13,
+            "enumeration_subtree_exhausted": 2,
+            "forced": 8,
+            "raw_deadpoint_acquisition_disabled": 1,
+            "rollback": 4,
+            "rollback_census": 4,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 2
+          },
+          "initial_active_candidates": 17,
+          "statistics": {
+            "candidate_universe": 300,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 4,
+            "mark_dependency_keys": 59,
+            "solutions": 2,
+            "trace_rows": 39,
+            "witness_rows": 0
+          }
+        },
+        "plain": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 4,
+          "base_forced": 5,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 4,
+            "census": 10,
+            "enumeration_subtree_exhausted": 2,
+            "forced": 5,
+            "raw_deadpoint_acquisition_disabled": 1,
+            "rollback": 4,
+            "rollback_census": 4,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 2
+          },
+          "initial_active_candidates": 10,
+          "statistics": {
+            "candidate_universe": 40,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 4,
+            "mark_dependency_keys": 12,
+            "solutions": 2,
+            "trace_rows": 33,
+            "witness_rows": 0
+          }
+        }
+      },
+      "original_solution_count_reported": 2,
+      "timings": {
+        "cold_certified_pipeline_seconds": 0.481801625,
+        "dpll_certified_cold_seconds": 0.088965875,
+        "mirror_cold_seconds": 0.583345459,
+        "mirror_reuse_seconds": 0.50503325,
+        "old_reuse_seconds": 0.405680667,
+        "plain_complete_seconds": 0.071715083,
+        "total_comparison_case_seconds": 1.241667584
+      },
+      "worker_preservation_claim": true
+    },
+    {
+      "DPLL": {
+        "dpll_certified": {
+          "branch_attempts": 4,
+          "branch_decisions": 2,
+          "clauses": 98,
+          "conflicts": 0,
+          "literal_visits": 4817,
+          "literals": 197,
+          "unit_assignments": 28,
+          "variables": 21,
+          "work": 11133
+        },
+        "dpll_plain": {
+          "branch_attempts": 4,
+          "branch_decisions": 2,
+          "clauses": 98,
+          "conflicts": 0,
+          "literal_visits": 4817,
+          "literals": 197,
+          "unit_assignments": 28,
+          "variables": 21,
+          "work": 11133
+        }
+      },
+      "certified_clause_count_per_arm": 0,
+      "dpll_certified_reuse_seconds": 0.008682542,
+      "dpll_plain_complete_seconds": 0.008455583,
+      "id": "two-variable-cnf-mask-04",
+      "lanes": {
+        "acquisition": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 4,
+          "base_forced": 4,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 4,
+            "census": 9,
+            "enumeration_subtree_exhausted": 2,
+            "forced": 4,
+            "rollback": 4,
+            "rollback_census": 4,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 3
+          },
+          "initial_active_candidates": 7,
+          "statistics": {
+            "candidate_universe": 21,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 4,
+            "mark_dependency_keys": 9,
+            "solutions": 3,
+            "trace_rows": 31,
+            "witness_rows": 0
+          }
+        },
+        "marked": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 4,
+          "base_forced": 4,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 4,
+            "census": 9,
+            "enumeration_subtree_exhausted": 2,
+            "forced": 4,
+            "rollback": 4,
+            "rollback_census": 4,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 3
+          },
+          "initial_active_candidates": 7,
+          "statistics": {
+            "candidate_universe": 21,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 4,
+            "mark_dependency_keys": 15,
+            "solutions": 3,
+            "trace_rows": 31,
+            "witness_rows": 0
+          }
+        },
+        "mirrored": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 4,
+          "base_forced": 4,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 4,
+            "census": 9,
+            "enumeration_subtree_exhausted": 2,
+            "forced": 4,
+            "rollback": 4,
+            "rollback_census": 4,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 3
+          },
+          "initial_active_candidates": 7,
+          "statistics": {
+            "candidate_universe": 21,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 4,
+            "mark_dependency_keys": 15,
+            "solutions": 3,
+            "trace_rows": 31,
+            "witness_rows": 0
+          }
+        },
+        "plain": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 4,
+          "base_forced": 4,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 4,
+            "census": 9,
+            "enumeration_subtree_exhausted": 2,
+            "forced": 4,
+            "rollback": 4,
+            "rollback_census": 4,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 3
+          },
+          "initial_active_candidates": 7,
+          "statistics": {
+            "candidate_universe": 21,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 4,
+            "mark_dependency_keys": 9,
+            "solutions": 3,
+            "trace_rows": 31,
+            "witness_rows": 0
+          }
+        }
+      },
+      "original_solution_count_reported": 3,
+      "timings": {
+        "cold_certified_pipeline_seconds": 0.15163425,
+        "dpll_certified_cold_seconds": 0.066330209,
+        "mirror_cold_seconds": 0.153461584,
+        "mirror_reuse_seconds": 0.097217459,
+        "old_reuse_seconds": 0.095379791,
+        "plain_complete_seconds": 0.056544792,
+        "total_comparison_case_seconds": 0.442477375
+      },
+      "worker_preservation_claim": true
+    },
+    {
+      "DPLL": {
+        "dpll_certified": {
+          "branch_attempts": 2,
+          "branch_decisions": 1,
+          "clauses": 312,
+          "conflicts": 0,
+          "literal_visits": 23378,
+          "literals": 626,
+          "unit_assignments": 48,
+          "variables": 40,
+          "work": 45954
+        },
+        "dpll_plain": {
+          "branch_attempts": 2,
+          "branch_decisions": 1,
+          "clauses": 312,
+          "conflicts": 0,
+          "literal_visits": 23378,
+          "literals": 626,
+          "unit_assignments": 48,
+          "variables": 40,
+          "work": 45954
+        }
+      },
+      "certified_clause_count_per_arm": 0,
+      "dpll_certified_reuse_seconds": 0.013101,
+      "dpll_plain_complete_seconds": 0.011723542,
+      "id": "two-variable-cnf-mask-05",
+      "lanes": {
+        "acquisition": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 2,
+          "base_forced": 6,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 2,
+            "census": 9,
+            "enumeration_subtree_exhausted": 1,
+            "forced": 6,
+            "rollback": 2,
+            "rollback_census": 2,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 2
+          },
+          "initial_active_candidates": 10,
+          "statistics": {
+            "candidate_universe": 40,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 2,
+            "mark_dependency_keys": 12,
+            "solutions": 2,
+            "trace_rows": 25,
+            "witness_rows": 0
+          }
+        },
+        "marked": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 2,
+          "base_forced": 6,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 2,
+            "census": 9,
+            "enumeration_subtree_exhausted": 1,
+            "forced": 6,
+            "rollback": 2,
+            "rollback_census": 2,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 2
+          },
+          "initial_active_candidates": 10,
+          "statistics": {
+            "candidate_universe": 40,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 2,
+            "mark_dependency_keys": 20,
+            "solutions": 2,
+            "trace_rows": 25,
+            "witness_rows": 0
+          }
+        },
+        "mirrored": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 2,
+          "base_forced": 6,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 2,
+            "census": 9,
+            "enumeration_subtree_exhausted": 1,
+            "forced": 6,
+            "rollback": 2,
+            "rollback_census": 2,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 2
+          },
+          "initial_active_candidates": 10,
+          "statistics": {
+            "candidate_universe": 40,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 2,
+            "mark_dependency_keys": 20,
+            "solutions": 2,
+            "trace_rows": 25,
+            "witness_rows": 0
+          }
+        },
+        "plain": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 2,
+          "base_forced": 6,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 2,
+            "census": 9,
+            "enumeration_subtree_exhausted": 1,
+            "forced": 6,
+            "rollback": 2,
+            "rollback_census": 2,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 2
+          },
+          "initial_active_candidates": 10,
+          "statistics": {
+            "candidate_universe": 40,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 2,
+            "mark_dependency_keys": 12,
+            "solutions": 2,
+            "trace_rows": 25,
+            "witness_rows": 0
+          }
+        }
+      },
+      "original_solution_count_reported": 2,
+      "timings": {
+        "cold_certified_pipeline_seconds": 0.154327208,
+        "dpll_certified_cold_seconds": 0.117448,
+        "mirror_cold_seconds": 0.155736291,
+        "mirror_reuse_seconds": 0.09714175,
+        "old_reuse_seconds": 0.096115917,
+        "plain_complete_seconds": 0.057936875,
+        "total_comparison_case_seconds": 0.501475958
+      },
+      "worker_preservation_claim": true
+    },
+    {
+      "DPLL": {
+        "dpll_certified": {
+          "branch_attempts": 2,
+          "branch_decisions": 1,
+          "clauses": 313,
+          "conflicts": 0,
+          "literal_visits": 23446,
+          "literals": 628,
+          "unit_assignments": 48,
+          "variables": 40,
+          "work": 46076
+        },
+        "dpll_plain": {
+          "branch_attempts": 2,
+          "branch_decisions": 1,
+          "clauses": 313,
+          "conflicts": 0,
+          "literal_visits": 23446,
+          "literals": 628,
+          "unit_assignments": 48,
+          "variables": 40,
+          "work": 46076
+        }
+      },
+      "certified_clause_count_per_arm": 0,
+      "dpll_certified_reuse_seconds": 0.012811333,
+      "dpll_plain_complete_seconds": 0.019080792,
+      "id": "two-variable-cnf-mask-06",
+      "lanes": {
+        "acquisition": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 2,
+          "base_forced": 6,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 2,
+            "census": 9,
+            "enumeration_subtree_exhausted": 1,
+            "forced": 6,
+            "rollback": 2,
+            "rollback_census": 2,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 2
+          },
+          "initial_active_candidates": 10,
+          "statistics": {
+            "candidate_universe": 40,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 2,
+            "mark_dependency_keys": 12,
+            "solutions": 2,
+            "trace_rows": 25,
+            "witness_rows": 0
+          }
+        },
+        "marked": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 2,
+          "base_forced": 6,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 2,
+            "census": 9,
+            "enumeration_subtree_exhausted": 1,
+            "forced": 6,
+            "rollback": 2,
+            "rollback_census": 2,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 2
+          },
+          "initial_active_candidates": 10,
+          "statistics": {
+            "candidate_universe": 40,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 2,
+            "mark_dependency_keys": 20,
+            "solutions": 2,
+            "trace_rows": 25,
+            "witness_rows": 0
+          }
+        },
+        "mirrored": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 2,
+          "base_forced": 6,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 2,
+            "census": 9,
+            "enumeration_subtree_exhausted": 1,
+            "forced": 6,
+            "rollback": 2,
+            "rollback_census": 2,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 2
+          },
+          "initial_active_candidates": 10,
+          "statistics": {
+            "candidate_universe": 40,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 2,
+            "mark_dependency_keys": 20,
+            "solutions": 2,
+            "trace_rows": 25,
+            "witness_rows": 0
+          }
+        },
+        "plain": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 2,
+          "base_forced": 6,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 2,
+            "census": 9,
+            "enumeration_subtree_exhausted": 1,
+            "forced": 6,
+            "rollback": 2,
+            "rollback_census": 2,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 2
+          },
+          "initial_active_candidates": 10,
+          "statistics": {
+            "candidate_universe": 40,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 2,
+            "mark_dependency_keys": 12,
+            "solutions": 2,
+            "trace_rows": 25,
+            "witness_rows": 0
+          }
+        }
+      },
+      "original_solution_count_reported": 2,
+      "timings": {
+        "cold_certified_pipeline_seconds": 0.16308325,
+        "dpll_certified_cold_seconds": 0.075313875,
+        "mirror_cold_seconds": 0.203060291,
+        "mirror_reuse_seconds": 0.10905475,
+        "old_reuse_seconds": 0.101416417,
+        "plain_complete_seconds": 0.058847,
+        "total_comparison_case_seconds": 0.523868333
+      },
+      "worker_preservation_claim": true
+    },
+    {
+      "DPLL": {
+        "dpll_certified": {
+          "branch_attempts": 2,
+          "branch_decisions": 1,
+          "clauses": 707,
+          "conflicts": 1,
+          "literal_visits": 74859,
+          "literals": 1417,
+          "unit_assignments": 68,
+          "variables": 65,
+          "work": 138603
+        },
+        "dpll_plain": {
+          "branch_attempts": 2,
+          "branch_decisions": 1,
+          "clauses": 706,
+          "conflicts": 1,
+          "literal_visits": 77111,
+          "literals": 1415,
+          "unit_assignments": 71,
+          "variables": 65,
+          "work": 142740
+        }
+      },
+      "certified_clause_count_per_arm": 1,
+      "dpll_certified_reuse_seconds": 0.022051708,
+      "dpll_plain_complete_seconds": 0.025570334,
+      "id": "two-variable-cnf-mask-07",
+      "lanes": {
+        "acquisition": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 2,
+          "base_forced": 5,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 2,
+            "census": 8,
+            "enumeration_subtree_exhausted": 1,
+            "forced": 5,
+            "raw_deadpoint_candidate": 1,
+            "rollback": 2,
+            "rollback_census": 2,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 1
+          },
+          "initial_active_candidates": 13,
+          "statistics": {
+            "candidate_universe": 65,
+            "deadpoint_candidates": 1,
+            "decision_attempts": 2,
+            "mark_dependency_keys": 15,
+            "solutions": 1,
+            "trace_rows": 23,
+            "witness_rows": 13
+          }
+        },
+        "marked": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 2,
+          "base_branch_attempts": 2,
+          "base_forced": 5,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 2,
+            "census": 10,
+            "enumeration_subtree_exhausted": 1,
+            "forced": 7,
+            "raw_deadpoint_acquisition_disabled": 1,
+            "rollback": 2,
+            "rollback_census": 2,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 1
+          },
+          "initial_active_candidates": 51,
+          "statistics": {
+            "candidate_universe": 455,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 2,
+            "mark_dependency_keys": 53,
+            "solutions": 1,
+            "trace_rows": 27,
+            "witness_rows": 0
+          }
+        },
+        "mirrored": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 2,
+          "base_branch_attempts": 2,
+          "base_forced": 5,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 2,
+            "census": 10,
+            "enumeration_subtree_exhausted": 1,
+            "forced": 7,
+            "raw_deadpoint_acquisition_disabled": 1,
+            "rollback": 2,
+            "rollback_census": 2,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 1
+          },
+          "initial_active_candidates": 20,
+          "statistics": {
+            "candidate_universe": 455,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 2,
+            "mark_dependency_keys": 70,
+            "solutions": 1,
+            "trace_rows": 27,
+            "witness_rows": 0
+          }
+        },
+        "plain": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 2,
+          "base_forced": 5,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 2,
+            "census": 8,
+            "enumeration_subtree_exhausted": 1,
+            "forced": 5,
+            "raw_deadpoint_acquisition_disabled": 1,
+            "rollback": 2,
+            "rollback_census": 2,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 1
+          },
+          "initial_active_candidates": 13,
+          "statistics": {
+            "candidate_universe": 65,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 2,
+            "mark_dependency_keys": 15,
+            "solutions": 1,
+            "trace_rows": 23,
+            "witness_rows": 0
+          }
+        }
+      },
+      "original_solution_count_reported": 1,
+      "timings": {
+        "cold_certified_pipeline_seconds": 0.491744208,
+        "dpll_certified_cold_seconds": 0.116799458,
+        "mirror_cold_seconds": 0.567927791,
+        "mirror_reuse_seconds": 0.495810875,
+        "old_reuse_seconds": 0.410547833,
+        "plain_complete_seconds": 0.079420125,
+        "total_comparison_case_seconds": 1.284002292
+      },
+      "worker_preservation_claim": true
+    },
+    {
+      "DPLL": {
+        "dpll_certified": {
+          "branch_attempts": 4,
+          "branch_decisions": 2,
+          "clauses": 97,
+          "conflicts": 0,
+          "literal_visits": 4778,
+          "literals": 195,
+          "unit_assignments": 28,
+          "variables": 21,
+          "work": 11058
+        },
+        "dpll_plain": {
+          "branch_attempts": 4,
+          "branch_decisions": 2,
+          "clauses": 97,
+          "conflicts": 0,
+          "literal_visits": 4778,
+          "literals": 195,
+          "unit_assignments": 28,
+          "variables": 21,
+          "work": 11058
+        }
+      },
+      "certified_clause_count_per_arm": 0,
+      "dpll_certified_reuse_seconds": 0.008696917,
+      "dpll_plain_complete_seconds": 0.009031625,
+      "id": "two-variable-cnf-mask-08",
+      "lanes": {
+        "acquisition": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 4,
+          "base_forced": 4,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 4,
+            "census": 9,
+            "enumeration_subtree_exhausted": 2,
+            "forced": 4,
+            "rollback": 4,
+            "rollback_census": 4,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 3
+          },
+          "initial_active_candidates": 7,
+          "statistics": {
+            "candidate_universe": 21,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 4,
+            "mark_dependency_keys": 9,
+            "solutions": 3,
+            "trace_rows": 31,
+            "witness_rows": 0
+          }
+        },
+        "marked": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 4,
+          "base_forced": 4,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 4,
+            "census": 9,
+            "enumeration_subtree_exhausted": 2,
+            "forced": 4,
+            "rollback": 4,
+            "rollback_census": 4,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 3
+          },
+          "initial_active_candidates": 7,
+          "statistics": {
+            "candidate_universe": 21,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 4,
+            "mark_dependency_keys": 15,
+            "solutions": 3,
+            "trace_rows": 31,
+            "witness_rows": 0
+          }
+        },
+        "mirrored": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 4,
+          "base_forced": 4,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 4,
+            "census": 9,
+            "enumeration_subtree_exhausted": 2,
+            "forced": 4,
+            "rollback": 4,
+            "rollback_census": 4,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 3
+          },
+          "initial_active_candidates": 7,
+          "statistics": {
+            "candidate_universe": 21,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 4,
+            "mark_dependency_keys": 15,
+            "solutions": 3,
+            "trace_rows": 31,
+            "witness_rows": 0
+          }
+        },
+        "plain": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 4,
+          "base_forced": 4,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 4,
+            "census": 9,
+            "enumeration_subtree_exhausted": 2,
+            "forced": 4,
+            "rollback": 4,
+            "rollback_census": 4,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 3
+          },
+          "initial_active_candidates": 7,
+          "statistics": {
+            "candidate_universe": 21,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 4,
+            "mark_dependency_keys": 9,
+            "solutions": 3,
+            "trace_rows": 31,
+            "witness_rows": 0
+          }
+        }
+      },
+      "original_solution_count_reported": 3,
+      "timings": {
+        "cold_certified_pipeline_seconds": 0.177711958,
+        "dpll_certified_cold_seconds": 0.065388583,
+        "mirror_cold_seconds": 0.1569735,
+        "mirror_reuse_seconds": 0.098151042,
+        "old_reuse_seconds": 0.101927917,
+        "plain_complete_seconds": 0.061904875,
+        "total_comparison_case_seconds": 0.477558333
+      },
+      "worker_preservation_claim": true
+    },
+    {
+      "DPLL": {
+        "dpll_certified": {
+          "branch_attempts": 2,
+          "branch_decisions": 1,
+          "clauses": 313,
+          "conflicts": 0,
+          "literal_visits": 23449,
+          "literals": 628,
+          "unit_assignments": 48,
+          "variables": 40,
+          "work": 46079
+        },
+        "dpll_plain": {
+          "branch_attempts": 2,
+          "branch_decisions": 1,
+          "clauses": 313,
+          "conflicts": 0,
+          "literal_visits": 23449,
+          "literals": 628,
+          "unit_assignments": 48,
+          "variables": 40,
+          "work": 46079
+        }
+      },
+      "certified_clause_count_per_arm": 0,
+      "dpll_certified_reuse_seconds": 0.011888542,
+      "dpll_plain_complete_seconds": 0.012097667,
+      "id": "two-variable-cnf-mask-09",
+      "lanes": {
+        "acquisition": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 2,
+          "base_forced": 6,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 2,
+            "census": 9,
+            "enumeration_subtree_exhausted": 1,
+            "forced": 6,
+            "rollback": 2,
+            "rollback_census": 2,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 2
+          },
+          "initial_active_candidates": 10,
+          "statistics": {
+            "candidate_universe": 40,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 2,
+            "mark_dependency_keys": 12,
+            "solutions": 2,
+            "trace_rows": 25,
+            "witness_rows": 0
+          }
+        },
+        "marked": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 2,
+          "base_forced": 6,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 2,
+            "census": 9,
+            "enumeration_subtree_exhausted": 1,
+            "forced": 6,
+            "rollback": 2,
+            "rollback_census": 2,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 2
+          },
+          "initial_active_candidates": 10,
+          "statistics": {
+            "candidate_universe": 40,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 2,
+            "mark_dependency_keys": 20,
+            "solutions": 2,
+            "trace_rows": 25,
+            "witness_rows": 0
+          }
+        },
+        "mirrored": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 2,
+          "base_forced": 6,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 2,
+            "census": 9,
+            "enumeration_subtree_exhausted": 1,
+            "forced": 6,
+            "rollback": 2,
+            "rollback_census": 2,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 2
+          },
+          "initial_active_candidates": 10,
+          "statistics": {
+            "candidate_universe": 40,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 2,
+            "mark_dependency_keys": 20,
+            "solutions": 2,
+            "trace_rows": 25,
+            "witness_rows": 0
+          }
+        },
+        "plain": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 2,
+          "base_forced": 6,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 2,
+            "census": 9,
+            "enumeration_subtree_exhausted": 1,
+            "forced": 6,
+            "rollback": 2,
+            "rollback_census": 2,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 2
+          },
+          "initial_active_candidates": 10,
+          "statistics": {
+            "candidate_universe": 40,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 2,
+            "mark_dependency_keys": 12,
+            "solutions": 2,
+            "trace_rows": 25,
+            "witness_rows": 0
+          }
+        }
+      },
+      "original_solution_count_reported": 2,
+      "timings": {
+        "cold_certified_pipeline_seconds": 0.174868375,
+        "dpll_certified_cold_seconds": 0.070891625,
+        "mirror_cold_seconds": 0.155255459,
+        "mirror_reuse_seconds": 0.097275667,
+        "old_reuse_seconds": 0.117629209,
+        "plain_complete_seconds": 0.058620917,
+        "total_comparison_case_seconds": 0.476027208
+      },
+      "worker_preservation_claim": true
+    },
+    {
+      "DPLL": {
+        "dpll_certified": {
+          "branch_attempts": 2,
+          "branch_decisions": 1,
+          "clauses": 314,
+          "conflicts": 0,
+          "literal_visits": 23501,
+          "literals": 630,
+          "unit_assignments": 48,
+          "variables": 40,
+          "work": 46185
+        },
+        "dpll_plain": {
+          "branch_attempts": 2,
+          "branch_decisions": 1,
+          "clauses": 314,
+          "conflicts": 0,
+          "literal_visits": 23501,
+          "literals": 630,
+          "unit_assignments": 48,
+          "variables": 40,
+          "work": 46185
+        }
+      },
+      "certified_clause_count_per_arm": 0,
+      "dpll_certified_reuse_seconds": 0.011734334,
+      "dpll_plain_complete_seconds": 0.01198725,
+      "id": "two-variable-cnf-mask-10",
+      "lanes": {
+        "acquisition": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 2,
+          "base_forced": 6,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 2,
+            "census": 9,
+            "enumeration_subtree_exhausted": 1,
+            "forced": 6,
+            "rollback": 2,
+            "rollback_census": 2,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 2
+          },
+          "initial_active_candidates": 10,
+          "statistics": {
+            "candidate_universe": 40,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 2,
+            "mark_dependency_keys": 12,
+            "solutions": 2,
+            "trace_rows": 25,
+            "witness_rows": 0
+          }
+        },
+        "marked": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 2,
+          "base_forced": 6,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 2,
+            "census": 9,
+            "enumeration_subtree_exhausted": 1,
+            "forced": 6,
+            "rollback": 2,
+            "rollback_census": 2,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 2
+          },
+          "initial_active_candidates": 10,
+          "statistics": {
+            "candidate_universe": 40,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 2,
+            "mark_dependency_keys": 20,
+            "solutions": 2,
+            "trace_rows": 25,
+            "witness_rows": 0
+          }
+        },
+        "mirrored": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 2,
+          "base_forced": 6,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 2,
+            "census": 9,
+            "enumeration_subtree_exhausted": 1,
+            "forced": 6,
+            "rollback": 2,
+            "rollback_census": 2,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 2
+          },
+          "initial_active_candidates": 10,
+          "statistics": {
+            "candidate_universe": 40,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 2,
+            "mark_dependency_keys": 20,
+            "solutions": 2,
+            "trace_rows": 25,
+            "witness_rows": 0
+          }
+        },
+        "plain": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 2,
+          "base_forced": 6,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 2,
+            "census": 9,
+            "enumeration_subtree_exhausted": 1,
+            "forced": 6,
+            "rollback": 2,
+            "rollback_census": 2,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 2
+          },
+          "initial_active_candidates": 10,
+          "statistics": {
+            "candidate_universe": 40,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 2,
+            "mark_dependency_keys": 12,
+            "solutions": 2,
+            "trace_rows": 25,
+            "witness_rows": 0
+          }
+        }
+      },
+      "original_solution_count_reported": 2,
+      "timings": {
+        "cold_certified_pipeline_seconds": 0.162252083,
+        "dpll_certified_cold_seconds": 0.071474875,
+        "mirror_cold_seconds": 0.154019709,
+        "mirror_reuse_seconds": 0.095867459,
+        "old_reuse_seconds": 0.1003315,
+        "plain_complete_seconds": 0.061247917,
+        "total_comparison_case_seconds": 0.465380167
+      },
+      "worker_preservation_claim": true
+    },
+    {
+      "DPLL": {
+        "dpll_certified": {
+          "branch_attempts": 2,
+          "branch_decisions": 1,
+          "clauses": 708,
+          "conflicts": 1,
+          "literal_visits": 74977,
+          "literals": 1419,
+          "unit_assignments": 68,
+          "variables": 65,
+          "work": 138795
+        },
+        "dpll_plain": {
+          "branch_attempts": 2,
+          "branch_decisions": 1,
+          "clauses": 707,
+          "conflicts": 1,
+          "literal_visits": 77227,
+          "literals": 1417,
+          "unit_assignments": 71,
+          "variables": 65,
+          "work": 142932
+        }
+      },
+      "certified_clause_count_per_arm": 1,
+      "dpll_certified_reuse_seconds": 0.021721333,
+      "dpll_plain_complete_seconds": 0.022579666,
+      "id": "two-variable-cnf-mask-11",
+      "lanes": {
+        "acquisition": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 2,
+          "base_forced": 5,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 2,
+            "census": 8,
+            "enumeration_subtree_exhausted": 1,
+            "forced": 5,
+            "raw_deadpoint_candidate": 1,
+            "rollback": 2,
+            "rollback_census": 2,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 1
+          },
+          "initial_active_candidates": 13,
+          "statistics": {
+            "candidate_universe": 65,
+            "deadpoint_candidates": 1,
+            "decision_attempts": 2,
+            "mark_dependency_keys": 15,
+            "solutions": 1,
+            "trace_rows": 23,
+            "witness_rows": 13
+          }
+        },
+        "marked": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 2,
+          "base_branch_attempts": 2,
+          "base_forced": 5,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 2,
+            "census": 10,
+            "enumeration_subtree_exhausted": 1,
+            "forced": 7,
+            "raw_deadpoint_acquisition_disabled": 1,
+            "rollback": 2,
+            "rollback_census": 2,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 1
+          },
+          "initial_active_candidates": 51,
+          "statistics": {
+            "candidate_universe": 455,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 2,
+            "mark_dependency_keys": 53,
+            "solutions": 1,
+            "trace_rows": 27,
+            "witness_rows": 0
+          }
+        },
+        "mirrored": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 2,
+          "base_branch_attempts": 2,
+          "base_forced": 5,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 2,
+            "census": 10,
+            "enumeration_subtree_exhausted": 1,
+            "forced": 7,
+            "raw_deadpoint_acquisition_disabled": 1,
+            "rollback": 2,
+            "rollback_census": 2,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 1
+          },
+          "initial_active_candidates": 20,
+          "statistics": {
+            "candidate_universe": 455,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 2,
+            "mark_dependency_keys": 70,
+            "solutions": 1,
+            "trace_rows": 27,
+            "witness_rows": 0
+          }
+        },
+        "plain": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 2,
+          "base_forced": 5,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 2,
+            "census": 8,
+            "enumeration_subtree_exhausted": 1,
+            "forced": 5,
+            "raw_deadpoint_acquisition_disabled": 1,
+            "rollback": 2,
+            "rollback_census": 2,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 1
+          },
+          "initial_active_candidates": 13,
+          "statistics": {
+            "candidate_universe": 65,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 2,
+            "mark_dependency_keys": 15,
+            "solutions": 1,
+            "trace_rows": 23,
+            "witness_rows": 0
+          }
+        }
+      },
+      "original_solution_count_reported": 1,
+      "timings": {
+        "cold_certified_pipeline_seconds": 0.471185541,
+        "dpll_certified_cold_seconds": 0.091694833,
+        "mirror_cold_seconds": 0.557298208,
+        "mirror_reuse_seconds": 0.487889625,
+        "old_reuse_seconds": 0.401274083,
+        "plain_complete_seconds": 0.063278708,
+        "total_comparison_case_seconds": 1.208518958
+      },
+      "worker_preservation_claim": true
+    },
+    {
+      "DPLL": {
+        "dpll_certified": {
+          "branch_attempts": 4,
+          "branch_decisions": 2,
+          "clauses": 313,
+          "conflicts": 1,
+          "literal_visits": 23739,
+          "literals": 628,
+          "unit_assignments": 47,
+          "variables": 40,
+          "work": 46782
+        },
+        "dpll_plain": {
+          "branch_attempts": 4,
+          "branch_decisions": 2,
+          "clauses": 312,
+          "conflicts": 1,
+          "literal_visits": 24767,
+          "literals": 626,
+          "unit_assignments": 50,
+          "variables": 40,
+          "work": 48598
+        }
+      },
+      "certified_clause_count_per_arm": 1,
+      "dpll_certified_reuse_seconds": 0.01184775,
+      "dpll_plain_complete_seconds": 0.012219709,
+      "id": "two-variable-cnf-mask-12",
+      "lanes": {
+        "acquisition": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 4,
+          "base_forced": 5,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 4,
+            "census": 10,
+            "enumeration_subtree_exhausted": 2,
+            "forced": 5,
+            "raw_deadpoint_candidate": 1,
+            "rollback": 4,
+            "rollback_census": 4,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 2
+          },
+          "initial_active_candidates": 10,
+          "statistics": {
+            "candidate_universe": 40,
+            "deadpoint_candidates": 1,
+            "decision_attempts": 4,
+            "mark_dependency_keys": 12,
+            "solutions": 2,
+            "trace_rows": 33,
+            "witness_rows": 10
+          }
+        },
+        "marked": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 3,
+          "base_branch_attempts": 4,
+          "base_forced": 5,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 4,
+            "census": 13,
+            "enumeration_subtree_exhausted": 2,
+            "forced": 8,
+            "raw_deadpoint_acquisition_disabled": 1,
+            "rollback": 4,
+            "rollback_census": 4,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 2
+          },
+          "initial_active_candidates": 39,
+          "statistics": {
+            "candidate_universe": 300,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 4,
+            "mark_dependency_keys": 45,
+            "solutions": 2,
+            "trace_rows": 39,
+            "witness_rows": 0
+          }
+        },
+        "mirrored": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 3,
+          "base_branch_attempts": 4,
+          "base_forced": 5,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 4,
+            "census": 13,
+            "enumeration_subtree_exhausted": 2,
+            "forced": 8,
+            "raw_deadpoint_acquisition_disabled": 1,
+            "rollback": 4,
+            "rollback_census": 4,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 2
+          },
+          "initial_active_candidates": 17,
+          "statistics": {
+            "candidate_universe": 300,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 4,
+            "mark_dependency_keys": 59,
+            "solutions": 2,
+            "trace_rows": 39,
+            "witness_rows": 0
+          }
+        },
+        "plain": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 4,
+          "base_forced": 5,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 4,
+            "census": 10,
+            "enumeration_subtree_exhausted": 2,
+            "forced": 5,
+            "raw_deadpoint_acquisition_disabled": 1,
+            "rollback": 4,
+            "rollback_census": 4,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 2
+          },
+          "initial_active_candidates": 10,
+          "statistics": {
+            "candidate_universe": 40,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 4,
+            "mark_dependency_keys": 12,
+            "solutions": 2,
+            "trace_rows": 33,
+            "witness_rows": 0
+          }
+        }
+      },
+      "original_solution_count_reported": 2,
+      "timings": {
+        "cold_certified_pipeline_seconds": 0.525235834,
+        "dpll_certified_cold_seconds": 0.098323958,
+        "mirror_cold_seconds": 0.569433292,
+        "mirror_reuse_seconds": 0.490400167,
+        "old_reuse_seconds": 0.444407542,
+        "plain_complete_seconds": 0.072692167,
+        "total_comparison_case_seconds": 1.282219208
+      },
+      "worker_preservation_claim": true
+    },
+    {
+      "DPLL": {
+        "dpll_certified": {
+          "branch_attempts": 2,
+          "branch_decisions": 1,
+          "clauses": 704,
+          "conflicts": 1,
+          "literal_visits": 75200,
+          "literals": 1411,
+          "unit_assignments": 69,
+          "variables": 65,
+          "work": 139430
+        },
+        "dpll_plain": {
+          "branch_attempts": 2,
+          "branch_decisions": 1,
+          "clauses": 703,
+          "conflicts": 1,
+          "literal_visits": 77553,
+          "literals": 1409,
+          "unit_assignments": 72,
+          "variables": 65,
+          "work": 143718
+        }
+      },
+      "certified_clause_count_per_arm": 1,
+      "dpll_certified_reuse_seconds": 0.022431833,
+      "dpll_plain_complete_seconds": 0.028769416,
+      "id": "two-variable-cnf-mask-13",
+      "lanes": {
+        "acquisition": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 2,
+          "base_forced": 5,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 2,
+            "census": 8,
+            "enumeration_subtree_exhausted": 1,
+            "forced": 5,
+            "raw_deadpoint_candidate": 1,
+            "rollback": 2,
+            "rollback_census": 2,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 1
+          },
+          "initial_active_candidates": 13,
+          "statistics": {
+            "candidate_universe": 65,
+            "deadpoint_candidates": 1,
+            "decision_attempts": 2,
+            "mark_dependency_keys": 15,
+            "solutions": 1,
+            "trace_rows": 23,
+            "witness_rows": 13
+          }
+        },
+        "marked": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 2,
+          "base_branch_attempts": 2,
+          "base_forced": 5,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 2,
+            "census": 10,
+            "enumeration_subtree_exhausted": 1,
+            "forced": 7,
+            "raw_deadpoint_acquisition_disabled": 1,
+            "rollback": 2,
+            "rollback_census": 2,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 1
+          },
+          "initial_active_candidates": 51,
+          "statistics": {
+            "candidate_universe": 455,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 2,
+            "mark_dependency_keys": 54,
+            "solutions": 1,
+            "trace_rows": 27,
+            "witness_rows": 0
+          }
+        },
+        "mirrored": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 2,
+          "base_branch_attempts": 2,
+          "base_forced": 5,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 2,
+            "census": 10,
+            "enumeration_subtree_exhausted": 1,
+            "forced": 7,
+            "raw_deadpoint_acquisition_disabled": 1,
+            "rollback": 2,
+            "rollback_census": 2,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 1
+          },
+          "initial_active_candidates": 20,
+          "statistics": {
+            "candidate_universe": 455,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 2,
+            "mark_dependency_keys": 73,
+            "solutions": 1,
+            "trace_rows": 27,
+            "witness_rows": 0
+          }
+        },
+        "plain": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 2,
+          "base_forced": 5,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 2,
+            "census": 8,
+            "enumeration_subtree_exhausted": 1,
+            "forced": 5,
+            "raw_deadpoint_acquisition_disabled": 1,
+            "rollback": 2,
+            "rollback_census": 2,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 1
+          },
+          "initial_active_candidates": 13,
+          "statistics": {
+            "candidate_universe": 65,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 2,
+            "mark_dependency_keys": 15,
+            "solutions": 1,
+            "trace_rows": 23,
+            "witness_rows": 0
+          }
+        }
+      },
+      "original_solution_count_reported": 1,
+      "timings": {
+        "cold_certified_pipeline_seconds": 0.475097458,
+        "dpll_certified_cold_seconds": 0.096503792,
+        "mirror_cold_seconds": 0.647162292,
+        "mirror_reuse_seconds": 0.565282917,
+        "old_reuse_seconds": 0.401598208,
+        "plain_complete_seconds": 0.116123875,
+        "total_comparison_case_seconds": 1.366040417
+      },
+      "worker_preservation_claim": true
+    },
+    {
+      "DPLL": {
+        "dpll_certified": {
+          "branch_attempts": 2,
+          "branch_decisions": 1,
+          "clauses": 704,
+          "conflicts": 1,
+          "literal_visits": 75267,
+          "literals": 1411,
+          "unit_assignments": 69,
+          "variables": 65,
+          "work": 139497
+        },
+        "dpll_plain": {
+          "branch_attempts": 2,
+          "branch_decisions": 1,
+          "clauses": 703,
+          "conflicts": 1,
+          "literal_visits": 77620,
+          "literals": 1409,
+          "unit_assignments": 72,
+          "variables": 65,
+          "work": 143785
+        }
+      },
+      "certified_clause_count_per_arm": 1,
+      "dpll_certified_reuse_seconds": 0.022225625,
+      "dpll_plain_complete_seconds": 0.023346208,
+      "id": "two-variable-cnf-mask-14",
+      "lanes": {
+        "acquisition": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 2,
+          "base_forced": 5,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 2,
+            "census": 8,
+            "enumeration_subtree_exhausted": 1,
+            "forced": 5,
+            "raw_deadpoint_candidate": 1,
+            "rollback": 2,
+            "rollback_census": 2,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 1
+          },
+          "initial_active_candidates": 13,
+          "statistics": {
+            "candidate_universe": 65,
+            "deadpoint_candidates": 1,
+            "decision_attempts": 2,
+            "mark_dependency_keys": 15,
+            "solutions": 1,
+            "trace_rows": 23,
+            "witness_rows": 13
+          }
+        },
+        "marked": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 2,
+          "base_branch_attempts": 2,
+          "base_forced": 5,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 2,
+            "census": 10,
+            "enumeration_subtree_exhausted": 1,
+            "forced": 7,
+            "raw_deadpoint_acquisition_disabled": 1,
+            "rollback": 2,
+            "rollback_census": 2,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 1
+          },
+          "initial_active_candidates": 51,
+          "statistics": {
+            "candidate_universe": 455,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 2,
+            "mark_dependency_keys": 54,
+            "solutions": 1,
+            "trace_rows": 27,
+            "witness_rows": 0
+          }
+        },
+        "mirrored": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 2,
+          "base_branch_attempts": 2,
+          "base_forced": 5,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 2,
+            "census": 10,
+            "enumeration_subtree_exhausted": 1,
+            "forced": 7,
+            "raw_deadpoint_acquisition_disabled": 1,
+            "rollback": 2,
+            "rollback_census": 2,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 1
+          },
+          "initial_active_candidates": 20,
+          "statistics": {
+            "candidate_universe": 455,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 2,
+            "mark_dependency_keys": 73,
+            "solutions": 1,
+            "trace_rows": 27,
+            "witness_rows": 0
+          }
+        },
+        "plain": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 2,
+          "base_forced": 5,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 2,
+            "census": 8,
+            "enumeration_subtree_exhausted": 1,
+            "forced": 5,
+            "raw_deadpoint_acquisition_disabled": 1,
+            "rollback": 2,
+            "rollback_census": 2,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 1
+          },
+          "initial_active_candidates": 13,
+          "statistics": {
+            "candidate_universe": 65,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 2,
+            "mark_dependency_keys": 15,
+            "solutions": 1,
+            "trace_rows": 23,
+            "witness_rows": 0
+          }
+        }
+      },
+      "original_solution_count_reported": 1,
+      "timings": {
+        "cold_certified_pipeline_seconds": 0.453259792,
+        "dpll_certified_cold_seconds": 0.094367833,
+        "mirror_cold_seconds": 0.535782625,
+        "mirror_reuse_seconds": 0.465958417,
+        "old_reuse_seconds": 0.382932042,
+        "plain_complete_seconds": 0.063962709,
+        "total_comparison_case_seconds": 1.173111708
+      },
+      "worker_preservation_claim": true
+    },
+    {
+      "DPLL": {
+        "dpll_certified": {
+          "branch_attempts": 2,
+          "branch_decisions": 1,
+          "clauses": 1350,
+          "conflicts": 2,
+          "literal_visits": 190525,
+          "literals": 2704,
+          "unit_assignments": 90,
+          "variables": 96,
+          "work": 341568
+        },
+        "dpll_plain": {
+          "branch_attempts": 2,
+          "branch_decisions": 1,
+          "clauses": 1348,
+          "conflicts": 2,
+          "literal_visits": 199226,
+          "literals": 2700,
+          "unit_assignments": 96,
+          "variables": 96,
+          "work": 357744
+        }
+      },
+      "certified_clause_count_per_arm": 2,
+      "dpll_certified_reuse_seconds": 0.04698,
+      "dpll_plain_complete_seconds": 0.049120167,
+      "id": "two-variable-cnf-mask-15",
+      "lanes": {
+        "acquisition": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 2,
+          "base_forced": 2,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 2,
+            "census": 5,
+            "enumeration_subtree_exhausted": 1,
+            "forced": 2,
+            "raw_deadpoint_candidate": 2,
+            "rollback": 2,
+            "rollback_census": 2,
+            "root_cleanup_complete": 1
+          },
+          "initial_active_candidates": 16,
+          "statistics": {
+            "candidate_universe": 96,
+            "deadpoint_candidates": 2,
+            "decision_attempts": 2,
+            "mark_dependency_keys": 18,
+            "solutions": 0,
+            "trace_rows": 17,
+            "witness_rows": 32
+          }
+        },
+        "marked": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 2,
+          "base_forced": 2,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 2,
+            "census": 5,
+            "enumeration_subtree_exhausted": 1,
+            "forced": 2,
+            "raw_deadpoint_acquisition_disabled": 2,
+            "rollback": 2,
+            "rollback_census": 2,
+            "root_cleanup_complete": 1
+          },
+          "initial_active_candidates": 110,
+          "statistics": {
+            "candidate_universe": 1440,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 2,
+            "mark_dependency_keys": 80,
+            "solutions": 0,
+            "trace_rows": 17,
+            "witness_rows": 0
+          }
+        },
+        "mirrored": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 2,
+          "base_forced": 2,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 2,
+            "census": 5,
+            "enumeration_subtree_exhausted": 1,
+            "forced": 2,
+            "raw_deadpoint_acquisition_disabled": 2,
+            "rollback": 2,
+            "rollback_census": 2,
+            "root_cleanup_complete": 1
+          },
+          "initial_active_candidates": 30,
+          "statistics": {
+            "candidate_universe": 1440,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 2,
+            "mark_dependency_keys": 114,
+            "solutions": 0,
+            "trace_rows": 17,
+            "witness_rows": 0
+          }
+        },
+        "plain": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 2,
+          "base_forced": 2,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 2,
+            "census": 5,
+            "enumeration_subtree_exhausted": 1,
+            "forced": 2,
+            "raw_deadpoint_acquisition_disabled": 2,
+            "rollback": 2,
+            "rollback_census": 2,
+            "root_cleanup_complete": 1
+          },
+          "initial_active_candidates": 16,
+          "statistics": {
+            "candidate_universe": 96,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 2,
+            "mark_dependency_keys": 18,
+            "solutions": 0,
+            "trace_rows": 17,
+            "witness_rows": 0
+          }
+        }
+      },
+      "original_solution_count_reported": 0,
+      "timings": {
+        "cold_certified_pipeline_seconds": 0.73303425,
+        "dpll_certified_cold_seconds": 0.117486875,
+        "mirror_cold_seconds": 0.854511458,
+        "mirror_reuse_seconds": 0.7848455,
+        "old_reuse_seconds": 0.626064125,
+        "plain_complete_seconds": 0.056499125,
+        "total_comparison_case_seconds": 1.810712042
+      },
+      "worker_preservation_claim": true
+    },
+    {
+      "DPLL": {
+        "dpll_certified": {
+          "branch_attempts": 0,
+          "branch_decisions": 0,
+          "clauses": 1110,
+          "conflicts": 1,
+          "literal_visits": 145460,
+          "literals": 2223,
+          "unit_assignments": 82,
+          "variables": 98,
+          "work": 261343
+        },
+        "dpll_plain": {
+          "branch_attempts": 0,
+          "branch_decisions": 0,
+          "clauses": 1109,
+          "conflicts": 1,
+          "literal_visits": 165478,
+          "literals": 2218,
+          "unit_assignments": 98,
+          "variables": 98,
+          "work": 298875
+        }
+      },
+      "certified_clause_count_per_arm": 1,
+      "dpll_certified_reuse_seconds": 0.03630975,
+      "dpll_plain_complete_seconds": 0.041301792,
+      "id": "implication-transitivity",
+      "lanes": {
+        "acquisition": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 0,
+          "base_forced": 5,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "census": 6,
+            "forced": 5,
+            "raw_deadpoint_candidate": 1,
+            "root_cleanup_complete": 1
+          },
+          "initial_active_candidates": 14,
+          "statistics": {
+            "candidate_universe": 98,
+            "deadpoint_candidates": 1,
+            "decision_attempts": 0,
+            "mark_dependency_keys": 21,
+            "solutions": 0,
+            "trace_rows": 13,
+            "witness_rows": 14
+          }
+        },
+        "marked": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 0,
+          "base_forced": 5,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "census": 6,
+            "forced": 5,
+            "raw_deadpoint_acquisition_disabled": 1,
+            "root_cleanup_complete": 1
+          },
+          "initial_active_candidates": 139,
+          "statistics": {
+            "candidate_universe": 1848,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 0,
+            "mark_dependency_keys": 84,
+            "solutions": 0,
+            "trace_rows": 13,
+            "witness_rows": 0
+          }
+        },
+        "mirrored": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 0,
+          "base_forced": 5,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "census": 6,
+            "forced": 5,
+            "raw_deadpoint_acquisition_disabled": 1,
+            "root_cleanup_complete": 1
+          },
+          "initial_active_candidates": 33,
+          "statistics": {
+            "candidate_universe": 1848,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 0,
+            "mark_dependency_keys": 107,
+            "solutions": 0,
+            "trace_rows": 13,
+            "witness_rows": 0
+          }
+        },
+        "plain": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 0,
+          "base_forced": 5,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "census": 6,
+            "forced": 5,
+            "raw_deadpoint_acquisition_disabled": 1,
+            "root_cleanup_complete": 1
+          },
+          "initial_active_candidates": 14,
+          "statistics": {
+            "candidate_universe": 98,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 0,
+            "mark_dependency_keys": 21,
+            "solutions": 0,
+            "trace_rows": 13,
+            "witness_rows": 0
+          }
+        }
+      },
+      "original_solution_count_reported": 0,
+      "timings": {
+        "cold_certified_pipeline_seconds": 0.684248042,
+        "dpll_certified_cold_seconds": 0.090004375,
+        "mirror_cold_seconds": 0.853601625,
+        "mirror_reuse_seconds": 0.797556375,
+        "old_reuse_seconds": 0.630242833,
+        "plain_complete_seconds": 0.048246542,
+        "total_comparison_case_seconds": 1.717486
+      },
+      "worker_preservation_claim": true
+    },
+    {
+      "DPLL": {
+        "dpll_certified": {
+          "branch_attempts": 0,
+          "branch_decisions": 0,
+          "clauses": 1525,
+          "conflicts": 1,
+          "literal_visits": 249840,
+          "literals": 3055,
+          "unit_assignments": 107,
+          "variables": 112,
+          "work": 445800
+        },
+        "dpll_plain": {
+          "branch_attempts": 0,
+          "branch_decisions": 0,
+          "clauses": 1524,
+          "conflicts": 1,
+          "literal_visits": 257319,
+          "literals": 3050,
+          "unit_assignments": 112,
+          "variables": 112,
+          "work": 460252
+        }
+      },
+      "certified_clause_count_per_arm": 1,
+      "dpll_certified_reuse_seconds": 0.059585,
+      "dpll_plain_complete_seconds": 0.06295275,
+      "id": "disjunction-cases",
+      "lanes": {
+        "acquisition": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 0,
+          "base_forced": 5,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "census": 6,
+            "forced": 5,
+            "raw_deadpoint_candidate": 1,
+            "root_cleanup_complete": 1
+          },
+          "initial_active_candidates": 16,
+          "statistics": {
+            "candidate_universe": 112,
+            "deadpoint_candidates": 1,
+            "decision_attempts": 0,
+            "mark_dependency_keys": 20,
+            "solutions": 0,
+            "trace_rows": 13,
+            "witness_rows": 16
+          }
+        },
+        "marked": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 0,
+          "base_forced": 5,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "census": 6,
+            "forced": 5,
+            "raw_deadpoint_acquisition_disabled": 1,
+            "root_cleanup_complete": 1
+          },
+          "initial_active_candidates": 159,
+          "statistics": {
+            "candidate_universe": 2112,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 0,
+            "mark_dependency_keys": 83,
+            "solutions": 0,
+            "trace_rows": 13,
+            "witness_rows": 0
+          }
+        },
+        "mirrored": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 0,
+          "base_forced": 5,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "census": 6,
+            "forced": 5,
+            "raw_deadpoint_acquisition_disabled": 1,
+            "root_cleanup_complete": 1
+          },
+          "initial_active_candidates": 35,
+          "statistics": {
+            "candidate_universe": 2112,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 0,
+            "mark_dependency_keys": 107,
+            "solutions": 0,
+            "trace_rows": 13,
+            "witness_rows": 0
+          }
+        },
+        "plain": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 0,
+          "base_forced": 5,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "census": 6,
+            "forced": 5,
+            "raw_deadpoint_acquisition_disabled": 1,
+            "root_cleanup_complete": 1
+          },
+          "initial_active_candidates": 16,
+          "statistics": {
+            "candidate_universe": 112,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 0,
+            "mark_dependency_keys": 20,
+            "solutions": 0,
+            "trace_rows": 13,
+            "witness_rows": 0
+          }
+        }
+      },
+      "original_solution_count_reported": 0,
+      "timings": {
+        "cold_certified_pipeline_seconds": 0.7842005,
+        "dpll_certified_cold_seconds": 0.117517625,
+        "mirror_cold_seconds": 0.968954833,
+        "mirror_reuse_seconds": 0.9098315,
+        "old_reuse_seconds": 0.726047917,
+        "plain_complete_seconds": 0.051045833,
+        "total_comparison_case_seconds": 1.984761541
+      },
+      "worker_preservation_claim": true
+    },
+    {
+      "DPLL": {
+        "dpll_certified": {
+          "branch_attempts": 0,
+          "branch_decisions": 0,
+          "clauses": 301,
+          "conflicts": 1,
+          "literal_visits": 17404,
+          "literals": 602,
+          "unit_assignments": 34,
+          "variables": 45,
+          "work": 34871
+        },
+        "dpll_plain": {
+          "branch_attempts": 0,
+          "branch_decisions": 0,
+          "clauses": 300,
+          "conflicts": 1,
+          "literal_visits": 21359,
+          "literals": 599,
+          "unit_assignments": 45,
+          "variables": 45,
+          "work": 42006
+        }
+      },
+      "certified_clause_count_per_arm": 1,
+      "dpll_certified_reuse_seconds": 0.006374791,
+      "dpll_plain_complete_seconds": 0.006951417,
+      "id": "contraposition",
+      "lanes": {
+        "acquisition": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 0,
+          "base_forced": 3,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "census": 4,
+            "forced": 3,
+            "raw_deadpoint_candidate": 1,
+            "root_cleanup_complete": 1
+          },
+          "initial_active_candidates": 9,
+          "statistics": {
+            "candidate_universe": 45,
+            "deadpoint_candidates": 1,
+            "decision_attempts": 0,
+            "mark_dependency_keys": 15,
+            "solutions": 0,
+            "trace_rows": 9,
+            "witness_rows": 9
+          }
+        },
+        "marked": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 0,
+          "base_forced": 3,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "census": 4,
+            "forced": 3,
+            "raw_deadpoint_acquisition_disabled": 1,
+            "root_cleanup_complete": 1
+          },
+          "initial_active_candidates": 53,
+          "statistics": {
+            "candidate_universe": 504,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 0,
+            "mark_dependency_keys": 57,
+            "solutions": 0,
+            "trace_rows": 9,
+            "witness_rows": 0
+          }
+        },
+        "mirrored": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 0,
+          "base_forced": 3,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "census": 4,
+            "forced": 3,
+            "raw_deadpoint_acquisition_disabled": 1,
+            "root_cleanup_complete": 1
+          },
+          "initial_active_candidates": 18,
+          "statistics": {
+            "candidate_universe": 504,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 0,
+            "mark_dependency_keys": 72,
+            "solutions": 0,
+            "trace_rows": 9,
+            "witness_rows": 0
+          }
+        },
+        "plain": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 0,
+          "base_forced": 3,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "census": 4,
+            "forced": 3,
+            "raw_deadpoint_acquisition_disabled": 1,
+            "root_cleanup_complete": 1
+          },
+          "initial_active_candidates": 9,
+          "statistics": {
+            "candidate_universe": 45,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 0,
+            "mark_dependency_keys": 15,
+            "solutions": 0,
+            "trace_rows": 9,
+            "witness_rows": 0
+          }
+        }
+      },
+      "original_solution_count_reported": 0,
+      "timings": {
+        "cold_certified_pipeline_seconds": 0.182455792,
+        "dpll_certified_cold_seconds": 0.039500166,
+        "mirror_cold_seconds": 0.269011958,
+        "mirror_reuse_seconds": 0.238287708,
+        "old_reuse_seconds": 0.15128525,
+        "plain_complete_seconds": 0.026045625,
+        "total_comparison_case_seconds": 0.524023416
+      },
+      "worker_preservation_claim": true
+    },
+    {
+      "DPLL": {
+        "dpll_certified": {
+          "branch_attempts": 0,
+          "branch_decisions": 0,
+          "clauses": 35,
+          "conflicts": 1,
+          "literal_visits": 435,
+          "literals": 67,
+          "unit_assignments": 6,
+          "variables": 12,
+          "work": 2216
+        },
+        "dpll_plain": {
+          "branch_attempts": 0,
+          "branch_decisions": 0,
+          "clauses": 34,
+          "conflicts": 1,
+          "literal_visits": 723,
+          "literals": 66,
+          "unit_assignments": 12,
+          "variables": 12,
+          "work": 2678
+        }
+      },
+      "certified_clause_count_per_arm": 1,
+      "dpll_certified_reuse_seconds": 0.001818083,
+      "dpll_plain_complete_seconds": 0.001827667,
+      "id": "excluded-middle",
+      "lanes": {
+        "acquisition": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 0,
+          "base_forced": 1,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "census": 2,
+            "forced": 1,
+            "raw_deadpoint_candidate": 1,
+            "root_cleanup_complete": 1
+          },
+          "initial_active_candidates": 4,
+          "statistics": {
+            "candidate_universe": 12,
+            "deadpoint_candidates": 1,
+            "decision_attempts": 0,
+            "mark_dependency_keys": 8,
+            "solutions": 0,
+            "trace_rows": 5,
+            "witness_rows": 4
+          }
+        },
+        "marked": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 0,
+          "base_forced": 1,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "census": 2,
+            "forced": 1,
+            "raw_deadpoint_acquisition_disabled": 1,
+            "root_cleanup_complete": 1
+          },
+          "initial_active_candidates": 7,
+          "statistics": {
+            "candidate_universe": 48,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 0,
+            "mark_dependency_keys": 29,
+            "solutions": 0,
+            "trace_rows": 5,
+            "witness_rows": 0
+          }
+        },
+        "mirrored": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 0,
+          "base_forced": 0,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "census": 1,
+            "raw_deadpoint_acquisition_disabled": 1,
+            "root_cleanup_complete": 1
+          },
+          "initial_active_candidates": 4,
+          "statistics": {
+            "candidate_universe": 48,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 0,
+            "mark_dependency_keys": 37,
+            "solutions": 0,
+            "trace_rows": 3,
+            "witness_rows": 0
+          }
+        },
+        "plain": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 0,
+          "base_forced": 1,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "census": 2,
+            "forced": 1,
+            "raw_deadpoint_acquisition_disabled": 1,
+            "root_cleanup_complete": 1
+          },
+          "initial_active_candidates": 4,
+          "statistics": {
+            "candidate_universe": 12,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 0,
+            "mark_dependency_keys": 8,
+            "solutions": 0,
+            "trace_rows": 5,
+            "witness_rows": 0
+          }
+        }
+      },
+      "original_solution_count_reported": 0,
+      "timings": {
+        "cold_certified_pipeline_seconds": 0.048596375,
+        "dpll_certified_cold_seconds": 0.018378458,
+        "mirror_cold_seconds": 0.044708125,
+        "mirror_reuse_seconds": 0.028568125,
+        "old_reuse_seconds": 0.031501417,
+        "plain_complete_seconds": 0.013333916,
+        "total_comparison_case_seconds": 0.126891167
+      },
+      "worker_preservation_claim": true
+    },
+    {
+      "DPLL": {
+        "dpll_certified": {
+          "branch_attempts": 2,
+          "branch_decisions": 1,
+          "clauses": 487,
+          "conflicts": 1,
+          "literal_visits": 54631,
+          "literals": 977,
+          "unit_assignments": 68,
+          "variables": 65,
+          "work": 102132
+        },
+        "dpll_plain": {
+          "branch_attempts": 2,
+          "branch_decisions": 1,
+          "clauses": 486,
+          "conflicts": 1,
+          "literal_visits": 56242,
+          "literals": 975,
+          "unit_assignments": 71,
+          "variables": 65,
+          "work": 105019
+        }
+      },
+      "certified_clause_count_per_arm": 1,
+      "dpll_certified_reuse_seconds": 0.017336292,
+      "dpll_plain_complete_seconds": 0.017499417,
+      "id": "negative-nonrectangular-origins",
+      "lanes": {
+        "acquisition": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 2,
+          "base_forced": 5,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 2,
+            "census": 8,
+            "enumeration_subtree_exhausted": 1,
+            "forced": 5,
+            "raw_deadpoint_candidate": 1,
+            "rollback": 2,
+            "rollback_census": 2,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 1
+          },
+          "initial_active_candidates": 13,
+          "statistics": {
+            "candidate_universe": 65,
+            "deadpoint_candidates": 1,
+            "decision_attempts": 2,
+            "mark_dependency_keys": 39,
+            "solutions": 1,
+            "trace_rows": 23,
+            "witness_rows": 13
+          }
+        },
+        "marked": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 2,
+          "base_branch_attempts": 2,
+          "base_forced": 5,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 2,
+            "census": 10,
+            "enumeration_subtree_exhausted": 1,
+            "forced": 7,
+            "raw_deadpoint_acquisition_disabled": 1,
+            "rollback": 2,
+            "rollback_census": 2,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 1
+          },
+          "initial_active_candidates": 51,
+          "statistics": {
+            "candidate_universe": 455,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 2,
+            "mark_dependency_keys": 94,
+            "solutions": 1,
+            "trace_rows": 27,
+            "witness_rows": 0
+          }
+        },
+        "mirrored": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 2,
+          "base_branch_attempts": 2,
+          "base_forced": 5,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 2,
+            "census": 10,
+            "enumeration_subtree_exhausted": 1,
+            "forced": 7,
+            "raw_deadpoint_acquisition_disabled": 1,
+            "rollback": 2,
+            "rollback_census": 2,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 1
+          },
+          "initial_active_candidates": 20,
+          "statistics": {
+            "candidate_universe": 455,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 2,
+            "mark_dependency_keys": 182,
+            "solutions": 1,
+            "trace_rows": 27,
+            "witness_rows": 0
+          }
+        },
+        "plain": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 2,
+          "base_forced": 5,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 2,
+            "census": 8,
+            "enumeration_subtree_exhausted": 1,
+            "forced": 5,
+            "raw_deadpoint_acquisition_disabled": 1,
+            "rollback": 2,
+            "rollback_census": 2,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 1
+          },
+          "initial_active_candidates": 13,
+          "statistics": {
+            "candidate_universe": 65,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 2,
+            "mark_dependency_keys": 39,
+            "solutions": 1,
+            "trace_rows": 23,
+            "witness_rows": 0
+          }
+        }
+      },
+      "original_solution_count_reported": 1,
+      "timings": {
+        "cold_certified_pipeline_seconds": 0.500216875,
+        "dpll_certified_cold_seconds": 0.093434333,
+        "mirror_cold_seconds": 0.588650834,
+        "mirror_reuse_seconds": 0.514875667,
+        "old_reuse_seconds": 0.425819,
+        "plain_complete_seconds": 0.069571834,
+        "total_comparison_case_seconds": 1.271861625
+      },
+      "worker_preservation_claim": true
+    },
+    {
+      "DPLL": {
+        "dpll_certified": {
+          "branch_attempts": 2,
+          "branch_decisions": 1,
+          "clauses": 5,
+          "conflicts": 0,
+          "literal_visits": 53,
+          "literals": 9,
+          "unit_assignments": 4,
+          "variables": 4,
+          "work": 616
+        },
+        "dpll_plain": {
+          "branch_attempts": 2,
+          "branch_decisions": 1,
+          "clauses": 5,
+          "conflicts": 0,
+          "literal_visits": 53,
+          "literals": 9,
+          "unit_assignments": 4,
+          "variables": 4,
+          "work": 616
+        }
+      },
+      "certified_clause_count_per_arm": 0,
+      "dpll_certified_reuse_seconds": 0.004792375,
+      "dpll_plain_complete_seconds": 0.004942042,
+      "id": "assigned-zero-and-absence",
+      "lanes": {
+        "acquisition": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 2,
+          "base_forced": 1,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 2,
+            "census": 4,
+            "enumeration_subtree_exhausted": 1,
+            "forced": 1,
+            "rollback": 2,
+            "rollback_census": 2,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 2
+          },
+          "initial_active_candidates": 3,
+          "statistics": {
+            "candidate_universe": 4,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 2,
+            "mark_dependency_keys": 2,
+            "solutions": 2,
+            "trace_rows": 15,
+            "witness_rows": 0
+          }
+        },
+        "marked": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 2,
+          "base_forced": 1,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 2,
+            "census": 4,
+            "enumeration_subtree_exhausted": 1,
+            "forced": 1,
+            "rollback": 2,
+            "rollback_census": 2,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 2
+          },
+          "initial_active_candidates": 3,
+          "statistics": {
+            "candidate_universe": 4,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 2,
+            "mark_dependency_keys": 6,
+            "solutions": 2,
+            "trace_rows": 15,
+            "witness_rows": 0
+          }
+        },
+        "mirrored": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 2,
+          "base_forced": 1,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 2,
+            "census": 4,
+            "enumeration_subtree_exhausted": 1,
+            "forced": 1,
+            "rollback": 2,
+            "rollback_census": 2,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 2
+          },
+          "initial_active_candidates": 3,
+          "statistics": {
+            "candidate_universe": 4,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 2,
+            "mark_dependency_keys": 6,
+            "solutions": 2,
+            "trace_rows": 15,
+            "witness_rows": 0
+          }
+        },
+        "plain": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 2,
+          "base_forced": 1,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 2,
+            "census": 4,
+            "enumeration_subtree_exhausted": 1,
+            "forced": 1,
+            "rollback": 2,
+            "rollback_census": 2,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 2
+          },
+          "initial_active_candidates": 3,
+          "statistics": {
+            "candidate_universe": 4,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 2,
+            "mark_dependency_keys": 2,
+            "solutions": 2,
+            "trace_rows": 15,
+            "witness_rows": 0
+          }
+        }
+      },
+      "original_solution_count_reported": 2,
+      "timings": {
+        "cold_certified_pipeline_seconds": 0.063898083,
+        "dpll_certified_cold_seconds": 0.027679375,
+        "mirror_cold_seconds": 0.064322792,
+        "mirror_reuse_seconds": 0.040197917,
+        "old_reuse_seconds": 0.040357208,
+        "plain_complete_seconds": 0.023291208,
+        "total_comparison_case_seconds": 0.193636167
+      },
+      "worker_preservation_claim": true
+    },
+    {
+      "DPLL": {
+        "dpll_certified": {
+          "branch_attempts": 2,
+          "branch_decisions": 1,
+          "clauses": 6,
+          "conflicts": 0,
+          "literal_visits": 90,
+          "literals": 12,
+          "unit_assignments": 6,
+          "variables": 4,
+          "work": 809
+        },
+        "dpll_plain": {
+          "branch_attempts": 2,
+          "branch_decisions": 1,
+          "clauses": 6,
+          "conflicts": 0,
+          "literal_visits": 90,
+          "literals": 12,
+          "unit_assignments": 6,
+          "variables": 4,
+          "work": 809
+        }
+      },
+      "certified_clause_count_per_arm": 0,
+      "dpll_certified_reuse_seconds": 0.004803833,
+      "dpll_plain_complete_seconds": 0.004729333,
+      "id": "remote-only-overlap",
+      "lanes": {
+        "acquisition": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 2,
+          "base_forced": 2,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 2,
+            "census": 5,
+            "enumeration_subtree_exhausted": 1,
+            "forced": 2,
+            "rollback": 2,
+            "rollback_census": 2,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 2
+          },
+          "initial_active_candidates": 4,
+          "statistics": {
+            "candidate_universe": 4,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 2,
+            "mark_dependency_keys": 3,
+            "solutions": 2,
+            "trace_rows": 17,
+            "witness_rows": 0
+          }
+        },
+        "marked": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 2,
+          "base_forced": 2,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 2,
+            "census": 5,
+            "enumeration_subtree_exhausted": 1,
+            "forced": 2,
+            "rollback": 2,
+            "rollback_census": 2,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 2
+          },
+          "initial_active_candidates": 4,
+          "statistics": {
+            "candidate_universe": 4,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 2,
+            "mark_dependency_keys": 7,
+            "solutions": 2,
+            "trace_rows": 17,
+            "witness_rows": 0
+          }
+        },
+        "mirrored": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 2,
+          "base_forced": 2,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 2,
+            "census": 5,
+            "enumeration_subtree_exhausted": 1,
+            "forced": 2,
+            "rollback": 2,
+            "rollback_census": 2,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 2
+          },
+          "initial_active_candidates": 4,
+          "statistics": {
+            "candidate_universe": 4,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 2,
+            "mark_dependency_keys": 7,
+            "solutions": 2,
+            "trace_rows": 17,
+            "witness_rows": 0
+          }
+        },
+        "plain": {
+          "auxiliary_branch_attempts": 0,
+          "auxiliary_forced": 0,
+          "base_branch_attempts": 2,
+          "base_forced": 2,
+          "base_removals_on_auxiliary_placement": [],
+          "event_counts": {
+            "branch": 2,
+            "census": 5,
+            "enumeration_subtree_exhausted": 1,
+            "forced": 2,
+            "rollback": 2,
+            "rollback_census": 2,
+            "root_cleanup_complete": 1,
+            "solution_candidate": 2
+          },
+          "initial_active_candidates": 4,
+          "statistics": {
+            "candidate_universe": 4,
+            "deadpoint_candidates": 0,
+            "decision_attempts": 2,
+            "mark_dependency_keys": 3,
+            "solutions": 2,
+            "trace_rows": 17,
+            "witness_rows": 0
+          }
+        }
+      },
+      "original_solution_count_reported": 2,
+      "timings": {
+        "cold_certified_pipeline_seconds": 0.068200458,
+        "dpll_certified_cold_seconds": 0.030265542,
+        "mirror_cold_seconds": 0.072956417,
+        "mirror_reuse_seconds": 0.045414917,
+        "old_reuse_seconds": 0.042692416,
+        "plain_complete_seconds": 0.025726916,
+        "total_comparison_case_seconds": 0.211494958
+      },
+      "worker_preservation_claim": true
+    }
+  ],
+  "runner_exit": 2,
+  "schema": "ROOT-passive-unqualified-mirrored-observations-v2",
+  "scope": "Saved literal JSON/event counts and phase sums only; no checker, solver, helper, truth evaluation, simulation or replay. Whole Source/worker claim never replaces failed original outer gate. Timings single instrumented rejected cohort observations; Boolean variable and placement branches have different units. No performance or theorem admission.",
+  "search_cases_reported": 23,
+  "search_diagnostics_reported": 31,
+  "stored_packet_and_result_bytes": 15704028,
+  "terminal_gate_passed": false,
+  "terminal_seconds": 46.967264375,
+  "worker_exit": 0,
+  "worker_peak_bytes": 124928000,
+  "worker_reported_all_diagnostics_passed": true
+}

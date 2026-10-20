@@ -1,0 +1,891 @@
+{
+  "archive_all_member_hashes_verified": true,
+  "archive_member_count": 141,
+  "archive_members": [
+    {
+      "archive_member": "Root/ROOT-all-idle-fresh-barrier-v2.json",
+      "bytes": 871,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/ROOT-all-idle-fresh-barrier-v2.json",
+      "sha256": "6505cf71cb890dd4fb296aff56d5b4a6b2e9888d7e8c54d735db4102311f3f89"
+    },
+    {
+      "archive_member": "Root/ROOT-grant-retirement-v2.json",
+      "bytes": 2166,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/ROOT-grant-retirement-v2.json",
+      "sha256": "e0a2612102233a467a3f93a8a2e0e332ebda4e996bc34491736f0febec056ffc"
+    },
+    {
+      "archive_member": "Root/ROOT-passive-unqualified-observations-v2.json",
+      "bytes": 111455,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/ROOT-passive-unqualified-observations-v2.json",
+      "sha256": "c0f66977c5cade8b62fa6c43e0330bb62ad4c31f0ca6920a5b1ba889df74de77"
+    },
+    {
+      "archive_member": "Root/ROOT-previous-turn-assessment-v1.json",
+      "bytes": 538,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/ROOT-previous-turn-assessment-v1.json",
+      "sha256": "41692c1acc0f30f4f7c3752d9dc019466656e05ff3248f6c5a16eaf95a132385"
+    },
+    {
+      "archive_member": "Root/ROOT-prospective-v1-retirement.json",
+      "bytes": 656,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/ROOT-prospective-v1-retirement.json",
+      "sha256": "f8191196b05bee5030c305f5e9c2ee8b479e43b9b96908dcbc0cbd3dfc015ae7"
+    },
+    {
+      "archive_member": "Root/Source-only-offer-v1.json",
+      "bytes": 6920,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/Source-only-offer-v1.json",
+      "sha256": "97fee695fa3c234423dfc9e695a95a23b38ca9c4019a23aa8cd788b2cb9e240a"
+    },
+    {
+      "archive_member": "Root/Source-only-offer-v2.json",
+      "bytes": 6920,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/Source-only-offer-v2.json",
+      "sha256": "d5e94d71d089c9a66537a2840a65dbaef711aa8d6f4fbfe7b6d79726bf4db2d5"
+    },
+    {
+      "archive_member": "Root/assemble_report_source_v1.py",
+      "bytes": 5414,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/assemble_report_source_v1.py",
+      "sha256": "c90dd99a29e2e7506f8804c3a8b80ae281af8154d4f8bd72662704a12664c7f8"
+    },
+    {
+      "archive_member": "Root/author_inputs_v1.py",
+      "bytes": 1671,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/author_inputs_v1.py",
+      "sha256": "8ff7836b68254f8572babebacdc29319c9b83be45f0203e79b17a0ef50dc2813"
+    },
+    {
+      "archive_member": "Root/author_prospective_plan_v1.py",
+      "bytes": 12693,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/author_prospective_plan_v1.py",
+      "sha256": "9946d43a6ff0e812898c08b82af57a21874f8fe959b04f30387491018d36f158"
+    },
+    {
+      "archive_member": "Root/author_prospective_plan_v2.py",
+      "bytes": 12718,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/author_prospective_plan_v2.py",
+      "sha256": "7069d4f4842d77dbf1d12702eea39e9a912a62745ec82fc683271966cbe38c96"
+    },
+    {
+      "archive_member": "Root/author_root_grant_v2.py",
+      "bytes": 1988,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/author_root_grant_v2.py",
+      "sha256": "6a877e0434003cb978a757fe1c12a7cab5890e8dcf41f6646e70e9b9dff3f99e"
+    },
+    {
+      "archive_member": "Root/authorization-false-v1.json",
+      "bytes": 352,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/authorization-false-v1.json",
+      "sha256": "40a22d52347ea2a8adee7cfdf12753488d920cb621995c966ec4706ce9ecb4ae"
+    },
+    {
+      "archive_member": "Root/authorization-false-v2.json",
+      "bytes": 352,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/authorization-false-v2.json",
+      "sha256": "1c63ca7667d464ea6c4d5cc60b70717dc1737710c7b360ff7b7d3d413408cb3a"
+    },
+    {
+      "archive_member": "Root/authorization-once-v2.json",
+      "bytes": 860,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/authorization-once-v2.json",
+      "sha256": "924d29ae86d2f3a27fc7264e400bb7f5a06f56254e4756ae97682a6415111eab"
+    },
+    {
+      "archive_member": "Root/basic-tiling-algorithm-current.md",
+      "bytes": 36240,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/basic-tiling-algorithm-current.md",
+      "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+    },
+    {
+      "archive_member": "Root/build_report_helpers_v1.py",
+      "bytes": 392,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/build_report_helpers_v1.py",
+      "sha256": "f5d19765cd7ce569a6898be7e0550e42d52486fd2b1e208ef4f6ebdfd1abc259"
+    },
+    {
+      "archive_member": "Root/build_saved_report_v1.py",
+      "bytes": 21990,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/build_saved_report_v1.py",
+      "sha256": "2ec516b78971e3f1df3b3a52d361fdd20fa1f892b6b1d2d929b3f724168cb102"
+    },
+    {
+      "archive_member": "Root/cohort-inputs-v1.json",
+      "bytes": 280994,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/cohort-inputs-v1.json",
+      "sha256": "98b479a008a2b57aaaa270e1ae3a0b32660909a972ae5bcf3a2d30148a879cca"
+    },
+    {
+      "archive_member": "Root/declaration-v1.json",
+      "bytes": 26575,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/declaration-v1.json",
+      "sha256": "78092b9d194778706df68d384488bb7e7ec82df180588db318865a660bbe9d96"
+    },
+    {
+      "archive_member": "Root/declaration-v2.json",
+      "bytes": 26600,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/declaration-v2.json",
+      "sha256": "ab1d5b5db9fc0fcf4036b7f4bfba15cbd173ece6dd28c421adf582dc260bc9ae"
+    },
+    {
+      "archive_member": "Root/display_helpers_v1.py.txt",
+      "bytes": 3452,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/display_helpers_v1.py.txt",
+      "sha256": "49661b03a4337a820c8e8db97fc9f0f65171274b53f212a29ac26ddf1b8f56af"
+    },
+    {
+      "archive_member": "Root/finite_point_dpll_control_DRAFT_v1.py",
+      "bytes": 11787,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/finite_point_dpll_control_DRAFT_v1.py",
+      "sha256": "d4de135dd3af35c82c2bd7346e3d83f65b18806fded836635e0610f9bae1ebf6"
+    },
+    {
+      "archive_member": "Root/finite_point_dpll_control_v1.py",
+      "bytes": 12038,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/finite_point_dpll_control_v1.py",
+      "sha256": "165157396c6ad3d05436cac9050dd3f7f87c770041abe2b0a6300f7b18fb56c5"
+    },
+    {
+      "archive_member": "Root/future-outer-selector-delta-v1.json",
+      "bytes": 1084,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/future-outer-selector-delta-v1.json",
+      "sha256": "60f166c2856d40dc411b79f49090d400f2723524fbd8a29c351211a45f0c5594"
+    },
+    {
+      "archive_member": "Root/mirrored-receptors-template.html",
+      "bytes": 16637,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/mirrored-receptors-template.html",
+      "sha256": "af5cbba6b5960ae4e30f5b125351a90810286579b085392ac2172c6ab37a320d"
+    },
+    {
+      "archive_member": "Root/observe_mirrored_receptor_once_v1.py",
+      "bytes": 5524,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/observe_mirrored_receptor_once_v1.py",
+      "sha256": "9b2048ffb27bfd079bfea9a3238a51d5c2538103d21578ebd2dab5eb933e130a"
+    },
+    {
+      "archive_member": "Root/plan-authorized-v2.json",
+      "bytes": 4144,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/plan-authorized-v2.json",
+      "sha256": "26b53cc3ec1f69dd5d0bd81927530ec13040fd53a7e6a8738df1e86726f67349"
+    },
+    {
+      "archive_member": "Root/plan-false-v1.json",
+      "bytes": 4145,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/plan-false-v1.json",
+      "sha256": "a60faafdd14aeb5b5d8b008a993d502238dd8a8d3e5e3a105f37a37ff1502301"
+    },
+    {
+      "archive_member": "Root/plan-false-v2.json",
+      "bytes": 4145,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/plan-false-v2.json",
+      "sha256": "51a89dea81d47ea2beadb441a103005bc25cd1a63ef491d94031fcefa1204982"
+    },
+    {
+      "archive_member": "Root/prepare_outer_sources_v1.py",
+      "bytes": 4312,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/prepare_outer_sources_v1.py",
+      "sha256": "60d289cc038d8a9fae5f018949e4e8525f6f87a2be062a7eea92438474e760d1"
+    },
+    {
+      "archive_member": "Root/prepare_worker_v1.py",
+      "bytes": 7881,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/prepare_worker_v1.py",
+      "sha256": "0ef101394ba9c21912a2cfa0c3e2f9f945580f1b4e6508847666547a5f36a17a"
+    },
+    {
+      "archive_member": "Root/prepare_worker_v2.py",
+      "bytes": 7967,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/prepare_worker_v2.py",
+      "sha256": "30c7b09f893e8a09f26824b9aade75e0d883a9cd51cdd9fe381c5ab235498ccb"
+    },
+    {
+      "archive_member": "Root/project_saved_negative_v2.py",
+      "bytes": 6089,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/project_saved_negative_v2.py",
+      "sha256": "8246d34ce042df32c225da6bb21bcadc2214f3aa0de78c079f34c7d548d4ca8f"
+    },
+    {
+      "archive_member": "Root/qualify_mirrored_receptor_worker_v1.py",
+      "bytes": 68593,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/qualify_mirrored_receptor_worker_v1.py",
+      "sha256": "b56833425bbd7d8fa45123c58bce7a5869dad500c3064c2e2f0f5e1596825651"
+    },
+    {
+      "archive_member": "Root/qualify_mirrored_receptor_worker_v2.py",
+      "bytes": 68586,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/qualify_mirrored_receptor_worker_v2.py",
+      "sha256": "a70fad6b834fe433b5644b720a1249a2cd737b4abb801cb7113c0bb86d476838"
+    },
+    {
+      "archive_member": "Root/reader-preimage.html",
+      "bytes": 101409,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/reader-preimage.html",
+      "sha256": "ec0e74216eac6526fa9ecbe319a958e571af340c59e4606e3a47a8c473aab739"
+    },
+    {
+      "archive_member": "Root/report_body_v1.py.txt",
+      "bytes": 13517,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/report_body_v1.py.txt",
+      "sha256": "c6ef82daace14764a25498b336b17a65dec147b4791b2ccb4b978644eda60b4a"
+    },
+    {
+      "archive_member": "Root/run_mirrored_receptor_once_v1.py",
+      "bytes": 33973,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/run_mirrored_receptor_once_v1.py",
+      "sha256": "d3f8d438c082c35cfd3a938f7598de01cb05f1f12211da1b6c40bf0ab481f5e8"
+    },
+    {
+      "archive_member": "Root/run_mirrored_receptor_once_v2.py",
+      "bytes": 34997,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/run_mirrored_receptor_once_v2.py",
+      "sha256": "af37af74b2d079a7ebe962bf16ecf074afd25e118a2aabc577446fa016ca5ae2"
+    },
+    {
+      "archive_member": "Root/runtime-closure-v1.json",
+      "bytes": 11277,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/runtime-closure-v1.json",
+      "sha256": "d6f648b42b50e2ee361dda829b1af13dc5b3f8ae7394a7f879f6a557289a8adc"
+    },
+    {
+      "archive_member": "Root/runtime-closure-v2.json",
+      "bytes": 11277,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/runtime-closure-v2.json",
+      "sha256": "ef8711559b937cc952f575a497a49a33254d47512c4e86a99bef1045d01fb820"
+    },
+    {
+      "archive_member": "Root/worker-Source-ancestry-v1.json",
+      "bytes": 826,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/worker-Source-ancestry-v1.json",
+      "sha256": "991befe61f89096a46e0265d785678021105d1067799298bf2d15fcc50ce5210"
+    },
+    {
+      "archive_member": "Root/worker-Source-ancestry-v2.json",
+      "bytes": 826,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/worker-Source-ancestry-v2.json",
+      "sha256": "991befe61f89096a46e0265d785678021105d1067799298bf2d15fcc50ce5210"
+    },
+    {
+      "archive_member": "Root/worker_extension_v1.py.txt",
+      "bytes": 10599,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/worker_extension_v1.py.txt",
+      "sha256": "4c2c3cad2b37363f4f3730ebf0f4ea26bdebdb6d7523c5fcabc50e485e49c054"
+    },
+    {
+      "archive_member": "Root/actual-comparison-v2/CONSUMED.json",
+      "bytes": 534,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/actual-comparison-v2/CONSUMED.json",
+      "sha256": "67ece422af3609f3867977a6bb305b8a929cc0819510fc8c4a5625cb19540e35"
+    },
+    {
+      "archive_member": "Root/actual-comparison-v2/WORKER_CONSUMED.json",
+      "bytes": 269,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/actual-comparison-v2/WORKER_CONSUMED.json",
+      "sha256": "2f205f68306846c51bc6912d5300190a8f64f842d5770e53b7abcfe10e29b4bb"
+    },
+    {
+      "archive_member": "Root/actual-comparison-v2/canonical-mirrored-receptor-comparison.json",
+      "bytes": 15525671,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/actual-comparison-v2/canonical-mirrored-receptor-comparison.json",
+      "sha256": "43b432d287434e59a157a094116595f6b9b5e32a5851485373a38f946035e0a5"
+    },
+    {
+      "archive_member": "Root/actual-comparison-v2/result.json",
+      "bytes": 178357,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/actual-comparison-v2/result.json",
+      "sha256": "e57ac849171538de4fb9e43e6ac093ad18a1d22f4d166b6ff78da2f446ca4004"
+    },
+    {
+      "archive_member": "Root/actual-comparison-v2/runner-receipt.json",
+      "bytes": 4955,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/actual-comparison-v2/runner-receipt.json",
+      "sha256": "8c5f17ccefa10c1b4ab4797743b4099b715fa610451da9ec0dcd0bcd711948b9"
+    },
+    {
+      "archive_member": "Root/actual-comparison-v2/stderr.bin",
+      "bytes": 0,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/actual-comparison-v2/stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_member": "Root/actual-comparison-v2/stdout.bin",
+      "bytes": 0,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/actual-comparison-v2/stdout.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_member": "Root/actual-comparison-v2/worker-receipt.json",
+      "bytes": 3109,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/actual-comparison-v2/worker-receipt.json",
+      "sha256": "c15faaa8abd7db45c02d47e06332a29ed9b28dc7b57a4aa65b4d004c41f37be9"
+    },
+    {
+      "archive_member": "Root/plan-authorized-v2-terminal-observation/CONSUMED.json",
+      "bytes": 286,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/plan-authorized-v2-terminal-observation/CONSUMED.json",
+      "sha256": "9e9bda13b5520100fa1c8b23e8176cd70b368970a06ecdc858b25c72ebcee9a6"
+    },
+    {
+      "archive_member": "Root/plan-authorized-v2-terminal-observation/stderr.bin",
+      "bytes": 0,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/plan-authorized-v2-terminal-observation/stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_member": "Root/plan-authorized-v2-terminal-observation/stdout.bin",
+      "bytes": 162,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/plan-authorized-v2-terminal-observation/stdout.bin",
+      "sha256": "0c2861f5cf1d7863d12d719b1623f8d1b11ed532928ea9ebe720c2006d0a5d4c"
+    },
+    {
+      "archive_member": "Root/plan-authorized-v2-terminal-observation/terminal.json",
+      "bytes": 1580,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/plan-authorized-v2-terminal-observation/terminal.json",
+      "sha256": "aa405f930b8c79038b2bc17ea89c953e29391e4065293000edd5e18c31101e96"
+    },
+    {
+      "archive_member": "Root/prospective-v1-negative/Source-only-offer-v1.json",
+      "bytes": 6920,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/prospective-v1-negative/Source-only-offer-v1.json",
+      "sha256": "97fee695fa3c234423dfc9e695a95a23b38ca9c4019a23aa8cd788b2cb9e240a"
+    },
+    {
+      "archive_member": "Root/prospective-v1-negative/author_prospective_plan_v1.py",
+      "bytes": 12693,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/prospective-v1-negative/author_prospective_plan_v1.py",
+      "sha256": "9946d43a6ff0e812898c08b82af57a21874f8fe959b04f30387491018d36f158"
+    },
+    {
+      "archive_member": "Root/prospective-v1-negative/authorization-false-v1.json",
+      "bytes": 352,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/prospective-v1-negative/authorization-false-v1.json",
+      "sha256": "40a22d52347ea2a8adee7cfdf12753488d920cb621995c966ec4706ce9ecb4ae"
+    },
+    {
+      "archive_member": "Root/prospective-v1-negative/declaration-v1.json",
+      "bytes": 26575,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/prospective-v1-negative/declaration-v1.json",
+      "sha256": "78092b9d194778706df68d384488bb7e7ec82df180588db318865a660bbe9d96"
+    },
+    {
+      "archive_member": "Root/prospective-v1-negative/plan-false-v1.json",
+      "bytes": 4145,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/prospective-v1-negative/plan-false-v1.json",
+      "sha256": "a60faafdd14aeb5b5d8b008a993d502238dd8a8d3e5e3a105f37a37ff1502301"
+    },
+    {
+      "archive_member": "Root/prospective-v1-negative/prepare_worker_v1.py",
+      "bytes": 7881,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/prospective-v1-negative/prepare_worker_v1.py",
+      "sha256": "0ef101394ba9c21912a2cfa0c3e2f9f945580f1b4e6508847666547a5f36a17a"
+    },
+    {
+      "archive_member": "Root/prospective-v1-negative/qualify_mirrored_receptor_worker_v1.py",
+      "bytes": 68593,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/prospective-v1-negative/qualify_mirrored_receptor_worker_v1.py",
+      "sha256": "b56833425bbd7d8fa45123c58bce7a5869dad500c3064c2e2f0f5e1596825651"
+    },
+    {
+      "archive_member": "Root/prospective-v1-negative/runtime-closure-v1.json",
+      "bytes": 11277,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/prospective-v1-negative/runtime-closure-v1.json",
+      "sha256": "d6f648b42b50e2ee361dda829b1af13dc5b3f8ae7394a7f879f6a557289a8adc"
+    },
+    {
+      "archive_member": "Root/prospective-v1-negative/worker-Source-ancestry-v1.json",
+      "bytes": 826,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/prospective-v1-negative/worker-Source-ancestry-v1.json",
+      "sha256": "991befe61f89096a46e0265d785678021105d1067799298bf2d15fcc50ce5210"
+    },
+    {
+      "archive_member": "executed-Sources/census/unit_center_search_verifier_v1.py",
+      "bytes": 24791,
+      "path": "/private/tmp/gcts-unit-center-search-verifier-20261019-v1/unit_center_search_verifier_v1.py",
+      "sha256": "7b11424eaa6efa6619bfedf9f6af15f48683343f534c014470b6e6307fcfe399"
+    },
+    {
+      "archive_member": "executed-Sources/compiler/unit_center_marking_compiler_v1.py",
+      "bytes": 20653,
+      "path": "/private/tmp/gcts-unit-center-receptor-library-20261019/unit_center_marking_compiler_v1.py",
+      "sha256": "9a07bd4afbfd7b4c95edd8d9e2a3ea489a025a53e1b18014ca5b429d09291eb9"
+    },
+    {
+      "archive_member": "executed-Sources/dpll/finite_point_dpll_control_v1.py",
+      "bytes": 12038,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/finite_point_dpll_control_v1.py",
+      "sha256": "165157396c6ad3d05436cac9050dd3f7f87c770041abe2b0a6300f7b18fb56c5"
+    },
+    {
+      "archive_member": "executed-Sources/mirror_compiler/unit_center_mirrored_marking_compiler_v2.py",
+      "bytes": 21246,
+      "path": "/private/tmp/gcts-mirrored-receptor-library-20261019-v1/unit_center_mirrored_marking_compiler_v2.py",
+      "sha256": "6a12fc6c7f347d3c62ffed1b68b7367cb7ecb182480123e59045bb4846cda26b"
+    },
+    {
+      "archive_member": "executed-Sources/mirror_verifier/mirrored_marking_verifier_v2.py",
+      "bytes": 25416,
+      "path": "/private/tmp/gcts-mirrored-receptor-verifier-20261019-v2/mirrored_marking_verifier_v2.py",
+      "sha256": "7f40dcb95ce8e5a41117745244e091301b9a2f57c1f2a65da24d4763dd9bc6a0"
+    },
+    {
+      "archive_member": "executed-Sources/observer/observe_mirrored_receptor_once_v1.py",
+      "bytes": 5524,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/observe_mirrored_receptor_once_v1.py",
+      "sha256": "9b2048ffb27bfd079bfea9a3238a51d5c2538103d21578ebd2dab5eb933e130a"
+    },
+    {
+      "archive_member": "executed-Sources/runner/run_mirrored_receptor_once_v1.py",
+      "bytes": 33973,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/run_mirrored_receptor_once_v1.py",
+      "sha256": "d3f8d438c082c35cfd3a938f7598de01cb05f1f12211da1b6c40bf0ab481f5e8"
+    },
+    {
+      "archive_member": "executed-Sources/search/unit_center_point_search_v1.py",
+      "bytes": 29335,
+      "path": "/private/tmp/gcts-unit-center-point-search-20261019-v1/unit_center_point_search_v1.py",
+      "sha256": "198c0ae0300f01b507f0c17e6a573b58f9d986f105468a1756fa77106416b1c8"
+    },
+    {
+      "archive_member": "executed-Sources/verifier/finite_marking_verifier_v1.py",
+      "bytes": 24281,
+      "path": "/private/tmp/gcts-finite-marking-verifier-20261019-v1/finite_marking_verifier_v1.py",
+      "sha256": "eaee3b1681fcd8c5783d82c40f4225271a1a5ed350d6c8d7ac3baed8c7153b8f"
+    },
+    {
+      "archive_member": "executed-Sources/worker/qualify_mirrored_receptor_worker_v2.py",
+      "bytes": 68586,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/qualify_mirrored_receptor_worker_v2.py",
+      "sha256": "a70fad6b834fe433b5644b720a1249a2cd737b4abb801cb7113c0bb86d476838"
+    },
+    {
+      "archive_member": "mirror-library/API-v1.json",
+      "bytes": 3628,
+      "path": "/private/tmp/gcts-mirrored-receptor-library-20261019-v1/API-v1.json",
+      "sha256": "d582e7a582f2464078f9e28398b32b53b99f92679ea7025bb25f0c992cb5511b"
+    },
+    {
+      "archive_member": "mirror-library/API-v2.json",
+      "bytes": 1924,
+      "path": "/private/tmp/gcts-mirrored-receptor-library-20261019-v1/API-v2.json",
+      "sha256": "09a44e4b80b43dffde8222e80066eae1074c502c96e8fced99e896abe17baca9"
+    },
+    {
+      "archive_member": "mirror-library/Source-contract-v1.json",
+      "bytes": 3131,
+      "path": "/private/tmp/gcts-mirrored-receptor-library-20261019-v1/Source-contract-v1.json",
+      "sha256": "ba24b029b86b40268a620268bdff699c4ca6a724a809916bf9899737e3cd196d"
+    },
+    {
+      "archive_member": "mirror-library/Source-contract-v2.json",
+      "bytes": 2033,
+      "path": "/private/tmp/gcts-mirrored-receptor-library-20261019-v1/Source-contract-v2.json",
+      "sha256": "d4d9383e03690da4ba53678424e7f75673c2d9bdefd59b0f9bb082228c1f2157"
+    },
+    {
+      "archive_member": "mirror-library/author-static-audit-v1.json",
+      "bytes": 2172,
+      "path": "/private/tmp/gcts-mirrored-receptor-library-20261019-v1/author-static-audit-v1.json",
+      "sha256": "8f35c04c99a7fa92a749e925ef5d5173397e0dbdb91be754d42c991fe1af69c9"
+    },
+    {
+      "archive_member": "mirror-library/author-static-audit-v2.json",
+      "bytes": 1596,
+      "path": "/private/tmp/gcts-mirrored-receptor-library-20261019-v1/author-static-audit-v2.json",
+      "sha256": "dc7db2b0b3f8b0d913cd0167812d656933fb3080839bf357f8b77dbaa0880f40"
+    },
+    {
+      "archive_member": "mirror-library/author_source_packet_v1.py",
+      "bytes": 12792,
+      "path": "/private/tmp/gcts-mirrored-receptor-library-20261019-v1/author_source_packet_v1.py",
+      "sha256": "96474ea05104e679338103c1b4beb00e92680d2103152f85c37a803b6f687e3f"
+    },
+    {
+      "archive_member": "mirror-library/author_source_packet_v2.py",
+      "bytes": 5663,
+      "path": "/private/tmp/gcts-mirrored-receptor-library-20261019-v1/author_source_packet_v2.py",
+      "sha256": "f952288c03a794ac92e55f846a9b385aa6a80e9ab898feafba12e8d5a7505ee4"
+    },
+    {
+      "archive_member": "mirror-library/extension-projection-argument-v1.json",
+      "bytes": 3187,
+      "path": "/private/tmp/gcts-mirrored-receptor-library-20261019-v1/extension-projection-argument-v1.json",
+      "sha256": "7e680221f0b37cc15d59873e331426eae3fee896dc7b36f99353994ef5126134"
+    },
+    {
+      "archive_member": "mirror-library/handoff-v1.json",
+      "bytes": 1939,
+      "path": "/private/tmp/gcts-mirrored-receptor-library-20261019-v1/handoff-v1.json",
+      "sha256": "ab37bd8f6979a6c1a0c5a5cfe44a2da81a432da374e1c665f6fbd9b3b223ed5c"
+    },
+    {
+      "archive_member": "mirror-library/handoff-v2.json",
+      "bytes": 1926,
+      "path": "/private/tmp/gcts-mirrored-receptor-library-20261019-v1/handoff-v2.json",
+      "sha256": "67a191ca2b5163a8221e1bd96cb6c3b43645f525a8df966cc7d3a3867ff9c361"
+    },
+    {
+      "archive_member": "mirror-library/unit_center_mirrored_marking_compiler_v1.py",
+      "bytes": 21212,
+      "path": "/private/tmp/gcts-mirrored-receptor-library-20261019-v1/unit_center_mirrored_marking_compiler_v1.py",
+      "sha256": "9bfb4c09e17477a749cb959061fa08b942c9afdf30d03e955289b4e06956060e"
+    },
+    {
+      "archive_member": "mirror-library/unit_center_mirrored_marking_compiler_v2.py",
+      "bytes": 21246,
+      "path": "/private/tmp/gcts-mirrored-receptor-library-20261019-v1/unit_center_mirrored_marking_compiler_v2.py",
+      "sha256": "6a12fc6c7f347d3c62ffed1b68b7367cb7ecb182480123e59045bb4846cda26b"
+    },
+    {
+      "archive_member": "mirror-verifier-V1/API-v1.json",
+      "bytes": 9251,
+      "path": "/private/tmp/gcts-mirrored-receptor-verifier-20261019-v1/API-v1.json",
+      "sha256": "00d87ea9844c04c10d4795d86b9810066f78161a04bda331a161716736956851"
+    },
+    {
+      "archive_member": "mirror-verifier-V1/Source-static-audit-v1.json",
+      "bytes": 1496,
+      "path": "/private/tmp/gcts-mirrored-receptor-verifier-20261019-v1/Source-static-audit-v1.json",
+      "sha256": "d54de0944e5a202e87127b98fb4c2a6eefdffe7fdfc6dc46f0cbe1ab3d1f72aa"
+    },
+    {
+      "archive_member": "mirror-verifier-V1/basic-tiling-algorithm-current.md",
+      "bytes": 36240,
+      "path": "/private/tmp/gcts-mirrored-receptor-verifier-20261019-v1/basic-tiling-algorithm-current.md",
+      "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+    },
+    {
+      "archive_member": "mirror-verifier-V1/correspondence-note-v1.html",
+      "bytes": 9419,
+      "path": "/private/tmp/gcts-mirrored-receptor-verifier-20261019-v1/correspondence-note-v1.html",
+      "sha256": "95a2dce1e0ad7f7569f4e9fe0a37f31449d440043a04dac704e507f3ff012cd0"
+    },
+    {
+      "archive_member": "mirror-verifier-V1/handoff-v1.json",
+      "bytes": 2572,
+      "path": "/private/tmp/gcts-mirrored-receptor-verifier-20261019-v1/handoff-v1.json",
+      "sha256": "063457bb6250de76f8303ec8c8164f3a1cd2ddc058ae870493a412edf2518faa"
+    },
+    {
+      "archive_member": "mirror-verifier-V1/mirrored_marking_verifier_v1.py",
+      "bytes": 25416,
+      "path": "/private/tmp/gcts-mirrored-receptor-verifier-20261019-v1/mirrored_marking_verifier_v1.py",
+      "sha256": "bfac28318ae61e169d3dfc276ec7176b34ba0b25e4bd82485a62b20ed6b8f3b3"
+    },
+    {
+      "archive_member": "mirror-verifier-V1/prospective-diagnostics-v1.json",
+      "bytes": 5357,
+      "path": "/private/tmp/gcts-mirrored-receptor-verifier-20261019-v1/prospective-diagnostics-v1.json",
+      "sha256": "c6c09ebcabff04fdfcd0eaaefe301def34e8f7f90783fd5e4352313fc5b907c2"
+    },
+    {
+      "archive_member": "mirror-verifier-V2/API-v2.json",
+      "bytes": 10705,
+      "path": "/private/tmp/gcts-mirrored-receptor-verifier-20261019-v2/API-v2.json",
+      "sha256": "d167db811e781a877ec988a8d9253fcbf98f843fa3dbd40ca86aa7678d279832"
+    },
+    {
+      "archive_member": "mirror-verifier-V2/Source-static-audit-v2.json",
+      "bytes": 1844,
+      "path": "/private/tmp/gcts-mirrored-receptor-verifier-20261019-v2/Source-static-audit-v2.json",
+      "sha256": "de2564aea44cb1629a0972e2a208a62aa3f1cbb2aa2999ba8eb7d95a8a6b2f89"
+    },
+    {
+      "archive_member": "mirror-verifier-V2/handoff-v2.json",
+      "bytes": 2439,
+      "path": "/private/tmp/gcts-mirrored-receptor-verifier-20261019-v2/handoff-v2.json",
+      "sha256": "3ba3f82ab9ce167c03c178d25d04408231cb3a78c20d3254ca0d2d5293babceb"
+    },
+    {
+      "archive_member": "mirror-verifier-V2/mirrored_marking_verifier_v2.py",
+      "bytes": 25416,
+      "path": "/private/tmp/gcts-mirrored-receptor-verifier-20261019-v2/mirrored_marking_verifier_v2.py",
+      "sha256": "7f40dcb95ce8e5a41117745244e091301b9a2f57c1f2a65da24d4763dd9bc6a0"
+    },
+    {
+      "archive_member": "mirror-verifier-V2/proof-delta-v2.json",
+      "bytes": 2434,
+      "path": "/private/tmp/gcts-mirrored-receptor-verifier-20261019-v2/proof-delta-v2.json",
+      "sha256": "a37310d7bd841950ca7fda79f1bb6796007b4cfbb8068c892b5929e197eb0d61"
+    },
+    {
+      "archive_member": "DPLL-independent-review/handoff-v1.json",
+      "bytes": 1357,
+      "path": "/private/tmp/gcts-point-CNF-control-review-20261019-v1/handoff-v1.json",
+      "sha256": "2e63e3450c02285a6aac797f3e733129829e26bfe16296b0b13b1e713ae4f109"
+    },
+    {
+      "archive_member": "DPLL-independent-review/manual-equivalence-argument-v1.html",
+      "bytes": 8755,
+      "path": "/private/tmp/gcts-point-CNF-control-review-20261019-v1/manual-equivalence-argument-v1.html",
+      "sha256": "27f803fb1c7a33df3aa639f75992d40a9da1dca6aed25b58f5c61cc0ec32fca2"
+    },
+    {
+      "archive_member": "DPLL-independent-review/typed-draft-Source-review-v1-negative.json",
+      "bytes": 2184,
+      "path": "/private/tmp/gcts-point-CNF-control-review-20261019-v1/typed-draft-Source-review-v1-negative.json",
+      "sha256": "9aa5990bc0448f60e03ca85115d48b9e46e5637a0112b35ce463e09dde311f5a"
+    },
+    {
+      "archive_member": "DPLL-independent-review/typed-successor-Source-review-v1.json",
+      "bytes": 7366,
+      "path": "/private/tmp/gcts-point-CNF-control-review-20261019-v1/typed-successor-Source-review-v1.json",
+      "sha256": "4c33eb983778006f8a4e503d9635bb8fe4ef4d0c5a2e92d9b2371f11a8614bab"
+    },
+    {
+      "archive_member": "peer-reviews/audit_saved_negative_v2.py",
+      "bytes": 37069,
+      "path": "/private/tmp/gcts-mirrored-receptor-peer-20261019-v1/audit_saved_negative_v2.py",
+      "sha256": "4be7b9a546ddfe037d5dce397793e3c9a753c6036e16f923d7c11bdfec4a4991"
+    },
+    {
+      "archive_member": "peer-reviews/freeze_combined_negative_v1.py",
+      "bytes": 16572,
+      "path": "/private/tmp/gcts-mirrored-receptor-peer-20261019-v1/freeze_combined_negative_v1.py",
+      "sha256": "b0f8bb2104bb07b4f2f9caef4649eec81e486fc037c3e05ac2877bc88ef335ef"
+    },
+    {
+      "archive_member": "peer-reviews/freeze_combined_v2.py",
+      "bytes": 18146,
+      "path": "/private/tmp/gcts-mirrored-receptor-peer-20261019-v1/freeze_combined_v2.py",
+      "sha256": "512aaef46fcc171742d821c5b30738cab2293c7878a4eec39bad9235e7e30521"
+    },
+    {
+      "archive_member": "peer-reviews/freeze_dpll_Source_reviews_v1.py",
+      "bytes": 12165,
+      "path": "/private/tmp/gcts-mirrored-receptor-peer-20261019-v1/freeze_dpll_Source_reviews_v1.py",
+      "sha256": "d594337a88506a5ba0092f91066d3446a47ed1580c1507c18e76176a1eaceaeb"
+    },
+    {
+      "archive_member": "peer-reviews/freeze_future_selector_review_v1.py",
+      "bytes": 6369,
+      "path": "/private/tmp/gcts-mirrored-receptor-peer-20261019-v1/freeze_future_selector_review_v1.py",
+      "sha256": "f1f7c7c51d2f805d07da45c0a5cb975cb6c51b8d744fe5984a9a3315232cc9a7"
+    },
+    {
+      "archive_member": "peer-reviews/freeze_grant_delta_v2.py",
+      "bytes": 8574,
+      "path": "/private/tmp/gcts-mirrored-receptor-peer-20261019-v1/freeze_grant_delta_v2.py",
+      "sha256": "e553ca711684f9b2a21c1b165597c4a21a59d5cb84dcaa28829313a50e54c21f"
+    },
+    {
+      "archive_member": "peer-reviews/typed-DPLL-component-Source-review-v1.json",
+      "bytes": 8053,
+      "path": "/private/tmp/gcts-mirrored-receptor-peer-20261019-v1/typed-DPLL-component-Source-review-v1.json",
+      "sha256": "8ccf5d425603cbdee012a44647904b85b67a8b97ce18d5281bbd6992e0e661d0"
+    },
+    {
+      "archive_member": "peer-reviews/typed-DPLL-draft-Source-negative-v1.json",
+      "bytes": 2539,
+      "path": "/private/tmp/gcts-mirrored-receptor-peer-20261019-v1/typed-DPLL-draft-Source-negative-v1.json",
+      "sha256": "0a104580fcccc9d8b250f42b820c544d462d3930ebd6fddeb4552c556ba29df2"
+    },
+    {
+      "archive_member": "peer-reviews/typed-final-grant-delta-review-v2.json",
+      "bytes": 15116,
+      "path": "/private/tmp/gcts-mirrored-receptor-peer-20261019-v1/typed-final-grant-delta-review-v2.json",
+      "sha256": "fc674990d61d7d8b59ef8cd88399945126a22cf20b921033edee54e637ca1ca7"
+    },
+    {
+      "archive_member": "peer-reviews/typed-future-outer-selector-Source-review-v1.json",
+      "bytes": 3826,
+      "path": "/private/tmp/gcts-mirrored-receptor-peer-20261019-v1/typed-future-outer-selector-Source-review-v1.json",
+      "sha256": "e6619a15be5bfd9e42146ab71564dede7d75a7e8ec0cc863b26b10bb345db0dc"
+    },
+    {
+      "archive_member": "peer-reviews/typed-mirrored-comparison-Source-prospective-negative-v1.json",
+      "bytes": 30467,
+      "path": "/private/tmp/gcts-mirrored-receptor-peer-20261019-v1/typed-mirrored-comparison-Source-prospective-negative-v1.json",
+      "sha256": "7d9894b476cec648a753f98b5f8efeb9e29672ef8af83cc688519422c24ffcee"
+    },
+    {
+      "archive_member": "peer-reviews/typed-mirrored-comparison-Source-prospective-negative-v1b.json",
+      "bytes": 30429,
+      "path": "/private/tmp/gcts-mirrored-receptor-peer-20261019-v1/typed-mirrored-comparison-Source-prospective-negative-v1b.json",
+      "sha256": "de068c26e04cc12841b621b636543a51c784337c3c041fbb575f5498c4f8b086"
+    },
+    {
+      "archive_member": "peer-reviews/typed-mirrored-comparison-Source-prospective-review-v2.json",
+      "bytes": 31294,
+      "path": "/private/tmp/gcts-mirrored-receptor-peer-20261019-v1/typed-mirrored-comparison-Source-prospective-review-v2.json",
+      "sha256": "12c5f9f2e0a0fd43620e3fb904d9783e50569b16c03b26e0d676093eba4d4554"
+    },
+    {
+      "archive_member": "peer-reviews/typed-saved-actual-negative-review-v2.json",
+      "bytes": 178397,
+      "path": "/private/tmp/gcts-mirrored-receptor-peer-20261019-v1/typed-saved-actual-negative-review-v2.json",
+      "sha256": "d4ac33f9f97938e8d396267f8af959c8e0be874795ef43f2997a3137a7640e7f"
+    },
+    {
+      "archive_member": "fixed-checker-audit/handoff-v1.json",
+      "bytes": 2074,
+      "path": "/private/tmp/gcts-fixed-checker-feasibility-20261019-v1/handoff-v1.json",
+      "sha256": "8e6e69bc89121fa1c1c91bf34ec06c7cb800949314f4e2880d6eb25bb6ad8746"
+    },
+    {
+      "archive_member": "fixed-checker-audit/source-metadata-v1.json",
+      "bytes": 6465,
+      "path": "/private/tmp/gcts-fixed-checker-feasibility-20261019-v1/source-metadata-v1.json",
+      "sha256": "82325f419cd653e6814ad8403ce4884ca88c098e1234b3353a579477e7b8c6d3"
+    },
+    {
+      "archive_member": "fixed-checker-audit/feasibility-note-v1.html",
+      "bytes": 16966,
+      "path": "/private/tmp/gcts-fixed-checker-feasibility-20261019-v1/feasibility-note-v1.html",
+      "sha256": "bf899264692365fdf13f10450ab3d2ff149297c2f0e5521d150988beaa574690"
+    },
+    {
+      "archive_member": "fixed-checker-audit/fixed-checker-combined-plaintext-v1.tree",
+      "bytes": 19325,
+      "path": "/private/tmp/gcts-fixed-checker-feasibility-20261019-v1/fixed-checker-combined-plaintext-v1.tree",
+      "sha256": "8b3b0af5a4f36a6eb01c8ad080b420bb014af84f647e8e95d0f61832edbb4623"
+    },
+    {
+      "archive_member": "fixed-VM-design/typed-fixed-checker-feasibility-Source-review-v1.json",
+      "bytes": 15378,
+      "path": "/private/tmp/gcts-fixed-VM-design-peer-20261019-v1/typed-fixed-checker-feasibility-Source-review-v1.json",
+      "sha256": "ef190a516bd9310e0c5e65ef445d33629709b23f81aa5e630def471e567f2eef"
+    },
+    {
+      "archive_member": "fixed-VM-design/fixed-interpreter-encoding-contract-v1.json",
+      "bytes": 22116,
+      "path": "/private/tmp/gcts-fixed-VM-design-peer-20261019-v1/fixed-interpreter-encoding-contract-v1.json",
+      "sha256": "356d2160f3a038260053b3973945e1aa1deb2cbd1bfc0a9d417337e45b36c539"
+    },
+    {
+      "archive_member": "input-search-ancestor/cohort-inputs-v1.json",
+      "bytes": 19278,
+      "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/cohort-inputs-v1.json",
+      "sha256": "73f8425e274e075293a858bf7d3ea4d3b6bcfc6f0bc95c3bdca9e90ac81a92a9"
+    },
+    {
+      "archive_member": "input-search-ancestor/qualify_certified_point_search_worker_v1.py",
+      "bytes": 42227,
+      "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/qualify_certified_point_search_worker_v1.py",
+      "sha256": "fbb7194ac95c677c09d802285973d6f2f3187a5571f8a4c45ac23d385ecf734f"
+    },
+    {
+      "archive_member": "input-search-ancestor/ROOT-final-milestone-v1.json",
+      "bytes": 6065,
+      "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/ROOT-final-milestone-v1.json",
+      "sha256": "c2607e986c54ea1ed6f8e02ed6783cfdbcb6131bbe542d8b7a569b62686b58f3"
+    },
+    {
+      "archive_member": "input-component-ancestor/cohort-inputs-v1.json",
+      "bytes": 234761,
+      "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/cohort-inputs-v1.json",
+      "sha256": "155280e0539b36b9a7afc9e885edcf12fac8c9fe24ec5ec74ea040e5506782ec"
+    },
+    {
+      "archive_member": "input-component-ancestor/qualify_marking_worker_v1.py",
+      "bytes": 32842,
+      "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/qualify_marking_worker_v1.py",
+      "sha256": "7e792c80e26ba9759b7ea86782f76f93b5bab70326a641197658086c4ec99f8c"
+    },
+    {
+      "archive_member": "fixed-checker-Sources/boundary_lowering/proof_boundary.py",
+      "bytes": 6992,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/proof_boundary.py",
+      "sha256": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f"
+    },
+    {
+      "archive_member": "fixed-checker-Sources/bytecode_compiler/tree_machine.py",
+      "bytes": 13290,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/tree_machine.py",
+      "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257"
+    },
+    {
+      "archive_member": "fixed-checker-Sources/combined_plaintext/fixed-checker-combined-plaintext-v1.tree",
+      "bytes": 19325,
+      "path": "/private/tmp/gcts-fixed-checker-feasibility-20261019-v1/fixed-checker-combined-plaintext-v1.tree",
+      "sha256": "8b3b0af5a4f36a6eb01c8ad080b420bb014af84f647e8e95d0f61832edbb4623"
+    },
+    {
+      "archive_member": "fixed-checker-Sources/fol_checker/fol_checker.tree",
+      "bytes": 17577,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/fol_checker.tree",
+      "sha256": "8c86a24231d9c7d1777d7998b747a8cfd07087c168da64db6c5dff0820c802ed"
+    },
+    {
+      "archive_member": "fixed-checker-Sources/host_kernel/serialized_kernel.py",
+      "bytes": 13977,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/serialized_kernel.py",
+      "sha256": "045cdba67ead9f12e91c702736fa09a5ae4d9796aea86831d65b245031a261f4"
+    },
+    {
+      "archive_member": "fixed-checker-Sources/master/basic-tiling-algorithm-current.md",
+      "bytes": 36240,
+      "path": "/private/tmp/gcts-certified-point-search-ROOT-20261019-v1/basic-tiling-algorithm-current.md",
+      "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+    },
+    {
+      "archive_member": "fixed-checker-Sources/microcode_lowering/tape_tree_machine.py",
+      "bytes": 19188,
+      "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/tape_tree_machine.py",
+      "sha256": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f"
+    },
+    {
+      "archive_member": "fixed-checker-Sources/physical_adapter/physical_wang_adapter_v1.py",
+      "bytes": 9421,
+      "path": "/private/tmp/gcts-marking-implementation-ROOT-20261019-v1/physical_wang_adapter_v1.py",
+      "sha256": "5e85cd213960632d7b1cfc6632d5799098b76e59f282443be5a3ea603cdffbac"
+    },
+    {
+      "archive_member": "fixed-checker-Sources/wang_compiler/wang_spacetime_compiler_v1.py",
+      "bytes": 13084,
+      "path": "/private/tmp/gcts-wang-spacetime-library-20261019/wang_spacetime_compiler_v1.py",
+      "sha256": "92a8c49bd9be346faf9e6472c588140d3844c4e52c1f0a18fef24409e7ff20ba"
+    },
+    {
+      "archive_member": "fixed-checker-Sources/wire_wrapper/boundary_syntax.tree",
+      "bytes": 1739,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/boundary_syntax.tree",
+      "sha256": "b19efd9bb2b599c1eefb7a62b5b92257483c809e63a81431f683064acd60c25c"
+    }
+  ],
+  "data": {
+    "bytes": 12062252,
+    "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/publication/mirrored-receptors-data.json",
+    "sha256": "353621badf86cd41e61de934467ff5974865b1d5115ddf427e473ca23ea4e043"
+  },
+  "detached_publication_review_excluded_from_hash_cycle": true,
+  "evidence_archive": {
+    "bytes": 1749311,
+    "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/publication/mirrored-receptors-evidence.tar.gz",
+    "sha256": "0159d0bb898c252863d13f508dfc6faaa8fda809db34e8646c71168df893fd92"
+  },
+  "mathematical_adoption": false,
+  "notebook": {
+    "bytes": 102277,
+    "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/publication/reader.html",
+    "sha256": "1d41b3dee6b8b2cc0dbadcb4ce76d44a81fa10a579c86b46995af2617128df37"
+  },
+  "qualification_status": "OUTER_GATE_REJECTED_UNQUALIFIED",
+  "reader_append_custody": {
+    "append_bytes": 868,
+    "append_only": true,
+    "append_sha256": "18f921ee442189e6b92650a127209a67225b1ec84c2f379d4d521e97bfeaf9ce",
+    "postimage": {
+      "bytes": 102277,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/publication/reader.html",
+      "sha256": "1d41b3dee6b8b2cc0dbadcb4ce76d44a81fa10a579c86b46995af2617128df37"
+    },
+    "preimage": {
+      "bytes": 101409,
+      "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/reader-preimage.html",
+      "sha256": "ec0e74216eac6526fa9ecbe319a958e571af340c59e4606e3a47a8c473aab739"
+    }
+  },
+  "report": {
+    "bytes": 21221,
+    "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/publication/mirrored-receptors.html",
+    "sha256": "eee7f7ce072dd584b9268b21db7c1ab920903b483b23ef5d1273b5e69bfd4e8c"
+  },
+  "schema": "unqualified-mirrored-publication-manifest-v1",
+  "scope": "Raw copy/hash/archive and saved display formatting only; no mathematical replay, helper imports or gate repair. Original rejected outer result remains authoritative.",
+  "summary": {
+    "bytes": 111455,
+    "path": "/private/tmp/gcts-mirrored-receptor-ROOT-20261019-v1/publication/mirrored-receptors-summary.json",
+    "sha256": "c0f66977c5cade8b62fa6c43e0330bb62ad4c31f0ca6920a5b1ba889df74de77"
+  }
+}
