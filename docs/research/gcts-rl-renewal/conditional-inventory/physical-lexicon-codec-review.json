@@ -1,0 +1,278 @@
+{
+  "G1_adopted": false,
+  "actual_execution_authorized": false,
+  "bank_census": {
+    "foreign": 10,
+    "input-refusal": 16,
+    "positive": 28,
+    "quota": 12,
+    "wire-refusal": 35
+  },
+  "checks": [
+    {
+      "id": "exact-frozen-handoff",
+      "passed": true
+    },
+    {
+      "id": "frozen-file-API-v1.json",
+      "passed": true
+    },
+    {
+      "id": "frozen-file-audit_Source_metadata_v1.py",
+      "passed": true
+    },
+    {
+      "id": "frozen-file-author-static-audit-v1.json",
+      "passed": true
+    },
+    {
+      "id": "frozen-file-diagnostic-bank-v1.json",
+      "passed": true
+    },
+    {
+      "id": "frozen-file-freeze_source_packet_v1.py",
+      "passed": true
+    },
+    {
+      "id": "frozen-file-manual-codec-correspondence-v1.json",
+      "passed": true
+    },
+    {
+      "id": "frozen-file-strict_value_dag_v1.py",
+      "passed": true
+    },
+    {
+      "id": "lineage-pin-predecessor_worker",
+      "passed": true
+    },
+    {
+      "id": "lineage-pin-master",
+      "passed": true
+    },
+    {
+      "id": "lineage-pin-predecessor_field_map",
+      "passed": true
+    },
+    {
+      "id": "lineage-pin-retirement",
+      "passed": true
+    },
+    {
+      "id": "lineage-pin-python",
+      "passed": true
+    },
+    {
+      "id": "AST-unused-compile-only",
+      "passed": true
+    },
+    {
+      "id": "no-research-or-other-imports",
+      "passed": true
+    },
+    {
+      "id": "no-callback-bearing-generators",
+      "passed": true
+    },
+    {
+      "id": "all101-cases",
+      "passed": true
+    },
+    {
+      "id": "101-unique-ids",
+      "passed": true
+    },
+    {
+      "id": "exact-category-populations",
+      "passed": true
+    },
+    {
+      "id": "no-passed-test-labels",
+      "passed": true
+    },
+    {
+      "id": "explicit-changed-gate-unadopted",
+      "passed": true
+    },
+    {
+      "id": "no-whole-schema-or-fit",
+      "passed": true
+    },
+    {
+      "id": "independent-obligations-pin",
+      "passed": true
+    }
+  ],
+  "codec_calls": 0,
+  "failed_checks": [],
+  "fit_proved": false,
+  "fixture_calls": 0,
+  "full_read": [
+    "Source",
+    "API",
+    "manual correspondence",
+    "all101declared cases",
+    "handoff"
+  ],
+  "helper_calls": 0,
+  "independent_G1_obligations": {
+    "bytes": 58581,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/review-C/independent-G1-obligations-v1.json",
+    "sha256": "11133fef322621608f924f3368750b4e39aa2ae11f38fe1f4aa04fc3b815a17a"
+  },
+  "manual_findings": [
+    {
+      "finding": "Exact None/bool/int/float/str/list/tuple/dict are explicit and subclasses/bytes/custom values refuse. Ordered dictionary child occurrences, bool versusint, tuple versuslist, missing versuspresent values and surrogatepass string bytes are distinguished. Finite acyclic repeated values are allowed; active-container identity detects cycles.",
+      "id": "typed-domain"
+    },
+    {
+      "finding": "Float value equivalence is the predecessor float.hex carrier, including signedzero/inf/nan. NaN sign/payload and raw alias identity are deliberately outside that carrier. Nonfinite support at this layer does not relax old canonical JSONallow_nanFalse or any future Root schema restriction.",
+      "id": "float-policy"
+    },
+    {
+      "finding": "First-use depth-first postorder assigns positive child-before-parent IDs. Full immutable record bytes, not a digest, key fresh per-call interning. Repeated equal payloads may share one node but ordered root references and stored container child occurrences remain explicit. This is value sharing, not event provenance.",
+      "id": "exact-interning"
+    },
+    {
+      "finding": "The decoder checks fixedmagic, minimal unsignedLEB128, declared record lengths, exact per-record ends and no trailing data. Integers reject bad sign/negativezero/leadingzero magnitude; floats require exact .hex canonical spelling; strings require surrogatepass UTF8 re-encoding equality.",
+      "id": "framing-canonicality"
+    },
+    {
+      "finding": "Positive strictly earlier child IDs prevent cycles. Exact duplicate-record checks, first-use postorder traversal and total root reachability reject duplicate/padded/reordered graphs. Zero or out-of-store references refuse structurally.",
+      "id": "graph-canonicality"
+    },
+    {
+      "finding": "Complete decoder validation freshly materializes every reference occurrence and every dictionary, rejecting unhashable keys and builtin-equality collisions, including bool/int, int/float and signedzero collisions. Fresh NaN construction prevents interning alone from merging distinct native NaN key occurrences. The claim is value-tree correspondence under the declared pinnedPython behavior, not native alias/lookup identity.",
+      "id": "native-dictionaries"
+    },
+    {
+      "finding": "validate_store follows the full parse and native-materialization path, retaining produced values in the raw lifetime even when only a receipt is returned. Every expanded native node occurrence consumes expanded_items/depth/work; a small shared store can refuse its expansion quota rather than pass by header/hash.",
+      "id": "no-header-shortcut"
+    },
+    {
+      "finding": "String and integer allocation preflights conservatively bound their capacities; they may refuse before an exact wire-size limit is reached. Container reference and expanded-item/depth checks bound traversal. Private capacities are operation-local and provide no claim about outer actual memory/time or whole-cohort fit.",
+      "id": "bounded-allocations"
+    },
+    {
+      "finding": "tick charges max(1,units) then one Root callback. This is explicit traversal/byte accounting, not CPU instructions. Encode child-occurrence references and parser stored-reference counts have different declared scopes; no false equality between operation costs is asserted.",
+      "id": "work-semantics"
+    },
+    {
+      "finding": "Mandatory retention receives state before Work construction. Work construction performs no delegatedcallback, and the Work owner is installed in retained state before its firsttick. The caller must retain actual aggregate, inputs, callbacks, Sources and exceptions through final custody; no-op retain is not evidence.",
+      "id": "raw-owner-registration"
+    },
+    {
+      "finding": "Complete wire/native tuple is installed before final callback. Exact BaseException, includingStopIteration and foreign public-class instances, propagates unchanged; state retains exact primary and best-effort scalar prefix cannot admit or repair unfinished output. Private owned predicates require exactclass and matching owner.",
+      "id": "produced-output-and-faults"
+    },
+    {
+      "finding": "Root must supply genuine argument/function/closure custody and read-only callbacks/input. The codec is not a hostile-thread/global-mutation sandbox and does not establish firstRootfault dominance by itself. Future harness must check the independent Root latch before classifying expected failures.",
+      "id": "read-only-precondition"
+    },
+    {
+      "finding": "Under sufficient declared capacities and read-only supported input, the structural induction and canonical framing support value-tree decode/encode correspondence. It is a Source argument; no encoder, decoder, validator, materializer, carrier builder or test was called.",
+      "id": "manual-correspondence"
+    },
+    {
+      "finding": "The stated value-layer charge is exactly magic+count/length prefixes+unique full records+stored child/root references, hence wire length. It intentionally omits old recursively unfolded occurrences and is explicitly a new unadoptedG1 gate. No oldG0 pass, merecompression or retrospective rescue is claimed.",
+      "id": "new-charge-definition"
+    },
+    {
+      "finding": "All101cases are finite declarative recipes:28positive,16input refusal,35wire refusal,12quotas,10foreign. Their exact adapter, independent byte/value expectations, genuine Root gates and complete outcomes are still future work. The population is not exhaustive over all inputs/wires and is not reportedPASSED.",
+      "id": "bank-scope"
+    },
+    {
+      "finding": "The codec supplies no complete case/event/provenance/mutation/custody schema or integration. Independent obligations11133f\u2026 remain binding for any original-cohortG1 successor; codec Source correctness and unique-byte charge alone cannot qualify that artifact.",
+      "id": "full-evidence-gap"
+    },
+    {
+      "finding": "No t/m point semantics, scheduler, rollback, learned marking or RL behavior changes here. FullVM/checker/proofsearch, arithmetic/Hilbert theorem discovery, runtime/resourcefit and comparative advantage remain unestablished.",
+      "id": "unchanged-scientific-scope"
+    }
+  ],
+  "mathematical_authority": false,
+  "old_G0_unfolding_charged": false,
+  "partial_files_opened": 0,
+  "pins": {
+    "API-v1.json": {
+      "bytes": 9079,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/schema-B/API-v1.json",
+      "sha256": "0a5fc08067a486a9a41cecf67c382406e9f43a1186e552f37858ee865d779677"
+    },
+    "audit_Source_metadata_v1.py": {
+      "bytes": 2726,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/schema-B/audit_Source_metadata_v1.py",
+      "sha256": "3efcd433f7264aeb60fdb0e7291b6becb93d94ad2af24c3583394688484a4c67"
+    },
+    "author-static-audit-v1.json": {
+      "bytes": 2549,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/schema-B/author-static-audit-v1.json",
+      "sha256": "0b3084a7d42ca3ebc08c93ed1e54dea58b37411b869d4ca3af88ad8ed21bc87f"
+    },
+    "diagnostic-bank-v1.json": {
+      "bytes": 16425,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/schema-B/diagnostic-bank-v1.json",
+      "sha256": "754e6385879eabac6544be25d5ddddfa95a42cbc824a45810e1fe6aab9653b6b"
+    },
+    "freeze_source_packet_v1.py": {
+      "bytes": 3218,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/schema-B/freeze_source_packet_v1.py",
+      "sha256": "2e5a4a502e75b485b10475347e0fdfb8da765993872accfbc0ec1c51d449b073"
+    },
+    "handoff": {
+      "bytes": 6710,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/schema-B/handoff-v1.json",
+      "sha256": "7cefafe143ab68fb1f52ac54013caf54a0018c8e9ec8aa55ae07b7f01b4bb131"
+    },
+    "manual-codec-correspondence-v1.json": {
+      "bytes": 6319,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/schema-B/manual-codec-correspondence-v1.json",
+      "sha256": "1a3ec298482c5b07aa989cf22ea80e220ed0fc8b54334a7dd1b8083f0567ab54"
+    },
+    "master": {
+      "bytes": 36240,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/basic-tiling-algorithm.md",
+      "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+    },
+    "predecessor_field_map": {
+      "bytes": 18747,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/bounds-B/one-owner-field-map-v1.json",
+      "sha256": "3d34e2572390a44b40e12d0ead9c110f5c6e30ae0079c3d617ff080da61a4020"
+    },
+    "predecessor_worker": {
+      "bytes": 116476,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/qualify_complete_batch_worker_v2.py",
+      "sha256": "9ea014de87d5af2ed3017442f690699a0ef54750c8d8be12890e373936b65a03"
+    },
+    "python": {
+      "bytes": 18058560,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+      "sha256": "b6ea0c2a9bfce48dbf181a53f1ca4f0562d40658b85bf47258e2a88d8f9e3933"
+    },
+    "retirement": {
+      "bytes": 5051,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/ROOT-grant-retirement-v2.json",
+      "sha256": "d724f817dca900ce1e02bde46ae2a1b644344f12ca27b1de42173d3d1f4ab74d"
+    },
+    "strict_value_dag_v1.py": {
+      "bytes": 20200,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/schema-B/strict_value_dag_v1.py",
+      "sha256": "0f0cdf59ca7b676dd0bb86a7ff18be4ea6ca9a681d47b740d53db4e885e300b5"
+    }
+  },
+  "reviewer_identity": "/root/recovered_batch_review",
+  "runtime_qualified": false,
+  "schema": "strict-value-dag-independent-Source-review-v1",
+  "simulator_calls": 0,
+  "sizing_probes": 0,
+  "source_only": true,
+  "static_metadata": {
+    "AST_parse": true,
+    "compiled_code_executed": false,
+    "unused_compile": true
+  },
+  "status": "PASS_SOURCE_ONLY_CONDITIONAL_VALUE_CODEC",
+  "subject_calls": 0,
+  "subject_imports": 0,
+  "tools_stopped_after_freeze": true,
+  "whole_G1_schema_qualified": false
+}

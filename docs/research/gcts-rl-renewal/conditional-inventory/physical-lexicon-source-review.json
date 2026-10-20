@@ -1,0 +1,824 @@
+{
+  "G1_adopted": false,
+  "actual_execution_authorized": false,
+  "checks": [
+    {
+      "id": "exact-offer-pin",
+      "passed": true
+    },
+    {
+      "id": "exact-subject-sha",
+      "passed": true
+    },
+    {
+      "id": "prospective-plan-canonical-regular",
+      "passed": true
+    },
+    {
+      "id": "prospective-plan-complete-pin",
+      "passed": true
+    },
+    {
+      "id": "subject-plan-total-join",
+      "passed": true
+    },
+    {
+      "id": "false-authorization-canonical-regular",
+      "passed": true
+    },
+    {
+      "id": "false-authorization-complete-pin",
+      "passed": true
+    },
+    {
+      "id": "no-actual-authority",
+      "passed": true
+    },
+    {
+      "id": "pinned-python-canonical-regular",
+      "passed": true
+    },
+    {
+      "id": "pinned-python-complete-pin",
+      "passed": true
+    },
+    {
+      "id": "Source-observer-canonical-regular",
+      "passed": true
+    },
+    {
+      "id": "Source-observer-complete-pin",
+      "passed": true
+    },
+    {
+      "id": "Source-runner-canonical-regular",
+      "passed": true
+    },
+    {
+      "id": "Source-runner-complete-pin",
+      "passed": true
+    },
+    {
+      "id": "Source-utf8-canonical-regular",
+      "passed": true
+    },
+    {
+      "id": "Source-utf8-complete-pin",
+      "passed": true
+    },
+    {
+      "id": "Source-worker-canonical-regular",
+      "passed": true
+    },
+    {
+      "id": "Source-worker-complete-pin",
+      "passed": true
+    },
+    {
+      "id": "four-AST-unused-compiles-only",
+      "passed": true
+    },
+    {
+      "id": "declaration-canonical-regular",
+      "passed": true
+    },
+    {
+      "id": "declaration-complete-pin",
+      "passed": true
+    },
+    {
+      "id": "runtime_closure-canonical-regular",
+      "passed": true
+    },
+    {
+      "id": "runtime_closure-complete-pin",
+      "passed": true
+    },
+    {
+      "id": "manual-envelope-canonical-regular",
+      "passed": true
+    },
+    {
+      "id": "manual-envelope-complete-pin",
+      "passed": true
+    },
+    {
+      "id": "closure-total-source-join",
+      "passed": true
+    },
+    {
+      "id": "declaration-whole-input-join",
+      "passed": true
+    },
+    {
+      "id": "complete-input-complete-UTF8v2-physical-lexical-bank-canonical-regular",
+      "passed": true
+    },
+    {
+      "id": "complete-input-complete-UTF8v2-physical-lexical-bank-complete-pin",
+      "passed": true
+    },
+    {
+      "id": "stdlib-0-canonical-regular",
+      "passed": true
+    },
+    {
+      "id": "stdlib-0-complete-pin",
+      "passed": true
+    },
+    {
+      "id": "stdlib-1-canonical-regular",
+      "passed": true
+    },
+    {
+      "id": "stdlib-1-complete-pin",
+      "passed": true
+    },
+    {
+      "id": "stdlib-2-canonical-regular",
+      "passed": true
+    },
+    {
+      "id": "stdlib-2-complete-pin",
+      "passed": true
+    },
+    {
+      "id": "stdlib-3-canonical-regular",
+      "passed": true
+    },
+    {
+      "id": "stdlib-3-complete-pin",
+      "passed": true
+    },
+    {
+      "id": "stdlib-4-canonical-regular",
+      "passed": true
+    },
+    {
+      "id": "stdlib-4-complete-pin",
+      "passed": true
+    },
+    {
+      "id": "stdlib-5-canonical-regular",
+      "passed": true
+    },
+    {
+      "id": "stdlib-5-complete-pin",
+      "passed": true
+    },
+    {
+      "id": "stdlib-6-canonical-regular",
+      "passed": true
+    },
+    {
+      "id": "stdlib-6-complete-pin",
+      "passed": true
+    },
+    {
+      "id": "stdlib-7-canonical-regular",
+      "passed": true
+    },
+    {
+      "id": "stdlib-7-complete-pin",
+      "passed": true
+    },
+    {
+      "id": "stdlib-8-canonical-regular",
+      "passed": true
+    },
+    {
+      "id": "stdlib-8-complete-pin",
+      "passed": true
+    },
+    {
+      "id": "stdlib-9-canonical-regular",
+      "passed": true
+    },
+    {
+      "id": "stdlib-9-complete-pin",
+      "passed": true
+    },
+    {
+      "id": "stdlib-10-canonical-regular",
+      "passed": true
+    },
+    {
+      "id": "stdlib-10-complete-pin",
+      "passed": true
+    },
+    {
+      "id": "stdlib-11-canonical-regular",
+      "passed": true
+    },
+    {
+      "id": "stdlib-11-complete-pin",
+      "passed": true
+    },
+    {
+      "id": "stdlib-12-canonical-regular",
+      "passed": true
+    },
+    {
+      "id": "stdlib-12-complete-pin",
+      "passed": true
+    },
+    {
+      "id": "stdlib-13-canonical-regular",
+      "passed": true
+    },
+    {
+      "id": "stdlib-13-complete-pin",
+      "passed": true
+    },
+    {
+      "id": "stdlib-14-canonical-regular",
+      "passed": true
+    },
+    {
+      "id": "stdlib-14-complete-pin",
+      "passed": true
+    },
+    {
+      "id": "stdlib-15-canonical-regular",
+      "passed": true
+    },
+    {
+      "id": "stdlib-15-complete-pin",
+      "passed": true
+    },
+    {
+      "id": "stdlib-16-canonical-regular",
+      "passed": true
+    },
+    {
+      "id": "stdlib-16-complete-pin",
+      "passed": true
+    },
+    {
+      "id": "stdlib-17-canonical-regular",
+      "passed": true
+    },
+    {
+      "id": "stdlib-17-complete-pin",
+      "passed": true
+    },
+    {
+      "id": "stdlib-18-canonical-regular",
+      "passed": true
+    },
+    {
+      "id": "stdlib-18-complete-pin",
+      "passed": true
+    },
+    {
+      "id": "stdlib-19-canonical-regular",
+      "passed": true
+    },
+    {
+      "id": "stdlib-19-complete-pin",
+      "passed": true
+    },
+    {
+      "id": "stdlib-20-canonical-regular",
+      "passed": true
+    },
+    {
+      "id": "stdlib-20-complete-pin",
+      "passed": true
+    },
+    {
+      "id": "stdlib-21-canonical-regular",
+      "passed": true
+    },
+    {
+      "id": "stdlib-21-complete-pin",
+      "passed": true
+    },
+    {
+      "id": "stdlib-22-canonical-regular",
+      "passed": true
+    },
+    {
+      "id": "stdlib-22-complete-pin",
+      "passed": true
+    },
+    {
+      "id": "historical-closure-canonical-regular",
+      "passed": true
+    },
+    {
+      "id": "historical-closure-complete-pin",
+      "passed": true
+    },
+    {
+      "id": "direct-import-census-observer",
+      "passed": true
+    },
+    {
+      "id": "direct-import-census-runner",
+      "passed": true
+    },
+    {
+      "id": "direct-import-census-utf8",
+      "passed": true
+    },
+    {
+      "id": "direct-import-census-worker",
+      "passed": true
+    },
+    {
+      "id": "manual-matches-sources",
+      "passed": true
+    },
+    {
+      "id": "exact-original-outer-limits",
+      "passed": true
+    },
+    {
+      "id": "manual-pin-in-declaration",
+      "passed": true
+    },
+    {
+      "id": "complete-unchanged-bank-pin",
+      "passed": true
+    },
+    {
+      "id": "all-normal-group-order",
+      "passed": true
+    },
+    {
+      "id": "all-diagnostic-group-order",
+      "passed": true
+    },
+    {
+      "id": "normal-population-arithmetic",
+      "passed": true
+    },
+    {
+      "id": "all16-word-controls-and-length-bound",
+      "passed": true
+    },
+    {
+      "id": "all32-declaration-cases",
+      "passed": true
+    },
+    {
+      "id": "all25-foreign-sites-types",
+      "passed": true
+    },
+    {
+      "id": "all62-generator-calls",
+      "passed": true
+    },
+    {
+      "id": "manual-LEAD-and-other-arithmetic",
+      "passed": true
+    },
+    {
+      "id": "full-mutation-population",
+      "passed": true
+    },
+    {
+      "id": "full-mutation-record-upper",
+      "passed": true
+    },
+    {
+      "id": "ordinary-packet-bound-terms",
+      "passed": true
+    },
+    {
+      "id": "manual-term-products",
+      "passed": true
+    },
+    {
+      "id": "normal-step-manual-arithmetic",
+      "passed": true
+    },
+    {
+      "id": "fixed-file-leases",
+      "passed": true
+    },
+    {
+      "id": "simultaneous-physical-bound",
+      "passed": true
+    },
+    {
+      "id": "actual-directory-absent",
+      "passed": true
+    },
+    {
+      "id": "prospective-terminal-directory-absent",
+      "passed": true
+    },
+    {
+      "id": "historical-controller-Source-pins",
+      "passed": true
+    },
+    {
+      "id": "single-runner-declaration-delta-87",
+      "passed": true
+    },
+    {
+      "id": "single-runner-declaration-delta-46",
+      "passed": true
+    },
+    {
+      "id": "single-runner-declaration-delta-61",
+      "passed": true
+    },
+    {
+      "id": "single-runner-declaration-delta-62",
+      "passed": true
+    },
+    {
+      "id": "single-runner-declaration-delta-52",
+      "passed": true
+    },
+    {
+      "id": "controller-process-log-clock-custody-byte-exact",
+      "passed": true
+    },
+    {
+      "id": "observer-scope-single-delta",
+      "passed": true
+    },
+    {
+      "id": "observer-terminal-timeout-byte-exact",
+      "passed": true
+    },
+    {
+      "id": "current-master-pin",
+      "passed": true
+    },
+    {
+      "id": "old-grant-stays-retired-zero",
+      "passed": true
+    }
+  ],
+  "complete_physical_VM": false,
+  "component_calls": 0,
+  "controller_calls": 0,
+  "declaration": {
+    "bytes": 3459,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/utf8-declaration-v1.json",
+    "sha256": "c4fa33fa28077c7ea039b59e8112ddb251bb331916eba5465f25730aca0d7836"
+  },
+  "failed_checks": [],
+  "fixture_calls": 0,
+  "full_read": [
+    "all4offeredSources",
+    "wholeUTF8v2bank",
+    "manualenvelope",
+    "declaration",
+    "runtimeclosure",
+    "prospectiveplan/falseauth",
+    "staticassemblySource/receipt"
+  ],
+  "full_subject_review_complete": true,
+  "inputs": [
+    {
+      "pin": {
+        "bytes": 6402,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/root/utf8-prospective-bank-v2.json",
+        "sha256": "081b2eb3344d56b10a3399e8bf9826248011bc8faedbc5065d26129c27939f88"
+      },
+      "role": "complete-UTF8v2-physical-lexical-bank"
+    }
+  ],
+  "manual_envelope": {
+    "bytes": 7800,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/utf8-manual-envelope-v1.json",
+    "sha256": "6ce958c41c3b1e8a024045af83fbb07ec2be13a6077fbd5862e825a1a98626cc"
+  },
+  "manual_findings": [
+    {
+      "finding": "This is a fresh complete UTF8v2 lexical component cohort. It does not trim or qualify the old15case/33legacy/28newgraph cohort, adoptG1, rescueG0 or qualify a complete interpreter/proof/search/RL system.",
+      "id": "distinct-subject"
+    },
+    {
+      "finding": "All5378normals and all five unchanged diagnosticgroups are implemented:1792mode-byte,1785prefix-fence,7rootblank,1778midblank and16word controls;32declaration,3quota,25foreign, all3D+Q-3fulltable mutants and a twofreshconstruction identity group. No expected answer selects a smaller rank/population.",
+      "id": "full-bank-coverage"
+    },
+    {
+      "finding": "The full table checker validates exact fields, state/alphabet/index census, every unique read slot, unchangedwrites, bitmove/stationaryexits, root/interiorB, every#BOUND and all12undefined halt slots. Independent simulation retains full tape/head/trace; byte categories are separately authored, and all16word decisions additionally agree with pinnedPython surrogatepass decode.",
+      "id": "independent-physical-verification"
+    },
+    {
+      "finding": "Every input byte is consumed in exactly8LSB steps, including impossibleprefixes. MidbyteB explicitlyREJECT differs from oldundefined/stuck. The experiment tests the new completed lexical specification and accepted-word language under the documented oldnonaccepting interpretation, without oldphysical trajectory/headcost equivalence.",
+      "id": "lexical-scope"
+    },
+    {
+      "finding": "Depth0..2 use trivial1/2/4bounds. Depth3/4 partition lowprefix into0,1,2..3,4,other:5classes. Depth5 partitions0,1,2..15,16,17..19,20,21..31:7classes. Depth6 vectors LEAD,LEAD,REJECT,lasttag and depth7pairsLEAD,lasttag admit7lasttags. Equal residual functions share same depth/successor keys; sum38 is a conservative upper, not generatedcount.",
+      "id": "LEAD38-proof"
+    },
+    {
+      "finding": "Each128..191continuation interval has oneclass throughdepth6 and twoclasses atdepth7:9states.160..191 has sixearlyoneclasslevels then2+2:10.144..191 and128..143 each have fiveearlyoneclasslevels then2+2+2:11. Totals59, plus38LEAD=97assigned,3halts=100total and388literal rows; crossmode sharing only lowers this.",
+      "id": "other-mode59-proof"
+    },
+    {
+      "finding": "Two complete fresh generation calls are required and strict full typed tables match while table/delta owners differ. Every declaration/quota/foreign call is fresh and recorded;62started,2complete,60raised are separately validated. No cached table attestation or pre-run generation is permitted.",
+      "id": "generator-cost-and-reuse"
+    },
+    {
+      "finding": "Session.guard checks raw Sources and function/code/default/closure owners at call entry/exit, full typed effective limits and callback seals. Callback/argument/result/error owners are retained; plannedforeign objects and trigger lists remain exact. Genuine Root latches dominate expected-fault classification; foreign public exception class instances are not treatedowned by class.",
+      "id": "exact-primary-and-custody"
+    },
+    {
+      "finding": "The subject retains complete available construction rows/names/activechoices on exact faults. Work/state/transition cutoffs check genuine Source.step provenance and exactfirstlimit populations. Raw firsttransition is retained beforecallback/limit. Failed prefixes never become lexicalrejection/BOUND or admittedtables.",
+      "id": "raw-prefix-boundaries"
+    },
+    {
+      "finding": "Every row has duplicate/dangling/wrongmove variants plus every fence-row deletion. Each record stores its complete ordinary candidate table, rejection/error and Source site; original baseline typed value is checked unchanged. It does not save only hashes or patches, and no archivedpartial is a fixture.",
+      "id": "mutation-evidence"
+    },
+    {
+      "finding": "All literal names are bounded ASCII<=64characters, totalstates<=100, full/duplicate delta<=389rows at conservative32bytes/row.100*(64+3)+389*32+4096=23244<24576bytes including bounded metadata. At most1261matrixrecords; nonword/word records conservatively fit1024/4096bytes. The full summed41691136byte packet upper remains below48MiB.",
+      "id": "ordinary-byte-bound"
+    },
+    {
+      "finding": "Failure retains completed normals/calls/diagnostics plus active operation and one pendinggroup, with a separate48MiBlease. It first attempts a separately bounded64KiBscalarnegative summary. Exact primary remains authoritative; oversized/incomplete output staysrawpartial/nonadmitted. No file repair, deletion, truncation, overwrite or name retry.",
+      "id": "complete-failure-evidence"
+    },
+    {
+      "finding": "All six declared file leases, simultaneous48MiBmain+48MiBfailure, bounded4MiBlogs and original9MiBouterreserve total121700352bytes<134217728. Each declared filename is spentonce and write enforces its ownceil; completedfiles and failedpartials remain charged. This is ordinary completeJSON stored=expanded for this distinct certificate, with no G1reference/unfolding shortcut.",
+      "id": "aggregate-physical-reservation"
+    },
+    {
+      "finding": "The manual40222physical normal steps and full bounded row scans support a finite work prerequisite. Root callbacks, hashing/custody/canonicalization/writes and all preparations remain charged; no hardwaretime or exactheap fit is claimed. Actual180spositive,210scustody,400mRootcallbacks and1GiBworkerHWM gates remain decisive.",
+      "id": "work-time-memory-prerequisites"
+    },
+    {
+      "finding": "After removing the reviewed qualification-validator body and reversing five declaration replacements, the runner exactly matches its pinned predecessor bytes. Observer exactinverse changes onlyversion/scope. Processcreation, Sourceentryepoch, wait4reap, fresh ownedgroup probes before signals, separately guarded cleanup, stablewholelogs, finalrawcustody and externalterminal guards remain unchanged.",
+      "id": "controller-preservation"
+    },
+    {
+      "finding": "No candidateadmission without completecanonical/result/header, knownnormalworkerexit and positiveresultread beforeoriginal180. Later rawinput/Source/stdlib/resource/log/ledger closure staysbefore210. Externalobserver joins runnerexit0 withsameplan/epoch/ownedgroup/log/bytes and no postreceiptdeadlinefailure; timeout225 is an observationfailsafe, not extendedpositiveauthority.",
+      "id": "positive-terminal-gates"
+    },
+    {
+      "finding": "Closure explicitly trusts interpreter/builtin/frozen/transitivestdlib/OSloader/SourceFileLoaderpyc under ordinaryexclusive ownership, not hostileglobals/defaultcontents/concurrentmutation. Its inherited oldprofile/graph-query prose is historical/out-of-subject: currentguard/typedlimits/callbackseals were reviewed directly, and no profile/graph qualification follows.",
+      "id": "runtime-trust-scope"
+    },
+    {
+      "finding": "Prospectiveauthorization isfalse/max0, actualdirectory andprospectiveterminaldirectory absent, oldgrantsretired0. This review is Sourceonly and grantsnothing. Root may issue only a fresh exactsubjectonce grant after grant-onlydelta review and all-peer idlebarrier; no Source/harness/controller/fixture/simulator/sizing call has occurred in this review.",
+      "id": "authority-barrier"
+    }
+  ],
+  "master": {
+    "bytes": 36240,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/basic-tiling-algorithm.md",
+    "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+  },
+  "mathematical_admission": false,
+  "metadata_note": "Initial guessed manual-resource-envelope filename was absent; exact offered utf8-manual-envelope-v1.json then read fully. Missing optional path supplied no evidence and no Source operation. A receipt-author-only incorrect retirement field assumption was separately preserved and corrected; no offered Source changed.",
+  "new_grants": 0,
+  "offer": {
+    "bytes": 4229,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/utf8-Source-offer-v1.json",
+    "sha256": "561afd3a96586cc15b1ab28e775ac840a4168e6949e646bc5cd464f728aa55e0"
+  },
+  "old_G0_unchanged": true,
+  "old_grant_remaining": 0,
+  "partial_files_opened": 0,
+  "plan": {
+    "bytes": 3198,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/utf8-plan-prospective-v1.json",
+    "sha256": "63a8961020ade2bbfd52e5d90924ac7241d4b58a557e732ab1990668f8e52ae6"
+  },
+  "proof_discovery": false,
+  "python": {
+    "bytes": 18058560,
+    "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+    "sha256": "b6ea0c2a9bfce48dbf181a53f1ca4f0562d40658b85bf47258e2a88d8f9e3933"
+  },
+  "review_author_metadata_negative": {
+    "bytes": 893,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/review-C/utf8-review-author-negative-v1.json",
+    "sha256": "1277301f931d82d88c14dab65b419b8dd3f0ea62915a536a3e31518565276277"
+  },
+  "review_passed": true,
+  "reviewer_identity": "/root/recovered_batch_review",
+  "runtime_closure": {
+    "bytes": 8754,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/utf8-runtime-closure-v1.json",
+    "sha256": "df60364bdcfbe80e22d5bebda2e5b5656adcdd79331992a046d4245a53e11cac"
+  },
+  "runtime_qualified": false,
+  "schema": "wang-encoding-Source-prospective-review-v1",
+  "simulator_calls": 0,
+  "sizing_probes": 0,
+  "source_only": true,
+  "sources": {
+    "observer": {
+      "bytes": 5574,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/observe_utf8_once_v1.py",
+      "sha256": "b3334b0f1de87b876a89ddfa6db2c0366f0aabe88f1b9beebd25156c127dd75f"
+    },
+    "runner": {
+      "bytes": 31173,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/run_utf8_once_v1.py",
+      "sha256": "2a1d623fa511964f7bc65fc8721c7c6ddb41bf91b9a03d2c5851df92aba33fd6"
+    },
+    "utf8": {
+      "bytes": 8265,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/root/utf8_residual_machine_v1.py",
+      "sha256": "08f9472acb2042e398997cc0dddd6ddc2487c866a3b683b42f53852bee26a088"
+    },
+    "worker": {
+      "bytes": 35395,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/qualify_utf8_worker_v1.py",
+      "sha256": "d3b4ed809e8aa96e00899e56eb621c19c82231b1a7055056c854070621ea2b34"
+    }
+  },
+  "static_metadata": {
+    "AST_parse_count": 4,
+    "compiled_code_executed": false,
+    "unused_compile_count": 4
+  },
+  "stdlib_files": [
+    {
+      "bytes": 9349,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/hashlib.py",
+      "sha256": "6dbdebf270868b391080e21dc9687eddfaf321c965ad979f68d3f5c423c613ab"
+    },
+    {
+      "bytes": 4784,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/__init__.py",
+      "sha256": "d540b5ac137fcb3e26a8d5f2939649e34373c6685f98a30a9f682cf231be5854"
+    },
+    {
+      "bytes": 1354,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/_abc.py",
+      "sha256": "80aab7931dc999dee581c8b8b56fcd973fe156335a96ceeaf6acfc03cebf10e8"
+    },
+    {
+      "bytes": 880,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/machinery.py",
+      "sha256": "d045cd7ecf2a12b6ecbfbef79eb114e87ef2ebd756f5b705f73e6f3266e3dede"
+    },
+    {
+      "bytes": 10994,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/util.py",
+      "sha256": "671f2995653f673f6d5056a1089debef473bc28ae7114f7a8db71475733d6876"
+    },
+    {
+      "bytes": 14020,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/__init__.py",
+      "sha256": "d5d41e2c29049515d295d81a6d40b4890fbec8d8482cfb401630f8ef2f77e4d5"
+    },
+    {
+      "bytes": 12525,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/decoder.py",
+      "sha256": "382cd02af6f7efede5a6d4abbcda1015e5c7a75794b0016022878f9cf32a24f6"
+    },
+    {
+      "bytes": 16075,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/encoder.py",
+      "sha256": "52bfb1b66029cc70fa3bd7fe11df9f2e03922d413407a341b387a22c987f24f8"
+    },
+    {
+      "bytes": 2434,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/scanner.py",
+      "sha256": "572958017eae8842eeddd0e3d18d3c56cc0a197348224915e1d87ce937841764"
+    },
+    {
+      "bytes": 40821,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/os.py",
+      "sha256": "54c43a1fc69c979c70d8f7d097174cee163bfe59937723ee353043dd4a0211e1"
+    },
+    {
+      "bytes": 51052,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py",
+      "sha256": "10ba48ae8063cfe7589436041d0d4628c05f427c7709cf8e75e486f8930cc32c"
+    },
+    {
+      "bytes": 2495,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/signal.py",
+      "sha256": "0363c964c90ac0b3e515de5749205e6e6454051a1211058375d84d91eab6071a"
+    },
+    {
+      "bytes": 88747,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py",
+      "sha256": "85d29b2bf0249f5436838298c9a60ee93508b1102e9ac43b001f8a7e7ae8f375"
+    },
+    {
+      "bytes": 10993,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/types.py",
+      "sha256": "345474ef027a1273f353da9bdc1f7c18f65335e72e681bcc0376774cc51f2405"
+    },
+    {
+      "bytes": 64452,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/ast.py",
+      "sha256": "b515c23dbbc459329d3b802a3aac742cc456d7472e66f7ed6e9dc97e40596d7d"
+    },
+    {
+      "bytes": 52378,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/collections/__init__.py",
+      "sha256": "7fdb04dd248ab37909f46d2085bfee56b32d7e91e49ad3a2fad99c453295659b"
+    },
+    {
+      "bytes": 81540,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/enum.py",
+      "sha256": "f35e542d8c4c1d2b5e910138d726fa48774925f3c4dc5462793ebcb66aa55501"
+    },
+    {
+      "bytes": 27637,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/contextlib.py",
+      "sha256": "8b7a477f978a8532852fd81e241c78182516bc4975d672d580a5848a76e11eb6"
+    },
+    {
+      "bytes": 37940,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/functools.py",
+      "sha256": "de4a1d37c795e2a065124b5c49357893433bc6bb111b41277ccc9930ef08d4c9"
+    },
+    {
+      "bytes": 10965,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/operator.py",
+      "sha256": "b2af20f67667203c1730e686cc5d0427becc94db4c97f1d3efe3ed2158473f6a"
+    },
+    {
+      "bytes": 1073,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/keyword.py",
+      "sha256": "18c2be738c04ad20ad375f6a71db34b3823c7f40b0340f5294d0e89f3c9b093b"
+    },
+    {
+      "bytes": 7148,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/reprlib.py",
+      "sha256": "e177bc70da83a7fbcde6fd261dc15da34e8a20873b1cccd4f9a1f8f27cca3779"
+    },
+    {
+      "bytes": 21909,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/warnings.py",
+      "sha256": "6405e281882932205eae641b2d31fba7776f94517a206d289465a1caffbf310e"
+    }
+  ],
+  "subject": {
+    "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/actual-utf8-v1",
+    "declaration": {
+      "bytes": 3459,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/utf8-declaration-v1.json",
+      "sha256": "c4fa33fa28077c7ea039b59e8112ddb251bb331916eba5465f25730aca0d7836"
+    },
+    "inputs": [
+      {
+        "pin": {
+          "bytes": 6402,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/root/utf8-prospective-bank-v2.json",
+          "sha256": "081b2eb3344d56b10a3399e8bf9826248011bc8faedbc5065d26129c27939f88"
+        },
+        "role": "complete-UTF8v2-physical-lexical-bank"
+      }
+    ],
+    "invocation_id": "ROOT-UTF8v2-complete-20261020-v1",
+    "limits": {
+      "expanded_bytes": 134217728,
+      "memory_bytes": 1073741824,
+      "observer_bytes": 1048576,
+      "overall_seconds": 210,
+      "result_bytes": 134217728,
+      "runner_metadata_bytes": 8388608,
+      "stderr_bytes": 4194304,
+      "stdout_bytes": 4194304,
+      "work_seconds": 180,
+      "worker_receipt_bytes": 4194304
+    },
+    "python": {
+      "bytes": 18058560,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+      "sha256": "b6ea0c2a9bfce48dbf181a53f1ca4f0562d40658b85bf47258e2a88d8f9e3933"
+    },
+    "runtime_closure": {
+      "bytes": 8754,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/utf8-runtime-closure-v1.json",
+      "sha256": "df60364bdcfbe80e22d5bebda2e5b5656adcdd79331992a046d4245a53e11cac"
+    },
+    "schema": "ROOT-wang-encoding-qualification-plan-v1",
+    "sources": {
+      "observer": {
+        "bytes": 5574,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/observe_utf8_once_v1.py",
+        "sha256": "b3334b0f1de87b876a89ddfa6db2c0366f0aabe88f1b9beebd25156c127dd75f"
+      },
+      "runner": {
+        "bytes": 31173,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/run_utf8_once_v1.py",
+        "sha256": "2a1d623fa511964f7bc65fc8721c7c6ddb41bf91b9a03d2c5851df92aba33fd6"
+      },
+      "utf8": {
+        "bytes": 8265,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/root/utf8_residual_machine_v1.py",
+        "sha256": "08f9472acb2042e398997cc0dddd6ddc2487c866a3b683b42f53852bee26a088"
+      },
+      "worker": {
+        "bytes": 35395,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/qualify_utf8_worker_v1.py",
+        "sha256": "d3b4ed809e8aa96e00899e56eb621c19c82231b1a7055056c854070621ea2b34"
+      }
+    }
+  },
+  "subject_function_calls": 0,
+  "subject_imports": 0,
+  "subject_sha256": "d57adc6054cd43ed4623029655578709c6657e2e2705b3a8418dacd1d96d5712",
+  "table_generation_calls": 0,
+  "tools_stopped_after_freeze": true
+}

@@ -1,0 +1,187 @@
+{
+  "G1_adopted": false,
+  "actual_execution_authorized": false,
+  "checks": [
+    {
+      "id": "pin-handoff-v1.json",
+      "passed": true
+    },
+    {
+      "id": "pin-boot_postfix_structure_v1.py",
+      "passed": true
+    },
+    {
+      "id": "pin-API-v1.json",
+      "passed": true
+    },
+    {
+      "id": "pin-diagnostic-bank-v1.json",
+      "passed": true
+    },
+    {
+      "id": "pin-manual-argument-v1.json",
+      "passed": true
+    },
+    {
+      "id": "pin-lineage-pins-v1.json",
+      "passed": true
+    },
+    {
+      "id": "pin-freeze-manifest-v1.json",
+      "passed": true
+    },
+    {
+      "id": "pin-author-static-audit-v1.json",
+      "passed": true
+    },
+    {
+      "id": "Source-AST-unused-compile-only",
+      "passed": true
+    },
+    {
+      "id": "fixed-generator-keyword-interface",
+      "passed": true
+    },
+    {
+      "id": "bank-full-eight-families",
+      "passed": true
+    },
+    {
+      "id": "bank-full-thirteen-controls",
+      "passed": true
+    },
+    {
+      "id": "bank-full24-construction",
+      "passed": true
+    },
+    {
+      "id": "bank-unique-ids",
+      "passed": true
+    },
+    {
+      "id": "manual-allocation-arithmetic",
+      "passed": true
+    },
+    {
+      "id": "explicit-limited-scope",
+      "passed": true
+    }
+  ],
+  "failed_checks": [],
+  "fixture_calls": 0,
+  "full_BOOT": false,
+  "full_VM": false,
+  "full_read": [
+    "Source",
+    "API",
+    "manual argument",
+    "all eight family recipes",
+    "all13literal controls",
+    "all24construction cases",
+    "handoff"
+  ],
+  "helper_calls": 0,
+  "manual_findings": [
+    {
+      "finding": "Each nonhalt state is assigned exactly24 literal physical read/next/write/move actions. Default visible invalid symbols reject and globalR exitsBOUND. No transition invokes a host classifier, value decoder, arithmetic opcode or input-derived state index. State/alphabet generation accepts no word/program/theory/capacity/horizon.",
+      "id": "literal-physical-actions"
+    },
+    {
+      "finding": "Unique L/R, input/stack headers and delimiters, initial raw input, B/1 scratch and exclusive marker ownership are explicit preconditions. Scans rewind toL then seek fixed header. Missing/malformed layout is outside lexical/termination claims; there is no global layout validator or16band linkage.",
+      "id": "physical-layout-preconditions"
+    },
+    {
+      "finding": "The eighteen bit/flag states per mode physically read nineLSB-first bits. The low-eight nonzero flag allows ninth1 only after eightzero bits; hence accepted atom range is exactly0..256. The current input marker is consumed and the next physical symbol marked before a stack traversal.",
+      "id": "atom-range"
+    },
+    {
+      "finding": "Initialization clears each B/1 scratch cell. Push scans unary1 prefix and writes firstB or returnsBOUND at capacity. Pop scans to B/fence, erases final1 then checks a predecessor1; empty/singleton underflow rejects, and a full scratch band can still pop. Failed scratch need not be restored and cannot be admitted.",
+      "id": "unary-stack"
+    },
+    {
+      "finding": "FREE2/PUBLIC3 scan exactlytwo/three pending unary roots, then require B/fence. Postsemicolon cursor accepts only B padding until firstcolonDONE. Input fence givesBOUND at that phase. DONE ignores postcolon data and constructs no actual value tree.",
+      "id": "roots-and-padding"
+    },
+    {
+      "finding": "Per-mode base counts53/54 plus21cached marker destinations give74/75assigned states;149assigned+3halts=152total,24symbols,3576literal rows and72undefined halt slots. These are conditional Source upper/count arguments, not generated census or resourcefit.",
+      "id": "manual-bound"
+    },
+    {
+      "finding": "On well-formed finite layout, each traversal stops at its declared header/marker/fence. The stated coarse32(W+1)^2 physical-step upper is consistent with at most a constant number of full-span traversals per consumed input symbol; no timing or whole interpreter fit follows.",
+      "id": "termination-scope"
+    },
+    {
+      "finding": "Allocation publishes names/rows before state callback; assignment retains each raw action before its transition callback. Exact construction foreign errors are rethrown with best-effort original prefix attachment. Own predicates check exact type+private-convention owner; public impostor classes are not inferredowned.",
+      "id": "construction-fault-custody"
+    },
+    {
+      "finding": "All eight exhaustive families,13controls and24construction cases are declarative and unrun. Future independent oracle must model first observed lexical/capacity failure and all cases. No fixture or simulator was authored/called by this review.",
+      "id": "bank-status"
+    },
+    {
+      "finding": "Value/cons/heap construction, tagged values, UTF8/key uniqueness, program parser, fullBOOT/controller, outerEOF, sixteen-band linkage and physical-to-host checker correspondence remain absent. This is a useful structural routine Source component, not an implemented proof system or GCTS/RL result.",
+      "id": "scope-gaps"
+    }
+  ],
+  "mathematical_admission": false,
+  "metadata_read_note": "An initial guessed manual filename was absent; the exact handoff-named manual-argument-v1.json was then fully read. No Source function was run and no missing file supplied evidence.",
+  "partial_files_opened": 0,
+  "pins": {
+    "API-v1.json": {
+      "bytes": 7248,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/physical-L/API-v1.json",
+      "sha256": "38f10de5abfe8f8a408f409d5ce9256fce9e18873cb150811df0c8dda5753e87"
+    },
+    "author-static-audit-v1.json": {
+      "bytes": 1425,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/physical-L/author-static-audit-v1.json",
+      "sha256": "158efc23f5d0f9d8d2cc31b93033a0e9161e2720f46e77204d4ee2b2d29f7c3e"
+    },
+    "boot_postfix_structure_v1.py": {
+      "bytes": 12628,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/physical-L/boot_postfix_structure_v1.py",
+      "sha256": "830a57c3f2fc04e0327f73a12a7ce7dd921aad682390f5e67d8d2e745bbf8496"
+    },
+    "diagnostic-bank-v1.json": {
+      "bytes": 22461,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/physical-L/diagnostic-bank-v1.json",
+      "sha256": "1810831c038b51d6bd9018d7c8ce554a4e28127c3aa9f62681d802f2f0c16b7d"
+    },
+    "freeze-manifest-v1.json": {
+      "bytes": 1838,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/physical-L/freeze-manifest-v1.json",
+      "sha256": "2661f2cef75599b8009d8b0ff02a549befb2436a9839094cc40c1cadf0563b7e"
+    },
+    "handoff-v1.json": {
+      "bytes": 3560,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/physical-L/handoff-v1.json",
+      "sha256": "cfd6ca8fad3534fffa5575c4efafad2d531c36d92e482a693b41ae0b636cf787"
+    },
+    "lineage-pins-v1.json": {
+      "bytes": 1590,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/physical-L/lineage-pins-v1.json",
+      "sha256": "8de6f5e1d23b8be52e6a23eb779852b7f409203598e3bb98eb10000e6e48febf"
+    },
+    "manual-argument-v1.json": {
+      "bytes": 5120,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/physical-L/manual-argument-v1.json",
+      "sha256": "dea57bcb073fde3dfe7fd83894a56fe5d16be648c1a65b06a149262db4ed4611"
+    }
+  },
+  "reviewer_identity": "/root/recovered_batch_review",
+  "runtime_qualified": false,
+  "schema": "boot-postfix-physical-structure-independent-Source-review-v1",
+  "simulator_calls": 0,
+  "sizing_probes": 0,
+  "source_only": true,
+  "static_metadata": {
+    "AST_parse": true,
+    "compiled_code_executed": false,
+    "unused_compile": true
+  },
+  "status": "PASS_SOURCE_ONLY_CONDITIONAL_STRUCTURAL_GRAMMAR",
+  "subject_calls": 0,
+  "subject_imports": 0,
+  "table_generation_calls": 0,
+  "tools_stopped_after_freeze": true
+}

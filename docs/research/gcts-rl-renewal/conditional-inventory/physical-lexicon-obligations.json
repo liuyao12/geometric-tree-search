@@ -1,0 +1,1610 @@
+{
+  "G0_unchanged": true,
+  "G1_adopted": false,
+  "GCTS_RL_advantage_established": false,
+  "actual_execution_authorized": false,
+  "checker_calls": 0,
+  "checks": [
+    {
+      "id": "pin-master",
+      "passed": true
+    },
+    {
+      "id": "pin-worker",
+      "passed": true
+    },
+    {
+      "id": "pin-component",
+      "passed": true
+    },
+    {
+      "id": "pin-graph",
+      "passed": true
+    },
+    {
+      "id": "pin-field_map",
+      "passed": true
+    },
+    {
+      "id": "pin-contract_findings",
+      "passed": true
+    },
+    {
+      "id": "pin-old_bank",
+      "passed": true
+    },
+    {
+      "id": "pin-batch_bank",
+      "passed": true
+    },
+    {
+      "id": "pin-old_grant_retirement",
+      "passed": true
+    },
+    {
+      "id": "pin-bound_review",
+      "passed": true
+    },
+    {
+      "id": "pin-python",
+      "passed": true
+    },
+    {
+      "id": "previous-published-active-no-authority",
+      "passed": true
+    },
+    {
+      "id": "three-AST-and-unused-compile-only",
+      "passed": true
+    },
+    {
+      "id": "exact-24-canonical-fields",
+      "passed": true
+    },
+    {
+      "id": "exact-12-metrics",
+      "passed": true
+    },
+    {
+      "id": "ordinary-lifetime-literal-key-tuple",
+      "passed": true
+    },
+    {
+      "id": "original-15-normal",
+      "passed": true
+    },
+    {
+      "id": "original-4-small-10-graph",
+      "passed": true
+    },
+    {
+      "id": "original-33-legacy",
+      "passed": true
+    },
+    {
+      "id": "original-28-groups-55-variants",
+      "passed": true
+    }
+  ],
+  "compiler_calls": 0,
+  "exact_profile_return_bindings": {
+    "attempted_requests": {
+      "container": "tuple",
+      "source": "profile_rows[*].lifetime.requests"
+    },
+    "body_result": {
+      "container": "identity",
+      "source": "profile_rows[*].lifetime.body_result"
+    },
+    "exact_receipt_preimages": {
+      "container": "tuple",
+      "source": "profile_rows[*].lifetime.expected_receipts"
+    },
+    "receipts": {
+      "container": "list",
+      "source": "profile_rows[*].lifetime.receipts"
+    }
+  },
+  "failed_checks": [],
+  "fit_proved": false,
+  "fixture_calls": 0,
+  "full_literal_descendants_rule": "Every listed schema payload owns every original descendant, not only the named fields. This inventory is derived from Source construction sites; it is not a parsed completed canonical packet. No such completed packet from the rejected old actual is claimed.",
+  "goal_status": "active",
+  "helper_calls": 0,
+  "inherited_G0_negative": {
+    "conditional_expanded_lower_bytes": 134857533,
+    "excess_lower_bytes": 639805,
+    "no_global_infeasibility_claim": true,
+    "partial_content_used": false,
+    "review": {
+      "bytes": 11278,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/review-C/typed-expanded-lower-bound-review-v1.json",
+      "sha256": "b75be9752672ce878c67d8b9f85fafa557359b91c33de0ad65a203dcff162dba"
+    },
+    "unchanged_limit_bytes": 134217728
+  },
+  "mathematical_admission": false,
+  "new_actual_invocations": 0,
+  "new_grants": 0,
+  "obligations": [
+    {
+      "id": "S01_TOTAL_SCHEMA",
+      "requirement": "Provide a versioned total schema and field-by-field mapping for all24 old canonical top-level fields and every literal descendant. Unknown, absent, duplicate or unowned required fields must cause refusal. A pin, count, PASSED status, recipe name or hash is not a replacement for a required value.",
+      "verification": "Independent schema checker must enumerate required paths/roles and reject omissions/extras, not trust the producer mapping."
+    },
+    {
+      "id": "S02_FULL_INPUTS",
+      "requirement": "Retain both complete raw original banks plus strict decoded values and exact ordered case bindings. Preserve all original machine transition rows, wire parameters, palette records, targets, pins, generations, modes,33legacy declarations and28groups55variants including parameters/triggers/expected/source_reasoning.",
+      "verification": "Check raw byte pins and strict typed subtree bindings against original Source-bound inputs; never regenerate a smaller bank from emitted answers."
+    },
+    {
+      "id": "S03_NORMAL_POPULATION",
+      "requirement": "Preserve exactly four small cases, one large case and ten graph cases in original order. For every small palette preserve all independent nonempty masks, declared empty cross-splices, every original rank and exact16-times-inventory witness multiplicity, with deterministic128-request scopes. Preserve large global samples and all focused families without claiming full large enumeration.",
+      "verification": "Independent population/bijection checks and explicit original scope labels, including no-full-materialization/no-full-large-unranking."
+    },
+    {
+      "id": "S04_INDEPENDENT_ORACLES",
+      "requirement": "Retain the complete independently compiled legacy palette and semantic tiles, independent expected bucket populations, direct large membership/cardinality provenance, every independent graph solution identity and independent domains. Equal actual and expected payloads may share bytes only with distinct provenance bindings.",
+      "verification": "Expected values must come from the independent Source/oracle route; reading the actual answer twice is not independent verification."
+    },
+    {
+      "id": "S05_EXACT_VALUES",
+      "requirement": "Preserve exact permitted types, tuple/list distinction, bool/int distinction, string code-unit content, dictionary insertion order when it is part of custody, absent keys versus assignedzero/None, and every nested t/m/color/inventory identity. Declare float/bytes/custom-object support explicitly; never coerce a nonliteral object into a replayable literal.",
+      "verification": "Strict typed equality and complete decoding checks; hash lookup alone is insufficient, unsupported carriers refuse."
+    },
+    {
+      "id": "S06_EVENT_IDENTITY",
+      "requirement": "Allocate a distinct immutable ordinal for every actual call, profile, query, observation, baseline/reference, diagnostic run and exit/fault occurrence. Equal payloads do not merge occurrences. Preserve original per-stream ordering and explicit cross-stream/case/profile/variant bindings.",
+      "verification": "Closed population/order/conservation checks; no inferred global event order from an old rejected partial or from equality of values."
+    },
+    {
+      "id": "S07_PROFILE_LIFECYCLE",
+      "requirement": "Retain every attempted profile, including failed constructor/entry/preparation/body/query/reconciliation/exit. Preserve the complete raw registered lifetime, ordinary projection, exact descriptor/limits/declared arguments, request sequence, receipts, typed preimages, stage/failed_stage, counters, cost availability and custody flags.",
+      "verification": "One accounting row per attempted scope; normal request/produced/preimage/delivered populations agree only on success, and active failure states remain distinct."
+    },
+    {
+      "id": "S08_RAW_PRODUCED_BEFORE_COPY",
+      "requirement": "Keep a produced raw receipt and full tile reachable before the first receipt-copy callback or quota can fail. An active query retains ordinal/request/stage/start_work/produced_receipt/produced_preimage/preimage_complete/delivered independently of completed receipts.",
+      "verification": "Required first-receipt-tree diagnostic distinguishes1produced/0preimage/0delivered and empty completed sequence; no lost available tile or fabricated completed preimage."
+    },
+    {
+      "id": "S09_MUTATION_VERSIONS",
+      "requirement": "Keep exact independent typed receipt preimage, observed post-callback value and reconciliation result as separately attributed versions. Do not retarget an earlier immutable owner after mutation or intern mutable references before the value is sealed.",
+      "verification": "The bool0-to-False, list-to-tuple, absent-to-assignedzero and changed authority controls must retain both versions and private refusal semantics."
+    },
+    {
+      "id": "S10_RETURN_BINDINGS",
+      "requirement": "Preserve all profile-return metadata plus four explicit bindings: receipts to lifetime.receipts aslist; attempted_requests to lifetime.requests astuple; exact_receipt_preimages to lifetime.expected_receipts astuple; body_result to lifetime.body_result byidentity. Normal body_result remainsNone and caller-owned small/large/graph results remain separately reachable.",
+      "verification": "Total binding schema rejects wrong type/container/path/owner/version and verifies full returned object equivalence; a smaller body return may not erase consumer output."
+    },
+    {
+      "id": "S11_GRAPH_CONFORMANCE",
+      "requirement": "Retain every graph result descendant, ordered journal/query_journal, whole solution placements/tiles/generations and every full observation: points/chosen/marks/domains/exclusions, dependency incidence, branch parent snapshots, next-rank cursors, scheduler and rollback_parent. Preserve every independent domain population and all BEFORE/AFTER_ROLLBACK and root-restoration checks.",
+      "verification": "GlobalDEAD beforeFORCED beforeearliest-generation branching; full target, marking values/refcounts/fixed ownership and conditional exclusions independently checked under the master contract."
+    },
+    {
+      "id": "S12_GRAPH_SCOPE",
+      "requirement": "Keep finite singleton-center/four-midpoint adaptation and the nonzero-root TEST_VARIANT label. No new claims for arbitrary support, remote extra markings, fractional t, infinite plane coverage, physical FOL interpreter or unrestricted RL follow from this calibration.",
+      "verification": "Result statuses distinguish finite solution/exhaustion/restricted behavior/UNKNOWN; complete branch/root restoration is not a plane proof."
+    },
+    {
+      "id": "S13_LEGACY_DIAGNOSTICS",
+      "requirement": "Retain all33 legacy diagnostic rows and every present descendant, including callback count/trace, original expected site, exact foreign identity, private-owner classification, setup receipts, full subject/graph prefixes and UNKNOWN results.",
+      "verification": "GenuineRoot first fault checked before expected-fault classification. Foreign public class membership alone never means private ownership. Only exact graph-owned quota may become UNKNOWN, never zero or UNSAT."
+    },
+    {
+      "id": "S14_NEW_DIAGNOSTICS",
+      "requirement": "Retain all28groups55variants in exact declaration order, including baselines, reference standalone calls, closed-query attempts, all owner-result fields, work scalars, three lifetime counters and ordinary lifetime/prefix projections. Preserve failedprofile notadmitted, custody refusal, swallowed/reentrant first-fault identity and secondary nonmasking.",
+      "verification": "Every planned trigger must follow genuineRoot guard; expected refusal is distinct from profile/custody admission. Complete tuple/list/bool/None and nested values are retained."
+    },
+    {
+      "id": "S15_SCALAR_SUMMARY_SCOPE",
+      "requirement": "Retain complete scalar-builder records and cap/availability/truncation flags, writer_invokedFalse and filesystem_persistence_testedFalse. A scalar summary is diagnostic-only and is not full prefix or output-persistence evidence.",
+      "verification": "Hostile exception/prefix controls do not call repr/str/iterate. Missing/nonliteral counters stay unavailable; capped rows never stand in for uncapped evidence."
+    },
+    {
+      "id": "S16_COST_CONSERVATION",
+      "requirement": "Keep started/completed/raised full maps, Root callback counts with cutoff scope, all12 profile metrics and every complete/failed per-profile cost row. Distinguish attempted cumulative profile cost, preparation, query kernel, overhead and post-preparation overhead. Count each cumulative profile once; do not add its kernels again.",
+      "verification": "Known totals and unavailable observations are separate. Constructor or missing-prefix work remainsNone/unavailable; no zero fabrication or all-cost-complete inference from partial sums."
+    },
+    {
+      "id": "S17_CUSTODY_NOT_SERIALIZATION",
+      "requirement": "Keep the actual Source/module/function/code/default/kwdefault/closure cells and contents, callback/class member owners, query dispatcher, descriptor/argument owners, Work owner and exact primary/secondary exception/traceback objects alive through final custody. Serialized IDs/type labels are nonreplayable metadata.",
+      "verification": "Entry/exit/final genuine Source and strict argument seals remain real checks; round-tripping a value store does not reconstruct executable identity or private resource ownership."
+    },
+    {
+      "id": "S18_CALL_CONTRACTS",
+      "requirement": "Retain original effective args/limits/callback association for every standalone/profile call and exact success/refusal/fault outcomes. Preserve detached descriptor acceptance only after full strict typed equality; dynamic graph oracle ticks still charge the exact L callback and Root guard.",
+      "verification": "Before/after call integrity, query function/closure seals and dispatcher restoration are checked on both return and fault; no warm cache substitutes for an actual component operation."
+    },
+    {
+      "id": "S19_PROGRESS_VIEWS",
+      "requirement": "Completed progress/reader groupings may be views only after an explicit mapping to the same canonical event owners. Preserve stage transitions, completed IDs/order and the full unfinished active run/prefix; do not drop incomplete state merely because no final row was admitted.",
+      "verification": "Join views to complete owners with population equality and retain an immutable final reader projection. View deduplication is explicitly part of G1 gate change."
+    },
+    {
+      "id": "S20_OUTER_ENVELOPE",
+      "requirement": "Preserve q/result/header identities, raw output pins, invocation/plan/declaration/runtime closure binding, call/metric counters, logical/expanded byte declarations, denied-event observations, process IDs/epochs/deadlines, exact broader-claimfalse flags and separate external runner/observer terminal observations.",
+      "verification": "No positive component admission without complete canonical/result/header, original positive work deadline and known worker exit, final Source/input/stdlb custody, physical/memory/Root-callback gates and original outer cleanup window."
+    },
+    {
+      "id": "S21_NONADMISSION_ON_FAILURE",
+      "requirement": "Any incomplete output, stopped query, failed seal, failed schema/binding verification, missing cost/terminal observation or unclosed active transaction prevents positive admission. Preserve exact first Root fault over planned/secondary faults. Retain all raw files, leases and objects; never repair a partial.",
+      "verification": "Bounded negative summary/prefix is separately labeled diagnostic-only. File absence/rename/deletion cannot finance a retry or make missing completion counts available."
+    },
+    {
+      "id": "S22_EXPLICIT_CHANGED_GATE",
+      "requirement": "G0 remains the old literal canonical expansion plus conservative profile-return reconstruction charge, with its reviewed negative unchanged. A DAG/one-owner format that charges fewer duplicate logical occurrences is a new gate even if all information is retained. Name the changed contract and exact semantic claim before adoption.",
+      "verification": "No label of merecompression, exactoldgatepass or retroactive rescue. G1 remains unadopted until complete schema/preservation/independent verification/resource review."
+    },
+    {
+      "id": "S23_THREE_BYTE_MEASURES",
+      "requirement": "Declare exact stored bytes, per-owner full typed unfolding bytes and semantic occurrence/binding charges separately. A physical reference is not itself a full logical value. If G1 intentionally charges a unique value owner once plus each event/binding record, say so explicitly; it is not old full-occurrence charging.",
+      "verification": "Define a total cost function on the complete schema, specify all charged owners/events/roles/views/metadata, forbid silently zeroing required payload/occurrences and prove the implemented ledger equals that declared function."
+    },
+    {
+      "id": "S24_RESOURCE_BOUND",
+      "requirement": "A valuecodec compression ratio or example roundtrip gives no whole-cohort fit. Bound full inputs, value nodes, event/binding records, independent evidence, diagnostic baselines/failures, type/version metadata, duplicate physical views, negative/header/log slots and all reconstruction/verification costs.",
+      "verification": "Use exact complete-cohort Source bounds or actually admitted complete observations under unchanged caps. Preserve128MiB stored/declaredexpanded, physicalsumincluding9MiBreserve,180/210seconds,1GiBworkerHWM,400mRootcallbacks; no bank trimming or cap raise."
+    },
+    {
+      "id": "S25_AGGREGATE_OUTPUT",
+      "requirement": "Use one cooperative aggregate budget across canonical file, result/header, logs, all partials and reserved negative space before bulk allocation. Failed leases retain unused capacity and exactness may become unavailable; successful fixed reservation and completed size remain separate.",
+      "verification": "Fresh reviewed integration must use full writer contract, safe once names/no overwrite/retry/truncate/delete, exact raw pins and metadata census. Writer Source pass alone is not filesystem qualification."
+    },
+    {
+      "id": "S26_INDEPENDENT_DECODE",
+      "requirement": "Provide an independently reviewed complete decoder/schema validator that rejects malformed, truncated, cyclic, forward/missing-reference, duplicate-owner, noncanonical/type-alias and trailing-data encodings according to the declared codec. Reconstruct complete required logical values and verify semantic joins separately.",
+      "verification": "Codec roundtrip is one test, not proof of event completeness or field preservation. Decode only complete authorized outputs; partials remain raw bytes/length/hash only."
+    },
+    {
+      "id": "S27_PROVENANCE_AND_AUTHORITY",
+      "requirement": "Bind all new Source/stdlib/dependency closures, raw banks, schema/version/charge convention, exact population, limits and claim scope in one prospective offer. Old six-role closure is historical provenance, not permission to omit a newly added codec/writer/checker dependency.",
+      "verification": "Independent wholeSource review and fresh Root-only once grant, explicit consumed-beforelaunch and external terminal custody. All retired grants stayzero; no Source function or fixture calls before the new reviewed actual."
+    },
+    {
+      "id": "S28_SEPARATE_COMPONENT_EXPERIMENTS",
+      "requirement": "These full15/33/28 requirements apply to a successor claiming qualification of the original full batch. A separately declared complete lexical or codec component bank can be qualified under its own exact reviewed once subject, with its own limited claim.",
+      "verification": "Do not call a separate component bank a trimmed old-cohort pass, G1 adoption, fullVM, automatically discovered theorem or GCTS/RL advantage."
+    }
+  ],
+  "original_population": {
+    "batch_groups": [
+      {
+        "id": "batch-ordered-dynamic",
+        "recipe": "ordered-positive",
+        "subject": "batch-profile",
+        "variant_ids": [
+          "ordered-dynamic"
+        ]
+      },
+      {
+        "id": "batch-ordered-static",
+        "recipe": "static-positive",
+        "subject": "batch-profile",
+        "variant_ids": [
+          "ordered-static"
+        ]
+      },
+      {
+        "id": "batch-foreign-entry",
+        "recipe": "foreign-site",
+        "subject": "batch-profile",
+        "variant_ids": [
+          "foreign-entry-RuntimeError",
+          "foreign-entry-ValueError",
+          "foreign-entry-StopIteration"
+        ]
+      },
+      {
+        "id": "batch-foreign-preparation",
+        "recipe": "foreign-site",
+        "subject": "batch-profile",
+        "variant_ids": [
+          "foreign-preparation-RuntimeError",
+          "foreign-preparation-ValueError",
+          "foreign-preparation-StopIteration"
+        ]
+      },
+      {
+        "id": "batch-foreign-query-kernel",
+        "recipe": "foreign-site",
+        "subject": "batch-profile",
+        "variant_ids": [
+          "foreign-query-kernel-RuntimeError",
+          "foreign-query-kernel-ValueError",
+          "foreign-query-kernel-StopIteration"
+        ]
+      },
+      {
+        "id": "batch-foreign-first-receipt-tree",
+        "recipe": "foreign-site",
+        "subject": "batch-profile",
+        "variant_ids": [
+          "foreign-first-receipt-tree-RuntimeError",
+          "foreign-first-receipt-tree-ValueError",
+          "foreign-first-receipt-tree-StopIteration"
+        ]
+      },
+      {
+        "id": "batch-foreign-reconciliation",
+        "recipe": "foreign-site",
+        "subject": "batch-profile",
+        "variant_ids": [
+          "foreign-reconciliation-RuntimeError",
+          "foreign-reconciliation-ValueError",
+          "foreign-reconciliation-StopIteration"
+        ]
+      },
+      {
+        "id": "batch-foreign-body",
+        "recipe": "foreign-site",
+        "subject": "batch-profile",
+        "variant_ids": [
+          "foreign-body-RuntimeError",
+          "foreign-body-ValueError",
+          "foreign-body-StopIteration"
+        ]
+      },
+      {
+        "id": "batch-foreign-retain",
+        "recipe": "foreign-site",
+        "subject": "batch-profile",
+        "variant_ids": [
+          "foreign-retain-RuntimeError",
+          "foreign-retain-ValueError",
+          "foreign-retain-StopIteration"
+        ]
+      },
+      {
+        "id": "batch-foreign-custody-entry",
+        "recipe": "foreign-site",
+        "subject": "batch-profile",
+        "variant_ids": [
+          "foreign-custody-entry-RuntimeError",
+          "foreign-custody-entry-ValueError",
+          "foreign-custody-entry-StopIteration"
+        ]
+      },
+      {
+        "id": "batch-foreign-custody-exit",
+        "recipe": "foreign-site",
+        "subject": "batch-profile",
+        "variant_ids": [
+          "foreign-custody-exit-RuntimeError",
+          "foreign-custody-exit-ValueError",
+          "foreign-custody-exit-StopIteration"
+        ]
+      },
+      {
+        "id": "batch-foreign-public-class",
+        "recipe": "foreign-public-class",
+        "subject": "batch-profile",
+        "variant_ids": [
+          "foreign-public-Invalid",
+          "foreign-public-Limit"
+        ]
+      },
+      {
+        "id": "batch-work-cumulative",
+        "recipe": "work-cumulative",
+        "subject": "batch-profile",
+        "variant_ids": [
+          "work-cumulative"
+        ]
+      },
+      {
+        "id": "batch-queries-cumulative",
+        "recipe": "queries-cumulative",
+        "subject": "batch-profile",
+        "variant_ids": [
+          "queries-cumulative"
+        ]
+      },
+      {
+        "id": "batch-receipt-items-cumulative",
+        "recipe": "receipt-items-cumulative",
+        "subject": "batch-profile",
+        "variant_ids": [
+          "receipt-items-cumulative"
+        ]
+      },
+      {
+        "id": "batch-swallowed-query",
+        "recipe": "swallowed-query",
+        "subject": "batch-profile",
+        "variant_ids": [
+          "swallowed-query"
+        ]
+      },
+      {
+        "id": "batch-reentrant-query",
+        "recipe": "reentrant",
+        "subject": "batch-profile",
+        "variant_ids": [
+          "reentrant-query"
+        ]
+      },
+      {
+        "id": "batch-closed-success",
+        "recipe": "closed-success",
+        "subject": "batch-profile",
+        "variant_ids": [
+          "closed-success"
+        ]
+      },
+      {
+        "id": "batch-closed-failure",
+        "recipe": "closed-failure",
+        "subject": "batch-profile",
+        "variant_ids": [
+          "closed-failure"
+        ]
+      },
+      {
+        "id": "batch-mutation-bool-int",
+        "recipe": "mutation-bool-int",
+        "subject": "batch-profile",
+        "variant_ids": [
+          "mutation-bool-int-single"
+        ]
+      },
+      {
+        "id": "batch-mutation-list-tuple",
+        "recipe": "mutation-list-tuple",
+        "subject": "batch-profile",
+        "variant_ids": [
+          "mutation-list-tuple-single"
+        ]
+      },
+      {
+        "id": "batch-mutation-absent-zero",
+        "recipe": "mutation-absent-zero",
+        "subject": "batch-profile",
+        "variant_ids": [
+          "mutation-absent-zero-absent",
+          "mutation-absent-zero-assignedzero"
+        ]
+      },
+      {
+        "id": "batch-custody-return",
+        "recipe": "custody-return",
+        "subject": "batch-profile",
+        "variant_ids": [
+          "custody-return-entry",
+          "custody-return-exit"
+        ]
+      },
+      {
+        "id": "batch-secondary-nonmasking",
+        "recipe": "secondary-nonmasking",
+        "subject": "batch-profile",
+        "variant_ids": [
+          "secondary-ValueError",
+          "secondary-StopIteration",
+          "secondary-Limit"
+        ]
+      },
+      {
+        "id": "summary-hostile-exception",
+        "recipe": "summary-hostile",
+        "subject": "scalar-summary-builder",
+        "variant_ids": [
+          "summary-hostile"
+        ]
+      },
+      {
+        "id": "summary-scalar-unavailable",
+        "recipe": "summary-scalar",
+        "subject": "scalar-summary-builder",
+        "variant_ids": [
+          "summary-scalar-bool",
+          "summary-scalar-negative",
+          "summary-scalar-huge",
+          "summary-scalar-unavailable"
+        ]
+      },
+      {
+        "id": "summary-counter-caps",
+        "recipe": "summary-counter-caps",
+        "subject": "scalar-summary-builder",
+        "variant_ids": [
+          "summary-counters"
+        ]
+      },
+      {
+        "id": "summary-active-fault-metadata",
+        "recipe": "summary-active-metadata",
+        "subject": "scalar-summary-builder",
+        "variant_ids": [
+          "summary-active-string",
+          "summary-active-dict"
+        ]
+      }
+    ],
+    "graph_cases": [
+      {
+        "id": "connected-failed-children-first",
+        "kind": "literal",
+        "mode": "first"
+      },
+      {
+        "id": "connected-failed-children-all",
+        "kind": "literal",
+        "mode": "all"
+      },
+      {
+        "id": "distant-DEAD-before-FORCED",
+        "kind": "literal",
+        "mode": "first"
+      },
+      {
+        "id": "distant-FORCED-before-BRANCH",
+        "kind": "literal",
+        "mode": "all"
+      },
+      {
+        "id": "earliest-before-lower-degree-TEST-VARIANT",
+        "kind": "literal",
+        "mode": "first"
+      },
+      {
+        "id": "off-support-zero-pin",
+        "kind": "literal",
+        "mode": "all"
+      },
+      {
+        "id": "whole-board-capacity1-head-prefix",
+        "kind": "unknown_board",
+        "mode": "all"
+      },
+      {
+        "id": "whole-board-capacity1-head-suffix",
+        "kind": "unknown_board",
+        "mode": "all"
+      },
+      {
+        "id": "whole-board-capacity2-head-prefix",
+        "kind": "unknown_board",
+        "mode": "all"
+      },
+      {
+        "id": "whole-board-capacity2-head-suffix",
+        "kind": "unknown_board",
+        "mode": "all"
+      }
+    ],
+    "large_palette_id": "palette-large-logical-universe",
+    "legacy_diagnostics": [
+      {
+        "expected": "INVALID",
+        "expected_callback_count": 0,
+        "expected_callback_function": null,
+        "id": "build-bool-symbol",
+        "operation": "build_bool_symbol",
+        "role": "implicit"
+      },
+      {
+        "expected": "INVALID",
+        "expected_callback_count": 0,
+        "expected_callback_function": null,
+        "id": "build-duplicate-transition",
+        "operation": "build_duplicate_transition",
+        "role": "implicit"
+      },
+      {
+        "expected": "INVALID",
+        "expected_callback_count": 0,
+        "expected_callback_function": null,
+        "id": "build-accept-outgoing",
+        "operation": "build_accept_outgoing",
+        "role": "implicit"
+      },
+      {
+        "expected": "INVALID",
+        "expected_callback_count": 0,
+        "expected_callback_function": null,
+        "id": "build-wire-blank",
+        "operation": "build_wire_blank",
+        "role": "implicit"
+      },
+      {
+        "expected": "INVALID",
+        "expected_callback_count": 0,
+        "expected_callback_function": null,
+        "id": "build-initial-accept",
+        "operation": "build_initial_accept",
+        "role": "implicit"
+      },
+      {
+        "expected": "INVALID",
+        "expected_callback_count": 0,
+        "expected_callback_function": null,
+        "id": "count-bool-mask",
+        "operation": "count_bool_mask",
+        "role": "implicit"
+      },
+      {
+        "expected": "INVALID",
+        "expected_callback_count": 0,
+        "expected_callback_function": null,
+        "id": "count-list-mask",
+        "operation": "count_list_mask",
+        "role": "implicit"
+      },
+      {
+        "expected": "INVALID",
+        "expected_callback_count": 0,
+        "expected_callback_function": null,
+        "id": "count-nested-none",
+        "operation": "count_nested_none",
+        "role": "implicit"
+      },
+      {
+        "expected": "INVALID",
+        "expected_callback_count": 0,
+        "expected_callback_function": null,
+        "id": "select-bool-index",
+        "operation": "select_bool_index",
+        "role": "implicit"
+      },
+      {
+        "expected": "INVALID",
+        "expected_callback_count": 0,
+        "expected_callback_function": null,
+        "id": "select-negative-index",
+        "operation": "select_negative_index",
+        "role": "implicit"
+      },
+      {
+        "expected": "INVALID",
+        "expected_callback_count": 0,
+        "expected_callback_function": null,
+        "id": "select-past-end",
+        "operation": "select_past_end",
+        "role": "implicit"
+      },
+      {
+        "expected": "INVALID",
+        "expected_callback_count": 0,
+        "expected_callback_function": null,
+        "id": "count-invalid-descriptor",
+        "operation": "count_invalid_descriptor",
+        "role": "implicit"
+      },
+      {
+        "expected": "LIMIT",
+        "expected_callback_count": 0,
+        "expected_callback_function": null,
+        "id": "implicit-work-limit",
+        "operation": "implicit_work_limit",
+        "role": "implicit"
+      },
+      {
+        "expected": "LIMIT",
+        "expected_callback_count": 0,
+        "expected_callback_function": null,
+        "id": "implicit-integer-limit",
+        "operation": "implicit_integer_limit",
+        "role": "implicit"
+      },
+      {
+        "expected": "LIMIT",
+        "expected_callback_count": 0,
+        "expected_callback_function": null,
+        "id": "implicit-data-limit",
+        "operation": "implicit_data_limit",
+        "role": "implicit"
+      },
+      {
+        "expected": "FOREIGN",
+        "expected_callback_count": 1,
+        "expected_callback_function": null,
+        "id": "implicit-foreign-entry",
+        "operation": "implicit_foreign_entry",
+        "role": "implicit"
+      },
+      {
+        "expected": "FOREIGN",
+        "expected_callback_count": 14,
+        "expected_callback_function": "_wire_record",
+        "id": "implicit-foreign-wire",
+        "operation": "implicit_foreign_wire",
+        "role": "implicit"
+      },
+      {
+        "expected": "FOREIGN",
+        "expected_callback_count": 95,
+        "expected_callback_function": "_fill",
+        "id": "implicit-foreign-fill",
+        "operation": "implicit_foreign_fill",
+        "role": "implicit"
+      },
+      {
+        "expected": "FOREIGN",
+        "expected_callback_count": 1,
+        "expected_callback_function": null,
+        "id": "implicit-foreign-same-invalid",
+        "operation": "implicit_foreign_same_invalid",
+        "role": "implicit"
+      },
+      {
+        "expected": "FOREIGN",
+        "expected_callback_count": 1,
+        "expected_callback_function": null,
+        "id": "implicit-foreign-same-limit",
+        "operation": "implicit_foreign_same_limit",
+        "role": "implicit"
+      },
+      {
+        "expected": "INVALID",
+        "expected_callback_count": 0,
+        "expected_callback_function": null,
+        "id": "graph-empty-target",
+        "operation": "graph_empty_target",
+        "role": "graph"
+      },
+      {
+        "expected": "INVALID",
+        "expected_callback_count": 0,
+        "expected_callback_function": null,
+        "id": "graph-odd-center",
+        "operation": "graph_odd_center",
+        "role": "graph"
+      },
+      {
+        "expected": "INVALID",
+        "expected_callback_count": 0,
+        "expected_callback_function": null,
+        "id": "graph-duplicate-center",
+        "operation": "graph_duplicate_center",
+        "role": "graph"
+      },
+      {
+        "expected": "INVALID",
+        "expected_callback_count": 0,
+        "expected_callback_function": null,
+        "id": "graph-origin-mismatch",
+        "operation": "graph_origin_mismatch",
+        "role": "graph"
+      },
+      {
+        "expected": "INVALID",
+        "expected_callback_count": 0,
+        "expected_callback_function": null,
+        "id": "graph-duplicate-pin",
+        "operation": "graph_duplicate_pin",
+        "role": "graph"
+      },
+      {
+        "expected": "INVALID",
+        "expected_callback_count": 0,
+        "expected_callback_function": null,
+        "id": "graph-none-pin",
+        "operation": "graph_none_pin",
+        "role": "graph"
+      },
+      {
+        "expected": "INVALID",
+        "expected_callback_count": 0,
+        "expected_callback_function": null,
+        "id": "graph-bool-generation",
+        "operation": "graph_bool_generation",
+        "role": "graph"
+      },
+      {
+        "expected": "INVALID",
+        "expected_callback_count": 0,
+        "expected_callback_function": null,
+        "id": "graph-bad-mode",
+        "operation": "graph_bad_mode",
+        "role": "graph"
+      },
+      {
+        "expected": "UNKNOWN",
+        "expected_callback_count": 0,
+        "expected_callback_function": null,
+        "id": "graph-work-unknown",
+        "operation": "graph_work_unknown",
+        "role": "graph"
+      },
+      {
+        "expected": "FOREIGN",
+        "expected_callback_count": 1,
+        "expected_callback_function": null,
+        "id": "graph-foreign-entry",
+        "operation": "graph_foreign_entry",
+        "role": "graph"
+      },
+      {
+        "expected": "FOREIGN",
+        "expected_callback_count": 10,
+        "expected_callback_function": null,
+        "id": "graph-foreign-inside",
+        "operation": "graph_foreign_inside",
+        "role": "graph"
+      },
+      {
+        "expected": "FOREIGN",
+        "expected_callback_count": 10,
+        "expected_callback_function": null,
+        "id": "graph-foreign-same-invalid",
+        "operation": "graph_foreign_same_invalid",
+        "role": "graph"
+      },
+      {
+        "expected": "FOREIGN",
+        "expected_callback_count": 10,
+        "expected_callback_function": null,
+        "id": "graph-foreign-same-limit",
+        "operation": "graph_foreign_same_limit",
+        "role": "graph"
+      }
+    ],
+    "normal_ids": [
+      "palette-empty-transition",
+      "palette-all-stationary",
+      "palette-mixed-holes",
+      "palette-five-symbols",
+      "palette-large-logical-universe",
+      "connected-failed-children-first",
+      "connected-failed-children-all",
+      "distant-DEAD-before-FORCED",
+      "distant-FORCED-before-BRANCH",
+      "earliest-before-lower-degree-TEST-VARIANT",
+      "off-support-zero-pin",
+      "whole-board-capacity1-head-prefix",
+      "whole-board-capacity1-head-suffix",
+      "whole-board-capacity2-head-prefix",
+      "whole-board-capacity2-head-suffix"
+    ],
+    "small_palette_ids": [
+      "palette-empty-transition",
+      "palette-all-stationary",
+      "palette-mixed-holes",
+      "palette-five-symbols"
+    ]
+  },
+  "partial_JSON_parses": 0,
+  "partial_files_opened": 0,
+  "pins": {
+    "batch_bank": {
+      "bytes": 38883,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/diagnostics-L/new-diagnostic-bank-v1.json",
+      "sha256": "6e579fa58384188b5444606c87dbdee92a86f5771a983a36fbf6904192e669ab"
+    },
+    "bound_review": {
+      "bytes": 11278,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/review-C/typed-expanded-lower-bound-review-v1.json",
+      "sha256": "b75be9752672ce878c67d8b9f85fafa557359b91c33de0ad65a203dcff162dba"
+    },
+    "component": {
+      "bytes": 38513,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/components-B/implicit_wang_batch_v2.py",
+      "sha256": "2dd3269a96bbe8db63afdffc3b175830dad5dea7cc94555024a7aac95ef088e7"
+    },
+    "contract_findings": {
+      "bytes": 21455,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/review-C/evidence-expansion-contract-findings-v1.json",
+      "sha256": "d5ec96f459b1c603fe7cd579997d4e9cec63bba2f68bbc8f807c2ac97073a02d"
+    },
+    "field_map": {
+      "bytes": 18747,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/bounds-B/one-owner-field-map-v1.json",
+      "sha256": "3d34e2572390a44b40e12d0ead9c110f5c6e30ae0079c3d617ff080da61a4020"
+    },
+    "graph": {
+      "bytes": 36892,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/recovered/L/implicit_wang_point_search_v1.py",
+      "sha256": "1a83c9c59b2e1862d5a2acda69b826ccc3a8e2cf4899e824286f711f8bf25981"
+    },
+    "master": {
+      "bytes": 36240,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/basic-tiling-algorithm.md",
+      "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+    },
+    "old_bank": {
+      "bytes": 740651,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/recovered/ROOT/implicit-inputs-v1.json",
+      "sha256": "10fe60d005a2f586a76bf69ae30317b8dae538ba9f126714b9f71ffa474a89b4"
+    },
+    "old_grant_retirement": {
+      "bytes": 5051,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/ROOT-grant-retirement-v2.json",
+      "sha256": "d724f817dca900ce1e02bde46ae2a1b644344f12ca27b1de42173d3d1f4ab74d"
+    },
+    "previous_final_milestone": {
+      "bytes": 5270,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/root/ROOT-final-milestone-v1.json",
+      "sha256": "e28697089c54d53486fa1456376f2ab39a866bd558f6b065fe8b73046a9a7717"
+    },
+    "previous_publication_commit": {
+      "bytes": 2822,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/root/ROOT-publication-commit-v1.json",
+      "sha256": "50abda2557c8fa5dba0838446fcb864b58b93b5a86182c89b7d9a0d3e29e28ae"
+    },
+    "python": {
+      "bytes": 18058560,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+      "sha256": "b6ea0c2a9bfce48dbf181a53f1ca4f0562d40658b85bf47258e2a88d8f9e3933"
+    },
+    "worker": {
+      "bytes": 116476,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/qualify_complete_batch_worker_v2.py",
+      "sha256": "9ea014de87d5af2ed3017442f690699a0ef54750c8d8be12890e373936b65a03"
+    }
+  },
+  "plain_value_store_assessment": {
+    "insufficient_for": [
+      "Total oldfield/subtree coverage and full case/diagnostic populations.",
+      "Event identities/order/cross-stream joins and independent-oracle provenance.",
+      "Before/after mutation versions and partial query production/preimage/delivery states.",
+      "Actual Source/function/closure/argument/Work/error/callback owner custody.",
+      "Authentic Root firstfault, private ownership and known-versus-unavailable costs.",
+      "Whole-schema charge definition, complete resource bounds, aggregate physical output/negative reservation and external terminal admission."
+    ],
+    "separate_inference": "A complete codec may be correct and useful while no full G1 certificate is implemented, preserved, fitting, authorized or admitted.",
+    "sufficient_for": "Exact immutable typed payload ownership, storage sharing and explicit full-value reconstruction under its separately reviewed codec contract."
+  },
+  "reading_scope": {
+    "component": "Relevant full profile/query lifecycle and return/prefix constructors read; schema descendants remain full literal obligations.",
+    "field_map": "Full prior16-category mapping and gate-change text read.",
+    "graph": "Relevant oracle/query, observation/core, solution/journal/result and failure constructors read.",
+    "master": "Full current tracked isolated master read; no fresh primary-working-bytes claim.",
+    "worker": "Full116476B oldworker read, including normal qualification,33legacy and28/55new diagnostic, wrapper/outer success/failure paths."
+  },
+  "review_notes": [
+    "A quick parent message stated26canonical fields; the exact AST inventory corrects that to24 before freezing. No Source execution occurred.",
+    "An optional read of the not-yet-existing newRoot/research-direction-v1.json reported file missing. It was not used as authority or evidence; exact assigned scope comes from the parent instruction and pinned prior milestone.",
+    "Current numeric byte caps are not a representation-independent semantic invariant. Owner-expanded versus occurrence-expanded charging must be stated precisely, and an explicitly new G1 gate must not be mislabeled oldG0 equivalence.",
+    "This note defines review obligations; it does not execute a preservation checker, create fixtures, adopt a schema, implement codec/writer/controller, prove fit or authorize any actual."
+  ],
+  "reviewer_identity": "/root/recovered_batch_review",
+  "runtime_qualified": false,
+  "schema": "independent-G1-complete-evidence-obligations-v1",
+  "simulator_calls": 0,
+  "sizing_probes": 0,
+  "source_AST_field_inventory": {
+    "batch_diagnostic_run": {
+      "fields": [
+        "profile_admitted",
+        "custody_success",
+        "planned_trigger_fired",
+        "exact_primary_identity",
+        "thrown",
+        "events",
+        "checkpoint_after_first",
+        "reference_receipts",
+        "callback_references",
+        "work_object_scalars",
+        "produced_receipt_count",
+        "preimage_completed_count",
+        "delivered_receipt_count",
+        "ordinary_lifetime_projection",
+        "ordinary_prefix_projection",
+        "result",
+        "callbacks_and_nonliteral_owners_retained",
+        "nonliteral_projection_scope"
+      ],
+      "line": 1599,
+      "spreads": []
+    },
+    "canonical_packet": {
+      "fields": [
+        "schema",
+        "status",
+        "inputs",
+        "small_palettes",
+        "large_palette",
+        "graphs",
+        "diagnostics",
+        "call_receipts",
+        "call_started",
+        "call_completed",
+        "call_raised",
+        "root_callbacks",
+        "batch_inputs",
+        "profile_rows",
+        "profile_metrics",
+        "profile_accounting",
+        "batch_diagnostics",
+        "batch_diagnostic_progress",
+        "full_VM_implemented",
+        "full_FOL_palette_qualified",
+        "proof_discovery",
+        "full_pipeline_qualified",
+        "mathematical_authority",
+        "scope"
+      ],
+      "line": 1840,
+      "spreads": []
+    },
+    "component_schema_records": {
+      "implicit-wang-build-receipt-v1": [
+        {
+          "fields": [
+            "schema",
+            "descriptor",
+            "attempted_work",
+            "authority",
+            "executed_source_qualified"
+          ],
+          "line": 481,
+          "spreads": []
+        }
+      ],
+      "implicit-wang-count-receipt-v1": [
+        {
+          "fields": [
+            "schema",
+            "count",
+            "attempted_work",
+            "authority"
+          ],
+          "line": 491,
+          "spreads": []
+        },
+        {
+          "fields": [
+            "schema",
+            "count",
+            "attempted_work",
+            "authority"
+          ],
+          "line": 725,
+          "spreads": []
+        }
+      ],
+      "implicit-wang-profile-failure-prefix-v1": [
+        {
+          "fields": [
+            "schema",
+            "authority",
+            "status",
+            "stage",
+            "limits",
+            "descriptor",
+            "active_query",
+            "attempted_queries",
+            "produced_receipt_count",
+            "preimage_completed_count",
+            "delivered_receipt_count",
+            "attempted_requests",
+            "completed_receipts",
+            "exact_receipt_preimages",
+            "attempted_work",
+            "data_items",
+            "receipt_items",
+            "query_attempted_work",
+            "preparation_attempted_work",
+            "registered",
+            "custody_entry_completed",
+            "custody_exit_completed",
+            "custody_cleanup_error"
+          ],
+          "line": 757,
+          "spreads": []
+        }
+      ],
+      "implicit-wang-profile-receipt-v1": [
+        {
+          "fields": [
+            "schema",
+            "status",
+            "receipts",
+            "body_result",
+            "attempted_queries",
+            "produced_receipt_count",
+            "preimage_completed_count",
+            "delivered_receipt_count",
+            "active_query",
+            "attempted_requests",
+            "exact_receipt_preimages",
+            "preparation_attempted_work",
+            "query_attempted_work",
+            "overhead_attempted_work",
+            "attempted_work",
+            "data_items",
+            "receipt_items",
+            "profile_closed",
+            "custody_entry_completed",
+            "custody_exit_completed",
+            "authority",
+            "executed_source_qualified"
+          ],
+          "line": 825,
+          "spreads": []
+        }
+      ],
+      "implicit-wang-select-receipt-v1": [
+        {
+          "fields": [
+            "schema",
+            "count",
+            "tile",
+            "attempted_work",
+            "authority"
+          ],
+          "line": 496,
+          "spreads": []
+        },
+        {
+          "fields": [
+            "schema",
+            "count",
+            "tile",
+            "attempted_work",
+            "authority"
+          ],
+          "line": 722,
+          "spreads": []
+        }
+      ]
+    },
+    "forbidden_operation_zero_counters": {
+      "fields": [
+        "Native_calls",
+        "Model_calls",
+        "inverse_calls",
+        "Reader_calls",
+        "FOL_kernel_calls",
+        "opaque_program_decodes"
+      ],
+      "line": 1923,
+      "spreads": []
+    },
+    "normal_graph_case": {
+      "fields": [
+        "id",
+        "complete",
+        "input",
+        "instance",
+        "legacy_problem",
+        "result",
+        "observations",
+        "independent_solution_ids",
+        "independent_solution_count",
+        "actual_solution_count",
+        "domain_checks",
+        "scope"
+      ],
+      "line": 1223,
+      "spreads": []
+    },
+    "normal_large_palette": {
+      "fields": [
+        "id",
+        "complete",
+        "input",
+        "descriptor",
+        "build",
+        "description",
+        "legacy_cardinality",
+        "total_count",
+        "global_rank_samples",
+        "focused_families",
+        "fully_materialized",
+        "full_large_unranking_exhausted",
+        "scope"
+      ],
+      "line": 1040,
+      "spreads": []
+    },
+    "normal_small_palette": {
+      "fields": [
+        "id",
+        "complete",
+        "input",
+        "descriptor",
+        "build",
+        "description",
+        "legacy_palette",
+        "semantic_tiles",
+        "queries",
+        "nonempty_mask_queries",
+        "zero_mask_queries",
+        "selected_witnesses",
+        "full_literal_tile_count",
+        "scope"
+      ],
+      "line": 872,
+      "spreads": []
+    },
+    "operation_counts": {
+      "fields": [
+        "compiler_calls",
+        "search_calls",
+        "verifier_calls",
+        "oracle_calls"
+      ],
+      "line": 1899,
+      "spreads": []
+    },
+    "ordinary_profile_lifetime": {
+      "fields": [
+        "schema",
+        "descriptor",
+        "limits",
+        "active",
+        "busy",
+        "active_query",
+        "attempted_queries",
+        "produced_receipt_count",
+        "preimage_completed_count",
+        "delivered_receipt_count",
+        "receipts",
+        "requests",
+        "expected_receipts",
+        "query_work",
+        "receipt_items",
+        "preparation_work",
+        "stage",
+        "failed_stage",
+        "custody_entry_attempted",
+        "custody_entry_completed",
+        "custody_exit_attempted",
+        "custody_exit_completed",
+        "custody_cleanup_error",
+        "registered",
+        "authority",
+        "attempted_work",
+        "data_items",
+        "query_fault",
+        "body_result"
+      ],
+      "line": 640
+    },
+    "profile_accounting_row": {
+      "fields": [
+        "id",
+        "attempted_work",
+        "preparation_work",
+        "query_kernel_work",
+        "overhead_work",
+        "postpreparation_overhead_work",
+        "private_work_available",
+        "complete"
+      ],
+      "line": 485,
+      "spreads": [
+        "counters"
+      ]
+    },
+    "profile_metrics": {
+      "fields": [
+        "profile_count",
+        "profile_attempted_work",
+        "profile_preparation_work",
+        "profile_query_kernel_work",
+        "profile_overhead_work",
+        "profile_postpreparation_overhead_work",
+        "produced_receipt_count",
+        "preimage_completed_count",
+        "delivered_receipt_count",
+        "attempted_queries",
+        "palette_attempted_work_known_total",
+        "palette_work_unavailable_count"
+      ],
+      "line": 512,
+      "spreads": []
+    },
+    "profile_return_bindings": {
+      "fields": [
+        "receipts",
+        "attempted_requests",
+        "exact_receipt_preimages",
+        "body_result"
+      ],
+      "line": 733,
+      "spreads": []
+    },
+    "profile_success_row": {
+      "fields": [
+        "id",
+        "complete",
+        "lifetime",
+        "profile_return_metadata",
+        "profile_return_bindings",
+        "reconstruction_scope"
+      ],
+      "line": 737,
+      "spreads": []
+    },
+    "q": {
+      "fields": [
+        "schema",
+        "status",
+        "outputs",
+        "case_ids",
+        "rows",
+        "diagnostics",
+        "diagnostic_ids",
+        "profile_metrics",
+        "batch_diagnostics",
+        "batch_diagnostic_ids",
+        "profile_granularity",
+        "profile_query_chunk",
+        "small_palettes",
+        "small_mask_queries",
+        "selected_small_witnesses",
+        "large_logical_tiles",
+        "graph_cases",
+        "graph_domain_checks",
+        "rollback_comparisons",
+        "palette_query_calls",
+        "root_check_calls",
+        "root_check_calls_scope",
+        "full_pipeline_qualified",
+        "mathematical_proof_accepted",
+        "fixed_FOL_palette_qualified",
+        "gcts_rl_advantage_established",
+        "learned_pair_markings",
+        "trained_RL",
+        "complete_physical_VM",
+        "proof_discovery"
+      ],
+      "line": 1901,
+      "spread_fields_expanded": [
+        "schema",
+        "status",
+        "outputs",
+        "case_ids",
+        "rows",
+        "diagnostics",
+        "diagnostic_ids",
+        "profile_metrics",
+        "batch_diagnostics",
+        "batch_diagnostic_ids",
+        "profile_granularity",
+        "profile_query_chunk",
+        "small_palettes",
+        "small_mask_queries",
+        "selected_small_witnesses",
+        "large_logical_tiles",
+        "graph_cases",
+        "graph_domain_checks",
+        "rollback_comparisons",
+        "palette_query_calls",
+        "root_check_calls",
+        "root_check_calls_scope",
+        "full_pipeline_qualified",
+        "mathematical_proof_accepted",
+        "fixed_FOL_palette_qualified",
+        "gcts_rl_advantage_established",
+        "learned_pair_markings",
+        "trained_RL",
+        "complete_physical_VM",
+        "proof_discovery",
+        "compiler_calls",
+        "search_calls",
+        "verifier_calls",
+        "oracle_calls"
+      ],
+      "spreads": [
+        "counts"
+      ]
+    },
+    "raw_profile_state": {
+      "fields": [
+        "schema",
+        "descriptor",
+        "limits",
+        "work",
+        "active",
+        "busy",
+        "active_query",
+        "attempted_queries",
+        "produced_receipt_count",
+        "preimage_completed_count",
+        "delivered_receipt_count",
+        "receipts",
+        "requests",
+        "expected_receipts",
+        "query_work",
+        "receipt_items",
+        "preparation_work",
+        "body_result",
+        "stage",
+        "failed_stage",
+        "custody_entry_attempted",
+        "custody_entry_completed",
+        "custody_exit_attempted",
+        "custody_exit_completed",
+        "custody_cleanup_error",
+        "query_fault",
+        "body_callback",
+        "registered",
+        "authority"
+      ],
+      "line": 671,
+      "spreads": []
+    },
+    "result_payload": {
+      "fields": [
+        "schema",
+        "invocation_id",
+        "plan",
+        "declaration",
+        "runtime_closure",
+        "qualification",
+        "outputs",
+        "denied_events",
+        "canonical_logical_bytes",
+        "expanded_canonical_packet_bytes",
+        "profile_return_reconstruction_delta_bytes",
+        "expanded_scope",
+        "full_pipeline_qualified",
+        "scientific_acceptance",
+        "mathematical_proof_accepted"
+      ],
+      "line": 1924,
+      "spread_fields_expanded": [
+        "schema",
+        "invocation_id",
+        "plan",
+        "declaration",
+        "runtime_closure",
+        "qualification",
+        "outputs",
+        "denied_events",
+        "canonical_logical_bytes",
+        "expanded_canonical_packet_bytes",
+        "profile_return_reconstruction_delta_bytes",
+        "expanded_scope",
+        "full_pipeline_qualified",
+        "scientific_acceptance",
+        "mathematical_proof_accepted",
+        "compiler_calls",
+        "search_calls",
+        "verifier_calls",
+        "oracle_calls",
+        "Native_calls",
+        "Model_calls",
+        "inverse_calls",
+        "Reader_calls",
+        "FOL_kernel_calls",
+        "opaque_program_decodes"
+      ],
+      "spreads": [
+        "counts",
+        "zeros"
+      ]
+    },
+    "scalar_failure_summary": {
+      "fields": [
+        "schema",
+        "status",
+        "authority",
+        "mathematical_authority",
+        "resource_accepted",
+        "full_pipeline_qualified",
+        "no_failed_prefix_admission",
+        "invocation_id",
+        "plan_sha256",
+        "stage",
+        "active_row_id",
+        "active_row_stage",
+        "first_available_fault",
+        "snapshot_cutoff_ns",
+        "clock_available",
+        "work_deadline_ns",
+        "overall_deadline_ns",
+        "root_check_calls",
+        "call_started",
+        "call_completed",
+        "call_raised",
+        "completed_case_count",
+        "last_completed_case_id",
+        "component_progress_records",
+        "diagnostic_records_retained",
+        "retained_call_receipts",
+        "retained_output_descriptors",
+        "counter_scope",
+        "coverage"
+      ],
+      "line": 194,
+      "spreads": []
+    },
+    "worker_failure": {
+      "fields": [
+        "schema",
+        "status",
+        "plan",
+        "invocation_id",
+        "stage",
+        "active_row",
+        "completed_case_ids",
+        "diagnostic_prefix",
+        "batch_diagnostic_progress",
+        "completed_component_ids",
+        "call_started",
+        "call_completed",
+        "call_raised",
+        "root_check_calls",
+        "first_available_fault",
+        "outputs",
+        "no_failed_prefix_admission",
+        "full_pipeline_qualified",
+        "mathematical_proof_accepted"
+      ],
+      "line": 1956,
+      "spreads": []
+    },
+    "worker_header": {
+      "fields": [
+        "schema",
+        "version",
+        "invocation_id",
+        "plan",
+        "began_ns",
+        "work_deadline_ns",
+        "overall_deadline_ns",
+        "pid",
+        "ppid",
+        "worker_entry_ns",
+        "result",
+        "outputs",
+        "logical_result_bytes",
+        "expanded_logical_result_bytes",
+        "outer_metadata_reservation",
+        "finite_encoding_candidate",
+        "full_pipeline_qualified",
+        "scientific_acceptance",
+        "mathematical_proof_accepted",
+        "call_started",
+        "call_completed",
+        "call_raised",
+        "root_check_calls",
+        "positive_worker_completed_ns"
+      ],
+      "line": 1938,
+      "spread_fields_expanded": [
+        "schema",
+        "version",
+        "invocation_id",
+        "plan",
+        "began_ns",
+        "work_deadline_ns",
+        "overall_deadline_ns",
+        "pid",
+        "ppid",
+        "worker_entry_ns",
+        "result",
+        "outputs",
+        "logical_result_bytes",
+        "expanded_logical_result_bytes",
+        "outer_metadata_reservation",
+        "finite_encoding_candidate",
+        "full_pipeline_qualified",
+        "scientific_acceptance",
+        "mathematical_proof_accepted",
+        "call_started",
+        "call_completed",
+        "call_raised",
+        "root_check_calls",
+        "positive_worker_completed_ns",
+        "Native_calls",
+        "Model_calls",
+        "inverse_calls",
+        "Reader_calls",
+        "FOL_kernel_calls",
+        "opaque_program_decodes"
+      ],
+      "spreads": [
+        "zeros"
+      ]
+    }
+  },
+  "source_only": true,
+  "static_method": {
+    "AST_parse_count": 3,
+    "compiled_code_executed": false,
+    "metadata_only": true,
+    "unused_compile_count": 3
+  },
+  "status": "SOURCE_ONLY_OBLIGATIONS_NOT_AN_IMPLEMENTATION_OR_GATE_ADOPTION",
+  "subject_calls": 0,
+  "subject_imports": 0,
+  "table_generation_calls": 0,
+  "tools_stopped_after_freeze": true
+}

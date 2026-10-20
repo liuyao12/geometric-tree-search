@@ -1,0 +1,151 @@
+{
+  "G1_adopted": false,
+  "RL_training": false,
+  "admission": {
+    "bytes": 3621,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/ROOT-utf8-component-admission-v1.json",
+    "sha256": "2fc8c28431aaec130234aff55ff39a64bbc2ee42bb1dff66185c5a31c753d68a"
+  },
+  "canonical": {
+    "bytes": 10533076,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/actual-utf8-v1/canonical-utf8-calibration.json",
+    "sha256": "4b05a7048b885b008b1ca27d65dae446e8f080109d176b8bf703447d0f63b4c3"
+  },
+  "codec": {
+    "source_only": true,
+    "unrun_cases": 101
+  },
+  "complete_VM": false,
+  "finite_lexical_component_qualified": true,
+  "goal_status": "active",
+  "new_theorem": false,
+  "old_G0_negative_unchanged": true,
+  "partial_files_produced": false,
+  "passive_review": {
+    "bytes": 16057,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/review-C/typed-UTF8-complete-saved-result-review-v1.json",
+    "sha256": "f0bd91eb98d93bbb88e0fb704c45210bf6e3a9dbe2278ed78f3eabcf8dfea9f2"
+  },
+  "proof_search_advantage": false,
+  "qualification": {
+    "G1_adopted": false,
+    "compiler_calls": 62,
+    "compiler_completed": 2,
+    "compiler_raised": 60,
+    "complete_physical_VM": false,
+    "diagnostic_ids": [
+      "exact-declaration-types",
+      "construction-work-state-transition-cutoffs",
+      "foreign-callback-identity",
+      "complete-table-and-terminal-rows",
+      "fixed-machine-identity"
+    ],
+    "diagnostics": [
+      {
+        "complete": true,
+        "id": "exact-declaration-types",
+        "variants": 32
+      },
+      {
+        "complete": true,
+        "id": "construction-work-state-transition-cutoffs",
+        "variants": 3
+      },
+      {
+        "complete": true,
+        "id": "foreign-callback-identity",
+        "variants": 25
+      },
+      {
+        "complete": true,
+        "id": "complete-table-and-terminal-rows",
+        "variants": 1066
+      },
+      {
+        "complete": true,
+        "id": "fixed-machine-identity",
+        "variants": 0
+      }
+    ],
+    "full_pipeline_qualified": false,
+    "gcts_rl_advantage_established": false,
+    "mathematical_proof_accepted": false,
+    "normal_case_count": 5378,
+    "normal_counts": {
+      "all-byte-boundary-blanks": 7,
+      "all-finite-prefix-fences": 1785,
+      "all-mid-byte-blanks": 1778,
+      "all-seven-mode-byte-transitions": 1792,
+      "complete-word-controls": 16
+    },
+    "normal_group_ids": [
+      "all-seven-mode-byte-transitions",
+      "all-finite-prefix-fences",
+      "all-byte-boundary-blanks",
+      "all-mid-byte-blanks",
+      "complete-word-controls"
+    ],
+    "oracle_calls": 5378,
+    "outputs": [
+      {
+        "bytes": 10533076,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/actual-utf8-v1/canonical-utf8-calibration.json",
+        "sha256": "4b05a7048b885b008b1ca27d65dae446e8f080109d176b8bf703447d0f63b4c3"
+      }
+    ],
+    "proof_discovery": false,
+    "root_check_calls": 199965,
+    "schema": "utf8-lexical-component-candidate-v1",
+    "search_calls": 0,
+    "states": 85,
+    "status": "COMPLETE_COMPONENT_CALIBRATION_CANDIDATE",
+    "transitions": 328,
+    "undefined": 12,
+    "verifier_calls": 6446
+  },
+  "remaining_actual_invocations": 0,
+  "resources": {
+    "expanded_bytes": 10536391,
+    "limits": {
+      "expanded_bytes": 134217728,
+      "memory_bytes": 1073741824,
+      "observer_bytes": 1048576,
+      "overall_seconds": 210,
+      "result_bytes": 134217728,
+      "runner_metadata_bytes": 8388608,
+      "stderr_bytes": 4194304,
+      "stdout_bytes": 4194304,
+      "work_seconds": 180,
+      "worker_receipt_bytes": 4194304
+    },
+    "logical_bytes": 10536391,
+    "post_receipt_actual_directory_plus_same_reserve_bytes": 19981710,
+    "pre_runner_receipt_conservative_physical_bytes": 19976017,
+    "terminal_runner_clock_seconds": 1.663739,
+    "worker_peak_bytes": 59523072
+  },
+  "result": {
+    "bytes": 3315,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/actual-utf8-v1/result.json",
+    "sha256": "6b75712742b5e43c3089c05290c0611f7f2dbd811e71d9d97eb3004f14223c7c"
+  },
+  "runner": {
+    "bytes": 5693,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/actual-utf8-v1/runner-receipt.json",
+    "sha256": "a9787f104f84637183c35cb044c0d78f41275fc4c5efad652666df65db2eaca6"
+  },
+  "schema": "parallel-physical-lexicon-milestone-v1",
+  "status": "PROGRESS",
+  "structural_reader": {
+    "source_only": true,
+    "unrun_construction_diagnostics": 24,
+    "unrun_exhaustive_families": 8,
+    "unrun_literal_controls": 13
+  },
+  "subject_sha256": "d57adc6054cd43ed4623029655578709c6657e2e2705b3a8418dacd1d96d5712",
+  "terminal": {
+    "bytes": 1849,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/utf8-plan-authorized-v1-terminal-observation/terminal.json",
+    "sha256": "7274c54dbbe1bc5f0aa9b8cf32ef737f08b662448388be599d3fb3d35e9d627d"
+  }
+}

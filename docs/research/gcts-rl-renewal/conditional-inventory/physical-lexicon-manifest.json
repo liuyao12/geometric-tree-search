@@ -1,0 +1,567 @@
+{
+  "archive_member_count": 83,
+  "archive_members": [
+    {
+      "archive_path": "current/physical-L/API-v1.json",
+      "bytes": 7248,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/physical-L/API-v1.json",
+      "sha256": "38f10de5abfe8f8a408f409d5ce9256fce9e18873cb150811df0c8dda5753e87"
+    },
+    {
+      "archive_path": "current/physical-L/author-static-audit-v1.json",
+      "bytes": 1425,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/physical-L/author-static-audit-v1.json",
+      "sha256": "158efc23f5d0f9d8d2cc31b93033a0e9161e2720f46e77204d4ee2b2d29f7c3e"
+    },
+    {
+      "archive_path": "current/physical-L/boot_postfix_structure_v1.py",
+      "bytes": 12628,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/physical-L/boot_postfix_structure_v1.py",
+      "sha256": "830a57c3f2fc04e0327f73a12a7ce7dd921aad682390f5e67d8d2e745bbf8496"
+    },
+    {
+      "archive_path": "current/physical-L/diagnostic-bank-v1.json",
+      "bytes": 22461,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/physical-L/diagnostic-bank-v1.json",
+      "sha256": "1810831c038b51d6bd9018d7c8ce554a4e28127c3aa9f62681d802f2f0c16b7d"
+    },
+    {
+      "archive_path": "current/physical-L/freeze-manifest-v1.json",
+      "bytes": 1838,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/physical-L/freeze-manifest-v1.json",
+      "sha256": "2661f2cef75599b8009d8b0ff02a549befb2436a9839094cc40c1cadf0563b7e"
+    },
+    {
+      "archive_path": "current/physical-L/handoff-v1.json",
+      "bytes": 3560,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/physical-L/handoff-v1.json",
+      "sha256": "cfd6ca8fad3534fffa5575c4efafad2d531c36d92e482a693b41ae0b636cf787"
+    },
+    {
+      "archive_path": "current/physical-L/lineage-pins-v1.json",
+      "bytes": 1590,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/physical-L/lineage-pins-v1.json",
+      "sha256": "8de6f5e1d23b8be52e6a23eb779852b7f409203598e3bb98eb10000e6e48febf"
+    },
+    {
+      "archive_path": "current/physical-L/manual-argument-v1.json",
+      "bytes": 5120,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/physical-L/manual-argument-v1.json",
+      "sha256": "dea57bcb073fde3dfe7fd83894a56fe5d16be648c1a65b06a149262db4ed4611"
+    },
+    {
+      "archive_path": "current/review-C/freeze_G1_obligations_v1.py",
+      "bytes": 28517,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/review-C/freeze_G1_obligations_v1.py",
+      "sha256": "576e740640a564a9ed326c76fd3fb0217e3d72919459df3ab217f0e307e46d53"
+    },
+    {
+      "archive_path": "current/review-C/freeze_boot_structure_review_v1.py",
+      "bytes": 7089,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/review-C/freeze_boot_structure_review_v1.py",
+      "sha256": "e1d8f435a31b9e57e59c08325751a2ddc93fa6b70efef0085a1c1af566123120"
+    },
+    {
+      "archive_path": "current/review-C/freeze_utf8_grant_delta_v1.py",
+      "bytes": 7096,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/review-C/freeze_utf8_grant_delta_v1.py",
+      "sha256": "ded0bfd3a1dd2430abc2f2afeaf8ab223191119e8ed3f2227ae10656565bcfb9"
+    },
+    {
+      "archive_path": "current/review-C/freeze_utf8_prospective_review_v1.py",
+      "bytes": 18278,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/review-C/freeze_utf8_prospective_review_v1.py",
+      "sha256": "0c4e147eb63d7c13cebecd986b09de0fc99cf6214fa5807d082297672de4f37d"
+    },
+    {
+      "archive_path": "current/review-C/freeze_utf8_saved_review_v1.py",
+      "bytes": 21542,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/review-C/freeze_utf8_saved_review_v1.py",
+      "sha256": "e97a5460ec499ccfcac6def74efbddceaee9ca2068c0fe398665fc16f7c55454"
+    },
+    {
+      "archive_path": "current/review-C/freeze_value_codec_review_v1.py",
+      "bytes": 9546,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/review-C/freeze_value_codec_review_v1.py",
+      "sha256": "ee319843cb98338dfd7fe46fc0dbb7d87aac2955a98b2305be6f45a932d248d2"
+    },
+    {
+      "archive_path": "current/review-C/independent-G1-obligations-v1.json",
+      "bytes": 58581,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/review-C/independent-G1-obligations-v1.json",
+      "sha256": "11133fef322621608f924f3368750b4e39aa2ae11f38fe1f4aa04fc3b815a17a"
+    },
+    {
+      "archive_path": "current/review-C/typed-UTF8-complete-saved-result-review-v1.json",
+      "bytes": 16057,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/review-C/typed-UTF8-complete-saved-result-review-v1.json",
+      "sha256": "f0bd91eb98d93bbb88e0fb704c45210bf6e3a9dbe2278ed78f3eabcf8dfea9f2"
+    },
+    {
+      "archive_path": "current/review-C/typed-UTF8-component-Source-prospective-review-v1.json",
+      "bytes": 29917,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/review-C/typed-UTF8-component-Source-prospective-review-v1.json",
+      "sha256": "7ae6c69815b86a86232f040d328fc09ac7c53c1ac7686851f1f07bb086fada4b"
+    },
+    {
+      "archive_path": "current/review-C/typed-UTF8-grant-only-delta-review-v1.json",
+      "bytes": 11797,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/review-C/typed-UTF8-grant-only-delta-review-v1.json",
+      "sha256": "d9d28ca1ae261edde08b59d3d0a80e0ad937380d5a5804876ee48035bc1f875b"
+    },
+    {
+      "archive_path": "current/review-C/typed-boot-postfix-structure-Source-review-v1.json",
+      "bytes": 8323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/review-C/typed-boot-postfix-structure-Source-review-v1.json",
+      "sha256": "e9fbd7affc399e97fc786f593e083d115d6d7f4b764ca9ba7bc8d3cf0a6cb85c"
+    },
+    {
+      "archive_path": "current/review-C/typed-strict-value-dag-Source-review-v1.json",
+      "bytes": 13232,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/review-C/typed-strict-value-dag-Source-review-v1.json",
+      "sha256": "d6b2a271cd358bf51a13294f1a9f4532c129e02c914d68176445c2473dd5a54c"
+    },
+    {
+      "archive_path": "current/review-C/utf8-review-author-negative-v1.json",
+      "bytes": 893,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/review-C/utf8-review-author-negative-v1.json",
+      "sha256": "1277301f931d82d88c14dab65b419b8dd3f0ea62915a536a3e31518565276277"
+    },
+    {
+      "archive_path": "current/review-C/utf8-review-author-preimage-v1.py",
+      "bytes": 17966,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/review-C/utf8-review-author-preimage-v1.py",
+      "sha256": "3b550aae30a59f7b31de2d55ed2923b1fa03df55bb99e361db58d8eb9211ba93"
+    },
+    {
+      "archive_path": "current/review-C/utf8-saved-review-author-negative-v1.json",
+      "bytes": 1108,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/review-C/utf8-saved-review-author-negative-v1.json",
+      "sha256": "6dc6a6956f99883cbf948fcd5ec31cdb336c26df931dfb995e5d7f4c45df96b3"
+    },
+    {
+      "archive_path": "current/review-C/utf8-saved-review-author-preimage-v1.py",
+      "bytes": 21399,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/review-C/utf8-saved-review-author-preimage-v1.py",
+      "sha256": "d483ef1bde1d1f6a7492924230f60bb30a4a0e1dcfd10d4a32c2791b18c30ae6"
+    },
+    {
+      "archive_path": "current/root/ROOT-continuation-assessment-v1.json",
+      "bytes": 1352,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/ROOT-continuation-assessment-v1.json",
+      "sha256": "aefcce3ab0b826ea53677bfe47a4275929ad80d8598f4da27e7726b3cdf8c148"
+    },
+    {
+      "archive_path": "current/root/ROOT-utf8-component-admission-v1.json",
+      "bytes": 3621,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/ROOT-utf8-component-admission-v1.json",
+      "sha256": "2fc8c28431aaec130234aff55ff39a64bbc2ee42bb1dff66185c5a31c753d68a"
+    },
+    {
+      "archive_path": "current/root/ROOT-utf8-final-prelaunch-barrier-v1.json",
+      "bytes": 603,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/ROOT-utf8-final-prelaunch-barrier-v1.json",
+      "sha256": "54bcfaf663707e5ed1e3aed755e00ded8ab31adcac14a08d0d01eecd70fa1333"
+    },
+    {
+      "archive_path": "current/root/ROOT-utf8-grant-issuance-v1.json",
+      "bytes": 1613,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/ROOT-utf8-grant-issuance-v1.json",
+      "sha256": "185f126074935ae1a0f9a3cf7654c67283bdcf57f2bc921636cac6e5364364cb"
+    },
+    {
+      "archive_path": "current/root/ROOT-utf8-grant-retirement-v1.json",
+      "bytes": 5260,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/ROOT-utf8-grant-retirement-v1.json",
+      "sha256": "f6c466981753cdbc72e792364687ab1ca32fbe016d231d29680f737457f50572"
+    },
+    {
+      "archive_path": "current/root/actual-utf8-v1/CONSUMED.json",
+      "bytes": 590,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/actual-utf8-v1/CONSUMED.json",
+      "sha256": "56d099d55fdceff3187b9c51e9bc46a64282398d6f7733aab83001da86c7b395"
+    },
+    {
+      "archive_path": "current/root/actual-utf8-v1/WORKER_CONSUMED.json",
+      "bytes": 332,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/actual-utf8-v1/WORKER_CONSUMED.json",
+      "sha256": "1fb6e0513ac42a3d36a50b2a084965551b1e73db3fb027fa6d4fcba60c62cf7b"
+    },
+    {
+      "archive_path": "current/root/actual-utf8-v1/canonical-utf8-calibration.json",
+      "bytes": 10533076,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/actual-utf8-v1/canonical-utf8-calibration.json",
+      "sha256": "4b05a7048b885b008b1ca27d65dae446e8f080109d176b8bf703447d0f63b4c3"
+    },
+    {
+      "archive_path": "current/root/actual-utf8-v1/result.json",
+      "bytes": 3315,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/actual-utf8-v1/result.json",
+      "sha256": "6b75712742b5e43c3089c05290c0611f7f2dbd811e71d9d97eb3004f14223c7c"
+    },
+    {
+      "archive_path": "current/root/actual-utf8-v1/runner-receipt.json",
+      "bytes": 5693,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/actual-utf8-v1/runner-receipt.json",
+      "sha256": "a9787f104f84637183c35cb044c0d78f41275fc4c5efad652666df65db2eaca6"
+    },
+    {
+      "archive_path": "current/root/actual-utf8-v1/stderr.bin",
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/actual-utf8-v1/stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_path": "current/root/actual-utf8-v1/stdout.bin",
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/actual-utf8-v1/stdout.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_path": "current/root/actual-utf8-v1/worker-receipt.json",
+      "bytes": 1520,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/actual-utf8-v1/worker-receipt.json",
+      "sha256": "a35e18f05cd8682ba77980a895f0e53a15b11a438b6d38ccaf5a177181098976"
+    },
+    {
+      "archive_path": "current/root/assemble_utf8_controls_v1.py",
+      "bytes": 5800,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/assemble_utf8_controls_v1.py",
+      "sha256": "33f90bd886261b157125a884a9fa25d3e17b30bdbb9aec2ee8edf76831f8b26f"
+    },
+    {
+      "archive_path": "current/root/author_utf8_offer_v1.py",
+      "bytes": 13463,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/author_utf8_offer_v1.py",
+      "sha256": "7259aa07e7b97f3adb8c68653edac989afcffcbbdc4aeb7db0d7d24c8bd3a0d7"
+    },
+    {
+      "archive_path": "current/root/barrier-before-utf8-grant-v1.json",
+      "bytes": 604,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/barrier-before-utf8-grant-v1.json",
+      "sha256": "cb714a17f688d1613a6e7264042b438482c63dfa3025391012ce60b1d8e9f9d7"
+    },
+    {
+      "archive_path": "current/root/observe_utf8_once_v1.py",
+      "bytes": 5574,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/observe_utf8_once_v1.py",
+      "sha256": "b3334b0f1de87b876a89ddfa6db2c0366f0aabe88f1b9beebd25156c127dd75f"
+    },
+    {
+      "archive_path": "current/root/physical-lexicon-template.html",
+      "bytes": 18278,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/physical-lexicon-template.html",
+      "sha256": "0c1acde90646f4668749ae55997673aafb7b422f7f1c0515e28d311c6b1368c9"
+    },
+    {
+      "archive_path": "current/root/prepare_utf8_once_grant_v1.py",
+      "bytes": 3438,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/prepare_utf8_once_grant_v1.py",
+      "sha256": "53375e7715007f04f32dda7a3d08de06fdb57741be306c8a89faf7f8207ed655"
+    },
+    {
+      "archive_path": "current/root/publish_physical_lexicon_v1.py",
+      "bytes": 10246,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/publish_physical_lexicon_v1.py",
+      "sha256": "e12c46148c631be157e91097534827e83c20a7c27f1b304ddabec3b098757137"
+    },
+    {
+      "archive_path": "current/root/qualify_utf8_worker_v1.py",
+      "bytes": 35395,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/qualify_utf8_worker_v1.py",
+      "sha256": "d3b4ed809e8aa96e00899e56eb621c19c82231b1a7055056c854070621ea2b34"
+    },
+    {
+      "archive_path": "current/root/reader-before-physical-lexicon.html",
+      "bytes": 104888,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/reader-before-physical-lexicon.html",
+      "sha256": "36464e865a25d30b17ee3e728cdae96edf295340b4df632d4eb84b0cee951894"
+    },
+    {
+      "archive_path": "current/root/run_utf8_once_v1.py",
+      "bytes": 31173,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/run_utf8_once_v1.py",
+      "sha256": "2a1d623fa511964f7bc65fc8721c7c6ddb41bf91b9a03d2c5851df92aba33fd6"
+    },
+    {
+      "archive_path": "current/root/utf8-Source-offer-v1.json",
+      "bytes": 4229,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/utf8-Source-offer-v1.json",
+      "sha256": "561afd3a96586cc15b1ab28e775ac840a4168e6949e646bc5cd464f728aa55e0"
+    },
+    {
+      "archive_path": "current/root/utf8-authorization-once-v1.json",
+      "bytes": 829,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/utf8-authorization-once-v1.json",
+      "sha256": "e036272c2425fdf812d2ce63266069c0b15250f1e5943ab0f8b88c88ea725e2a"
+    },
+    {
+      "archive_path": "current/root/utf8-authorization-prospective-false-v1.json",
+      "bytes": 254,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/utf8-authorization-prospective-false-v1.json",
+      "sha256": "e0de810bed84fb9ae3aeb5e18a4eb42bfb52da1557fd031e4b6f0afd51587165"
+    },
+    {
+      "archive_path": "current/root/utf8-controls-static-assembly-v1.json",
+      "bytes": 1627,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/utf8-controls-static-assembly-v1.json",
+      "sha256": "0db9037622388c899849e07f64d70e16a64e25d918824221a645130f4518199f"
+    },
+    {
+      "archive_path": "current/root/utf8-declaration-v1.json",
+      "bytes": 3459,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/utf8-declaration-v1.json",
+      "sha256": "c4fa33fa28077c7ea039b59e8112ddb251bb331916eba5465f25730aca0d7836"
+    },
+    {
+      "archive_path": "current/root/utf8-manual-envelope-v1.json",
+      "bytes": 7800,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/utf8-manual-envelope-v1.json",
+      "sha256": "6ce958c41c3b1e8a024045af83fbb07ec2be13a6077fbd5862e825a1a98626cc"
+    },
+    {
+      "archive_path": "current/root/utf8-plan-authorized-v1-terminal-observation/CONSUMED.json",
+      "bytes": 349,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/utf8-plan-authorized-v1-terminal-observation/CONSUMED.json",
+      "sha256": "4a4aa83d19c68cfa7a8f83c881e33141eb3094bd321d4c8e41f7417f87eaa9e0"
+    },
+    {
+      "archive_path": "current/root/utf8-plan-authorized-v1-terminal-observation/stderr.bin",
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/utf8-plan-authorized-v1-terminal-observation/stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_path": "current/root/utf8-plan-authorized-v1-terminal-observation/stdout.bin",
+      "bytes": 213,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/utf8-plan-authorized-v1-terminal-observation/stdout.bin",
+      "sha256": "89b81d56a3286ce3bd4946b379d1686f08c33bbc4076d9eced9759740fb86748"
+    },
+    {
+      "archive_path": "current/root/utf8-plan-authorized-v1-terminal-observation/terminal.json",
+      "bytes": 1849,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/utf8-plan-authorized-v1-terminal-observation/terminal.json",
+      "sha256": "7274c54dbbe1bc5f0aa9b8cf32ef737f08b662448388be599d3fb3d35e9d627d"
+    },
+    {
+      "archive_path": "current/root/utf8-plan-authorized-v1.json",
+      "bytes": 2788,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/utf8-plan-authorized-v1.json",
+      "sha256": "b77044480ccf93fe68ca120dafb98763c3f194ad7ea2d69015a638cb872168ac"
+    },
+    {
+      "archive_path": "current/root/utf8-plan-prospective-v1.json",
+      "bytes": 3198,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/utf8-plan-prospective-v1.json",
+      "sha256": "63a8961020ade2bbfd52e5d90924ac7241d4b58a557e732ab1990668f8e52ae6"
+    },
+    {
+      "archive_path": "current/root/utf8-runtime-closure-v1.json",
+      "bytes": 8754,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/utf8-runtime-closure-v1.json",
+      "sha256": "df60364bdcfbe80e22d5bebda2e5b5656adcdd79331992a046d4245a53e11cac"
+    },
+    {
+      "archive_path": "current/schema-B/API-v1.json",
+      "bytes": 9079,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/schema-B/API-v1.json",
+      "sha256": "0a5fc08067a486a9a41cecf67c382406e9f43a1186e552f37858ee865d779677"
+    },
+    {
+      "archive_path": "current/schema-B/audit_Source_metadata_v1.py",
+      "bytes": 2726,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/schema-B/audit_Source_metadata_v1.py",
+      "sha256": "3efcd433f7264aeb60fdb0e7291b6becb93d94ad2af24c3583394688484a4c67"
+    },
+    {
+      "archive_path": "current/schema-B/author-static-audit-v1.json",
+      "bytes": 2549,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/schema-B/author-static-audit-v1.json",
+      "sha256": "0b3084a7d42ca3ebc08c93ed1e54dea58b37411b869d4ca3af88ad8ed21bc87f"
+    },
+    {
+      "archive_path": "current/schema-B/diagnostic-bank-v1.json",
+      "bytes": 16425,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/schema-B/diagnostic-bank-v1.json",
+      "sha256": "754e6385879eabac6544be25d5ddddfa95a42cbc824a45810e1fe6aab9653b6b"
+    },
+    {
+      "archive_path": "current/schema-B/freeze_source_packet_v1.py",
+      "bytes": 3218,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/schema-B/freeze_source_packet_v1.py",
+      "sha256": "2e5a4a502e75b485b10475347e0fdfb8da765993872accfbc0ec1c51d449b073"
+    },
+    {
+      "archive_path": "current/schema-B/handoff-v1.json",
+      "bytes": 6710,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/schema-B/handoff-v1.json",
+      "sha256": "7cefafe143ab68fb1f52ac54013caf54a0018c8e9ec8aa55ae07b7f01b4bb131"
+    },
+    {
+      "archive_path": "current/schema-B/manual-codec-correspondence-v1.json",
+      "bytes": 6319,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/schema-B/manual-codec-correspondence-v1.json",
+      "sha256": "1a3ec298482c5b07aa989cf22ea80e220ed0fc8b54334a7dd1b8083f0567ab54"
+    },
+    {
+      "archive_path": "current/schema-B/strict_value_dag_v1.py",
+      "bytes": 20200,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/schema-B/strict_value_dag_v1.py",
+      "sha256": "0f0cdf59ca7b676dd0bb86a7ff18be4ea6ca9a681d47b740d53db4e885e300b5"
+    },
+    {
+      "archive_path": "provenance/research-runs/gcts-batch-20261020/publisher/docs/basic-tiling-algorithm.md",
+      "bytes": 36240,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/basic-tiling-algorithm.md",
+      "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+    },
+    {
+      "archive_path": "provenance/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/evidence-limits-source.tar.gz",
+      "bytes": 1772567,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/evidence-limits-source.tar.gz",
+      "sha256": "8b18d800865643d0c19f19c8fe9cac516093587336eb1af85535d4f5858fd13c"
+    },
+    {
+      "archive_path": "provenance/research-runs/gcts-batch-20261020/root/ROOT-grant-retirement-v2.json",
+      "bytes": 5051,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/ROOT-grant-retirement-v2.json",
+      "sha256": "d724f817dca900ce1e02bde46ae2a1b644344f12ca27b1de42173d3d1f4ab74d"
+    },
+    {
+      "archive_path": "provenance/research-runs/gcts-batch-20261020/root/observe_batch_once_v1.py",
+      "bytes": 5620,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/observe_batch_once_v1.py",
+      "sha256": "51a0385fb85f7715e01789d0ebcd2d5f7e806d7258cdd7db4fef4ca8d56219ab"
+    },
+    {
+      "archive_path": "provenance/research-runs/gcts-batch-20261020/root/qualify_complete_batch_worker_v2.py",
+      "bytes": 116476,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/qualify_complete_batch_worker_v2.py",
+      "sha256": "9ea014de87d5af2ed3017442f690699a0ef54750c8d8be12890e373936b65a03"
+    },
+    {
+      "archive_path": "provenance/research-runs/gcts-batch-20261020/root/run_batch_once_v1.py",
+      "bytes": 34355,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/root/run_batch_once_v1.py",
+      "sha256": "9f5a2a31acdc03d94b4e89842af2606f405ddb4ba933f1d5099f6b4280af3090"
+    },
+    {
+      "archive_path": "provenance/research-runs/gcts-evidence-next-20261020/bounds-B/one-owner-field-map-v1.json",
+      "bytes": 18747,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/bounds-B/one-owner-field-map-v1.json",
+      "sha256": "3d34e2572390a44b40e12d0ead9c110f5c6e30ae0079c3d617ff080da61a4020"
+    },
+    {
+      "archive_path": "provenance/research-runs/gcts-evidence-next-20261020/recovered-checker/CodecV2/fixed_vm_codec_v2.py",
+      "bytes": 28213,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/recovered-checker/CodecV2/fixed_vm_codec_v2.py",
+      "sha256": "427b274efd755bbd58f3f37d34aed1c45581ecf7a591d48394672a05158f4182"
+    },
+    {
+      "archive_path": "provenance/research-runs/gcts-evidence-next-20261020/recovered-checker/PhysicalFoundation/fixed_vm_physical_foundation_v1.py",
+      "bytes": 16645,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/recovered-checker/PhysicalFoundation/fixed_vm_physical_foundation_v1.py",
+      "sha256": "93d400f9178d5b0f9396c5ff2ad3561ebf53c85fe2ff87679a81babd3bac2e0b"
+    },
+    {
+      "archive_path": "provenance/research-runs/gcts-evidence-next-20261020/review-C/typed-expanded-lower-bound-review-v1.json",
+      "bytes": 11278,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/review-C/typed-expanded-lower-bound-review-v1.json",
+      "sha256": "b75be9752672ce878c67d8b9f85fafa557359b91c33de0ad65a203dcff162dba"
+    },
+    {
+      "archive_path": "provenance/research-runs/gcts-evidence-next-20261020/root/utf8-prospective-bank-v2.json",
+      "bytes": 6402,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/root/utf8-prospective-bank-v2.json",
+      "sha256": "081b2eb3344d56b10a3399e8bf9826248011bc8faedbc5065d26129c27939f88"
+    },
+    {
+      "archive_path": "provenance/research-runs/gcts-evidence-next-20261020/root/utf8-residual-contract-v2.json",
+      "bytes": 9593,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/root/utf8-residual-contract-v2.json",
+      "sha256": "66b6bc3926693b1353a4781557bbe6bf5988794297244f9b9d721c4eb329690d"
+    },
+    {
+      "archive_path": "provenance/research-runs/gcts-evidence-next-20261020/root/utf8_residual_machine_v1.py",
+      "bytes": 8265,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-evidence-next-20261020/root/utf8_residual_machine_v1.py",
+      "sha256": "08f9472acb2042e398997cc0dddd6ddc2487c866a3b683b42f53852bee26a088"
+    }
+  ],
+  "files": [
+    {
+      "bytes": 13232,
+      "file": "physical-lexicon-codec-review.json",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/physical-lexicon-codec-review.json",
+      "sha256": "d6b2a271cd358bf51a13294f1a9f4532c129e02c914d68176445c2473dd5a54c"
+    },
+    {
+      "bytes": 71680,
+      "file": "physical-lexicon-data.json",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/physical-lexicon-data.json",
+      "sha256": "c723987d384ae41576d1428ff7a9978fae70041d68fb1bbbbbaccd326cfa9f8d"
+    },
+    {
+      "bytes": 2180134,
+      "file": "physical-lexicon-evidence.tar.gz",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/physical-lexicon-evidence.tar.gz",
+      "sha256": "ec294a5380386b639a589142a28b7d7a6f78b26751b0b5f02907c1cdfa47a048"
+    },
+    {
+      "bytes": 58581,
+      "file": "physical-lexicon-obligations.json",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/physical-lexicon-obligations.json",
+      "sha256": "11133fef322621608f924f3368750b4e39aa2ae11f38fe1f4aa04fc3b815a17a"
+    },
+    {
+      "bytes": 16057,
+      "file": "physical-lexicon-review.json",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/physical-lexicon-review.json",
+      "sha256": "f0bd91eb98d93bbb88e0fb704c45210bf6e3a9dbe2278ed78f3eabcf8dfea9f2"
+    },
+    {
+      "bytes": 29917,
+      "file": "physical-lexicon-source-review.json",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/physical-lexicon-source-review.json",
+      "sha256": "7ae6c69815b86a86232f040d328fc09ac7c53c1ac7686851f1f07bb086fada4b"
+    },
+    {
+      "bytes": 8323,
+      "file": "physical-lexicon-structure-review.json",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/physical-lexicon-structure-review.json",
+      "sha256": "e9fbd7affc399e97fc786f593e083d115d6d7f4b764ca9ba7bc8d3cf0a6cb85c"
+    },
+    {
+      "bytes": 5330,
+      "file": "physical-lexicon-summary.json",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/physical-lexicon-summary.json",
+      "sha256": "2c8a273fa05a250a2bd21c6c2307d11b15b66f03bf4329d3a78c06c6ecce074d"
+    },
+    {
+      "bytes": 18278,
+      "file": "physical-lexicon.html",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/physical-lexicon.html",
+      "sha256": "0c1acde90646f4668749ae55997673aafb7b422f7f1c0515e28d311c6b1368c9"
+    }
+  ],
+  "goal_status": "active",
+  "new_invocations": 1,
+  "reader": {
+    "exact_added_section": "<section id=\"physical-lexicon-update\"><p class=\"eyebrow\">20 OCTOBER 2026 \u00b7 PARALLEL RESEARCH AND FINITE PHYSICAL QUALIFICATION</p><h2>A lexical machine passes its complete finite bank.</h2><p>One fresh run completed all \\(5\\,378\\) normal cases and five diagnostic groups, emitting \\(85\\) states and \\(328\\) literal transitions within the original limits. The saved reader translates actual physical steps into words. Separate agents delivered an independently reviewed codec and structural reader; both remain unrun. No new theorem or GCTS+RL advantage follows. <a href=\"physical-lexicon.html#outcome\"><b>Read the result</b></a> \u00b7 <a href=\"physical-lexicon.html#reader\">Inspect saved steps</a> \u00b7 <a href=\"physical-lexicon.html#parallel\">Agent contributions</a>.</p></section>",
+    "pin": {
+      "bytes": 105667,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/reader.html",
+      "sha256": "cc59def2227bf3597fdeb8a0168cb62947eb4d38f0a3a24af8c1f3bd4ad13e4e"
+    },
+    "preimage": {
+      "bytes": 104888,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/reader-before-physical-lexicon.html",
+      "sha256": "36464e865a25d30b17ee3e728cdae96edf295340b4df632d4eb84b0cee951894"
+    }
+  },
+  "remaining_invocations": 0,
+  "review_not_self_hashed": "Publication review and manifest are excluded from the asset self-hash closure; review binds exact manifest bytes.",
+  "schema": "physical-lexicon-publication-manifest-v1",
+  "status": "PROGRESS",
+  "subject_sha256": "d57adc6054cd43ed4623029655578709c6657e2e2705b3a8418dacd1d96d5712"
+}

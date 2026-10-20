@@ -1,0 +1,569 @@
+{
+  "G1_adopted": false,
+  "GCTS_RL_advantage_established": false,
+  "ROOT_adoption_authority": false,
+  "Source_review": {
+    "bytes": 29917,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/review-C/typed-UTF8-component-Source-prospective-review-v1.json",
+    "sha256": "7ae6c69815b86a86232f040d328fc09ac7c53c1ac7686851f1f07bb086fada4b"
+  },
+  "actual_execution_authorized": false,
+  "checker_calls": 0,
+  "checks": [
+    {
+      "id": "exact-retirement-pin",
+      "passed": true
+    },
+    {
+      "id": "retired-one-and-zero-remaining",
+      "passed": true
+    },
+    {
+      "id": "twelve-complete-files",
+      "passed": true
+    },
+    {
+      "id": "raw-file-pin-0",
+      "passed": true
+    },
+    {
+      "id": "raw-file-pin-1",
+      "passed": true
+    },
+    {
+      "id": "raw-file-pin-2",
+      "passed": true
+    },
+    {
+      "id": "raw-file-pin-3",
+      "passed": true
+    },
+    {
+      "id": "raw-file-pin-4",
+      "passed": true
+    },
+    {
+      "id": "raw-file-pin-5",
+      "passed": true
+    },
+    {
+      "id": "raw-file-pin-6",
+      "passed": true
+    },
+    {
+      "id": "raw-file-pin-7",
+      "passed": true
+    },
+    {
+      "id": "raw-file-pin-8",
+      "passed": true
+    },
+    {
+      "id": "raw-file-pin-9",
+      "passed": true
+    },
+    {
+      "id": "raw-file-pin-10",
+      "passed": true
+    },
+    {
+      "id": "raw-file-pin-11",
+      "passed": true
+    },
+    {
+      "id": "complete-directory-census",
+      "passed": true
+    },
+    {
+      "id": "no-partial-or-alias-members",
+      "passed": true
+    },
+    {
+      "id": "exact-complete-packet",
+      "passed": true
+    },
+    {
+      "id": "retired-exact-plan",
+      "passed": true
+    },
+    {
+      "id": "retired-exact-grant",
+      "passed": true
+    },
+    {
+      "id": "review-and-grant-exact-subject",
+      "passed": true
+    },
+    {
+      "id": "unchanged-Source-observer",
+      "passed": true
+    },
+    {
+      "id": "unchanged-Source-runner",
+      "passed": true
+    },
+    {
+      "id": "unchanged-Source-utf8",
+      "passed": true
+    },
+    {
+      "id": "unchanged-Source-worker",
+      "passed": true
+    },
+    {
+      "id": "unchanged-python",
+      "passed": true
+    },
+    {
+      "id": "unchanged-declaration",
+      "passed": true
+    },
+    {
+      "id": "unchanged-runtime_closure",
+      "passed": true
+    },
+    {
+      "id": "unchanged-manual-envelope",
+      "passed": true
+    },
+    {
+      "id": "unchanged-stdlib-0",
+      "passed": true
+    },
+    {
+      "id": "unchanged-stdlib-1",
+      "passed": true
+    },
+    {
+      "id": "unchanged-stdlib-2",
+      "passed": true
+    },
+    {
+      "id": "unchanged-stdlib-3",
+      "passed": true
+    },
+    {
+      "id": "unchanged-stdlib-4",
+      "passed": true
+    },
+    {
+      "id": "unchanged-stdlib-5",
+      "passed": true
+    },
+    {
+      "id": "unchanged-stdlib-6",
+      "passed": true
+    },
+    {
+      "id": "unchanged-stdlib-7",
+      "passed": true
+    },
+    {
+      "id": "unchanged-stdlib-8",
+      "passed": true
+    },
+    {
+      "id": "unchanged-stdlib-9",
+      "passed": true
+    },
+    {
+      "id": "unchanged-stdlib-10",
+      "passed": true
+    },
+    {
+      "id": "unchanged-stdlib-11",
+      "passed": true
+    },
+    {
+      "id": "unchanged-stdlib-12",
+      "passed": true
+    },
+    {
+      "id": "unchanged-stdlib-13",
+      "passed": true
+    },
+    {
+      "id": "unchanged-stdlib-14",
+      "passed": true
+    },
+    {
+      "id": "unchanged-stdlib-15",
+      "passed": true
+    },
+    {
+      "id": "unchanged-stdlib-16",
+      "passed": true
+    },
+    {
+      "id": "unchanged-stdlib-17",
+      "passed": true
+    },
+    {
+      "id": "unchanged-stdlib-18",
+      "passed": true
+    },
+    {
+      "id": "unchanged-stdlib-19",
+      "passed": true
+    },
+    {
+      "id": "unchanged-stdlib-20",
+      "passed": true
+    },
+    {
+      "id": "unchanged-stdlib-21",
+      "passed": true
+    },
+    {
+      "id": "unchanged-stdlib-22",
+      "passed": true
+    },
+    {
+      "id": "unchanged-bank-pin",
+      "passed": true
+    },
+    {
+      "id": "full-original-bank-stored",
+      "passed": true
+    },
+    {
+      "id": "packet-identity",
+      "passed": true
+    },
+    {
+      "id": "packet-false-G1_adopted",
+      "passed": true
+    },
+    {
+      "id": "packet-false-complete_physical_VM",
+      "passed": true
+    },
+    {
+      "id": "packet-false-proof_discovery",
+      "passed": true
+    },
+    {
+      "id": "packet-false-mathematical_authority",
+      "passed": true
+    },
+    {
+      "id": "actual-table-census",
+      "passed": true
+    },
+    {
+      "id": "table-below-manual-bound",
+      "passed": true
+    },
+    {
+      "id": "all-saved-matrix-slots-present",
+      "passed": true
+    },
+    {
+      "id": "all-saved-halt-slots-present",
+      "passed": true
+    },
+    {
+      "id": "all-complete-normal-populations",
+      "passed": true
+    },
+    {
+      "id": "normal-group-order",
+      "passed": true
+    },
+    {
+      "id": "all-normal-identities-unique",
+      "passed": true
+    },
+    {
+      "id": "all-saved-full-traces-and-tapes-joined",
+      "passed": true
+    },
+    {
+      "id": "all16-word-controls-direct-bank-join",
+      "passed": true
+    },
+    {
+      "id": "five-complete-diagnostic-groups",
+      "passed": true
+    },
+    {
+      "id": "all-diagnostic-populations",
+      "passed": true
+    },
+    {
+      "id": "all62-call-occurrences-and-order",
+      "passed": true
+    },
+    {
+      "id": "exact-success-failure-call-census",
+      "passed": true
+    },
+    {
+      "id": "all32-3-25-full-call-prefix-provenance-joins",
+      "passed": true
+    },
+    {
+      "id": "all1066-full-mutation-tables-exact-payload-deltas",
+      "passed": true
+    },
+    {
+      "id": "two-full-identity-tables-retained",
+      "passed": true
+    },
+    {
+      "id": "verifier-oracle-population-joins",
+      "passed": true
+    },
+    {
+      "id": "result-census-joins",
+      "passed": true
+    },
+    {
+      "id": "all-output-pins-join",
+      "passed": true
+    },
+    {
+      "id": "worker-result-pin",
+      "passed": true
+    },
+    {
+      "id": "runner-worker-header-pin",
+      "passed": true
+    },
+    {
+      "id": "terminal-runner-receipt-pin",
+      "passed": true
+    },
+    {
+      "id": "all-plan-bindings",
+      "passed": true
+    },
+    {
+      "id": "same-epoch-and-deadlines",
+      "passed": true
+    },
+    {
+      "id": "same-process-and-once-markers",
+      "passed": true
+    },
+    {
+      "id": "known-worker-runner-observer-exit0",
+      "passed": true
+    },
+    {
+      "id": "positive-completion-before180",
+      "passed": true
+    },
+    {
+      "id": "terminal-and-custody-before210",
+      "passed": true
+    },
+    {
+      "id": "logs-groups-and-no-faults",
+      "passed": true
+    },
+    {
+      "id": "memory-original-gate",
+      "passed": true
+    },
+    {
+      "id": "same-original-limits",
+      "passed": true
+    },
+    {
+      "id": "stored-expanded-ledgers",
+      "passed": true
+    },
+    {
+      "id": "recorded-before-runner-receipt-physical",
+      "passed": true
+    },
+    {
+      "id": "complete-after-receipt-physical",
+      "passed": true
+    },
+    {
+      "id": "observer-within-reserved1MiB",
+      "passed": true
+    },
+    {
+      "id": "Root-callback-cutoffs-exact",
+      "passed": true
+    },
+    {
+      "id": "recorded-clock-arithmetic",
+      "passed": true
+    },
+    {
+      "id": "scope-not-broader-qualification",
+      "passed": true
+    },
+    {
+      "id": "final-idle-barrier-join",
+      "passed": true
+    }
+  ],
+  "complete_saved_packet_read": true,
+  "failed_checks": [],
+  "final_idle_barrier": {
+    "bytes": 603,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/ROOT-utf8-final-prelaunch-barrier-v1.json",
+    "sha256": "54bcfaf663707e5ed1e3aed755e00ded8ab31adcac14a08d0d01eecd70fa1333"
+  },
+  "fixture_calls": 0,
+  "full_VM_qualified": false,
+  "goal_status": "active",
+  "grant_delta_review": {
+    "bytes": 11797,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/review-C/typed-UTF8-grant-only-delta-review-v1.json",
+    "sha256": "d9d28ca1ae261edde08b59d3d0a80e0ad937380d5a5804876ee48035bc1f875b"
+  },
+  "limitations": [
+    "Exact foreign Python identity and fresh owner separation were checked inside the reviewed Source actual and saved as assertions/provenance. A post-exit JSON review cannot reconstruct or independently rerun those object identities.",
+    "Every complete saved record and literal descendant was parsed/compared for populations/joins; the reviewed actual remains the source of the independent semantic assertions. No new semantic replay or new test was conducted.",
+    "Standalone component resource observations do not establish wholeVM, fullBOOT, fullWang palette, proofsearch, GCTS/RL improvement or oldcohort/G1 qualification.",
+    "Root alone decides adoption within the limited finite lexical scope. The terminal ROOT_resource_accepted field remainsFalse until any separately authored Root adoption; this review creates no grant or rerun authority."
+  ],
+  "mathematical_admission": false,
+  "method": "Complete JSON/raw-byte census, strict saved-value comparisons and literal saved-record joins only. No trajectory, byte-language answer, mutant fixture or output size was regenerated; no offered Source function, simulator, table checker, decoder or fixture was imported or called. Static saved trace tuples are joined to saved literal rows and tape cells; full candidate tables are compared with saved baseline subtrees, not executed.",
+  "new_actual_invocations": 0,
+  "new_grants": 0,
+  "old_G0_unchanged": true,
+  "partial_files_opened": 0,
+  "passive_only": true,
+  "proof_discovery": false,
+  "raw_manifest": [
+    {
+      "bytes": 590,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/actual-utf8-v1/CONSUMED.json",
+      "sha256": "56d099d55fdceff3187b9c51e9bc46a64282398d6f7733aab83001da86c7b395"
+    },
+    {
+      "bytes": 332,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/actual-utf8-v1/WORKER_CONSUMED.json",
+      "sha256": "1fb6e0513ac42a3d36a50b2a084965551b1e73db3fb027fa6d4fcba60c62cf7b"
+    },
+    {
+      "bytes": 10533076,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/actual-utf8-v1/canonical-utf8-calibration.json",
+      "sha256": "4b05a7048b885b008b1ca27d65dae446e8f080109d176b8bf703447d0f63b4c3"
+    },
+    {
+      "bytes": 3315,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/actual-utf8-v1/result.json",
+      "sha256": "6b75712742b5e43c3089c05290c0611f7f2dbd811e71d9d97eb3004f14223c7c"
+    },
+    {
+      "bytes": 5693,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/actual-utf8-v1/runner-receipt.json",
+      "sha256": "a9787f104f84637183c35cb044c0d78f41275fc4c5efad652666df65db2eaca6"
+    },
+    {
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/actual-utf8-v1/stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/actual-utf8-v1/stdout.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 1520,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/actual-utf8-v1/worker-receipt.json",
+      "sha256": "a35e18f05cd8682ba77980a895f0e53a15b11a438b6d38ccaf5a177181098976"
+    },
+    {
+      "bytes": 349,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/utf8-plan-authorized-v1-terminal-observation/CONSUMED.json",
+      "sha256": "4a4aa83d19c68cfa7a8f83c881e33141eb3094bd321d4c8e41f7417f87eaa9e0"
+    },
+    {
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/utf8-plan-authorized-v1-terminal-observation/stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 213,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/utf8-plan-authorized-v1-terminal-observation/stdout.bin",
+      "sha256": "89b81d56a3286ce3bd4946b379d1686f08c33bbc4076d9eced9759740fb86748"
+    },
+    {
+      "bytes": 1849,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/utf8-plan-authorized-v1-terminal-observation/terminal.json",
+      "sha256": "7274c54dbbe1bc5f0aa9b8cf32ef737f08b662448388be599d3fb3d35e9d627d"
+    }
+  ],
+  "remaining_actual_invocations": 0,
+  "resources": {
+    "Root_callbacks": {
+      "canonical_packet_cutoff": 196677,
+      "final_postheader_total": null,
+      "result_cutoff": 199965,
+      "worker_header_cutoff": 199969
+    },
+    "actual_and_observer_plus_reserve_bytes": 19984121,
+    "canonical_bytes": 10533076,
+    "final_callback_scope": "Later Source-enforced checks remain under400m; no separately serialized final postheader total is claimed.",
+    "instrument_seconds": 1.688935458,
+    "observer_directory_bytes": 2411,
+    "post_receipt_actual_directory_bytes": 10544526,
+    "post_receipt_actual_plus_same_reserve_bytes": 19981710,
+    "runner_pre_receipt_conservative_physical_bytes": 19976017,
+    "stored_expanded_logical_bytes": 10536391,
+    "terminal_runner_clock_seconds": 1.663739,
+    "worker_HWM_bytes": 59523072
+  },
+  "retirement": {
+    "bytes": 5260,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/root/ROOT-utf8-grant-retirement-v1.json",
+    "sha256": "f6c466981753cdbc72e792364687ab1ca32fbe016d231d29680f737457f50572"
+  },
+  "review_author_metadata_negative": {
+    "bytes": 1108,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-complete-evidence-20261020/review-C/utf8-saved-review-author-negative-v1.json",
+    "sha256": "6dc6a6956f99883cbf948fcd5ec31cdb336c26df931dfb995e5d7f4c45df96b3"
+  },
+  "review_passed": true,
+  "reviewer_identity": "/root/recovered_batch_review",
+  "saved_census": {
+    "declaration_cases": 32,
+    "diagnostic_groups": 5,
+    "foreign_cases": 25,
+    "matrix_full_records": 1066,
+    "matrix_recipes": {
+      "dangling": 328,
+      "duplicate": 328,
+      "missing-fence": 82,
+      "wrong-move": 328
+    },
+    "normal_cases": 5378,
+    "normal_counts": {
+      "all-byte-boundary-blanks": 7,
+      "all-finite-prefix-fences": 1785,
+      "all-mid-byte-blanks": 1778,
+      "all-seven-mode-byte-transitions": 1792,
+      "complete-word-controls": 16
+    },
+    "oracle_calls": 5378,
+    "quota_cases": 3,
+    "saved_trace_steps": 39744,
+    "states": 85,
+    "subject_calls": 62,
+    "subject_completed": 2,
+    "subject_raised": 60,
+    "transitions": 328,
+    "two_construction_identity_groups": 1,
+    "undefined_slots": 12,
+    "verifier_calls": 6446
+  },
+  "schema": "UTF8-complete-saved-component-passive-review-v1",
+  "semantic_replays": 0,
+  "simulator_calls": 0,
+  "sizing_probes": 0,
+  "status": "PASS_COMPLETE_SAVED_COMPONENT_EVIDENCE",
+  "subject_function_calls": 0,
+  "subject_imports": 0,
+  "supports_finite_component_adoption": true,
+  "tools_stopped_after_freeze": true
+}
