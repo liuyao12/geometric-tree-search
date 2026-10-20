@@ -1,0 +1,80 @@
+{
+  "archive_scan": {
+    "all_members_byte_checked": true,
+    "archive": {
+      "bytes": 10420542,
+      "file": "point-novelty-search-evidence.tar.gz",
+      "sha256": "44a06e8732d1c0144ec6a8114f365cec78244576d59e44d2dff9adde4ed4c73d"
+    },
+    "members": 171,
+    "omitted_trusted_runtime": [
+      {
+        "pin": {
+          "bytes": 18058560,
+          "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+          "sha256": "b6ea0c2a9bfce48dbf181a53f1ca4f0562d40658b85bf47258e2a88d8f9e3933"
+        },
+        "reason": "Pinned isolated trusted CPython binary not redistributed; all research Sources and Native assets are included."
+      }
+    ],
+    "partial_raw_metadata_only": [],
+    "payload_bytes": 128084163,
+    "schema": "point-novelty-archive-complete-byte-scan-v1"
+  },
+  "conclusion": "Two whole-memory failures and one admitted negative case. Observed18searches293placements24audits144controls; qualified6/86/8/48. Four qualified point packets locally complete two primitive steps repeated across P01/P11. Zero admitted recipient proofs; positive S0/SC checker observations diagnostic only. No useful acceleration or trainedRL.",
+  "files": [
+    {
+      "bytes": 1227732,
+      "file": "point-novelty-search-data.json",
+      "sha256": "2c987c901fa3cc705e0796c00068dc5506d22b10539b649f3babb5d12459cd10"
+    },
+    {
+      "bytes": 56140,
+      "file": "point-novelty-search-engineering.json",
+      "sha256": "4ed86a1ae9425737485ff6930996b32f70af058c1c2a4f7ee86bebda710673c1"
+    },
+    {
+      "bytes": 10420542,
+      "file": "point-novelty-search-evidence.tar.gz",
+      "sha256": "44a06e8732d1c0144ec6a8114f365cec78244576d59e44d2dff9adde4ed4c73d"
+    },
+    {
+      "bytes": 134205,
+      "file": "point-novelty-search-review-C.json",
+      "sha256": "587a51a589146e84d96fddeb5542750303b09e6fef8cb686a5f2aa8a0b3b73c8"
+    },
+    {
+      "bytes": 71157,
+      "file": "point-novelty-search-review-L.json",
+      "sha256": "25c39903e8a4b5d03e50a31122303c5af4cee1e7a718ce45bf86aaaf7c51db54"
+    },
+    {
+      "bytes": 35071,
+      "file": "point-novelty-search.html",
+      "sha256": "01259cd26559b6401971b3702c4999ecee43229683ea5622c2805d38c6d77520"
+    },
+    {
+      "bytes": 112533,
+      "file": "reader.html",
+      "sha256": "e4e2298530c0b154ae4ce85ef65829d63c3fa438219e5924f849d1db3c2969ec"
+    }
+  ],
+  "reader_delta": {
+    "after": {
+      "bytes": 112533,
+      "sha256": "e4e2298530c0b154ae4ce85ef65829d63c3fa438219e5924f849d1db3c2969ec"
+    },
+    "before": {
+      "bytes": 111956,
+      "sha256": "522059cfb30e309138772748d9853f235576909077e1c738782398c80280c982"
+    },
+    "deleting_exact_insertion_recovers_prior_body": true,
+    "inserted_bytes": 577,
+    "inserted_text": "<section id=\"point-novelty-update\" class=\"panel\"><h2>Point hints reach local proof receptors</h2><p><a href=\"point-novelty-search.html#local-clusters\">Inspect the qualified local extensions, formulas, English and colored tiles</a>. The admitted negative case records four local packets whose members were later placed, representing two steps repeated across two arms. Both positive jobs fail the unchanged whole-memory gate. No target proof or useful GCTS/RL search advantage is established; all complete observations remain available with their admission scope.</p></section>\n",
+    "offset": 1331,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/reader.html",
+    "schema": "point-novelty-reader-exact-insertion-v1"
+  },
+  "schema": "point-novelty-search-publication-manifest-v1",
+  "source_parent_commit": "d40d72b82fcf5438c4896b4cf24f0f25584de9b2"
+}
