@@ -1,0 +1,590 @@
+{
+  "schema": "typed-word-point-resource-custody-review-v1",
+  "reviewer_identity": "/root/recovered_batch_diagnostics (verification-L)",
+  "status": "PASS_TRUTHFUL_CLASSIFICATION_TWO_MEMORY_REJECTIONS_ONE_RESOURCE_ACCEPTANCE_SCIENTIFIC_COMPARISON_INCOMPLETE",
+  "review_passed": true,
+  "scientific_self_admission": false,
+  "resource_accepted_cases": [
+    "pilot-fork-join-missing-Pa"
+  ],
+  "resource_rejected_cases": [
+    "pilot-fork-join-positive",
+    "pilot-quantifier-equality-positive"
+  ],
+  "whole_cohort_admitted": false,
+  "all_attempts_searched_outcomes": 9,
+  "all_attempts_skipped_outcomes": 9,
+  "resource_qualified_searched_outcomes": 3,
+  "resource_qualified_skipped_outcomes": 3,
+  "scientific_comparison_complete": false,
+  "new_admitted_recipient_proofs": 0,
+  "unqualified_reported_recipient_candidates": 1,
+  "new_grants_consumed": 3,
+  "remaining_grants": 0,
+  "check_count": 7,
+  "failed_checks": 0,
+  "checks": [
+    {
+      "id": "exact-closure-and-grants",
+      "passed": true,
+      "finding": "All41 whole-offer body pins,3exact plans,3fresh consumed one-use grants and current review/preflight pins revalidated; ownership/Native group joins match. Remaining grants0; no old grant reuse."
+    },
+    {
+      "id": "complete-output-custody",
+      "passed": true,
+      "finding": "All42 complete actual/observer files raw-pinned,14percase. Headers point to exact complete packet bodies, including firstcase failure.json; terminal headers and stdout logs agree. Firstcase parent result remains null/header invalid; it is not reconstructed as positive."
+    },
+    {
+      "id": "Native-transport-and-logs",
+      "passed": true,
+      "finding": "All3 Native constructor/owned-group/close/reap receipts complete; normal exit0/wait4status0,no signal or cleanup error,cleanEOF/no pendingstdout/emptystderr.287complete ordered request stages join full query IDs,purposes and request/input/output hashes; last rawbinary hashes and executable pins agree. Logs are complete,within caps and nonoverflowing."
+    },
+    {
+      "id": "time-file-callback-gates",
+      "passed": true,
+      "finding": "All worker/header totals below160s,knownworker exits below180s and finalcustody/observer/outputsummary below210s;225fallback untriggered. All complete file censuses reconcile receipts within128MiB,9MiBouterreserve,48MiBpacket and boundedlogs/headers/receipts. Callbacks below400m. No .partial files or parsing."
+    },
+    {
+      "id": "memory-refusal-preservation",
+      "passed": true,
+      "finding": "Case1 worker post-output Python+Native1079541760 exceeds1GiB and correctly stays FAILED_CASE_NOT_ADMITTED; parent/observer combined authorities remain null. Equality worker returned COMPLETE but parentconservative1122566144 and whole1153777664 exceed1GiB,so parent/tool2/observerfalse are preserved. No lower pre-output sample or partial scientific payload rescues either run."
+    },
+    {
+      "id": "one-resource-acceptance",
+      "passed": true,
+      "finding": "Only missing-premise case has child,parent,tool0 and observerresourceaccepted; full post-output/waitedchild/Native/parent/observer+tworeserves total860045312 below1GiB,with all other gates satisfied."
+    },
+    {
+      "id": "scientific-and-control-scope",
+      "passed": true,
+      "finding": "All3saved scientific packets contain9searches+9skips total,scientificcompletefalse. Only the accepted negative-case3searches+3skips qualify as resource-admitted observations.48control labels returned percase,but the first2failed wholejobs do not qualify those controls. One reported positive recipient candidate lies in rejectedcase1; no new admitted recipient proof or fullcomparison. This audit does not replay or scientifically self-admit the author L reduction."
+    }
+  ],
+  "cases": [
+    {
+      "case_id": "pilot-fork-join-positive",
+      "classification": "REJECTED_WORKER_FINAL_COMBINED_MEMORY_GATE",
+      "resource_custody_admitted": false,
+      "packet": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-positive/failure.json",
+        "bytes": 31536978,
+        "sha256": "ccb0cbe9f3e545b4f5f32ce37aac6fdbac96a43f82adbe1d8d43688ef4ff5dbd"
+      },
+      "plan": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/root/plan-pilot-fork-join-positive-v1.json",
+        "bytes": 15436,
+        "sha256": "132c4c8310ce8fa896339a256dc3f45db935dc05e2503f48acb83fcdb90df35d"
+      },
+      "grant": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/root/grant-pilot-fork-join-positive-v1.json",
+        "bytes": 1864,
+        "sha256": "f52978dae01c931b183013a22c19c3938cb3ebf12dbc352721b9bebccacdfa26"
+      },
+      "worker_status": "FAILED_CASE_NOT_ADMITTED",
+      "worker_error": {
+        "message": "complete Native custody, combined peaks or positive deadline failed",
+        "traceback": "RootBudget: complete Native custody, combined peaks or positive deadline failed\n",
+        "type": "RootBudget"
+      },
+      "worker_exit": 2,
+      "parent_exit": 2,
+      "tool_exit": 2,
+      "header_valid_for_positive_result": false,
+      "result_pin_admitted_by_parent": null,
+      "callbacks": 14530831,
+      "seconds": {
+        "packet_elapsed": 104.20207562499854,
+        "header_after_output": 104.45448245800071,
+        "known_worker_exit": 106.0963306670019,
+        "parent_final_custody": 106.11103820800054,
+        "observer_final_gate": 106.14467995800078,
+        "external_summary_after_final_output": 106.14491054099926
+      },
+      "memory_bytes": {
+        "packet_Python_peak": 1066336256,
+        "header_post_output_Python_peak": 1066336256,
+        "waited_child_peak": 1066336256,
+        "Native_wait4_peak": 13205504,
+        "worker_combined_post_output_Python_and_Native": 1079541760,
+        "parent_peak": 41517056,
+        "parent_conservative_with_final_output_reserve": null,
+        "observer_peak": 21823488,
+        "whole_conservative_with_both_final_output_reserves": null,
+        "limit": 1073741824
+      },
+      "physical_complete_bytes": 40507331,
+      "Native": {
+        "queries": 90,
+        "reported_status_counts": {
+          "accepted": 23,
+          "rejected": 66,
+          "unknown_step_budget": 1
+        },
+        "closed": true,
+        "all_reaped": true,
+        "exit": 0,
+        "wait4_status": 0,
+        "cleanup_errors": [],
+        "termination_signals": [],
+        "native_pid": 39267,
+        "worker_pid_and_group": 39266
+      },
+      "scientific_record_only": {
+        "job_record_complete": true,
+        "scientific_complete": false,
+        "searches_returned": 3,
+        "cluster_arms_skipped": 3,
+        "word_controls_reported_returned": 48,
+        "word_controls_whole_case_resource_qualified": false,
+        "reported_recipient_Native_acceptances": 1,
+        "not_mathematically_replayed_or_self_admitted": true
+      },
+      "tool_observations": {
+        "session": 92936,
+        "launch_UTC": "2026-10-20 16:03:40 UTC",
+        "terminal_observed_UTC": "2026-10-20 16:06:04 UTC"
+      }
+    },
+    {
+      "case_id": "pilot-quantifier-equality-positive",
+      "classification": "REJECTED_PARENT_AND_OBSERVER_COMBINED_MEMORY_GATE",
+      "resource_custody_admitted": false,
+      "packet": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/result.json",
+        "bytes": 30984092,
+        "sha256": "13225d454d75887557a9f2203689186769da92bf43abfee8e85a5c4891703afa"
+      },
+      "plan": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/root/plan-pilot-quantifier-equality-positive-v1.json",
+        "bytes": 15456,
+        "sha256": "29aa9abe2d0affd8273f9a6265434fdec05cd9bc6fadfb506f1bd4ef60119d58"
+      },
+      "grant": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/root/grant-pilot-quantifier-equality-positive-v1.json",
+        "bytes": 1884,
+        "sha256": "6effe6ed7ae4f8a5cd40f4a62cc80209333d7b26943cf0f126f7f68a670d804d"
+      },
+      "worker_status": "COMPLETE",
+      "worker_error": null,
+      "worker_exit": 0,
+      "parent_exit": 2,
+      "tool_exit": 2,
+      "header_valid_for_positive_result": true,
+      "result_pin_admitted_by_parent": {
+        "bytes": 30984092,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/result.json",
+        "sha256": "13225d454d75887557a9f2203689186769da92bf43abfee8e85a5c4891703afa"
+      },
+      "callbacks": 14980770,
+      "seconds": {
+        "packet_elapsed": 106.84784541700355,
+        "header_after_output": 107.13097716700577,
+        "known_worker_exit": 108.78422970800602,
+        "parent_final_custody": 108.81160170800285,
+        "observer_final_gate": 108.83819550000044,
+        "external_summary_after_final_output": 108.83846670899948
+      },
+      "memory_bytes": {
+        "packet_Python_peak": 1033011200,
+        "header_post_output_Python_peak": 1033011200,
+        "waited_child_peak": 1033011200,
+        "Native_wait4_peak": 13123584,
+        "worker_combined_post_output_Python_and_Native": 1046134784,
+        "parent_peak": 66994176,
+        "parent_conservative_with_final_output_reserve": 1122566144,
+        "observer_peak": 21774336,
+        "whole_conservative_with_both_final_output_reserves": 1153777664,
+        "limit": 1073741824
+      },
+      "physical_complete_bytes": 40390865,
+      "Native": {
+        "queries": 108,
+        "reported_status_counts": {
+          "accepted": 30,
+          "rejected": 77,
+          "unknown_step_budget": 1
+        },
+        "closed": true,
+        "all_reaped": true,
+        "exit": 0,
+        "wait4_status": 0,
+        "cleanup_errors": [],
+        "termination_signals": [],
+        "native_pid": 40037,
+        "worker_pid_and_group": 39988
+      },
+      "scientific_record_only": {
+        "job_record_complete": true,
+        "scientific_complete": false,
+        "searches_returned": 3,
+        "cluster_arms_skipped": 3,
+        "word_controls_reported_returned": 48,
+        "word_controls_whole_case_resource_qualified": false,
+        "reported_recipient_Native_acceptances": 0,
+        "not_mathematically_replayed_or_self_admitted": true
+      },
+      "tool_observations": {
+        "session": 35079,
+        "launch_UTC": "2026-10-20 16:06:53 UTC",
+        "terminal_observed_UTC": "2026-10-20 16:08:52 UTC"
+      }
+    },
+    {
+      "case_id": "pilot-fork-join-missing-Pa",
+      "classification": "ACCEPTED_RESOURCE_CUSTODY_ATTEMPT_SCIENTIFICALLY_INCOMPLETE",
+      "resource_custody_admitted": true,
+      "packet": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/result.json",
+        "bytes": 31344945,
+        "sha256": "93ec9488a5b5a9575cecd56d17f286af9cf96d3650d7af80b2965e78ed3dbd38"
+      },
+      "plan": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/root/plan-pilot-fork-join-missing-Pa-v1.json",
+        "bytes": 15440,
+        "sha256": "cf8fe1fa207b292c76375c01d1c8dea8920ae2d4e8848830c0798609d74dab44"
+      },
+      "grant": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/root/grant-pilot-fork-join-missing-Pa-v1.json",
+        "bytes": 1868,
+        "sha256": "d9798fa627dc9f98ace4a84555593218acb0c991a8a89c57497f407a9b631a64"
+      },
+      "worker_status": "COMPLETE",
+      "worker_error": null,
+      "worker_exit": 0,
+      "parent_exit": 0,
+      "tool_exit": 0,
+      "header_valid_for_positive_result": true,
+      "result_pin_admitted_by_parent": {
+        "bytes": 31344945,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/result.json",
+        "sha256": "93ec9488a5b5a9575cecd56d17f286af9cf96d3650d7af80b2965e78ed3dbd38"
+      },
+      "callbacks": 14710204,
+      "seconds": {
+        "packet_elapsed": 101.93944141599786,
+        "header_after_output": 102.24551824999799,
+        "known_worker_exit": 104.1780462079987,
+        "parent_final_custody": 104.20659987500403,
+        "observer_final_gate": 104.23895295800321,
+        "external_summary_after_final_output": 104.2393857499992
+      },
+      "memory_bytes": {
+        "packet_Python_peak": 739393536,
+        "header_post_output_Python_peak": 739393536,
+        "waited_child_peak": 739393536,
+        "Native_wait4_peak": 12877824,
+        "worker_combined_post_output_Python_and_Native": 752271360,
+        "parent_peak": 67108864,
+        "parent_conservative_with_final_output_reserve": 828817408,
+        "observer_peak": 21790720,
+        "whole_conservative_with_both_final_output_reserves": 860045312,
+        "limit": 1073741824
+      },
+      "physical_complete_bytes": 40585968,
+      "Native": {
+        "queries": 89,
+        "reported_status_counts": {
+          "accepted": 22,
+          "rejected": 66,
+          "unknown_step_budget": 1
+        },
+        "closed": true,
+        "all_reaped": true,
+        "exit": 0,
+        "wait4_status": 0,
+        "cleanup_errors": [],
+        "termination_signals": [],
+        "native_pid": 40787,
+        "worker_pid_and_group": 40786
+      },
+      "scientific_record_only": {
+        "job_record_complete": true,
+        "scientific_complete": false,
+        "searches_returned": 3,
+        "cluster_arms_skipped": 3,
+        "word_controls_reported_returned": 48,
+        "word_controls_whole_case_resource_qualified": true,
+        "reported_recipient_Native_acceptances": 0,
+        "not_mathematically_replayed_or_self_admitted": true
+      },
+      "tool_observations": {
+        "session": 36852,
+        "launch_UTC": "2026-10-20 16:09:06 UTC",
+        "terminal_observed_UTC": "2026-10-20 16:11:10 UTC"
+      }
+    }
+  ],
+  "complete_artifact_pins": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-positive/CONSUMED.json",
+      "bytes": 261,
+      "sha256": "fa66b93750bbd1d68aad1137d054515ef918ef28c9856134e71bd8fdf7f51ce5"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-positive/failure.json",
+      "bytes": 31536978,
+      "sha256": "ccb0cbe9f3e545b4f5f32ce37aac6fdbac96a43f82adbe1d8d43688ef4ff5dbd"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-positive/native/boundary-oracle",
+      "bytes": 41808,
+      "sha256": "2b6bf8bb09a4e03d0cb1b4595dea1fe6d4432aa93d8f7eed72c30077fd9941a4"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-positive/native/code.bin",
+      "bytes": 7558192,
+      "sha256": "97f0b600cffd83552c4e0f0c4fb1f5d26cfdb76e3e74b267bbaebeddc836e7ed"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-positive/native/input.bin",
+      "bytes": 682164,
+      "sha256": "11af34b9d1c50b2228504b83da142597692ca8b68b00b86faa77336b81f29409"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-positive/native/output.bin",
+      "bytes": 682168,
+      "sha256": "9e903e18627706581107004526e907830a109b2a211a715d9426f517a66d67fd"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-positive/owned-child.json",
+      "bytes": 238,
+      "sha256": "8895739cddc1adc1b751d2fac092cc7b7618d054990430136e4e073f92462443"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-positive/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-positive/stdout.bin",
+      "bytes": 131,
+      "sha256": "0cc30cab47bf84b729281e25636b296c91d61caad99a0bd1a04dfaec6fa4d82c"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-positive/terminal.json",
+      "bytes": 1757,
+      "sha256": "b62ebb166b3721e017d1e4b410bff164fa9983c52abba834a57b296d55550a82"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-positive/worker-header.json",
+      "bytes": 595,
+      "sha256": "c824d7008fe80d88b6859b22f9a40dd42871fa454d475b0cf0a8b7a7079e66e9"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-positive.observer/observer.json",
+      "bytes": 1490,
+      "sha256": "d8cd6a20d7a0de2062e3fb2781626ab230b49c84bda29a8f2da3ac36785e946f"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-positive.observer/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-positive.observer/stdout.bin",
+      "bytes": 1549,
+      "sha256": "33cfda51aa9aceb623ee74804de3b952469718e6bed1304cc2252e91b0415b4b"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/CONSUMED.json",
+      "bytes": 271,
+      "sha256": "51a039802fc33dd488228eaaf159444dfb803df136967bb2d1855962828196ce"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/native/boundary-oracle",
+      "bytes": 41808,
+      "sha256": "2b6bf8bb09a4e03d0cb1b4595dea1fe6d4432aa93d8f7eed72c30077fd9941a4"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/native/code.bin",
+      "bytes": 7558192,
+      "sha256": "97f0b600cffd83552c4e0f0c4fb1f5d26cfdb76e3e74b267bbaebeddc836e7ed"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/native/input.bin",
+      "bytes": 900052,
+      "sha256": "f2432fb8ac10022fe24de0e42d9ddeda8fc1426e973948fd699c6136a6e12ce8"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/native/output.bin",
+      "bytes": 900056,
+      "sha256": "8ffed28c4da3ce93bfaf6c7faec40dd3d25b68c0d2614f3d8334066ae6ac1404"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/owned-child.json",
+      "bytes": 248,
+      "sha256": "204e9976d8d85a7b7a67f82a01b6808b04e2a4231c42b834aa7a3c031262fafa"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/result.json",
+      "bytes": 30984092,
+      "sha256": "13225d454d75887557a9f2203689186769da92bf43abfee8e85a5c4891703afa"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/stdout.bin",
+      "bytes": 126,
+      "sha256": "c572ec308ddedaa9af2b4f3970a88fcf8d2e0cb062b15496d79095a1d82a93d0"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/terminal.json",
+      "bytes": 2062,
+      "sha256": "0d27d711441e94c5b7ab76973ead16375516909291e543a47cf3b3f57159dc66"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/worker-header.json",
+      "bytes": 598,
+      "sha256": "ea1276175b443e324264786790c4b2efbf057e53c4e56e9b1efb687bfe65da8a"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-quantifier-equality-positive.observer/observer.json",
+      "bytes": 1522,
+      "sha256": "d175ef42d7f11b316977eb1d265a257741ea82fda77a9fddd59c3812b7cb164a"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-quantifier-equality-positive.observer/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-quantifier-equality-positive.observer/stdout.bin",
+      "bytes": 1838,
+      "sha256": "b83dc2a61f70275e50963df27bea3f5a3a3a339af5dcc67c725ce28b7b482e5d"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/CONSUMED.json",
+      "bytes": 263,
+      "sha256": "46a79cfa7272d18c472ff99f1d25e01ac59722512427a66425f99cfc33acbc87"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/native/boundary-oracle",
+      "bytes": 41808,
+      "sha256": "2b6bf8bb09a4e03d0cb1b4595dea1fe6d4432aa93d8f7eed72c30077fd9941a4"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/native/code.bin",
+      "bytes": 7558192,
+      "sha256": "97f0b600cffd83552c4e0f0c4fb1f5d26cfdb76e3e74b267bbaebeddc836e7ed"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/native/input.bin",
+      "bytes": 817244,
+      "sha256": "a66951150278d8e1fe075dd9488e2218932ba1de1f18f3eec96c3479d5962047"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/native/output.bin",
+      "bytes": 817248,
+      "sha256": "f34eb85eaeda13507a0772cddbb551789b1acbdeeb64133eae24d74d3983b146"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/owned-child.json",
+      "bytes": 240,
+      "sha256": "411e77b81389b06a80d0bf72ba699e19fde51b476259239a56aa609a21f27558"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/result.json",
+      "bytes": 31344945,
+      "sha256": "93ec9488a5b5a9575cecd56d17f286af9cf96d3650d7af80b2965e78ed3dbd38"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/stdout.bin",
+      "bytes": 118,
+      "sha256": "a31ab13cc1a44906a5a3a26ed3750d6a432496e4ed9e5bca60ef6f02ae7ac665"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/terminal.json",
+      "bytes": 2026,
+      "sha256": "4162afcc2b7309161ac1a4a4f2cbcc60080a1b627853ab59f1c0506841ebd0cf"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/worker-header.json",
+      "bytes": 581,
+      "sha256": "a2de4b7c6b7d4c0319898a51f8dc4d519ab8763f4e95b923cfe672c4a9cf65e0"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa.observer/observer.json",
+      "bytes": 1501,
+      "sha256": "44cfce42716e0c05d172862f8733c36cdf812aa7efe27d68963817812235a3e1"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa.observer/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa.observer/stdout.bin",
+      "bytes": 1802,
+      "sha256": "bbc045830c85cb1e8ea762aea3332c68cc2341461b09a2e1a754de9e344c7ec8"
+    }
+  ],
+  "Native_stage_query_joins": 287,
+  "all_attempts_reported_Native_status_counts": {
+    "accepted": 75,
+    "rejected": 209,
+    "unknown_step_budget": 3
+  },
+  "whole_offer": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/root/prospective-whole-offer-v1.json",
+    "bytes": 20464,
+    "sha256": "ff9c093007f5cdecca84a1d6195d32a300ba0aa7335677115a59724195ef471f"
+  },
+  "external_tool_observations": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/root/external-tool-observer-v1.json",
+    "bytes": 2582,
+    "sha256": "03d84efc069787432c34e26a8654e52e2dd21dcbcfecc652535b3f4649554e27"
+  },
+  "inherited_plan_resource_ABI_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/verification-L/typed-word-point-whole-plan-resource-ABI-Source-review-v1.json",
+    "bytes": 21934,
+    "sha256": "d31e2876d444ab3dd091031cb3542c67ab5566ce9bf959a7c4cc019af53c167f"
+  },
+  "independent_scientific_Source_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/review-C/typed-scientific-composition-Source-review-v1.json",
+    "bytes": 30153,
+    "sha256": "b0c62c9774d8651d41fb5475cbaede2d4aa842c316f61c3fc12dc0de7df30d27"
+  },
+  "independent_whole_Source_preflight": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/review-C/typed-whole-prospective-Source-review-v1.json",
+    "bytes": 18357,
+    "sha256": "c2f8661b038efd1a5ce5a02fb4b869fd57122197440f7a3214165bc363f2f456"
+  },
+  "limits": {
+    "custody_seconds": 210,
+    "log_bytes": 4194304,
+    "memory_bytes": 1073741824,
+    "observer_fallback_seconds": 225,
+    "physical_bytes": 134217728,
+    "positive_seconds": 180,
+    "reserved_outer_bytes": 9437184,
+    "result_bytes": 50331648,
+    "root_callbacks": 400000000,
+    "work_seconds": 160
+  },
+  "scope_limits": [
+    "PASS means the saved positive/negative resource classifications and complete custody joins are consistent; it does not mean all3experiments passed. Two memory refusals remain negative complete attempts with no admitted proof prefix or controls.",
+    "Only the negative-case run qualifies under whole resources; its search results are UNKNOWN/skipped,not a proof that the target is false. No newly admitted positive theorem or complete six-arm comparison follows.",
+    "This is passive saved-evidence resource/custody audit,not mathematical replay,logical Source admission,adversarial sandbox,wholeOS memory proof or future fit estimate. C independent review controls the author L verifier and scientific result acceptance.",
+    "The unchanged225s independent fallback did not trigger; no new kill-path claim. Root UTC/tool observations are retained records,not independently reobserved. Live filesystem scans are non-atomic; the audit uses complete terminal files after process closure.",
+    "OldSource,cohorts,grants,failures and positive results remain unchanged. All48control rows are reported as returned; actual whole-case qualification remains1case,not3."
+  ],
+  "attestation": {
+    "scientific_imports": 0,
+    "scientific_calls": 0,
+    "mathematical_replays": 0,
+    "actual_launches": 0,
+    "grants_issued": 0,
+    "partial_files_parsed": 0,
+    "partial_files_observed": 0,
+    "Source_or_actual_mutations": false,
+    "operations": "Complete saved JSON/log reads,rawSHA256/length/finalcensus,exact custody/grant/query metadata joins and ordinary resource arithmetic only."
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "archive_scan": {
+    "all_members_byte_checked": true,
+    "archive": {
+      "bytes": 10205101,
+      "file": "word-point-proof-search-evidence.tar.gz",
+      "sha256": "57fef2f9b7c3fdfd37f5f1739100beb5017878393c970eb051ce03aaaa17cc1f"
+    },
+    "members": 136,
+    "omitted_trusted_runtime": [
+      {
+        "pin": {
+          "bytes": 18058560,
+          "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+          "sha256": "b6ea0c2a9bfce48dbf181a53f1ca4f0562d40658b85bf47258e2a88d8f9e3933"
+        },
+        "reason": "Pinned trusted isolated CPython binary not redistributed; research Sources and fixed Native assets are included."
+      }
+    ],
+    "partial_raw_metadata_only": [],
+    "payload_bytes": 125500904,
+    "schema": "word-point-archive-complete-byte-scan-v1"
+  },
+  "conclusion": "Three actuals: two rejectedmemory, one admittednegative. Observed89placements/12audits; admitted14/4.0newadmittedrecipientproofs; no complete6armcomparison or GCTS/RLgain.",
+  "files": [
+    {
+      "bytes": 347207,
+      "file": "word-point-proof-search-data.json",
+      "sha256": "e46a0c5bc27e24141d913d3c62a1cd2ffef655ad4e763ce3e816fbae2c1bbd51"
+    },
+    {
+      "bytes": 31320,
+      "file": "word-point-proof-search-engineering.json",
+      "sha256": "5dc45938e32c2b65b81635eaed222fece1fe7ecd530275592821ac6339ab5f98"
+    },
+    {
+      "bytes": 10205101,
+      "file": "word-point-proof-search-evidence.tar.gz",
+      "sha256": "57fef2f9b7c3fdfd37f5f1739100beb5017878393c970eb051ce03aaaa17cc1f"
+    },
+    {
+      "bytes": 90866,
+      "file": "word-point-proof-search-review-C.json",
+      "sha256": "bfcb46aaa5aae8808c77508fe4821ca6553db08635c9b10bb3ca3c5dfcad74d7"
+    },
+    {
+      "bytes": 30757,
+      "file": "word-point-proof-search-review-L.json",
+      "sha256": "6da90efe70cffd863ee981dc4b60a4085a38207f9eaf8df2261540d77c3d200a"
+    },
+    {
+      "bytes": 26183,
+      "file": "word-point-proof-search.html",
+      "sha256": "9ecfeab0c6011e6876158e0df5c787d5d58df45094809644a99a46343eeee9b6"
+    },
+    {
+      "bytes": 109567,
+      "file": "reader.html",
+      "sha256": "47e046a2b360576bdd3d09c1423c05269f8e9e5cc4326ec20a82e6905679cf04"
+    }
+  ],
+  "reader_delta": {
+    "after": {
+      "bytes": 109567,
+      "sha256": "47e046a2b360576bdd3d09c1423c05269f8e9e5cc4326ec20a82e6905679cf04"
+    },
+    "before": {
+      "bytes": 108864,
+      "sha256": "8f234f403e48da3468a771c0a25706442db59bdb99ae64ad5d0b4b4a88c1c5f4"
+    },
+    "deleting_exact_insertion_recovers_prior_body": true,
+    "inserted_bytes": 703,
+    "inserted_text": "<section id=\"word-point-update\" class=\"panel\"><h2>Word-valued point search: audits and placements now run</h2><p><a href=\"word-point-proof-search.html#outcome\">Read the new parallel-agent experiment and exact evidence</a>. One whole case passed the resource gate: both point arms completed their audits and made placements, with certified markings removing twelve initial incidences. Both positive case jobs failed memory; their observations remain explicitly nonadmitted. No GCTS proof-search advantage or new admitted recipient proof is claimed. The report separates these results, preserves all failed attempts, and provides line-by-line formulas with colored point-marking inspectors.</p></section>\n",
+    "offset": 1331,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/research/gcts-rl-renewal/conditional-inventory/reader.html",
+    "schema": "word-point-reader-exact-insertion-v1"
+  },
+  "schema": "word-point-proof-search-publication-manifest-v1",
+  "source_parent_commit": "41e8e472c7ed17c01b2d6e9c71e500262f8e42ed"
+}

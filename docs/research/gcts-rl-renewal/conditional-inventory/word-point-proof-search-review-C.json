@@ -1,0 +1,2732 @@
+{
+  "schema": "typed-word-point-actual-scientific-review-v1",
+  "reviewer_identity": "/root/recovered_batch_review",
+  "review_passed": true,
+  "status": "PASS_BOUNDED_PASSIVE_OUTCOME_AND_REPORTING_SCOPE_TWO_CASES_EXPLICITLY_REJECTED",
+  "passive_complete_saved_data_only": true,
+  "source_only": false,
+  "scientific_calls": 0,
+  "logical_replays": 0,
+  "actual_execution_authorized": false,
+  "check_count": 9,
+  "failed_checks": 0,
+  "checks": [
+    {
+      "id": "exact-whole-inputs-and-complete-saved-bodies",
+      "passed": true,
+      "finding": "All41 offered Source/input/runtime pins remain exact. All42 complete actual/observer files are raw-pinned; three unique consumed one-use grants join their exact plans and prior reviews. No partial file observed or parsed, no scientific execution or replay."
+    },
+    {
+      "id": "resource-outcomes-control-admission",
+      "passed": true,
+      "finding": "Both positive cases are explicitly rejected: first has a complete failure packet/worker2 and post-output Python+Native sum above1GiB; second worker0/COMPLETE is still rejected by parent/observer whole peak1153777664B. Only missing-Pa observer/tool0 and860045312B qualifies. No failed-job prefix, raw proof or controls are adopted as an admitted D8 result."
+    },
+    {
+      "id": "whole-search-population-and-prerequisite",
+      "passed": true,
+      "finding": "All three raw jobs returned six explicit arm records: nine searches and nine Native-UNKNOWN prerequisite skips. Each registry consumed1e9 microsteps and exposed no usable ground inventory. Only the admitted negative job contributes three searched/three skipped outcomes. No full six-arm comparison or cluster gain is established."
+    },
+    {
+      "id": "actual-reduction-and-mechanism-controls",
+      "passed": true,
+      "finding": "All48 exact L bank IDs returned PASSED in each saved packet, along with49 literal word-pair comparisons, full target reduction/wire/overlay receipts and unchanged Tiny mechanism controls. Only one full case resource-admits these observations; the other two remain diagnostic records. Passive audit does not repeat the mathematical reduction/checker."
+    },
+    {
+      "id": "real-recipient-point-progress-and-trace",
+      "passed": true,
+      "finding": "All six raw point calls completed both actual full-domain/inverse/scheduler audits and made placements:19/15,16/25,4/10 P00/P10 attempts. Saved decision/order/place/cutoff records reconcile counters, key membership and complete alternatives. Only the admitted negative contributes four audits and14 point attempts. All end UNKNOWN, no point proof or finite exhaustion."
+    },
+    {
+      "id": "actual-marking-effect-with-correct-scope",
+      "passed": true,
+      "finding": "Each P10 initial audit contains exactly12 fewer incidences than P00 at the same original frontier, with equal first branch decision and identical second audited state after the first guard. Full literal certificates and auxiliary witnesses join those12 original first-row command candidates. This supports real initial Graph pruning, rather than only a post-cutoff witness list; it does not establish improved time, hard-case reasoning, or statistically beneficial search."
+    },
+    {
+      "id": "raw-positive-proof-is-not-admitted",
+      "passed": true,
+      "finding": "First positive raw S0 has14 primitive rows/28 literal selected placements, exact saved domain-command/point/proof/query joins, Host/region/Native acceptance and4axiom+3instantiate+7MP. This conventional symbolic baseline observation resides in a whole failed job and is NOT an admitted D8 theorem/proof-search result. No host/native logical replay was performed."
+    },
+    {
+      "id": "donor-and-Native-record-joins",
+      "passed": true,
+      "finding": "All287 complete Native records join exact stored request SHA256, original theory/target/proof references and complete request-stage input/output hashes; terminal input/output bins join the last records. Eighteen raw donor whole/essential requests are accepted3/5/5, six of them in the admitted negative case. Three library families were cold acquired and frozen; no ground transfer was admitted."
+    },
+    {
+      "id": "scientific-interpretation-and-next-obligation",
+      "passed": true,
+      "finding": "The finite authored one-element missing-premise control returns true premises/false target and was not supplied to search; it is an independently evaluated explicit countermodel, not automatic model discovery. UNKNOWN search is not a disproof. Shared setup remains83–90s and only one complete resource fit; point carrier progress is engineering evidence, not practical general proof search, GCTS/cluster/RL advantage, physical Wang qualification, or completion of the program."
+    }
+  ],
+  "qualified_case_ids": [
+    "pilot-fork-join-missing-Pa"
+  ],
+  "rejected_case_ids": [
+    "pilot-fork-join-positive",
+    "pilot-quantifier-equality-positive"
+  ],
+  "complete_pilot_comparison": false,
+  "GCTS_or_RL_advantage_established": false,
+  "new_recipient_proof_admitted": false,
+  "raw_totals": {
+    "searches": 9,
+    "skips": 9,
+    "point_attempts": 89,
+    "point_domain_audits": 12,
+    "Native_queries": 287,
+    "Native_status_counts": {
+      "accepted": 75,
+      "rejected": 209,
+      "unknown_step_budget": 3
+    },
+    "donor_whole_essential_acceptances": 18,
+    "word_control_returns": 144
+  },
+  "admitted_totals": {
+    "searches": 3,
+    "skips": 3,
+    "point_attempts": 14,
+    "point_domain_audits": 4,
+    "Native_queries": 89,
+    "Native_status_counts": {
+      "accepted": 22,
+      "rejected": 66,
+      "unknown_step_budget": 1
+    },
+    "donor_whole_essential_acceptances": 6,
+    "word_control_returns": 48,
+    "recipient_proofs": 0
+  },
+  "cases": [
+    {
+      "case_id": "pilot-fork-join-positive",
+      "resource_admitted": false,
+      "worker_status": "FAILED_CASE_NOT_ADMITTED",
+      "packet": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-positive/failure.json",
+        "bytes": 31536978,
+        "sha256": "ccb0cbe9f3e545b4f5f32ce37aac6fdbac96a43f82adbe1d8d43688ef4ff5dbd"
+      },
+      "header": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-positive/worker-header.json",
+        "bytes": 595,
+        "sha256": "c824d7008fe80d88b6859b22f9a40dd42871fa454d475b0cf0a8b7a7079e66e9"
+      },
+      "terminal": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-positive/terminal.json",
+        "bytes": 1757,
+        "sha256": "b62ebb166b3721e017d1e4b410bff164fa9983c52abba834a57b296d55550a82"
+      },
+      "observer": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-positive.observer/observer.json",
+        "bytes": 1490,
+        "sha256": "d8cd6a20d7a0de2062e3fb2781626ab230b49c84bda29a8f2da3ac36785e946f"
+      },
+      "tool_exit": 2,
+      "worker_exit": 2,
+      "whole_peak_bytes": null,
+      "observer_gate_seconds": 106.14467995800078,
+      "worker_error": {
+        "message": "complete Native custody, combined peaks or positive deadline failed",
+        "traceback": "RootBudget: complete Native custody, combined peaks or positive deadline failed\n",
+        "type": "RootBudget"
+      },
+      "plan": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/root/plan-pilot-fork-join-positive-v1.json",
+        "bytes": 15436,
+        "sha256": "132c4c8310ce8fa896339a256dc3f45db935dc05e2503f48acb83fcdb90df35d"
+      },
+      "grant": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/root/grant-pilot-fork-join-positive-v1.json",
+        "bytes": 1864,
+        "sha256": "f52978dae01c931b183013a22c19c3938cb3ebf12dbc352721b9bebccacdfa26"
+      },
+      "consumed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-positive/CONSUMED.json",
+        "bytes": 261,
+        "sha256": "fa66b93750bbd1d68aad1137d054515ef918ef28c9856134e71bd8fdf7f51ce5"
+      },
+      "native_query_count": 90,
+      "native_status_counts": {
+        "accepted": 23,
+        "rejected": 66,
+        "unknown_step_budget": 1
+      },
+      "query_stage_joins": 90,
+      "donors": [
+        {
+          "id": "train-propositional-application",
+          "rows": 3,
+          "whole_query": 4,
+          "essential_query": 5
+        },
+        {
+          "id": "train-propositional-chain",
+          "rows": 5,
+          "whole_query": 12,
+          "essential_query": 13
+        },
+        {
+          "id": "train-propositional-curried",
+          "rows": 5,
+          "whole_query": 20,
+          "essential_query": 21
+        }
+      ],
+      "library_family_ids": [
+        "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+        "68fc85fd778d3ed2abb50f4c6f694d980ef9acdce6b756b308824907a444117b",
+        "e9b268c1fd1ead1078954a62c37b5df26bfa76b514a5a044e06f80a1b11206d9"
+      ],
+      "complete_six_outcome_record": true,
+      "all_six_searched": false,
+      "scientific_complete": false,
+      "reference_check": {
+        "accepted_placements": 63823,
+        "affected_scope": "Each whole-word port update represents all bytes of a complete aligned occurrence. Every occurrence contains its common origin, so union of all original byte dependencies equals the checked port dependency set. Scalar/t-support dependencies are unchanged; finite unions preserve all affected candidate sets.",
+        "attempted_placements": 66020,
+        "complete": true,
+        "dependency_memberships": 287870,
+        "dependency_points": 70,
+        "distinct_complete_words": 9314,
+        "internal_conflicts": 2197,
+        "pointwise_identity": false,
+        "port_scalar_occurrences": 224047,
+        "reduction_scope": "Only states reached from the checked boundary by the complete checked placements: aligned complete canonical JSON words with nonbyte terminator256; scalar namespaces disjoint. Equal IDs iff equal full terminated words; unequal words conflict at first differing byte or shorter terminator. Partial/shifted words and arbitrary byte states are excluded.",
+        "schema": "aligned-complete-word-reference-v1",
+        "storage_scope": "Full canonical payload compared once per distinct dictionary word, small independently derived occurrence records per candidate, bidirectional port incidence without a reverse byte map. No old Model or Host/Native acceptance invoked."
+      },
+      "word_model_check": {
+        "complete": true,
+        "dependencies": 70,
+        "dictionary_words": 9314,
+        "placements": 63823,
+        "scope": "Full exact word evidence/actual owner correspondence; L separately verifies old byte construction reduction."
+      },
+      "word_reference_controls_returned": 48,
+      "word_reference_controls_qualified": false,
+      "marking_certificates": 12,
+      "marking_scope": "All12 are first-row command versus first-row guard exhaustion; shallow local plumbing, not new mathematical lemmas.",
+      "initial_audited_incidence_difference": 12,
+      "second_audits_identical": true,
+      "full_shared_setup_seconds": 83.1742971249987,
+      "compile_and_model_seconds": 69.20272912500513,
+      "word_evidence_seconds": 5.840522250000504,
+      "ground_admission_query": 88,
+      "ground_admission_status": "unknown_step_budget",
+      "binding_work": 20003,
+      "arms": [
+        {
+          "id": "S0",
+          "execution_status": "SEARCH_RETURNED",
+          "status": "symbolic_proof_candidate",
+          "metrics": {
+            "attempts": 14,
+            "nodes": 15,
+            "skeleton_tests": 47209
+          },
+          "trace_events": {
+            "decision": 14,
+            "extend": 14,
+            "return": 14
+          },
+          "search_seconds": 0.11083666700142203,
+          "timings": {
+            "full_arm_seconds": 5.0090705420007,
+            "host_region_native_seconds": 4.898186124999484,
+            "scope": "Full arm includes search, proof gates and entry preparation. Cold shared compilation/acquisition/marking/indexed output and final job serialization remain separately charged once.",
+            "search_seconds": 0.11084758299693931
+          },
+          "domain_audits": [],
+          "root_restored": true,
+          "proof_verification_status": "HOST_REGION_NATIVE_ACCEPTED",
+          "raw_proof_observation": {
+            "rows": 14,
+            "selected_placements": 28,
+            "Host": {
+              "accepted": true,
+              "rows": 14,
+              "scope": "independent flat Host Kernel; syntax helpers also used by compiler; exact case theory, no extra premises",
+              "target": [
+                "pred",
+                "S",
+                [
+                  [
+                    "fun",
+                    "f",
+                    [
+                      [
+                        "fun",
+                        "a",
+                        []
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            },
+            "region": {
+              "complete": true,
+              "decoded_rows": 14,
+              "mark_points": 42,
+              "required_points": 28,
+              "selected_placements": 28
+            },
+            "Native_query": 89,
+            "Native_status": "accepted",
+            "rule_counts": {
+              "axiom": 4,
+              "instantiate": 3,
+              "mp": 7
+            },
+            "admitted_D8_proof": false
+          }
+        },
+        {
+          "id": "P11",
+          "execution_status": "SKIPPED_UNKNOWN_PREREQUISITE",
+          "search": null,
+          "reason": "ground_registry_native_unknown"
+        },
+        {
+          "id": "P00",
+          "execution_status": "SEARCH_RETURNED",
+          "status": "unknown_search_budget",
+          "metrics": {
+            "attempts": 19,
+            "auxiliary_removed_incidences": 0,
+            "auxiliary_removed_incidences_total": 0,
+            "branch": 10,
+            "forced": 9,
+            "initial_auxiliary_removed_incidences": 0,
+            "nodes": 19
+          },
+          "trace_events": {
+            "decision": 19,
+            "order": 19,
+            "place": 19,
+            "cutoff": 1
+          },
+          "search_seconds": 2.3707004169991706,
+          "timings": {
+            "full_arm_seconds": 2.3707234159955988,
+            "host_region_native_seconds": null,
+            "scope": "Full arm includes search, proof gates and entry preparation. Cold shared compilation/acquisition/marking/indexed output and final job serialization remain separately charged once.",
+            "search_seconds": 2.370716416000505
+          },
+          "domain_audits": [
+            {
+              "complete": true,
+              "decision": [
+                "branch",
+                [
+                  0,
+                  1
+                ],
+                [
+                  [
+                    0,
+                    1,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    5,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    10,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    127,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    212,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    213,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    214,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    215,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    216,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    217,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    218,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    219,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    220,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    221,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    222,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    223,
+                    0
+                  ]
+                ]
+              ],
+              "frontier_points": 28,
+              "incidences": 63823
+            },
+            {
+              "complete": true,
+              "decision": [
+                "forced",
+                [
+                  0,
+                  0
+                ],
+                [
+                  [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                ]
+              ],
+              "frontier_points": 27,
+              "incidences": 59986
+            }
+          ],
+          "root_restored": true,
+          "proof_verification_status": "NO_PROOF_CANDIDATE",
+          "initial_auxiliary_witnesses": []
+        },
+        {
+          "id": "SC",
+          "execution_status": "SKIPPED_UNKNOWN_PREREQUISITE",
+          "search": null,
+          "reason": "ground_registry_native_unknown"
+        },
+        {
+          "id": "P10",
+          "execution_status": "SEARCH_RETURNED",
+          "status": "unknown_search_budget",
+          "metrics": {
+            "attempts": 15,
+            "auxiliary_removed_incidences": 0,
+            "auxiliary_removed_incidences_total": 12,
+            "branch": 8,
+            "forced": 7,
+            "initial_auxiliary_removed_incidences": 12,
+            "nodes": 15
+          },
+          "trace_events": {
+            "decision": 15,
+            "order": 15,
+            "place": 15,
+            "cutoff": 1
+          },
+          "search_seconds": 2.2551671670007636,
+          "timings": {
+            "full_arm_seconds": 2.255176875005418,
+            "host_region_native_seconds": null,
+            "scope": "Full arm includes search, proof gates and entry preparation. Cold shared compilation/acquisition/marking/indexed output and final job serialization remain separately charged once.",
+            "search_seconds": 2.2551710000043386
+          },
+          "domain_audits": [
+            {
+              "complete": true,
+              "decision": [
+                "branch",
+                [
+                  0,
+                  1
+                ],
+                [
+                  [
+                    0,
+                    1,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    5,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    10,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    127,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    212,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    213,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    214,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    215,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    216,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    217,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    218,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    219,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    220,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    221,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    222,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    223,
+                    0
+                  ]
+                ]
+              ],
+              "frontier_points": 28,
+              "incidences": 63811
+            },
+            {
+              "complete": true,
+              "decision": [
+                "forced",
+                [
+                  0,
+                  0
+                ],
+                [
+                  [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                ]
+              ],
+              "frontier_points": 27,
+              "incidences": 59986
+            }
+          ],
+          "root_restored": true,
+          "proof_verification_status": "NO_PROOF_CANDIDATE",
+          "initial_auxiliary_witnesses": [
+            {
+              "assigned_owner": "initial",
+              "assigned_value": 1,
+              "auxiliary_point": [
+                -100,
+                0
+              ],
+              "candidate": [
+                0,
+                0,
+                1,
+                0
+              ],
+              "candidate_value": 0,
+              "channel": "certified-failure",
+              "frontier_point": [
+                0,
+                0
+              ]
+            },
+            {
+              "assigned_owner": "initial",
+              "assigned_value": 1,
+              "auxiliary_point": [
+                -100,
+                1
+              ],
+              "candidate": [
+                0,
+                0,
+                2,
+                0
+              ],
+              "candidate_value": 0,
+              "channel": "certified-failure",
+              "frontier_point": [
+                0,
+                0
+              ]
+            },
+            {
+              "assigned_owner": "initial",
+              "assigned_value": 1,
+              "auxiliary_point": [
+                -100,
+                2
+              ],
+              "candidate": [
+                0,
+                0,
+                3,
+                0
+              ],
+              "candidate_value": 0,
+              "channel": "certified-failure",
+              "frontier_point": [
+                0,
+                0
+              ]
+            },
+            {
+              "assigned_owner": "initial",
+              "assigned_value": 1,
+              "auxiliary_point": [
+                -100,
+                3
+              ],
+              "candidate": [
+                0,
+                0,
+                4,
+                0
+              ],
+              "candidate_value": 0,
+              "channel": "certified-failure",
+              "frontier_point": [
+                0,
+                0
+              ]
+            },
+            {
+              "assigned_owner": "initial",
+              "assigned_value": 1,
+              "auxiliary_point": [
+                -100,
+                4
+              ],
+              "candidate": [
+                0,
+                0,
+                6,
+                0
+              ],
+              "candidate_value": 0,
+              "channel": "certified-failure",
+              "frontier_point": [
+                0,
+                0
+              ]
+            },
+            {
+              "assigned_owner": "initial",
+              "assigned_value": 1,
+              "auxiliary_point": [
+                -100,
+                5
+              ],
+              "candidate": [
+                0,
+                0,
+                7,
+                0
+              ],
+              "candidate_value": 0,
+              "channel": "certified-failure",
+              "frontier_point": [
+                0,
+                0
+              ]
+            },
+            {
+              "assigned_owner": "initial",
+              "assigned_value": 1,
+              "auxiliary_point": [
+                -100,
+                6
+              ],
+              "candidate": [
+                0,
+                0,
+                8,
+                0
+              ],
+              "candidate_value": 0,
+              "channel": "certified-failure",
+              "frontier_point": [
+                0,
+                0
+              ]
+            },
+            {
+              "assigned_owner": "initial",
+              "assigned_value": 1,
+              "auxiliary_point": [
+                -100,
+                7
+              ],
+              "candidate": [
+                0,
+                0,
+                9,
+                0
+              ],
+              "candidate_value": 0,
+              "channel": "certified-failure",
+              "frontier_point": [
+                0,
+                0
+              ]
+            },
+            {
+              "assigned_owner": "initial",
+              "assigned_value": 1,
+              "auxiliary_point": [
+                -100,
+                8
+              ],
+              "candidate": [
+                0,
+                0,
+                11,
+                0
+              ],
+              "candidate_value": 0,
+              "channel": "certified-failure",
+              "frontier_point": [
+                0,
+                0
+              ]
+            },
+            {
+              "assigned_owner": "initial",
+              "assigned_value": 1,
+              "auxiliary_point": [
+                -100,
+                9
+              ],
+              "candidate": [
+                0,
+                0,
+                12,
+                0
+              ],
+              "candidate_value": 0,
+              "channel": "certified-failure",
+              "frontier_point": [
+                0,
+                0
+              ]
+            },
+            {
+              "assigned_owner": "initial",
+              "assigned_value": 1,
+              "auxiliary_point": [
+                -100,
+                10
+              ],
+              "candidate": [
+                0,
+                0,
+                13,
+                0
+              ],
+              "candidate_value": 0,
+              "channel": "certified-failure",
+              "frontier_point": [
+                0,
+                0
+              ]
+            },
+            {
+              "assigned_owner": "initial",
+              "assigned_value": 1,
+              "auxiliary_point": [
+                -100,
+                11
+              ],
+              "candidate": [
+                0,
+                0,
+                14,
+                0
+              ],
+              "candidate_value": 0,
+              "channel": "certified-failure",
+              "frontier_point": [
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "id": "P01",
+          "execution_status": "SKIPPED_UNKNOWN_PREREQUISITE",
+          "search": null,
+          "reason": "ground_registry_native_unknown"
+        }
+      ],
+      "proof_admitted": false
+    },
+    {
+      "case_id": "pilot-quantifier-equality-positive",
+      "resource_admitted": false,
+      "worker_status": "COMPLETE",
+      "packet": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/result.json",
+        "bytes": 30984092,
+        "sha256": "13225d454d75887557a9f2203689186769da92bf43abfee8e85a5c4891703afa"
+      },
+      "header": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/worker-header.json",
+        "bytes": 598,
+        "sha256": "ea1276175b443e324264786790c4b2efbf057e53c4e56e9b1efb687bfe65da8a"
+      },
+      "terminal": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/terminal.json",
+        "bytes": 2062,
+        "sha256": "0d27d711441e94c5b7ab76973ead16375516909291e543a47cf3b3f57159dc66"
+      },
+      "observer": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-quantifier-equality-positive.observer/observer.json",
+        "bytes": 1522,
+        "sha256": "d175ef42d7f11b316977eb1d265a257741ea82fda77a9fddd59c3812b7cb164a"
+      },
+      "tool_exit": 2,
+      "worker_exit": 0,
+      "whole_peak_bytes": 1153777664,
+      "observer_gate_seconds": 108.83819550000044,
+      "worker_error": null,
+      "plan": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/root/plan-pilot-quantifier-equality-positive-v1.json",
+        "bytes": 15456,
+        "sha256": "29aa9abe2d0affd8273f9a6265434fdec05cd9bc6fadfb506f1bd4ef60119d58"
+      },
+      "grant": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/root/grant-pilot-quantifier-equality-positive-v1.json",
+        "bytes": 1884,
+        "sha256": "6effe6ed7ae4f8a5cd40f4a62cc80209333d7b26943cf0f126f7f68a670d804d"
+      },
+      "consumed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/CONSUMED.json",
+        "bytes": 271,
+        "sha256": "51a039802fc33dd488228eaaf159444dfb803df136967bb2d1855962828196ce"
+      },
+      "native_query_count": 108,
+      "native_status_counts": {
+        "accepted": 30,
+        "rejected": 77,
+        "unknown_step_budget": 1
+      },
+      "query_stage_joins": 108,
+      "donors": [
+        {
+          "id": "train-propositional-application",
+          "rows": 3,
+          "whole_query": 4,
+          "essential_query": 5
+        },
+        {
+          "id": "train-propositional-chain",
+          "rows": 5,
+          "whole_query": 12,
+          "essential_query": 13
+        },
+        {
+          "id": "train-propositional-curried",
+          "rows": 5,
+          "whole_query": 20,
+          "essential_query": 21
+        }
+      ],
+      "library_family_ids": [
+        "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+        "68fc85fd778d3ed2abb50f4c6f694d980ef9acdce6b756b308824907a444117b",
+        "e9b268c1fd1ead1078954a62c37b5df26bfa76b514a5a044e06f80a1b11206d9"
+      ],
+      "complete_six_outcome_record": true,
+      "all_six_searched": false,
+      "scientific_complete": false,
+      "reference_check": {
+        "accepted_placements": 63980,
+        "affected_scope": "Each whole-word port update represents all bytes of a complete aligned occurrence. Every occurrence contains its common origin, so union of all original byte dependencies equals the checked port dependency set. Scalar/t-support dependencies are unchanged; finite unions preserve all affected candidate sets.",
+        "attempted_placements": 66512,
+        "complete": true,
+        "dependency_memberships": 290020,
+        "dependency_points": 65,
+        "distinct_complete_words": 9794,
+        "internal_conflicts": 2532,
+        "pointwise_identity": false,
+        "port_scalar_occurrences": 226040,
+        "reduction_scope": "Only states reached from the checked boundary by the complete checked placements: aligned complete canonical JSON words with nonbyte terminator256; scalar namespaces disjoint. Equal IDs iff equal full terminated words; unequal words conflict at first differing byte or shorter terminator. Partial/shifted words and arbitrary byte states are excluded.",
+        "schema": "aligned-complete-word-reference-v1",
+        "storage_scope": "Full canonical payload compared once per distinct dictionary word, small independently derived occurrence records per candidate, bidirectional port incidence without a reverse byte map. No old Model or Host/Native acceptance invoked."
+      },
+      "word_model_check": {
+        "complete": true,
+        "dependencies": 65,
+        "dictionary_words": 9794,
+        "placements": 63980,
+        "scope": "Full exact word evidence/actual owner correspondence; L separately verifies old byte construction reduction."
+      },
+      "word_reference_controls_returned": 48,
+      "word_reference_controls_qualified": false,
+      "marking_certificates": 12,
+      "marking_scope": "All12 are first-row command versus first-row guard exhaustion; shallow local plumbing, not new mathematical lemmas.",
+      "initial_audited_incidence_difference": 12,
+      "second_audits_identical": true,
+      "full_shared_setup_seconds": 89.78660508400208,
+      "compile_and_model_seconds": 76.66718870900513,
+      "word_evidence_seconds": 5.656309375001001,
+      "ground_admission_query": 107,
+      "ground_admission_status": "unknown_step_budget",
+      "binding_work": 20003,
+      "arms": [
+        {
+          "id": "P01",
+          "execution_status": "SKIPPED_UNKNOWN_PREREQUISITE",
+          "search": null,
+          "reason": "ground_registry_native_unknown"
+        },
+        {
+          "id": "P10",
+          "execution_status": "SEARCH_RETURNED",
+          "status": "unknown_search_budget",
+          "metrics": {
+            "attempts": 25,
+            "auxiliary_removed_incidences": 0,
+            "auxiliary_removed_incidences_total": 12,
+            "backtracks": 8,
+            "branch": 10,
+            "dead": 6,
+            "forced": 9,
+            "initial_auxiliary_removed_incidences": 12,
+            "nodes": 25
+          },
+          "trace_events": {
+            "decision": 25,
+            "order": 19,
+            "place": 25,
+            "return": 8,
+            "cutoff": 1
+          },
+          "search_seconds": 2.8381099999969592,
+          "timings": {
+            "full_arm_seconds": 2.838120042004448,
+            "host_region_native_seconds": null,
+            "scope": "Full arm includes search, proof gates and entry preparation. Cold shared compilation/acquisition/marking/indexed output and final job serialization remain separately charged once.",
+            "search_seconds": 2.838113917001465
+          },
+          "domain_audits": [
+            {
+              "complete": true,
+              "decision": [
+                "branch",
+                [
+                  0,
+                  1
+                ],
+                [
+                  [
+                    0,
+                    1,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    5,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    14,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    175,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    260,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    261,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    262,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    263,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    264,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    265,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    266,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    267,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    268,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    269,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    270,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    271,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    272,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    273,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    274,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    275,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    276,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    277,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    278,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    281,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    283,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    361,
+                    0
+                  ]
+                ]
+              ],
+              "frontier_points": 26,
+              "incidences": 63968
+            },
+            {
+              "complete": true,
+              "decision": [
+                "forced",
+                [
+                  0,
+                  0
+                ],
+                [
+                  [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                ]
+              ],
+              "frontier_points": 25,
+              "incidences": 59575
+            }
+          ],
+          "root_restored": true,
+          "proof_verification_status": "NO_PROOF_CANDIDATE",
+          "initial_auxiliary_witnesses": [
+            {
+              "assigned_owner": "initial",
+              "assigned_value": 1,
+              "auxiliary_point": [
+                -100,
+                0
+              ],
+              "candidate": [
+                0,
+                0,
+                1,
+                0
+              ],
+              "candidate_value": 0,
+              "channel": "certified-failure",
+              "frontier_point": [
+                0,
+                0
+              ]
+            },
+            {
+              "assigned_owner": "initial",
+              "assigned_value": 1,
+              "auxiliary_point": [
+                -100,
+                1
+              ],
+              "candidate": [
+                0,
+                0,
+                2,
+                0
+              ],
+              "candidate_value": 0,
+              "channel": "certified-failure",
+              "frontier_point": [
+                0,
+                0
+              ]
+            },
+            {
+              "assigned_owner": "initial",
+              "assigned_value": 1,
+              "auxiliary_point": [
+                -100,
+                2
+              ],
+              "candidate": [
+                0,
+                0,
+                3,
+                0
+              ],
+              "candidate_value": 0,
+              "channel": "certified-failure",
+              "frontier_point": [
+                0,
+                0
+              ]
+            },
+            {
+              "assigned_owner": "initial",
+              "assigned_value": 1,
+              "auxiliary_point": [
+                -100,
+                3
+              ],
+              "candidate": [
+                0,
+                0,
+                4,
+                0
+              ],
+              "candidate_value": 0,
+              "channel": "certified-failure",
+              "frontier_point": [
+                0,
+                0
+              ]
+            },
+            {
+              "assigned_owner": "initial",
+              "assigned_value": 1,
+              "auxiliary_point": [
+                -100,
+                4
+              ],
+              "candidate": [
+                0,
+                0,
+                6,
+                0
+              ],
+              "candidate_value": 0,
+              "channel": "certified-failure",
+              "frontier_point": [
+                0,
+                0
+              ]
+            },
+            {
+              "assigned_owner": "initial",
+              "assigned_value": 1,
+              "auxiliary_point": [
+                -100,
+                5
+              ],
+              "candidate": [
+                0,
+                0,
+                7,
+                0
+              ],
+              "candidate_value": 0,
+              "channel": "certified-failure",
+              "frontier_point": [
+                0,
+                0
+              ]
+            },
+            {
+              "assigned_owner": "initial",
+              "assigned_value": 1,
+              "auxiliary_point": [
+                -100,
+                6
+              ],
+              "candidate": [
+                0,
+                0,
+                8,
+                0
+              ],
+              "candidate_value": 0,
+              "channel": "certified-failure",
+              "frontier_point": [
+                0,
+                0
+              ]
+            },
+            {
+              "assigned_owner": "initial",
+              "assigned_value": 1,
+              "auxiliary_point": [
+                -100,
+                7
+              ],
+              "candidate": [
+                0,
+                0,
+                9,
+                0
+              ],
+              "candidate_value": 0,
+              "channel": "certified-failure",
+              "frontier_point": [
+                0,
+                0
+              ]
+            },
+            {
+              "assigned_owner": "initial",
+              "assigned_value": 1,
+              "auxiliary_point": [
+                -100,
+                8
+              ],
+              "candidate": [
+                0,
+                0,
+                10,
+                0
+              ],
+              "candidate_value": 0,
+              "channel": "certified-failure",
+              "frontier_point": [
+                0,
+                0
+              ]
+            },
+            {
+              "assigned_owner": "initial",
+              "assigned_value": 1,
+              "auxiliary_point": [
+                -100,
+                9
+              ],
+              "candidate": [
+                0,
+                0,
+                11,
+                0
+              ],
+              "candidate_value": 0,
+              "channel": "certified-failure",
+              "frontier_point": [
+                0,
+                0
+              ]
+            },
+            {
+              "assigned_owner": "initial",
+              "assigned_value": 1,
+              "auxiliary_point": [
+                -100,
+                10
+              ],
+              "candidate": [
+                0,
+                0,
+                12,
+                0
+              ],
+              "candidate_value": 0,
+              "channel": "certified-failure",
+              "frontier_point": [
+                0,
+                0
+              ]
+            },
+            {
+              "assigned_owner": "initial",
+              "assigned_value": 1,
+              "auxiliary_point": [
+                -100,
+                11
+              ],
+              "candidate": [
+                0,
+                0,
+                13,
+                0
+              ],
+              "candidate_value": 0,
+              "channel": "certified-failure",
+              "frontier_point": [
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "id": "SC",
+          "execution_status": "SKIPPED_UNKNOWN_PREREQUISITE",
+          "search": null,
+          "reason": "ground_registry_native_unknown"
+        },
+        {
+          "id": "P00",
+          "execution_status": "SEARCH_RETURNED",
+          "status": "unknown_search_budget",
+          "metrics": {
+            "attempts": 16,
+            "auxiliary_removed_incidences": 0,
+            "auxiliary_removed_incidences_total": 0,
+            "branch": 8,
+            "forced": 8,
+            "initial_auxiliary_removed_incidences": 0,
+            "nodes": 16
+          },
+          "trace_events": {
+            "decision": 16,
+            "order": 16,
+            "place": 16,
+            "cutoff": 1
+          },
+          "search_seconds": 2.124528000000282,
+          "timings": {
+            "full_arm_seconds": 2.1245373749989085,
+            "host_region_native_seconds": null,
+            "scope": "Full arm includes search, proof gates and entry preparation. Cold shared compilation/acquisition/marking/indexed output and final job serialization remain separately charged once.",
+            "search_seconds": 2.124531499997829
+          },
+          "domain_audits": [
+            {
+              "complete": true,
+              "decision": [
+                "branch",
+                [
+                  0,
+                  1
+                ],
+                [
+                  [
+                    0,
+                    1,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    5,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    14,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    175,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    260,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    261,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    262,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    263,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    264,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    265,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    266,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    267,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    268,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    269,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    270,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    271,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    272,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    273,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    274,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    275,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    276,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    277,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    278,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    281,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    283,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    361,
+                    0
+                  ]
+                ]
+              ],
+              "frontier_points": 26,
+              "incidences": 63980
+            },
+            {
+              "complete": true,
+              "decision": [
+                "forced",
+                [
+                  0,
+                  0
+                ],
+                [
+                  [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                ]
+              ],
+              "frontier_points": 25,
+              "incidences": 59575
+            }
+          ],
+          "root_restored": true,
+          "proof_verification_status": "NO_PROOF_CANDIDATE",
+          "initial_auxiliary_witnesses": []
+        },
+        {
+          "id": "P11",
+          "execution_status": "SKIPPED_UNKNOWN_PREREQUISITE",
+          "search": null,
+          "reason": "ground_registry_native_unknown"
+        },
+        {
+          "id": "S0",
+          "execution_status": "SEARCH_RETURNED",
+          "status": "unknown_search_budget",
+          "metrics": {
+            "attempts": 600,
+            "backtracks": 589,
+            "nodes": 601,
+            "skeleton_tests": 329934
+          },
+          "trace_events": {
+            "decision": 601,
+            "extend": 600,
+            "return": 589,
+            "cutoff": 1
+          },
+          "search_seconds": 0.7691847500027507,
+          "timings": {
+            "full_arm_seconds": 0.7692023330018856,
+            "host_region_native_seconds": null,
+            "scope": "Full arm includes search, proof gates and entry preparation. Cold shared compilation/acquisition/marking/indexed output and final job serialization remain separately charged once.",
+            "search_seconds": 0.7691891669965116
+          },
+          "domain_audits": [],
+          "root_restored": true,
+          "proof_verification_status": "NO_PROOF_CANDIDATE"
+        }
+      ],
+      "proof_admitted": false
+    },
+    {
+      "case_id": "pilot-fork-join-missing-Pa",
+      "resource_admitted": true,
+      "worker_status": "COMPLETE",
+      "packet": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/result.json",
+        "bytes": 31344945,
+        "sha256": "93ec9488a5b5a9575cecd56d17f286af9cf96d3650d7af80b2965e78ed3dbd38"
+      },
+      "header": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/worker-header.json",
+        "bytes": 581,
+        "sha256": "a2de4b7c6b7d4c0319898a51f8dc4d519ab8763f4e95b923cfe672c4a9cf65e0"
+      },
+      "terminal": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/terminal.json",
+        "bytes": 2026,
+        "sha256": "4162afcc2b7309161ac1a4a4f2cbcc60080a1b627853ab59f1c0506841ebd0cf"
+      },
+      "observer": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa.observer/observer.json",
+        "bytes": 1501,
+        "sha256": "44cfce42716e0c05d172862f8733c36cdf812aa7efe27d68963817812235a3e1"
+      },
+      "tool_exit": 0,
+      "worker_exit": 0,
+      "whole_peak_bytes": 860045312,
+      "observer_gate_seconds": 104.23895295800321,
+      "worker_error": null,
+      "plan": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/root/plan-pilot-fork-join-missing-Pa-v1.json",
+        "bytes": 15440,
+        "sha256": "cf8fe1fa207b292c76375c01d1c8dea8920ae2d4e8848830c0798609d74dab44"
+      },
+      "grant": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/root/grant-pilot-fork-join-missing-Pa-v1.json",
+        "bytes": 1868,
+        "sha256": "d9798fa627dc9f98ace4a84555593218acb0c991a8a89c57497f407a9b631a64"
+      },
+      "consumed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/CONSUMED.json",
+        "bytes": 263,
+        "sha256": "46a79cfa7272d18c472ff99f1d25e01ac59722512427a66425f99cfc33acbc87"
+      },
+      "native_query_count": 89,
+      "native_status_counts": {
+        "accepted": 22,
+        "rejected": 66,
+        "unknown_step_budget": 1
+      },
+      "query_stage_joins": 89,
+      "donors": [
+        {
+          "id": "train-propositional-application",
+          "rows": 3,
+          "whole_query": 4,
+          "essential_query": 5
+        },
+        {
+          "id": "train-propositional-chain",
+          "rows": 5,
+          "whole_query": 12,
+          "essential_query": 13
+        },
+        {
+          "id": "train-propositional-curried",
+          "rows": 5,
+          "whole_query": 20,
+          "essential_query": 21
+        }
+      ],
+      "library_family_ids": [
+        "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+        "68fc85fd778d3ed2abb50f4c6f694d980ef9acdce6b756b308824907a444117b",
+        "e9b268c1fd1ead1078954a62c37b5df26bfa76b514a5a044e06f80a1b11206d9"
+      ],
+      "complete_six_outcome_record": true,
+      "all_six_searched": false,
+      "scientific_complete": false,
+      "reference_check": {
+        "accepted_placements": 63120,
+        "affected_scope": "Each whole-word port update represents all bytes of a complete aligned occurrence. Every occurrence contains its common origin, so union of all original byte dependencies equals the checked port dependency set. Scalar/t-support dependencies are unchanged; finite unions preserve all affected candidate sets.",
+        "attempted_placements": 65317,
+        "complete": true,
+        "dependency_memberships": 285058,
+        "dependency_points": 70,
+        "distinct_complete_words": 9261,
+        "internal_conflicts": 2197,
+        "pointwise_identity": false,
+        "port_scalar_occurrences": 221938,
+        "reduction_scope": "Only states reached from the checked boundary by the complete checked placements: aligned complete canonical JSON words with nonbyte terminator256; scalar namespaces disjoint. Equal IDs iff equal full terminated words; unequal words conflict at first differing byte or shorter terminator. Partial/shifted words and arbitrary byte states are excluded.",
+        "schema": "aligned-complete-word-reference-v1",
+        "storage_scope": "Full canonical payload compared once per distinct dictionary word, small independently derived occurrence records per candidate, bidirectional port incidence without a reverse byte map. No old Model or Host/Native acceptance invoked."
+      },
+      "word_model_check": {
+        "complete": true,
+        "dependencies": 70,
+        "dictionary_words": 9261,
+        "placements": 63120,
+        "scope": "Full exact word evidence/actual owner correspondence; L separately verifies old byte construction reduction."
+      },
+      "word_reference_controls_returned": 48,
+      "word_reference_controls_qualified": true,
+      "marking_certificates": 12,
+      "marking_scope": "All12 are first-row command versus first-row guard exhaustion; shallow local plumbing, not new mathematical lemmas.",
+      "initial_audited_incidence_difference": 12,
+      "second_audits_identical": true,
+      "full_shared_setup_seconds": 84.51385995899909,
+      "compile_and_model_seconds": 70.67388291600219,
+      "word_evidence_seconds": 5.987650916998973,
+      "ground_admission_query": 88,
+      "ground_admission_status": "unknown_step_budget",
+      "binding_work": 20003,
+      "arms": [
+        {
+          "id": "P00",
+          "execution_status": "SEARCH_RETURNED",
+          "status": "unknown_search_budget",
+          "metrics": {
+            "attempts": 4,
+            "auxiliary_removed_incidences": 0,
+            "auxiliary_removed_incidences_total": 0,
+            "branch": 2,
+            "forced": 2,
+            "initial_auxiliary_removed_incidences": 0,
+            "nodes": 4
+          },
+          "trace_events": {
+            "decision": 4,
+            "order": 4,
+            "place": 4,
+            "cutoff": 1
+          },
+          "search_seconds": 2.291347041995323,
+          "timings": {
+            "full_arm_seconds": 2.2913709159984137,
+            "host_region_native_seconds": null,
+            "scope": "Full arm includes search, proof gates and entry preparation. Cold shared compilation/acquisition/marking/indexed output and final job serialization remain separately charged once.",
+            "search_seconds": 2.2913551660021767
+          },
+          "domain_audits": [
+            {
+              "complete": true,
+              "decision": [
+                "branch",
+                [
+                  0,
+                  1
+                ],
+                [
+                  [
+                    0,
+                    1,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    4,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    8,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    159,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    160,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    161,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    162,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    163,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    164,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    165,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    166,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    167,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    168,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    169,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    170,
+                    0
+                  ]
+                ]
+              ],
+              "frontier_points": 28,
+              "incidences": 63120
+            },
+            {
+              "complete": true,
+              "decision": [
+                "forced",
+                [
+                  0,
+                  0
+                ],
+                [
+                  [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                ]
+              ],
+              "frontier_points": 27,
+              "incidences": 59337
+            }
+          ],
+          "root_restored": true,
+          "proof_verification_status": "NO_PROOF_CANDIDATE",
+          "initial_auxiliary_witnesses": []
+        },
+        {
+          "id": "SC",
+          "execution_status": "SKIPPED_UNKNOWN_PREREQUISITE",
+          "search": null,
+          "reason": "ground_registry_native_unknown"
+        },
+        {
+          "id": "P10",
+          "execution_status": "SEARCH_RETURNED",
+          "status": "unknown_search_budget",
+          "metrics": {
+            "attempts": 10,
+            "auxiliary_removed_incidences": 0,
+            "auxiliary_removed_incidences_total": 12,
+            "branch": 5,
+            "forced": 5,
+            "initial_auxiliary_removed_incidences": 12,
+            "nodes": 10
+          },
+          "trace_events": {
+            "decision": 10,
+            "order": 10,
+            "place": 10,
+            "cutoff": 1
+          },
+          "search_seconds": 2.291594875001465,
+          "timings": {
+            "full_arm_seconds": 2.2916148750009597,
+            "host_region_native_seconds": null,
+            "scope": "Full arm includes search, proof gates and entry preparation. Cold shared compilation/acquisition/marking/indexed output and final job serialization remain separately charged once.",
+            "search_seconds": 2.2915992080015712
+          },
+          "domain_audits": [
+            {
+              "complete": true,
+              "decision": [
+                "branch",
+                [
+                  0,
+                  1
+                ],
+                [
+                  [
+                    0,
+                    1,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    4,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    8,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    159,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    160,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    161,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    162,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    163,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    164,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    165,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    166,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    167,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    168,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    169,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    170,
+                    0
+                  ]
+                ]
+              ],
+              "frontier_points": 28,
+              "incidences": 63108
+            },
+            {
+              "complete": true,
+              "decision": [
+                "forced",
+                [
+                  0,
+                  0
+                ],
+                [
+                  [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                ]
+              ],
+              "frontier_points": 27,
+              "incidences": 59337
+            }
+          ],
+          "root_restored": true,
+          "proof_verification_status": "NO_PROOF_CANDIDATE",
+          "initial_auxiliary_witnesses": [
+            {
+              "assigned_owner": "initial",
+              "assigned_value": 1,
+              "auxiliary_point": [
+                -100,
+                0
+              ],
+              "candidate": [
+                0,
+                0,
+                1,
+                0
+              ],
+              "candidate_value": 0,
+              "channel": "certified-failure",
+              "frontier_point": [
+                0,
+                0
+              ]
+            },
+            {
+              "assigned_owner": "initial",
+              "assigned_value": 1,
+              "auxiliary_point": [
+                -100,
+                1
+              ],
+              "candidate": [
+                0,
+                0,
+                2,
+                0
+              ],
+              "candidate_value": 0,
+              "channel": "certified-failure",
+              "frontier_point": [
+                0,
+                0
+              ]
+            },
+            {
+              "assigned_owner": "initial",
+              "assigned_value": 1,
+              "auxiliary_point": [
+                -100,
+                2
+              ],
+              "candidate": [
+                0,
+                0,
+                3,
+                0
+              ],
+              "candidate_value": 0,
+              "channel": "certified-failure",
+              "frontier_point": [
+                0,
+                0
+              ]
+            },
+            {
+              "assigned_owner": "initial",
+              "assigned_value": 1,
+              "auxiliary_point": [
+                -100,
+                3
+              ],
+              "candidate": [
+                0,
+                0,
+                5,
+                0
+              ],
+              "candidate_value": 0,
+              "channel": "certified-failure",
+              "frontier_point": [
+                0,
+                0
+              ]
+            },
+            {
+              "assigned_owner": "initial",
+              "assigned_value": 1,
+              "auxiliary_point": [
+                -100,
+                4
+              ],
+              "candidate": [
+                0,
+                0,
+                6,
+                0
+              ],
+              "candidate_value": 0,
+              "channel": "certified-failure",
+              "frontier_point": [
+                0,
+                0
+              ]
+            },
+            {
+              "assigned_owner": "initial",
+              "assigned_value": 1,
+              "auxiliary_point": [
+                -100,
+                5
+              ],
+              "candidate": [
+                0,
+                0,
+                7,
+                0
+              ],
+              "candidate_value": 0,
+              "channel": "certified-failure",
+              "frontier_point": [
+                0,
+                0
+              ]
+            },
+            {
+              "assigned_owner": "initial",
+              "assigned_value": 1,
+              "auxiliary_point": [
+                -100,
+                6
+              ],
+              "candidate": [
+                0,
+                0,
+                9,
+                0
+              ],
+              "candidate_value": 0,
+              "channel": "certified-failure",
+              "frontier_point": [
+                0,
+                0
+              ]
+            },
+            {
+              "assigned_owner": "initial",
+              "assigned_value": 1,
+              "auxiliary_point": [
+                -100,
+                7
+              ],
+              "candidate": [
+                0,
+                0,
+                10,
+                0
+              ],
+              "candidate_value": 0,
+              "channel": "certified-failure",
+              "frontier_point": [
+                0,
+                0
+              ]
+            },
+            {
+              "assigned_owner": "initial",
+              "assigned_value": 1,
+              "auxiliary_point": [
+                -100,
+                8
+              ],
+              "candidate": [
+                0,
+                0,
+                11,
+                0
+              ],
+              "candidate_value": 0,
+              "channel": "certified-failure",
+              "frontier_point": [
+                0,
+                0
+              ]
+            },
+            {
+              "assigned_owner": "initial",
+              "assigned_value": 1,
+              "auxiliary_point": [
+                -100,
+                9
+              ],
+              "candidate": [
+                0,
+                0,
+                12,
+                0
+              ],
+              "candidate_value": 0,
+              "channel": "certified-failure",
+              "frontier_point": [
+                0,
+                0
+              ]
+            },
+            {
+              "assigned_owner": "initial",
+              "assigned_value": 1,
+              "auxiliary_point": [
+                -100,
+                10
+              ],
+              "candidate": [
+                0,
+                0,
+                13,
+                0
+              ],
+              "candidate_value": 0,
+              "channel": "certified-failure",
+              "frontier_point": [
+                0,
+                0
+              ]
+            },
+            {
+              "assigned_owner": "initial",
+              "assigned_value": 1,
+              "auxiliary_point": [
+                -100,
+                11
+              ],
+              "candidate": [
+                0,
+                0,
+                14,
+                0
+              ],
+              "candidate_value": 0,
+              "channel": "certified-failure",
+              "frontier_point": [
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "id": "P01",
+          "execution_status": "SKIPPED_UNKNOWN_PREREQUISITE",
+          "search": null,
+          "reason": "ground_registry_native_unknown"
+        },
+        {
+          "id": "S0",
+          "execution_status": "SEARCH_RETURNED",
+          "status": "unknown_search_budget",
+          "metrics": {
+            "attempts": 600,
+            "backtracks": 588,
+            "nodes": 601,
+            "skeleton_tests": 405081
+          },
+          "trace_events": {
+            "decision": 601,
+            "extend": 600,
+            "return": 588,
+            "cutoff": 1
+          },
+          "search_seconds": 1.1483095410003443,
+          "timings": {
+            "full_arm_seconds": 1.1483367910041125,
+            "host_region_native_seconds": null,
+            "scope": "Full arm includes search, proof gates and entry preparation. Cold shared compilation/acquisition/marking/indexed output and final job serialization remain separately charged once.",
+            "search_seconds": 1.148320958003751
+          },
+          "domain_audits": [],
+          "root_restored": true,
+          "proof_verification_status": "NO_PROOF_CANDIDATE"
+        },
+        {
+          "id": "P11",
+          "execution_status": "SKIPPED_UNKNOWN_PREREQUISITE",
+          "search": null,
+          "reason": "ground_registry_native_unknown"
+        }
+      ],
+      "proof_admitted": false
+    }
+  ],
+  "actual_file_pins": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-positive/CONSUMED.json",
+      "bytes": 261,
+      "sha256": "fa66b93750bbd1d68aad1137d054515ef918ef28c9856134e71bd8fdf7f51ce5"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-positive/failure.json",
+      "bytes": 31536978,
+      "sha256": "ccb0cbe9f3e545b4f5f32ce37aac6fdbac96a43f82adbe1d8d43688ef4ff5dbd"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-positive/native/boundary-oracle",
+      "bytes": 41808,
+      "sha256": "2b6bf8bb09a4e03d0cb1b4595dea1fe6d4432aa93d8f7eed72c30077fd9941a4"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-positive/native/code.bin",
+      "bytes": 7558192,
+      "sha256": "97f0b600cffd83552c4e0f0c4fb1f5d26cfdb76e3e74b267bbaebeddc836e7ed"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-positive/native/input.bin",
+      "bytes": 682164,
+      "sha256": "11af34b9d1c50b2228504b83da142597692ca8b68b00b86faa77336b81f29409"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-positive/native/output.bin",
+      "bytes": 682168,
+      "sha256": "9e903e18627706581107004526e907830a109b2a211a715d9426f517a66d67fd"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-positive/owned-child.json",
+      "bytes": 238,
+      "sha256": "8895739cddc1adc1b751d2fac092cc7b7618d054990430136e4e073f92462443"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-positive/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-positive/stdout.bin",
+      "bytes": 131,
+      "sha256": "0cc30cab47bf84b729281e25636b296c91d61caad99a0bd1a04dfaec6fa4d82c"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-positive/terminal.json",
+      "bytes": 1757,
+      "sha256": "b62ebb166b3721e017d1e4b410bff164fa9983c52abba834a57b296d55550a82"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-positive/worker-header.json",
+      "bytes": 595,
+      "sha256": "c824d7008fe80d88b6859b22f9a40dd42871fa454d475b0cf0a8b7a7079e66e9"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-positive.observer/observer.json",
+      "bytes": 1490,
+      "sha256": "d8cd6a20d7a0de2062e3fb2781626ab230b49c84bda29a8f2da3ac36785e946f"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-positive.observer/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-positive.observer/stdout.bin",
+      "bytes": 1549,
+      "sha256": "33cfda51aa9aceb623ee74804de3b952469718e6bed1304cc2252e91b0415b4b"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/CONSUMED.json",
+      "bytes": 271,
+      "sha256": "51a039802fc33dd488228eaaf159444dfb803df136967bb2d1855962828196ce"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/native/boundary-oracle",
+      "bytes": 41808,
+      "sha256": "2b6bf8bb09a4e03d0cb1b4595dea1fe6d4432aa93d8f7eed72c30077fd9941a4"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/native/code.bin",
+      "bytes": 7558192,
+      "sha256": "97f0b600cffd83552c4e0f0c4fb1f5d26cfdb76e3e74b267bbaebeddc836e7ed"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/native/input.bin",
+      "bytes": 900052,
+      "sha256": "f2432fb8ac10022fe24de0e42d9ddeda8fc1426e973948fd699c6136a6e12ce8"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/native/output.bin",
+      "bytes": 900056,
+      "sha256": "8ffed28c4da3ce93bfaf6c7faec40dd3d25b68c0d2614f3d8334066ae6ac1404"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/owned-child.json",
+      "bytes": 248,
+      "sha256": "204e9976d8d85a7b7a67f82a01b6808b04e2a4231c42b834aa7a3c031262fafa"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/result.json",
+      "bytes": 30984092,
+      "sha256": "13225d454d75887557a9f2203689186769da92bf43abfee8e85a5c4891703afa"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/stdout.bin",
+      "bytes": 126,
+      "sha256": "c572ec308ddedaa9af2b4f3970a88fcf8d2e0cb062b15496d79095a1d82a93d0"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/terminal.json",
+      "bytes": 2062,
+      "sha256": "0d27d711441e94c5b7ab76973ead16375516909291e543a47cf3b3f57159dc66"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-quantifier-equality-positive/worker-header.json",
+      "bytes": 598,
+      "sha256": "ea1276175b443e324264786790c4b2efbf057e53c4e56e9b1efb687bfe65da8a"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-quantifier-equality-positive.observer/observer.json",
+      "bytes": 1522,
+      "sha256": "d175ef42d7f11b316977eb1d265a257741ea82fda77a9fddd59c3812b7cb164a"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-quantifier-equality-positive.observer/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-quantifier-equality-positive.observer/stdout.bin",
+      "bytes": 1838,
+      "sha256": "b83dc2a61f70275e50963df27bea3f5a3a3a339af5dcc67c725ce28b7b482e5d"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/CONSUMED.json",
+      "bytes": 263,
+      "sha256": "46a79cfa7272d18c472ff99f1d25e01ac59722512427a66425f99cfc33acbc87"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/native/boundary-oracle",
+      "bytes": 41808,
+      "sha256": "2b6bf8bb09a4e03d0cb1b4595dea1fe6d4432aa93d8f7eed72c30077fd9941a4"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/native/code.bin",
+      "bytes": 7558192,
+      "sha256": "97f0b600cffd83552c4e0f0c4fb1f5d26cfdb76e3e74b267bbaebeddc836e7ed"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/native/input.bin",
+      "bytes": 817244,
+      "sha256": "a66951150278d8e1fe075dd9488e2218932ba1de1f18f3eec96c3479d5962047"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/native/output.bin",
+      "bytes": 817248,
+      "sha256": "f34eb85eaeda13507a0772cddbb551789b1acbdeeb64133eae24d74d3983b146"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/owned-child.json",
+      "bytes": 240,
+      "sha256": "411e77b81389b06a80d0bf72ba699e19fde51b476259239a56aa609a21f27558"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/result.json",
+      "bytes": 31344945,
+      "sha256": "93ec9488a5b5a9575cecd56d17f286af9cf96d3650d7af80b2965e78ed3dbd38"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/stdout.bin",
+      "bytes": 118,
+      "sha256": "a31ab13cc1a44906a5a3a26ed3750d6a432496e4ed9e5bca60ef6f02ae7ac665"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/terminal.json",
+      "bytes": 2026,
+      "sha256": "4162afcc2b7309161ac1a4a4f2cbcc60080a1b627853ab59f1c0506841ebd0cf"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa/worker-header.json",
+      "bytes": 581,
+      "sha256": "a2de4b7c6b7d4c0319898a51f8dc4d519ab8763f4e95b923cfe672c4a9cf65e0"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa.observer/observer.json",
+      "bytes": 1501,
+      "sha256": "44cfce42716e0c05d172862f8733c36cdf812aa7efe27d68963817812235a3e1"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa.observer/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/actual/pilot-fork-join-missing-Pa.observer/stdout.bin",
+      "bytes": 1802,
+      "sha256": "bbc045830c85cb1e8ea762aea3332c68cc2341461b09a2e1a754de9e344c7ec8"
+    }
+  ],
+  "whole_offer": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/root/prospective-whole-offer-v1.json",
+    "bytes": 20464,
+    "sha256": "ff9c093007f5cdecca84a1d6195d32a300ba0aa7335677115a59724195ef471f"
+  },
+  "scientific_Source_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/review-C/typed-scientific-composition-Source-review-v1.json",
+    "bytes": 30153,
+    "sha256": "b0c62c9774d8651d41fb5475cbaede2d4aa842c316f61c3fc12dc0de7df30d27"
+  },
+  "whole_Source_preflight": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/review-C/typed-whole-prospective-Source-review-v1.json",
+    "bytes": 18357,
+    "sha256": "c2f8661b038efd1a5ce5a02fb4b869fd57122197440f7a3214165bc363f2f456"
+  },
+  "external_tool_observer": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/root/external-tool-observer-v1.json",
+    "bytes": 2582,
+    "sha256": "03d84efc069787432c34e26a8654e52e2dd21dcbcfecc652535b3f4649554e27"
+  },
+  "bank": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/verification-L/declarative-diagnostic-bank-v1.json",
+    "bytes": 12238,
+    "sha256": "10c3bf7dca8e8d2b4d38e7219bfebe3a24f47f8f196320606259b7468cb856f2"
+  },
+  "control_ids": [
+    "full-synthetic-word-reduction",
+    "bool-word-ID",
+    "negative-word-ID",
+    "out-of-range-word-ID",
+    "wrong-full-word-ID",
+    "missing-word-occurrence",
+    "shifted-word-origin",
+    "partial-byte-instead-of-port",
+    "missing-assigned-scalar-zero",
+    "bool-scalar-zero",
+    "extra-unconstrained-zero",
+    "word-scalar-namespace-collision",
+    "wrong-unit-occupancy",
+    "bool-point-alias",
+    "dictionary-not-immutable",
+    "duplicate-word-content",
+    "unused-dictionary-word",
+    "wrong-word-terminator-zero",
+    "bool-word-terminator",
+    "partial-dictionary-word",
+    "proper-prefix-dictionary-word",
+    "dictionary-bytes-as-list",
+    "missing-boundary-IDzero",
+    "bool-boundary-IDzero",
+    "wrong-boundary-full-word",
+    "shifted-boundary-word",
+    "missing-original-key",
+    "changed-original-metadata",
+    "truncated-original-domain",
+    "missing-root-alignment",
+    "duplicate-root-alignment",
+    "spurious-dependency-key",
+    "missing-dependency-edge",
+    "spurious-dependency-point",
+    "consumed-dependency-iterator",
+    "original-conflicting-guards-preserved",
+    "all49-tiny-aligned-word-pairs-and-zero-terminator-counterexample",
+    "affected-port-and-scalar-union",
+    "generic-auxiliary-extension-and-legality",
+    "missing-auxiliary-dependency",
+    "spurious-auxiliary-dependency",
+    "dropped-base-overlay-lookup",
+    "spurious-missing-overlay-lookup",
+    "repeated-key-sorted-auxiliary-union",
+    "foreign-RuntimeError",
+    "foreign-ValueError",
+    "foreign-StopIteration",
+    "foreign-ReferenceMismatch"
+  ],
+  "first_failure_unavailable_positive_parent_whole_peak": null,
+  "partial_policy": "No .partial files observed. No partial parsing/projection/admission; no failed-job rescue.",
+  "remaining": "Report both resource negatives and the qualified negative-job mechanism progress. All cluster-dependent arms remain skipped; no admitted positive recipient or complete comparison. Full program goal remains active.",
+  "tools_stopped": true,
+  "independent_resource_custody_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-word-point-proof-pilot-20261020/verification-L/typed-word-point-resource-custody-review-v1.json",
+    "bytes": 30757,
+    "sha256": "6da90efe70cffd863ee981dc4b60a4085a38207f9eaf8df2261540d77c3d200a"
+  }
+}
