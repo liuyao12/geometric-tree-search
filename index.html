@@ -3,206 +3,148 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Geometrically Constrained Tree Search</title>
-  <link rel="stylesheet" href="./style.css">
+  <meta name="description" content="A directory of GCTS projects in pure math, applied math, and meta math: interactive tilings, materials, packing, learning, and proof.">
+  <title>GCTS — Pure Math, Applied Math &amp; Meta Math</title>
+  <link rel="stylesheet" href="./assets/project-directory.css?v=20261020">
+  <script>window.MathJax = {tex: {inlineMath: [['\\(', '\\)']]}, options: {enableMenu: false}};</script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  <script defer src="./assets/project-directory.js?v=20261020"></script>
 </head>
 <body>
-  <main class="page">
-    <header class="site-header">
-      <p class="eyebrow">GCTS research notes and playgrounds</p>
-      <h1>Geometrically Constrained Tree Search</h1>
-      <p class="lede">
-        GCTS is a play on MCTS; one should not read more into the analogy than
-        that.
-      </p>
-      <nav class="actions" aria-label="Primary">
-        <a href="./GCTS-I.html">Read the GCTS article</a>
-        <a href="./a2-online-tiler/">Open A₂ Online Tiler</a>
-        <a href="./penrose-model-set/">Open Penrose Model-Set Tiler</a>
-        <a href="./hat-gcts-online-demo/">Watch Hat learn online</a>
-        <a href="./3d-lattice-tiler/">Open 3D Lattice Tiler</a>
-        <a href="./nonacube-cross.html">Verify the nine-cube non-tiler</a>
-        <a href="./3d-reptiles/">Explore 3D Reptiles</a>
-        <a href="./iqc-growth-live/">Open Materials Growth Lab</a>
-        <a href="./circle-packing-search/">Open Circle Packing Search</a>
-      </nav>
+  <a class="skip-link" href="#projects">Skip to projects</a>
+  <div class="page">
+    <header class="masthead">
+      <a class="brand" href="./" aria-label="GCTS home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>GCTS</a>
+      <nav aria-label="Site"><a href="./GCTS-I.html">The essay <span aria-hidden="true">↗</span></a><a href="https://github.com/liuyao12/geometric-tree-search">Source <span aria-hidden="true">↗</span></a></nav>
     </header>
-
-    <section class="section featured-section">
-      <div class="section-heading">
-        <h2>Primary article</h2>
-        <p>Start here: the essay and interactive turtle demo are the center of the site.</p>
+    <main>
+      <div class="intro">
+        <p class="eyebrow">A collection of mathematical investigations</p>
+        <h1>Geometrically Constrained<br class="wide-break"> Tree Search</h1>
+        <p class="lede">Building structure, learning constraints, and checking what follows. Explore the projects through three connected perspectives.</p>
+        <a class="essay-link" href="./GCTS-I.html">Start with the essay &amp; interactive Turtle demo <span aria-hidden="true">→</span></a>
       </div>
-      <article class="featured-article">
-        <p class="project-type">GCTS essay</p>
-        <h3>Geometrically Constrained Tree Search I</h3>
-        <p>
-          Why geometric constraints make ordinary tree search feel different,
-          and how markings, macros, symmetries, or certificates may make the
-          tree navigable. Includes the sticky turtle demo and marking overlay.
-        </p>
-        <a href="./GCTS-I.html">Read article</a>
-      </article>
-    </section>
-
-    <section class="section success-section">
-      <div class="section-heading">
-        <h2>Latest result</h2>
-        <p>A reproducible narrowing experiment in the non-polycube lattice search.</p>
+      <nav class="category-nav" aria-label="Project categories">
+        <a class="category-jump pure-math" href="#pure-math"><span class="category-kicker">01 / 08 projects</span><span class="category-name">Pure Math<span aria-hidden="true">↘</span></span><span class="category-description">Objects, constructions, and obstructions.</span></a>
+        <a class="category-jump applied-math" href="#applied-math"><span class="category-kicker">02 / 04 projects</span><span class="category-name">Applied Math<span aria-hidden="true">↘</span></span><span class="category-description">From geometric models to physical structure.</span></a>
+        <a class="category-jump meta-math" href="#meta-math"><span class="category-kicker">03 / 04 projects</span><span class="category-name">Meta Math<span aria-hidden="true">↘</span></span><span class="category-description">How the search learns. How the claims are checked.</span></a>
+      </nav>
+      <div class="directory-toolbar" id="projects">
+        <div><p class="eyebrow">Project directory</p><p id="project-count">16 projects across three perspectives</p></div>
+        <div class="search" hidden><label for="project-search">Find a project</label><div class="search-field"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input id="project-search" type="search" placeholder="Try tiling, materials, or proof…" autocomplete="off" aria-controls="project-groups"></div></div>
       </div>
-      <article class="success-story">
-        <div class="success-copy">
-          <p class="project-type">complete A₂-sliced census</p>
-          <h3>Long runs expose hidden tilers—and narrow hard survivors</h3>
-          <p>
-            We enumerated every connected union of 9 and 10 consecutive-layer
-            A₂ alcoves in the chosen rigid-lattice model, then used exact
-            translational-quotient screens to remove the easy periodic cases.
-            The size-10 pass alone checked 98,537 tiles. A complete
-            determinant-12 campaign then exhausted all 455 eight-copy
-            quotients for eight recovered size-9 leads: two have exact
-            periodic tilings, while six survive every quotient in that screen.
-            A subsequent determinant-15 campaign found a third hidden tiler:
-            size-10 tile 36194 has a replayed nine-copy translational quotient.
-            For recovered size-9 leader 04636, exhaustive substitution screens
-            now also reject every connected five-copy parent at scale 2 in both
-            symmetry models: 17,707 proper and 931,637 reflected metatiles.
-            The same complete reflected screen now closes leader 01085 across
-            68,758 proper and 1,109,220 reflected five-copy metatiles, with a
-            fresh geometric replay of every obstruction.
-            A ten-million-node continuation also closes most of the hard
-            nine-copy quotient classes for size-10 leaders 36141 and 35323:
-            81/85 and 77/85 orbit classes are now exact-negative.
-          </p>
-          <p class="success-caveat">
-            This is a search success, not an aperiodicity claim: the survivors
-            are hard benchmark cases whose larger periodic domains—or failure
-            to tile—remain unresolved. Every positive quotient carries a
-            replayed scale-2 quotient-cluster substitution; every reported
-            five-copy rejection has a replayed atomic local obstruction.
-          </p>
-          <div class="success-actions">
-            <a href="./3d-lattice-tiler/?tile=a2_sliced_10_36194">Inspect the 9-tile quotient</a>
-            <a class="secondary-link" href="./3d-lattice-tiler/?tile=a2_sliced_pal_9_04636">Inspect the narrowed survivor</a>
-            <a class="secondary-link" href="./3d-lattice-tiler/?tile=a2_sliced_pal_9_01085">Inspect the second narrowed survivor</a>
-            <a class="secondary-link" href="./3d-lattice-tiler/?tile=a2_sliced_10_36141">Inspect the leading survivor</a>
-            <a class="secondary-link" href="./3d-lattice-tiler/">Open the full catalogue</a>
+      <p class="sr-only" id="search-status" role="status" aria-live="polite"></p>
+      <div id="project-groups">
+        <section class="project-section pure-math" id="pure-math" aria-labelledby="pure-math-title">
+          <div class="section-heading"><div><span class="section-number" aria-hidden="true">01</span><h2 id="pure-math-title">Pure Math</h2><span class="section-count" aria-label="8 projects">08</span></div><p>Explore tilings, packings, and topology through interactive examples.</p></div>
+          <div class="project-grid">
+            <article class="project-card" data-search="A₂ Online Tiler Planar tiling Grow Hat, Turtle, and custom tile patches, or test whether they fill a chosen boundary. hat turtle plane lattice seed boundary Tiling studio">
+              <p class="project-kind">Planar tiling</p>
+              <h3><a href="./a2-online-tiler/"><span class="project-title">\(A_2\) Online Tiler</span><span aria-hidden="true">↗</span></a></h3>
+              <p class="project-description">Grow Hat, Turtle, and custom tile patches, or test whether they fill a chosen boundary.</p>
+              <div class="related-links"><a href="./turtle-tiling-game/">Tiling studio <span aria-hidden="true">→</span></a></div>
+            </article>
+            <article class="project-card" data-search="Penrose Model-Set Tiler Aperiodic order Explore thin and thick rhombs on a cut-and-project point set, with live search and backtracking. quasicrystal rhomb cyclotomic Spectral tiling study">
+              <p class="project-kind">Aperiodic order</p>
+              <h3><a href="./penrose-model-set/"><span class="project-title">Penrose Model-Set Tiler</span><span aria-hidden="true">↗</span></a></h3>
+              <p class="project-description">Explore thin and thick rhombs on a cut-and-project point set, with live search and backtracking.</p>
+              <div class="related-links"><a href="./docs/projects/spectral-tiling-study.html">Spectral tiling study <span aria-hidden="true">→</span></a></div>
+            </article>
+            <article class="project-card" data-search="3D Lattice Tiler Spatial tiling Build with lattice polyhedra and custom polycubes. Inspect periodic tilings, frontier growth, and the research catalogue. cube integer non polycube aperiodic Latest search results">
+              <p class="project-kind">Spatial tiling</p>
+              <h3><a href="./3d-lattice-tiler/"><span class="project-title">3D Lattice Tiler</span><span aria-hidden="true">↗</span></a></h3>
+              <p class="project-description">Build with lattice polyhedra and custom polycubes. Inspect periodic tilings, frontier growth, and the research catalogue.</p>
+              <div class="related-links"><a href="./research-highlights.html">Latest search results <span aria-hidden="true">→</span></a></div>
+            </article>
+            <article class="project-card" data-search="3D Reptiles Substitution Inspect the Chair44 tile, its markings, and its assembly. Explore rotating orientations in the quaquaversal construction. chair inflation self similar Quaquaversal tiling">
+              <p class="project-kind">Substitution</p>
+              <h3><a href="./3d-reptiles/"><span class="project-title">3D Reptiles</span><span aria-hidden="true">↗</span></a></h3>
+              <p class="project-description">Inspect the Chair44 tile, its markings, and its assembly. Explore rotating orientations in the quaquaversal construction.</p>
+              <div class="related-links"><a href="./3d-reptiles/quaquaversal/">Quaquaversal tiling <span aria-hidden="true">→</span></a></div>
+            </article>
+            <article class="project-card" data-search="Nine-Cube Non-Tiler Obstruction certificates Follow the nine-cube cross investigation through geometric constraints, search trees, and checkable certificates. nonacube cross proof impossible Search-tree replay">
+              <p class="project-kind">Obstruction certificates</p>
+              <h3><a href="./nonacube-cross.html"><span class="project-title">Nine-Cube Non-Tiler</span><span aria-hidden="true">↗</span></a></h3>
+              <p class="project-description">Follow the nine-cube cross investigation through geometric constraints, search trees, and checkable certificates.</p>
+              <div class="related-links"><a href="./docs/projects/nonacube-search-replay.html">Search-tree replay <span aria-hidden="true">→</span></a></div>
+            </article>
+            <article class="project-card" data-search="Heesch Problems Finite coronas Explore finite layers around a tile and the local obstructions that stop a patch from extending. corona planar surround Tile catalogue">
+              <p class="project-kind">Finite coronas</p>
+              <h3><a href="./docs/projects/planar-heesch.html"><span class="project-title">Heesch Problems</span><span aria-hidden="true">↗</span></a></h3>
+              <p class="project-description">Explore finite layers around a tile and the local obstructions that stop a patch from extending.</p>
+              <div class="related-links"><a href="./docs/projects/heesch-catalog.html">Tile catalogue <span aria-hidden="true">→</span></a></div>
+            </article>
+            <article class="project-card" data-search="Hyperbolic Tiling Lab Hyperbolic geometry See the Böröczky family in hyperbolic space, then inspect the branches and backtracks of a live search. boroczky curved plane ">
+              <p class="project-kind">Hyperbolic geometry</p>
+              <h3><a href="./apps/hyperbolic-tiler/"><span class="project-title">Hyperbolic Tiling Lab</span><span aria-hidden="true">↗</span></a></h3>
+              <p class="project-description">See the Böröczky family in hyperbolic space, then inspect the branches and backtracks of a live search.</p>
+            </article>
+            <article class="project-card" data-search="Knot Movies Topology Follow changing strands through a verified sequence of Reidemeister moves, one diagram at a time. knot unknot diagram reidemeister ">
+              <p class="project-kind">Topology</p>
+              <h3><a href="./apps/knot-movie/"><span class="project-title">Knot Movies</span><span aria-hidden="true">↗</span></a></h3>
+              <p class="project-description">Follow changing strands through a verified sequence of Reidemeister moves, one diagram at a time.</p>
+            </article>
           </div>
-        </div>
-        <dl class="success-metrics" aria-label="A2 census results">
-          <div><dt>22,607</dt><dd>size-9 tiles</dd></div>
-          <div><dt>98,537</dt><dd>size-10 tiles</dd></div>
-          <div><dt>3</dt><dd>replayed long-domain discoveries</dd></div>
-          <div><dt>8 + 9</dt><dd>tile quotient sizes</dd></div>
-          <div><dt>949,344</dt><dd>04636 five-copy parents excluded</dd></div>
-          <div><dt>1,177,978</dt><dd>01085 five-copy parents excluded</dd></div>
-          <div><dt>81 / 85</dt><dd>36141 nine-copy orbits excluded</dd></div>
-        </dl>
-      </article>
-    </section>
-
-    <section class="section project-section">
-      <div class="section-heading">
-        <h2>Playgrounds</h2>
-        <p>Small working environments for testing geometric tree search ideas.</p>
-      </div>
-      <div class="project-list">
-        <article class="featured-article">
-          <p class="project-type">geometric corner tree search</p>
-          <h3>Held Circle Packings</h3>
-          <p>
-            Choose integer bends and search for circles held inside the unit
-            disk by surrounding tangencies. Step through symmetry-reduced
-            branches or open a catalog of verified numerical packings.
-          </p>
-          <a href="./circle-packing-search/">Open circle packing search</a>
-        </article>
-
-        <article class="featured-article">
-          <p class="project-type">3D multi-species growth laboratory</p>
-          <h3>Materials Growth Lab: hundreds to one million atoms</h3>
-          <p>
-            Start from 216 known colored atomic positions, learn overlapping
-            cluster types, and watch one search reconstruct the observed window
-            before continuing toward a 1,048,576-atom represented target across
-            crystal, quasicrystal, and amorphous controls.
-          </p>
-          <a href="./iqc-growth-live/">Open live growth lab</a>
-        </article>
-
-        <article class="featured-article">
-          <p class="project-type">exact aperiodic search laboratory</p>
-          <h3>Penrose Model-Set Tiler</h3>
-          <p>
-            Select genuine P2 kite–dart and P3 rhomb prototiles, mix them on
-            their common exact cyclotomic atom support, and replay every
-            speculative placement, early prune, and rollback.
-          </p>
-          <a href="./penrose-model-set/">Open Penrose tiler</a>
-        </article>
-
-        <article class="featured-article">
-          <p class="project-type">live decision laboratory</p>
-          <h3>A₂ Online Tiler</h3>
-          <p>
-            Grow a patch around an arbitrary initial tile, or draw a closed
-            A₂ boundary and ask whether Hat, Turtle, or a mixture tiles it.
-            The search begins unmarked and learns only from exhausted branches.
-          </p>
-          <a href="./a2-online-tiler/">Open live tiler</a>
-        </article>
-
-        <article class="featured-article">
-          <p class="project-type">step-through experiment</p>
-          <h3>Hat GCTS: failure writes the marking</h3>
-          <p>
-            Start with no marking, try Hat placements, and watch failed
-            branches become sparse geometric mismatch certificates without
-            invalidating the accepted patch.
-          </p>
-          <a href="./hat-gcts-online-demo/">Open demonstration</a>
-        </article>
-
-        <article class="project-item">
-          <img src="./assets/turtle-tiling-preview.svg" alt="A2 Turtle and Hat tiling studio preview">
-          <div>
-            <p class="project-type">interactive A2 playground</p>
-            <h3>Turtle, Hat, and Custom Tiling Studio</h3>
-            <p>
-              Repeat a Turtle, Hat, or custom closed lattice loop around a
-              single tile, Trefoil, or Hexagon center. Includes an exact A2
-              point editor and online mismatch learning.
-            </p>
-            <a href="./turtle-tiling-game/">Open studio</a>
+        </section>
+        <section class="project-section applied-math" id="applied-math" aria-labelledby="applied-math-title">
+          <div class="section-heading"><div><span class="section-number" aria-hidden="true">02</span><h2 id="applied-math-title">Applied Math</h2><span class="section-count" aria-label="4 projects">04</span></div><p>Investigate materials, constrained packings, and models you can build.</p></div>
+          <div class="project-grid">
+            <article class="project-card" data-search="Materials Growth Lab Materials Explore structural growth in crystals and quasicrystals, with interactive investigations and an auditable evidence ledger. atoms physics crystal matter molecular Growth workbench">
+              <p class="project-kind">Materials</p>
+              <h3><a href="./iqc-growth-live/"><span class="project-title">Materials Growth Lab</span><span aria-hidden="true">↗</span></a></h3>
+              <p class="project-description">Explore structural growth in crystals and quasicrystals, with interactive investigations and an auditable evidence ledger.</p>
+              <div class="related-links"><a href="./apps/iqc-growth-live/">Growth workbench <span aria-hidden="true">→</span></a></div>
+            </article>
+            <article class="project-card" data-search="Held Circle Packings Constrained packing Search for circle arrangements under geometric constraints and inspect how local choices shape the packing. sphere disk disc optimization ">
+              <p class="project-kind">Constrained packing</p>
+              <h3><a href="./circle-packing-search/"><span class="project-title">Held Circle Packings</span><span aria-hidden="true">↗</span></a></h3>
+              <p class="project-description">Search for circle arrangements under geometric constraints and inspect how local choices shape the packing.</p>
+            </article>
+            <article class="project-card" data-search="Tetrahedron Atlas Packing &amp; structure Compare published tetrahedron quasicrystals, periodic approximants, and dense packings in an interactive three-dimensional viewer. tetrahedra density physical crystal ">
+              <p class="project-kind">Packing & structure</p>
+              <h3><a href="./apps/tetrahedron-atlas/"><span class="project-title">Tetrahedron Atlas</span><span aria-hidden="true">↗</span></a></h3>
+              <p class="project-description">Compare published tetrahedron quasicrystals, periodic approximants, and dense packings in an interactive three-dimensional viewer.</p>
+            </article>
+            <article class="project-card" data-search="Turtle &amp; Trefoil Models Physical models Rotate and animate tile assemblies, then explore their model descriptions and physical construction details. 3d print printable fabrication trefoil Chair44 print pack (ZIP)">
+              <p class="project-kind">Physical models</p>
+              <h3><a href="./turtle-trefoil-printables/"><span class="project-title">Turtle &amp; Trefoil Models</span><span aria-hidden="true">↗</span></a></h3>
+              <p class="project-description">Rotate and animate tile assemblies, then explore their model descriptions and physical construction details.</p>
+              <div class="related-links"><a href="./3d-reptiles/chair/print/chair44-print-pack.zip">Chair44 print pack (ZIP) <span aria-hidden="true">→</span></a></div>
+            </article>
           </div>
-        </article>
-
-        <article class="project-item">
-          <img src="./assets/3d-lattice-tiler-preview.svg" alt="3D lattice tiler preview">
-          <div>
-            <p class="project-type">interactive playground</p>
-            <h3>3D Lattice Tiler</h3>
-            <p>
-              A browser-only JavaScript playground for lattice polyhedra and
-              polycubes on Z^3, with mixed tile systems, custom polycubes,
-              live search metrics, and search-tree inspection.
-            </p>
-            <a href="./3d-lattice-tiler/">Launch playground</a>
+        </section>
+        <section class="project-section meta-math" id="meta-math" aria-labelledby="meta-math-title">
+          <div class="section-heading"><div><span class="section-number" aria-hidden="true">03</span><h2 id="meta-math-title">Meta Math</h2><span class="section-count" aria-label="4 projects">04</span></div><p>Study matching rules, inspect the algorithm, and follow machine-checked reasoning.</p></div>
+          <div class="project-grid">
+            <article class="project-card" data-search="Learn Local Matching Rules Constraint learning Classify neighboring tile pairs with unmarked search, then inspect the provisional point markings learned from those tests. turtle hat corona learning Corona workflow Pair consensus">
+              <p class="project-kind">Constraint learning</p>
+              <h3><a href="./GCTS-learning.html"><span class="project-title">Learn Local Matching Rules</span><span aria-hidden="true">↗</span></a></h3>
+              <p class="project-description">Classify neighboring tile pairs with unmarked search, then inspect the provisional point markings learned from those tests.</p>
+              <div class="related-links"><a href="./apps/a2-corona-workflow/">Corona workflow <span aria-hidden="true">→</span></a><a href="./apps/a2-corona-consensus/">Pair consensus <span aria-hidden="true">→</span></a></div>
+            </article>
+            <article class="project-card" data-search="Hat Online Learning Search &amp; memory Step through a recorded experiment in which failed branches become sparse geometric markings. memoization failure learning trace ">
+              <p class="project-kind">Search & memory</p>
+              <h3><a href="./hat-gcts-online-demo/"><span class="project-title">Hat Online Learning</span><span aria-hidden="true">↗</span></a></h3>
+              <p class="project-description">Step through a recorded experiment in which failed branches become sparse geometric markings.</p>
+            </article>
+            <article class="project-card" data-search="Incidence Cubes Formal proof Explore conics, point-line incidence, and tiled-surface cancellation alongside the scope of a joint Lean formalization. lean formal verification penrose fomin pylyavskyy ">
+              <p class="project-kind">Formal proof</p>
+              <h3><a href="./apps/incidence-cubes/"><span class="project-title">Incidence Cubes</span><span aria-hidden="true">↗</span></a></h3>
+              <p class="project-description">Explore conics, point-line incidence, and tiled-surface cancellation alongside the scope of a joint Lean formalization.</p>
+            </article>
+            <article class="project-card" data-search="The Point-Value Algorithm Shared foundations Read the shared contract for point values, frontier bookkeeping, forced moves, rollback, and the distinction between proof and hypothesis. reference specification algorithm verification gcts Learning protocol">
+              <p class="project-kind">Shared foundations</p>
+              <h3><a href="https://github.com/liuyao12/geometric-tree-search/blob/main/docs/basic-tiling-algorithm.md"><span class="project-title">The Point-Value Algorithm</span><span aria-hidden="true">↗</span></a></h3>
+              <p class="project-description">Read the shared contract for point values, frontier bookkeeping, forced moves, rollback, and the distinction between proof and hypothesis.</p>
+              <div class="related-links"><a href="https://github.com/liuyao12/geometric-tree-search/blob/main/docs/projects/gcts-offline-online-learning.md">Learning protocol <span aria-hidden="true">→</span></a></div>
+            </article>
           </div>
-        </article>
-
+        </section>
       </div>
-    </section>
-
-    <section class="section">
-      <h2>What GCTS Studies</h2>
-      <p>
-        GCTS sits near constraint programming, exact cover, tiling search, and
-        geometric deep learning, but emphasizes the growing search tree itself:
-        frontier choices, symmetry classes of moves, reusable patches, and
-        checkable local certificates.
-      </p>
-    </section>
-  </main>
+      <div class="empty-state" hidden><h2>No matching projects</h2><p>Try a broader term, such as tiling, packing, or learning.</p><button type="button" id="clear-search">Show all projects</button></div>
+      <aside class="research-note" aria-label="Research update"><p class="eyebrow">From the tiling search</p><p>Longer searches recover hidden periodic tilings and narrow the remaining candidates.</p><a href="./research-highlights.html">Read the research update <span aria-hidden="true">→</span></a></aside>
+    </main>
+    <footer><p>GCTS is a play on MCTS. The connection is an analogy.</p><a href="#">Back to top <span aria-hidden="true">↑</span></a></footer>
+  </div>
 </body>
 </html>
