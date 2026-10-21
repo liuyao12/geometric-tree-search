@@ -1,0 +1,936 @@
+{
+  "archive": {
+    "bytes": 2906805,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/publication/principal-receptors-evidence.tar.gz",
+    "sha256": "6829d7dd42d593c8534ec3d78f193d4eb9f6afd9e8d544cb3ac3cb1cfd3cf944"
+  },
+  "files": [
+    {
+      "archive_path": "actual/mechanism-0/CONSUMED.json",
+      "bytes": 248,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/actual/mechanism-0/CONSUMED.json",
+      "sha256": "129110d2ab7d1669d2d1da1c870e52d11ae089b78a34ee71e33eb9b9161c47a2"
+    },
+    {
+      "archive_path": "actual/mechanism-0/native/boundary-oracle",
+      "bytes": 41808,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/actual/mechanism-0/native/boundary-oracle",
+      "sha256": "2b6bf8bb09a4e03d0cb1b4595dea1fe6d4432aa93d8f7eed72c30077fd9941a4"
+    },
+    {
+      "archive_path": "actual/mechanism-0/native/code.bin",
+      "bytes": 7558192,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/actual/mechanism-0/native/code.bin",
+      "sha256": "97f0b600cffd83552c4e0f0c4fb1f5d26cfdb76e3e74b267bbaebeddc836e7ed"
+    },
+    {
+      "archive_path": "actual/mechanism-0/native/input.bin",
+      "bytes": 580216,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/actual/mechanism-0/native/input.bin",
+      "sha256": "004490c42d8c4bef3c87d24182033f5d99275215614a08e567578c01df4b35c2"
+    },
+    {
+      "archive_path": "actual/mechanism-0/native/output.bin",
+      "bytes": 580220,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/actual/mechanism-0/native/output.bin",
+      "sha256": "874f8a3c943b10052529288174c2082b711892e5449265e465dc0fffb89fd5ab"
+    },
+    {
+      "archive_path": "actual/mechanism-0/owned-child.json",
+      "bytes": 225,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/actual/mechanism-0/owned-child.json",
+      "sha256": "70024723a7e26dbf1113671eb7f0c0d3d75439ada9918099d231987e0d3e5dde"
+    },
+    {
+      "archive_path": "actual/mechanism-0/result.json",
+      "bytes": 1285801,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/actual/mechanism-0/result.json",
+      "sha256": "4fdd0e1a32190c60d09c5e80252ec326d009b8e253ee8f3884ea07410591dcd0"
+    },
+    {
+      "archive_path": "actual/mechanism-0/stderr.bin",
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/actual/mechanism-0/stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_path": "actual/mechanism-0/stdout.bin",
+      "bytes": 101,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/actual/mechanism-0/stdout.bin",
+      "sha256": "8561e0eadd95b0b1ce0dd0ebc9745ad976a0ce170c375aa6c1600d6be18a51d8"
+    },
+    {
+      "archive_path": "actual/mechanism-0/terminal.json",
+      "bytes": 1969,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/actual/mechanism-0/terminal.json",
+      "sha256": "e5037861b0158462c0cafe7861effb34e15549417f2a5c9876e87f169541a98e"
+    },
+    {
+      "archive_path": "actual/mechanism-0/worker-header.json",
+      "bytes": 552,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/actual/mechanism-0/worker-header.json",
+      "sha256": "3fc29ce77f20ccc384fd852217c9fa9caaf0b6e1e46dc91b88c61e9c635725c7"
+    },
+    {
+      "archive_path": "actual/mechanism-0.observer/observer.json",
+      "bytes": 1470,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/actual/mechanism-0.observer/observer.json",
+      "sha256": "22086c0af0b05276cb46e3ae23c00d40d723c3c1e3a1786d483e144e19b66b77"
+    },
+    {
+      "archive_path": "actual/mechanism-0.observer/stderr.bin",
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/actual/mechanism-0.observer/stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_path": "actual/mechanism-0.observer/stdout.bin",
+      "bytes": 1745,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/actual/mechanism-0.observer/stdout.bin",
+      "sha256": "2c1cad649f46d1f9ab6c54bd245ce38c513a7484cd6db2dc743ca31e68a14720"
+    },
+    {
+      "archive_path": "diagnostics-L/API-v1.json",
+      "bytes": 4128,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/diagnostics-L/API-v1.json",
+      "sha256": "60f9b15a0bb373bc61886d75e45fca92d59ef84499730cac7f8ad5480c46816b"
+    },
+    {
+      "archive_path": "diagnostics-L/corpus-control-bank-v1.json",
+      "bytes": 3905,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/diagnostics-L/corpus-control-bank-v1.json",
+      "sha256": "469b213d5f0b401346bcdd045c7a0a22bcbbb67196fe1848700dc4940c1a7acd"
+    },
+    {
+      "archive_path": "diagnostics-L/handoff-v1.json",
+      "bytes": 4512,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/diagnostics-L/handoff-v1.json",
+      "sha256": "e170a9bfaa86c2a961d085d0a9a09e889ba478afb6812922e8115e8432e53b6d"
+    },
+    {
+      "archive_path": "diagnostics-L/manifest-v1.json",
+      "bytes": 3065,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/diagnostics-L/manifest-v1.json",
+      "sha256": "60bf181eb45c80c74bdcbd8debb95928b27eaf9bf4057488eeefd9e208a3b909"
+    },
+    {
+      "archive_path": "diagnostics-L/manual-contrast-scope-v1.json",
+      "bytes": 6627,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/diagnostics-L/manual-contrast-scope-v1.json",
+      "sha256": "f19443d83a04e3820deb547a6f93964ef309b450f7b9cfbdd7dbfc7ad3672793"
+    },
+    {
+      "archive_path": "diagnostics-L/mechanism-inputs-v1.json",
+      "bytes": 6995,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/diagnostics-L/mechanism-inputs-v1.json",
+      "sha256": "c58d29127d3fc912c70b9de73dd1f4caed806a8b33542295cc6fc1257528bbaf"
+    },
+    {
+      "archive_path": "diagnostics-L/mechanism-protocol-v1.json",
+      "bytes": 6110,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/diagnostics-L/mechanism-protocol-v1.json",
+      "sha256": "9e1afdd8c0abbaec307d8e1208c5ed1cc5b42942941a018eca0c3003e9166e40"
+    },
+    {
+      "archive_path": "diagnostics-L/mechanism_corpus_contract_v1.py",
+      "bytes": 11608,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/diagnostics-L/mechanism_corpus_contract_v1.py",
+      "sha256": "8c14e13bc539acdab3c24ad367949e4cbe5477bf661f850bdaba78a387a1f9c9"
+    },
+    {
+      "archive_path": "diagnostics-L/static-validation-v1.json",
+      "bytes": 1669,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/diagnostics-L/static-validation-v1.json",
+      "sha256": "aebbb891a0315d2e4173b196336e792402fd4598315ad8bbedd9e9539027052c"
+    },
+    {
+      "archive_path": "diagnostics-L/typed-independent-principal-reference-Source-review-v1.json",
+      "bytes": 7391,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/diagnostics-L/typed-independent-principal-reference-Source-review-v1.json",
+      "sha256": "b01b4756550172d48d07c474dc7dcdb2601f58069118ea3b759221ba420cdfd9"
+    },
+    {
+      "archive_path": "diagnostics-L/typed-mechanism-plan-corpus-raw-crosscheck-v1.json",
+      "bytes": 35548,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/diagnostics-L/typed-mechanism-plan-corpus-raw-crosscheck-v1.json",
+      "sha256": "f86e0aa686e877a59c0b9df1f664c4b118abbe13a109de1ca66d0c997dee3932"
+    },
+    {
+      "archive_path": "diagnostics-L/typed-principal-mechanism-passive-outcome-review-v1.json",
+      "bytes": 152511,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/diagnostics-L/typed-principal-mechanism-passive-outcome-review-v1.json",
+      "sha256": "3010687ea0f39366320523cdf9143ee632750f9818d72b4b070100e746406853"
+    },
+    {
+      "archive_path": "implementation-B/API-v1.json",
+      "bytes": 14361,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/implementation-B/API-v1.json",
+      "sha256": "b71683b6a4cccf3d7b181f69fc704247289fa72423241ed1fea381151174d2b6"
+    },
+    {
+      "archive_path": "implementation-B/AST-delta-v1.json",
+      "bytes": 2523,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/implementation-B/AST-delta-v1.json",
+      "sha256": "7d70d8aaccc83291c5ea194169ad3e43cc0b8ab031b4102117f06db870d3091f"
+    },
+    {
+      "archive_path": "implementation-B/D16-reader-review-preimages-v1/principal-receptors-template-v1.html",
+      "bytes": 12742,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/implementation-B/D16-reader-review-preimages-v1/principal-receptors-template-v1.html",
+      "sha256": "2fb007fd04d4c5be31de8f74b8ea7fe28997d2f2a46bd0cbdd7fb44696ab752e"
+    },
+    {
+      "archive_path": "implementation-B/D16-reader-review-preimages-v1/principal-receptors-template-v1.html-to-principal-receptors-template-v2.html.patch",
+      "bytes": 4893,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/implementation-B/D16-reader-review-preimages-v1/principal-receptors-template-v1.html-to-principal-receptors-template-v2.html.patch",
+      "sha256": "2bd1ab4198363c965f275d12d73133a08c1eb4972e44be0743beb6d85eae5f8e"
+    },
+    {
+      "archive_path": "implementation-B/D16-reader-review-preimages-v1/principal-receptors-template-v2.html",
+      "bytes": 12911,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/implementation-B/D16-reader-review-preimages-v1/principal-receptors-template-v2.html",
+      "sha256": "bec813b4ca3f91a51f0b6e35f7c1717de7827dae47aad5bab3f1306a722695db"
+    },
+    {
+      "archive_path": "implementation-B/D16-reader-review-preimages-v1/principal-receptors-template-v3.html",
+      "bytes": 13244,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/implementation-B/D16-reader-review-preimages-v1/principal-receptors-template-v3.html",
+      "sha256": "4d1809d7072c202f40e5ef2a02b371f38f6b03e8082db2692d4c961f0aa95617"
+    },
+    {
+      "archive_path": "implementation-B/D16-reader-review-preimages-v1/project_saved_mechanism_v1.py",
+      "bytes": 8030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/implementation-B/D16-reader-review-preimages-v1/project_saved_mechanism_v1.py",
+      "sha256": "658db5773ae0624b3a143b0677cf77bb265eed7cf44a393955bbce0cb3ce04db"
+    },
+    {
+      "archive_path": "implementation-B/D16-reader-review-preimages-v1/project_saved_mechanism_v1.py-to-project_saved_mechanism_v3.py.patch",
+      "bytes": 3666,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/implementation-B/D16-reader-review-preimages-v1/project_saved_mechanism_v1.py-to-project_saved_mechanism_v3.py.patch",
+      "sha256": "f80c4057f9ff44c0fe569f5409b608a3584409281ab7889aeebeb2f8213decdc"
+    },
+    {
+      "archive_path": "implementation-B/D16-reader-review-preimages-v1/project_saved_mechanism_v3.py",
+      "bytes": 9359,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/implementation-B/D16-reader-review-preimages-v1/project_saved_mechanism_v3.py",
+      "sha256": "43c5275efbc7a4c596d386b7d50e6e30846acb1caf79fe7b1b0f282e76b95cb8"
+    },
+    {
+      "archive_path": "implementation-B/D16-reader-review-preimages-v1/project_saved_mechanism_v3.py-to-project_saved_mechanism_v4.py.patch",
+      "bytes": 1689,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/implementation-B/D16-reader-review-preimages-v1/project_saved_mechanism_v3.py-to-project_saved_mechanism_v4.py.patch",
+      "sha256": "beb4e7c3fb67394d48b874093aabe6896682790d5a8e918fc5c25be0d2b6b9fe"
+    },
+    {
+      "archive_path": "implementation-B/D16-reader-review-preimages-v1/project_saved_mechanism_v4.py",
+      "bytes": 9353,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/implementation-B/D16-reader-review-preimages-v1/project_saved_mechanism_v4.py",
+      "sha256": "d7edae0bf9daa6be48213cee728cc009b22b2a971a38939baf25ad40e1414b2b"
+    },
+    {
+      "archive_path": "implementation-B/D16-reader-review-preimages-v1/template-v2-to-v3.patch",
+      "bytes": 11038,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/implementation-B/D16-reader-review-preimages-v1/template-v2-to-v3.patch",
+      "sha256": "85d3b65b985792ced200df5fffdf0c059e7c953c3777c7a41e90ded941fb7582"
+    },
+    {
+      "archive_path": "implementation-B/diagnostic-population-v1.json",
+      "bytes": 2355,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/implementation-B/diagnostic-population-v1.json",
+      "sha256": "a076908eced9e966c59e6f72c51eaf23ef1cb0a351497ce0bbe8e12dd27128bb"
+    },
+    {
+      "archive_path": "implementation-B/handoff-v1.json",
+      "bytes": 5096,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/implementation-B/handoff-v1.json",
+      "sha256": "522f6d12c1603810c417544486714cfe9da8fbc6ee675f46f956b7d81eeebde0"
+    },
+    {
+      "archive_path": "implementation-B/handoff-v2.json",
+      "bytes": 6284,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/implementation-B/handoff-v2.json",
+      "sha256": "d7e297c8721ff0b672886b6ec60d37c7c4bdebb5e1736503a25a396475741294"
+    },
+    {
+      "archive_path": "implementation-B/manifest-v1.json",
+      "bytes": 4727,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/implementation-B/manifest-v1.json",
+      "sha256": "774fcec80c14c9fb70a519e9ee6d621619a7e062f2f23218159bed30777f0031"
+    },
+    {
+      "archive_path": "implementation-B/manifest-v2.json",
+      "bytes": 7010,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/implementation-B/manifest-v2.json",
+      "sha256": "f51f4c5a2a3ad36203c86be04b0f82d79b20aa0a4107b2ee3e6e2d99db92f7e3"
+    },
+    {
+      "archive_path": "implementation-B/manual-conformance-v1.json",
+      "bytes": 6844,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/implementation-B/manual-conformance-v1.json",
+      "sha256": "305545b0753b3d5b9c911dd0f103540d139796f92c73a7a2c5a60a85a660ceda"
+    },
+    {
+      "archive_path": "implementation-B/manual-conformance-v2.json",
+      "bytes": 7366,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/implementation-B/manual-conformance-v2.json",
+      "sha256": "4ee674bc267d8575b208742999784b12be42be1ee1b97a022e5f8c9f0a1eb1b9"
+    },
+    {
+      "archive_path": "implementation-B/metadata-correction-v1.json",
+      "bytes": 1070,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/implementation-B/metadata-correction-v1.json",
+      "sha256": "e1121b9c03bbeb2a410030abb05ce1f7ba0426d75829890d00433b4169f2d0c0"
+    },
+    {
+      "archive_path": "implementation-B/predecessor-Sources-v1/abstention-policy-v1.json",
+      "bytes": 3141,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/implementation-B/predecessor-Sources-v1/abstention-policy-v1.json",
+      "sha256": "9c22ef40b0d63af01bc2a5382008b144be34dd03d29c1dac8aa4d7f6fc0922ea"
+    },
+    {
+      "archive_path": "implementation-B/predecessor-Sources-v1/ordering-policy-v1.json",
+      "bytes": 4841,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/implementation-B/predecessor-Sources-v1/ordering-policy-v1.json",
+      "sha256": "57ee2d9d253fd8d6cb30c54a2c8bdfda8ce76be99d02b019390cd7948f5025db"
+    },
+    {
+      "archive_path": "implementation-B/predecessor-Sources-v1/point-ordering-policy-v1.json",
+      "bytes": 3673,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/implementation-B/predecessor-Sources-v1/point-ordering-policy-v1.json",
+      "sha256": "e371edf8ff17d201ffb9dd880cb66c80ce493e74d58f71cac72478d917f61882"
+    },
+    {
+      "archive_path": "implementation-B/predecessor-Sources-v1/proof_search_pilot_v13.py",
+      "bytes": 110576,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/implementation-B/predecessor-Sources-v1/proof_search_pilot_v13.py",
+      "sha256": "43f34c5dde8ae92372e9b65e95808e7074059c325bffc28436c09f970266d7ce"
+    },
+    {
+      "archive_path": "implementation-B/principal_receptor_families_v1.py",
+      "bytes": 18159,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/implementation-B/principal_receptor_families_v1.py",
+      "sha256": "ac6ed929bc5ce3ef53a4a8710a113194176dadd9538db47ecdd34b57d1ac7332"
+    },
+    {
+      "archive_path": "implementation-B/proof-search-v13-to-v14.patch",
+      "bytes": 32941,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/implementation-B/proof-search-v13-to-v14.patch",
+      "sha256": "0c13580b0e0b953bc4ea6d930f22d63b25cccef6cfaef83ffc904fe6419161c7"
+    },
+    {
+      "archive_path": "implementation-B/proof_search_pilot_v14.py",
+      "bytes": 128103,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/implementation-B/proof_search_pilot_v14.py",
+      "sha256": "40c4d75de096cd0dbe94fc7bceed83ad3eb829eb15d161aaf82f5de560a1e721"
+    },
+    {
+      "archive_path": "implementation-B/typed-passive-reader-Source-and-data-review-v1.json",
+      "bytes": 13417,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/implementation-B/typed-passive-reader-Source-and-data-review-v1.json",
+      "sha256": "0d5987e95c6ec96528e92a8c06311ca69da3f151a60c9dcbe2a515804b64b294"
+    },
+    {
+      "archive_path": "implementation-B/typed-passive-reader-Source-and-data-review-v2.json",
+      "bytes": 3692,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/implementation-B/typed-passive-reader-Source-and-data-review-v2.json",
+      "sha256": "9e5e964bf360dbb7d68e81dc9b51a709cfb4b0ee4fdc7e2a0ecc4bf161302340"
+    },
+    {
+      "archive_path": "publication/package_evidence_v1.py",
+      "bytes": 4563,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/publication/package_evidence_v1.py",
+      "sha256": "898ae9a6e355cd665f03697671050a051abc1e13f9d8d0082957a3ca798de2cd"
+    },
+    {
+      "archive_path": "publication/principal-receptors-data-v2.json",
+      "bytes": 120825,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/publication/principal-receptors-data-v2.json",
+      "sha256": "865a659d33c84e3ccefebf5b97564ae3124b9407cf804be94451410cda62473c"
+    },
+    {
+      "archive_path": "publication/principal-receptors-data-v3.json",
+      "bytes": 123021,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/publication/principal-receptors-data-v3.json",
+      "sha256": "fadb678fc1efd1b72fa5ac564f2a623e42eaaafd08ce0b82a015e1b0b8ba204e"
+    },
+    {
+      "archive_path": "publication/principal-receptors-data-v4.json",
+      "bytes": 123015,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/publication/principal-receptors-data-v4.json",
+      "sha256": "af167b02a72b1cc495c5ff20cb6211c8829853080d2aa12d1d86ea46e42d3adb"
+    },
+    {
+      "archive_path": "publication/principal-receptors-data-v5.json",
+      "bytes": 123330,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/publication/principal-receptors-data-v5.json",
+      "sha256": "84e202a8b7be941a194fa246d9ef95e951015a26a95488df2b57c5fdd5981b80"
+    },
+    {
+      "archive_path": "publication/principal-receptors-data.json",
+      "bytes": 96365,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/publication/principal-receptors-data.json",
+      "sha256": "7fc9b1218030d923bc7412fdaaa9ef12b7046a007885ee9c46cff1eaf3cf6001"
+    },
+    {
+      "archive_path": "publication/principal-receptors-template-v1.html",
+      "bytes": 12742,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/publication/principal-receptors-template-v1.html",
+      "sha256": "2fb007fd04d4c5be31de8f74b8ea7fe28997d2f2a46bd0cbdd7fb44696ab752e"
+    },
+    {
+      "archive_path": "publication/principal-receptors-template-v2.html",
+      "bytes": 12911,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/publication/principal-receptors-template-v2.html",
+      "sha256": "bec813b4ca3f91a51f0b6e35f7c1717de7827dae47aad5bab3f1306a722695db"
+    },
+    {
+      "archive_path": "publication/principal-receptors-template-v3.html",
+      "bytes": 13244,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/publication/principal-receptors-template-v3.html",
+      "sha256": "4d1809d7072c202f40e5ef2a02b371f38f6b03e8082db2692d4c961f0aa95617"
+    },
+    {
+      "archive_path": "publication/project_saved_mechanism_v1.py",
+      "bytes": 8030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/publication/project_saved_mechanism_v1.py",
+      "sha256": "658db5773ae0624b3a143b0677cf77bb265eed7cf44a393955bbce0cb3ce04db"
+    },
+    {
+      "archive_path": "publication/project_saved_mechanism_v2.py",
+      "bytes": 9156,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/publication/project_saved_mechanism_v2.py",
+      "sha256": "80447bfe25db44cb194413e8da3c9373df258932355b2df89df1634c7049c8aa"
+    },
+    {
+      "archive_path": "publication/project_saved_mechanism_v3.py",
+      "bytes": 9359,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/publication/project_saved_mechanism_v3.py",
+      "sha256": "43c5275efbc7a4c596d386b7d50e6e30846acb1caf79fe7b1b0f282e76b95cb8"
+    },
+    {
+      "archive_path": "publication/project_saved_mechanism_v4.py",
+      "bytes": 9353,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/publication/project_saved_mechanism_v4.py",
+      "sha256": "d7edae0bf9daa6be48213cee728cc009b22b2a971a38939baf25ad40e1414b2b"
+    },
+    {
+      "archive_path": "publication/project_saved_mechanism_v5.py",
+      "bytes": 10015,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/publication/project_saved_mechanism_v5.py",
+      "sha256": "4120ff0689f044a4c11536b374dc085f1c06918fdac0b3a67976df64b50ace42"
+    },
+    {
+      "archive_path": "review-C/B-draft-capture-ac6ed929.py",
+      "bytes": 18159,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/review-C/B-draft-capture-ac6ed929.py",
+      "sha256": "ac6ed929bc5ce3ef53a4a8710a113194176dadd9538db47ecdd34b57d1ac7332"
+    },
+    {
+      "archive_path": "review-C/audit_complete_mechanism_saved_v1.py",
+      "bytes": 42591,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/review-C/audit_complete_mechanism_saved_v1.py",
+      "sha256": "e924d5fc36e846f2533e952aee0567110194ca23836ca90dd798601a3b20b921"
+    },
+    {
+      "archive_path": "review-C/audit_complete_mechanism_saved_v2.py",
+      "bytes": 43108,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/review-C/audit_complete_mechanism_saved_v2.py",
+      "sha256": "b0b9f5f352d78b833bc573b76fe28c1176fde1507937a9bc3491fa9448e57e68"
+    },
+    {
+      "archive_path": "review-C/author-root-reviews-negative-preimage-v1.py",
+      "bytes": 7914,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/review-C/author-root-reviews-negative-preimage-v1.py",
+      "sha256": "700bce2c2ab34b5162993373fc39a305cb28ca186a149a3c55cdf30670176976"
+    },
+    {
+      "archive_path": "review-C/author_mechanism_whole_review_v1.py",
+      "bytes": 15159,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/review-C/author_mechanism_whole_review_v1.py",
+      "sha256": "e6d9a7120558e6e367c0529f64abb10369263af0357d78e4b37810892a25dfcf"
+    },
+    {
+      "archive_path": "review-C/author_principal_theory_packet_v1.py",
+      "bytes": 21949,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/review-C/author_principal_theory_packet_v1.py",
+      "sha256": "ab465d40a4cb41e7ca63b1926be1ce3697f0cf16e1e6a1c8a8f5ac56ca1bcd43"
+    },
+    {
+      "archive_path": "review-C/author_root_mechanism_Source_reviews_v1.py",
+      "bytes": 8441,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/review-C/author_root_mechanism_Source_reviews_v1.py",
+      "sha256": "88b1fba030a24d5457be9355ea1c1b61d24bce74e64e34d664ea001d8be14b17"
+    },
+    {
+      "archive_path": "review-C/passive-audit-author-draft-v2.json",
+      "bytes": 180639,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/review-C/passive-audit-author-draft-v2.json",
+      "sha256": "f8fa7b61739a801d8b6e5fd5990f3d3902214ce92bf7f78cb7d348b8cb0ea209"
+    },
+    {
+      "archive_path": "review-C/principal-family-control-bank-v1.json",
+      "bytes": 11703,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/review-C/principal-family-control-bank-v1.json",
+      "sha256": "b013dca1c2e14ce8823ad63cda56529021ff0b62e446d284a491e4b2d13cf05d"
+    },
+    {
+      "archive_path": "review-C/principal-family-reference-API-v1.json",
+      "bytes": 3867,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/review-C/principal-family-reference-API-v1.json",
+      "sha256": "343ab4502f70d734124976a58d2d3a15efc4f06fc1754dab7278b1728ec8e1c3"
+    },
+    {
+      "archive_path": "review-C/principal-family-reference-static-audit-v1.json",
+      "bytes": 924,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/review-C/principal-family-reference-static-audit-v1.json",
+      "sha256": "06088cdad6744b3aedf1de59215852a176dad9f4a1138a88b05b8e5cf7ec1612"
+    },
+    {
+      "archive_path": "review-C/principal-family-soundness-theory-v1.json",
+      "bytes": 17432,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/review-C/principal-family-soundness-theory-v1.json",
+      "sha256": "40c1f27fc910705193a3991f1276582698a2ab228f741d6b3abbd2a482bf9f1c"
+    },
+    {
+      "archive_path": "review-C/principal-family-theory-controls-handoff-v1.json",
+      "bytes": 2095,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/review-C/principal-family-theory-controls-handoff-v1.json",
+      "sha256": "c7d99ddc4e2ee1902919250424e4a75b781625860bdefe39194b5cd208976c00"
+    },
+    {
+      "archive_path": "review-C/principal_family_reference_v1.py",
+      "bytes": 26907,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/review-C/principal_family_reference_v1.py",
+      "sha256": "f61ca4d19ae58e4f90487aa52ee65fe0359fbd1981aed8160d4547e151a02607"
+    },
+    {
+      "archive_path": "review-C/root-source-review-author-negative-v1.json",
+      "bytes": 637,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/review-C/root-source-review-author-negative-v1.json",
+      "sha256": "efbeb70378f0613921601cff62e5822518623fc6911cb86b64d2c5b899a0466c"
+    },
+    {
+      "archive_path": "review-C/typed-mechanism-worker-corpus-Source-review-v1.json",
+      "bytes": 4141,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/review-C/typed-mechanism-worker-corpus-Source-review-v1.json",
+      "sha256": "6b3584b4ac470b238055ddab2ecacd11cbd2e9b516943571c09c3abb891526f4"
+    },
+    {
+      "archive_path": "review-C/typed-principal-mechanism-actual-scientific-review-v1.json",
+      "bytes": 82480,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/review-C/typed-principal-mechanism-actual-scientific-review-v1.json",
+      "sha256": "5d3ae10fb06406a02a9e261b73fc40e9f37d66029324f0ac0d5e44196b3ac954"
+    },
+    {
+      "archive_path": "review-C/typed-principal-mechanism-actual-scientific-review-v2.json",
+      "bytes": 182828,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/review-C/typed-principal-mechanism-actual-scientific-review-v2.json",
+      "sha256": "0e2700b655859ad2d63d4ea95b247fdfbaa68436fa85d190b84cbc2ef3b01164"
+    },
+    {
+      "archive_path": "review-C/typed-principal-mechanism-whole-Source-plan-review-v1.json",
+      "bytes": 85984,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/review-C/typed-principal-mechanism-whole-Source-plan-review-v1.json",
+      "sha256": "25849b2a4c150c83343e6a5e71edfe3b5e4e78a90403c130d7cb7a8db15e8974"
+    },
+    {
+      "archive_path": "review-C/typed-word-subtree-encoding-Source-negative-v1.json",
+      "bytes": 1936,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/review-C/typed-word-subtree-encoding-Source-negative-v1.json",
+      "sha256": "85388daf3cfdcde1a0ce5b4c2533f4737a67309ebdcb42e40d56d5ab518aaab8"
+    },
+    {
+      "archive_path": "review-C/typed-word-subtree-encoding-Source-review-v3.json",
+      "bytes": 4014,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/review-C/typed-word-subtree-encoding-Source-review-v3.json",
+      "sha256": "ee2bffeb5c172740e0266d761099ebe36b1a7258e9a28c32ab6c7b8218ea9ad0"
+    },
+    {
+      "archive_path": "review-C/word-reference-v2-negative-raw.py",
+      "bytes": 40468,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/review-C/word-reference-v2-negative-raw.py",
+      "sha256": "994d95356261bc38a433c1142f603b8985c8b46e850aee9521a7932451aeea00"
+    },
+    {
+      "archive_path": "root/Root-baseline-and-direction-v1.json",
+      "bytes": 2041,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/root/Root-baseline-and-direction-v1.json",
+      "sha256": "0d65668b64e5e354ec8f8ce48688456a555a814efb43256022cadafadde38a61"
+    },
+    {
+      "archive_path": "root/Root-scientific-milestone-v1.json",
+      "bytes": 3732,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/root/Root-scientific-milestone-v1.json",
+      "sha256": "5317a9e346d29bcc5295e32656fff405f829abe6677ca6a47da5fa60e9b9b6f7"
+    },
+    {
+      "archive_path": "root/Root-static-raw-Source-preflight-v1.json",
+      "bytes": 16465,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/root/Root-static-raw-Source-preflight-v1.json",
+      "sha256": "b177397a75509f57762a5505c1da31d1de2ee2e9cd7c9656443189baa90bd3a8"
+    },
+    {
+      "archive_path": "root/grant-mechanism-0-v1.json",
+      "bytes": 1021,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/root/grant-mechanism-0-v1.json",
+      "sha256": "c069963504ccd43d94f001dc91e646e42d4b540a0bc722b51ee12f96ffe53101"
+    },
+    {
+      "archive_path": "root/inherited-runtime-raw-copy-v1.json",
+      "bytes": 15929,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/root/inherited-runtime-raw-copy-v1.json",
+      "sha256": "0a6fe2c78edd1350e56642eef6594aaa1302c10509481a4611341ed67239a6cb"
+    },
+    {
+      "archive_path": "root/local-reader-QA-v1.json",
+      "bytes": 4809,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/root/local-reader-QA-v1.json",
+      "sha256": "d1bca02f239b70c5873122e0f84f5c2d9ea3c1c4adb24ba029e019ed021c1444"
+    },
+    {
+      "archive_path": "root/mechanism_worker_v1.py",
+      "bytes": 12637,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/root/mechanism_worker_v1.py",
+      "sha256": "6ec57d3cde59669ecf6110241fc40c491009b70b08ab9136bfc807af9d4e924b"
+    },
+    {
+      "archive_path": "root/observe_mechanism_once_v1.py",
+      "bytes": 10113,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/root/observe_mechanism_once_v1.py",
+      "sha256": "24804c7d4558d8df511942d9e6b2e4d8d2cfd88ce7df6f5b5f775f87d0c20ca9"
+    },
+    {
+      "archive_path": "root/plan-mechanism-0-v1.json",
+      "bytes": 29956,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/root/plan-mechanism-0-v1.json",
+      "sha256": "665d35945fda003128774fc1a75f9f8fb3ea2cfcb72465b1313127ffa913c93e"
+    },
+    {
+      "archive_path": "root/protocol-v1.json",
+      "bytes": 5433,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/root/protocol-v1.json",
+      "sha256": "45f1943a285e28e47ce31808b42df14ab4005c64b0bb8a510c6354954f6c6d2a"
+    },
+    {
+      "archive_path": "root/protocol-v2.json",
+      "bytes": 5848,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/root/protocol-v2.json",
+      "sha256": "36136e3c7fdaa824e371eddd56e7fc4346cdc5300f12da7043546c5815933a27"
+    },
+    {
+      "archive_path": "root/publisher-preparation-v1.json",
+      "bytes": 543,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/root/publisher-preparation-v1.json",
+      "sha256": "ea3eec03c53a64f70606374394b8b09e66657dbbcef77de686c2d176ba409de1"
+    },
+    {
+      "archive_path": "root/run_mechanism_once_v1.py",
+      "bytes": 12973,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/root/run_mechanism_once_v1.py",
+      "sha256": "98c55321bb87a8c04b2c6d56b357aba9c3a8f5fc98660474ae3ac1c9d00b0aca"
+    },
+    {
+      "archive_path": "root/serial-barrier-v1.json",
+      "bytes": 1130,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/root/serial-barrier-v1.json",
+      "sha256": "30e6e221870973549200def057a67985756474f99583a89a073bb6ac7b5f6b74"
+    },
+    {
+      "archive_path": "root/tool-terminal-receipt-v1.json",
+      "bytes": 586,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/root/tool-terminal-receipt-v1.json",
+      "sha256": "0a40242bdf84e3b5656e5ee4ef37197f4d29253d45e5c3110a7474d85c8f0e6f"
+    },
+    {
+      "archive_path": "root/word_point_reference_verifier_v2.py",
+      "bytes": 40468,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/root/word_point_reference_verifier_v2.py",
+      "sha256": "994d95356261bc38a433c1142f603b8985c8b46e850aee9521a7932451aeea00"
+    },
+    {
+      "archive_path": "root/word_point_reference_verifier_v3.py",
+      "bytes": 41899,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/root/word_point_reference_verifier_v3.py",
+      "sha256": "9c95d8722b9d3715c32de63cbec74f548eb63d878c82920b46dfe43e43522de4"
+    },
+    {
+      "archive_path": "runtime/bounded_request_oracle.py",
+      "bytes": 20424,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/runtime/bounded_request_oracle.py",
+      "sha256": "606e790f4ba3ecc976877cbe52ccfd64519262f2ea07214c80d989f58e4f7637"
+    },
+    {
+      "archive_path": "runtime/certificate_boundary_search.py",
+      "bytes": 7089,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/runtime/certificate_boundary_search.py",
+      "sha256": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a"
+    },
+    {
+      "archive_path": "runtime/compact_point_model_v1.py",
+      "bytes": 18396,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/runtime/compact_point_model_v1.py",
+      "sha256": "a0d91692f50ab196013177669f8808f624c197ce5e3c1051ab0146a9c1616368"
+    },
+    {
+      "archive_path": "runtime/compact_reference_verifier_v1.py",
+      "bytes": 30365,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/runtime/compact_reference_verifier_v1.py",
+      "sha256": "c4b5f719014245acb2a8e05a7375b2c2fa44e27a8a748777d5b559f83eea687f"
+    },
+    {
+      "archive_path": "runtime/graph_copy_reference_v1.py",
+      "bytes": 27925,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/runtime/graph_copy_reference_v1.py",
+      "sha256": "8712a15aeb1308e3dd9b5e6a122513525e4b8ad8ed4c8f6d7d556d5f4cb0ac8c"
+    },
+    {
+      "archive_path": "runtime/interned_quantified_family_points_v1.py",
+      "bytes": 4311,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/runtime/interned_quantified_family_points_v1.py",
+      "sha256": "fb37663b4c0c3de4e9f3c28564678af833857f7ebe761cd83275d62f123b9a8e"
+    },
+    {
+      "archive_path": "runtime/interned_result_reader_v2.py",
+      "bytes": 4705,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/runtime/interned_result_reader_v2.py",
+      "sha256": "cd06c8372b6edd05774cf5974c5b6265bbc196afdc68d47507e54a2044dec836"
+    },
+    {
+      "archive_path": "runtime/learned_cluster_selector_v1.py",
+      "bytes": 10705,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/runtime/learned_cluster_selector_v1.py",
+      "sha256": "8b197307690599dab9afd4a88752bb82c6fb08cf49f13fff71c1f62dc0b7d181"
+    },
+    {
+      "archive_path": "runtime/logic.py",
+      "bytes": 10808,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/runtime/logic.py",
+      "sha256": "5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011"
+    },
+    {
+      "archive_path": "runtime/mechanism_corpus_contract_v1.py",
+      "bytes": 11608,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/runtime/mechanism_corpus_contract_v1.py",
+      "sha256": "8c14e13bc539acdab3c24ad367949e4cbe5477bf661f850bdaba78a387a1f9c9"
+    },
+    {
+      "archive_path": "runtime/native_inference_inventory.py",
+      "bytes": 10594,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/runtime/native_inference_inventory.py",
+      "sha256": "89979f6be8f422ea293c2f0b6c0e966fc9a0710a8e15cbe58437f868cbf75091"
+    },
+    {
+      "archive_path": "runtime/native_inventory_policy.py",
+      "bytes": 2746,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/runtime/native_inventory_policy.py",
+      "sha256": "8721a361f4a97e5311f8ed944431d49d08592ed102f50ed333d1ad2b9ff01591"
+    },
+    {
+      "archive_path": "runtime/native_receptor_points.py",
+      "bytes": 8962,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/runtime/native_receptor_points.py",
+      "sha256": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888"
+    },
+    {
+      "archive_path": "runtime/principal_family_reference_v1.py",
+      "bytes": 26907,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/runtime/principal_family_reference_v1.py",
+      "sha256": "f61ca4d19ae58e4f90487aa52ee65fe0359fbd1981aed8160d4547e151a02607"
+    },
+    {
+      "archive_path": "runtime/principal_receptor_families_v1.py",
+      "bytes": 18159,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/runtime/principal_receptor_families_v1.py",
+      "sha256": "ac6ed929bc5ce3ef53a4a8710a113194176dadd9538db47ecdd34b57d1ac7332"
+    },
+    {
+      "archive_path": "runtime/proof_boundary.py",
+      "bytes": 6992,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/runtime/proof_boundary.py",
+      "sha256": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f"
+    },
+    {
+      "archive_path": "runtime/quantified_family_points_v2.py",
+      "bytes": 6472,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/runtime/quantified_family_points_v2.py",
+      "sha256": "f65eb38269db74ff5db0d9eb2096a38d7f07bbd6a579aa564acc692f84e4437c"
+    },
+    {
+      "archive_path": "runtime/quantified_receptors_v1.py",
+      "bytes": 11060,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/runtime/quantified_receptors_v1.py",
+      "sha256": "d1c4afa10d58abbcf473cb3da8ee8768c974dd05d03ea00b988d574b2441af5a"
+    },
+    {
+      "archive_path": "runtime/quantified_symbolic_control_v2.py",
+      "bytes": 26238,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/runtime/quantified_symbolic_control_v2.py",
+      "sha256": "740319d243cc2fd2eefe1d7ef1611d8bcfe6f0ff70a2ce2ed72771e78f64a391"
+    },
+    {
+      "archive_path": "runtime/receptor_support_ordering_v1.py",
+      "bytes": 16868,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/runtime/receptor_support_ordering_v1.py",
+      "sha256": "18cf90ebd75d746db3eb251eaffa92cd6a25432b70f34653b57f3d58ef5d8adc"
+    },
+    {
+      "archive_path": "runtime/selector_corpus_contract_v1.py",
+      "bytes": 24112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/runtime/selector_corpus_contract_v1.py",
+      "sha256": "89d3da66c126acfea845fb0e51968235dcd6f8f6e3e73c5cba2bfa3e36f7927e"
+    },
+    {
+      "archive_path": "runtime/selector_numeric_controls_v1.py",
+      "bytes": 9830,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/runtime/selector_numeric_controls_v1.py",
+      "sha256": "e70c237098b33cf60410d984686395ca3b79572596db2eb6584c381dc4b5557d"
+    },
+    {
+      "archive_path": "runtime/semantic_inventory_guidance.py",
+      "bytes": 6942,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/runtime/semantic_inventory_guidance.py",
+      "sha256": "744948b67e2870ae24737469aceb920624b59d616e8a48f91b99d39f56c14a79"
+    },
+    {
+      "archive_path": "runtime/semantic_inventory_oracle.py",
+      "bytes": 2180,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/runtime/semantic_inventory_oracle.py",
+      "sha256": "f41bfd56829b89b015fcf7a4dbd41dabd36110156e345353059980a66f6a4400"
+    },
+    {
+      "archive_path": "runtime/semantic_inventory_search_v2.py",
+      "bytes": 15936,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/runtime/semantic_inventory_search_v2.py",
+      "sha256": "35443c958f2115efa18cc923fb4a4f1070e6e03ccf1d1adf2bb56ce1f7bab28b"
+    },
+    {
+      "archive_path": "runtime/semantic_lemma_inventory.py",
+      "bytes": 7196,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/runtime/semantic_lemma_inventory.py",
+      "sha256": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad"
+    },
+    {
+      "archive_path": "runtime/semantic_point_smt.py",
+      "bytes": 4593,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/runtime/semantic_point_smt.py",
+      "sha256": "6bcb3fb60529f6888836a1ca0c613b772cea192c9549620f968dbdf7cb9be74a"
+    },
+    {
+      "archive_path": "runtime/semantic_receiver_driver.py",
+      "bytes": 53725,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/runtime/semantic_receiver_driver.py",
+      "sha256": "5f73835dfc9219f06f01206ebf6bbac5744eea582cbfb03deed42105f2ccacd0"
+    },
+    {
+      "archive_path": "runtime/semantic_receptor_points.py",
+      "bytes": 7409,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/runtime/semantic_receptor_points.py",
+      "sha256": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207"
+    },
+    {
+      "archive_path": "runtime/tape_binary.py",
+      "bytes": 3756,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/runtime/tape_binary.py",
+      "sha256": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247"
+    },
+    {
+      "archive_path": "runtime/tape_tree_machine.py",
+      "bytes": 19188,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/runtime/tape_tree_machine.py",
+      "sha256": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f"
+    },
+    {
+      "archive_path": "runtime/tree_machine.py",
+      "bytes": 13290,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/runtime/tree_machine.py",
+      "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257"
+    },
+    {
+      "archive_path": "runtime/turtle.py",
+      "bytes": 29244,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/runtime/turtle.py",
+      "sha256": "67cf41b84d05645bbd384682baad1fc2c1a8c2f4ff1418c9577f4c139891fc0f"
+    },
+    {
+      "archive_path": "runtime/word_point_model_v1.py",
+      "bytes": 17663,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/runtime/word_point_model_v1.py",
+      "sha256": "4acf64cde5aa12966688cbd41c6918ba6604931483518ed5a5dc938d661b262a"
+    },
+    {
+      "archive_path": "runtime/word_point_reference_verifier_v1.py",
+      "bytes": 35387,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/runtime/word_point_reference_verifier_v1.py",
+      "sha256": "3acf80c6d40acaa277ed9a51eb33d1959c25ec23c6300ce5f144c9c670e229da"
+    },
+    {
+      "archive_path": "runtime/word_point_reference_verifier_v3.py",
+      "bytes": 41899,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-principal-receptor-families-20261021/runtime/word_point_reference_verifier_v3.py",
+      "sha256": "9c95d8722b9d3715c32de63cbec74f548eb63d878c82920b46dfe43e43522de4"
+    },
+    {
+      "archive_path": "reference-masters/primary-master.md",
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    {
+      "archive_path": "reference-masters/publisher-master.md",
+      "bytes": 36240,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/basic-tiling-algorithm.md",
+      "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+    },
+    {
+      "archive_path": "fixed-native/boundary-oracle-v2",
+      "bytes": 41808,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/implementation-B/recovered/and-support/Native-runtime/boundary-oracle-v2",
+      "sha256": "2b6bf8bb09a4e03d0cb1b4595dea1fe6d4432aa93d8f7eed72c30077fd9941a4"
+    },
+    {
+      "archive_path": "fixed-native/boundary_oracle.cpp",
+      "bytes": 3547,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/implementation-B/recovered/and-support/Native-runtime/boundary_oracle.cpp",
+      "sha256": "f0965f08fc9e8272d0fdd1ab3233c3a308267a4fc3b2e1a928c39dbeaaec31be"
+    },
+    {
+      "archive_path": "fixed-native/proof-boundary-001.json",
+      "bytes": 1494417,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/implementation-B/recovered/and-support/fixed-native-inputs/proof-boundary-001.json",
+      "sha256": "977ceac5504ad3d712c7fa2d46d20494b42e30820f77eb2bffbeea313d07ee54"
+    },
+    {
+      "archive_path": "fixed-native/proof-boundary-microcode-001.json.gz",
+      "bytes": 1114802,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/implementation-B/recovered/and-support/fixed-native-inputs/proof-boundary-microcode-001.json.gz",
+      "sha256": "23e2b54cc8365fa42f05148885dc7da671f525f8cb24b154f5c69aeeb3180336"
+    },
+    {
+      "archive_path": "provenance/previous-entry-v13.py",
+      "bytes": 110576,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-learned-selector-proof-pilot-20261020/implementation-B/proof_search_pilot_v13.py",
+      "sha256": "43f34c5dde8ae92372e9b65e95808e7074059c325bffc28436c09f970266d7ce"
+    },
+    {
+      "archive_path": "provenance/previous-final-milestone.json",
+      "bytes": 7708,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-learned-selector-proof-pilot-20261020/root/Root-final-milestone-v1.json",
+      "sha256": "be1d4715ecd447cb7a5e55a1dfacd53daf694c0b3fa6e2481c265c5c5d67df24"
+    }
+  ],
+  "omitted_runtime": [
+    {
+      "bytes": 18058560,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+      "reason": "Pinned interpreter identity only; runtime executable not redistributed.",
+      "sha256": "b6ea0c2a9bfce48dbf181a53f1ca4f0562d40658b85bf47258e2a88d8f9e3933"
+    }
+  ],
+  "partial_files_parsed": false,
+  "regular_files": 153,
+  "schema": "D16-complete-raw-evidence-snapshot-v1",
+  "scope": "Exact current research Sources, fixed runtime copies, controls, complete actual/custody/review files and display drafts. No scientific function is imported or executed. Previous entry/milestone are provenance only; no old proof/library/policy adopted. Later publication receipts remain outside this closed snapshot.",
+  "snapshot_manifest_bytes": 56520,
+  "snapshot_manifest_sha256": "b2b6c393297658d42bf8a5e8f7b794304b7d52ea6cae93fff89e6679c4bc5bc2",
+  "uncompressed_source_bytes": 15849047
+}
