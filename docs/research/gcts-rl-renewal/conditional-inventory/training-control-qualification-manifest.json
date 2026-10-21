@@ -1,0 +1,1031 @@
+{
+  "Native_queries": 0,
+  "actual_count": 1,
+  "all_members_raw_verified": true,
+  "archive": {
+    "bytes": 1769505,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/publication/training-control-qualification-evidence.zip",
+    "sha256": "6e149d9cc8785a26b30e1ef3ad4c28394ef2d31a23818bd23625040cacbf53c7"
+  },
+  "denominators": {
+    "independent_graph_cases": 17,
+    "inherited_diagnostic_carrier": true,
+    "train_applicable_rows": 305,
+    "unexpected_first_fault_cases": 2
+  },
+  "embedded_snapshot": {
+    "bytes": 55725,
+    "sha256": "5ba5c2f3caa54e7f32c0fb1f6e704aa30dc2f60cfb584a01fc5ee7f14f4a9ed2"
+  },
+  "export": null,
+  "files": [
+    {
+      "archive_path": "actual/qualify-controls-0.observer/observer.json",
+      "bytes": 1484,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/actual/qualify-controls-0.observer/observer.json",
+      "role": "external_observer",
+      "sha256": "76eaddec1e7c8aea4b8248884d51d4be0f26a9579c4c5afbcc9965d2bcdebe89"
+    },
+    {
+      "archive_path": "actual/qualify-controls-0.observer/stderr.bin",
+      "bytes": 0,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/actual/qualify-controls-0.observer/stderr.bin",
+      "role": "complete_actual_census",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_path": "actual/qualify-controls-0.observer/stdout.bin",
+      "bytes": 1780,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/actual/qualify-controls-0.observer/stdout.bin",
+      "role": "complete_actual_census",
+      "sha256": "6b8dfffbc63cc51bf4956b57985096a9f0ad24168b92b508e0b72623ea20ee29"
+    },
+    {
+      "archive_path": "actual/qualify-controls-0/CONSUMED.json",
+      "bytes": 255,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/actual/qualify-controls-0/CONSUMED.json",
+      "role": "complete_actual_census",
+      "sha256": "e1e7a63e768974f9abc5535f01c914758d5e41f30f5d64c59866fdb115906daf"
+    },
+    {
+      "archive_path": "actual/qualify-controls-0/owned-child.json",
+      "bytes": 232,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/actual/qualify-controls-0/owned-child.json",
+      "role": "complete_actual_census",
+      "sha256": "ccb544fcef2c3b506f945b269d449c39af828fb76d5eaa053069137f45c11379"
+    },
+    {
+      "archive_path": "actual/qualify-controls-0/result.json",
+      "bytes": 477405,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/actual/qualify-controls-0/result.json",
+      "role": "qualification_result",
+      "sha256": "3c40d411e9a73b59b10c11649e9da2ab7955ab8474108f257e7727bcf6d4f358"
+    },
+    {
+      "archive_path": "actual/qualify-controls-0/stderr.bin",
+      "bytes": 0,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/actual/qualify-controls-0/stderr.bin",
+      "role": "complete_actual_census",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_path": "actual/qualify-controls-0/stdout.bin",
+      "bytes": 107,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/actual/qualify-controls-0/stdout.bin",
+      "role": "complete_actual_census",
+      "sha256": "8ef3d00227c431e341a32aa19239e11956c914e4cc08973e98504e418bc6cef7"
+    },
+    {
+      "archive_path": "actual/qualify-controls-0/terminal.json",
+      "bytes": 2004,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/actual/qualify-controls-0/terminal.json",
+      "role": "terminal_receipt",
+      "sha256": "fd1302cb663b12e32706e0d305e35bac564402f9ccdef60826824ab89a7def91"
+    },
+    {
+      "archive_path": "actual/qualify-controls-0/worker-header.json",
+      "bytes": 569,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/actual/qualify-controls-0/worker-header.json",
+      "role": "worker_header",
+      "sha256": "16114e6e1c044505961ccb5c8d867cebfd288701d10ec662abb27c62c5908d86"
+    },
+    {
+      "archive_path": "declared-provenance/boundary_oracle.cpp",
+      "bytes": 3547,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/implementation-B/recovered/and-support/Native-runtime/boundary_oracle.cpp",
+      "role": "guarded_Source_or_input",
+      "sha256": "f0965f08fc9e8272d0fdd1ab3233c3a308267a4fc3b2e1a928c39dbeaaec31be"
+    },
+    {
+      "archive_path": "declared-provenance/main-basic-tiling-algorithm.md",
+      "bytes": 21657,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "role": "guarded_Source_or_input",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    {
+      "archive_path": "declared-provenance/proof-boundary-001.json",
+      "bytes": 1494417,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/implementation-B/recovered/and-support/fixed-native-inputs/proof-boundary-001.json",
+      "role": "guarded_Source_or_input",
+      "sha256": "977ceac5504ad3d712c7fa2d46d20494b42e30820f77eb2bffbeea313d07ee54"
+    },
+    {
+      "archive_path": "declared-provenance/proof-boundary-microcode-001.json.gz",
+      "bytes": 1114802,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/implementation-B/recovered/and-support/fixed-native-inputs/proof-boundary-microcode-001.json.gz",
+      "role": "guarded_Source_or_input",
+      "sha256": "23e2b54cc8365fa42f05148885dc7da671f525f8cb24b154f5c69aeeb3180336"
+    },
+    {
+      "archive_path": "declared-provenance/publisher-basic-tiling-algorithm.md",
+      "bytes": 36240,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/basic-tiling-algorithm.md",
+      "role": "guarded_Source_or_input",
+      "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+    },
+    {
+      "archive_path": "diagnostics-L/API-v1.json",
+      "bytes": 3668,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/diagnostics-L/API-v1.json",
+      "role": "qualification_evidence",
+      "sha256": "91afb729e9fcc0cd15761a594eac904854e3854cfde9a9b46e9b552a6c1d767f"
+    },
+    {
+      "archive_path": "diagnostics-L/D19-v1-to-D20-v2.patch",
+      "bytes": 1064,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/diagnostics-L/D19-v1-to-D20-v2.patch",
+      "role": "qualification_evidence",
+      "sha256": "f0bb2d38db19a78fc86a0d32203b516daf75e188640cc0eeb06c07698e19f127"
+    },
+    {
+      "archive_path": "diagnostics-L/D20-v2-to-v3.patch",
+      "bytes": 887,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/diagnostics-L/D20-v2-to-v3.patch",
+      "role": "qualification_evidence",
+      "sha256": "4313cacfb7653ce94e4aa8eb8b5df746f9468122d493978cd60b6fd405d3fe30"
+    },
+    {
+      "archive_path": "diagnostics-L/all-31-control-expectation-audit-v1.json",
+      "bytes": 6505,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/diagnostics-L/all-31-control-expectation-audit-v1.json",
+      "role": "qualification_evidence",
+      "sha256": "4aa4df8c3170bdf979171671cb26f4e8888646a49eba9c46a13c61e78ac3bc64"
+    },
+    {
+      "archive_path": "diagnostics-L/conditional_selector_corpus_contract_v2.py",
+      "bytes": 40403,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/diagnostics-L/conditional_selector_corpus_contract_v2.py",
+      "role": "qualification_evidence",
+      "sha256": "b40e06a973bd7a09039ee8ccfc3f8012409b729dae2740ac075af88b574e0313"
+    },
+    {
+      "archive_path": "diagnostics-L/conditional_selector_corpus_contract_v3.py",
+      "bytes": 40459,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/diagnostics-L/conditional_selector_corpus_contract_v3.py",
+      "role": "qualification_evidence",
+      "sha256": "1eccce00363091e6fec8a4fc1d3c72fd70f4c19b620d3d5bd800c152b31feff5"
+    },
+    {
+      "archive_path": "diagnostics-L/handoff-v1.json",
+      "bytes": 5173,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/diagnostics-L/handoff-v1.json",
+      "role": "qualification_evidence",
+      "sha256": "cb49ad0e426d77d6520457a92823efce3c115f26d46cf03500dec4d2f333469c"
+    },
+    {
+      "archive_path": "diagnostics-L/independent-Horn-expected-bank-v1.json",
+      "bytes": 15431,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/diagnostics-L/independent-Horn-expected-bank-v1.json",
+      "role": "qualification_evidence",
+      "sha256": "914cc9a31ca9f22176087811b6ae4f768b622cc296031aec95cc0df0a6da44b2"
+    },
+    {
+      "archive_path": "diagnostics-L/manual-semantics-and-scope-v1.json",
+      "bytes": 4581,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/diagnostics-L/manual-semantics-and-scope-v1.json",
+      "role": "qualification_evidence",
+      "sha256": "9762180c3de885653b354603bb16593c76a8c31978247e1da5da51218246f657"
+    },
+    {
+      "archive_path": "diagnostics-L/phase-payload-relocation-assessment-v1.json",
+      "bytes": 6294,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/diagnostics-L/phase-payload-relocation-assessment-v1.json",
+      "role": "qualification_evidence",
+      "sha256": "7091f3c81846ccbed7591294544330e9f19cd04d3b58cf0d09e8b19150665f2a"
+    },
+    {
+      "archive_path": "diagnostics-L/project_training_control_qualification_v1.py",
+      "bytes": 17807,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/diagnostics-L/project_training_control_qualification_v1.py",
+      "role": "qualification_evidence",
+      "sha256": "9d4e89ed2168faaaa655f79c4b38722e0507b157af0cab5004f2efab40ac4eb0"
+    },
+    {
+      "archive_path": "diagnostics-L/qualification-projector-API-v1.json",
+      "bytes": 5730,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/diagnostics-L/qualification-projector-API-v1.json",
+      "role": "qualification_evidence",
+      "sha256": "4f6aaa21194a48fc868643a56e84470f5a19847a6f489515299649897d8b544e"
+    },
+    {
+      "archive_path": "diagnostics-L/qualification-projector-handoff-v1.json",
+      "bytes": 3009,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/diagnostics-L/qualification-projector-handoff-v1.json",
+      "role": "qualification_evidence",
+      "sha256": "5da77fd5334125c446aea408827afb9d76905c06d084a0c7b1904b618415fa03"
+    },
+    {
+      "archive_path": "diagnostics-L/qualification-projector-manual-v1.json",
+      "bytes": 4021,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/diagnostics-L/qualification-projector-manual-v1.json",
+      "role": "qualification_evidence",
+      "sha256": "1a9472f8faec4cc84186bcdd045c82030fa00a5914c05a214cc3023135755fe2"
+    },
+    {
+      "archive_path": "diagnostics-L/qualification-projector-static-v1.json",
+      "bytes": 1561,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/diagnostics-L/qualification-projector-static-v1.json",
+      "role": "qualification_evidence",
+      "sha256": "acead9d8f65a0929b979116d98e5c7ab5e2e6ba5db2bc36968aa1021d6900e41"
+    },
+    {
+      "archive_path": "diagnostics-L/qualification-reader-API-v1.json",
+      "bytes": 4448,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/diagnostics-L/qualification-reader-API-v1.json",
+      "role": "qualification_evidence",
+      "sha256": "46b0c8e31300fc29ba957e08b689ea33e898871ed61ebf4e0c8a26d4c829517e"
+    },
+    {
+      "archive_path": "diagnostics-L/qualification-reader-handoff-v1.json",
+      "bytes": 1931,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/diagnostics-L/qualification-reader-handoff-v1.json",
+      "role": "qualification_evidence",
+      "sha256": "a038a934df07061907f6a834d9e1bcc3c4a20ac962003c58f9e42dd17088f16d"
+    },
+    {
+      "archive_path": "diagnostics-L/qualification-reader-static-v1.json",
+      "bytes": 1614,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/diagnostics-L/qualification-reader-static-v1.json",
+      "role": "qualification_evidence",
+      "sha256": "42f362fd9ba7f271788d87b690dc2b73504632e45df6dc7b473786d31cc852ed"
+    },
+    {
+      "archive_path": "diagnostics-L/static-validation-v1.json",
+      "bytes": 2584,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/diagnostics-L/static-validation-v1.json",
+      "role": "qualification_evidence",
+      "sha256": "c6eff494bc2802fae52d2157743dc3dda9686bf6b71ad32bcec2b85c5bc6eaae"
+    },
+    {
+      "archive_path": "diagnostics-L/training-control-qualification-v2.html",
+      "bytes": 12769,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/diagnostics-L/training-control-qualification-v2.html",
+      "role": "qualification_evidence",
+      "sha256": "a9f58d3899f9dc6c2e2f53a1ce61a7a7e1f36dcae6fea1f329ef9aeeef9edabd"
+    },
+    {
+      "archive_path": "diagnostics-L/training-control-qualification.html",
+      "bytes": 12795,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/diagnostics-L/training-control-qualification.html",
+      "role": "qualification_evidence",
+      "sha256": "23995576fb21c4a1e33db9a1d3f5a3f076e57a5c649684cc07a38c1eb5fb8454"
+    },
+    {
+      "archive_path": "implementation-B/API-v1.json",
+      "bytes": 7488,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/implementation-B/API-v1.json",
+      "role": "qualification_evidence",
+      "sha256": "1e19ae1285615633f08d8001bb8368e5a5225221b5644bf8e6373db11aa57765"
+    },
+    {
+      "archive_path": "implementation-B/D19-v19-to-D20-qualification-v1.patch",
+      "bytes": 14990,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/implementation-B/D19-v19-to-D20-qualification-v1.patch",
+      "role": "qualification_evidence",
+      "sha256": "e87f9c7ce6aff1f17d9aa9bcfa50dd7a994e2b5d38a25667c23681cb8a4a210b"
+    },
+    {
+      "archive_path": "implementation-B/conditional_qualification_v1.py",
+      "bytes": 249103,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/implementation-B/conditional_qualification_v1.py",
+      "role": "guarded_Source_or_input",
+      "sha256": "7db1ede090bd911b1174982a23159a887947d43c222952051e16d7a9867a7404"
+    },
+    {
+      "archive_path": "implementation-B/handoff-v1.json",
+      "bytes": 3441,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/implementation-B/handoff-v1.json",
+      "role": "qualification_evidence",
+      "sha256": "4448c778a30d8658634be51f70c81bf55e6db021fa503f1f55b55f58b225358d"
+    },
+    {
+      "archive_path": "implementation-B/manual-conformance-v1.json",
+      "bytes": 3722,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/implementation-B/manual-conformance-v1.json",
+      "role": "qualification_evidence",
+      "sha256": "bf0c90a1fd0ce99ecdead3070c2e9003ce65dfc17aba8623b7e56a248f48f0f9"
+    },
+    {
+      "archive_path": "implementation-B/package_training_control_qualification_v1.py",
+      "bytes": 12895,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/implementation-B/package_training_control_qualification_v1.py",
+      "role": "qualification_evidence",
+      "sha256": "fb55b4f37d7bc109e1974eab680cb100e3cc1fb75292b9255c1aae57f13a681b"
+    },
+    {
+      "archive_path": "implementation-B/packager-API-v1.json",
+      "bytes": 3375,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/implementation-B/packager-API-v1.json",
+      "role": "qualification_evidence",
+      "sha256": "7cec701c61ac19566198ac9ded826b3489a9cd127ddde26d6b1eaf5c242537d7"
+    },
+    {
+      "archive_path": "implementation-B/packager-handoff-v1.json",
+      "bytes": 2298,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/implementation-B/packager-handoff-v1.json",
+      "role": "qualification_evidence",
+      "sha256": "a680b1f5d1f8c9455cab03b35930b3ab4b1ba68964505790959bf66c55564419"
+    },
+    {
+      "archive_path": "implementation-B/packager-manual-conformance-v1.json",
+      "bytes": 2924,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/implementation-B/packager-manual-conformance-v1.json",
+      "role": "qualification_evidence",
+      "sha256": "92b440ea029fba12366452ef8107f23dd828940ba1ba5a446f47d0bfc869d5c0"
+    },
+    {
+      "archive_path": "implementation-B/packager-static-audit-v1.json",
+      "bytes": 1875,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/implementation-B/packager-static-audit-v1.json",
+      "role": "qualification_evidence",
+      "sha256": "effe79bd6637aef001bfa243158195387fd02df94f379e3273a8f5c70b70c931"
+    },
+    {
+      "archive_path": "implementation-B/qualification-AST-delta-v1.json",
+      "bytes": 3795,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/implementation-B/qualification-AST-delta-v1.json",
+      "role": "qualification_evidence",
+      "sha256": "5c5dc65c95ac082be4fd8a7c28278fd7da1de2c4a5347ae23cfb8dc580b12df5"
+    },
+    {
+      "archive_path": "implementation-B/qualification-dependency-closure-v1.json",
+      "bytes": 14152,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/implementation-B/qualification-dependency-closure-v1.json",
+      "role": "qualification_evidence",
+      "sha256": "1dad49b5078d4ada6a913bb99793ca6799e93ceafcba2d229f9df7b42eb5b5f1"
+    },
+    {
+      "archive_path": "implementation-B/qualification-driver.fragment.py",
+      "bytes": 13923,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/implementation-B/qualification-driver.fragment.py",
+      "role": "qualification_evidence",
+      "sha256": "4a4e8e9ea509e32403d7a73aa22cbf8957f6cd2b8604af5c13c70b258bd71f3e"
+    },
+    {
+      "archive_path": "implementation-B/qualification-outcome-next-blockers-v1.json",
+      "bytes": 21044,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/implementation-B/qualification-outcome-next-blockers-v1.json",
+      "role": "qualification_evidence",
+      "sha256": "4623e1266f5f0fc650faea46572957f89afb12aa40714c9dd1398e003adc42a4"
+    },
+    {
+      "archive_path": "implementation-B/qualification-outcome-next-blockers-v2.json",
+      "bytes": 10965,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/implementation-B/qualification-outcome-next-blockers-v2.json",
+      "role": "qualification_evidence",
+      "sha256": "4308ed0d935e8f60c521d3e02a779b3f1bc9ced16e7d2d7852e1dace7c8ead53"
+    },
+    {
+      "archive_path": "inputs/independent-Horn-expected-bank-v1.json",
+      "bytes": 15431,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/inputs/independent-Horn-expected-bank-v1.json",
+      "role": "independent_graph_bank",
+      "sha256": "914cc9a31ca9f22176087811b6ae4f768b622cc296031aec95cc0df0a6da44b2"
+    },
+    {
+      "archive_path": "inputs/training-control-carrier-v1.json",
+      "bytes": 23886,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/inputs/training-control-carrier-v1.json",
+      "role": "training_input",
+      "sha256": "b8c3e582a9297bce440ce5ce17b4b3aae02028cb7312947254b475810e8e4da5"
+    },
+    {
+      "archive_path": "publication-authority.json",
+      "bytes": 3429,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/root/publication-authority-v1.json",
+      "role": "explicit_packaging_input",
+      "sha256": "8e557c9c430a9608d6ca161357bff0be59d94611f923c5a3e1b35d18fb298f91"
+    },
+    {
+      "archive_path": "publication-inventory.json",
+      "bytes": 50541,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/root/publication-inventory-v1.json",
+      "role": "explicit_packaging_input",
+      "sha256": "22bc0fb86b3796e93fcd5af9b52284b3d2126cadaabba20b09050a0077f2bf3d"
+    },
+    {
+      "archive_path": "publication/training-control-qualification-data.json",
+      "bytes": 1821593,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/publication/training-control-qualification-data.json",
+      "role": "qualification_evidence",
+      "sha256": "85de4feb57f18e64d1866d569c1368b9efbd3678ce9c61c7d4e90a81b4392145"
+    },
+    {
+      "archive_path": "publication/training-control-qualification.html",
+      "bytes": 12769,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/publication/training-control-qualification.html",
+      "role": "qualification_evidence",
+      "sha256": "a9f58d3899f9dc6c2e2f53a1ce61a7a7e1f36dcae6fea1f329ef9aeeef9edabd"
+    },
+    {
+      "archive_path": "review-C/manual-six-corpus-graph-expectations-v1.json",
+      "bytes": 6253,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/review-C/manual-six-corpus-graph-expectations-v1.json",
+      "role": "qualification_evidence",
+      "sha256": "249c55d12d94d776e599f818ccc9a70fbcb62e5a663349da9a5d28bd85c12178"
+    },
+    {
+      "archive_path": "review-C/passive_qualification_actual_review_v1.py",
+      "bytes": 28523,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/review-C/passive_qualification_actual_review_v1.py",
+      "role": "qualification_evidence",
+      "sha256": "dc0db309069aa91aee61acbdb922e4e95ec96e9820007e486d144eeae5429a69"
+    },
+    {
+      "archive_path": "review-C/prospective-pretraining-qualification-assessment-v1.json",
+      "bytes": 7227,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/review-C/prospective-pretraining-qualification-assessment-v1.json",
+      "role": "qualification_evidence",
+      "sha256": "09d78ba19fb8fc0a7ee778ba0a65adc2de2c0671fe5c24cb7d3cd0df3145da3b"
+    },
+    {
+      "archive_path": "review-C/typed-corrected-corpus-and-independent-bank-Source-review-v1.json",
+      "bytes": 11103,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/review-C/typed-corrected-corpus-and-independent-bank-Source-review-v1.json",
+      "role": "qualification_evidence",
+      "sha256": "62bf1b5185326f9dd4f9c1b236277fca29fe06b1d6ad4462810c6abf347b749e"
+    },
+    {
+      "archive_path": "review-C/typed-predecessor-corpus-control-Source-negative-v1.json",
+      "bytes": 2837,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/review-C/typed-predecessor-corpus-control-Source-negative-v1.json",
+      "role": "qualification_evidence",
+      "sha256": "3d3ddc6077db65fa0394ae60bd0b6332e5c12bca296f5db0294f361096313816"
+    },
+    {
+      "archive_path": "review-C/typed-pretraining-qualification-entry-component-Source-review-v1.json",
+      "bytes": 286,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/review-C/typed-pretraining-qualification-entry-component-Source-review-v1.json",
+      "role": "qualification_evidence",
+      "sha256": "e838b2033f719e31df17678cad518e80b5e744074bcb87cf2611b4ab1cd19dd0"
+    },
+    {
+      "archive_path": "review-C/typed-pretraining-qualification-entry-component-Source-review-v2.json",
+      "bytes": 11207,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/review-C/typed-pretraining-qualification-entry-component-Source-review-v2.json",
+      "role": "qualification_evidence",
+      "sha256": "a671fc1cc6c41dcc1cdc87d50913a14f60ced5bdafb318a3b29e8bbaa3fcfb5b"
+    },
+    {
+      "archive_path": "review-C/typed-qualification-packager-component-Source-review-v1.json",
+      "bytes": 6318,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/review-C/typed-qualification-packager-component-Source-review-v1.json",
+      "role": "qualification_evidence",
+      "sha256": "b17f0b0798b973ae4da8f5c039d7db3696b4563966b9cd49a8765e3601d5ed58"
+    },
+    {
+      "archive_path": "review-C/typed-qualification-projector-and-reader-Source-review-v1.json",
+      "bytes": 10569,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/review-C/typed-qualification-projector-and-reader-Source-review-v1.json",
+      "role": "qualification_evidence",
+      "sha256": "760374bef3df9ac1251f683441044ea61f9f958d0b23ee180e7b0a0c85ad8326"
+    },
+    {
+      "archive_path": "review-C/typed-qualification-reader-data-review-v1.json",
+      "bytes": 9063,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/review-C/typed-qualification-reader-data-review-v1.json",
+      "role": "qualification_evidence",
+      "sha256": "d46feb2643e59e5ee4a3e4ab01730f9fac4858acbbe1e4904a355fd93c7f40b6"
+    },
+    {
+      "archive_path": "review-C/typed-qualification-whole-prospective-Source-plan-review-v1.json",
+      "bytes": 8061,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/review-C/typed-qualification-whole-prospective-Source-plan-review-v1.json",
+      "role": "qualification_evidence",
+      "sha256": "77c8a29e11669b3768f4ca3ebc9a2d20d2a6cec7ad49d44345524b7a2a315456"
+    },
+    {
+      "archive_path": "review-C/typed-qualification-worker-component-Source-review-v1.json",
+      "bytes": 5402,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/review-C/typed-qualification-worker-component-Source-review-v1.json",
+      "role": "qualification_evidence",
+      "sha256": "ef3b3eaebf46ee108f899d695f9bdedcda6d922554659ef729b1ea36bdc3e443"
+    },
+    {
+      "archive_path": "review-C/typed-training-control-qualification-actual-review-v1.json",
+      "bytes": 45606,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/review-C/typed-training-control-qualification-actual-review-v1.json",
+      "role": "C_actual_review",
+      "sha256": "cb934c39c96e0942d13383fbbdbb44c099574cfe5e56fc190093cc1dc3996ff3"
+    },
+    {
+      "archive_path": "root/admission/qualify-controls-0-v1.json",
+      "bytes": 7444,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/root/admission/qualify-controls-0-v1.json",
+      "role": "Root_admission",
+      "sha256": "4d473cb99b89f4315d143467082ff4e748493b3db37e5d2a33cf92e8189092dd"
+    },
+    {
+      "archive_path": "root/before-qualification-once-barrier-v1.json",
+      "bytes": 1772,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/root/before-qualification-once-barrier-v1.json",
+      "role": "qualification_evidence",
+      "sha256": "fe055357d0f40fe63db039ca212da745586f37fec944c8ea1bd2c3b073c172de"
+    },
+    {
+      "archive_path": "root/conditional_qualification_worker_v1.py",
+      "bytes": 15929,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/root/conditional_qualification_worker_v1.py",
+      "role": "guarded_Source_or_input",
+      "sha256": "1907115f9d1694e9ce201df89398f49e547319fabbc24002088e9350fba23a89"
+    },
+    {
+      "archive_path": "root/grants/qualify-controls-0-v1.json",
+      "bytes": 982,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/root/grants/qualify-controls-0-v1.json",
+      "role": "qualification_evidence",
+      "sha256": "ed24eea20edb55ef280ae63fe3ad6228e7d33e8b94fd6f3ff46d55bd9290884e"
+    },
+    {
+      "archive_path": "root/local-qualification-case-v2.png",
+      "bytes": 84957,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/root/local-qualification-case-v2.png",
+      "role": "qualification_evidence",
+      "sha256": "c1c9281984a18a2a8dbc54d17ac0c1fdb5b96c041fac4062a945ffe43f0b17ba"
+    },
+    {
+      "archive_path": "root/local-reader-QA-v1.json",
+      "bytes": 7896,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/root/local-reader-QA-v1.json",
+      "role": "qualification_evidence",
+      "sha256": "4c7171769aff4c61a08629313de05448a517b56d58609de23eb63d75c512b847"
+    },
+    {
+      "archive_path": "root/observe_conditional_once_v1.py",
+      "bytes": 10113,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/root/observe_conditional_once_v1.py",
+      "role": "guarded_Source_or_input",
+      "sha256": "24804c7d4558d8df511942d9e6b2e4d8d2cfd88ce7df6f5b5f775f87d0c20ca9"
+    },
+    {
+      "archive_path": "root/passive-closure-authoring-negative-v1.json",
+      "bytes": 1236,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/root/passive-closure-authoring-negative-v1.json",
+      "role": "qualification_evidence",
+      "sha256": "e2c667b72fdcb1411e9fd93537b1b3772440ab4cff0e8f19a506e2829c85b1d2"
+    },
+    {
+      "archive_path": "root/plans/qualify-controls-0-v1.json",
+      "bytes": 19335,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/root/plans/qualify-controls-0-v1.json",
+      "role": "once_plan",
+      "sha256": "766ca1411a7189679e76b0b3581482920bef9030c9ff91f3c8755217b312b226"
+    },
+    {
+      "archive_path": "root/qualification-HTML-v1-publication-preimage.html",
+      "bytes": 12795,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/root/qualification-HTML-v1-publication-preimage.html",
+      "role": "qualification_evidence",
+      "sha256": "23995576fb21c4a1e33db9a1d3f5a3f076e57a5c649684cc07a38c1eb5fb8454"
+    },
+    {
+      "archive_path": "root/qualification-parent-insertion-v1.html",
+      "bytes": 1071,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/root/qualification-parent-insertion-v1.html",
+      "role": "qualification_evidence",
+      "sha256": "55919d5f1f0c840f1461a7c54bbbf791fa08f41cf4055855ea39b06ec3befd6d"
+    },
+    {
+      "archive_path": "root/qualification-protocol-v1.json",
+      "bytes": 7190,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/root/qualification-protocol-v1.json",
+      "role": "guarded_Source_or_input",
+      "sha256": "e74167627f2c347c891b61f76344688f1ab5899e4dc22561b58082d0a9f93472"
+    },
+    {
+      "archive_path": "root/qualification-source-closure-v1.json",
+      "bytes": 23091,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/root/qualification-source-closure-v1.json",
+      "role": "qualification_evidence",
+      "sha256": "f28c2dc9ba3f590adf90de9a9801642a35d5a180ce9fc7fe76e537b867d9997a"
+    },
+    {
+      "archive_path": "root/run_conditional_once_v1.py",
+      "bytes": 12973,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/root/run_conditional_once_v1.py",
+      "role": "guarded_Source_or_input",
+      "sha256": "98c55321bb87a8c04b2c6d56b357aba9c3a8f5fc98660474ae3ac1c9d00b0aca"
+    },
+    {
+      "archive_path": "root/templates/qualify-controls-0-v1.json",
+      "bytes": 18695,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/root/templates/qualify-controls-0-v1.json",
+      "role": "guarded_Source_or_input",
+      "sha256": "15b5e5acc6ec131b1e91dc1fc9c7bc1b4d34136dd968068fa5e1a5865a59f1b6"
+    },
+    {
+      "archive_path": "runtime/batched_quantified_guards_v1.py",
+      "bytes": 20422,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/runtime/batched_quantified_guards_v1.py",
+      "role": "guarded_Source_or_input",
+      "sha256": "778e29f0cdcc7c933ecf9b27f5070596c83482d69df9f3cced22ccbd98cf154f"
+    },
+    {
+      "archive_path": "runtime/bounded_request_oracle.py",
+      "bytes": 20424,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/runtime/bounded_request_oracle.py",
+      "role": "guarded_Source_or_input",
+      "sha256": "606e790f4ba3ecc976877cbe52ccfd64519262f2ea07214c80d989f58e4f7637"
+    },
+    {
+      "archive_path": "runtime/certificate_boundary_search.py",
+      "bytes": 7089,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/runtime/certificate_boundary_search.py",
+      "role": "guarded_Source_or_input",
+      "sha256": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a"
+    },
+    {
+      "archive_path": "runtime/conditional_family_selector_v1.py",
+      "bytes": 15461,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/runtime/conditional_family_selector_v1.py",
+      "role": "guarded_Source_or_input",
+      "sha256": "8f0147347ddcae27124a97af295985a8241599b78f34a2d7285435177aa7e951"
+    },
+    {
+      "archive_path": "runtime/conditional_family_semantic_controls_v2.py",
+      "bytes": 11700,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/runtime/conditional_family_semantic_controls_v2.py",
+      "role": "guarded_Source_or_input",
+      "sha256": "7d92f660f6bd360c5313a58add0f86b74f15fac860c050f71f907996fb0b5425"
+    },
+    {
+      "archive_path": "runtime/conditional_selector_corpus_contract_v3.py",
+      "bytes": 40459,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/runtime/conditional_selector_corpus_contract_v3.py",
+      "role": "guarded_Source_or_input",
+      "sha256": "1eccce00363091e6fec8a4fc1d3c72fd70f4c19b620d3d5bd800c152b31feff5"
+    },
+    {
+      "archive_path": "runtime/conditional_selector_numeric_controls_v1.py",
+      "bytes": 23075,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/runtime/conditional_selector_numeric_controls_v1.py",
+      "role": "guarded_Source_or_input",
+      "sha256": "59e2d0d6b0a99daf86f0d2235f378b4b01acacf9e001ccd8d9cd0176ea4c288c"
+    },
+    {
+      "archive_path": "runtime/graph_copy_reference_v1.py",
+      "bytes": 27925,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/runtime/graph_copy_reference_v1.py",
+      "role": "guarded_Source_or_input",
+      "sha256": "8712a15aeb1308e3dd9b5e6a122513525e4b8ad8ed4c8f6d7d556d5f4cb0ac8c"
+    },
+    {
+      "archive_path": "runtime/guard_batch_differential_controls_v1.py",
+      "bytes": 7998,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/runtime/guard_batch_differential_controls_v1.py",
+      "role": "guarded_Source_or_input",
+      "sha256": "830c7d6a7ff1dcfdeda5988d0e4bf83109f7efa10a78409d6ee2e330c1b57098"
+    },
+    {
+      "archive_path": "runtime/learned_cluster_selector_v1.py",
+      "bytes": 10705,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/runtime/learned_cluster_selector_v1.py",
+      "role": "guarded_Source_or_input",
+      "sha256": "8b197307690599dab9afd4a88752bb82c6fb08cf49f13fff71c1f62dc0b7d181"
+    },
+    {
+      "archive_path": "runtime/logic.py",
+      "bytes": 10808,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/runtime/logic.py",
+      "role": "guarded_Source_or_input",
+      "sha256": "5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011"
+    },
+    {
+      "archive_path": "runtime/matched_family_corpus_contract_v1.py",
+      "bytes": 16169,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/runtime/matched_family_corpus_contract_v1.py",
+      "role": "guarded_Source_or_input",
+      "sha256": "59e9fb9afdee23f905c3ea5a00ab6c9888c96dcc53993e38db749a58e47484a3"
+    },
+    {
+      "archive_path": "runtime/matched_symbolic_reference_controls_v2.py",
+      "bytes": 9536,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/runtime/matched_symbolic_reference_controls_v2.py",
+      "role": "guarded_Source_or_input",
+      "sha256": "2f0c6f82ec65d67d6f82c3b21b7b13a3f28419600f23b5e2d6e6cfd6dca4bfb5"
+    },
+    {
+      "archive_path": "runtime/mechanism_corpus_contract_v1.py",
+      "bytes": 11608,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/runtime/mechanism_corpus_contract_v1.py",
+      "role": "guarded_Source_or_input",
+      "sha256": "8c14e13bc539acdab3c24ad367949e4cbe5477bf661f850bdaba78a387a1f9c9"
+    },
+    {
+      "archive_path": "runtime/native_receptor_points.py",
+      "bytes": 8962,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/runtime/native_receptor_points.py",
+      "role": "guarded_Source_or_input",
+      "sha256": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888"
+    },
+    {
+      "archive_path": "runtime/principal_family_reference_v1.py",
+      "bytes": 26907,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/runtime/principal_family_reference_v1.py",
+      "role": "guarded_Source_or_input",
+      "sha256": "f61ca4d19ae58e4f90487aa52ee65fe0359fbd1981aed8160d4547e151a02607"
+    },
+    {
+      "archive_path": "runtime/principal_receptor_families_v1.py",
+      "bytes": 18159,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/runtime/principal_receptor_families_v1.py",
+      "role": "guarded_Source_or_input",
+      "sha256": "ac6ed929bc5ce3ef53a4a8710a113194176dadd9538db47ecdd34b57d1ac7332"
+    },
+    {
+      "archive_path": "runtime/proof_boundary.py",
+      "bytes": 6992,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/runtime/proof_boundary.py",
+      "role": "guarded_Source_or_input",
+      "sha256": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f"
+    },
+    {
+      "archive_path": "runtime/quantified_receptors_v1.py",
+      "bytes": 11060,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/runtime/quantified_receptors_v1.py",
+      "role": "guarded_Source_or_input",
+      "sha256": "d1c4afa10d58abbcf473cb3da8ee8768c974dd05d03ea00b988d574b2441af5a"
+    },
+    {
+      "archive_path": "runtime/quantified_symbolic_control_v2.py",
+      "bytes": 26238,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/runtime/quantified_symbolic_control_v2.py",
+      "role": "guarded_Source_or_input",
+      "sha256": "740319d243cc2fd2eefe1d7ef1611d8bcfe6f0ff70a2ce2ed72771e78f64a391"
+    },
+    {
+      "archive_path": "runtime/reference_setup_calibration_v1.py",
+      "bytes": 5657,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/runtime/reference_setup_calibration_v1.py",
+      "role": "guarded_Source_or_input",
+      "sha256": "98e17cb2be741d73358667d646a95dc3b6dc2dbaed852b4a0629aebfd89b2ad7"
+    },
+    {
+      "archive_path": "runtime/selector_corpus_contract_v1.py",
+      "bytes": 24112,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/runtime/selector_corpus_contract_v1.py",
+      "role": "guarded_Source_or_input",
+      "sha256": "89d3da66c126acfea845fb0e51968235dcd6f8f6e3e73c5cba2bfa3e36f7927e"
+    },
+    {
+      "archive_path": "runtime/selector_numeric_controls_v1.py",
+      "bytes": 9830,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/runtime/selector_numeric_controls_v1.py",
+      "role": "guarded_Source_or_input",
+      "sha256": "e70c237098b33cf60410d984686395ca3b79572596db2eb6584c381dc4b5557d"
+    },
+    {
+      "archive_path": "runtime/semantic_inventory_oracle.py",
+      "bytes": 2180,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/runtime/semantic_inventory_oracle.py",
+      "role": "guarded_Source_or_input",
+      "sha256": "f41bfd56829b89b015fcf7a4dbd41dabd36110156e345353059980a66f6a4400"
+    },
+    {
+      "archive_path": "runtime/semantic_lemma_inventory.py",
+      "bytes": 7196,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/runtime/semantic_lemma_inventory.py",
+      "role": "guarded_Source_or_input",
+      "sha256": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad"
+    },
+    {
+      "archive_path": "runtime/semantic_receptor_points.py",
+      "bytes": 7409,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/runtime/semantic_receptor_points.py",
+      "role": "guarded_Source_or_input",
+      "sha256": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207"
+    },
+    {
+      "archive_path": "runtime/tape_binary.py",
+      "bytes": 3756,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/runtime/tape_binary.py",
+      "role": "guarded_Source_or_input",
+      "sha256": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247"
+    },
+    {
+      "archive_path": "runtime/tape_tree_machine.py",
+      "bytes": 19188,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/runtime/tape_tree_machine.py",
+      "role": "guarded_Source_or_input",
+      "sha256": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f"
+    },
+    {
+      "archive_path": "runtime/tree_machine.py",
+      "bytes": 13290,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/runtime/tree_machine.py",
+      "role": "guarded_Source_or_input",
+      "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257"
+    },
+    {
+      "archive_path": "runtime/turtle.py",
+      "bytes": 29244,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/runtime/turtle.py",
+      "role": "guarded_Source_or_input",
+      "sha256": "67cf41b84d05645bbd384682baad1fc2c1a8c2f4ff1418c9577f4c139891fc0f"
+    },
+    {
+      "archive_path": "runtime/word_point_model_v1.py",
+      "bytes": 17663,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/runtime/word_point_model_v1.py",
+      "role": "guarded_Source_or_input",
+      "sha256": "4acf64cde5aa12966688cbd41c6918ba6604931483518ed5a5dc938d661b262a"
+    },
+    {
+      "archive_path": "runtime/word_point_reference_verifier_v1.py",
+      "bytes": 35387,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/runtime/word_point_reference_verifier_v1.py",
+      "role": "guarded_Source_or_input",
+      "sha256": "3acf80c6d40acaa277ed9a51eb33d1959c25ec23c6300ce5f144c9c670e229da"
+    },
+    {
+      "archive_path": "runtime/word_point_reference_verifier_v3.py",
+      "bytes": 41899,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/runtime/word_point_reference_verifier_v3.py",
+      "role": "guarded_Source_or_input",
+      "sha256": "9c95d8722b9d3715c32de63cbec74f548eb63d878c82920b46dfe43e43522de4"
+    },
+    {
+      "archive_path": "runtime/zero_read_native_reference_controls_v1.py",
+      "bytes": 3536,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/runtime/zero_read_native_reference_controls_v1.py",
+      "role": "guarded_Source_or_input",
+      "sha256": "8cdf06e2cc2b373d2573f9c23a6a308923ff70b8191040ffbe0f551e2a3dccdc"
+    },
+    {
+      "archive_path": "runtime/zero_read_resolver_reference_controls_v2.py",
+      "bytes": 10122,
+      "opaque_partial": false,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/runtime/zero_read_resolver_reference_controls_v2.py",
+      "role": "guarded_Source_or_input",
+      "sha256": "499cf1f35c0666ce8ca6100bb91f41c512a631d5627cd7f767960ce237ecfc5b"
+    }
+  ],
+  "inventory": {
+    "bytes": 50541,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/root/publication-inventory-v1.json",
+    "sha256": "22bc0fb86b3796e93fcd5af9b52284b3d2126cadaabba20b09050a0077f2bf3d"
+  },
+  "learned_policies": 0,
+  "omitted_runtime": [
+    {
+      "bytes": 18058560,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+      "reason": "Executable or generated table: identity retained; body omitted.",
+      "role": "runtime_pin_only",
+      "sha256": "b6ea0c2a9bfce48dbf181a53f1ca4f0562d40658b85bf47258e2a88d8f9e3933"
+    },
+    {
+      "bytes": 41808,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/actual/qualify-controls-0/native/boundary-oracle",
+      "reason": "Executable or generated table: identity retained; body omitted.",
+      "role": "runtime_pin_only",
+      "sha256": "2b6bf8bb09a4e03d0cb1b4595dea1fe6d4432aa93d8f7eed72c30077fd9941a4"
+    },
+    {
+      "bytes": 7558192,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-successor-20261021/actual/qualify-controls-0/native/code.bin",
+      "reason": "Executable or generated table: identity retained; body omitted.",
+      "role": "runtime_pin_only",
+      "sha256": "97f0b600cffd83552c4e0f0c4fb1f5d26cfdb76e3e74b267bbaebeddc836e7ed"
+    },
+    {
+      "bytes": 41808,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-proof-search-pilot-20261020/implementation-B/recovered/and-support/Native-runtime/boundary-oracle-v2",
+      "reason": "Executable or generated table: identity retained; body omitted.",
+      "role": "runtime_pin_only",
+      "sha256": "2b6bf8bb09a4e03d0cb1b4595dea1fe6d4432aa93d8f7eed72c30077fd9941a4"
+    }
+  ],
+  "partial_files_parsed": 0,
+  "phase_input_count": 2,
+  "raw_members": 120,
+  "real_training_episodes": 0,
+  "regular_members_including_snapshot": 121,
+  "schema": "D20-training-control-qualification-raw-snapshot-v1",
+  "scientific_calls": 0,
+  "scientific_imports": 0,
+  "scope": "Single fresh qualification only. Explicit Root allowlist, no directory scan/pin chasing or old main-study/result adoption. Executables/generatedtables rawpins only. Later installation/live receipts remain outside snapshot.",
+  "source_input_count": 50,
+  "stage_id": "qualify-controls-0",
+  "uncompressed_bytes": 6580972
+}
