@@ -1,0 +1,281 @@
+{
+  "schema": "GCTS-point-proof-six-target-cohort-result-v1",
+  "date": "2026-10-22",
+  "summary": "One elementary automatically discovered checked proof; five whole-work deadline failures.",
+  "cases": [
+    {
+      "target_index": 0,
+      "target_id": "PA-reflexivity",
+      "status": "FOUND_VALID_ROOT_WHOLE_ADMITTED",
+      "admitted": true,
+      "goal_latex": "\\forall x\\,(x=x)",
+      "whole_observer_elapsed_seconds": 9.105046500000753,
+      "qualified_whole_peak_bytes": 177913856,
+      "controls_qualified": true,
+      "scoped_control_groups": 162,
+      "C_actual_review": {
+        "path": "research-runs/gcts-point-proof-search-20261022/review-C/typed-point-frame-target-0-complete-actual-review-v1.json",
+        "bytes": 47677,
+        "sha256": "4d5e1abe63a50b6e610125bb69474aadadc7c2542713191c841001dada7f9110"
+      },
+      "Root_disposition": {
+        "path": "research-runs/gcts-point-proof-search-20261022/root/point-frame-target-0-Root-whole-disposition-v1.json",
+        "bytes": 3930,
+        "sha256": "aeaa7185d6b1e13e5c025bfa79942ac7794ecd707e40b04e7f680c81d689113a"
+      },
+      "query": {
+        "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-0/target-query.bin",
+        "bytes": 21,
+        "sha256": "c1c45a289cba90663e4296d2530ae80649b714f51fd54adfa3d211486567a64d"
+      },
+      "certificate": {
+        "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-0/candidate-certificate.bin",
+        "bytes": 33,
+        "sha256": "116c31813cba90ba9ffec2eabc88a1cbed6158b4b8ae296a9d01fd41115598b5"
+      },
+      "proof_rows": [
+        {
+          "row": 0,
+          "formula_latex": "x=x",
+          "rule": "E1",
+          "references": [],
+          "English": "The arbitrary object x equals itself."
+        },
+        {
+          "row": 1,
+          "formula_latex": "x=x",
+          "rule": "E1",
+          "references": [],
+          "English": "The same equality is asserted again; this duplicate is unused."
+        },
+        {
+          "row": 2,
+          "formula_latex": "\\forall x\\,(x=x)",
+          "rule": "GEN",
+          "references": [
+            0
+          ],
+          "English": "Generalize row 0; the fixed hypothesis set is empty."
+        }
+      ],
+      "minimal_proof_claim": false
+    },
+    {
+      "target_index": 1,
+      "target_id": "PA-zero-left",
+      "status": "FAILED_CASE_NOT_ADMITTED",
+      "admitted": false,
+      "goal_latex": "\\forall x\\,(0+x=x)",
+      "whole_observer_elapsed_seconds": 160.1426094169874,
+      "qualified_whole_peak_bytes": null,
+      "worker_header_callbacks": 214143528,
+      "controls_qualified": false,
+      "query_freeze_admitted": false,
+      "C_actual_review": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/review-C/typed-point-frame-target-1-complete-negative-actual-review-v1.json",
+        "bytes": 50902,
+        "sha256": "d6231136cb15f99724902c6858b300f1403db95b3276bdb8ac5034a0bc826cbc"
+      },
+      "Root_disposition": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/point-frame-target-1-Root-whole-negative-disposition-v1.json",
+        "bytes": 4282,
+        "sha256": "a558c6a31fb612d96aa15e82c6a25d5505374dabb6cebe6ba7ff8eb5e033e2fd"
+      },
+      "proof": null,
+      "positive_payloads": {
+        "qualification_result": null,
+        "input_freeze": null,
+        "search_result": null,
+        "subject_receipt": null,
+        "reference_receipt": null,
+        "point_receipt": null,
+        "scientific_result": null
+      },
+      "cause": "absolute whole-work deadline",
+      "consumed": true,
+      "retry_authority": false
+    },
+    {
+      "target_index": 2,
+      "target_id": "PA-addition-commutes",
+      "status": "FAILED_CASE_NOT_ADMITTED",
+      "admitted": false,
+      "goal_latex": "\\forall x\\forall y\\,(x+y=y+x)",
+      "whole_observer_elapsed_seconds": 160.15552070799458,
+      "qualified_whole_peak_bytes": null,
+      "worker_header_callbacks": 217827441,
+      "controls_qualified": false,
+      "query_freeze_admitted": false,
+      "C_actual_review": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/review-C/typed-point-frame-target-2-complete-negative-actual-review-v1.json",
+        "bytes": 51948,
+        "sha256": "f99de75ebc0c20d78dc3fbad727bc9bfa09bd1a070dcefd5d797a1287370314d"
+      },
+      "Root_disposition": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/point-frame-target-2-Root-whole-negative-disposition-v1.json",
+        "bytes": 4291,
+        "sha256": "35d8d28bde34369875477fa37a4dbb2455a95f653f25e8c5e848817d10044edb"
+      },
+      "proof": null,
+      "positive_payloads": {
+        "qualification_result": null,
+        "input_freeze": null,
+        "search_result": null,
+        "subject_receipt": null,
+        "reference_receipt": null,
+        "point_receipt": null,
+        "scientific_result": null
+      },
+      "cause": "absolute whole-work deadline",
+      "consumed": true,
+      "retry_authority": false
+    },
+    {
+      "target_index": 3,
+      "target_id": "HI-point-not-line",
+      "status": "FAILED_CASE_NOT_ADMITTED",
+      "admitted": false,
+      "goal_latex": "\\forall p\\,(\\mathrm{Pt}(p)\\to\\neg\\mathrm{Ln}(p))",
+      "whole_observer_elapsed_seconds": 160.26201424999454,
+      "qualified_whole_peak_bytes": null,
+      "worker_header_callbacks": 215663459,
+      "controls_qualified": false,
+      "query_freeze_admitted": false,
+      "C_actual_review": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/review-C/typed-point-frame-target-3-complete-negative-actual-review-v1.json",
+        "bytes": 51946,
+        "sha256": "782d245c986cc71aa4e5ad0936deebc8a5f73ae35cedcaf6269d1117da0d8f1a"
+      },
+      "Root_disposition": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/point-frame-target-3-Root-whole-negative-disposition-v1.json",
+        "bytes": 4288,
+        "sha256": "5fe953d0e930f7e3a0212c3b60208c603259d56119bdd6f44f1dc1c141bc0be8"
+      },
+      "proof": null,
+      "positive_payloads": {
+        "qualification_result": null,
+        "input_freeze": null,
+        "search_result": null,
+        "subject_receipt": null,
+        "reference_receipt": null,
+        "point_receipt": null,
+        "scientific_result": null
+      },
+      "cause": "absolute whole-work deadline",
+      "consumed": true,
+      "retry_authority": false
+    },
+    {
+      "target_index": 4,
+      "target_id": "HI-distinct-lines-no-two-shared-points",
+      "status": "FAILED_CASE_NOT_ADMITTED",
+      "admitted": false,
+      "goal_latex": "\\forall l\\forall m\\,((\\mathrm{Ln}(l)\\land\\mathrm{Ln}(m)\\land l\\ne m)\\to\\neg\\exists p\\exists q\\,(\\mathrm{Pt}(p)\\land\\mathrm{Pt}(q)\\land p\\ne q\\land I(p,l)\\land I(q,l)\\land I(p,m)\\land I(q,m)))",
+      "whole_observer_elapsed_seconds": 160.22253416699823,
+      "qualified_whole_peak_bytes": null,
+      "worker_header_callbacks": 214151342,
+      "controls_qualified": false,
+      "query_freeze_admitted": false,
+      "C_actual_review": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/review-C/typed-point-frame-target-4-complete-negative-actual-review-v1.json",
+        "bytes": 48208,
+        "sha256": "1d8ebae6ef7cc4459f2fac5effb81f321a6ef30a5a712db9f79063d0156fbd09"
+      },
+      "Root_disposition": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/point-frame-target-4-Root-whole-negative-disposition-v1.json",
+        "bytes": 4308,
+        "sha256": "c645305941e41af4502fa31fb04864b772a1f9f47d1fc0646bcf742d870d4839"
+      },
+      "proof": null,
+      "positive_payloads": {
+        "qualification_result": null,
+        "input_freeze": null,
+        "search_result": null,
+        "subject_receipt": null,
+        "reference_receipt": null,
+        "point_receipt": null,
+        "scientific_result": null
+      },
+      "cause": "absolute whole-work deadline",
+      "consumed": true,
+      "retry_authority": false
+    },
+    {
+      "target_index": 5,
+      "target_id": "HI-point-off-each-line",
+      "status": "FAILED_CASE_NOT_ADMITTED",
+      "admitted": false,
+      "goal_latex": "\\forall l\\,(\\mathrm{Ln}(l)\\to\\exists p\\,(\\mathrm{Pt}(p)\\land\\neg I(p,l)))",
+      "whole_observer_elapsed_seconds": 160.2060869170091,
+      "qualified_whole_peak_bytes": null,
+      "worker_header_callbacks": 204835847,
+      "controls_qualified": false,
+      "query_freeze_admitted": false,
+      "C_actual_review": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/review-C/typed-point-frame-target-5-complete-negative-actual-review-v1.json",
+        "bytes": 51055,
+        "sha256": "b65974503ad47ba80860a4ad5706f7fcaa9a1f970244798ff78478f31c40c6e1"
+      },
+      "Root_disposition": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/point-frame-target-5-Root-whole-negative-disposition-v1.json",
+        "bytes": 4292,
+        "sha256": "18f45771e49c84d3ce291247caa8dd1faecad8d314a6506166b9afb931ae5115"
+      },
+      "proof": null,
+      "positive_payloads": {
+        "qualification_result": null,
+        "input_freeze": null,
+        "search_result": null,
+        "subject_receipt": null,
+        "reference_receipt": null,
+        "point_receipt": null,
+        "scientific_result": null
+      },
+      "cause": "absolute whole-work deadline",
+      "consumed": true,
+      "retry_authority": false
+    }
+  ],
+  "admitted_proofs": 1,
+  "whole_deadline_failures": 5,
+  "all_six_consumed": true,
+  "same_runtime_Source_configuration_caps": true,
+  "limits": {
+    "work_seconds": 160,
+    "positive_seconds": 180,
+    "custody_seconds": 210,
+    "observer_fallback_seconds": 225,
+    "memory_bytes": 1073741824,
+    "physical_bytes": 134217728,
+    "result_bytes": 50331648,
+    "log_bytes": 4194304,
+    "reserved_outer_bytes": 9437184,
+    "root_callbacks": 400000000
+  },
+  "development_set_not_blind_holdout": true,
+  "negative_batch_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/review-C/typed-remaining-five-point-frame-complete-negative-actual-batch-review-v1.json",
+    "bytes": 7636,
+    "sha256": "c31b9e1e434c1109b2e8100dc5c94afae58b5c0f943e8cd47adda2a067ff2fb4"
+  },
+  "Root_negative_batch_disposition": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/remaining-five-Root-whole-negative-batch-disposition-v1.json",
+    "bytes": 2318,
+    "sha256": "fa22491603e42378c24061c8cf8ce39d88c1e902609a37ba81fc521deba7785b"
+  },
+  "first_case_details": {
+    "path": "research-runs/gcts-point-proof-search-20261022/root/first-actual-publication-v2/point-proof-first-actual-data-v1.json",
+    "bytes": 35810,
+    "sha256": "fb804f6170356fb7b8b77c6c523dd2f9703af62155d1f5dee435276f3ae45a90"
+  },
+  "interpretation": "Case0 is an equality/generalization control, not substantive arithmetic discovery. No qualified proof/control/input prefix is salvaged from failed cases. Null qualified peaks do not mean zero or a memory failure. No finite exhaustion or unprovability conclusion follows. No current-frame or elimination metrics survive the failed result gate.",
+  "matched_baseline_run": false,
+  "learned_markings": false,
+  "RL_used": false,
+  "learned_lemma_families": false,
+  "GCTS_or_RL_advantage_established": false,
+  "strict_finite_Wang_palette_constructed": false,
+  "candidate_generation_investigation": "Source-only structural indexing proposal, not a measured bottleneck or learned effect. Requires independent fixtures and a prospectively reviewed experiment before execution.",
+  "scientific_imports_calls_by_packaging": 0,
+  "goal_complete": false
+}
