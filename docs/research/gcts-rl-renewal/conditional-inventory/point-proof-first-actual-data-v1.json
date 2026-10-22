@@ -1,0 +1,1657 @@
+{
+  "schema": "GCTS-point-proof-first-actual-public-result-v1",
+  "date": "2026-10-22",
+  "status": "FOUND_VALID_ROOT_WHOLE_ADMITTED",
+  "case_id": "point-frame-full-FPC-v1-target-0",
+  "target_id": "PA-reflexivity",
+  "theorem_latex": "\\forall x\\,(x=x)",
+  "scope": "Elementary equality/generalization development control; not substantive arithmetic discovery.",
+  "actual_review": {
+    "path": "research-runs/gcts-point-proof-search-20261022/review-C/typed-point-frame-target-0-complete-actual-review-v1.json",
+    "bytes": 47677,
+    "sha256": "4d5e1abe63a50b6e610125bb69474aadadc7c2542713191c841001dada7f9110"
+  },
+  "Root_disposition": {
+    "path": "research-runs/gcts-point-proof-search-20261022/root/point-frame-target-0-Root-whole-disposition-v1.json",
+    "bytes": 3930,
+    "sha256": "aeaa7185d6b1e13e5c025bfa79942ac7794ecd707e40b04e7f680c81d689113a"
+  },
+  "result": {
+    "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-0/result.json",
+    "bytes": 4359672,
+    "sha256": "6e60d68b6fc2ee4e6953c2b9b907800baa2c0794adc117499bbc847968fb83db"
+  },
+  "query": {
+    "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-0/target-query.bin",
+    "bytes": 21,
+    "sha256": "c1c45a289cba90663e4296d2530ae80649b714f51fd54adfa3d211486567a64d"
+  },
+  "certificate": {
+    "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-0/candidate-certificate.bin",
+    "bytes": 33,
+    "sha256": "116c31813cba90ba9ffec2eabc88a1cbed6158b4b8ae296a9d01fd41115598b5"
+  },
+  "controls": {
+    "schema": "Root-point-frame-saved-group-census-v1",
+    "groups": 162,
+    "populations": [
+      {
+        "population": "baseline56",
+        "groups": 56,
+        "all_saved_statuses_passed": true,
+        "exact_plan_ID_order": true
+      },
+      {
+        "population": "point-kernel13",
+        "groups": 13,
+        "all_saved_statuses_passed": true,
+        "exact_plan_ID_order": true
+      },
+      {
+        "population": "point-kernel-safety3",
+        "groups": 3,
+        "all_saved_statuses_passed": true,
+        "exact_plan_ID_order": true
+      },
+      {
+        "population": "full-frame-controller10",
+        "groups": 10,
+        "all_saved_statuses_passed": true,
+        "exact_plan_ID_order": true
+      },
+      {
+        "population": "intro_integration1",
+        "groups": 1,
+        "all_saved_statuses_passed": true,
+        "exact_plan_ID_order": true
+      },
+      {
+        "population": "obligation47",
+        "groups": 47,
+        "all_saved_statuses_passed": true,
+        "exact_plan_ID_order": true
+      },
+      {
+        "population": "point20",
+        "groups": 20,
+        "all_saved_statuses_passed": true,
+        "exact_plan_ID_order": true
+      },
+      {
+        "population": "regression2",
+        "groups": 2,
+        "all_saved_statuses_passed": true,
+        "exact_plan_ID_order": true
+      },
+      {
+        "population": "tiny-full-provider10",
+        "groups": 10,
+        "all_saved_statuses_passed": true,
+        "exact_plan_ID_order": true
+      }
+    ],
+    "scope": "Metadata interpretation of existing complete result only, no runtime replay. Earlier display assumptions of uniform status field and explicit16 plan key corrected: original groups use passed boolean; additive banks use status string; explicit16 packages two separately scoped plan populations."
+  },
+  "proof_rows": [
+    {
+      "row": 0,
+      "formula_latex": "x=x",
+      "rule": "E1",
+      "references": [],
+      "English": "The arbitrary object x equals itself."
+    },
+    {
+      "row": 1,
+      "formula_latex": "x=x",
+      "rule": "E1",
+      "references": [],
+      "English": "The same equality is asserted again; this duplicate is unused."
+    },
+    {
+      "row": 2,
+      "formula_latex": "\\forall x\\,(x=x)",
+      "rule": "GEN",
+      "references": [
+        0
+      ],
+      "English": "Generalize row 0; the fixed hypothesis set is empty."
+    }
+  ],
+  "saved_export": {
+    "accepted": false,
+    "exact_rows": 3,
+    "inventory_version": "FPC-POINT-FULL-FRAME-PROVIDER-v1",
+    "model": {
+      "frame": {
+        "rows": 3,
+        "schema": "FPC-point-frame-v1",
+        "syntax_nodes": 4
+      },
+      "inventory_version": "FPC-POINT-FULL-FRAME-PROVIDER-v1",
+      "query": {
+        "Gamma": [],
+        "claim_mode": 0,
+        "finite_axioms": [],
+        "function_arities": [
+          0,
+          1,
+          2,
+          2
+        ],
+        "goal": [
+          "all",
+          0,
+          [
+            "eq",
+            [
+              "var",
+              0
+            ],
+            [
+              "var",
+              0
+            ]
+          ]
+        ],
+        "predicate_arities": [],
+        "theory_profile": 1,
+        "version": 1
+      },
+      "query_hex": "465043310100040001020200010004000100000000",
+      "schema": "FPC-point-model-identity-v1"
+    },
+    "rows": [
+      {
+        "formula": [
+          "eq",
+          [
+            "var",
+            0
+          ],
+          [
+            "var",
+            0
+          ]
+        ],
+        "references": [],
+        "row": 0,
+        "rule_tag": 1,
+        "subtag": 6,
+        "witness": [
+          [
+            "var",
+            0
+          ]
+        ]
+      },
+      {
+        "formula": [
+          "eq",
+          [
+            "var",
+            0
+          ],
+          [
+            "var",
+            0
+          ]
+        ],
+        "references": [],
+        "row": 1,
+        "rule_tag": 1,
+        "subtag": 6,
+        "witness": [
+          [
+            "var",
+            0
+          ]
+        ]
+      },
+      {
+        "formula": [
+          "all",
+          0,
+          [
+            "eq",
+            [
+              "var",
+              0
+            ],
+            [
+              "var",
+              0
+            ]
+          ]
+        ],
+        "references": [
+          [
+            0,
+            [
+              "eq",
+              [
+                "var",
+                0
+              ],
+              [
+                "var",
+                0
+              ]
+            ]
+          ]
+        ],
+        "row": 2,
+        "rule_tag": 4,
+        "subtag": null,
+        "witness": [
+          0,
+          0
+        ]
+      }
+    ],
+    "schema": "FPC-point-candidate-export-v1",
+    "scope": "Canonical primitive candidate only; same-byte original dual validators and whole admission required.",
+    "state_serial": 16
+  },
+  "search_metrics": {
+    "callbacks": 216253,
+    "frame_atomic_steps": 7380,
+    "frame_runs": 97,
+    "frames_exhausted": 17,
+    "frames_fuel_limited": 79,
+    "max_frontier": 3,
+    "max_path_depth": 3,
+    "rounds_completed": 13,
+    "sum_frame_limits": 32497
+  },
+  "last_frame": {
+    "atomic_steps": 228,
+    "frame": {
+      "rows": 3,
+      "schema": "FPC-point-frame-v1",
+      "syntax_nodes": 4
+    },
+    "max_steps": 256,
+    "pair_index": 6,
+    "round": 14,
+    "status": "CANDIDATE"
+  },
+  "same_byte_subject_receipt": {
+    "accepted": true,
+    "calculus": "FPC-H1",
+    "certificate": {
+      "EOF": 33,
+      "row_count": 3,
+      "rows": [
+        {
+          "formula": [
+            "eq",
+            [
+              "var",
+              0
+            ],
+            [
+              "var",
+              0
+            ]
+          ],
+          "formula_source": {
+            "kind": "formula",
+            "nodes": [
+              {
+                "kind": "formula",
+                "parent": null,
+                "slot": null,
+                "span": [
+                  5,
+                  10
+                ],
+                "tag": 1
+              },
+              {
+                "kind": "term",
+                "parent": 0,
+                "slot": 0,
+                "span": [
+                  6,
+                  8
+                ],
+                "tag": 0
+              },
+              {
+                "kind": "term",
+                "parent": 0,
+                "slot": 1,
+                "span": [
+                  8,
+                  10
+                ],
+                "tag": 0
+              }
+            ],
+            "span": [
+              5,
+              10
+            ]
+          },
+          "index": 0,
+          "rule": "LOGICAL_AXIOM",
+          "rule_source": {
+            "kind": "natural",
+            "name": "rule_tag",
+            "span": [
+              10,
+              11
+            ]
+          },
+          "rule_tag": 1,
+          "span": [
+            5,
+            14
+          ],
+          "subtag": 6,
+          "validation": {
+            "references": [],
+            "side_conditions": [
+              {
+                "name": "exact whole row formula",
+                "passed": true
+              }
+            ],
+            "status": "VALID",
+            "witness_name": "E1"
+          },
+          "witness": [
+            [
+              "var",
+              0
+            ]
+          ],
+          "witness_source": [
+            {
+              "kind": "natural",
+              "name": "logical_tag",
+              "span": [
+                11,
+                12
+              ]
+            },
+            {
+              "kind": "term",
+              "name": "t",
+              "nodes": [
+                {
+                  "kind": "term",
+                  "parent": null,
+                  "slot": null,
+                  "span": [
+                    12,
+                    14
+                  ],
+                  "tag": 0
+                }
+              ],
+              "span": [
+                12,
+                14
+              ]
+            }
+          ]
+        },
+        {
+          "formula": [
+            "eq",
+            [
+              "var",
+              0
+            ],
+            [
+              "var",
+              0
+            ]
+          ],
+          "formula_source": {
+            "kind": "formula",
+            "nodes": [
+              {
+                "kind": "formula",
+                "parent": null,
+                "slot": null,
+                "span": [
+                  14,
+                  19
+                ],
+                "tag": 1
+              },
+              {
+                "kind": "term",
+                "parent": 0,
+                "slot": 0,
+                "span": [
+                  15,
+                  17
+                ],
+                "tag": 0
+              },
+              {
+                "kind": "term",
+                "parent": 0,
+                "slot": 1,
+                "span": [
+                  17,
+                  19
+                ],
+                "tag": 0
+              }
+            ],
+            "span": [
+              14,
+              19
+            ]
+          },
+          "index": 1,
+          "rule": "LOGICAL_AXIOM",
+          "rule_source": {
+            "kind": "natural",
+            "name": "rule_tag",
+            "span": [
+              19,
+              20
+            ]
+          },
+          "rule_tag": 1,
+          "span": [
+            14,
+            23
+          ],
+          "subtag": 6,
+          "validation": {
+            "references": [],
+            "side_conditions": [
+              {
+                "name": "exact whole row formula",
+                "passed": true
+              }
+            ],
+            "status": "VALID",
+            "witness_name": "E1"
+          },
+          "witness": [
+            [
+              "var",
+              0
+            ]
+          ],
+          "witness_source": [
+            {
+              "kind": "natural",
+              "name": "logical_tag",
+              "span": [
+                20,
+                21
+              ]
+            },
+            {
+              "kind": "term",
+              "name": "t",
+              "nodes": [
+                {
+                  "kind": "term",
+                  "parent": null,
+                  "slot": null,
+                  "span": [
+                    21,
+                    23
+                  ],
+                  "tag": 0
+                }
+              ],
+              "span": [
+                21,
+                23
+              ]
+            }
+          ]
+        },
+        {
+          "formula": [
+            "all",
+            0,
+            [
+              "eq",
+              [
+                "var",
+                0
+              ],
+              [
+                "var",
+                0
+              ]
+            ]
+          ],
+          "formula_source": {
+            "kind": "formula",
+            "nodes": [
+              {
+                "kind": "formula",
+                "parent": null,
+                "slot": null,
+                "span": [
+                  23,
+                  30
+                ],
+                "tag": 4
+              },
+              {
+                "kind": "formula",
+                "parent": 0,
+                "slot": 0,
+                "span": [
+                  25,
+                  30
+                ],
+                "tag": 1
+              },
+              {
+                "kind": "term",
+                "parent": 1,
+                "slot": 0,
+                "span": [
+                  26,
+                  28
+                ],
+                "tag": 0
+              },
+              {
+                "kind": "term",
+                "parent": 1,
+                "slot": 1,
+                "span": [
+                  28,
+                  30
+                ],
+                "tag": 0
+              }
+            ],
+            "span": [
+              23,
+              30
+            ]
+          },
+          "index": 2,
+          "rule": "GEN",
+          "rule_source": {
+            "kind": "natural",
+            "name": "rule_tag",
+            "span": [
+              30,
+              31
+            ]
+          },
+          "rule_tag": 4,
+          "span": [
+            23,
+            33
+          ],
+          "subtag": null,
+          "validation": {
+            "references": [
+              0
+            ],
+            "side_conditions": [
+              {
+                "name": "GEN strictly earlier reference",
+                "passed": true
+              },
+              {
+                "detail": {
+                  "Gamma_free_variables": []
+                },
+                "name": "GEN variable absent from every hypothesis",
+                "passed": true
+              },
+              {
+                "name": "exact whole row formula",
+                "passed": true
+              }
+            ],
+            "status": "VALID"
+          },
+          "witness": [
+            0,
+            0
+          ],
+          "witness_source": [
+            {
+              "kind": "natural",
+              "name": "source_row",
+              "span": [
+                31,
+                32
+              ]
+            },
+            {
+              "kind": "natural",
+              "name": "variable_id",
+              "span": [
+                32,
+                33
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "claim": "CLOSED_THEOREM_RELATIVE_TO_THEORY",
+    "complete": true,
+    "cost": {
+      "callbacks": 1423,
+      "elapsed_seconds": 0.000752334002754651,
+      "scope": "entry through final checked receipt copy; caller serialization/output excluded"
+    },
+    "derivation_complete": true,
+    "envelope": null,
+    "final_goal_equal": true,
+    "no_prefix_authority": true,
+    "query": {
+      "EOF": 21,
+      "Gamma": [],
+      "claim_mode": 0,
+      "finite_axioms": [],
+      "function_arities": [
+        0,
+        1,
+        2,
+        2
+      ],
+      "goal": [
+        "all",
+        0,
+        [
+          "eq",
+          [
+            "var",
+            0
+          ],
+          [
+            "var",
+            0
+          ]
+        ]
+      ],
+      "predicate_arities": [],
+      "source_fields": [
+        {
+          "kind": "natural",
+          "name": "version",
+          "span": [
+            4,
+            5
+          ]
+        },
+        {
+          "kind": "natural",
+          "name": "claim_mode",
+          "span": [
+            5,
+            6
+          ]
+        },
+        {
+          "elements": [
+            {
+              "kind": "natural",
+              "name": "element",
+              "span": [
+                7,
+                8
+              ]
+            },
+            {
+              "kind": "natural",
+              "name": "element",
+              "span": [
+                8,
+                9
+              ]
+            },
+            {
+              "kind": "natural",
+              "name": "element",
+              "span": [
+                9,
+                10
+              ]
+            },
+            {
+              "kind": "natural",
+              "name": "element",
+              "span": [
+                10,
+                11
+              ]
+            }
+          ],
+          "kind": "natural_vector",
+          "name": "function_arities",
+          "span": [
+            6,
+            11
+          ]
+        },
+        {
+          "elements": [],
+          "kind": "natural_vector",
+          "name": "predicate_arities",
+          "span": [
+            11,
+            12
+          ]
+        },
+        {
+          "kind": "natural",
+          "name": "theory_profile",
+          "span": [
+            12,
+            13
+          ]
+        },
+        {
+          "kind": "empty",
+          "name": "profile_payload",
+          "span": [
+            13,
+            13
+          ]
+        },
+        {
+          "elements": [],
+          "kind": "formula_vector",
+          "name": "Gamma",
+          "span": [
+            13,
+            14
+          ]
+        },
+        {
+          "kind": "formula",
+          "name": "goal",
+          "nodes": [
+            {
+              "kind": "formula",
+              "parent": null,
+              "slot": null,
+              "span": [
+                14,
+                21
+              ],
+              "tag": 4
+            },
+            {
+              "kind": "formula",
+              "parent": 0,
+              "slot": 0,
+              "span": [
+                16,
+                21
+              ],
+              "tag": 1
+            },
+            {
+              "kind": "term",
+              "parent": 1,
+              "slot": 0,
+              "span": [
+                17,
+                19
+              ],
+              "tag": 0
+            },
+            {
+              "kind": "term",
+              "parent": 1,
+              "slot": 1,
+              "span": [
+                19,
+                21
+              ],
+              "tag": 0
+            }
+          ],
+          "span": [
+            14,
+            21
+          ]
+        }
+      ],
+      "theory_profile": 1,
+      "version": 1
+    },
+    "raw_inputs": {
+      "certificate": {
+        "bytes": 33,
+        "sha256": "116c31813cba90ba9ffec2eabc88a1cbed6158b4b8ae296a9d01fd41115598b5"
+      },
+      "query": {
+        "bytes": 21,
+        "sha256": "c1c45a289cba90663e4296d2530ae80649b714f51fd54adfa3d211486567a64d"
+      }
+    },
+    "schema": "FPC-H1-finite-byte-check-receipt-v1",
+    "status": "VALID_DERIVATION",
+    "syntax_complete": true,
+    "version": "FPC-H1-BYTE-CHECKER-v1",
+    "wire": "FPC-H1-exact-binary-wire-contract-v1"
+  },
+  "same_byte_reference_receipt": {
+    "complete_check": true,
+    "final_goal_equal": true,
+    "query": {
+      "goal": {
+        "node_byte_spans": [
+          [
+            14,
+            21
+          ],
+          [
+            16,
+            21
+          ],
+          [
+            17,
+            19
+          ],
+          [
+            19,
+            21
+          ]
+        ],
+        "prefix_tokens": [
+          [
+            "all",
+            0
+          ],
+          [
+            "eq"
+          ],
+          [
+            "var",
+            0
+          ],
+          [
+            "var",
+            0
+          ]
+        ]
+      },
+      "hypotheses": [],
+      "mode": 0,
+      "profile": 1,
+      "signature": [
+        [
+          0,
+          1,
+          2,
+          2
+        ],
+        []
+      ],
+      "theory": []
+    },
+    "rows": [
+      {
+        "byte_span": [
+          5,
+          14
+        ],
+        "formula": {
+          "node_byte_spans": [
+            [
+              5,
+              10
+            ],
+            [
+              6,
+              8
+            ],
+            [
+              8,
+              10
+            ]
+          ],
+          "prefix_tokens": [
+            [
+              "eq"
+            ],
+            [
+              "var",
+              0
+            ],
+            [
+              "var",
+              0
+            ]
+          ]
+        },
+        "index": 0,
+        "payload": [
+          {
+            "node_byte_spans": [
+              [
+                12,
+                14
+              ]
+            ],
+            "prefix_tokens": [
+              [
+                "var",
+                0
+              ]
+            ]
+          }
+        ],
+        "rule_tag": 1,
+        "witness_tag": 6
+      },
+      {
+        "byte_span": [
+          14,
+          23
+        ],
+        "formula": {
+          "node_byte_spans": [
+            [
+              14,
+              19
+            ],
+            [
+              15,
+              17
+            ],
+            [
+              17,
+              19
+            ]
+          ],
+          "prefix_tokens": [
+            [
+              "eq"
+            ],
+            [
+              "var",
+              0
+            ],
+            [
+              "var",
+              0
+            ]
+          ]
+        },
+        "index": 1,
+        "payload": [
+          {
+            "node_byte_spans": [
+              [
+                21,
+                23
+              ]
+            ],
+            "prefix_tokens": [
+              [
+                "var",
+                0
+              ]
+            ]
+          }
+        ],
+        "rule_tag": 1,
+        "witness_tag": 6
+      },
+      {
+        "byte_span": [
+          23,
+          33
+        ],
+        "formula": {
+          "node_byte_spans": [
+            [
+              23,
+              30
+            ],
+            [
+              25,
+              30
+            ],
+            [
+              26,
+              28
+            ],
+            [
+              28,
+              30
+            ]
+          ],
+          "prefix_tokens": [
+            [
+              "all",
+              0
+            ],
+            [
+              "eq"
+            ],
+            [
+              "var",
+              0
+            ],
+            [
+              "var",
+              0
+            ]
+          ]
+        },
+        "index": 2,
+        "payload": [
+          0,
+          0
+        ],
+        "rule_tag": 4,
+        "witness_tag": null
+      }
+    ],
+    "schema": "FPC-H1-independent-flat-reference-v2",
+    "status": "VALID_DERIVATION"
+  },
+  "point_observation": {
+    "GCTS_conformance": false,
+    "boundary": {
+      "exterior_m": [
+        "OUTSIDE_FORMULA_DOMAIN"
+      ],
+      "exterior_t": 1,
+      "final_goal_port": [
+        2,
+        1
+      ],
+      "final_goal_value": [
+        "all",
+        0,
+        [
+          "eq",
+          [
+            "var",
+            0
+          ],
+          [
+            "var",
+            0
+          ]
+        ]
+      ]
+    },
+    "callbacks": 337,
+    "complete": true,
+    "inventory_scope": "Fixed five primitive rule families with typed parameters; not one fixed finite Wang palette",
+    "m_values": [
+      [
+        [
+          0,
+          1
+        ],
+        [
+          "eq",
+          [
+            "var",
+            0
+          ],
+          [
+            "var",
+            0
+          ]
+        ]
+      ],
+      [
+        [
+          1,
+          1
+        ],
+        [
+          "eq",
+          [
+            "var",
+            0
+          ],
+          [
+            "var",
+            0
+          ]
+        ]
+      ],
+      [
+        [
+          2,
+          1
+        ],
+        [
+          "all",
+          0,
+          [
+            "eq",
+            [
+              "var",
+              0
+            ],
+            [
+              "var",
+              0
+            ]
+          ]
+        ]
+      ]
+    ],
+    "mismatches": [],
+    "point_compatible": true,
+    "point_domain": "integer row coordinate times cell/port channel; translations only",
+    "proof_admitted": false,
+    "row_count": 3,
+    "schema": "FPC-H1-point-row-observation-v1",
+    "scope": "Parser wellformedness and pinned inventory construction are preconditions. This provisional point observation is not a replacement for current same-byte dual validation.",
+    "search_engine": false,
+    "t_totals": [
+      [
+        [
+          0,
+          0
+        ],
+        1
+      ],
+      [
+        [
+          1,
+          0
+        ],
+        1
+      ],
+      [
+        [
+          2,
+          0
+        ],
+        1
+      ]
+    ],
+    "target": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        2,
+        0
+      ]
+    ],
+    "tiles": [
+      {
+        "conclusion": [
+          "eq",
+          [
+            "var",
+            0
+          ],
+          [
+            "var",
+            0
+          ]
+        ],
+        "family": 1,
+        "m": [
+          [
+            [
+              0,
+              1
+            ],
+            [
+              "eq",
+              [
+                "var",
+                0
+              ],
+              [
+                "var",
+                0
+              ]
+            ]
+          ]
+        ],
+        "references": [],
+        "subtag": 6,
+        "t": [
+          [
+            [
+              0,
+              0
+            ],
+            1
+          ]
+        ],
+        "translation": [
+          0,
+          0
+        ],
+        "witness": [
+          [
+            "var",
+            0
+          ]
+        ]
+      },
+      {
+        "conclusion": [
+          "eq",
+          [
+            "var",
+            0
+          ],
+          [
+            "var",
+            0
+          ]
+        ],
+        "family": 1,
+        "m": [
+          [
+            [
+              0,
+              1
+            ],
+            [
+              "eq",
+              [
+                "var",
+                0
+              ],
+              [
+                "var",
+                0
+              ]
+            ]
+          ]
+        ],
+        "references": [],
+        "subtag": 6,
+        "t": [
+          [
+            [
+              0,
+              0
+            ],
+            1
+          ]
+        ],
+        "translation": [
+          1,
+          0
+        ],
+        "witness": [
+          [
+            "var",
+            0
+          ]
+        ]
+      },
+      {
+        "conclusion": [
+          "all",
+          0,
+          [
+            "eq",
+            [
+              "var",
+              0
+            ],
+            [
+              "var",
+              0
+            ]
+          ]
+        ],
+        "family": 4,
+        "m": [
+          [
+            [
+              -2,
+              1
+            ],
+            [
+              "eq",
+              [
+                "var",
+                0
+              ],
+              [
+                "var",
+                0
+              ]
+            ]
+          ],
+          [
+            [
+              0,
+              1
+            ],
+            [
+              "all",
+              0,
+              [
+                "eq",
+                [
+                  "var",
+                  0
+                ],
+                [
+                  "var",
+                  0
+                ]
+              ]
+            ]
+          ]
+        ],
+        "references": [
+          0
+        ],
+        "subtag": null,
+        "t": [
+          [
+            [
+              0,
+              0
+            ],
+            1
+          ]
+        ],
+        "translation": [
+          2,
+          0
+        ],
+        "witness": [
+          0,
+          0
+        ]
+      }
+    ]
+  },
+  "costs": {
+    "whole_observer_elapsed_seconds": 9.105046500000753,
+    "final_observer_gate_seconds": 9.105392459008726,
+    "conservative_whole_peak_bytes": 177913856,
+    "worker_header_callbacks": 13367023,
+    "stages": [
+      {
+        "began": 0.0792093339987332,
+        "name": "IMPORT checker",
+        "seconds": 0.005298666001181118,
+        "status": "COMPLETED"
+      },
+      {
+        "began": 0.08451433399750385,
+        "name": "IMPORT builders",
+        "seconds": 0.0015778749948367476,
+        "status": "COMPLETED"
+      },
+      {
+        "began": 0.08609504198830109,
+        "name": "IMPORT reference",
+        "seconds": 0.003558917000191286,
+        "status": "COMPLETED"
+      },
+      {
+        "began": 0.08965845899365377,
+        "name": "IMPORT baseline_search",
+        "seconds": 0.006762332996004261,
+        "status": "COMPLETED"
+      },
+      {
+        "began": 0.09642412498942576,
+        "name": "IMPORT codec",
+        "seconds": 0.001614875000086613,
+        "status": "COMPLETED"
+      },
+      {
+        "began": 0.09804174999590032,
+        "name": "IMPORT baseline_bank",
+        "seconds": 0.004819374997168779,
+        "status": "COMPLETED"
+      },
+      {
+        "began": 0.10286425000231247,
+        "name": "IMPORT producer",
+        "seconds": 0.012203666992718354,
+        "status": "COMPLETED"
+      },
+      {
+        "began": 0.11507270899892319,
+        "name": "IMPORT obligation_bank",
+        "seconds": 0.005391415994381532,
+        "status": "COMPLETED"
+      },
+      {
+        "began": 0.12046770899905823,
+        "name": "IMPORT point_adapter",
+        "seconds": 0.00170974999491591,
+        "status": "COMPLETED"
+      },
+      {
+        "began": 0.12218041699088644,
+        "name": "IMPORT point_bank",
+        "seconds": 0.0019250420009484515,
+        "status": "COMPLETED"
+      },
+      {
+        "began": 0.12410862499382347,
+        "name": "IMPORT intro_bank",
+        "seconds": 0.0012462500017136335,
+        "status": "COMPLETED"
+      },
+      {
+        "began": 0.12535787498927675,
+        "name": "IMPORT regression_bank",
+        "seconds": 0.0015372090128948912,
+        "status": "COMPLETED"
+      },
+      {
+        "began": 0.1268975419952767,
+        "name": "IMPORT explicit_kernel",
+        "seconds": 0.0034769170015351847,
+        "status": "COMPLETED"
+      },
+      {
+        "began": 0.1303776669956278,
+        "name": "IMPORT explicit_oracle",
+        "seconds": 0.0023192499938886613,
+        "status": "COMPLETED"
+      },
+      {
+        "began": 0.13270016699971166,
+        "name": "IMPORT explicit_bank",
+        "seconds": 0.004217207999317907,
+        "status": "COMPLETED"
+      },
+      {
+        "began": 0.13692045900097582,
+        "name": "IMPORT provider",
+        "seconds": 0.0066829999996116385,
+        "status": "COMPLETED"
+      },
+      {
+        "began": 0.14360654199845158,
+        "name": "IMPORT tiny_oracle",
+        "seconds": 0.0019758330017793924,
+        "status": "COMPLETED"
+      },
+      {
+        "began": 0.14558474998921156,
+        "name": "IMPORT tiny_encoder",
+        "seconds": 0.0012122090120101348,
+        "status": "COMPLETED"
+      },
+      {
+        "began": 0.14679908398829866,
+        "name": "IMPORT tiny_bank",
+        "seconds": 0.003048166006919928,
+        "status": "COMPLETED"
+      },
+      {
+        "began": 0.14984991699748207,
+        "name": "IMPORT controller",
+        "seconds": 0.0027847919991472736,
+        "status": "COMPLETED"
+      },
+      {
+        "began": 0.15263741699163802,
+        "name": "IMPORT frame_oracle",
+        "seconds": 0.0005981670110486448,
+        "status": "COMPLETED"
+      },
+      {
+        "began": 0.1532373749942053,
+        "name": "IMPORT controller_bank",
+        "seconds": 0.00494066700048279,
+        "status": "COMPLETED"
+      },
+      {
+        "began": 0.15826041699619964,
+        "name": "FREEZE independent target before controls/search",
+        "seconds": 0.0011226250062463805,
+        "status": "COMPLETED"
+      },
+      {
+        "began": 0.15939950000029057,
+        "name": "CONTROLS baseline56",
+        "seconds": 0.22621329200046603,
+        "status": "COMPLETED"
+      },
+      {
+        "began": 0.3856460839888314,
+        "name": "CONTROLS obligation47",
+        "seconds": 5.623649416011176,
+        "status": "COMPLETED"
+      },
+      {
+        "began": 6.009326208994025,
+        "name": "CONTROLS intro_integration1",
+        "seconds": 0.006580999994184822,
+        "status": "COMPLETED"
+      },
+      {
+        "began": 6.01591729199572,
+        "name": "CONTROLS regression2",
+        "seconds": 0.0018329169979551807,
+        "status": "COMPLETED"
+      },
+      {
+        "began": 6.017756916990038,
+        "name": "CONTROLS point20",
+        "seconds": 0.003612708009313792,
+        "status": "COMPLETED"
+      },
+      {
+        "began": 6.021885291993385,
+        "name": "CONTROLS explicit-point16",
+        "seconds": 0.0757872079993831,
+        "status": "COMPLETED"
+      },
+      {
+        "began": 6.0976989999908255,
+        "name": "CONTROLS tiny-full-provider10",
+        "seconds": 2.0127729590021772,
+        "status": "COMPLETED"
+      },
+      {
+        "began": 8.110484208998969,
+        "name": "CONTROLS full-frame-controller10",
+        "seconds": 0.6538140409975313,
+        "status": "COMPLETED"
+      },
+      {
+        "began": 8.764511624991428,
+        "name": "SEARCH fresh full-FPC point-frame dovetail",
+        "seconds": 0.15310200001113117,
+        "status": "COMPLETED"
+      },
+      {
+        "began": 8.918434916995466,
+        "name": "VALIDATE original subject same bytes",
+        "seconds": 0.0007597079966217279,
+        "status": "COMPLETED"
+      },
+      {
+        "began": 8.919196292001288,
+        "name": "VALIDATE original independent reference same bytes",
+        "seconds": 0.00012991699622943997,
+        "status": "COMPLETED"
+      },
+      {
+        "began": 8.919382874999428,
+        "name": "REDUCE dual-validated same rows to points",
+        "seconds": 0.00018804200226441026,
+        "status": "COMPLETED"
+      }
+    ],
+    "all_ten_limits": {
+      "work_seconds": 160,
+      "positive_seconds": 180,
+      "custody_seconds": 210,
+      "observer_fallback_seconds": 225,
+      "memory_bytes": 1073741824,
+      "physical_bytes": 134217728,
+      "result_bytes": 50331648,
+      "log_bytes": 4194304,
+      "reserved_outer_bytes": 9437184,
+      "root_callbacks": 400000000
+    }
+  },
+  "six_recipes": [
+    {
+      "case_id": "point-frame-full-FPC-v1-target-0",
+      "target_index": 0,
+      "target_id": "PA-reflexivity"
+    },
+    {
+      "case_id": "point-frame-full-FPC-v1-target-1",
+      "target_index": 1,
+      "target_id": "PA-zero-left"
+    },
+    {
+      "case_id": "point-frame-full-FPC-v1-target-2",
+      "target_index": 2,
+      "target_id": "PA-addition-commutes"
+    },
+    {
+      "case_id": "point-frame-full-FPC-v1-target-3",
+      "target_index": 3,
+      "target_id": "HI-point-not-line"
+    },
+    {
+      "case_id": "point-frame-full-FPC-v1-target-4",
+      "target_index": 4,
+      "target_id": "HI-distinct-lines-no-two-shared-points"
+    },
+    {
+      "case_id": "point-frame-full-FPC-v1-target-5",
+      "target_index": 5,
+      "target_id": "HI-point-off-each-line"
+    }
+  ],
+  "other_five_status": "NOT_RUN_IN_THIS_STUDY",
+  "learned_markings": false,
+  "RL_used": false,
+  "learned_lemma_families": false,
+  "GCTS_or_RL_advantage_established": false,
+  "strict_finite_Wang_palette_constructed": false,
+  "minimal_proof_claim": false,
+  "packaging_scientific_imports_calls": 0,
+  "historical_consumed_failures_replayed": false,
+  "goal_complete": false
+}
