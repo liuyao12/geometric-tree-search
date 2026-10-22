@@ -1,0 +1,85 @@
+{
+  "model": {
+    "version": "hat-turtle-lift-search-1",
+    "orientations": 12,
+    "hatAtoms": 192,
+    "turtleAtoms": 240,
+    "capacity": 12,
+    "pointCoordinateDenominator": 18,
+    "hatAngles": [
+      8,
+      3,
+      4,
+      6,
+      4,
+      9,
+      4,
+      3,
+      4,
+      9,
+      4,
+      3,
+      8,
+      3
+    ],
+    "turtleAngles": [
+      8,
+      3,
+      4,
+      6,
+      4,
+      9,
+      4,
+      3,
+      4,
+      9,
+      4,
+      3,
+      8,
+      3
+    ]
+  },
+  "checks": [
+    "Exact rank-two hat kernel; turtle image is minus twice the kernel coefficients",
+    "All twelve symmetry actions preserve exact atomic supports in both projections; joint projection has a unique inverse",
+    "Common oriented triangulation is nondegenerate over the entire hat–turtle interval, using exact integer quadratic tests",
+    "Incremental domains equal independent exhaustive enumeration; branch rollback restores totals, marks, generations, and domains",
+    "All root domains independently match exhaustive orientation/vertex alignment and whole-patch point replay",
+    "Global dead precedes forced; global forced precedes branching; earliest generation precedes smaller later domains",
+    "Hidden translations do not evade projected overlap tests",
+    "Tiny two-tile instance agrees with brute-force root domain; budget exhaustion is unknown and best viable patch replays"
+  ],
+  "searches": [
+    {
+      "target": 20,
+      "seed": 1,
+      "elapsedMs": 14357,
+      "status": "consistent finite patch",
+      "stats": {
+        "attempts": 78,
+        "forced": 13,
+        "branches": 33,
+        "backtracks": 59,
+        "capacityHat": 8296,
+        "capacityTurtle": 349,
+        "markingHat": 10619,
+        "markingTurtle": 1419,
+        "graphAudits": 82
+      },
+      "replay": {
+        "tiles": 20,
+        "points": 8952,
+        "openVertexObligations": 140,
+        "surfaceVertices": 156,
+        "surfaceEdges": 175,
+        "eulerCharacteristic": 1,
+        "sharedEdges": 105,
+        "boundaryEdges": 70,
+        "hatAndTurtleCapacities": true,
+        "sharedLiftMarkings": true,
+        "scope": "Consistent finite patch; open boundary, no infinite extension claim"
+      }
+    }
+  ],
+  "scope": "Finite growth checkpoints in a connected, doubly projected, coherently marked model. No learned constraints or substitution rules. No infinite-tiling claim."
+}
