@@ -1,0 +1,197 @@
+{
+  "schema": "GCTS-point-proof-source-manifest-v1",
+  "date": "2026-10-22",
+  "scope": "Component Source and source-review archive only, not a closed runnable whole experiment or a proof certificate.",
+  "members": [
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/explicit_point_kernel_v1.py",
+      "bytes": 28994,
+      "sha256": "93343eff1809d73def5a9264631c656f584b0c7a9f258a374302ead2e73e1618"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/explicit-point-kernel-static-v1.json",
+      "bytes": 661,
+      "sha256": "5c66c7fb63249b6f40f63a51fbe185d0c9c61842cc88e8686a5611f6f21af573"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/explicit-point-kernel-manual-v1.json",
+      "bytes": 5366,
+      "sha256": "dcbcd1d89645ce3c53bd547a6663ab38474e9750a7d8d3d3fcb28e961473f7ae"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/explicit-point-kernel-source-handoff-v1.json",
+      "bytes": 2993,
+      "sha256": "b6644f8bef9f43f7a43418c9fe753e6625ebdada29e1f745d3a2b5ebfaf90c91"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/explicit_point_kernel_v2.py",
+      "bytes": 29002,
+      "sha256": "158174c8445997bedf5b17785840eb7a89dcd4d46098fcdfb35a84e2fef3849c"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/explicit-point-kernel-static-v2.json",
+      "bytes": 637,
+      "sha256": "a2ab6a2df0c6134c8f6ba97d7475e64a002d2412ed25278614beeacb0fab5757"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/explicit-point-kernel-source-handoff-v2.json",
+      "bytes": 1673,
+      "sha256": "2ed1663f9f68fa0d1dd423cfc2320ce146aac330557777376b86b74c45ec8b3e"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/independent-point-oracle-bank-source-assessment-v1.json",
+      "bytes": 4146,
+      "sha256": "b6efd10be833749474f80723933ae6809f4ad79e41184a40fb1200357def2604"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/full-frame-provider-source-assessment-v1.json",
+      "bytes": 4688,
+      "sha256": "2b55c9b2f47e69fbb9c794727126ab34a139c981db8677742b425edffed81260"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/explicit_point_literal_oracle_v1.py",
+      "bytes": 18338,
+      "sha256": "ff34af27a491da3571fc02227333ca3ce048a8d7c6d49cb780d3b1c9ba14a995"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/explicit_point_independent_controls_v1.py",
+      "bytes": 40853,
+      "sha256": "eedf82a42ebae7f4133f2ee1781e33205980769f8164bd278641761e6d1a1029"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/explicit-point-independent-oracle-and-controls-API-v1.json",
+      "bytes": 7658,
+      "sha256": "ff6535e973986464ef5d842ac2ce1cc214303ba1299d2f1431f051b9eda5b97a"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/explicit-point-independent-oracle-and-controls-manual-v1.json",
+      "bytes": 7806,
+      "sha256": "e1482da0e7d221da9a8bacb99baea63687726a781aaeab18a840fb6d2831d347"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/explicit-point-independent-oracle-and-controls-static-v1.json",
+      "bytes": 2662,
+      "sha256": "a9e203200d3fd888ceeb21a01be2207e53e1588e5c389d27cb6ca4969c4df823"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/explicit-point-independent-oracle-and-controls-handoff-v1.json",
+      "bytes": 5660,
+      "sha256": "afbeb2b917869ef66c675f0fa5d1d24a62fb69130ecf0905f34e51936e44fa9f"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/explicit-point-kernel-API-proposal-v1.json",
+      "bytes": 17188,
+      "sha256": "ce63ed341e34f4038b0cd1cc17e515f22c9fbb388981676fb12bf2df30f08aae"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/explicit-point-kernel-generation-binding-addendum-v1.json",
+      "bytes": 4110,
+      "sha256": "c89c8ae82b9a9874a28b02b9d70913eceffd2c7cdaf2066c23c080c6aba4fc75"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/point-proof-independent-raw-models-v1.json",
+      "bytes": 15516,
+      "sha256": "18851c3488152f3743a61eacafc12322c94c48f98038cccf01bd95482793225a"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/typed-explicit-kernel-bank-interoperability-Source-review-v1.json",
+      "bytes": 9751,
+      "sha256": "556eede933198d1459881da1b8a96534ae8e9522a9b219d7b895273ace90a824"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/typed-explicit-kernel-bank-interoperability-Source-review-v2.json",
+      "bytes": 3763,
+      "sha256": "9461cca888e3063a108797e5aa976de763ea9042d778b403e6073fb1d2de3246"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/fpc_full_frame_inventory_v1.py",
+      "bytes": 54916,
+      "sha256": "85d316650f57d3d1833ab1ca5cb199903a66cea268505dc61361a8559c4e786c"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/full-frame-provider-API-v1.json",
+      "bytes": 10295,
+      "sha256": "1358798d12afd9a51bd022c7a324d920502b1b75b00d1edbb506fa5898768d0c"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/full-frame-provider-manual-conformance-v1.json",
+      "bytes": 11394,
+      "sha256": "513006db5fc7a94f08660869ccbc1cbbccabce02a071bb8b3c0491ec06c14a4b"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/full-frame-provider-dependency-closure-v1.json",
+      "bytes": 4451,
+      "sha256": "9745928d6563e598f2d2f499a01aafc2b0b138bc5bc8f15f4f5828b959c887db"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/full-frame-provider-static-v1.json",
+      "bytes": 14695,
+      "sha256": "ae55dba077d8a331eb8ea90c8f91030f1c884e20ba5a857b77e785b5111109fc"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/full-frame-provider-Source-handoff-v1.json",
+      "bytes": 5141,
+      "sha256": "7f58dd22af4fe973fdfcc51fec6381b542649d8a2ab14511f2b5c954a25f367f"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/point-proof-provider-state-cursor-ABI-v2.json",
+      "bytes": 18277,
+      "sha256": "c45d77772afc6dbad1592f169e419eca217e3af81c3cc114115c21c1e0871659"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/point-proof-provider-state-cursor-ABI-v2-binding-addendum-v1.json",
+      "bytes": 3675,
+      "sha256": "047e3ea707b714f19d765e994976ced825b82fae64cf37d826ed2ec662f86d7b"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/point-proof-provider-implementation-key-memory-binding-v1.json",
+      "bytes": 2669,
+      "sha256": "bbc86235c192875b2017ad72167965898e9eaf84d78c252a39f57afdde4062ef"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/point-proof-ground-placement-identity-addendum-v1.json",
+      "bytes": 4712,
+      "sha256": "41082cb752bff9ca18768103a288fc9c7a377cbcd9b151efc9b8b4602483475e"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/review-C/typed-point-provider-and-explicit-kernel-pre-code-ABI-review-v1.json",
+      "bytes": 8938,
+      "sha256": "315e118f2c8e6f94e1a7e32090f5ddc447c22af7333869c146aa10c8c8766218"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/review-C/typed-explicit-point-independent-oracle-bank-Source-review-v1.json",
+      "bytes": 7725,
+      "sha256": "6ea51c219df0884ef30747a65567d794aeaea4575646367cd3cbf9323a0d5c68"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/review-C/typed-explicit-point-kernel-full-Source-review-v1-negative.json",
+      "bytes": 5774,
+      "sha256": "c489042b9e5792b4ac9b5f540e3f348f569f64080708e251c7093c33c81fd04b"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/review-C/typed-explicit-point-kernel-full-Source-review-v2.json",
+      "bytes": 4159,
+      "sha256": "ac6875b2516ca4609588a814a861aa14fa2c199e8ba1fbcbd4541059785eb7b7"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/review-C/typed-full-FPC-frame-provider-complete-Source-review-v1.json",
+      "bytes": 14167,
+      "sha256": "27afe94657e71d714e6c45da7f1301cc00ff1ae4c2f8aec4cd40f793f8e7c26f"
+    }
+  ],
+  "raw_member_count": 35,
+  "raw_member_bytes": 382453,
+  "direct_included_references_verified": 134,
+  "public_page": {
+    "path": "research-runs/gcts-point-proof-search-20261022/root/source-milestone-publication-v1/point-proof-search-v1.html",
+    "bytes": 16910,
+    "sha256": "0cf8f65eeb8eb8b7b450788af2f3c6f1d65e2167a82744b6134ac7e803490106"
+  },
+  "public_status": {
+    "path": "research-runs/gcts-point-proof-search-20261022/root/source-milestone-publication-v1/point-proof-source-data-v1.json",
+    "bytes": 3102,
+    "sha256": "29e7891f1e6bb6c9fe55141008aace0b36e56efda765c72ddd168a7d89b5f499"
+  },
+  "scientific_imports_calls": 0,
+  "scientific_execution": false
+}

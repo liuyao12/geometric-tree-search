@@ -1,0 +1,71 @@
+{
+  "schema": "GCTS-point-proof-source-milestone-v1",
+  "date": "2026-10-22",
+  "status": "SOURCE_WRITTEN_AND_REVIEWED_RUNTIME_UNRUN",
+  "components": [
+    {
+      "role": "coordinating agent",
+      "component": "explicit finite-list point engine",
+      "source": {
+        "path": "research-runs/gcts-point-proof-search-20261022/root/explicit_point_kernel_v2.py",
+        "bytes": 29002,
+        "sha256": "158174c8445997bedf5b17785840eb7a89dcd4d46098fcdfb35a84e2fef3849c"
+      },
+      "source_review_passed": true,
+      "runtime_qualified": false
+    },
+    {
+      "role": "implementation agent",
+      "component": "full logical finite-frame inventory provider",
+      "source": {
+        "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/fpc_full_frame_inventory_v1.py",
+        "bytes": 54916,
+        "sha256": "85d316650f57d3d1833ab1ca5cb199903a66cea268505dc61361a8559c4e786c"
+      },
+      "source_review_passed": true,
+      "runtime_qualified": false
+    },
+    {
+      "role": "independent test agent",
+      "component": "literal oracle and prospective controls",
+      "sources": [
+        {
+          "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/explicit_point_literal_oracle_v1.py",
+          "bytes": 18338,
+          "sha256": "ff34af27a491da3571fc02227333ca3ce048a8d7c6d49cb780d3b1c9ba14a995"
+        },
+        {
+          "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/explicit_point_independent_controls_v1.py",
+          "bytes": 40853,
+          "sha256": "eedf82a42ebae7f4133f2ee1781e33205980769f8164bd278641761e6d1a1029"
+        }
+      ],
+      "source_review_passed": true,
+      "raw_groups": 13,
+      "additional_safety_groups": 3,
+      "groups_executed": 0,
+      "runtime_qualified": false
+    }
+  ],
+  "critical_review": {
+    "provider_review": {
+      "path": "research-runs/gcts-point-proof-search-20261022/review-C/typed-full-FPC-frame-provider-complete-Source-review-v1.json",
+      "bytes": 14167,
+      "sha256": "27afe94657e71d714e6c45da7f1301cc00ff1ae4c2f8aec4cd40f793f8e7c26f"
+    },
+    "kernel_v1_keyword_negative_preserved": true,
+    "kernel_v2_narrow_fix_source_review_passed": true
+  },
+  "independence": "Literal oracle/bank frozen before first kernel executable read. Subsequent interoperability reading is recorded separately.",
+  "remaining": [
+    "Integrated virtual point-domain graph/controller and fair frame runner",
+    "Independent full-provider membership/completeness and state controls",
+    "Exact bounded whole worker/protocol/closed inputs/reviews before scientific execution",
+    "Same-byte original proof validators and complete result admission"
+  ],
+  "preserved": "Original six exact statements, scoped126 and ten resource caps unchanged; consumed failures and negative reviews retained.",
+  "proofs_discovered_by_these_components": 0,
+  "scientific_execution": false,
+  "GCTS_or_RL_advantage_established": false,
+  "archive_scope": "Component Source and source-review archive only, not a closed runnable whole experiment or a proof certificate."
+}
