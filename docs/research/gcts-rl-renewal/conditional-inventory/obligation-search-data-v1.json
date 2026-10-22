@@ -1,0 +1,68 @@
+{
+  "schema": "GCTS-obligation-search-report-v1",
+  "case_id": "obligation-fpc-h1-hi-point-not-line-0",
+  "status": "FAILED_MEMORY_NOT_ADMITTED",
+  "target_id": "HI-point-not-line",
+  "target_latex": "\\forall p\\,(\\operatorname{Pt}(p)\\to\\neg\\operatorname{Ln}(p))",
+  "proof_admitted": false,
+  "qualification_admitted": false,
+  "candidate_certificate_saved": false,
+  "worker_seconds": 21.526701958995545,
+  "worker_callbacks": 27771277,
+  "worker_observed_peak_bytes": 1085112320,
+  "worker_postoutput_peak_bytes": 1085390848,
+  "reaped_child_observed_peak_bytes": 1104003072,
+  "observer_seconds": 23.02218441599689,
+  "qualified_whole_peak_bytes": null,
+  "limits": {
+    "custody_seconds": 210,
+    "log_bytes": 4194304,
+    "memory_bytes": 1073741824,
+    "observer_fallback_seconds": 225,
+    "physical_bytes": 134217728,
+    "positive_seconds": 180,
+    "reserved_outer_bytes": 9437184,
+    "result_bytes": 50331648,
+    "root_callbacks": 400000000,
+    "work_seconds": 160
+  },
+  "controls": [
+    {
+      "population": "baseline56",
+      "groups": 56,
+      "diagnostic_stage": "COMPLETED",
+      "admitted": false
+    },
+    {
+      "population": "obligation47",
+      "groups": 47,
+      "diagnostic_stage": "COMPLETED",
+      "admitted": false
+    },
+    {
+      "population": "intro_integration1",
+      "groups": 1,
+      "diagnostic_stage": "COMPLETED",
+      "admitted": false
+    },
+    {
+      "population": "regression2",
+      "groups": 2,
+      "diagnostic_stage": "COMPLETED",
+      "admitted": false
+    },
+    {
+      "population": "point20",
+      "groups": 20,
+      "diagnostic_stage": "COMPLETED",
+      "admitted": false
+    }
+  ],
+  "other_five_targets": "UNCHANGED_NOT_RUN_BY_THIS_CASE",
+  "actual_raw_files": 12,
+  "actual_raw_bytes": 18134,
+  "partial_files": 0,
+  "scope": "Ordinary symbolic feasibility failure. No proof, qualified prefix, GCTS/RL effect, speedup, finite-palette or nonprovability claim.",
+  "allocation_scope": "No per-structure allocation census saved. Stack location is not an allocation profile.",
+  "parallel_outcome": "Independent reviews identified and Source-fixed reciprocal INTRO ownership and constructor first-fault/partial cleanup; two additive regression groups preserved existing124."
+}

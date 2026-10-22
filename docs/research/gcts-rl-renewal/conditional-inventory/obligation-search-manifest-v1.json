@@ -1,0 +1,596 @@
+{
+  "schema": "GCTS-obligation-search-evidence-manifest-v1",
+  "scope": "Complete selected task Sources and negative actual; no new execution, proof or prefix authority.",
+  "runtime_binary_omitted": {
+    "bytes": 18058560,
+    "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+    "sha256": "b6ea0c2a9bfce48dbf181a53f1ca4f0562d40658b85bf47258e2a88d8f9e3933"
+  },
+  "members": [
+    {
+      "member": "actual/CONSUMED.json",
+      "bytes": 274,
+      "sha256": "960db14807dadeba959df14b1a98e544c38ae45f94321b359ea83643667d3a16"
+    },
+    {
+      "member": "actual/failure.json",
+      "bytes": 7536,
+      "sha256": "56787e5adb286284065306388e77436ddda5fb4acc79ddef5dafe05886faa90f"
+    },
+    {
+      "member": "actual/owned-child.json",
+      "bytes": 248,
+      "sha256": "f2d915219144697ef6ccd814da00529ce6a0c70d65c6b63a2fa400505c2b4cee"
+    },
+    {
+      "member": "actual/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "member": "actual/stdout.bin",
+      "bytes": 144,
+      "sha256": "7c4b14e7cdd7f3cce58003f8772d3dd4f91fe8699ca7efa967da366e6aa68d9b"
+    },
+    {
+      "member": "actual/target-input-freeze.json",
+      "bytes": 4298,
+      "sha256": "1359b01019c3ba2657ab7fbaf6de10b1bf862242f426d3adf55c7736b6a266e4"
+    },
+    {
+      "member": "actual/target-query.bin",
+      "bytes": 27,
+      "sha256": "63dafaccc6eb9a76defe986d436b3563248a4799a458a1fc68b3fe766e23d391"
+    },
+    {
+      "member": "actual/terminal.json",
+      "bytes": 1830,
+      "sha256": "ff65a5a3c2a826f0607b33206a211b7f5e4167a725063a7fabc3db607ff41c69"
+    },
+    {
+      "member": "actual/worker-header.json",
+      "bytes": 652,
+      "sha256": "69df817186e9e3fd58ba9d01ad37538aaab9b519d6dc7d8523af368cd7eaa65a"
+    },
+    {
+      "member": "contracts/primary-master.md",
+      "bytes": 21657,
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    {
+      "member": "contracts/published-master.md",
+      "bytes": 36240,
+      "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+    },
+    {
+      "member": "custody/observe_conditional_once_v1.py",
+      "bytes": 10113,
+      "sha256": "24804c7d4558d8df511942d9e6b2e4d8d2cfd88ce7df6f5b5f775f87d0c20ca9"
+    },
+    {
+      "member": "custody/run_conditional_once_v1.py",
+      "bytes": 12973,
+      "sha256": "98c55321bb87a8c04b2c6d56b357aba9c3a8f5fc98660474ae3ac1c9d00b0aca"
+    },
+    {
+      "member": "observer/observer.json",
+      "bytes": 1507,
+      "sha256": "0f9f1071cd15cc43b5748f9341ad6bbd00754b02cf30b823eea09e04c8a0a60c"
+    },
+    {
+      "member": "observer/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "member": "observer/stdout.bin",
+      "bytes": 1618,
+      "sha256": "c8cb9e310b7b5ed235c79e098feca87aaac08818d6144d5bb277db6e2e092804"
+    },
+    {
+      "member": "research/diagnostics-L/first-fixed-verifier-target-declarations-v1.json",
+      "bytes": 8614,
+      "sha256": "c6ae5f616b61e85f4b5cbd2b1e7619c047f42d83afd725e277475292cd904b0a"
+    },
+    {
+      "member": "research/diagnostics-L/fpc-h1-independent-reference-API-v2.json",
+      "bytes": 8744,
+      "sha256": "f33b029e72accf7d7d51285a0009cb5d892c1b24e96931a5c8c646153fceeaf3"
+    },
+    {
+      "member": "research/diagnostics-L/fpc-h1-independent-reference-manual-v2.json",
+      "bytes": 5996,
+      "sha256": "7330d9a8d26ee053f49935188264accdf3480da25b94ccc8457e4d2b8e2b7a7b"
+    },
+    {
+      "member": "research/diagnostics-L/fpc-h1-independent-search-control-definition-v1.json",
+      "bytes": 12247,
+      "sha256": "bd897cc49d5bb16c4c5850b3c11005669692532a5a13891408d75bd5219671bf"
+    },
+    {
+      "member": "research/diagnostics-L/fpc-h1-independent-search-controls-and-codec-API-v2.json",
+      "bytes": 11813,
+      "sha256": "06cebbd5356c2e91b2faffaef890300bdd531adde0c608759f460377425fd005"
+    },
+    {
+      "member": "research/diagnostics-L/fpc-h1-independent-search-controls-and-codec-handoff-v2.json",
+      "bytes": 5809,
+      "sha256": "e49e4f32f05d5831a7071343249cc81f8f507391ff8a3007db02baa24cc925bf"
+    },
+    {
+      "member": "research/diagnostics-L/fpc-h1-independent-search-controls-and-codec-manual-v2.json",
+      "bytes": 7549,
+      "sha256": "135094cc5f640093f7e68b74ab9794683563a79ea6ab87325b19181916069606"
+    },
+    {
+      "member": "research/diagnostics-L/fpc-h1-independent-search-controls-and-codec-static-v2.json",
+      "bytes": 2092,
+      "sha256": "63a0b72867e908c3d9b4b58d77eb5f60a86bd05fcbb2bf22b4975b0f84139804"
+    },
+    {
+      "member": "research/diagnostics-L/fpc-h1-independent-search-controls-v2-raw-delta.json",
+      "bytes": 3015,
+      "sha256": "9d0cdc61d67ae6b6ecff29d1d2b166fc40fccc8d49b3c68ad3d96515e0176765"
+    },
+    {
+      "member": "research/diagnostics-L/fpc-h1-obligation-controls-old56-applicability-v1.json",
+      "bytes": 36691,
+      "sha256": "2824fc6317ca9587c2731c44fd48923bdab71dbf393e8b763e227787db3ac9e3"
+    },
+    {
+      "member": "research/diagnostics-L/fpc-h1-obligation-independent-controls-API-v2.json",
+      "bytes": 8597,
+      "sha256": "dc01914b4f2aa92a6138816d1ffd750dc8817e1841952755e140cfea8b5f4bb6"
+    },
+    {
+      "member": "research/diagnostics-L/fpc-h1-obligation-independent-controls-handoff-v2.json",
+      "bytes": 8851,
+      "sha256": "797e68d4e4ee253d46ef1c98efd95c55bd69e2afddad4ffd4226e491d677ed41"
+    },
+    {
+      "member": "research/diagnostics-L/fpc-h1-obligation-independent-controls-manual-v2.json",
+      "bytes": 8867,
+      "sha256": "bfac91bffe32298a58fc8c0ac366ad90a1109fc1c2c314d2dd0389f63ba92bfc"
+    },
+    {
+      "member": "research/diagnostics-L/fpc-h1-obligation-intro-integration-API-v1.json",
+      "bytes": 3219,
+      "sha256": "e433ecc08d0bdf7b50ce8df3b5ef140ce207e351a69eac053808e206231e528a"
+    },
+    {
+      "member": "research/diagnostics-L/fpc-h1-obligation-intro-integration-manual-v1.json",
+      "bytes": 3300,
+      "sha256": "42f1379ffc0973b0b13e523fc5ff0debb909c6605e4f0ce985aaf246567488f4"
+    },
+    {
+      "member": "research/diagnostics-L/fpc-h1-obligation-two-defect-regressions-API-v1.json",
+      "bytes": 4713,
+      "sha256": "2332bcc915cb7c1064fb70f680c0b34c34214ef29a765918830330ff88eacca1"
+    },
+    {
+      "member": "research/diagnostics-L/fpc-h1-obligation-two-defect-regressions-handoff-v1.json",
+      "bytes": 4195,
+      "sha256": "05d8be5d3cc34d99629232c6532aa900712c1d88eeac85e61acda0b0d9e6a8c5"
+    },
+    {
+      "member": "research/diagnostics-L/fpc-h1-obligation-two-defect-regressions-manual-v1.json",
+      "bytes": 4530,
+      "sha256": "a5143c6a9e2f461daca8117cb93b3fc8d1c91a6998d78e07d8fa3150295a84c3"
+    },
+    {
+      "member": "research/diagnostics-L/fpc-h1-obligation-two-defect-regressions-static-v1.json",
+      "bytes": 1097,
+      "sha256": "f85bae7842946e917ba7b43af0010a9e6e062e5190cb5d4e5b8f4f9b038bdf8e"
+    },
+    {
+      "member": "research/diagnostics-L/fpc-h1-point-row-independent-controls-API-v1.json",
+      "bytes": 5415,
+      "sha256": "c257ab62bf0d66ca234ff02345008964f43a8a173b888d74f9d7c0796fb48502"
+    },
+    {
+      "member": "research/diagnostics-L/fpc-h1-point-row-independent-controls-manual-v1.json",
+      "bytes": 3871,
+      "sha256": "673d5d5cb3b04cb0bdbfb3e419f0813d220373bfb95469098f8d3b9a77d0a4b5"
+    },
+    {
+      "member": "research/diagnostics-L/fpc_h1_declared_query_codec_v1.py",
+      "bytes": 14061,
+      "sha256": "4c6366b1a3728608cedfd86f0c78ca38ffb9d65ffc1907b926fc5f5446ad0ab4"
+    },
+    {
+      "member": "research/diagnostics-L/fpc_h1_independent_reference_v2.py",
+      "bytes": 24681,
+      "sha256": "ecda2a10feb69e5aed6ae34dc6c2123dbbc3297ab5c0a431861d628e9cd4334a"
+    },
+    {
+      "member": "research/diagnostics-L/fpc_h1_independent_search_controls_v2.py",
+      "bytes": 35231,
+      "sha256": "f0c2be3c99e866aea7a62dc012c6ec96be64c6a0f9b8619a82626d04603946af"
+    },
+    {
+      "member": "research/diagnostics-L/fpc_h1_obligation_independent_controls_v2.py",
+      "bytes": 51653,
+      "sha256": "309fa0c9d5c068266faf96ff2f61f3ff15874cf24b0065bc83d216fa10152280"
+    },
+    {
+      "member": "research/diagnostics-L/fpc_h1_obligation_intro_integration_control_v1.py",
+      "bytes": 10141,
+      "sha256": "5390689c124393bed3ea8a19c84a1e43bb81d956945dbcebc5712b97892d90c2"
+    },
+    {
+      "member": "research/diagnostics-L/fpc_h1_obligation_two_defect_regressions_v1.py",
+      "bytes": 13618,
+      "sha256": "2a20fd644b8370d1f6b8f07921075c72b227dc280d9502c9259ac6ed9eb41c7b"
+    },
+    {
+      "member": "research/diagnostics-L/fpc_h1_point_row_independent_controls_v1.py",
+      "bytes": 18065,
+      "sha256": "d49e554bc24fba8539224b7f4099e2f089639f36245a9ed4e47fc2753e7d387e"
+    },
+    {
+      "member": "research/diagnostics-L/next-geometric-receptor-study-bounded-census-design-v1.json",
+      "bytes": 8550,
+      "sha256": "223332bf95c2437d465c2790cf82164f07124402567ab9314d80c2d7365404a0"
+    },
+    {
+      "member": "research/diagnostics-L/obligation-control-population-additive-INTRO-supplement-v1.json",
+      "bytes": 2245,
+      "sha256": "96be84ce6f5923695c5194c045c449f77964d10ad00ec7e51ad2d21a7d350808"
+    },
+    {
+      "member": "research/diagnostics-L/obligation-control-population-composition-judgment-v1.json",
+      "bytes": 13944,
+      "sha256": "2248619d7fc379ffff0084d75cb74c7517b6202f2ddad382fdd7ca6c825d82b9"
+    },
+    {
+      "member": "research/diagnostics-L/obligation-first-independent-control-requirements-v1.json",
+      "bytes": 7984,
+      "sha256": "262cbb1654ca090d60224334ace9ac9ecb13040ea4d308a8518782244a9047f0"
+    },
+    {
+      "member": "research/diagnostics-L/obligation-first-independent-input-declarations-v1.json",
+      "bytes": 16785,
+      "sha256": "dd86e8a412e8ac2852ce88e02661aa743e1003ebe818ae992c1df4c86e4eda3d"
+    },
+    {
+      "member": "research/diagnostics-L/typed-FPC-H1-obligation-producer-search-component-Source-review-v2.json",
+      "bytes": 6238,
+      "sha256": "5602d90a3a49d1a34d8843d2317a53b4432491839eb198ab233cdfef74057c6e"
+    },
+    {
+      "member": "research/diagnostics-L/typed-FPC-H1-uniform-search-component-Source-review-v1.json",
+      "bytes": 13815,
+      "sha256": "aec5071d937f9b20927226f4ff50af4143f16b85bad607aa0e53f939495ddc8b"
+    },
+    {
+      "member": "research/diagnostics-L/typed-independent-search-bank-carrier-negative-v1.json",
+      "bytes": 3243,
+      "sha256": "62c225d19412be9911129b087da439b78fad5e1e84723acc7c22ffb448346917"
+    },
+    {
+      "member": "research/diagnostics-L/typed-obligation-once-memory-failure-bounded-assessment-v1.json",
+      "bytes": 6200,
+      "sha256": "5238d29c37fbfd9cb0d47173339f082498239cec4bc8790b3e5faa8aaf59364c"
+    },
+    {
+      "member": "research/implementation-B/first-order-primitive-calculus-contract-v3.json",
+      "bytes": 22752,
+      "sha256": "8d33020a469b586f4f74afc7ecb28f89fecd83f5a6afb00df1a2bb0b87dad2ed"
+    },
+    {
+      "member": "research/implementation-B/first-order-primitive-calculus-interface-v3.json",
+      "bytes": 3924,
+      "sha256": "dd0224b700e91fdfcdfa460a6b761e2c53df423f1a45504c07d069e8088ce1bb"
+    },
+    {
+      "member": "research/implementation-B/fpc-h1-byte-checker-API-v1.json",
+      "bytes": 7053,
+      "sha256": "598eab55203f2c1d80fe9e9864fd57e03e374be834d2c69b7df7d14f996d7a66"
+    },
+    {
+      "member": "research/implementation-B/fpc-h1-byte-checker-manual-v1.json",
+      "bytes": 6365,
+      "sha256": "847fd6582972c25f4d47628cdd2dcb660e88d8ce8b1269a1f708629ea9239bab"
+    },
+    {
+      "member": "research/implementation-B/fpc-h1-exact-wire-contract-v1.json",
+      "bytes": 12714,
+      "sha256": "13baa91f5bd038e485255fc96eeb7170f75f04dd842da9160010d1e06f0262b1"
+    },
+    {
+      "member": "research/implementation-B/fpc-h1-obligation-first-producer-design-v2.json",
+      "bytes": 33597,
+      "sha256": "603845b9f1858fe2771031a3118692433670ae1ef32b5aa9bf7f851f1abf6ae1"
+    },
+    {
+      "member": "research/implementation-B/fpc-h1-obligation-plan-context-ABI-v1.json",
+      "bytes": 14913,
+      "sha256": "3dbe18a406873c528798d35fafa852f365b9c97f9f28e190da69ff5b6950ecfc"
+    },
+    {
+      "member": "research/implementation-B/fpc-h1-obligation-producer-API-v2.json",
+      "bytes": 13142,
+      "sha256": "a1e82325fb9a525334e01575aa774d94ade5cb2aa52b53f5cb7f31dbe6a4bc5d"
+    },
+    {
+      "member": "research/implementation-B/fpc-h1-obligation-producer-Source-handoff-v2.json",
+      "bytes": 7546,
+      "sha256": "f984e3f71120430c9a352a9552092d268b4ef2d9275c2807317ab3e7e1a332c6"
+    },
+    {
+      "member": "research/implementation-B/fpc-h1-obligation-producer-manual-v2.json",
+      "bytes": 9247,
+      "sha256": "b52de66d9febe6e9101f0ae6434e234c78aebcd3d8da8dd5e08468151a7b9e1f"
+    },
+    {
+      "member": "research/implementation-B/fpc-h1-obligation-producer-static-v2.json",
+      "bytes": 6415,
+      "sha256": "53fb145d91f0d424c23f3c23f19978da88be81644a155a131c22bdee47e6cbea"
+    },
+    {
+      "member": "research/implementation-B/fpc-h1-obligation-producer-successor-v2.json",
+      "bytes": 13484,
+      "sha256": "47c3de793ac150a679f8004a74271f0be12d3aa69155eb64c0007b1e5ba04100"
+    },
+    {
+      "member": "research/implementation-B/fpc-h1-obligation-producer-v1-to-v2.patch",
+      "bytes": 8352,
+      "sha256": "378c4196fd1d3d503f4cb566cf62c8bc6e0299eabbe4641cb65d7361bb310e46"
+    },
+    {
+      "member": "research/implementation-B/fpc-h1-obligation-producer-v2-memory-growth-assessment-v1.json",
+      "bytes": 19008,
+      "sha256": "e4bf33d0f4b948fee84b3232f1fdf1d7106aebaf32004d30ffdd6737d3ee3d5a"
+    },
+    {
+      "member": "research/implementation-B/fpc-h1-obligation-runtime-dependencies-v2.json",
+      "bytes": 5870,
+      "sha256": "4c0f1529a4290eabfa007816fd7b83823716cce2a196c0ed9356fa1529828374"
+    },
+    {
+      "member": "research/implementation-B/fpc-h1-uniform-proof-search-prospective-design-v2.json",
+      "bytes": 26898,
+      "sha256": "0b7bf4be21fb5cfdb339be1e9bccbbe2d2192b6f9bc0b53224131e5b0c8850f1"
+    },
+    {
+      "member": "research/implementation-B/fpc-h1-uniform-search-API-v1.json",
+      "bytes": 10982,
+      "sha256": "f25c26ff1842252ab8085692686b3f1d49cd7ddc730d37f34e6acf0e339d90c9"
+    },
+    {
+      "member": "research/implementation-B/fpc-h1-uniform-search-handoff-v1.json",
+      "bytes": 3784,
+      "sha256": "b834297ea922c824d1b4e491e545a9d14e896e587f352a727dd91b049038aece"
+    },
+    {
+      "member": "research/implementation-B/fpc-h1-uniform-search-manual-v1.json",
+      "bytes": 9267,
+      "sha256": "877aabf5877adaabd453c149c1f63cc3197a0af0660b010f8943e33787336d45"
+    },
+    {
+      "member": "research/implementation-B/fpc-h1-uniform-search-static-v1.json",
+      "bytes": 2226,
+      "sha256": "cc3f3bc3061c923b5857f8f8e4e0ca0dcfb1c42d00696c8d76953812df5f47db"
+    },
+    {
+      "member": "research/implementation-B/fpc_h1_ast_and_builders_v1.py",
+      "bytes": 11348,
+      "sha256": "a42aa71f1e5482a1e1d9637290b4c7f8b52f366d86f7234a86cb11420171ed32"
+    },
+    {
+      "member": "research/implementation-B/fpc_h1_byte_checker_v1.py",
+      "bytes": 31557,
+      "sha256": "140a9c4b7a6a18c4c20aa4294a0f3fa90f65fe319adbf47a22125170f32b2ef7"
+    },
+    {
+      "member": "research/implementation-B/fpc_h1_obligation_producer_v2.py",
+      "bytes": 105517,
+      "sha256": "fa135ec9e84cdb84b0be506d74a1f167e619b7ac82fcb6a1d8b8782c738523d1"
+    },
+    {
+      "member": "research/implementation-B/fpc_h1_uniform_search_v1.py",
+      "bytes": 54407,
+      "sha256": "53467e578ad7b512ae66e8e03cd85dadba1ded39b9ab0012c17e7e8f170a0902"
+    },
+    {
+      "member": "research/implementation-B/typed-independent-search-codec-and-bank-v2-Source-peer-review-v1.json",
+      "bytes": 13196,
+      "sha256": "822490c505f2f8f71157e8f73c271e4fc738f8fd3017c627c30af35c00acd18a"
+    },
+    {
+      "member": "research/implementation-B/typed-obligation-worker-v4-and-custody-Source-peer-review-v1.json",
+      "bytes": 16442,
+      "sha256": "e3b45efccaf680f6692a357bd3a4bc49dc29fa0db10066cc2bb4ff66dde32216"
+    },
+    {
+      "member": "research/review-C/typed-FPC-H1-byte-checker-component-Source-review-v1.json",
+      "bytes": 27200,
+      "sha256": "c061a3437770eafa2fea494a091c7098c6e389dada77da6e3e584697efcf9fbb"
+    },
+    {
+      "member": "research/review-C/typed-FPC-H1-independent-reference-full-component-Source-review-v2.json",
+      "bytes": 50329,
+      "sha256": "a20089b597479c43711ea407f48010ec4ba1a3d334a3358bb08a59f7e20fa1e0"
+    },
+    {
+      "member": "research/review-C/typed-FPC-H1-independent-search-codec-and-controls-Source-review-v1-negative.json",
+      "bytes": 25130,
+      "sha256": "c25939f2276e74ab921881c043d638fbed08b60fa43fda941aea50ba30fef0ee"
+    },
+    {
+      "member": "research/review-C/typed-FPC-H1-independent-search-codec-and-controls-Source-review-v2.json",
+      "bytes": 27330,
+      "sha256": "1481b2ba6efebd469e5b51bce3dea11702f253a16b823476b7198ea0efc38f2f"
+    },
+    {
+      "member": "research/review-C/typed-FPC-H1-obligation-INTRO-integration-control-component-Source-review-v1.json",
+      "bytes": 8636,
+      "sha256": "55e75f82871032714438b75c0b98c821533fce8d2701c18ebbb15b5ce5705366"
+    },
+    {
+      "member": "research/review-C/typed-FPC-H1-obligation-grant-proposal-component-review-v1.json",
+      "bytes": 6315,
+      "sha256": "65c72255f0b2e8ee1dd52c7c8f77ca8b55d4e05acb684d87e3937ddc7232f45a"
+    },
+    {
+      "member": "research/review-C/typed-FPC-H1-obligation-independent-controls-component-Source-review-v2.json",
+      "bytes": 9885,
+      "sha256": "4cf662e98b3db204fd8ae492a0b7a082c98a17ffc0fc04a608185110e8e3b381"
+    },
+    {
+      "member": "research/review-C/typed-FPC-H1-obligation-producer-complete-component-Source-review-v2.json",
+      "bytes": 17728,
+      "sha256": "4c21b92f8b0bb5b12e6b7ae720f034b546f57674b5f1f5d88c94347942a28efd"
+    },
+    {
+      "member": "research/review-C/typed-FPC-H1-obligation-search-complete-negative-actual-review-v1.json",
+      "bytes": 48766,
+      "sha256": "2916d2a751eae1cca5a3caa9f43eb7f81a9f021a000eecb71935e0960facb9dc"
+    },
+    {
+      "member": "research/review-C/typed-FPC-H1-obligation-whole-prospective-Source-plan-review-v1.json",
+      "bytes": 24207,
+      "sha256": "99bd409d4d34945cdd6b85cdf93cc5811b49e6caa0a78ed974cdf0397c3445bc"
+    },
+    {
+      "member": "research/review-C/typed-FPC-H1-point-row-adapter-component-Source-review-v2.json",
+      "bytes": 11616,
+      "sha256": "52c064358631db36ee656c2b860d308a9b7f790f72c307c9d969ebd6b373dafe"
+    },
+    {
+      "member": "research/review-C/typed-FPC-H1-point-row-independent-controls-and-API-Source-review-v1.json",
+      "bytes": 10234,
+      "sha256": "762d4f2fb85e8fff5b0a46c05a2a2321a2b86a76c2b692ff0a189c1b9134829f"
+    },
+    {
+      "member": "research/review-C/typed-FPC-H1-target-authority-input-freeze-Source-review-v3.json",
+      "bytes": 8879,
+      "sha256": "b0f9b375bfa4845363a8f6ca6846b3229bd3d3c2e8545e4f36e3c8dddccb5f61"
+    },
+    {
+      "member": "research/review-C/typed-FPC-H1-uniform-proof-search-design-review-v2.json",
+      "bytes": 22997,
+      "sha256": "bdb53031d067928491dc2172317401f3e44d44f2fd6cd545765c0cc552ea6c4a"
+    },
+    {
+      "member": "research/review-C/typed-obligation-two-defect-additive-regression-proposal-review-v1.json",
+      "bytes": 5394,
+      "sha256": "21f621677fe6d72f69877bf16731fb18aecf0a4d2bbf05cf16090095760d37a9"
+    },
+    {
+      "member": "research/review-C/typed-obligation-two-defect-regressions-component-Source-review-v1.json",
+      "bytes": 8626,
+      "sha256": "0044b9fb42d7534e37f6722cf1cdebc0f2816349bae624af2576f2255da5577d"
+    },
+    {
+      "member": "research/review-C/typed-obligation-worker4-API5-component-Source-review-v1.json",
+      "bytes": 19341,
+      "sha256": "93f4e02360e9b1122fd6251b8dd5d8bfee173b9dd874a69b163a9155e5fd25b9"
+    },
+    {
+      "member": "research/root/FPC-H1-obligation-producer-Source-reading-v1.json",
+      "bytes": 4249,
+      "sha256": "2d7d5cc1200792bd51165e7100f5617599545217742705d5df2bb46632dd0a3a"
+    },
+    {
+      "member": "research/root/FPC-H1-obligation-producer-Source-reading-v2.json",
+      "bytes": 2773,
+      "sha256": "9f4b576c7955e283a3d3f331c5ec60a2070fd28f389a0be826c3fdcd2e37aef9"
+    },
+    {
+      "member": "research/root/FPC-H1-search-executable-Source-reading-v2.json",
+      "bytes": 2880,
+      "sha256": "3f918c56f9d5e0ee06644d1c63e9c2ed1fa32e08a46ef52880c09ca8c2ac7ef6"
+    },
+    {
+      "member": "research/root/admission/obligation-fpc-h1-hi-point-not-line-0-v1.json",
+      "bytes": 3442,
+      "sha256": "9ee7ee44e63c0cf5a0e813a172bdb14bcde7c801fe117fd5349bf441f05d6353"
+    },
+    {
+      "member": "research/root/build_obligation_search_report_v1.py",
+      "bytes": 18977,
+      "sha256": "2d95d50f44adbcf8e6a8dc948902e41ba6572ee1ba55c358d77c611997437d15"
+    },
+    {
+      "member": "research/root/first-fixed-verifier-search-targets-v3.json",
+      "bytes": 7910,
+      "sha256": "2e7cc31d6e72107d3811cf6a980ec261e0122c8736d4520db9cea119317eb54d"
+    },
+    {
+      "member": "research/root/fpc-h1-obligation-closed-inputs-v1.json",
+      "bytes": 41919,
+      "sha256": "a67fdfc2eb2d2471c2b255ea229a0e5c5979a0a529b2bebdaaef70fee28412e6"
+    },
+    {
+      "member": "research/root/fpc-h1-obligation-once-terminal-observation-v2.json",
+      "bytes": 6517,
+      "sha256": "48b350c7227ba5bf8c98d248c2f87519b02be41f49f137bc1e3c4fb8413ba002"
+    },
+    {
+      "member": "research/root/fpc-h1-obligation-protocol-v1.json",
+      "bytes": 56536,
+      "sha256": "fd925de2a5d6da6078f83b704b6b263ebaa5fab2f00f014a35eb90208b158bd6"
+    },
+    {
+      "member": "research/root/fpc-h1-obligation-tools-idle-barrier-v1.json",
+      "bytes": 3088,
+      "sha256": "64b784eae45a9da9b6fc7abdd04cbda09dd2b97b1ed585b5585dcd39deb4e78a"
+    },
+    {
+      "member": "research/root/fpc-h1-obligation-worker-API-v5.json",
+      "bytes": 18351,
+      "sha256": "dbae31ed7728a3cb7afd28cf1c2e929fddfd809596200ac306c5fe318a5027dc"
+    },
+    {
+      "member": "research/root/fpc-h1-obligation-worker-Source-successor-v4.json",
+      "bytes": 1377,
+      "sha256": "2fdd4b647309b3b14e21151f60371e9ec9dd211e59054adc1ca312cd16997df4"
+    },
+    {
+      "member": "research/root/fpc-h1-obligation-worker-v3-v4.patch",
+      "bytes": 4978,
+      "sha256": "8672b45ac6e58778272ffa566047d6a46838dafb984e386b5f1f852be41b9186"
+    },
+    {
+      "member": "research/root/fpc-h1-point-row-public-API-v1.json",
+      "bytes": 6466,
+      "sha256": "ea09e64353a43ebdb9a67150e8e77d2e2f608b3dbca0268eef75ad25123c1ebf"
+    },
+    {
+      "member": "research/root/fpc-h1-point-row-reduction-contract-v1.json",
+      "bytes": 8538,
+      "sha256": "3d56003ac1538232926a7b36b584423ba75d0ecfcda87a27f98e61f71d5fed99"
+    },
+    {
+      "member": "research/root/fpc_h1_obligation_search_worker_v4.py",
+      "bytes": 31590,
+      "sha256": "cdff3a24040ee8a18e923a3dba6bc9e0e5bcf02e21ca05e939d8b5e1ba6789b3"
+    },
+    {
+      "member": "research/root/fpc_h1_point_rows_v2.py",
+      "bytes": 10972,
+      "sha256": "57eac1681fbb9e3a6494109a1b9ca43cbfa4d5bfc25ce87954537ae801acf32f"
+    },
+    {
+      "member": "research/root/grants/obligation-fpc-h1-hi-point-not-line-0-v1.json",
+      "bytes": 2462,
+      "sha256": "298d440df4e19a430c7f14c39e7e27e0dafe2f7938fe8e07159d084020f6496f"
+    },
+    {
+      "member": "research/root/obligation-report-inputs-v1.json",
+      "bytes": 1187,
+      "sha256": "ed299a82c2cecf782cc63104b3e2f0ba7bd7071415af627948983f4e17ad8389"
+    },
+    {
+      "member": "research/root/plans/obligation-fpc-h1-hi-point-not-line-0-v1.json",
+      "bytes": 50898,
+      "sha256": "504563d214bfa3ae6546d063933730dee57e1a95ffd8da7cdef8ceac10c2af18"
+    },
+    {
+      "member": "research/root/prepare_fpc_h1_obligation_metadata_v2.py",
+      "bytes": 13538,
+      "sha256": "32cfc0e7e62722afbe409db207ea62398f5903169a485a7c9516b44e3aefaf7c"
+    }
+  ]
+}
