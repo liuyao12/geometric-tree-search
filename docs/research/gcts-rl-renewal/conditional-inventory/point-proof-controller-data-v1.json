@@ -1,0 +1,57 @@
+{
+  "schema": "GCTS-point-proof-controller-milestone-v1",
+  "date": "2026-10-22",
+  "status": "CONTROLLER_SOURCE_WRITTEN_AND_REVIEWED_RUNTIME_UNRUN",
+  "controller": {
+    "path": "research-runs/gcts-point-proof-search-20261022/root/fpc_point_frame_controller_v1.py",
+    "bytes": 27604,
+    "sha256": "e9198683dc830e0080fefde997e81adbcf5963c2671688b491c99bfde3ea9d61"
+  },
+  "controller_review": {
+    "path": "research-runs/gcts-point-proof-search-20261022/review-C/typed-full-frame-point-controller-complete-Source-review-v1.json",
+    "bytes": 13882,
+    "sha256": "b8f110dd51b8498b2b9a22cb7e73bba31e8d30c11dbb083b3d50dd44b699d098"
+  },
+  "provider": {
+    "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/fpc_full_frame_inventory_v3.py",
+    "bytes": 55773,
+    "sha256": "9411bc96d89670c22c8e27ccacaee41a9942563587a5f2a41bfe18aae3b54740"
+  },
+  "provider_review": {
+    "path": "research-runs/gcts-point-proof-search-20261022/review-C/typed-full-frame-provider-dependency-rebind-complete-Source-review-v3.json",
+    "bytes": 16198,
+    "sha256": "55c6524c944df464c5957f96016a838c9345278be0326d476efca3492c12bac7"
+  },
+  "tiny_provider_review": {
+    "path": "research-runs/gcts-point-proof-search-20261022/review-C/typed-tiny-full-provider-reference-encoder-controls-full-Source-review-v1.json",
+    "bytes": 17872,
+    "sha256": "18d3b14e3010973ee5ae173f83589b66bec6afe3332e934d7108d146ddc65210"
+  },
+  "implemented_in_Source": [
+    "All-row global empty/unresolved/singleton/branch scheduling",
+    "Exact dependency projection reuse including remote marks/refcounts",
+    "Owned branch offers and exact parent/remainder restoration",
+    "Normal unknown fuel stops without branch rejection",
+    "Fresh fair frame restarts, conditional unlimited coverage only"
+  ],
+  "populations": {
+    "original_scoped": 126,
+    "generic_point": 16,
+    "tiny_provider": 10,
+    "controller_groups": "independent Source authoring in progress"
+  },
+  "groups_executed_in_new_study": 0,
+  "new_proofs_discovered": 0,
+  "scientific_execution": false,
+  "runtime_qualified": false,
+  "GCTS_or_RL_advantage_established": false,
+  "remaining": [
+    "Independent controller control bank and complete runtime integration",
+    "Exact whole closure/protocol/plan/review/grant/barrier/once execution",
+    "Original same-byte dual validators, point reduction and full result review",
+    "Complete provider elimination/cost reporting before benchmark claims",
+    "Reusable lemma families and learned search policy"
+  ],
+  "preserved": "Six exact development statements, previous scoped populations, ten resource caps and consumed negative attempts unchanged.",
+  "archive_scope": "Source components and source-review evidence only, not a closed runnable experiment. Dependencies outside this study directory remain external; Source review is not runtime qualification. Earlier component Source bodies and negative reviews are preserved."
+}
