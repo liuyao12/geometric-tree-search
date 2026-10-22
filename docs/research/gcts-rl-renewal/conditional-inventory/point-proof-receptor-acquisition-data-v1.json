@@ -1,0 +1,6982 @@
+{
+  "schema": "Root-two-donor-acquisition-results-v1",
+  "issued_utc": "2026-10-22T23:43:05.502478+00:00",
+  "whole_actual_reviews_accepted": true,
+  "summary": "The ordinary prover acquired a checked five-line training proof of implication reflexivity. The second fixed donor search crossed the Python memory threshold, so the two-proof acquisition requirement was not met.",
+  "interpretation": "The first proof is an elementary instance produced through generic implication introduction and hypothesis discharge. The second run returned no proof; its memory failure is not a logical refutation. This cohort is closed with STOP_ACQUISITION. Cluster extraction and holdout search did not proceed.",
+  "contribution_assessment": "One fresh ordinary training derivation establishes a small acquisition capability. No receptor library, learned marking, RL policy, mapped cluster transfer or measured GCTS advantage exists in this cohort.",
+  "next_step": "Design a common ordinary prover that handles negation directly and works with input subformulas, reconstructing every result into the same primitive FPC checker. Add bounded charged observations of search-state growth. Then freeze a separate, more varied non-wrapper training and holdout study. Two admitted donors and checked cluster expansions into a new complete proof remain the gate before testing learned selection.",
+  "cases": [
+    {
+      "donor_index": 0,
+      "input_slot": "donor0",
+      "case_id": "receptor-two-donor-acquisition-v1-donor-0",
+      "admitted": true,
+      "display_outcome": "Admitted ordinary training proof",
+      "observer_seconds": 26.204309792025015,
+      "observer_final_gate_seconds": 26.204758292005863,
+      "tool_summary_seconds": 26.20703683400643,
+      "worker_receipt_seconds": 26.04251245901105,
+      "callbacks": 26780543,
+      "qualified_whole_peak_bytes": 164315136,
+      "physical_files": 15,
+      "physical_bytes": 5135585,
+      "partial_files": 0,
+      "proof_rows": [
+        {
+          "formula": [
+            "imp",
+            [
+              "pred",
+              0,
+              []
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                0,
+                []
+              ],
+              [
+                "pred",
+                0,
+                []
+              ]
+            ]
+          ],
+          "formula_source": {
+            "kind": "formula",
+            "nodes": [
+              {
+                "kind": "formula",
+                "parent": null,
+                "slot": null,
+                "span": [
+                  5,
+                  16
+                ],
+                "tag": 3
+              },
+              {
+                "kind": "formula",
+                "parent": 0,
+                "slot": 0,
+                "span": [
+                  6,
+                  9
+                ],
+                "tag": 0
+              },
+              {
+                "kind": "formula",
+                "parent": 0,
+                "slot": 1,
+                "span": [
+                  9,
+                  16
+                ],
+                "tag": 3
+              },
+              {
+                "kind": "formula",
+                "parent": 2,
+                "slot": 0,
+                "span": [
+                  10,
+                  13
+                ],
+                "tag": 0
+              },
+              {
+                "kind": "formula",
+                "parent": 2,
+                "slot": 1,
+                "span": [
+                  13,
+                  16
+                ],
+                "tag": 0
+              }
+            ],
+            "span": [
+              5,
+              16
+            ]
+          },
+          "index": 0,
+          "rule": "LOGICAL_AXIOM",
+          "rule_source": {
+            "kind": "natural",
+            "name": "rule_tag",
+            "span": [
+              16,
+              17
+            ]
+          },
+          "rule_tag": 1,
+          "span": [
+            5,
+            24
+          ],
+          "subtag": 0,
+          "validation": {
+            "references": [],
+            "side_conditions": [
+              {
+                "name": "exact whole row formula",
+                "passed": true
+              }
+            ],
+            "status": "VALID",
+            "witness_name": "H1"
+          },
+          "witness": [
+            [
+              "pred",
+              0,
+              []
+            ],
+            [
+              "pred",
+              0,
+              []
+            ]
+          ],
+          "witness_source": [
+            {
+              "kind": "natural",
+              "name": "logical_tag",
+              "span": [
+                17,
+                18
+              ]
+            },
+            {
+              "kind": "formula",
+              "name": "A",
+              "nodes": [
+                {
+                  "kind": "formula",
+                  "parent": null,
+                  "slot": null,
+                  "span": [
+                    18,
+                    21
+                  ],
+                  "tag": 0
+                }
+              ],
+              "span": [
+                18,
+                21
+              ]
+            },
+            {
+              "kind": "formula",
+              "name": "B",
+              "nodes": [
+                {
+                  "kind": "formula",
+                  "parent": null,
+                  "slot": null,
+                  "span": [
+                    21,
+                    24
+                  ],
+                  "tag": 0
+                }
+              ],
+              "span": [
+                21,
+                24
+              ]
+            }
+          ]
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "pred",
+              0,
+              []
+            ],
+            [
+              "imp",
+              [
+                "imp",
+                [
+                  "pred",
+                  0,
+                  []
+                ],
+                [
+                  "pred",
+                  0,
+                  []
+                ]
+              ],
+              [
+                "pred",
+                0,
+                []
+              ]
+            ]
+          ],
+          "formula_source": {
+            "kind": "formula",
+            "nodes": [
+              {
+                "kind": "formula",
+                "parent": null,
+                "slot": null,
+                "span": [
+                  24,
+                  39
+                ],
+                "tag": 3
+              },
+              {
+                "kind": "formula",
+                "parent": 0,
+                "slot": 0,
+                "span": [
+                  25,
+                  28
+                ],
+                "tag": 0
+              },
+              {
+                "kind": "formula",
+                "parent": 0,
+                "slot": 1,
+                "span": [
+                  28,
+                  39
+                ],
+                "tag": 3
+              },
+              {
+                "kind": "formula",
+                "parent": 2,
+                "slot": 0,
+                "span": [
+                  29,
+                  36
+                ],
+                "tag": 3
+              },
+              {
+                "kind": "formula",
+                "parent": 3,
+                "slot": 0,
+                "span": [
+                  30,
+                  33
+                ],
+                "tag": 0
+              },
+              {
+                "kind": "formula",
+                "parent": 3,
+                "slot": 1,
+                "span": [
+                  33,
+                  36
+                ],
+                "tag": 0
+              },
+              {
+                "kind": "formula",
+                "parent": 2,
+                "slot": 1,
+                "span": [
+                  36,
+                  39
+                ],
+                "tag": 0
+              }
+            ],
+            "span": [
+              24,
+              39
+            ]
+          },
+          "index": 1,
+          "rule": "LOGICAL_AXIOM",
+          "rule_source": {
+            "kind": "natural",
+            "name": "rule_tag",
+            "span": [
+              39,
+              40
+            ]
+          },
+          "rule_tag": 1,
+          "span": [
+            24,
+            51
+          ],
+          "subtag": 0,
+          "validation": {
+            "references": [],
+            "side_conditions": [
+              {
+                "name": "exact whole row formula",
+                "passed": true
+              }
+            ],
+            "status": "VALID",
+            "witness_name": "H1"
+          },
+          "witness": [
+            [
+              "pred",
+              0,
+              []
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                0,
+                []
+              ],
+              [
+                "pred",
+                0,
+                []
+              ]
+            ]
+          ],
+          "witness_source": [
+            {
+              "kind": "natural",
+              "name": "logical_tag",
+              "span": [
+                40,
+                41
+              ]
+            },
+            {
+              "kind": "formula",
+              "name": "A",
+              "nodes": [
+                {
+                  "kind": "formula",
+                  "parent": null,
+                  "slot": null,
+                  "span": [
+                    41,
+                    44
+                  ],
+                  "tag": 0
+                }
+              ],
+              "span": [
+                41,
+                44
+              ]
+            },
+            {
+              "kind": "formula",
+              "name": "B",
+              "nodes": [
+                {
+                  "kind": "formula",
+                  "parent": null,
+                  "slot": null,
+                  "span": [
+                    44,
+                    51
+                  ],
+                  "tag": 3
+                },
+                {
+                  "kind": "formula",
+                  "parent": 0,
+                  "slot": 0,
+                  "span": [
+                    45,
+                    48
+                  ],
+                  "tag": 0
+                },
+                {
+                  "kind": "formula",
+                  "parent": 0,
+                  "slot": 1,
+                  "span": [
+                    48,
+                    51
+                  ],
+                  "tag": 0
+                }
+              ],
+              "span": [
+                44,
+                51
+              ]
+            }
+          ]
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "imp",
+              [
+                "pred",
+                0,
+                []
+              ],
+              [
+                "imp",
+                [
+                  "imp",
+                  [
+                    "pred",
+                    0,
+                    []
+                  ],
+                  [
+                    "pred",
+                    0,
+                    []
+                  ]
+                ],
+                [
+                  "pred",
+                  0,
+                  []
+                ]
+              ]
+            ],
+            [
+              "imp",
+              [
+                "imp",
+                [
+                  "pred",
+                  0,
+                  []
+                ],
+                [
+                  "imp",
+                  [
+                    "pred",
+                    0,
+                    []
+                  ],
+                  [
+                    "pred",
+                    0,
+                    []
+                  ]
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "pred",
+                  0,
+                  []
+                ],
+                [
+                  "pred",
+                  0,
+                  []
+                ]
+              ]
+            ]
+          ],
+          "formula_source": {
+            "kind": "formula",
+            "nodes": [
+              {
+                "kind": "formula",
+                "parent": null,
+                "slot": null,
+                "span": [
+                  51,
+                  86
+                ],
+                "tag": 3
+              },
+              {
+                "kind": "formula",
+                "parent": 0,
+                "slot": 0,
+                "span": [
+                  52,
+                  67
+                ],
+                "tag": 3
+              },
+              {
+                "kind": "formula",
+                "parent": 1,
+                "slot": 0,
+                "span": [
+                  53,
+                  56
+                ],
+                "tag": 0
+              },
+              {
+                "kind": "formula",
+                "parent": 1,
+                "slot": 1,
+                "span": [
+                  56,
+                  67
+                ],
+                "tag": 3
+              },
+              {
+                "kind": "formula",
+                "parent": 3,
+                "slot": 0,
+                "span": [
+                  57,
+                  64
+                ],
+                "tag": 3
+              },
+              {
+                "kind": "formula",
+                "parent": 4,
+                "slot": 0,
+                "span": [
+                  58,
+                  61
+                ],
+                "tag": 0
+              },
+              {
+                "kind": "formula",
+                "parent": 4,
+                "slot": 1,
+                "span": [
+                  61,
+                  64
+                ],
+                "tag": 0
+              },
+              {
+                "kind": "formula",
+                "parent": 3,
+                "slot": 1,
+                "span": [
+                  64,
+                  67
+                ],
+                "tag": 0
+              },
+              {
+                "kind": "formula",
+                "parent": 0,
+                "slot": 1,
+                "span": [
+                  67,
+                  86
+                ],
+                "tag": 3
+              },
+              {
+                "kind": "formula",
+                "parent": 8,
+                "slot": 0,
+                "span": [
+                  68,
+                  79
+                ],
+                "tag": 3
+              },
+              {
+                "kind": "formula",
+                "parent": 9,
+                "slot": 0,
+                "span": [
+                  69,
+                  72
+                ],
+                "tag": 0
+              },
+              {
+                "kind": "formula",
+                "parent": 9,
+                "slot": 1,
+                "span": [
+                  72,
+                  79
+                ],
+                "tag": 3
+              },
+              {
+                "kind": "formula",
+                "parent": 11,
+                "slot": 0,
+                "span": [
+                  73,
+                  76
+                ],
+                "tag": 0
+              },
+              {
+                "kind": "formula",
+                "parent": 11,
+                "slot": 1,
+                "span": [
+                  76,
+                  79
+                ],
+                "tag": 0
+              },
+              {
+                "kind": "formula",
+                "parent": 8,
+                "slot": 1,
+                "span": [
+                  79,
+                  86
+                ],
+                "tag": 3
+              },
+              {
+                "kind": "formula",
+                "parent": 14,
+                "slot": 0,
+                "span": [
+                  80,
+                  83
+                ],
+                "tag": 0
+              },
+              {
+                "kind": "formula",
+                "parent": 14,
+                "slot": 1,
+                "span": [
+                  83,
+                  86
+                ],
+                "tag": 0
+              }
+            ],
+            "span": [
+              51,
+              86
+            ]
+          },
+          "index": 2,
+          "rule": "LOGICAL_AXIOM",
+          "rule_source": {
+            "kind": "natural",
+            "name": "rule_tag",
+            "span": [
+              86,
+              87
+            ]
+          },
+          "rule_tag": 1,
+          "span": [
+            51,
+            101
+          ],
+          "subtag": 1,
+          "validation": {
+            "references": [],
+            "side_conditions": [
+              {
+                "name": "exact whole row formula",
+                "passed": true
+              }
+            ],
+            "status": "VALID",
+            "witness_name": "H2"
+          },
+          "witness": [
+            [
+              "pred",
+              0,
+              []
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                0,
+                []
+              ],
+              [
+                "pred",
+                0,
+                []
+              ]
+            ],
+            [
+              "pred",
+              0,
+              []
+            ]
+          ],
+          "witness_source": [
+            {
+              "kind": "natural",
+              "name": "logical_tag",
+              "span": [
+                87,
+                88
+              ]
+            },
+            {
+              "kind": "formula",
+              "name": "A",
+              "nodes": [
+                {
+                  "kind": "formula",
+                  "parent": null,
+                  "slot": null,
+                  "span": [
+                    88,
+                    91
+                  ],
+                  "tag": 0
+                }
+              ],
+              "span": [
+                88,
+                91
+              ]
+            },
+            {
+              "kind": "formula",
+              "name": "B",
+              "nodes": [
+                {
+                  "kind": "formula",
+                  "parent": null,
+                  "slot": null,
+                  "span": [
+                    91,
+                    98
+                  ],
+                  "tag": 3
+                },
+                {
+                  "kind": "formula",
+                  "parent": 0,
+                  "slot": 0,
+                  "span": [
+                    92,
+                    95
+                  ],
+                  "tag": 0
+                },
+                {
+                  "kind": "formula",
+                  "parent": 0,
+                  "slot": 1,
+                  "span": [
+                    95,
+                    98
+                  ],
+                  "tag": 0
+                }
+              ],
+              "span": [
+                91,
+                98
+              ]
+            },
+            {
+              "kind": "formula",
+              "name": "C",
+              "nodes": [
+                {
+                  "kind": "formula",
+                  "parent": null,
+                  "slot": null,
+                  "span": [
+                    98,
+                    101
+                  ],
+                  "tag": 0
+                }
+              ],
+              "span": [
+                98,
+                101
+              ]
+            }
+          ]
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "imp",
+              [
+                "pred",
+                0,
+                []
+              ],
+              [
+                "imp",
+                [
+                  "pred",
+                  0,
+                  []
+                ],
+                [
+                  "pred",
+                  0,
+                  []
+                ]
+              ]
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                0,
+                []
+              ],
+              [
+                "pred",
+                0,
+                []
+              ]
+            ]
+          ],
+          "formula_source": {
+            "kind": "formula",
+            "nodes": [
+              {
+                "kind": "formula",
+                "parent": null,
+                "slot": null,
+                "span": [
+                  101,
+                  120
+                ],
+                "tag": 3
+              },
+              {
+                "kind": "formula",
+                "parent": 0,
+                "slot": 0,
+                "span": [
+                  102,
+                  113
+                ],
+                "tag": 3
+              },
+              {
+                "kind": "formula",
+                "parent": 1,
+                "slot": 0,
+                "span": [
+                  103,
+                  106
+                ],
+                "tag": 0
+              },
+              {
+                "kind": "formula",
+                "parent": 1,
+                "slot": 1,
+                "span": [
+                  106,
+                  113
+                ],
+                "tag": 3
+              },
+              {
+                "kind": "formula",
+                "parent": 3,
+                "slot": 0,
+                "span": [
+                  107,
+                  110
+                ],
+                "tag": 0
+              },
+              {
+                "kind": "formula",
+                "parent": 3,
+                "slot": 1,
+                "span": [
+                  110,
+                  113
+                ],
+                "tag": 0
+              },
+              {
+                "kind": "formula",
+                "parent": 0,
+                "slot": 1,
+                "span": [
+                  113,
+                  120
+                ],
+                "tag": 3
+              },
+              {
+                "kind": "formula",
+                "parent": 6,
+                "slot": 0,
+                "span": [
+                  114,
+                  117
+                ],
+                "tag": 0
+              },
+              {
+                "kind": "formula",
+                "parent": 6,
+                "slot": 1,
+                "span": [
+                  117,
+                  120
+                ],
+                "tag": 0
+              }
+            ],
+            "span": [
+              101,
+              120
+            ]
+          },
+          "index": 3,
+          "rule": "MP",
+          "rule_source": {
+            "kind": "natural",
+            "name": "rule_tag",
+            "span": [
+              120,
+              121
+            ]
+          },
+          "rule_tag": 3,
+          "span": [
+            101,
+            123
+          ],
+          "subtag": null,
+          "validation": {
+            "references": [
+              1,
+              2
+            ],
+            "side_conditions": [
+              {
+                "name": "MP strictly earlier references",
+                "passed": true
+              },
+              {
+                "name": "MP exact ordered operands",
+                "passed": true
+              },
+              {
+                "name": "exact whole row formula",
+                "passed": true
+              }
+            ],
+            "status": "VALID"
+          },
+          "witness": [
+            1,
+            2
+          ],
+          "witness_source": [
+            {
+              "kind": "natural",
+              "name": "antecedent_row",
+              "span": [
+                121,
+                122
+              ]
+            },
+            {
+              "kind": "natural",
+              "name": "implication_row",
+              "span": [
+                122,
+                123
+              ]
+            }
+          ]
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "pred",
+              0,
+              []
+            ],
+            [
+              "pred",
+              0,
+              []
+            ]
+          ],
+          "formula_source": {
+            "kind": "formula",
+            "nodes": [
+              {
+                "kind": "formula",
+                "parent": null,
+                "slot": null,
+                "span": [
+                  123,
+                  130
+                ],
+                "tag": 3
+              },
+              {
+                "kind": "formula",
+                "parent": 0,
+                "slot": 0,
+                "span": [
+                  124,
+                  127
+                ],
+                "tag": 0
+              },
+              {
+                "kind": "formula",
+                "parent": 0,
+                "slot": 1,
+                "span": [
+                  127,
+                  130
+                ],
+                "tag": 0
+              }
+            ],
+            "span": [
+              123,
+              130
+            ]
+          },
+          "index": 4,
+          "rule": "MP",
+          "rule_source": {
+            "kind": "natural",
+            "name": "rule_tag",
+            "span": [
+              130,
+              131
+            ]
+          },
+          "rule_tag": 3,
+          "span": [
+            123,
+            133
+          ],
+          "subtag": null,
+          "validation": {
+            "references": [
+              0,
+              3
+            ],
+            "side_conditions": [
+              {
+                "name": "MP strictly earlier references",
+                "passed": true
+              },
+              {
+                "name": "MP exact ordered operands",
+                "passed": true
+              },
+              {
+                "name": "exact whole row formula",
+                "passed": true
+              }
+            ],
+            "status": "VALID"
+          },
+          "witness": [
+            0,
+            3
+          ],
+          "witness_source": [
+            {
+              "kind": "natural",
+              "name": "antecedent_row",
+              "span": [
+                131,
+                132
+              ]
+            },
+            {
+              "kind": "natural",
+              "name": "implication_row",
+              "span": [
+                132,
+                133
+              ]
+            }
+          ]
+        }
+      ],
+      "goal": [
+        "imp",
+        [
+          "pred",
+          0,
+          []
+        ],
+        [
+          "pred",
+          0,
+          []
+        ]
+      ],
+      "Root_disposition": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/root/acquisition-donor-0-Root-whole-disposition-v1.json",
+        "bytes": 3273,
+        "sha256": "a12fb3d5ec2dd0b1c351c25d7314af3b0813d90f750acde6ef2ac831aa1f3f72"
+      },
+      "C_review": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/review-C/typed-two-donor-acquisition-donor0-complete-whole-actual-review-v1.json",
+        "bytes": 28762,
+        "sha256": "ae803e1e91b80fbc241ec2c74cc49f1e663a7ab4bf88973dd1cb31a6a6877289"
+      },
+      "qualification_complete": true,
+      "query": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/actual/receptor-two-donor-acquisition-v1-donor-0/selected-donor0-query.bin",
+        "bytes": 21,
+        "sha256": "b9ce78b3bedb95b86105ba965357a8ad3a47888fbc8eb0f38b456eca078b9ac3"
+      },
+      "certificate": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/actual/receptor-two-donor-acquisition-v1-donor-0/candidate-certificate.bin",
+        "bytes": 133,
+        "sha256": "6d128abf843529890a947fbd3e52c3e94bb62c889419b240441c197dba3a8be0"
+      },
+      "subject_receipt": {
+        "accepted": true,
+        "calculus": "FPC-H1",
+        "certificate": {
+          "EOF": 133,
+          "row_count": 5,
+          "rows": [
+            {
+              "formula": [
+                "imp",
+                [
+                  "pred",
+                  0,
+                  []
+                ],
+                [
+                  "imp",
+                  [
+                    "pred",
+                    0,
+                    []
+                  ],
+                  [
+                    "pred",
+                    0,
+                    []
+                  ]
+                ]
+              ],
+              "formula_source": {
+                "kind": "formula",
+                "nodes": [
+                  {
+                    "kind": "formula",
+                    "parent": null,
+                    "slot": null,
+                    "span": [
+                      5,
+                      16
+                    ],
+                    "tag": 3
+                  },
+                  {
+                    "kind": "formula",
+                    "parent": 0,
+                    "slot": 0,
+                    "span": [
+                      6,
+                      9
+                    ],
+                    "tag": 0
+                  },
+                  {
+                    "kind": "formula",
+                    "parent": 0,
+                    "slot": 1,
+                    "span": [
+                      9,
+                      16
+                    ],
+                    "tag": 3
+                  },
+                  {
+                    "kind": "formula",
+                    "parent": 2,
+                    "slot": 0,
+                    "span": [
+                      10,
+                      13
+                    ],
+                    "tag": 0
+                  },
+                  {
+                    "kind": "formula",
+                    "parent": 2,
+                    "slot": 1,
+                    "span": [
+                      13,
+                      16
+                    ],
+                    "tag": 0
+                  }
+                ],
+                "span": [
+                  5,
+                  16
+                ]
+              },
+              "index": 0,
+              "rule": "LOGICAL_AXIOM",
+              "rule_source": {
+                "kind": "natural",
+                "name": "rule_tag",
+                "span": [
+                  16,
+                  17
+                ]
+              },
+              "rule_tag": 1,
+              "span": [
+                5,
+                24
+              ],
+              "subtag": 0,
+              "validation": {
+                "references": [],
+                "side_conditions": [
+                  {
+                    "name": "exact whole row formula",
+                    "passed": true
+                  }
+                ],
+                "status": "VALID",
+                "witness_name": "H1"
+              },
+              "witness": [
+                [
+                  "pred",
+                  0,
+                  []
+                ],
+                [
+                  "pred",
+                  0,
+                  []
+                ]
+              ],
+              "witness_source": [
+                {
+                  "kind": "natural",
+                  "name": "logical_tag",
+                  "span": [
+                    17,
+                    18
+                  ]
+                },
+                {
+                  "kind": "formula",
+                  "name": "A",
+                  "nodes": [
+                    {
+                      "kind": "formula",
+                      "parent": null,
+                      "slot": null,
+                      "span": [
+                        18,
+                        21
+                      ],
+                      "tag": 0
+                    }
+                  ],
+                  "span": [
+                    18,
+                    21
+                  ]
+                },
+                {
+                  "kind": "formula",
+                  "name": "B",
+                  "nodes": [
+                    {
+                      "kind": "formula",
+                      "parent": null,
+                      "slot": null,
+                      "span": [
+                        21,
+                        24
+                      ],
+                      "tag": 0
+                    }
+                  ],
+                  "span": [
+                    21,
+                    24
+                  ]
+                }
+              ]
+            },
+            {
+              "formula": [
+                "imp",
+                [
+                  "pred",
+                  0,
+                  []
+                ],
+                [
+                  "imp",
+                  [
+                    "imp",
+                    [
+                      "pred",
+                      0,
+                      []
+                    ],
+                    [
+                      "pred",
+                      0,
+                      []
+                    ]
+                  ],
+                  [
+                    "pred",
+                    0,
+                    []
+                  ]
+                ]
+              ],
+              "formula_source": {
+                "kind": "formula",
+                "nodes": [
+                  {
+                    "kind": "formula",
+                    "parent": null,
+                    "slot": null,
+                    "span": [
+                      24,
+                      39
+                    ],
+                    "tag": 3
+                  },
+                  {
+                    "kind": "formula",
+                    "parent": 0,
+                    "slot": 0,
+                    "span": [
+                      25,
+                      28
+                    ],
+                    "tag": 0
+                  },
+                  {
+                    "kind": "formula",
+                    "parent": 0,
+                    "slot": 1,
+                    "span": [
+                      28,
+                      39
+                    ],
+                    "tag": 3
+                  },
+                  {
+                    "kind": "formula",
+                    "parent": 2,
+                    "slot": 0,
+                    "span": [
+                      29,
+                      36
+                    ],
+                    "tag": 3
+                  },
+                  {
+                    "kind": "formula",
+                    "parent": 3,
+                    "slot": 0,
+                    "span": [
+                      30,
+                      33
+                    ],
+                    "tag": 0
+                  },
+                  {
+                    "kind": "formula",
+                    "parent": 3,
+                    "slot": 1,
+                    "span": [
+                      33,
+                      36
+                    ],
+                    "tag": 0
+                  },
+                  {
+                    "kind": "formula",
+                    "parent": 2,
+                    "slot": 1,
+                    "span": [
+                      36,
+                      39
+                    ],
+                    "tag": 0
+                  }
+                ],
+                "span": [
+                  24,
+                  39
+                ]
+              },
+              "index": 1,
+              "rule": "LOGICAL_AXIOM",
+              "rule_source": {
+                "kind": "natural",
+                "name": "rule_tag",
+                "span": [
+                  39,
+                  40
+                ]
+              },
+              "rule_tag": 1,
+              "span": [
+                24,
+                51
+              ],
+              "subtag": 0,
+              "validation": {
+                "references": [],
+                "side_conditions": [
+                  {
+                    "name": "exact whole row formula",
+                    "passed": true
+                  }
+                ],
+                "status": "VALID",
+                "witness_name": "H1"
+              },
+              "witness": [
+                [
+                  "pred",
+                  0,
+                  []
+                ],
+                [
+                  "imp",
+                  [
+                    "pred",
+                    0,
+                    []
+                  ],
+                  [
+                    "pred",
+                    0,
+                    []
+                  ]
+                ]
+              ],
+              "witness_source": [
+                {
+                  "kind": "natural",
+                  "name": "logical_tag",
+                  "span": [
+                    40,
+                    41
+                  ]
+                },
+                {
+                  "kind": "formula",
+                  "name": "A",
+                  "nodes": [
+                    {
+                      "kind": "formula",
+                      "parent": null,
+                      "slot": null,
+                      "span": [
+                        41,
+                        44
+                      ],
+                      "tag": 0
+                    }
+                  ],
+                  "span": [
+                    41,
+                    44
+                  ]
+                },
+                {
+                  "kind": "formula",
+                  "name": "B",
+                  "nodes": [
+                    {
+                      "kind": "formula",
+                      "parent": null,
+                      "slot": null,
+                      "span": [
+                        44,
+                        51
+                      ],
+                      "tag": 3
+                    },
+                    {
+                      "kind": "formula",
+                      "parent": 0,
+                      "slot": 0,
+                      "span": [
+                        45,
+                        48
+                      ],
+                      "tag": 0
+                    },
+                    {
+                      "kind": "formula",
+                      "parent": 0,
+                      "slot": 1,
+                      "span": [
+                        48,
+                        51
+                      ],
+                      "tag": 0
+                    }
+                  ],
+                  "span": [
+                    44,
+                    51
+                  ]
+                }
+              ]
+            },
+            {
+              "formula": [
+                "imp",
+                [
+                  "imp",
+                  [
+                    "pred",
+                    0,
+                    []
+                  ],
+                  [
+                    "imp",
+                    [
+                      "imp",
+                      [
+                        "pred",
+                        0,
+                        []
+                      ],
+                      [
+                        "pred",
+                        0,
+                        []
+                      ]
+                    ],
+                    [
+                      "pred",
+                      0,
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "imp",
+                  [
+                    "imp",
+                    [
+                      "pred",
+                      0,
+                      []
+                    ],
+                    [
+                      "imp",
+                      [
+                        "pred",
+                        0,
+                        []
+                      ],
+                      [
+                        "pred",
+                        0,
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "imp",
+                    [
+                      "pred",
+                      0,
+                      []
+                    ],
+                    [
+                      "pred",
+                      0,
+                      []
+                    ]
+                  ]
+                ]
+              ],
+              "formula_source": {
+                "kind": "formula",
+                "nodes": [
+                  {
+                    "kind": "formula",
+                    "parent": null,
+                    "slot": null,
+                    "span": [
+                      51,
+                      86
+                    ],
+                    "tag": 3
+                  },
+                  {
+                    "kind": "formula",
+                    "parent": 0,
+                    "slot": 0,
+                    "span": [
+                      52,
+                      67
+                    ],
+                    "tag": 3
+                  },
+                  {
+                    "kind": "formula",
+                    "parent": 1,
+                    "slot": 0,
+                    "span": [
+                      53,
+                      56
+                    ],
+                    "tag": 0
+                  },
+                  {
+                    "kind": "formula",
+                    "parent": 1,
+                    "slot": 1,
+                    "span": [
+                      56,
+                      67
+                    ],
+                    "tag": 3
+                  },
+                  {
+                    "kind": "formula",
+                    "parent": 3,
+                    "slot": 0,
+                    "span": [
+                      57,
+                      64
+                    ],
+                    "tag": 3
+                  },
+                  {
+                    "kind": "formula",
+                    "parent": 4,
+                    "slot": 0,
+                    "span": [
+                      58,
+                      61
+                    ],
+                    "tag": 0
+                  },
+                  {
+                    "kind": "formula",
+                    "parent": 4,
+                    "slot": 1,
+                    "span": [
+                      61,
+                      64
+                    ],
+                    "tag": 0
+                  },
+                  {
+                    "kind": "formula",
+                    "parent": 3,
+                    "slot": 1,
+                    "span": [
+                      64,
+                      67
+                    ],
+                    "tag": 0
+                  },
+                  {
+                    "kind": "formula",
+                    "parent": 0,
+                    "slot": 1,
+                    "span": [
+                      67,
+                      86
+                    ],
+                    "tag": 3
+                  },
+                  {
+                    "kind": "formula",
+                    "parent": 8,
+                    "slot": 0,
+                    "span": [
+                      68,
+                      79
+                    ],
+                    "tag": 3
+                  },
+                  {
+                    "kind": "formula",
+                    "parent": 9,
+                    "slot": 0,
+                    "span": [
+                      69,
+                      72
+                    ],
+                    "tag": 0
+                  },
+                  {
+                    "kind": "formula",
+                    "parent": 9,
+                    "slot": 1,
+                    "span": [
+                      72,
+                      79
+                    ],
+                    "tag": 3
+                  },
+                  {
+                    "kind": "formula",
+                    "parent": 11,
+                    "slot": 0,
+                    "span": [
+                      73,
+                      76
+                    ],
+                    "tag": 0
+                  },
+                  {
+                    "kind": "formula",
+                    "parent": 11,
+                    "slot": 1,
+                    "span": [
+                      76,
+                      79
+                    ],
+                    "tag": 0
+                  },
+                  {
+                    "kind": "formula",
+                    "parent": 8,
+                    "slot": 1,
+                    "span": [
+                      79,
+                      86
+                    ],
+                    "tag": 3
+                  },
+                  {
+                    "kind": "formula",
+                    "parent": 14,
+                    "slot": 0,
+                    "span": [
+                      80,
+                      83
+                    ],
+                    "tag": 0
+                  },
+                  {
+                    "kind": "formula",
+                    "parent": 14,
+                    "slot": 1,
+                    "span": [
+                      83,
+                      86
+                    ],
+                    "tag": 0
+                  }
+                ],
+                "span": [
+                  51,
+                  86
+                ]
+              },
+              "index": 2,
+              "rule": "LOGICAL_AXIOM",
+              "rule_source": {
+                "kind": "natural",
+                "name": "rule_tag",
+                "span": [
+                  86,
+                  87
+                ]
+              },
+              "rule_tag": 1,
+              "span": [
+                51,
+                101
+              ],
+              "subtag": 1,
+              "validation": {
+                "references": [],
+                "side_conditions": [
+                  {
+                    "name": "exact whole row formula",
+                    "passed": true
+                  }
+                ],
+                "status": "VALID",
+                "witness_name": "H2"
+              },
+              "witness": [
+                [
+                  "pred",
+                  0,
+                  []
+                ],
+                [
+                  "imp",
+                  [
+                    "pred",
+                    0,
+                    []
+                  ],
+                  [
+                    "pred",
+                    0,
+                    []
+                  ]
+                ],
+                [
+                  "pred",
+                  0,
+                  []
+                ]
+              ],
+              "witness_source": [
+                {
+                  "kind": "natural",
+                  "name": "logical_tag",
+                  "span": [
+                    87,
+                    88
+                  ]
+                },
+                {
+                  "kind": "formula",
+                  "name": "A",
+                  "nodes": [
+                    {
+                      "kind": "formula",
+                      "parent": null,
+                      "slot": null,
+                      "span": [
+                        88,
+                        91
+                      ],
+                      "tag": 0
+                    }
+                  ],
+                  "span": [
+                    88,
+                    91
+                  ]
+                },
+                {
+                  "kind": "formula",
+                  "name": "B",
+                  "nodes": [
+                    {
+                      "kind": "formula",
+                      "parent": null,
+                      "slot": null,
+                      "span": [
+                        91,
+                        98
+                      ],
+                      "tag": 3
+                    },
+                    {
+                      "kind": "formula",
+                      "parent": 0,
+                      "slot": 0,
+                      "span": [
+                        92,
+                        95
+                      ],
+                      "tag": 0
+                    },
+                    {
+                      "kind": "formula",
+                      "parent": 0,
+                      "slot": 1,
+                      "span": [
+                        95,
+                        98
+                      ],
+                      "tag": 0
+                    }
+                  ],
+                  "span": [
+                    91,
+                    98
+                  ]
+                },
+                {
+                  "kind": "formula",
+                  "name": "C",
+                  "nodes": [
+                    {
+                      "kind": "formula",
+                      "parent": null,
+                      "slot": null,
+                      "span": [
+                        98,
+                        101
+                      ],
+                      "tag": 0
+                    }
+                  ],
+                  "span": [
+                    98,
+                    101
+                  ]
+                }
+              ]
+            },
+            {
+              "formula": [
+                "imp",
+                [
+                  "imp",
+                  [
+                    "pred",
+                    0,
+                    []
+                  ],
+                  [
+                    "imp",
+                    [
+                      "pred",
+                      0,
+                      []
+                    ],
+                    [
+                      "pred",
+                      0,
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "imp",
+                  [
+                    "pred",
+                    0,
+                    []
+                  ],
+                  [
+                    "pred",
+                    0,
+                    []
+                  ]
+                ]
+              ],
+              "formula_source": {
+                "kind": "formula",
+                "nodes": [
+                  {
+                    "kind": "formula",
+                    "parent": null,
+                    "slot": null,
+                    "span": [
+                      101,
+                      120
+                    ],
+                    "tag": 3
+                  },
+                  {
+                    "kind": "formula",
+                    "parent": 0,
+                    "slot": 0,
+                    "span": [
+                      102,
+                      113
+                    ],
+                    "tag": 3
+                  },
+                  {
+                    "kind": "formula",
+                    "parent": 1,
+                    "slot": 0,
+                    "span": [
+                      103,
+                      106
+                    ],
+                    "tag": 0
+                  },
+                  {
+                    "kind": "formula",
+                    "parent": 1,
+                    "slot": 1,
+                    "span": [
+                      106,
+                      113
+                    ],
+                    "tag": 3
+                  },
+                  {
+                    "kind": "formula",
+                    "parent": 3,
+                    "slot": 0,
+                    "span": [
+                      107,
+                      110
+                    ],
+                    "tag": 0
+                  },
+                  {
+                    "kind": "formula",
+                    "parent": 3,
+                    "slot": 1,
+                    "span": [
+                      110,
+                      113
+                    ],
+                    "tag": 0
+                  },
+                  {
+                    "kind": "formula",
+                    "parent": 0,
+                    "slot": 1,
+                    "span": [
+                      113,
+                      120
+                    ],
+                    "tag": 3
+                  },
+                  {
+                    "kind": "formula",
+                    "parent": 6,
+                    "slot": 0,
+                    "span": [
+                      114,
+                      117
+                    ],
+                    "tag": 0
+                  },
+                  {
+                    "kind": "formula",
+                    "parent": 6,
+                    "slot": 1,
+                    "span": [
+                      117,
+                      120
+                    ],
+                    "tag": 0
+                  }
+                ],
+                "span": [
+                  101,
+                  120
+                ]
+              },
+              "index": 3,
+              "rule": "MP",
+              "rule_source": {
+                "kind": "natural",
+                "name": "rule_tag",
+                "span": [
+                  120,
+                  121
+                ]
+              },
+              "rule_tag": 3,
+              "span": [
+                101,
+                123
+              ],
+              "subtag": null,
+              "validation": {
+                "references": [
+                  1,
+                  2
+                ],
+                "side_conditions": [
+                  {
+                    "name": "MP strictly earlier references",
+                    "passed": true
+                  },
+                  {
+                    "name": "MP exact ordered operands",
+                    "passed": true
+                  },
+                  {
+                    "name": "exact whole row formula",
+                    "passed": true
+                  }
+                ],
+                "status": "VALID"
+              },
+              "witness": [
+                1,
+                2
+              ],
+              "witness_source": [
+                {
+                  "kind": "natural",
+                  "name": "antecedent_row",
+                  "span": [
+                    121,
+                    122
+                  ]
+                },
+                {
+                  "kind": "natural",
+                  "name": "implication_row",
+                  "span": [
+                    122,
+                    123
+                  ]
+                }
+              ]
+            },
+            {
+              "formula": [
+                "imp",
+                [
+                  "pred",
+                  0,
+                  []
+                ],
+                [
+                  "pred",
+                  0,
+                  []
+                ]
+              ],
+              "formula_source": {
+                "kind": "formula",
+                "nodes": [
+                  {
+                    "kind": "formula",
+                    "parent": null,
+                    "slot": null,
+                    "span": [
+                      123,
+                      130
+                    ],
+                    "tag": 3
+                  },
+                  {
+                    "kind": "formula",
+                    "parent": 0,
+                    "slot": 0,
+                    "span": [
+                      124,
+                      127
+                    ],
+                    "tag": 0
+                  },
+                  {
+                    "kind": "formula",
+                    "parent": 0,
+                    "slot": 1,
+                    "span": [
+                      127,
+                      130
+                    ],
+                    "tag": 0
+                  }
+                ],
+                "span": [
+                  123,
+                  130
+                ]
+              },
+              "index": 4,
+              "rule": "MP",
+              "rule_source": {
+                "kind": "natural",
+                "name": "rule_tag",
+                "span": [
+                  130,
+                  131
+                ]
+              },
+              "rule_tag": 3,
+              "span": [
+                123,
+                133
+              ],
+              "subtag": null,
+              "validation": {
+                "references": [
+                  0,
+                  3
+                ],
+                "side_conditions": [
+                  {
+                    "name": "MP strictly earlier references",
+                    "passed": true
+                  },
+                  {
+                    "name": "MP exact ordered operands",
+                    "passed": true
+                  },
+                  {
+                    "name": "exact whole row formula",
+                    "passed": true
+                  }
+                ],
+                "status": "VALID"
+              },
+              "witness": [
+                0,
+                3
+              ],
+              "witness_source": [
+                {
+                  "kind": "natural",
+                  "name": "antecedent_row",
+                  "span": [
+                    131,
+                    132
+                  ]
+                },
+                {
+                  "kind": "natural",
+                  "name": "implication_row",
+                  "span": [
+                    132,
+                    133
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "claim": "CLOSED_THEOREM_RELATIVE_TO_THEORY",
+        "complete": true,
+        "cost": {
+          "callbacks": 3594,
+          "elapsed_seconds": 0.0028697910020127892,
+          "scope": "entry through final checked receipt copy; caller serialization/output excluded"
+        },
+        "derivation_complete": true,
+        "envelope": null,
+        "final_goal_equal": true,
+        "no_prefix_authority": true,
+        "query": {
+          "EOF": 21,
+          "Gamma": [],
+          "claim_mode": 0,
+          "finite_axioms": [],
+          "function_arities": [],
+          "goal": [
+            "imp",
+            [
+              "pred",
+              0,
+              []
+            ],
+            [
+              "pred",
+              0,
+              []
+            ]
+          ],
+          "predicate_arities": [
+            0,
+            0,
+            0
+          ],
+          "source_fields": [
+            {
+              "kind": "natural",
+              "name": "version",
+              "span": [
+                4,
+                5
+              ]
+            },
+            {
+              "kind": "natural",
+              "name": "claim_mode",
+              "span": [
+                5,
+                6
+              ]
+            },
+            {
+              "elements": [],
+              "kind": "natural_vector",
+              "name": "function_arities",
+              "span": [
+                6,
+                7
+              ]
+            },
+            {
+              "elements": [
+                {
+                  "kind": "natural",
+                  "name": "element",
+                  "span": [
+                    8,
+                    9
+                  ]
+                },
+                {
+                  "kind": "natural",
+                  "name": "element",
+                  "span": [
+                    9,
+                    10
+                  ]
+                },
+                {
+                  "kind": "natural",
+                  "name": "element",
+                  "span": [
+                    10,
+                    11
+                  ]
+                }
+              ],
+              "kind": "natural_vector",
+              "name": "predicate_arities",
+              "span": [
+                7,
+                11
+              ]
+            },
+            {
+              "kind": "natural",
+              "name": "theory_profile",
+              "span": [
+                11,
+                12
+              ]
+            },
+            {
+              "elements": [],
+              "kind": "formula_vector",
+              "name": "finite_axioms",
+              "span": [
+                12,
+                13
+              ]
+            },
+            {
+              "elements": [],
+              "kind": "formula_vector",
+              "name": "Gamma",
+              "span": [
+                13,
+                14
+              ]
+            },
+            {
+              "kind": "formula",
+              "name": "goal",
+              "nodes": [
+                {
+                  "kind": "formula",
+                  "parent": null,
+                  "slot": null,
+                  "span": [
+                    14,
+                    21
+                  ],
+                  "tag": 3
+                },
+                {
+                  "kind": "formula",
+                  "parent": 0,
+                  "slot": 0,
+                  "span": [
+                    15,
+                    18
+                  ],
+                  "tag": 0
+                },
+                {
+                  "kind": "formula",
+                  "parent": 0,
+                  "slot": 1,
+                  "span": [
+                    18,
+                    21
+                  ],
+                  "tag": 0
+                }
+              ],
+              "span": [
+                14,
+                21
+              ]
+            }
+          ],
+          "theory_profile": 0,
+          "version": 1
+        },
+        "raw_inputs": {
+          "certificate": {
+            "bytes": 133,
+            "sha256": "6d128abf843529890a947fbd3e52c3e94bb62c889419b240441c197dba3a8be0"
+          },
+          "query": {
+            "bytes": 21,
+            "sha256": "b9ce78b3bedb95b86105ba965357a8ad3a47888fbc8eb0f38b456eca078b9ac3"
+          }
+        },
+        "schema": "FPC-H1-finite-byte-check-receipt-v1",
+        "status": "VALID_DERIVATION",
+        "syntax_complete": true,
+        "version": "FPC-H1-BYTE-CHECKER-v1",
+        "wire": "FPC-H1-exact-binary-wire-contract-v1"
+      },
+      "reference_receipt": {
+        "complete_check": true,
+        "final_goal_equal": true,
+        "query": {
+          "goal": {
+            "node_byte_spans": [
+              [
+                14,
+                21
+              ],
+              [
+                15,
+                18
+              ],
+              [
+                18,
+                21
+              ]
+            ],
+            "prefix_tokens": [
+              [
+                "imp"
+              ],
+              [
+                "pred",
+                0,
+                0
+              ],
+              [
+                "pred",
+                0,
+                0
+              ]
+            ]
+          },
+          "hypotheses": [],
+          "mode": 0,
+          "profile": 0,
+          "signature": [
+            [],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "theory": []
+        },
+        "rows": [
+          {
+            "byte_span": [
+              5,
+              24
+            ],
+            "formula": {
+              "node_byte_spans": [
+                [
+                  5,
+                  16
+                ],
+                [
+                  6,
+                  9
+                ],
+                [
+                  9,
+                  16
+                ],
+                [
+                  10,
+                  13
+                ],
+                [
+                  13,
+                  16
+                ]
+              ],
+              "prefix_tokens": [
+                [
+                  "imp"
+                ],
+                [
+                  "pred",
+                  0,
+                  0
+                ],
+                [
+                  "imp"
+                ],
+                [
+                  "pred",
+                  0,
+                  0
+                ],
+                [
+                  "pred",
+                  0,
+                  0
+                ]
+              ]
+            },
+            "index": 0,
+            "payload": [
+              {
+                "node_byte_spans": [
+                  [
+                    18,
+                    21
+                  ]
+                ],
+                "prefix_tokens": [
+                  [
+                    "pred",
+                    0,
+                    0
+                  ]
+                ]
+              },
+              {
+                "node_byte_spans": [
+                  [
+                    21,
+                    24
+                  ]
+                ],
+                "prefix_tokens": [
+                  [
+                    "pred",
+                    0,
+                    0
+                  ]
+                ]
+              }
+            ],
+            "rule_tag": 1,
+            "witness_tag": 0
+          },
+          {
+            "byte_span": [
+              24,
+              51
+            ],
+            "formula": {
+              "node_byte_spans": [
+                [
+                  24,
+                  39
+                ],
+                [
+                  25,
+                  28
+                ],
+                [
+                  28,
+                  39
+                ],
+                [
+                  29,
+                  36
+                ],
+                [
+                  30,
+                  33
+                ],
+                [
+                  33,
+                  36
+                ],
+                [
+                  36,
+                  39
+                ]
+              ],
+              "prefix_tokens": [
+                [
+                  "imp"
+                ],
+                [
+                  "pred",
+                  0,
+                  0
+                ],
+                [
+                  "imp"
+                ],
+                [
+                  "imp"
+                ],
+                [
+                  "pred",
+                  0,
+                  0
+                ],
+                [
+                  "pred",
+                  0,
+                  0
+                ],
+                [
+                  "pred",
+                  0,
+                  0
+                ]
+              ]
+            },
+            "index": 1,
+            "payload": [
+              {
+                "node_byte_spans": [
+                  [
+                    41,
+                    44
+                  ]
+                ],
+                "prefix_tokens": [
+                  [
+                    "pred",
+                    0,
+                    0
+                  ]
+                ]
+              },
+              {
+                "node_byte_spans": [
+                  [
+                    44,
+                    51
+                  ],
+                  [
+                    45,
+                    48
+                  ],
+                  [
+                    48,
+                    51
+                  ]
+                ],
+                "prefix_tokens": [
+                  [
+                    "imp"
+                  ],
+                  [
+                    "pred",
+                    0,
+                    0
+                  ],
+                  [
+                    "pred",
+                    0,
+                    0
+                  ]
+                ]
+              }
+            ],
+            "rule_tag": 1,
+            "witness_tag": 0
+          },
+          {
+            "byte_span": [
+              51,
+              101
+            ],
+            "formula": {
+              "node_byte_spans": [
+                [
+                  51,
+                  86
+                ],
+                [
+                  52,
+                  67
+                ],
+                [
+                  53,
+                  56
+                ],
+                [
+                  56,
+                  67
+                ],
+                [
+                  57,
+                  64
+                ],
+                [
+                  58,
+                  61
+                ],
+                [
+                  61,
+                  64
+                ],
+                [
+                  64,
+                  67
+                ],
+                [
+                  67,
+                  86
+                ],
+                [
+                  68,
+                  79
+                ],
+                [
+                  69,
+                  72
+                ],
+                [
+                  72,
+                  79
+                ],
+                [
+                  73,
+                  76
+                ],
+                [
+                  76,
+                  79
+                ],
+                [
+                  79,
+                  86
+                ],
+                [
+                  80,
+                  83
+                ],
+                [
+                  83,
+                  86
+                ]
+              ],
+              "prefix_tokens": [
+                [
+                  "imp"
+                ],
+                [
+                  "imp"
+                ],
+                [
+                  "pred",
+                  0,
+                  0
+                ],
+                [
+                  "imp"
+                ],
+                [
+                  "imp"
+                ],
+                [
+                  "pred",
+                  0,
+                  0
+                ],
+                [
+                  "pred",
+                  0,
+                  0
+                ],
+                [
+                  "pred",
+                  0,
+                  0
+                ],
+                [
+                  "imp"
+                ],
+                [
+                  "imp"
+                ],
+                [
+                  "pred",
+                  0,
+                  0
+                ],
+                [
+                  "imp"
+                ],
+                [
+                  "pred",
+                  0,
+                  0
+                ],
+                [
+                  "pred",
+                  0,
+                  0
+                ],
+                [
+                  "imp"
+                ],
+                [
+                  "pred",
+                  0,
+                  0
+                ],
+                [
+                  "pred",
+                  0,
+                  0
+                ]
+              ]
+            },
+            "index": 2,
+            "payload": [
+              {
+                "node_byte_spans": [
+                  [
+                    88,
+                    91
+                  ]
+                ],
+                "prefix_tokens": [
+                  [
+                    "pred",
+                    0,
+                    0
+                  ]
+                ]
+              },
+              {
+                "node_byte_spans": [
+                  [
+                    91,
+                    98
+                  ],
+                  [
+                    92,
+                    95
+                  ],
+                  [
+                    95,
+                    98
+                  ]
+                ],
+                "prefix_tokens": [
+                  [
+                    "imp"
+                  ],
+                  [
+                    "pred",
+                    0,
+                    0
+                  ],
+                  [
+                    "pred",
+                    0,
+                    0
+                  ]
+                ]
+              },
+              {
+                "node_byte_spans": [
+                  [
+                    98,
+                    101
+                  ]
+                ],
+                "prefix_tokens": [
+                  [
+                    "pred",
+                    0,
+                    0
+                  ]
+                ]
+              }
+            ],
+            "rule_tag": 1,
+            "witness_tag": 1
+          },
+          {
+            "byte_span": [
+              101,
+              123
+            ],
+            "formula": {
+              "node_byte_spans": [
+                [
+                  101,
+                  120
+                ],
+                [
+                  102,
+                  113
+                ],
+                [
+                  103,
+                  106
+                ],
+                [
+                  106,
+                  113
+                ],
+                [
+                  107,
+                  110
+                ],
+                [
+                  110,
+                  113
+                ],
+                [
+                  113,
+                  120
+                ],
+                [
+                  114,
+                  117
+                ],
+                [
+                  117,
+                  120
+                ]
+              ],
+              "prefix_tokens": [
+                [
+                  "imp"
+                ],
+                [
+                  "imp"
+                ],
+                [
+                  "pred",
+                  0,
+                  0
+                ],
+                [
+                  "imp"
+                ],
+                [
+                  "pred",
+                  0,
+                  0
+                ],
+                [
+                  "pred",
+                  0,
+                  0
+                ],
+                [
+                  "imp"
+                ],
+                [
+                  "pred",
+                  0,
+                  0
+                ],
+                [
+                  "pred",
+                  0,
+                  0
+                ]
+              ]
+            },
+            "index": 3,
+            "payload": [
+              1,
+              2
+            ],
+            "rule_tag": 3,
+            "witness_tag": null
+          },
+          {
+            "byte_span": [
+              123,
+              133
+            ],
+            "formula": {
+              "node_byte_spans": [
+                [
+                  123,
+                  130
+                ],
+                [
+                  124,
+                  127
+                ],
+                [
+                  127,
+                  130
+                ]
+              ],
+              "prefix_tokens": [
+                [
+                  "imp"
+                ],
+                [
+                  "pred",
+                  0,
+                  0
+                ],
+                [
+                  "pred",
+                  0,
+                  0
+                ]
+              ]
+            },
+            "index": 4,
+            "payload": [
+              0,
+              3
+            ],
+            "rule_tag": 3,
+            "witness_tag": null
+          }
+        ],
+        "schema": "FPC-H1-independent-flat-reference-v2",
+        "status": "VALID_DERIVATION"
+      },
+      "point_receipt": {
+        "GCTS_conformance": false,
+        "boundary": {
+          "exterior_m": [
+            "OUTSIDE_FORMULA_DOMAIN"
+          ],
+          "exterior_t": 1,
+          "final_goal_port": [
+            4,
+            1
+          ],
+          "final_goal_value": [
+            "imp",
+            [
+              "pred",
+              0,
+              []
+            ],
+            [
+              "pred",
+              0,
+              []
+            ]
+          ]
+        },
+        "callbacks": 1538,
+        "complete": true,
+        "inventory_scope": "Fixed five primitive rule families with typed parameters; not one fixed finite Wang palette",
+        "m_values": [
+          [
+            [
+              0,
+              1
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                0,
+                []
+              ],
+              [
+                "imp",
+                [
+                  "pred",
+                  0,
+                  []
+                ],
+                [
+                  "pred",
+                  0,
+                  []
+                ]
+              ]
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                0,
+                []
+              ],
+              [
+                "imp",
+                [
+                  "imp",
+                  [
+                    "pred",
+                    0,
+                    []
+                  ],
+                  [
+                    "pred",
+                    0,
+                    []
+                  ]
+                ],
+                [
+                  "pred",
+                  0,
+                  []
+                ]
+              ]
+            ]
+          ],
+          [
+            [
+              2,
+              1
+            ],
+            [
+              "imp",
+              [
+                "imp",
+                [
+                  "pred",
+                  0,
+                  []
+                ],
+                [
+                  "imp",
+                  [
+                    "imp",
+                    [
+                      "pred",
+                      0,
+                      []
+                    ],
+                    [
+                      "pred",
+                      0,
+                      []
+                    ]
+                  ],
+                  [
+                    "pred",
+                    0,
+                    []
+                  ]
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "imp",
+                  [
+                    "pred",
+                    0,
+                    []
+                  ],
+                  [
+                    "imp",
+                    [
+                      "pred",
+                      0,
+                      []
+                    ],
+                    [
+                      "pred",
+                      0,
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "imp",
+                  [
+                    "pred",
+                    0,
+                    []
+                  ],
+                  [
+                    "pred",
+                    0,
+                    []
+                  ]
+                ]
+              ]
+            ]
+          ],
+          [
+            [
+              3,
+              1
+            ],
+            [
+              "imp",
+              [
+                "imp",
+                [
+                  "pred",
+                  0,
+                  []
+                ],
+                [
+                  "imp",
+                  [
+                    "pred",
+                    0,
+                    []
+                  ],
+                  [
+                    "pred",
+                    0,
+                    []
+                  ]
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "pred",
+                  0,
+                  []
+                ],
+                [
+                  "pred",
+                  0,
+                  []
+                ]
+              ]
+            ]
+          ],
+          [
+            [
+              4,
+              1
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                0,
+                []
+              ],
+              [
+                "pred",
+                0,
+                []
+              ]
+            ]
+          ]
+        ],
+        "mismatches": [],
+        "point_compatible": true,
+        "point_domain": "integer row coordinate times cell/port channel; translations only",
+        "proof_admitted": false,
+        "row_count": 5,
+        "schema": "FPC-H1-point-row-observation-v1",
+        "scope": "Parser wellformedness and pinned inventory construction are preconditions. This provisional point observation is not a replacement for current same-byte dual validation.",
+        "search_engine": false,
+        "t_totals": [
+          [
+            [
+              0,
+              0
+            ],
+            1
+          ],
+          [
+            [
+              1,
+              0
+            ],
+            1
+          ],
+          [
+            [
+              2,
+              0
+            ],
+            1
+          ],
+          [
+            [
+              3,
+              0
+            ],
+            1
+          ],
+          [
+            [
+              4,
+              0
+            ],
+            1
+          ]
+        ],
+        "target": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            4,
+            0
+          ]
+        ],
+        "tiles": [
+          {
+            "conclusion": [
+              "imp",
+              [
+                "pred",
+                0,
+                []
+              ],
+              [
+                "imp",
+                [
+                  "pred",
+                  0,
+                  []
+                ],
+                [
+                  "pred",
+                  0,
+                  []
+                ]
+              ]
+            ],
+            "family": 1,
+            "m": [
+              [
+                [
+                  0,
+                  1
+                ],
+                [
+                  "imp",
+                  [
+                    "pred",
+                    0,
+                    []
+                  ],
+                  [
+                    "imp",
+                    [
+                      "pred",
+                      0,
+                      []
+                    ],
+                    [
+                      "pred",
+                      0,
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "references": [],
+            "subtag": 0,
+            "t": [
+              [
+                [
+                  0,
+                  0
+                ],
+                1
+              ]
+            ],
+            "translation": [
+              0,
+              0
+            ],
+            "witness": [
+              [
+                "pred",
+                0,
+                []
+              ],
+              [
+                "pred",
+                0,
+                []
+              ]
+            ]
+          },
+          {
+            "conclusion": [
+              "imp",
+              [
+                "pred",
+                0,
+                []
+              ],
+              [
+                "imp",
+                [
+                  "imp",
+                  [
+                    "pred",
+                    0,
+                    []
+                  ],
+                  [
+                    "pred",
+                    0,
+                    []
+                  ]
+                ],
+                [
+                  "pred",
+                  0,
+                  []
+                ]
+              ]
+            ],
+            "family": 1,
+            "m": [
+              [
+                [
+                  0,
+                  1
+                ],
+                [
+                  "imp",
+                  [
+                    "pred",
+                    0,
+                    []
+                  ],
+                  [
+                    "imp",
+                    [
+                      "imp",
+                      [
+                        "pred",
+                        0,
+                        []
+                      ],
+                      [
+                        "pred",
+                        0,
+                        []
+                      ]
+                    ],
+                    [
+                      "pred",
+                      0,
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "references": [],
+            "subtag": 0,
+            "t": [
+              [
+                [
+                  0,
+                  0
+                ],
+                1
+              ]
+            ],
+            "translation": [
+              1,
+              0
+            ],
+            "witness": [
+              [
+                "pred",
+                0,
+                []
+              ],
+              [
+                "imp",
+                [
+                  "pred",
+                  0,
+                  []
+                ],
+                [
+                  "pred",
+                  0,
+                  []
+                ]
+              ]
+            ]
+          },
+          {
+            "conclusion": [
+              "imp",
+              [
+                "imp",
+                [
+                  "pred",
+                  0,
+                  []
+                ],
+                [
+                  "imp",
+                  [
+                    "imp",
+                    [
+                      "pred",
+                      0,
+                      []
+                    ],
+                    [
+                      "pred",
+                      0,
+                      []
+                    ]
+                  ],
+                  [
+                    "pred",
+                    0,
+                    []
+                  ]
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "imp",
+                  [
+                    "pred",
+                    0,
+                    []
+                  ],
+                  [
+                    "imp",
+                    [
+                      "pred",
+                      0,
+                      []
+                    ],
+                    [
+                      "pred",
+                      0,
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "imp",
+                  [
+                    "pred",
+                    0,
+                    []
+                  ],
+                  [
+                    "pred",
+                    0,
+                    []
+                  ]
+                ]
+              ]
+            ],
+            "family": 1,
+            "m": [
+              [
+                [
+                  0,
+                  1
+                ],
+                [
+                  "imp",
+                  [
+                    "imp",
+                    [
+                      "pred",
+                      0,
+                      []
+                    ],
+                    [
+                      "imp",
+                      [
+                        "imp",
+                        [
+                          "pred",
+                          0,
+                          []
+                        ],
+                        [
+                          "pred",
+                          0,
+                          []
+                        ]
+                      ],
+                      [
+                        "pred",
+                        0,
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "imp",
+                    [
+                      "imp",
+                      [
+                        "pred",
+                        0,
+                        []
+                      ],
+                      [
+                        "imp",
+                        [
+                          "pred",
+                          0,
+                          []
+                        ],
+                        [
+                          "pred",
+                          0,
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "imp",
+                      [
+                        "pred",
+                        0,
+                        []
+                      ],
+                      [
+                        "pred",
+                        0,
+                        []
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "references": [],
+            "subtag": 1,
+            "t": [
+              [
+                [
+                  0,
+                  0
+                ],
+                1
+              ]
+            ],
+            "translation": [
+              2,
+              0
+            ],
+            "witness": [
+              [
+                "pred",
+                0,
+                []
+              ],
+              [
+                "imp",
+                [
+                  "pred",
+                  0,
+                  []
+                ],
+                [
+                  "pred",
+                  0,
+                  []
+                ]
+              ],
+              [
+                "pred",
+                0,
+                []
+              ]
+            ]
+          },
+          {
+            "conclusion": [
+              "imp",
+              [
+                "imp",
+                [
+                  "pred",
+                  0,
+                  []
+                ],
+                [
+                  "imp",
+                  [
+                    "pred",
+                    0,
+                    []
+                  ],
+                  [
+                    "pred",
+                    0,
+                    []
+                  ]
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "pred",
+                  0,
+                  []
+                ],
+                [
+                  "pred",
+                  0,
+                  []
+                ]
+              ]
+            ],
+            "family": 3,
+            "m": [
+              [
+                [
+                  -2,
+                  1
+                ],
+                [
+                  "imp",
+                  [
+                    "pred",
+                    0,
+                    []
+                  ],
+                  [
+                    "imp",
+                    [
+                      "imp",
+                      [
+                        "pred",
+                        0,
+                        []
+                      ],
+                      [
+                        "pred",
+                        0,
+                        []
+                      ]
+                    ],
+                    [
+                      "pred",
+                      0,
+                      []
+                    ]
+                  ]
+                ]
+              ],
+              [
+                [
+                  -1,
+                  1
+                ],
+                [
+                  "imp",
+                  [
+                    "imp",
+                    [
+                      "pred",
+                      0,
+                      []
+                    ],
+                    [
+                      "imp",
+                      [
+                        "imp",
+                        [
+                          "pred",
+                          0,
+                          []
+                        ],
+                        [
+                          "pred",
+                          0,
+                          []
+                        ]
+                      ],
+                      [
+                        "pred",
+                        0,
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "imp",
+                    [
+                      "imp",
+                      [
+                        "pred",
+                        0,
+                        []
+                      ],
+                      [
+                        "imp",
+                        [
+                          "pred",
+                          0,
+                          []
+                        ],
+                        [
+                          "pred",
+                          0,
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "imp",
+                      [
+                        "pred",
+                        0,
+                        []
+                      ],
+                      [
+                        "pred",
+                        0,
+                        []
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                [
+                  0,
+                  1
+                ],
+                [
+                  "imp",
+                  [
+                    "imp",
+                    [
+                      "pred",
+                      0,
+                      []
+                    ],
+                    [
+                      "imp",
+                      [
+                        "pred",
+                        0,
+                        []
+                      ],
+                      [
+                        "pred",
+                        0,
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "imp",
+                    [
+                      "pred",
+                      0,
+                      []
+                    ],
+                    [
+                      "pred",
+                      0,
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "references": [
+              1,
+              2
+            ],
+            "subtag": null,
+            "t": [
+              [
+                [
+                  0,
+                  0
+                ],
+                1
+              ]
+            ],
+            "translation": [
+              3,
+              0
+            ],
+            "witness": [
+              1,
+              2
+            ]
+          },
+          {
+            "conclusion": [
+              "imp",
+              [
+                "pred",
+                0,
+                []
+              ],
+              [
+                "pred",
+                0,
+                []
+              ]
+            ],
+            "family": 3,
+            "m": [
+              [
+                [
+                  -4,
+                  1
+                ],
+                [
+                  "imp",
+                  [
+                    "pred",
+                    0,
+                    []
+                  ],
+                  [
+                    "imp",
+                    [
+                      "pred",
+                      0,
+                      []
+                    ],
+                    [
+                      "pred",
+                      0,
+                      []
+                    ]
+                  ]
+                ]
+              ],
+              [
+                [
+                  -1,
+                  1
+                ],
+                [
+                  "imp",
+                  [
+                    "imp",
+                    [
+                      "pred",
+                      0,
+                      []
+                    ],
+                    [
+                      "imp",
+                      [
+                        "pred",
+                        0,
+                        []
+                      ],
+                      [
+                        "pred",
+                        0,
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "imp",
+                    [
+                      "pred",
+                      0,
+                      []
+                    ],
+                    [
+                      "pred",
+                      0,
+                      []
+                    ]
+                  ]
+                ]
+              ],
+              [
+                [
+                  0,
+                  1
+                ],
+                [
+                  "imp",
+                  [
+                    "pred",
+                    0,
+                    []
+                  ],
+                  [
+                    "pred",
+                    0,
+                    []
+                  ]
+                ]
+              ]
+            ],
+            "references": [
+              0,
+              3
+            ],
+            "subtag": null,
+            "t": [
+              [
+                [
+                  0,
+                  0
+                ],
+                1
+              ]
+            ],
+            "translation": [
+              4,
+              0
+            ],
+            "witness": [
+              0,
+              3
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "donor_index": 1,
+      "input_slot": "donor1",
+      "case_id": "receptor-two-donor-acquisition-v1-donor-1",
+      "admitted": false,
+      "display_outcome": "Memory limit; proof unavailable",
+      "observer_seconds": 76.04713954101317,
+      "observer_final_gate_seconds": 76.04808733300888,
+      "tool_summary_seconds": 76.04883287500707,
+      "worker_receipt_seconds": 71.82047358399723,
+      "callbacks": 58018404,
+      "qualified_whole_peak_bytes": null,
+      "physical_files": 14,
+      "physical_bytes": 51927,
+      "partial_files": 0,
+      "proof_rows": [],
+      "goal": null,
+      "Root_disposition": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/root/acquisition-donor-1-Root-whole-disposition-v1.json",
+        "bytes": 2493,
+        "sha256": "29999deb4bc8688925c8431355034b942e3568e9dd9817a11ec4f0444f7d857c"
+      },
+      "C_review": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/review-C/typed-two-donor-acquisition-donor1-complete-whole-negative-actual-review-v1.json",
+        "bytes": 22833,
+        "sha256": "6725d8988e78a8e5cde038143f8a13aeb3c516ce6125ba654422978561a13507"
+      },
+      "qualification_complete": false,
+      "error": {
+        "message": "strict Python whole high-water ceiling",
+        "traceback": "Traceback (most recent call last):\n  File \"/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/implementation-B/fpc_receptor_acquisition_worker_v1.py\", line 509, in main\n    search_result = stage('ACQUIRE fresh ordinary producer2 ' + input_slot, lambda:\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/implementation-B/fpc_receptor_acquisition_worker_v1.py\", line 172, in stage\n    answer = operation()\n             ^^^^^^^^^^^\n  File \"/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/implementation-B/fpc_receptor_acquisition_worker_v1.py\", line 510, in <lambda>\n    modules['producer'].search_obligations(frozen_query,\n  File \"/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc_h1_obligation_producer_v2.py\", line 2209, in search_obligations\n    call.fault()\n  File \"/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc_h1_obligation_producer_v2.py\", line 46, in fault\n    raise self.first\n  File \"/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc_h1_obligation_producer_v2.py\", line 2207, in search_obligations\n    return engine.run()\n           ^^^^^^^^^^^^\n  File \"/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc_h1_obligation_producer_v2.py\", line 2143, in run\n    self.priority_step()\n  File \"/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc_h1_obligation_producer_v2.py\", line 1725, in priority_step\n    self.build_descriptor(descriptor, binding)\n  File \"/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc_h1_obligation_producer_v2.py\", line 1680, in build_descriptor\n    if not self.raw_universe(formula):\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc_h1_obligation_producer_v2.py\", line 1609, in raw_universe\n    root = temporary.load(raw)\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc_h1_obligation_producer_v2.py\", line 262, in load\n    self.c.tick()\n  File \"/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc_h1_obligation_producer_v2.py\", line 38, in tick\n    self.check()\n  File \"/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/implementation-B/fpc_receptor_acquisition_worker_v1.py\", line 165, in check\n    raise fault\nRootBudget: strict Python whole high-water ceiling\n",
+        "type": "RootBudget"
+      },
+      "observed_python_peak_bytes": 1136967680,
+      "positive_payloads": {
+        "qualification_result": null,
+        "input_freeze": null,
+        "search_result": null,
+        "subject_receipt": null,
+        "reference_receipt": null,
+        "point_receipt": null,
+        "scientific_result": null
+      }
+    }
+  ],
+  "frozen_inputs": {
+    "complete": true,
+    "prefix": [
+      {
+        "depth": 0,
+        "eligible": false,
+        "expanded_nodes": 1,
+        "rank": 0,
+        "reason": "ATOMIC",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          0,
+          0
+        ],
+        "truth_values": [
+          false,
+          true
+        ]
+      },
+      {
+        "depth": 1,
+        "eligible": false,
+        "expanded_nodes": 2,
+        "rank": 1,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          1,
+          0,
+          0
+        ],
+        "truth_values": [
+          true,
+          false
+        ]
+      },
+      {
+        "depth": 2,
+        "eligible": false,
+        "expanded_nodes": 3,
+        "rank": 2,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "truth_values": [
+          false,
+          true
+        ]
+      },
+      {
+        "depth": 1,
+        "eligible": true,
+        "expanded_nodes": 3,
+        "rank": 3,
+        "reason": "DONOR0",
+        "single_axiom_subtags": [],
+        "tautology": true,
+        "tokens": [
+          2,
+          0,
+          0,
+          0,
+          0
+        ],
+        "truth_values": [
+          true,
+          true
+        ]
+      },
+      {
+        "depth": 1,
+        "eligible": false,
+        "expanded_nodes": 3,
+        "rank": 4,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          0,
+          0,
+          0,
+          1
+        ],
+        "truth_values": [
+          true,
+          true,
+          false,
+          true
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": false,
+        "expanded_nodes": 4,
+        "rank": 5,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          1,
+          1,
+          1,
+          0,
+          0
+        ],
+        "truth_values": [
+          true,
+          false
+        ]
+      },
+      {
+        "depth": 2,
+        "eligible": false,
+        "expanded_nodes": 4,
+        "rank": 6,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          1,
+          2,
+          0,
+          0,
+          0,
+          0
+        ],
+        "truth_values": [
+          false,
+          false
+        ]
+      },
+      {
+        "depth": 2,
+        "eligible": false,
+        "expanded_nodes": 4,
+        "rank": 7,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          1,
+          2,
+          0,
+          0,
+          0,
+          1
+        ],
+        "truth_values": [
+          false,
+          false,
+          true,
+          false
+        ]
+      },
+      {
+        "depth": 2,
+        "eligible": false,
+        "expanded_nodes": 4,
+        "rank": 8,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "truth_values": [
+          true,
+          false
+        ]
+      },
+      {
+        "depth": 2,
+        "eligible": false,
+        "expanded_nodes": 4,
+        "rank": 9,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          0,
+          0,
+          1,
+          0,
+          1
+        ],
+        "truth_values": [
+          true,
+          true,
+          true,
+          false
+        ]
+      },
+      {
+        "depth": 2,
+        "eligible": false,
+        "expanded_nodes": 4,
+        "rank": 10,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "truth_values": [
+          false,
+          true
+        ]
+      },
+      {
+        "depth": 2,
+        "eligible": false,
+        "expanded_nodes": 4,
+        "rank": 11,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "truth_values": [
+          false,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "depth": 4,
+        "eligible": false,
+        "expanded_nodes": 5,
+        "rank": 12,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          1,
+          1,
+          1,
+          1,
+          0,
+          0
+        ],
+        "truth_values": [
+          false,
+          true
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": true,
+        "expanded_nodes": 5,
+        "rank": 13,
+        "reason": "DONOR1",
+        "single_axiom_subtags": [],
+        "tautology": true,
+        "tokens": [
+          1,
+          1,
+          2,
+          0,
+          0,
+          0,
+          0
+        ],
+        "truth_values": [
+          true,
+          true
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": false,
+        "expanded_nodes": 5,
+        "rank": 14,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          1,
+          1,
+          2,
+          0,
+          0,
+          0,
+          1
+        ],
+        "truth_values": [
+          true,
+          true,
+          false,
+          true
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": false,
+        "expanded_nodes": 5,
+        "rank": 15,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          1,
+          2,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "truth_values": [
+          false,
+          true
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": false,
+        "expanded_nodes": 5,
+        "rank": 16,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          1,
+          2,
+          0,
+          0,
+          1,
+          0,
+          1
+        ],
+        "truth_values": [
+          false,
+          false,
+          false,
+          true
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": false,
+        "expanded_nodes": 5,
+        "rank": 17,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          1,
+          2,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "truth_values": [
+          true,
+          false
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": false,
+        "expanded_nodes": 5,
+        "rank": 18,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          1,
+          2,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "truth_values": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": true,
+        "expanded_nodes": 5,
+        "rank": 19,
+        "reason": "HOLDOUT_BOUNDS",
+        "single_axiom_subtags": [],
+        "tautology": true,
+        "tokens": [
+          2,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0
+        ],
+        "truth_values": [
+          true,
+          true
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": false,
+        "expanded_nodes": 5,
+        "rank": 20,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1
+        ],
+        "truth_values": [
+          true,
+          true,
+          false,
+          true
+        ]
+      },
+      {
+        "depth": 2,
+        "eligible": false,
+        "expanded_nodes": 5,
+        "rank": 21,
+        "reason": "SINGLE_AXIOM",
+        "single_axiom_subtags": [
+          0
+        ],
+        "tautology": true,
+        "tokens": [
+          2,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0
+        ],
+        "truth_values": [
+          true,
+          true
+        ]
+      },
+      {
+        "depth": 2,
+        "eligible": false,
+        "expanded_nodes": 5,
+        "rank": 22,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          1
+        ],
+        "truth_values": [
+          true,
+          true,
+          false,
+          true
+        ]
+      },
+      {
+        "depth": 2,
+        "eligible": false,
+        "expanded_nodes": 5,
+        "rank": 23,
+        "reason": "SINGLE_AXIOM",
+        "single_axiom_subtags": [
+          0
+        ],
+        "tautology": true,
+        "tokens": [
+          2,
+          0,
+          0,
+          2,
+          0,
+          1,
+          0,
+          0
+        ],
+        "truth_values": [
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "depth": 2,
+        "eligible": true,
+        "expanded_nodes": 5,
+        "rank": 24,
+        "reason": "HOLDOUT_BOUNDS",
+        "single_axiom_subtags": [],
+        "tautology": true,
+        "tokens": [
+          2,
+          0,
+          0,
+          2,
+          0,
+          1,
+          0,
+          1
+        ],
+        "truth_values": [
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "depth": 2,
+        "eligible": false,
+        "expanded_nodes": 5,
+        "rank": 25,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          0,
+          0,
+          2,
+          0,
+          1,
+          0,
+          2
+        ],
+        "truth_values": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          false,
+          true
+        ]
+      },
+      {
+        "depth": 2,
+        "eligible": true,
+        "expanded_nodes": 5,
+        "rank": 26,
+        "reason": "HOLDOUT_BOUNDS",
+        "single_axiom_subtags": [],
+        "tautology": true,
+        "tokens": [
+          2,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "truth_values": [
+          true,
+          true
+        ]
+      },
+      {
+        "depth": 2,
+        "eligible": false,
+        "expanded_nodes": 5,
+        "rank": 27,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1
+        ],
+        "truth_values": [
+          true,
+          false,
+          true,
+          true
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": true,
+        "expanded_nodes": 5,
+        "rank": 28,
+        "reason": "HOLDOUT_BOUNDS",
+        "single_axiom_subtags": [],
+        "tautology": true,
+        "tokens": [
+          2,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "truth_values": [
+          true,
+          true
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": false,
+        "expanded_nodes": 5,
+        "rank": 29,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "truth_values": [
+          true,
+          true,
+          false,
+          true
+        ]
+      },
+      {
+        "depth": 2,
+        "eligible": false,
+        "expanded_nodes": 5,
+        "rank": 30,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "truth_values": [
+          false,
+          true
+        ]
+      },
+      {
+        "depth": 2,
+        "eligible": false,
+        "expanded_nodes": 5,
+        "rank": 31,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "truth_values": [
+          false,
+          true,
+          false,
+          true
+        ]
+      },
+      {
+        "depth": 2,
+        "eligible": false,
+        "expanded_nodes": 5,
+        "rank": 32,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          2,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "truth_values": [
+          false,
+          false,
+          true,
+          true
+        ]
+      },
+      {
+        "depth": 2,
+        "eligible": false,
+        "expanded_nodes": 5,
+        "rank": 33,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          2,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1
+        ],
+        "truth_values": [
+          false,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "depth": 2,
+        "eligible": false,
+        "expanded_nodes": 5,
+        "rank": 34,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          2,
+          0,
+          0,
+          0,
+          1,
+          0,
+          2
+        ],
+        "truth_values": [
+          false,
+          true,
+          false,
+          true,
+          true,
+          true,
+          false,
+          true
+        ]
+      },
+      {
+        "depth": 5,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 35,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0
+        ],
+        "truth_values": [
+          true,
+          false
+        ]
+      },
+      {
+        "depth": 4,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 36,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          1,
+          1,
+          1,
+          2,
+          0,
+          0,
+          0,
+          0
+        ],
+        "truth_values": [
+          false,
+          false
+        ]
+      },
+      {
+        "depth": 4,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 37,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          1,
+          1,
+          1,
+          2,
+          0,
+          0,
+          0,
+          1
+        ],
+        "truth_values": [
+          false,
+          false,
+          true,
+          false
+        ]
+      },
+      {
+        "depth": 4,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 38,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          1,
+          1,
+          2,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "truth_values": [
+          true,
+          false
+        ]
+      },
+      {
+        "depth": 4,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 39,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          1,
+          1,
+          2,
+          0,
+          0,
+          1,
+          0,
+          1
+        ],
+        "truth_values": [
+          true,
+          true,
+          true,
+          false
+        ]
+      },
+      {
+        "depth": 4,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 40,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          1,
+          1,
+          2,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "truth_values": [
+          false,
+          true
+        ]
+      },
+      {
+        "depth": 4,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 41,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          1,
+          1,
+          2,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "truth_values": [
+          false,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "depth": 4,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 42,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          1,
+          2,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0
+        ],
+        "truth_values": [
+          false,
+          false
+        ]
+      },
+      {
+        "depth": 4,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 43,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          1,
+          2,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1
+        ],
+        "truth_values": [
+          false,
+          false,
+          true,
+          false
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 44,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          1,
+          2,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0
+        ],
+        "truth_values": [
+          false,
+          false
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 45,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          1,
+          2,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          1
+        ],
+        "truth_values": [
+          false,
+          false,
+          true,
+          false
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 46,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          1,
+          2,
+          0,
+          0,
+          2,
+          0,
+          1,
+          0,
+          0
+        ],
+        "truth_values": [
+          false,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 47,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          1,
+          2,
+          0,
+          0,
+          2,
+          0,
+          1,
+          0,
+          1
+        ],
+        "truth_values": [
+          false,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 48,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          1,
+          2,
+          0,
+          0,
+          2,
+          0,
+          1,
+          0,
+          2
+        ],
+        "truth_values": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 49,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          1,
+          2,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "truth_values": [
+          false,
+          false
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 50,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          1,
+          2,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1
+        ],
+        "truth_values": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "depth": 4,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 51,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          1,
+          2,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "truth_values": [
+          false,
+          false
+        ]
+      },
+      {
+        "depth": 4,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 52,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          1,
+          2,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "truth_values": [
+          false,
+          false,
+          true,
+          false
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 53,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          1,
+          2,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "truth_values": [
+          true,
+          false
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 54,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          1,
+          2,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "truth_values": [
+          true,
+          false,
+          true,
+          false
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 55,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          1,
+          2,
+          2,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "truth_values": [
+          true,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 56,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          1,
+          2,
+          2,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1
+        ],
+        "truth_values": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 57,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          1,
+          2,
+          2,
+          0,
+          0,
+          0,
+          1,
+          0,
+          2
+        ],
+        "truth_values": [
+          true,
+          false,
+          true,
+          false,
+          false,
+          false,
+          true,
+          false
+        ]
+      },
+      {
+        "depth": 4,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 58,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0
+        ],
+        "truth_values": [
+          true,
+          false
+        ]
+      },
+      {
+        "depth": 4,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 59,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1
+        ],
+        "truth_values": [
+          true,
+          true,
+          true,
+          false
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 60,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          0,
+          0,
+          1,
+          2,
+          0,
+          0,
+          0,
+          0
+        ],
+        "truth_values": [
+          true,
+          false
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 61,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          0,
+          0,
+          1,
+          2,
+          0,
+          0,
+          0,
+          1
+        ],
+        "truth_values": [
+          true,
+          true,
+          true,
+          false
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 62,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          0,
+          0,
+          1,
+          2,
+          0,
+          1,
+          0,
+          0
+        ],
+        "truth_values": [
+          true,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 63,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          0,
+          0,
+          1,
+          2,
+          0,
+          1,
+          0,
+          1
+        ],
+        "truth_values": [
+          true,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 64,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          0,
+          0,
+          1,
+          2,
+          0,
+          1,
+          0,
+          2
+        ],
+        "truth_values": [
+          true,
+          true,
+          true,
+          true,
+          false,
+          false,
+          true,
+          false
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 65,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          0,
+          0,
+          2,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "truth_values": [
+          true,
+          false
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 66,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          0,
+          0,
+          2,
+          0,
+          0,
+          1,
+          0,
+          1
+        ],
+        "truth_values": [
+          true,
+          true,
+          true,
+          false
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 67,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          0,
+          0,
+          2,
+          0,
+          1,
+          1,
+          0,
+          0
+        ],
+        "truth_values": [
+          true,
+          true,
+          true,
+          false
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 68,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          0,
+          0,
+          2,
+          0,
+          1,
+          1,
+          0,
+          1
+        ],
+        "truth_values": [
+          true,
+          true,
+          true,
+          false
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 69,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          0,
+          0,
+          2,
+          0,
+          1,
+          1,
+          0,
+          2
+        ],
+        "truth_values": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          false
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 70,
+        "reason": "SINGLE_AXIOM",
+        "single_axiom_subtags": [
+          0
+        ],
+        "tautology": true,
+        "tokens": [
+          2,
+          0,
+          0,
+          2,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "truth_values": [
+          true,
+          true
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": true,
+        "expanded_nodes": 6,
+        "rank": 71,
+        "reason": "HOLDOUT_BOUNDS",
+        "single_axiom_subtags": [],
+        "tautology": true,
+        "tokens": [
+          2,
+          0,
+          0,
+          2,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "truth_values": [
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 72,
+        "reason": "SINGLE_AXIOM",
+        "single_axiom_subtags": [
+          0
+        ],
+        "tautology": true,
+        "tokens": [
+          2,
+          0,
+          0,
+          2,
+          1,
+          0,
+          1,
+          0,
+          0
+        ],
+        "truth_values": [
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 73,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          0,
+          0,
+          2,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        "truth_values": [
+          true,
+          true,
+          false,
+          true
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 74,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          0,
+          0,
+          2,
+          1,
+          0,
+          1,
+          0,
+          2
+        ],
+        "truth_values": [
+          true,
+          true,
+          true,
+          true,
+          false,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 75,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0
+        ],
+        "truth_values": [
+          false,
+          true
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 76,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1
+        ],
+        "truth_values": [
+          false,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "depth": 2,
+        "eligible": true,
+        "expanded_nodes": 6,
+        "rank": 77,
+        "reason": "HOLDOUT_BOUNDS",
+        "single_axiom_subtags": [],
+        "tautology": true,
+        "tokens": [
+          2,
+          1,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0
+        ],
+        "truth_values": [
+          true,
+          true
+        ]
+      },
+      {
+        "depth": 2,
+        "eligible": true,
+        "expanded_nodes": 6,
+        "rank": 78,
+        "reason": "HOLDOUT_BOUNDS",
+        "single_axiom_subtags": [],
+        "tautology": true,
+        "tokens": [
+          2,
+          1,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          1
+        ],
+        "truth_values": [
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "depth": 2,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 79,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          1,
+          0,
+          0,
+          2,
+          0,
+          1,
+          0,
+          0
+        ],
+        "truth_values": [
+          true,
+          false,
+          true,
+          true
+        ]
+      },
+      {
+        "depth": 2,
+        "eligible": true,
+        "expanded_nodes": 6,
+        "rank": 80,
+        "reason": "HOLDOUT_BOUNDS",
+        "single_axiom_subtags": [],
+        "tautology": true,
+        "tokens": [
+          2,
+          1,
+          0,
+          0,
+          2,
+          0,
+          1,
+          0,
+          1
+        ],
+        "truth_values": [
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "depth": 2,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 81,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          1,
+          0,
+          0,
+          2,
+          0,
+          1,
+          0,
+          2
+        ],
+        "truth_values": [
+          true,
+          true,
+          false,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 82,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "truth_values": [
+          true,
+          false
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 83,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1
+        ],
+        "truth_values": [
+          true,
+          true,
+          true,
+          false
+        ]
+      },
+      {
+        "depth": 4,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 84,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "truth_values": [
+          false,
+          true
+        ]
+      },
+      {
+        "depth": 4,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 85,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "truth_values": [
+          false,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": true,
+        "expanded_nodes": 6,
+        "rank": 86,
+        "reason": "HOLDOUT_BOUNDS",
+        "single_axiom_subtags": [],
+        "tautology": true,
+        "tokens": [
+          2,
+          1,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "truth_values": [
+          true,
+          true
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": true,
+        "expanded_nodes": 6,
+        "rank": 87,
+        "reason": "HOLDOUT_BOUNDS",
+        "single_axiom_subtags": [],
+        "tautology": true,
+        "tokens": [
+          2,
+          1,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "truth_values": [
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": true,
+        "expanded_nodes": 6,
+        "rank": 88,
+        "reason": "HOLDOUT_BOUNDS",
+        "single_axiom_subtags": [],
+        "tautology": true,
+        "tokens": [
+          2,
+          1,
+          2,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "truth_values": [
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 89,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          1,
+          2,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1
+        ],
+        "truth_values": [
+          true,
+          true,
+          false,
+          true
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 90,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          1,
+          2,
+          0,
+          0,
+          0,
+          1,
+          0,
+          2
+        ],
+        "truth_values": [
+          true,
+          true,
+          true,
+          true,
+          false,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "depth": 2,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 91,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          2,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "truth_values": [
+          true,
+          false
+        ]
+      },
+      {
+        "depth": 2,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 92,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          2,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1
+        ],
+        "truth_values": [
+          true,
+          false,
+          true,
+          false
+        ]
+      },
+      {
+        "depth": 2,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 93,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          2,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0
+        ],
+        "truth_values": [
+          true,
+          true,
+          true,
+          false
+        ]
+      },
+      {
+        "depth": 2,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 94,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          2,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1
+        ],
+        "truth_values": [
+          true,
+          false,
+          true,
+          false
+        ]
+      },
+      {
+        "depth": 2,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 95,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          2,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          2
+        ],
+        "truth_values": [
+          true,
+          false,
+          true,
+          false,
+          true,
+          true,
+          true,
+          false
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 96,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          2,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "truth_values": [
+          false,
+          true
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 97,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          2,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "truth_values": [
+          false,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 98,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          2,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0
+        ],
+        "truth_values": [
+          false,
+          false,
+          true,
+          true
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 99,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          2,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        "truth_values": [
+          false,
+          true,
+          false,
+          true
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 100,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          2,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          2
+        ],
+        "truth_values": [
+          false,
+          true,
+          false,
+          true,
+          false,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": true,
+        "expanded_nodes": 6,
+        "rank": 101,
+        "reason": "HOLDOUT_BOUNDS",
+        "single_axiom_subtags": [],
+        "tautology": true,
+        "tokens": [
+          2,
+          2,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "truth_values": [
+          true,
+          true
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 102,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          2,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "truth_values": [
+          true,
+          true,
+          false,
+          true
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 103,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          2,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "truth_values": [
+          true,
+          false,
+          true,
+          true
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 104,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          2,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1
+        ],
+        "truth_values": [
+          true,
+          true,
+          false,
+          true
+        ]
+      },
+      {
+        "depth": 3,
+        "eligible": false,
+        "expanded_nodes": 6,
+        "rank": 105,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          2,
+          2,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          2
+        ],
+        "truth_values": [
+          true,
+          true,
+          false,
+          true,
+          false,
+          true,
+          false,
+          true
+        ]
+      },
+      {
+        "depth": 6,
+        "eligible": false,
+        "expanded_nodes": 7,
+        "rank": 106,
+        "reason": "NOT_TAUTOLOGY",
+        "single_axiom_subtags": [],
+        "tautology": false,
+        "tokens": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0
+        ],
+        "truth_values": [
+          false,
+          true
+        ]
+      },
+      {
+        "depth": 5,
+        "eligible": true,
+        "expanded_nodes": 7,
+        "rank": 107,
+        "reason": "HOLDOUT0",
+        "single_axiom_subtags": [],
+        "tautology": true,
+        "tokens": [
+          1,
+          1,
+          1,
+          1,
+          2,
+          0,
+          0,
+          0,
+          0
+        ],
+        "truth_values": [
+          true,
+          true
+        ]
+      }
+    ],
+    "schema": "two-donor-input-only-selection-v1",
+    "scope": "Input-only propositional acquisition; Boolean eligibility is not proof admission.",
+    "slots": {
+      "donor0": {
+        "atom_count": 1,
+        "depth": 1,
+        "expanded_nodes": 3,
+        "query": {
+          "Gamma": [],
+          "claim_mode": 0,
+          "finite_axioms": [],
+          "function_arities": [],
+          "goal": [
+            "imp",
+            [
+              "pred",
+              0,
+              []
+            ],
+            [
+              "pred",
+              0,
+              []
+            ]
+          ],
+          "predicate_arities": [
+            0,
+            0,
+            0
+          ],
+          "theory_profile": 0,
+          "version": 1
+        },
+        "tokens": [
+          2,
+          0,
+          0,
+          0,
+          0
+        ],
+        "truth_values": [
+          true,
+          true
+        ]
+      },
+      "donor1": {
+        "atom_count": 1,
+        "depth": 3,
+        "expanded_nodes": 5,
+        "query": {
+          "Gamma": [],
+          "claim_mode": 0,
+          "finite_axioms": [],
+          "function_arities": [],
+          "goal": [
+            "not",
+            [
+              "not",
+              [
+                "imp",
+                [
+                  "pred",
+                  0,
+                  []
+                ],
+                [
+                  "pred",
+                  0,
+                  []
+                ]
+              ]
+            ]
+          ],
+          "predicate_arities": [
+            0,
+            0,
+            0
+          ],
+          "theory_profile": 0,
+          "version": 1
+        },
+        "tokens": [
+          1,
+          1,
+          2,
+          0,
+          0,
+          0,
+          0
+        ],
+        "truth_values": [
+          true,
+          true
+        ]
+      },
+      "holdout0": {
+        "atom_count": 1,
+        "depth": 5,
+        "expanded_nodes": 7,
+        "query": {
+          "Gamma": [],
+          "claim_mode": 0,
+          "finite_axioms": [],
+          "function_arities": [],
+          "goal": [
+            "not",
+            [
+              "not",
+              [
+                "not",
+                [
+                  "not",
+                  [
+                    "imp",
+                    [
+                      "pred",
+                      0,
+                      []
+                    ],
+                    [
+                      "pred",
+                      0,
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "predicate_arities": [
+            0,
+            0,
+            0
+          ],
+          "theory_profile": 0,
+          "version": 1
+        },
+        "tokens": [
+          1,
+          1,
+          1,
+          1,
+          2,
+          0,
+          0,
+          0,
+          0
+        ],
+        "truth_values": [
+          true,
+          true
+        ]
+      }
+    },
+    "status": "SELECTED"
+  },
+  "acquisition_gate_satisfied": false,
+  "cohort_status": "STOP_ACQUISITION",
+  "new_admitted_training_proofs": 1,
+  "admitted_training_primitive_rows": 5,
+  "library_extracted": false,
+  "holdout_searched": false,
+  "RL_used": false,
+  "learned_markings_used": false,
+  "GCTS_or_RL_advantage_established": false,
+  "original198_scoped_subjects_and_ten_caps_preserved": true,
+  "scope": "Two fixed cold ordinary acquisition jobs; no provider/frame equivalence or novelty claim. Syntax split is weak: negation wrappers of the same implication identity. Primary observer elapsed, final gate and tool summary are separate clocks. Failed case has no qualified whole peak or positive prefix.",
+  "next_direction": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/root/closed-acquisition-Root-next-direction-v1.json",
+    "bytes": 2093,
+    "sha256": "f13fb2e9e5b9e3d0d16d53f21d0ca5e23e62c8775b07eaf4da179f93767b0d09"
+  },
+  "scientific_imports_calls_outside_once": 0,
+  "proof_or_control_replays": 0,
+  "goal_status": "ACTIVE_INCOMPLETE"
+}
