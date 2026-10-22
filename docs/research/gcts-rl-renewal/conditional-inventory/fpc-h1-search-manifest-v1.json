@@ -1,0 +1,502 @@
+{
+  "archive": {
+    "bytes": 346777,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/search-report/fpc-h1-search-evidence-v1.zip",
+    "sha256": "ca8919156b975569316355ac2ea6f0daa4d00e3414aa2489165d09e29b6143c3"
+  },
+  "complete_actual_bytes": 15607,
+  "complete_actual_file_count": 12,
+  "data": {
+    "bytes": 110125,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/search-report/fpc-h1-search-data-v1.json",
+    "sha256": "1d931ac28a3c3d4b0809f4100b65ed82205f9ff379325512c5b977b2235d76ea"
+  },
+  "evidence_inventory": {
+    "pin_only_runtime": {
+      "bytes": 18058560,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+      "sha256": "b6ea0c2a9bfce48dbf181a53f1ca4f0562d40658b85bf47258e2a88d8f9e3933"
+    },
+    "raw_member_count": 76,
+    "raw_members": [
+      {
+        "bytes": 21657,
+        "member": "workspace/docs/basic-tiling-algorithm.md",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+        "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+      },
+      {
+        "bytes": 36240,
+        "member": "workspace/research-runs/gcts-batch-20261020/publisher/docs/basic-tiling-algorithm.md",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/basic-tiling-algorithm.md",
+        "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+      },
+      {
+        "bytes": 10113,
+        "member": "workspace/research-runs/gcts-conditional-selector-main-20261021/root/observe_conditional_once_v1.py",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-main-20261021/root/observe_conditional_once_v1.py",
+        "sha256": "24804c7d4558d8df511942d9e6b2e4d8d2cfd88ce7df6f5b5f775f87d0c20ca9"
+      },
+      {
+        "bytes": 12973,
+        "member": "workspace/research-runs/gcts-conditional-selector-main-20261021/root/run_conditional_once_v1.py",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-main-20261021/root/run_conditional_once_v1.py",
+        "sha256": "98c55321bb87a8c04b2c6d56b357aba9c3a8f5fc98660474ae3ac1c9d00b0aca"
+      },
+      {
+        "bytes": 1502,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0.observer/observer.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0.observer/observer.json",
+        "sha256": "15c8ee8da7ccbd772df377985fc8e5274c07aef52f4601b93f056e3fe30df1d3"
+      },
+      {
+        "bytes": 0,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0.observer/stderr.bin",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0.observer/stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "bytes": 1605,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0.observer/stdout.bin",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0.observer/stdout.bin",
+        "sha256": "72ac2ce9444d3df2faaaa710804522ddf6551601f9c7e732b136ae840ff04c96"
+      },
+      {
+        "bytes": 270,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0/CONSUMED.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0/CONSUMED.json",
+        "sha256": "94d1e7367e91c066f2e3585b486e61c2658142f11ae7030948316e7c8af84e2e"
+      },
+      {
+        "bytes": 5061,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0/failure.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0/failure.json",
+        "sha256": "d21496a8984ac77502253ed6cd3e7ff54f6c99b877c2aa52bda959c4715c358f"
+      },
+      {
+        "bytes": 247,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0/owned-child.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0/owned-child.json",
+        "sha256": "dd48bff6822c346de02af240ff97ee9e1cc05cd7061838bbf8a3f6d5abc2bb65"
+      },
+      {
+        "bytes": 0,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0/stderr.bin",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0/stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "bytes": 141,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0/stdout.bin",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0/stdout.bin",
+        "sha256": "3304bad4435c80731b33f01f7c15f4ae3d1688f20a1d579021c6b870f592d981"
+      },
+      {
+        "bytes": 4294,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0/target-input-freeze.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0/target-input-freeze.json",
+        "sha256": "c81608c940caaa493ed49fe2d5517a6212504473e57103ac0d3f503ca1a7a6e9"
+      },
+      {
+        "bytes": 27,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0/target-query.bin",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0/target-query.bin",
+        "sha256": "63dafaccc6eb9a76defe986d436b3563248a4799a458a1fc68b3fe766e23d391"
+      },
+      {
+        "bytes": 1817,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0/terminal.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0/terminal.json",
+        "sha256": "b14a3ea7c8703f0f9a27802cd0a66b2ec6b0296c44d94d594feb742b60db2fb4"
+      },
+      {
+        "bytes": 643,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0/worker-header.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0/worker-header.json",
+        "sha256": "fe46b98056786d1e386cc0fc2e412789f30766d7d2a4e1ae113cd53caf125ca2"
+      },
+      {
+        "bytes": 8614,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/first-fixed-verifier-target-declarations-v1.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/first-fixed-verifier-target-declarations-v1.json",
+        "sha256": "c6ae5f616b61e85f4b5cbd2b1e7619c047f42d83afd725e277475292cd904b0a"
+      },
+      {
+        "bytes": 8744,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc-h1-independent-reference-API-v2.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc-h1-independent-reference-API-v2.json",
+        "sha256": "f33b029e72accf7d7d51285a0009cb5d892c1b24e96931a5c8c646153fceeaf3"
+      },
+      {
+        "bytes": 5996,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc-h1-independent-reference-manual-v2.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc-h1-independent-reference-manual-v2.json",
+        "sha256": "7330d9a8d26ee053f49935188264accdf3480da25b94ccc8457e4d2b8e2b7a7b"
+      },
+      {
+        "bytes": 12247,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc-h1-independent-search-control-definition-v1.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc-h1-independent-search-control-definition-v1.json",
+        "sha256": "bd897cc49d5bb16c4c5850b3c11005669692532a5a13891408d75bd5219671bf"
+      },
+      {
+        "bytes": 11813,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc-h1-independent-search-controls-and-codec-API-v2.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc-h1-independent-search-controls-and-codec-API-v2.json",
+        "sha256": "06cebbd5356c2e91b2faffaef890300bdd531adde0c608759f460377425fd005"
+      },
+      {
+        "bytes": 7000,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc-h1-independent-search-controls-and-codec-handoff-v1.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc-h1-independent-search-controls-and-codec-handoff-v1.json",
+        "sha256": "37dc11f2c3dbcf4125cd8c893fc04bcfc0c2af56943bb8574e0cceccdf98cd2e"
+      },
+      {
+        "bytes": 5809,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc-h1-independent-search-controls-and-codec-handoff-v2.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc-h1-independent-search-controls-and-codec-handoff-v2.json",
+        "sha256": "e49e4f32f05d5831a7071343249cc81f8f507391ff8a3007db02baa24cc925bf"
+      },
+      {
+        "bytes": 7549,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc-h1-independent-search-controls-and-codec-manual-v2.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc-h1-independent-search-controls-and-codec-manual-v2.json",
+        "sha256": "135094cc5f640093f7e68b74ab9794683563a79ea6ab87325b19181916069606"
+      },
+      {
+        "bytes": 2092,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc-h1-independent-search-controls-and-codec-static-v2.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc-h1-independent-search-controls-and-codec-static-v2.json",
+        "sha256": "63a0b72867e908c3d9b4b58d77eb5f60a86bd05fcbb2bf22b4975b0f84139804"
+      },
+      {
+        "bytes": 3015,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc-h1-independent-search-controls-v2-raw-delta.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc-h1-independent-search-controls-v2-raw-delta.json",
+        "sha256": "9d0cdc61d67ae6b6ecff29d1d2b166fc40fccc8d49b3c68ad3d96515e0176765"
+      },
+      {
+        "bytes": 14061,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc_h1_declared_query_codec_v1.py",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc_h1_declared_query_codec_v1.py",
+        "sha256": "4c6366b1a3728608cedfd86f0c78ca38ffb9d65ffc1907b926fc5f5446ad0ab4"
+      },
+      {
+        "bytes": 24681,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc_h1_independent_reference_v2.py",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc_h1_independent_reference_v2.py",
+        "sha256": "ecda2a10feb69e5aed6ae34dc6c2123dbbc3297ab5c0a431861d628e9cd4334a"
+      },
+      {
+        "bytes": 34768,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc_h1_independent_search_controls_v1.py",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc_h1_independent_search_controls_v1.py",
+        "sha256": "ad8d3ad7c6a12838e44ac5c676daf9c9b8296f6d3c6cf5963c3df11c09eb5c4a"
+      },
+      {
+        "bytes": 35231,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc_h1_independent_search_controls_v2.py",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc_h1_independent_search_controls_v2.py",
+        "sha256": "f0c2be3c99e866aea7a62dc012c6ec96be64c6a0f9b8619a82626d04603946af"
+      },
+      {
+        "bytes": 6510,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/symbolic-baseline-and-next-GCTS-comparison-narrative-v1.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/symbolic-baseline-and-next-GCTS-comparison-narrative-v1.json",
+        "sha256": "93842d79a10edea00fee28b8501c7f26fcc98a45a9c7fc069f6efa6c32d028cd"
+      },
+      {
+        "bytes": 13815,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/typed-FPC-H1-uniform-search-component-Source-review-v1.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/typed-FPC-H1-uniform-search-component-Source-review-v1.json",
+        "sha256": "aec5071d937f9b20927226f4ff50af4143f16b85bad607aa0e53f939495ddc8b"
+      },
+      {
+        "bytes": 3243,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/typed-independent-search-bank-carrier-negative-v1.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/typed-independent-search-bank-carrier-negative-v1.json",
+        "sha256": "62c225d19412be9911129b087da439b78fad5e1e84723acc7c22ffb448346917"
+      },
+      {
+        "bytes": 22752,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/first-order-primitive-calculus-contract-v3.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/first-order-primitive-calculus-contract-v3.json",
+        "sha256": "8d33020a469b586f4f74afc7ecb28f89fecd83f5a6afb00df1a2bb0b87dad2ed"
+      },
+      {
+        "bytes": 3924,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/first-order-primitive-calculus-interface-v3.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/first-order-primitive-calculus-interface-v3.json",
+        "sha256": "dd0224b700e91fdfcdfa460a6b761e2c53df423f1a45504c07d069e8088ce1bb"
+      },
+      {
+        "bytes": 7053,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc-h1-byte-checker-API-v1.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc-h1-byte-checker-API-v1.json",
+        "sha256": "598eab55203f2c1d80fe9e9864fd57e03e374be834d2c69b7df7d14f996d7a66"
+      },
+      {
+        "bytes": 6365,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc-h1-byte-checker-manual-v1.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc-h1-byte-checker-manual-v1.json",
+        "sha256": "847fd6582972c25f4d47628cdd2dcb660e88d8ce8b1269a1f708629ea9239bab"
+      },
+      {
+        "bytes": 12714,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc-h1-exact-wire-contract-v1.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc-h1-exact-wire-contract-v1.json",
+        "sha256": "13baa91f5bd038e485255fc96eeb7170f75f04dd842da9160010d1e06f0262b1"
+      },
+      {
+        "bytes": 17300,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc-h1-failed-once-memory-design-audit-v1.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc-h1-failed-once-memory-design-audit-v1.json",
+        "sha256": "aaff6ce7b2660218cd2db0b00b201467a01f499ee06dd5b37a2a0c3b4eacbdf2"
+      },
+      {
+        "bytes": 26898,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc-h1-uniform-proof-search-prospective-design-v2.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc-h1-uniform-proof-search-prospective-design-v2.json",
+        "sha256": "0b7bf4be21fb5cfdb339be1e9bccbbe2d2192b6f9bc0b53224131e5b0c8850f1"
+      },
+      {
+        "bytes": 10982,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc-h1-uniform-search-API-v1.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc-h1-uniform-search-API-v1.json",
+        "sha256": "f25c26ff1842252ab8085692686b3f1d49cd7ddc730d37f34e6acf0e339d90c9"
+      },
+      {
+        "bytes": 3784,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc-h1-uniform-search-handoff-v1.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc-h1-uniform-search-handoff-v1.json",
+        "sha256": "b834297ea922c824d1b4e491e545a9d14e896e587f352a727dd91b049038aece"
+      },
+      {
+        "bytes": 9267,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc-h1-uniform-search-manual-v1.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc-h1-uniform-search-manual-v1.json",
+        "sha256": "877aabf5877adaabd453c149c1f63cc3197a0af0660b010f8943e33787336d45"
+      },
+      {
+        "bytes": 2226,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc-h1-uniform-search-static-v1.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc-h1-uniform-search-static-v1.json",
+        "sha256": "cc3f3bc3061c923b5857f8f8e4e0ca0dcfb1c42d00696c8d76953812df5f47db"
+      },
+      {
+        "bytes": 11348,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc_h1_ast_and_builders_v1.py",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc_h1_ast_and_builders_v1.py",
+        "sha256": "a42aa71f1e5482a1e1d9637290b4c7f8b52f366d86f7234a86cb11420171ed32"
+      },
+      {
+        "bytes": 31557,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc_h1_byte_checker_v1.py",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc_h1_byte_checker_v1.py",
+        "sha256": "140a9c4b7a6a18c4c20aa4294a0f3fa90f65fe319adbf47a22125170f32b2ef7"
+      },
+      {
+        "bytes": 54407,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc_h1_uniform_search_v1.py",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc_h1_uniform_search_v1.py",
+        "sha256": "53467e578ad7b512ae66e8e03cd85dadba1ded39b9ab0012c17e7e8f170a0902"
+      },
+      {
+        "bytes": 13196,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/typed-independent-search-codec-and-bank-v2-Source-peer-review-v1.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/typed-independent-search-codec-and-bank-v2-Source-peer-review-v1.json",
+        "sha256": "822490c505f2f8f71157e8f73c271e4fc738f8fd3017c627c30af35c00acd18a"
+      },
+      {
+        "bytes": 27200,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-FPC-H1-byte-checker-component-Source-review-v1.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-FPC-H1-byte-checker-component-Source-review-v1.json",
+        "sha256": "c061a3437770eafa2fea494a091c7098c6e389dada77da6e3e584697efcf9fbb"
+      },
+      {
+        "bytes": 50329,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-FPC-H1-independent-reference-full-component-Source-review-v2.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-FPC-H1-independent-reference-full-component-Source-review-v2.json",
+        "sha256": "a20089b597479c43711ea407f48010ec4ba1a3d334a3358bb08a59f7e20fa1e0"
+      },
+      {
+        "bytes": 25130,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-FPC-H1-independent-search-codec-and-controls-Source-review-v1-negative.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-FPC-H1-independent-search-codec-and-controls-Source-review-v1-negative.json",
+        "sha256": "c25939f2276e74ab921881c043d638fbed08b60fa43fda941aea50ba30fef0ee"
+      },
+      {
+        "bytes": 27330,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-FPC-H1-independent-search-codec-and-controls-Source-review-v2.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-FPC-H1-independent-search-codec-and-controls-Source-review-v2.json",
+        "sha256": "1481b2ba6efebd469e5b51bce3dea11702f253a16b823476b7198ea0efc38f2f"
+      },
+      {
+        "bytes": 15407,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-FPC-H1-search-worker-component-Source-review-v1-negative.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-FPC-H1-search-worker-component-Source-review-v1-negative.json",
+        "sha256": "e68635ac4ebb788dd03bb9da6fbbdcbb7bd75094b4499e51a088e8acc9d8a51f"
+      },
+      {
+        "bytes": 15277,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-FPC-H1-search-worker-component-Source-review-v3.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-FPC-H1-search-worker-component-Source-review-v3.json",
+        "sha256": "e2ed40e1e365c7c39c0ef69a8f9c4f209fe443c9583175c9d7e701bf4f470743"
+      },
+      {
+        "bytes": 8879,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-FPC-H1-target-authority-input-freeze-Source-review-v3.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-FPC-H1-target-authority-input-freeze-Source-review-v3.json",
+        "sha256": "b0f9b375bfa4845363a8f6ca6846b3229bd3d3c2e8545e4f36e3c8dddccb5f61"
+      },
+      {
+        "bytes": 22997,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-FPC-H1-uniform-proof-search-design-review-v2.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-FPC-H1-uniform-proof-search-design-review-v2.json",
+        "sha256": "bdb53031d067928491dc2172317401f3e44d44f2fd6cd545765c0cc552ea6c4a"
+      },
+      {
+        "bytes": 35306,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-FPC-H1-uniform-search-complete-negative-actual-review-v1.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-FPC-H1-uniform-search-complete-negative-actual-review-v1.json",
+        "sha256": "6e6779101658ef3e21e4caabf40fd2d7f385d1ce7956063e1257ae6722bb0ef8"
+      },
+      {
+        "bytes": 27892,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-FPC-H1-uniform-search-component-Source-review-v1.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-FPC-H1-uniform-search-component-Source-review-v1.json",
+        "sha256": "b84d7d1c2fc5d3ba938dc857a2e24a378c486daa58193f13793ba02b84d8af42"
+      },
+      {
+        "bytes": 22939,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-FPC-H1-uniform-search-grant-proposal-component-review-v1.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-FPC-H1-uniform-search-grant-proposal-component-review-v1.json",
+        "sha256": "b8e2334e054d59533ab48a56e190c81cc36639c037642c30f9db3ce6562b57c1"
+      },
+      {
+        "bytes": 50813,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-FPC-H1-uniform-search-whole-prospective-Source-plan-review-v1.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-FPC-H1-uniform-search-whole-prospective-Source-plan-review-v1.json",
+        "sha256": "d10991c32d7e5b3a294afe5d9c6124c5dfc639919e163be67f574ce22346dea2"
+      },
+      {
+        "bytes": 2880,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/root/FPC-H1-search-executable-Source-reading-v2.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/FPC-H1-search-executable-Source-reading-v2.json",
+        "sha256": "3f918c56f9d5e0ee06644d1c63e9c2ed1fa32e08a46ef52880c09ca8c2ac7ef6"
+      },
+      {
+        "bytes": 4977,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/root/admission/search-fpc-h1-hi-point-not-line-0-v1.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/admission/search-fpc-h1-hi-point-not-line-0-v1.json",
+        "sha256": "55d5ea9126e376af542bb4082bdeafc0e3abfe7274446e6ce220477e53cf2546"
+      },
+      {
+        "bytes": 7910,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/root/first-fixed-verifier-search-targets-v3.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/first-fixed-verifier-search-targets-v3.json",
+        "sha256": "2e7cc31d6e72107d3811cf6a980ec261e0122c8736d4520db9cea119317eb54d"
+      },
+      {
+        "bytes": 22291,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/root/fpc-h1-search-closed-inputs-v1.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/fpc-h1-search-closed-inputs-v1.json",
+        "sha256": "518cde7d2c31e8d6965a88637a4e03b6effecbefb0bf6d601344ce54541e47af"
+      },
+      {
+        "bytes": 2441,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/root/fpc-h1-search-grant-proposal-v1.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/fpc-h1-search-grant-proposal-v1.json",
+        "sha256": "5a17dd1bff5278726e8c1f9f9db96975152729a63ee7636bd335424f7c6ca99b"
+      },
+      {
+        "bytes": 31930,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/root/fpc-h1-search-protocol-v1.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/fpc-h1-search-protocol-v1.json",
+        "sha256": "d4a14124c1acec3e5fe78e24548d9b0009bffd30bc94249df21113f00180aa76"
+      },
+      {
+        "bytes": 4518,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/root/fpc-h1-search-terminal-observation-v1.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/fpc-h1-search-terminal-observation-v1.json",
+        "sha256": "1c998bb6266cdb6b25242ce1825cbd5c30111515cbad764fe6687564dde4f551"
+      },
+      {
+        "bytes": 1867,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/root/fpc-h1-search-tools-idle-barrier-v1.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/fpc-h1-search-tools-idle-barrier-v1.json",
+        "sha256": "0daa3c6a8af70d9cb974577a5538dbc2bfb25e95d983cfc9f9a30af9d8978bfb"
+      },
+      {
+        "bytes": 8196,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/root/fpc-h1-search-worker-API-v3.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/fpc-h1-search-worker-API-v3.json",
+        "sha256": "9456310a72460d17c0e089c3099c88a78c144bb7abf323151bb82e37d41a3cb6"
+      },
+      {
+        "bytes": 5500,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/root/fpc-h1-search-worker-successor-Source-v2.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/fpc-h1-search-worker-successor-Source-v2.json",
+        "sha256": "706a77f8648a2a07acca01f7d6a74aeb94dc7edddfbbd639be9c8f526bacb869"
+      },
+      {
+        "bytes": 2620,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/root/fpc-h1-search-worker-successor-Source-v3.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/fpc-h1-search-worker-successor-Source-v3.json",
+        "sha256": "e297c8280fead335977617493506b4b1b6cc5f8df40eca3850e4aecff883ef85"
+      },
+      {
+        "bytes": 22293,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/root/fpc_h1_search_worker_v1.py",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/fpc_h1_search_worker_v1.py",
+        "sha256": "c16a7251d8241b17e4e63c320624535900c2e3f843287da98dceec463dcc81b4"
+      },
+      {
+        "bytes": 24365,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/root/fpc_h1_search_worker_v2.py",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/fpc_h1_search_worker_v2.py",
+        "sha256": "334ae2bacb78f3359ca1dfe4da6edd8fc027d43476dbbbc2d014f2dd5dbe881e"
+      },
+      {
+        "bytes": 25049,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/root/fpc_h1_search_worker_v3.py",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/fpc_h1_search_worker_v3.py",
+        "sha256": "d4ad16bae325bc66f0f8ba545938a82b01b747148989ef8e339f91bff780cb0f"
+      },
+      {
+        "bytes": 2673,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/root/grants/search-fpc-h1-hi-point-not-line-0-v1.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/grants/search-fpc-h1-hi-point-not-line-0-v1.json",
+        "sha256": "34511eb28a389d029d6db6c4fec2454883896ce626e6d775d9c72dfe6afe178c"
+      },
+      {
+        "bytes": 21415,
+        "member": "workspace/research-runs/gcts-fixed-wang-compiler-20261021/root/plans/search-fpc-h1-hi-point-not-line-0-v1.json",
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/plans/search-fpc-h1-hi-point-not-line-0-v1.json",
+        "sha256": "724a97330f9fcecc17c5bd3eb8017415d0dae3f29a208b85a320a4527b0f5840"
+      }
+    ],
+    "schema": "Root-FPC-H1-search-evidence-inventory-v1",
+    "scope": "Complete original failed once evidence, exact reviewed Sources/inputs and passive review/disposition. No proof/control-prefix admission, no scientific replay. Runtime executable pin-only; installed stdlib/OS are trusted substrate."
+  },
+  "html": {
+    "bytes": 19123,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/search-report/fpc-h1-search-v1.html",
+    "sha256": "627f44053176515d20673040b0802c5e414be159aa4ca61c6c07131a02aa1e85"
+  },
+  "parent_append_inverse": {
+    "bytes": 876,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/search-report/parent-search-append-inverse-v1.json",
+    "sha256": "293a7d2160d91e20b7a48c27e3467fab8ddbacd718de08b9fb83d91c09bd994a"
+  },
+  "parent_source": {
+    "bytes": 137039,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/search-report/reader-with-search-v1.html",
+    "sha256": "685ad9d0feac09219a1ca320fd733350d0930aa09b5a3cdaabbc97c179ed0acd"
+  },
+  "partial_file_count": 0,
+  "schema": "Root-FPC-H1-search-publication-manifest-v1",
+  "scientific_replay_or_imports": 0,
+  "scope": "ZIP raw members are authoritative saved evidence; report data and HTML are display companions. Runtime binary pin-only. Live verification is a separate postpublication receipt.",
+  "status": "NEGATIVE_WHOLE_CASE_NO_PROOF_OR_CONTROL_PREFIX_ADMITTED"
+}

@@ -1,0 +1,2127 @@
+{
+  "created_utc": "2026-10-22T08:47:57.559477+00:00",
+  "declarations": {
+    "calculus": "FPC-H1",
+    "claim_mode": 0,
+    "claim_mode_name": "theorem",
+    "hypotheses": [],
+    "input_role": "Separate prospective mathematical search inputs, excluded from FPC137 qualification and the current publication archive.",
+    "profiles": [
+      {
+        "function_arities": [
+          0,
+          1,
+          2,
+          2
+        ],
+        "function_legend": [
+          {
+            "arity": 0,
+            "id": 0,
+            "name_latex": "\\(0\\)"
+          },
+          {
+            "arity": 1,
+            "id": 1,
+            "name_latex": "\\(S\\)"
+          },
+          {
+            "arity": 2,
+            "id": 2,
+            "name_latex": "\\(+\\)"
+          },
+          {
+            "arity": 2,
+            "id": 3,
+            "name_latex": "\\(\\cdot\\)"
+          }
+        ],
+        "name": "PA_0S_PLUS_TIMES_V1",
+        "predicate_arities": [],
+        "profile_payload": "NO_OCTETS",
+        "profile_payload_scope": "The fixed six table axioms and formula-induction schema are those of the exact v3 contract. No additional finite theory vector, count-zero sentinel, hypothesis, lemma or derived axiom is supplied.",
+        "variable_legend": [
+          {
+            "id": 0,
+            "name_latex": "\\(x\\)"
+          },
+          {
+            "id": 1,
+            "name_latex": "\\(y\\)"
+          }
+        ],
+        "wire_id": 1
+      },
+      {
+        "function_arities": [],
+        "name": "HILBERT_PLANE_INCIDENCE_MIN_V1",
+        "predicate_arities": [
+          1,
+          1,
+          2
+        ],
+        "predicate_legend": [
+          {
+            "arity": 1,
+            "id": 0,
+            "name_latex": "\\(\\mathrm{Pt}\\)"
+          },
+          {
+            "arity": 1,
+            "id": 1,
+            "name_latex": "\\(\\mathrm{Ln}\\)"
+          },
+          {
+            "arity": 2,
+            "id": 2,
+            "name_latex": "\\(I\\)"
+          }
+        ],
+        "profile_payload": "NO_OCTETS",
+        "profile_payload_scope": "Only the fixed six sorted-incidence axioms of the exact v3 contract. Sorts are ordinary predicates in a one-sorted language, not an implicit geometric or typing oracle.",
+        "variable_legend": [
+          {
+            "id": 0,
+            "name_latex": "\\(p\\)"
+          },
+          {
+            "id": 1,
+            "name_latex": "\\(q\\)"
+          },
+          {
+            "id": 2,
+            "name_latex": "\\(r\\)"
+          },
+          {
+            "id": 3,
+            "name_latex": "\\(l\\)"
+          },
+          {
+            "id": 4,
+            "name_latex": "\\(m\\)"
+          },
+          {
+            "id": 5,
+            "name_latex": "\\(z\\)"
+          }
+        ],
+        "wire_id": 2
+      }
+    ],
+    "prospective_status": {
+      "all_six": "PUBLIC_DEVELOPMENT_TARGET_UNRUN",
+      "builder_encoder_reference_checker_imports_or_calls": 0,
+      "goal_specific_transitions_or_palette_supplied": false,
+      "lemmas_or_accepting_histories_supplied": false,
+      "proofs_or_rows_supplied": false,
+      "qualification_or_search_authority": false,
+      "query_or_certificate_bytes_generated": false,
+      "whole_goal_core_AST_generated": false
+    },
+    "query_version": 1,
+    "schema": "FPC-H1-six-public-development-target-declarations-v1",
+    "status": "LITERAL_PROSPECTIVE_INPUTS_ONLY_UNRUN",
+    "targets": [
+      {
+        "binder_order": [
+          0
+        ],
+        "classification": "Elementary equality/generalization development control; no substantive arithmetic-discovery claim.",
+        "function_arities": [
+          0,
+          1,
+          2,
+          2
+        ],
+        "goal_latex": "\\(\\forall x\\,(x=x)\\)",
+        "goal_tree": [
+          "all",
+          0,
+          [
+            "eq",
+            [
+              "var",
+              0
+            ],
+            [
+              "var",
+              0
+            ]
+          ]
+        ],
+        "hypotheses": [],
+        "id": "PA-reflexivity",
+        "mode": 0,
+        "predicate_arities": [],
+        "profile": "PA_0S_PLUS_TIMES_V1",
+        "profile_id": 1
+      },
+      {
+        "binder_order": [
+          0
+        ],
+        "classification": "Original induction-oriented zero-left target retained, not replaced by the right-zero table axiom. No supplied induction formula or proof-length/necessity assertion.",
+        "function_arities": [
+          0,
+          1,
+          2,
+          2
+        ],
+        "goal_latex": "\\(\\forall x\\,(0+x=x)\\)",
+        "goal_tree": [
+          "all",
+          0,
+          [
+            "eq",
+            [
+              "fun",
+              2,
+              [
+                [
+                  "fun",
+                  0,
+                  []
+                ],
+                [
+                  "var",
+                  0
+                ]
+              ]
+            ],
+            [
+              "var",
+              0
+            ]
+          ]
+        ],
+        "hypotheses": [],
+        "id": "PA-zero-left",
+        "mode": 0,
+        "predicate_arities": [],
+        "profile": "PA_0S_PLUS_TIMES_V1",
+        "profile_id": 1
+      },
+      {
+        "binder_order": [
+          0,
+          1
+        ],
+        "classification": "Unchanged hierarchical arithmetic development goal; no lemma, decomposition or accepting derivation supplied.",
+        "function_arities": [
+          0,
+          1,
+          2,
+          2
+        ],
+        "goal_latex": "\\(\\forall x\\forall y\\,(x+y=y+x)\\)",
+        "goal_tree": [
+          "all",
+          0,
+          [
+            "all",
+            1,
+            [
+              "eq",
+              [
+                "fun",
+                2,
+                [
+                  [
+                    "var",
+                    0
+                  ],
+                  [
+                    "var",
+                    1
+                  ]
+                ]
+              ],
+              [
+                "fun",
+                2,
+                [
+                  [
+                    "var",
+                    1
+                  ],
+                  [
+                    "var",
+                    0
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        "hypotheses": [],
+        "id": "PA-addition-commutes",
+        "mode": 0,
+        "predicate_arities": [],
+        "profile": "PA_0S_PLUS_TIMES_V1",
+        "profile_id": 1
+      },
+      {
+        "binder_order": [
+          0
+        ],
+        "classification": "Literal predicate statement in the explicit incidence fragment; no drawing, metric, sorted-domain or geometric oracle.",
+        "function_arities": [],
+        "goal_latex": "\\(\\forall p\\,(\\mathrm{Pt}(p)\\to\\neg\\mathrm{Ln}(p))\\)",
+        "goal_tree": [
+          "all",
+          0,
+          [
+            "imp",
+            [
+              "pred",
+              0,
+              [
+                [
+                  "var",
+                  0
+                ]
+              ]
+            ],
+            [
+              "not",
+              [
+                "pred",
+                1,
+                [
+                  [
+                    "var",
+                    0
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        "hypotheses": [],
+        "id": "HI-point-not-line",
+        "mode": 0,
+        "predicate_arities": [
+          1,
+          1,
+          2
+        ],
+        "profile": "HILBERT_PLANE_INCIDENCE_MIN_V1",
+        "profile_id": 2
+      },
+      {
+        "binder_kinds": [
+          "all",
+          "all",
+          "exists",
+          "exists"
+        ],
+        "binder_order": [
+          3,
+          4,
+          0,
+          1
+        ],
+        "classification": "Original quantified equality/negation development statement, without adding any witness point, incidence fact or uniqueness lemma.",
+        "function_arities": [],
+        "goal_latex": "\\(\\forall l\\forall m\\,((\\mathrm{Ln}(l)\\land\\mathrm{Ln}(m)\\land l\\ne m)\\to\\neg\\exists p\\exists q\\,(\\mathrm{Pt}(p)\\land\\mathrm{Pt}(q)\\land p\\ne q\\land I(p,l)\\land I(q,l)\\land I(p,m)\\land I(q,m)))\\)",
+        "goal_tree": [
+          "all",
+          3,
+          [
+            "all",
+            4,
+            [
+              "imp",
+              [
+                "and",
+                [
+                  "pred",
+                  1,
+                  [
+                    [
+                      "var",
+                      3
+                    ]
+                  ]
+                ],
+                [
+                  "and",
+                  [
+                    "pred",
+                    1,
+                    [
+                      [
+                        "var",
+                        4
+                      ]
+                    ]
+                  ],
+                  [
+                    "not",
+                    [
+                      "eq",
+                      [
+                        "var",
+                        3
+                      ],
+                      [
+                        "var",
+                        4
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "not",
+                [
+                  "exists",
+                  0,
+                  [
+                    "exists",
+                    1,
+                    [
+                      "and",
+                      [
+                        "pred",
+                        0,
+                        [
+                          [
+                            "var",
+                            0
+                          ]
+                        ]
+                      ],
+                      [
+                        "and",
+                        [
+                          "pred",
+                          0,
+                          [
+                            [
+                              "var",
+                              1
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "not",
+                            [
+                              "eq",
+                              [
+                                "var",
+                                0
+                              ],
+                              [
+                                "var",
+                                1
+                              ]
+                            ]
+                          ],
+                          [
+                            "and",
+                            [
+                              "pred",
+                              2,
+                              [
+                                [
+                                  "var",
+                                  0
+                                ],
+                                [
+                                  "var",
+                                  3
+                                ]
+                              ]
+                            ],
+                            [
+                              "and",
+                              [
+                                "pred",
+                                2,
+                                [
+                                  [
+                                    "var",
+                                    1
+                                  ],
+                                  [
+                                    "var",
+                                    3
+                                  ]
+                                ]
+                              ],
+                              [
+                                "and",
+                                [
+                                  "pred",
+                                  2,
+                                  [
+                                    [
+                                      "var",
+                                      0
+                                    ],
+                                    [
+                                      "var",
+                                      4
+                                    ]
+                                  ]
+                                ],
+                                [
+                                  "pred",
+                                  2,
+                                  [
+                                    [
+                                      "var",
+                                      1
+                                    ],
+                                    [
+                                      "var",
+                                      4
+                                    ]
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        "hypotheses": [],
+        "id": "HI-distinct-lines-no-two-shared-points",
+        "mode": 0,
+        "predicate_arities": [
+          1,
+          1,
+          2
+        ],
+        "profile": "HILBERT_PLANE_INCIDENCE_MIN_V1",
+        "profile_id": 2
+      },
+      {
+        "binder_kinds": [
+          "all",
+          "exists"
+        ],
+        "binder_order": [
+          3,
+          0
+        ],
+        "classification": "Original existential incidence-fragment target. No point witness, proof, lemma or geometric construction supplied.",
+        "function_arities": [],
+        "goal_latex": "\\(\\forall l\\,(\\mathrm{Ln}(l)\\to\\exists p\\,(\\mathrm{Pt}(p)\\land\\neg I(p,l)))\\)",
+        "goal_tree": [
+          "all",
+          3,
+          [
+            "imp",
+            [
+              "pred",
+              1,
+              [
+                [
+                  "var",
+                  3
+                ]
+              ]
+            ],
+            [
+              "exists",
+              0,
+              [
+                "and",
+                [
+                  "pred",
+                  0,
+                  [
+                    [
+                      "var",
+                      0
+                    ]
+                  ]
+                ],
+                [
+                  "not",
+                  [
+                    "pred",
+                    2,
+                    [
+                      [
+                        "var",
+                        0
+                      ],
+                      [
+                        "var",
+                        3
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        "hypotheses": [],
+        "id": "HI-point-off-each-line",
+        "mode": 0,
+        "predicate_arities": [
+          1,
+          1,
+          2
+        ],
+        "profile": "HILBERT_PLANE_INCIDENCE_MIN_V1",
+        "profile_id": 2
+      }
+    ],
+    "tree_convention": {
+      "association": "Every conjunction is already explicitly binary and right associated in each literal tree. No flattening, reordering, reassociation, simplification or alpha-renaming is authorized.",
+      "binder_identity": "Binder IDs and every variable leaf are exact literals. An all/exists binder binds the same ID only within its displayed body. Existential expansion preserves that ID and body without a fresh-variable choice.",
+      "expansion_boundary": "These are hand-authored high-level declarations and literal replacement templates. No expanded whole-goal core AST or byte payload has been generated, encoded, checked or evaluated. Future exact query construction must be independently reviewed and performed only inside a separate reviewed actual.",
+      "inequality": "Every inequality is explicitly not(eq(left,right)); it is not a new predicate or wire tag.",
+      "literal_high_level_abbreviations": [
+        {
+          "exact_primitive_replacement": [
+            "not",
+            [
+              "imp",
+              "A",
+              [
+                "not",
+                "B"
+              ]
+            ]
+          ],
+          "node": [
+            "and",
+            "A",
+            "B"
+          ]
+        },
+        {
+          "exact_primitive_replacement": [
+            "not",
+            [
+              "all",
+              "x",
+              [
+                "not",
+                "A"
+              ]
+            ]
+          ],
+          "node": [
+            "exists",
+            "x",
+            "A"
+          ]
+        }
+      ],
+      "primitive_formula_nodes": [
+        [
+          "pred",
+          "natural predicate ID",
+          "ordered argument tree list"
+        ],
+        [
+          "eq",
+          "left term",
+          "right term"
+        ],
+        [
+          "not",
+          "formula"
+        ],
+        [
+          "imp",
+          "antecedent formula",
+          "consequent formula"
+        ],
+        [
+          "all",
+          "natural binder ID",
+          "body formula"
+        ]
+      ],
+      "term_nodes": [
+        [
+          "var",
+          "natural variable ID"
+        ],
+        [
+          "fun",
+          "natural function ID",
+          "ordered argument tree list"
+        ]
+      ]
+    }
+  },
+  "disposition": {
+    "Root_terminal_observation": {
+      "bytes": 4518,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/fpc-h1-search-terminal-observation-v1.json",
+      "sha256": "1c998bb6266cdb6b25242ce1825cbd5c30111515cbad764fe6687564dde4f551"
+    },
+    "admitted": false,
+    "broad_goal_status": "ACTIVE",
+    "case_id": "search-fpc-h1-hi-point-not-line-0",
+    "census": {
+      "owned_processes": "Root signal0 snapshot:82855 ABSENT,82856 ABSENT",
+      "partial_files": 0,
+      "regular_bytes": 15607,
+      "regular_files": 12
+    },
+    "consumption": "Original once case consumed even on failure. No replay, cap/bank/grammar shrink, prefix salvage or supplied proof/library/policy adoption.",
+    "control_progress_scope": "Recorded generic stage completed in0.2281574999942677seconds and strict full56 gate precedes target search by reviewed Source. Complete qualification receipt is null in failed whole output; progress is diagnostic only.",
+    "controls_admitted": false,
+    "created_utc": "2026-10-22T08:46:09.906781+00:00",
+    "failure_site_scope": "Saved traceback reaches fallback candidate freezing before Root memory check. No allocation-category profile or full search ledger was saved, so a specific memory allocation cause is not established by the actual.",
+    "grant": {
+      "bytes": 2673,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/grants/search-fpc-h1-hi-point-not-line-0-v1.json",
+      "sha256": "34511eb28a389d029d6db6c4fec2454883896ce626e6d775d9c72dfe6afe178c"
+    },
+    "headline": "Memory limit reached; no proof admitted",
+    "independent_complete_review": {
+      "bytes": 35306,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-FPC-H1-uniform-search-complete-negative-actual-review-v1.json",
+      "sha256": "6e6779101658ef3e21e4caabf40fd2d7f385d1ce7956063e1257ae6722bb0ef8"
+    },
+    "measurements": {
+      "observer_elapsed_seconds": 61.94279500000994,
+      "observer_final_gate_seconds": 61.94307020799897,
+      "qualified_whole_peak_bytes": null,
+      "reaped_child_peak_bytes": 1150222336,
+      "work_memory_ceiling_bytes": 1073741824,
+      "worker_after_output_peak_bytes": 1148813312,
+      "worker_callbacks": 99315599,
+      "worker_elapsed_seconds": 60.2447189999948,
+      "worker_saved_peak_bytes": 1147781120
+    },
+    "next": "Preserve and publish this negative result. Review a generic memory-compact successor prospectively while keeping targets, primitive rules, finite grammar and original budgets fixed. Point/marking/RL reduction and matched comparisons remain separate research.",
+    "observer": {
+      "bytes": 1502,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0.observer/observer.json",
+      "sha256": "15c8ee8da7ccbd772df377985fc8e5274c07aef52f4601b93f056e3fe30df1d3"
+    },
+    "plan": {
+      "bytes": 21415,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/plans/search-fpc-h1-hi-point-not-line-0-v1.json",
+      "sha256": "724a97330f9fcecc17c5bd3eb8017415d0dae3f29a208b85a320a4527b0f5840"
+    },
+    "population": "All six original literal declarations retained unchanged. Only index3/HI-point-not-line attempted. Five remaining targets PLANNED_NOT_RUN.",
+    "proof_admitted": false,
+    "resource_admitted": false,
+    "schema": "Root-FPC-H1-search-disposition-v1",
+    "scientific_qualified": false,
+    "scientific_replay_or_helper_calls": 0,
+    "scope": "One ordinary symbolic baseline feasibility attempt, not a GCTS/RL or external-prover comparison. The mathematical target remains unknown from this attempt; the other five fixed targets remain planned and not run.",
+    "stage_complete": false,
+    "status": "FAILED_CASE_NOT_ADMITTED",
+    "summary": "The fixed geometry search exceeded the declared 1 GiB memory ceiling. The worker saved a failure at 60.244719 seconds; the observer recorded 61.942795 seconds. The generic-control stage completed before target search began, but its full receipt is withheld by the failed whole job. No control qualification, proof, exhaustion or reusable prefix is admitted.",
+    "target_status": "UNKNOWN_MEMORY_LIMIT",
+    "terminal": {
+      "bytes": 1817,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0/terminal.json",
+      "sha256": "b14a3ea7c8703f0f9a27802cd0a66b2ec6b0296c44d94d594feb742b60db2fb4"
+    },
+    "worker_failure": {
+      "bytes": 5061,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0/failure.json",
+      "sha256": "d21496a8984ac77502253ed6cd3e7ff54f6c99b877c2aa52bda959c4715c358f"
+    }
+  },
+  "identities": {
+    "archive": {
+      "bytes": 346777,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/search-report/fpc-h1-search-evidence-v1.zip",
+      "sha256": "ca8919156b975569316355ac2ea6f0daa4d00e3414aa2489165d09e29b6143c3"
+    },
+    "complete_review": {
+      "bytes": 35306,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-FPC-H1-uniform-search-complete-negative-actual-review-v1.json",
+      "sha256": "6e6779101658ef3e21e4caabf40fd2d7f385d1ce7956063e1257ae6722bb0ef8"
+    },
+    "disposition": {
+      "bytes": 4977,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/admission/search-fpc-h1-hi-point-not-line-0-v1.json",
+      "sha256": "55d5ea9126e376af542bb4082bdeafc0e3abfe7274446e6ce220477e53cf2546"
+    },
+    "worker_failure": {
+      "bytes": 5061,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0/failure.json",
+      "sha256": "d21496a8984ac77502253ed6cd3e7ff54f6c99b877c2aa52bda959c4715c358f"
+    }
+  },
+  "independent_complete_review": {
+    "Root_admission_issued": false,
+    "Root_terminal_observation": {
+      "bytes": 4518,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/fpc-h1-search-terminal-observation-v1.json",
+      "sha256": "1c998bb6266cdb6b25242ce1825cbd5c30111515cbad764fe6687564dde4f551"
+    },
+    "admitted": false,
+    "barrier": {
+      "bytes": 1867,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/fpc-h1-search-tools-idle-barrier-v1.json",
+      "sha256": "0daa3c6a8af70d9cb974577a5538dbc2bfb25e95d983cfc9f9a30af9d8978bfb"
+    },
+    "case_id": "search-fpc-h1-hi-point-not-line-0",
+    "checks": [
+      {
+        "finding": "All48 plan.files remain raw-identical to the exact whole prospective PASS; current protocol/worker/engine/codec/bank/kernel/custodians unchanged. The distinct Root grant copies the reviewed nested payload with only five current extensions, exact whole/grant/proposal/barrier rawpins and all-peer idle evidence. CONSUMED binds this exact plan+grant with uses1. Current output belongs to this one case; no retry, modified cap or old result adoption is inferred or authorized.",
+        "id": "current-Source-plan-once-grant-barrier-and-consumption",
+        "passed": true
+      },
+      {
+        "finding": "Independent full actual+observer census is12 regular files/15,607B, not the initial provisional13, and exactly matches durable Root observation1c998bb6. Zero partial/symlink/special files. All stdout/stderr byte counts/EOF/no-overflow and empty stderr/error arrays reconcile. Current terminal embeds the exact header and observer embeds exact owned parent82855/child-group82856. Root recorded observed terminal session50086 exit2 and signal0 ABSENT snapshots of those exact IDs; C performed no live process probe. This is not a claim about unrelated processes.",
+        "id": "complete-current-raw-census-output-logs-and-ownership",
+        "passed": true
+      },
+      {
+        "finding": "Complete failure is FAILED_CASE_NOT_ADMITTED, first_Root_fault=true, RootBudget strict Python whole high-water ceiling. Saved traceback is target search fallback candidate -> _freeze -> genuine Root check. Worker HWM1,147,781,120B exceeds1,073,741,824B; callback99,315,599 remains below400m and worker60.2447189999948s below160. Header postoutput1,148,813,312B and reaped-child1,150,222,336B are distinct measured high-water observations. This is a cooperative memory gate, not an OS OOM, work deadline, declared grammar exhaustion, proven specific allocation category or nonprovability.",
+        "id": "exact-sticky-memory-failure-and-saved-site",
+        "passed": true
+      },
+      {
+        "finding": "Worker/custodian/observer exits are2; failed header is invalid for positive custody, result=null, resource candidates false and every conservative qualified whole peak NULL. Native closed/reaped is explicitly vacuous0; threads terminal/log EOF/no errors and no225 fallback are saved. Observer.elapsed_seconds61.94279500000994 is the direct whole sample; final observer gate61.94307020799897, parent exit/custody and stdout samples remain separate and are not added. Custody/time/output samples passed, but memory/resource admission failed. No fabricated conservative whole peak is summed from component measurements.",
+        "id": "negative-resource-gates-cleanup-and-literal-clock-scope",
+        "passed": true
+      },
+      {
+        "finding": "Six imports, inputfreeze and generic-control stage are recorded COMPLETED, then target SEARCH only STARTED. Exact current worker Source puts the strict complete ordered56/typed-count gate before entering search. However the complete bank return is deliberately absent from this failed whole receipt: qualification_complete=false and qualification_result/input_freeze/search_result/subject/reference/scientific fields allnull. Saved27-byte query and4294B freeze file agree with original literal target/codec/saved parsed JSON; they remain nonadmitted diagnostics. No checker/codec/query decoder/expected semantics is replayed and no bank/query/proof prefix is rescued.",
+        "id": "charged-input-and-bank-progress-no-prefix-authority",
+        "passed": true
+      },
+      {
+        "finding": "There is no result.json, candidate certificate or complete target search return; no proof or EXHAUSTED/SOURCE_OUTSIDE conclusion qualifies. This original feasibility case is consumed and bounded whole-failed; all six mathematical declarations remain unchanged, with the other five not run by this grant. Resource/scientific/stage/admission flags are allfalse, while this independent negative review itself passes. No mathematical falsity/unprovability, general search incapacity, GCTS/RL/Graph advantage or fixed-Wang logical-machine qualification follows. Root disposition/publication remain separate.",
+        "id": "whole-negative-denominator-and-no-construction-or-discovery-claim",
+        "passed": true
+      }
+    ],
+    "cleanup": {
+      "C_live_process_probe": false,
+      "Native_scope": "VACUOUS_NO_NATIVE",
+      "Root_owned_snapshot": {
+        "earlier_ps_probe": "Sandbox denied subprocess /bin/ps with PermissionError before execution; no process-list evidence obtained",
+        "method": "os.kill(pid,0); signal0 is an existence probe, no signal delivered",
+        "pids": {
+          "82855": "ABSENT",
+          "82856": "ABSENT"
+        },
+        "scope": "Present existence snapshots of exact owned IDs after observed terminal exit; not a proof of no unrelated processes"
+      },
+      "errors": [],
+      "log_EOF": true,
+      "retry_or_next_grant_authority": false,
+      "review_passed": true,
+      "terminal_threads_closed": true
+    },
+    "complete_actual_file_census": [
+      {
+        "bytes": 1502,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0.observer/observer.json",
+        "sha256": "15c8ee8da7ccbd772df377985fc8e5274c07aef52f4601b93f056e3fe30df1d3"
+      },
+      {
+        "bytes": 0,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0.observer/stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "bytes": 1605,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0.observer/stdout.bin",
+        "sha256": "72ac2ce9444d3df2faaaa710804522ddf6551601f9c7e732b136ae840ff04c96"
+      },
+      {
+        "bytes": 270,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0/CONSUMED.json",
+        "sha256": "94d1e7367e91c066f2e3585b486e61c2658142f11ae7030948316e7c8af84e2e"
+      },
+      {
+        "bytes": 5061,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0/failure.json",
+        "sha256": "d21496a8984ac77502253ed6cd3e7ff54f6c99b877c2aa52bda959c4715c358f"
+      },
+      {
+        "bytes": 247,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0/owned-child.json",
+        "sha256": "dd48bff6822c346de02af240ff97ee9e1cc05cd7061838bbf8a3f6d5abc2bb65"
+      },
+      {
+        "bytes": 0,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0/stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "bytes": 141,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0/stdout.bin",
+        "sha256": "3304bad4435c80731b33f01f7c15f4ae3d1688f20a1d579021c6b870f592d981"
+      },
+      {
+        "bytes": 4294,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0/target-input-freeze.json",
+        "sha256": "c81608c940caaa493ed49fe2d5517a6212504473e57103ac0d3f503ca1a7a6e9"
+      },
+      {
+        "bytes": 27,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0/target-query.bin",
+        "sha256": "63dafaccc6eb9a76defe986d436b3563248a4799a458a1fc68b3fe766e23d391"
+      },
+      {
+        "bytes": 1817,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0/terminal.json",
+        "sha256": "b14a3ea7c8703f0f9a27802cd0a66b2ec6b0296c44d94d594feb742b60db2fb4"
+      },
+      {
+        "bytes": 643,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0/worker-header.json",
+        "sha256": "fe46b98056786d1e386cc0fc2e412789f30766d7d2a4e1ae113cd53caf125ca2"
+      }
+    ],
+    "consumption": {
+      "bytes": 270,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0/CONSUMED.json",
+      "sha256": "94d1e7367e91c066f2e3585b486e61c2658142f11ae7030948316e7c8af84e2e"
+    },
+    "costs": {
+      "observer_final_gate_seconds": 61.94307020799897,
+      "qualified_whole_peak_bytes": null,
+      "reaped_child_peak_bytes": 1150222336,
+      "scope": "Direct saved samples of the one whole failed job; not summed, not a successful proof/control-prefix cost or positive whole memory bound",
+      "whole_seconds": 61.94279500000994,
+      "worker_after_output_peak_bytes": 1148813312,
+      "worker_elapsed_seconds": 60.2447189999948,
+      "worker_python_peak_bytes": 1147781120,
+      "worker_stdout_seconds": 60.246973999994225
+    },
+    "diagnostic_artifacts": {
+      "authority": "NONE_WHOLE_FAILED_CASE",
+      "saved_complete_search_receipt": false,
+      "saved_full_generic_control_receipt": false,
+      "saved_generic_control_stage_complete": true,
+      "target_input_freeze": {
+        "bytes": 4294,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0/target-input-freeze.json",
+        "sha256": "c81608c940caaa493ed49fe2d5517a6212504473e57103ac0d3f503ca1a7a6e9"
+      },
+      "target_query": {
+        "bytes": 27,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0/target-query.bin",
+        "sha256": "63dafaccc6eb9a76defe986d436b3563248a4799a458a1fc68b3fe766e23d391"
+      }
+    },
+    "failed_qualification_gates": [
+      "resource_admitted",
+      "scientific_qualified",
+      "stage_complete",
+      "admitted"
+    ],
+    "failure": {
+      "bytes": 5061,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0/failure.json",
+      "sha256": "d21496a8984ac77502253ed6cd3e7ff54f6c99b877c2aa52bda959c4715c358f"
+    },
+    "failure_summary": {
+      "callbacks": 99315599,
+      "first_Root_fault": true,
+      "local_site": "fallback candidate freezing at genuine Root callback",
+      "message": "strict Python whole high-water ceiling",
+      "qualified_control_groups": 0,
+      "qualified_proofs": 0,
+      "qualified_query_prefixes": 0,
+      "returned_search_status": null,
+      "stage": "SEARCH same frozen independent query",
+      "type": "RootBudget"
+    },
+    "failures": [],
+    "formal_nonprovability_or_GCTS_claim": false,
+    "grant": {
+      "bytes": 2673,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/grants/search-fpc-h1-hi-point-not-line-0-v1.json",
+      "sha256": "34511eb28a389d029d6db6c4fec2454883896ce626e6d775d9c72dfe6afe178c"
+    },
+    "grant_component_review": {
+      "bytes": 22939,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-FPC-H1-uniform-search-grant-proposal-component-review-v1.json",
+      "sha256": "b8e2334e054d59533ab48a56e190c81cc36639c037642c30f9db3ce6562b57c1"
+    },
+    "header": {
+      "bytes": 643,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0/worker-header.json",
+      "sha256": "fe46b98056786d1e386cc0fc2e412789f30766d7d2a4e1ae113cd53caf125ca2"
+    },
+    "input_pins": [
+      {
+        "bytes": 18058560,
+        "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "sha256": "b6ea0c2a9bfce48dbf181a53f1ca4f0562d40658b85bf47258e2a88d8f9e3933"
+      },
+      {
+        "bytes": 21657,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+        "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+      },
+      {
+        "bytes": 36240,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/basic-tiling-algorithm.md",
+        "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+      },
+      {
+        "bytes": 10113,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-main-20261021/root/observe_conditional_once_v1.py",
+        "sha256": "24804c7d4558d8df511942d9e6b2e4d8d2cfd88ce7df6f5b5f775f87d0c20ca9"
+      },
+      {
+        "bytes": 12973,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-main-20261021/root/run_conditional_once_v1.py",
+        "sha256": "98c55321bb87a8c04b2c6d56b357aba9c3a8f5fc98660474ae3ac1c9d00b0aca"
+      },
+      {
+        "bytes": 8614,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/first-fixed-verifier-target-declarations-v1.json",
+        "sha256": "c6ae5f616b61e85f4b5cbd2b1e7619c047f42d83afd725e277475292cd904b0a"
+      },
+      {
+        "bytes": 8744,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc-h1-independent-reference-API-v2.json",
+        "sha256": "f33b029e72accf7d7d51285a0009cb5d892c1b24e96931a5c8c646153fceeaf3"
+      },
+      {
+        "bytes": 5996,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc-h1-independent-reference-manual-v2.json",
+        "sha256": "7330d9a8d26ee053f49935188264accdf3480da25b94ccc8457e4d2b8e2b7a7b"
+      },
+      {
+        "bytes": 12247,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc-h1-independent-search-control-definition-v1.json",
+        "sha256": "bd897cc49d5bb16c4c5850b3c11005669692532a5a13891408d75bd5219671bf"
+      },
+      {
+        "bytes": 11813,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc-h1-independent-search-controls-and-codec-API-v2.json",
+        "sha256": "06cebbd5356c2e91b2faffaef890300bdd531adde0c608759f460377425fd005"
+      },
+      {
+        "bytes": 5809,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc-h1-independent-search-controls-and-codec-handoff-v2.json",
+        "sha256": "e49e4f32f05d5831a7071343249cc81f8f507391ff8a3007db02baa24cc925bf"
+      },
+      {
+        "bytes": 7549,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc-h1-independent-search-controls-and-codec-manual-v2.json",
+        "sha256": "135094cc5f640093f7e68b74ab9794683563a79ea6ab87325b19181916069606"
+      },
+      {
+        "bytes": 2092,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc-h1-independent-search-controls-and-codec-static-v2.json",
+        "sha256": "63a0b72867e908c3d9b4b58d77eb5f60a86bd05fcbb2bf22b4975b0f84139804"
+      },
+      {
+        "bytes": 3015,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc-h1-independent-search-controls-v2-raw-delta.json",
+        "sha256": "9d0cdc61d67ae6b6ecff29d1d2b166fc40fccc8d49b3c68ad3d96515e0176765"
+      },
+      {
+        "bytes": 14061,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc_h1_declared_query_codec_v1.py",
+        "sha256": "4c6366b1a3728608cedfd86f0c78ca38ffb9d65ffc1907b926fc5f5446ad0ab4"
+      },
+      {
+        "bytes": 24681,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc_h1_independent_reference_v2.py",
+        "sha256": "ecda2a10feb69e5aed6ae34dc6c2123dbbc3297ab5c0a431861d628e9cd4334a"
+      },
+      {
+        "bytes": 35231,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc_h1_independent_search_controls_v2.py",
+        "sha256": "f0c2be3c99e866aea7a62dc012c6ec96be64c6a0f9b8619a82626d04603946af"
+      },
+      {
+        "bytes": 13815,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/typed-FPC-H1-uniform-search-component-Source-review-v1.json",
+        "sha256": "aec5071d937f9b20927226f4ff50af4143f16b85bad607aa0e53f939495ddc8b"
+      },
+      {
+        "bytes": 3243,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/typed-independent-search-bank-carrier-negative-v1.json",
+        "sha256": "62c225d19412be9911129b087da439b78fad5e1e84723acc7c22ffb448346917"
+      },
+      {
+        "bytes": 22752,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/first-order-primitive-calculus-contract-v3.json",
+        "sha256": "8d33020a469b586f4f74afc7ecb28f89fecd83f5a6afb00df1a2bb0b87dad2ed"
+      },
+      {
+        "bytes": 3924,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/first-order-primitive-calculus-interface-v3.json",
+        "sha256": "dd0224b700e91fdfcdfa460a6b761e2c53df423f1a45504c07d069e8088ce1bb"
+      },
+      {
+        "bytes": 7053,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc-h1-byte-checker-API-v1.json",
+        "sha256": "598eab55203f2c1d80fe9e9864fd57e03e374be834d2c69b7df7d14f996d7a66"
+      },
+      {
+        "bytes": 6365,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc-h1-byte-checker-manual-v1.json",
+        "sha256": "847fd6582972c25f4d47628cdd2dcb660e88d8ce8b1269a1f708629ea9239bab"
+      },
+      {
+        "bytes": 12714,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc-h1-exact-wire-contract-v1.json",
+        "sha256": "13baa91f5bd038e485255fc96eeb7170f75f04dd842da9160010d1e06f0262b1"
+      },
+      {
+        "bytes": 26898,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc-h1-uniform-proof-search-prospective-design-v2.json",
+        "sha256": "0b7bf4be21fb5cfdb339be1e9bccbbe2d2192b6f9bc0b53224131e5b0c8850f1"
+      },
+      {
+        "bytes": 10982,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc-h1-uniform-search-API-v1.json",
+        "sha256": "f25c26ff1842252ab8085692686b3f1d49cd7ddc730d37f34e6acf0e339d90c9"
+      },
+      {
+        "bytes": 3784,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc-h1-uniform-search-handoff-v1.json",
+        "sha256": "b834297ea922c824d1b4e491e545a9d14e896e587f352a727dd91b049038aece"
+      },
+      {
+        "bytes": 9267,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc-h1-uniform-search-manual-v1.json",
+        "sha256": "877aabf5877adaabd453c149c1f63cc3197a0af0660b010f8943e33787336d45"
+      },
+      {
+        "bytes": 2226,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc-h1-uniform-search-static-v1.json",
+        "sha256": "cc3f3bc3061c923b5857f8f8e4e0ca0dcfb1c42d00696c8d76953812df5f47db"
+      },
+      {
+        "bytes": 11348,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc_h1_ast_and_builders_v1.py",
+        "sha256": "a42aa71f1e5482a1e1d9637290b4c7f8b52f366d86f7234a86cb11420171ed32"
+      },
+      {
+        "bytes": 31557,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc_h1_byte_checker_v1.py",
+        "sha256": "140a9c4b7a6a18c4c20aa4294a0f3fa90f65fe319adbf47a22125170f32b2ef7"
+      },
+      {
+        "bytes": 54407,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc_h1_uniform_search_v1.py",
+        "sha256": "53467e578ad7b512ae66e8e03cd85dadba1ded39b9ab0012c17e7e8f170a0902"
+      },
+      {
+        "bytes": 13196,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/typed-independent-search-codec-and-bank-v2-Source-peer-review-v1.json",
+        "sha256": "822490c505f2f8f71157e8f73c271e4fc738f8fd3017c627c30af35c00acd18a"
+      },
+      {
+        "bytes": 27200,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-FPC-H1-byte-checker-component-Source-review-v1.json",
+        "sha256": "c061a3437770eafa2fea494a091c7098c6e389dada77da6e3e584697efcf9fbb"
+      },
+      {
+        "bytes": 50329,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-FPC-H1-independent-reference-full-component-Source-review-v2.json",
+        "sha256": "a20089b597479c43711ea407f48010ec4ba1a3d334a3358bb08a59f7e20fa1e0"
+      },
+      {
+        "bytes": 25130,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-FPC-H1-independent-search-codec-and-controls-Source-review-v1-negative.json",
+        "sha256": "c25939f2276e74ab921881c043d638fbed08b60fa43fda941aea50ba30fef0ee"
+      },
+      {
+        "bytes": 27330,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-FPC-H1-independent-search-codec-and-controls-Source-review-v2.json",
+        "sha256": "1481b2ba6efebd469e5b51bce3dea11702f253a16b823476b7198ea0efc38f2f"
+      },
+      {
+        "bytes": 15407,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-FPC-H1-search-worker-component-Source-review-v1-negative.json",
+        "sha256": "e68635ac4ebb788dd03bb9da6fbbdcbb7bd75094b4499e51a088e8acc9d8a51f"
+      },
+      {
+        "bytes": 15277,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-FPC-H1-search-worker-component-Source-review-v3.json",
+        "sha256": "e2ed40e1e365c7c39c0ef69a8f9c4f209fe443c9583175c9d7e701bf4f470743"
+      },
+      {
+        "bytes": 8879,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-FPC-H1-target-authority-input-freeze-Source-review-v3.json",
+        "sha256": "b0f9b375bfa4845363a8f6ca6846b3229bd3d3c2e8545e4f36e3c8dddccb5f61"
+      },
+      {
+        "bytes": 22997,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-FPC-H1-uniform-proof-search-design-review-v2.json",
+        "sha256": "bdb53031d067928491dc2172317401f3e44d44f2fd6cd545765c0cc552ea6c4a"
+      },
+      {
+        "bytes": 2880,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/FPC-H1-search-executable-Source-reading-v2.json",
+        "sha256": "3f918c56f9d5e0ee06644d1c63e9c2ed1fa32e08a46ef52880c09ca8c2ac7ef6"
+      },
+      {
+        "bytes": 7910,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/first-fixed-verifier-search-targets-v3.json",
+        "sha256": "2e7cc31d6e72107d3811cf6a980ec261e0122c8736d4520db9cea119317eb54d"
+      },
+      {
+        "bytes": 31930,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/fpc-h1-search-protocol-v1.json",
+        "sha256": "d4a14124c1acec3e5fe78e24548d9b0009bffd30bc94249df21113f00180aa76"
+      },
+      {
+        "bytes": 8196,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/fpc-h1-search-worker-API-v3.json",
+        "sha256": "9456310a72460d17c0e089c3099c88a78c144bb7abf323151bb82e37d41a3cb6"
+      },
+      {
+        "bytes": 5500,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/fpc-h1-search-worker-successor-Source-v2.json",
+        "sha256": "706a77f8648a2a07acca01f7d6a74aeb94dc7edddfbbd639be9c8f526bacb869"
+      },
+      {
+        "bytes": 2620,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/fpc-h1-search-worker-successor-Source-v3.json",
+        "sha256": "e297c8280fead335977617493506b4b1b6cc5f8df40eca3850e4aecff883ef85"
+      },
+      {
+        "bytes": 25049,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/fpc_h1_search_worker_v3.py",
+        "sha256": "d4ad16bae325bc66f0f8ba545938a82b01b747148989ef8e339f91bff780cb0f"
+      }
+    ],
+    "observer": {
+      "bytes": 1502,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0.observer/observer.json",
+      "sha256": "15c8ee8da7ccbd772df377985fc8e5274c07aef52f4601b93f056e3fe30df1d3"
+    },
+    "operations": {
+      "Root_admission_grant_or_Publisher_mutations": 0,
+      "browser_network_or_process_probes": 0,
+      "checker_reference_builder_encoder_codec_query_decode_or_semantic_probes": 0,
+      "experimental_Source_imports_calls": 0,
+      "partial_parses": 0,
+      "primary_reader_index_gcts_active_access": 0,
+      "query_AST_proof_expected_output_generation": 0,
+      "scientific_helper_or_search_or_bank_replay": 0
+    },
+    "owned_child": {
+      "bytes": 247,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0/owned-child.json",
+      "sha256": "dd48bff6822c346de02af240ff97ee9e1cc05cd7061838bbf8a3f6d5abc2bb65"
+    },
+    "partial_files_parsed": 0,
+    "physical_census": {
+      "files": [
+        {
+          "bytes": 1502,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0.observer/observer.json",
+          "sha256": "15c8ee8da7ccbd772df377985fc8e5274c07aef52f4601b93f056e3fe30df1d3"
+        },
+        {
+          "bytes": 0,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0.observer/stderr.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "bytes": 1605,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0.observer/stdout.bin",
+          "sha256": "72ac2ce9444d3df2faaaa710804522ddf6551601f9c7e732b136ae840ff04c96"
+        },
+        {
+          "bytes": 270,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0/CONSUMED.json",
+          "sha256": "94d1e7367e91c066f2e3585b486e61c2658142f11ae7030948316e7c8af84e2e"
+        },
+        {
+          "bytes": 5061,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0/failure.json",
+          "sha256": "d21496a8984ac77502253ed6cd3e7ff54f6c99b877c2aa52bda959c4715c358f"
+        },
+        {
+          "bytes": 247,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0/owned-child.json",
+          "sha256": "dd48bff6822c346de02af240ff97ee9e1cc05cd7061838bbf8a3f6d5abc2bb65"
+        },
+        {
+          "bytes": 0,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0/stderr.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "bytes": 141,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0/stdout.bin",
+          "sha256": "3304bad4435c80731b33f01f7c15f4ae3d1688f20a1d579021c6b870f592d981"
+        },
+        {
+          "bytes": 4294,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0/target-input-freeze.json",
+          "sha256": "c81608c940caaa493ed49fe2d5517a6212504473e57103ac0d3f503ca1a7a6e9"
+        },
+        {
+          "bytes": 27,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0/target-query.bin",
+          "sha256": "63dafaccc6eb9a76defe986d436b3563248a4799a458a1fc68b3fe766e23d391"
+        },
+        {
+          "bytes": 1817,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0/terminal.json",
+          "sha256": "b14a3ea7c8703f0f9a27802cd0a66b2ec6b0296c44d94d594feb742b60db2fb4"
+        },
+        {
+          "bytes": 643,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0/worker-header.json",
+          "sha256": "fe46b98056786d1e386cc0fc2e412789f30766d7d2a4e1ae113cd53caf125ca2"
+        }
+      ],
+      "partial_files": [],
+      "regular_file_count": 12,
+      "total_bytes": 15607
+    },
+    "plan": {
+      "bytes": 21415,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/plans/search-fpc-h1-hi-point-not-line-0-v1.json",
+      "sha256": "724a97330f9fcecc17c5bd3eb8017415d0dae3f29a208b85a320a4527b0f5840"
+    },
+    "protocol": {
+      "bytes": 31930,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/fpc-h1-search-protocol-v1.json",
+      "sha256": "d4a14124c1acec3e5fe78e24548d9b0009bffd30bc94249df21113f00180aa76"
+    },
+    "resource_admitted": false,
+    "result": null,
+    "review_passed": true,
+    "review_program": {
+      "bytes": 21721,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/passive_FPC_H1_search_complete_failure_review_v1.py",
+      "sha256": "3b6659817c82f47f60c6a0110339638c3a05ad797f1af833339d6edba3e73563"
+    },
+    "reviewed_metadata_pins": [
+      {
+        "bytes": 50813,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-FPC-H1-uniform-search-whole-prospective-Source-plan-review-v1.json",
+        "sha256": "d10991c32d7e5b3a294afe5d9c6124c5dfc639919e163be67f574ce22346dea2"
+      },
+      {
+        "bytes": 22939,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-FPC-H1-uniform-search-grant-proposal-component-review-v1.json",
+        "sha256": "b8e2334e054d59533ab48a56e190c81cc36639c037642c30f9db3ce6562b57c1"
+      },
+      {
+        "bytes": 2441,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/fpc-h1-search-grant-proposal-v1.json",
+        "sha256": "5a17dd1bff5278726e8c1f9f9db96975152729a63ee7636bd335424f7c6ca99b"
+      },
+      {
+        "bytes": 4518,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/fpc-h1-search-terminal-observation-v1.json",
+        "sha256": "1c998bb6266cdb6b25242ce1825cbd5c30111515cbad764fe6687564dde4f551"
+      }
+    ],
+    "schema": "F-C-FPC-H1-uniform-search-complete-actual-review-v1",
+    "scientific_qualified": false,
+    "stage_complete": false,
+    "status": "REVIEWED_WHOLE_MEMORY_FAILURE_NOT_ADMITTED_NO_PREFIX_AUTHORITY",
+    "terminal": {
+      "bytes": 1817,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0/terminal.json",
+      "sha256": "b14a3ea7c8703f0f9a27802cd0a66b2ec6b0296c44d94d594feb742b60db2fb4"
+    },
+    "tools_idle_after_receipt": true,
+    "whole_prospective_review": {
+      "bytes": 50813,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-FPC-H1-uniform-search-whole-prospective-Source-plan-review-v1.json",
+      "sha256": "d10991c32d7e5b3a294afe5d9c6124c5dfc639919e163be67f574ce22346dea2"
+    }
+  },
+  "memory_design_audit": {
+    "Source_pins": [
+      {
+        "bytes": 54407,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc_h1_uniform_search_v1.py",
+        "sha256": "53467e578ad7b512ae66e8e03cd85dadba1ded39b9ab0012c17e7e8f170a0902"
+      },
+      {
+        "bytes": 25049,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/fpc_h1_search_worker_v3.py",
+        "sha256": "d4ad16bae325bc66f0f8ba545938a82b01b747148989ef8e339f91bff780cb0f"
+      },
+      {
+        "bytes": 10982,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc-h1-uniform-search-API-v1.json",
+        "sha256": "f25c26ff1842252ab8085692686b3f1d49cd7ddc730d37f34e6acf0e339d90c9"
+      },
+      {
+        "bytes": 9267,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc-h1-uniform-search-manual-v1.json",
+        "sha256": "877aabf5877adaabd453c149c1f63cc3197a0af0660b010f8943e33787336d45"
+      }
+    ],
+    "Source_retention_audit": [
+      {
+        "attribution": "Demonstrated retention policy; actual list lengths/bytes were not saved.",
+        "id": "append-only-diagnostic-history",
+        "lines": "422;509-526;612;786;877;1024",
+        "mechanism": "Receipt lists retain every event including completed events, pattern match/mismatch, refusal, dequeue and repeated catalog request until the entire search returns. These are diagnostic histories, not all necessary live semantic state. Events and queues are separate owners; completed generators normally leave queues, but their records remain."
+      },
+      {
+        "attribution": "A direct source of potentially growing resident trees and transient builder/freeze allocations; no measured dominance or per-rule allocation census.",
+        "id": "full-candidate-tree-and-duplicate-retention",
+        "lines": "76-97;686-716",
+        "mechanism": "Each unique primitive witness key retains a candidate record. Full result trees are frozen before output-bound and exact-known-formula checks; even OUTSIDE_OUTPUT_BOUND candidates retain formula trees. Duplicate conclusions can retain a fresh equal tree in the candidate record while known points at an older representative. _freeze rebuilds repeated subtrees without a shared structural arena/memo. Some containers share existing tuple references; not every repeated reference is a deep copy."
+      },
+      {
+        "attribution": "Growing source-visible retention; multiplicity/bytes at failure unknown.",
+        "id": "aliases-and-matched-binding-copies",
+        "lines": "533-547;558-575;669-680;741-750;785-788;875-879",
+        "mechanism": "Known formulas, demands, tasks, candidates and priority entries append origin aliases. Pattern meta binding freezes concrete subtrees; match histories keep those bindings even if a task is already present or rejected by W. Separate task-refusal/match containers may reference the same copy. Semantic exact-formula dedup does not deduplicate all this provenance or all intermediate AST copies."
+      },
+      {
+        "asymptotic_scope_latex": "For \\(P\\) priority arrivals and \\(T\\) eligible tasks, materialized task-arrival work/slice history can scale as \\(O(PT)\\) in a worst-shaped stream, before residual tuple work. This is a structural upper-pattern observation, not a measured count for this run.",
+        "id": "catalog-delta-to-slice-fanout",
+        "lines": "547-584;621-631",
+        "mechanism": "Every new priority catalog value opens a delta event scanning tasks up to its captured limit and can materialize a residual-slice dictionary per eligible task. Completed slices remain in the receipt. Initial/delta products traverse frozen-prefix Cartesian positions and filter by maximum arrival serial, preserving coverage while potentially doing much duplicate-index work."
+      },
+      {
+        "attribution": "Retention/amplification is in Source; backlog size and contribution at failure were not recorded.",
+        "id": "stale-dual-queue-tickets",
+        "lines": "586-631",
+        "mechanism": "Each pending slice requeue pushes a new heap item and oldest-deque ticket. A pop from one index leaves a stale ticket in the other; stale tickets are retired only when encountered, one per priority lane visit. Completed jobs remain in residual_slices. A large stale backlog consumes memory as well as charged service."
+      },
+      {
+        "attribution": "Real finite-grammar state may itself exceed the cap; deleting history cannot guarantee feasibility.",
+        "id": "catalogs-known-and-obligation-indexes",
+        "lines": "435-472;837-883;885-1001",
+        "mechanism": "Term/W catalogs and keys, priority catalogs/indexes, known formulas, demand map, implication subscriptions, MP/GEN/candidate/task/join sets and generator-local size/depth buckets remain live. Some are necessary to this exact closure algorithm, not mere removable logging. Each new formula schedules bounded GEN and subtree/match work, so diagnostic and semantic structures can amplify one another."
+      },
+      {
+        "attribution": "No pre-search memory sample or detailed allocation trace is saved, so no fraction can be assigned to controls, working sets, Python allocator or exception retention.",
+        "id": "control-receipt-baseline-and-failure-frames",
+        "lines": "worker140;279-300;362-388",
+        "mechanism": "The complete control result is retained in worker qualification while main search runs, then deliberately omitted from failure output. It can contribute a baseline. The first-fault traceback also retains frames/engine references during failure handling; this happens at/after the fault and cannot alone explain a high-water crossing already detected."
+      }
+    ],
+    "case_id": "search-fpc-h1-hi-point-not-line-0",
+    "direct_saved_observations": {
+      "Native_requests_started": 0,
+      "Native_scope": "VACUOUS: no Native imports, oracle or subprocesses",
+      "Root_callbacks": 99315599,
+      "Source_unchanged_recorded": true,
+      "error_message": "strict Python whole high-water ceiling",
+      "error_type": "RootBudget",
+      "first_Root_fault": true,
+      "header_after_output_high_water_bytes_sample": 1148813312,
+      "observer_final_conservative_whole_peak_bytes": null,
+      "observer_resource_candidate": false,
+      "parent_exit_code": 2,
+      "qualification_complete": false,
+      "qualification_result": null,
+      "reference_receipt": null,
+      "scientific_result": null,
+      "search_result": null,
+      "stages": [
+        {
+          "began": 0.0884029579901835,
+          "name": "FREEZE independent target before any search",
+          "seconds": 0.0012246250116731972,
+          "status": "COMPLETED"
+        },
+        {
+          "began": 0.08963133300130721,
+          "name": "RUN exact independently declared generic controls",
+          "seconds": 0.2281574999942677,
+          "status": "COMPLETED"
+        },
+        {
+          "began": 0.31779966699832585,
+          "name": "SEARCH same frozen independent query",
+          "status": "STARTED"
+        }
+      ],
+      "status": "FAILED_CASE_NOT_ADMITTED",
+      "strict_cap_bytes": 1073741824,
+      "subject_receipt": null,
+      "terminal_child_ru_maxrss_bytes": 1150222336,
+      "terminal_conservative_combined_peak_bytes": null,
+      "worker_elapsed_seconds_sample": 60.2447189999948,
+      "worker_python_high_water_bytes_sample": 1147781120
+    },
+    "established_causal_scope": [
+      "The first latched RootBudget explicitly reports the strict Python high-water ceiling. Root check tests callbacks, elapsed deadline, then ru_maxrss; the saved Python sample exceeds the strict1GiB cap. The failure is a memory-gate failure, not an inferred160s timeout or claimed mathematical failure.",
+      "The traceback is inside fallback_step -> candidate -> _freeze -> genuine Root check. It establishes where the high-water violation was detected, not which earlier allocations caused it or how many bytes were live in each owner.",
+      "The controls invocation stage is saved COMPLETED and target search STARTED. The worker intentionally withholds the bank receipt/input/search/validator/scientific outputs after any primary failure. No independent complete56-control receipt or searched proof is admitted from this whole failed job.",
+      "Qualified aggregate peaks are null because the whole/header resource path did not qualify. They are neither zero nor a numeric whole-memory estimate. Here the explicit worker fault and high-water samples separately support the memory-gate diagnosis; null alone would not.",
+      "Worker/header/terminal/observer numbers are distinct samples/scopes. Do not add peaks, subtract nested stage clocks to infer exclusive cost, use callbacks as allocation counts, or reconstruct any missing search prefix."
+    ],
+    "falsifiable_future_Source_and_control_gates": [
+      "Independent tiny grammars compare exact candidate/known closures and every primitive guard across tree versus interned/packed forms; exact output certificates recheck in both validators.",
+      "Staggered catalog arrivals exercise all initial/delta mixed tuples, both MP/demand arrivals, late/full-Gamma GEN and cyclic demand alias handling, with independent literal expectations.",
+      "Lossless ledger roundtrip preserves every origin/witness/refusal/completion meaning; EOF cannot rely only on counters or a truncated file. Exact caps/flush/input stability/physical ownership are checked inside whole actual.",
+      "Queue compaction preserves selected valid jobs/oldest-fourth counter under the declared schedule, with any stale-debt change isolated as an explicit engineering factor.",
+      "Interrupt every arena/ledger/queue/catalog/export/validator/output phase with genuine Root and one-shot foreign same-public-class faults; retain first identity and admit no incomplete prefix.",
+      "Only a fresh exact protocol/Source/closed-input/plan/grant and complete once outputs can establish measured memory/cost behavior. No experiments or repeat current grant are authorized by this note."
+    ],
+    "input_pins": [
+      {
+        "bytes": 5061,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0/failure.json",
+        "sha256": "d21496a8984ac77502253ed6cd3e7ff54f6c99b877c2aa52bda959c4715c358f"
+      },
+      {
+        "bytes": 643,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0/worker-header.json",
+        "sha256": "fe46b98056786d1e386cc0fc2e412789f30766d7d2a4e1ae113cd53caf125ca2"
+      },
+      {
+        "bytes": 1817,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0/terminal.json",
+        "sha256": "b14a3ea7c8703f0f9a27802cd0a66b2ec6b0296c44d94d594feb742b60db2fb4"
+      },
+      {
+        "bytes": 1502,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0.observer/observer.json",
+        "sha256": "15c8ee8da7ccbd772df377985fc8e5274c07aef52f4601b93f056e3fe30df1d3"
+      }
+    ],
+    "not_measured_or_not_inferred": [
+      "No per-owner object count, live-byte estimate, arena/queue/ledger census, tracemalloc snapshot or allocation history was saved. None is synthesized from the traceback.",
+      "No detailed target progress, discovered formula/lemma, proof length, candidate count, branch count or remaining work is recoverable from these records.",
+      "No proof-search utility, theorem nonprovability, GCTS/RL effect, fit prediction or counterfactual speedup follows. Current once consumption/failure and all six original target slots stay preserved."
+    ],
+    "operations": {
+      "complete_failure_header_terminal_observer_JSON_read_only": true,
+      "frozen_Source_actual_protocol_or_publication_edits": 0,
+      "helper_codec_builder_search_checker_reference_bank_fixture_or_probe_calls": 0,
+      "new_actual_grant_or_admission": false,
+      "partial_parses": 0,
+      "proof_AST_query_or_progress_reconstruction": 0,
+      "raw_Source_and_API_inspection": true,
+      "scientific_imports_or_calls": 0
+    },
+    "prospective_generic_compact_successor": {
+      "A-structural-arena": "Intern immutable syntax by exact constructor/label/child-ID keys, not hash equality alone. Catalogs, formula/witness/task/index records then carry small IDs and share one read-only node arena. Preserve literal binder/symbol identity and exact source occurrences. Original builders may initially produce temporary trees; a checked bridge interns them before retention. Any ID-aware replacement builder/FV/capture implementation is a separate qualified Source obligation. Do not claim generic hash-consing establishes calculus correctness.",
+      "B-separate-live-state-from-completed-evidence": "Keep only active cursor/event/task/job control blocks in the live scheduler. Completed detailed records move to a lossless, exactly pinned bounded owned ledger, or a versioned packed representation with exact node IDs. Counts/checksums alone cannot replace complete auditable provenance required by the receipt contract. Final receipt may reference full ledger members through exact byte/hash indexes and semantic definitions; independent decoders must recover equivalent fields without rerunning inference.",
+      "C-lazy-delta-ownership": "Replace eager task-by-arrival slice materialization with one resumable per-task epoch/initial-slice cursor and catalog-prefix snapshots/ranks. Materialize the next slice only when serviced; preserve the max-arrival-serial coverage rule, every mixed old/new tuple and unique candidate/origin ownership. Exhaustion still requires all final epochs, catalogs and obligations complete. Source/control review must show no tuple is skipped and no missing entry becomes EOF.",
+      "D-queue-representation": "Use live indexed priority/age structures or compressed obsolete-ticket runs so active membership does not require a resident tuple for every historical requeue. Preserve every-fourth actual dequeue semantics and declared score. Removing stale-pop quanta changes service timing; either preserve them as explicit compact debt cursors if exact v1 interleaving is claimed, or prospectively disclose the queue/scheduler engineering factor. Never report that timing as a learned/GCTS advantage.",
+      "E-compact-exact-keys-and-aliases": "Keep exact semantic key ownership and required pending/completed distinctions using interned IDs/packed indexes. Stream or losslessly encode repetitive origin ranges rather than appending repeated deep paths/trees in many lists. A Bloom filter/hash-only key or silent LRU eviction must not suppress a primitive alternative or falsely close coverage. If a cache is evicted and recomputed, all repeated validation work/cost and changed traces must be declared.",
+      "F-controls-and-diagnostics": "A prospective worker could persist the full completed control evidence in its own bounded artifact and release its in-memory copy before target search. This does not admit that prefix: positive whole admission still requires all controls, target result and final resource/custody gates. Add inexpensive per-owner counts/high-water samples at declared phase checkpoints; charge collection/serialization and do not label estimates as allocated-byte attribution.",
+      "authority": "Design only for a separately named, independently reviewed fresh successor/study; not a fix/retry/salvage of this consumed once job. No implementation or executable metadata is authored here.",
+      "invariants": "Preserve the same raw-query interface, fixed theory/signature/Gamma, primitive rules/capture/GEN/induction guards, V8-D2-W9-R512 producer grammar, six target population, complete ordinary fallback, exact formula reachability quotient, bounded UNKNOWN/EOF distinctions, first-fault identity, fresh primitive DAG export and external same-byte dual-validation gates. Original160/180/210/225 time bounds, strict1GiB/128MiBphysical/48MiBresult/4MiBlogs/9MiBreserve/400m callbacks remain. No supplied proof/hint/learned state.",
+      "output_contract": "A versioned compact receipt must preserve status meanings, complete primitive/source/provenance evidence, exact coverage/EOF and no-prefix rules. It need not be byte-identical to v1, but field/reference semantics require explicit decoder/adapter qualification. Any ledger/index/output is inside the existing128MiB physical and48MiB result budgets, explicit Root allowlist, charged I/O and first-fault handling. Output-cap failure remains UNKNOWN/whole failure; no unbounded side channel, offclock spill or posthoc replay.",
+      "retained_difficulty": "A finite but enormous grammar still needs semantic catalogs/known formulas/exact ownership state. Representation changes can reduce redundancy; they do not bound reachable-state size below1GiB or guarantee this goal finishes."
+    },
+    "schema": "FPC-H1-failed-once-memory-design-audit-v1",
+    "status": "PASSIVE_DIAGNOSIS_AND_PROSPECTIVE_DESIGN_ONLY_NO_ADMISSION_OR_REPAIR",
+    "tools_idle_after_note": true
+  },
+  "observer": {
+    "case_id": "search-fpc-h1-hi-point-not-line-0",
+    "conservative_whole_peak_bytes": null,
+    "elapsed_seconds": 61.94279500000994,
+    "errors": [],
+    "fallback_trigger_seconds": null,
+    "final_conservative_whole_peak_bytes": null,
+    "final_observer_gate_seconds": 61.94307020799897,
+    "final_observer_peak_bytes": 21676032,
+    "final_output_memory_reserve_bytes": 9437184,
+    "known_parent_exit_seconds": 61.94239458300581,
+    "logs": {
+      "stderr": {
+        "bytes": 0,
+        "eof": true,
+        "overflow": false,
+        "stored": 0
+      },
+      "stdout": {
+        "bytes": 1605,
+        "eof": true,
+        "overflow": false,
+        "stored": 1605
+      }
+    },
+    "observer_peak_before_receipt_bytes": 21676032,
+    "owned_child": {
+      "case_id": "search-fpc-h1-hi-point-not-line-0",
+      "child_pgid": 82856,
+      "child_pid": 82856,
+      "parent_pid": 82855,
+      "plan_sha256": "724a97330f9fcecc17c5bd3eb8017415d0dae3f29a208b85a320a4527b0f5840",
+      "schema": "Root-owned-child-group-v1"
+    },
+    "parent_exit_code": 2,
+    "partial_files_parsed": false,
+    "reason": null,
+    "receipt_allowance_bytes": 1048576,
+    "resource_candidate_accepted": false,
+    "resource_candidate_before_receipt": false,
+    "schema": "Root-case-external-observer-v1",
+    "scientific_qualification": "PENDING_COMPLETE_RESULT_AND_INDEPENDENT_REVIEW",
+    "stored_bytes_before_observer_receipt": 14105,
+    "watchdog_scope": "Separate process with225second fallback trigger and bounded cleanup; not an OS real-time guarantee or adversarial sandbox."
+  },
+  "plan": {
+    "actual_dir": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0",
+    "case_id": "search-fpc-h1-hi-point-not-line-0",
+    "closed_inputs": {
+      "bytes": 22291,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/fpc-h1-search-closed-inputs-v1.json",
+      "sha256": "518cde7d2c31e8d6965a88637a4e03b6effecbefb0bf6d601344ce54541e47af"
+    },
+    "control_ids": [
+      "codec-hi-and-exists-literal",
+      "codec-pa-no-profile-payload",
+      "codec-metadata-query-invariance",
+      "codec-shadowed-binder-preserved",
+      "codec-bool-mode-refused",
+      "codec-open-theorem-refused",
+      "codec-signature-mismatch-refused",
+      "codec-binder-order-refused",
+      "codec-extra-proof-field-refused",
+      "codec-retained-fault-identity",
+      "product-two-by-three",
+      "product-three-binary-slots",
+      "product-closed-empty",
+      "product-zero-arity",
+      "product-open-request-not-eof",
+      "product-staggered-arrivals",
+      "product-known-empty-dominates-open",
+      "match-formula-meta",
+      "match-consistent-repeat",
+      "match-conflicting-repeat",
+      "match-rigid-binder",
+      "match-no-alpha-renaming",
+      "match-term-meta",
+      "match-sort-conflict",
+      "match-variable-meta",
+      "match-rigid-arity-conflict",
+      "builder-H1-literal",
+      "builder-H2-literal",
+      "builder-H3-literal",
+      "builder-Q1-literal",
+      "builder-Q2-literal",
+      "builder-Q3-literal",
+      "builder-E1-literal",
+      "builder-E2-literal",
+      "builder-Q1-capture-refused",
+      "builder-Q3-free-variable-refused",
+      "builder-E2-capture-refused",
+      "builder-induction-full-parameters-refused",
+      "search-antecedent-first-closure",
+      "search-implication-first-closure",
+      "search-duplicate-source-aliases",
+      "search-cyclic-demand-no-fact",
+      "search-long-source-witness-not-fact",
+      "search-shared-DAG-export",
+      "search-late-GEN",
+      "search-full-Gamma-GEN-refusal",
+      "search-source-variable-outside-grammar",
+      "search-source-depth-outside-grammar",
+      "search-priority-record-invariants",
+      "search-cutoff-live-prefix-no-exhaustion",
+      "fault-product-first-ValueError",
+      "fault-matcher-first-StopIteration",
+      "fault-search-retained-owned-codec",
+      "fault-search-later-RuntimeError",
+      "fault-final-validator-first-identity",
+      "fault-builder-public-class-identity"
+    ],
+    "declarations": {
+      "bytes": 8614,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/first-fixed-verifier-target-declarations-v1.json",
+      "sha256": "c6ae5f616b61e85f4b5cbd2b1e7619c047f42d83afd725e277475292cd904b0a"
+    },
+    "experiment": "FPC-H1-uniform-search-feasibility-v1",
+    "files": [
+      {
+        "bytes": 31557,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc_h1_byte_checker_v1.py",
+        "sha256": "140a9c4b7a6a18c4c20aa4294a0f3fa90f65fe319adbf47a22125170f32b2ef7"
+      },
+      {
+        "bytes": 11348,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc_h1_ast_and_builders_v1.py",
+        "sha256": "a42aa71f1e5482a1e1d9637290b4c7f8b52f366d86f7234a86cb11420171ed32"
+      },
+      {
+        "bytes": 24681,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc_h1_independent_reference_v2.py",
+        "sha256": "ecda2a10feb69e5aed6ae34dc6c2123dbbc3297ab5c0a431861d628e9cd4334a"
+      },
+      {
+        "bytes": 54407,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc_h1_uniform_search_v1.py",
+        "sha256": "53467e578ad7b512ae66e8e03cd85dadba1ded39b9ab0012c17e7e8f170a0902"
+      },
+      {
+        "bytes": 14061,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc_h1_declared_query_codec_v1.py",
+        "sha256": "4c6366b1a3728608cedfd86f0c78ca38ffb9d65ffc1907b926fc5f5446ad0ab4"
+      },
+      {
+        "bytes": 35231,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc_h1_independent_search_controls_v2.py",
+        "sha256": "f0c2be3c99e866aea7a62dc012c6ec96be64c6a0f9b8619a82626d04603946af"
+      },
+      {
+        "bytes": 25049,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/fpc_h1_search_worker_v3.py",
+        "sha256": "d4ad16bae325bc66f0f8ba545938a82b01b747148989ef8e339f91bff780cb0f"
+      },
+      {
+        "bytes": 12973,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-main-20261021/root/run_conditional_once_v1.py",
+        "sha256": "98c55321bb87a8c04b2c6d56b357aba9c3a8f5fc98660474ae3ac1c9d00b0aca"
+      },
+      {
+        "bytes": 10113,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-main-20261021/root/observe_conditional_once_v1.py",
+        "sha256": "24804c7d4558d8df511942d9e6b2e4d8d2cfd88ce7df6f5b5f775f87d0c20ca9"
+      },
+      {
+        "bytes": 18058560,
+        "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "sha256": "b6ea0c2a9bfce48dbf181a53f1ca4f0562d40658b85bf47258e2a88d8f9e3933"
+      },
+      {
+        "bytes": 21657,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+        "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+      },
+      {
+        "bytes": 36240,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/basic-tiling-algorithm.md",
+        "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+      },
+      {
+        "bytes": 8614,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/first-fixed-verifier-target-declarations-v1.json",
+        "sha256": "c6ae5f616b61e85f4b5cbd2b1e7619c047f42d83afd725e277475292cd904b0a"
+      },
+      {
+        "bytes": 7910,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/first-fixed-verifier-search-targets-v3.json",
+        "sha256": "2e7cc31d6e72107d3811cf6a980ec261e0122c8736d4520db9cea119317eb54d"
+      },
+      {
+        "bytes": 22752,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/first-order-primitive-calculus-contract-v3.json",
+        "sha256": "8d33020a469b586f4f74afc7ecb28f89fecd83f5a6afb00df1a2bb0b87dad2ed"
+      },
+      {
+        "bytes": 12714,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc-h1-exact-wire-contract-v1.json",
+        "sha256": "13baa91f5bd038e485255fc96eeb7170f75f04dd842da9160010d1e06f0262b1"
+      },
+      {
+        "bytes": 3924,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/first-order-primitive-calculus-interface-v3.json",
+        "sha256": "dd0224b700e91fdfcdfa460a6b761e2c53df423f1a45504c07d069e8088ce1bb"
+      },
+      {
+        "bytes": 7053,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc-h1-byte-checker-API-v1.json",
+        "sha256": "598eab55203f2c1d80fe9e9864fd57e03e374be834d2c69b7df7d14f996d7a66"
+      },
+      {
+        "bytes": 6365,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc-h1-byte-checker-manual-v1.json",
+        "sha256": "847fd6582972c25f4d47628cdd2dcb660e88d8ce8b1269a1f708629ea9239bab"
+      },
+      {
+        "bytes": 8744,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc-h1-independent-reference-API-v2.json",
+        "sha256": "f33b029e72accf7d7d51285a0009cb5d892c1b24e96931a5c8c646153fceeaf3"
+      },
+      {
+        "bytes": 5996,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc-h1-independent-reference-manual-v2.json",
+        "sha256": "7330d9a8d26ee053f49935188264accdf3480da25b94ccc8457e4d2b8e2b7a7b"
+      },
+      {
+        "bytes": 26898,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc-h1-uniform-proof-search-prospective-design-v2.json",
+        "sha256": "0b7bf4be21fb5cfdb339be1e9bccbbe2d2192b6f9bc0b53224131e5b0c8850f1"
+      },
+      {
+        "bytes": 3784,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc-h1-uniform-search-handoff-v1.json",
+        "sha256": "b834297ea922c824d1b4e491e545a9d14e896e587f352a727dd91b049038aece"
+      },
+      {
+        "bytes": 10982,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc-h1-uniform-search-API-v1.json",
+        "sha256": "f25c26ff1842252ab8085692686b3f1d49cd7ddc730d37f34e6acf0e339d90c9"
+      },
+      {
+        "bytes": 9267,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc-h1-uniform-search-manual-v1.json",
+        "sha256": "877aabf5877adaabd453c149c1f63cc3197a0af0660b010f8943e33787336d45"
+      },
+      {
+        "bytes": 2226,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc-h1-uniform-search-static-v1.json",
+        "sha256": "cc3f3bc3061c923b5857f8f8e4e0ca0dcfb1c42d00696c8d76953812df5f47db"
+      },
+      {
+        "bytes": 5809,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc-h1-independent-search-controls-and-codec-handoff-v2.json",
+        "sha256": "e49e4f32f05d5831a7071343249cc81f8f507391ff8a3007db02baa24cc925bf"
+      },
+      {
+        "bytes": 11813,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc-h1-independent-search-controls-and-codec-API-v2.json",
+        "sha256": "06cebbd5356c2e91b2faffaef890300bdd531adde0c608759f460377425fd005"
+      },
+      {
+        "bytes": 7549,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc-h1-independent-search-controls-and-codec-manual-v2.json",
+        "sha256": "135094cc5f640093f7e68b74ab9794683563a79ea6ab87325b19181916069606"
+      },
+      {
+        "bytes": 2092,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc-h1-independent-search-controls-and-codec-static-v2.json",
+        "sha256": "63a0b72867e908c3d9b4b58d77eb5f60a86bd05fcbb2bf22b4975b0f84139804"
+      },
+      {
+        "bytes": 12247,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc-h1-independent-search-control-definition-v1.json",
+        "sha256": "bd897cc49d5bb16c4c5850b3c11005669692532a5a13891408d75bd5219671bf"
+      },
+      {
+        "bytes": 3015,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc-h1-independent-search-controls-v2-raw-delta.json",
+        "sha256": "9d0cdc61d67ae6b6ecff29d1d2b166fc40fccc8d49b3c68ad3d96515e0176765"
+      },
+      {
+        "bytes": 3243,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/typed-independent-search-bank-carrier-negative-v1.json",
+        "sha256": "62c225d19412be9911129b087da439b78fad5e1e84723acc7c22ffb448346917"
+      },
+      {
+        "bytes": 13815,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/typed-FPC-H1-uniform-search-component-Source-review-v1.json",
+        "sha256": "aec5071d937f9b20927226f4ff50af4143f16b85bad607aa0e53f939495ddc8b"
+      },
+      {
+        "bytes": 13196,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/typed-independent-search-codec-and-bank-v2-Source-peer-review-v1.json",
+        "sha256": "822490c505f2f8f71157e8f73c271e4fc738f8fd3017c627c30af35c00acd18a"
+      },
+      {
+        "bytes": 27200,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-FPC-H1-byte-checker-component-Source-review-v1.json",
+        "sha256": "c061a3437770eafa2fea494a091c7098c6e389dada77da6e3e584697efcf9fbb"
+      },
+      {
+        "bytes": 50329,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-FPC-H1-independent-reference-full-component-Source-review-v2.json",
+        "sha256": "a20089b597479c43711ea407f48010ec4ba1a3d334a3358bb08a59f7e20fa1e0"
+      },
+      {
+        "bytes": 22997,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-FPC-H1-uniform-proof-search-design-review-v2.json",
+        "sha256": "bdb53031d067928491dc2172317401f3e44d44f2fd6cd545765c0cc552ea6c4a"
+      },
+      {
+        "bytes": 25130,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-FPC-H1-independent-search-codec-and-controls-Source-review-v1-negative.json",
+        "sha256": "c25939f2276e74ab921881c043d638fbed08b60fa43fda941aea50ba30fef0ee"
+      },
+      {
+        "bytes": 27330,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-FPC-H1-independent-search-codec-and-controls-Source-review-v2.json",
+        "sha256": "1481b2ba6efebd469e5b51bce3dea11702f253a16b823476b7198ea0efc38f2f"
+      },
+      {
+        "bytes": 15407,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-FPC-H1-search-worker-component-Source-review-v1-negative.json",
+        "sha256": "e68635ac4ebb788dd03bb9da6fbbdcbb7bd75094b4499e51a088e8acc9d8a51f"
+      },
+      {
+        "bytes": 15277,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-FPC-H1-search-worker-component-Source-review-v3.json",
+        "sha256": "e2ed40e1e365c7c39c0ef69a8f9c4f209fe443c9583175c9d7e701bf4f470743"
+      },
+      {
+        "bytes": 8879,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-FPC-H1-target-authority-input-freeze-Source-review-v3.json",
+        "sha256": "b0f9b375bfa4845363a8f6ca6846b3229bd3d3c2e8545e4f36e3c8dddccb5f61"
+      },
+      {
+        "bytes": 8196,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/fpc-h1-search-worker-API-v3.json",
+        "sha256": "9456310a72460d17c0e089c3099c88a78c144bb7abf323151bb82e37d41a3cb6"
+      },
+      {
+        "bytes": 5500,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/fpc-h1-search-worker-successor-Source-v2.json",
+        "sha256": "706a77f8648a2a07acca01f7d6a74aeb94dc7edddfbbd639be9c8f526bacb869"
+      },
+      {
+        "bytes": 2620,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/fpc-h1-search-worker-successor-Source-v3.json",
+        "sha256": "e297c8280fead335977617493506b4b1b6cc5f8df40eca3850e4aecff883ef85"
+      },
+      {
+        "bytes": 2880,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/FPC-H1-search-executable-Source-reading-v2.json",
+        "sha256": "3f918c56f9d5e0ee06644d1c63e9c2ed1fa32e08a46ef52880c09ca8c2ac7ef6"
+      },
+      {
+        "bytes": 31930,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/fpc-h1-search-protocol-v1.json",
+        "sha256": "d4a14124c1acec3e5fe78e24548d9b0009bffd30bc94249df21113f00180aa76"
+      }
+    ],
+    "grammar": {
+      "control_only": false,
+      "derived_nodes": 512,
+      "schema": "FPC-H1-finite-producer-grammar-v1",
+      "term_depth": 2,
+      "variables": 8,
+      "witness_nodes": 9
+    },
+    "limits": {
+      "custody_seconds": 210,
+      "log_bytes": 4194304,
+      "memory_bytes": 1073741824,
+      "observer_fallback_seconds": 225,
+      "physical_bytes": 134217728,
+      "positive_seconds": 180,
+      "reserved_outer_bytes": 9437184,
+      "result_bytes": 50331648,
+      "root_callbacks": 400000000,
+      "work_seconds": 160
+    },
+    "module_pins": {
+      "bank": {
+        "bytes": 35231,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc_h1_independent_search_controls_v2.py",
+        "sha256": "f0c2be3c99e866aea7a62dc012c6ec96be64c6a0f9b8619a82626d04603946af"
+      },
+      "builders": {
+        "bytes": 11348,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc_h1_ast_and_builders_v1.py",
+        "sha256": "a42aa71f1e5482a1e1d9637290b4c7f8b52f366d86f7234a86cb11420171ed32"
+      },
+      "checker": {
+        "bytes": 31557,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc_h1_byte_checker_v1.py",
+        "sha256": "140a9c4b7a6a18c4c20aa4294a0f3fa90f65fe319adbf47a22125170f32b2ef7"
+      },
+      "codec": {
+        "bytes": 14061,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc_h1_declared_query_codec_v1.py",
+        "sha256": "4c6366b1a3728608cedfd86f0c78ca38ffb9d65ffc1907b926fc5f5446ad0ab4"
+      },
+      "reference": {
+        "bytes": 24681,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc_h1_independent_reference_v2.py",
+        "sha256": "ecda2a10feb69e5aed6ae34dc6c2123dbbc3297ab5c0a431861d628e9cd4334a"
+      },
+      "search": {
+        "bytes": 54407,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc_h1_uniform_search_v1.py",
+        "sha256": "53467e578ad7b512ae66e8e03cd85dadba1ded39b9ab0012c17e7e8f170a0902"
+      }
+    },
+    "observer_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-main-20261021/root/observe_conditional_once_v1.py",
+    "ordering": "MATCH_SCORE",
+    "protocol": {
+      "bytes": 31930,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/fpc-h1-search-protocol-v1.json",
+      "sha256": "d4a14124c1acec3e5fe78e24548d9b0009bffd30bc94249df21113f00180aa76"
+    },
+    "python": {
+      "bytes": 18058560,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+      "sha256": "b6ea0c2a9bfce48dbf181a53f1ca4f0562d40658b85bf47258e2a88d8f9e3933"
+    },
+    "required_upstream_ids": [],
+    "runner_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-main-20261021/root/run_conditional_once_v1.py",
+    "schema": "proof-search-case-once-plan-v1",
+    "scope": "Exactly one fresh uniform symbolic geometry feasibility search after charged independent query freeze and full56 controls. Original six targets/caps retained. Independent whole review and separate once grant required; no proof/policy/library intake or GCTS/RL/Wang claim. Consumed even on failure; no replay/prefix rescue.",
+    "stage": "evaluate",
+    "target_authority": {
+      "bytes": 7910,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/first-fixed-verifier-search-targets-v3.json",
+      "sha256": "2e7cc31d6e72107d3811cf6a980ec261e0122c8736d4520db9cea119317eb54d"
+    },
+    "target_id": "HI-point-not-line",
+    "target_index": 3,
+    "worker_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/fpc_h1_search_worker_v3.py"
+  },
+  "schema": "Root-FPC-H1-search-display-envelope-v1",
+  "scope": "Passive complete saved evidence only. Failed whole job: no admitted proof, control qualification, query or search prefix; no replay or inference is performed by this envelope.",
+  "terminal": {
+    "case_id": "search-fpc-h1-hi-point-not-line-0",
+    "child_usage": {
+      "ru_maxrss": 1150222336
+    },
+    "conservative_combined_peak_bytes": null,
+    "errors": [],
+    "final_custody_gate_passed": true,
+    "final_custody_gate_seconds": 61.896294249992934,
+    "header": {
+      "callbacks": 99315599,
+      "case_id": "search-fpc-h1-hi-point-not-line-0",
+      "first_Root_fault": true,
+      "native_closed_and_reaped": true,
+      "native_peak_bytes": 0,
+      "native_scope": "VACUOUS_NO_NATIVE_SUBPROCESS",
+      "python_peak_after_output_bytes": 1148813312,
+      "result": {
+        "bytes": 5061,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/search-fpc-h1-hi-point-not-line-0/failure.json",
+        "sha256": "d21496a8984ac77502253ed6cd3e7ff54f6c99b877c2aa52bda959c4715c358f"
+      },
+      "schema": "proof-search-case-worker-header-v1",
+      "seconds": 60.24678362499981,
+      "source_unchanged": true,
+      "status": "FAILED_CASE_NOT_ADMITTED"
+    },
+    "header_valid": false,
+    "known_exit_seconds": 61.87324620799336,
+    "logs": {
+      "stderr": {
+        "bytes": 0,
+        "eof": true,
+        "overflow": false,
+        "stored": 0
+      },
+      "stdout": {
+        "bytes": 141,
+        "eof": true,
+        "overflow": false,
+        "stored": 141
+      }
+    },
+    "memory_terminal_output_reserve_bytes": 9437184,
+    "old_qualification_reused": false,
+    "outer_seconds": 61.896200999995926,
+    "parent_usage": {
+      "ru_maxrss": 40271872
+    },
+    "process_exit_code": 2,
+    "qualification": "PENDING_COMPLETE_RESULT_AND_INDEPENDENT_SCIENTIFIC_REVIEW",
+    "reason": null,
+    "result": null,
+    "rss_unit": "bytes on Darwin only",
+    "schema": "proof-search-case-terminal-v1",
+    "sources_unchanged": true,
+    "stored_bytes_before_terminal_receipt": 10683,
+    "threads_terminal": true
+  },
+  "worker_result": {
+    "callbacks": 99315599,
+    "case_id": "search-fpc-h1-hi-point-not-line-0",
+    "component_versions": {
+      "bank": "FPC-H1-independent-search-controls-v2",
+      "builders": "FPC-H1-AST-BUILDERS-v1",
+      "checker": "FPC-H1-BYTE-CHECKER-v1",
+      "codec": "FPC-H1-declared-query-codec-v1",
+      "reference": "FPC-H1-independent-flat-reference-v2",
+      "search": "FPC-H1-UNIFORM-SEARCH-v1"
+    },
+    "elapsed_seconds": 60.2447189999948,
+    "error": {
+      "message": "strict Python whole high-water ceiling",
+      "traceback": "Traceback (most recent call last):\n  File \"/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/fpc_h1_search_worker_v3.py\", line 296, in main\n    search_receipt = stage('SEARCH same frozen independent query', lambda:\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/fpc_h1_search_worker_v3.py\", line 164, in stage\n    answer = operation()\n             ^^^^^^^^^^^\n  File \"/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/fpc_h1_search_worker_v3.py\", line 297, in <lambda>\n    modules['search'].search_fpc(frozen_query, grammar=plan['grammar'],\n  File \"/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc_h1_uniform_search_v1.py\", line 1174, in search_fpc\n    result = engine.run()\n             ^^^^^^^^^^^^\n  File \"/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc_h1_uniform_search_v1.py\", line 1145, in run\n    self.fallback_step()\n  File \"/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc_h1_uniform_search_v1.py\", line 1029, in fallback_step\n    self.candidate(producer[\"tag\"], values, (\"fallback\", producer[\"tag\"], tuple(step[\"indices\"])))\n  File \"/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc_h1_uniform_search_v1.py\", line 710, in candidate\n    formula = _freeze(formula, self.c)\n              ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc_h1_uniform_search_v1.py\", line 81, in _freeze\n    call.tick()\n  File \"/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc_h1_uniform_search_v1.py\", line 33, in tick\n    self.check()\n  File \"/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/fpc_h1_search_worker_v3.py\", line 157, in check\n    raise fault\nRootBudget: strict Python whole high-water ceiling\n",
+      "type": "RootBudget"
+    },
+    "first_Root_fault": true,
+    "guard_compilations": [],
+    "independent_external_controls": null,
+    "input_freeze": null,
+    "native_peak_bytes": 0,
+    "native_queries": [],
+    "native_requests_started": 0,
+    "native_transport": {
+      "all_reaped": true,
+      "closed": true,
+      "native_exit_code": 0,
+      "native_high_water_bytes": 0,
+      "scope": "VACUOUS: no Native imports, oracle or subprocesses",
+      "subprocesses_started": 0
+    },
+    "old_qualification_reused": false,
+    "python_peak_bytes": 1147781120,
+    "qualification_complete": false,
+    "qualification_result": null,
+    "reference_receipt": null,
+    "schema": "proof-search-case-worker-v1",
+    "scientific_result": null,
+    "scope": "One fresh ordinary symbolic search plus independent generic controls. Every provisional output is nonadmitted until whole custody/review/Root disposition. No GCTS/Graph/RL, fixed verifier machine/palette, truth/consistency, full Hilbert geometry, broad completeness or advantage claim",
+    "search_result": null,
+    "source_unchanged": true,
+    "stage": "evaluate",
+    "stages": [
+      {
+        "began": 0.06589149999490473,
+        "name": "IMPORT checker",
+        "seconds": 0.005019999996875413,
+        "status": "COMPLETED"
+      },
+      {
+        "began": 0.07091483299154788,
+        "name": "IMPORT builders",
+        "seconds": 0.0014786250103497878,
+        "status": "COMPLETED"
+      },
+      {
+        "began": 0.07239558300352655,
+        "name": "IMPORT reference",
+        "seconds": 0.0033163749903906137,
+        "status": "COMPLETED"
+      },
+      {
+        "began": 0.07571399999142159,
+        "name": "IMPORT search",
+        "seconds": 0.006302417008555494,
+        "status": "COMPLETED"
+      },
+      {
+        "began": 0.08201870799530298,
+        "name": "IMPORT codec",
+        "seconds": 0.0015330000023823231,
+        "status": "COMPLETED"
+      },
+      {
+        "began": 0.08355341700371355,
+        "name": "IMPORT bank",
+        "seconds": 0.004847457996220328,
+        "status": "COMPLETED"
+      },
+      {
+        "began": 0.0884029579901835,
+        "name": "FREEZE independent target before any search",
+        "seconds": 0.0012246250116731972,
+        "status": "COMPLETED"
+      },
+      {
+        "began": 0.08963133300130721,
+        "name": "RUN exact independently declared generic controls",
+        "seconds": 0.2281574999942677,
+        "status": "COMPLETED"
+      },
+      {
+        "began": 0.31779966699832585,
+        "name": "SEARCH same frozen independent query",
+        "status": "STARTED"
+      }
+    ],
+    "status": "FAILED_CASE_NOT_ADMITTED",
+    "subject_receipt": null,
+    "work_snapshots": [],
+    "worker_version": "FPC-H1-uniform-search-worker-v3"
+  }
+}
