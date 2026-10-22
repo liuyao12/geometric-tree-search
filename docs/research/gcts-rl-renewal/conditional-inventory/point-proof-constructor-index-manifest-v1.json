@@ -1,0 +1,2371 @@
+{
+  "schema": "GCTS-point-proof-constructor-index-manifest-v1",
+  "members": [
+    {
+      "path": "AGENTS.md",
+      "bytes": 1518,
+      "sha256": "d28fa1017af52d7e454797315a24f9b4d204b24741e6db9b01d30456e506e0c2"
+    },
+    {
+      "path": "docs/basic-tiling-algorithm.md",
+      "bytes": 21657,
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    {
+      "path": "research-runs/gcts-conditional-selector-main-20261021/root/observe_conditional_once_v1.py",
+      "bytes": 10113,
+      "sha256": "24804c7d4558d8df511942d9e6b2e4d8d2cfd88ce7df6f5b5f775f87d0c20ca9"
+    },
+    {
+      "path": "research-runs/gcts-conditional-selector-main-20261021/root/run_conditional_once_v1.py",
+      "bytes": 12973,
+      "sha256": "98c55321bb87a8c04b2c6d56b357aba9c3a8f5fc98660474ae3ac1c9d00b0aca"
+    },
+    {
+      "path": "research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/first-fixed-verifier-target-declarations-v1.json",
+      "bytes": 8614,
+      "sha256": "c6ae5f616b61e85f4b5cbd2b1e7619c047f42d83afd725e277475292cd904b0a"
+    },
+    {
+      "path": "research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc_h1_declared_query_codec_v1.py",
+      "bytes": 14061,
+      "sha256": "4c6366b1a3728608cedfd86f0c78ca38ffb9d65ffc1907b926fc5f5446ad0ab4"
+    },
+    {
+      "path": "research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc_h1_independent_reference_v2.py",
+      "bytes": 24681,
+      "sha256": "ecda2a10feb69e5aed6ae34dc6c2123dbbc3297ab5c0a431861d628e9cd4334a"
+    },
+    {
+      "path": "research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc_h1_independent_search_controls_v2.py",
+      "bytes": 35231,
+      "sha256": "f0c2be3c99e866aea7a62dc012c6ec96be64c6a0f9b8619a82626d04603946af"
+    },
+    {
+      "path": "research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc_h1_obligation_independent_controls_v2.py",
+      "bytes": 51653,
+      "sha256": "309fa0c9d5c068266faf96ff2f61f3ff15874cf24b0065bc83d216fa10152280"
+    },
+    {
+      "path": "research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc_h1_obligation_intro_integration_control_v1.py",
+      "bytes": 10141,
+      "sha256": "5390689c124393bed3ea8a19c84a1e43bb81d956945dbcebc5712b97892d90c2"
+    },
+    {
+      "path": "research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc_h1_obligation_two_defect_regressions_v1.py",
+      "bytes": 13618,
+      "sha256": "2a20fd644b8370d1f6b8f07921075c72b227dc280d9502c9259ac6ed9eb41c7b"
+    },
+    {
+      "path": "research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc_h1_point_row_independent_controls_v1.py",
+      "bytes": 18065,
+      "sha256": "d49e554bc24fba8539224b7f4099e2f089639f36245a9ed4e47fc2753e7d387e"
+    },
+    {
+      "path": "research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/first-order-primitive-calculus-contract-v3.json",
+      "bytes": 22752,
+      "sha256": "8d33020a469b586f4f74afc7ecb28f89fecd83f5a6afb00df1a2bb0b87dad2ed"
+    },
+    {
+      "path": "research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc-h1-exact-wire-contract-v1.json",
+      "bytes": 12714,
+      "sha256": "13baa91f5bd038e485255fc96eeb7170f75f04dd842da9160010d1e06f0262b1"
+    },
+    {
+      "path": "research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc_h1_ast_and_builders_v1.py",
+      "bytes": 11348,
+      "sha256": "a42aa71f1e5482a1e1d9637290b4c7f8b52f366d86f7234a86cb11420171ed32"
+    },
+    {
+      "path": "research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc_h1_byte_checker_v1.py",
+      "bytes": 31557,
+      "sha256": "140a9c4b7a6a18c4c20aa4294a0f3fa90f65fe319adbf47a22125170f32b2ef7"
+    },
+    {
+      "path": "research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc_h1_obligation_producer_v2.py",
+      "bytes": 105517,
+      "sha256": "fa135ec9e84cdb84b0be506d74a1f167e619b7ac82fcb6a1d8b8782c738523d1"
+    },
+    {
+      "path": "research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc_h1_uniform_search_v1.py",
+      "bytes": 54407,
+      "sha256": "53467e578ad7b512ae66e8e03cd85dadba1ded39b9ab0012c17e7e8f170a0902"
+    },
+    {
+      "path": "research-runs/gcts-fixed-wang-compiler-20261021/root/first-fixed-verifier-search-targets-v3.json",
+      "bytes": 7910,
+      "sha256": "2e7cc31d6e72107d3811cf6a980ec261e0122c8736d4520db9cea119317eb54d"
+    },
+    {
+      "path": "research-runs/gcts-fixed-wang-compiler-20261021/root/fpc-h1-obligation-worker-API-v5.json",
+      "bytes": 18351,
+      "sha256": "dbae31ed7728a3cb7afd28cf1c2e929fddfd809596200ac306c5fe318a5027dc"
+    },
+    {
+      "path": "research-runs/gcts-fixed-wang-compiler-20261021/root/fpc_h1_point_rows_v2.py",
+      "bytes": 10972,
+      "sha256": "57eac1681fbb9e3a6494109a1b9ca43cbfa4d5bfc25ce87954537ae801acf32f"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v2-target-0.observer/observer.json",
+      "bytes": 1517,
+      "sha256": "4836d5fd36457524bc844f0d807d9014378c6feb0f798d5493041685314ac923"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v2-target-0.observer/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v2-target-0.observer/stdout.bin",
+      "bytes": 1620,
+      "sha256": "8566f6870a0a2bea384227583911623e0cc32843102760fc78bab3e481104449"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v2-target-0/CONSUMED.json",
+      "bytes": 278,
+      "sha256": "35b8c0701fd4120416fbe7daf486914308fc331b5b8f75513feb7e1cd288c11e"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v2-target-0/failure.json",
+      "bytes": 10693,
+      "sha256": "d025279cab7aa0827c4f55ae4c5237402d57940d3e7fde97465c5596601cb2d3"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v2-target-0/owned-child.json",
+      "bytes": 255,
+      "sha256": "bbdb4d00d57aab43c829e1151f20b909dcd2746f26fb744ee180ff37d8990649"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v2-target-0/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v2-target-0/stdout.bin",
+      "bytes": 147,
+      "sha256": "d654ea3a3b7ca76b0cbf99785b8921098a96f6d309e2212509b0a813b18e4bbb"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v2-target-0/target-input-freeze.json",
+      "bytes": 3685,
+      "sha256": "899b3bb053f428ad7f903c922d6eef80fc47bf1c76f227f3f1f74a83db170d32"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v2-target-0/target-query.bin",
+      "bytes": 21,
+      "sha256": "c1c45a289cba90663e4296d2530ae80649b714f51fd54adfa3d211486567a64d"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v2-target-0/terminal.json",
+      "bytes": 1832,
+      "sha256": "4602e4f5cdaca5d92d7e82bb7d8331dfa44de5df80a1453607685fc79bac20e8"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v2-target-0/worker-header.json",
+      "bytes": 656,
+      "sha256": "1fb28680a465a359d9604bc19dea2c3596fbc007355575881651ab3128e20d63"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-0.observer/observer.json",
+      "bytes": 1531,
+      "sha256": "9d1594cefe47699002844aaefcced3eea4ad5d76836ca63f56abab08a89bdb3d"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-0.observer/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-0.observer/stdout.bin",
+      "bytes": 1889,
+      "sha256": "32ab9632b91d1c10cdb2ab821d8a2c97eb617b0cf01940793fe923684f0d7778"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-0/CONSUMED.json",
+      "bytes": 278,
+      "sha256": "79bbc3a27db17e56d6966f4e6cfbe5e147a3b74cee151cdb9da9713afd49e2a5"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-0/candidate-certificate.bin",
+      "bytes": 33,
+      "sha256": "116c31813cba90ba9ffec2eabc88a1cbed6158b4b8ae296a9d01fd41115598b5"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-0/owned-child.json",
+      "bytes": 255,
+      "sha256": "53b3f0abc7eac69900f992db53539de4f7019e27c24b4e7ce70693bcfcf66db1"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-0/result.json",
+      "bytes": 4392718,
+      "sha256": "22151d5ca5267d94f6d47dbaa2d490e4e215f653a1003700a749b7fa45f08b8b"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-0/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-0/stdout.bin",
+      "bytes": 133,
+      "sha256": "e2f0bdb595ad7cb5e1d4803b3c5ea6e52852630b491e53d314dab3aa04e5fd23"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-0/target-input-freeze.json",
+      "bytes": 3685,
+      "sha256": "541d7174621936360b75ff490a53755ec124104cf16c9ea84a507e28ebe6d19b"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-0/target-query.bin",
+      "bytes": 21,
+      "sha256": "c1c45a289cba90663e4296d2530ae80649b714f51fd54adfa3d211486567a64d"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-0/terminal.json",
+      "bytes": 2117,
+      "sha256": "428da06ce1f6c5f48a386b7fb484d4a63188bad2363b44b0a840d6b8fe87f330"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-0/worker-header.json",
+      "bytes": 644,
+      "sha256": "1bd42ecfb8c5cd7fcebef8310e93941fc6be29e39b8c353d81e71c686c5a2038"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-1.observer/observer.json",
+      "bytes": 1521,
+      "sha256": "49121b5b06b1f024f1b95d41d111be24e8a1e99965109d788a92c1d27419b2b4"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-1.observer/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-1.observer/stdout.bin",
+      "bytes": 1627,
+      "sha256": "3f3dd01035242852d31fd54854658188d9f6f7cb1189d54456c583df3a0d75f2"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-1/CONSUMED.json",
+      "bytes": 278,
+      "sha256": "c802fbd9451d7ea22497b003350cc2e21d5320d7e3a88d90d327856690af9e74"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-1/failure.json",
+      "bytes": 10864,
+      "sha256": "961d46810ee2bd81e44ea7b36ec2c278dcfeaab63753bd0d5f0a52219cc0d630"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-1/owned-child.json",
+      "bytes": 255,
+      "sha256": "2ebd76ab322db02be07254be326f9e9ac2747dbe077de513ff7a9b3b1c35983a"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-1/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-1/stdout.bin",
+      "bytes": 150,
+      "sha256": "b98684ae7274a42dda463491ba65b634a5355499de176ae2809d33d5f2a99679"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-1/target-input-freeze.json",
+      "bytes": 4151,
+      "sha256": "79be9674423628613c10ec582b08e82de5a3cc3241f18852c7fb078ba7173edb"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-1/target-query.bin",
+      "bytes": 27,
+      "sha256": "798ce1a249369c734a9f90054cc4e777b556ac8984ed6502c4407531ae801c77"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-1/terminal.json",
+      "bytes": 1839,
+      "sha256": "e6271fe5eae29920473b6db54fb1b53d72147d00f90a91ea1295d6b21d8dc135"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-1/worker-header.json",
+      "bytes": 659,
+      "sha256": "fe277552ba72c9b5575b5fa012ba8b9e0289b799dbb030bb2a9fbfb7e2ce0dd7"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-2.observer/observer.json",
+      "bytes": 1519,
+      "sha256": "06cadc906aebab1fae3753d8c4c96436cf6efc8c17ee630b656604171bc7bf4c"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-2.observer/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-2.observer/stdout.bin",
+      "bytes": 1627,
+      "sha256": "563adb2c74801e730c8a118f2c0de733915c8ac84ba504eba657e64612829bf0"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-2/CONSUMED.json",
+      "bytes": 278,
+      "sha256": "c92810a9e0257cdf9b6bbcb1c82e8f4051f32e286b8f0b5b54843578ad367c4e"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-2/failure.json",
+      "bytes": 10532,
+      "sha256": "6fb439c1f69060d877bf9905ae89edf801f0046a9f849277e4506bbf3315ac39"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-2/owned-child.json",
+      "bytes": 255,
+      "sha256": "2e08c56e5c218bb2c5d76162401f7e997a4a73f41bfb3e9d40cfed4d8a946eae"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-2/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-2/stdout.bin",
+      "bytes": 150,
+      "sha256": "fa5856da03c4413e14d7c4a53417abaae4db44705ec361de514c4b62cadaa869"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-2/target-input-freeze.json",
+      "bytes": 4760,
+      "sha256": "d80572ea9fc509a22a568cdc5c7032ca1ab17496fed82ed1e780ae788896d374"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-2/target-query.bin",
+      "bytes": 33,
+      "sha256": "956c4ad0eb11034d5d219ea99e11bec69e90db670eb52a834d3a215015a908c4"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-2/terminal.json",
+      "bytes": 1839,
+      "sha256": "3ec94188ac7fe463c404ab5044d2733a1c645c8a5ac84443965a6afee6b410a3"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-2/worker-header.json",
+      "bytes": 659,
+      "sha256": "f557d4c73741d3d3b8b6ef88f2630e44a72ecd54a9cecb5365c6f795d912f4ca"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-3.observer/observer.json",
+      "bytes": 1520,
+      "sha256": "e43ef0ccea8a7388f4c0fb1d78c8d9e2bd65113159ef7d3ac3f5ac838d9ea73c"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-3.observer/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-3.observer/stdout.bin",
+      "bytes": 1627,
+      "sha256": "e0e8fd24d684c4de277fcf2649e3603ccf19af503c5b7e9e67a52d910ada92b5"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-3/CONSUMED.json",
+      "bytes": 278,
+      "sha256": "2e79b320c4bc81ecd4f8f2518c04866e2db7bfe6d8b134358148d7ed41e85699"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-3/failure.json",
+      "bytes": 10811,
+      "sha256": "1a6ed9399000f61b69da5884bec13f576d8b2bc69aa96566db58f7c7fac18c2f"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-3/owned-child.json",
+      "bytes": 255,
+      "sha256": "b5000f88efdba9ee76cec6f5117658488da5e95e4248a502ea2054f9fa1c06e7"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-3/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-3/stdout.bin",
+      "bytes": 150,
+      "sha256": "cd31f360133a28fff0df7f0e96414d9d861a6bf70e8d36ad6162aea9b0e53a3f"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-3/target-input-freeze.json",
+      "bytes": 4307,
+      "sha256": "25facde5c33fad8395ef0b51cb1a3a0a7697cbf4532b0392da3c413d7b3f6903"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-3/target-query.bin",
+      "bytes": 27,
+      "sha256": "63dafaccc6eb9a76defe986d436b3563248a4799a458a1fc68b3fe766e23d391"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-3/terminal.json",
+      "bytes": 1839,
+      "sha256": "b53629819ab731b33bc1d1e3efb6f8c3131d191edede172fe76fa38c17b0e4ed"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-3/worker-header.json",
+      "bytes": 659,
+      "sha256": "8465260b4082bd3fb789bd2e1ca600cac7dcda40ac574ef5490ab5e185bc9428"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-4.observer/observer.json",
+      "bytes": 1520,
+      "sha256": "3736b58303b8988f825b9df2ebd681a7c01c724738c4aed052a4676c55644ded"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-4.observer/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-4.observer/stdout.bin",
+      "bytes": 1627,
+      "sha256": "492eae914059b71fb103e0fe21f32c1f9ef6d3f093504be0eeb2d671fc3dc74d"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-4/CONSUMED.json",
+      "bytes": 278,
+      "sha256": "8215a8b39699dca0c4f9340dd5ab1eba3948882e459a287296b4df0892cb9ec1"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-4/failure.json",
+      "bytes": 10480,
+      "sha256": "00a916bcd8975d8b5e63ca200e1bec5fd4c4b714706e70e146666f96815eb69d"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-4/owned-child.json",
+      "bytes": 255,
+      "sha256": "f234b973de9dc25a383613763671aa19a03794472b56d17a9420d4acc41dda15"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-4/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-4/stdout.bin",
+      "bytes": 149,
+      "sha256": "3107afa5d3448e13c05c2d116ebfe90e0b6cb073dc431bd0e2a455692befa955"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-4/target-input-freeze.json",
+      "bytes": 14569,
+      "sha256": "c6531a5a0c13a5458d195275f9a8d319ed0f71060feba6dd7b82835c25f9fdc1"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-4/target-query.bin",
+      "bytes": 111,
+      "sha256": "6ce8eba8f6888a762cb9c29588c89e6ad8d2d5dc84dce3a813ab703a9815f1e6"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-4/terminal.json",
+      "bytes": 1839,
+      "sha256": "b947c037a29491b81b1fa5c1b3f3195bdbb7fa7b8453052b1a5909b676ee3ed6"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-4/worker-header.json",
+      "bytes": 659,
+      "sha256": "060c37b9000c88414ceb3c11369aad2adfaa7bf6084a01a88ef2dd9e11705388"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-5.observer/observer.json",
+      "bytes": 1521,
+      "sha256": "d105fcf0efab0cd3d1c308c10fa206acef9e2bc90f4df14a983ddd0003cd9c65"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-5.observer/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-5.observer/stdout.bin",
+      "bytes": 1628,
+      "sha256": "29763694e10fca6fda6cd1ef11ce2f56948599a7a7d61395eb6338a30f5581f2"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-5/CONSUMED.json",
+      "bytes": 278,
+      "sha256": "0d09255ad506f8be23cf6105eaf8b3ed242436fb4000ca107c4afeb269dc3841"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-5/failure.json",
+      "bytes": 10873,
+      "sha256": "a1b3d2a028182e32fadc3f0d894706d34be776909346e74d86696b423f4344df"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-5/owned-child.json",
+      "bytes": 255,
+      "sha256": "f6bad8171e748c6dbddd9c4ac25e65733750aefedb51352eab9757b728ef23bb"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-5/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-5/stdout.bin",
+      "bytes": 149,
+      "sha256": "3bc9a4b15df9d7e2a6a1336f97060750d55f38ab7420dad7d510e46a88c118ca"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-5/target-input-freeze.json",
+      "bytes": 5800,
+      "sha256": "5a23cc59054c69673861120be5e24f204a180912e873c3c883a17349485438a9"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-5/target-query.bin",
+      "bytes": 41,
+      "sha256": "5fe7e11d2f78e004b7d939411e49fb1e950ac08aec6ff960ab32459bd35933f4"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-5/terminal.json",
+      "bytes": 1840,
+      "sha256": "b9aa78491f415596fa3eb8e44ace3800d955078abc2f888284bc9756712cb03e"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-5/worker-header.json",
+      "bytes": 659,
+      "sha256": "346a873441afe715c1216a3de585c698477f228b31c8c3e9cdf1191042bc4746"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-0.observer/observer.json",
+      "bytes": 1510,
+      "sha256": "5e72cc00593756e8ff97fce5e738021225e5271770d24dbd94fb9e5a5aa7bea7"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-0.observer/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-0.observer/stdout.bin",
+      "bytes": 1848,
+      "sha256": "c7f654b86efcb2130965d6a75af642af06a45acafb607a8f734b33c065744d06"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-0/CONSUMED.json",
+      "bytes": 269,
+      "sha256": "087c26fca7ac69da3cb0c6fea5ad5eb87cd209a91444568462f15d6fcd1855a8"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-0/candidate-certificate.bin",
+      "bytes": 33,
+      "sha256": "116c31813cba90ba9ffec2eabc88a1cbed6158b4b8ae296a9d01fd41115598b5"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-0/owned-child.json",
+      "bytes": 246,
+      "sha256": "c83c135cd7b88a8552074c79140c42768424a6be08702da60aa10016331077b6"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-0/result.json",
+      "bytes": 4359672,
+      "sha256": "6e60d68b6fc2ee4e6953c2b9b907800baa2c0794adc117499bbc847968fb83db"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-0/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-0/stdout.bin",
+      "bytes": 123,
+      "sha256": "7b764520fce8120c5198e36e6993cd284c202e8e9ecfd66e08abcd00c94a0eaf"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-0/target-input-freeze.json",
+      "bytes": 3676,
+      "sha256": "5403bf949bcafd6ee739fa88bc3aba6bb2c669e9e1d56106877652c2e1110b63"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-0/target-query.bin",
+      "bytes": 21,
+      "sha256": "c1c45a289cba90663e4296d2530ae80649b714f51fd54adfa3d211486567a64d"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-0/terminal.json",
+      "bytes": 2076,
+      "sha256": "9f63c633a570c012530b9a943516669817111f1c24159eb12f9440b4da6380f3"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-0/worker-header.json",
+      "bytes": 625,
+      "sha256": "c9a25123d7c2648dc9ef28445e9c933ef7ab50916d58100c79df0b5da81c7ae7"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-1.observer/observer.json",
+      "bytes": 1501,
+      "sha256": "de43fa8f8124c58855df8f2614b6e144a41079727eb7419ad4a1f2aa43f75316"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-1.observer/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-1.observer/stdout.bin",
+      "bytes": 1600,
+      "sha256": "2bb19ce6b1590a6ca49a1f927bf55d6f1c8e8e5ad055968b0de871f0e029ad99"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-1/CONSUMED.json",
+      "bytes": 269,
+      "sha256": "0c5790c01069645aa3841d03fca947e7026df8b83c9b8101b7db5c31e3824acb"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-1/failure.json",
+      "bytes": 10493,
+      "sha256": "e1c812fccf96d23a3e74389c372c892604cf5afc039bf9d855865d1f21566104"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-1/owned-child.json",
+      "bytes": 246,
+      "sha256": "0748a78eccf02e2d35ab855e723743eaaf71e57c34e6bfeb73b90f8a2b3a973c"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-1/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-1/stdout.bin",
+      "bytes": 141,
+      "sha256": "9337e69f923288d5bb102838447c451288ddce3883013be45b611d9072937908"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-1/target-input-freeze.json",
+      "bytes": 4142,
+      "sha256": "14f01f0117e56769e3057306439b23ef3cef369a3ed8fcfd2405edc07d77861d"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-1/target-query.bin",
+      "bytes": 27,
+      "sha256": "798ce1a249369c734a9f90054cc4e777b556ac8984ed6502c4407531ae801c77"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-1/terminal.json",
+      "bytes": 1812,
+      "sha256": "b87c78039ab1b1d97e8d2fdbee14f7cbfb58331db787663558195480a7499800"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-1/worker-header.json",
+      "bytes": 640,
+      "sha256": "f09702da69ffc70cac56174d594b7848fa68218d133454ab0f8864805a3c70df"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-2.observer/observer.json",
+      "bytes": 1503,
+      "sha256": "b644a7796bc0467e01933ec21b0c102bfd911e3a65ed19125275e7605d5a19fe"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-2.observer/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-2.observer/stdout.bin",
+      "bytes": 1599,
+      "sha256": "493f16baa769b3b961443816b345c5fd5afc8c6273e04c42fa9822196967dabc"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-2/CONSUMED.json",
+      "bytes": 269,
+      "sha256": "0bb2a870b252593668f9cb054dee453e2216c8fee4a19514907a893edf2253d3"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-2/failure.json",
+      "bytes": 11035,
+      "sha256": "f2e07c9edc5a62f68feee740e0ad1c7983cb7be6a2e72c37309ecf4981dfbffa"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-2/owned-child.json",
+      "bytes": 246,
+      "sha256": "dd76c41ef083aeb05fb20e91fc9b41f512def16d43814777ef8e34fb4738148c"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-2/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-2/stdout.bin",
+      "bytes": 141,
+      "sha256": "d58d882db53637b6a6531e467ecb785233c339b2f377cb70e4921941d8e187ae"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-2/target-input-freeze.json",
+      "bytes": 4751,
+      "sha256": "6905e9ee3cca88ea6c1c5cb99d9c13052704320b76101602f21ec42525d78eee"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-2/target-query.bin",
+      "bytes": 33,
+      "sha256": "956c4ad0eb11034d5d219ea99e11bec69e90db670eb52a834d3a215015a908c4"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-2/terminal.json",
+      "bytes": 1811,
+      "sha256": "ab9b233a2e646c5cc126e4458eb57f694447a29c20524424fed4d4cc99b700ae"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-2/worker-header.json",
+      "bytes": 640,
+      "sha256": "096f84ebf25cfd92f3f52a42bdb2e320a74e13b11760dde6558acad0212908cf"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-3.observer/observer.json",
+      "bytes": 1503,
+      "sha256": "106ef34ac65072600e885e73a4335d478925cb37368f0ad0a107685599441dbe"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-3.observer/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-3.observer/stdout.bin",
+      "bytes": 1599,
+      "sha256": "3cadb85c7537be1ab1ee9509273b195623a528fdee15c49923ec44c1ada7f847"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-3/CONSUMED.json",
+      "bytes": 269,
+      "sha256": "cdfb8d36192c206b2550428642808af6704b0bb3a873ae3fb24cf1d1502d95d0"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-3/failure.json",
+      "bytes": 11027,
+      "sha256": "351810e9716b50c0d02dbca567e8855e837c47effa318b8b62dbb8971624cb11"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-3/owned-child.json",
+      "bytes": 246,
+      "sha256": "a76c19acfd30f5deb005fc37c6dffc8d36334ea476b0639c1b1428b01370a1d8"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-3/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-3/stdout.bin",
+      "bytes": 140,
+      "sha256": "65c1a5ba448368c929f4fa8a7b58c842a062f8821d24f3ad7d853c68ec550b4e"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-3/target-input-freeze.json",
+      "bytes": 4298,
+      "sha256": "857f51c1edd50477971961dd4a2bee0d12c9a79e9544f80683bd187e6d476951"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-3/target-query.bin",
+      "bytes": 27,
+      "sha256": "63dafaccc6eb9a76defe986d436b3563248a4799a458a1fc68b3fe766e23d391"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-3/terminal.json",
+      "bytes": 1811,
+      "sha256": "6c86e6e7b9bf4f08d2dd81e8fca833699fe2d69422fae07201bed2e196974254"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-3/worker-header.json",
+      "bytes": 641,
+      "sha256": "e41105e83067b80fa91a763513b32e6f73356e1907ee5d95ffe164d3d65557c4"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-4.observer/observer.json",
+      "bytes": 1502,
+      "sha256": "505a163c42b5ca54d0f9110627b7dda94b5e380609f419566bd359c7d946e07c"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-4.observer/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-4.observer/stdout.bin",
+      "bytes": 1600,
+      "sha256": "f742be7f580fdc5e1a24e8938615e5b8901f64aa1de40b8d7ed3ace602c8be3b"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-4/CONSUMED.json",
+      "bytes": 269,
+      "sha256": "7b2c7e1322a41d7afb74722579c8615b62dd94f8085f6dc140bed5e3d304075c"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-4/failure.json",
+      "bytes": 8931,
+      "sha256": "eb04189abee5f7b8462d2f5add2ed0c73d8b0d75dd3fc19f388536408da77033"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-4/owned-child.json",
+      "bytes": 246,
+      "sha256": "61ae5f245c411fa3f18eb5e8d9596291205fb33c982487fabcfac3acb6aee011"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-4/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-4/stdout.bin",
+      "bytes": 141,
+      "sha256": "6bfbe46051b2e28fa0c851546ceb15dacf49989412cb69d04b977b7271eb6de0"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-4/target-input-freeze.json",
+      "bytes": 14560,
+      "sha256": "39070828f17e701a8a7ab370201fe42304897bf8e998306f1230fe720821fdb7"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-4/target-query.bin",
+      "bytes": 111,
+      "sha256": "6ce8eba8f6888a762cb9c29588c89e6ad8d2d5dc84dce3a813ab703a9815f1e6"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-4/terminal.json",
+      "bytes": 1812,
+      "sha256": "b0517ae10dc8568aefcc49b2eec47adaaf845482d572d7f0f43d505563dc37e9"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-4/worker-header.json",
+      "bytes": 640,
+      "sha256": "b189efd2fc75ba438b3064e2287f231d348d6ab181a3420ce07a32e7ce428387"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-5.observer/observer.json",
+      "bytes": 1502,
+      "sha256": "5e59601da6a1e0c30d3ff7a786ac896babdbf833d370f5a537bb50e53a44f6dc"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-5.observer/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-5.observer/stdout.bin",
+      "bytes": 1600,
+      "sha256": "3101010d449935f332652d0df9b77e381c0e6ace19d54f9988349552a043221c"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-5/CONSUMED.json",
+      "bytes": 269,
+      "sha256": "3ae9951dc8206c56c4929c1e40c6be14a3e5032786750d3b9aed1356c5330387"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-5/failure.json",
+      "bytes": 10555,
+      "sha256": "de0a040ee51178ac05bbc9043d6c3dca3688844e37fc5b74264986c575cb32c0"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-5/owned-child.json",
+      "bytes": 246,
+      "sha256": "bb80ea9d1bcf5ce869dbb6320c3c00b1b08bf240b9ba5cd2ced2bcc93f713acb"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-5/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-5/stdout.bin",
+      "bytes": 139,
+      "sha256": "fe931d9cb399aa6db7a71a5b433860585e7842cee9973e94ce639e63f156c5cd"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-5/target-input-freeze.json",
+      "bytes": 5791,
+      "sha256": "13b93a22c33ef72d6d495bf77c76e9faa7754020aa1b2635315c9ea68e904001"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-5/target-query.bin",
+      "bytes": 41,
+      "sha256": "5fe7e11d2f78e004b7d939411e49fb1e950ac08aec6ff960ab32459bd35933f4"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-5/terminal.json",
+      "bytes": 1812,
+      "sha256": "fcb1f0b8ee85dc6e7d6ff601afa244367d34b860c524ef687f9fd8de04677e21"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/actual/point-frame-full-FPC-v1-target-5/worker-header.json",
+      "bytes": 641,
+      "sha256": "c21d68aeb4fa7d6b8b6e4a1de99d0f83e4bbbbc873d2ad649e82dba5bf282731"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/conclusion-index-bank-v1-v2-finite-float.patch",
+      "bytes": 785,
+      "sha256": "a30b289761d9f8a8c4831aff66da65b3999ed74e7779bb27fa97028ba0f0fb80"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/conclusion-index-bank-v2-v1-finite-float.inverse.patch",
+      "bytes": 785,
+      "sha256": "b8c92e6a1515bf45897bd935dfa5623173abd1f4c4db295b78e36dc4566d526a"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/conclusion-index-control-literal-data-v1.json",
+      "bytes": 13490,
+      "sha256": "b23d97e5bce2c28e288742d9173787905e0b18ce804cde7a1dc39e3db20695e2"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/conclusion-index-independent-controls-API-v1.json",
+      "bytes": 7879,
+      "sha256": "e9366451e2791ba4663156214734d56777d475e2b8a45f84dbb973abe5426cea"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/conclusion-index-independent-controls-API-v2.json",
+      "bytes": 8749,
+      "sha256": "26f1978661a2459700d87e8552872135854f99cf7f6ced4778a8659e05da4648"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/conclusion-index-independent-controls-handoff-v1.json",
+      "bytes": 6278,
+      "sha256": "a2465fea88fd358065e63cdb48132f2625713394f66bb9b10dd661289b0ba8d1"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/conclusion-index-independent-controls-handoff-v2.json",
+      "bytes": 8503,
+      "sha256": "528aa9f62add6a4df9dc85365d2d7b3b7ed8213bc3acaecff6bcaa0e28e868b4"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/conclusion-index-independent-controls-manual-v1.json",
+      "bytes": 6026,
+      "sha256": "ed2498022d65858f8a05adff4aad37ffddfc8caef272ff04026b4e880436d5f2"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/conclusion-index-independent-controls-manual-v2.json",
+      "bytes": 3060,
+      "sha256": "e9c5517937aebba9fc88fb8da6c44dce15b3ec3b26fcdd12cd5709697653a431"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/conclusion-index-independent-controls-role-closure-v1.json",
+      "bytes": 6989,
+      "sha256": "1663d4b85a205a9f38fd7a0017245ba15e9e55035299bb186808c21f7566c1f1"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/conclusion-index-independent-controls-role-closure-v2.json",
+      "bytes": 7184,
+      "sha256": "4b4670a29674c3e1fd6907f0129178e77b742405cb43330c1e3dbf293685f4ad"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/conclusion-index-independent-controls-static-v1.json",
+      "bytes": 3078,
+      "sha256": "c77619a7c4bcb73f8d35408989220d688ff9fecc5b04d11e858d87e5d3c158f4"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/conclusion-index-independent-controls-static-v2.json",
+      "bytes": 2267,
+      "sha256": "bb8c2f774482af823d34071883178466666bd481b32c5a2fc0e379ee0f09aa0b"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/conclusion_index_independent_controls_v1.py",
+      "bytes": 29081,
+      "sha256": "539e22f8df9a42af3926878d7b871d0aa0b855ff086b5f2be9909759ce3ef199"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/conclusion_index_independent_controls_v2.py",
+      "bytes": 29220,
+      "sha256": "3afd0cbd5c43419f7f8d23e46ef015cfd2232b2325a354e984535ccd14ad1ac5"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/controller-only-E1-two-row-reuse-declaration-v1.json",
+      "bytes": 1797,
+      "sha256": "a0a70d991dff6deefd33078e1a62b6fa8c2bc2fb4ee6db03ebe433214fed4a83"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/explicit-point-independent-oracle-and-controls-API-v1.json",
+      "bytes": 7658,
+      "sha256": "ff6535e973986464ef5d842ac2ce1cc214303ba1299d2f1431f051b9eda5b97a"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/explicit-point-independent-oracle-and-controls-handoff-v1.json",
+      "bytes": 5660,
+      "sha256": "afbeb2b917869ef66c675f0fa5d1d24a62fb69130ecf0905f34e51936e44fa9f"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/explicit_point_independent_controls_v1.py",
+      "bytes": 40853,
+      "sha256": "eedf82a42ebae7f4133f2ee1781e33205980769f8164bd278641761e6d1a1029"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/explicit_point_literal_oracle_v1.py",
+      "bytes": 18338,
+      "sha256": "ff34af27a491da3571fc02227333ca3ce048a8d7c6d49cb780d3b1c9ba14a995"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/full-frame-controller-independent-controls-API-v2.json",
+      "bytes": 10597,
+      "sha256": "a50e8fb0ab8f9a23a29c271f74eb0f08a7b6910830d5895bfd42d8b53dedf0f1"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/full-frame-controller-independent-controls-handoff-v2.json",
+      "bytes": 5068,
+      "sha256": "32a41c599c0fd795d901c0ae0144634d1d19d7f7df0023bd657f5281600d8806"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/full-frame-controller-independent-controls-proposal-v1.json",
+      "bytes": 17030,
+      "sha256": "ce0327e4836270e4476984c9a048d9e8de73b00f939f4a2af186971f52e5fbdb"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/full-frame-controller-independent-controls-role-closure-v2.json",
+      "bytes": 6055,
+      "sha256": "a8a808fcb35a5258b58d0b15cee98ff6cb2852c4665d9cfc35f848e4802a68ec"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/full_frame_controller_independent_controls_v2.py",
+      "bytes": 45831,
+      "sha256": "41d964fb0075cd034d64ccb98d078c6290e71d09d14ca2bc7ec004d343348f79"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/point-proof-independent-raw-models-v1.json",
+      "bytes": 15516,
+      "sha256": "18851c3488152f3743a61eacafc12322c94c48f98038cccf01bd95482793225a"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/primitive-conclusion-constructor-facts-v1.json",
+      "bytes": 12383,
+      "sha256": "9db985e858a17c4cf16981e30cd4063bddf68c1c12ae0e33962c0c706e8672bb"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/structural-provider-index-independent-fixtures-v1.json",
+      "bytes": 12444,
+      "sha256": "bfb5e2a07400312e7befe9e8b738d910455cfd113f61a68293268f9576ae3efb"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/structural-provider-index-independent-handoff-v1.json",
+      "bytes": 7404,
+      "sha256": "08740f6de377cfc2176a7d2f039b7da11c8eb44d767e61c04f78c473d7bb0d06"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/tiny-full-provider-inputs-and-expectations-v1.json",
+      "bytes": 16186,
+      "sha256": "bd3cefe3f86700f0909d605bcac480e4c0f941dafc529716f68b20350699d708"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/tiny-full-provider-reference-encoder-and-controls-API-v1.json",
+      "bytes": 10771,
+      "sha256": "80067d3db78e8a8bfd5fc2a813ec7052e1d75fb6c9bf774ca02bdcdae08abc67"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/tiny-full-provider-reference-encoder-and-controls-handoff-v1.json",
+      "bytes": 8658,
+      "sha256": "8abf683bdb1920ba84e4c203f6924f9446f5271f895d5c972554eb47d7546e67"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/tiny_fpc_frame_completion_reference_v1.py",
+      "bytes": 3981,
+      "sha256": "e4d6f452cbda35b530fb469c10a2441bc694b523df8e46de74c96c4ab074de99"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/tiny_fpc_provider_controls_v1.py",
+      "bytes": 30645,
+      "sha256": "dadc7d7cad94fd80dbfe381e9d59f56c1af20d90149f292b9bd70ebe657442f7"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/tiny_fpc_provider_reference_v1.py",
+      "bytes": 14647,
+      "sha256": "bcf281fc7e19bf8c08a5b33456a6bb2eeebb33b2034f203f1540820e5e4eff9b"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/tiny_fpc_query_encoder_v1.py",
+      "bytes": 9018,
+      "sha256": "154615acacc813239d6cf005c82aa37fce96e631098f6408a8798a981a08455d"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/typed-controller-bank-provider-post-freeze-Source-interoperability-review-v1.json",
+      "bytes": 11763,
+      "sha256": "2fea887cbfd98d27c1cd88d62095114bca4dcda9d0b0be6239cd1ffda1e1aa22"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/typed-full-frame-provider-conclusion-index-component-Source-review-v4.json",
+      "bytes": 18747,
+      "sha256": "0c47da910f47d439010f513e0ec1c0e7f0f94708b0298d5dfa7d46791503d650"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/typed-full-frame-provider-conclusion-index-documentation-r2-review-v1.json",
+      "bytes": 5244,
+      "sha256": "f3e220c2a9b358730af88a8bca5b5ba2255980fc9f6585e0b4c19ed8ee298142"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/typed-point-frame-worker2-integration-component-Source-review-v1.json",
+      "bytes": 15038,
+      "sha256": "d4c9a040e3587dbde8399831d7de16a33ab899d4710bb8ad2fe42644a35affda"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/typed-point-frame-worker3-successor-component-Source-review-v1.json",
+      "bytes": 8986,
+      "sha256": "918160e17997592688262a81828785db4bdd8006a9a90797147fa7dae6479ad8"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/typed-point-proof-first-actual-draft-display-review-v1.json",
+      "bytes": 7951,
+      "sha256": "403ec8e084286a5d198054f5dd06803c39648844cd05ebb060cfa086b15b7f05"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/fpc_full_frame_inventory_v3.py",
+      "bytes": 55773,
+      "sha256": "9411bc96d89670c22c8e27ccacaee41a9942563587a5f2a41bfe18aae3b54740"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/fpc_full_frame_inventory_v4.py",
+      "bytes": 58026,
+      "sha256": "7fc9ebe143513fa86e726c78832cdbb91589fbd9e8a5d2b21eb3183a5fbf5fd2"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/fpc_point_frame_search_worker_v1.py",
+      "bytes": 42911,
+      "sha256": "e9dad16f64a2f596342f5081b19318b72e2a7f0e788ebc8e57235de8af85fc0a"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/fpc_point_frame_search_worker_v2.py",
+      "bytes": 44965,
+      "sha256": "db22a1c85d86e513c204e8d8e635e1a094f904a1db35b1554d9580416e4d8232"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/fpc_point_frame_search_worker_v3.py",
+      "bytes": 44965,
+      "sha256": "16cd87d911692f5e8378fa46f87339e75c92b88cc738414d976b4ac66e830fd2"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/full-frame-provider-Source-handoff-v3.json",
+      "bytes": 3960,
+      "sha256": "d14dd7f97a257caeb1c038f4c0967e62fdee619f6ae158faab96edb507fefc6d"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/full-frame-provider-Source-handoff-v4-r2.json",
+      "bytes": 5236,
+      "sha256": "c1788a5896f12de308da0ad5a088baf778dd059da6bd53cea29e53c92c7246d9"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/full-frame-provider-conclusion-index-API-v4.json",
+      "bytes": 3893,
+      "sha256": "39ff45799f6a03c4216a286d2b4cfc965b50cd320c4c360f32ada2c00fc4d903"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/full-frame-provider-conclusion-index-manual-v4-r2.json",
+      "bytes": 6570,
+      "sha256": "9805445459a747c0bae9068e4d7c7a3f13a7f27a255c8c0eb5d048aa93a5f20e"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/full-frame-provider-dependency-closure-v4.json",
+      "bytes": 6200,
+      "sha256": "968228a1e8f2a8607960a800deac85ba8183dc446921d8aa1ded03ded410bd1b"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/full-frame-provider-dependency-rebind-API-v2.json",
+      "bytes": 6738,
+      "sha256": "b773db2d2c1ef950c91b39c1b67b2295f28cab13b4e9bfade78f3785c898236f"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/full-frame-provider-dependency-rebind-API-v3.json",
+      "bytes": 2731,
+      "sha256": "af51e8ab4ba4b344ae43fd9ffa2310c1e4a2f83c11586b211878fafdf8e2cce4"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/full-frame-provider-dependency-rebind-manual-v2.json",
+      "bytes": 5293,
+      "sha256": "6f56474b18faf81f6397f70dc4587211d09dcc1eb1a5f5a9d7cd264c77f8f465"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/full-frame-provider-public-record-binding-addendum-v1.json",
+      "bytes": 11712,
+      "sha256": "cf7ae0f4bb2321b7f4e9d795020daff1c34f908dd2c6afcdd45da10a5690a281"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/full-frame-provider-snapshot-layout-addendum-v1.json",
+      "bytes": 5164,
+      "sha256": "58324b13513f13c9c47010cd3900561fb16e9bc674c84401129556c455565aa4"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/matched-conventional-full-frame-baseline-DESIGN-v1.json",
+      "bytes": 14190,
+      "sha256": "16b5aceaa64d3d5e6a628fe28eb8f4f6f04c104491e034856b13274012b0d5be"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/matched-conventional-full-frame-baseline-handoff-v1.json",
+      "bytes": 790,
+      "sha256": "818d884367d93ec8a6ec375e851c88356230b6bf3b95e6b9e0bcc1a93dff2106"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/point-frame-worker-API-v1.json",
+      "bytes": 26789,
+      "sha256": "19f8a569f966de02c6c1dac4f4893dfd2dd37081e59bfde396157a7fab35e5db"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/point-frame-worker-API-v2.json",
+      "bytes": 32773,
+      "sha256": "27c5b303e2b9b08cdf2e25ada63c9de0bb0561c25593975b38bde9753fc1cf12"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/point-frame-worker-API-v3.json",
+      "bytes": 35226,
+      "sha256": "2775957be8836e08b2cc768329238da80a69a83a2bd4dac5fe63dde942b83218"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/point-frame-worker-Source-handoff-v1.json",
+      "bytes": 3653,
+      "sha256": "eb39817fa846e88b5ef17bf286557683ce450f1753d049ab877b06c509b0efb8"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/point-frame-worker-Source-handoff-v2.json",
+      "bytes": 6145,
+      "sha256": "5849669c5be08642cda774b79bbe7da5d26d9cabf86dc59e200e484a959e1b39"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/point-frame-worker-Source-handoff-v3.json",
+      "bytes": 4327,
+      "sha256": "9aabfbe1a20f1b0fd9148709a142b08a3a98b7c029f743cf318d62d5b098e42e"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/point-frame-worker-dependency-offer-v1.json",
+      "bytes": 21735,
+      "sha256": "300747dd6509aadce6942bd533cd56638f0801693465e8563e83d4dd25cc3ed5"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/point-frame-worker-dependency-offer-v2.json",
+      "bytes": 27907,
+      "sha256": "6d5765e5c54b2e08d812219982acd3235d1aaba2198365d98ad2ac4234ea4e8c"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/point-frame-worker-dependency-offer-v3.json",
+      "bytes": 30998,
+      "sha256": "9069f14706c6de6eb864980b0b0eccf4f2dc645bdfa7d56f4ce1414f5a94af13"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/point-frame-worker-manual-conformance-v1.json",
+      "bytes": 4662,
+      "sha256": "fb1256e2b9f34539899876a6b292a4bd64707875760b47c4495f31fcf1998a13"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/point-frame-worker-manual-conformance-v2.json",
+      "bytes": 5777,
+      "sha256": "4d10c2b12b2aeefbc2ab1ce44d1e0d7552f1e80436fd98b0bed214c1b69af358"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/point-frame-worker-manual-conformance-v3.json",
+      "bytes": 3201,
+      "sha256": "df6fb4e6d2c6c9981b574fa87f2e38281fb8ebebf00aadfbfaca4986b6b504cc"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/point-frame-worker-static-v2.json",
+      "bytes": 2851,
+      "sha256": "b22e541f314fd66aad4cebcdefd0eeda705ec0a4d446e66ff9f368fa1907b0e7"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/point-frame-worker-static-v3.json",
+      "bytes": 1940,
+      "sha256": "a6b63588cdd716e90bbf71dce5297ac7c8afbcc55b885f767d611b54dc24fa05"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/point-frame-worker-v1-v2-constructor-index.patch",
+      "bytes": 25090,
+      "sha256": "609ad995c33a745da5838456d7111758350bf9d271d675ee6a58e2d385544f6d"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/point-frame-worker-v2-v1-constructor-index.inverse.patch",
+      "bytes": 25090,
+      "sha256": "5b1e20057cb63f9b38988627a3c45ac52bb234ba3a251363c23c81833fd63077"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/point-frame-worker-v2-v3-bank-carrier.patch",
+      "bytes": 3149,
+      "sha256": "b96780fc92048a3e0e2299bef89f55fbf79b70eb653e77e9f170acb3fb71a2e6"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/point-frame-worker-v3-v2-bank-carrier.inverse.patch",
+      "bytes": 3149,
+      "sha256": "6d73dd45d1d84da682eede5976b3c62197172fb49ab318c08fad411331d59d90"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/typed-conclusion-index-bank-finite-float-successor-Source-review-v2.json",
+      "bytes": 7937,
+      "sha256": "cd73b253cdb7b243f80462bd7d78c5e71f6186e2abbcbe05ba1bfe213dfd0760"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/review-C/constructor-index-v3-target0-complete-passive-evidence-audit-v1.json",
+      "bytes": 36956,
+      "sha256": "9d410bc6a31ad372c69c597cdce645f0459abe2f3df6a6a0980a75684e030a1c"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/review-C/constructor-index-whole-review-v2-check-identifier-clarification-v1.json",
+      "bytes": 1069,
+      "sha256": "88bc7b5b474b5db6fc136c20fc76fb8a7d3e93c6b8effff7e9474329ca1211d0"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/review-C/passive_constructor_index_target0_negative_actual_review_v1.py",
+      "bytes": 19011,
+      "sha256": "357752674644bc0f1a05e139d21192ec429301af34ca8a077f988a9912d91bef"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/review-C/passive_constructor_index_v3_six_actuals_review_v1.py",
+      "bytes": 43260,
+      "sha256": "e891c045e9d1ef14d0339fa76bdea0e77412acbd6580dc64cf98fe89621824ea"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/review-C/passive_constructor_index_whole_batch_review_v1.py",
+      "bytes": 25431,
+      "sha256": "549971995379952f1da532dcdbaf1311bf696ac76ddfff200550c5032d706f16"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/review-C/passive_constructor_index_whole_batch_review_v2.py",
+      "bytes": 27201,
+      "sha256": "96ae31391c38a6ee973a1af28d7314332b934f09b8abb2a5ef13aa5ad0d6084f"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/review-C/passive_point_frame_target0_actual_review_v1.py",
+      "bytes": 19622,
+      "sha256": "7fcfbbc7383ee8fe23a2342d876754d91cdc74ab776e4439836572f922350f87"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/review-C/passive_remaining_five_point_frame_failure_review_v1.py",
+      "bytes": 24894,
+      "sha256": "af9c3ce4a1ab6cf2c401245ca64f4368e1896c596a729242552291c9a257a6b7"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/review-C/typed-conclusion-index-independent-bank-complete-Source-review-v1.json",
+      "bytes": 23454,
+      "sha256": "ec4640860c4a24ffccdc52b6ddbf9719756e8a4485037366ba2fcbdc9ca4606e"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/review-C/typed-conclusion-index-independent-bank-complete-successor-Source-review-v2.json",
+      "bytes": 11496,
+      "sha256": "428c6200e9a6032ef79a8b286732de10674c10e5bc27d856fb579dc4fbab847f"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/review-C/typed-constructor-index-six-target-complete-whole-prospective-Source-plan-proposal-review-v1.json",
+      "bytes": 35776,
+      "sha256": "c4151d8b37d3a492cf58624b78ae8fef8d2b893870a8f87c185b92248d514fb6"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/review-C/typed-constructor-index-six-target-complete-whole-prospective-Source-plan-proposal-review-v2.json",
+      "bytes": 38423,
+      "sha256": "d3061e59faf2dec469dedec33ee4c6b03a603babe5bf9b36aea125470f4c89ca"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/review-C/typed-constructor-index-target-0-complete-negative-actual-review-v1.json",
+      "bytes": 57453,
+      "sha256": "b97991e52acbac1194abe2dd9260dc8c6d136a2fc3ed4bd9727e049077ba29e9"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/review-C/typed-constructor-index-v3-six-case-complete-actual-batch-review-v1.json",
+      "bytes": 8714,
+      "sha256": "d7850b3f62f34e45e2219bc775e287c2b2be5a58f93737b2558ed32e33f620b9"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/review-C/typed-constructor-index-v3-target-0-complete-actual-review-v1.json",
+      "bytes": 93216,
+      "sha256": "81fdcc57a9ccfab59e4ec8b30a73f80e330e00fde48bb24fdde6d21ba686eaf4"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/review-C/typed-constructor-index-v3-target-1-complete-negative-actual-review-v1.json",
+      "bytes": 58352,
+      "sha256": "03800efa6348e682372fe2a6d98972a089b80c62af04fb0969542eda36c58793"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/review-C/typed-constructor-index-v3-target-2-complete-negative-actual-review-v1.json",
+      "bytes": 58026,
+      "sha256": "fcc15e86bcac0c1c2c1e8c6cae541babb7a0b1c0543ca9189665093d64d1ec76"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/review-C/typed-constructor-index-v3-target-3-complete-negative-actual-review-v1.json",
+      "bytes": 58304,
+      "sha256": "5e7d0e3f4c578e91d4a55583b4427af8510e9c85737fd65afd9bc0030b7e212b"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/review-C/typed-constructor-index-v3-target-4-complete-negative-actual-review-v1.json",
+      "bytes": 57993,
+      "sha256": "294d44df9ecef4c686c0ccd349e92cec33bdf72f54ebdae47768fd6bc7c709e2"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/review-C/typed-constructor-index-v3-target-5-complete-negative-actual-review-v1.json",
+      "bytes": 58370,
+      "sha256": "b1a1389475806e41aebe00ba8a8dc09ba3f0ea897ae5c9e144debcdaa7d115c9"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/review-C/typed-explicit-point-independent-oracle-bank-Source-review-v1.json",
+      "bytes": 7725,
+      "sha256": "6ea51c219df0884ef30747a65567d794aeaea4575646367cd3cbf9323a0d5c68"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/review-C/typed-explicit-point-kernel-full-Source-review-v2.json",
+      "bytes": 4159,
+      "sha256": "ac6875b2516ca4609588a814a861aa14fa2c199e8ba1fbcbd4541059785eb7b7"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/review-C/typed-full-frame-controller-independent-bank-full-Source-review-v1.json",
+      "bytes": 14405,
+      "sha256": "78dad5e9852b5b9f0b4e09c93a0f058495e5d9f694efb5068a0a8d0a7258b02e"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/review-C/typed-full-frame-controller-independent-bank-successor-Source-review-v2.json",
+      "bytes": 11259,
+      "sha256": "0df329a3554ddb08f60ffeb5ae92eb23d5ff5e959bdbc91aa7c778705831687c"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/review-C/typed-full-frame-point-controller-complete-Source-review-v1.json",
+      "bytes": 13882,
+      "sha256": "b8f110dd51b8498b2b9a22cb7e73bba31e8d30c11dbb083b3d50dd44b699d098"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/review-C/typed-full-frame-provider-conclusion-index-complete-Source-review-v4-r2.json",
+      "bytes": 28537,
+      "sha256": "f55f5b398218fb4faf64c579ef0a173eb8bb0351657b065ba634c8b9dc20b65a"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/review-C/typed-full-frame-provider-dependency-rebind-complete-Source-review-v3.json",
+      "bytes": 16198,
+      "sha256": "55c6524c944df464c5957f96016a838c9345278be0326d476efca3492c12bac7"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/review-C/typed-point-frame-search-worker-complete-component-Source-review-v1.json",
+      "bytes": 18939,
+      "sha256": "5295961d059d904c197d3206acba653baedfb3842b8423d1efa584de8aa9ae02"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/review-C/typed-point-frame-target-0-actual-passive-audit-v1.json",
+      "bytes": 38626,
+      "sha256": "ad3c1811e1f4cf74bb6d3d25cafdaea2e64146bb1577f61e28252683869cb866"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/review-C/typed-point-frame-target-0-complete-actual-review-v1.json",
+      "bytes": 47677,
+      "sha256": "4d5e1abe63a50b6e610125bb69474aadadc7c2542713191c841001dada7f9110"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/review-C/typed-point-frame-target-0-grant-proposal-component-review-v1.json",
+      "bytes": 6201,
+      "sha256": "1a5b892c6765b0878089770fcd4ee5a0c4fd3170674a38ff694fed323d8b666a"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/review-C/typed-point-frame-target-0-whole-prospective-Source-plan-review-v1.json",
+      "bytes": 18993,
+      "sha256": "af99d99decb30918865b9ce2b60d191dff31fdc29c4079e26d9aa38f4ebd3cd1"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/review-C/typed-point-frame-target-1-complete-negative-actual-review-v1.json",
+      "bytes": 50902,
+      "sha256": "d6231136cb15f99724902c6858b300f1403db95b3276bdb8ac5034a0bc826cbc"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/review-C/typed-point-frame-target-2-complete-negative-actual-review-v1.json",
+      "bytes": 51948,
+      "sha256": "f99de75ebc0c20d78dc3fbad727bc9bfa09bd1a070dcefd5d797a1287370314d"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/review-C/typed-point-frame-target-3-complete-negative-actual-review-v1.json",
+      "bytes": 51946,
+      "sha256": "782d245c986cc71aa4e5ad0936deebc8a5f73ae35cedcaf6269d1117da0d8f1a"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/review-C/typed-point-frame-target-4-complete-negative-actual-review-v1.json",
+      "bytes": 48208,
+      "sha256": "1d8ebae6ef7cc4459f2fac5effb81f321a6ef30a5a712db9f79063d0156fbd09"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/review-C/typed-point-frame-target-5-complete-negative-actual-review-v1.json",
+      "bytes": 51055,
+      "sha256": "b65974503ad47ba80860a4ad5706f7fcaa9a1f970244798ff78478f31c40c6e1"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/review-C/typed-point-proof-cohort-publication-temporal-display-negative-v1.json",
+      "bytes": 1451,
+      "sha256": "b8ea1fe7f1bb82ee725655a79469075ae76bc10d8c6702c76571764ba9a3175d"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/review-C/typed-remaining-five-point-frame-complete-negative-actual-batch-review-v1.json",
+      "bytes": 7636,
+      "sha256": "c31b9e1e434c1109b2e8100dc5c94afae58b5c0f943e8cd47adda2a067ff2fb4"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/review-C/typed-remaining-five-point-frame-grant-proposal-batch-review-v1.json",
+      "bytes": 21531,
+      "sha256": "21f1578409db64668ec06cfd94f5979d47a706ae5a4c5fc37a7f1e1e93f8bdae"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/review-C/typed-remaining-five-point-frame-whole-prospective-batch-review-v1.json",
+      "bytes": 38508,
+      "sha256": "a102c00be8abbdf237d057f558b1830efa72308ac288a5d1182f7f5683e90c5b"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/review-C/typed-tiny-full-provider-reference-encoder-controls-full-Source-review-v1.json",
+      "bytes": 17872,
+      "sha256": "18d3b14e3010973ee5ae173f83589b66bec6afe3332e934d7108d146ddc65210"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/build_cohort_publication_v1.py",
+      "bytes": 13463,
+      "sha256": "d5c4f87085dd9a886a921e8e47aa0de82513d1e0877144b792c1d54adeb6115e"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/build_cohort_publication_v2.py",
+      "bytes": 4934,
+      "sha256": "94754bed334566043a8d11bc0cbe6ceff070908d1404575cedcf2d5e9020984c"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/build_constructor_index_publication_v1.py",
+      "bytes": 11956,
+      "sha256": "b4bce7f7be3200233b89f9f8be1931fc92994721ac50fff3aa875448fc9f3936"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/build_constructor_index_publication_v2.py",
+      "bytes": 12131,
+      "sha256": "487f3e24f62deedc8a3a6395d8a05165f38b448bf6f8a72e0f69699e60403d11"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/build_first_actual_publication_v2.py",
+      "bytes": 9854,
+      "sha256": "8b87e9aeb6059b3ee0e0ba90ea9f89ecd8a359a6bfb2bd8bf8cef663ca73b849"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/census_completed_constructor_index_case_v1.py",
+      "bytes": 1787,
+      "sha256": "8d8b5b6c533dc39192d2f0799a9dd826d32cce275e280ccd749f33cccd3a3a4b"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/census_completed_constructor_index_case_v2.py",
+      "bytes": 1787,
+      "sha256": "82b2f269a9a20a322c5ab75f71e5ae9aafad9269bd253574d9daa48d31929663"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/census_completed_point_frame_case_v1.py",
+      "bytes": 1767,
+      "sha256": "c0ef45c58320e4719416f83aca19447396bd311971096c6206025267e95402d5"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/cohort-publication-v1/point-proof-cohort-manifest-v1.json",
+      "bytes": 54090,
+      "sha256": "59c4294701e4d0a7bfde050cab88d03c75c9b6893de423a924fe4124e5424c1f"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/cohort-publication-v1/point-proof-search-v1.draft.html",
+      "bytes": 24454,
+      "sha256": "e32a1d854a1e2bd2dd59a00800d155c823d46b6ed1e12f6a129911fbac6bec7e"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/cohort-publication-v1/point-proof-search-v1.html",
+      "bytes": 24438,
+      "sha256": "6c53a834e84ffcc81db10c6eab70531187be001034ea0315b47ff67a18568baa"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/cohort-publication-v2/point-proof-cohort-data-v1.json",
+      "bytes": 12447,
+      "sha256": "fd61cab79e8af140294015db154775ae166cdcaed5313d868f3ee02346327fec"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/cohort-publication-v2/point-proof-cohort-manifest-v1.json",
+      "bytes": 55430,
+      "sha256": "9aa010a75e90ab0b4de215ae66475b6e5d5ffca4ba4d96c394a905ea7c4d2964"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/cohort-publication-v2/point-proof-search-v1.html",
+      "bytes": 24599,
+      "sha256": "cce73c39d169e6c56f052ab0826e47088181250d721a7119de9226e5facd5004"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-metadata-authoring-observation-v1.json",
+      "bytes": 949,
+      "sha256": "de043d534e92a49a12af831e730c31e8252e259abcc6ea1a120139298ee28459"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-packaging-authoring-observation-v1.json",
+      "bytes": 787,
+      "sha256": "bc584a06bd4f9507de47930004003116ff8af6ae0cf573a67c104de91db300ac"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-six-actuals-observation-v1.json",
+      "bytes": 17932,
+      "sha256": "0f4b096272db60f740900cc19da4c2b7b06e482fd158e725c72414bc1a48a009"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-study-Root-whole-prospective-acceptance-v1.json",
+      "bytes": 3436,
+      "sha256": "dfc0bd47daa84eeebcf7bd2fe9772d0571bc5111a3961d226f8f8c9d2cd1dc0e"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-study-Root-whole-prospective-acceptance-v2.json",
+      "bytes": 3745,
+      "sha256": "bcae52f6fee3968d6e17b1260cc2befd8e5a2fe9659394c5a4c5005c19e3802a"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-study-Root-whole-results-v1.json",
+      "bytes": 46013,
+      "sha256": "fd85804c628e25337e1ad0e8784d86e8db027c316e007bd40580802719f0da4b"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-study-preparation-v1.json",
+      "bytes": 8946,
+      "sha256": "a74133099f8b10552343d53365dc0e325568ff60670369c0346b0d3a4bb917df"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-study-preparation-v2.json",
+      "bytes": 8954,
+      "sha256": "8e320def229a248a08609d167446c29a3290b11a2113364160c9d70cc45e6475"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-0-Root-prospective-acceptance-v1.json",
+      "bytes": 2797,
+      "sha256": "e9106d1f44c814ce8d309f1e2332a4a6612dbbd1e0bee403a9f65c46b4eed37d"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-0-Root-prospective-acceptance-v2.json",
+      "bytes": 2798,
+      "sha256": "a35541cae0372c937507baa7bed2b39bf39304a991f64b3e28f99f85e51a6043"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-0-Root-whole-negative-disposition-v1.json",
+      "bytes": 2136,
+      "sha256": "a6c92dd5b16cbec771d38598b4d493712cbe42659a07bd74d83d201371a8e50f"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-0-Source-closure-v1.json",
+      "bytes": 32423,
+      "sha256": "242ce8d2389618dff7a7a769c8ffc5a0d6e6440b2892a89316c749f93372e261"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-0-Source-closure-v2.json",
+      "bytes": 35551,
+      "sha256": "bcee57a626811e40ecef4c7eb286db1dbd659d18e044900da9569436b6752748"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-0-all-tools-idle-barrier-v1.json",
+      "bytes": 926,
+      "sha256": "375033122d07c7468cd5862e284159dcc78046ac5803be15a99e9779f252afbf"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-0-all-tools-idle-barrier-v2.json",
+      "bytes": 927,
+      "sha256": "85fca5048258cc8d4e77bde86edc8975dc048f6ec72e6a4e0e99dd64f768b6a9"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-0-first-terminal-raw-census-v1.json",
+      "bytes": 4398,
+      "sha256": "27ff054b5d9555aca34dcb44a608508742f91489e961d11f1caeb852f2f390ee"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-0-first-terminal-raw-census-v2.json",
+      "bytes": 4745,
+      "sha256": "5170d97055970988591c9c3f638816e79187206cc18feda66513a894564bbd7c"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-0-grant-proposal-v1.json",
+      "bytes": 3294,
+      "sha256": "808039e5c2b7e42cc72b2472e20e87cc06e4c518ee7ecdf48f8ad67a1fe74844"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-0-grant-proposal-v2.json",
+      "bytes": 3301,
+      "sha256": "7ab853cbe10cbbbe777503cc808e63e23902a3c6e45edadf900500f3d50b8a13"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-1-Root-prospective-acceptance-v2.json",
+      "bytes": 2798,
+      "sha256": "42c60c3172f4d5431ed4f9e07ee9877952cae8c33eed073699cdba820e2e7a70"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-1-Source-closure-v1.json",
+      "bytes": 32423,
+      "sha256": "0cc1444ee49cb77634aa3489104f60048bc019f5c6335b3ed89810eea320d210"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-1-Source-closure-v2.json",
+      "bytes": 35551,
+      "sha256": "5e3a32b2a4c5d36e005e8e911ae81590654722debe9a8892f4f319541ace470f"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-1-all-tools-idle-barrier-v2.json",
+      "bytes": 927,
+      "sha256": "378d9b7350c07a0afd7999e38ad9a40ae3c12ea55fb20e2dddee6b88a26ca688"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-1-first-terminal-raw-census-v2.json",
+      "bytes": 4398,
+      "sha256": "55733bdc5320751941673ce3eb4f47d872de731227043cfe32ab5277a70d98df"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-1-grant-proposal-v1.json",
+      "bytes": 3294,
+      "sha256": "1858426cda0ccffd05804a1f1b5047fabb9f613e8a17fc2a72225411b09dba3d"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-1-grant-proposal-v2.json",
+      "bytes": 3301,
+      "sha256": "cf837d8031beb33a6d7eb83a8f9a5134c422c0aff83ed9455e9a545476c89f02"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-2-Root-prospective-acceptance-v2.json",
+      "bytes": 2798,
+      "sha256": "cd6103047d72260d75161081e15af2f702a5d22f337d7e4284f20f3a8863c5e0"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-2-Source-closure-v1.json",
+      "bytes": 32423,
+      "sha256": "99fddbac929be7759af3664c83092f48ffd295ab9a2b307e779839c89f4bc538"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-2-Source-closure-v2.json",
+      "bytes": 35551,
+      "sha256": "125b22b5d94fe7ba67911083d74948bd0d30a6947a17017756c4e465216ad73a"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-2-all-tools-idle-barrier-v2.json",
+      "bytes": 927,
+      "sha256": "e125bcde6c93b5e4e3e4d7df38d6058bd46ccc53a33e771bd3b9163d3d75b323"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-2-first-terminal-raw-census-v2.json",
+      "bytes": 4398,
+      "sha256": "e3048816d727c3e7cfc78983a960cce6a14b26b15981a4799d9ec1d4616dcc4a"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-2-grant-proposal-v1.json",
+      "bytes": 3294,
+      "sha256": "c79fffa2c19bd52aba835dd85288b3b99cf854733da64ecc7a495599828e50ff"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-2-grant-proposal-v2.json",
+      "bytes": 3301,
+      "sha256": "85574ed2ababae67946a525e7b7d9811b9a4cb7d9bfa61eedbeee8cff0b6d5ac"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-3-Root-prospective-acceptance-v2.json",
+      "bytes": 2798,
+      "sha256": "aa2df4ef1b4593c28d8071e4abb911b6ae27be31144a95b7b25c55cc70c810eb"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-3-Source-closure-v1.json",
+      "bytes": 32423,
+      "sha256": "e3ae409d4af9cf1c3dd85af5a246ae90c8c8db46a0d167bc0c9f91f34e03b3be"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-3-Source-closure-v2.json",
+      "bytes": 35551,
+      "sha256": "8bd43f97b7a31df54322ae6a680a675242310af176463ba360fd0d1988ceff85"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-3-all-tools-idle-barrier-v2.json",
+      "bytes": 927,
+      "sha256": "0847dfce3a0b2194b821d85afc55208293c0cc0d743ba1ebd75849df4dadca84"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-3-first-terminal-raw-census-v2.json",
+      "bytes": 4398,
+      "sha256": "03b98379e3eaadbb44f1dc5c993cffd08bd90ccefef9affda4ca4fcf99769bde"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-3-grant-proposal-v1.json",
+      "bytes": 3294,
+      "sha256": "ae4545be2a1c8239e5abe827d8c2dbcc11251ca7d89738707f23971ae9697cd4"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-3-grant-proposal-v2.json",
+      "bytes": 3301,
+      "sha256": "6d25df2478c42baf833d81fa01fe07a892da490883381559fa24fc30838b1962"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-4-Root-prospective-acceptance-v2.json",
+      "bytes": 2798,
+      "sha256": "ca8e2054fbd4be9bc09803055c5f1bd4203853b9bee235021d2ca92c6e60889c"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-4-Source-closure-v1.json",
+      "bytes": 32423,
+      "sha256": "0faa193ecd1ac53a6c18f5b6c1850e20fc85dc3be3b9f182bdd5541fdd278fe0"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-4-Source-closure-v2.json",
+      "bytes": 35551,
+      "sha256": "889d0cf127094f9a7e06010ad32ef6617d9ca66d13adc1248fdee32a2b41ff75"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-4-all-tools-idle-barrier-v2.json",
+      "bytes": 927,
+      "sha256": "d997df582cb2341b50b10e5aafe5efac69fbabfd551c1bfc060c438faafcda03"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-4-first-terminal-raw-census-v2.json",
+      "bytes": 4400,
+      "sha256": "bcadaf8391a3aa03f9a78951e05f2ddf8ef1b4e1ca5a221f7b7036d23e5495ab"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-4-grant-proposal-v1.json",
+      "bytes": 3294,
+      "sha256": "283d9b1aa999cef9ce8c93869cccb21809671f33520e7591ba7fee2f71843175"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-4-grant-proposal-v2.json",
+      "bytes": 3301,
+      "sha256": "99d9983e0fcb86df495e8cf4362f751397d1fc5c8d39ef92333f11da5a6fc8a6"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-5-Root-prospective-acceptance-v2.json",
+      "bytes": 2798,
+      "sha256": "f166828ca4eb84a71df94b46fe4cd86a01e52a656300ce0c9a779c5987533f00"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-5-Source-closure-v1.json",
+      "bytes": 32423,
+      "sha256": "27aabeb9cc950b49069c615065376e519f482e880241ce63024e11a49de4ffb5"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-5-Source-closure-v2.json",
+      "bytes": 35551,
+      "sha256": "819684c6bae5db7f4463f72742e9a78b875ffb4ce10cbae74145bdb3b85192b8"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-5-all-tools-idle-barrier-v2.json",
+      "bytes": 927,
+      "sha256": "a00c7486218da002da6f479cdf28034364331c71707b9470b4b9e98b0384291e"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-5-first-terminal-raw-census-v2.json",
+      "bytes": 4398,
+      "sha256": "f329ccde9d55cc0df5429d760dcf6cccdca9ea4eff92b602ed790d3e0257b467"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-5-grant-proposal-v1.json",
+      "bytes": 3294,
+      "sha256": "bd9fe6a4ea2deb907901f2bce8a5122ca4cbe9b395d83c564d52e1c0f41ab182"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-5-grant-proposal-v2.json",
+      "bytes": 3301,
+      "sha256": "9cc4e5aa48df4e3812d5074d2c6c76f5089d49efd0a4cb271bb24b95dcdab476"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-v2-target0-owned-process-terminal-observation-v1.json",
+      "bytes": 623,
+      "sha256": "208e6eb77ce3f033b7645284d8078882c09e65ec7a99ca765c3ac3a9179fc0c7"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-v3-Root-whole-batch-disposition-v1.json",
+      "bytes": 2611,
+      "sha256": "e13df5c214b5af49543fb7cb94c772896612cde84b950661d218595af59d2973"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-v3-six-owned-process-terminal-observation-v1.json",
+      "bytes": 4135,
+      "sha256": "833e8be8846742f27d2ccea09638ebefa203ef8768df12ecd71e817f104ac798"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-v3-target-0-Root-whole-disposition-v1.json",
+      "bytes": 3907,
+      "sha256": "146b77b314fdf8ec5be25720ffe2073646e4049cda93b52b772b6cb259e93157"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-v3-target-1-Root-whole-disposition-v1.json",
+      "bytes": 1983,
+      "sha256": "422b706194584c7e008355597a37d15ce55c34356c195316169008755906d26a"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-v3-target-2-Root-whole-disposition-v1.json",
+      "bytes": 1991,
+      "sha256": "019e3d59a1ae422f3b8a7666fb3cad5673059215c3f39471bc41097888716f09"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-v3-target-3-Root-whole-disposition-v1.json",
+      "bytes": 1988,
+      "sha256": "cde279606ffeff4bf6535e25613a99f84be4da57e0f5fb07ffaf6c1e79effcd4"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-v3-target-4-Root-whole-disposition-v1.json",
+      "bytes": 2008,
+      "sha256": "51f5aef0142eb3766ab3a0156f730b388d839bb99252caabc4129d281a69a91a"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-v3-target-5-Root-whole-disposition-v1.json",
+      "bytes": 1993,
+      "sha256": "129ed490c07134dd5b49757617c6d081c0252b556082ab9120defb8ae44cb89c"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-whole-protocol-v1.json",
+      "bytes": 26517,
+      "sha256": "773b906a8848706bf0beb47e12628c63f671785e02deb3fdc866ba1d748b09a9"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-whole-protocol-v2.json",
+      "bytes": 26841,
+      "sha256": "bec4cf0c6f83ecfeff3aa60ee4dc728db87f0b2c8767c8c4874f70acda1721bd"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/explicit-point-kernel-source-handoff-v2.json",
+      "bytes": 1673,
+      "sha256": "2ed1663f9f68fa0d1dd423cfc2320ce146aac330557777376b86b74c45ec8b3e"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/explicit_point_kernel_v2.py",
+      "bytes": 29002,
+      "sha256": "158174c8445997bedf5b17785840eb7a89dcd4d46098fcdfb35a84e2fef3849c"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/first-actual-publication-v1/point-proof-search-v1.draft.html",
+      "bytes": 20407,
+      "sha256": "f6de8384a875b96d38d797e3a333ae1d41e79d22196d0db16bfdd11ab7eaac7d"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/first-actual-publication-v2/point-proof-first-actual-data-v1.json",
+      "bytes": 35810,
+      "sha256": "fb804f6170356fb7b8b77c6c523dd2f9703af62155d1f5dee435276f3ae45a90"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/first-actual-publication-v2/point-proof-first-actual-manifest-v1.json",
+      "bytes": 25897,
+      "sha256": "e7185c75c320d930e9f8423fcdf4e82d7db2893eeb4b2fca3fb06879c3b1edca"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/first-actual-publication-v2/point-proof-search-v1.draft-v2.html",
+      "bytes": 20765,
+      "sha256": "adc81d9eb277a8e1f5097fe20046de21148ea78ef8d1af20a799dadb098757ce"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/fpc_point_frame_controller_v1.py",
+      "bytes": 27604,
+      "sha256": "e9198683dc830e0080fefde997e81adbcf5963c2671688b491c99bfde3ea9d61"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/full-frame-point-controller-public-binding-v1.json",
+      "bytes": 9726,
+      "sha256": "d8b17814cecfda54af4969673a0cb398d34dd6171e4d51b944235f3ebd2839ff"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/grants/point-frame-constructor-index-v2-target-0.json",
+      "bytes": 3522,
+      "sha256": "6d9944af9f28f1ba084fc69b50925ac96bbe353df8ebf07fa422c611129fabfa"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/grants/point-frame-constructor-index-v3-target-0.json",
+      "bytes": 3529,
+      "sha256": "0992bef0d7304b2f16ee29db9b9ef90a980ea6c236713a8f03f526fcd4bd0269"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/grants/point-frame-constructor-index-v3-target-1.json",
+      "bytes": 3529,
+      "sha256": "f3f6efccacf4dc1197c1fcefabfeaf621c4af659c327e2a0762e46bda993cebb"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/grants/point-frame-constructor-index-v3-target-2.json",
+      "bytes": 3529,
+      "sha256": "5b763cce8a9fec5f738f615d1808fc7bcc7155d58b54bd6d1c02c3ab67d1f7bf"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/grants/point-frame-constructor-index-v3-target-3.json",
+      "bytes": 3529,
+      "sha256": "0baa2f1c14f3ea178f1c94379eb7cea5a1eca48b701da095f359ac09e5513749"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/grants/point-frame-constructor-index-v3-target-4.json",
+      "bytes": 3529,
+      "sha256": "9af16ebee9b77f7a3f3ff3142ce9453946aeb9403177227fe0f8ef448e3eb787"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/grants/point-frame-constructor-index-v3-target-5.json",
+      "bytes": 3529,
+      "sha256": "ce20b3449d0bae1ef09a4514372dba677e99b40c9fa2e63acaeb9a1242e9df99"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/grants/point-frame-full-FPC-v1-target-0.json",
+      "bytes": 3151,
+      "sha256": "63fd1ced8ee1957d85b503158f1e038a1f082219411b46bbe554c5648d92ab53"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/grants/point-frame-full-FPC-v1-target-1.json",
+      "bytes": 3438,
+      "sha256": "af5181d509817a9e048478bfa22b17b3868f5b1b85f93aaae63451dcdafcda4b"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/grants/point-frame-full-FPC-v1-target-2.json",
+      "bytes": 3438,
+      "sha256": "5fab47792e260bbf18112c5e3b20a10bf995eab90ff994b47e905f62db480bb5"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/grants/point-frame-full-FPC-v1-target-3.json",
+      "bytes": 3438,
+      "sha256": "4dba08034b631f17452ae356ea78ca41a07e5aa72798572cfc72af97416441a9"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/grants/point-frame-full-FPC-v1-target-4.json",
+      "bytes": 3438,
+      "sha256": "8b97f3cd7570ce966a32349cf2ddad8cd4208b7cf60e3ab904b453faf3d0b265"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/grants/point-frame-full-FPC-v1-target-5.json",
+      "bytes": 3438,
+      "sha256": "3dc58ddf293d2b9ae0b66ed752345d326d116911be692b9395305eb5dff81b05"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/issue_constructor_index_case_grant_v1.py",
+      "bytes": 5815,
+      "sha256": "bf5978a1665702cc631e0c662592628159b89f8411c47345dcac89bf5606824e"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/issue_constructor_index_case_grant_v2.py",
+      "bytes": 5815,
+      "sha256": "16b08e7a5ec1d72494cf419e6b33869caceba3f065c818c8fd92003930ecd276"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/plans/point-frame-constructor-index-v2-target-0.json",
+      "bytes": 50744,
+      "sha256": "e42f5564f714f9788823ddcff68fd2edf84e8053231ececdefa145b1db942fdf"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/plans/point-frame-constructor-index-v2-target-1.json",
+      "bytes": 50742,
+      "sha256": "b0a63857781d65ea03c0c2ec5dfd51ee51b73f55ea42d3724229bda2b66bd226"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/plans/point-frame-constructor-index-v2-target-2.json",
+      "bytes": 50750,
+      "sha256": "80804045710d5668bbd70a357423afcee321716b5bbcbbba99833c0b144e9d6b"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/plans/point-frame-constructor-index-v2-target-3.json",
+      "bytes": 50747,
+      "sha256": "2982b15796cdf424acf281f14bee68ffff4e4ac735fbb72965f5cbdcddba1f77"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/plans/point-frame-constructor-index-v2-target-4.json",
+      "bytes": 50768,
+      "sha256": "1b133af73f905dd3f0e545f7bfad3f9dfda7f40c5d4e4435872431a5f29937ad"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/plans/point-frame-constructor-index-v2-target-5.json",
+      "bytes": 50752,
+      "sha256": "d414d4eedb8c8e38f8682d97afbe786f61ff62960a1545916dd8b88281a04976"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/plans/point-frame-constructor-index-v3-target-0.json",
+      "bytes": 53872,
+      "sha256": "5a1b1935c952b31adad4e8541019ed0cbd8b7945e2f3aab86155d58b8034a883"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/plans/point-frame-constructor-index-v3-target-1.json",
+      "bytes": 53870,
+      "sha256": "990487443fcee1e7f224b144397faf8377100f7a3b4feb1ae6dfb190d0b01374"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/plans/point-frame-constructor-index-v3-target-2.json",
+      "bytes": 53878,
+      "sha256": "5eaca0dd86e4054b15d90b402626d820056f09f69e5045872f96aead6658c5a5"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/plans/point-frame-constructor-index-v3-target-3.json",
+      "bytes": 53875,
+      "sha256": "f458d5eeea67c162f36229e4fb5370c798b13c7975b8e25bc81c2b204664910c"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/plans/point-frame-constructor-index-v3-target-4.json",
+      "bytes": 53896,
+      "sha256": "665fe664b3377c378c56527f1a1b4a5a5f974ed21e99735f435319145262a083"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/plans/point-frame-constructor-index-v3-target-5.json",
+      "bytes": 53880,
+      "sha256": "2b515719488448097feaf039db3a8d1caddeef7f97b6c451dc4ef436e08eda38"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/plans/point-frame-full-FPC-v1-target-0.json",
+      "bytes": 39965,
+      "sha256": "28186a111085a1e27491eb0d394106590d56589c773ef600a9355472c635c881"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/plans/point-frame-full-FPC-v1-target-1.json",
+      "bytes": 39963,
+      "sha256": "d86ba4eed9e4f83d19342a09feaa5ad747835a59def41cd3dd0d4ac365df3941"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/plans/point-frame-full-FPC-v1-target-2.json",
+      "bytes": 39971,
+      "sha256": "abbf2cee382d2660c6393814fbbf37c8b3e97b0752d6ac18177245a3d8ec656f"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/plans/point-frame-full-FPC-v1-target-3.json",
+      "bytes": 39968,
+      "sha256": "42e0d0820b450c5ad5c869ba695475203e3d9b70d1c90bbedcd95403a4442a40"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/plans/point-frame-full-FPC-v1-target-4.json",
+      "bytes": 39989,
+      "sha256": "8a78cbf54c55750ada06d40b3dfb0aab081ef76965263a0c6ab351356bb47489"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/plans/point-frame-full-FPC-v1-target-5.json",
+      "bytes": 39973,
+      "sha256": "4f218e16d18f7c096980bf4d77bbea3a10a40c0f8e739340db4b4184e6b07b3a"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/point-frame-provider-v4-r2-Root-component-Source-acceptance-v1.json",
+      "bytes": 3059,
+      "sha256": "1d5d89096ca01e31fb4bb9122cd8c95bd1446f8b612afd36d28d7345e843f0ce"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/point-frame-target-0-Root-prospective-acceptance-v1.json",
+      "bytes": 5498,
+      "sha256": "9e4b4e49da03bea972dfc32c39ff78c691e70f28f34798bb93d4e112603ae6c9"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/point-frame-target-0-Root-saved-group-census-v1.json",
+      "bytes": 1725,
+      "sha256": "e331e921fccb83b2ac90ca65315ad1b655837abbdca332400f1cfa86d136b403"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/point-frame-target-0-Root-whole-disposition-v1.json",
+      "bytes": 3930,
+      "sha256": "aeaa7185d6b1e13e5c025bfa79942ac7794ecd707e40b04e7f680c81d689113a"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/point-frame-target-0-all-tools-idle-barrier-v1.json",
+      "bytes": 1450,
+      "sha256": "ce99fc2a4c072fe3623e3d0e867d1a9a5275f8518669ca7a17362a637b07a1ee"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/point-frame-target-0-first-terminal-raw-census-v1.json",
+      "bytes": 4793,
+      "sha256": "84670c1c99aaec8d19fcd66eb076d3df7a9d80f24d6ef1a42b4d665e1dc42e41"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/point-frame-target-0-grant-proposal-v1.json",
+      "bytes": 3091,
+      "sha256": "5f7974328d3bee47828ebad154c4c5dd5b50e543f4033d4be6e5069c4da60217"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/point-frame-target-1-Root-prospective-acceptance-v1.json",
+      "bytes": 3119,
+      "sha256": "e75f65858a87c79dfa2caf3459a5e83bf7652d7ae82633743dcc98d7acaa2603"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/point-frame-target-1-Root-whole-negative-disposition-v1.json",
+      "bytes": 4282,
+      "sha256": "a558c6a31fb612d96aa15e82c6a25d5505374dabb6cebe6ba7ff8eb5e033e2fd"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/point-frame-target-1-Source-closure-v1.json",
+      "bytes": 23414,
+      "sha256": "e2cdec03123b52f86995a4b2364c4ffb3e648a292efa12840be3c9e6b988135a"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/point-frame-target-1-all-tools-idle-barrier-v1.json",
+      "bytes": 1062,
+      "sha256": "2ed42d7b0ee80be6d5ab398e155c5ee77cad626b049c83f1310e8a55e703a84c"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/point-frame-target-1-first-terminal-raw-census-v1.json",
+      "bytes": 4281,
+      "sha256": "5e4c4d724d494482f6a954a88bcfc91f6fd1e0dcfee19640e82faf8b3b349231"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/point-frame-target-1-grant-proposal-v1.json",
+      "bytes": 3141,
+      "sha256": "a9bce4480240f42d6d79443e8f6d3f187c819112d9db938f94a21be4ddc22094"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/point-frame-target-2-Root-prospective-acceptance-v1.json",
+      "bytes": 3119,
+      "sha256": "706c21b08f7d88b28071a139a2ec89175a5267c70dacb1c5f6a7506e1eacc17d"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/point-frame-target-2-Root-whole-negative-disposition-v1.json",
+      "bytes": 4291,
+      "sha256": "35d8d28bde34369875477fa37a4dbb2455a95f653f25e8c5e848817d10044edb"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/point-frame-target-2-Source-closure-v1.json",
+      "bytes": 23414,
+      "sha256": "ace3c97f8f30617de35a43c2f52f8c6bbca4bb5ae12ae366d9db619ef8b7a868"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/point-frame-target-2-all-tools-idle-barrier-v1.json",
+      "bytes": 1062,
+      "sha256": "28f739480594026f95867b7258805d9f51940e6a793ce734567720fe2f7470b9"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/point-frame-target-2-first-terminal-raw-census-v1.json",
+      "bytes": 4281,
+      "sha256": "a9753981456cba40a229aeee1753c388ca8a4e6b7f21e5b228e91bd151305ce1"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/point-frame-target-2-grant-proposal-v1.json",
+      "bytes": 3141,
+      "sha256": "5b90ff28dfd916e41e6b6c741184faf85b76b9c48416fe72b421ec695a6a797d"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/point-frame-target-3-Root-prospective-acceptance-v1.json",
+      "bytes": 3119,
+      "sha256": "f828660e891bd7c592b4e76db73c1822a2a31329519f2c87e44aac17bcda2a51"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/point-frame-target-3-Root-whole-negative-disposition-v1.json",
+      "bytes": 4288,
+      "sha256": "5fe953d0e930f7e3a0212c3b60208c603259d56119bdd6f44f1dc1c141bc0be8"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/point-frame-target-3-Source-closure-v1.json",
+      "bytes": 23414,
+      "sha256": "426319ca5ad58dfe4f2aa62ad4ea9c94cdc6d8e751b248b1891bfcc74d7959a3"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/point-frame-target-3-all-tools-idle-barrier-v1.json",
+      "bytes": 1062,
+      "sha256": "ba0d2363bb65ebcccdcf51e8954b2d92890a72b4c79bcee49f840d3c8c8338fa"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/point-frame-target-3-first-terminal-raw-census-v1.json",
+      "bytes": 4281,
+      "sha256": "92563f4aae5a40762f29949a1137fea79daefc7e864691cd87d2cc9967e1932a"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/point-frame-target-3-grant-proposal-v1.json",
+      "bytes": 3141,
+      "sha256": "9e57325108760c4f2efab63596915b0a1d26235116cbfefe488e8648ddc3fe1d"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/point-frame-target-4-Root-prospective-acceptance-v1.json",
+      "bytes": 3119,
+      "sha256": "a36c43330c30419915aca0ee7ef9d2419854363008e59e8671f9aa8ee3839ef8"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/point-frame-target-4-Root-whole-negative-disposition-v1.json",
+      "bytes": 4308,
+      "sha256": "c645305941e41af4502fa31fb04864b772a1f9f47d1fc0646bcf742d870d4839"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/point-frame-target-4-Source-closure-v1.json",
+      "bytes": 23414,
+      "sha256": "e475201ca92c73db0d3be070af326f74d75c698c91c2c6c6fbdec9e1a2a4bd8f"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/point-frame-target-4-all-tools-idle-barrier-v1.json",
+      "bytes": 1062,
+      "sha256": "ea6a6891e7cddcbe1f9475f64c28a629ea25072da5ff5f9f038343d46018fcef"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/point-frame-target-4-first-terminal-raw-census-v1.json",
+      "bytes": 4282,
+      "sha256": "213d81984feec433b2b061521f04390a78d8151e53e0c0ff6c2ff53f248a5d7b"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/point-frame-target-4-grant-proposal-v1.json",
+      "bytes": 3141,
+      "sha256": "0e33819d4bafb6c555313fb872ddecdbdb214a611699c1f475624a949740938b"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/point-frame-target-5-Root-prospective-acceptance-v1.json",
+      "bytes": 3119,
+      "sha256": "280f05e945052404932af392d7229de4c25d02705a0a6e84f550eb8082027aa0"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/point-frame-target-5-Root-whole-negative-disposition-v1.json",
+      "bytes": 4292,
+      "sha256": "18f45771e49c84d3ce291247caa8dd1faecad8d314a6506166b9afb931ae5115"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/point-frame-target-5-Source-closure-v1.json",
+      "bytes": 23414,
+      "sha256": "9810a3499117550be227d234a768d04acbdcdc2242095b2e471190fc6f11f228"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/point-frame-target-5-all-tools-idle-barrier-v1.json",
+      "bytes": 1062,
+      "sha256": "e06477a9da95fe4c9ff8d1d7c57c124285ecf6f4419ab80c6c1bdf56c7f25c25"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/point-frame-target-5-first-terminal-raw-census-v1.json",
+      "bytes": 4281,
+      "sha256": "39c68a57255ad547336cec6a477339841c494cf77953190c76cd2d3413b63972"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/point-frame-target-5-grant-proposal-v1.json",
+      "bytes": 3141,
+      "sha256": "3ddb2df2186e819391cfba6215d3d26c4556bf43e2363199c05555b5746c88ea"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/point-frame-whole-Source-closure-v1.json",
+      "bytes": 23414,
+      "sha256": "e0392007588cae83315a92a82048e8c3974f40b777005bbf24e6f84f35003ab2"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/point-frame-whole-preparation-v1.json",
+      "bytes": 2451,
+      "sha256": "ca88ca44401b5ce811a51813ba3cdfbdd3d70c84079c3234c7910a83066a19ae"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/point-frame-whole-protocol-v1.json",
+      "bytes": 23637,
+      "sha256": "aac9ee1421dbf7e5e3ee5aaf32aebf09a21ba88dcf3f0c8548a4b9d08c988b38"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/point-frame-worker-metadata-directive-v1.json",
+      "bytes": 2479,
+      "sha256": "44d14ce57d9465ef81405a8f7966f8e48e921dc9bbe87d5028a6f44c31fec513"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/point-proof-new-model-selection-v1.json",
+      "bytes": 1882,
+      "sha256": "c6302fe0d8ed03366a64f768e145ee5a48fc12a9935e482de8c41fbd06ea9ac0"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/point-proof-search-integration-decision-v1.json",
+      "bytes": 9908,
+      "sha256": "200371623902ba7ea0f76853811c8d74ac8665f096e3878fc5c2e5c9e5a63905"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/prepare_constructor_index_study_metadata_v1.py",
+      "bytes": 12317,
+      "sha256": "0300de845b5997b8546475ccc05e5bb68dfb2ad15ca5b20f78d19462f633c791"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/prepare_constructor_index_study_metadata_v2.py",
+      "bytes": 12634,
+      "sha256": "257a82b5b67da7b021c1304121518bef78766761f5e42d08640035a80584ea90"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/prepare_point_frame_once_metadata_v1.py",
+      "bytes": 14484,
+      "sha256": "0db16e0e8abdab4497c36844f56292c85d958521b7c4c04c882336c98e505245"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/prepare_reviewed_point_frame_case_grant_v1.py",
+      "bytes": 5476,
+      "sha256": "1c10c5740d38ae1c2b0d05964b4e7f2af7fed043d63653288e97517a4ccc0f0e"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/remaining-five-Root-whole-negative-batch-disposition-v1.json",
+      "bytes": 2318,
+      "sha256": "fa22491603e42378c24061c8cf8ce39d88c1e902609a37ba81fc521deba7785b"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/remaining-five-complete-terminal-observations-v1.json",
+      "bytes": 38047,
+      "sha256": "65d2cdb46d02f4dae0e9973166a3dd47b31d0e9fd1d9c6043918d01864ed0541"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/remaining-five-prospective-batch-Root-acceptance-v1.json",
+      "bytes": 7734,
+      "sha256": "922a311edcfe474b5e7515255a9872b3b023743d44d4920c932c72917e4310e5"
+    }
+  ],
+  "external_runtime": [
+    {
+      "bytes": 18058560,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+      "sha256": "b6ea0c2a9bfce48dbf181a53f1ca4f0562d40658b85bf47258e2a88d8f9e3933"
+    }
+  ],
+  "raw_member_count": 469,
+  "raw_member_bytes": 14342975,
+  "public_page": {
+    "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-publication-v2/point-proof-search-v1.html",
+    "bytes": 30058,
+    "sha256": "511db21cf3a32d08e4a3b9429d0b35d1f820e5497ccbb93b213437da327a6e48"
+  },
+  "public_status": {
+    "path": "research-runs/gcts-point-proof-search-20261022/root/constructor-index-publication-v2/point-proof-constructor-index-data-v1.json",
+    "bytes": 46013,
+    "sha256": "fd85804c628e25337e1ad0e8784d86e8db027c316e007bd40580802719f0da4b"
+  },
+  "scientific_imports_calls": 0,
+  "scope": "Selected complete original cohort, failed carrier attempt and corrected new study; current and historical Source/reviews retain their original scope. External runtime pinned, not bundled."
+}

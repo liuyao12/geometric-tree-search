@@ -1,0 +1,968 @@
+{
+  "schema": "GCTS-point-proof-constructor-index-study-result-v1",
+  "date": "2026-10-22",
+  "whole_actual_review_accepted": true,
+  "summary": "Structural indexing rediscovered the same elementary reflexivity proof. The five harder arithmetic and incidence targets again reached the work deadline.",
+  "interpretation": "Indexing did not enlarge the solved set within these budgets. The repeated elementary certificate and identical controller metrics establish no improvement on that control. Practical proof search and a GCTS or RL advantage remain unestablished.",
+  "cases": [
+    {
+      "case_id": "point-frame-constructor-index-v3-target-0",
+      "target_index": 0,
+      "target_id": "PA-reflexivity",
+      "display_name": "Reflexivity",
+      "goal_latex": "\\(\\forall x\\,(x=x)\\)",
+      "whole_observer_elapsed_seconds": 10.267159999988507,
+      "callbacks": 13479062,
+      "qualification_complete": true,
+      "admitted": true,
+      "status": "ADMITTED_FINITE_PROOF",
+      "qualified_whole_peak_bytes": 165265408,
+      "controls_qualified": true,
+      "scoped_control_groups": 176,
+      "C_actual_review": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/review-C/typed-constructor-index-v3-target-0-complete-actual-review-v1.json",
+        "bytes": 93216,
+        "sha256": "81fdcc57a9ccfab59e4ec8b30a73f80e330e00fde48bb24fdde6d21ba686eaf4"
+      },
+      "Root_disposition": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-v3-target-0-Root-whole-disposition-v1.json",
+        "bytes": 3907,
+        "sha256": "146b77b314fdf8ec5be25720ffe2073646e4049cda93b52b772b6cb259e93157"
+      },
+      "proof": [
+        {
+          "formula": [
+            "eq",
+            [
+              "var",
+              0
+            ],
+            [
+              "var",
+              0
+            ]
+          ],
+          "references": [],
+          "row": 0,
+          "rule_tag": 1,
+          "subtag": 6,
+          "witness": [
+            [
+              "var",
+              0
+            ]
+          ]
+        },
+        {
+          "formula": [
+            "eq",
+            [
+              "var",
+              0
+            ],
+            [
+              "var",
+              0
+            ]
+          ],
+          "references": [],
+          "row": 1,
+          "rule_tag": 1,
+          "subtag": 6,
+          "witness": [
+            [
+              "var",
+              0
+            ]
+          ]
+        },
+        {
+          "formula": [
+            "all",
+            0,
+            [
+              "eq",
+              [
+                "var",
+                0
+              ],
+              [
+                "var",
+                0
+              ]
+            ]
+          ],
+          "references": [
+            [
+              0,
+              [
+                "eq",
+                [
+                  "var",
+                  0
+                ],
+                [
+                  "var",
+                  0
+                ]
+              ]
+            ]
+          ],
+          "row": 2,
+          "rule_tag": 4,
+          "subtag": null,
+          "witness": [
+            0,
+            0
+          ]
+        }
+      ],
+      "query": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-0/target-query.bin",
+        "bytes": 21,
+        "sha256": "c1c45a289cba90663e4296d2530ae80649b714f51fd54adfa3d211486567a64d"
+      },
+      "certificate": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-0/candidate-certificate.bin",
+        "bytes": 33,
+        "sha256": "116c31813cba90ba9ffec2eabc88a1cbed6158b4b8ae296a9d01fd41115598b5"
+      },
+      "search_metrics": {
+        "callbacks": 216253,
+        "frame_atomic_steps": 7380,
+        "frame_runs": 97,
+        "frames_exhausted": 17,
+        "frames_fuel_limited": 79,
+        "max_frontier": 3,
+        "max_path_depth": 3,
+        "rounds_completed": 13,
+        "sum_frame_limits": 32497
+      },
+      "positive_payloads": null
+    },
+    {
+      "case_id": "point-frame-constructor-index-v3-target-1",
+      "target_index": 1,
+      "target_id": "PA-zero-left",
+      "display_name": "Left zero",
+      "goal_latex": "\\(\\forall x\\,(0+x=x)\\)",
+      "whole_observer_elapsed_seconds": 160.46307937501115,
+      "callbacks": 206799385,
+      "qualification_complete": false,
+      "admitted": false,
+      "status": "FAILED_CASE_NOT_ADMITTED",
+      "qualified_whole_peak_bytes": null,
+      "controls_qualified": false,
+      "scoped_control_groups": null,
+      "C_actual_review": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/review-C/typed-constructor-index-v3-target-1-complete-negative-actual-review-v1.json",
+        "bytes": 58352,
+        "sha256": "03800efa6348e682372fe2a6d98972a089b80c62af04fb0969542eda36c58793"
+      },
+      "Root_disposition": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-v3-target-1-Root-whole-disposition-v1.json",
+        "bytes": 1983,
+        "sha256": "422b706194584c7e008355597a37d15ce55c34356c195316169008755906d26a"
+      },
+      "proof": null,
+      "query": null,
+      "certificate": null,
+      "search_metrics": null,
+      "positive_payloads": {
+        "qualification_result": null,
+        "input_freeze": null,
+        "search_result": null,
+        "subject_receipt": null,
+        "reference_receipt": null,
+        "point_receipt": null,
+        "scientific_result": null
+      },
+      "cause": "absolute whole-work deadline",
+      "consumed": true,
+      "retry_authority": false
+    },
+    {
+      "case_id": "point-frame-constructor-index-v3-target-2",
+      "target_index": 2,
+      "target_id": "PA-addition-commutes",
+      "display_name": "Addition commutes",
+      "goal_latex": "\\(\\forall x\\forall y\\,(x+y=y+x)\\)",
+      "whole_observer_elapsed_seconds": 160.20607174999896,
+      "callbacks": 219434430,
+      "qualification_complete": false,
+      "admitted": false,
+      "status": "FAILED_CASE_NOT_ADMITTED",
+      "qualified_whole_peak_bytes": null,
+      "controls_qualified": false,
+      "scoped_control_groups": null,
+      "C_actual_review": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/review-C/typed-constructor-index-v3-target-2-complete-negative-actual-review-v1.json",
+        "bytes": 58026,
+        "sha256": "fcc15e86bcac0c1c2c1e8c6cae541babb7a0b1c0543ca9189665093d64d1ec76"
+      },
+      "Root_disposition": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-v3-target-2-Root-whole-disposition-v1.json",
+        "bytes": 1991,
+        "sha256": "019e3d59a1ae422f3b8a7666fb3cad5673059215c3f39471bc41097888716f09"
+      },
+      "proof": null,
+      "query": null,
+      "certificate": null,
+      "search_metrics": null,
+      "positive_payloads": {
+        "qualification_result": null,
+        "input_freeze": null,
+        "search_result": null,
+        "subject_receipt": null,
+        "reference_receipt": null,
+        "point_receipt": null,
+        "scientific_result": null
+      },
+      "cause": "absolute whole-work deadline",
+      "consumed": true,
+      "retry_authority": false
+    },
+    {
+      "case_id": "point-frame-constructor-index-v3-target-3",
+      "target_index": 3,
+      "target_id": "HI-point-not-line",
+      "display_name": "A point is not a line",
+      "goal_latex": "\\(\\forall p\\,(\\mathrm{Pt}(p)\\to\\neg\\mathrm{Ln}(p))\\)",
+      "whole_observer_elapsed_seconds": 160.25010483301594,
+      "callbacks": 213730479,
+      "qualification_complete": false,
+      "admitted": false,
+      "status": "FAILED_CASE_NOT_ADMITTED",
+      "qualified_whole_peak_bytes": null,
+      "controls_qualified": false,
+      "scoped_control_groups": null,
+      "C_actual_review": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/review-C/typed-constructor-index-v3-target-3-complete-negative-actual-review-v1.json",
+        "bytes": 58304,
+        "sha256": "5e7d0e3f4c578e91d4a55583b4427af8510e9c85737fd65afd9bc0030b7e212b"
+      },
+      "Root_disposition": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-v3-target-3-Root-whole-disposition-v1.json",
+        "bytes": 1988,
+        "sha256": "cde279606ffeff4bf6535e25613a99f84be4da57e0f5fb07ffaf6c1e79effcd4"
+      },
+      "proof": null,
+      "query": null,
+      "certificate": null,
+      "search_metrics": null,
+      "positive_payloads": {
+        "qualification_result": null,
+        "input_freeze": null,
+        "search_result": null,
+        "subject_receipt": null,
+        "reference_receipt": null,
+        "point_receipt": null,
+        "scientific_result": null
+      },
+      "cause": "absolute whole-work deadline",
+      "consumed": true,
+      "retry_authority": false
+    },
+    {
+      "case_id": "point-frame-constructor-index-v3-target-4",
+      "target_index": 4,
+      "target_id": "HI-distinct-lines-no-two-shared-points",
+      "display_name": "Distinct lines cannot share two distinct points",
+      "goal_latex": "\\(\\forall l\\forall m\\,((\\mathrm{Ln}(l)\\land\\mathrm{Ln}(m)\\land l\\ne m)\\to\\neg\\exists p\\exists q\\,(\\mathrm{Pt}(p)\\land\\mathrm{Pt}(q)\\land p\\ne q\\land I(p,l)\\land I(q,l)\\land I(p,m)\\land I(q,m)))\\)",
+      "whole_observer_elapsed_seconds": 160.1684541659779,
+      "callbacks": 209103901,
+      "qualification_complete": false,
+      "admitted": false,
+      "status": "FAILED_CASE_NOT_ADMITTED",
+      "qualified_whole_peak_bytes": null,
+      "controls_qualified": false,
+      "scoped_control_groups": null,
+      "C_actual_review": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/review-C/typed-constructor-index-v3-target-4-complete-negative-actual-review-v1.json",
+        "bytes": 57993,
+        "sha256": "294d44df9ecef4c686c0ccd349e92cec33bdf72f54ebdae47768fd6bc7c709e2"
+      },
+      "Root_disposition": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-v3-target-4-Root-whole-disposition-v1.json",
+        "bytes": 2008,
+        "sha256": "51f5aef0142eb3766ab3a0156f730b388d839bb99252caabc4129d281a69a91a"
+      },
+      "proof": null,
+      "query": null,
+      "certificate": null,
+      "search_metrics": null,
+      "positive_payloads": {
+        "qualification_result": null,
+        "input_freeze": null,
+        "search_result": null,
+        "subject_receipt": null,
+        "reference_receipt": null,
+        "point_receipt": null,
+        "scientific_result": null
+      },
+      "cause": "absolute whole-work deadline",
+      "consumed": true,
+      "retry_authority": false
+    },
+    {
+      "case_id": "point-frame-constructor-index-v3-target-5",
+      "target_index": 5,
+      "target_id": "HI-point-off-each-line",
+      "display_name": "Every line has a point off it",
+      "goal_latex": "\\(\\forall l\\,(\\mathrm{Ln}(l)\\to\\exists p\\,(\\mathrm{Pt}(p)\\land\\neg I(p,l)))\\)",
+      "whole_observer_elapsed_seconds": 160.16252187499776,
+      "callbacks": 218780934,
+      "qualification_complete": false,
+      "admitted": false,
+      "status": "FAILED_CASE_NOT_ADMITTED",
+      "qualified_whole_peak_bytes": null,
+      "controls_qualified": false,
+      "scoped_control_groups": null,
+      "C_actual_review": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/review-C/typed-constructor-index-v3-target-5-complete-negative-actual-review-v1.json",
+        "bytes": 58370,
+        "sha256": "b1a1389475806e41aebe00ba8a8dc09ba3f0ea897ae5c9e144debcdaa7d115c9"
+      },
+      "Root_disposition": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-v3-target-5-Root-whole-disposition-v1.json",
+        "bytes": 1993,
+        "sha256": "129ed490c07134dd5b49757617c6d081c0252b556082ab9120defb8ae44cb89c"
+      },
+      "proof": null,
+      "query": null,
+      "certificate": null,
+      "search_metrics": null,
+      "positive_payloads": {
+        "qualification_result": null,
+        "input_freeze": null,
+        "search_result": null,
+        "subject_receipt": null,
+        "reference_receipt": null,
+        "point_receipt": null,
+        "scientific_result": null
+      },
+      "cause": "absolute whole-work deadline",
+      "consumed": true,
+      "retry_authority": false
+    }
+  ],
+  "current_success": {
+    "whole_seconds": 10.267159999988507,
+    "whole_peak_bytes": 165265408,
+    "search_seconds": 0.15698224998777732,
+    "search_metrics": {
+      "callbacks": 216253,
+      "frame_atomic_steps": 7380,
+      "frame_runs": 97,
+      "frames_exhausted": 17,
+      "frames_fuel_limited": 79,
+      "max_frontier": 3,
+      "max_path_depth": 3,
+      "rounds_completed": 13,
+      "sum_frame_limits": 32497
+    },
+    "certificate": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/actual/point-frame-constructor-index-v3-target-0/candidate-certificate.bin",
+      "bytes": 33,
+      "sha256": "116c31813cba90ba9ffec2eabc88a1cbed6158b4b8ae296a9d01fd41115598b5"
+    },
+    "proof_rows": [
+      {
+        "formula": [
+          "eq",
+          [
+            "var",
+            0
+          ],
+          [
+            "var",
+            0
+          ]
+        ],
+        "references": [],
+        "row": 0,
+        "rule_tag": 1,
+        "subtag": 6,
+        "witness": [
+          [
+            "var",
+            0
+          ]
+        ]
+      },
+      {
+        "formula": [
+          "eq",
+          [
+            "var",
+            0
+          ],
+          [
+            "var",
+            0
+          ]
+        ],
+        "references": [],
+        "row": 1,
+        "rule_tag": 1,
+        "subtag": 6,
+        "witness": [
+          [
+            "var",
+            0
+          ]
+        ]
+      },
+      {
+        "formula": [
+          "all",
+          0,
+          [
+            "eq",
+            [
+              "var",
+              0
+            ],
+            [
+              "var",
+              0
+            ]
+          ]
+        ],
+        "references": [
+          [
+            0,
+            [
+              "eq",
+              [
+                "var",
+                0
+              ],
+              [
+                "var",
+                0
+              ]
+            ]
+          ]
+        ],
+        "row": 2,
+        "rule_tag": 4,
+        "subtag": null,
+        "witness": [
+          0,
+          0
+        ]
+      }
+    ]
+  },
+  "current_admitted_proofs": 1,
+  "additional_distinct_theorems": 0,
+  "total_distinct_theorems_in_these_two_studies": 1,
+  "whole_deadline_failures": 5,
+  "all_six_consumed": true,
+  "failed_carrier_attempt": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-0-Root-whole-negative-disposition-v1.json",
+    "bytes": 2136,
+    "sha256": "a6c92dd5b16cbec771d38598b4d493712cbe42659a07bd74d83d201371a8e50f"
+  },
+  "failed_carrier_siblings": "Five prospective version2 cases superseded without execution or grant; not failed or consumed.",
+  "limits": {
+    "work_seconds": 160,
+    "positive_seconds": 180,
+    "custody_seconds": 210,
+    "observer_fallback_seconds": 225,
+    "memory_bytes": 1073741824,
+    "physical_bytes": 134217728,
+    "result_bytes": 50331648,
+    "log_bytes": 4194304,
+    "reserved_outer_bytes": 9437184,
+    "root_callbacks": 400000000
+  },
+  "scoped_control_groups": 176,
+  "original_control_groups_retained": 162,
+  "additional_control_groups": 14,
+  "same_statements_and_caps": true,
+  "development_set_not_blind_holdout": true,
+  "C_batch_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/review-C/typed-constructor-index-v3-six-case-complete-actual-batch-review-v1.json",
+    "bytes": 8714,
+    "sha256": "d7850b3f62f34e45e2219bc775e287c2b2be5a58f93737b2558ed32e33f620b9"
+  },
+  "Root_batch_disposition": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-v3-Root-whole-batch-disposition-v1.json",
+    "bytes": 2611,
+    "sha256": "e13df5c214b5af49543fb7cb94c772896612cde84b950661d218595af59d2973"
+  },
+  "matched_conventional_baseline": false,
+  "learned_markings": false,
+  "RL_used": false,
+  "learned_lemma_families": false,
+  "GCTS_or_RL_advantage_established": false,
+  "strict_finite_Wang_palette_constructed": false,
+  "new_index_scope": "Ordinary necessary constructor-shape filtering. All primitive candidate identities/order/scope preserved by reviewed Source argument; no learned failure or policy.",
+  "additional_bank_scope": "Ten private necessary-shape groups over54 cases, helper fault group, and3 limited public integration groups. Not all-profile public membership/EOF proof.",
+  "evidence_records": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/review-C/constructor-index-v3-target0-complete-passive-evidence-audit-v1.json",
+      "bytes": 36956,
+      "sha256": "9d410bc6a31ad372c69c597cdce645f0459abe2f3df6a6a0980a75684e030a1c"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/review-C/constructor-index-whole-review-v2-check-identifier-clarification-v1.json",
+      "bytes": 1069,
+      "sha256": "88bc7b5b474b5db6fc136c20fc76fb8a7d3e93c6b8effff7e9474329ca1211d0"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/review-C/typed-constructor-index-six-target-complete-whole-prospective-Source-plan-proposal-review-v1.json",
+      "bytes": 35776,
+      "sha256": "c4151d8b37d3a492cf58624b78ae8fef8d2b893870a8f87c185b92248d514fb6"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/review-C/typed-constructor-index-six-target-complete-whole-prospective-Source-plan-proposal-review-v2.json",
+      "bytes": 38423,
+      "sha256": "d3061e59faf2dec469dedec33ee4c6b03a603babe5bf9b36aea125470f4c89ca"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/review-C/typed-constructor-index-target-0-complete-negative-actual-review-v1.json",
+      "bytes": 57453,
+      "sha256": "b97991e52acbac1194abe2dd9260dc8c6d136a2fc3ed4bd9727e049077ba29e9"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/review-C/typed-constructor-index-v3-six-case-complete-actual-batch-review-v1.json",
+      "bytes": 8714,
+      "sha256": "d7850b3f62f34e45e2219bc775e287c2b2be5a58f93737b2558ed32e33f620b9"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/review-C/typed-constructor-index-v3-target-0-complete-actual-review-v1.json",
+      "bytes": 93216,
+      "sha256": "81fdcc57a9ccfab59e4ec8b30a73f80e330e00fde48bb24fdde6d21ba686eaf4"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/review-C/typed-constructor-index-v3-target-1-complete-negative-actual-review-v1.json",
+      "bytes": 58352,
+      "sha256": "03800efa6348e682372fe2a6d98972a089b80c62af04fb0969542eda36c58793"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/review-C/typed-constructor-index-v3-target-2-complete-negative-actual-review-v1.json",
+      "bytes": 58026,
+      "sha256": "fcc15e86bcac0c1c2c1e8c6cae541babb7a0b1c0543ca9189665093d64d1ec76"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/review-C/typed-constructor-index-v3-target-3-complete-negative-actual-review-v1.json",
+      "bytes": 58304,
+      "sha256": "5e7d0e3f4c578e91d4a55583b4427af8510e9c85737fd65afd9bc0030b7e212b"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/review-C/typed-constructor-index-v3-target-4-complete-negative-actual-review-v1.json",
+      "bytes": 57993,
+      "sha256": "294d44df9ecef4c686c0ccd349e92cec33bdf72f54ebdae47768fd6bc7c709e2"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/review-C/typed-constructor-index-v3-target-5-complete-negative-actual-review-v1.json",
+      "bytes": 58370,
+      "sha256": "b1a1389475806e41aebe00ba8a8dc09ba3f0ea897ae5c9e144debcdaa7d115c9"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/census_completed_constructor_index_case_v1.py",
+      "bytes": 1787,
+      "sha256": "8d8b5b6c533dc39192d2f0799a9dd826d32cce275e280ccd749f33cccd3a3a4b"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/census_completed_constructor_index_case_v2.py",
+      "bytes": 1787,
+      "sha256": "82b2f269a9a20a322c5ab75f71e5ae9aafad9269bd253574d9daa48d31929663"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-six-actuals-observation-v1.json",
+      "bytes": 17932,
+      "sha256": "0f4b096272db60f740900cc19da4c2b7b06e482fd158e725c72414bc1a48a009"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-study-Root-whole-prospective-acceptance-v1.json",
+      "bytes": 3436,
+      "sha256": "dfc0bd47daa84eeebcf7bd2fe9772d0571bc5111a3961d226f8f8c9d2cd1dc0e"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-study-Root-whole-prospective-acceptance-v2.json",
+      "bytes": 3745,
+      "sha256": "bcae52f6fee3968d6e17b1260cc2befd8e5a2fe9659394c5a4c5005c19e3802a"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-study-preparation-v1.json",
+      "bytes": 8946,
+      "sha256": "a74133099f8b10552343d53365dc0e325568ff60670369c0346b0d3a4bb917df"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-study-preparation-v2.json",
+      "bytes": 8954,
+      "sha256": "8e320def229a248a08609d167446c29a3290b11a2113364160c9d70cc45e6475"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-0-Root-prospective-acceptance-v2.json",
+      "bytes": 2798,
+      "sha256": "a35541cae0372c937507baa7bed2b39bf39304a991f64b3e28f99f85e51a6043"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-0-Root-whole-negative-disposition-v1.json",
+      "bytes": 2136,
+      "sha256": "a6c92dd5b16cbec771d38598b4d493712cbe42659a07bd74d83d201371a8e50f"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-0-Source-closure-v1.json",
+      "bytes": 32423,
+      "sha256": "242ce8d2389618dff7a7a769c8ffc5a0d6e6440b2892a89316c749f93372e261"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-0-Source-closure-v2.json",
+      "bytes": 35551,
+      "sha256": "bcee57a626811e40ecef4c7eb286db1dbd659d18e044900da9569436b6752748"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-0-all-tools-idle-barrier-v2.json",
+      "bytes": 927,
+      "sha256": "85fca5048258cc8d4e77bde86edc8975dc048f6ec72e6a4e0e99dd64f768b6a9"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-0-first-terminal-raw-census-v2.json",
+      "bytes": 4745,
+      "sha256": "5170d97055970988591c9c3f638816e79187206cc18feda66513a894564bbd7c"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-0-grant-proposal-v1.json",
+      "bytes": 3294,
+      "sha256": "808039e5c2b7e42cc72b2472e20e87cc06e4c518ee7ecdf48f8ad67a1fe74844"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-0-grant-proposal-v2.json",
+      "bytes": 3301,
+      "sha256": "7ab853cbe10cbbbe777503cc808e63e23902a3c6e45edadf900500f3d50b8a13"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-1-Root-prospective-acceptance-v2.json",
+      "bytes": 2798,
+      "sha256": "42c60c3172f4d5431ed4f9e07ee9877952cae8c33eed073699cdba820e2e7a70"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-1-Source-closure-v1.json",
+      "bytes": 32423,
+      "sha256": "0cc1444ee49cb77634aa3489104f60048bc019f5c6335b3ed89810eea320d210"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-1-Source-closure-v2.json",
+      "bytes": 35551,
+      "sha256": "5e3a32b2a4c5d36e005e8e911ae81590654722debe9a8892f4f319541ace470f"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-1-all-tools-idle-barrier-v2.json",
+      "bytes": 927,
+      "sha256": "378d9b7350c07a0afd7999e38ad9a40ae3c12ea55fb20e2dddee6b88a26ca688"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-1-first-terminal-raw-census-v2.json",
+      "bytes": 4398,
+      "sha256": "55733bdc5320751941673ce3eb4f47d872de731227043cfe32ab5277a70d98df"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-1-grant-proposal-v1.json",
+      "bytes": 3294,
+      "sha256": "1858426cda0ccffd05804a1f1b5047fabb9f613e8a17fc2a72225411b09dba3d"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-1-grant-proposal-v2.json",
+      "bytes": 3301,
+      "sha256": "cf837d8031beb33a6d7eb83a8f9a5134c422c0aff83ed9455e9a545476c89f02"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-2-Root-prospective-acceptance-v2.json",
+      "bytes": 2798,
+      "sha256": "cd6103047d72260d75161081e15af2f702a5d22f337d7e4284f20f3a8863c5e0"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-2-Source-closure-v1.json",
+      "bytes": 32423,
+      "sha256": "99fddbac929be7759af3664c83092f48ffd295ab9a2b307e779839c89f4bc538"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-2-Source-closure-v2.json",
+      "bytes": 35551,
+      "sha256": "125b22b5d94fe7ba67911083d74948bd0d30a6947a17017756c4e465216ad73a"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-2-all-tools-idle-barrier-v2.json",
+      "bytes": 927,
+      "sha256": "e125bcde6c93b5e4e3e4d7df38d6058bd46ccc53a33e771bd3b9163d3d75b323"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-2-first-terminal-raw-census-v2.json",
+      "bytes": 4398,
+      "sha256": "e3048816d727c3e7cfc78983a960cce6a14b26b15981a4799d9ec1d4616dcc4a"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-2-grant-proposal-v1.json",
+      "bytes": 3294,
+      "sha256": "c79fffa2c19bd52aba835dd85288b3b99cf854733da64ecc7a495599828e50ff"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-2-grant-proposal-v2.json",
+      "bytes": 3301,
+      "sha256": "85574ed2ababae67946a525e7b7d9811b9a4cb7d9bfa61eedbeee8cff0b6d5ac"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-3-Root-prospective-acceptance-v2.json",
+      "bytes": 2798,
+      "sha256": "aa2df4ef1b4593c28d8071e4abb911b6ae27be31144a95b7b25c55cc70c810eb"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-3-Source-closure-v1.json",
+      "bytes": 32423,
+      "sha256": "e3ae409d4af9cf1c3dd85af5a246ae90c8c8db46a0d167bc0c9f91f34e03b3be"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-3-Source-closure-v2.json",
+      "bytes": 35551,
+      "sha256": "8bd43f97b7a31df54322ae6a680a675242310af176463ba360fd0d1988ceff85"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-3-all-tools-idle-barrier-v2.json",
+      "bytes": 927,
+      "sha256": "0847dfce3a0b2194b821d85afc55208293c0cc0d743ba1ebd75849df4dadca84"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-3-first-terminal-raw-census-v2.json",
+      "bytes": 4398,
+      "sha256": "03b98379e3eaadbb44f1dc5c993cffd08bd90ccefef9affda4ca4fcf99769bde"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-3-grant-proposal-v1.json",
+      "bytes": 3294,
+      "sha256": "ae4545be2a1c8239e5abe827d8c2dbcc11251ca7d89738707f23971ae9697cd4"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-3-grant-proposal-v2.json",
+      "bytes": 3301,
+      "sha256": "6d25df2478c42baf833d81fa01fe07a892da490883381559fa24fc30838b1962"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-4-Root-prospective-acceptance-v2.json",
+      "bytes": 2798,
+      "sha256": "ca8e2054fbd4be9bc09803055c5f1bd4203853b9bee235021d2ca92c6e60889c"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-4-Source-closure-v1.json",
+      "bytes": 32423,
+      "sha256": "0faa193ecd1ac53a6c18f5b6c1850e20fc85dc3be3b9f182bdd5541fdd278fe0"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-4-Source-closure-v2.json",
+      "bytes": 35551,
+      "sha256": "889d0cf127094f9a7e06010ad32ef6617d9ca66d13adc1248fdee32a2b41ff75"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-4-all-tools-idle-barrier-v2.json",
+      "bytes": 927,
+      "sha256": "d997df582cb2341b50b10e5aafe5efac69fbabfd551c1bfc060c438faafcda03"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-4-first-terminal-raw-census-v2.json",
+      "bytes": 4400,
+      "sha256": "bcadaf8391a3aa03f9a78951e05f2ddf8ef1b4e1ca5a221f7b7036d23e5495ab"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-4-grant-proposal-v1.json",
+      "bytes": 3294,
+      "sha256": "283d9b1aa999cef9ce8c93869cccb21809671f33520e7591ba7fee2f71843175"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-4-grant-proposal-v2.json",
+      "bytes": 3301,
+      "sha256": "99d9983e0fcb86df495e8cf4362f751397d1fc5c8d39ef92333f11da5a6fc8a6"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-5-Root-prospective-acceptance-v2.json",
+      "bytes": 2798,
+      "sha256": "f166828ca4eb84a71df94b46fe4cd86a01e52a656300ce0c9a779c5987533f00"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-5-Source-closure-v1.json",
+      "bytes": 32423,
+      "sha256": "27aabeb9cc950b49069c615065376e519f482e880241ce63024e11a49de4ffb5"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-5-Source-closure-v2.json",
+      "bytes": 35551,
+      "sha256": "819684c6bae5db7f4463f72742e9a78b875ffb4ce10cbae74145bdb3b85192b8"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-5-all-tools-idle-barrier-v2.json",
+      "bytes": 927,
+      "sha256": "a00c7486218da002da6f479cdf28034364331c71707b9470b4b9e98b0384291e"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-5-first-terminal-raw-census-v2.json",
+      "bytes": 4398,
+      "sha256": "f329ccde9d55cc0df5429d760dcf6cccdca9ea4eff92b602ed790d3e0257b467"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-5-grant-proposal-v1.json",
+      "bytes": 3294,
+      "sha256": "bd9fe6a4ea2deb907901f2bce8a5122ca4cbe9b395d83c564d52e1c0f41ab182"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-target-5-grant-proposal-v2.json",
+      "bytes": 3301,
+      "sha256": "9cc4e5aa48df4e3812d5074d2c6c76f5089d49efd0a4cb271bb24b95dcdab476"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-v3-Root-whole-batch-disposition-v1.json",
+      "bytes": 2611,
+      "sha256": "e13df5c214b5af49543fb7cb94c772896612cde84b950661d218595af59d2973"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-v3-six-owned-process-terminal-observation-v1.json",
+      "bytes": 4135,
+      "sha256": "833e8be8846742f27d2ccea09638ebefa203ef8768df12ecd71e817f104ac798"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-v3-target-0-Root-whole-disposition-v1.json",
+      "bytes": 3907,
+      "sha256": "146b77b314fdf8ec5be25720ffe2073646e4049cda93b52b772b6cb259e93157"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-v3-target-1-Root-whole-disposition-v1.json",
+      "bytes": 1983,
+      "sha256": "422b706194584c7e008355597a37d15ce55c34356c195316169008755906d26a"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-v3-target-2-Root-whole-disposition-v1.json",
+      "bytes": 1991,
+      "sha256": "019e3d59a1ae422f3b8a7666fb3cad5673059215c3f39471bc41097888716f09"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-v3-target-3-Root-whole-disposition-v1.json",
+      "bytes": 1988,
+      "sha256": "cde279606ffeff4bf6535e25613a99f84be4da57e0f5fb07ffaf6c1e79effcd4"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-v3-target-4-Root-whole-disposition-v1.json",
+      "bytes": 2008,
+      "sha256": "51f5aef0142eb3766ab3a0156f730b388d839bb99252caabc4129d281a69a91a"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-v3-target-5-Root-whole-disposition-v1.json",
+      "bytes": 1993,
+      "sha256": "129ed490c07134dd5b49757617c6d081c0252b556082ab9120defb8ae44cb89c"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-whole-protocol-v1.json",
+      "bytes": 26517,
+      "sha256": "773b906a8848706bf0beb47e12628c63f671785e02deb3fdc866ba1d748b09a9"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/constructor-index-whole-protocol-v2.json",
+      "bytes": 26841,
+      "sha256": "bec4cf0c6f83ecfeff3aa60ee4dc728db87f0b2c8767c8c4874f70acda1721bd"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/grants/point-frame-constructor-index-v3-target-0.json",
+      "bytes": 3529,
+      "sha256": "0992bef0d7304b2f16ee29db9b9ef90a980ea6c236713a8f03f526fcd4bd0269"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/grants/point-frame-constructor-index-v3-target-1.json",
+      "bytes": 3529,
+      "sha256": "f3f6efccacf4dc1197c1fcefabfeaf621c4af659c327e2a0762e46bda993cebb"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/grants/point-frame-constructor-index-v3-target-2.json",
+      "bytes": 3529,
+      "sha256": "5b763cce8a9fec5f738f615d1808fc7bcc7155d58b54bd6d1c02c3ab67d1f7bf"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/grants/point-frame-constructor-index-v3-target-3.json",
+      "bytes": 3529,
+      "sha256": "0baa2f1c14f3ea178f1c94379eb7cea5a1eca48b701da095f359ac09e5513749"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/grants/point-frame-constructor-index-v3-target-4.json",
+      "bytes": 3529,
+      "sha256": "9af16ebee9b77f7a3f3ff3142ce9453946aeb9403177227fe0f8ef448e3eb787"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/grants/point-frame-constructor-index-v3-target-5.json",
+      "bytes": 3529,
+      "sha256": "ce20b3449d0bae1ef09a4514372dba677e99b40c9fa2e63acaeb9a1242e9df99"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/issue_constructor_index_case_grant_v1.py",
+      "bytes": 5815,
+      "sha256": "bf5978a1665702cc631e0c662592628159b89f8411c47345dcac89bf5606824e"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/issue_constructor_index_case_grant_v2.py",
+      "bytes": 5815,
+      "sha256": "16b08e7a5ec1d72494cf419e6b33869caceba3f065c818c8fd92003930ecd276"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/plans/point-frame-constructor-index-v2-target-0.json",
+      "bytes": 50744,
+      "sha256": "e42f5564f714f9788823ddcff68fd2edf84e8053231ececdefa145b1db942fdf"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/plans/point-frame-constructor-index-v2-target-1.json",
+      "bytes": 50742,
+      "sha256": "b0a63857781d65ea03c0c2ec5dfd51ee51b73f55ea42d3724229bda2b66bd226"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/plans/point-frame-constructor-index-v2-target-2.json",
+      "bytes": 50750,
+      "sha256": "80804045710d5668bbd70a357423afcee321716b5bbcbbba99833c0b144e9d6b"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/plans/point-frame-constructor-index-v2-target-3.json",
+      "bytes": 50747,
+      "sha256": "2982b15796cdf424acf281f14bee68ffff4e4ac735fbb72965f5cbdcddba1f77"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/plans/point-frame-constructor-index-v2-target-4.json",
+      "bytes": 50768,
+      "sha256": "1b133af73f905dd3f0e545f7bfad3f9dfda7f40c5d4e4435872431a5f29937ad"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/plans/point-frame-constructor-index-v2-target-5.json",
+      "bytes": 50752,
+      "sha256": "d414d4eedb8c8e38f8682d97afbe786f61ff62960a1545916dd8b88281a04976"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/plans/point-frame-constructor-index-v3-target-0.json",
+      "bytes": 53872,
+      "sha256": "5a1b1935c952b31adad4e8541019ed0cbd8b7945e2f3aab86155d58b8034a883"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/plans/point-frame-constructor-index-v3-target-1.json",
+      "bytes": 53870,
+      "sha256": "990487443fcee1e7f224b144397faf8377100f7a3b4feb1ae6dfb190d0b01374"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/plans/point-frame-constructor-index-v3-target-2.json",
+      "bytes": 53878,
+      "sha256": "5eaca0dd86e4054b15d90b402626d820056f09f69e5045872f96aead6658c5a5"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/plans/point-frame-constructor-index-v3-target-3.json",
+      "bytes": 53875,
+      "sha256": "f458d5eeea67c162f36229e4fb5370c798b13c7975b8e25bc81c2b204664910c"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/plans/point-frame-constructor-index-v3-target-4.json",
+      "bytes": 53896,
+      "sha256": "665fe664b3377c378c56527f1a1b4a5a5f974ed21e99735f435319145262a083"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/plans/point-frame-constructor-index-v3-target-5.json",
+      "bytes": 53880,
+      "sha256": "2b515719488448097feaf039db3a8d1caddeef7f97b6c451dc4ef436e08eda38"
+    }
+  ],
+  "scientific_imports_calls_by_disposition": 0,
+  "goal_complete": false
+}
