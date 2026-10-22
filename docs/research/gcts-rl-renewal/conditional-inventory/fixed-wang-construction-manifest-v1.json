@@ -1,0 +1,606 @@
+{
+  "archive": {
+    "bytes": 520665,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/publication/fixed-wang-construction-evidence-v1.zip",
+    "sha256": "961293038ff264c2effaa260f1e7fd69ce82cb60245e95996daf08ac9a6ce5bd"
+  },
+  "embedded_manifest_bytes": 37066,
+  "embedded_manifest_sha256": "fbd8f9933d2a75ed6a2212ea72b9f2ce05f3b595963e79c470488de07745d46b",
+  "omitted_runtime": [
+    {
+      "bytes": 18058560,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+      "reason": "Exact interpreter identity retained; binary body omitted. Installed stdlib/OS remains the declared trusted substrate.",
+      "role": "fixed_interpreter_pin_only",
+      "sha256": "b6ea0c2a9bfce48dbf181a53f1ca4f0562d40658b85bf47258e2a88d8f9e3933"
+    }
+  ],
+  "qualification": {
+    "C_actual_review": {
+      "bytes": 28383,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-fixed-Wang-complete-qualification-actual-review-v1.json",
+      "sha256": "77269e3573c41aa264280658e26825a9ef42b9a612600d4e7b5549a9ba3a4c8a"
+    },
+    "Root_admission": {
+      "bytes": 14237,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/admission/qualify-fixed-wang-0-v1.json",
+      "sha256": "467772026b660368292ddca18b4f6a90f6c87576d3245a95cc493ab54bdd4c6c"
+    },
+    "control_count": 45,
+    "state": "QUALIFIED_FINITE_CONSTRUCTION",
+    "supplied_trajectories": 6
+  },
+  "raw_bytes": 8606621,
+  "raw_file_count": 81,
+  "raw_files": [
+    {
+      "archive_path": "external-source/docs/basic-tiling-algorithm.md",
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "role": "complete_guarded_Source_or_semantics",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    {
+      "archive_path": "external-source/research-runs/gcts-batch-20261020/publisher/docs/basic-tiling-algorithm.md",
+      "bytes": 36240,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher/docs/basic-tiling-algorithm.md",
+      "role": "complete_guarded_Source_or_semantics",
+      "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+    },
+    {
+      "archive_path": "external-source/research-runs/gcts-conditional-selector-main-20261021/root/observe_conditional_once_v1.py",
+      "bytes": 10113,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-main-20261021/root/observe_conditional_once_v1.py",
+      "role": "complete_guarded_Source_or_semantics",
+      "sha256": "24804c7d4558d8df511942d9e6b2e4d8d2cfd88ce7df6f5b5f775f87d0c20ca9"
+    },
+    {
+      "archive_path": "external-source/research-runs/gcts-conditional-selector-main-20261021/root/run_conditional_once_v1.py",
+      "bytes": 12973,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-conditional-selector-main-20261021/root/run_conditional_once_v1.py",
+      "role": "complete_guarded_Source_or_semantics",
+      "sha256": "98c55321bb87a8c04b2c6d56b357aba9c3a8f5fc98660474ae3ac1c9d00b0aca"
+    },
+    {
+      "archive_path": "task/actual/qualify-fixed-wang-0.observer/observer.json",
+      "bytes": 1492,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/qualify-fixed-wang-0.observer/observer.json",
+      "role": "complete_current_once_actual",
+      "sha256": "71d97f3e8fa54846d664a9b5fde39ddebea663a36610bc2ea6d53886fe2efbec"
+    },
+    {
+      "archive_path": "task/actual/qualify-fixed-wang-0.observer/stderr.bin",
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/qualify-fixed-wang-0.observer/stderr.bin",
+      "role": "complete_current_once_actual",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_path": "task/actual/qualify-fixed-wang-0.observer/stdout.bin",
+      "bytes": 1809,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/qualify-fixed-wang-0.observer/stdout.bin",
+      "role": "complete_current_once_actual",
+      "sha256": "a4ce56de62c8d286bc52f6f74568358593290ffe8f4b8abe52960e55fd255e04"
+    },
+    {
+      "archive_path": "task/actual/qualify-fixed-wang-0/CONSUMED.json",
+      "bytes": 257,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/qualify-fixed-wang-0/CONSUMED.json",
+      "role": "complete_current_once_actual",
+      "sha256": "977669c83438362d1aca2eb8507e346d00cfec39563e197a921dec5045460d76"
+    },
+    {
+      "archive_path": "task/actual/qualify-fixed-wang-0/owned-child.json",
+      "bytes": 234,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/qualify-fixed-wang-0/owned-child.json",
+      "role": "complete_current_once_actual",
+      "sha256": "14b58b9519e26137d844401e2b35a144ee1db92437d99bbd3848d54f6328a84e"
+    },
+    {
+      "archive_path": "task/actual/qualify-fixed-wang-0/result.json",
+      "bytes": 1328693,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/qualify-fixed-wang-0/result.json",
+      "role": "complete_current_once_actual",
+      "sha256": "ec080f1764949cc5b3a217fc5c25bd211f41934b946dd7fd12f8f8ff25b68b88"
+    },
+    {
+      "archive_path": "task/actual/qualify-fixed-wang-0/stderr.bin",
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/qualify-fixed-wang-0/stderr.bin",
+      "role": "complete_current_once_actual",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_path": "task/actual/qualify-fixed-wang-0/stdout.bin",
+      "bytes": 110,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/qualify-fixed-wang-0/stdout.bin",
+      "role": "complete_current_once_actual",
+      "sha256": "cd34bd1c67f6669180d6aa4bdc7e27f67109042b29255fa56ee8aec90c4fa0b6"
+    },
+    {
+      "archive_path": "task/actual/qualify-fixed-wang-0/terminal.json",
+      "bytes": 2037,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/qualify-fixed-wang-0/terminal.json",
+      "role": "complete_current_once_actual",
+      "sha256": "1f29fd99f66f9816fc6afbab601fa0391dc61e55d97b227e824ec6c7f3a858b5"
+    },
+    {
+      "archive_path": "task/actual/qualify-fixed-wang-0/worker-header.json",
+      "bytes": 601,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/actual/qualify-fixed-wang-0/worker-header.json",
+      "role": "complete_current_once_actual",
+      "sha256": "4f362ba5d3ffc63f7dc12179d5c7bdb20de7780efd49220edde8042ac51a657f"
+    },
+    {
+      "archive_path": "task/diagnostics-L/deterministic-TM-Wang-adversarial-specification-v1.json",
+      "bytes": 35824,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/deterministic-TM-Wang-adversarial-specification-v1.json",
+      "role": "complete_guarded_Source_or_semantics",
+      "sha256": "2d2568ac7e44275ea02a17084a7e4975f44a6e42e7b535e317852473f26071d7"
+    },
+    {
+      "archive_path": "task/diagnostics-L/finite-framed-TM-Wang-construction-argument-v1.json",
+      "bytes": 42532,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/finite-framed-TM-Wang-construction-argument-v1.json",
+      "role": "separate_Source_math_scope",
+      "sha256": "65dc65ea994bb5c4898a79e85115160364b1d2138cb13e5c364e1f4f73ea496c"
+    },
+    {
+      "archive_path": "task/diagnostics-L/fixed-Wang-qualification-API-v1.json",
+      "bytes": 4460,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fixed-Wang-qualification-API-v1.json",
+      "role": "complete_guarded_Source_or_semantics",
+      "sha256": "b83583b70d8b25a864bcde161136179f2198856ff1201b5a1f2a7e3bfb728bcf"
+    },
+    {
+      "archive_path": "task/diagnostics-L/fixed-Wang-qualification-control-definitions-v1.json",
+      "bytes": 16081,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fixed-Wang-qualification-control-definitions-v1.json",
+      "role": "complete_guarded_Source_or_semantics",
+      "sha256": "0d31ce7a7178c263c777f20fba71ddd52aaffa0565301989942519bf802fc71d"
+    },
+    {
+      "archive_path": "task/diagnostics-L/fixed-Wang-qualification-handoff-v1.json",
+      "bytes": 4625,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fixed-Wang-qualification-handoff-v1.json",
+      "role": "complete_guarded_Source_or_semantics",
+      "sha256": "47755137ee3402ddb39af00254202a88afbfad1cef97607360262f1371286507"
+    },
+    {
+      "archive_path": "task/diagnostics-L/fixed-Wang-qualification-manual-independence-v1.json",
+      "bytes": 4101,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fixed-Wang-qualification-manual-independence-v1.json",
+      "role": "complete_guarded_Source_or_semantics",
+      "sha256": "07b975bbba31ac4a136ff61ff24fddddea804dd1d12eed3d8f9ff6f9a070a15b"
+    },
+    {
+      "archive_path": "task/diagnostics-L/fixed-proof-verifier-next-obligations-v1.json",
+      "bytes": 6925,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fixed-proof-verifier-next-obligations-v1.json",
+      "role": "separate_Source_math_scope",
+      "sha256": "08ccaa87230abe10e1f0343398dd8a1266252257a4bc66269cb364942a6a09fd"
+    },
+    {
+      "archive_path": "task/diagnostics-L/fixed_wang_qualification_bank_v1.py",
+      "bytes": 30884,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fixed_wang_qualification_bank_v1.py",
+      "role": "complete_guarded_Source_or_semantics",
+      "sha256": "97a44667a6086a9a617fd057bce2dfc268ef91e56a7a39290cd5970e092ae569"
+    },
+    {
+      "archive_path": "task/diagnostics-L/typed-fixed-Wang-compiler-component-Source-review-v1.json",
+      "bytes": 16553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/typed-fixed-Wang-compiler-component-Source-review-v1.json",
+      "role": "complete_guarded_Source_or_semantics",
+      "sha256": "9a9f32d9b395890518882e3fc1a1b2a1cbb14965eb8a39829068a56b50459ea5"
+    },
+    {
+      "archive_path": "task/diagnostics-L/typed-fixed-Wang-qualification-worker-component-Source-review-v1.json",
+      "bytes": 13721,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/typed-fixed-Wang-qualification-worker-component-Source-review-v1.json",
+      "role": "complete_guarded_Source_or_semantics",
+      "sha256": "7c512ac708191b7de7d0926de01ecfbeb7542bdb2a394261beabcb552016bcf7"
+    },
+    {
+      "archive_path": "task/implementation-B/API-v1.json",
+      "bytes": 4968,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/API-v1.json",
+      "role": "complete_guarded_Source_or_semantics",
+      "sha256": "ba232c730e441becae4bf125d75d9b4d631f02f5355abd476ac4e98d099e749f"
+    },
+    {
+      "archive_path": "task/implementation-B/construction-specification-v1.json",
+      "bytes": 11775,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/construction-specification-v1.json",
+      "role": "complete_guarded_Source_or_semantics",
+      "sha256": "ef45f3699a789f5088b12a749cbbb6eb22dcb1e6aecebc35e24e43bafa835f9f"
+    },
+    {
+      "archive_path": "task/implementation-B/deterministic_tm_wang_v1.py",
+      "bytes": 21321,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/deterministic_tm_wang_v1.py",
+      "role": "complete_guarded_Source_or_semantics",
+      "sha256": "54ae552084743639181f416f5ca02d9acf25c031c61c60c4550d34ac7883d7dd"
+    },
+    {
+      "archive_path": "task/implementation-B/fixed-Wang-qualification-worker-API-v1.json",
+      "bytes": 7380,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fixed-Wang-qualification-worker-API-v1.json",
+      "role": "complete_guarded_Source_or_semantics",
+      "sha256": "e01fea8169ec39502cce414a9aae25d38196f25676304b6852eb06490a9293c9"
+    },
+    {
+      "archive_path": "task/implementation-B/fixed-Wang-qualification-worker-handoff-v1.json",
+      "bytes": 4677,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fixed-Wang-qualification-worker-handoff-v1.json",
+      "role": "complete_guarded_Source_or_semantics",
+      "sha256": "9bdd7adafe31c422898a1b746ef6cd19d83ffb0f4822818ee00ead334d635a43"
+    },
+    {
+      "archive_path": "task/implementation-B/fixed-Wang-qualification-worker-manual-scope-v1.json",
+      "bytes": 4555,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fixed-Wang-qualification-worker-manual-scope-v1.json",
+      "role": "complete_guarded_Source_or_semantics",
+      "sha256": "dd954342f41a3ecc9bb047fca2b2ad97fa901039d80608a7d778681e39a2ca77"
+    },
+    {
+      "archive_path": "task/implementation-B/fixed-Wang-qualification-worker-static-audit-v1.json",
+      "bytes": 5160,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fixed-Wang-qualification-worker-static-audit-v1.json",
+      "role": "complete_guarded_Source_or_semantics",
+      "sha256": "24bb3d9cad7fc976fdd29d6442d1ec9392c8ac51df02fc872f444d79146d9ded"
+    },
+    {
+      "archive_path": "task/implementation-B/fixed_wang_qualification_worker_v1.py",
+      "bytes": 14277,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fixed_wang_qualification_worker_v1.py",
+      "role": "complete_guarded_Source_or_semantics",
+      "sha256": "7f7ebe6010563684cf0f0463e4e85bc794995e9563857a424a11a2784168e5bc"
+    },
+    {
+      "archive_path": "task/implementation-B/handoff-v1.json",
+      "bytes": 4364,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/handoff-v1.json",
+      "role": "complete_guarded_Source_or_semantics",
+      "sha256": "a66ef134924e1ed2b2862804c8e567f9eedb131b565c7e138b102e84b7ee4147"
+    },
+    {
+      "archive_path": "task/implementation-B/manual-conformance-v1.json",
+      "bytes": 4245,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/manual-conformance-v1.json",
+      "role": "complete_guarded_Source_or_semantics",
+      "sha256": "95fbf770f993aebdab1d2794c7aefe7463e3cb7f8f526fb6459cccc9551458cd"
+    },
+    {
+      "archive_path": "task/implementation-B/typed-independent-fixed-Wang-qualification-Source-review-v1.json",
+      "bytes": 13441,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/typed-independent-fixed-Wang-qualification-Source-review-v1.json",
+      "role": "complete_guarded_Source_or_semantics",
+      "sha256": "2e0d7d85862e82d79ef95d375bc68a9a8d34b333239cfa7a4775818ed05f04c8"
+    },
+    {
+      "archive_path": "task/publication/fixed-wang-construction-data-v1.json",
+      "bytes": 6163799,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/publication/fixed-wang-construction-data-v1.json",
+      "role": "publication_or_current_authority_context",
+      "sha256": "6fad726664004042fc0df49d36d920e90844d50216fff7f7370d9d26d60a5d89"
+    },
+    {
+      "archive_path": "task/publication/fixed-wang-construction-reader-Source-handoff-v1.json",
+      "bytes": 2649,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/publication/fixed-wang-construction-reader-Source-handoff-v1.json",
+      "role": "publication_or_current_authority_context",
+      "sha256": "b67892b41b9037e04279ca915b6a1f9b4d35d52590d1d67f35a0f0947bd15e3a"
+    },
+    {
+      "archive_path": "task/publication/fixed-wang-construction-reader-Source-handoff-v2.json",
+      "bytes": 2000,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/publication/fixed-wang-construction-reader-Source-handoff-v2.json",
+      "role": "publication_or_current_authority_context",
+      "sha256": "e8247008eb580299194fdd91dabbd6ad26e7ea6f5cdf4821302bfd02e3d602d0"
+    },
+    {
+      "archive_path": "task/publication/fixed-wang-construction-reader-data-contract-v1.json",
+      "bytes": 5463,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/publication/fixed-wang-construction-reader-data-contract-v1.json",
+      "role": "publication_or_current_authority_context",
+      "sha256": "283e5a9b806d4ebdc40d51460c03e2910f9ad1d24bfe625c740e624906d93ee3"
+    },
+    {
+      "archive_path": "task/publication/fixed-wang-construction-reader-manual-scope-v1.json",
+      "bytes": 2772,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/publication/fixed-wang-construction-reader-manual-scope-v1.json",
+      "role": "publication_or_current_authority_context",
+      "sha256": "e944b57dff53011146f3d461d25a4b07cc20e58b9a93ddbf9348fca42356b716"
+    },
+    {
+      "archive_path": "task/publication/fixed-wang-construction-reader-static-Source-audit-v1.json",
+      "bytes": 2000,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/publication/fixed-wang-construction-reader-static-Source-audit-v1.json",
+      "role": "publication_or_current_authority_context",
+      "sha256": "e958fb5315fd613632d521c92ea999618c52796bd8f008fa305a168fd0c55ec7"
+    },
+    {
+      "archive_path": "task/publication/fixed-wang-construction-reader-v1-Root-QA-negative-v1.json",
+      "bytes": 1296,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/publication/fixed-wang-construction-reader-v1-Root-QA-negative-v1.json",
+      "role": "publication_or_current_authority_context",
+      "sha256": "9aeb32951c4768bd805ff50f3733f38d7e368992fb61dc341ce24bfa0439b01c"
+    },
+    {
+      "archive_path": "task/publication/fixed-wang-construction-reader-v2-Source-delta-and-API-v1.json",
+      "bytes": 5921,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/publication/fixed-wang-construction-reader-v2-Source-delta-and-API-v1.json",
+      "role": "publication_or_current_authority_context",
+      "sha256": "ea34852a8448dec084751822b9b361f9a079169c0389e7d3e825fe2ef8ce8a14"
+    },
+    {
+      "archive_path": "task/publication/fixed-wang-construction-reader-v2.html",
+      "bytes": 25198,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/publication/fixed-wang-construction-reader-v2.html",
+      "role": "publication_or_current_authority_context",
+      "sha256": "1431968fe1125681effe5a81c9f3138f186927c8cc308ce83ab5f6a3fb76eba5"
+    },
+    {
+      "archive_path": "task/publication/fixed-wang-construction-reader-v3.html",
+      "bytes": 25206,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/publication/fixed-wang-construction-reader-v3.html",
+      "role": "publication_or_current_authority_context",
+      "sha256": "de07adc4a79411d1e70d5e0da4a60c97fdc170711cdcf958a0a9d25d7968f91b"
+    },
+    {
+      "archive_path": "task/publication/fixed-wang-construction-v1.html",
+      "bytes": 24088,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/publication/fixed-wang-construction-v1.html",
+      "role": "publication_or_current_authority_context",
+      "sha256": "e6b769ca2049f1805a0c48bd6d4d15b874e9ad7a43e78e6b49cdad3eddf02da1"
+    },
+    {
+      "archive_path": "task/review-C/minimal-public-evidence-file-allowlist-proposal-v1.json",
+      "bytes": 23360,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/minimal-public-evidence-file-allowlist-proposal-v1.json",
+      "role": "publication_or_current_authority_context",
+      "sha256": "00f208cd17c9febd72431e1e4c8120e18a3a62b1ee1ae87c00738a43cda1093b"
+    },
+    {
+      "archive_path": "task/review-C/passive_complete_qualification_actual_review_v1.py",
+      "bytes": 35451,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/passive_complete_qualification_actual_review_v1.py",
+      "role": "independent_C_review_or_passive_review_Source",
+      "sha256": "4161eaec28476ca727d12e2b431967411cc0f4ed7cef497563bb0cd9217ecfa9"
+    },
+    {
+      "archive_path": "task/review-C/passive_disposition_and_reader_data_review_v1.py",
+      "bytes": 11115,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/passive_disposition_and_reader_data_review_v1.py",
+      "role": "publication_or_current_authority_context",
+      "sha256": "c0919acf002f54b22c2ec6b8a6f6b81af3a5c13c8dfbac0a04e3d0fac812cdde"
+    },
+    {
+      "archive_path": "task/review-C/passive_grant_proposal_component_review_v1.py",
+      "bytes": 8815,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/passive_grant_proposal_component_review_v1.py",
+      "role": "independent_C_review_or_passive_review_Source",
+      "sha256": "11fb892870c392d194a0e10786860e51507b26083aa6b75b1f5125e6fe94e503"
+    },
+    {
+      "archive_path": "task/review-C/passive_leaf_reader_Source_review_v1.py",
+      "bytes": 10831,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/passive_leaf_reader_Source_review_v1.py",
+      "role": "publication_or_current_authority_context",
+      "sha256": "6fc67915bfd020920e0d6f763fe5433bebc0934f13fed1fee7f8919e59bd39b8"
+    },
+    {
+      "archive_path": "task/review-C/passive_leaf_reader_successor_Source_review_v3.py",
+      "bytes": 9721,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/passive_leaf_reader_successor_Source_review_v3.py",
+      "role": "publication_or_current_authority_context",
+      "sha256": "3eb92c081875f83a8247a8dc77620911cec84c571cc91dfe4c5ed3a2d5d852ce"
+    },
+    {
+      "archive_path": "task/review-C/passive_parent_splice_Source_review_v1.py",
+      "bytes": 7780,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/passive_parent_splice_Source_review_v1.py",
+      "role": "publication_or_current_authority_context",
+      "sha256": "2521361fb7fec92d6bd513a48ea261704447dc76e0abe7d4e171e94d7324d40b"
+    },
+    {
+      "archive_path": "task/review-C/passive_whole_qualification_Source_plan_review_v1.py",
+      "bytes": 23642,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/passive_whole_qualification_Source_plan_review_v1.py",
+      "role": "independent_C_review_or_passive_review_Source",
+      "sha256": "9f3d3f5ba180f393edc6cfd3aed75d75490f823f72b7b597e00c6cf97bf11ac9"
+    },
+    {
+      "archive_path": "task/review-C/typed-fixed-Wang-complete-qualification-actual-review-v1.json",
+      "bytes": 28383,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-fixed-Wang-complete-qualification-actual-review-v1.json",
+      "role": "independent_C_review_or_passive_review_Source",
+      "sha256": "77269e3573c41aa264280658e26825a9ef42b9a612600d4e7b5549a9ba3a4c8a"
+    },
+    {
+      "archive_path": "task/review-C/typed-fixed-Wang-disposition-and-reader-data-review-v1.json",
+      "bytes": 12924,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-fixed-Wang-disposition-and-reader-data-review-v1.json",
+      "role": "publication_or_current_authority_context",
+      "sha256": "3cc29316a2bca143f4a86a40848c95875948a6694eceb3bc76f7c9e214d9f045"
+    },
+    {
+      "archive_path": "task/review-C/typed-fixed-Wang-grant-proposal-component-review-v1.json",
+      "bytes": 14140,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-fixed-Wang-grant-proposal-component-review-v1.json",
+      "role": "current_explicit_custody_or_independent_review",
+      "sha256": "4e71ab0938418c38dee1d4d781f65c80b4cd73831865082e95b9017e72a7601a"
+    },
+    {
+      "archive_path": "task/review-C/typed-fixed-Wang-leaf-reader-Source-negative-v1.json",
+      "bytes": 8666,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-fixed-Wang-leaf-reader-Source-negative-v1.json",
+      "role": "publication_or_current_authority_context",
+      "sha256": "d421fa0aab346ec8c7c29c35d70fd99f58abf341bfff699259192116681fa44e"
+    },
+    {
+      "archive_path": "task/review-C/typed-fixed-Wang-leaf-reader-successor-Source-review-v3.json",
+      "bytes": 11218,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-fixed-Wang-leaf-reader-successor-Source-review-v3.json",
+      "role": "publication_or_current_authority_context",
+      "sha256": "bc67d65cff92311f331d2814ebfc16d8a8ad2a38d8ac34b1a3e25e319c2b51c6"
+    },
+    {
+      "archive_path": "task/review-C/typed-fixed-Wang-parent-splice-and-prose-Source-review-v1.json",
+      "bytes": 5340,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-fixed-Wang-parent-splice-and-prose-Source-review-v1.json",
+      "role": "publication_or_current_authority_context",
+      "sha256": "952183b91b895f895b7de214034465dc111528a673ae3a4696dd59715e687391"
+    },
+    {
+      "archive_path": "task/review-C/typed-fixed-Wang-whole-prospective-Source-plan-review-v1.json",
+      "bytes": 63617,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-fixed-Wang-whole-prospective-Source-plan-review-v1.json",
+      "role": "current_explicit_custody_or_independent_review",
+      "sha256": "37dee6ba5293cdeb42df6d3d66ec4d6d940e1dfc6c5fb782bb3b3b014ad09075"
+    },
+    {
+      "archive_path": "task/root/admission/qualify-fixed-wang-0-v1.json",
+      "bytes": 14237,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/admission/qualify-fixed-wang-0-v1.json",
+      "role": "publication_or_current_authority_context",
+      "sha256": "467772026b660368292ddca18b4f6a90f6c87576d3245a95cc493ab54bdd4c6c"
+    },
+    {
+      "archive_path": "task/root/build_publication_v1.py",
+      "bytes": 3150,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/build_publication_v1.py",
+      "role": "publication_or_current_authority_context",
+      "sha256": "9b4b4bc5dce842c064efb960a5af1787178c39148b42987a7034325221bd2d41"
+    },
+    {
+      "archive_path": "task/root/closed-inputs-v1.json",
+      "bytes": 13893,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/closed-inputs-v1.json",
+      "role": "complete_semantic_closure",
+      "sha256": "cb31d92e9716f9e9b348858eb8b3e153df1add364c760389e0c824117fc5ecf1"
+    },
+    {
+      "archive_path": "task/root/first-fixed-verifier-search-targets-v1.json",
+      "bytes": 4327,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/first-fixed-verifier-search-targets-v1.json",
+      "role": "publication_or_current_authority_context",
+      "sha256": "91f0965f34dd7d43307722fd9cc06c40f1e7d6ae9d6680015a9a8aeaf436ef03"
+    },
+    {
+      "archive_path": "task/root/grant-proposal-v1.json",
+      "bytes": 1718,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/grant-proposal-v1.json",
+      "role": "current_explicit_custody_or_independent_review",
+      "sha256": "412e359f417287b5833c19a30538355b7caa8c9930aa6a0d106ec3fa13196ff7"
+    },
+    {
+      "archive_path": "task/root/grants/qualify-fixed-wang-0-v1.json",
+      "bytes": 2552,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/grants/qualify-fixed-wang-0-v1.json",
+      "role": "current_explicit_custody_or_independent_review",
+      "sha256": "50b86609e732f39f8150395e1b1b9d59ce499fb622427f838b9c934c3890ecdf"
+    },
+    {
+      "archive_path": "task/root/local-browser-QA-v1.json",
+      "bytes": 2044,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/local-browser-QA-v1.json",
+      "role": "publication_or_current_authority_context",
+      "sha256": "b20be6cd00cd042b313259b4dd407b51235578fb4a4fb73f75e28e27a3ada53e"
+    },
+    {
+      "archive_path": "task/root/parent-insertion-v1.html",
+      "bytes": 1985,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/parent-insertion-v1.html",
+      "role": "publication_or_current_authority_context",
+      "sha256": "58a4843987dc676e4eb566f20a8781fb5b18c09c0408b5188dc26d8206cbb127"
+    },
+    {
+      "archive_path": "task/root/parent-reader-preimage-v1.html",
+      "bytes": 130633,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/parent-reader-preimage-v1.html",
+      "role": "publication_or_current_authority_context",
+      "sha256": "728c99800d7176f645b4fbe11a12fc4497824929d443660e831785b0f7c4de2f"
+    },
+    {
+      "archive_path": "task/root/parent-reader-proposed-v2.html",
+      "bytes": 132618,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/parent-reader-proposed-v2.html",
+      "role": "publication_or_current_authority_context",
+      "sha256": "37769be85d04a5196d39db00f90c6643f856c11f477b5ede135b7d0d876cb6bb"
+    },
+    {
+      "archive_path": "task/root/parent-splice-authoring-negative-v1.json",
+      "bytes": 484,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/parent-splice-authoring-negative-v1.json",
+      "role": "publication_or_current_authority_context",
+      "sha256": "b7e4498e4ed815f13537f0ed1f2777ff88a607970bdb3afa4e76321cd23b1746"
+    },
+    {
+      "archive_path": "task/root/plans/qualify-fixed-wang-0-v1.json",
+      "bytes": 10304,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/plans/qualify-fixed-wang-0-v1.json",
+      "role": "current_explicit_custody_or_independent_review",
+      "sha256": "cf617a26d0435ce51985122605a775cdee920e31f917796e681e0ed86cf13ecd"
+    },
+    {
+      "archive_path": "task/root/protocol-v1.json",
+      "bytes": 13986,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/protocol-v1.json",
+      "role": "complete_guarded_Source_or_semantics",
+      "sha256": "07cf883bc3e31fabe8defa080d46e3323535e6415d31e073148cec622fac6daa"
+    },
+    {
+      "archive_path": "task/root/publication-preflight-v1.json",
+      "bytes": 1462,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/publication-preflight-v1.json",
+      "role": "publication_or_current_authority_context",
+      "sha256": "360864e0dcd8aa129701c71c39148f7c15689789fecd47ea12447362a0bf566d"
+    },
+    {
+      "archive_path": "task/root/qualification-once-invocation-v1.json",
+      "bytes": 1034,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/qualification-once-invocation-v1.json",
+      "role": "current_explicit_custody_or_independent_review",
+      "sha256": "a992ebe983ac63aa7d61f7937e3bfa11e8f52aad7d8548cb067c290ff894f30d"
+    },
+    {
+      "archive_path": "task/root/qualification-once-tools-idle-barrier-v1.json",
+      "bytes": 1730,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/qualification-once-tools-idle-barrier-v1.json",
+      "role": "current_explicit_custody_or_independent_review",
+      "sha256": "0b0610533a7c906a7075598b8e861ae746db555c9c844c7b7b1839e7dc2b8b27"
+    },
+    {
+      "archive_path": "task/root/qualification-terminal-review-offer-v1.json",
+      "bytes": 6289,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/qualification-terminal-review-offer-v1.json",
+      "role": "complete_terminal_review_offer",
+      "sha256": "6c48acbc8b23edbd951a34a225a6980a135802248839bccad7f9bc57a51998ae"
+    },
+    {
+      "archive_path": "task/root/reader-label-successor-v3.json",
+      "bytes": 1681,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/reader-label-successor-v3.json",
+      "role": "publication_or_current_authority_context",
+      "sha256": "91c71e2c2b4bfdf055e7c918da3ef7baea873238fa9589af81b4e79f9fec9373"
+    },
+    {
+      "archive_path": "task/root/terminal-resource-observation-v1.json",
+      "bytes": 2322,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/terminal-resource-observation-v1.json",
+      "role": "publication_or_current_authority_context",
+      "sha256": "153855119543f8539e72279646300154d0bad17407ff7aeb824c4479ed80bef4"
+    },
+    {
+      "archive_path": "PUBLICATION-INVENTORY.json",
+      "bytes": 36692,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/publication-inventory-v1.json",
+      "role": "exact_nonrecursive_publication_inventory",
+      "sha256": "0c441da619fb893d3ad7bdaccca7ce2cb0ce85caf19b6dfc3fdf1856e7c0cf69"
+    }
+  ],
+  "schema": "fixed-Wang-construction-evidence-manifest-v1",
+  "scope": "Explicit raw-file archive for one complete bounded finite construction qualification and its passive display. Exactly named C49base bodies plus Root authority/publication context and named Source/review closures; no directory scan or recursive pin chase. Python binary omitted with exact raw identity. Future FPC-H1 code/design/checker, Native program, historical proof/library/policy and unrelated files are not scientific inputs or selected bodies. Prospective six targets remain unrun. No mathematical proof, universal palette, GCTS/RL advantage or whole-plane claim."
+}
