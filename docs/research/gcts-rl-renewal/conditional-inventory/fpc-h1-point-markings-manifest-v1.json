@@ -1,0 +1,143 @@
+{
+  "schema": "Root-FPC-H1-point-marking-evidence-manifest-v1",
+  "status": "SOURCE_AND_REVIEW_ONLY_NO_SCIENTIFIC_EXECUTION",
+  "member_count": 22,
+  "raw_bytes": 253611,
+  "members": [
+    {
+      "member": "sources/root/fpc_h1_point_rows_v1.py",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/fpc_h1_point_rows_v1.py",
+      "bytes": 10901,
+      "sha256": "91f1eb15b08fef0b405fe8332a08004c3a102b779d1dcdac1aa447f6f02822dd"
+    },
+    {
+      "member": "sources/root/fpc_h1_point_rows_v2.py",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/fpc_h1_point_rows_v2.py",
+      "bytes": 10972,
+      "sha256": "57eac1681fbb9e3a6494109a1b9ca43cbfa4d5bfc25ce87954537ae801acf32f"
+    },
+    {
+      "member": "sources/root/fpc-h1-point-rows-Source-successor-v2.json",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/fpc-h1-point-rows-Source-successor-v2.json",
+      "bytes": 1029,
+      "sha256": "fa5977ce1326dbdfd1f324364f8fa4d732f60a5e3eab73d843a5b54f9a710c52"
+    },
+    {
+      "member": "sources/root/fpc-h1-point-row-reduction-contract-v1.json",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/fpc-h1-point-row-reduction-contract-v1.json",
+      "bytes": 8538,
+      "sha256": "3d56003ac1538232926a7b36b584423ba75d0ecfcda87a27f98e61f71d5fed99"
+    },
+    {
+      "member": "sources/root/fpc-h1-point-row-public-API-v1.json",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/fpc-h1-point-row-public-API-v1.json",
+      "bytes": 6466,
+      "sha256": "ea09e64353a43ebdb9a67150e8e77d2e2f608b3dbca0268eef75ad25123c1ebf"
+    },
+    {
+      "member": "sources/implementation-B/fpc_h1_ast_and_builders_v1.py",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc_h1_ast_and_builders_v1.py",
+      "bytes": 11348,
+      "sha256": "a42aa71f1e5482a1e1d9637290b4c7f8b52f366d86f7234a86cb11420171ed32"
+    },
+    {
+      "member": "sources/implementation-B/fpc_h1_byte_checker_v1.py",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc_h1_byte_checker_v1.py",
+      "bytes": 31557,
+      "sha256": "140a9c4b7a6a18c4c20aa4294a0f3fa90f65fe319adbf47a22125170f32b2ef7"
+    },
+    {
+      "member": "sources/diagnostics-L/fpc_h1_point_row_independent_controls_v1.py",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc_h1_point_row_independent_controls_v1.py",
+      "bytes": 18065,
+      "sha256": "d49e554bc24fba8539224b7f4099e2f089639f36245a9ed4e47fc2753e7d387e"
+    },
+    {
+      "member": "sources/diagnostics-L/fpc-h1-point-row-independent-controls-API-v1.json",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc-h1-point-row-independent-controls-API-v1.json",
+      "bytes": 5415,
+      "sha256": "c257ab62bf0d66ca234ff02345008964f43a8a173b888d74f9d7c0796fb48502"
+    },
+    {
+      "member": "sources/diagnostics-L/fpc-h1-point-row-independent-controls-manual-v1.json",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc-h1-point-row-independent-controls-manual-v1.json",
+      "bytes": 3871,
+      "sha256": "673d5d5cb3b04cb0bdbfb3e419f0813d220373bfb95469098f8d3b9a77d0a4b5"
+    },
+    {
+      "member": "sources/diagnostics-L/fpc-h1-point-row-independent-controls-static-v1.json",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc-h1-point-row-independent-controls-static-v1.json",
+      "bytes": 1462,
+      "sha256": "aaf66ce14a826dd2cf9a1b7e8bf28cf6eb92b8eef1636a39f7d56f709f176314"
+    },
+    {
+      "member": "sources/diagnostics-L/fpc-h1-point-row-independent-controls-handoff-v1.json",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc-h1-point-row-independent-controls-handoff-v1.json",
+      "bytes": 3778,
+      "sha256": "5d84b624f783098adcef10b9dcc95a981edca05f780f44c9c8e6cc684645cbbf"
+    },
+    {
+      "member": "sources/diagnostics-L/typed-FPC-H1-point-row-adapter-bank-static-compatibility-review-v1.json",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/typed-FPC-H1-point-row-adapter-bank-static-compatibility-review-v1.json",
+      "bytes": 6603,
+      "sha256": "0a7d506f948933048b818d861cfc297d930ac03f0deefa20c59103f8209f1596"
+    },
+    {
+      "member": "sources/review-C/typed-FPC-H1-point-row-adapter-component-Source-review-v2.json",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-FPC-H1-point-row-adapter-component-Source-review-v2.json",
+      "bytes": 11616,
+      "sha256": "52c064358631db36ee656c2b860d308a9b7f790f72c307c9d969ebd6b373dafe"
+    },
+    {
+      "member": "sources/review-C/typed-FPC-H1-point-row-independent-controls-and-API-Source-review-v1.json",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/typed-FPC-H1-point-row-independent-controls-and-API-Source-review-v1.json",
+      "bytes": 10234,
+      "sha256": "762d4f2fb85e8fff5b0a46c05a2a2321a2b86a76c2b692ff0a189c1b9134829f"
+    },
+    {
+      "member": "sources/review-C/passive_FPC_H1_point_row_component_review_v2.py",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/passive_FPC_H1_point_row_component_review_v2.py",
+      "bytes": 10164,
+      "sha256": "99155e7ed0403332ddce2715ba103acd2cefbf2b5fc29afb6f0f7942a3e9aaf5"
+    },
+    {
+      "member": "sources/review-C/passive_FPC_H1_point_control_component_review_v1.py",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/review-C/passive_FPC_H1_point_control_component_review_v1.py",
+      "bytes": 10123,
+      "sha256": "7cb9dc8125dd64ef904e3326bb43255939fe6b35cb0f9117e084399c77556730"
+    },
+    {
+      "member": "contracts/main-master.md",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "bytes": 21657,
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    {
+      "member": "contracts/published-master.md",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-batch-20261020/publisher-recovery-6338a77/docs/basic-tiling-algorithm.md",
+      "bytes": 36240,
+      "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+    },
+    {
+      "member": "report/fpc-h1-point-markings-v1.html",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/point-report-v1/fpc-h1-point-markings-v1.html",
+      "bytes": 18825,
+      "sha256": "180fde15c6118ca0b68b14a376504712794c2eb2934b22dcd6a61d3d07e21e84"
+    },
+    {
+      "member": "report/fpc-h1-point-markings-data-v1.json",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/point-report-v1/fpc-h1-point-markings-data-v1.json",
+      "bytes": 12914,
+      "sha256": "3861ecc257f72afe65c730cd5ba4c9070efdfe762c9ecd330e10914468021c8d"
+    },
+    {
+      "member": "report/parent-append-v1.html",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/root/point-report-v1/parent-append-v1.html",
+      "bytes": 1833,
+      "sha256": "3e7084b2ecd5ea1888f028fdd85d7fd839ae06db02a5639d9051c3527478f2fc"
+    }
+  ],
+  "execution_results": 0,
+  "proof_admitted": false,
+  "scope": "Raw current/provenance Sources, static reviews and display artifacts. Prospective control expected outputs are specifications, not run receipts. No partial files or prior proof certificates are included."
+}
