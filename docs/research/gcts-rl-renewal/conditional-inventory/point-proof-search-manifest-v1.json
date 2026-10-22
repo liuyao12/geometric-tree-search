@@ -1,0 +1,356 @@
+{
+  "schema": "Root-point-proof-design-publication-manifest-v1",
+  "scope": "Prospective algorithm design and visual explanation only; no new science execution.",
+  "source_files": [
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/point-proof-frame-feasibility-design-v1.json",
+      "role": "New full-kernel finite-frame model",
+      "bytes": 20410,
+      "sha256": "b23f97adeb1973e310e9251686266c801fcd2b6c3d2144fd4ad90ad754b65acf"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/point-proof-frame-provider-API-PROPOSAL-v1.json",
+      "role": "Prospective provider interface with explicit open ABI obligations",
+      "bytes": 7576,
+      "sha256": "1cdc44b0b0a2df1870303a4493430ca0be49832009a6136a11c6bdce7277f277"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/point-proof-frame-design-handoff-v1.json",
+      "role": "Frozen B handoff",
+      "bytes": 2560,
+      "sha256": "1202d91abe779595dbcc1f299dd693abb72ce71b9951e0c8b45a930567e22e2a"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/point-proof-ground-placement-identity-addendum-v1.json",
+      "role": "Binding full point-value placement identity clarification",
+      "bytes": 4712,
+      "sha256": "41082cb752bff9ca18768103a288fc9c7a377cbcd9b151efc9b8b4602483475e"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/point-proof-finite-frame-semantics-v1.json",
+      "role": "Independent broader-envelope proposal; Root selects the B specialization",
+      "bytes": 13465,
+      "sha256": "48ae5cb26e848563d1f5e2e3810506fbedf83bcf8f15bb95298beb37e2e876ab"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/point-proof-independent-raw-models-v1.json",
+      "role": "Thirteen handwritten additive generic point-model inputs, all unrun",
+      "bytes": 15516,
+      "sha256": "18851c3488152f3743a61eacafc12322c94c48f98038cccf01bd95482793225a"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/point-proof-conformance-benchmark-expectations-v1.json",
+      "role": "Independent conformance/comparator/census expectations",
+      "bytes": 11267,
+      "sha256": "db45247f6303c09827bf158fce09809c4cd4e83b6542cfc143bccd4d8aa0677a"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/point-proof-design-handoff-v1.json",
+      "role": "Frozen L handoff",
+      "bytes": 4186,
+      "sha256": "0df4074d1d16a446b8cf4074b397f252b084fcc4ea349d4e47a13e267bc9ad57"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/review-C/initial-point-proof-search-concept-objections-v1.md",
+      "role": "Initial independent objections",
+      "bytes": 7003,
+      "sha256": "ea8b21f40cf06c2de349416c965b324928339e2dc840e0cee58069eed61d2c14"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/review-C/typed-point-proof-frame-model-concept-review-v1.json",
+      "role": "Scoped new-model concept review only",
+      "bytes": 10348,
+      "sha256": "43135cf1f3c4ce3755f010928d5ca259e2f40b61818b0a1ad6140ef982c2c763"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/review-C/typed-point-proof-frame-identity-and-schedule-concept-addendum-v1.json",
+      "role": "Scoped identity and fair-schedule concept review",
+      "bytes": 2997,
+      "sha256": "eef96c688a2af25bf1c07cb24080991f48a15881f5363220074e0a444e7abcf5"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/point-proof-search-integration-decision-v1.json",
+      "role": "Root explicit model/scope/ownership decision",
+      "bytes": 9908,
+      "sha256": "200371623902ba7ea0f76853811c8d74ac8665f096e3878fc5c2e5c9e5a63905"
+    },
+    {
+      "path": "research-runs/gcts-point-proof-search-20261022/root/point-proof-new-model-selection-v1.json",
+      "role": "Root selection for next ABI design; no execution authority",
+      "bytes": 1882,
+      "sha256": "c6302fe0d8ed03366a64f768e145ee5a48fc12a9935e482de8c41fbd06ea9ac0"
+    },
+    {
+      "path": "docs/basic-tiling-algorithm.md",
+      "role": "Current workspace master contract",
+      "bytes": 21657,
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    {
+      "path": "research-runs/gcts-batch-20261020/publisher-recovery-6338a77/docs/basic-tiling-algorithm.md",
+      "role": "Published master contract; preserved distinct body",
+      "bytes": 36240,
+      "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+    },
+    {
+      "path": "research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/first-order-primitive-calculus-contract-v3.json",
+      "role": "Exact FPC calculus contract",
+      "bytes": 22752,
+      "sha256": "8d33020a469b586f4f74afc7ecb28f89fecd83f5a6afb00df1a2bb0b87dad2ed"
+    },
+    {
+      "path": "research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc-h1-exact-wire-contract-v1.json",
+      "role": "Exact query/certificate wire contract",
+      "bytes": 12714,
+      "sha256": "13baa91f5bd038e485255fc96eeb7170f75f04dd842da9160010d1e06f0262b1"
+    },
+    {
+      "path": "research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc_h1_ast_and_builders_v1.py",
+      "role": "Pinned builder Source, not executed",
+      "bytes": 11348,
+      "sha256": "a42aa71f1e5482a1e1d9637290b4c7f8b52f366d86f7234a86cb11420171ed32"
+    },
+    {
+      "path": "research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc_h1_byte_checker_v1.py",
+      "role": "Pinned subject checker Source, not executed",
+      "bytes": 31557,
+      "sha256": "140a9c4b7a6a18c4c20aa4294a0f3fa90f65fe319adbf47a22125170f32b2ef7"
+    },
+    {
+      "path": "research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc_h1_independent_reference_v2.py",
+      "role": "Pinned independent reference Source, not executed",
+      "bytes": 24681,
+      "sha256": "ecda2a10feb69e5aed6ae34dc6c2123dbbc3297ab5c0a431861d628e9cd4334a"
+    },
+    {
+      "path": "research-runs/gcts-fixed-wang-compiler-20261021/root/fpc-h1-point-row-reduction-contract-v1.json",
+      "role": "Existing conditional point reduction",
+      "bytes": 8538,
+      "sha256": "3d56003ac1538232926a7b36b584423ba75d0ecfcda87a27f98e61f71d5fed99"
+    },
+    {
+      "path": "research-runs/gcts-fixed-wang-compiler-20261021/root/fpc-h1-point-row-public-API-v1.json",
+      "role": "Existing adapter public API",
+      "bytes": 6466,
+      "sha256": "ea09e64353a43ebdb9a67150e8e77d2e2f608b3dbca0268eef75ad25123c1ebf"
+    },
+    {
+      "path": "research-runs/gcts-fixed-wang-compiler-20261021/root/fpc_h1_point_rows_v2.py",
+      "role": "Existing point adapter Source, not executed",
+      "bytes": 10972,
+      "sha256": "57eac1681fbb9e3a6494109a1b9ca43cbfa4d5bfc25ce87954537ae801acf32f"
+    },
+    {
+      "path": "research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/first-fixed-verifier-target-declarations-v1.json",
+      "role": "All six unchanged literal mathematical development inputs",
+      "bytes": 8614,
+      "sha256": "c6ae5f616b61e85f4b5cbd2b1e7619c047f42d83afd725e277475292cd904b0a"
+    },
+    {
+      "path": "research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/next-geometric-receptor-study-bounded-census-design-v1.json",
+      "role": "Prospective bounded in-actual census proposal",
+      "bytes": 8550,
+      "sha256": "223332bf95c2437d465c2790cf82164f07124402567ab9314d80c2d7365404a0"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/research/gcts-rl-renewal/conditional-inventory/point-proof-search-v1.html",
+      "bytes": 14159,
+      "sha256": "554f85d4de23b7b014e75e51e97b9a6212c7ea07a6488edfcd4f7f0e970177cb"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/conditional-inventory/point-proof-search-data-v1.json",
+      "bytes": 1121,
+      "sha256": "842a0f0a5e5f1f47996dbe7c27ad83fc06fd2eaa2d90c67b44c2ac1d25e42ba3"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/conditional-inventory/point-proof-search-evidence-v1.zip",
+      "bytes": 122863,
+      "sha256": "5a09b01a426cee7c33f357987470afc0d9f8d5baa4c82cbf8ccedbd1d4502419"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/conditional-inventory/reader.html",
+      "bytes": 140103,
+      "sha256": "fbe8e32b53a2b03365a9157e4168dddc386e6511c29f58aa506857269f3153cf"
+    }
+  ],
+  "archive": {
+    "schema": "Point-proof-design-archive-v1",
+    "files": [
+      {
+        "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/point-proof-frame-feasibility-design-v1.json",
+        "role": "New full-kernel finite-frame model",
+        "bytes": 20410,
+        "sha256": "b23f97adeb1973e310e9251686266c801fcd2b6c3d2144fd4ad90ad754b65acf"
+      },
+      {
+        "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/point-proof-frame-provider-API-PROPOSAL-v1.json",
+        "role": "Prospective provider interface with explicit open ABI obligations",
+        "bytes": 7576,
+        "sha256": "1cdc44b0b0a2df1870303a4493430ca0be49832009a6136a11c6bdce7277f277"
+      },
+      {
+        "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/point-proof-frame-design-handoff-v1.json",
+        "role": "Frozen B handoff",
+        "bytes": 2560,
+        "sha256": "1202d91abe779595dbcc1f299dd693abb72ce71b9951e0c8b45a930567e22e2a"
+      },
+      {
+        "path": "research-runs/gcts-point-proof-search-20261022/implementation-B/point-proof-ground-placement-identity-addendum-v1.json",
+        "role": "Binding full point-value placement identity clarification",
+        "bytes": 4712,
+        "sha256": "41082cb752bff9ca18768103a288fc9c7a377cbcd9b151efc9b8b4602483475e"
+      },
+      {
+        "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/point-proof-finite-frame-semantics-v1.json",
+        "role": "Independent broader-envelope proposal; Root selects the B specialization",
+        "bytes": 13465,
+        "sha256": "48ae5cb26e848563d1f5e2e3810506fbedf83bcf8f15bb95298beb37e2e876ab"
+      },
+      {
+        "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/point-proof-independent-raw-models-v1.json",
+        "role": "Thirteen handwritten additive generic point-model inputs, all unrun",
+        "bytes": 15516,
+        "sha256": "18851c3488152f3743a61eacafc12322c94c48f98038cccf01bd95482793225a"
+      },
+      {
+        "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/point-proof-conformance-benchmark-expectations-v1.json",
+        "role": "Independent conformance/comparator/census expectations",
+        "bytes": 11267,
+        "sha256": "db45247f6303c09827bf158fce09809c4cd4e83b6542cfc143bccd4d8aa0677a"
+      },
+      {
+        "path": "research-runs/gcts-point-proof-search-20261022/diagnostics-L/point-proof-design-handoff-v1.json",
+        "role": "Frozen L handoff",
+        "bytes": 4186,
+        "sha256": "0df4074d1d16a446b8cf4074b397f252b084fcc4ea349d4e47a13e267bc9ad57"
+      },
+      {
+        "path": "research-runs/gcts-point-proof-search-20261022/review-C/initial-point-proof-search-concept-objections-v1.md",
+        "role": "Initial independent objections",
+        "bytes": 7003,
+        "sha256": "ea8b21f40cf06c2de349416c965b324928339e2dc840e0cee58069eed61d2c14"
+      },
+      {
+        "path": "research-runs/gcts-point-proof-search-20261022/review-C/typed-point-proof-frame-model-concept-review-v1.json",
+        "role": "Scoped new-model concept review only",
+        "bytes": 10348,
+        "sha256": "43135cf1f3c4ce3755f010928d5ca259e2f40b61818b0a1ad6140ef982c2c763"
+      },
+      {
+        "path": "research-runs/gcts-point-proof-search-20261022/review-C/typed-point-proof-frame-identity-and-schedule-concept-addendum-v1.json",
+        "role": "Scoped identity and fair-schedule concept review",
+        "bytes": 2997,
+        "sha256": "eef96c688a2af25bf1c07cb24080991f48a15881f5363220074e0a444e7abcf5"
+      },
+      {
+        "path": "research-runs/gcts-point-proof-search-20261022/root/point-proof-search-integration-decision-v1.json",
+        "role": "Root explicit model/scope/ownership decision",
+        "bytes": 9908,
+        "sha256": "200371623902ba7ea0f76853811c8d74ac8665f096e3878fc5c2e5c9e5a63905"
+      },
+      {
+        "path": "research-runs/gcts-point-proof-search-20261022/root/point-proof-new-model-selection-v1.json",
+        "role": "Root selection for next ABI design; no execution authority",
+        "bytes": 1882,
+        "sha256": "c6302fe0d8ed03366a64f768e145ee5a48fc12a9935e482de8c41fbd06ea9ac0"
+      },
+      {
+        "path": "docs/basic-tiling-algorithm.md",
+        "role": "Current workspace master contract",
+        "bytes": 21657,
+        "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+      },
+      {
+        "path": "research-runs/gcts-batch-20261020/publisher-recovery-6338a77/docs/basic-tiling-algorithm.md",
+        "role": "Published master contract; preserved distinct body",
+        "bytes": 36240,
+        "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+      },
+      {
+        "path": "research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/first-order-primitive-calculus-contract-v3.json",
+        "role": "Exact FPC calculus contract",
+        "bytes": 22752,
+        "sha256": "8d33020a469b586f4f74afc7ecb28f89fecd83f5a6afb00df1a2bb0b87dad2ed"
+      },
+      {
+        "path": "research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc-h1-exact-wire-contract-v1.json",
+        "role": "Exact query/certificate wire contract",
+        "bytes": 12714,
+        "sha256": "13baa91f5bd038e485255fc96eeb7170f75f04dd842da9160010d1e06f0262b1"
+      },
+      {
+        "path": "research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc_h1_ast_and_builders_v1.py",
+        "role": "Pinned builder Source, not executed",
+        "bytes": 11348,
+        "sha256": "a42aa71f1e5482a1e1d9637290b4c7f8b52f366d86f7234a86cb11420171ed32"
+      },
+      {
+        "path": "research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc_h1_byte_checker_v1.py",
+        "role": "Pinned subject checker Source, not executed",
+        "bytes": 31557,
+        "sha256": "140a9c4b7a6a18c4c20aa4294a0f3fa90f65fe319adbf47a22125170f32b2ef7"
+      },
+      {
+        "path": "research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc_h1_independent_reference_v2.py",
+        "role": "Pinned independent reference Source, not executed",
+        "bytes": 24681,
+        "sha256": "ecda2a10feb69e5aed6ae34dc6c2123dbbc3297ab5c0a431861d628e9cd4334a"
+      },
+      {
+        "path": "research-runs/gcts-fixed-wang-compiler-20261021/root/fpc-h1-point-row-reduction-contract-v1.json",
+        "role": "Existing conditional point reduction",
+        "bytes": 8538,
+        "sha256": "3d56003ac1538232926a7b36b584423ba75d0ecfcda87a27f98e61f71d5fed99"
+      },
+      {
+        "path": "research-runs/gcts-fixed-wang-compiler-20261021/root/fpc-h1-point-row-public-API-v1.json",
+        "role": "Existing adapter public API",
+        "bytes": 6466,
+        "sha256": "ea09e64353a43ebdb9a67150e8e77d2e2f608b3dbca0268eef75ad25123c1ebf"
+      },
+      {
+        "path": "research-runs/gcts-fixed-wang-compiler-20261021/root/fpc_h1_point_rows_v2.py",
+        "role": "Existing point adapter Source, not executed",
+        "bytes": 10972,
+        "sha256": "57eac1681fbb9e3a6494109a1b9ca43cbfa4d5bfc25ce87954537ae801acf32f"
+      },
+      {
+        "path": "research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/first-fixed-verifier-target-declarations-v1.json",
+        "role": "All six unchanged literal mathematical development inputs",
+        "bytes": 8614,
+        "sha256": "c6ae5f616b61e85f4b5cbd2b1e7619c047f42d83afd725e277475292cd904b0a"
+      },
+      {
+        "path": "research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/next-geometric-receptor-study-bounded-census-design-v1.json",
+        "role": "Prospective bounded in-actual census proposal",
+        "bytes": 8550,
+        "sha256": "223332bf95c2437d465c2790cf82164f07124402567ab9314d80c2d7365404a0"
+      }
+    ],
+    "scope": "Design, independent raw test inputs and reviews only. No scientific execution or proof.",
+    "raw_file_count": 25,
+    "raw_bytes": 315919
+  },
+  "parent": {
+    "preimage": {
+      "bytes": 139495,
+      "sha256": "c82fe4738a5959847fff1e9a641152094836cc59c4821a93c93065737e97a8f7"
+    },
+    "addition": {
+      "bytes": 608,
+      "sha256": "00f239dc2e4604a56cbb11508e60cdf4a0f405a44f2beae2e590bdd7ffcf1eef"
+    },
+    "result": {
+      "bytes": 140103,
+      "sha256": "fbe8e32b53a2b03365a9157e4168dddc386e6511c29f58aa506857269f3153cf"
+    },
+    "inverse_exact": true
+  },
+  "new_scientific_imports_calls": 0,
+  "proofs_discovered": null,
+  "qualification": null,
+  "finite_palette": null,
+  "GCTS_or_RL_advantage": null
+}

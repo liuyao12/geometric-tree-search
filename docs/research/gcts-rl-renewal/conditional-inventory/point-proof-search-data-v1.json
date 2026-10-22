@@ -1,0 +1,29 @@
+{
+  "schema": "Point-proof-search-public-status-v1",
+  "date": "2026-10-22",
+  "status": "MODEL_CONCEPT_REVIEWED_UNIMPLEMENTED_UNRUN",
+  "new_scientific_executions": 0,
+  "new_proofs_discovered": 0,
+  "qualification": null,
+  "model": "New full-FPC finite frame and syntax envelope; explicit same-inventory comparator",
+  "original_targets": 6,
+  "original_scoped_control_groups": 126,
+  "new_declarative_point_groups": 13,
+  "new_groups_executed": false,
+  "strict_finite_Wang_palette": null,
+  "learned_GCTS_effect": null,
+  "RL_effect": null,
+  "comparison_result": null,
+  "remaining": "Strict concrete cursor/state/transition ABI; full provider/point engine and independent verifier/banks; separately reviewed bounded actual.",
+  "concept_review": [
+    {
+      "bytes": 10348,
+      "sha256": "43135cf1f3c4ce3755f010928d5ca259e2f40b61818b0a1ad6140ef982c2c763"
+    },
+    {
+      "bytes": 2997,
+      "sha256": "eef96c688a2af25bf1c07cb24080991f48a15881f5363220074e0a444e7abcf5"
+    }
+  ],
+  "scope": "Prospective mathematical model and raw test definitions only. No prior failure/prefix/proof/library is adopted."
+}
