@@ -1,0 +1,625 @@
+{
+  "schema": "Root-fixed-slot-study-whole-results-v1",
+  "issued_utc": "2026-10-22T20:52:26.446005+00:00",
+  "whole_actual_review_accepted": true,
+  "scope": "Two complete separately consumed WHOLE NEGATIVES, no admitted current proof or control prefix.",
+  "summary": "Fixing output-determined witness fields did not yet solve the selected incidence statement. The first attempt caught an interface defect; the narrow repaired run reached search and then the original work deadline.",
+  "interpretation": "The repaired job completed all ten control-stage wrappers and entered search at about 19.81 worker seconds, then hit the 160-second whole-work deadline without returning a proof. Those stage labels are diagnostic: all seven positive payloads and the current qualification result remain null. The unique admitted theorem count stays one, elementary reflexivity from the earlier studies. No learned marking, RL or receptor-family advantage is established.",
+  "next_step": "The next decisive experiment is a matched conventional CSP versus point-bookkeeping comparison using the same provider, full context, guards, frame/fuel schedule and current row-order ties. In this unit-row model the semantic decisions should coincide; compare actually saved diagnostics and total cost. A separate receptor-family study must acquire reusable primitive-proof clusters on fresh training tasks, validate every expansion and test structurally different problems against fixed and uniform selection of the same library. Original consumed cases remain immutable; no proof route is supplied.",
+  "cases": [
+    {
+      "case_id": "point-frame-fixed-slots-v1-target-3",
+      "target_index": 3,
+      "target_id": "HI-point-not-line",
+      "display_outcome": "Interface failure before target search",
+      "admitted": false,
+      "observer_elapsed_seconds": 6.513863375002984,
+      "observer_tool_summary_seconds": 6.514508499996737,
+      "target_search_started": false,
+      "qualification_complete": false,
+      "positive_payloads": {
+        "qualification_result": null,
+        "input_freeze": null,
+        "search_result": null,
+        "subject_receipt": null,
+        "reference_receipt": null,
+        "point_receipt": null,
+        "scientific_result": null
+      },
+      "qualified_whole_peak_bytes": null,
+      "callbacks": 8923368,
+      "physical_bytes": 21172,
+      "physical_files": 12,
+      "partial_files": 0,
+      "C_negative_review": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/review-C/typed-fixed-slot-v1-target-3-complete-negative-actual-review-v1.json",
+        "bytes": 67774,
+        "sha256": "33e43cbf8199b7c9cad621c2210384f3a0d2e2bdfb973bdae3eb9a705121d256"
+      },
+      "Root_disposition": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/fixed-slot-v1-target-3-Root-whole-negative-disposition-v1.json",
+        "bytes": 3540,
+        "sha256": "8823155c1afac98041920a3552d00464c074a24748d9317d8d6a6d89b7e00226"
+      }
+    },
+    {
+      "case_id": "point-frame-fixed-slots-v2-target-3",
+      "target_index": 3,
+      "target_id": "HI-point-not-line",
+      "display_outcome": "Whole-work deadline during target search; no proof",
+      "admitted": false,
+      "observer_elapsed_seconds": 160.30486008399748,
+      "observer_tool_summary_seconds": 160.3055588339921,
+      "target_search_started": true,
+      "qualification_complete": false,
+      "positive_payloads": {
+        "qualification_result": null,
+        "input_freeze": null,
+        "search_result": null,
+        "subject_receipt": null,
+        "reference_receipt": null,
+        "point_receipt": null,
+        "scientific_result": null
+      },
+      "qualified_whole_peak_bytes": null,
+      "callbacks": 191940340,
+      "physical_bytes": 22117,
+      "physical_files": 12,
+      "partial_files": 0,
+      "C_negative_review": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/review-C/typed-fixed-slot-v2-target-3-complete-negative-actual-review-v1.json",
+        "bytes": 76851,
+        "sha256": "92f1decbbb5d92bcc4fd7a64706c6e631de6fb07a2182d77e60fa61544c6a83d"
+      },
+      "Root_disposition": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/fixed-slot-v2-target-3-Root-whole-negative-disposition-v1.json",
+        "bytes": 3003,
+        "sha256": "ae374e095e4bd328c855179905a14ac8d6a0513b0034fec278f1f416d32c26bd"
+      }
+    }
+  ],
+  "original_development_targets_retained": 6,
+  "current_other_five": [
+    {
+      "target_index": 0,
+      "status": "NOT_RUN_UNGRANTED"
+    },
+    {
+      "target_index": 1,
+      "status": "NOT_RUN_UNGRANTED"
+    },
+    {
+      "target_index": 2,
+      "status": "NOT_RUN_UNGRANTED"
+    },
+    {
+      "target_index": 4,
+      "status": "NOT_RUN_UNGRANTED"
+    },
+    {
+      "target_index": 5,
+      "status": "NOT_RUN_UNGRANTED"
+    }
+  ],
+  "declared_scoped_groups": 184,
+  "declared_scoped_populations": 11,
+  "original_scoped_groups_retained": 176,
+  "additional_fixed_slot_groups": 8,
+  "current_population_qualified": false,
+  "qualified_current_group_result": null,
+  "diagnostic_search_stage_start_worker_seconds": 19.80883675001678,
+  "new_target_proof_admitted": false,
+  "new_distinct_theorems": 0,
+  "unique_theorems": 1,
+  "RL_used": false,
+  "learned_markings_used": false,
+  "receptor_library_used": false,
+  "GCTS_or_RL_advantage_established": false,
+  "matched_conventional_baseline_run": false,
+  "provider_census": "UNSUPPORTED production-wide provider counters under unchanged trace0 controller.",
+  "evidence_records": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/actual/point-frame-fixed-slots-v1-target-3.observer/observer.json",
+      "bytes": 1507,
+      "sha256": "a7f4077c7ef6f0478da324e7e061ce438f2e4379559feba6aaf91495f66aed09"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/actual/point-frame-fixed-slots-v1-target-3.observer/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/actual/point-frame-fixed-slots-v1-target-3.observer/stdout.bin",
+      "bytes": 1605,
+      "sha256": "f9081fb57fa9191a684593427f66b78ecd465b92d65bc260deef4070966c36c7"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/actual/point-frame-fixed-slots-v1-target-3/CONSUMED.json",
+      "bytes": 272,
+      "sha256": "582025ce0fbb74c23fb620715044fc7df17cd8e161be5400abe4e1cfa988b07c"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/actual/point-frame-fixed-slots-v1-target-3/failure.json",
+      "bytes": 10608,
+      "sha256": "f778a9d2507f11c0b30244398f59585ae0fe578b53cdb6e1289667bb6c6a74d7"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/actual/point-frame-fixed-slots-v1-target-3/owned-child.json",
+      "bytes": 249,
+      "sha256": "6d5eaae818a8c0838bc78082a061a446e13355703f96dab794c045a802371bea"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/actual/point-frame-fixed-slots-v1-target-3/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/actual/point-frame-fixed-slots-v1-target-3/stdout.bin",
+      "bytes": 141,
+      "sha256": "ec22c990431565d05ce52ac71dcd1a2d0f830533b6e4ac7961eb47090d5c42bd"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/actual/point-frame-fixed-slots-v1-target-3/target-input-freeze.json",
+      "bytes": 4301,
+      "sha256": "26052854484d91ab460e21efe55ec7cf5e6c21cb2dce451a7854ea17d7ce2e0b"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/actual/point-frame-fixed-slots-v1-target-3/target-query.bin",
+      "bytes": 27,
+      "sha256": "63dafaccc6eb9a76defe986d436b3563248a4799a458a1fc68b3fe766e23d391"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/actual/point-frame-fixed-slots-v1-target-3/terminal.json",
+      "bytes": 1817,
+      "sha256": "4ba8a118053b99b86a28245e8d57a32ec0ae820ad56dc8d4962a9141fcd0ab45"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/actual/point-frame-fixed-slots-v1-target-3/worker-header.json",
+      "bytes": 645,
+      "sha256": "7bcf0b1ac1e0350e4d2b8fb10f412d44b76072308117d52cbfb573a341b8fcc0"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/actual/point-frame-fixed-slots-v2-target-3.observer/observer.json",
+      "bytes": 1508,
+      "sha256": "eb6c45fb60daf168a5bbd11a25faee22972bc75dceac2a3b66c72010a53b8312"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/actual/point-frame-fixed-slots-v2-target-3.observer/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/actual/point-frame-fixed-slots-v2-target-3.observer/stdout.bin",
+      "bytes": 1610,
+      "sha256": "608d2498407150ee0cb81a6ddaec048be1c68bc59e3d2023bbb72e4e5d99507d"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/actual/point-frame-fixed-slots-v2-target-3/CONSUMED.json",
+      "bytes": 272,
+      "sha256": "b8b41941156c8d27a8ecafeed3bf7cf4944bdfef7f7a6674d9281d262d80a05f"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/actual/point-frame-fixed-slots-v2-target-3/failure.json",
+      "bytes": 11537,
+      "sha256": "ed9b356444c88eacbda9b729845ce36d9b2dfda5dc151bcab78f1eacc3d000e3"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/actual/point-frame-fixed-slots-v2-target-3/owned-child.json",
+      "bytes": 249,
+      "sha256": "1eccd47927d6612754375fc5b6e2e319d82adc83c9d78b741af8af577b9cccbf"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/actual/point-frame-fixed-slots-v2-target-3/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/actual/point-frame-fixed-slots-v2-target-3/stdout.bin",
+      "bytes": 144,
+      "sha256": "a38890de0d70bf0d702e531a8a0004751671b3b0aa58661cfc4a53b8af06a7fd"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/actual/point-frame-fixed-slots-v2-target-3/target-input-freeze.json",
+      "bytes": 4301,
+      "sha256": "44c62893654642c1cf487a875d3b9fac64fdcc4b2fc209aeba78d7f61f356236"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/actual/point-frame-fixed-slots-v2-target-3/target-query.bin",
+      "bytes": 27,
+      "sha256": "63dafaccc6eb9a76defe986d436b3563248a4799a458a1fc68b3fe766e23d391"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/actual/point-frame-fixed-slots-v2-target-3/terminal.json",
+      "bytes": 1822,
+      "sha256": "b56fd9d40059a37569496b07deffe31455ad20840bb6be6d4f89474bc27e40c4"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/actual/point-frame-fixed-slots-v2-target-3/worker-header.json",
+      "bytes": 647,
+      "sha256": "7cddd5047f10e000358535005a62937c499aeedaab8dba20c86705bf8aff58fa"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/diagnostics-L/fixed-free-slot-independent-controls-handoff-v1.json",
+      "bytes": 5104,
+      "sha256": "019c8b5fa552f622b2a4542401b722abdc69ba4f9e5a1fe1dc4f9c1d69d823c1"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/diagnostics-L/fixed-free-slot-independent-controls-handoff-v2.json",
+      "bytes": 8409,
+      "sha256": "7845f70b889a492c75474fb87063217521944e67d8eacfc2eede845b63aeeb6f"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/diagnostics-L/fixed-slots-v2-evidence-and-minimum-matched-study-v1.json",
+      "bytes": 5988,
+      "sha256": "4e42f058b1cf413f50238c561bec162e92e6dc88f21df7489454854b33f36a5b"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/diagnostics-L/typed-point-frame-worker4-caller-component-Source-review-v1.json",
+      "bytes": 8776,
+      "sha256": "dac7adbdc990581dcf7fa85e6726431c43d0037e52b62a1672e52230f6f71dcc"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/diagnostics-L/typed-point-frame-worker5-caller-successor-component-Source-review-v1.json",
+      "bytes": 9854,
+      "sha256": "2db90ed3aeba3efaa03328ca4df677b4cf06a426d06083598d2942cf2a9e07c6"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/implementation-B/full-frame-provider-Source-handoff-v5.json",
+      "bytes": 4917,
+      "sha256": "74c8b03556cab9b0ed98a709e77edf71db18874ff650a1ee4a8b086b1ef85bc6"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/implementation-B/full-frame-provider-Source-handoff-v6.json",
+      "bytes": 4062,
+      "sha256": "f31de58b146b2b02a0f3bded1493ac185060b1f7b65d57674a733734e4b9cef9"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/implementation-B/point-frame-worker-Source-handoff-v4.json",
+      "bytes": 7607,
+      "sha256": "3bb612973651e8892f3e118fb1483a1a06879b1040c31d24c325c73870beff3f"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/implementation-B/point-frame-worker-Source-handoff-v5.json",
+      "bytes": 7403,
+      "sha256": "4d6c709f1a0b3b79ba67d4a32a7a64db5e07e80f9582d8a90df43aed70cf8b96"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/review-C/typed-fixed-free-slot-independent-bank-complete-Source-review-v1.json",
+      "bytes": 10867,
+      "sha256": "15137e807bad5c9f8bcc0b49e6d5f8b76163ad860651b6c55181b00f8f7e40d2"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/review-C/typed-fixed-slot-provider6-bank2-narrow-component-Source-review-v1.json",
+      "bytes": 25387,
+      "sha256": "e49c4c151f9c1f5e7df76c771f3a15d2101323a705c7313f8279339acf9c2876"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/review-C/typed-fixed-slot-six-target-complete-whole-prospective-Source-plan-proposal-review-v1.json",
+      "bytes": 21382,
+      "sha256": "f08846ec0c7545cfbf8aa62de5de94afd6036ef5eb612e8b6e0ee1e0e951590f"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/review-C/typed-fixed-slot-six-target-complete-whole-prospective-Source-plan-proposal-review-v2.json",
+      "bytes": 21249,
+      "sha256": "522fa003ca2244e94a578d5adc9a12c90eea8556c49786a9715e71910952e2f0"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/review-C/typed-fixed-slot-v1-target-3-complete-negative-actual-review-v1.json",
+      "bytes": 67774,
+      "sha256": "33e43cbf8199b7c9cad621c2210384f3a0d2e2bdfb973bdae3eb9a705121d256"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/review-C/typed-fixed-slot-v2-target-3-complete-negative-actual-review-v1.json",
+      "bytes": 76851,
+      "sha256": "92f1decbbb5d92bcc4fd7a64706c6e631de6fb07a2182d77e60fa61544c6a83d"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/review-C/typed-full-frame-provider-fixed-free-complete-Source-review-v5.json",
+      "bytes": 12128,
+      "sha256": "a1eace074d147675da0e37dc8e89023e138f3867878f914d6d8d3eca0b230681"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/fixed-free-provider-v5-Root-component-Source-acceptance-v1.json",
+      "bytes": 3640,
+      "sha256": "b0815a423037fe5d046679d319758373c3c16ed2acf5fc2a0e45ef98da7f7adb"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/fixed-free-provider-v6-Root-component-Source-acceptance-v1.json",
+      "bytes": 2804,
+      "sha256": "c637a06e0a41a9e9d225f449b9183081ff25fab1b79b1db01b469553a52abfda"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/fixed-slot-prospective-pilot-selection-v1.json",
+      "bytes": 3393,
+      "sha256": "4bf183df8a83f55a715970337603f44c79850657a0388c41d4e6f79caad9ca06"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/fixed-slot-prospective-pilot-selection-v2.json",
+      "bytes": 4109,
+      "sha256": "57aefc06e70f63e88456348c7fa24521cffe28c4c7425dd8ce2e72bc8d4b940e"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/fixed-slot-study-Root-whole-prospective-acceptance-v1.json",
+      "bytes": 3079,
+      "sha256": "a546cf593f9a0b998d0414e20a6cf98843bff398eb3506c8eefb76dcc02a3e13"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/fixed-slot-study-Root-whole-prospective-acceptance-v2.json",
+      "bytes": 3099,
+      "sha256": "702c0d6d8e4d04692c6ea21e4a7d54a5a3f051fd0bff5129ba05ba22a96e1be5"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/fixed-slot-study-preparation-v1.json",
+      "bytes": 9126,
+      "sha256": "f89b86d12f9cc1df6462f78f5b70cf4471c364237de7c33de8b73646797dc227"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/fixed-slot-study-preparation-v2.json",
+      "bytes": 9142,
+      "sha256": "6034f9fe7238a75a422e07cadaad38043d279271f9920306f2bf9ffa191fc9aa"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/fixed-slot-target-0-Source-closure-v1.json",
+      "bytes": 45455,
+      "sha256": "5846b27f11b17ad34bc3c373bd8ca2dd960d459e098694b5f19150b3df1d6464"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/fixed-slot-target-0-Source-closure-v2.json",
+      "bytes": 55752,
+      "sha256": "18f15bdefb120f453c601ffe8ce7fca2f3ae52a2d61ad36b7a46a6d5820aa9b8"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/fixed-slot-target-0-grant-proposal-v1.json",
+      "bytes": 3185,
+      "sha256": "f646f37f334525e1a506c4af938b392ba560d12a0054d43b1a98db517814f5d8"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/fixed-slot-target-0-grant-proposal-v2.json",
+      "bytes": 3197,
+      "sha256": "4d445fbd9acd89abcb9fedc214c74c33b5b12dd39fe1d92dc98645c06ffabea8"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/fixed-slot-target-1-Source-closure-v1.json",
+      "bytes": 45455,
+      "sha256": "61af55fa68679557c4410d3ccfadbb996e3452ef05763388cdda265c46a47153"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/fixed-slot-target-1-Source-closure-v2.json",
+      "bytes": 55752,
+      "sha256": "cbef9a1f1ad911588a2b500a23e112038e38585622ce5a26bd5bbf7e47e458cb"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/fixed-slot-target-1-grant-proposal-v1.json",
+      "bytes": 3185,
+      "sha256": "dc5f655c049ad8731b2f18ab614f6c1a09cc915c839dc29ce7c8a353ec736c5d"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/fixed-slot-target-1-grant-proposal-v2.json",
+      "bytes": 3197,
+      "sha256": "5ff0f1de2faaab2b1950e502cfbff0d3d172fa3b3f4426d188c9e705e2a22080"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/fixed-slot-target-2-Source-closure-v1.json",
+      "bytes": 45455,
+      "sha256": "81ee9c75d33c541948c6d30433b9436265af44b9f7f60e7d1e343ce425dc954e"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/fixed-slot-target-2-Source-closure-v2.json",
+      "bytes": 55752,
+      "sha256": "93ab5a43cb13dfe0e0b35ebd0a9a8fc81d28a12657c2de573a9970759e4d95f8"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/fixed-slot-target-2-grant-proposal-v1.json",
+      "bytes": 3185,
+      "sha256": "28070ef1555c1bed7690753f68d403a87bf950412018ab5c442c44bd4293ba15"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/fixed-slot-target-2-grant-proposal-v2.json",
+      "bytes": 3197,
+      "sha256": "8b93b1abb8453544ac98af5345e8f261c7964eabb03103659116cf1a8251a888"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/fixed-slot-target-3-Root-prospective-acceptance-v1.json",
+      "bytes": 2737,
+      "sha256": "bcdfbcbbbe3e643fd2dc001a234a310118fb82f0e596a69bca34145835c8a0db"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/fixed-slot-target-3-Root-prospective-acceptance-v2.json",
+      "bytes": 2737,
+      "sha256": "88649b250cbee4fdc4714a0411ad9f42c1d892c4c2f637a19008f92662dda878"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/fixed-slot-target-3-Source-closure-v1.json",
+      "bytes": 45455,
+      "sha256": "8a678754559129f99032061b0eb502ce18571a3f119eba45a711b2a1085df224"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/fixed-slot-target-3-Source-closure-v2.json",
+      "bytes": 55752,
+      "sha256": "f0c26da5bd367193da901dc2944f2705aab396c052d49ba138d77cd31f65e622"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/fixed-slot-target-3-all-tools-idle-barrier-v1.json",
+      "bytes": 907,
+      "sha256": "c3ec8de4cd2a5db139e1795603af267086841183b9089e1216b6bf3fc1b22594"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/fixed-slot-target-3-all-tools-idle-barrier-v2.json",
+      "bytes": 907,
+      "sha256": "c1585eba7a01a31664899373c25f8e070c3808c7d2e385eaaf3a296cccfb8390"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/fixed-slot-target-3-first-terminal-raw-census-v1.json",
+      "bytes": 4319,
+      "sha256": "e142b55c31c8e89c46ae10812f0891b15cdc3c4f944d8a4a046a20d0117394dc"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/fixed-slot-target-3-first-terminal-raw-census-v2.json",
+      "bytes": 4320,
+      "sha256": "2fb6cc19456d4c09c47161f318fa78af1da59a408c5e1ad4bf8d096c36034f69"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/fixed-slot-target-3-grant-proposal-v1.json",
+      "bytes": 3185,
+      "sha256": "662c0bc35fcb422754424feb754447bb0577d1fdd2df2257c6e1ad05f4348330"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/fixed-slot-target-3-grant-proposal-v2.json",
+      "bytes": 3197,
+      "sha256": "be57f984d445cda9a5bf943ef1668a7281ef219f83dc64b5b598e517e725f58b"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/fixed-slot-target-4-Source-closure-v1.json",
+      "bytes": 45455,
+      "sha256": "0d331c220572d2cf592f562afd52a1874c4919660ae56690b9696ea5b12f2c57"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/fixed-slot-target-4-Source-closure-v2.json",
+      "bytes": 55752,
+      "sha256": "dff3a2001e8351b0d589cc36f5799dc70a8944c792ca8ee475ccef9ab73a577c"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/fixed-slot-target-4-grant-proposal-v1.json",
+      "bytes": 3185,
+      "sha256": "288cf665a124aad4267a30534fbda12f299b4f0024997b87ed6eee941b5e051e"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/fixed-slot-target-4-grant-proposal-v2.json",
+      "bytes": 3197,
+      "sha256": "8a3fa31ffb2418cee4cd6be98682409658c44e5f2b76958a897cc2ed3013e844"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/fixed-slot-target-5-Source-closure-v1.json",
+      "bytes": 45455,
+      "sha256": "58bacb311c3938a4eeaf9da26ecda95a16456e27e28609f7e083b16185767aed"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/fixed-slot-target-5-Source-closure-v2.json",
+      "bytes": 55752,
+      "sha256": "1e003c4d00983a5432b6451feaa1647b5c37d040ecc1737ffd639973d5fc7b4e"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/fixed-slot-target-5-grant-proposal-v1.json",
+      "bytes": 3185,
+      "sha256": "3f2bff8a4f66451933c68e064db370d0f4048c3219b830dd16657e6e1f87c619"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/fixed-slot-target-5-grant-proposal-v2.json",
+      "bytes": 3197,
+      "sha256": "e8b39eb0c2ca5d1cd7738ad46a64b51359340e2c1861fa31c2646b0737bba4b3"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/fixed-slot-v1-owned-process-terminal-observation-v1.json",
+      "bytes": 630,
+      "sha256": "84f502db2d136274ab6a44d81b432f2d56459e3529a2bc1f3ab74447adf83cfb"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/fixed-slot-v1-target-3-Root-whole-negative-disposition-v1.json",
+      "bytes": 3540,
+      "sha256": "8823155c1afac98041920a3552d00464c074a24748d9317d8d6a6d89b7e00226"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/fixed-slot-v2-owned-process-terminal-observation-v1.json",
+      "bytes": 617,
+      "sha256": "bb732ea8be0f3047f1cba4723acd7912a349a21d306dd35c82460f54e9293445"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/fixed-slot-v2-target-3-Root-whole-negative-disposition-v1.json",
+      "bytes": 3003,
+      "sha256": "ae374e095e4bd328c855179905a14ac8d6a0513b0034fec278f1f416d32c26bd"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/fixed-slot-whole-protocol-v1.json",
+      "bytes": 28432,
+      "sha256": "2bf54dd9cac60f410ffb1001c4849fb10f7abc1fe5b3d916aad775fc42981ebb"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/fixed-slot-whole-protocol-v2.json",
+      "bytes": 28709,
+      "sha256": "5bf1d67f024763387e695d4d4b10cb55adc11ebb111fde5306cc82feaa2af128"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/grants/point-frame-fixed-slots-v1-target-3.json",
+      "bytes": 3461,
+      "sha256": "4d26b67a8c5f1214e48f5215d6241a8b1bebc239bca65b5d514a3a8146770830"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/grants/point-frame-fixed-slots-v2-target-3.json",
+      "bytes": 3473,
+      "sha256": "8dde202e0e0a80d300e2c0785ef32d01ec23ff8a6487cc93f206380b5003bc8c"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/plans/point-frame-fixed-slots-v1-target-0.json",
+      "bytes": 65829,
+      "sha256": "921cff3402c08e772ceedcd3a5c1bf95edd647f1fa650da16d520f7c43905fda"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/plans/point-frame-fixed-slots-v1-target-1.json",
+      "bytes": 65827,
+      "sha256": "e8b62a33892f03791c85132b2a7a65ca81a299b662b7709d877d0bc0b91351dc"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/plans/point-frame-fixed-slots-v1-target-2.json",
+      "bytes": 65835,
+      "sha256": "49dfa48eccaea0b9ed9000949a8e1e645ae3ed6e8a8472f84de3b83c76264f11"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/plans/point-frame-fixed-slots-v1-target-3.json",
+      "bytes": 65832,
+      "sha256": "b51dd6a9c03eaa06f1e13d39ae3e2228d7b2c8b5080f7e8c7f45404e21fef94f"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/plans/point-frame-fixed-slots-v1-target-4.json",
+      "bytes": 65853,
+      "sha256": "56c0390f8d7281fb6e3169e751f17121f8caf6003e4353f341f98fed2dc28337"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/plans/point-frame-fixed-slots-v1-target-5.json",
+      "bytes": 65837,
+      "sha256": "beaf29400e84b7a370c1b0b65206934cb38fb1f09d844e027d11aba41b701134"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/plans/point-frame-fixed-slots-v2-target-0.json",
+      "bytes": 76126,
+      "sha256": "894f5c8e6084e82a0c1425b793390e9f820a8815c5666942f869b75c58635cfa"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/plans/point-frame-fixed-slots-v2-target-1.json",
+      "bytes": 76124,
+      "sha256": "f3f3cad064f2982ef45659a5b26cc331a0a9f5add8ea5f32af05016cf6227843"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/plans/point-frame-fixed-slots-v2-target-2.json",
+      "bytes": 76132,
+      "sha256": "fe09e2d738fa5a1ed6fecdcb4f878db5151d47704bbb1d0c10f70a3af674df28"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/plans/point-frame-fixed-slots-v2-target-3.json",
+      "bytes": 76129,
+      "sha256": "9e653fd338f453173bb6a84f286c59c00ce77dacbd9fa721f662bd2ff67c5a93"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/plans/point-frame-fixed-slots-v2-target-4.json",
+      "bytes": 76150,
+      "sha256": "abbc1f5d70aab823ff5efcbc8cb62acaec458541ab250d16a81366a432617a1c"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/plans/point-frame-fixed-slots-v2-target-5.json",
+      "bytes": 76134,
+      "sha256": "198c6639b1978181d2d23960856c13bc468af54801d36ded111cf56bb5b1d041"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/verify_published_fixed_slot_v1.py",
+      "bytes": 3011,
+      "sha256": "2893d51a3b05cfebe16dfae48a6c05f0c0f71c20c26759d30d51abc58a477f65"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/root/write_fixed_slot_results_v1.py",
+      "bytes": 10184,
+      "sha256": "a9badd4a440f63aa206bcfb8218b101b266dcdcd6f3c6dde42ae4bb65b933d53"
+    }
+  ],
+  "scientific_imports_calls": 0,
+  "proof_or_control_replays": 0,
+  "goal_status": "ACTIVE_UNBUDGETED_INCOMPLETE"
+}
