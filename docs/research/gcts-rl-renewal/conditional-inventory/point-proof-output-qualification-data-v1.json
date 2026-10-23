@@ -1,0 +1,30 @@
+{
+  "schema": "public-output-qualification-outcome-v1",
+  "case_id": "signed-propositional-successor-whole-qualification-v1-qualify-0",
+  "outcome": "CONSUMED_WHOLE_RESULT_OUTPUT_CEILING_NO_QUALIFIED_PREFIX",
+  "qualification_admitted": false,
+  "new_research_proofs": 0,
+  "metrics": {
+    "configured_work_seconds": 160,
+    "result_ceiling_bytes": 50331648,
+    "observer_elapsed_seconds": 71.80292950000148,
+    "observer_final_gate_seconds": 71.80339950000052,
+    "worker_failure_elapsed_seconds": 70.51745437498903,
+    "Root_callbacks": 95073804,
+    "qualified_whole_peak_bytes": null,
+    "raw_reaped_child_peak_bytes_diagnostic_only": 582303744,
+    "file_count": 10,
+    "physical_bytes": 22769,
+    "partial_files": 0,
+    "all_seven_positive_fields_null": true,
+    "qualification_complete": false,
+    "observer_resource_candidate_accepted": false,
+    "worker_exit_code": 2,
+    "first_fault_monotonic_ns": null,
+    "compiler_snapshot_count": 0,
+    "rejected_temporary_report_bytes": null
+  },
+  "scope": "221 prospective groups/36 roles/16 scopes/15 wrappers, all unqualified by this whole negative. Completed stage labels are diagnostic only.",
+  "next": "Lossless factoring of complete existing JSON is a proposed transport change, not a new proof rule or demonstrated size/speed benefit.",
+  "limits": "Exact rejected temporary length/field contributions were not saved. Empty compiler snapshot and null check-origin fault stamp supply no compiler cost census. Serialization-origin timestampNone is expected. Raw child memory peaks do not establish qualified whole memory. No comparative speedup, mathematical failure or GCTS/RL advantage inferred."
+}
