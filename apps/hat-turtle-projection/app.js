@@ -34,6 +34,7 @@ function updateLabels(){const m=state.morph,shape=shapeName();$('shape-label').t
  $('position-label').textContent=state.playing?(Math.sin(state.phase)>=0?'Toward Comet':'Toward Chevron'):shape;
  $('rotation-value').textContent=`${Math.round(state.phi*180/Math.PI)} degrees`;$('relative-angle').value=state.phi*180/Math.PI;
  for(const name of ['hat','turtle','chevron','comet'])$(name).setAttribute('aria-pressed',!state.matrix&&Math.abs(state.phi)<1e-10&&Math.abs(m-FAMILY_STOPS[name])<1e-10);
+ let example='';if(!state.matrix&&state.exact)for(const name of ['hat','turtle','aligned-c','aligned-a','aligned-b']){const p=namedAlignment(name);if(Math.abs(p.m-m)<1e-12&&Math.abs(p.phi-state.phi)<1e-12)example=name;}$('aligned-example').value=example;
  updateFrameNote();if(state.explore){parameterMap.draw({m,phi:state.phi});updateLatticeStatus();}
 }
 function prepare(){
@@ -159,7 +160,7 @@ function drawLattice(scale,ox,oy){
 }
 function setPerspective(p){setPlaying(false);if(!state.explore)setMode(true);state.matrix=null;state.phi=p.phi;updateMatrixControls();setMorph(p.m,p.exact);dirty=true;}
 function goStop(name){setPlaying(false);setMode(false);const p=namedAlignment(name);setMorph(FAMILY_STOPS[name],p?.exact||null);}
-function updateMatrixControls(){const on=!!state.matrix;$('morph').disabled=on;$('relative-angle').disabled=on;$('play').disabled=on;$('perspective-controls').classList.toggle('matrix-mode',on);}
+function updateMatrixControls(){const on=!!state.matrix;$('morph').disabled=on;$('relative-angle').disabled=on;$('play').disabled=on;$('perspective-controls').classList.toggle('matrix-mode',on);if(!on)$('matrix-status').textContent='Four-parameter view inactive. Apply the displayed inputs to select a general screen plane.';}
 function applyMatrix(){try{
  const values=['a','b','c','d'].map(k=>$(`matrix-${k}`).value),pivots=$('matrix-chart').value.split(',').map(Number),projection=matrixPerspective(values,pivots);
  setPlaying(false);if(!state.explore)setMode(true);state.matrix=projection;updateMatrixControls();updateLabels();prepareSingleTile();dirty=true;
