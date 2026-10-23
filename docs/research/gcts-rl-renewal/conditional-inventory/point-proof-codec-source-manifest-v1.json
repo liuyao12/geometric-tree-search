@@ -1,0 +1,323 @@
+{
+  "schema": "Root-codec-Source-publication-manifest-v1",
+  "issued_utc": "2026-10-23T08:54:57.358068+00:00",
+  "status": "SOURCE_REVIEWED_NOT_RUNTIME_QUALIFIED",
+  "component_status_prose": "The corrected codec and the independent bank have passed complete Source review.",
+  "implementation_label": "Corrected Source reviewed \u00b7 unexecuted",
+  "review_label": "3 Source blockers resolved \u00b7 reviewed",
+  "review_resolution_prose": "The corrected successor closes all three findings by Source inspection. The original rejected version and negative review remain in the archive; the independent finite test bank was preserved.",
+  "codec": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/implementation-B/fpc_lossless_evidence_codec_v2.py",
+    "bytes": 50474,
+    "sha256": "81deea8c341a2337e2a7fb261c649920d3849a057a3cdae254c6cbf8c50fbfe2"
+  },
+  "independent_bank": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/diagnostics-L/lossless_evidence_independent_controls_v1.py",
+    "bytes": 40509,
+    "sha256": "b5a6f7b1e2aa31e3ccc5ee96d8550c879dd2f21bf473daec8a9e0abe6a3a613f"
+  },
+  "component_acceptance": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/root/lossless-codec2-and-independent-bank-Root-component-Source-acceptance-v1.json",
+    "bytes": 3663,
+    "sha256": "2927992c2e7dae199e2c978beabf0f0ddcf7ac75e72be7a4ba712f34217d3eeb"
+  },
+  "original_scientific_scope": {
+    "observations": 221,
+    "wrappers": 15,
+    "scopes": 16,
+    "roles": 36,
+    "whole_qualified": false
+  },
+  "prospective_codec_scope": {
+    "groups": 8,
+    "declared_public_calls": 168,
+    "declared_observations": 31,
+    "all_unrun": true
+  },
+  "whole_denominator": null,
+  "worker_Source_authorized": false,
+  "execution_authorized": false,
+  "scientific_execution": false,
+  "new_qualified_suites": 0,
+  "new_research_proofs": 0,
+  "latest_measured_result": "CONSUMED_WHOLE_OUTPUT_CEILING_NEGATIVE_NO_QUALIFIED_PREFIX",
+  "GCTS_RL_advantage_established": false,
+  "archive_scope": "Component Source, contracts, independent controls and reviews only; no complete future worker/run closure or execution claim. Historical negative evidence archive unchanged.",
+  "members": [
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/lossless-evidence-codec-Source-handoff-v1.json",
+      "bytes": 5083,
+      "sha256": "8a4d71cc756a8d9865c6d36bb469cee7c45b0553cfefa7e299779b60b416ba9c"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/fpc_lossless_evidence_codec_v1.py",
+      "bytes": 50137,
+      "sha256": "5da51cfaec571557c1ee48e34c5108a456d0d7f5bcc94763c304b3069d925734"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/lossless-evidence-codec-API-v1.json",
+      "bytes": 25051,
+      "sha256": "1369ac9158f8e20c6ae8cc164f58702a566d5c9f0f4183b8cdaa5bb8411496b9"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/lossless-evidence-codec-manual-v1.json",
+      "bytes": 5147,
+      "sha256": "18c26b8728c76a42a25da481846cb05aaa9e168f214ffd2dcd763e97e41571de"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/lossless-evidence-codec-static-v1.json",
+      "bytes": 7364,
+      "sha256": "a80f0ec723ec8d43a572955f97a6626c7d29166179d97443f2989e98335cd189"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/lossless-evidence-codec-dependency-offer-v1.json",
+      "bytes": 3219,
+      "sha256": "46dd6f83da1771ee0f734e5746a3c20459635199a4d3e112080af7c5e76168d2"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/lossless-evidence-codec-new-Source-v1.patch",
+      "bytes": 51251,
+      "sha256": "c903c8a073803ff649f635f1a8202aab52bf3959092f58a2f40bc8b024ebb22d"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/root/lossless-evidence-codec-component-Root-Source-authorship-v1.json",
+      "bytes": 3879,
+      "sha256": "74425b4fc6970eca1b2f492e02ec154908fa3c401d37910fdbe8894ab55bec62"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/lossless-qualification-evidence-format-and-caller-CONTRACT-v2.json",
+      "bytes": 61803,
+      "sha256": "8dfe7079f578d9ec4013c1a1682a37a57776fb89059e0eed5b50ddbc987e2856"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/lossless-evidence-integer-policy-paper-ABI-addendum-v2.json",
+      "bytes": 9890,
+      "sha256": "177884019727b617a152393cae55404779205adafaff658254ae471e2bc934a5"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/lossless-evidence-minimum-public-interface-paper-v1.json",
+      "bytes": 9069,
+      "sha256": "7a00b1ac4b7a77bdc4841c77cace6fe6363adb896c41571f76dfa9a2425d9b4f"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/root/lossless-evidence-initial-callback-intake-paper-v1.json",
+      "bytes": 2280,
+      "sha256": "e9bbf4733358cc52406600aef443925fd3994e56f90d652d98ccae2e1b794b3a"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/root/lossless-evidence-incomplete-finish-public-choice-v1.json",
+      "bytes": 1103,
+      "sha256": "d367d79db4dc953a92acff8df92a96160e8ecc3ec062be08c7a621abe5712d8a"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/diagnostics-L/lossless-evidence-independent-codec-bank-API-expectations-v3.json",
+      "bytes": 7947,
+      "sha256": "7dbb0abfc174b5a9fdcee0edf787f7d9e2f9f4295b56a093bb1293999a169892"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/lossless-evidence-codec-Source-handoff-v2.json",
+      "bytes": 4275,
+      "sha256": "0f7da26a609f4f22a3564446b82e0d8c676bfb8804b6401f05ca81471ebe7df9"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/fpc_lossless_evidence_codec_v2.py",
+      "bytes": 50474,
+      "sha256": "81deea8c341a2337e2a7fb261c649920d3849a057a3cdae254c6cbf8c50fbfe2"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/lossless-evidence-codec-API-v2.json",
+      "bytes": 26007,
+      "sha256": "cda3d9c261a84b82ccf9a55f0525aefe74b471735b5bbbe9e1836faef44acd13"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/lossless-evidence-codec-manual-v2.json",
+      "bytes": 6684,
+      "sha256": "40b1fea51300ed379bb71052befa01dd59503477e95c64f60213cfadeec10694"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/lossless-evidence-codec-static-v2.json",
+      "bytes": 10785,
+      "sha256": "1e05c4318f6abfaf6c4d1bb17dd14e6e71f6ae241e331d4bdd0b63bd168d71d7"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/lossless-evidence-codec-dependency-offer-v2.json",
+      "bytes": 4997,
+      "sha256": "6653574f0dea0bb27f6d2904434281185a56b80be9fce0fe44672e9f41c28099"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/lossless-evidence-codec-Source1-to-Source2.patch",
+      "bytes": 5511,
+      "sha256": "3e0e3091dccd256c7a15e8bc5e534cb1af8e93043d837c27b2ab69445a349643"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/lossless-evidence-codec-Source2-to-Source1.patch",
+      "bytes": 5511,
+      "sha256": "428c99409866604e013c2047da9fd82363cfc605add456f4cc061d7ee98f51f7"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/lossless-evidence-codec-Source2-review-lineage-addendum-v1.json",
+      "bytes": 1739,
+      "sha256": "1a385ae716d09bb3cc892d4b92fb74b537b37c69f5c9ef288b01edc81b9620b2"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/review-C/typed-lossless-evidence-codec-complete-component-Source-review-v1-negative.json",
+      "bytes": 10321,
+      "sha256": "d5b8e34ad1836b4f5cbf8b474827b6adc51a596d1df324dcfacba0003ba68a41"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/lossless-evidence-codec-static-Python312-addendum-v1.json",
+      "bytes": 16565,
+      "sha256": "d4728688652545861067976c15be87c15d88581ff8da3e5659cafad47ebb16fd"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/diagnostics-L/lossless-evidence-independent-codec-bank-Source-handoff-v1.json",
+      "bytes": 3839,
+      "sha256": "81bea2aea57cb834810ba0a00e5a2f524d79ee8395d9f711682397b6bd9fa722"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/diagnostics-L/lossless_evidence_independent_controls_v1.py",
+      "bytes": 40509,
+      "sha256": "b5a6f7b1e2aa31e3ccc5ee96d8550c879dd2f21bf473daec8a9e0abe6a3a613f"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/diagnostics-L/lossless-evidence-independent-codec-bank-API-v1.json",
+      "bytes": 9697,
+      "sha256": "dba17aead522bed264b222a3f877ced0d292f12815bc5d6efb74bb9d17dda052"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/diagnostics-L/lossless-evidence-independent-codec-bank-manual-v1.json",
+      "bytes": 5000,
+      "sha256": "10606f9e333d476ff06c51ba4ad2a82ebbc27815332dddbc8c2132b025b8834d"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/diagnostics-L/lossless-evidence-independent-codec-bank-call-locators-v1.json",
+      "bytes": 45697,
+      "sha256": "51f8de521fbc51df38cba436dd7803d53a0f0be2a2d4ea15fc82cddc722fc6ad"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/diagnostics-L/lossless-evidence-independent-codec-bank-static-v1.json",
+      "bytes": 2689,
+      "sha256": "1bfdf9dc8c1693f90a2bdd3b7226ebcc338f32943c4416b3d15a60c08efaf7fe"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/diagnostics-L/lossless-evidence-independent-codec-bank-closure-v1.json",
+      "bytes": 4493,
+      "sha256": "6585e46c7c4786555e8cb6b353fdedce843482fee090d59f69d8301993f41322"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/root/lossless-evidence-generic-diagnostic-path-expectations-v1.json",
+      "bytes": 2155,
+      "sha256": "f1409d64bf3d921bdd7da152ee9febf1f26e14091bd149a64b6626e403e9edc3"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/root/lossless-codec-independent-control-Root-Source-authorship-v1.json",
+      "bytes": 2092,
+      "sha256": "3576bd0c07d0967ec21ad262804db35631a5e0f213bb86cad042817017d97057"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/review-C/typed-lossless-evidence-codec-complete-successor-component-Source-review-v2.json",
+      "bytes": 7084,
+      "sha256": "ffff8e56cfd97801e19f06013656ea21e17241989850b3cb8424feefdc358f69"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/review-C/lossless-evidence-codec-Source2-passive-successor-audit-v1.json",
+      "bytes": 5258,
+      "sha256": "648004533d936850a2df5b7ea99f39db79652550c737750b6b5735788b5585b4"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/review-C/typed-independent-lossless-codec-bank-complete-component-Source-review-v1.json",
+      "bytes": 8971,
+      "sha256": "487bf899ec5a92a93dfd5402951d70b479601d7f137d4250df0ff68195d7e42f"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/review-C/lossless-evidence-codec-bank-v1-passive-Source-audit-v1.json",
+      "bytes": 4920,
+      "sha256": "d71e89733c99cdb1600cf1bc4ec6a168e85e5adc8495d6a14c7b2237a26920dc"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/review-C/lossless-evidence-codec-v1-passive-Source-audit-v1.json",
+      "bytes": 5565,
+      "sha256": "ad3647ba1f0587ca45e58a7dfecccfde8fb2f266943d9543ce015e21e62eb4d9"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/root/lossless-codec2-and-independent-bank-Root-component-Source-acceptance-v1.json",
+      "bytes": 3663,
+      "sha256": "2927992c2e7dae199e2c978beabf0f0ddcf7ac75e72be7a4ba712f34217d3eeb"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/root/lossless-evidence-codec-and-bank-Root-manual-review-v1.json",
+      "bytes": 3791,
+      "sha256": "a21a99ed6c37d4cba25b8e9a0d71e66c892606979bf0e2c0184de67a84e1c30a"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/root/lossless-evidence-codec2-Root-passive-AST-audit-v1.json",
+      "bytes": 700,
+      "sha256": "5cae52d5cd6366bf061a01c30fa44ccffbb28bc97c9c36dc06701528a1bcb71c"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/diagnostics-L/pre-format-lossless-evidence-codec-independent-coverage-requirements-v2.json",
+      "bytes": 21460,
+      "sha256": "d1aa3e304b5dbb7386d19d46a4b8f42af02d7307f2bbb476ab3559ac9b8a8242"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/diagnostics-L/lossless-evidence-paper2-independent-control-matrix-v1.json",
+      "bytes": 25177,
+      "sha256": "314833b4143706f7494f478588422a552b02e663b61d6b4431d12173b7b5022d"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/diagnostics-L/lossless-evidence-paper2-independent-policy-ABI-binding-v2.json",
+      "bytes": 10909,
+      "sha256": "eac7d0179a0c8e8863f533966348d212cc103d2abbaf71221404fefc5c74328e"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/root/lossless-evidence-worker-integration-scope-paper-v1.json",
+      "bytes": 4747,
+      "sha256": "9ead6f55fce96f7e571f4d96988f71d923888cf0f9c308dafa0352313d2296c9"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/review-C/typed-lossless-evidence-worker-scope-and-incomplete-finish-paper-review-v1.json",
+      "bytes": 4238,
+      "sha256": "f28c1abb2fafbd9c34206f15476ba2a19b76127ec37c24afd32b05421aa68841"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/review-C/typed-lossless-evidence-codec8-expectations-and-path-composition-review-v1.json",
+      "bytes": 2858,
+      "sha256": "29112bfb15da9dc9a329d87218236cf61ce77624a5a9e8205683a039c3b09d0b"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/review-C/typed-lossless-evidence-minimum-public-interface-paper-review-v1.json",
+      "bytes": 7699,
+      "sha256": "1025bfbf3bf0efec6d4ae8c4217cead76636f5be19a7d951214ff623481d6e07"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/review-C/typed-research-priority-minimal-informative-comparison-assessment-v1.json",
+      "bytes": 10111,
+      "sha256": "9c80583b52a02a3344dc8818013d917f97cd311a16b80e26d9dff05dc4bc5bf1"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/root/prepare_codec_source_publication_v1.py",
+      "bytes": 13894,
+      "sha256": "5141b79e4fe9d0a456ffdb0bc013e5c00acd641f412c2f3c6b633d64062d7b16"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/root/publish_codec_source_api_v1.py",
+      "bytes": 6998,
+      "sha256": "f102670cd97ca66e391a3e0aa58f62a9034dc2c8fde1e6012c4068089b21dfdd"
+    },
+    {
+      "name": "docs/basic-tiling-algorithm.md",
+      "bytes": 21657,
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    {
+      "name": "milestone-catalog.json",
+      "bytes": 18937,
+      "sha256": "fe3cc7ada6dbc4bbfc2cb87c11ec2f075a8ed493f16211d1b1dcb11899f4da99"
+    }
+  ],
+  "archive": {
+    "bytes": 233675,
+    "sha256": "f5b02331342e637b8be5b058d8dadc1b6e0b7f756c9d7f3dc7df8c2f72d17170"
+  },
+  "archive_member_count": 54
+}
