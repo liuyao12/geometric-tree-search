@@ -1,0 +1,260 @@
+{
+  "schema": "GCTS-reconstruction-progress-source-snapshot-v1",
+  "snapshot_utc": "2026-10-23T00:45:34.751508+00:00",
+  "status": "SOURCE_AND_MANUAL_CONSTRUCTION_PROGRESS_NO_NEW_ACTUAL",
+  "new_scientific_actuals": 0,
+  "new_target_proofs": 0,
+  "compiler_programs": 7,
+  "schematic_instruction_rows": 82,
+  "manual_generic_construction_reviewed": true,
+  "compiler_source": "IMPLEMENTATION_IN_PROGRESS_NOT_INCLUDED_IN_THIS_SNAPSHOT",
+  "producer_source": "IMPLEMENTATION_IN_PROGRESS_NOT_INCLUDED_IN_THIS_SNAPSHOT",
+  "selector_source": {
+    "path": "research-runs/gcts-receptor-acquisition-20261022/root/nonwrapper_two_donor_input_selector_v1.py",
+    "bytes": 14767,
+    "sha256": "79e3faa7a63f908e94410b980c21c3e368d1672c4c318af4c822ad8462b25d83"
+  },
+  "selector_review": {
+    "path": "research-runs/gcts-receptor-acquisition-20261022/review-C/typed-nonwrapper-two-donor-selector-complete-Source-enumeration-review-v1.json",
+    "bytes": 12610,
+    "sha256": "5c99c309a305d84c19506bbb032499430bf8da18f7f1f28a79449f9d5b4c24c3"
+  },
+  "selector_executed": false,
+  "all_required_executable_banks_frozen": false,
+  "selector_bank_source": {
+    "path": "research-runs/gcts-receptor-acquisition-20261022/diagnostics-L/nonwrapper_selector_independent_controls_v1.py",
+    "bytes": 30254,
+    "sha256": "a9f440295a9a9753d0983b62df056755df5adc1e88daf1c6895ce1d83a54fe2d"
+  },
+  "selector_bank_executed": false,
+  "next_actual_authorized": false,
+  "runtime_qualification": false,
+  "current_contract": {
+    "path": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/signed-primitive-reconstruction-contract-v2.json",
+    "bytes": 28336,
+    "sha256": "57f40db8dca1fc925b4a298128089e3998d2bfddad4c520ba8ebb99339988924"
+  },
+  "current_public_ABI": {
+    "path": "research-runs/gcts-receptor-acquisition-20261022/root/signed-propositional-strict-ABI-addendum-v3.json",
+    "bytes": 14280,
+    "sha256": "0a79637d1380186ee7b637aa576fac4261501cff7b178bef73c5501852cf21e5"
+  },
+  "artifacts": [
+    {
+      "path": "research-runs/gcts-receptor-acquisition-20261022/root/nonwrapper-two-donor-input-selector-API-DESIGN-v1.json",
+      "bytes": 9535,
+      "sha256": "9afbc84dcb0e73624a124e0a75a09993d382809edcb52a8c7031e0e41892ccc4"
+    },
+    {
+      "path": "research-runs/gcts-receptor-acquisition-20261022/root/nonwrapper-selector-public-literal-bindings-v1.json",
+      "bytes": 453,
+      "sha256": "65a1886a241a09e9cd6dc1ccfca3409809b5e16be3bb061d31326ad7de5b705f"
+    },
+    {
+      "path": "research-runs/gcts-receptor-acquisition-20261022/root/nonwrapper-selector-constrained-enumeration-argument-v1.json",
+      "bytes": 4767,
+      "sha256": "249c747126c02986a2de92385cd595252ba7b3577fe7f499cd99223a84779298"
+    },
+    {
+      "path": "research-runs/gcts-receptor-acquisition-20261022/root/nonwrapper-selector-constrained-enumeration-argument-v2.json",
+      "bytes": 5604,
+      "sha256": "040b9880c3c58fb5db5e36ed6d9a2b9efe0b20329d338651e6259328401a0c44"
+    },
+    {
+      "path": "research-runs/gcts-receptor-acquisition-20261022/root/nonwrapper-selector-Root-Source-authorship-acceptance-v1.json",
+      "bytes": 1966,
+      "sha256": "6f93037be68819d21c99afb50569881c93ac6526a9c3ada758be721a6baa99ea"
+    },
+    {
+      "path": "research-runs/gcts-receptor-acquisition-20261022/root/nonwrapper-selector-Source-handoff-v1.json",
+      "bytes": 2513,
+      "sha256": "640ebfe565aa61a0026584a2b98cbaf2454c7fd46e21282affb62e7e19f9fdb5"
+    },
+    {
+      "path": "research-runs/gcts-receptor-acquisition-20261022/root/nonwrapper-selector-Root-component-Source-acceptance-v1.json",
+      "bytes": 1450,
+      "sha256": "dc650765e054c408c8be3794df74adddc22a8fc509eb91e63021bd488554b902"
+    },
+    {
+      "path": "research-runs/gcts-receptor-acquisition-20261022/root/nonwrapper_two_donor_input_selector_v1.py",
+      "bytes": 14767,
+      "sha256": "79e3faa7a63f908e94410b980c21c3e368d1672c4c318af4c822ad8462b25d83"
+    },
+    {
+      "path": "research-runs/gcts-receptor-acquisition-20261022/root/signed-propositional-strict-ABI-addendum-v1.json",
+      "bytes": 10559,
+      "sha256": "145c7c3eafe5909209bc744a56a23c755d71d1dc41c89ce50f9d20ef23fe454d"
+    },
+    {
+      "path": "research-runs/gcts-receptor-acquisition-20261022/root/signed-propositional-strict-ABI-addendum-v2.json",
+      "bytes": 13790,
+      "sha256": "99bdfeb8dc027175cbb3164c90c696208cd81d4f1c4f48b9e271ccd92f43603d"
+    },
+    {
+      "path": "research-runs/gcts-receptor-acquisition-20261022/root/signed-propositional-strict-ABI-addendum-v3.json",
+      "bytes": 14280,
+      "sha256": "0a79637d1380186ee7b637aa576fac4261501cff7b178bef73c5501852cf21e5"
+    },
+    {
+      "path": "research-runs/gcts-receptor-acquisition-20261022/root/signed-propositional-Root-Source-authorship-acceptance-v1.json",
+      "bytes": 3240,
+      "sha256": "318fc6bcf5ddc53e61b9eeb3ef3a261ef4d212c6686c63ca361b1eb36cde8ac4"
+    },
+    {
+      "path": "research-runs/gcts-receptor-acquisition-20261022/root/signed-subformula-Root-scoped-design-adoption-v1.json",
+      "bytes": 2280,
+      "sha256": "73ab818039053c412a39af2180beb46cbc93541854e93f0123edb2d49fc25a0e"
+    },
+    {
+      "path": "research-runs/gcts-receptor-acquisition-20261022/root/analytic-baseline-contribution-boundary-v1.json",
+      "bytes": 2438,
+      "sha256": "701a93af2c730e624a1eb1f15e9d7326f73cb279881937678cb473c85ed7ace7"
+    },
+    {
+      "path": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/signed-subformula-propositional-producer-API-DESIGN-v1.json",
+      "bytes": 16446,
+      "sha256": "8758bd4ca10bf4a65a2032c763031f324a7cc82253183570ee76033cbd1e8912"
+    },
+    {
+      "path": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/signed-primitive-reconstruction-contract-v1.json",
+      "bytes": 26346,
+      "sha256": "8fc3656a8e89b4331bbfb0a5e7f7401042a7d842caa6e15a211bcbaa91781e66"
+    },
+    {
+      "path": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/signed-primitive-reconstruction-contract-v2.json",
+      "bytes": 28336,
+      "sha256": "57f40db8dca1fc925b4a298128089e3998d2bfddad4c520ba8ebb99339988924"
+    },
+    {
+      "path": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/signed-primitive-reconstruction-handoff-v1.json",
+      "bytes": 5417,
+      "sha256": "77034f9ff68f78ead2a277f24d6ff2c7a31e02a18764d0e59c5a734a83d356e9"
+    },
+    {
+      "path": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/signed-primitive-reconstruction-handoff-v2.json",
+      "bytes": 2541,
+      "sha256": "9c4f807d23ddc5ea7a268b6b1089f46f376c5a4816a79c78ea49d4ce88c5d2c0"
+    },
+    {
+      "path": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/signed-primitive-reconstruction-contract-delta-v2.json",
+      "bytes": 9505,
+      "sha256": "eb0cd98ebf1a0cdcf451a25434a44b685a949a0f40476686ca57f457ff454a19"
+    },
+    {
+      "path": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/signed-primitive-reconstruction-v1-to-v2.patch",
+      "bytes": 12002,
+      "sha256": "5babb08f65ac672a4ba9d031dd5d0b04342c4478347558a1c1d42126f967fd2f"
+    },
+    {
+      "path": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/signed-primitive-reconstruction-v2-to-v1.inverse.patch",
+      "bytes": 11996,
+      "sha256": "26215fbe875056d291348c17c098013647f3ffc1cf10cc44fe6d5ea02e95b95b"
+    },
+    {
+      "path": "research-runs/gcts-receptor-acquisition-20261022/diagnostics-L/prospective-nonwrapper-two-donor-input-design-v1.json",
+      "bytes": 12849,
+      "sha256": "1b1068e39b636036bd728e5c490f5ada24724d81380b20a60e3ef3745aa591ee"
+    },
+    {
+      "path": "research-runs/gcts-receptor-acquisition-20261022/diagnostics-L/nonwrapper-selector-independent-literal-expectations-v1.json",
+      "bytes": 24228,
+      "sha256": "08770968af3ed99206e48c2b8d93be6471c5b730f96a091bf1ea688465c12082"
+    },
+    {
+      "path": "research-runs/gcts-receptor-acquisition-20261022/diagnostics-L/nonwrapper-selector-independent-expectations-handoff-v1.json",
+      "bytes": 1790,
+      "sha256": "912f2d4dd15bf9693325effbde0ac66765232f4783a0255d492d50e11154fa3f"
+    },
+    {
+      "path": "research-runs/gcts-receptor-acquisition-20261022/diagnostics-L/signed-subformula-independent-symbolic-expectations-v1.json",
+      "bytes": 21129,
+      "sha256": "a6402cb80f1dcf883e20959811e4ff8229b421a963be8d32b197800e1860b131"
+    },
+    {
+      "path": "research-runs/gcts-receptor-acquisition-20261022/diagnostics-L/signed-subformula-independent-symbolic-expectations-handoff-v1.json",
+      "bytes": 2715,
+      "sha256": "d7cb35661c102b96d837d0ffa08bb8894a83ac28a182146661b5b79de2c6817d"
+    },
+    {
+      "path": "research-runs/gcts-receptor-acquisition-20261022/diagnostics-L/signed-subformula-independent-strict-ABI-binding-v1.json",
+      "bytes": 8196,
+      "sha256": "9e9b0c27f2cc7a14d2d4a100eb2af53d353ca9f986d6fbe4a4e8c9c28441c153"
+    },
+    {
+      "path": "research-runs/gcts-receptor-acquisition-20261022/diagnostics-L/signed-subformula-independent-strict-ABI-binding-v2.json",
+      "bytes": 20785,
+      "sha256": "689acaec3bc722f08b0cecc8ed47ec99a98ae8f16c496624c0fbd31810df65cb"
+    },
+    {
+      "path": "research-runs/gcts-receptor-acquisition-20261022/diagnostics-L/signed-subformula-independent-expectations-handoff-v2.json",
+      "bytes": 2353,
+      "sha256": "0da594c175f7caf2e634cf1f3e4a6d16d2fcd0c5d86a833b1c462481d38e5a7d"
+    },
+    {
+      "path": "research-runs/gcts-receptor-acquisition-20261022/review-C/typed-signed-subformula-producer-and-nonwrapper-input-design-assessment-v1.json",
+      "bytes": 11028,
+      "sha256": "064b3a207302148dd82f9006c4ef801296de83e8b87a0855823610ea8e1eaf15"
+    },
+    {
+      "path": "research-runs/gcts-receptor-acquisition-20261022/review-C/typed-signed-subformula-primitive-reconstruction-requirements-v1.json",
+      "bytes": 14648,
+      "sha256": "c0f97aeb7c149866be5c8398422239f650d33600bb28ee44c2b0c7273bc2b7e6"
+    },
+    {
+      "path": "research-runs/gcts-receptor-acquisition-20261022/review-C/typed-nonwrapper-two-donor-selector-public-API-design-review-v1.json",
+      "bytes": 6720,
+      "sha256": "3839ff26c50a71862fecbd97d6cbfb7a0bee5f5870e6620045bb370b964bdc17"
+    },
+    {
+      "path": "research-runs/gcts-receptor-acquisition-20261022/review-C/typed-nonwrapper-two-donor-selector-complete-Source-enumeration-review-v1.json",
+      "bytes": 12610,
+      "sha256": "5c99c309a305d84c19506bbb032499430bf8da18f7f1f28a79449f9d5b4c24c3"
+    },
+    {
+      "path": "research-runs/gcts-receptor-acquisition-20261022/review-C/typed-signed-propositional-strict-ABI-design-review-v3.json",
+      "bytes": 7416,
+      "sha256": "b1829e32959dbff40b9dd33e877b601e3e2a10fe727a6cbbe39552407f471050"
+    },
+    {
+      "path": "research-runs/gcts-receptor-acquisition-20261022/review-C/typed-signed-primitive-reconstruction-contract-manual-review-v1.json",
+      "bytes": 8654,
+      "sha256": "d4b8405879f451d9ae83cb6fc5043d08dfa86d88e69328f92281d2c06b35da88"
+    },
+    {
+      "path": "research-runs/gcts-receptor-acquisition-20261022/review-C/typed-signed-primitive-reconstruction-contract-manual-successor-review-v2.json",
+      "bytes": 6858,
+      "sha256": "8a2a6668c69ea0bcbe70cf2c4623202653f93989306e85b99093285d04e5a51a"
+    },
+    {
+      "path": "research-runs/gcts-receptor-acquisition-20261022/diagnostics-L/nonwrapper_selector_independent_controls_v1.py",
+      "bytes": 30254,
+      "sha256": "a9f440295a9a9753d0983b62df056755df5adc1e88daf1c6895ce1d83a54fe2d"
+    },
+    {
+      "path": "research-runs/gcts-receptor-acquisition-20261022/diagnostics-L/nonwrapper-selector-independent-controls-handoff-v1.json",
+      "bytes": 3697,
+      "sha256": "8cdc8c3b5510a5e00d194f9b13d038960f4e02d88cbde7fb106fa1aee5d61563"
+    },
+    {
+      "path": "research-runs/gcts-receptor-acquisition-20261022/diagnostics-L/nonwrapper-selector-independent-controls-API-v1.json",
+      "bytes": 5657,
+      "sha256": "a027689be53278a79dddef0321b21a8054daaa54f05a17c146bab50b2bee7ac8"
+    },
+    {
+      "path": "research-runs/gcts-receptor-acquisition-20261022/diagnostics-L/nonwrapper-selector-independent-controls-manual-v1.json",
+      "bytes": 5753,
+      "sha256": "4111aac5c2cdc80d355752b502190057cf6e00c83b5d876e857cc80b80120fdb"
+    },
+    {
+      "path": "research-runs/gcts-receptor-acquisition-20261022/diagnostics-L/nonwrapper-selector-independent-controls-static-v1.json",
+      "bytes": 1569,
+      "sha256": "98b908a16f84f2d56f22e688274cb789f37c818838d7c24610bb6cd786544144"
+    },
+    {
+      "path": "research-runs/gcts-receptor-acquisition-20261022/diagnostics-L/nonwrapper-selector-independent-controls-closure-v1.json",
+      "bytes": 1967,
+      "sha256": "b3cd0e5d78ddb53ec03e612158b078635cb4ec033544bdfcac8ae2f4f6a5eb6d"
+    }
+  ],
+  "scope": "Generic compiler programs are hand-specified baseline infrastructure, not learned families or target proofs. All prior actuals are unchanged; closed acquisition remains STOP. No GCTS/RL advantage, runtime fit or fixed finite Wang palette is established."
+}
