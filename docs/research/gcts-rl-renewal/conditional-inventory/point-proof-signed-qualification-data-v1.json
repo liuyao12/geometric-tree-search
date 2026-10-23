@@ -1,0 +1,50 @@
+{
+  "schema": "GCTS-signed-qualification-negative-public-result-v1",
+  "published_snapshot_utc": "2026-10-23T01:42:07.055293+00:00",
+  "status": "WHOLE_WORK_DEADLINE_NOT_QUALIFIED",
+  "new_actuals": 1,
+  "new_target_proofs": 0,
+  "qualification_admitted": false,
+  "gcts_advantage_established": false,
+  "rl_advantage_established": false,
+  "learned_inventory": false,
+  "population": {
+    "groups": 212,
+    "scopes": 15,
+    "wrappers": 14,
+    "namespaces": 35,
+    "retained_groups": 198,
+    "added_selector_groups": 6,
+    "added_signed_groups": 8
+  },
+  "metrics": {
+    "configured_work_seconds": 160,
+    "observer_elapsed_seconds": 175.36821174999932,
+    "observer_final_gate_seconds": 175.36911679100012,
+    "worker_failure_elapsed_seconds": 175.19860137501382,
+    "Root_callbacks": 299003183,
+    "qualified_whole_peak_bytes": null,
+    "raw_reaped_child_peak_bytes_diagnostic_only": 248725504,
+    "file_count": 10,
+    "physical_bytes": 24658,
+    "partial_files": 0,
+    "all_seven_positive_fields_null": true,
+    "qualification_complete": false,
+    "observer_resource_candidate_accepted": false,
+    "worker_exit_code": 2
+  },
+  "disposition": {
+    "path": "research-runs/gcts-receptor-acquisition-20261022/root/signed-qualification-Root-whole-disposition-v1.json",
+    "bytes": 4079,
+    "sha256": "5b431f972e478ebc0c2d1ff5dbcd819cd1a68b9737938e5275d25edd17af1f4c"
+  },
+  "independent_review": {
+    "path": "research-runs/gcts-receptor-acquisition-20261022/review-C/typed-signed-qualification-complete-whole-negative-actual-review-v1.json",
+    "bytes": 20015,
+    "sha256": "0109be4fa62d8b8c23a04e7559e68e994a3bebb8744efe4ba00154733ecf7edb"
+  },
+  "source_status": "Selector, compiler, producer and independent banks written and manually reviewed. Whole runtime qualification failed; no completed-bank prefix admitted.",
+  "interpretation": "The stopped stack is in primitive export/formula encoding. It identifies a cutoff location, not a measured dominant cost or allocation profile. Static reachability/expansion/encoding amplification and proposed improvements remain untested.",
+  "next": "Review generic compiler cost and bounded scalar observability before any distinct prospective successor study. Preserve all original caps/populations and the consumed case. No retry, proof recovery or research donor uptake.",
+  "scope": "Ordinary baseline infrastructure, no new research theorem, learned lemma family, GCTS/RL or transfer result. Original acquisition cohort remains STOP. Earlier Source-only panel is a historical frozen snapshot."
+}
