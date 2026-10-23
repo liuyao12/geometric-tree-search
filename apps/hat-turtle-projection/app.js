@@ -2,13 +2,14 @@ import {HALFROOT3, latticeToCartesian, relativeTile, reflectedFrameStats, steady
 import {FAMILY_STOPS, familyAngle, certifiedMarks, coefficients, projectPerspective, latticeBasis, namedAlignment} from './perspectives.js?v=4';
 import {matrixPerspective, projectMatrix} from './matrix-perspectives.js?v=4';
 import {createParameterMap} from './parameter-map.js?v=4';
+import {COORDINATE_ORIGIN, shiftedTile, latticeWindow} from './lattice-window.js?v=5';
 const $ = id => document.getElementById(id);
 const canvas = $('scene'), ctx = canvas.getContext('2d', {alpha:false});
 const TAU = 2*Math.PI;
 const colors={H1:'#355e69',H:'#a7c5c1',T:'#ecd8ae',P:'#c4d3b7',F:'#e3b99d'};
 const state={morph:1/3,phase:Math.acos(1/3),explore:false,phi:0,exact:{xn:3,yn:0,q:1},matrix:null,playing:!matchMedia('(prefers-reduced-motion: reduce)').matches,lifted:false,zoom:16,panX:0,panY:0,speed:1,selected:0,highlight:true,steady:true,single:false,framing:'marks'};
 let data, marks, markModels, modelMean=[0,0,0,0], model, screenX, screenY, screenZ, centers, fitScale=1, width=1, height=1, dpr=1, lastTime=0, lastDraw=0, visible=[];
-let drag=null, dirty=true, frameStats, tileCoordinates, tileModel, tileSides, tileRadius=3, selectedAnchor=null;
+let drag=null, dirty=true, frameStats, tileCoordinates, tileModel, tileSides, tileRadius=3, selectedAnchor=null, nearbyCoordinates=[], nearbyModel=[];
 const viewer=document.querySelector('.viewer');
 const theta = () => familyAngle(state.morph);
 function currentFrame(c,s){if(state.explore)return IDENTITY_FRAME;if(state.framing==='marks')return fixedMarkFrame(c,s,modelMean);return state.framing==='steady'&&frameStats?steadyFrame(frameStats,c,s):IDENTITY_FRAME;}
@@ -68,6 +69,7 @@ function draw(){if(!model)return; if(state.single){drawSingleTile();dirty=false;
  for(const tile of visible){polygonPath(data.tiles[tile.id]);ctx.fillStyle=colors[data.labels[tile.id]];ctx.fill();ctx.stroke();}
  if(!state.explore&&certifiedMarks(state.morph)&&state.framing==='marks'){for(const item of visible){const anchor=markModels.get(item.id);if(!anchor)continue;const p=project4(...anchor,c,s,state.lifted);ctx.beginPath();ctx.arc(ox+p[0]*scale,oy-p[1]*scale,2.6,0,TAU);ctx.fillStyle='#fffaf0';ctx.fill();ctx.lineWidth=.8;ctx.strokeStyle='#294c48';ctx.stroke();}}
  if(state.explore&&$('show-lattice').checked)drawLattice(scale,ox,oy);
+ drawNearbyPoints({w:width,h:height,scale,ox,oy,frame:activeFrame,offset:modelMean.map(x=>-x),bounds:[0,0,width,height]});
  if(state.highlight){polygonPath(data.tiles[state.selected]);ctx.lineWidth=3;ctx.strokeStyle='#c45430';ctx.stroke();ctx.lineWidth=1;ctx.strokeStyle='#fff8e6';ctx.stroke();}
  dirty=false;lastDraw=performance.now();
 }
@@ -98,8 +100,9 @@ function prepareSingleTile(){
  if(!data)return;
  const host=$('coordinate-labels');
  window.MathJax?.typesetClear?.([host]);host.replaceChildren();
- selectedAnchor=markModels.get(state.selected)||null;tileCoordinates=relativeTile(data.vertices,data.tiles[state.selected]);
- tileModel=tileCoordinates.map(latticeToCartesian);
+ selectedAnchor=markModels.get(state.selected)||null;tileCoordinates=shiftedTile(data.vertices,data.tiles[state.selected]);
+ tileModel=relativeTile(data.vertices,data.tiles[state.selected]).map(latticeToCartesian);
+ prepareLatticeWindow();
  const average=[0,0,0,0];tileModel.forEach(p=>p.forEach((x,k)=>average[k]+=x/14));
  tileModel=tileModel.map(p=>p.map((x,k)=>x-average[k]));
  const mid=tileModel.map(p=>projectVertex(...p,Math.SQRT1_2,Math.SQRT1_2,false));
@@ -121,7 +124,7 @@ function prepareSingleTile(){
 }
 function drawSingleTile(){
  const rect=viewer.getBoundingClientRect(),w=rect.width,h=rect.height;
- const labelWidth=w<500?76:150,gutter=labelWidth+(w<500?23:30);
+ const labelWidth=w<500?100:180,gutter=labelWidth+(w<500?23:30);
  const sc=Math.min(Math.max(60,w-2*gutter)/(2*tileRadius),(h-150)/(2*tileRadius))*.91;
  const c=Math.cos(theta()),s=Math.sin(theta()),f={...currentFrame(c,s),tx:0,ty:0};
  const anchorOffset=selectedAnchor?selectedAnchor.map((v,k)=>v-centers[state.selected*4+k]):[0,0,0,0];
@@ -137,6 +140,8 @@ function drawSingleTile(){
   const line=$(`leader-${i}`);line.setAttribute('x1',points[i][0]);line.setAttribute('y1',points[i][1]);line.setAttribute('x2',inside);line.setAttribute('y2',y);
   const circle=$(`vertex-${i}`);circle.setAttribute('cx',points[i][0]);circle.setAttribute('cy',points[i][1]);
  }));
+ const center=lock?selectedAnchor:centers.subarray(4*state.selected,4*state.selected+4);
+ drawNearbyPoints({w,h,scale:sc,ox:w/2,oy:h/2+25,frame:f,offset:modelMean.map((x,k)=>-x-center[k]),bounds:[gutter,65,w-gutter,h-20]});
 }
 let lastLatticeTex='';
 function chosenLattice(){return state.matrix?state.matrix.basis:latticeBasis(state.morph,state.explore?state.phi:0,state.exact);}
@@ -158,6 +163,24 @@ function drawLattice(scale,ox,oy){
  $('lattice-grid-note').textContent='Dots show the underlying projected lattice, not translation symmetries of the tiling.';
  ctx.fillStyle='#264c4870';ctx.beginPath();for(let i=lo[0];i<=hi[0];i++)for(let j=lo[1];j<=hi[1];j++){const x=origin[0]+i*bs[0][0]+j*bs[1][0],y=origin[1]+i*bs[0][1]+j*bs[1][1];if(x>=0&&x<=width&&y>=0&&y<=height){ctx.moveTo(x+.85,y);ctx.arc(x,y,.85,0,TAU);}}ctx.fill();
 }
+function prepareLatticeWindow(){
+ const steps=Number($('lattice-steps').value);
+ nearbyCoordinates=latticeWindow(tileCoordinates[0],steps);
+ nearbyModel=nearbyCoordinates.map(p=>latticeToCartesian(p.map((x,k)=>x+COORDINATE_ORIGIN[k])));
+}
+function drawNearbyPoints({w,h,scale,ox,oy,frame,offset,bounds}){
+ const layer=$('nearby-scene'),context=layer.getContext('2d'),ratio=Math.min(devicePixelRatio||1,2);
+ if(layer.width!==Math.round(w*ratio)||layer.height!==Math.round(h*ratio)){layer.width=Math.round(w*ratio);layer.height=Math.round(h*ratio);}
+ context.setTransform(ratio,0,0,ratio,0,0);context.clearRect(0,0,w,h);
+ if(!$('show-nearby').checked){$('nearby-status').textContent='Lattice points hidden.';return;}
+ const pixels=new Set();let visiblePoints=0;
+ context.fillStyle='#2866b8b0';
+ for(const p of nearbyModel){const projectedPoint=projected(p.map((x,k)=>x+offset[k]),weights(),frame),x=ox+scale*projectedPoint[0],y=oy-scale*projectedPoint[1];
+  if(x<bounds[0]||y<bounds[1]||x>bounds[2]||y>bounds[3])continue;
+  visiblePoints++;const key=`${Math.round(x)},${Math.round(y)}`;if(pixels.has(key))continue;pixels.add(key);context.fillRect(x-.9,y-.9,1.8,1.8);
+ }
+ $('nearby-status').textContent=`${nearbyCoordinates.length.toLocaleString()} lattice points · ${visiblePoints.toLocaleString()} in the drawing region · blue points may project together`;
+}
 function setPerspective(p){setPlaying(false);if(!state.explore)setMode(true);state.matrix=null;state.phi=p.phi;updateMatrixControls();setMorph(p.m,p.exact);dirty=true;}
 function goStop(name){setPlaying(false);setMode(false);const p=namedAlignment(name);setMorph(FAMILY_STOPS[name],p?.exact||null);}
 function updateMatrixControls(){const on=!!state.matrix;$('morph').disabled=on;$('relative-angle').disabled=on;$('play').disabled=on;$('perspective-controls').classList.toggle('matrix-mode',on);if(!on)$('matrix-status').textContent='Four-parameter view inactive. Apply the displayed inputs to select a general screen plane.';}
@@ -172,6 +195,8 @@ $('aligned-example').onchange=e=>{const p=namedAlignment(e.target.value);if(p)se
 $('show-lattice').onchange=()=>{dirty=true;};$('apply-matrix').onclick=applyMatrix;
 $('irrational-matrix').onclick=()=>{$('matrix-chart').value='0,1';for(const [k,v] of Object.entries({a:'sqrt(2)',b:'0',c:'0',d:'1'}))$(`matrix-${k}`).value=v;applyMatrix();};
 
+$('show-nearby').onchange=()=>{dirty=true;};
+$('lattice-steps').onchange=()=>{if(data)prepareLatticeWindow();dirty=true;};
 $('play').onclick=()=>setPlaying(!state.playing);
 $('morph').addEventListener('input',e=>{const value=Number(e.target.value)/3000;state.matrix=null;setPlaying(false);setMorph(value);});
 for(const name of ['hat','turtle','chevron','comet'])$(name).onclick=()=>goStop(name);$('midpoint').onclick=()=>goStop('equal');

@@ -20,7 +20,7 @@ The coefficient basis is oblique, rather than an orthonormal cubic basis. The or
 P_\theta(U,V)=\cos\theta\,U+\sin\theta\,V,\qquad 0\leq\theta\leq\pi/2.
 \]
 
-The slider fraction is \(m=1-2\theta/\pi\). Chevron, Hat, equal edges, Turtle, and Comet occur at \(m=0,1/3,1/2,2/3,1\), respectively. At the limits one edge class vanishes, so some of the fourteen fixed vertex labels coincide in the image. The limiting polygons still have positive area. The single-tile view labels all fourteen vertices relative to the first vertex of the selected tile, using MathJax. Those labels remain constant.
+The slider fraction is \(m=1-2\theta/\pi\). Chevron, Hat, equal edges, Turtle, and Comet occur at \(m=0,1/3,1/2,2/3,1\), respectively. At the limits one edge class vanishes, so some of the fourteen fixed vertex labels coincide in the image. The limiting polygons still have positive area. The single-tile view labels all fourteen vertices in one shared shifted global frame, \((p',q',r',s')=(p-4,q,r-3,s+2)\), using MathJax. Those labels remain constant. The lattice origin is separate from the white interior mark.
 
 ## Two-parameter map and lattice alignments
 
@@ -75,6 +75,22 @@ Decimals and fractions are parsed as exact rationals. The panel also accepts exp
 \]
 
 The original family is the line \((t,-t,t,2t)\), where \(t=\tan\theta/\sqrt3\). These are coordinates of the same plane, up to rotation of its screen basis.
+
+
+## Integer reference plane and nearby lattice points
+
+In the shifted global coordinates the rational finite-patch reference plane is
+
+\[
+N\mathbf{x}=\mathbf{0},\qquad
+N=\begin{pmatrix}-8&-13&16&0\\13&5&0&16\end{pmatrix}.
+\]
+
+This is equivalent to the two affine integer equations before the origin shift. The current stationary white marks and camera still use the original irrational plane; the coordinate translation does not replace those marks with intersections of this rational plane.
+
+The blue overlay draws a small integer box centered at the selected tile's first vertex, with the chosen number of steps in each of the four lattice directions. There is no distance cutoff. All points in this finite box are generated, including during animation; only points outside the drawing region are clipped. Projection multiplicities and screen-pixel coincidences are expected. The status distinguishes the box's point count from the count inside the current drawing region. The same projection, camera and tile centering are used for tile edges and lattice dots.
+
+The drawing and global patch coordinates are kept separate: shifting the labels cannot alter the relative tile geometry. `validate-view.mjs` checks the translated labels and reconstruction of the original vertices, the integer plane equations, and the finite lattice-window counts in addition to the existing camera checks. The visualization adds no search or placement rule.
 
 ## Camera framing and material marks
 

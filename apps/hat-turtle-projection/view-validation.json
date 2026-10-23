@@ -31,6 +31,33 @@
   },
   "reflectedTiles": 1009,
   "coordinateLabelsChecked": 110894,
+  "coordinateFrame": "Shifted global integer coordinates",
+  "coordinateOrigin": [
+    4,
+    0,
+    3,
+    -2
+  ],
+  "referencePlaneMatrix": [
+    [
+      -8,
+      -13,
+      16,
+      0
+    ],
+    [
+      13,
+      5,
+      0,
+      16
+    ]
+  ],
+  "latticeWindowCounts": [
+    81,
+    625,
+    2401,
+    6561
+  ],
   "uniformCamera": true,
   "samples": [
     {
