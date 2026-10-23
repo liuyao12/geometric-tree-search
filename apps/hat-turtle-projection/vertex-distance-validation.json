@@ -1,0 +1,45 @@
+{
+  "coordinateFrame": "Translated triangular coefficient frame with a white material mark at the origin",
+  "originTile": 3546,
+  "originCoordinates": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "planeMatrix": [
+    [
+      "-2",
+      "-1-sqrt(5)",
+      "4",
+      "0"
+    ],
+    [
+      "2*sqrt(5)",
+      "sqrt(5)-3",
+      "4",
+      "8"
+    ]
+  ],
+  "vertices": 49246,
+  "whiteMarks": 1009,
+  "minimum": 0.007354213752002181,
+  "maximum": 4.64793068843926,
+  "maximumVertex": [
+    -53.07420074175548,
+    -32.804201768662125,
+    -49.75659697612906,
+    50.92579925824451
+  ],
+  "withinDistanceTwo": 40998,
+  "centralTileCoordinateRange": [
+    -2.074200741755483,
+    1.2434030238709397
+  ],
+  "maxDualError": 8.881784197001252e-16,
+  "maxMarkDefect": 2.8421709430404007e-13,
+  "maxStationarityError": 7.12884223886324e-14,
+  "maxCameraChange": 2.848430738093266e-14,
+  "fullFamilySamples": 101,
+  "scope": "Numerical check of all vertices and white marks in the finite substitution patch. Distance is to the continuous white-dot plane using the L1 norm in the four coefficient directions. No distance cutoff is applied to vertex rendering."
+}
