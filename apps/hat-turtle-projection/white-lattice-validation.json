@@ -1,0 +1,42 @@
+{
+  "tiles": [
+    3,
+    7,
+    11,
+    28,
+    36
+  ],
+  "rationalRank": 4,
+  "determinant": "-6723/10201",
+  "differenceRows": [
+    [
+      "637/101",
+      "-125/101",
+      "-143/101",
+      "127/101"
+    ],
+    [
+      "62/101",
+      "-197/202",
+      "1051/202",
+      "-35/202"
+    ],
+    [
+      "1571/101",
+      "-304/101",
+      "-761/202",
+      "625/202"
+    ],
+    [
+      "1537/101",
+      "-715/202",
+      "995/202",
+      "269/202"
+    ]
+  ],
+  "basis": "Rational and square-root-of-five parts of the first two lattice coefficients",
+  "patchSha256": "d0a33ec8305baa24c6c7ade55d9790b6a2a582f59e9f316178576c86e6791418",
+  "marksSha256": "165346c06bd3d5ed8050583ad7050bdc3dc1b535ab53a7ada420f1072b7bfa75",
+  "conclusion": "These five existing marks do not lie in any rank-two planar lattice. An invertible linear screen transformation cannot change this obstruction.",
+  "scope": "Existing material marks only. Does not rule out different choices of marks."
+}

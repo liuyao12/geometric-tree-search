@@ -1,0 +1,14 @@
+{
+  "marks": 1009,
+  "rotationDegrees": 16.19267462638122,
+  "sixfoldCoherence": 0.8915946648187464,
+  "residualAverageDirectionDegrees": -3.2867865325679897e-15,
+  "parameterSamples": 101,
+  "coordinateFrames": [
+    "raw",
+    "mean-centered"
+  ],
+  "maxDrift": 1.1718571004216928e-13,
+  "maxLengthError": 1.942890293094024e-14,
+  "scope": "One global rotation aligns the average sixfold nearest-neighbor direction horizontally. It preserves the tiling and stationary material marks. It does not place the marks on an exact lattice; see white-lattice-validation.json."
+}

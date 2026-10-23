@@ -3,16 +3,17 @@ import {FAMILY_STOPS, familyAngle, certifiedMarks, coefficients, projectPerspect
 import {matrixPerspective, projectMatrix} from './matrix-perspectives.js?v=4';
 import {createParameterMap} from './parameter-map.js?v=4';
 import {COORDINATE_ORIGIN, shiftedTile, latticeWindow} from './lattice-window.js?v=5';
+import {whiteMarkAlignment, rotateFrame} from './white-mark-alignment.js?v=6';
 const $ = id => document.getElementById(id);
 const canvas = $('scene'), ctx = canvas.getContext('2d', {alpha:false});
 const TAU = 2*Math.PI;
 const colors={H1:'#355e69',H:'#a7c5c1',T:'#ecd8ae',P:'#c4d3b7',F:'#e3b99d'};
 const state={morph:1/3,phase:Math.acos(1/3),explore:false,phi:0,exact:{xn:3,yn:0,q:1},matrix:null,playing:!matchMedia('(prefers-reduced-motion: reduce)').matches,lifted:false,zoom:16,panX:0,panY:0,speed:1,selected:0,highlight:true,steady:true,single:false,framing:'marks'};
 let data, marks, markModels, modelMean=[0,0,0,0], model, screenX, screenY, screenZ, centers, fitScale=1, width=1, height=1, dpr=1, lastTime=0, lastDraw=0, visible=[];
-let drag=null, dirty=true, frameStats, tileCoordinates, tileModel, tileSides, tileRadius=3, selectedAnchor=null, nearbyCoordinates=[], nearbyModel=[];
+let drag=null, dirty=true, frameStats, tileCoordinates, tileModel, tileSides, tileRadius=3, selectedAnchor=null, whiteAlignment={re:1,im:0}, nearbyCoordinates=[], nearbyModel=[];
 const viewer=document.querySelector('.viewer');
 const theta = () => familyAngle(state.morph);
-function currentFrame(c,s){if(state.explore)return IDENTITY_FRAME;if(state.framing==='marks')return fixedMarkFrame(c,s,modelMean);return state.framing==='steady'&&frameStats?steadyFrame(frameStats,c,s):IDENTITY_FRAME;}
+function currentFrame(c,s){if(state.explore)return IDENTITY_FRAME;if(state.framing==='marks')return rotateFrame(fixedMarkFrame(c,s,modelMean),whiteAlignment);return state.framing==='steady'&&frameStats?steadyFrame(frameStats,c,s):IDENTITY_FRAME;}
 function weights(){return coefficients(state.morph,state.explore?state.phi:0,state.exact);}
 function projected(point,w=weights(),f=activeFrame){if(state.matrix){const p=projectMatrix(point,state.matrix);return [p[0],p[1],0];}return projectPerspective(...point,w,f);}
 function project4(u,v,s,t,c,si,lift){return projected([u,v,s,t],activeWeights,activeFrame);}
@@ -48,6 +49,7 @@ function prepare(){
  for(let j=0;j<data.tiles.length;j++){for(const id of data.tiles[j])for(let k=0;k<4;k++)centers[4*j+k]+=model[4*id+k]/14;
  const v=project4(...centers.subarray(4*j,4*j+4),.5,HALFROOT3,false),dist=v[0]*v[0]+v[1]*v[1];if(data.labels[j]==='H1'&&dist<best){best=dist;state.selected=j;}}
  $('patch-info').textContent=`${data.tiles.length.toLocaleString()} tiles · drag to pan · scroll to zoom`;
+ whiteAlignment=whiteMarkAlignment([...markModels.values()].map(p=>[.5*p[0]+HALFROOT3*p[2],.5*p[1]+HALFROOT3*p[3]]));
  frameStats=reflectedFrameStats(centers,data.labels); updateFrameNote();prepareSingleTile(); resize(); $('loading').hidden=true; if(new URLSearchParams(location.search).get('view')==='tile')setDisplay(true);
 }
 function resize(){const r=canvas.getBoundingClientRect();if(r.width>0&&r.height>0){width=r.width;height=r.height;}dpr=Math.min(devicePixelRatio||1,2);canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);
@@ -80,7 +82,7 @@ function frame(time){const dt=lastTime?Math.min(time-lastTime,100):0;lastTime=ti
 function zoomBy(factor,x=width/2,y=height/2){const old=state.zoom;state.zoom=Math.max(.25,Math.min(80,old*factor));factor=state.zoom/old;state.panX=x-width/2-(x-width/2-state.panX)*factor;state.panY=y-height/2-(y-height/2-state.panY)*factor;dirty=true;}
 function contains(ids,x,y){let inside=false;for(let i=0,j=13;i<14;j=i++){const ax=screenX[ids[i]],ay=screenY[ids[i]],bx=screenX[ids[j]],by=screenY[ids[j]];if((ay>y)!==(by>y)&&x<(bx-ax)*(y-ay)/(by-ay)+ax)inside=!inside;}return inside;}
 function updateFrameNote(){
- $('frame-note').textContent=state.explore?'Every view is a two-dimensional projection. General perspectives may overlap or change reflected tile shapes.':state.framing==='marks'?(certifiedMarks(state.morph)?'All 1,009 reflected reference marks stay fixed in this Hat–Turtle interval.':'The reflected layout is stabilized; interior marks are shown between Hat and Turtle.'):state.framing==='steady'?'Overall rotation and spacing stabilized; small local shifts remain.':'Fixed edge directions across the entire tile family.';
+ $('frame-note').textContent=state.explore?'Every view is a two-dimensional projection. General perspectives may overlap or change reflected tile shapes.':state.framing==='marks'?(certifiedMarks(state.morph)?'White marks stay fixed; their average triangular direction is horizontal. The spacing is not an exact lattice.':'Horizontal white-mark layout; interior marks are shown between Hat and Turtle.'):state.framing==='steady'?'Overall rotation and spacing stabilized; small local shifts remain.':'Fixed edge directions across the entire tile family.';
 }
 
 function setDisplay(single){
