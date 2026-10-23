@@ -1,20 +1,32 @@
 {
-  "schema": "Root-lossless-qualification-publication-data-v1",
-  "issued_utc": "2026-10-23T10:30:06.859810+00:00",
-  "scientific_actuals_this_turn": 2,
+  "schema": "Root-lossless-native-compare-publication-data-v1",
+  "issued_utc": "2026-10-23T11:32:06.581235+00:00",
+  "scientific_actuals_this_turn": 1,
   "scientific_calls_outside_once_actual": 0,
   "scientific_execution_for_publication": false,
   "new_qualified_suites": 0,
   "new_research_proofs": 0,
+  "current_disposition_reviewed": true,
   "current_disposition": {
-    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/root/lossless-evidence-qualification-successor-Root-whole-disposition-v1.json",
-    "bytes": 4597,
-    "sha256": "f06335a16fcb1c27b9b62e975ff26529d99bc99efdd59fbfbe9faed8b96ed80e"
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/root/lossless-evidence-qualification-native-compare-Root-whole-disposition-v1.json",
+    "bytes": 4452,
+    "sha256": "87a90b2ba0ca282ef0d696995b124515bd6d8fbc5ef79b7f69ae3d23d6a8ad30"
   },
-  "first_disposition": {
-    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/root/lossless-evidence-qualification-Root-whole-disposition-v1.json",
-    "bytes": 3794,
-    "sha256": "89c92403fd5e10d43898836a97c6c988f69cea05640c55a84de1dc1bf30f799c"
+  "current_actual_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/review-C/typed-lossless-evidence-qualification-complete-whole-negative-actual-review-v3.json",
+    "bytes": 10771,
+    "sha256": "cf19d427fe0588bb9e7a4e7f264b25226be62a6b08da33d414f2742512eb7ccf"
+  },
+  "current_metrics": {
+    "observer_elapsed_seconds": 160.7272321670025,
+    "observer_final_gate_seconds": 160.72752795898123,
+    "worker_elapsed_seconds": 160.27266008302104,
+    "callbacks": 240635789,
+    "qualified_whole_peak_bytes": null,
+    "raw_worker_peak_diagnostic_bytes": 706101248,
+    "first_Root_fault": true,
+    "first_fault_monotonic_ns": 192129488683666,
+    "EVIDENCE_FINISH_began": 143.28115900000557
   },
   "case_history": [
     {
@@ -59,26 +71,77 @@
         "evidence_finish_began_seconds": 142.80181545900996
       },
       "disposition": "CONSUMED_COMPLETE_WHOLE_NEGATIVE_WORK_DEADLINE_DURING_CANONICAL_READBACK"
+    },
+    {
+      "case_id": "signed-propositional-lossless-evidence-whole-qualification-v3-qualify-0",
+      "metrics": {
+        "worker": 160.27266008302104,
+        "worker_header": 160.2751533749979,
+        "worker_stdout": 160.27533875001245,
+        "runner_outer": 160.6831749160192,
+        "runner_final_gate": 160.68328387499787,
+        "observer": 160.7272321670025,
+        "observer_final_gate": 160.72752795898123,
+        "callbacks": 240635789,
+        "raw_memory_diagnostics": {
+          "worker": 706101248,
+          "runner_parent": 40828928,
+          "observer": 22282240,
+          "qualified_whole_peak": null
+        },
+        "qualified_whole_peak_bytes": null,
+        "first_fault_monotonic_ns": 192129488683666,
+        "evidence_finish_began_seconds": 143.28115900000557
+      },
+      "disposition": "CONSUMED_COMPLETE_WHOLE_NEGATIVE_WORK_DEADLINE_DURING_CANONICAL_READBACK"
     }
   ],
+  "case_summaries": [
+    {
+      "label": "First lossless case \u00b7 bank Source1",
+      "observer_time_display": "1.747761 s",
+      "event": "Independent test callback-count expectation failed.",
+      "disposition": "Consumed whole negative."
+    },
+    {
+      "label": "Second lossless case \u00b7 bank Source2",
+      "observer_time_display": "160.634785 s",
+      "event": "Work deadline during final canonical readback.",
+      "disposition": "Consumed whole negative."
+    },
+    {
+      "label": "Third lossless case \u00b7 bounded native comparator",
+      "observer_time_display": "160.727232 s",
+      "event": "Work deadline during final canonical readback.",
+      "disposition": "Consumed whole negative."
+    }
+  ],
+  "current_headline": "The third whole qualification is negative.",
+  "current_plain_observation": "The work deadline interrupted mandatory canonical readback after all control and packing stages returned. All seven positive fields are null; both evidence pools are withheld.",
+  "next_scientific_step": "Pause local transport tuning and review a distinct cohort qualification and per-proof checking contract. Full suite obligations and evidence remain required, all cold and aggregate costs must be reported, and existing negatives cannot serve as qualification. Fresh wholly checked donors and a matched receptor-family comparison remain the scientific milestone.",
   "stage_scope": {
-    "imports_completed": 38,
-    "controls_completed_labels": 16,
-    "packs_completed_labels": 15,
-    "evidence_open_completed": true,
-    "evidence_finish_completed": false,
+    "completed": 70,
+    "imports": 38,
+    "controls": 16,
+    "packs": 15,
+    "open_completed": true,
+    "finish_started": {
+      "began": 143.28115900000557,
+      "name": "EVIDENCE_FINISH",
+      "status": "STARTED"
+    },
     "labels_are_not_qualified_controls": true,
-    "whole_group_admission": 0
+    "whole_group_admission": false
   },
-  "current_positive_fields": {
-    "qualification_result": null,
-    "input_freeze": null,
-    "search_result": null,
-    "subject_receipt": null,
-    "reference_receipt": null,
-    "point_receipt": null,
-    "scientific_result": null
-  },
+  "current_positive_fields": [
+    "input_freeze",
+    "qualification_result",
+    "subject_receipt",
+    "reference_receipt",
+    "point_receipt",
+    "search_result",
+    "scientific_result"
+  ],
   "whole_scope": {
     "groups": 229,
     "original_groups": 221,
@@ -91,39 +154,37 @@
   "qualified_whole_peak_bytes": null,
   "output_rejection": null,
   "raw_negative_packets": {
-    "files": 20,
-    "physical_bytes": 50962,
+    "files": 30,
+    "physical_bytes": 78530,
     "partials": 0
   },
-  "next_step": "Select bounded native comparison at existing <=4096-codepoint checkpoints as the next smallest candidate for future precise Source authorship/review. Preserve byte order/prefix behavior and all real checks. Do not combine callback batching/new compression profile. Short-string cache only as separate future scoped refinement preserving all checks/puts/flush/writes.",
-  "source_assessment": {
-    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/implementation-B/lossless-canonical-stream-whole-negative-next-step-assessment-v1.json",
-    "bytes": 9437,
-    "sha256": "1dd77ee8eb05ee159597a8aa28f5001fd2b713ad0566a9a2b8200d85e027ce07"
+  "next_priority_paper": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/implementation-B/cohort-qualification-versus-per-proof-cost-paper-v1.json",
+    "bytes": 6524,
+    "sha256": "a26b6ef06c77c8784c13877eaa46efb0ef1d069bb5692fb17de9a01095640c19"
+  },
+  "next_priority_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/review-C/typed-cohort-qualification-versus-per-proof-cost-paper-review-v1.json",
+    "bytes": 4041,
+    "sha256": "a924ac496d8ec1f3a63987d5c1ca710aee85b4581f513b5fa1f570393579e64e"
+  },
+  "next_priority_Root_decision": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/root/cohort-per-proof-Root-next-priority-paper-decision-v1.json",
+    "bytes": 1307,
+    "sha256": "fd944be2600af386d2a696adc15123c490175c144c318f4ed3c3e37d465a32e2"
   },
   "external_guard_not_archived": [
     {
-      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
       "bytes": 18058560,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
       "sha256": "b6ea0c2a9bfce48dbf181a53f1ca4f0562d40658b85bf47258e2a88d8f9e3933"
     }
   ],
-  "scope": "Complete negative evidence and frozen current/provenance project guard union. External pinned Python binary rehashed but not redistributed. No scientific decode/import/replay for packaging; runtime first-case local counter delta unavailable. No qualification/proof/prefix/benefit or finite universal Wang palette claim.",
+  "scope": "Complete immutable negative history, all current/project Source guards and reviewed future paper direction. No scientific import, replay, decoder, proof, prefix or qualification admission; no finite universal Wang palette or learned GCTS/RL advantage.",
   "predecessor": {
-    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/root/lossless-qualification-publication-catalog-v1.json",
-    "bytes": 156508,
-    "sha256": "08fc4644955be36eb92eab5a5a904f9bd580f39eb65201d0d1217ee0027e62c7"
-  },
-  "display_QA_successor": "Newest notice precedes all older status notices; original main body unchanged by exact insertion inverse. Clarify no checkpointbatching/newprofile authorization.",
-  "next_priority_review": {
-    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/review-C/typed-lossless-canonical-stream-next-priority-paper-review-v1.json",
-    "bytes": 5316,
-    "sha256": "e8c8ff2feaccc2eb7773f25cdb90d3b96cd7dc0983e4c5e9d6949db648bb92a2"
-  },
-  "next_priority_decision": {
-    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/root/lossless-next-bridge-Root-priority-paper-decision-v1.json",
-    "bytes": 1521,
-    "sha256": "02991526a95fa5fc0971aae80ffdd550a9c8bdc6fd96b912a7ea9b4f5c03472d"
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/root/lossless-qualification-publication-catalog-v2.json",
+    "bytes": 159059,
+    "sha256": "cb5a2c9cd8852d5097a4ca2167cb07a780bbe2ddd636f12d68960026ceb38616"
   },
   "members": [
     {
@@ -1402,6 +1463,71 @@
       "sha256": "9de65acdd98d80325b49d709ac1dccadd281a2ca5a8ec168a1f9fa3114ae2b81"
     },
     {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/actual/signed-propositional-lossless-evidence-whole-qualification-v3-qualify-0.observer/observer.json",
+      "bytes": 1580,
+      "sha256": "9479d47596935cf18450f1db71aa212da95b3f4dd86979d55d1f1c8d49416ff2"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/actual/signed-propositional-lossless-evidence-whole-qualification-v3-qualify-0.observer/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/actual/signed-propositional-lossless-evidence-whole-qualification-v3-qualify-0.observer/stdout.bin",
+      "bytes": 1720,
+      "sha256": "3b28e6ec95e1998c1637b29f2d432d942b23d668d7bfbdd3f0ab963ccee63de6"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/actual/signed-propositional-lossless-evidence-whole-qualification-v3-qualify-0/CONSUMED.json",
+      "bytes": 308,
+      "sha256": "91da8c9d600c0ec9945a2a15f6c4479843bed887055bfb32b128dd524bfe989a"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/actual/signed-propositional-lossless-evidence-whole-qualification-v3-qualify-0/failure.json",
+      "bytes": 20842,
+      "sha256": "16fa7de8477c21c54d430c41a6881cb1f8187ef4e7e2629ef32b84790d54d601"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/actual/signed-propositional-lossless-evidence-whole-qualification-v3-qualify-0/owned-child.json",
+      "bytes": 285,
+      "sha256": "3de3e6987fb68481afdcc3e7514f7ae35dc01960ea07990406717e6a6526e3d9"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/actual/signed-propositional-lossless-evidence-whole-qualification-v3-qualify-0/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/actual/signed-propositional-lossless-evidence-whole-qualification-v3-qualify-0/stdout.bin",
+      "bytes": 180,
+      "sha256": "a1227bc3221e02b786ef76af52565a0b1086768e87ee9331027112b904f1b79c"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/actual/signed-propositional-lossless-evidence-whole-qualification-v3-qualify-0/terminal.json",
+      "bytes": 1932,
+      "sha256": "36fee6dc259c395d721f0e4dbf17b6c5f5e02fcaafb30e202dbf1f5b56005361"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/actual/signed-propositional-lossless-evidence-whole-qualification-v3-qualify-0/worker-header.json",
+      "bytes": 721,
+      "sha256": "dc66aece3e974223662889f97f1359da71da00bb354acd0936320f03b6a86880"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/diagnostics-L/bounded-native-string-comparison-independent-preintake-handoff-v1.json",
+      "bytes": 1804,
+      "sha256": "2bade6f3a3bd0ffc56874cb1043d61950d23d12a202caa98f406b02d3ac283c9"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/diagnostics-L/bounded-native-string-comparison-independent-preservation-expectations-v1.json",
+      "bytes": 13017,
+      "sha256": "09a4859a9b3f048bf2af2eedd971ae1bbf6d74749fa9b45d55698a51680145f4"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/diagnostics-L/codec3-worker3-independent-passive-preservation-audit-v1.json",
+      "bytes": 25452,
+      "sha256": "94a58ab9d939bd6dbfd9e59206b198e4454545fbd2a80a9ca66bb27cc0784e57"
+    },
+    {
       "name": "research-runs/gcts-receptor-acquisition-20261022/diagnostics-L/lossless-codec-bank1-to-bank2.patch",
       "bytes": 948,
       "sha256": "b96e8895bdd784ef0257b7be8b8cb6a4ee9d13c60a65bfe830feabe17917dfee"
@@ -1642,6 +1768,11 @@
       "sha256": "1c6ec1eeea6e031cb8fd62c957f4f69f090b3b26c70c762e48c26ce3c4ce4693"
     },
     {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/diagnostics-L/typed-lossless-codec3-worker3-independent-preservation-Source-review-v1.json",
+      "bytes": 13919,
+      "sha256": "727d232218cd4941c3a0d9b756158adf10edf50d399c502786574e930bc445ef"
+    },
+    {
       "name": "research-runs/gcts-receptor-acquisition-20261022/diagnostics-L/typed-lossless-evidence-qualification-worker-complete-component-Source-review-v1.json",
       "bytes": 21166,
       "sha256": "7af06f928d3cfafaf871e79a9b1c227a9d6a1129c383471af54691151df553fd"
@@ -1650,6 +1781,11 @@
       "name": "research-runs/gcts-receptor-acquisition-20261022/diagnostics-L/typed-lossless-evidence-qualification-worker-narrow-successor-component-Source-review-v2.json",
       "bytes": 9746,
       "sha256": "e31d788b27ef998ac4b16b974b5edbeae98dcb7e12c4d6cfe81c0f9610a04efe"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/diagnostics-L/typed-lossless-native-comparison-publication-administrative-Source-review-v1.json",
+      "bytes": 8201,
+      "sha256": "1b89ed6eb74db397603d1e6b0e6ba671a46806123c078d95af6bf30f3545e9ab"
     },
     {
       "name": "research-runs/gcts-receptor-acquisition-20261022/diagnostics-L/typed-ordinary-acquisition-worker-complete-component-Source-review-v1.json",
@@ -1697,6 +1833,11 @@
       "sha256": "60718c72bd296e8139f84dadcc15423785052d1dc0895ce007e2157e4add28a4"
     },
     {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/cohort-qualification-versus-per-proof-cost-paper-v1.json",
+      "bytes": 6524,
+      "sha256": "a26b6ef06c77c8784c13877eaa46efb0ef1d069bb5692fb17de9a01095640c19"
+    },
+    {
       "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/fpc_h1_signed_compiler_v3.py",
       "bytes": 45796,
       "sha256": "e904a88fc7896f4a941ab2d4f3f37ee2af005369be30b959263a4dd5f55eda0d"
@@ -1712,6 +1853,11 @@
       "sha256": "81deea8c341a2337e2a7fb261c649920d3849a057a3cdae254c6cbf8c50fbfe2"
     },
     {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/fpc_lossless_evidence_codec_v3.py",
+      "bytes": 50486,
+      "sha256": "4a06aad019c6a2215ba8802e798d350190168bbda62b19d50ee6e0ff573b8143"
+    },
+    {
       "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/fpc_lossless_evidence_qualification_worker_v1.py",
       "bytes": 81140,
       "sha256": "a716e54bdfb55604d28bc8243b1346ee9d864ce44b9afef08e843c8f07c783eb"
@@ -1720,6 +1866,11 @@
       "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/fpc_lossless_evidence_qualification_worker_v2.py",
       "bytes": 81140,
       "sha256": "9521e347e966e37e99672d36a32aa96a4977d8bb4e9c8627395b3f13dab45c03"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/fpc_lossless_evidence_qualification_worker_v3.py",
+      "bytes": 81140,
+      "sha256": "628700c5ed9a85fd91452044e47a9aebbd624633150ce9166493d247c436a849"
     },
     {
       "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/fpc_receptor_acquisition_worker_v1.py",
@@ -1737,6 +1888,16 @@
       "sha256": "1dd77ee8eb05ee159597a8aa28f5001fd2b713ad0566a9a2b8200d85e027ce07"
     },
     {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/lossless-codec2-to-codec3.patch",
+      "bytes": 625,
+      "sha256": "28bbd3d5bbbd9a1797e185785177bd2c3f3d30395bbb4120782c11308f790f76"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/lossless-codec3-to-codec2.inverse.patch",
+      "bytes": 625,
+      "sha256": "b44906c9018f480fce4b310c5a20d008bfb72e92e6601233a940350d56a57828"
+    },
+    {
       "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/lossless-codec8-closed-callback-diagnosis-handoff-v1.json",
       "bytes": 1518,
       "sha256": "e4f5e087464c4e53a0846b78562a1bc8e1567017fcfb39e8585ad07501582ce7"
@@ -1752,14 +1913,44 @@
       "sha256": "cda3d9c261a84b82ccf9a55f0525aefe74b471735b5bbbe9e1836faef44acd13"
     },
     {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/lossless-evidence-codec-API-v3.json",
+      "bytes": 28153,
+      "sha256": "c881c42774bf094534bff263dfdeb22e9a0f457ae2df65965944f067d12b8d2e"
+    },
+    {
       "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/lossless-evidence-codec-Source-handoff-v2.json",
       "bytes": 4275,
       "sha256": "0f7da26a609f4f22a3564446b82e0d8c676bfb8804b6401f05ca81471ebe7df9"
     },
     {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/lossless-evidence-codec-Source-handoff-v3.json",
+      "bytes": 4235,
+      "sha256": "18c50f5698de6f85c1c355a183588ae8c9597f5043457961ec38467447fdd652"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/lossless-evidence-codec-bounded-compare-equivalence-v3.json",
+      "bytes": 4133,
+      "sha256": "c84cf886e9f97b35e583a29f7ab9a133f4f1c40fcc9399315b576dbbc9cc0137"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/lossless-evidence-codec-dependency-offer-v3.json",
+      "bytes": 8100,
+      "sha256": "9dcbfcbca7ac56b7fdaaf2dbf0af163efb1216dc395094493761aca6313e4c18"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/lossless-evidence-codec-manual-v3.json",
+      "bytes": 11198,
+      "sha256": "0fb9f6b09373f5919574b06065f3704e1348b27ffbafdc3503e6f303b72ab7dd"
+    },
+    {
       "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/lossless-evidence-codec-static-Python312-addendum-v1.json",
       "bytes": 16565,
       "sha256": "d4728688652545861067976c15be87c15d88581ff8da3e5659cafad47ebb16fd"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/lossless-evidence-codec-static-v3.json",
+      "bytes": 10082,
+      "sha256": "da903c37e12ba37e6a214a9ed492b9b5eb00694e8fbbc7980314396fea8d5eb3"
     },
     {
       "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/lossless-evidence-integer-policy-paper-ABI-addendum-v2.json",
@@ -1782,6 +1973,11 @@
       "sha256": "20c82c1abc2b4e8035fe09874fca0678be672b9d575131e7ef69f9f0350938e5"
     },
     {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/lossless-evidence-qualification-worker-API-v3.json",
+      "bytes": 65430,
+      "sha256": "d670a38d78cc25755dd1e4af114a6680172302a2641ea39e76d0ee7cb41f8b9c"
+    },
+    {
       "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/lossless-evidence-qualification-worker-Source-handoff-v1.json",
       "bytes": 4660,
       "sha256": "cb1ecdb9e4a0996b00ae7eaab0e49d63b041fc839cd722e7fac7bce4f56068db"
@@ -1790,6 +1986,11 @@
       "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/lossless-evidence-qualification-worker-Source-handoff-v2.json",
       "bytes": 4565,
       "sha256": "d6e524af35db3f6c742272eed4440e55d1bebcbeb85df01fa6c98a291ef3d2d8"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/lossless-evidence-qualification-worker-Source-handoff-v3.json",
+      "bytes": 4872,
+      "sha256": "f361b5b2a7a74a5441b7ff39481637bc00f4e89026c6ea394a172001be08e192"
     },
     {
       "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/lossless-evidence-qualification-worker-call-lastuse-census-v1.json",
@@ -1802,6 +2003,11 @@
       "sha256": "fa20a651a06aea54ae80de985346dce7c0bc5f1aff74a81c4a19d288266dc7a4"
     },
     {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/lossless-evidence-qualification-worker-call-lastuse-census-v3.json",
+      "bytes": 13407,
+      "sha256": "24ee9c13b016c7db355ec45e2c50c19e67f8a080eede186c34b7dba483f45041"
+    },
+    {
       "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/lossless-evidence-qualification-worker-dependency-offer-v1.json",
       "bytes": 90696,
       "sha256": "fe1dce5c3ae0d003e8a6f0fa0cf6bf2aee8a3a0a2e72fb7f31e733dcd9f67627"
@@ -1810,6 +2016,11 @@
       "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/lossless-evidence-qualification-worker-dependency-offer-v2.json",
       "bytes": 96648,
       "sha256": "692b37a21254a50720bb7633dfff9602edecd58fb290dc40dd1a5535d85a0a0e"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/lossless-evidence-qualification-worker-dependency-offer-v3.json",
+      "bytes": 102540,
+      "sha256": "40a9c06b51e600432df6d27a6f537b27bd72d3343a87f09e75062d66d47ae7ab"
     },
     {
       "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/lossless-evidence-qualification-worker-manual-v1.json",
@@ -1822,6 +2033,11 @@
       "sha256": "0665140f7a706cbff6e9cd59eef714014c69e85dba890889ef675e1744e7d57b"
     },
     {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/lossless-evidence-qualification-worker-manual-v3.json",
+      "bytes": 7222,
+      "sha256": "6913111d330348217277201a5430e0df128632c964fdc8e64326ab31c0e0f992"
+    },
+    {
       "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/lossless-evidence-qualification-worker-static-v1.json",
       "bytes": 4223,
       "sha256": "dcf54f29006d7e3ca62661215d73e487e98273c371e9c1cc29f042b1084073ed"
@@ -1830,6 +2046,11 @@
       "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/lossless-evidence-qualification-worker-static-v2.json",
       "bytes": 4665,
       "sha256": "432007359687dae0e33e44d95477b05961375df0b1af830c3fbfc668c94f5814"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/lossless-evidence-qualification-worker-static-v3.json",
+      "bytes": 4686,
+      "sha256": "82774e9c110134e0fb3a6d169a7b52bae1b8fe00968ebd7b0f5834e4506fd326"
     },
     {
       "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/lossless-qualification-evidence-format-and-caller-CONTRACT-v2.json",
@@ -1850,6 +2071,16 @@
       "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/lossless-worker2-to-worker1.inverse.patch",
       "bytes": 17195,
       "sha256": "bfa7ce70bf218452bec56c2379cc2f36fcd01fe5bc544c5266a6c67c2a13808f"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/lossless-worker2-to-worker3.patch",
+      "bytes": 17195,
+      "sha256": "2ad3ce44b0d9a0b6ebfe517473adb10c0d33ada983c2c5abb5363087cab2b726"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/lossless-worker3-to-worker2.inverse.patch",
+      "bytes": 17195,
+      "sha256": "ad05027876c3809291053b25862f229471ffac5e811340240950a5ef32a75e57"
     },
     {
       "name": "research-runs/gcts-receptor-acquisition-20261022/implementation-B/signed-compiler-API-v1.json",
@@ -2057,6 +2288,21 @@
       "sha256": "68db4b6283c8d0692ef5929b9b1c7b262fe276391293e236bf1a17b5dbd4676c"
     },
     {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/review-C/lossless-evidence-codec3-narrow-static-audit-v1.json",
+      "bytes": 1756,
+      "sha256": "1c5e7b1c5dbd5aa854661d1faf19ef46a06eab2d960fc5b6815562f99bcfb8c9"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/review-C/lossless-worker3-narrow-static-audit-v1.json",
+      "bytes": 6958,
+      "sha256": "6864fa9990702f9855aaaa234253337c3e7a322a7f040dbfd64627e30fe33ad3"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/review-C/typed-cohort-qualification-versus-per-proof-cost-paper-review-v1.json",
+      "bytes": 4041,
+      "sha256": "a924ac496d8ec1f3a63987d5c1ca710aee85b4581f513b5fa1f570393579e64e"
+    },
+    {
       "name": "research-runs/gcts-receptor-acquisition-20261022/review-C/typed-independent-lossless-codec-bank-complete-component-Source-review-v1.json",
       "bytes": 8971,
       "sha256": "487bf899ec5a92a93dfd5402951d70b479601d7f137d4250df0ff68195d7e42f"
@@ -2065,6 +2311,11 @@
       "name": "research-runs/gcts-receptor-acquisition-20261022/review-C/typed-independent-lossless-codec-bank-complete-successor-component-Source-review-v2.json",
       "bytes": 6791,
       "sha256": "22bc510a1afb60039d2177947c04c4c745388bb17eaba371b3f8b8e38833befb"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/review-C/typed-lossless-bounded-compare-successor-authority-interface-paper-review-v1.json",
+      "bytes": 5208,
+      "sha256": "4131f51d0ab502e95a49ed7b57e5ea9c0729428d8d3232ff85b8fdf9ff0b52f9"
     },
     {
       "name": "research-runs/gcts-receptor-acquisition-20261022/review-C/typed-lossless-canonical-stream-next-priority-paper-review-v1.json",
@@ -2077,6 +2328,11 @@
       "sha256": "ffff8e56cfd97801e19f06013656ea21e17241989850b3cb8424feefdc358f69"
     },
     {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/review-C/typed-lossless-evidence-codec-complete-successor-component-Source-review-v3.json",
+      "bytes": 7753,
+      "sha256": "1e0a46209cc71fba314d861876c59493ca8b68aa21d2c100b5b2fbe941a339e4"
+    },
+    {
       "name": "research-runs/gcts-receptor-acquisition-20261022/review-C/typed-lossless-evidence-qualification-complete-whole-negative-actual-review-v1.json",
       "bytes": 13282,
       "sha256": "b5f16b2c2b612abe57e01dbb06636ca170e3ca757f2f46862999e5f74cb33138"
@@ -2085,6 +2341,16 @@
       "name": "research-runs/gcts-receptor-acquisition-20261022/review-C/typed-lossless-evidence-qualification-complete-whole-negative-actual-review-v2.json",
       "bytes": 14560,
       "sha256": "2e310f7b40d1a073186512d29285c54862341efd2f4348d2dde957b27ef15472"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/review-C/typed-lossless-evidence-qualification-complete-whole-negative-actual-review-v3.json",
+      "bytes": 10771,
+      "sha256": "cf19d427fe0588bb9e7a4e7f264b25226be62a6b08da33d414f2742512eb7ccf"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/review-C/typed-lossless-evidence-qualification-complete-whole-prospective-native-compare-review-v3.json",
+      "bytes": 9597,
+      "sha256": "6ebea337f51811fde201404059f5ac3c42784627af28ad4c0ee52c1fe1b84e8a"
     },
     {
       "name": "research-runs/gcts-receptor-acquisition-20261022/review-C/typed-lossless-evidence-qualification-worker-complete-component-Source-review-v1.json",
@@ -2097,6 +2363,11 @@
       "sha256": "e9f65ff2f9ef7c2ea1c20c7d31a14b714915f2f3c61da80b446b20a1faa4fa77"
     },
     {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/review-C/typed-lossless-evidence-qualification-worker-complete-narrow-successor-Source-review-v3.json",
+      "bytes": 6647,
+      "sha256": "355e98a747e861b1813127c343358292d1cf59ba933a74be1f4d79739021cc57"
+    },
+    {
       "name": "research-runs/gcts-receptor-acquisition-20261022/review-C/typed-lossless-evidence-worker-scope-and-incomplete-finish-paper-review-v1.json",
       "bytes": 4238,
       "sha256": "f28c1abb2fafbd9c34206f15476ba2a19b76127ec37c24afd32b05421aa68841"
@@ -2105,6 +2376,11 @@
       "name": "research-runs/gcts-receptor-acquisition-20261022/review-C/typed-lossless-lifecycle-successor-authority-diagnosis-helpers-Source-review-v1.json",
       "bytes": 11031,
       "sha256": "8d959ed0f53233937d2049eedceca9430dded77247f97cc0064b60fb88227001"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/review-C/typed-lossless-native-compare-metadata-helpers-complete-Source-review-v1.json",
+      "bytes": 9307,
+      "sha256": "9c3a462677e82cd8f8585b252c6dba84d1b4b797d2057f7c838c6cb6b46b8c2c"
     },
     {
       "name": "research-runs/gcts-receptor-acquisition-20261022/review-C/typed-lossless-qualification-metadata-helpers-Source-review-v1.json",
@@ -2132,9 +2408,19 @@
       "sha256": "fb93df136d1d6f7be363886ed39376c87089b60057877448a37a6920f82a8936"
     },
     {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/review-C/typed-signed-compiler-successor-single-diagnostics-and-caller-ABI-review-v3.json",
+      "bytes": 10243,
+      "sha256": "bc82149682155bdb396ad94c4b13baa4b8a9539276d447e41fb5a5d46bb20d71"
+    },
+    {
       "name": "research-runs/gcts-receptor-acquisition-20261022/review-C/typed-signed-primitive-compiler-complete-component-Source-review-v1.json",
       "bytes": 12881,
       "sha256": "1e6b5217ddad94b78c7761038a018d28355a98b8a6f17acc7275846ac2d2908b"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/review-C/typed-signed-primitive-reconstruction-contract-design-review-v3.json",
+      "bytes": 7077,
+      "sha256": "7b473efa9c21810b41492837151c7b4fe4b19abe18b5f463ccef2d7de64bb3c7"
     },
     {
       "name": "research-runs/gcts-receptor-acquisition-20261022/review-C/typed-signed-propositional-producer-complete-component-Source-review-v1-negative.json",
@@ -2150,6 +2436,11 @@
       "name": "research-runs/gcts-receptor-acquisition-20261022/review-C/typed-signed-propositional-producer-complete-successor-component-Source-review-v3.json",
       "bytes": 8297,
       "sha256": "aa8856be5ac44136f2018568327671164bfee0e3388db62cb734cc037958592c"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/review-C/typed-signed-propositional-strict-ABI-design-review-v3.json",
+      "bytes": 7416,
+      "sha256": "b1829e32959dbff40b9dd33e877b601e3e2a10fe727a6cbbe39552407f471050"
     },
     {
       "name": "research-runs/gcts-receptor-acquisition-20261022/review-C/typed-signed-reconstruction-ABI3-and-independent-final-expectations-composition-review-v1.json",
@@ -2197,6 +2488,11 @@
       "sha256": "5b6d0bc95fde3ffdb89cc14a485e051edbd372b372aa83bb381062395e3ed48c"
     },
     {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/root/census_lossless_evidence_qualification_native_compare_case_v1.py",
+      "bytes": 1454,
+      "sha256": "f88ca1ec601524daf7735ae7d14a142f1a5eadde6cc03eaa53ec3f019d60dc88"
+    },
+    {
       "name": "research-runs/gcts-receptor-acquisition-20261022/root/census_lossless_evidence_qualification_successor_case_v1.py",
       "bytes": 1449,
       "sha256": "4f21d7afddcfd0afedac0d591143146ac82251f82d3854ff0c80267694b9a0ea"
@@ -2205,6 +2501,11 @@
       "name": "research-runs/gcts-receptor-acquisition-20261022/root/census_signed_successor_qualification_case_v1.py",
       "bytes": 1429,
       "sha256": "0ab7c2f81281924b2a23b17c0db6e901c1808443150ac47c3b6bb3ca5f4b4809"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/root/cohort-per-proof-Root-next-priority-paper-decision-v1.json",
+      "bytes": 1307,
+      "sha256": "fd944be2600af386d2a696adc15123c490175c144c318f4ed3c3e37d465a32e2"
     },
     {
       "name": "research-runs/gcts-receptor-acquisition-20261022/root/grants/signed-propositional-lossless-evidence-whole-qualification-v1-qualify-0.json",
@@ -2217,6 +2518,11 @@
       "sha256": "9a3d1eaf226cfb68f6fd13978af95ee7b65d252d62baf81e4bf7f7b4dd4e3451"
     },
     {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/root/grants/signed-propositional-lossless-evidence-whole-qualification-v3-qualify-0.json",
+      "bytes": 5188,
+      "sha256": "abc608db8ebae4ae231a17543570d86fd710f6ee64763dca9c6e1a36bf764798"
+    },
+    {
       "name": "research-runs/gcts-receptor-acquisition-20261022/root/issue_acquisition_grant_v1.py",
       "bytes": 5115,
       "sha256": "35ec83215285a38438403ac804e7482de0c880cf188d467d5b3d7fa4d6a695df"
@@ -2227,6 +2533,11 @@
       "sha256": "f68b8aa696a885597fa4d5a91fac88992268ca67c7f368a2a10bbe5c5da54ab2"
     },
     {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/root/issue_lossless_evidence_qualification_native_compare_grant_v1.py",
+      "bytes": 5632,
+      "sha256": "1793836ab6d92aaeef91e6b34938bb0b83092bd615f50d4517f360e892d6e124"
+    },
+    {
       "name": "research-runs/gcts-receptor-acquisition-20261022/root/issue_lossless_evidence_qualification_successor_grant_v1.py",
       "bytes": 5627,
       "sha256": "ba32229e784e77dcccebc4fda6c638b58eaf37b02dfc33c416c4d6ea667764e8"
@@ -2235,6 +2546,11 @@
       "name": "research-runs/gcts-receptor-acquisition-20261022/root/issue_signed_successor_qualification_grant_v1.py",
       "bytes": 5407,
       "sha256": "2a56081e992a33ce94e603951f98699b2ff975051f86ce68dfb53054f4ee6420"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/root/lossless-bounded-compare-successor-Root-Source-authorship-v1.json",
+      "bytes": 5891,
+      "sha256": "4bbf82f877dd564a096b60a5c1e103eb252d676d15957f5d20640f0d90006221"
     },
     {
       "name": "research-runs/gcts-receptor-acquisition-20261022/root/lossless-codec2-and-independent-bank-Root-component-Source-acceptance-v1.json",
@@ -2295,6 +2611,56 @@
       "name": "research-runs/gcts-receptor-acquisition-20261022/root/lossless-evidence-qualification-metadata-helpers-Source-handoff-v1.json",
       "bytes": 3830,
       "sha256": "eccb9e2962bc00bf557cc3fedbe7e0eedef5f621b899da72a7d9fdb9fb811b59"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/root/lossless-evidence-qualification-native-compare-Root-case-prospective-acceptance-v1.json",
+      "bytes": 3040,
+      "sha256": "5c85a81de55048a160e945fcabbb5c86bd62f3f030d2042cef58733c96631433"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/root/lossless-evidence-qualification-native-compare-Root-component-Source-acceptance-v1.json",
+      "bytes": 17062,
+      "sha256": "4b70b194a0ac3deefd4e1921d8aef2ded0f8fbf281417e16cb37b5754856a066"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/root/lossless-evidence-qualification-native-compare-Root-whole-disposition-v1.json",
+      "bytes": 4452,
+      "sha256": "87a90b2ba0ca282ef0d696995b124515bd6d8fbc5ef79b7f69ae3d23d6a8ad30"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/root/lossless-evidence-qualification-native-compare-Root-whole-prospective-acceptance-v1.json",
+      "bytes": 1539,
+      "sha256": "27eaa4c58faea07bd60e6447f14a817569b2c82ab02c503f45f6403c753d2751"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/root/lossless-evidence-qualification-native-compare-Source-closure-v1.json",
+      "bytes": 141567,
+      "sha256": "084a37ed83d5ed7b14b4673dc7b702ba6c6545eaba481bf8cfedc4c12dd00c3f"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/root/lossless-evidence-qualification-native-compare-all-tools-idle-barrier-v1.json",
+      "bytes": 1041,
+      "sha256": "062914f8d0d0cab79936c78b74ccd055182685a4a20455af12f7432c8ca1b187"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/root/lossless-evidence-qualification-native-compare-grant-proposal-v1.json",
+      "bytes": 4800,
+      "sha256": "9f610ec1f91d177843c621c83189ffe3a2c68c4b083c4a33f33b79e983d89684"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/root/lossless-evidence-qualification-native-compare-study-preparation-v1.json",
+      "bytes": 2836,
+      "sha256": "8e01d70812eeb6a294515e5e293cd6f02712e2466da143cd693c42651ec8a1ee"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/root/lossless-evidence-qualification-native-compare-terminal-raw-census-v1.json",
+      "bytes": 4039,
+      "sha256": "a67cba4c4eb2047f9b2b930a3cac97e6326ed9f34975516dcc8728eeee26451f"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/root/lossless-evidence-qualification-native-compare-whole-protocol-v1.json",
+      "bytes": 30469,
+      "sha256": "a2e44c7dfa77afa9aadba62cea2513dcab8c5b0f72563792d68761bb366b7cf6"
     },
     {
       "name": "research-runs/gcts-receptor-acquisition-20261022/root/lossless-evidence-qualification-study-preparation-v1.json",
@@ -2392,9 +2758,74 @@
       "sha256": "0c50eed2d41a940bcb3589b53c5ca372c5a243102e9c487e1fcabe63dc8de3dd"
     },
     {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/root/lossless-native-compare-Root-negative-passive-audit-v1.json",
+      "bytes": 2859,
+      "sha256": "8d2652b479fdcb1bcafb84065b696d96fac56a9250e9cb6a38efafaf67ca8771"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/root/lossless-native-compare-Root-passive-Source-audit-v1.json",
+      "bytes": 2295,
+      "sha256": "64a636c6681d7d900ee6fd6beea58a9c50333ef129f49e6fd019ec139cd887a5"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/root/lossless-native-compare-builder-Source2-to-Source3.patch",
+      "bytes": 4296,
+      "sha256": "957e7e51473eb6b75266dd39e0748614788294171ba8f8c361d526694439ca66"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/root/lossless-native-compare-builder-Source3-to-Source2.inverse.patch",
+      "bytes": 4296,
+      "sha256": "f33bba11a28f260fb7bc12f2178dc7b6df3aa6152d0ab6d0a583a0144e559a7c"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/root/lossless-native-compare-census-Source2-to-Source3.patch",
+      "bytes": 1121,
+      "sha256": "ab6dcf819eb057367efedb5f7e8862b3d24d1f99ffb930bf75172e3ab2d21cb1"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/root/lossless-native-compare-census-Source3-to-Source2.inverse.patch",
+      "bytes": 1121,
+      "sha256": "c1fe636e4a8af4bd5382eb5b70ee963a1d710c747b636287f1102c56d4eecbe5"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/root/lossless-native-compare-issuer-Source2-to-Source3.patch",
+      "bytes": 504,
+      "sha256": "c709c87041cba605111de4ef5ac962b798426bd21c812349a658b06b404c23d3"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/root/lossless-native-compare-issuer-Source3-to-Source2.inverse.patch",
+      "bytes": 504,
+      "sha256": "682e51658186876e9bbe7fbeebe19b0bc322780fef967f54a5dd5617afebdb47"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/root/lossless-native-compare-metadata-helpers-Source-handoff-v1.json",
+      "bytes": 9189,
+      "sha256": "f27abad224bfb4c5a8defedf4a4085b4e56e162cb6720dd4ccd1a75869596288"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/root/lossless-native-compare-metadata-helpers-manual-v1.json",
+      "bytes": 3247,
+      "sha256": "dc3b15ed52111cc39c2d82b6a1e5400dfa83bba0ea5a1f0cdb0012658484a0b5"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/root/lossless-native-compare-metadata-helpers-static-v1.json",
+      "bytes": 8059,
+      "sha256": "f36ef52b2ab7d09c702193d4f453d616b0f3f05cd42d103e11ac7bc5f1efd1b2"
+    },
+    {
       "name": "research-runs/gcts-receptor-acquisition-20261022/root/lossless-next-bridge-Root-priority-paper-decision-v1.json",
       "bytes": 1521,
       "sha256": "02991526a95fa5fc0971aae80ffdd550a9c8bdc6fd96b912a7ea9b4f5c03472d"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/root/lossless-qualification-publication-Root-live-disposition-v2.json",
+      "bytes": 4128,
+      "sha256": "3c4160326c0ec1f58f0fdd49bd3971c4daf396bda23e36a02595af988e210890"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/root/lossless-qualification-publication-catalog-v2.json",
+      "bytes": 159059,
+      "sha256": "cb5a2c9cd8852d5097a4ca2167cb07a780bbe2ddd636f12d68960026ceb38616"
     },
     {
       "name": "research-runs/gcts-receptor-acquisition-20261022/root/lossless-worker-Root-passive-API-offer-audit-v1.json",
@@ -2415,6 +2846,11 @@
       "name": "research-runs/gcts-receptor-acquisition-20261022/root/next-research-state-v10.json",
       "bytes": 9616,
       "sha256": "2dd79e708903a2722dfe7e609375fe92ef97361a7d88950cb37d1f92de80b488"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/root/next-research-state-v12.json",
+      "bytes": 13741,
+      "sha256": "6346d3cd56290ec04e3e8375a511b7fbe9012216b3387e0d878578171c74a8c7"
     },
     {
       "name": "research-runs/gcts-receptor-acquisition-20261022/root/nonwrapper-selector-Root-component-Source-acceptance-v1.json",
@@ -2462,6 +2898,16 @@
       "sha256": "fb2c66affadd3c974daec1db27b1a7b936f69574a49b235f3ae6845a04e83701"
     },
     {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/root/plans/signed-propositional-lossless-evidence-whole-qualification-v3-qualify-0.json",
+      "bytes": 172536,
+      "sha256": "728f9a5dfbc36c0524fcdd0986b3cb8988cc318b79df57206784d9543e44fd4a"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/root/plans/signed-propositional-successor-whole-qualification-v1-qualify-0.json",
+      "bytes": 142765,
+      "sha256": "db348b552b040dafa3370d9db6e86d90c637a4cda09e6b15acbbd83dfcec2ab6"
+    },
+    {
       "name": "research-runs/gcts-receptor-acquisition-20261022/root/prepare_acquisition_study_v1.py",
       "bytes": 11572,
       "sha256": "3dde27f6373c37bf700cd1ea7844d9872252edfd5357909517a96649926f0c53"
@@ -2470,6 +2916,11 @@
       "name": "research-runs/gcts-receptor-acquisition-20261022/root/prepare_lossless_evidence_qualification_metadata_v1.py",
       "bytes": 10516,
       "sha256": "b2c221c403d65bcf20d4c906a8eafdfed22a530bc3b099422163db81813ddee7"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/root/prepare_lossless_evidence_qualification_native_compare_metadata_v1.py",
+      "bytes": 10553,
+      "sha256": "cf12685e2b6463f643180ce96b4c34c140d2088edcf82880b61d1064b7514919"
     },
     {
       "name": "research-runs/gcts-receptor-acquisition-20261022/root/prepare_lossless_evidence_qualification_successor_metadata_v1.py",
@@ -2487,9 +2938,29 @@
       "sha256": "2d38cfde0e57027c17f34586e1286fcdce9203f46e56f6707ae22bc655d544b9"
     },
     {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/root/prepare_lossless_qualification_publication_v3.py",
+      "bytes": 11369,
+      "sha256": "772a1ddc9d355a28da3190d70c871751003200172d1a7ad6330ae8c04f736c91"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/root/prepare_lossless_qualification_publication_v4.py",
+      "bytes": 11373,
+      "sha256": "67b1d3b884d9ec75aa411fe77b443eefc40373ab4579f5833dd963e14ffa6121"
+    },
+    {
       "name": "research-runs/gcts-receptor-acquisition-20261022/root/prepare_signed_successor_qualification_metadata_v1.py",
       "bytes": 9978,
       "sha256": "a3ae21e653991618f8b3888628a3f8e0c9d474103062d5fd5e920da215a17647"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/root/publication-lossless-qualification-v2/point-proof-parallel-progress-v1.html",
+      "bytes": 10999,
+      "sha256": "08b2fd6fac5fd26ce8eba624655776133ac722407521c18e72f485af17cb57fc"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/root/publication-lossless-qualification-v2/point-proof-search-v1.html",
+      "bytes": 58800,
+      "sha256": "d36d357bebfb89a48722240e6c3bcadaefce0eb2ede624dfe4a795798becdf65"
     },
     {
       "name": "research-runs/gcts-receptor-acquisition-20261022/root/publish_lossless_qualification_api_v1.py",
@@ -2500,6 +2971,11 @@
       "name": "research-runs/gcts-receptor-acquisition-20261022/root/publish_lossless_qualification_api_v2.py",
       "bytes": 7058,
       "sha256": "e47e9a7e0e77606e553cba4ec188e6181cc1dcac961803c0ea0deca7cae998ab"
+    },
+    {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/root/publish_lossless_qualification_api_v3.py",
+      "bytes": 7257,
+      "sha256": "036f9a8f69a490c56bb52eac8392cc8ef24786db19aa42cd2642e0bb430e18aa"
     },
     {
       "name": "research-runs/gcts-receptor-acquisition-20261022/root/receptor-acquisition-Root-design-decision-v1.json",
@@ -2597,14 +3073,19 @@
       "sha256": "a29b4ca1008b355006431584f05da9b391d22532602e7e54f14291477ef2e668"
     },
     {
+      "name": "research-runs/gcts-receptor-acquisition-20261022/root/verify_lossless_qualification_live_v2.py",
+      "bytes": 2639,
+      "sha256": "852fab7cd81c9d990a4b0e3dd561bd17e1633b33d9e610a88e76423afeba73e2"
+    },
+    {
       "name": "milestone-catalog.json",
-      "bytes": 159059,
-      "sha256": "cb5a2c9cd8852d5097a4ca2167cb07a780bbe2ddd636f12d68960026ceb38616"
+      "bytes": 188052,
+      "sha256": "722b7191455254485a070c88597d3f61df2a43b3faf75e533934fee01177f5da"
     }
   ],
   "archive": {
-    "bytes": 2270270,
-    "sha256": "ee09dd68be8ef83424525d8f637965eceaf31844f395a3e3e2857c2cfe9f600f"
+    "bytes": 2681920,
+    "sha256": "5c989b772429adac253a47843f5f220371458792193fa4a192ecad9c9910d701"
   },
-  "archive_member_count": 495
+  "archive_member_count": 579
 }
