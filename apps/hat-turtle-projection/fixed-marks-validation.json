@@ -5,8 +5,8 @@
     "raw",
     "mean-centered"
   ],
-  "maxDrift": 1.0247593068766007e-13,
+  "maxDrift": 8.987733679556355e-14,
   "maxBarycentricError": 3.126388037344441e-12,
   "minWeight": 0.08413680311318927,
-  "scope": "Numerical rendering check; continuum proof is research/hat-turtle-fixed-points/certify.py"
+  "scope": "Full-family stationarity check. Interior-point certificate is restricted to the Hat–Turtle interval; marks are hidden outside it."
 }

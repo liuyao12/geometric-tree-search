@@ -1,0 +1,67 @@
+{
+  "geometry": {
+    "integerVertices": 49246,
+    "tiles": 7921,
+    "sharedEdges": 53728,
+    "eulerCharacteristic": 1,
+    "samples": [
+      {
+        "fraction": 0.01,
+        "tileArea": 1.7795942774445799,
+        "properCrossingsOrOverlaps": 0,
+        "edgePairsChecked": 665521
+      },
+      {
+        "fraction": 0.05,
+        "tileArea": 1.9773647149365756,
+        "properCrossingsOrOverlaps": 0,
+        "edgePairsChecked": 586650
+      },
+      {
+        "fraction": 0.16666666666666666,
+        "tileArea": 2.5980762113533156,
+        "properCrossingsOrOverlaps": 0,
+        "edgePairsChecked": 444258
+      },
+      {
+        "fraction": 0.3333333333333333,
+        "tileArea": 3.4641016151377544,
+        "properCrossingsOrOverlaps": 0,
+        "edgePairsChecked": 342374
+      },
+      {
+        "fraction": 0.5,
+        "tileArea": 4.098076211353316,
+        "properCrossingsOrOverlaps": 0,
+        "edgePairsChecked": 286633
+      },
+      {
+        "fraction": 0.6666666666666666,
+        "tileArea": 4.330127018922193,
+        "properCrossingsOrOverlaps": 0,
+        "edgePairsChecked": 273606
+      },
+      {
+        "fraction": 0.8333333333333334,
+        "tileArea": 4.098076211353315,
+        "properCrossingsOrOverlaps": 0,
+        "edgePairsChecked": 283865
+      },
+      {
+        "fraction": 0.95,
+        "tileArea": 3.688091102890748,
+        "properCrossingsOrOverlaps": 0,
+        "edgePairsChecked": 318727
+      },
+      {
+        "fraction": 0.99,
+        "tileArea": 3.5107904224964366,
+        "properCrossingsOrOverlaps": 0,
+        "edgePairsChecked": 337750
+      }
+    ]
+  },
+  "browser": {
+    "status": "pending"
+  }
+}

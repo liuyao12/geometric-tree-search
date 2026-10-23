@@ -20,7 +20,7 @@ for(const anchor of marks.anchors){
   const p=latticeToCartesian(anchor.coordinates).map((v,k)=>v-offset[k]);
   const hat=projectVertex(...p,.5,HALFROOT3,false);
   for(let j=0;j<=100;j++){
-   const angle=Math.PI/6+j/100*Math.PI/6,c=Math.cos(angle),s=Math.sin(angle),frame=fixedMarkFrame(c,s,offset);
+   const angle=j/100*Math.PI/2,c=Math.cos(angle),s=Math.sin(angle),frame=fixedMarkFrame(c,s,offset);
    assert.ok(frame.scale>0);
    const actual=projectVertex(...p,c,s,false,frame);
    maxDrift=Math.max(maxDrift,Math.hypot(actual[0]-hat[0],actual[1]-hat[1]));
@@ -28,6 +28,6 @@ for(const anchor of marks.anchors){
  }
 }
 assert.ok(maxDrift<1e-10);assert.ok(maxBarycentricError<1e-10);
-const report={reflectedTiles:reflected.length,parameterSamples:101,coordinateFrames:['raw','mean-centered'],maxDrift,maxBarycentricError,minWeight,scope:'Numerical rendering check; continuum proof is research/hat-turtle-fixed-points/certify.py'};
+const report={reflectedTiles:reflected.length,parameterSamples:101,coordinateFrames:['raw','mean-centered'],maxDrift,maxBarycentricError,minWeight,scope:'Full-family stationarity check. Interior-point certificate is restricted to the Hat–Turtle interval; marks are hidden outside it.'};
 fs.writeFileSync(new URL('fixed-marks-validation.json',import.meta.url),JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify(report,null,2));

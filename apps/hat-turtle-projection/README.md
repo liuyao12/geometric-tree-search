@@ -1,69 +1,100 @@
-# Hat–turtle projection animation
+# Full tile family and four-dimensional perspectives
 
-A finite patch of 7,921 hats is generated from the H/T/P/F substitution rules in Craig S. Kaplan's `hatviz`. Its shared-vertex graph is coherently lifted to four integer lattice coordinates. The browser continuously varies one linear projection of that fixed patch; it never separately reshapes or repositions tiles.
+A finite patch of 7,921 tiles is generated from the H/T/P/F substitution rules in Craig S. Kaplan's `hatviz`. Its shared-vertex graph is coherently lifted to four integer lattice coefficients. The browser changes a projection of this fixed object; no tile is moved separately.
 
-- Plane view displays a genuine tiling patch throughout the deformation.
-- Lifted view uses a third orthonormal projected coordinate and a fixed camera tilt. Projected boundaries may overlap in this view. Polygon fills are a visualization choice.
-- Colors, reflection classes and selected tile identity remain fixed.
-- The equal-edge midpoint admits periodic tilings as well; the animation retains its original substitution patch.
-- This page is a known geometric substitution visualization, not a point-value search, GCTS, RL, matching-rule learner, or certificate of a new tiling. The shared algorithm contract's search scheduler and marking-learning requirements are therefore not invoked; no engine has been changed.
+Tile family follows the entire Chevron–Hat–Turtle–Comet deformation. Other perspectives provides a two-parameter map and six four-parameter coordinate charts covering all real screen planes. Every screen image is two-dimensional. General perspectives can overlap and can give reflected tiles different shapes. Colors, reflection classes, selected tile identity, and shared edges remain attached to the fixed object. At equal edge lengths the polygon also admits periodic tilings; this particular patch retains its substitution arrangement.
 
-## Geometry
+This is a known geometric substitution visualization. It does not run a point-value search, GCTS, RL, or matching-rule learner. The shared algorithm contract's search scheduler and learning requirements are not invoked, and the separate `lifted-search` engine is unchanged.
 
-Integer coordinates \((p,q,r,s)\) encode two triangular lattices:
+## Fixed coordinates and full family
+
+Integer coefficients \((p,q,r,s)\) encode two perpendicular triangular planes, with Cartesian coordinates
 
 \[
-u=(p+q/2,\sqrt{3}q/2),\qquad v=(\sqrt{3}r/2,r/2+s).
+U=p+q/2+i\sqrt3q/2,\qquad V=\sqrt3r/2+i(r/2+s).
 \]
 
-The screen plane uses
+The coefficient basis is oblique, rather than an orthonormal cubic basis. The original family uses the orthogonal screen projection
 
 \[
-P_\theta(u,v)=\cos\theta\,u+\sin\theta\,v,
-\qquad \pi/6\leq\theta\leq\pi/3.
+P_\theta(U,V)=\cos\theta\,U+\sin\theta\,V,\qquad 0\leq\theta\leq\pi/2.
 \]
 
-These are orthogonal projections with respect to the Euclidean metric of the two triangular planes; the integer coefficient basis is oblique. The animation does not claim that this coefficient basis is an orthonormal cubic basis. The hat appears at \(\theta=\pi/3\), the turtle at \(\theta=\pi/6\).
+The slider fraction is \(m=1-2\theta/\pi\). Chevron, Hat, equal edges, Turtle, and Comet occur at \(m=0,1/3,1/2,2/3,1\), respectively. At the limits one edge class vanishes, so some of the fourteen fixed vertex labels coincide in the image. The limiting polygons still have positive area. The single-tile view labels all fourteen vertices relative to the first vertex of the selected tile, using MathJax. Those labels remain constant.
 
-For the third displayed direction, the viewer uses
+## Two-parameter map and lattice alignments
+
+The map adds a relative rotation:
 
 \[
-z=\frac{-\sin\theta(u_x+u_y)+\cos\theta(v_x+v_y)}{\sqrt2}.
+P_{\theta,\varphi}(U,V)=\cos\theta\,U+\sin\theta e^{i\varphi}V.
 \]
 
-This direction is orthogonal to both screen-plane directions. A fixed camera tilt then reveals the lifted patch.
+These screen rows are orthonormal in Cartesian coordinates. Up to a rotation of the screen, this is the complete complex-linear family, a complex projective line with two real degrees of freedom. The original family is the line \(\varphi=0\). Each vertical end of the rectangular map represents one plane, up to screen rotation. It is not the complete family of real screen planes.
 
-## Provenance and reproduction
-
-`geometry-reference.js` and `hat-reference.js` are unmodified downloads from https://github.com/isohedral/hatviz (2026-10-20), under the accompanying BSD 3-Clause license. They are build-time references, not runtime dependencies. `generate.cjs` builds `patch.json`; run it with Node.js. Its checks include integer edge lifts, all shared-edge consistency equations, connectivity, fourteen vertices and the two edge-class counts per tile, edge incidence at most two, and reconstruction of the reference hat patch. See `validation.json` for independent geometry and browser checks.
-
-The lift follows Nan Ma and Arnaud Chéritat: https://www.math.univ-toulouse.fr/~cheritat/2023-monotile/4D-lift/index.html
-
-Serve this directory over HTTP and open `index.html`. No compilation or package installation is needed. Browser controls include playback, endpoints and midpoint, dragging, zoom, whole-patch fit, tile selection, and a lifted view. Reduced-motion preferences pause playback initially.
-
-## Single tile and steadier framing
-
-The single-tile view labels all fourteen vertices with their integer triangular-basis coordinates, relative to the selected tile's first vertex. MathJax typesets the labels and coordinate explanation. Labels are constant through the animation. The lattice coefficient basis is explicitly distinguished from orthonormal Cartesian coordinates.
-
-Steady reflected layout is a global, orientation-preserving similarity fitted to the reflected tiles' vertex-average reference points over the entire patch. It removes overall rotation, translation and scale change; it does not move tiles separately. This keeps the main spacing visually steady while preserving congruence and shared edges. Residual local motion is disclosed in the UI. It is not an exact locking of every reflected tile.
-
-The fit minimizes
+Let \(\zeta=e^{i\pi/3}\) and \(z=\tan\theta e^{i\varphi}\). Apart from the nonzero overall factor, the projected coefficient lattice is
 
 \[
-\sum_i\left|g\,z_i(\theta)+t-z_i(\pi/3)\right|^2,
-\qquad g,t\in\mathbb C.
+\mathbb Z[\zeta]+ze^{i\pi/6}\mathbb Z[\zeta].
 \]
 
-The reference points are used only to choose the camera. There is no claim that vertex averages or area centroids are a privileged geometric center.
+It is a discrete rank-two lattice exactly when
 
-`validate-view.mjs` independently checks all relative coordinate labels, the residual of the least-squares camera, and preservation of edge-length ratios. Its rank witness rules out using the **same local point** in every identically oriented reflected copy. It does not rule out choosing different local points in different copies.
+\[
+ze^{i\pi/6}\in\mathbb Q(\zeta),
+\quad\text{equivalently}\quad
+x=\sqrt3\operatorname{Re}z\in\mathbb Q,\qquad y=\operatorname{Im}z\in\mathbb Q.
+\]
 
-## Exact stationary interior marks
+To see necessity, a discrete superlattice of the first triangular lattice has finite index, so both additional generators have rational coordinates in its basis. Sufficiency follows by clearing denominators. The resulting lattice is triangular: the sum of these two commensurate Eisenstein modules is a fractional ideal in the principal ideal domain of Eisenstein integers. Both limiting planes are also aligned. Otherwise the image is dense: its closure is invariant under a sixty-degree rotation, which rules out a proper positive-dimensional closed subgroup.
 
-The default framing now uses a different fixed material point in each reflected tile's four-dimensional triangulated surface. All 1,009 marks in this finite patch lie in one affine plane. A single similarity of the screen then keeps every mark stationary throughout the plane-view animation. Shared edges remain shared. This is exact geometry, with floating-point rendering.
+Thus the alignment locus is countable and dense, not a collection of continuous curves. Teal dots show only a finite sample. A named example or dot retains its exact rational data; free dragging is not certified as either rational or irrational from floating-point values. The overlay uses an exact integer lattice basis before floating-point rendering. Fine lattices require zooming in; the display reports this instead of plotting an excessive number of dots. Lattice alignment does not imply translational periodicity of the tiling.
 
-The choice of surface matters: a non-planar boundary does not define a unique interior. We fix twelve triangles spanning each reflected tile's boundary, then keep each point's barycentric coordinates in its triangle constant. The exact verifier checks that all triangles remain oriented without degenerating throughout the entire hat–turtle interval, and that each mark is strictly interior to its triangle. The lift stays fixed; its image changes.
+## Four degrees of freedom
 
-See [the construction and exact finite-patch certificate](../../research/hat-turtle-fixed-points/README.md). No assertion about every tile of an infinite tiling is made. Lifted view includes an additional varying depth coordinate and does not lock these marks on screen.
+Fixing two members of an orthonormal four-frame leaves one continuous angle for the other two members (and a disconnected reflection choice). That rotation alone leaves projection onto the fixed first plane unchanged. To change the screen plane, there are four real degrees of freedom: locally its spanning vectors can be written
 
-Run `node validate-fixed-marks.mjs` for a numerical rendering check. Run `python3 ../../research/hat-turtle-fixed-points/certify.py` for the exact certificate (standard Python library only). The exploratory `check.py` additionally requires NumPy.
+\[
+e_1+a e_3+b e_4,\qquad e_2+c e_3+d e_4.
+\]
+
+The advanced panel uses coefficient-coordinate covectors instead. Choose any two of the four columns as pivots, put the identity in them, and enter the other four coefficients. For the first chart the matrix is
+
+\[
+C=\begin{pmatrix}1&0&a&b\\0&1&c&d\end{pmatrix}.
+\]
+
+There are six choices of pivot pair. Every rank-two matrix has a nonzero two-column minor, so these charts cover all planes. We convert the row covectors to Cartesian coordinates and apply Gram–Schmidt. This gives an actual orthogonal projection with an orthonormal screen basis, rather than a shear. Changing charts with the same four inputs generally chooses a different plane; it does not preserve the old view automatically.
+
+In each chart, the image of the entire coefficient lattice is discrete of rank two exactly when all four free entries are rational. Indeed it contains the two identity generators; discreteness forces finite index over their lattice, and conversely denominators can be cleared. An invertible screen change during orthonormalization preserves discreteness. This gives a countable dense locus in the four-dimensional Grassmannian. These aligned lattices need not be triangular. An irrational entry rules out discreteness of rank two, but outside the complex-linear slice this need not mean density in the whole plane.
+
+Decimals and fractions are parsed as exact rationals. The panel also accepts explicitly irrational square-root examples. For rational \(x,y\), the two-parameter family in the first matrix chart has
+
+\[
+(a,b,c,d)=(A,-B,B,A+B),\qquad A=x/3-y,\quad B=x/3+y.
+\]
+
+The original family is the line \((t,-t,t,2t)\), where \(t=\tan\theta/\sqrt3\). These are coordinates of the same plane, up to rotation of its screen basis.
+
+## Camera framing and material marks
+
+Fixed reflected layout uses a different fixed material point in each of the 1,009 reflected tiles. All these points lie in one affine plane in four dimensions. One global similarity makes their images stationary across the full original family, while preserving shared edges. Numerical checks cover the whole interval. The exact certificate that these points are interior to their triangulated tiles applies only between Hat and Turtle. Some points leave the projected polygon beyond that interval, so white interior marks are hidden there. No claim about every tile of an infinite tiling is made.
+
+A non-planar polygon boundary does not determine a unique interior. The construction fixes twelve triangles spanning each reflected boundary and holds each mark's barycentric coordinates constant. See the [construction and exact finite-patch certificate](../../research/hat-turtle-fixed-points/README.md).
+
+Steady reflected layout instead fits one orientation-preserving similarity to reflected vertex averages relative to their Hat positions. Small residual motion remains. Fixed edge directions uses the raw coordinate orientation. These are camera choices only. General perspective exploration uses its own fixed framing, without the stationary-mark camera.
+
+`validate-view.mjs` checks labels, the least-squares camera, and edge-length ratios. Its rank witness rules out using the same local point in all identically oriented reflected tiles, but does not rule out the different material points used here.
+
+## Validation and reproduction
+
+- `node validate-perspectives.mjs`: full-family special stops, limiting polygons, congruence of all tiles at nine samples, exact lattice containment, orthonormality and lattice bases in all six matrix charts, and agreement between the two-parameter slice and four-parameter projections. Writes `perspectives-validation.json`.
+- `python3 validate-family.py`: independent shared-edge, overlap, crossing, area and orientation checks at nine nondegenerate full-family samples. Writes `family-geometry-validation.json`. Endpoint collapsed edges are handled separately by the preceding test.
+- `node validate-fixed-marks.mjs`: stationarity across 101 full-family samples. Writes `fixed-marks-validation.json`; this does not extend the interior certificate.
+- `python3 ../../research/hat-turtle-fixed-points/certify.py`: exact interior certificate over the Hat–Turtle interval, using the standard Python library. Its exploratory companion `check.py` requires NumPy.
+
+Finite samples are rendering checks, not a proof for all parameters. The lattice criteria and chart completeness follow from the arguments above.
+
+`geometry-reference.js` and `hat-reference.js` are unmodified build-time downloads from [hatviz](https://github.com/isohedral/hatviz), under the accompanying BSD license. `generate.cjs` builds `patch.json` and checks integer lifts, shared edges, connectivity, fourteen vertices, edge-class counts, edge incidence and reconstruction of the Hat patch. The lift follows [Nan Ma and Arnaud Chéritat](https://www.math.univ-toulouse.fr/~cheritat/2023-monotile/4D-lift/index.html). The full family and limiting shape names follow the [authors' monotile site](https://cs.uwaterloo.ca/~csk/hat/).
+
+Serve this directory over HTTP; no compilation or package installation is needed. Reduced-motion preferences pause the animation initially. `validation.json` records the original patch checks.

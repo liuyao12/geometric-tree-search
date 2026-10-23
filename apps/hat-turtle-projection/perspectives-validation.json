@@ -1,0 +1,71 @@
+{
+  "checks": [
+    "Full interval including both limiting shapes has positive congruent tile areas; hat/turtle stop positions and zero coefficients are correct",
+    "Exact rational alignment examples map all four lattice generators and sample vertices into the computed image lattice",
+    "The two-parameter family is exactly a slice of the general four-parameter plane charts, up to screen rotation",
+    "All six charts use orthonormal screen rows, exact rational HNF lattice bases, and distinguish an explicitly irrational example"
+  ],
+  "familySamples": [
+    {
+      "fraction": 0,
+      "angleDegrees": 90,
+      "tileArea": 1.7320508075688772,
+      "limitingVertexCounts": [
+        6
+      ]
+    },
+    {
+      "fraction": 0.01,
+      "angleDegrees": 89.10000000000001,
+      "tileArea": 1.7795942774445797,
+      "limitingVertexCounts": []
+    },
+    {
+      "fraction": 0.16666666666666666,
+      "angleDegrees": 75.00000000000001,
+      "tileArea": 2.598076211353316,
+      "limitingVertexCounts": []
+    },
+    {
+      "fraction": 0.3333333333333333,
+      "angleDegrees": 60.00000000000001,
+      "tileArea": 3.4641016151377544,
+      "limitingVertexCounts": []
+    },
+    {
+      "fraction": 0.5,
+      "angleDegrees": 45,
+      "tileArea": 4.098076211353316,
+      "limitingVertexCounts": []
+    },
+    {
+      "fraction": 0.6666666666666666,
+      "angleDegrees": 30.000000000000004,
+      "tileArea": 4.330127018922193,
+      "limitingVertexCounts": []
+    },
+    {
+      "fraction": 0.8333333333333334,
+      "angleDegrees": 14.999999999999996,
+      "tileArea": 4.098076211353316,
+      "limitingVertexCounts": []
+    },
+    {
+      "fraction": 0.99,
+      "angleDegrees": 0.9000000000000008,
+      "tileArea": 3.5107904224964357,
+      "limitingVertexCounts": []
+    },
+    {
+      "fraction": 1,
+      "angleDegrees": 0,
+      "tileArea": 3.4641016151377544,
+      "limitingVertexCounts": [
+        8
+      ]
+    }
+  ],
+  "alignedExamples": 6,
+  "matrixCharts": 6,
+  "scope": "Finite numerical rendering and lattice-basis checks. The commensurability criterion and six-chart completeness are derived in README.md. Free floating-point views are not classified as exact alignments."
+}
