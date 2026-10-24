@@ -1,0 +1,121 @@
+{
+  "schema": "GCTS-receptor-library-public-results-v1",
+  "date": "2026-10-24",
+  "status": "FINITE_FOUR_FAMILY_INVENTORY_ADMITTED",
+  "description": "Four deterministic templates acquired from two automatically found propositional proofs; all four selected source occurrences expanded and checked by both original validators.",
+  "independent_whole_review_passed": true,
+  "families": [
+    {
+      "family_index": 0,
+      "donor": "donor0",
+      "internal_rows": 2,
+      "boundary_ports": 1,
+      "Formula_parameters": 2,
+      "source_rows": [
+        0,
+        3
+      ],
+      "boundary_source_rows": [
+        2
+      ],
+      "source_root": 3,
+      "expanded_rows": 3
+    },
+    {
+      "family_index": 1,
+      "donor": "donor0",
+      "internal_rows": 3,
+      "boundary_ports": 0,
+      "Formula_parameters": 2,
+      "source_rows": [
+        0,
+        2,
+        3
+      ],
+      "boundary_source_rows": [],
+      "source_root": 3,
+      "expanded_rows": 3
+    },
+    {
+      "family_index": 2,
+      "donor": "donor1",
+      "internal_rows": 2,
+      "boundary_ports": 1,
+      "Formula_parameters": 3,
+      "source_rows": [
+        0,
+        3
+      ],
+      "boundary_source_rows": [
+        2
+      ],
+      "source_root": 3,
+      "expanded_rows": 3
+    },
+    {
+      "family_index": 3,
+      "donor": "donor1",
+      "internal_rows": 3,
+      "boundary_ports": 0,
+      "Formula_parameters": 3,
+      "source_rows": [
+        0,
+        2,
+        3
+      ],
+      "boundary_source_rows": [],
+      "source_root": 3,
+      "expanded_rows": 3
+    }
+  ],
+  "scoped_controls": {
+    "groups": 8,
+    "passed": 8,
+    "failed": 0,
+    "limits": "Finite named public extraction/instance facets only. Future final-use, fallback, transactions, arbitrary fault sites and larger/shared acquisition remain unexercised."
+  },
+  "metrics": {
+    "observer_elapsed_seconds": 45.232797499978915,
+    "conservative_whole_peak_bytes": 375095296,
+    "shared_positive_bytes": 23868512,
+    "shared_positive_cap_bytes": 50331648,
+    "complete_case_and_observer_physical_bytes": 23875659
+  },
+  "actual_files": 22,
+  "partial_files": 0,
+  "source_occurrence_instances": 4,
+  "diagram_reading": {
+    "conditional_families": [
+      0,
+      2
+    ],
+    "closed_families": [
+      1,
+      3
+    ],
+    "conditional_wire_order": [
+      "explicit boundary HYP",
+      "H1 axiom",
+      "modus ponens using rows \\((1,0)\\)"
+    ],
+    "closed_wire_order": [
+      "H1 axiom",
+      "H2 axiom",
+      "modus ponens using rows \\((0,1)\\)"
+    ],
+    "aliases": "\\(D\\) is the negated original donor goal; \\(U=D\\to((D\\to D)\\to D)\\); \\(V=(D\\to(D\\to D))\\to(D\\to D)\\). Display notation only, not a learned parameter or merged key."
+  },
+  "limits": {
+    "new_research_proofs": 0,
+    "holdout_searched": false,
+    "cross_donor_full_key_reuse": false,
+    "larger_or_internally_shared_acquisition": false,
+    "hierarchical_inventory": false,
+    "learned_markings": false,
+    "RL_result": false,
+    "GCTS_speedup_demonstrated": false,
+    "inference_scope": "Standalone source instances. Future use needs contextual instantiation, primitive fallback, final root-used expansion and original proof checking.",
+    "palette": "No finite universal Wang palette has been built."
+  },
+  "publication_scope": "Readable mathematical results and aggregate metrics only. New raw evidence archive, full internal reviews, source snapshots, certificates, execution logs, local paths and process identifiers are excluded. Full bundle stays local pending optional explicit permission."
+}
