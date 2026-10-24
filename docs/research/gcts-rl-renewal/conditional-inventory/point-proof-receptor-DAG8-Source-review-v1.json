@@ -1,0 +1,160 @@
+{
+  "schema": "C-receptor-DAG8-independent-bank-complete-component-Source-review-v1",
+  "status": "COMPLETE_BANK_SOURCE_COMPONENT_PASS_ALL_EIGHT_UNRUN",
+  "review_passed": true,
+  "subject": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/diagnostics-L/fpc_receptor_dag_independent_bank_v1.py",
+    "bytes": 53547,
+    "sha256": "ee823c3ca2ac18c238cd510a940a4489c427c8bda053555ed34a5c803dc1e4d7"
+  },
+  "packet": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/diagnostics-L/receptor-DAG-independent-bank-Source-handoff-v1.json",
+      "bytes": 3826,
+      "sha256": "23d0661f2057d1368bae2b491211c36e4b3828e233b4a36d231235490604bbe7"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/diagnostics-L/receptor-DAG-independent-bank-API-v1.json",
+      "bytes": 8356,
+      "sha256": "9a70d7fbca6a38a4e1993f834017e765ef5fc3cb888cda50da7f135b72b300d2"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/diagnostics-L/receptor-DAG-independent-bank-manual-v1.json",
+      "bytes": 5272,
+      "sha256": "c20995540168779240d601e428072f71d211f151493a4e0c14341aebebb4fefa"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/diagnostics-L/receptor-DAG-independent-bank-static-v1.json",
+      "bytes": 12336,
+      "sha256": "f274cd7e6cd1575fbffbd7a2c96a41d64caee9acf0d7acd862319155b4498fc3"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/diagnostics-L/receptor-DAG-independent-bank-coverage-v1.json",
+      "bytes": 7457,
+      "sha256": "7804258ba16bf8ad200bd3d768e01ec99216568ae6f1f8f4871a1d459fde5607"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/diagnostics-L/receptor-DAG-independent-bank-public-call-census-v1.json",
+      "bytes": 12436,
+      "sha256": "23c98a664fd075dce8aee5c6d4a12f3b01ee48fbdad9672c79479baa8b4bb0f7"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/diagnostics-L/receptor-DAG-independent-bank-dependency-offer-v1.json",
+      "bytes": 5479,
+      "sha256": "05658e96f8fcc6a5136ab80412eb9f79444a6c3cdefdf65a9c219c1a0c409163"
+    }
+  ],
+  "basis": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/root/receptor-family-Source2-Root-component-and-bank-Source-acceptance-v1.json",
+      "bytes": 7603,
+      "sha256": "9d316fdd9d782da4390e1985a491a85d97cfb15d1ae36e20f367ab7522995670"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/review-C/typed-two-admitted-donor-receptor-extractor-instance-complete-successor-Source-review-v2.json",
+      "bytes": 13307,
+      "sha256": "8f762d2787bd307115b28f60b57032164ca7d408f32361c1ebb12d9549179412"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/review-C/typed-two-admitted-donor-receptor-DAG8-bank-scope-paper-review-v1.json",
+      "bytes": 4894,
+      "sha256": "d308831cae7e1eb05576962b133a905b17a248a61ccee9e2018d689fc0375d06"
+    }
+  ],
+  "method": "All1020 Source lines,43 definitions and every branch read; final complete API/manual/coverage/call census/dependency/handoff/static inspected. Original public encoder/checker copy/wire contracts and accepted Source2 public scope used. Raw/JSON/AST/symtable and unused compilation only; no bank/project import, fixture/helper, query/certificate generation, checker/encoder/search/getter call or research donor body intake.",
+  "findings": [
+    {
+      "id": "DB1",
+      "result": "PASS_BY_SOURCE_INSPECTION",
+      "topic": "Independent expectations and actual positive paths",
+      "evidence": "Expected incidence/maps/Formula images/counters are derived from authored declarations, literal finite graph inputs and independent H1/H2/H3 equations, not read from implementation answers. Minimal independent FPP1 writing is limited to the authored nullary propositional HYP/H1/MP fixtures. Actual Source2 public extraction/compilation and genuine original checker/reference namespaces supply accepting views. No fake VALID receipt, hidden parser, private service hook, old proof or target route is present."
+    },
+    {
+      "id": "DB2",
+      "result": "PASS_BY_SOURCE_INSPECTION",
+      "topic": "Shared/unfolded and boundary occurrence fixtures",
+      "evidence": "The original source incidence2/4/7/9 and2/3/4/7/9 receives valid generic logical/MP assignments. Complete physical counts6/7, shared fan-out and distinct equal-content rows are constrained independently. Distinct equal Gamma ports use a valid three-port versus repeated two-port analog; the original schematic two-port equal-label graph is explicitly not claimed as a valid MP certificate. Canonical parameter traversal and source maps satisfy the public family schema."
+    },
+    {
+      "id": "DB3",
+      "result": "PASS_BY_SOURCE_INSPECTION",
+      "topic": "Synthetic extraction, growth and provenance",
+      "evidence": "Two byte-distinct atom-renamed four-row generic axiom/MP proofs are encoded only inside a future actual. Earliest reachable MP size2/3 families, literal source/boundary maps, exact coverage counters and both selected representatives per full key are independently constrained and all four selected occurrences compiled. Shifted unused-row variants check key invariance/source identity. Genuine HYP/MP consequences test normal unsupported-prefix NO_USABLE_LIBRARY with exact counters. Synthetic zero-body admission pins are openly CONTROL_ONLY metadata, not current donor admission or fake validation."
+    },
+    {
+      "id": "DB4",
+      "result": "PASS_BY_SOURCE_INSPECTION",
+      "topic": "Alias, canonical parameter and MP guards",
+      "evidence": "Valid supplied families test boundary B/A/C order, strict bool ID refusal, residual/no-default matching, complete binding refusals, whole quantified Formula images and alias noncontraction. Original imp/not alias equation is a relative boundary assumption, not a closed theorem. Positive/wrong-antecedent/wrong-output/swapped-port MP constraints, forward/unfilled refs and actual H2/H3 consequences use the original public services. The six-row map fixture preserves every origin/edge and deliberately separates original context goal from the standalone boundary consequence."
+    },
+    {
+      "id": "DB5",
+      "result": "PASS_BY_SOURCE_INSPECTION",
+      "topic": "Genuine first fault and negative-only proxies",
+      "evidence": "All three public endpoints test RuntimeError, StopIteration, public unowned same-class and retained genuine owned objects at their first callback. Seven throw-only public dependency delegates cover encoder/builder/checker/reference paths, require the actual forwarded check, record one target entry and assert no post-throw callback/proxy helper. They delegate other public work to authentic namespaces, never patch originals or return validation data. Every expected-error catch invokes c.raise_first before classification or identity recovery, so a genuine outer RootBudget/check first E wins identically. No post-root-fault copy or passing result is produced."
+    },
+    {
+      "id": "DB6",
+      "result": "PASS_BY_SOURCE_INSPECTION",
+      "topic": "Full normal output and immutable namespace boundary",
+      "evidence": "run_bank has exact six-key projection and nine-key return, eight ordered four-key group rows, strict conditional normal counts and complete full locator list. All normal extractor/matcher/instance fields and paired views are retained. Raw immutable byte observations become complete reversible hex/length/hash tags; tuple error paths become full JSON arrays. Final copying returns ordinary acyclic finite JSON carriers. Original public namespace attribute identities are checked unchanged. Copier/type-tuple defenses are assessed on finite authored carriers and genuine qualified exports, not advertised as new hostile-object/all-intake coverage."
+    },
+    {
+      "id": "DB7",
+      "result": "PASS_BY_SOURCE_INSPECTION",
+      "topic": "Exact finite call census",
+      "evidence": "Manual Source control-flow enumeration and final static locator artifact agree:4/2/18/8/7/8/1/21 principal calls,69 total, exact consecutive ordinals and declared facets/endpoints. Helpers, predicates, constructors and nested real callbacks are explicitly outside that principal count, with all actual costs still charged. A fault at a pre-call checkpoint creates no completed-prefix authority."
+    },
+    {
+      "id": "DB8",
+      "result": "PASS_WITH_EXPLICIT_SCOPE_LIMITS",
+      "topic": "All original facets retained honestly",
+      "evidence": "Original eight IDs and literal semantics remain normative. Arbitrary larger growth/later-prefix boundary recovery, forced digest collision and backward-reference/cycle generality retain Source-only coverage where unavailable as finite public cases. Larger/shared supplied service shapes are distinct from current size2/3 extraction. Final used-map, genuine earlier-frame/member/Gamma/port guards, primitive fallback, transaction rollback, overlaps/reward and all-cutoff cleanup remain explicitly UNEXERCISED future-consumer/Source obligations. Group passed:true can cover only its stated exercised public facets."
+    },
+    {
+      "id": "DB9",
+      "result": "LIMIT_RETAINED",
+      "topic": "Native costs and qualification boundary",
+      "evidence": "Expected fixed graph/formula inputs are finite and genuine outer checks are retained across construction, public work, comparisons and output copying. Native JSON/hash/hex/container allocation and recursive instantiation of finite authored patterns remain whole-resource costs, without a latency/memory/output fit forecast. Existing229 provenance/subjects and original ten caps are unchanged. This Source PASS does not run or qualify any new group, admit a donor/library/proof, exercise holdout/future consumer or establish GCTS/RL advantage."
+    }
+  ],
+  "audit": {
+    "lines": 1020,
+    "top_definitions": 43,
+    "parse_unused_compile": true,
+    "symtable_unresolved_globals": [],
+    "definition_raw_LF_hashes_reproduced": 43,
+    "definition_AST_hashes_reproduced": 43,
+    "offered_shallow_current_pins_verified": 21,
+    "verified_raw_bytes": 405396,
+    "principal_call_count": 69,
+    "group_call_counts": [
+      4,
+      2,
+      18,
+      8,
+      7,
+      8,
+      1,
+      21
+    ],
+    "imports": [
+      "hashlib",
+      "json",
+      "math"
+    ],
+    "executed_code_objects": 0,
+    "note": "AST/hash/static census reproductions establish current metadata association only. No semantic fixture or project callable was executed and no broad historical runtime guard sweep is claimed."
+  },
+  "disposition": "No concrete Source/API blocker found in this exact independent bank. review_passed=true is component Source review only. All eight groups are UNRUN; future caller Source/whole/once/actual association must retain full bank observations and coverage limits, with no retargeting or fresh237 claim.",
+  "operations": {
+    "scientific_imports_calls": 0,
+    "donor_proof_body_reads_mining": 0,
+    "fixture_helper_encoder_checker_getter_tests": 0,
+    "query_certificate_family_generation": 0,
+    "frozen_Source_edits": 0,
+    "protocol_grant_actual_publication_actions": 0
+  },
+  "tools_idle_after_freeze": true,
+  "issued_utc": "2026-10-24T17:41:14.436412+00:00"
+}
