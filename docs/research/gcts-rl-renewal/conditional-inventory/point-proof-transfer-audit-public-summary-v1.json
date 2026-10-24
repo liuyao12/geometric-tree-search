@@ -1,0 +1,91 @@
+{
+  "schema": "GCTS-proof-family-transfer-audit-public-summary-v1",
+  "date": "2026-10-24",
+  "classification": "Independent manual mathematical assessment; new schema-inference component unexecuted.",
+  "previous_inventory_unchanged": true,
+  "previous_goal_turn": "PROGRESS: finite four-family inventory admitted and public report verified.",
+  "holdout": {
+    "loaded": false,
+    "searched": false,
+    "declared_maximum_goal_nodes": 15,
+    "Gamma_empty": true,
+    "proper_tautological_subformulas_excluded": true
+  },
+  "expanded_tree_measure": "Each atom, negation and implication counts once per occurrence. Equal/shared Formula images do not merge expanded occurrences.",
+  "current_output_pattern": "\\(V_i=(D_i\\to(D_i\\to D_i))\\to(D_i\\to D_i)\\)",
+  "manual_lower_bounds": [
+    {
+      "donor": "donor0",
+      "family_indices": [
+        0,
+        1
+      ],
+      "minimum_D_nodes": 9,
+      "D_occurrences": 5,
+      "additional_implications": 4,
+      "minimum_output_nodes": 49
+    },
+    {
+      "donor": "donor1",
+      "family_indices": [
+        2,
+        3
+      ],
+      "minimum_D_nodes": 12,
+      "D_occurrences": 5,
+      "additional_implications": 4,
+      "minimum_output_nodes": 64
+    }
+  ],
+  "conclusion": "Exact matching at the goal or its subformulas is impossible for these four outputs. This does not rule out larger auxiliary formulas or reconstruction obligations.",
+  "manual_skeleton_expectations": {
+    "closed_conclusion": "\\((A\\to B)\\to(A\\to A)\\)",
+    "closed_minimum_nodes": 7,
+    "closed_limit": "Every instance contains the proper tautology \\(A\\to A\\); the frozen input rules still exclude goal/subformula matching.",
+    "conditional_boundary": "\\((A\\to(B\\to A))\\to C\\)",
+    "conditional_conclusion": "\\(C\\)",
+    "conditional_limit": "The boundary needs an earlier proof; its H1 antecedent is a theorem, so the boundary is equivalent to the requested conclusion."
+  },
+  "prospective_implementation": {
+    "method": "Fixed-proof-skeleton first-order schema inference with occurs checking.",
+    "obligations": [
+      "Fresh whole Formula variables at boundary and logical witness slots.",
+      "Preserve graph identities and ordered primitive inference equations.",
+      "Check generic schema equations and every source specialization.",
+      "Return candidate only; authenticate and check actual use separately."
+    ],
+    "executed": false,
+    "new_schema_admitted": false
+  },
+  "conventional_baselines": [
+    {
+      "title": "Generating Theorems by Generating Proof Structures",
+      "author": "Christoph Wernhard",
+      "year": 2026,
+      "url": "https://arxiv.org/html/2602.15511v1",
+      "relevance": "Condensed detachment, proof-structure theorem generation and lemma synthesis by DAG compression."
+    },
+    {
+      "title": "Generating Compressed Combinatory Proof Structures",
+      "author": "Christoph Wernhard",
+      "year": 2022,
+      "url": "https://arxiv.org/html/2209.12592v1",
+      "relevance": "Principal types, formula unification and compressed proof structure."
+    },
+    {
+      "title": "CD Tools",
+      "author": "Christoph Wernhard",
+      "year": 2022,
+      "url": "https://arxiv.org/abs/2207.08453",
+      "relevance": "SGCD as a relevant conventional structure-generating search comparison."
+    }
+  ],
+  "next_evidence": "A broader declared inventory policy and shared contextual demand interface, equally informed ordinary lemma reuse, primitive fallback, complete checked final-root use mapping and all costs.",
+  "limitations": [
+    "No new machine-discovered theorem or observed schema-inference output.",
+    "No fresh-target reuse or search advantage.",
+    "No learned marking, RL policy or reference GCTS conformance.",
+    "No arithmetic, Hilbert geometry or universal finite Wang palette result from this component."
+  ],
+  "publication_scope": "Readable mathematical audit and explicit public aggregate fields only. New raw archive, internal reviews, Source snapshots, proof bytes, execution logs and local runtime metadata remain local."
+}
