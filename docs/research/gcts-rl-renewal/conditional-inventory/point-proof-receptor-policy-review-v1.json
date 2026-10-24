@@ -1,0 +1,62 @@
+{
+  "schema": "C-two-admitted-donor-receptor-ordered-policy-mathematical-addendum-v1",
+  "review_kind": "manual mathematical policy assessment only",
+  "status": "STRUCTURAL_SIZE2_3_LIMITATION_CONFIRMED_WITH_EXPLICIT_ASSUMPTIONS",
+  "review_passed": true,
+  "basis": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/review-C/typed-two-admitted-donor-receptor-extraction-paper-review-v1.json",
+      "bytes": 15920,
+      "sha256": "47630c0ba783d13de80ac434650cd05dab906a83f1d991db2dc73d46a4c467af"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/implementation-B/prospective-propositional-receptor-cluster-experiment-v3.json",
+      "bytes": 20514,
+      "sha256": "f11650f8441860c23c09a2e6bfc6061a33282fa1069f5f3f5782c8e7bf31a226"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-point-proof-search-20261022/diagnostics-L/two-donor-receptor-DAG-independent-declarations-v1.json",
+      "bytes": 13524,
+      "sha256": "8d67c4bb85b25aafd9f8db335439c09260c848438012a6949f9cd022caeebe42"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/root/two-admitted-donor-receptor-Source-authorship-v1.json",
+      "bytes": 6746,
+      "sha256": "646a7f32cde6cf9a807ba5a0f1c61aef96eed6a2b725c902d66a949c74a02139"
+    }
+  ],
+  "assumptions": [
+    "Mine only the ancestor closure of the checked final row; source references are strictly earlier and formula syntax is a finite tree.",
+    "Every reachable primitive row is H1/H2/H3 with no references, or ordered MP; all relevant Formula/witness trees are propositional. No HYP, GEN, theory, equality or other referenced rule appears.",
+    "Use increasing root order and the unchanged least-external-predecessor growth; inspect prefixes from size2; structural eligibility is the accepted supported-rule/rootedness/propositional/max4-boundary predicate.",
+    "Quota is the first2 distinct full keys per donor, with source-order occurrence preservation and no key contraction; cross-donor merging does not reopen a donor quota."
+  ],
+  "proof": [
+    "If the reachable closure contains no MP, every root is an unreferenced axiom and no prefix reaches size2: the policy selects no family.",
+    "Otherwise let \\(r\\) be its least-source-index MP, with ordered predecessors \\(a,b<r\\). Both predecessors are reachable. Either being MP would contradict minimality of \\(r\\), so both are axioms.",
+    "The predecessor identities are distinct. Reusing one row as both antecedent and implication would require a finite Formula \\(F\\) satisfying \\(F=(F\\to C)\\), impossible by finite syntax-tree size.",
+    "Every earlier reachable root is an axiom and yields no size2 candidate. Growth at \\(r\\) therefore produces the first eligible prefix \\(\\{r,\\min(a,b)\\}\\), with one boundary port. Its next step adds the other axiom, giving \\(\\{r,a,b\\}\\), with no boundary ports. Both are rooted, supported and within the frozen limits.",
+    "The full keys differ because their internal-node lists have lengths2 and3. They are consequently the first two distinct keys for that donor and fill its quota before any later/larger prefix can be selected."
+  ],
+  "finding": "For the stated pure closed propositional proof DAGs, this unchanged policy selects only size2/3 families, or no family. It cannot acquire a larger family or an internally shared DAG: the selected shapes are one axiom plus MP with one boundary, and two distinct axiom leaves plus MP. The two selected families overlap as source subgraphs; overlap between two records is not internal fan-out sharing within one acquired family.",
+  "scope_precision": [
+    "This is a deterministic selection-policy limitation, not an inference-soundness defect or a reason to reject unchanged Source implementation.",
+    "The previously reviewed current donor rule censuses contain only H1/H2/H3 and MP. No row graph was inspected or mined for this addendum; the argument handles both existence and absence of a reachable MP.",
+    "Eligibility here is structural. If a selected source-instance later exceeds tiny-encoder or resource limits, it refuses/STOPs under the existing gate; it does not authorize silently skipping it to mine later families.",
+    "Current work can establish primitive proof -> typed family -> identity-preserving checked instance feasibility. It cannot establish multiscale or internally shared-DAG acquisition, hierarchical reuse, learned utility or GCTS/RL benefit.",
+    "The existing DAG-shared declaration/control can establish public instance-service support for an independently supplied shared shape. It must not be labeled coverage that this extraction policy actually acquires such a shape."
+  ],
+  "effect_on_prior_review": "Strengthens the prior EX10 practical-risk statement into this proved conditional restriction. All settled layouts, exact2..8/max4/max2 limits, current Source-only authority, original controls/caps and prior no-execution boundaries remain unchanged.",
+  "future_boundary": "If larger or internally shared acquisition is a scientific goal, use a separately declared deterministic diversity-policy successor before its outcomes. Do not change this frozen policy, quotas or controls to conceal the limitation.",
+  "operations": {
+    "donor_mining_or_row_inspection": 0,
+    "scientific_imports_calls": 0,
+    "helpers_fixtures_getters_or_probes": 0,
+    "queries_proofs_or_Source_authored": 0,
+    "policy_or_control_changes": 0,
+    "actuals_or_grants": 0
+  },
+  "execution_authority": false,
+  "tools_idle_after_freeze": true,
+  "issued_utc": "2026-10-24T16:38:50.497860+00:00"
+}
