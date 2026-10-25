@@ -1,0 +1,298 @@
+{
+  "schema": "public-contextual-controls-summary-v1",
+  "status": "FINITE_SYNTHETIC_QUALIFICATION_ADMITTED",
+  "scope": "Authored infrastructure tests; no newly discovered theorem, learned inventory transfer, GCTS or RL advantage.",
+  "groups": {
+    "failed": 0,
+    "groups": 6,
+    "passed": 6
+  },
+  "normal_searches": 20,
+  "paired_cases": 10,
+  "normal_candidate_results": 14,
+  "normal_unknown_results": 6,
+  "original_compiler_component_cases": 8,
+  "original_fallback_case": 1,
+  "candidate_dual_check_pairs": 23,
+  "selected_fault_probes": 7,
+  "detached_map_tamper_probes": 8,
+  "selected_closed_applications": 4,
+  "selected_open_applications": 0,
+  "selected_hierarchy": 0,
+  "selected_consumer_CD_contexts": 0,
+  "selected_consumer_quotient_contractions": 0,
+  "cases": [
+    {
+      "name": "closed-repeated",
+      "observed_use": [
+        {
+          "CD_contexts": 0,
+          "applications": 1,
+          "closed_use": true,
+          "hierarchy": false,
+          "open_use": false
+        },
+        {
+          "CD_contexts": 0,
+          "applications": 1,
+          "closed_use": true,
+          "hierarchy": false,
+          "open_use": false
+        }
+      ],
+      "statuses": [
+        "CANDIDATE_FOUND",
+        "CANDIDATE_FOUND"
+      ]
+    },
+    {
+      "name": "compound-witness-residual",
+      "observed_use": [
+        {
+          "CD_contexts": 0,
+          "applications": 1,
+          "closed_use": true,
+          "hierarchy": false,
+          "open_use": false
+        },
+        {
+          "CD_contexts": 0,
+          "applications": 1,
+          "closed_use": true,
+          "hierarchy": false,
+          "open_use": false
+        }
+      ],
+      "statuses": [
+        "CANDIDATE_FOUND",
+        "CANDIDATE_FOUND"
+      ]
+    },
+    {
+      "name": "open-seeded-intro0",
+      "observed_use": [
+        {
+          "CD_contexts": 0,
+          "applications": 0,
+          "closed_use": false,
+          "hierarchy": false,
+          "open_use": false
+        },
+        {
+          "CD_contexts": 0,
+          "applications": 0,
+          "closed_use": false,
+          "hierarchy": false,
+          "open_use": false
+        }
+      ],
+      "statuses": [
+        "CANDIDATE_FOUND",
+        "CANDIDATE_FOUND"
+      ]
+    },
+    {
+      "name": "recursive-hierarchy",
+      "observed_use": [
+        {
+          "CD_contexts": 0,
+          "applications": 0,
+          "closed_use": false,
+          "hierarchy": false,
+          "open_use": false
+        },
+        {
+          "CD_contexts": 0,
+          "applications": 0,
+          "closed_use": false,
+          "hierarchy": false,
+          "open_use": false
+        }
+      ],
+      "statuses": [
+        "CANDIDATE_FOUND",
+        "CANDIDATE_FOUND"
+      ]
+    },
+    {
+      "name": "self-cycle",
+      "observed_use": [
+        {
+          "CD_contexts": 0,
+          "applications": 0,
+          "closed_use": false,
+          "hierarchy": false,
+          "open_use": false
+        },
+        {
+          "CD_contexts": 0,
+          "applications": 0,
+          "closed_use": false,
+          "hierarchy": false,
+          "open_use": false
+        }
+      ],
+      "statuses": [
+        "UNKNOWN_DECLARED_PRODUCER",
+        "UNKNOWN_DECLARED_PRODUCER"
+      ]
+    },
+    {
+      "name": "mutual-cycle",
+      "observed_use": [
+        {
+          "CD_contexts": 0,
+          "applications": 0,
+          "closed_use": false,
+          "hierarchy": false,
+          "open_use": false
+        },
+        {
+          "CD_contexts": 0,
+          "applications": 0,
+          "closed_use": false,
+          "hierarchy": false,
+          "open_use": false
+        }
+      ],
+      "statuses": [
+        "UNKNOWN_DECLARED_PRODUCER",
+        "UNKNOWN_DECLARED_PRODUCER"
+      ]
+    },
+    {
+      "name": "duplicate-ports",
+      "observed_use": [
+        {
+          "CD_contexts": 0,
+          "applications": 0,
+          "closed_use": false,
+          "hierarchy": false,
+          "open_use": false
+        },
+        {
+          "CD_contexts": 0,
+          "applications": 0,
+          "closed_use": false,
+          "hierarchy": false,
+          "open_use": false
+        }
+      ],
+      "statuses": [
+        "CANDIDATE_FOUND",
+        "CANDIDATE_FOUND"
+      ]
+    },
+    {
+      "name": "empty-fallback",
+      "observed_use": [
+        {
+          "CD_contexts": 0,
+          "applications": 0,
+          "closed_use": false,
+          "hierarchy": false,
+          "open_use": false
+        },
+        {
+          "CD_contexts": 0,
+          "applications": 0,
+          "closed_use": false,
+          "hierarchy": false,
+          "open_use": false
+        }
+      ],
+      "statuses": [
+        "CANDIDATE_FOUND",
+        "CANDIDATE_FOUND"
+      ]
+    },
+    {
+      "name": "no-hit-fallback",
+      "observed_use": [
+        {
+          "CD_contexts": 0,
+          "applications": 0,
+          "closed_use": false,
+          "hierarchy": false,
+          "open_use": false
+        },
+        {
+          "CD_contexts": 0,
+          "applications": 0,
+          "closed_use": false,
+          "hierarchy": false,
+          "open_use": false
+        }
+      ],
+      "statuses": [
+        "CANDIDATE_FOUND",
+        "CANDIDATE_FOUND"
+      ]
+    },
+    {
+      "name": "outside-boundary",
+      "observed_use": [
+        {
+          "CD_contexts": 0,
+          "applications": 0,
+          "closed_use": false,
+          "hierarchy": false,
+          "open_use": false
+        },
+        {
+          "CD_contexts": 0,
+          "applications": 0,
+          "closed_use": false,
+          "hierarchy": false,
+          "open_use": false
+        }
+      ],
+      "statuses": [
+        "UNKNOWN_DECLARED_PRODUCER",
+        "UNKNOWN_DECLARED_PRODUCER"
+      ]
+    }
+  ],
+  "coverage_limits": [
+    "open_use: UNEXERCISED because no corresponding selected first-solution trace was observed; offers do not establish use.",
+    "selected_hierarchy: UNEXERCISED because no corresponding selected first-solution trace was observed; offers do not establish use.",
+    "CD_temporary_contexts: UNEXERCISED because no corresponding selected first-solution trace was observed; offers do not establish use.",
+    "No public consumer verifier hook exists; mutated detached evidence is rejected by this independent bank association checker, not by a fabricated project endpoint.",
+    "No production/library/holdout input; no transfer, indispensability, performance, GCTS or RL claim.",
+    "All normal query/candidate/receipt evidence is retained completely; byte leaves are full reversible hex wrappers."
+  ],
+  "metrics": {
+    "observer_seconds": 18.791938666952774,
+    "final_observer_gate_seconds": 18.792209209001157,
+    "whole_peak_bytes": 280051712,
+    "positive_body_bytes": 6761154,
+    "all_actual_and_observer_bytes": 6767940
+  },
+  "scientific_admission": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/root/contextual-library-controls-v1-case-0-Root-complete-whole-admission-v1.json",
+    "bytes": 8974,
+    "sha256": "1beb532704710390e66b7401fce808d8adebdc9294f665dd1571c182b0711b92"
+  },
+  "complete_C_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/review-C/typed-contextual-library-controls-complete-whole-actual-review-v1.json",
+    "bytes": 36201,
+    "sha256": "3cb005373720f28d1d544e69d6c8ef4460c9fab24ac0bfb9e7ef3ce14576a131"
+  },
+  "holdout_loaded": false,
+  "holdout_searched": false,
+  "production_inventory_loaded": false,
+  "next_test": {
+    "arms": [
+      "NO_LIBRARY",
+      "CONDITIONAL_LEMMA_CD",
+      "RECEPTOR_DAG"
+    ],
+    "status": "Prospectively specified; not executed in this milestone."
+  },
+  "evidence_archive": {
+    "name": "point-proof-contextual-controls-evidence-v1.zip",
+    "bytes": 15563253,
+    "sha256": "046b2205ef28110948ebfd04ee67ee4ca34d84b9f9344e1f78a737ab4cba1b51",
+    "entries": 70
+  }
+}
