@@ -1,0 +1,335 @@
+{
+  "schema": "public-frozen-target-three-arm-comparison-summary-v1",
+  "status": "ALL_THREE_WHOLE_RESOURCE_NEGATIVES",
+  "admitted_proofs": 0,
+  "admitted_contextual_uses": 0,
+  "normal_unknown_results": 0,
+  "complete_normal_search_receipts": 0,
+  "retained_candidate_certificates": 0,
+  "offers_and_selected_application_counts": null,
+  "target_identity": {
+    "bytes": 38,
+    "sha256": "8e56b3ed583f537881ffebcd40dc32443e5b0e204e52a978f9b7e65ee6104f24"
+  },
+  "fixed_arm_order": [
+    "NO_LIBRARY",
+    "CONDITIONAL_LEMMA_CD",
+    "RECEPTOR_DAG"
+  ],
+  "rows": [
+    {
+      "arm": "NO_LIBRARY",
+      "case_id": "frozen-target-contextual-reuse-v1-NO_LIBRARY",
+      "observed_status": "FAILED_CASE_NOT_ADMITTED",
+      "error_type": "RootBudget",
+      "error_message": "whole Python high-water ceiling",
+      "all7positive_fields_null": true,
+      "resource_candidate_accepted": false,
+      "normal_search_result_retained": false,
+      "normal_unknown": false,
+      "final_use_map_retained": false,
+      "callbacks": 55629702,
+      "observer_elapsed_seconds": 53.88183816696983,
+      "observer_final_gate_seconds": 53.88224049995188,
+      "raw_child_high_water_bytes": 1230815232,
+      "worker_header_high_water_bytes": 1225768960,
+      "conservative_whole_peak_bytes": null,
+      "physical_files": 11,
+      "physical_bytes": 12758,
+      "stages": [
+        {
+          "began": 0.12003250000998378,
+          "name": "QUALIFICATION BEFORE DATA",
+          "seconds": 0.0013295419630594552,
+          "status": "COMPLETED"
+        },
+        {
+          "began": 0.12136670900508761,
+          "name": "INVENTORY METADATA",
+          "seconds": 0.000700791017152369,
+          "status": "COMPLETED"
+        },
+        {
+          "began": 0.1220707920147106,
+          "name": "IMPORT checker",
+          "seconds": 0.010113416996318847,
+          "status": "COMPLETED"
+        },
+        {
+          "began": 0.13219320902135223,
+          "name": "IMPORT builders",
+          "seconds": 0.00393108295975253,
+          "status": "COMPLETED"
+        },
+        {
+          "began": 0.13613608398009092,
+          "name": "IMPORT reference",
+          "seconds": 0.0068627080181613564,
+          "status": "COMPLETED"
+        },
+        {
+          "began": 0.14301012502983212,
+          "name": "IMPORT instance",
+          "seconds": 0.01130916696274653,
+          "status": "COMPLETED"
+        },
+        {
+          "began": 0.1543294169823639,
+          "name": "IMPORT consumer",
+          "seconds": 0.03294816700508818,
+          "status": "COMPLETED"
+        },
+        {
+          "began": 0.1872831250075251,
+          "name": "LOAD ORIGINAL HOLDOUT CARRIER",
+          "seconds": 0.218131874979008,
+          "status": "COMPLETED"
+        },
+        {
+          "began": 0.405419708986301,
+          "name": "DECODE ORIGINAL QUERY",
+          "seconds": 0.0004088749992661178,
+          "status": "COMPLETED"
+        },
+        {
+          "began": 0.4059529170044698,
+          "name": "EXPORT ORIGINAL QUERY",
+          "seconds": 0.0004000830231234431,
+          "status": "COMPLETED"
+        },
+        {
+          "began": 0.4063572090235539,
+          "name": "SEARCH NO_LIBRARY",
+          "status": "STARTED"
+        }
+      ]
+    },
+    {
+      "arm": "CONDITIONAL_LEMMA_CD",
+      "case_id": "frozen-target-contextual-reuse-v1-CONDITIONAL_LEMMA_CD",
+      "observed_status": "FAILED_CASE_NOT_ADMITTED",
+      "error_type": "RootBudget",
+      "error_message": "whole Python high-water ceiling",
+      "all7positive_fields_null": true,
+      "resource_candidate_accepted": false,
+      "normal_search_result_retained": false,
+      "normal_unknown": false,
+      "final_use_map_retained": false,
+      "callbacks": 13684005,
+      "observer_elapsed_seconds": 17.599197208008263,
+      "observer_final_gate_seconds": 17.599775500013493,
+      "raw_child_high_water_bytes": 1096073216,
+      "worker_header_high_water_bytes": 1091026944,
+      "conservative_whole_peak_bytes": null,
+      "physical_files": 11,
+      "physical_bytes": 12211,
+      "stages": [
+        {
+          "began": 0.08327733300393447,
+          "name": "QUALIFICATION BEFORE DATA",
+          "seconds": 0.0015343749546445906,
+          "status": "COMPLETED"
+        },
+        {
+          "began": 0.08481779199792072,
+          "name": "INVENTORY METADATA",
+          "seconds": 0.0008258330053649843,
+          "status": "COMPLETED"
+        },
+        {
+          "began": 0.08564866700908169,
+          "name": "IMPORT checker",
+          "seconds": 0.008838540990836918,
+          "status": "COMPLETED"
+        },
+        {
+          "began": 0.09449516696622595,
+          "name": "IMPORT builders",
+          "seconds": 0.0017491250182501972,
+          "status": "COMPLETED"
+        },
+        {
+          "began": 0.09624924999661744,
+          "name": "IMPORT reference",
+          "seconds": 0.00313799997093156,
+          "status": "COMPLETED"
+        },
+        {
+          "began": 0.09939162497175857,
+          "name": "IMPORT instance",
+          "seconds": 0.005685292009729892,
+          "status": "COMPLETED"
+        },
+        {
+          "began": 0.10508349997689947,
+          "name": "IMPORT consumer",
+          "seconds": 0.031140167033299804,
+          "status": "COMPLETED"
+        },
+        {
+          "began": 0.13623312499839813,
+          "name": "LOAD ORIGINAL HOLDOUT CARRIER",
+          "seconds": 0.24631912499899045,
+          "status": "COMPLETED"
+        },
+        {
+          "began": 0.3825571669731289,
+          "name": "DECODE ORIGINAL QUERY",
+          "seconds": 0.00041520799277350307,
+          "status": "COMPLETED"
+        },
+        {
+          "began": 0.38308100000722334,
+          "name": "LOAD ALL SEVEN FAMILIES",
+          "seconds": 0.3390792499994859,
+          "status": "COMPLETED"
+        },
+        {
+          "began": 0.732828582986258,
+          "name": "EXPORT ORIGINAL QUERY",
+          "seconds": 0.000655542011372745,
+          "status": "COMPLETED"
+        },
+        {
+          "began": 0.7334926669718698,
+          "name": "SEARCH CONDITIONAL_LEMMA_CD",
+          "status": "STARTED"
+        }
+      ]
+    },
+    {
+      "arm": "RECEPTOR_DAG",
+      "case_id": "frozen-target-contextual-reuse-v1-RECEPTOR_DAG",
+      "observed_status": "FAILED_CASE_NOT_ADMITTED",
+      "error_type": "RootBudget",
+      "error_message": "whole Python high-water ceiling",
+      "all7positive_fields_null": true,
+      "resource_candidate_accepted": false,
+      "normal_search_result_retained": false,
+      "normal_unknown": false,
+      "final_use_map_retained": false,
+      "callbacks": 13975338,
+      "observer_elapsed_seconds": 22.205961125029717,
+      "observer_final_gate_seconds": 22.20630133303348,
+      "raw_child_high_water_bytes": 1100660736,
+      "worker_header_high_water_bytes": 1090240512,
+      "conservative_whole_peak_bytes": null,
+      "physical_files": 11,
+      "physical_bytes": 13281,
+      "stages": [
+        {
+          "began": 0.11664595897309482,
+          "name": "QUALIFICATION BEFORE DATA",
+          "seconds": 0.0009219999774359167,
+          "status": "COMPLETED"
+        },
+        {
+          "began": 0.11757158394902945,
+          "name": "INVENTORY METADATA",
+          "seconds": 0.000415208050981164,
+          "status": "COMPLETED"
+        },
+        {
+          "began": 0.11798920895671472,
+          "name": "IMPORT checker",
+          "seconds": 0.011177333013620228,
+          "status": "COMPLETED"
+        },
+        {
+          "began": 0.12919166695792228,
+          "name": "IMPORT builders",
+          "seconds": 0.002392333000898361,
+          "status": "COMPLETED"
+        },
+        {
+          "began": 0.13159120897762477,
+          "name": "IMPORT reference",
+          "seconds": 0.0038021249929443,
+          "status": "COMPLETED"
+        },
+        {
+          "began": 0.13539762498112395,
+          "name": "IMPORT instance",
+          "seconds": 0.006069042021408677,
+          "status": "COMPLETED"
+        },
+        {
+          "began": 0.14147162495646626,
+          "name": "IMPORT consumer",
+          "seconds": 0.03068704204633832,
+          "status": "COMPLETED"
+        },
+        {
+          "began": 0.172165916999802,
+          "name": "LOAD ORIGINAL HOLDOUT CARRIER",
+          "seconds": 0.2699325419962406,
+          "status": "COMPLETED"
+        },
+        {
+          "began": 0.4421044999617152,
+          "name": "DECODE ORIGINAL QUERY",
+          "seconds": 0.0004176250076852739,
+          "status": "COMPLETED"
+        },
+        {
+          "began": 0.44263354199938476,
+          "name": "LOAD ALL SEVEN FAMILIES",
+          "seconds": 0.5288275829516351,
+          "status": "COMPLETED"
+        },
+        {
+          "began": 0.9774573749746196,
+          "name": "EXPORT ORIGINAL QUERY",
+          "seconds": 0.0004910840070806444,
+          "status": "COMPLETED"
+        },
+        {
+          "began": 0.9779616669984534,
+          "name": "SEARCH RECEPTOR_DAG",
+          "status": "STARTED"
+        }
+      ]
+    }
+  ],
+  "original_limits": {
+    "custody_seconds": 210,
+    "log_bytes": 4194304,
+    "memory_bytes": 1073741824,
+    "observer_fallback_seconds": 225,
+    "physical_bytes": 134217728,
+    "positive_seconds": 180,
+    "reserved_outer_bytes": 9437184,
+    "result_bytes": 50331648,
+    "root_callbacks": 400000000,
+    "work_seconds": 160
+  },
+  "configuration": {
+    "control_only": false,
+    "fallback_witness_nodes": 9,
+    "intro_depth": 8,
+    "obligation_nodes": 512,
+    "oldest_period": 4,
+    "ordering": "FOCUSED",
+    "priority_subformula_nodes": 512,
+    "schema": "FPC-H1-obligation-configuration-v1",
+    "term_depth": 2,
+    "variables": 8
+  },
+  "complete_C_review": {
+    "bytes": 25602,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/review-C/typed-frozen-target-contextual-reuse-three-arm-aggregate-negative-assessment-v1.json",
+    "sha256": "8b9a07ac1cf0c4dea8d52cccaf7407a3b7bf75560bdbb5024b21fb27b5904d5b"
+  },
+  "Root_disposition": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/root/frozen-target-contextual-three-arm-Root-complete-whole-disposition-v1.json",
+    "bytes": 21056,
+    "sha256": "b429e1cf7a9bfc46df60ee5415ef83b29326514f4019cfaa05211b2a4f31b272"
+  },
+  "scope": "Same frozen target, three predeclared serial cold attempts. Failure times are termination diagnostics, not proof times or relative efficiency. Child RSS is not whole memory; the original whole-bound fields remain null. No selected-use count is inferred from missing receipts. No GCTS/RL advantage, successful transfer or nonprovability claim.",
+  "evidence_archive": {
+    "name": "point-proof-frozen-target-comparison-evidence-v1.zip",
+    "bytes": 16000248,
+    "sha256": "871e57562823ca4942a0508c07a9d7bbb68be3fcbf5c2367ddfd7c7ec5308c57",
+    "entries": 110
+  }
+}
