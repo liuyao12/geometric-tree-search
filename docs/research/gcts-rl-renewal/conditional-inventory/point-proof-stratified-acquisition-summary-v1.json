@@ -1,0 +1,1922 @@
+{
+  "schema": "public-stratified-acquisition-summary-v1",
+  "status": "FINITE_SEVEN_FAMILY_INVENTORY_ADMITTED",
+  "training_proofs": 2,
+  "sampled_roots": 16,
+  "prefix_attempts": 81,
+  "eligible_inferences": 52,
+  "full_key_groups": 19,
+  "selected_keys": 7,
+  "selected_source_occurrences": 8,
+  "checked_source_instances": 8,
+  "checked_generic_instances": 7,
+  "new_control_groups": 6,
+  "candidate_internal_sharing_nonzero": 0,
+  "holdout_loaded": false,
+  "holdout_searched": false,
+  "contextual_transfer_demonstrated": false,
+  "GCTS_RL_advantage_demonstrated": false,
+  "metrics": {
+    "observer_elapsed_seconds": 54.96973233297467,
+    "observer_final_gate_seconds": 54.970290458004456,
+    "header_seconds": 54.735120375000406,
+    "header_callbacks": 74115525,
+    "conservative_whole_peak_bytes": 408059904,
+    "combined_positive_artifact_bytes": 1712224,
+    "entire_result_bytes": 25788552,
+    "shared_positive_bytes": 27500776,
+    "shared_cap_bytes": 50331648,
+    "complete_physical_bytes": 27507900
+  },
+  "families": [
+    {
+      "index": 0,
+      "family_id": "7a92f9f437c1e3b1487c914b0a86989dbba2d96148689c7a3628c4ceb0a895ca",
+      "parameters": [
+        {
+          "id": 0,
+          "sort": "Formula"
+        },
+        {
+          "id": 1,
+          "sort": "Formula"
+        }
+      ],
+      "internal_nodes": 5,
+      "boundary_count": 0,
+      "metrics": {
+        "MP_nodes": 2,
+        "boundary_count": 0,
+        "internal_nodes": 5,
+        "root_in_boundary": false,
+        "root_pattern_nodes": 3,
+        "root_support": 1,
+        "sharing_excess": 0
+      },
+      "source_occurrences": 1,
+      "boundary_patterns": [],
+      "conclusion_pattern": [
+        "imp",
+        [
+          "param",
+          0
+        ],
+        [
+          "param",
+          0
+        ]
+      ],
+      "line_by_line": [
+        {
+          "line": 1,
+          "role": "axiom",
+          "rule": "H1",
+          "formula": [
+            "imp",
+            [
+              "param",
+              0
+            ],
+            [
+              "imp",
+              [
+                "imp",
+                [
+                  "param",
+                  1
+                ],
+                [
+                  "param",
+                  0
+                ]
+              ],
+              [
+                "param",
+                0
+              ]
+            ]
+          ],
+          "references": [],
+          "english": "Use an instance of logical axiom H1."
+        },
+        {
+          "line": 2,
+          "role": "axiom",
+          "rule": "H1",
+          "formula": [
+            "imp",
+            [
+              "param",
+              0
+            ],
+            [
+              "imp",
+              [
+                "param",
+                1
+              ],
+              [
+                "param",
+                0
+              ]
+            ]
+          ],
+          "references": [],
+          "english": "Use an instance of logical axiom H1."
+        },
+        {
+          "line": 3,
+          "role": "axiom",
+          "rule": "H2",
+          "formula": [
+            "imp",
+            [
+              "imp",
+              [
+                "param",
+                0
+              ],
+              [
+                "imp",
+                [
+                  "imp",
+                  [
+                    "param",
+                    1
+                  ],
+                  [
+                    "param",
+                    0
+                  ]
+                ],
+                [
+                  "param",
+                  0
+                ]
+              ]
+            ],
+            [
+              "imp",
+              [
+                "imp",
+                [
+                  "param",
+                  0
+                ],
+                [
+                  "imp",
+                  [
+                    "param",
+                    1
+                  ],
+                  [
+                    "param",
+                    0
+                  ]
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "param",
+                  0
+                ],
+                [
+                  "param",
+                  0
+                ]
+              ]
+            ]
+          ],
+          "references": [],
+          "english": "Use an instance of logical axiom H2."
+        },
+        {
+          "line": 4,
+          "role": "inference",
+          "rule": "Modus ponens",
+          "formula": [
+            "imp",
+            [
+              "imp",
+              [
+                "param",
+                0
+              ],
+              [
+                "imp",
+                [
+                  "param",
+                  1
+                ],
+                [
+                  "param",
+                  0
+                ]
+              ]
+            ],
+            [
+              "imp",
+              [
+                "param",
+                0
+              ],
+              [
+                "param",
+                0
+              ]
+            ]
+          ],
+          "references": [
+            1,
+            3
+          ],
+          "english": "Apply the implication in line 3 to line 1."
+        },
+        {
+          "line": 5,
+          "role": "inference",
+          "rule": "Modus ponens",
+          "formula": [
+            "imp",
+            [
+              "param",
+              0
+            ],
+            [
+              "param",
+              0
+            ]
+          ],
+          "references": [
+            2,
+            4
+          ],
+          "english": "Apply the implication in line 4 to line 2."
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "family_id": "d2bd57f688094f16c7c0f2adb84e8fec6764044c7767997cab76de1bace0eed6",
+      "parameters": [
+        {
+          "id": 0,
+          "sort": "Formula"
+        },
+        {
+          "id": 1,
+          "sort": "Formula"
+        },
+        {
+          "id": 2,
+          "sort": "Formula"
+        },
+        {
+          "id": 3,
+          "sort": "Formula"
+        },
+        {
+          "id": 4,
+          "sort": "Formula"
+        }
+      ],
+      "internal_nodes": 8,
+      "boundary_count": 3,
+      "metrics": {
+        "MP_nodes": 5,
+        "boundary_count": 3,
+        "internal_nodes": 8,
+        "root_in_boundary": true,
+        "root_pattern_nodes": 1,
+        "root_support": 2,
+        "sharing_excess": 0
+      },
+      "source_occurrences": 1,
+      "boundary_patterns": [
+        [
+          "param",
+          0
+        ],
+        [
+          "imp",
+          [
+            "param",
+            0
+          ],
+          [
+            "param",
+            1
+          ]
+        ],
+        [
+          "imp",
+          [
+            "param",
+            1
+          ],
+          [
+            "imp",
+            [
+              "imp",
+              [
+                "param",
+                2
+              ],
+              [
+                "param",
+                2
+              ]
+            ],
+            [
+              "param",
+              3
+            ]
+          ]
+        ]
+      ],
+      "conclusion_pattern": [
+        "param",
+        3
+      ],
+      "line_by_line": [
+        {
+          "line": 1,
+          "role": "boundary",
+          "rule": "Hypothesis",
+          "formula": [
+            "param",
+            0
+          ],
+          "references": [],
+          "english": "Assume this required boundary premise. Later use must supply a proof of it."
+        },
+        {
+          "line": 2,
+          "role": "boundary",
+          "rule": "Hypothesis",
+          "formula": [
+            "imp",
+            [
+              "param",
+              0
+            ],
+            [
+              "param",
+              1
+            ]
+          ],
+          "references": [],
+          "english": "Assume this required boundary premise. Later use must supply a proof of it."
+        },
+        {
+          "line": 3,
+          "role": "boundary",
+          "rule": "Hypothesis",
+          "formula": [
+            "imp",
+            [
+              "param",
+              1
+            ],
+            [
+              "imp",
+              [
+                "imp",
+                [
+                  "param",
+                  2
+                ],
+                [
+                  "param",
+                  2
+                ]
+              ],
+              [
+                "param",
+                3
+              ]
+            ]
+          ],
+          "references": [],
+          "english": "Assume this required boundary premise. Later use must supply a proof of it."
+        },
+        {
+          "line": 4,
+          "role": "axiom",
+          "rule": "H1",
+          "formula": [
+            "imp",
+            [
+              "param",
+              2
+            ],
+            [
+              "imp",
+              [
+                "imp",
+                [
+                  "param",
+                  4
+                ],
+                [
+                  "param",
+                  2
+                ]
+              ],
+              [
+                "param",
+                2
+              ]
+            ]
+          ],
+          "references": [],
+          "english": "Use an instance of logical axiom H1."
+        },
+        {
+          "line": 5,
+          "role": "axiom",
+          "rule": "H1",
+          "formula": [
+            "imp",
+            [
+              "param",
+              2
+            ],
+            [
+              "imp",
+              [
+                "param",
+                4
+              ],
+              [
+                "param",
+                2
+              ]
+            ]
+          ],
+          "references": [],
+          "english": "Use an instance of logical axiom H1."
+        },
+        {
+          "line": 6,
+          "role": "axiom",
+          "rule": "H2",
+          "formula": [
+            "imp",
+            [
+              "imp",
+              [
+                "param",
+                2
+              ],
+              [
+                "imp",
+                [
+                  "imp",
+                  [
+                    "param",
+                    4
+                  ],
+                  [
+                    "param",
+                    2
+                  ]
+                ],
+                [
+                  "param",
+                  2
+                ]
+              ]
+            ],
+            [
+              "imp",
+              [
+                "imp",
+                [
+                  "param",
+                  2
+                ],
+                [
+                  "imp",
+                  [
+                    "param",
+                    4
+                  ],
+                  [
+                    "param",
+                    2
+                  ]
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "param",
+                  2
+                ],
+                [
+                  "param",
+                  2
+                ]
+              ]
+            ]
+          ],
+          "references": [],
+          "english": "Use an instance of logical axiom H2."
+        },
+        {
+          "line": 7,
+          "role": "inference",
+          "rule": "Modus ponens",
+          "formula": [
+            "imp",
+            [
+              "imp",
+              [
+                "param",
+                2
+              ],
+              [
+                "imp",
+                [
+                  "param",
+                  4
+                ],
+                [
+                  "param",
+                  2
+                ]
+              ]
+            ],
+            [
+              "imp",
+              [
+                "param",
+                2
+              ],
+              [
+                "param",
+                2
+              ]
+            ]
+          ],
+          "references": [
+            4,
+            6
+          ],
+          "english": "Apply the implication in line 6 to line 4."
+        },
+        {
+          "line": 8,
+          "role": "inference",
+          "rule": "Modus ponens",
+          "formula": [
+            "imp",
+            [
+              "param",
+              2
+            ],
+            [
+              "param",
+              2
+            ]
+          ],
+          "references": [
+            5,
+            7
+          ],
+          "english": "Apply the implication in line 7 to line 5."
+        },
+        {
+          "line": 9,
+          "role": "inference",
+          "rule": "Modus ponens",
+          "formula": [
+            "param",
+            1
+          ],
+          "references": [
+            1,
+            2
+          ],
+          "english": "Apply the implication in line 2 to line 1."
+        },
+        {
+          "line": 10,
+          "role": "inference",
+          "rule": "Modus ponens",
+          "formula": [
+            "imp",
+            [
+              "imp",
+              [
+                "param",
+                2
+              ],
+              [
+                "param",
+                2
+              ]
+            ],
+            [
+              "param",
+              3
+            ]
+          ],
+          "references": [
+            9,
+            3
+          ],
+          "english": "Apply the implication in line 3 to line 9."
+        },
+        {
+          "line": 11,
+          "role": "inference",
+          "rule": "Modus ponens",
+          "formula": [
+            "param",
+            3
+          ],
+          "references": [
+            8,
+            10
+          ],
+          "english": "Apply the implication in line 10 to line 8."
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "family_id": "9853ee4b14f3b4525c751fde4ab056dbb0526b62eb0d5c0ac86e5252a0d714e0",
+      "parameters": [
+        {
+          "id": 0,
+          "sort": "Formula"
+        },
+        {
+          "id": 1,
+          "sort": "Formula"
+        }
+      ],
+      "internal_nodes": 3,
+      "boundary_count": 0,
+      "metrics": {
+        "MP_nodes": 1,
+        "boundary_count": 0,
+        "internal_nodes": 3,
+        "root_in_boundary": false,
+        "root_pattern_nodes": 7,
+        "root_support": 3,
+        "sharing_excess": 0
+      },
+      "source_occurrences": 2,
+      "boundary_patterns": [],
+      "conclusion_pattern": [
+        "imp",
+        [
+          "imp",
+          [
+            "param",
+            0
+          ],
+          [
+            "param",
+            1
+          ]
+        ],
+        [
+          "imp",
+          [
+            "param",
+            0
+          ],
+          [
+            "param",
+            0
+          ]
+        ]
+      ],
+      "line_by_line": [
+        {
+          "line": 1,
+          "role": "axiom",
+          "rule": "H1",
+          "formula": [
+            "imp",
+            [
+              "param",
+              0
+            ],
+            [
+              "imp",
+              [
+                "param",
+                1
+              ],
+              [
+                "param",
+                0
+              ]
+            ]
+          ],
+          "references": [],
+          "english": "Use an instance of logical axiom H1."
+        },
+        {
+          "line": 2,
+          "role": "axiom",
+          "rule": "H2",
+          "formula": [
+            "imp",
+            [
+              "imp",
+              [
+                "param",
+                0
+              ],
+              [
+                "imp",
+                [
+                  "param",
+                  1
+                ],
+                [
+                  "param",
+                  0
+                ]
+              ]
+            ],
+            [
+              "imp",
+              [
+                "imp",
+                [
+                  "param",
+                  0
+                ],
+                [
+                  "param",
+                  1
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "param",
+                  0
+                ],
+                [
+                  "param",
+                  0
+                ]
+              ]
+            ]
+          ],
+          "references": [],
+          "english": "Use an instance of logical axiom H2."
+        },
+        {
+          "line": 3,
+          "role": "inference",
+          "rule": "Modus ponens",
+          "formula": [
+            "imp",
+            [
+              "imp",
+              [
+                "param",
+                0
+              ],
+              [
+                "param",
+                1
+              ]
+            ],
+            [
+              "imp",
+              [
+                "param",
+                0
+              ],
+              [
+                "param",
+                0
+              ]
+            ]
+          ],
+          "references": [
+            1,
+            2
+          ],
+          "english": "Apply the implication in line 2 to line 1."
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "family_id": "e0d03f1d1f91065e2801865a7742aaa86b430feb053fde8dc33b1839cfa719c7",
+      "parameters": [
+        {
+          "id": 0,
+          "sort": "Formula"
+        },
+        {
+          "id": 1,
+          "sort": "Formula"
+        },
+        {
+          "id": 2,
+          "sort": "Formula"
+        },
+        {
+          "id": 3,
+          "sort": "Formula"
+        },
+        {
+          "id": 4,
+          "sort": "Formula"
+        }
+      ],
+      "internal_nodes": 4,
+      "boundary_count": 3,
+      "metrics": {
+        "MP_nodes": 3,
+        "boundary_count": 3,
+        "internal_nodes": 4,
+        "root_in_boundary": true,
+        "root_pattern_nodes": 1,
+        "root_support": 2,
+        "sharing_excess": 0
+      },
+      "source_occurrences": 1,
+      "boundary_patterns": [
+        [
+          "param",
+          0
+        ],
+        [
+          "imp",
+          [
+            "param",
+            0
+          ],
+          [
+            "imp",
+            [
+              "imp",
+              [
+                "param",
+                1
+              ],
+              [
+                "imp",
+                [
+                  "param",
+                  2
+                ],
+                [
+                  "param",
+                  1
+                ]
+              ]
+            ],
+            [
+              "param",
+              3
+            ]
+          ]
+        ],
+        [
+          "imp",
+          [
+            "param",
+            3
+          ],
+          [
+            "param",
+            4
+          ]
+        ]
+      ],
+      "conclusion_pattern": [
+        "param",
+        4
+      ],
+      "line_by_line": [
+        {
+          "line": 1,
+          "role": "boundary",
+          "rule": "Hypothesis",
+          "formula": [
+            "param",
+            0
+          ],
+          "references": [],
+          "english": "Assume this required boundary premise. Later use must supply a proof of it."
+        },
+        {
+          "line": 2,
+          "role": "boundary",
+          "rule": "Hypothesis",
+          "formula": [
+            "imp",
+            [
+              "param",
+              0
+            ],
+            [
+              "imp",
+              [
+                "imp",
+                [
+                  "param",
+                  1
+                ],
+                [
+                  "imp",
+                  [
+                    "param",
+                    2
+                  ],
+                  [
+                    "param",
+                    1
+                  ]
+                ]
+              ],
+              [
+                "param",
+                3
+              ]
+            ]
+          ],
+          "references": [],
+          "english": "Assume this required boundary premise. Later use must supply a proof of it."
+        },
+        {
+          "line": 3,
+          "role": "boundary",
+          "rule": "Hypothesis",
+          "formula": [
+            "imp",
+            [
+              "param",
+              3
+            ],
+            [
+              "param",
+              4
+            ]
+          ],
+          "references": [],
+          "english": "Assume this required boundary premise. Later use must supply a proof of it."
+        },
+        {
+          "line": 4,
+          "role": "axiom",
+          "rule": "H1",
+          "formula": [
+            "imp",
+            [
+              "param",
+              1
+            ],
+            [
+              "imp",
+              [
+                "param",
+                2
+              ],
+              [
+                "param",
+                1
+              ]
+            ]
+          ],
+          "references": [],
+          "english": "Use an instance of logical axiom H1."
+        },
+        {
+          "line": 5,
+          "role": "inference",
+          "rule": "Modus ponens",
+          "formula": [
+            "imp",
+            [
+              "imp",
+              [
+                "param",
+                1
+              ],
+              [
+                "imp",
+                [
+                  "param",
+                  2
+                ],
+                [
+                  "param",
+                  1
+                ]
+              ]
+            ],
+            [
+              "param",
+              3
+            ]
+          ],
+          "references": [
+            1,
+            2
+          ],
+          "english": "Apply the implication in line 2 to line 1."
+        },
+        {
+          "line": 6,
+          "role": "inference",
+          "rule": "Modus ponens",
+          "formula": [
+            "param",
+            3
+          ],
+          "references": [
+            4,
+            5
+          ],
+          "english": "Apply the implication in line 5 to line 4."
+        },
+        {
+          "line": 7,
+          "role": "inference",
+          "rule": "Modus ponens",
+          "formula": [
+            "param",
+            4
+          ],
+          "references": [
+            6,
+            3
+          ],
+          "english": "Apply the implication in line 3 to line 6."
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "family_id": "0ae559e4c5c36cebdf652768e4d8796ebb953fb0a95a3c95780df4557da15445",
+      "parameters": [
+        {
+          "id": 0,
+          "sort": "Formula"
+        },
+        {
+          "id": 1,
+          "sort": "Formula"
+        },
+        {
+          "id": 2,
+          "sort": "Formula"
+        }
+      ],
+      "internal_nodes": 5,
+      "boundary_count": 0,
+      "metrics": {
+        "MP_nodes": 2,
+        "boundary_count": 0,
+        "internal_nodes": 5,
+        "root_in_boundary": false,
+        "root_pattern_nodes": 9,
+        "root_support": 1,
+        "sharing_excess": 0
+      },
+      "source_occurrences": 1,
+      "boundary_patterns": [],
+      "conclusion_pattern": [
+        "imp",
+        [
+          "imp",
+          [
+            "param",
+            2
+          ],
+          [
+            "param",
+            0
+          ]
+        ],
+        [
+          "imp",
+          [
+            "param",
+            2
+          ],
+          [
+            "imp",
+            [
+              "param",
+              1
+            ],
+            [
+              "param",
+              0
+            ]
+          ]
+        ]
+      ],
+      "line_by_line": [
+        {
+          "line": 1,
+          "role": "axiom",
+          "rule": "H1",
+          "formula": [
+            "imp",
+            [
+              "param",
+              0
+            ],
+            [
+              "imp",
+              [
+                "param",
+                1
+              ],
+              [
+                "param",
+                0
+              ]
+            ]
+          ],
+          "references": [],
+          "english": "Use an instance of logical axiom H1."
+        },
+        {
+          "line": 2,
+          "role": "axiom",
+          "rule": "H1",
+          "formula": [
+            "imp",
+            [
+              "imp",
+              [
+                "param",
+                0
+              ],
+              [
+                "imp",
+                [
+                  "param",
+                  1
+                ],
+                [
+                  "param",
+                  0
+                ]
+              ]
+            ],
+            [
+              "imp",
+              [
+                "param",
+                2
+              ],
+              [
+                "imp",
+                [
+                  "param",
+                  0
+                ],
+                [
+                  "imp",
+                  [
+                    "param",
+                    1
+                  ],
+                  [
+                    "param",
+                    0
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "references": [],
+          "english": "Use an instance of logical axiom H1."
+        },
+        {
+          "line": 3,
+          "role": "inference",
+          "rule": "Modus ponens",
+          "formula": [
+            "imp",
+            [
+              "param",
+              2
+            ],
+            [
+              "imp",
+              [
+                "param",
+                0
+              ],
+              [
+                "imp",
+                [
+                  "param",
+                  1
+                ],
+                [
+                  "param",
+                  0
+                ]
+              ]
+            ]
+          ],
+          "references": [
+            1,
+            2
+          ],
+          "english": "Apply the implication in line 2 to line 1."
+        },
+        {
+          "line": 4,
+          "role": "axiom",
+          "rule": "H2",
+          "formula": [
+            "imp",
+            [
+              "imp",
+              [
+                "param",
+                2
+              ],
+              [
+                "imp",
+                [
+                  "param",
+                  0
+                ],
+                [
+                  "imp",
+                  [
+                    "param",
+                    1
+                  ],
+                  [
+                    "param",
+                    0
+                  ]
+                ]
+              ]
+            ],
+            [
+              "imp",
+              [
+                "imp",
+                [
+                  "param",
+                  2
+                ],
+                [
+                  "param",
+                  0
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "param",
+                  2
+                ],
+                [
+                  "imp",
+                  [
+                    "param",
+                    1
+                  ],
+                  [
+                    "param",
+                    0
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "references": [],
+          "english": "Use an instance of logical axiom H2."
+        },
+        {
+          "line": 5,
+          "role": "inference",
+          "rule": "Modus ponens",
+          "formula": [
+            "imp",
+            [
+              "imp",
+              [
+                "param",
+                2
+              ],
+              [
+                "param",
+                0
+              ]
+            ],
+            [
+              "imp",
+              [
+                "param",
+                2
+              ],
+              [
+                "imp",
+                [
+                  "param",
+                  1
+                ],
+                [
+                  "param",
+                  0
+                ]
+              ]
+            ]
+          ],
+          "references": [
+            3,
+            4
+          ],
+          "english": "Apply the implication in line 4 to line 3."
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "family_id": "324aa89c1daf865475bbaab7f461fb02782e533ecba3eac260081ce63528a485",
+      "parameters": [
+        {
+          "id": 0,
+          "sort": "Formula"
+        },
+        {
+          "id": 1,
+          "sort": "Formula"
+        },
+        {
+          "id": 2,
+          "sort": "Formula"
+        },
+        {
+          "id": 3,
+          "sort": "Formula"
+        },
+        {
+          "id": 4,
+          "sort": "Formula"
+        }
+      ],
+      "internal_nodes": 8,
+      "boundary_count": 3,
+      "metrics": {
+        "MP_nodes": 5,
+        "boundary_count": 3,
+        "internal_nodes": 8,
+        "root_in_boundary": true,
+        "root_pattern_nodes": 1,
+        "root_support": 2,
+        "sharing_excess": 0
+      },
+      "source_occurrences": 1,
+      "boundary_patterns": [
+        [
+          "imp",
+          [
+            "imp",
+            [
+              "param",
+              0
+            ],
+            [
+              "param",
+              0
+            ]
+          ],
+          [
+            "param",
+            1
+          ]
+        ],
+        [
+          "imp",
+          [
+            "param",
+            1
+          ],
+          [
+            "param",
+            2
+          ]
+        ],
+        [
+          "imp",
+          [
+            "param",
+            2
+          ],
+          [
+            "param",
+            3
+          ]
+        ]
+      ],
+      "conclusion_pattern": [
+        "param",
+        3
+      ],
+      "line_by_line": [
+        {
+          "line": 1,
+          "role": "boundary",
+          "rule": "Hypothesis",
+          "formula": [
+            "imp",
+            [
+              "imp",
+              [
+                "param",
+                0
+              ],
+              [
+                "param",
+                0
+              ]
+            ],
+            [
+              "param",
+              1
+            ]
+          ],
+          "references": [],
+          "english": "Assume this required boundary premise. Later use must supply a proof of it."
+        },
+        {
+          "line": 2,
+          "role": "boundary",
+          "rule": "Hypothesis",
+          "formula": [
+            "imp",
+            [
+              "param",
+              1
+            ],
+            [
+              "param",
+              2
+            ]
+          ],
+          "references": [],
+          "english": "Assume this required boundary premise. Later use must supply a proof of it."
+        },
+        {
+          "line": 3,
+          "role": "boundary",
+          "rule": "Hypothesis",
+          "formula": [
+            "imp",
+            [
+              "param",
+              2
+            ],
+            [
+              "param",
+              3
+            ]
+          ],
+          "references": [],
+          "english": "Assume this required boundary premise. Later use must supply a proof of it."
+        },
+        {
+          "line": 4,
+          "role": "axiom",
+          "rule": "H1",
+          "formula": [
+            "imp",
+            [
+              "param",
+              0
+            ],
+            [
+              "imp",
+              [
+                "imp",
+                [
+                  "param",
+                  4
+                ],
+                [
+                  "param",
+                  0
+                ]
+              ],
+              [
+                "param",
+                0
+              ]
+            ]
+          ],
+          "references": [],
+          "english": "Use an instance of logical axiom H1."
+        },
+        {
+          "line": 5,
+          "role": "axiom",
+          "rule": "H1",
+          "formula": [
+            "imp",
+            [
+              "param",
+              0
+            ],
+            [
+              "imp",
+              [
+                "param",
+                4
+              ],
+              [
+                "param",
+                0
+              ]
+            ]
+          ],
+          "references": [],
+          "english": "Use an instance of logical axiom H1."
+        },
+        {
+          "line": 6,
+          "role": "axiom",
+          "rule": "H2",
+          "formula": [
+            "imp",
+            [
+              "imp",
+              [
+                "param",
+                0
+              ],
+              [
+                "imp",
+                [
+                  "imp",
+                  [
+                    "param",
+                    4
+                  ],
+                  [
+                    "param",
+                    0
+                  ]
+                ],
+                [
+                  "param",
+                  0
+                ]
+              ]
+            ],
+            [
+              "imp",
+              [
+                "imp",
+                [
+                  "param",
+                  0
+                ],
+                [
+                  "imp",
+                  [
+                    "param",
+                    4
+                  ],
+                  [
+                    "param",
+                    0
+                  ]
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "param",
+                  0
+                ],
+                [
+                  "param",
+                  0
+                ]
+              ]
+            ]
+          ],
+          "references": [],
+          "english": "Use an instance of logical axiom H2."
+        },
+        {
+          "line": 7,
+          "role": "inference",
+          "rule": "Modus ponens",
+          "formula": [
+            "imp",
+            [
+              "imp",
+              [
+                "param",
+                0
+              ],
+              [
+                "imp",
+                [
+                  "param",
+                  4
+                ],
+                [
+                  "param",
+                  0
+                ]
+              ]
+            ],
+            [
+              "imp",
+              [
+                "param",
+                0
+              ],
+              [
+                "param",
+                0
+              ]
+            ]
+          ],
+          "references": [
+            4,
+            6
+          ],
+          "english": "Apply the implication in line 6 to line 4."
+        },
+        {
+          "line": 8,
+          "role": "inference",
+          "rule": "Modus ponens",
+          "formula": [
+            "imp",
+            [
+              "param",
+              0
+            ],
+            [
+              "param",
+              0
+            ]
+          ],
+          "references": [
+            5,
+            7
+          ],
+          "english": "Apply the implication in line 7 to line 5."
+        },
+        {
+          "line": 9,
+          "role": "inference",
+          "rule": "Modus ponens",
+          "formula": [
+            "param",
+            1
+          ],
+          "references": [
+            8,
+            1
+          ],
+          "english": "Apply the implication in line 1 to line 8."
+        },
+        {
+          "line": 10,
+          "role": "inference",
+          "rule": "Modus ponens",
+          "formula": [
+            "param",
+            2
+          ],
+          "references": [
+            9,
+            2
+          ],
+          "english": "Apply the implication in line 2 to line 9."
+        },
+        {
+          "line": 11,
+          "role": "inference",
+          "rule": "Modus ponens",
+          "formula": [
+            "param",
+            3
+          ],
+          "references": [
+            10,
+            3
+          ],
+          "english": "Apply the implication in line 3 to line 10."
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "family_id": "cbe2b7f30085299ee27ffbd99f262058187359251b7175454eef1642ab4d175a",
+      "parameters": [
+        {
+          "id": 0,
+          "sort": "Formula"
+        },
+        {
+          "id": 1,
+          "sort": "Formula"
+        },
+        {
+          "id": 2,
+          "sort": "Formula"
+        },
+        {
+          "id": 3,
+          "sort": "Formula"
+        }
+      ],
+      "internal_nodes": 3,
+      "boundary_count": 4,
+      "metrics": {
+        "MP_nodes": 3,
+        "boundary_count": 4,
+        "internal_nodes": 3,
+        "root_in_boundary": true,
+        "root_pattern_nodes": 1,
+        "root_support": 7,
+        "sharing_excess": 0
+      },
+      "source_occurrences": 1,
+      "boundary_patterns": [
+        [
+          "param",
+          0
+        ],
+        [
+          "imp",
+          [
+            "param",
+            0
+          ],
+          [
+            "param",
+            1
+          ]
+        ],
+        [
+          "imp",
+          [
+            "param",
+            1
+          ],
+          [
+            "param",
+            2
+          ]
+        ],
+        [
+          "imp",
+          [
+            "param",
+            2
+          ],
+          [
+            "param",
+            3
+          ]
+        ]
+      ],
+      "conclusion_pattern": [
+        "param",
+        3
+      ],
+      "line_by_line": [
+        {
+          "line": 1,
+          "role": "boundary",
+          "rule": "Hypothesis",
+          "formula": [
+            "param",
+            0
+          ],
+          "references": [],
+          "english": "Assume this required boundary premise. Later use must supply a proof of it."
+        },
+        {
+          "line": 2,
+          "role": "boundary",
+          "rule": "Hypothesis",
+          "formula": [
+            "imp",
+            [
+              "param",
+              0
+            ],
+            [
+              "param",
+              1
+            ]
+          ],
+          "references": [],
+          "english": "Assume this required boundary premise. Later use must supply a proof of it."
+        },
+        {
+          "line": 3,
+          "role": "boundary",
+          "rule": "Hypothesis",
+          "formula": [
+            "imp",
+            [
+              "param",
+              1
+            ],
+            [
+              "param",
+              2
+            ]
+          ],
+          "references": [],
+          "english": "Assume this required boundary premise. Later use must supply a proof of it."
+        },
+        {
+          "line": 4,
+          "role": "boundary",
+          "rule": "Hypothesis",
+          "formula": [
+            "imp",
+            [
+              "param",
+              2
+            ],
+            [
+              "param",
+              3
+            ]
+          ],
+          "references": [],
+          "english": "Assume this required boundary premise. Later use must supply a proof of it."
+        },
+        {
+          "line": 5,
+          "role": "inference",
+          "rule": "Modus ponens",
+          "formula": [
+            "param",
+            1
+          ],
+          "references": [
+            1,
+            2
+          ],
+          "english": "Apply the implication in line 2 to line 1."
+        },
+        {
+          "line": 6,
+          "role": "inference",
+          "rule": "Modus ponens",
+          "formula": [
+            "param",
+            2
+          ],
+          "references": [
+            5,
+            3
+          ],
+          "english": "Apply the implication in line 3 to line 5."
+        },
+        {
+          "line": 7,
+          "role": "inference",
+          "rule": "Modus ponens",
+          "formula": [
+            "param",
+            3
+          ],
+          "references": [
+            6,
+            4
+          ],
+          "english": "Apply the implication in line 4 to line 6."
+        }
+      ]
+    }
+  ],
+  "evidence_archive": {
+    "name": "point-proof-stratified-acquisition-evidence-v1.zip",
+    "bytes": 15013199,
+    "sha256": "01d74f844eb384fa9d55015fd11c7a28c423cb95d3fd2b99ea53ad3d5d1d5279",
+    "entries": 133
+  },
+  "scope": "Automatically acquired ordinary propositional proof schemas from two previously found proofs, not new benchmark proofs or a fixed finite Wang palette. Full original and generic instances checked by original paired validators. Colors are reader annotations; no learned marking or trained RL."
+}
