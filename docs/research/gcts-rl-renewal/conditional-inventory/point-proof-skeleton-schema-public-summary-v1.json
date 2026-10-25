@@ -1,0 +1,155 @@
+{
+  "schema": "GCTS-proof-skeleton-schema-public-summary-v1",
+  "date": "2026-10-24",
+  "classification": "Finite schema-inference observation independently reviewed and admitted.",
+  "counts": {
+    "scoped_bank_groups": 6,
+    "bank_observations": 21,
+    "inference_calls": 4,
+    "source_instances": 4,
+    "generic_instances": 2,
+    "exact_key_groups": 2,
+    "instance_physical_rows": [
+      3,
+      3,
+      3,
+      3,
+      3,
+      3
+    ]
+  },
+  "metrics": {
+    "combined_positive_artifact_bytes": 94058,
+    "entire_result_bytes": 371178,
+    "shared_positive_bytes": 465236,
+    "shared_positive_cap_bytes": 50331648,
+    "inner_case_physical_bytes": 468782,
+    "complete_case_and_observer_physical_bytes": 472281,
+    "result_snapshot_elapsed_seconds": 1.3466797500150278,
+    "result_snapshot_callbacks": 1170115,
+    "header_after_output_elapsed_seconds": 1.4383678329759277,
+    "header_after_output_callbacks": 1316622,
+    "runner_exit_seconds": 1.451910083007533,
+    "runner_final_custody_gate_seconds": 1.4643165830057114,
+    "observer_elapsed_seconds": 1.5181008329964243,
+    "observer_final_gate_seconds": 1.5184388750349171,
+    "conservative_whole_peak_bytes": 406896640,
+    "raw_child_peak_bytes": 325812224,
+    "resource_candidate_accepted": true
+  },
+  "schemas": [
+    {
+      "group": 0,
+      "source_family_indices": [
+        0,
+        2
+      ],
+      "parameters": 3,
+      "boundary_ports": 1,
+      "source_occurrences": 2,
+      "rows": [
+        {
+          "line": 1,
+          "role": "boundary",
+          "schematic_latex": "\\bigl(\\bigl(A\\to \\bigl(B\\to A\\bigr)\\bigr)\\to C\\bigr)",
+          "actual_latex": "\\bigl(\\bigl(P_{0}\\to \\bigl(P_{1}\\to P_{0}\\bigr)\\bigr)\\to P_{2}\\bigr)",
+          "rule": "Hypothesis",
+          "reference_lines": [],
+          "English": "Assume the required boundary formula."
+        },
+        {
+          "line": 2,
+          "role": "axiom",
+          "schematic_latex": "\\bigl(A\\to \\bigl(B\\to A\\bigr)\\bigr)",
+          "actual_latex": "\\bigl(P_{0}\\to \\bigl(P_{1}\\to P_{0}\\bigr)\\bigr)",
+          "rule": "H1",
+          "reference_lines": [],
+          "English": "Use an instance of the first implication axiom."
+        },
+        {
+          "line": 3,
+          "role": "inference",
+          "schematic_latex": "C",
+          "actual_latex": "P_{2}",
+          "rule": "Modus ponens",
+          "reference_lines": [
+            2,
+            1
+          ],
+          "English": "Apply the implication in line 1 to line 2."
+        }
+      ]
+    },
+    {
+      "group": 1,
+      "source_family_indices": [
+        1,
+        3
+      ],
+      "parameters": 2,
+      "boundary_ports": 0,
+      "source_occurrences": 2,
+      "rows": [
+        {
+          "line": 1,
+          "role": "axiom",
+          "schematic_latex": "\\bigl(A\\to \\bigl(B\\to A\\bigr)\\bigr)",
+          "actual_latex": "\\bigl(P_{0}\\to \\bigl(P_{1}\\to P_{0}\\bigr)\\bigr)",
+          "rule": "H1",
+          "reference_lines": [],
+          "English": "Use an instance of the first implication axiom."
+        },
+        {
+          "line": 2,
+          "role": "axiom",
+          "schematic_latex": "\\bigl(\\bigl(A\\to \\bigl(B\\to A\\bigr)\\bigr)\\to \\bigl(\\bigl(A\\to B\\bigr)\\to \\bigl(A\\to A\\bigr)\\bigr)\\bigr)",
+          "actual_latex": "\\bigl(\\bigl(P_{0}\\to \\bigl(P_{1}\\to P_{0}\\bigr)\\bigr)\\to \\bigl(\\bigl(P_{0}\\to P_{1}\\bigr)\\to \\bigl(P_{0}\\to P_{0}\\bigr)\\bigr)\\bigr)",
+          "rule": "H2",
+          "reference_lines": [],
+          "English": "Use an instance of the second implication axiom."
+        },
+        {
+          "line": 3,
+          "role": "inference",
+          "schematic_latex": "\\bigl(\\bigl(A\\to B\\bigr)\\to \\bigl(A\\to A\\bigr)\\bigr)",
+          "actual_latex": "\\bigl(\\bigl(P_{0}\\to P_{1}\\bigr)\\to \\bigl(P_{0}\\to P_{0}\\bigr)\\bigr)",
+          "rule": "Modus ponens",
+          "reference_lines": [
+            1,
+            2
+          ],
+          "English": "Apply the implication in line 2 to line 1."
+        }
+      ]
+    }
+  ],
+  "old_four_family_inventory_unchanged": true,
+  "holdout_loaded": false,
+  "holdout_searched": false,
+  "contextual_use": false,
+  "novelty": "Ordinary fixed-proof-structure unification and reusable schema infrastructure; no GCTS/RL search advantage established.",
+  "limits": [
+    "Two generic examples are schema exercises, not solutions of fresh benchmark goals.",
+    "Boundary assumptions must have earlier proofs before contextual use.",
+    "No proof of most-generality; occurs-check rejection is Source-review-only in this bank.",
+    "No new arithmetic or Hilbert geometry result; no finite universal Wang palette.",
+    "Prior donor acquisition and library extraction costs are separate; this is no matched speed comparison."
+  ],
+  "next": "Broaden inventory acquisition and implement a shared contextual obligation interface with ordinary lemma reuse as an equally informed control, primitive fallback and checked final-root use.",
+  "publication_scope": "Readable report, public formulas/aggregate results, and directly user-approved complete evidence archives including Source snapshots, original certificates, logs, reviews and local file paths.",
+  "evidence_archives": [
+    {
+      "name": "point-proof-receptor-library-evidence-v1.zip",
+      "bytes": 11878882,
+      "sha256": "fd7f82b2433b522afb77ce301d7d79abe6bb6a49942a469edf509c4248e13bc0",
+      "scope": "Original complete receptor-library evidence with nested prior donor/cohort evidence."
+    },
+    {
+      "name": "point-proof-skeleton-schema-evidence-v1.zip",
+      "bytes": 11869645,
+      "sha256": "06039207a0750b889d26a90a2b673e5ad4b2e3144f99cff1bc43f0ff9a576014",
+      "members": 83,
+      "scope": "Complete current schema-feasibility evidence plus the unchanged prior archive. External pinned runtime must be supplied separately."
+    }
+  ]
+}
