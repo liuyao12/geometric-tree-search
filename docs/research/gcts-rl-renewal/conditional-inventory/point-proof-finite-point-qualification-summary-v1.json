@@ -1,0 +1,1367 @@
+{
+  "Root_admission": {
+    "bytes": 15668,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-finite-point-controller-20261026/root/finite-point-v2case0-Root-complete-whole-qualification-admission-v1.json",
+    "sha256": "863aa93c57acc815814cfef2cc1afa97224f9be03878ef82a79e6b4850a14ade"
+  },
+  "archive_scope": "Complete selected current Source snapshots, complete sole qualification case and all logs/custody/consumes/certified point selections, exact reviews/provenance/math/design/public inputs. Earlier full archives remain linked separately; no recursive historical closure or runtime binary inclusion claim.",
+  "case_id": "finite-point-qualification-v2-case-0",
+  "conformance_scope": "Finite all-root specialization. Every required point starts at generation zero; unequal-generation selector controls are separately synthetic. Whole-point/candidate/dependency/scheduler/rollback tests are bounded evidence. Generic prototype catalogue/growth/fairness and arbitrary-input formal verification remain separate.",
+  "counts": {
+    "contextual_solve_controls": 1,
+    "event_census": {
+      "DECISION": 74,
+      "EXCLUDED": 3,
+      "INITIALIZED": 33,
+      "PLACED": 48,
+      "ROLLED_BACK": 32,
+      "SOLVE_RESULT": 32
+    },
+    "explanation": "33INITIALIZED/74DECISION/48PLACED/3EXCLUDED/32ROLLED_BACK/32SOLVE_RESULT =222. One result-audit refusal deliberately retains attempted positive then UNKNOWN events, explaining32 result events for31 solves. The attempted positive event is explicitly unadmitted.",
+    "independent_complete_optional_subsets_examined": 515,
+    "invalid_Wang_inputs": 9,
+    "invalid_models": 19,
+    "original_Wang_assignment_attempts": 14,
+    "retained_valid_control_records": 33,
+    "saved_solve_statuses": {
+      "EXHAUSTED_FINITE_SEARCH": 6,
+      "FINITE_EXACT_SOLUTION": 21,
+      "UNKNOWN": 4
+    },
+    "solve_calls": 31,
+    "stable_audits": 222,
+    "synthetic_context_invalid_globally_valid_witnesses": 3,
+    "synthetic_selectors": 5,
+    "valid_engine_instances": 33
+  },
+  "examples": {
+    "Wang_alternating": {
+      "boundary": null,
+      "control_name": "Wang-alternating-labels",
+      "metrics": {
+        "accepted_base_placements": 2,
+        "attempts": 2,
+        "backtracks": 0,
+        "branch_decisions": 1,
+        "candidate_removals": {
+          "CAPACITY": 1,
+          "EXCLUDED": 0,
+          "MARKING": 1,
+          "NO_FRONTIER": 0,
+          "SELECTED": 2
+        },
+        "final_active_candidates": 0,
+        "final_edges": 0,
+        "final_frontier_points": 0,
+        "forced_placements": 1,
+        "max_active_candidates": 4,
+        "max_edges": 4,
+        "max_frontier_points": 2,
+        "seed_placements": 0
+      },
+      "palette": [
+        {
+          "E": "a",
+          "N": "v",
+          "S": "v",
+          "W": "b",
+          "id": "X"
+        },
+        {
+          "E": "b",
+          "N": "v",
+          "S": "v",
+          "W": "a",
+          "id": "Y"
+        }
+      ],
+      "placements": [
+        {
+          "generation": 1,
+          "id": "[\"WANG\",\"X\",0,0]",
+          "reason": "BRANCH"
+        },
+        {
+          "generation": 1,
+          "id": "[\"WANG\",\"Y\",1,0]",
+          "reason": "FORCED"
+        }
+      ],
+      "region": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "returned_assignment": [
+        {
+          "point": [
+            0,
+            0
+          ],
+          "type": "X"
+        },
+        {
+          "point": [
+            1,
+            0
+          ],
+          "type": "Y"
+        }
+      ],
+      "scope": "Actual tiny Wang search and independently checked point/original-Wang assignment; no encoded mathematical theorem."
+    },
+    "distant_marking": {
+      "control_name": "distant-m-removes-shared-everywhere",
+      "entry": {
+        "active_candidates": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "candidate_rows": [
+          {
+            "active": true,
+            "capacity_conflicts": [],
+            "excluded": false,
+            "id": "A",
+            "legal": true,
+            "marking_conflicts": [],
+            "selected": false
+          },
+          {
+            "active": true,
+            "capacity_conflicts": [],
+            "excluded": false,
+            "id": "B",
+            "legal": true,
+            "marking_conflicts": [],
+            "selected": false
+          },
+          {
+            "active": true,
+            "capacity_conflicts": [],
+            "excluded": false,
+            "id": "C",
+            "legal": true,
+            "marking_conflicts": [],
+            "selected": false
+          },
+          {
+            "active": true,
+            "capacity_conflicts": [],
+            "excluded": false,
+            "id": "D",
+            "legal": true,
+            "marking_conflicts": [],
+            "selected": false
+          }
+        ],
+        "excluded": [],
+        "forward_incidence": [
+          [
+            0,
+            0,
+            "A",
+            1
+          ],
+          [
+            1,
+            0,
+            "B",
+            1
+          ],
+          [
+            1,
+            0,
+            "C",
+            1
+          ],
+          [
+            2,
+            0,
+            "B",
+            1
+          ],
+          [
+            2,
+            0,
+            "D",
+            1
+          ]
+        ],
+        "frontier": [
+          {
+            "candidates": [
+              "A"
+            ],
+            "generation": 0,
+            "point": [
+              0,
+              0
+            ]
+          },
+          {
+            "candidates": [
+              "B",
+              "C"
+            ],
+            "generation": 0,
+            "point": [
+              1,
+              0
+            ]
+          },
+          {
+            "candidates": [
+              "B",
+              "D"
+            ],
+            "generation": 0,
+            "point": [
+              2,
+              0
+            ]
+          }
+        ],
+        "markings": [],
+        "point_generations": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0
+          ]
+        ],
+        "reverse_incidence": [
+          {
+            "id": "A",
+            "points": [
+              [
+                0,
+                0,
+                1
+              ]
+            ]
+          },
+          {
+            "id": "B",
+            "points": [
+              [
+                1,
+                0,
+                1
+              ],
+              [
+                2,
+                0,
+                1
+              ]
+            ]
+          },
+          {
+            "id": "C",
+            "points": [
+              [
+                1,
+                0,
+                1
+              ]
+            ]
+          },
+          {
+            "id": "D",
+            "points": [
+              [
+                2,
+                0,
+                1
+              ]
+            ]
+          }
+        ],
+        "schema": "GCTS-finite-point-snapshot-v1",
+        "selected": [],
+        "tile_generations": [],
+        "totals": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0
+          ]
+        ],
+        "trail_size": 0
+      },
+      "marking_scope": "Source-authored problem-defining values, not learned or proved redundant.",
+      "placements": [
+        {
+          "generation": 1,
+          "id": "A",
+          "reason": "FORCED"
+        },
+        {
+          "generation": 1,
+          "id": "C",
+          "reason": "FORCED"
+        },
+        {
+          "generation": 1,
+          "id": "D",
+          "reason": "FORCED"
+        }
+      ],
+      "raw_model": {
+        "capacity": 1,
+        "placements": [
+          {
+            "id": "A",
+            "m": [
+              [
+                1000,
+                1000,
+                "c",
+                "0"
+              ]
+            ],
+            "t": [
+              [
+                0,
+                0,
+                1
+              ]
+            ],
+            "translation": [
+              0,
+              0
+            ],
+            "type": "A"
+          },
+          {
+            "id": "B",
+            "m": [
+              [
+                1000,
+                1000,
+                "c",
+                "1"
+              ]
+            ],
+            "t": [
+              [
+                1,
+                0,
+                1
+              ],
+              [
+                2,
+                0,
+                1
+              ]
+            ],
+            "translation": [
+              0,
+              0
+            ],
+            "type": "B"
+          },
+          {
+            "id": "C",
+            "m": [],
+            "t": [
+              [
+                1,
+                0,
+                1
+              ]
+            ],
+            "translation": [
+              0,
+              0
+            ],
+            "type": "C"
+          },
+          {
+            "id": "D",
+            "m": [],
+            "t": [
+              [
+                2,
+                0,
+                1
+              ]
+            ],
+            "translation": [
+              0,
+              0
+            ],
+            "type": "D"
+          }
+        ],
+        "required": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            0
+          ]
+        ],
+        "schema": "GCTS-finite-point-instance-v1",
+        "seeds": []
+      },
+      "result_selected": [
+        "A",
+        "C",
+        "D"
+      ]
+    }
+  },
+  "goal_status": "ACTIVE_UNBUDGETED_INCOMPLETE",
+  "implemented_model": "Integer coordinate pairs and exact integer capacity units; explicit finite one-use placement universe and all required roots; independent partial literal marking channels over arbitrary support, including nonrequired distant points; shared complete graph and full rollback. Dedicated compiler enumerates labeled finite Wang palette-by-region placements and grouped positive fixed-boundary collars; translations only.",
+  "independent_complete_actual_review": {
+    "bytes": 48637,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-finite-point-controller-20261026/implementation-B/finite-point-v2case0-complete-independent-whole-actual-review-v1.json",
+    "sha256": "ff6addaec6d6383438fc7b86d64e050ff9de2f93809170dc322d22431db8ff59"
+  },
+  "interpretation": {
+    "GCTS_RL_advantage": false,
+    "first_order_verifier_table_or_proof_palette": false,
+    "infinite_Turtle_or_Penrose_tiling": false,
+    "learned_marking_or_RL_policy": false,
+    "new_mathematical_theorems": 0,
+    "old_symbolic_failures_preserved": true,
+    "proof_search_speedup": false
+  },
+  "issued_utc": "2026-10-26T11:40:39.089728+00:00",
+  "next_steps": [
+    "Compile a supplied finite local transition table to an explicit Wang/point tableau and check complete round trips.",
+    "Supply the exact shared first-order verifier, bounded input/accept compiler, inverse certificate map and human proof-line translation.",
+    "Integrate certified or explicitly labeled learned marking restrictions and actual validated RL cluster families with complete base fallback.",
+    "Continue practical finite/unbounded Turtle and Penrose modeling and separately reviewed original-target retained-state diagnosis."
+  ],
+  "per_control": [
+    {
+      "audits": 4,
+      "complete_canonical_record_sha256": "b3e9a64b96f71cbd5024e0279fecc2c0b698ef127830f02427da4efdc08a6546",
+      "event_census": {
+        "DECISION": 1,
+        "INITIALIZED": 1,
+        "ROLLED_BACK": 1,
+        "SOLVE_RESULT": 1
+      },
+      "independent_subsets_examined": 1,
+      "name": "empty",
+      "nodes": 1,
+      "reason": "SOLUTION",
+      "saved_complete_result_check": {
+        "complete": true,
+        "exact_solution_count": 1,
+        "status": "FINITE_EXACT_SOLUTION"
+      },
+      "saved_global_exact_solution_count": 1,
+      "status": "FINITE_EXACT_SOLUTION",
+      "whole_record_review": "PASS_SAVED_CHECK_AND_STRUCTURAL_JOINS"
+    },
+    {
+      "audits": 4,
+      "complete_canonical_record_sha256": "0b22883330416f50942f03c523949a4a7cd1b881e7e215f550c5f4878cced4f3",
+      "event_census": {
+        "DECISION": 1,
+        "INITIALIZED": 1,
+        "ROLLED_BACK": 1,
+        "SOLVE_RESULT": 1
+      },
+      "independent_subsets_examined": 1,
+      "name": "untouched-dead",
+      "nodes": 1,
+      "reason": "EXHAUSTED",
+      "saved_complete_result_check": {
+        "complete": true,
+        "exact_solution_count": 0,
+        "status": "EXHAUSTED_FINITE_SEARCH"
+      },
+      "saved_global_exact_solution_count": 0,
+      "status": "EXHAUSTED_FINITE_SEARCH",
+      "whole_record_review": "PASS_SAVED_CHECK_AND_STRUCTURAL_JOINS"
+    },
+    {
+      "audits": 4,
+      "complete_canonical_record_sha256": "f2cc781c2ceebe79ea9403545cb8d613b64ea45742084ef6618f005fbb3ef26d",
+      "event_census": {
+        "DECISION": 1,
+        "INITIALIZED": 1,
+        "ROLLED_BACK": 1,
+        "SOLVE_RESULT": 1
+      },
+      "independent_subsets_examined": 4,
+      "name": "pocket-dead-before-forced",
+      "nodes": 1,
+      "reason": "EXHAUSTED",
+      "saved_complete_result_check": {
+        "complete": true,
+        "exact_solution_count": 0,
+        "status": "EXHAUSTED_FINITE_SEARCH"
+      },
+      "saved_global_exact_solution_count": 0,
+      "status": "EXHAUSTED_FINITE_SEARCH",
+      "whole_record_review": "PASS_SAVED_CHECK_AND_STRUCTURAL_JOINS"
+    },
+    {
+      "audits": 6,
+      "complete_canonical_record_sha256": "92b9d416d4f837ffe7ab27741ff676f3ab8bf8058d6c1892c3439e5bf69e7062",
+      "event_census": {
+        "DECISION": 2,
+        "INITIALIZED": 1,
+        "PLACED": 1,
+        "ROLLED_BACK": 1,
+        "SOLVE_RESULT": 1
+      },
+      "independent_subsets_examined": 2,
+      "name": "one-forced",
+      "nodes": 2,
+      "reason": "SOLUTION",
+      "saved_complete_result_check": {
+        "complete": true,
+        "exact_solution_count": 1,
+        "status": "FINITE_EXACT_SOLUTION"
+      },
+      "saved_global_exact_solution_count": 1,
+      "status": "FINITE_EXACT_SOLUTION",
+      "whole_record_review": "PASS_SAVED_CHECK_AND_STRUCTURAL_JOINS"
+    },
+    {
+      "audits": 6,
+      "complete_canonical_record_sha256": "689d458d50b1f263d45b57ecb3d0d3e78fb10be831e31b9740aa677eda158bcf",
+      "event_census": {
+        "DECISION": 2,
+        "INITIALIZED": 1,
+        "PLACED": 1,
+        "ROLLED_BACK": 1,
+        "SOLVE_RESULT": 1
+      },
+      "independent_subsets_examined": 4,
+      "name": "duplicate-decoration-identities",
+      "nodes": 2,
+      "reason": "SOLUTION",
+      "saved_complete_result_check": {
+        "complete": true,
+        "exact_solution_count": 2,
+        "status": "FINITE_EXACT_SOLUTION"
+      },
+      "saved_global_exact_solution_count": 2,
+      "status": "FINITE_EXACT_SOLUTION",
+      "whole_record_review": "PASS_SAVED_CHECK_AND_STRUCTURAL_JOINS"
+    },
+    {
+      "audits": 8,
+      "complete_canonical_record_sha256": "035f1d28772419efdba381e56883c15714d8f35dcaf5fbf782f47af3316e37cd",
+      "event_census": {
+        "DECISION": 3,
+        "INITIALIZED": 1,
+        "PLACED": 2,
+        "ROLLED_BACK": 1,
+        "SOLVE_RESULT": 1
+      },
+      "independent_subsets_examined": 4,
+      "name": "fractional-completion",
+      "nodes": 3,
+      "reason": "SOLUTION",
+      "saved_complete_result_check": {
+        "complete": true,
+        "exact_solution_count": 1,
+        "status": "FINITE_EXACT_SOLUTION"
+      },
+      "saved_global_exact_solution_count": 1,
+      "status": "FINITE_EXACT_SOLUTION",
+      "whole_record_review": "PASS_SAVED_CHECK_AND_STRUCTURAL_JOINS"
+    },
+    {
+      "audits": 6,
+      "complete_canonical_record_sha256": "620583bfd3a401db40dacd1962f925fd5b4f2cb1597c34394305b6846868991a",
+      "event_census": {
+        "DECISION": 2,
+        "INITIALIZED": 1,
+        "PLACED": 1,
+        "ROLLED_BACK": 1,
+        "SOLVE_RESULT": 1
+      },
+      "independent_subsets_examined": 2,
+      "name": "fractional-unfillable-residual",
+      "nodes": 2,
+      "reason": "EXHAUSTED",
+      "saved_complete_result_check": {
+        "complete": true,
+        "exact_solution_count": 0,
+        "status": "EXHAUSTED_FINITE_SEARCH"
+      },
+      "saved_global_exact_solution_count": 0,
+      "status": "EXHAUSTED_FINITE_SEARCH",
+      "whole_record_review": "PASS_SAVED_CHECK_AND_STRUCTURAL_JOINS"
+    },
+    {
+      "audits": 6,
+      "complete_canonical_record_sha256": "b53fcae955cab06555086d59d1954ec445b17f1000435916c531843f69824277",
+      "event_census": {
+        "DECISION": 2,
+        "INITIALIZED": 1,
+        "PLACED": 1,
+        "ROLLED_BACK": 1,
+        "SOLVE_RESULT": 1
+      },
+      "independent_subsets_examined": 2,
+      "name": "shared-forced-once",
+      "nodes": 2,
+      "reason": "SOLUTION",
+      "saved_complete_result_check": {
+        "complete": true,
+        "exact_solution_count": 1,
+        "status": "FINITE_EXACT_SOLUTION"
+      },
+      "saved_global_exact_solution_count": 1,
+      "status": "FINITE_EXACT_SOLUTION",
+      "whole_record_review": "PASS_SAVED_CHECK_AND_STRUCTURAL_JOINS"
+    },
+    {
+      "audits": 6,
+      "complete_canonical_record_sha256": "f48aebeaad47fc8ff551ed392cf196980350aed5a37306464d2ea54fd82ba3ce",
+      "event_census": {
+        "DECISION": 2,
+        "INITIALIZED": 1,
+        "PLACED": 1,
+        "ROLLED_BACK": 1,
+        "SOLVE_RESULT": 1
+      },
+      "independent_subsets_examined": 4,
+      "name": "outside-Q-positive-capacity",
+      "nodes": 2,
+      "reason": "SOLUTION",
+      "saved_complete_result_check": {
+        "complete": true,
+        "exact_solution_count": 1,
+        "status": "FINITE_EXACT_SOLUTION"
+      },
+      "saved_global_exact_solution_count": 1,
+      "status": "FINITE_EXACT_SOLUTION",
+      "whole_record_review": "PASS_SAVED_CHECK_AND_STRUCTURAL_JOINS"
+    },
+    {
+      "audits": 6,
+      "complete_canonical_record_sha256": "82517ea8f0d97111281ffe959450c52e458417334da122342486d6ebc5cf4d36",
+      "event_census": {
+        "DECISION": 2,
+        "INITIALIZED": 1,
+        "PLACED": 1,
+        "ROLLED_BACK": 1,
+        "SOLVE_RESULT": 1
+      },
+      "independent_subsets_examined": 16,
+      "name": "literal-zero-absent-and-channel",
+      "nodes": 2,
+      "reason": "SOLUTION",
+      "saved_complete_result_check": {
+        "complete": true,
+        "exact_solution_count": 3,
+        "status": "FINITE_EXACT_SOLUTION"
+      },
+      "saved_global_exact_solution_count": 3,
+      "status": "FINITE_EXACT_SOLUTION",
+      "whole_record_review": "PASS_SAVED_CHECK_AND_STRUCTURAL_JOINS"
+    },
+    {
+      "audits": 10,
+      "complete_canonical_record_sha256": "5a01b30217c3a80c14e497b5f4a8178cdba39f5a8aaabdb6a81507cd4d36c45d",
+      "event_census": {
+        "DECISION": 4,
+        "INITIALIZED": 1,
+        "PLACED": 3,
+        "ROLLED_BACK": 1,
+        "SOLVE_RESULT": 1
+      },
+      "independent_subsets_examined": 16,
+      "name": "distant-m-removes-shared-everywhere",
+      "nodes": 4,
+      "reason": "SOLUTION",
+      "saved_complete_result_check": {
+        "complete": true,
+        "exact_solution_count": 1,
+        "status": "FINITE_EXACT_SOLUTION"
+      },
+      "saved_global_exact_solution_count": 1,
+      "status": "FINITE_EXACT_SOLUTION",
+      "whole_record_review": "PASS_SAVED_CHECK_AND_STRUCTURAL_JOINS"
+    },
+    {
+      "audits": 8,
+      "complete_canonical_record_sha256": "0331394cb1ab5c5854ee3d6ae8445e0442f9e4d1d89eedf672dc02dc39264993",
+      "event_census": {
+        "DECISION": 3,
+        "INITIALIZED": 1,
+        "PLACED": 2,
+        "ROLLED_BACK": 1,
+        "SOLVE_RESULT": 1
+      },
+      "independent_subsets_examined": 4,
+      "name": "mark-reference-counts",
+      "nodes": 3,
+      "reason": "SOLUTION",
+      "saved_complete_result_check": {
+        "complete": true,
+        "exact_solution_count": 1,
+        "status": "FINITE_EXACT_SOLUTION"
+      },
+      "saved_global_exact_solution_count": 1,
+      "status": "FINITE_EXACT_SOLUTION",
+      "whole_record_review": "PASS_SAVED_CHECK_AND_STRUCTURAL_JOINS"
+    },
+    {
+      "audits": 13,
+      "complete_canonical_record_sha256": "d1b45f1f3918f23416822ed877255403de4b8251f3a55f34cd213cd548fc2cf3",
+      "event_census": {
+        "DECISION": 5,
+        "EXCLUDED": 1,
+        "INITIALIZED": 1,
+        "PLACED": 3,
+        "ROLLED_BACK": 2,
+        "SOLVE_RESULT": 1
+      },
+      "independent_subsets_examined": 16,
+      "name": "failed-first-branch-then-success",
+      "nodes": 5,
+      "reason": "SOLUTION",
+      "saved_complete_result_check": {
+        "complete": true,
+        "exact_solution_count": 2,
+        "status": "FINITE_EXACT_SOLUTION"
+      },
+      "saved_global_exact_solution_count": 2,
+      "status": "FINITE_EXACT_SOLUTION",
+      "whole_record_review": "PASS_SAVED_CHECK_AND_STRUCTURAL_JOINS"
+    },
+    {
+      "audits": 4,
+      "complete_canonical_record_sha256": "043b8af22d740bed0be543c88ba5df625d77f288f3ef1f3511167b18120a211a",
+      "event_census": {
+        "DECISION": 1,
+        "INITIALIZED": 1,
+        "ROLLED_BACK": 1,
+        "SOLVE_RESULT": 1
+      },
+      "independent_subsets_examined": 1,
+      "name": "seed-exact",
+      "nodes": 1,
+      "reason": "SOLUTION",
+      "saved_complete_result_check": {
+        "complete": true,
+        "exact_solution_count": 1,
+        "status": "FINITE_EXACT_SOLUTION"
+      },
+      "saved_global_exact_solution_count": 1,
+      "status": "FINITE_EXACT_SOLUTION",
+      "whole_record_review": "PASS_SAVED_CHECK_AND_STRUCTURAL_JOINS"
+    },
+    {
+      "audits": 10,
+      "complete_canonical_record_sha256": "76e1fb4fdb632dcb5ded78163ef6ac6506b8d8ee20b3b82c78703e85d0104eec",
+      "event_census": {
+        "DECISION": 4,
+        "INITIALIZED": 1,
+        "PLACED": 3,
+        "ROLLED_BACK": 1,
+        "SOLVE_RESULT": 1
+      },
+      "independent_subsets_examined": 8,
+      "name": "nested-fractional-rollback",
+      "nodes": 4,
+      "reason": "SOLUTION",
+      "saved_complete_result_check": {
+        "complete": true,
+        "exact_solution_count": 1,
+        "status": "FINITE_EXACT_SOLUTION"
+      },
+      "saved_global_exact_solution_count": 1,
+      "status": "FINITE_EXACT_SOLUTION",
+      "whole_record_review": "PASS_SAVED_CHECK_AND_STRUCTURAL_JOINS"
+    },
+    {
+      "audits": 7,
+      "complete_canonical_record_sha256": "b32239448325061cd289a7d0ecc4bb68d99ab5fba5dbd9199f10cda1ca822d57",
+      "event_census": {
+        "DECISION": 1,
+        "EXCLUDED": 1,
+        "INITIALIZED": 1,
+        "PLACED": 2,
+        "ROLLED_BACK": 2
+      },
+      "independent_subsets_examined": 8,
+      "name": "manual-nested-place-exclude-rollback",
+      "nodes": null,
+      "reason": null,
+      "saved_complete_result_check": null,
+      "saved_global_exact_solution_count": 1,
+      "status": "MANUAL_CONTROL_NO_SOLVE",
+      "whole_record_review": "PASS_SAVED_CHECK_AND_STRUCTURAL_JOINS"
+    },
+    {
+      "audits": 3,
+      "complete_canonical_record_sha256": "63340c0474bff9037c0388c9c6259765b29cf2bab656135ec4981fde797b9296",
+      "event_census": {
+        "INITIALIZED": 1,
+        "PLACED": 1,
+        "ROLLED_BACK": 1
+      },
+      "independent_subsets_examined": 4,
+      "name": "detached-inspections-and-operation-errors",
+      "nodes": null,
+      "reason": null,
+      "saved_complete_result_check": null,
+      "saved_global_exact_solution_count": 2,
+      "status": "MANUAL_CONTROL_NO_SOLVE",
+      "whole_record_review": "PASS_SAVED_CHECK_AND_STRUCTURAL_JOINS"
+    },
+    {
+      "audits": 2,
+      "complete_canonical_record_sha256": "6d786e4e5464fbd41b729972606f4652c007636eec554ca0e6af048ecdc24bbf",
+      "event_census": {
+        "INITIALIZED": 1,
+        "SOLVE_RESULT": 1
+      },
+      "independent_subsets_examined": 16,
+      "name": "UNKNOWN-node-limit-0",
+      "nodes": 0,
+      "reason": "NODE_LIMIT",
+      "saved_complete_result_check": {
+        "complete": true,
+        "exact_solution_count": 2,
+        "status": "UNKNOWN"
+      },
+      "saved_global_exact_solution_count": 2,
+      "status": "UNKNOWN",
+      "whole_record_review": "PASS_SAVED_CHECK_AND_STRUCTURAL_JOINS"
+    },
+    {
+      "audits": 4,
+      "complete_canonical_record_sha256": "c24b2f474ea48eccc890f68c5f6201b0c37603e5d77c994398affa8521edf22f",
+      "event_census": {
+        "DECISION": 1,
+        "INITIALIZED": 1,
+        "PLACED": 1,
+        "SOLVE_RESULT": 1
+      },
+      "independent_subsets_examined": 16,
+      "name": "UNKNOWN-node-limit-1",
+      "nodes": 1,
+      "reason": "NODE_LIMIT",
+      "saved_complete_result_check": {
+        "complete": true,
+        "exact_solution_count": 2,
+        "status": "UNKNOWN"
+      },
+      "saved_global_exact_solution_count": 2,
+      "status": "UNKNOWN",
+      "whole_record_review": "PASS_SAVED_CHECK_AND_STRUCTURAL_JOINS"
+    },
+    {
+      "audits": 2,
+      "complete_canonical_record_sha256": "b9159e676a5ecb58fbafa359e85ec075959e8363fd41f096f9b4a5b6bbf7167f",
+      "event_census": {
+        "INITIALIZED": 1,
+        "SOLVE_RESULT": 1
+      },
+      "independent_subsets_examined": 16,
+      "name": "UNKNOWN-external-budget",
+      "nodes": 0,
+      "reason": "EXTERNAL_BUDGET",
+      "saved_complete_result_check": {
+        "complete": true,
+        "exact_solution_count": 2,
+        "status": "UNKNOWN"
+      },
+      "saved_global_exact_solution_count": 2,
+      "status": "UNKNOWN",
+      "whole_record_review": "PASS_SAVED_CHECK_AND_STRUCTURAL_JOINS"
+    },
+    {
+      "audits": 6,
+      "complete_canonical_record_sha256": "491a78d75ff712f5dbf90e12f6011e382f9e9dcf30ccd9cc5e993d2a526361d0",
+      "event_census": {
+        "DECISION": 2,
+        "INITIALIZED": 1,
+        "PLACED": 1,
+        "SOLVE_RESULT": 2
+      },
+      "independent_subsets_examined": 2,
+      "name": "UNKNOWN-result-audit-refusal",
+      "nodes": 2,
+      "reason": "EXTERNAL_BUDGET",
+      "saved_complete_result_check": {
+        "complete": true,
+        "exact_solution_count": 1,
+        "status": "UNKNOWN"
+      },
+      "saved_global_exact_solution_count": 1,
+      "status": "UNKNOWN",
+      "whole_record_review": "PASS_SAVED_CHECK_AND_STRUCTURAL_JOINS"
+    },
+    {
+      "audits": 11,
+      "complete_canonical_record_sha256": "759b4e2208655fc03fed550b19fdd01003b332ffb944c1723c908798bfca3fce",
+      "event_census": {
+        "DECISION": 3,
+        "EXCLUDED": 1,
+        "INITIALIZED": 1,
+        "PLACED": 3,
+        "ROLLED_BACK": 2,
+        "SOLVE_RESULT": 1
+      },
+      "independent_subsets_examined": 64,
+      "name": "contextual-entry-selection-and-assumed-exclusion",
+      "nodes": 3,
+      "reason": "SOLUTION",
+      "saved_complete_result_check": {
+        "complete": true,
+        "exact_solution_count": 2,
+        "status": "FINITE_EXACT_SOLUTION"
+      },
+      "saved_global_exact_solution_count": 8,
+      "status": "FINITE_EXACT_SOLUTION",
+      "whole_record_review": "PASS_SAVED_CHECK_AND_STRUCTURAL_JOINS"
+    },
+    {
+      "audits": 4,
+      "complete_canonical_record_sha256": "0dc9fe97f8d467ff2a11240c32ef61e027da39bffd21e1c023a0540dc7282b70",
+      "event_census": {
+        "DECISION": 1,
+        "INITIALIZED": 1,
+        "ROLLED_BACK": 1,
+        "SOLVE_RESULT": 1
+      },
+      "independent_subsets_examined": 1,
+      "name": "Wang-empty",
+      "nodes": 1,
+      "reason": "SOLUTION",
+      "saved_complete_result_check": {
+        "complete": true,
+        "exact_solution_count": 1,
+        "status": "FINITE_EXACT_SOLUTION"
+      },
+      "saved_global_exact_solution_count": 1,
+      "status": "FINITE_EXACT_SOLUTION",
+      "whole_record_review": "PASS_SAVED_CHECK_AND_STRUCTURAL_JOINS"
+    },
+    {
+      "audits": 8,
+      "complete_canonical_record_sha256": "0154ab22fef537caa3682e9549d6c8bec6cc8a77c56aa5108685c847eacf4f0f",
+      "event_census": {
+        "DECISION": 3,
+        "INITIALIZED": 1,
+        "PLACED": 2,
+        "ROLLED_BACK": 1,
+        "SOLVE_RESULT": 1
+      },
+      "independent_subsets_examined": 4,
+      "name": "Wang-free",
+      "nodes": 3,
+      "reason": "SOLUTION",
+      "saved_complete_result_check": {
+        "complete": true,
+        "exact_solution_count": 1,
+        "status": "FINITE_EXACT_SOLUTION"
+      },
+      "saved_global_exact_solution_count": 1,
+      "status": "FINITE_EXACT_SOLUTION",
+      "whole_record_review": "PASS_SAVED_CHECK_AND_STRUCTURAL_JOINS"
+    },
+    {
+      "audits": 8,
+      "complete_canonical_record_sha256": "cd4c4aa2420a6c7318cc24fd78decc0381b90475917d1878ef197be11e594fda",
+      "event_census": {
+        "DECISION": 3,
+        "INITIALIZED": 1,
+        "PLACED": 2,
+        "ROLLED_BACK": 1,
+        "SOLVE_RESULT": 1
+      },
+      "independent_subsets_examined": 4,
+      "name": "Wang-fixed",
+      "nodes": 3,
+      "reason": "SOLUTION",
+      "saved_complete_result_check": {
+        "complete": true,
+        "exact_solution_count": 1,
+        "status": "FINITE_EXACT_SOLUTION"
+      },
+      "saved_global_exact_solution_count": 1,
+      "status": "FINITE_EXACT_SOLUTION",
+      "whole_record_review": "PASS_SAVED_CHECK_AND_STRUCTURAL_JOINS"
+    },
+    {
+      "audits": 4,
+      "complete_canonical_record_sha256": "dbef61c3098def765721b9aa6bc012dc1bbd34884780574bb510cd14f6e1face",
+      "event_census": {
+        "DECISION": 1,
+        "INITIALIZED": 1,
+        "ROLLED_BACK": 1,
+        "SOLVE_RESULT": 1
+      },
+      "independent_subsets_examined": 2,
+      "name": "Wang-fixed-contradiction",
+      "nodes": 1,
+      "reason": "EXHAUSTED",
+      "saved_complete_result_check": {
+        "complete": true,
+        "exact_solution_count": 0,
+        "status": "EXHAUSTED_FINITE_SEARCH"
+      },
+      "saved_global_exact_solution_count": 0,
+      "status": "EXHAUSTED_FINITE_SEARCH",
+      "whole_record_review": "PASS_SAVED_CHECK_AND_STRUCTURAL_JOINS"
+    },
+    {
+      "audits": 8,
+      "complete_canonical_record_sha256": "43335eca83057152975a50402ab89ef0b1b973424fc0a84c649c62b84b69acfc",
+      "event_census": {
+        "DECISION": 3,
+        "INITIALIZED": 1,
+        "PLACED": 2,
+        "ROLLED_BACK": 1,
+        "SOLVE_RESULT": 1
+      },
+      "independent_subsets_examined": 4,
+      "name": "Wang-disconnected",
+      "nodes": 3,
+      "reason": "SOLUTION",
+      "saved_complete_result_check": {
+        "complete": true,
+        "exact_solution_count": 1,
+        "status": "FINITE_EXACT_SOLUTION"
+      },
+      "saved_global_exact_solution_count": 1,
+      "status": "FINITE_EXACT_SOLUTION",
+      "whole_record_review": "PASS_SAVED_CHECK_AND_STRUCTURAL_JOINS"
+    },
+    {
+      "audits": 10,
+      "complete_canonical_record_sha256": "d861e4684bfb3907d73b274472ed8b610541bed84631f4a516f8090f5d8115fc",
+      "event_census": {
+        "DECISION": 4,
+        "INITIALIZED": 1,
+        "PLACED": 3,
+        "ROLLED_BACK": 1,
+        "SOLVE_RESULT": 1
+      },
+      "independent_subsets_examined": 8,
+      "name": "Wang-concave",
+      "nodes": 4,
+      "reason": "SOLUTION",
+      "saved_complete_result_check": {
+        "complete": true,
+        "exact_solution_count": 1,
+        "status": "FINITE_EXACT_SOLUTION"
+      },
+      "saved_global_exact_solution_count": 1,
+      "status": "FINITE_EXACT_SOLUTION",
+      "whole_record_review": "PASS_SAVED_CHECK_AND_STRUCTURAL_JOINS"
+    },
+    {
+      "audits": 20,
+      "complete_canonical_record_sha256": "720b9c379b6043309dfd2dd4646cec0ced13555118e8495c39072db8e4e18635",
+      "event_census": {
+        "DECISION": 9,
+        "INITIALIZED": 1,
+        "PLACED": 8,
+        "ROLLED_BACK": 1,
+        "SOLVE_RESULT": 1
+      },
+      "independent_subsets_examined": 256,
+      "name": "Wang-holey",
+      "nodes": 9,
+      "reason": "SOLUTION",
+      "saved_complete_result_check": {
+        "complete": true,
+        "exact_solution_count": 1,
+        "status": "FINITE_EXACT_SOLUTION"
+      },
+      "saved_global_exact_solution_count": 1,
+      "status": "FINITE_EXACT_SOLUTION",
+      "whole_record_review": "PASS_SAVED_CHECK_AND_STRUCTURAL_JOINS"
+    },
+    {
+      "audits": 6,
+      "complete_canonical_record_sha256": "cdf5c16e3bf94b2f331d8096150435508e233cf546a6fb18382f26307706b78b",
+      "event_census": {
+        "DECISION": 2,
+        "INITIALIZED": 1,
+        "PLACED": 1,
+        "ROLLED_BACK": 1,
+        "SOLVE_RESULT": 1
+      },
+      "independent_subsets_examined": 4,
+      "name": "Wang-decoration-identities",
+      "nodes": 2,
+      "reason": "SOLUTION",
+      "saved_complete_result_check": {
+        "complete": true,
+        "exact_solution_count": 2,
+        "status": "FINITE_EXACT_SOLUTION"
+      },
+      "saved_global_exact_solution_count": 2,
+      "status": "FINITE_EXACT_SOLUTION",
+      "whole_record_review": "PASS_SAVED_CHECK_AND_STRUCTURAL_JOINS"
+    },
+    {
+      "audits": 4,
+      "complete_canonical_record_sha256": "49e7f97b32e21a378883f1fd031889fe055825b7238b7bfea5886c9a52de8e34",
+      "event_census": {
+        "DECISION": 1,
+        "INITIALIZED": 1,
+        "ROLLED_BACK": 1,
+        "SOLVE_RESULT": 1
+      },
+      "independent_subsets_examined": 1,
+      "name": "Wang-empty-palette-dead",
+      "nodes": 1,
+      "reason": "EXHAUSTED",
+      "saved_complete_result_check": {
+        "complete": true,
+        "exact_solution_count": 0,
+        "status": "EXHAUSTED_FINITE_SEARCH"
+      },
+      "saved_global_exact_solution_count": 0,
+      "status": "EXHAUSTED_FINITE_SEARCH",
+      "whole_record_review": "PASS_SAVED_CHECK_AND_STRUCTURAL_JOINS"
+    },
+    {
+      "audits": 6,
+      "complete_canonical_record_sha256": "488d93782b932475d348138957ce006276a9cbba4a6bcc6610689d6962b12075",
+      "event_census": {
+        "DECISION": 2,
+        "INITIALIZED": 1,
+        "PLACED": 1,
+        "ROLLED_BACK": 1,
+        "SOLVE_RESULT": 1
+      },
+      "independent_subsets_examined": 4,
+      "name": "Wang-interior-mismatch",
+      "nodes": 2,
+      "reason": "EXHAUSTED",
+      "saved_complete_result_check": {
+        "complete": true,
+        "exact_solution_count": 0,
+        "status": "EXHAUSTED_FINITE_SEARCH"
+      },
+      "saved_global_exact_solution_count": 0,
+      "status": "EXHAUSTED_FINITE_SEARCH",
+      "whole_record_review": "PASS_SAVED_CHECK_AND_STRUCTURAL_JOINS"
+    },
+    {
+      "audits": 8,
+      "complete_canonical_record_sha256": "f5ddadc580cc52aa08a5fd27804d943c445656bd0c097ca80d99bd9c141bb08e",
+      "event_census": {
+        "DECISION": 3,
+        "INITIALIZED": 1,
+        "PLACED": 2,
+        "ROLLED_BACK": 1,
+        "SOLVE_RESULT": 1
+      },
+      "independent_subsets_examined": 16,
+      "name": "Wang-alternating-labels",
+      "nodes": 3,
+      "reason": "SOLUTION",
+      "saved_complete_result_check": {
+        "complete": true,
+        "exact_solution_count": 2,
+        "status": "FINITE_EXACT_SOLUTION"
+      },
+      "saved_global_exact_solution_count": 2,
+      "status": "FINITE_EXACT_SOLUTION",
+      "whole_record_review": "PASS_SAVED_CHECK_AND_STRUCTURAL_JOINS"
+    }
+  ],
+  "public_files": {
+    "archive": "point-proof-finite-point-qualification-evidence-v1.zip",
+    "report": "point-proof-parallel-progress-v1.html#finite-point-controller-current",
+    "summary": "point-proof-finite-point-qualification-summary-v1.json"
+  },
+  "remaining_gaps": [
+    "Finite explicit integer-unit/all-root qualification only. Generic admitted universe is input-enumerated; no prototype completeness inference outside the dedicated finite Wang compiler.",
+    "All ordinary reachable engine placements touch root obligations and have generation1; five unequal-generation selector controls are synthetic. Dynamic growth/fairness, infinite tiling and Turtle/Penrose geometric faithfulness remain unimplemented/unqualified.",
+    "One selected entry and one assumed ban are explicit controls; arbitrary multi-entry prefix/reason behavior is Source-reviewed but not separately fabricated here. Full callback-error variants/public rollback audit failure and supervisor timeout/log-overflow/host-interference branches were Source-reviewed, not injected in this normal actual.",
+    "Saved in-actual complete independent checks establish the controlled scientific predicates. This passive review did not rerun them. Per-invalid-operation before/after states are asserted by the authenticated worker, while the retained error record includes exceptions and initial/final state rather than a separate full pair for every rejected call. Dependency checks execute at every audit but only initial dependency-check summary is separately retained.",
+    "Every causal metric/removal increment is not independently reconstructed. No benchmark comparison, speedup, memory improvement, causal allocation, learning/RL, learned marking, FOL palette/controller, engine-discovered theorem or novelty claim.",
+    "Resource gates are cooperative/observed plus owned elapsed termination, not a hard RSS/filesystem/process sandbox. Current raw pre/post pins and Source-based execution assurance do not establish security against a malicious concurrent same-user host. Tail/reserve scope remains explicit.",
+    "Three prior symbolic-target failures and original Source-negative remain permanent/unchanged. This prerequisite progress does not replace those benchmarks or complete the broader research goal. No archive/publication authorized by this receipt."
+  ],
+  "resources": {
+    "after_custody_readback_observer_SELF": {
+      "elapsed_seconds": 0.15749254199909046,
+      "high_water_bytes": 24248320,
+      "label": "after_custody_receipt_write_and_full_readback",
+      "ru_maxrss_raw": 24248320,
+      "ru_maxrss_units": "bytes on required Darwin platform",
+      "system_seconds": 0.018432,
+      "user_seconds": 0.049533999999999995
+    },
+    "after_terminal_readback_observer_SELF": {
+      "elapsed_seconds": 0.15776758400170365,
+      "high_water_bytes": 24248320,
+      "label": "after_terminal_write_and_readback",
+      "ru_maxrss_raw": 24248320,
+      "ru_maxrss_units": "bytes on required Darwin platform",
+      "system_seconds": 0.018609999999999998,
+      "user_seconds": 0.049623999999999995
+    },
+    "all_saved_observer_SELF_capture_sites": [
+      {
+        "elapsed_seconds": 5.895900176255964e-05,
+        "high_water_bytes": 23937024,
+        "label": "observer_start",
+        "ru_maxrss_raw": 23937024,
+        "ru_maxrss_units": "bytes on required Darwin platform",
+        "system_seconds": 0.010612,
+        "user_seconds": 0.033791
+      },
+      {
+        "elapsed_seconds": 0.010638333998940652,
+        "high_water_bytes": 24100864,
+        "label": "after_preflight",
+        "ru_maxrss_raw": 24100864,
+        "ru_maxrss_units": "bytes on required Darwin platform",
+        "system_seconds": 0.013569999999999999,
+        "user_seconds": 0.041374999999999995
+      },
+      {
+        "elapsed_seconds": 0.011803624998719897,
+        "high_water_bytes": 24133632,
+        "label": "before_child_launch",
+        "ru_maxrss_raw": 24133632,
+        "ru_maxrss_units": "bytes on required Darwin platform",
+        "system_seconds": 0.014417,
+        "user_seconds": 0.041665
+      },
+      {
+        "elapsed_seconds": 0.1475369170002523,
+        "high_water_bytes": 24231936,
+        "label": "after_wait_and_drain_joins",
+        "ru_maxrss_raw": 24231936,
+        "ru_maxrss_units": "bytes on required Darwin platform",
+        "system_seconds": 0.015802999999999998,
+        "user_seconds": 0.042228999999999996
+      },
+      {
+        "elapsed_seconds": 0.14841179200084298,
+        "high_water_bytes": 24231936,
+        "label": "after_complete_output_readbacks",
+        "ru_maxrss_raw": 24231936,
+        "ru_maxrss_units": "bytes on required Darwin platform",
+        "system_seconds": 0.016212,
+        "user_seconds": 0.042695
+      },
+      {
+        "elapsed_seconds": 0.1566737089997332,
+        "high_water_bytes": 24231936,
+        "label": "after_complete_post_guards",
+        "ru_maxrss_raw": 24231936,
+        "ru_maxrss_units": "bytes on required Darwin platform",
+        "system_seconds": 0.018068,
+        "user_seconds": 0.049095
+      },
+      {
+        "elapsed_seconds": 0.15690995900149574,
+        "high_water_bytes": 24248320,
+        "label": "after_custody_record_initial_serialization",
+        "ru_maxrss_raw": 24248320,
+        "ru_maxrss_units": "bytes on required Darwin platform",
+        "system_seconds": 0.018097,
+        "user_seconds": 0.049304
+      }
+    ],
+    "child_after_wait_lifetime_highwater": {
+      "elapsed_seconds": 0.14751341699957266,
+      "high_water_bytes": 51707904,
+      "label": "after_owned_child_wait",
+      "ru_maxrss_raw": 51707904,
+      "ru_maxrss_units": "bytes on required Darwin platform",
+      "system_seconds": 0.012676,
+      "user_seconds": 0.09289399999999999
+    },
+    "child_launch_elapsed_seconds": 0.013318459001311567,
+    "child_wait_elapsed_seconds": 0.14750741700117942,
+    "declared_allowance_bytes": 9437184,
+    "exact_byte_join": "51707904 +24248320 +9437184 =85393408; all observed resource gates passed. Worker saved pre-serialization own highwater50266112 is an earlier scope than waited-child51707904.",
+    "interpretation": "Separate lifetime maxima plus declared allowance, not exact simultaneous/process-tree peak or hard OS memory cap. Worker0.06648295799823245 seconds is main-entry through pre-serialization capture; child launch-to-wait0.13418895799986785 includes its full observed lifetime; outer0.15776983400064637 is through last named observation. Differences do not identify causal allocation or performance gain. Final outer serialization/flush/shutdown tail remains unmeasured and allowance is not a proved bound.",
+    "memory_ceiling_bytes": 536870912,
+    "observed_child_plus_observer_plus_allowance_bytes": 85393408,
+    "observed_launch_to_wait_seconds": 0.13418895799986785,
+    "outer_elapsed_through_last_observation_seconds": 0.15776983400064637,
+    "worker_pre_serialization": {
+      "budget_callbacks_before_serialization": 1059,
+      "memory_scope": "Darwin RUSAGE_SELF lifetime maximum; cooperative checks, not a hard cap or exact process-tree measurement",
+      "worker_elapsed_seconds_before_serialization": 0.06648295799823245,
+      "worker_self_lifetime_highwater_bytes_before_serialization": 50266112
+    }
+  },
+  "result": {
+    "bytes": 704630,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-finite-point-controller-20261026/actual/finite-point-qualification-v2-case-0/worker-result.json",
+    "sha256": "1536441331960e62039f020d47e3a0ce37071287b998274a072ef0e191a91622"
+  },
+  "runtime": {
+    "bytes": 18058560,
+    "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+    "sha256": "d90bce0f5ac3aa40e2ee5900ad243bad0b2205ce17408278f088b34aed737840"
+  },
+  "schema": "Root-finite-point-qualification-public-summary-v1",
+  "source_versions": {
+    "engine": {
+      "bytes": 28697,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-finite-point-controller-20261026/implementation-B/finite_point_engine_v1.py",
+      "sha256": "ef8332761c5f5a8902ff122199f5938b65db90fe9bf46355e185926dccb6a897"
+    },
+    "observer": {
+      "bytes": 30878,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-finite-point-controller-20261026/custody-L/finite_point_once_observer_v2.py",
+      "sha256": "8c4fb7219c94bfd140fe0c0697829c22fe082895f2bc4c049ca361cc8171919d"
+    },
+    "oracle": {
+      "bytes": 29683,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-finite-point-controller-20261026/independent-C/finite_point_independent_v2.py",
+      "sha256": "afd0c89339a959066371037ef3498beb71d2138315e4f25ec360c6bb4114aab7"
+    },
+    "worker": {
+      "bytes": 45616,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-finite-point-controller-20261026/independent-C/finite_point_qualification_v2.py",
+      "sha256": "8694a8bc2ae47e0877c12e1291eed32b960fb05221316e4102fabca91f25905b"
+    }
+  },
+  "status": "QUALIFIED_DECLARED_FINITE_POINT_CONTROLS",
+  "title": "The point controller passes its first controls."
+}

@@ -8,7 +8,114 @@
 
 .stop{background:#fff0eb;border-color:#d9b4a7}.stop b{color:#974526}.path{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.path article{border:1px solid var(--rule);padding:18px;border-radius:9px;background:#f1f5f2}.path strong{display:block;color:var(--purple);font-size:20px}summary{cursor:pointer;color:var(--teal)}@media(max-width:760px){.path{grid-template-columns:1fr}} 
 .family-visual{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:22px 0}.fragment{padding:16px;border:1px solid var(--rule);border-radius:10px;background:#fafbf9}.fragment h3{margin:0 0 14px;font-size:18px}.fragment p{font-size:14px;margin:12px 0 0}.tile-line{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.symbol-tile{aspect-ratio:1;display:flex;flex-direction:column;justify-content:space-between;align-items:center;border:3px solid;border-radius:3px;padding:8px 4px;text-align:center;background:white;min-height:115px}.symbol-tile span,.symbol-tile small{font-size:11px;line-height:1.2}.symbol-tile div{font-size:17px;max-width:100%}.symbol-tile.axiom{border-color:var(--purple);background:#f5f1fb}.symbol-tile.boundary{border-color:var(--teal);background:#ecf7f4}.symbol-tile.inference{border-color:var(--amber);background:#fff4e5}details ol{padding-left:25px}details li{margin:12px 0}@media(max-width:950px){.family-visual{grid-template-columns:1fr}}@media(max-width:420px){.symbol-tile{min-height:105px}.symbol-tile div{font-size:14px}}
-</style></head><body><main>
+</style></head><body><section id="finite-point-controller-current" aria-labelledby="finite-point-controller-title">
+<style>
+#finite-point-controller-current{padding:28px 18px;margin:0 0 36px;border-top:6px solid #23716c;background:#fff;color:#24363c;border-radius:16px;line-height:1.65;box-sizing:border-box}
+#finite-point-controller-current h1{font-size:clamp(1.8rem,5vw,2.8rem);line-height:1.15;margin:.6rem 0 1.2rem;color:#18383c}
+#finite-point-controller-current h2{line-height:1.25;margin:1.8rem 0 .8rem}
+#finite-point-controller-current .fp-kicker{text-transform:uppercase;letter-spacing:.07em;font-size:.76rem;font-weight:750;color:#276b66}
+#finite-point-controller-current .fp-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin:1.3rem 0}
+#finite-point-controller-current .fp-card{border:1px solid #d6e3e4;border-top:4px solid #23716c;border-radius:10px;padding:12px;background:#f7fbfa}
+#finite-point-controller-current .fp-card strong{display:block;font-size:1.8rem;line-height:1.4;color:#1f625e}
+#finite-point-controller-current .fp-card span{display:block;font-size:.9rem;line-height:1.45}
+#finite-point-controller-current figure{margin:1.2rem 0;padding:14px;background:#f4f8f9;border:1px solid #d5e1e5;border-radius:12px}
+#finite-point-controller-current svg{width:100%;height:auto;max-width:520px;display:block;margin:auto}
+#finite-point-controller-current figcaption{font-size:.94rem;margin-top:.8rem;line-height:1.65}
+#finite-point-controller-current .fp-legend{display:flex;flex-wrap:wrap;gap:.5rem 1.4rem;font-size:.9rem;justify-content:center;margin:.7rem 0}
+#finite-point-controller-current .fp-swatch{display:inline-block;width:.8rem;height:.8rem;border-radius:50%;margin-right:.35rem;vertical-align:-.08rem}
+#finite-point-controller-current .fp-steps{padding-left:1.4rem}
+#finite-point-controller-current .fp-steps li{padding-left:.3rem;margin:.6rem 0}
+#finite-point-controller-current .fp-note{padding:14px 16px;background:#edf6f4;border-left:4px solid #23716c;border-radius:4px;margin:1rem 0}
+#finite-point-controller-current .fp-scroll{overflow-x:auto;margin:1rem 0}
+#finite-point-controller-current table{border-collapse:collapse;width:100%;font-size:.92rem}
+#finite-point-controller-current th,#finite-point-controller-current td{padding:.65rem .6rem;text-align:left;border-bottom:1px solid #d8e2e5;vertical-align:top}
+#finite-point-controller-current th{background:#f0f5f6}
+#finite-point-controller-current .fp-links{display:flex;flex-wrap:wrap;gap:.6rem 1.3rem;margin:1.4rem 0}
+#finite-point-controller-current details{padding:12px;border:1px solid #d5e1e5;border-radius:8px;margin:1rem 0}
+#finite-point-controller-current summary{font-weight:700;cursor:pointer}
+#finite-point-controller-current code{overflow-wrap:anywhere}
+</style>
+<div class="fp-kicker">Implemented point controller · complete finite qualification · 26 October 2026 UTC</div>
+<h1 id="finite-point-controller-title">The point controller passes its first controls.</h1>
+<p>The new search runs on exact point tiles, a shared frontier graph, literal marking values and reversible placement decisions. One bounded execution completed the declared finite controls; a separate reviewer and Root accepted the complete evidence. This supplies an implemented and tested foundation for the Wang proof-search encoding.</p>
+<div class="fp-cards" aria-label="Finite controller qualification counts">
+<div class="fp-card"><strong>\(33\)</strong><span>Control instances accepted</span></div>
+<div class="fp-card"><strong>\(222\)</strong><span>Stable event checks retained</span></div>
+<div class="fp-card"><strong>\(0\)</strong><span>New mathematical theorems</span></div>
+</div>
+<p>The independent checker examined \(515\) optional-placement subsets across these tiny controls. The \(31\) search calls returned \(21\) finite exact solutions, \(6\) exhausted finite searches and \(4\) deliberately induced unknown results. Complete rollback and the distinction between unknown and exhaustion were part of the checks.</p>
+
+<h2>One branch forces the neighboring Wang tile</h2>
+<p>This is a recorded result from <code>Wang-alternating-labels</code>. Both cells initially admit either tile type. The engine chooses Tile X on the left; matching at the shared marking point leaves Tile Y as the sole candidate on the right.</p>
+<figure>
+<svg viewBox="0 0 480 290" role="img" aria-labelledby="fp-wang-svg-title fp-wang-svg-description" xmlns="http://www.w3.org/2000/svg">
+<title id="fp-wang-svg-title">Actual two-cell Wang solution with point anchors and colored markings</title>
+<desc id="fp-wang-svg-description">Tile X is placed by a branch on the left. Tile Y is then forced on the right. Their shared blue midpoint markings agree. Green marks appear on both north and south sides, amber marks on the two outer sides. White circles show the two unit coverage anchors. Square outlines are drawing guides.</desc>
+<g font-family="system-ui,sans-serif" font-size="19" fill="#24363c">
+<rect x="40" y="30" width="200" height="200" fill="white" stroke="#bdccd1" stroke-dasharray="5 5"/>
+<rect x="240" y="30" width="200" height="200" fill="white" stroke="#bdccd1" stroke-dasharray="5 5"/>
+<path d="M40 30H440 M40 230H440" stroke="#318765" stroke-width="6" opacity=".55"/>
+<path d="M40 30V230 M440 30V230" stroke="#bc842c" stroke-width="6" opacity=".55"/>
+<path d="M240 30V230" stroke="#347dba" stroke-width="6" opacity=".55"/>
+<g fill="#318765"><circle cx="140" cy="30" r="10"/><circle cx="340" cy="30" r="10"/><circle cx="140" cy="230" r="10"/><circle cx="340" cy="230" r="10"/></g>
+<g fill="#bc842c"><circle cx="40" cy="130" r="10"/><circle cx="440" cy="130" r="10"/></g>
+<circle cx="240" cy="130" r="11" fill="#347dba"/>
+<g fill="white" stroke="#24363c" stroke-width="3"><circle cx="140" cy="130" r="13"/><circle cx="340" cy="130" r="13"/></g>
+<text x="140" y="95" text-anchor="middle" font-weight="650">Tile X</text><text x="340" y="95" text-anchor="middle" font-weight="650">Tile Y</text>
+<text x="140" y="183" text-anchor="middle" font-size="16">Branch placement</text><text x="340" y="183" text-anchor="middle" font-size="16">Forced placement</text>
+<text x="240" y="274" text-anchor="middle" font-size="15">White anchors cover; colored points compare</text>
+</g></svg>
+<div class="fp-legend" aria-label="Literal Wang color values">
+<span><span class="fp-swatch" style="background:#347dba"></span>Literal color <code>a</code></span>
+<span><span class="fp-swatch" style="background:#bc842c"></span>Literal color <code>b</code></span>
+<span><span class="fp-swatch" style="background:#318765"></span>Literal color <code>v</code></span>
+</div>
+<figcaption>The displayed assignment comes from the saved search and independently checked inverse Wang assignment. The renderer draws the square guides. The solver uses unit coverage at \(Q=\{(0,0),(2,0)\}\) and literal marking agreement at the side midpoints. The shared point is \((1,0)\). Its two assignments both carry <code>a</code>. All seven distinct marking points lie outside \(Q\); they create no coverage obligations. Placements use translations only.</figcaption>
+</figure>
+<ol class="fp-steps">
+<li><strong>Choose Tile X.</strong> The left required point has two candidates, so this is a genuine branch decision.</li>
+<li><strong>Propagate the shared value.</strong> Tile X on the right would assign <code>b</code> to the occupied shared mark. That candidate is removed; Tile Y assigns <code>a</code> and becomes forced.</li>
+<li><strong>Check and undo.</strong> The complete point solution and original Wang assignment pass their independent checks. The explicit rollback then restores both original candidate domains.</li>
+</ol>
+<p>These colors define the small Wang problem. Learning additional useful markings, and compiling a mathematical theorem and its proof checker into such a palette, are still future steps.</p>
+
+<h2>A distant marking updates every affected frontier edge</h2>
+<p>A separate recorded point control exercises the extended marking support. Tile A assigns literal <code>0</code> at \((1000,1000)\); Tile B assigns literal <code>1</code> at the same slot and covers both of the later roots. Neither marking adds coverage at that distant point.</p>
+<div class="fp-scroll"><table aria-label="Recorded distant-marking frontier domains">
+<thead><tr><th>Recorded state</th><th>Root \((0,0)\)</th><th>Root \((1,0)\)</th><th>Root \((2,0)\)</th></tr></thead>
+<tbody>
+<tr><td>Initial domains</td><td>\(\{A\}\)</td><td>\(\{B,C\}\)</td><td>\(\{B,D\}\)</td></tr>
+<tr><td>After forced Tile A</td><td>Filled</td><td>\(\{C\}\)</td><td>\(\{D\}\)</td></tr>
+<tr><td>After forced Tiles C and D</td><td>Filled</td><td>Filled</td><td>Filled</td></tr>
+</tbody></table></div>
+<p>The single marking disagreement removes the shared candidate B from both frontier domains. The saved solution is \(\{A,C,D\}\), and rollback restores the original domains and the unassigned marking slot. This directly exercises the point/candidate dependency graph. These marking values were authored as part of the control; no marking was learned in this run.</p>
+
+<h2>What has been qualified</h2>
+<p>The complete case checks untouched required points and pockets, exact capacity units and fractional residuals, shared forced placements, marking values versus absent values, distant supports, full graph reconstruction and nested rollback. Finite Wang controls cover free and fixed boundaries, disconnected and concave regions, a hole with a grouped exterior seed, distinct labels with identical decoration, and contradictory cases.</p>
+<p>The corrected independent checker also tested a search begun with a selected tile and a manually excluded alternative. Three globally valid point solutions that violated those starting conditions were rejected. The manual exclusion remains a declared assumption. The archive retains every control, every event and the earlier code-review findings.</p>
+<details><summary>Counts, timing and resource scope</summary>
+<div class="fp-scroll"><table aria-label="Complete finite qualification census">
+<thead><tr><th>Check family</th><th>Retained result</th></tr></thead><tbody>
+<tr><td>Valid control instances / search calls</td><td>\(33\) / \(31\)</td></tr>
+<tr><td>Stable event checks / optional subsets examined</td><td>\(222\) / \(515\)</td></tr>
+<tr><td>Malformed point models / Wang inputs rejected</td><td>\(19\) / \(9\)</td></tr>
+<tr><td>Synthetic selector checks / context-invalid result checks</td><td>\(5\) / \(3\)</td></tr>
+</tbody></table></div>
+<p>The observer recorded the bounded workflow through its last capture at approximately \(0.158\,\mathrm{s}\). Separately observed child and observer lifetime high-waters, plus the declared \(9\,\mathrm{MiB}\) allowance, sum to \(81.44\,\mathrm{MiB}\), below the declared \(512\,\mathrm{MiB}\) gate. This is an observed sum with an allowance; it is not an exact simultaneous process-tree peak or a hard memory cap. The final outer serialization, flush and shutdown tail remains unmeasured.</p>
+<p>These measurements include this tiny qualification workflow and its independent checks. They establish no proof-search speedup or memory advantage. All required points in this finite implementation begin at generation zero; the unequal-generation selector cases are synthetic. Dynamic growth and fairness have not been qualified.</p>
+</details>
+<div class="fp-note"><strong>Research assessment.</strong> We now have an implemented finite point search with inspected Wang tiles and working marking propagation. There is still no trained RL policy, learned restriction, first-order proof palette or new theorem found by this engine, and no demonstrated GCTS+RL advantage. The three earlier searches on the original symbolic target remain memory failures.</div>
+<h2>The next bridge is an actual computation tableau</h2>
+<p>Next comes a supplied finite local transition table compiled into an explicit Wang/point instance, with a checked inverse. The shared first-order verifier, bounded certificate encoding and human proof-line map must then be supplied. Certified or explicitly labeled learned markings and validated RL cluster families follow through the same complete base graph. Turtle and Penrose tiling, practical boundaries, hierarchical receptor families and the separate original-target memory diagnosis remain in the research program.</p>
+<div class="fp-links">
+<a href="point-proof-finite-point-qualification-summary-v1.json">Complete public result summary</a>
+<a href="point-proof-finite-point-qualification-evidence-v1.zip">Full selected controller evidence archive</a>
+<a href="point-proof-frozen-target-v2-evidence-v1.zip">Earlier three-target evidence archive</a>
+</div>
+<p><small>The new archive contains the selected current sources, complete sole qualification case, logs, reviews, provenance and mathematical design inputs. Earlier complete archives remain available separately. Runtime identity is recorded; the runtime binary is not included. Original raw evidence was preserved, and publication performs no scientific replay.</small></p>
+<p class="fp-note"><strong>Earlier experiments follow.</strong> Their dated outcomes are preserved. This finite-controller qualification is the latest milestone on this page.</p>
+</section>
+<main>
 <style>
 .frozen-target-current{border-top:6px solid #9b442f}.frozen-target-current .status{color:#9b442f}.frozen-target-current .ft-pipeline{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:22px 0}.frozen-target-current .ft-run{min-width:0;border:1px solid #d4dedb;border-radius:10px;padding:16px;background:#fafbf9}.frozen-target-current .ft-run h3{font-size:18px;line-height:1.3;margin:0 0 14px}.frozen-target-current .ft-stage{padding:12px;margin-top:8px;border-left:4px solid;line-height:1.35;font-size:15px}.frozen-target-current .ft-done{background:#e8f3ed;border-color:#27795c}.frozen-target-current .ft-failed{background:#fae7df;border-color:#aa4c34}.frozen-target-current .ft-unreached{background:#eef0f1;border-color:#89959a;color:#52636a}.frozen-target-current .ft-table{overflow-x:auto}.frozen-target-current .ft-table table{min-width:700px}.frozen-target-current .ft-number{font-size:30px;line-height:1.25;color:#9b442f}.frozen-target-current .ft-note{background:#fff1e4;border-left:4px solid #a15f23;padding:14px 18px}.frozen-target-current code{overflow-wrap:anywhere}.frozen-target-current pre{overflow-x:auto;font-size:13px;background:#f2f4f3;padding:14px}@media(max-width:760px){.frozen-target-current .ft-pipeline{grid-template-columns:1fr}.frozen-target-current .ft-number{font-size:26px}}
 </style>
