@@ -1,0 +1,354 @@
+{
+  "aggregate": {
+    "bytes": 57269,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/root/frozen-target-contextual-three-arm-Root-complete-whole-disposition-v2.json",
+    "sha256": "0cf4ec7591574fd92e3e7b1d8a9e9aad061d9a74a07ff996e760b3fbc9994dba"
+  },
+  "assessment": "The unchanged original target was not solved within any of these three bounded whole-case attempts. No normal public search result/certificate/dual/use evidence exists. This is a bounded feasibility failure for this implementation/configuration, not a theorem about provability, family usefulness, DAG representation or GCTS/RL.",
+  "case_retries": 0,
+  "cases": [
+    {
+      "C_complete_actual_audit": {
+        "bytes": 35137,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/review-C/typed-frozen-target-v2-NO_LIBRARY-complete-owned-actual-passive-audit-v1.json",
+        "sha256": "e7657add7d77f39bba6acb7d5f2b686aba67e09b40f8a420e4c4d7fc2f6ec598"
+      },
+      "Root_disposition": {
+        "bytes": 10036,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/root/frozen-target-v2-NO_LIBRARY-Root-complete-whole-negative-disposition-v1.json",
+        "sha256": "dd04c65f8af9d0335135ea56f6eded24e0188346ec37b5ec61debc68d846cf87"
+      },
+      "Root_once_acceptance": {
+        "bytes": 3541,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/root/frozen-target-contextual-reuse-v2-NO_LIBRARY-Root-once-acceptance-v1.json",
+        "sha256": "5743f6e38742fedbc4d8bc17115d0403366ce41f1e73a5011f80be7ad02cb254"
+      },
+      "Root_raw_actual_audit": {
+        "bytes": 29262,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/root/frozen-target-v2-NO_LIBRARY-Root-complete-raw-passive-audit-v1.json",
+        "sha256": "3719cd94dd3c8667888781fbdc20ef20ccee0661aeb3fa60a5b8fb199b8d56ec"
+      },
+      "all7_positive_fields_null": [
+        "qualification_provenance",
+        "input_freeze",
+        "library_provenance",
+        "producer_result",
+        "subject_receipt",
+        "reference_receipt",
+        "scientific_result"
+      ],
+      "arm": "NO_LIBRARY",
+      "case_id": "frozen-target-contextual-reuse-v2-NO_LIBRARY",
+      "complete_C_review": {
+        "bytes": 29575,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/review-C/typed-frozen-target-v2-NO_LIBRARY-complete-whole-actual-negative-review-v1.json",
+        "sha256": "c95a2fa823d9da4713a92f48e068da62e07ae25d74836a712b6b3419901fa944"
+      },
+      "consumed_grant": {
+        "bytes": 1035,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/root/grants/frozen-target-contextual-reuse-v2-NO_LIBRARY.json",
+        "sha256": "3f94de01b6f1e2cb32ca3cc51b39f3cc96e53695075799ac547b7ce937126dee"
+      },
+      "contextual_use_admitted": false,
+      "first_error": "RootBudget: whole Python high-water ceiling",
+      "first_fault_stage": {
+        "began": 0.266759666001235,
+        "name": "SEARCH NO_LIBRARY",
+        "status": "STARTED"
+      },
+      "normal_return": false,
+      "observations": {
+        "OS_child_peak_bytes": 1215037440,
+        "callbacks": 58932106,
+        "conservative_combined_peak_bytes": null,
+        "conservative_whole_peak_bytes": null,
+        "final_conservative_whole_peak_bytes": null,
+        "final_custody_gate_seconds": 44.925806332999855,
+        "first_fault_ns": 13597145820208,
+        "header_python_peak_bytes": 1199390720,
+        "header_seconds": 43.370007250001436,
+        "known_child_exit_seconds": 44.91316350000125,
+        "known_parent_exit_seconds": 44.95720662500025,
+        "observer_peak_bytes": 21823488,
+        "observer_reserve_bytes": 9437184,
+        "parent_peak_bytes": 40501248,
+        "saved_final_observer_gate_seconds": 44.9579495830003,
+        "saved_observer_elapsed_seconds": 44.95761979099916,
+        "stdout_seconds": 43.370271625000896,
+        "terminal_outer_seconds": 44.92571725000016,
+        "terminal_reserve_bytes": 9437184,
+        "worker_elapsed_seconds": 43.36584641599984,
+        "worker_python_peak_bytes": 1198702592
+      },
+      "owned_bytes": 12373,
+      "owned_files": 11,
+      "plan": {
+        "bytes": 28975,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/root/plans/frozen-target-contextual-reuse-v2-NO_LIBRARY.json",
+        "sha256": "ffe4b14bc33863fccac13d88dcca61ead85659f37e72793b727aa6547823cfda"
+      },
+      "proof_admitted": false,
+      "resource_qualified": false,
+      "scientific_case_accepted": false
+    },
+    {
+      "C_complete_actual_audit": {
+        "bytes": 35623,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/review-C/typed-frozen-target-v2-CD-complete-owned-actual-passive-audit-v1.json",
+        "sha256": "b237ee4618ed57f83434a3127c010eb8f61a8d3752fe96ace7bef3a39c1daf0c"
+      },
+      "Root_disposition": {
+        "bytes": 10790,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/root/frozen-target-v2-CONDITIONAL_LEMMA_CD-Root-complete-whole-negative-disposition-v1.json",
+        "sha256": "f27b7565a33a2f4859a6b375d8144bdecab998fd57fe299639f876af49c87769"
+      },
+      "Root_once_acceptance": {
+        "bytes": 4104,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/root/frozen-target-contextual-reuse-v2-CONDITIONAL_LEMMA_CD-Root-once-acceptance-v1.json",
+        "sha256": "2e5a53a425bbf51728cd723731c1febfbb1d80961cf96b38a7225faf0700ea31"
+      },
+      "Root_raw_actual_audit": {
+        "bytes": 31600,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/root/frozen-target-v2-CONDITIONAL_LEMMA_CD-Root-complete-raw-passive-audit-v1.json",
+        "sha256": "c28360a171acec9d185fc912089d1a4963c01ad592edee36ee9d9bac43e5c2af"
+      },
+      "all7_positive_fields_null": [
+        "qualification_provenance",
+        "input_freeze",
+        "library_provenance",
+        "producer_result",
+        "subject_receipt",
+        "reference_receipt",
+        "scientific_result"
+      ],
+      "arm": "CONDITIONAL_LEMMA_CD",
+      "case_id": "frozen-target-contextual-reuse-v2-CONDITIONAL_LEMMA_CD",
+      "complete_C_review": {
+        "bytes": 23431,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/review-C/typed-frozen-target-v2-CD-complete-whole-actual-negative-review-v1.json",
+        "sha256": "d687ac244a990911b01aab42c91cb0474d3dddc6a70ee5209e96e31efdf99717"
+      },
+      "consumed_grant": {
+        "bytes": 1055,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/root/grants/frozen-target-contextual-reuse-v2-CONDITIONAL_LEMMA_CD.json",
+        "sha256": "b2e85d358dc1f9a950cd3cd91a6c638f2e902d7efe04bc8c3baa36f8362d688c"
+      },
+      "contextual_use_admitted": false,
+      "first_error": "RootBudget: whole Python high-water ceiling",
+      "first_fault_stage": {
+        "began": 0.5937485840004229,
+        "name": "SEARCH CONDITIONAL_LEMMA_CD",
+        "status": "STARTED"
+      },
+      "normal_return": false,
+      "observations": {
+        "OS_child_peak_bytes": 1075314688,
+        "callbacks": 13184908,
+        "conservative_combined_peak_bytes": null,
+        "conservative_whole_peak_bytes": null,
+        "final_conservative_whole_peak_bytes": null,
+        "final_custody_gate_seconds": 14.884071708998817,
+        "first_fault_ns": 18405418599708,
+        "header_python_peak_bytes": 1075298304,
+        "header_seconds": 13.625037792000512,
+        "known_child_exit_seconds": 14.872431542000413,
+        "known_parent_exit_seconds": 14.937896625000576,
+        "observer_peak_bytes": 21905408,
+        "observer_reserve_bytes": 9437184,
+        "parent_peak_bytes": 40353792,
+        "saved_final_observer_gate_seconds": 14.93861270799971,
+        "saved_observer_elapsed_seconds": 14.938364875000843,
+        "stdout_seconds": 13.625300292002066,
+        "terminal_outer_seconds": 14.883995459000289,
+        "terminal_reserve_bytes": 9437184,
+        "worker_elapsed_seconds": 13.623091417000978,
+        "worker_python_peak_bytes": 1075200000
+      },
+      "owned_bytes": 12834,
+      "owned_files": 11,
+      "plan": {
+        "bytes": 29005,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/root/plans/frozen-target-contextual-reuse-v2-CONDITIONAL_LEMMA_CD.json",
+        "sha256": "cf4b70e1ce6b0b4d978751ff388e1031aff649f7d42ebbfd3eea1a78016d61d7"
+      },
+      "proof_admitted": false,
+      "resource_qualified": false,
+      "scientific_case_accepted": false
+    },
+    {
+      "C_complete_actual_audit": {
+        "bytes": 34927,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/review-C/typed-frozen-target-v2-DAG-complete-owned-actual-passive-audit-v1.json",
+        "sha256": "86fc14397870501891ad64e6c6e1163b22aec0140938da57d3f29e7787638196"
+      },
+      "Root_disposition": {
+        "bytes": 10644,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/root/frozen-target-v2-RECEPTOR_DAG-Root-complete-whole-negative-disposition-v1.json",
+        "sha256": "982ab1aef08834f6b431ffec9e83f86ae1b51d45eddf6a12b65e9399795ad6f0"
+      },
+      "Root_once_acceptance": {
+        "bytes": 3980,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/root/frozen-target-contextual-reuse-v2-RECEPTOR_DAG-Root-once-acceptance-v1.json",
+        "sha256": "9a79d68e8515774028de56f52729656ce399339b828f6cdfcc912f297aa37614"
+      },
+      "Root_raw_actual_audit": {
+        "bytes": 30853,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/root/frozen-target-v2-RECEPTOR_DAG-Root-complete-raw-passive-audit-v1.json",
+        "sha256": "b8d22a4baca719d666faeab0db3edebf38db6dee2d0405e5bf7671eaa469cff7"
+      },
+      "all7_positive_fields_null": [
+        "qualification_provenance",
+        "input_freeze",
+        "library_provenance",
+        "producer_result",
+        "subject_receipt",
+        "reference_receipt",
+        "scientific_result"
+      ],
+      "arm": "RECEPTOR_DAG",
+      "case_id": "frozen-target-contextual-reuse-v2-RECEPTOR_DAG",
+      "complete_C_review": {
+        "bytes": 23362,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/review-C/typed-frozen-target-v2-DAG-complete-whole-actual-negative-review-v1.json",
+        "sha256": "7a883d0735da76f76f114d44426045b6649194d0d4658206ada52a35c4021866"
+      },
+      "consumed_grant": {
+        "bytes": 1039,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/root/grants/frozen-target-contextual-reuse-v2-RECEPTOR_DAG.json",
+        "sha256": "fbf1bbc6d07fe0d97c84d5975fd4ca59edb4a47b62b38046b563eabb27593979"
+      },
+      "contextual_use_admitted": false,
+      "first_error": "RootBudget: whole Python high-water ceiling",
+      "first_fault_stage": {
+        "began": 0.5316474169994763,
+        "name": "SEARCH RECEPTOR_DAG",
+        "status": "STARTED"
+      },
+      "normal_return": false,
+      "observations": {
+        "OS_child_peak_bytes": 1088536576,
+        "callbacks": 14322541,
+        "conservative_combined_peak_bytes": null,
+        "conservative_whole_peak_bytes": null,
+        "final_conservative_whole_peak_bytes": null,
+        "final_custody_gate_seconds": 14.769921250001062,
+        "first_fault_ns": 18913392263291,
+        "header_python_peak_bytes": 1076510720,
+        "header_seconds": 13.476752334001503,
+        "known_child_exit_seconds": 14.756156458999612,
+        "known_parent_exit_seconds": 14.816942375000508,
+        "observer_peak_bytes": 21807104,
+        "observer_reserve_bytes": 9437184,
+        "parent_peak_bytes": 40484864,
+        "saved_final_observer_gate_seconds": 14.817765957999654,
+        "saved_observer_elapsed_seconds": 14.817443750001985,
+        "stdout_seconds": 13.476993416999903,
+        "terminal_outer_seconds": 14.769844375001412,
+        "terminal_reserve_bytes": 9437184,
+        "worker_elapsed_seconds": 13.474047416999383,
+        "worker_python_peak_bytes": 1075904512
+      },
+      "owned_bytes": 12089,
+      "owned_files": 11,
+      "plan": {
+        "bytes": 28981,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/root/plans/frozen-target-contextual-reuse-v2-RECEPTOR_DAG.json",
+        "sha256": "600ef644fcace837714894647b1c6cd76017610d144fb4f5f81a776306373548"
+      },
+      "proof_admitted": false,
+      "resource_qualified": false,
+      "scientific_case_accepted": false
+    }
+  ],
+  "comparative_limits": "One original target/one cold attempt perarm, all censored by cooperative memory refusal. Diagnostic stop clocks/callbacks/postfault peaks may be reported with original capture sites; no proof-search speed/ranking, qualified whole aggregate peak, B6/D90 improvement, transfer/necessity or dominant allocation cause inferred. Original combined/whole peaks remain null.",
+  "configuration": {
+    "control_only": false,
+    "fallback_witness_nodes": 9,
+    "intro_depth": 8,
+    "obligation_nodes": 512,
+    "oldest_period": 4,
+    "ordering": "FOCUSED",
+    "priority_subformula_nodes": 512,
+    "schema": "FPC-H1-obligation-configuration-v1",
+    "term_depth": 2,
+    "variables": 8
+  },
+  "conformance": "Ordinary symbolic shared-information obligation-search adaptation only; no implemented point-value t/m/full frontier/global dead-forced/earliest-generation/exactrollback/marking or trained RL conformance. No fixed finite universal Wangpalette or new geometry theorem from these failed runs.",
+  "contextual_uses_admitted": 0,
+  "earlier_qualification_archive_href": "point-proof-ledger-qualification-evidence-v2.zip",
+  "evidence_archive_href": "point-proof-frozen-target-v2-evidence-v1.zip",
+  "evidence_scope": "Full exact selected Source/admin/33 owned byte records plus original opaque input carriers and prior published archive, catalogue and separately pinned runtime; package CRC/hash checks are transport checks, not scientific revalidation. Actuals retain original negative flags and seven retired null envelopes. No new checker/parser or search replay.",
+  "experiment": "frozen-target-contextual-reuse-v2",
+  "finite_qualification_scope": "CurrentSource3/D90 finite43normal/39same-byte-dual/6group controls remain separately admitted. Selected open/hierarchy/CDtemporary/native-cleanup gaps persist. Their pass did not predict production targetfit.",
+  "limits": {
+    "custody_seconds": 210,
+    "log_bytes": 4194304,
+    "memory_bytes": 1073741824,
+    "observer_fallback_seconds": 225,
+    "physical_bytes": 134217728,
+    "positive_seconds": 180,
+    "reserved_outer_bytes": 9437184,
+    "result_bytes": 50331648,
+    "root_callbacks": 400000000,
+    "work_seconds": 160
+  },
+  "matched_design": {
+    "CD_DAG_same_complete_acquired_families": 7,
+    "NO_LIBRARY_families": 0,
+    "exact_per_case_normal_returns": 0,
+    "fixed_serial_arms": [
+      "NO_LIBRARY",
+      "CONDITIONAL_LEMMA_CD",
+      "RECEPTOR_DAG"
+    ],
+    "one_original_frozen_target": true,
+    "same_Source3_D90_configuration_ten_caps": true,
+    "scientific_provenance_retired": true,
+    "scope": "Prospective design/common Source/data authority match; all actual positive provenance retired on failure. No recovered intermediate family/binding/use snapshot or matched normal search output.",
+    "target_identity": {
+      "bytes": 38,
+      "sha256": "8e56b3ed583f537881ffebcd40dc32443e5b0e204e52a978f9b7e65ee6104f24"
+    }
+  },
+  "module_pins": {
+    "builders": {
+      "bytes": 11348,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc_h1_ast_and_builders_v1.py",
+      "sha256": "a42aa71f1e5482a1e1d9637290b4c7f8b52f366d86f7234a86cb11420171ed32"
+    },
+    "checker": {
+      "bytes": 31557,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/implementation-B/fpc_h1_byte_checker_v1.py",
+      "sha256": "140a9c4b7a6a18c4c20aa4294a0f3fa90f65fe319adbf47a22125170f32b2ef7"
+    },
+    "consumer": {
+      "bytes": 153867,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/implementation-B/fpc_h1_contextual_library_producer_v3.py",
+      "sha256": "040ab9c296f709177c87a4e87b8c709acc58475c5266043cbccf99a4485fca4d"
+    },
+    "instance": {
+      "bytes": 46609,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/implementation-B/fpc_receptor_instance_service_v2.py",
+      "sha256": "7b7ca98d3e3dd2e48680d5f499594a8ec7322753bf7a6e8511d5cc667526fae9"
+    },
+    "reference": {
+      "bytes": 24681,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-fixed-wang-compiler-20261021/diagnostics-L/fpc_h1_independent_reference_v2.py",
+      "sha256": "ecda2a10feb69e5aed6ae34dc6c2123dbbc3297ab5c0a431861d628e9cd4334a"
+    }
+  },
+  "new_proofs_admitted": 0,
+  "next_priority": "Publish full coherent negative comparison and explicit evidence closure, then design separately reviewed bounded resource-accounting diagnostics for the unchanged target and exact production search. Preserve full research scope/point-GCTS gap; no easier retarget, blindly larger cap, partialproof salvage or unmeasured scientific call.",
+  "normal_returns": 0,
+  "owned_bytes": 37296,
+  "owned_files": 33,
+  "python": {
+    "bytes": 18058560,
+    "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+    "sha256": "d90bce0f5ac3aa40e2ee5900ad243bad0b2205ce17408278f088b34aed737840"
+  },
+  "qualified_resource_results": 0,
+  "reader_section_href": "point-proof-parallel-progress-v1.html#frozen-target-current",
+  "schema": "Root-frozen-target-v2-public-result-summary-v1",
+  "status": "ALL_THREE_BOUNDED_SEARCH_MEMORY_FAILURES_NO_ADMITTED_PROOF_OR_USE"
+}
