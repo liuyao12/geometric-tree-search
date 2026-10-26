@@ -1,12 +1,19 @@
 {
-  "coordinateFrame": "Translated triangular coefficient frame with a white material mark at the origin",
-  "originTile": 3546,
+  "coordinateFrame": "One shared integer lattice origin in the original triangular coefficient units",
+  "originNearTile": 3546,
+  "sourceCoordinateOrigin": [
+    22,
+    53,
+    55,
+    -33
+  ],
   "originCoordinates": [
     0,
     0,
     0,
     0
   ],
+  "integerVerticesChecked": 49246,
   "planeMatrix": [
     [
       "-2",
@@ -21,25 +28,30 @@
       "8"
     ]
   ],
+  "affinePlaneOffset": [
+    "-119+53*sqrt(5)",
+    "217-97*sqrt(5)"
+  ],
   "vertices": 49246,
   "whiteMarks": 1009,
-  "minimum": 0.007354213752002181,
-  "maximum": 4.64793068843926,
+  "minimum": 0.007354213751995076,
+  "maximum": 4.647930688439265,
   "maximumVertex": [
-    -53.07420074175548,
-    -32.804201768662125,
-    -49.75659697612906,
-    50.92579925824451
+    -53,
+    -33,
+    -50,
+    51
   ],
   "withinDistanceTwo": 40998,
   "centralTileCoordinateRange": [
-    -2.074200741755483,
-    1.2434030238709397
+    -2,
+    1
   ],
-  "maxDualError": 8.881784197001252e-16,
-  "maxMarkDefect": 2.8421709430404007e-13,
-  "maxStationarityError": 7.12884223886324e-14,
-  "maxCameraChange": 2.848430738093266e-14,
+  "maxDualError": 1.709743457922741e-14,
+  "maxDistanceChange": 4.107825191113079e-14,
+  "maxMarkDefect": 3.126388037344441e-13,
+  "maxStationarityError": 7.125383348285503e-14,
+  "maxCameraChange": 2.8491879111055443e-14,
   "fullFamilySamples": 101,
-  "scope": "Numerical check of all vertices and white marks in the finite substitution patch. Distance is to the continuous white-dot plane using the L1 norm in the four coefficient directions. No distance cutoff is applied to vertex rendering."
+  "scope": "Every displayed vertex tuple is checked exactly integral. Plane distance and camera checks use floating-point arithmetic for the finite substitution patch; the actual white-dot plane is affine and unchanged geometrically. No distance cutoff is applied to vertex rendering."
 }

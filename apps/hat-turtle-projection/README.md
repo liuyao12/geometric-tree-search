@@ -20,7 +20,7 @@ The coefficient basis is oblique, rather than an orthonormal cubic basis. The or
 P_\theta(U,V)=\cos\theta\,U+\sin\theta\,V,\qquad 0\leq\theta\leq\pi/2.
 \]
 
-The slider fraction is \(m=1-2\theta/\pi\). Chevron, Hat, equal edges, Turtle, and Comet occur at \(m=0,1/3,1/2,2/3,1\), respectively. At the limits one edge class vanishes, so some of the fourteen fixed vertex labels coincide in the image. The limiting polygons still have positive area. The single-tile view uses one white mark in central reflected tile 3546 as the shared four-dimensional origin. All geometry, marks, labels, and distances use the translated frame; labels show three-decimal approximations using MathJax. Vertex differences remain integers in the triangular coefficient basis. The shared origin stays fixed as another tile is selected.
+The slider fraction is \(m=1-2\theta/\pi\). Chevron, Hat, equal edges, Turtle, and Comet occur at \(m=0,1/3,1/2,2/3,1\), respectively. At the limits one edge class vanishes, so some of the fourteen fixed vertex labels coincide in the image. The limiting polygons still have positive area. The single-tile view uses a nearby integer lattice point as the shared four-dimensional origin. All geometry, marks, labels, and distances use this translated frame. MathJax labels display exact integer tuples in the original triangular coefficient units; no rounding or change of units is applied. The shared origin stays fixed as another tile is selected.
 
 ## Two-parameter map and lattice alignments
 
@@ -77,23 +77,23 @@ Decimals and fractions are parsed as exact rationals. The panel also accepts exp
 The original family is the line \((t,-t,t,2t)\), where \(t=\tan\theta/\sqrt3\). These are coordinates of the same plane, up to rotation of its screen basis.
 
 
-## White-dot origin, plane, and colored vertices
+## Integer origin, affine white-dot plane, and colored vertices
 
-The active coordinate origin is the white material mark in reflected tile 3546. All loaded vertex and mark coordinates are translated once into this frame. Camera centering is separate. There is no rational replacement plane in this view. The actual stationary plane is
+The active coordinate origin is the integer lattice point \((22,53,55,-33)\) in the source data, near the central reflected tile. Subtracting this integer vector preserves every vertex’s integrality and keeps the central tile’s labels small. The white marks are separate material points. All geometry is translated once; camera centering is separate. The actual stationary plane remains affine in this frame:
 
 \[
-\Pi=\ker A,\qquad A=\begin{pmatrix}-2&-1-\sqrt5&4&0\\2\sqrt5&\sqrt5-3&4&8\end{pmatrix}.
+\Pi=\{x:Ax=b\},\qquad A=\begin{pmatrix}-2&-1-\sqrt5&4&0\\2\sqrt5&\sqrt5-3&4&8\end{pmatrix},\qquad b=\begin{pmatrix}-119+53\sqrt5\\217-97\sqrt5\end{pmatrix}.
 \]
 
 Every shared patch vertex is colored by its Manhattan distance to this continuous plane in the four triangular coefficient coordinates:
 
 \[
-d_1(x,\Pi)=\min_{Ay=0}\|x-y\|_1.
+d_1(x,\Pi)=\min_{Ay=b}\|x-y\|_1.
 \]
 
 This is a linear program with two equality constraints. A minimum exists with at most two nonzero coordinate corrections, so `vertex-distance.js` tries all six coordinate pairs and takes the minimum correction norm. It does not round to lattice points. Distances are precomputed once and stay attached to the vertices throughout animation, general perspectives, and camera changes. All 49,246 shared vertices participate; only viewport clipping affects what is drawn. Coincident projected vertices can occlude one another. A fixed color legend spans zero through five. Single-tile view colors the selected tile's fourteen vertices using the same scale.
 
-`validate-vertex-distance.mjs` checks every patch vertex against an independent dual linear-program calculation, every white mark against the through-origin plane, coordinate reconstruction, the origin mark, and normalized camera stationarity across 101 full-family samples. Its numerical finite-patch report is `vertex-distance-validation.json`; no infinite-tiling claim or search-rule change is made. The earlier radius-two integer-point neighborhood and radius-24 claim concern a different rational plane and are superseded for this view.
+`validate-vertex-distance.mjs` checks every patch vertex against an independent dual linear-program calculation, every white mark against the affine plane, exact integrality and reconstruction of all 49,246 vertex tuples, and normalized camera stationarity across 101 full-family samples. Its numerical finite-patch report is `vertex-distance-validation.json`; no infinite-tiling claim or search-rule change is made. Distances and camera framing are unchanged by the integer translation. The earlier rational replacement plane is not used.
 
 ## Camera framing and material marks
 

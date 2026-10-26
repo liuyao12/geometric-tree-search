@@ -1,8 +1,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {latticeToCartesian,relativeTile,reflectedFrameStats,steadyFrame,projectVertex,HALFROOT3} from './projection.js';
-import {originFromMarks,WHITE_PLANE_MATRIX} from './vertex-distance.js';
-const COORDINATE_ORIGIN=originFromMarks(JSON.parse(fs.readFileSync(new URL('fixed-marks.json',import.meta.url))));
+import {COORDINATE_ORIGIN,WHITE_PLANE_MATRIX,WHITE_PLANE_OFFSET} from './vertex-distance.js';
 const shiftedTile=(vertices,ids)=>ids.map(i=>vertices[i].map((x,k)=>x-COORDINATE_ORIGIN[k]));
 const data=JSON.parse(fs.readFileSync(new URL('patch.json',import.meta.url)));
 const model=data.vertices.map(latticeToCartesian);
@@ -34,7 +33,7 @@ for(const fraction of [0,.25,.5,.75,1]){
 }
 for(const ids of data.tiles){
  const relative=relativeTile(data.vertices,ids),origin=model[ids[0]],shifted=shiftedTile(data.vertices,ids);
- for(let i=0;i<14;i++)for(let k=0;k<4;k++){assert.ok(Math.abs(shifted[i][k]+COORDINATE_ORIGIN[k]-data.vertices[ids[i]][k])<1e-11);assert.ok(Math.abs(shifted[i][k]-shifted[0][k]-relative[i][k])<1e-11);}
+ for(let i=0;i<14;i++)for(let k=0;k<4;k++){assert.ok(Number.isInteger(shifted[i][k]));assert.equal(shifted[i][k]+COORDINATE_ORIGIN[k],data.vertices[ids[i]][k]);assert.equal(shifted[i][k]-shifted[0][k],relative[i][k]);}
  assert.deepEqual(relative[0],[0,0,0,0]);
  assert.equal(new Set(relative.map(p=>p.join(','))).size,14);
  for(let i=0;i<14;i++){
@@ -52,6 +51,6 @@ const reflected=data.labels.map((label,i)=>label==='H1'?i:-1).filter(i=>i>=0),fi
 const orientation=data.vertices[first[1]].map((x,k)=>x-origin[k]);const witness=[];
 for(const i of reflected){const ids=data.tiles[i],p=data.vertices[ids[0]],edge=data.vertices[ids[1]].map((x,k)=>x-p[k]);if(edge.some((x,k)=>x!==orientation[k]))continue;const delta=p.map((x,k)=>x-origin[k]);if(rank([...witness,delta])>witness.length)witness.push(delta);if(witness.length===4)break;}
 assert.equal(witness.length,4);const det=determinant(witness);assert.notEqual(det,0n);
-const report={sameOrientationTranslations:{rank:4,integerWitness:witness,determinant:det.toString()},reflectedTiles:stats.count,coordinateLabelsChecked:14*data.tiles.length,coordinateFrame:'Translated coordinates with the central white mark at the origin',coordinateOrigin:[0,0,0,0],whitePlaneMatrix:WHITE_PLANE_MATRIX,uniformCamera:true,samples:results};
+const report={sameOrientationTranslations:{rank:4,integerWitness:witness,determinant:det.toString()},reflectedTiles:stats.count,coordinateLabelsChecked:14*data.tiles.length,coordinateFrame:'Shared integer lattice origin; exact integer vertex tuples',coordinateOrigin:[0,0,0,0],sourceCoordinateOrigin:COORDINATE_ORIGIN,whitePlaneMatrix:WHITE_PLANE_MATRIX,affinePlaneOffset:WHITE_PLANE_OFFSET,uniformCamera:true,samples:results};
 fs.writeFileSync(new URL('view-validation.json',import.meta.url),JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify(report,null,2));

@@ -2,7 +2,7 @@ import {HALFROOT3, latticeToCartesian, relativeTile, reflectedFrameStats, steady
 import {FAMILY_STOPS, familyAngle, certifiedMarks, coefficients, projectPerspective, latticeBasis, namedAlignment} from './perspectives.js?v=4';
 import {matrixPerspective, projectMatrix} from './matrix-perspectives.js?v=4';
 import {createParameterMap} from './parameter-map.js?v=4';
-import {ORIGIN_TILE, originFromMarks, originPlaneFrame, planeManhattanDistance, distanceColor} from './vertex-distance.js?v=8';
+import {ORIGIN_TILE, COORDINATE_ORIGIN, originPlaneFrame, planeManhattanDistance, distanceColor} from './vertex-distance.js?v=9';
 import {whiteMarkAlignment, rotateFrame} from './white-mark-alignment.js?v=6';
 const $ = id => document.getElementById(id);
 const canvas = $('scene'), ctx = canvas.getContext('2d', {alpha:false});
@@ -40,7 +40,7 @@ function updateLabels(){const m=state.morph,shape=shapeName();$('shape-label').t
  updateFrameNote();if(state.explore){parameterMap.draw({m,phi:state.phi});updateLatticeStatus();}
 }
 function prepare(){
- coordinateOrigin=originFromMarks(marks);
+ coordinateOrigin=COORDINATE_ORIGIN;
  shiftedVertices=data.vertices.map(p=>p.map((v,k)=>v-coordinateOrigin[k]));
  vertexDistances=shiftedVertices.map(planeManhattanDistance);distanceMaximum=Math.max(...vertexDistances);vertexColors=vertexDistances.map(distanceColor);
  $('distance-summary').textContent=`${data.vertices.length.toLocaleString()} shared vertices · maximum distance ${distanceMaximum.toFixed(3)} · colors stay with vertices`;
@@ -118,7 +118,7 @@ function prepareSingleTile(){
  for(let i=0;i<14;i++){
   const label=document.createElement('div');label.className='vertex-label';label.dataset.vertex=i;
   const prefix=document.createElement('span');prefix.className='coordinate-prefix';prefix.textContent=String.raw`\(\mathrm{v}_{${i}}=\)`;
-  const tuple=document.createElement('span');tuple.textContent=String.raw`\(\approx(${tileCoordinates[i].map(x=>Math.abs(x)<.0005?'0':x.toFixed(3)).join(',')})\)`;label.append(prefix,tuple);label.title=`Vertex ${i}; distance ${vertexDistances[data.tiles[state.selected][i]].toFixed(6)}`;
+  const tuple=document.createElement('span');tuple.textContent=String.raw`\((${tileCoordinates[i].join(',')})\)`;label.append(prefix,tuple);label.title=`Vertex ${i}; distance ${vertexDistances[data.tiles[state.selected][i]].toFixed(6)}`;
   host.append(label);
   const line=document.createElementNS(NS,'line');line.id=`leader-${i}`;$('single-leaders').append(line);
   const point=document.createElementNS(NS,'circle');point.id=`vertex-${i}`;point.setAttribute('r',i===0?'4.5':'3.2');$('single-points').append(point);

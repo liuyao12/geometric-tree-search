@@ -31,12 +31,18 @@
   },
   "reflectedTiles": 1009,
   "coordinateLabelsChecked": 110894,
-  "coordinateFrame": "Translated coordinates with the central white mark at the origin",
+  "coordinateFrame": "Shared integer lattice origin; exact integer vertex tuples",
   "coordinateOrigin": [
     0,
     0,
     0,
     0
+  ],
+  "sourceCoordinateOrigin": [
+    22,
+    53,
+    55,
+    -33
   ],
   "whitePlaneMatrix": [
     [
@@ -51,6 +57,10 @@
       4,
       8
     ]
+  ],
+  "affinePlaneOffset": [
+    -0.4883971925111439,
+    0.10140618252037825
   ],
   "uniformCamera": true,
   "samples": [
