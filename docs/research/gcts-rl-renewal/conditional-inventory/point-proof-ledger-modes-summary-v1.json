@@ -1,0 +1,56 @@
+{
+  "schema": "public-ledger-modes-qualification-outcome-v1",
+  "status": "WHOLE_COMPARISON_ASSERTION_NEGATIVE",
+  "case_id": "ledger-normal-mode-controls-v1-case-0",
+  "qualification_admitted": false,
+  "proof_or_use_admitted": false,
+  "resource_qualified": false,
+  "normal_bank_retained": false,
+  "actual_group_mode_case_and_pair_statuses": "WITHHELD_NO_COMPLETE_BANK_RETURN",
+  "declared_recipe_only": {
+    "groups": 6,
+    "normal_searches": 43,
+    "complete_dual_pairs": 39
+  },
+  "saved_observations": {
+    "imports_complete": 8,
+    "bank_stage_returned": false,
+    "outer_custody_complete": true,
+    "saved_observer_elapsed_seconds": 5.606561250000141,
+    "saved_final_observer_gate_seconds": 5.606815125000139,
+    "raw_child_high_water_bytes": 147079168,
+    "callbacks": 7864398,
+    "qualified_whole_peak_bytes": null
+  },
+  "error": {
+    "type": "ContextualControlError",
+    "message": "complete same-byte dual-validator mode equality"
+  },
+  "Root_disposition": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/root/ledger-normal-mode-case0-Root-complete-whole-negative-disposition-v1.json",
+    "bytes": 7145,
+    "sha256": "3cb8ea29545203bcb1d5cbdae8468918ca96d7bf73c3394fd872226aa150ee2a"
+  },
+  "complete_C_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/review-C/typed-ledger-normal-mode-controls-complete-whole-actual-negative-review-v1.json",
+    "bytes": 20079,
+    "sha256": "de46a6da2978a1e01a40c48755de8eeccc7d8db53ff21ee2253a10d109b28c0b"
+  },
+  "Source_diagnosis": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/diagnostics-L/contextual-library-bank2-validator-mode-equality-Source-diagnosis-v1.json",
+    "bytes": 13244,
+    "sha256": "34a7f7ad018bb733263087b14e5704e87063ddfab6f130d0bcd62a920a07f3fd"
+  },
+  "Source_diagnosis_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/review-C/typed-bank2-validator-timing-invariant-paper-review-and-bank3-requirements-v1.json",
+    "bytes": 15895,
+    "sha256": "98cb0f008275f4eb47b45d01b0fe56a4efb2d43e36b6c813db6be0a453f71794"
+  },
+  "archive": {
+    "name": "point-proof-ledger-modes-evidence-v1.zip",
+    "bytes": 16599661,
+    "sha256": "3f95d32b2a97f663db1a745c750598c6b2ab7493dcdc36526da8637070e2d670",
+    "entries": 122
+  },
+  "scope": "No exact actual mismatch leaf/value survived. Source proves elapsed time is not a scientific equality invariant. New bank3 Source is unexecuted. Raw failed-prefix clocks/RSS are not resource fit, speedup or comparison with historical target failures."
+}
