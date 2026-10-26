@@ -1,0 +1,188 @@
+{
+  "schema": "public-ledger-qualification-and-mathematical-analysis-v2",
+  "status": "FINITE_LEDGER_NORMAL_MODE_CONTROLS_ADMITTED",
+  "case_id": "ledger-normal-mode-controls-v2-case-0",
+  "qualification_admitted": true,
+  "resources_and_custody_accepted": true,
+  "new_research_proofs_admitted": 0,
+  "GCTS_RL_claim": false,
+  "proof_family_transfer_admitted": false,
+  "performance_or_memory_improvement_claim": false,
+  "observed_counts": {
+    "normal_search_returns": 43,
+    "contextual": 40,
+    "original_ordinary": 1,
+    "current_ordinary": 2,
+    "contextual_candidates": 28,
+    "contextual_unknowns": 12,
+    "complete_same_original_byte_dual_pairs": 39,
+    "contextual_pairs": 28,
+    "ordinary_pairs": 3,
+    "compiler_component_pairs": 8,
+    "mode_comparisons": 21,
+    "positive_mode_comparisons": 15,
+    "exact_None_mode_comparisons": 6,
+    "selected_closed_applications": 8,
+    "selected_local_images": 32,
+    "alternative_rows_across_canonical_search_returns": 8759,
+    "candidate_rows": 239,
+    "plan_nodes": 129,
+    "primitive_nodes": 303,
+    "discharge_records": 10,
+    "discharge_map_edges": 64
+  },
+  "selected_facet_findings": {
+    "closed_use": "OBSERVED:8 selected closed applications,32 local images, all final-root dependencies.",
+    "open_use": "UNEXERCISED",
+    "selected_hierarchy": "UNEXERCISED",
+    "CD_temporary_contexts": "UNEXERCISED",
+    "selected_boundary_serial_tamper": "UNEXERCISED",
+    "compiler_component_discharge_and_ordered_ports": "OBSERVED independently in the preserved original compiler units; not selected consumer use."
+  },
+  "group_assessments": [
+    {
+      "id": "live-boundaries-and-hierarchy",
+      "status": "PASS_FINITE_NORMAL_MODE_CONTROLS_WITH_EXPLICIT_SELECTED_FACET_GAPS",
+      "evidence": "All ten literal query/configuration/family case records retain complete None CD/DAG followed by legacy CD/DAG results, validators, inputs, progress snapshots, callback captures and lifetime reports. Same-arm complete copied search results and complete validators match with exactly the two authorized comparison leaves. Eight selected closed applications are observed.",
+      "gaps": [
+        "selected open use UNEXERCISED",
+        "selected hierarchy UNEXERCISED",
+        "selected CD temporary contexts UNEXERCISED"
+      ]
+    },
+    {
+      "id": "port-context-and-discharge",
+      "status": "PASS_PRESERVED_ORIGINAL_COMPILER_COMPONENT_FACETS",
+      "evidence": "Six full original public compiler units retain exact query/plan/candidate bytes and complete dual validators: direct-distinct, CD-distinct, CD-shared-premise, nested-equal-assumptions, ordered-source-HYP and ordered-source-THEORY_AXIOM. Duplicate equal ports retain ordered identities; shared proof premise is explicit; discharge indices are3,2 and nested2,1; unused inner and used outer occurrences remain distinct. These are compiler component controls.",
+      "gaps": [
+        "These component records do not establish selected open or CD temporary-context use by the consumer."
+      ]
+    },
+    {
+      "id": "sharing-and-quotient-map",
+      "status": "PASS_PRESERVED_EXACT_SYMBOLIC_SHARING_QUOTIENT_CONTROLS",
+      "evidence": "Two complete original compiler units retain shared4 and duplicated5. Shared4 really references one common original internal node. Duplicated5 preserves distinct original plan node identities while two complete-key outputs contract to one primitive. Complete plan outputs, quotient members, final-root dependency/export maps, bytes and original dual validators are retained.",
+      "gaps": [
+        "No distinct point placement, acquired internal sharing, learned family necessity or transfer conclusion."
+      ]
+    },
+    {
+      "id": "common-binding-and-fallback",
+      "status": "PASS_FINITE_COMMON_BINDING_AND_ALL_THREE_ORDINARY_ROUTES",
+      "evidence": "All complete common library fields match across CD/DAG within each mode. Two witness-only residual offers retain exact complete bindings and residual complements. Outside-boundary refusals occur in all four normal variants. The exact existing empty-fallback query/configuration is reused by original ordinary ordinal41, current consumer ordinary None ordinal42 and current consumer ordinary legacy ordinal43; all have complete same-byte dual validators. Current ordinary mode comparison uses the same exact two leaf exceptions.",
+      "gaps": [
+        "W prefixes are observed; full original W enumeration and scheduling/fairness depend on preserved Source. Available W entry and consumed library prefix are separate: empty/no-hit fallback can finish with W_consumed0 and one available original entry.",
+        "Current ordinary native/cleanup failures remain UNEXERCISED."
+      ]
+    },
+    {
+      "id": "root-used-and-tamper",
+      "status": "PASS_COMPLETE_NORMAL_MAPS_AND_RETAINED_FINITE_ASSOCIATION_REFUSALS",
+      "evidence": "Every normal candidate retains complete original plan, compiler output, candidate rows, final-root closure/export and all selected local/source/binding associations. Eight detached evidence mutations were refused by the bank association checker: drop-final-root-closure, drop-plan-output, compiler-byte-pin-mismatch, swap-ordered-MP-premises, omit-discharge-mapping, exchange-equal-Formula-assumption-occurrence, alter-selected-full-key and drop-selected-local-identity. Complete original payloads remain available.",
+      "gaps": [
+        "There is no public consumer verifier endpoint; compiler component mutations and bank-owned association refusals are not fabricated project verifier calls.",
+        "Selected-open boundary-not-earlier-than-owner tamper UNEXERCISED because no selected open boundary occurred."
+      ]
+    },
+    {
+      "id": "first-fault-and-isolation",
+      "status": "PASS_RETAINED_SELECTED_FIRST_ERROR_AND_NORMAL_LIFETIME_CONTROLS",
+      "evidence": "Seven selected fault records each report same exception object, one selected hit and zero later selected checks. They cover first-check StopIteration, same owned error class, retained owned error and selected public instance/checker/builder/reference sites. All40 contextual normal calls report input/progress/retained-result preservation after actual returned-object mutation. Current ordinary None is detached; ordinary legacy truthfully retains the live supplied-progress receipt association and full pre-mutation progress snapshot.",
+      "gaps": [
+        "JSON alone cannot independently recover Python object identity; these observations are tied to the reviewed Source recipe and complete run. They were not repeated by C.",
+        "No every-site/late-site/native-cleanup or general fault coverage claim."
+      ]
+    }
+  ],
+  "comparison": {
+    "search_exact_normalized_paths": [
+      "/receipt/counts/callbacks"
+    ],
+    "validation_exact_normalized_paths": [
+      "/subject_receipt/cost/elapsed_seconds"
+    ],
+    "validation_copy_marker": {
+      "type": "float",
+      "value": 0.0
+    },
+    "full_original_subject_cost3_shape": {
+      "callbacks": "exact int >=0",
+      "elapsed_seconds": "exact finite float >=0",
+      "scope": "entry through final checked receipt copy; caller serialization/output excluded"
+    },
+    "all_complete_original_costs_and_validations_untouched": true,
+    "all_other_scientific_fields_reference_fields_cost_callbacks_scope_scalar_types_candidate_bytes_and_order_exact": true,
+    "mode_comparisons": 21,
+    "positive_mode_comparisons": 15,
+    "exact_None_mode_comparisons": 6,
+    "original_positive_timer_values_differ_in_all15_saved_comparisons": true,
+    "claim": "All21 saved complete mode projection comparisons pass. Only subject elapsed is replaced in the validation comparison copy; original timing values remain in all39 complete validator pairs. There is no unconditional full raw-validator equality claim.",
+    "carrier_scope": "Finite pinned public JSON-array-image outputs with exact scalar types. Inherited tuple-to-list transport is not a new omitted field; no hostile/general typed carrier verifier claim."
+  },
+  "observed_lifecycle": {
+    "worker_receipt_callbacks": 56981627,
+    "post_output_header_callbacks": 56982102,
+    "worker_elapsed_seconds": 38.09362599999986,
+    "header_seconds": 38.10601470799975,
+    "known_child_exit_seconds": 38.48439837499973,
+    "final_custody_gate_seconds": 38.49793458299973,
+    "saved_observer_elapsed_seconds": 38.52815512500001,
+    "saved_final_observer_gate_seconds": 38.52846570899965,
+    "worker_receipt_peak_bytes": 367902720,
+    "post_output_header_peak_bytes": 368033792,
+    "OS_child_peak_bytes": 369901568,
+    "parent_peak_bytes": 41189376,
+    "observer_peak_bytes": 21790720,
+    "combined_peak_with_reserve_bytes": 420528128,
+    "whole_peak_with_reserves_bytes": 451756032
+  },
+  "qualified_whole_memory_bound": 451756032,
+  "whole_output": {
+    "complete_owned_files": 11,
+    "complete_owned_bytes": 19036549,
+    "bank_bytes": 19025110,
+    "entire_result_bytes": 4659,
+    "shared_bank_plus_ENTIRE_result_bytes": 19029769,
+    "all_logs_EOF_no_overflow": true,
+    "native_subprocesses": 0,
+    "no_prefix_admission": true
+  },
+  "Root_admission": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/root/ledger-bank3-v2case0-Root-complete-whole-admission-v1.json",
+    "bytes": 24883,
+    "sha256": "561754d177d207f7046563ffe762ed2d13f6843db130df66d920f718718e41ee"
+  },
+  "complete_C_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/review-C/typed-ledger-bank3-v2case0-complete-whole-actual-review-v2.json",
+    "bytes": 49538,
+    "sha256": "5c2b2887c00466f7a079c77f254ff60b4151f2b5a6d87217934490b3f8de6b06"
+  },
+  "mathematical_analysis": {
+    "agent_derived": true,
+    "experimental_engine_discovery": false,
+    "machine_checked": false,
+    "automated_discovery_credit": false,
+    "adoption": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research-runs/gcts-receptor-acquisition-20261022/root/finite-pair-marking-Root-mathematical-note-adoption-v1.json",
+      "bytes": 3153,
+      "sha256": "6f63dc67a209eaeff36f601b3a64d17f0ec082429f243a09f07d4773512bb6a0"
+    },
+    "scope": "Finite translated pair exclusions have exact equality-marking representations. Higher-order fixed-state limitation and conditional same-context solution-preservation, not existence/universality/experimental benefit."
+  },
+  "archive": {
+    "name": "point-proof-ledger-qualification-evidence-v2.zip",
+    "bytes": 18166216,
+    "sha256": "3a7c5f3c9f45ede0d26a43db386ce60bc0a7200a7dfc36efee94cbd62616cc15",
+    "entries": 118
+  },
+  "scope": "Only the exact current six-group finite synthetic normal-mode controls on D90/consumerSource3/bank3/worker2. All original query/candidate bytes/receipts/maps/timers/progress/lifetime/costs retained. Canonical43normal/39dual pairs include predetermined compiler component controls, not new research theorem discovery. Repeated copies are not extra calls.",
+  "limits": [
+    "No production, learned library, holdout, prior qualification replay or new research targets; no family transfer, practical usefulness, indispensability or theorem population expansion.",
+    "No scientific proof admission or acquired qualified library inventory. Full original candidate bytes and complete same-byte dual validator evidence support only the exact finite controls.",
+    "Expected bounded UNKNOWN returns under the declared symbolic universe are not relabeled as theorem refutations, exhaustive impossibility, memory failures or resource UNKNOWN.",
+    "No matched earlier B6/D90 runtime comparison, speedup, memory reduction or future whole-target fit inference.",
+    "Selected offers, registered jobs, residual bindings and component compiler discharge controls do not establish selected open use, hierarchy or CD temporary contexts.",
+    "Fault/alias/tamper facts are retained Source-bound finite runtime observations; C did not regenerate probes or claim universal verifier/native-cleanup coverage."
+  ],
+  "history": "Old assertion case and three target memory failures remain permanent unchanged negatives; their missing mismatch leaf/value and historical timing comparability are not recovered."
+}

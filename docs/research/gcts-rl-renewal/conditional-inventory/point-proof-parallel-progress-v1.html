@@ -1,5 +1,5 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Ledger storage qualification: comparison assertion and timing diagnosis</title><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','pre','code']}};</script>
+<title>Finite storage controls pass; exact pair markings and higher-order limits</title><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','pre','code']}};</script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 <style>
 :root{color-scheme:light;--ink:#203239;--muted:#576a70;--paper:#f7f5ee;--rule:#d4dedb;--teal:#176f66;--purple:#7154a5;--amber:#9a5617}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 system-ui,sans-serif}main{max-width:1160px;margin:auto;padding:42px 24px 64px}h1{font-size:clamp(30px,4vw,47px);line-height:1.14;max-width:900px}h2{font-size:25px;line-height:1.25}p{max-width:920px}a{color:var(--teal)}.eyebrow{font-size:13px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}.notice{padding:16px 20px;border-left:5px solid var(--amber);background:#fff3dc}.panel{border:1px solid var(--rule);border-radius:14px;background:#fff;padding:24px;margin-top:26px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{border:1px solid var(--rule);border-top:5px solid var(--teal);border-radius:8px;padding:18px}.card:nth-child(2){border-top-color:var(--purple)}.card:nth-child(3){border-top-color:var(--amber)}.card h3{margin:0 0 10px;font-size:19px}.card p{font-size:16px}.pipe{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:22px 0}.step{background:#edf4f1;border:1px solid var(--rule);padding:16px;border-radius:8px}.step b{display:block;color:var(--teal)}.caption,footer{color:var(--muted);font-size:14px}.open{padding:14px 18px;background:#f1edf8;border-left:4px solid var(--purple)}table{border-collapse:collapse;width:100%;font-size:16px}th,td{text-align:left;vertical-align:top;border-bottom:1px solid var(--rule);padding:12px 10px}th{color:var(--muted)}code{font-size:.86em}footer{margin-top:28px}@media(max-width:760px){.grid,.pipe{grid-template-columns:1fr}main{padding:24px 16px}.panel{padding:18px}}
@@ -8,7 +8,198 @@
 
 .stop{background:#fff0eb;border-color:#d9b4a7}.stop b{color:#974526}.path{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.path article{border:1px solid var(--rule);padding:18px;border-radius:9px;background:#f1f5f2}.path strong{display:block;color:var(--purple);font-size:20px}summary{cursor:pointer;color:var(--teal)}@media(max-width:760px){.path{grid-template-columns:1fr}} 
 .family-visual{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:22px 0}.fragment{padding:16px;border:1px solid var(--rule);border-radius:10px;background:#fafbf9}.fragment h3{margin:0 0 14px;font-size:18px}.fragment p{font-size:14px;margin:12px 0 0}.tile-line{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.symbol-tile{aspect-ratio:1;display:flex;flex-direction:column;justify-content:space-between;align-items:center;border:3px solid;border-radius:3px;padding:8px 4px;text-align:center;background:white;min-height:115px}.symbol-tile span,.symbol-tile small{font-size:11px;line-height:1.2}.symbol-tile div{font-size:17px;max-width:100%}.symbol-tile.axiom{border-color:var(--purple);background:#f5f1fb}.symbol-tile.boundary{border-color:var(--teal);background:#ecf7f4}.symbol-tile.inference{border-color:var(--amber);background:#fff4e5}details ol{padding-left:25px}details li{margin:12px 0}@media(max-width:950px){.family-visual{grid-template-columns:1fr}}@media(max-width:420px){.symbol-tile{min-height:105px}.symbol-tile div{font-size:14px}}
-</style></head><body><main><style>.ledger-current{border-top:6px solid #a44f38}.ledger-current .fact{color:#a44f38}.receipt-map{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:22px 0}.receipt-map article{border:2px solid #777;border-radius:10px;padding:20px}.receipt-map article:first-child{border-color:#176b70}.receipt-map article:last-child{border-color:#a16a23}.receipt-map code{overflow-wrap:anywhere}.ledger-current .caption{font-size:14px}@media(max-width:720px){.receipt-map{grid-template-columns:1fr}}</style>
+</style></head><body><main><style>.qualification-current{border-top:6px solid #176b70}.qualification-current .fact{color:#176b70}.qualification-current .result-table{width:100%;border-collapse:collapse}.qualification-current .result-table td,.qualification-current .result-table th{padding:10px;border-bottom:1px solid #d5dfdf;text-align:left}.qualification-current .table-scroll{overflow-x:auto}.qualification-current code{overflow-wrap:anywhere}.qualification-current .caption{font-size:14px}.marking-analysis-current{border-top:6px solid #a16a23}</style>
+<section class="panel qualification-current" id="ledger-qualification-current"><p class="status">Current outcome · finite normal-mode controls · 26 October 2026 UTC</p>
+<h1>The finite storage controls pass.</h1>
+<p>The corrected independent test completed in a new, separately reviewed once case. Complete external review accepted the six declared groups on the current storage implementation. Both original proof validators remain required, and the full original evidence is retained.</p>
+<div class="grid"><article class="card"><h3>Control groups</h3><span class="fact">\(6/6\)</span><p>Finite declared controls accepted with the coverage gaps below.</p></article><article class="card"><h3>Normal searches</h3><span class="fact">\(43\)</span><p>Contextual calls \(40\), original ordinary \(1\), current ordinary \(2\).</p></article><article class="card"><h3>Complete dual checks</h3><span class="fact">\(39\)</span><p>Same original bytes checked by both original validators, including compiler component controls.</p></article><article class="card"><h3>New research proofs</h3><span class="fact">\(0\)</span><p>This qualifies machinery; it supplies no new research theorem or family-transfer result.</p></article><article class="card"><h3>Saved observer time</h3><span class="fact">\(38.53\,\mathrm{s}\)</span><p>Whole finite workflow observation, not a proof-search speed comparison.</p></article><article class="card"><h3>Conservative whole peak</h3><span class="fact">\(430.83\,\mathrm{MiB}\)</span><p>Includes the recorded parent, child, observer and reserves under the unchanged \(1\,\mathrm{GiB}\) limit.</p></article></div>
+<h2>What the comparison now establishes</h2>
+<p>All \(21\) complete mode comparisons matched their required scientific projections. In all \(15\) positive comparisons the original checking durations differed. Every actual duration remains saved. Only <code>subject_receipt.cost.elapsed_seconds</code> is normalized in temporary validator-comparison copies; the existing search-receipt callback-count exception remains separate. All other scientific fields, original candidate bytes, reference receipts, cost callback counts and exact cost scopes agree as required.</p>
+<p>The complete bank contains \(28\) contextual candidate returns and \(12\) bounded <em>unknown</em> returns. Together with \(3\) ordinary candidate returns and \(8\) compiler component checks, it retains the canonical \(39\) complete validator pairs. Repeated progress or group copies do not count as additional searches or checks.</p>
+<div class="table-scroll"><table class="result-table"><thead><tr><th>Group</th><th>Accepted scope</th></tr></thead><tbody><tr><td>live-boundaries-and-hierarchy</td><td>Passed finite declared controls</td></tr><tr><td>port-context-and-discharge</td><td>Passed finite declared controls</td></tr><tr><td>sharing-and-quotient-map</td><td>Passed finite declared controls</td></tr><tr><td>common-binding-and-fallback</td><td>Passed finite declared controls</td></tr><tr><td>root-used-and-tamper</td><td>Passed finite declared controls</td></tr><tr><td>first-fault-and-isolation</td><td>Passed finite declared controls</td></tr></tbody></table></div>
+<h2>The important paths still not selected</h2>
+<div class="notice"><strong>Open-lemma use, selected hierarchy and temporary conditional contexts remain unexercised.</strong> The run observed \(8\) selected closed applications with \(32\) local images. Original compiler controls cover discharge and ordered ports, but those component checks do not establish selected open or hierarchical consumer use. No public consumer verifier hook or universal native/cleanup fault coverage is claimed.</div>
+<p>The original failed qualification and the three earlier target memory failures stay negative. This complete success does not recover their missing payloads, identify the earlier actual mismatch, establish a storage or speed improvement, or promise that the target search will fit. The current engine remains an ordinary symbolic adaptation; geometric GCTS marking/incidence/generation/rollback and trained RL benefit remain unestablished.</p>
+<h2>What comes next</h2><p>The next scientific test is practical use of the same acquired families on the unchanged frozen target in separately reviewed new cases. The marking analysis below gives a precise representation and soundness boundary for the geometric part of the program. Its proof was written by agents through mathematical reasoning and receives no automated-search credit.</p>
+<p><a href="point-proof-ledger-qualification-summary-v2.json">Exact result, counts and limitations</a> · <a href="point-proof-ledger-qualification-evidence-v2.zip">Full approved evidence archive</a> · <a href="#pair-marking-offset-title">See the constructed point markings</a> · <a href="point-proof-discovered-proofs-v1.html">Earlier automatically found training proofs</a></p>
+<p class="caption">The archive retains all \(11\) current case/observer files, the full \(65\)-guard selected closure except separately identified D90 Python, all complete reviews and the agent-derived mathematical sources. It includes the prior full archive unchanged. Raw proof transport, logs and local provenance paths are included under the user's full-archive approval.</p></section>
+<section class="panel marking-analysis-current" id="pair-markings-analysis-current"><p class="status">Mathematical analysis · agent-derived reasoning</p>
+<p><strong>Representation result with a clear limit.</strong> Any finite list of forbidden translated pairs has an exact finite equality-marking encoding under the stated assumptions. A genuinely higher-order exclusion cannot always be represented on unchanged fixed tile states. These are elementary mathematical arguments, reviewed by a separate agent and Root; they are not experimental engine discoveries or machine-checked proofs.</p>
+<section class="pair-marking-offset-diagram" aria-labelledby="pair-marking-offset-title">
+  <style>
+    .pair-marking-offset-diagram{max-width:960px;margin:2rem auto;padding:1.5rem;color:#203239;font:16px/1.6 system-ui,sans-serif}
+    .pair-marking-offset-diagram *{box-sizing:border-box}
+    .pair-marking-offset-diagram h2,.pair-marking-offset-diagram h3{line-height:1.3}
+    .pair-marking-offset-diagram .pmod-provenance{padding:1rem;border-left:4px solid #176b70;background:#eef7f5}
+    .pair-marking-offset-diagram .pmod-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .pair-marking-offset-diagram .pmod-card{min-width:0;padding:1rem;border:1px solid #b7c6ca;border-radius:.65rem;background:#fff}
+    .pair-marking-offset-diagram .pmod-card h3{margin:.2rem 0 .8rem}
+    .pair-marking-offset-diagram .pmod-lane-label{font-size:.85rem;color:#52626c}
+    .pair-marking-offset-diagram .pmod-axis-labels{display:grid;grid-template-columns:repeat(6,1fr);text-align:center;margin-top:-.9rem;font-size:.9rem}
+    .pair-marking-offset-diagram svg{display:block;width:100%;height:auto;overflow:visible}
+    .pair-marking-offset-diagram .pmod-legend{display:flex;gap:.6rem 1.2rem;flex-wrap:wrap;padding:0;list-style:none}
+    .pair-marking-offset-diagram .pmod-legend li{display:flex;align-items:center;gap:.45rem}
+    .pair-marking-offset-diagram .pmod-swatch{display:inline-block;width:1rem;height:1rem;border-radius:50%;flex:none}
+    .pair-marking-offset-diagram .pmod-base{background:#69737d}
+    .pair-marking-offset-diagram .pmod-zero{background:#0f766e}
+    .pair-marking-offset-diagram .pmod-one{background:#bd4d3e}
+    .pair-marking-offset-diagram .pmod-empty{background:#fff;border:1px solid #b7c0c8}
+    .pair-marking-offset-diagram .pmod-equation{overflow-x:auto}
+    .pair-marking-offset-diagram .pmod-note{padding:.8rem 1rem;background:#f5f6f8;border-left:3px solid #69737d}
+    @media(max-width:760px){.pair-marking-offset-diagram .pmod-cards{grid-template-columns:1fr}}
+  </style>
+  <h2 id="pair-marking-offset-title">Distant markings can reject a pair with disjoint base support</h2>
+  <p class="pmod-provenance"><strong>Abstract construction from mathematical reasoning.</strong> This diagram was authored by the agent to explain a representation lemma. It is not an executed fixture, learned model, experimental search result or automatically discovered proof. It illustrates partial legality only. No fixed target, completed tiling, plane construction, extension or performance claim is made. The host reader supplies its established MathJax renderer; this fragment adds no scripts.</p>
+  <p>Work on \(L=\mathbb Z\), with translations only and two fixed types. Put \(t_A=t_B=\delta_0\), where \(\delta_0(p)=\mathbf1_{\{0\}}(p)\). In one fresh channel \(\gamma\), assign \(m_{A,\gamma}(0)=0\) and \(m_{B,\gamma}(-3)=1\), leaving all other slots unassigned. Thus a translated \(B\)-placement at \(y\) places its marking value at \(y-3\), although its positive base support is at \(y\).</p>
+  <ul class="pmod-legend" aria-label="Diagram legend">
+    <li><span class="pmod-swatch pmod-base" aria-hidden="true"></span>Positive base support, value \(t=1\)</li>
+    <li><span class="pmod-swatch pmod-zero" aria-hidden="true"></span>Assigned marking value \(0\)</li>
+    <li><span class="pmod-swatch pmod-one" aria-hidden="true"></span>Assigned marking value \(1\)</li>
+    <li><span class="pmod-swatch pmod-empty" aria-hidden="true"></span>Lattice point with no placed positive base support</li>
+  </ul>
+  <p>The two drawing lanes show different data at the same horizontal lattice coordinates. They are display lanes, not extra lattice dimensions. Gray circles carry base values. Colored circles carry marking values in the single channel. Two concentric colored rings denote unequal assignments at one common point.</p>
+
+  <div class="pmod-cards">
+    <article class="pmod-card">
+      <h3>Rejected pair: \(\{(A,0),(B,3)\}\)</h3>
+      <p class="pmod-lane-label">Marking lane</p>
+      <svg viewBox="0 0 660 205" role="img" aria-labelledby="pmod-conflict-title pmod-conflict-desc">
+        <title id="pmod-conflict-title">Separate base-support points with a marking disagreement</title>
+        <desc id="pmod-conflict-desc">The gray base points are separated. Teal and coral marker rings occupy the same horizontal lattice coordinate, joined to the base lane by a guide. The unequal marking values conflict despite the disjoint base supports.</desc>
+        <path d="M55 160H605" stroke="#aeb9c2" stroke-width="2" fill="none"/>
+        <path d="M55 154V166M165 154V166M275 154V166M385 154V166M495 154V166M605 154V166" stroke="#aeb9c2" stroke-width="2"/>
+        <g fill="#fff" stroke="#b7c0c8" stroke-width="2">
+          <circle cx="55" cy="160" r="5"/><circle cx="275" cy="160" r="5"/>
+          <circle cx="385" cy="160" r="5"/><circle cx="605" cy="160" r="5"/>
+        </g>
+        <path d="M165 42V150M495 120V150" stroke="#aeb9c2" stroke-width="2" stroke-dasharray="5 5" fill="none"/>
+        <circle cx="165" cy="70" r="20" fill="#fff1ed" stroke="#bd4d3e" stroke-width="6"/>
+        <circle cx="165" cy="70" r="9" fill="#0f766e" stroke="#fff" stroke-width="2"/>
+        <g fill="#69737d" stroke="#fff" stroke-width="3"><circle cx="165" cy="160" r="12"/><circle cx="495" cy="160" r="12"/></g>
+        <path d="M165 113H495" stroke="#69737d" stroke-width="1.5" fill="none"/>
+        <path d="M165 107V119M495 107V119" stroke="#69737d" stroke-width="1.5"/>
+      </svg>
+      <div class="pmod-axis-labels" aria-label="Lattice coordinates"><span>\(-1\)</span><span>\(0\)</span><span>\(1\)</span><span>\(2\)</span><span>\(3\)</span><span>\(4\)</span></div>
+      <p class="pmod-lane-label">Base lane and lattice coordinates</p>
+      <div class="pmod-equation">\[0=3-3,\qquad m_{A,\gamma}(0)=0\ne1=m_{B,\gamma}(-3).\]</div>
+      <p>Both placements assign at point \(0\), with unequal values in channel \(\gamma\). The pair is marking-inconsistent. Its base supports \(\{0\}\) and \(\{3\}\) are disjoint, so \(T_S(p)\le1\) everywhere before the marking test.</p>
+    </article>
+
+    <article class="pmod-card">
+      <h3>Compatible pair: \(\{(A,0),(B,4)\}\)</h3>
+      <p class="pmod-lane-label">Marking lane</p>
+      <svg viewBox="0 0 660 205" role="img" aria-labelledby="pmod-compatible-title pmod-compatible-desc">
+        <title id="pmod-compatible-title">Separated marker assignments and separated base support</title>
+        <desc id="pmod-compatible-desc">Teal and coral markers occupy different horizontal coordinates. The coral marker lies at a lattice point with no placed positive base support, distant from its gray base point. The two markings do not conflict.</desc>
+        <path d="M55 160H605" stroke="#aeb9c2" stroke-width="2" fill="none"/>
+        <path d="M55 154V166M165 154V166M275 154V166M385 154V166M495 154V166M605 154V166" stroke="#aeb9c2" stroke-width="2"/>
+        <g fill="#fff" stroke="#b7c0c8" stroke-width="2">
+          <circle cx="55" cy="160" r="5"/><circle cx="275" cy="160" r="5"/>
+          <circle cx="385" cy="160" r="5"/><circle cx="495" cy="160" r="5"/>
+        </g>
+        <path d="M165 70V150M275 70V150M605 120V150" stroke="#aeb9c2" stroke-width="2" stroke-dasharray="5 5" fill="none"/>
+        <circle cx="165" cy="70" r="12" fill="#0f766e" stroke="#fff" stroke-width="2"/>
+        <circle cx="275" cy="70" r="12" fill="#bd4d3e" stroke="#fff" stroke-width="2"/>
+        <g fill="#69737d" stroke="#fff" stroke-width="3"><circle cx="165" cy="160" r="12"/><circle cx="605" cy="160" r="12"/></g>
+        <path d="M275 113H605" stroke="#69737d" stroke-width="1.5" fill="none"/>
+        <path d="M275 107V119M605 107V119" stroke="#69737d" stroke-width="1.5"/>
+      </svg>
+      <div class="pmod-axis-labels" aria-label="Lattice coordinates"><span>\(-1\)</span><span>\(0\)</span><span>\(1\)</span><span>\(2\)</span><span>\(3\)</span><span>\(4\)</span></div>
+      <p class="pmod-lane-label">Base lane and lattice coordinates</p>
+      <div class="pmod-equation">\[4-3=1\ne0.\]</div>
+      <p>The \(A\)-marking is assigned at \(0\); the translated \(B\)-marking is assigned at \(1\). No point receives unequal assigned values. Point \(1\) is a mark-only point for this pair: it adds no base capacity or coverage obligation. The base supports \(\{0\}\) and \(\{4\}\) are disjoint, so this pair is a legal marked partial state.</p>
+    </article>
+  </div>
+
+  <p class="pmod-note">The sign is essential: placing the second prototype’s marking at \(-3\) encodes the relative offset \(d=3\). Missing values impose no equality test. The construction compares point values; it does not use polygon intersections, regions between the points, or visual overlap of drawn shapes as a legality rule.</p>
+</section>
+
+<section class="pair-marking-lemma" aria-labelledby="pair-marking-title">
+  <style>
+    .pair-marking-lemma{max-width:920px;margin:2rem auto;padding:1.5rem;line-height:1.6;color:#203239;font-family:system-ui,sans-serif}
+    .pair-marking-lemma h2,.pair-marking-lemma h3{line-height:1.25}
+    .pair-marking-lemma .scope{padding:1rem;border-left:4px solid #176b70;background:#f0f6f5}
+    .pair-marking-lemma .caveat{padding:1rem;border-left:4px solid #a16a23;background:#faf5eb}
+    .pair-marking-lemma .equation{overflow-x:auto}
+    .pair-marking-lemma .contract{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .pair-marking-lemma .contract article{padding:1rem;border:1px solid #b9c7c8;border-radius:.5rem}
+    .pair-marking-lemma code{overflow-wrap:anywhere}
+    @media(max-width:650px){.pair-marking-lemma .contract{grid-template-columns:1fr}}
+  </style>
+  <h2 id="pair-marking-title">What finite equality markings can represent</h2>
+  <p class="scope"><strong>Provenance and scope.</strong> This is an elementary mathematical proof derived by the agent, not a proof discovered or checked by the experimental search engine. It belongs to mathematical analysis, outside automated-discovery and benchmark counts. No experimental data, private implementation, learned model or runtime proof object was used. The fragment uses the host reader’s established MathJax delimiters and adds no script dependency. Colors below are reader annotations, not learned GCTS markings.</p>
+  <p>The exact pair representation is possible under translation-only, fixed-type, distinct-placement semantics. It does not represent arbitrary higher-order exclusions, prove complete tilability, or imply useful search speed.</p>
+
+  <h3>Model and statement</h3>
+  <p>Let \(L\cong\mathbb Z^r\) be a discrete additive lattice and \(I\) a finite set of prototype types. Fix exact finite-support base functions \(t_i:L\to[0,1]\). A placement is \((i,x)\), and each placement identity is selected at most once. For a finite set \(S\), write</p>
+  <div class="equation">\[T_S(p)=\sum_{(i,x)\in S}t_i(p-x).\]</div>
+  <p>Base partial capacity legality means \(T_S(p)\le1\) everywhere. A channel marking \(m_{i,\gamma}:D_{i,\gamma}\to\{0,1\}\) is a coherent partial function with finite domain. Its translated value at \(x+u\) is \(m_{i,\gamma}(u)\). Only values assigned at the same point <em>and channel</em> are compared. Missing is unconstrained; assigned \(0\) is a value. The base data stay fixed.</p>
+  <p>A finite set \(F\subset I\times I\times L\) forbids distinct placements \((i,x)\ne(j,y)\) when \((i,j,y-x)\in F\). A descriptor denotes every admitted translation of its pair. The descriptions \((i,j,d)\) and \((j,i,-d)\) denote the same unordered physical exclusion.</p>
+  <p><strong>Representation theorem.</strong> There are finitely many binary equality channels and finite marking supports such that, for every finite placement set,</p>
+  <div class="equation">\[
+    \operatorname{Legal}_{t,m}(S)
+    \iff
+    [\,\forall p,\ T_S(p)\le1\,]\ \land\
+    [\,\nexists (i,x)\ne(j,y)\in S:\ (i,j,y-x)\in F\,].
+  \]</div>
+  <p>This is an equivalence for partial legality. It makes no assertion that such a partial state extends, fills a target, or tiles an infinite domain.</p>
+
+  <h3>Construction and complete proof</h3>
+  <p>Close the descriptors under \((i,j,d)\mapsto(j,i,-d)\), discard the vacuous \((i,i,0)\) descriptors, and choose one representative per remaining reciprocal orbit. Call the finite representative set \(R\) and put \(q=|R|\). For each \(f=(A,B,d)\in R\), make one private channel \(\gamma_f\) with just</p>
+  <div class="equation">\[
+    m_{A,\gamma_f}(0)=0,\qquad
+    m_{B,\gamma_f}(-d)=1.
+  \]</div>
+  <p>Leave every other slot in that channel unassigned. If \(A=B\), both entries belong to that one prototype, and \(d\ne0\) makes their domain points distinct.</p>
+  <ol>
+    <li><p>If \(A\ne B\), an \(A\)-placement at \(x\) assigns \(0\) at \(x\), while a \(B\)-placement at \(y\) assigns \(1\) at \(y-d\). A disagreement occurs exactly when \(x=y-d\), or \(y-x=d\). Placements of the same type assign only equal values in this channel. Other types assign nothing. Thus this channel rejects exactly its declared pair orbit.</p></li>
+    <li><p>If \(A=B\), each placement at \(x\) assigns \(0\) at \(x\) and \(1\) at \(x-d\). It is internally coherent. Distinct translations \(x,y\) can disagree only through \(x=y-d\) or \(x-d=y\); these give \(y-x=d\) or \(y-x=-d\). These are precisely the same unordered same-type exclusion. Equal-value overlaps do not reject anything.</p></li>
+    <li><p>The cross-type argument also covers \(d=0\): different types are rejected exactly at equal translations. The same-type case \(d=0\) is vacuous for two distinct placements and is omitted. The literal double assignment there would not be a function.</p></li>
+    <li><p>Every forbidden pair therefore creates a disagreement in its representative channel. Conversely, a marking inconsistency has two unequal values at one point and channel. Coherence of each prototype implies that two distinct placements supplied them; the preceding analysis identifies a declared pair orbit. Different private channels never compare with one another, even if their spatial supports overlap. Hence the conjunction creates exactly the desired exclusions.</p></li>
+    <li><p>The unchanged capacity condition conjoined with this marking equivalence is exactly the theorem. There are \(q\) channels and \(2q\) assigned prototype-channel-point slots. The supports are finite, but may lie far outside positive base support. This is a representation-size bound, not an optimality or runtime bound.</p></li>
+  </ol>
+  <p class="caveat"><strong>The precise caveat.</strong> No counterexample exists under the stated distinct-pair assumptions. If \((A,A,0)\) instead means “ban even one \(A\)-placement,” the assertion is false for coherent equality markings: a base-legal singleton cannot disagree with another placement. For example, \(t_A=\mathbf1_{\{0\}}\) on \(L=\mathbb Z\) has a legal singleton. Likewise, an order-sensitive relation on a sequence is not legality of a placement set. The minus sign in the construction matters: it produces \(y-x=d\), not the opposite cross-type offset.</p>
+
+  <h3>The converse exposes unwanted pair exclusions</h3>
+  <p>Every fixed finite-channel, finite-support equality marking also has an exact finite effective pair list:</p>
+  <div class="equation">\[
+    F_m=\{(i,j,u-v):
+      \exists\gamma,\ u\in D_{i,\gamma},\ v\in D_{j,\gamma},\
+      m_{i,\gamma}(u)\ne m_{j,\gamma}(v)\}.
+  \]</div>
+  <p>The list is finite. Two translated assignments meet exactly when \(x+u=y+v\), equivalently \(y-x=u-v\); unequal values then give precisely a pair in this list. A coherent prototype cannot generate a same-type zero-offset conflict. Thus finite fixed equality markings describe exactly finite translation-invariant pair exclusions, relative to the unchanged capacity rule. Compressing or fitting markings can create extra difference offsets; preserving sampled contacts alone does not prove those additional exclusions sound.</p>
+
+  <h3>Conditional corollary: certified pairs give redundant markings</h3>
+  <p>Fix the <em>same</em> original base model and context \(\mathcal C\), including admitted placements, required points, boundary or exterior data, seeds, inventory and solution meaning. Suppose every pair in the finite list, at <em>every admitted translation</em>, is separately proved impossible in any original exact solution.</p>
+  <p>Then the constructed markings preserve exactly the solution set in \(\mathcal C\). Every original solution avoids the proved-impossible pairs, and the construction rejects no unlisted pair, so its markings agree. Conversely, forgetting the added markings leaves the identical original base problem. For an infinite solution whose original pointwise conditions are already well-defined, any marking conflict would still be witnessed by two placements, giving the same argument. This is equality of solution sets, possibly empty; it proves neither existence nor infinite extension.</p>
+  <p>Capacity-legal partial states containing an unextendible pair may now be rejected. The corollary preserves complete original solutions, not every base-legal partial state.</p>
+  <p>A rooted proof transfers only when translation is a proved automorphism of the <em>same</em> context and solution family, or when all relevant translations are separately covered. In the invariant case, translating a hypothetical solution back gives a contradiction at the rooted pair. Fixed boundaries or seeds can defeat that argument. Translating the context as well does not establish a claim in the original context.</p>
+  <p>No current corona label or finite-window failure is asserted to meet this premise. Budget exhaustion is unknown; boundary-dependent negatives and incomplete enumeration are not global proofs. A geometric reading also needs a faithful reduction to the point model. The corollary gives a possible route to certified failure markings, with no extra pair exclusions, and makes no claim about compactness or measured benefit.</p>
+
+  <h3>Why a genuine triple exclusion is different</h3>
+  <p><strong>Fixed-state limitation.</strong> Suppose a triple \(S=\{c_1,c_2,c_3\}\) is base-capacity-legal and all its constituent pairs have consistent markings. At each point and channel, any two assigned values come from one coherent placement or from a compatible pair. They must agree. The entire union is therefore a partial function, so the triple is marking-consistent and hence legal. The argument works for any finite collection and does not depend on binary values or finite support.</p>
+  <div class="contract">
+    <article>
+      <h4>A triple that markings cannot isolate</h4>
+      <p>Take \(L=\mathbb Z\), types \(A,B,C\), and \(t_A=t_B=t_C=\tfrac13\mathbf1_{\{0\}}\). The coincident pair sums are \(\tfrac23\), while the coincident triple sum is \(1\). Require \(\{(A,x),(B,x),(C,x)\}\) to be forbidden while every constituent pair stays allowed.</p>
+      <p>The triple is base-legal. Any fixed equality marking allowing those pairs also allows the triple. Thus this higher-order rule has no exact representation in the stated marking model.</p>
+    </article>
+    <article>
+      <h4>A triple already rejected by capacity</h4>
+      <p>With \(t_A=t_B=t_C=\tfrac12\mathbf1_{\{0\}}\), each coincident pair sums to \(1\), but the triple sums to \(\tfrac32>1\).</p>
+      <p>Capacity itself rejects the triple, with no markings. The limitation therefore requires the triple to be base-capacity-legal; pairwise capacity legality alone does not suffice.</p>
+    </article>
+  </div>
+  <p>These are abstract mathematical examples, not executed fixtures. Pair allowance concerns the same fixed markings and placement identities. Separate existential choices of auxiliary states for each pair are outside the hypothesis. Added contextual or auxiliary states can change expressive power, but their projection to the original problem needs a separate soundness and completeness proof.</p>
+
+  <h3>Consequences for the original GCTS architecture</h3>
+  <p>Representation and certification must stay separate. Problem-defining exclusions change the problem; sample-supported exclusions remain hypotheses unless proved redundant. A higher-order failure clause or receptor-family cluster relation cannot simply be renamed a fixed marking on unchanged original types while preserving all constituent pairs. Retain a justified higher-order constraint or prove an enlarged state encoding. Ordinary symbolic proof-DAG relations do not automatically become point-placement markings.</p>
+  <p>Clusters must expand to distinct base placements with exact aggregate base values and compatible marking union; shared constituents cannot be double-counted. Keep complete base-placement fallback, the complete frontier/candidate graph, global dead-end checks, global forced propagation, then earliest-generation branching. A proposal pool cannot establish candidate degrees or forced moves.</p>
+  <p>All assigned marking points and channels, including distant mark-only points outside the frontier, must participate in candidate dependencies. They do not create base capacity, coverage obligations or generation births. Marking rejections must propagate globally through the graph. Trail values, reference counts, candidate validity and incidences for exact rollback; version frozen exclusions and revalidate the prefix, graph, caches and trails when rules change.</p>
+  <p>The explicit construction can grow to \(q\) channels and \(2q\) assignment slots with distant support. Their storage and update cost may outweigh pruning. This elementary boundary gives no universal encoding, compact optimum, useful speed, fit, geometric GCTS conformance, learned transfer or trained RL benefit.</p>
+</section>
+<p class="caption">For an already-marked input model, extend the argument with a disjoint namespace of new channels. No current learned exclusion list is certified by this mathematical note.</p></section>
+<p class="notice"><strong>Historical milestones below.</strong> Their dated “current” labels describe their own checkpoints. The completed v2 finite qualification above supersedes the earlier unqualified-status label; all earlier failed cases remain negative.</p><style>.ledger-current{border-top:6px solid #a44f38}.ledger-current .fact{color:#a44f38}.receipt-map{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:22px 0}.receipt-map article{border:2px solid #777;border-radius:10px;padding:20px}.receipt-map article:first-child{border-color:#176b70}.receipt-map article:last-child{border-color:#a16a23}.receipt-map code{overflow-wrap:anywhere}.ledger-current .caption{font-size:14px}@media(max-width:720px){.receipt-map{grid-template-columns:1fr}}</style>
 <section class="panel ledger-current" id="ledger-modes-current"><p class="status">Current outcome · finite storage qualification · 26 October 2026 UTC</p>
 <h1>Storage qualification remains incomplete.</h1>
 <p>The new storage representation was attempted once with the independently written test bank. The bank stopped at an assertion comparing the two modes' complete validator receipts. It returned no complete group results. The first error, all logs and the whole failed case are preserved.</p>
