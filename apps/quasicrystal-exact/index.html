@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Exact icosahedral tilings · GCTS</title>
+  <link rel="stylesheet" href="style.css">
+  <script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+<main>
+  <nav><a href="../../">GCTS</a><span> / Exact quasicrystal toolkit</span></nav>
+  <header>
+    <p class="eyebrow">POLYHEDRA · EXACT ARITHMETIC</p>
+    <h1>Icosahedral tilings,<br>without floating points.</h1>
+    <p class="lede">Two golden rhombohedra. Six integer lift coordinates. Every geometric decision in \(\mathbb Q(\sqrt5)\).</p>
+  </header>
+
+  <section>
+    <h2>The polyhedra</h2>
+    <p>The Ammann–Kramer–Neri construction uses prolate and oblate golden rhombohedra. The four-zonohedron Socolar–Steinhardt model and Danzer’s four tetrahedra are other polyhedral models. This toolkit implements the two-rhombohedron geometry and a regular six-grid dual construction.</p>
+    <p>Set \(\tau=(1+\sqrt5)/2\), so \(\tau^2=\tau+1\). Use the following six directions:</p>
+    \[
+      \begin{aligned}
+      u_0&=(0,1,\tau),&u_1&=(0,-1,\tau),\\
+      u_2&=(1,\tau,0),&u_3&=(-1,\tau,0),\\
+      u_4&=(\tau,0,1),&u_5&=(\tau,0,-1).
+      \end{aligned}
+    \]
+    <p>For each of the \(\binom63=20\) triples, form the parallelotope with vertices \(p+\epsilon_0u_i+\epsilon_1u_j+\epsilon_2u_k\), where \(\epsilon_r\in\{0,1\}\). There are ten orientations of each shape, up to translation. Reflections introduce no additional undecorated shapes in this fixed star.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Shape</th><th>Example axes</th><th>Exact volume</th></tr></thead>
+      <tbody><tr><td>Prolate</td><td>\((0,1,4)\)</td><td>\(2\tau^2\)</td></tr>
+        <tr><td>Oblate</td><td>\((0,1,2)\)</td><td>\(2\tau\)</td></tr></tbody>
+    </table></div>
+    <p>Each edge has squared length \(\tau+2\); each face is a golden rhombus. The volume ratio is \(\tau\). Keeping this common scale avoids adjoining \(\sqrt{\tau+2}\), which would be needed for unit-length edges.</p>
+  </section>
+
+  <section class="panel">
+    <h2>Generate an exact patch</h2>
+    <p>Enumerate all triple intersections whose three selected plane levels lie in \([-r,r]\). This crop has \(20(2r+1)^3\) tiles. It is a finite portion of a multigrid tiling, with a jagged boundary that may include disconnected pieces.</p>
+    <div class="controls"><label>Grid radius <select id="radius"><option value="0">0 · 20 tiles</option><option value="1" selected>1 · 540 tiles</option><option value="2">2 · 2,500 tiles</option></select></label>
+      <button id="generate">Generate patch</button><button id="download" disabled>Download exact JSON</button></div>
+    <p id="status" role="status" aria-live="polite">Ready. Generation runs in a separate worker.</p>
+    <dl id="summary"></dl>
+    <details id="sample-details" hidden><summary>Inspect eight exact vertices of a generated tile</summary><div id="sample"></div></details>
+    <p class="small">Coordinates serialize as canonical <code>[a,b,d]</code> integer strings, meaning \((a+b\tau)/d\). Lift coordinates and plane levels are integer strings too. No decimal coordinates are exported.</p>
+  </section>
+
+  <section>
+    <h2>Exact operators</h2>
+    <p>A value is the normalized triple \((a,b,d)\) representing \((a+b\tau)/d\), with \(a,b,d\in\mathbb Z\), \(d&gt;0\), and \(\gcd(a,b,d)=1\). JavaScript <code>BigInt</code> stores the coefficients, with no fixed precision limit. The API rejects <code>Number</code> coefficients and implicit numeric coercion.</p>
+    \[
+    (a+b\tau)(c+e\tau)=(ac+be)+(ae+bc+be)\tau,
+    \qquad
+    (a+b\tau)^{-1}=\frac{a+b-b\tau}{a^2+ab-b^2}.
+    \]
+    <p>For ordering, multiply by the positive denominator and use \(2a+b+b\sqrt5\). Equal-sign terms are immediate; opposite-sign terms compare \((2a+b)^2\) against \(5b^2\), entirely with integers. Exact floor and ceiling use rational bounds and binary search. No square-root evaluation or tolerance enters a predicate.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Module</th><th>Operations</th></tr></thead><tbody>
+      <tr><td><a href="../../assets/golden-field.js"><code>golden-field.js</code></a></td><td>Addition, subtraction, multiplication, division, integer powers, conjugation, equality, sign, order, floor, ceiling, canonical keys and JSON; vectors, dot/cross products, determinants, matrix inverse, three-plane intersection.</td></tr>
+      <tr><td><a href="../../assets/icosahedral-exact.js"><code>icosahedral-exact.js</code></a></td><td>Twenty orientations, vertices, outward faces, volumes, containment, positive-volume overlap, 160 distinct vertex alignments, internal-space acceptance window, multigrid regularity certificate and patch generation.</td></tr>
+      </tbody></table></div>
+    <pre><code>import { Golden, TAU } from '../../assets/golden-field.js';
+import { makeIcosahedralPatch } from '../../assets/icosahedral-exact.js';
+
+TAU.mul(TAU).equals(TAU.add(1n)); // true
+new Golden('123456789012345678901', '-7', '3').floor();
+const patch = makeIcosahedralPatch({ radius: 1 });
+const json = JSON.stringify(patch,
+  (_, value) =&gt; typeof value === 'bigint' ? String(value) : value);</code></pre>
+  </section>
+
+  <section>
+    <h2>The construction, step by step</h2>
+    <p>Grid family \(i\) consists of the planes \(u_i\cdot x+\gamma_i=k\), for \(k\in\mathbb Z\). The default shifts are \(\gamma=(1/11,1/13,1/17,1/19,1/23,1/29)\). For each triple of distinct families and chosen integer levels:</p>
+    <ol>
+      <li>Solve the three plane equations by exact cross products and determinants.</li>
+      <li>Set \(n_i=k_i\) on the three intersecting families. On every other family, set \(n_j=\lceil u_j\cdot x+\gamma_j\rceil\). Reject an exact integer there: it signals a singular intersection of at least four planes.</li>
+      <li>Project the lift to \(p=\sum_{j=0}^5n_ju_j\), and attach the rhombohedron generated by the selected three star vectors.</li>
+    </ol>
+    <p>The signs in the ceiling matter: the eight neighboring grid cells have labels \(n+\sum_{i\in I}\epsilon_i e_i\). These project to the eight tile vertices. Scanning all triples and levels constructs the tiling directly.</p>
+    <h3>Global regularity</h3>
+    <p>For any four families there is a cofactor dependency \(\sum c_i u_i=0\), with nonzero \(c_i\in\mathbb Z[\tau]\). Four planes could meet only if \(\sum c_i\gamma_i=\sum c_i k_i\in\mathbb Z[\tau]\). The code checks all fifteen quadruples and certifies that the left side is outside this ring for the default shifts. This is a sufficient global certificate. For other shifts, failure of this certificate means inconclusive; encountered singular intersections are still rejected exactly.</p>
+    <h3>An independent acceptance test</h3>
+    <p>Conjugate \(\tau\mapsto1-\tau\) to obtain internal vectors \(u'_i\). The physical and internal row spaces are orthogonal. A lift belongs to the cut-and-project vertex set when</p>
+    \[
+      \sum_i(n_i-\gamma_i)u'_i\in W,
+      \qquad W=\sum_i[0,1]u'_i.
+    \]
+    <p>The window is a rhombic triacontahedral zonotope. Its fifteen pairs of supporting planes have normals \(u'_i\times u'_j\). Membership uses exact slab comparisons; boundary, interior and exterior are distinguished. The tests independently check every generated vertex against this window.</p>
+    <p>The physical integer module \(\sum\mathbb Z u_i\) is dense in physical space, so “enumerate every module point in a bounded box” is not a finite algorithm. The six-grid enumeration gives a finite, explicit construction. The integer lift is also injective for this star: equating rational and irrational coefficients in all three coordinates forces all six lift coefficients to vanish.</p>
+  </section>
+
+  <section class="scope">
+    <h2>Geometry, matching rules, and the search contract</h2>
+    <p>The two undecorated shapes alone allow periodic arrangements. A six-grid construction selects a structured quasiperiodic family; it does not discover local matching rules. Ammann face-dot decorations are additional problem data. The 2016 growth paper describes both chiral decorations of each shape, but explicitly distinguishes weak matching rules from an unproved claim of perfect matching for those particular decorations. This toolkit does not encode those dots, nor claim a single Penrose local-isomorphism class.</p>
+    <p>Under the <a href="../../docs/basic-tiling-algorithm.md">shared algorithm contract</a>, this is a <strong>specialized geometric construction</strong>. Exact geometry is not a finite point-value capacity model. Corner coordinates alone do not supply exact occupancy weights; 3D solid angles must not be presumed to belong to the coordinate field.</p>
+    <div class="table-wrap"><table><thead><tr><th>Conformance item</th><th>Status</th></tr></thead><tbody>
+      <tr><td>Arithmetic, point identity, orientations, geometric predicates</td><td>Implemented exactly; all twenty undecorated orientations and every vertex alignment within that declared set.</td></tr>
+      <tr><td>Point domain, capacity and marking data</td><td>Integer lifts and exact physical coordinates are available. A faithful finite-support capacity model and transformed marking channels remain unspecified.</td></tr>
+      <tr><td>Target and activation</td><td>All triple intersections in a declared finite grid-index crop. No claim that the crop fills a prescribed target.</td></tr>
+      <tr><td>Frontier graph, generations, dead/forced priority, rollback</td><td>Not applicable to direct construction; no search engine is added or claimed conforming.</td></tr>
+      <tr><td>GCTS, RL, learned restrictions</td><td>None enabled. The multigrid rule is a declared construction, not learned pruning.</td></tr>
+      <tr><td>Result and verification</td><td>Finite patch from the specified regular multigrid. Independent cell witnesses, acceptance-window checks, exact pairwise nonoverlap and face-incidence checks. No independent infinite-coverage certificate.</td></tr>
+    </tbody></table></div>
+    <p>For a future search, retain the complete candidate graph, global dead/forced propagation, earliest-generation branching and full rollback. The exact operators here can support that work, but geometric overlap must remain a separately labeled control until a faithful point model is supplied.</p>
+  </section>
+
+  <section>
+    <h2>Reproduce and verify</h2>
+    <pre><code>node scripts/test-icosahedral-exact.mjs
+node scripts/export-icosahedral-exact.mjs 1 &gt; patch.json</code></pre>
+    <p>The test covers 867 scalar cases against independent rational bounds, cancellation involving the thousandth Fibonacci number, inverses and oriented faces, 540 generated tiles, 4,320 grid-cell and window witnesses, all 145,530 tile pairs, and exact rejection of singular grids. JSON preserves every coefficient for replay. The finite crop has equal shape counts by enumeration; this is not an estimate of infinite tiling frequencies.</p>
+    <p><a href="../../scripts/test-icosahedral-exact.mjs">Test source</a> · <a href="../../scripts/export-icosahedral-exact.mjs">Command-line exporter</a></p>
+    <h3>Primary references</h3>
+    <ul>
+      <li><a href="https://sigma-journal.com/2013/021/">Battaglia &amp; Prato, <em>Ammann Tilings in Symplectic Geometry</em> (2013)</a> — explicit golden-rhombohedron geometry and icosahedral quasilattices.</li>
+      <li><a href="https://arxiv.org/html/1604.02479">Hann, Socolar &amp; Steinhardt, <em>Local growth of icosahedral quasicrystalline tilings</em> (2016)</a> — face decorations, six-dimensional projection, acceptance windows, and matching-rule limitations.</li>
+      <li><a href="https://journals.aps.org/prb/abstract/10.1103/PhysRevB.34.617">Socolar &amp; Steinhardt, <em>Quasicrystals. II. Unit-cell configurations</em> (1986)</a> — local-isomorphism classes, constructions and decorated zonohedra.</li>
+      <li><a href="https://pubs.rsc.org/en/content/articlehtml/2015/RA/C5RA13874D"><em>Atomic structure of icosahedral quasicrystals: stacking multiple quasi-unit cells</em> (2015)</a> — the four-zonohedron model.</li>
+      <li><a href="https://www.mdpi.com/2073-8994/12/12/1983">Koca et al., <em>Icosahedral Polyhedra from D6 Lattice and Danzer’s ABCK Tiling</em> (2020)</a> — an alternative tetrahedral model.</li>
+    </ul>
+    <p class="small">Implementation version <code>icosahedral-six-grid-v1</code> · 27 October 2026</p>
+  </section>
+</main>
+</body>
+</html>
