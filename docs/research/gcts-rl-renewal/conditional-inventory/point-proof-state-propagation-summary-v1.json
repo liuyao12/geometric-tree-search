@@ -1,0 +1,590 @@
+{
+  "API_qualification": {
+    "Engine_calls": 0,
+    "independent_negative_cases": 4,
+    "malformed_controls": 30,
+    "production_negative_cases": 26,
+    "separate_from_benchmark_costs": true,
+    "solve_calls": 0,
+    "status": "API_QUALIFICATION_PASS",
+    "worker_post_full_readback_seconds": 0.7983879999956116,
+    "worker_pre_serialization_seconds": 0.7050114589947043
+  },
+  "benchmarks": {
+    "accepted_histories_per_negative_arm": 0,
+    "accepted_histories_per_positive_arm": 1,
+    "histories_per_arm": 19683,
+    "named_attempt_artifact_bytes": 47158150,
+    "named_cap_bytes": 402653184,
+    "negative_counter_forecast": "NONE",
+    "positive_STATE_six_field_prediction": "MATCHED",
+    "raw_history_examinations_all4_arms": 78732,
+    "rollbacks": "Every complete saved snapshot/branch context reviewed; all4 cases restore entire entry state.",
+    "whole_stable_audits": 224
+  },
+  "cost_scope": "Worker main-entry includes authentication/loading/construction/validation/fullhistory/reference/fullauditedsearch/verification/evidence; late includes fullresult serialize/fsync/readback/SHA. Startup beforemain/finalbudget/terminalencoding/flush/shutdown/outertail excluded. Parent postPopen-return-to-wait has different origin; no subtraction/crossclock inequality. RSS separate lifetime peaks+allowance, not simultaneous/process-tree/hard cap. API30control costs separate.",
+  "data_handling": "Only admitted currentstudy metadata and stat-only extents aggregated, no actualbody/witness/scientifichelper replay. First aggregation script requested an inapplicable administrative baseline cost field and stopped without output; corrected field mapping only.",
+  "exact_order": [
+    "state-propagation-api-v1-case-0",
+    "state-propagation-positive-base-v1-case-0",
+    "state-propagation-positive-state-v1-case-0",
+    "state-propagation-negative-state-v1-case-0",
+    "state-propagation-negative-base-v1-case-0"
+  ],
+  "five_Source_pins": {
+    "compiler": {
+      "bytes": 16921,
+      "path": "/private/tmp/gcts-state-propagation-20261027-active-v1/implementation-B/finite_local_table_tableau_state_v1.py",
+      "sha256": "a9008d0edeb3465f1af0e00319fc2fb1e139c9a918058b0d77931ecf3c67e940"
+    },
+    "engine": {
+      "bytes": 28697,
+      "path": "/private/tmp/gcts-state-propagation-20261027-active-v1/implementation-B/finite_point_engine_v1.py",
+      "sha256": "ef8332761c5f5a8902ff122199f5938b65db90fe9bf46355e185926dccb6a897"
+    },
+    "observer": {
+      "bytes": 38520,
+      "path": "/private/tmp/gcts-state-propagation-20261027-active-v1/custody-L/state_propagation_once_observer_v1.py",
+      "sha256": "76d494cd8b0c1b581f7a8a16dcd75ac3c1b1e09759f9233ba0ed421c818a4a8d"
+    },
+    "oracle": {
+      "bytes": 49684,
+      "path": "/private/tmp/gcts-state-propagation-20261027-active-v1/independent-C/state_propagation_independent_v1.py",
+      "sha256": "58d887dc90d5528d8dea681f84159795127698a20c6de219dd37d6e2b09c0367"
+    },
+    "worker": {
+      "bytes": 41386,
+      "path": "/private/tmp/gcts-state-propagation-20261027-active-v1/independent-C/state_propagation_qualification_v1.py",
+      "sha256": "f3d9f6b651d79674f1a465aa690b8d06128aaafa7e8834b6d6f9320e9cc6a453"
+    }
+  },
+  "further_scientific_execution_authorized": false,
+  "goal": "ACTIVE INCOMPLETE, substitution optional under latest user direction.",
+  "issued_utc": "2026-10-27T08:18:08.037718+00:00",
+  "limits": {
+    "custody_seconds": 120,
+    "log_bytes": 1048576,
+    "memory_bytes": 1073741824,
+    "observer_reserve_bytes": 16777216,
+    "observer_seconds": 150,
+    "result_bytes": 67108864,
+    "worker_seconds": 90
+  },
+  "model": {
+    "STATE_static_slots": 33,
+    "added_STATE_assignments": 2280,
+    "all_Q_root_generation": 0,
+    "augmented_total_mark_assignments": 4938,
+    "baseline_WANG_assignments": 2658,
+    "collar_seeds": 18,
+    "ordinary_placement_generation": 1,
+    "ordinary_placements": 660,
+    "palette_types": 33,
+    "region_cells": 20,
+    "required_points": 38,
+    "selected_positive_STATE_assignments": 50,
+    "selected_positive_STATE_slots": 19,
+    "steps": 2,
+    "supplied_finite_table": true,
+    "total_placements": 678,
+    "translation_only": true,
+    "width": 5
+  },
+  "publication_execution_authorized_by_this_document": false,
+  "rows": [
+    {
+      "accepted_placements_cumulative": 44,
+      "arm": "BASELINE",
+      "backtracks": 6,
+      "branch_decisions": 9,
+      "case_id": "state-propagation-positive-base-v1-case-0",
+      "context": "PRIMARY_ACCEPTED",
+      "final_selected": 38,
+      "forced_placements": 17,
+      "full_costs": {
+        "elapsed_seconds_before_serialization": 1.1420576669916045,
+        "engine_budget_callbacks_before_serialization": 67,
+        "oracle_notifications_before_serialization": 0,
+        "phases": {
+          "API_controls": null,
+          "authentication_load": {
+            "budget_callbacks": 0,
+            "elapsed_seconds": 0.019281417000456713
+          },
+          "base_construction_check": {
+            "budget_callbacks": 5,
+            "elapsed_seconds": 0.011749749988666736
+          },
+          "engine_setup": {
+            "budget_callbacks": 4,
+            "elapsed_seconds": 0.025554916996043175
+          },
+          "evidence_preparation": {
+            "budget_callbacks": 1,
+            "elapsed_seconds": 8.167000487446785e-06
+          },
+          "histories_expected_sets": {
+            "budget_callbacks": 310,
+            "elapsed_seconds": 0.028461957990657538
+          },
+          "post_result_verification_restore": {
+            "budget_callbacks": 6,
+            "elapsed_seconds": 0.048909582998021506
+          },
+          "solve_with_audits": {
+            "budget_callbacks": 210,
+            "elapsed_seconds": 1.0078927080030553
+          },
+          "treatment_construction_check": null
+        },
+        "positive_oracle_calls_before_serialization": {
+          "state_verify_erasure": 0,
+          "state_verify_extension": 0,
+          "state_verify_full_solution": 0
+        },
+        "scope": "MAIN_ENTRY_AFTER_STARTUP_IMPORTS_BEFORE_ARGS_AUTH_LOAD; PRE_SERIALIZATION_SAMPLES",
+        "self_lifetime_highwater_bytes_before_serialization": 96256000,
+        "stable_audits": 74,
+        "worker_budget_callbacks_before_serialization": 536
+      },
+      "full_post_readback_costs": {
+        "capture_site": "AFTER_FULL_RESULT_SERIALIZE_FSYNC_READBACK_SHA_AND_PRE_CAPTURE_BUDGET; RESOURCE_SAMPLES_PRECEDE_FINAL_BUDGET; CALLBACK_COUNT_FOLLOWS_FINAL_BUDGET",
+        "elapsed_origin": "WORKER_MAIN_ENTRY_MONOTONIC_BEFORE_ARGS_AUTH_LOAD_AFTER_STARTUP_IMPORTS",
+        "elapsed_seconds": 1.216573083991534,
+        "rss_scope": "DARWIN_RUSAGE_SELF_LIFETIME_MAXRSS_BYTES",
+        "self_lifetime_highwater_bytes": 119373824,
+        "worker_budget_callbacks_before_terminal_encoding": 540
+      },
+      "nodes": 33,
+      "resource_clock_scope": {
+        "child_lifetime_highwater_bytes": 119373824,
+        "decision": "PASS",
+        "declared_allowance_bytes": 16777216,
+        "late_observer_lifetime_highwater_bytes": 24805376,
+        "outer_through_last_observation_seconds": 1.2863065830024425,
+        "post_Popen_return_through_wait_seconds": 1.2618772499990882,
+        "scope": "Worker pre-serialization elapsed1.1420576669916045 and late post-readback elapsed1.216573083991534 begin MAIN_ENTRY after its startup/imports and before args/auth/role loading. Parent window1.2618772499990882 starts after Popen returns; supervise outer1.2863065830024425 has its own origin. No clean startup subtraction or crossclock inequality asserted. Lifetime maxima plus allowance are observational separate maxima, not simultaneous/process-tree/exactpeak/hard OS cap. All construction/history/full audit/verification/evidence costs included as Source phases; result serialization/fsync/readback cost captured only late. Final worker budget/terminalencoding/write/flush/shutdown and outer tail unmeasured, reserve not a proved bound. This single baseline yields no speedup/causal/order-effect/statistical/comparative advantage.",
+        "sum_of_separate_maxima_plus_allowance_bytes": 160956416,
+        "within_memory_ceiling_bytes": 1073741824,
+        "worker_after_full_result_readback": {
+          "capture_site": "AFTER_FULL_RESULT_SERIALIZE_FSYNC_READBACK_SHA_AND_PRE_CAPTURE_BUDGET; RESOURCE_SAMPLES_PRECEDE_FINAL_BUDGET; CALLBACK_COUNT_FOLLOWS_FINAL_BUDGET",
+          "elapsed_origin": "WORKER_MAIN_ENTRY_MONOTONIC_BEFORE_ARGS_AUTH_LOAD_AFTER_STARTUP_IMPORTS",
+          "elapsed_seconds": 1.216573083991534,
+          "rss_scope": "DARWIN_RUSAGE_SELF_LIFETIME_MAXRSS_BYTES",
+          "self_lifetime_highwater_bytes": 119373824,
+          "worker_budget_callbacks_before_terminal_encoding": 540
+        },
+        "worker_budget_callback_arithmetic": {
+          "before_serialization": 536,
+          "engine_callbacks": 67,
+          "four_late_gates_then_terminal": 540,
+          "history_callbacks": 309,
+          "six_phase_finish_gates": 6,
+          "stable_audit_brackets": 148,
+          "three_public_compile_decode_brackets": 6
+        },
+        "worker_preserialization": {
+          "elapsed_seconds_before_serialization": 1.1420576669916045,
+          "engine_budget_callbacks_before_serialization": 67,
+          "oracle_notifications_before_serialization": 0,
+          "phases": {
+            "API_controls": null,
+            "authentication_load": {
+              "budget_callbacks": 0,
+              "elapsed_seconds": 0.019281417000456713
+            },
+            "base_construction_check": {
+              "budget_callbacks": 5,
+              "elapsed_seconds": 0.011749749988666736
+            },
+            "engine_setup": {
+              "budget_callbacks": 4,
+              "elapsed_seconds": 0.025554916996043175
+            },
+            "evidence_preparation": {
+              "budget_callbacks": 1,
+              "elapsed_seconds": 8.167000487446785e-06
+            },
+            "histories_expected_sets": {
+              "budget_callbacks": 310,
+              "elapsed_seconds": 0.028461957990657538
+            },
+            "post_result_verification_restore": {
+              "budget_callbacks": 6,
+              "elapsed_seconds": 0.048909582998021506
+            },
+            "solve_with_audits": {
+              "budget_callbacks": 210,
+              "elapsed_seconds": 1.0078927080030553
+            },
+            "treatment_construction_check": null
+          },
+          "positive_oracle_calls_before_serialization": {
+            "state_verify_erasure": 0,
+            "state_verify_extension": 0,
+            "state_verify_full_solution": 0
+          },
+          "scope": "MAIN_ENTRY_AFTER_STARTUP_IMPORTS_BEFORE_ARGS_AUTH_LOAD; PRE_SERIALIZATION_SAMPLES",
+          "self_lifetime_highwater_bytes_before_serialization": 96256000,
+          "stable_audits": 74,
+          "worker_budget_callbacks_before_serialization": 536
+        }
+      },
+      "solve_with_audits_seconds": 1.0078927080030553,
+      "stable_audits": 74,
+      "status": "FINITE_EXACT_SOLUTION",
+      "whole_case_adoption": {
+        "bytes": 8402,
+        "path": "/private/tmp/gcts-state-propagation-20261027-active-v1/root/state-propagation-positive-base-v1-case-0-Root-complete-whole-actual-adoption-v1.json",
+        "sha256": "b3e1d43b6e8ba5cfb1964f35f2d0f0b3f6bccc73081cffa0a1c0ef935c6ae2c4"
+      },
+      "whole_result_rawpin": {
+        "bytes": 10923466,
+        "path": "/private/tmp/gcts-state-propagation-20261027-active-v1/actual/state-propagation-positive-base-v1-case-0/worker-result.json",
+        "sha256": "b29d1bb9421aa18d5e885b4d6d2c8ed7c458028aaff0f4d0dc7f8fc72a6dadad"
+      },
+      "worker_lifetime_peak_bytes": 119373824,
+      "worker_post_full_readback_seconds": 1.216573083991534,
+      "worker_pre_serialization_seconds": 1.1420576669916045
+    },
+    {
+      "accepted_placements_cumulative": 38,
+      "arm": "CERTIFIED_STATE",
+      "backtracks": 0,
+      "branch_decisions": 0,
+      "case_id": "state-propagation-positive-state-v1-case-0",
+      "context": "PRIMARY_ACCEPTED",
+      "final_selected": 38,
+      "forced_placements": 20,
+      "full_costs": {
+        "elapsed_seconds_before_serialization": 1.0854040410049492,
+        "engine_budget_callbacks_before_serialization": 43,
+        "oracle_notifications_before_serialization": 2730,
+        "phases": {
+          "API_controls": null,
+          "authentication_load": {
+            "budget_callbacks": 0,
+            "elapsed_seconds": 0.020184833003440872
+          },
+          "base_construction_check": {
+            "budget_callbacks": 5,
+            "elapsed_seconds": 0.011669416999211535
+          },
+          "engine_setup": {
+            "budget_callbacks": 4,
+            "elapsed_seconds": 0.03529149999667425
+          },
+          "evidence_preparation": {
+            "budget_callbacks": 1,
+            "elapsed_seconds": 9.082999895326793e-06
+          },
+          "histories_expected_sets": {
+            "budget_callbacks": 994,
+            "elapsed_seconds": 0.07589833400561474
+          },
+          "post_result_verification_restore": {
+            "budget_callbacks": 690,
+            "elapsed_seconds": 0.10252924999804236
+          },
+          "solve_with_audits": {
+            "budget_callbacks": 126,
+            "elapsed_seconds": 0.776420334004797
+          },
+          "treatment_construction_check": {
+            "budget_callbacks": 1367,
+            "elapsed_seconds": 0.06299991700507235
+          }
+        },
+        "positive_oracle_calls_before_serialization": {
+          "state_verify_erasure": 1,
+          "state_verify_extension": 1,
+          "state_verify_full_solution": 2
+        },
+        "scope": "MAIN_ENTRY_AFTER_STARTUP_IMPORTS_BEFORE_ARGS_AUTH_LOAD; PRE_SERIALIZATION_SAMPLES",
+        "self_lifetime_highwater_bytes_before_serialization": 87638016,
+        "stable_audits": 44,
+        "worker_budget_callbacks_before_serialization": 3187
+      },
+      "full_post_readback_costs": {
+        "capture_site": "AFTER_FULL_RESULT_SERIALIZE_FSYNC_READBACK_SHA_AND_PRE_CAPTURE_BUDGET; RESOURCE_SAMPLES_PRECEDE_FINAL_BUDGET; CALLBACK_COUNT_FOLLOWS_FINAL_BUDGET",
+        "elapsed_origin": "WORKER_MAIN_ENTRY_MONOTONIC_BEFORE_ARGS_AUTH_LOAD_AFTER_STARTUP_IMPORTS",
+        "elapsed_seconds": 1.1414098749955883,
+        "rss_scope": "DARWIN_RUSAGE_SELF_LIFETIME_MAXRSS_BYTES",
+        "self_lifetime_highwater_bytes": 112820224,
+        "worker_budget_callbacks_before_terminal_encoding": 3191
+      },
+      "nodes": 21,
+      "resource_clock_scope": {
+        "Root_reported_cumulative_bytes_association_only": 30181332,
+        "child_lifetime_highwater_bytes": 112820224,
+        "current_named_artifact_bytes": 7983139,
+        "declared_allowance_bytes": 16777216,
+        "late_observer_lifetime_highwater_bytes": 24756224,
+        "named_cap_bytes": 402653184,
+        "outer_through_last_observation_seconds": 1.2157745829899795,
+        "postPopen_return_through_wait_seconds": 1.1923942919966066,
+        "scope": "Worker preserialization1.0854040410049492 and postreadback1.1414098749955883 seconds are MAIN_ENTRY after startup/imports, not process lifetime. Parent postPopen-return1.1923942919966066 and supervise outer1.2157745829899795 seconds separate. Allconstruction/history/wholevalidation/stableaudits/verification/evidence included as currentSource phases; late resource samples include fullscientificserialization/write/fsync/readback/SHA but exclude finalbudget/terminalencode/stdoutflush/shutdown. Observeroutertail also unmeasured; reserve allowance not proved. Equalbudgets and observedallforced do not imply totalcost or causal/practical/comparative advantage.",
+        "sum_separate_maxima_plus_allowance_bytes": 154353664
+      },
+      "solve_with_audits_seconds": 0.776420334004797,
+      "stable_audits": 44,
+      "status": "FINITE_EXACT_SOLUTION",
+      "whole_case_adoption": {
+        "bytes": 10029,
+        "path": "/private/tmp/gcts-state-propagation-20261027-active-v1/root/state-propagation-positive-state-v1-case-0-Root-complete-whole-actual-adoption-v1.json",
+        "sha256": "fdc26d348ea802fbdee12cf9e3e668bfdea5b46ebd2fa27798b1c55e502e8b0c"
+      },
+      "whole_result_rawpin": {
+        "bytes": 7948869,
+        "path": "/private/tmp/gcts-state-propagation-20261027-active-v1/actual/state-propagation-positive-state-v1-case-0/worker-result.json",
+        "sha256": "95dc3ded167eb0551e0ceafec1543b34390fad72356b9cff771d69111c8e472e"
+      },
+      "worker_lifetime_peak_bytes": 112820224,
+      "worker_post_full_readback_seconds": 1.1414098749955883,
+      "worker_pre_serialization_seconds": 1.0854040410049492
+    },
+    {
+      "accepted_placements_cumulative": 35,
+      "arm": "CERTIFIED_STATE",
+      "backtracks": 0,
+      "branch_decisions": 0,
+      "case_id": "state-propagation-negative-state-v1-case-0",
+      "context": "PRIMARY_IMPOSSIBLE_FINAL",
+      "final_selected": 18,
+      "forced_placements": 17,
+      "full_costs": {
+        "elapsed_seconds_before_serialization": 0.8830232079926645,
+        "engine_budget_callbacks_before_serialization": 36,
+        "oracle_notifications_before_serialization": 1362,
+        "phases": {
+          "API_controls": null,
+          "authentication_load": {
+            "budget_callbacks": 0,
+            "elapsed_seconds": 0.02152383299835492
+          },
+          "base_construction_check": {
+            "budget_callbacks": 5,
+            "elapsed_seconds": 0.011339959004544653
+          },
+          "engine_setup": {
+            "budget_callbacks": 4,
+            "elapsed_seconds": 0.036231749996659346
+          },
+          "evidence_preparation": {
+            "budget_callbacks": 1,
+            "elapsed_seconds": 9.167008101940155e-06
+          },
+          "histories_expected_sets": {
+            "budget_callbacks": 310,
+            "elapsed_seconds": 0.02996412498760037
+          },
+          "post_result_verification_restore": {
+            "budget_callbacks": 1,
+            "elapsed_seconds": 0.02469099999871105
+          },
+          "solve_with_audits": {
+            "budget_callbacks": 108,
+            "elapsed_seconds": 0.6366539590089815
+          },
+          "treatment_construction_check": {
+            "budget_callbacks": 1367,
+            "elapsed_seconds": 0.12230070801160764
+          }
+        },
+        "positive_oracle_calls_before_serialization": {
+          "state_verify_erasure": 1,
+          "state_verify_extension": 1,
+          "state_verify_full_solution": 0
+        },
+        "scope": "MAIN_ENTRY_AFTER_STARTUP_IMPORTS_BEFORE_ARGS_AUTH_LOAD; PRE_SERIALIZATION_SAMPLES",
+        "self_lifetime_highwater_bytes_before_serialization": 81231872,
+        "stable_audits": 37,
+        "worker_budget_callbacks_before_serialization": 1796
+      },
+      "full_post_readback_costs": {
+        "capture_site": "AFTER_FULL_RESULT_SERIALIZE_FSYNC_READBACK_SHA_AND_PRE_CAPTURE_BUDGET; RESOURCE_SAMPLES_PRECEDE_FINAL_BUDGET; CALLBACK_COUNT_FOLLOWS_FINAL_BUDGET",
+        "elapsed_origin": "WORKER_MAIN_ENTRY_MONOTONIC_BEFORE_ARGS_AUTH_LOAD_AFTER_STARTUP_IMPORTS",
+        "elapsed_seconds": 0.9365850409958512,
+        "rss_scope": "DARWIN_RUSAGE_SELF_LIFETIME_MAXRSS_BYTES",
+        "self_lifetime_highwater_bytes": 102580224,
+        "worker_budget_callbacks_before_terminal_encoding": 1800
+      },
+      "nodes": 18,
+      "resource_clock_scope": {
+        "Root_reported_cumulative_artifact_bytes_association_only": 36868379,
+        "allowance_bytes": 16777216,
+        "child_lifetime_highwater_bytes": 102580224,
+        "current_named_artifact_bytes": 6687047,
+        "late_observer_lifetime_highwater_bytes": 24690688,
+        "named_cap_bytes": 402653184,
+        "outer_through_last_observation_seconds": 0.9950277080060914,
+        "postPopen_return_through_wait_seconds": 0.9728939170017838,
+        "scope": "Current construction/roundtrip/fullhistory/fullstableaudits/verification/evidence Sourcecosts included; fullserialization/fsync/readback/SHA captured inlateworker samples. No origin-normalization or crossclock inequality, no reserve guarantee or exactprocess-tree peak, no comparison with othercase costs. Alllimits same, no raisedcaps/timeout-as-proof.",
+        "sum_separate_maxima_plus_allowance_bytes": 144048128,
+        "worker_budget_decomposition": {
+          "before_serialization": 1796,
+          "engine_callbacks": 36,
+          "four_production_purecall_brackets": 8,
+          "raw_history_callbacks": 309,
+          "sevenphase_finish_gates": 7,
+          "stable_audit_brackets": 74,
+          "state_validation_notifications": 1362,
+          "terminal_after4late_gates": 1800
+        }
+      },
+      "solve_with_audits_seconds": 0.6366539590089815,
+      "stable_audits": 37,
+      "status": "EXHAUSTED_FINITE_SEARCH",
+      "whole_case_adoption": {
+        "bytes": 10722,
+        "path": "/private/tmp/gcts-state-propagation-20261027-active-v1/root/state-propagation-negative-state-v1-case-0-Root-complete-whole-actual-adoption-v1.json",
+        "sha256": "706b2050eba06f9eb60cadacca8f9da1a6e48f57f5e5c0782ace0296566cbe7c"
+      },
+      "whole_result_rawpin": {
+        "bytes": 6652758,
+        "path": "/private/tmp/gcts-state-propagation-20261027-active-v1/actual/state-propagation-negative-state-v1-case-0/worker-result.json",
+        "sha256": "f8321d0bb9ef4957fbc30cecb7bbb8baf2b1b318dc9cded3c0cdd4f2af50e880"
+      },
+      "worker_lifetime_peak_bytes": 102580224,
+      "worker_post_full_readback_seconds": 0.9365850409958512,
+      "worker_pre_serialization_seconds": 0.8830232079926645
+    },
+    {
+      "accepted_placements_cumulative": 42,
+      "arm": "BASELINE",
+      "backtracks": 6,
+      "branch_decisions": 6,
+      "case_id": "state-propagation-negative-base-v1-case-0",
+      "context": "PRIMARY_IMPOSSIBLE_FINAL",
+      "final_selected": 18,
+      "forced_placements": 18,
+      "full_costs": {
+        "elapsed_seconds_before_serialization": 1.0075249159999657,
+        "engine_budget_callbacks_before_serialization": 62,
+        "oracle_notifications_before_serialization": 0,
+        "phases": {
+          "API_controls": null,
+          "authentication_load": {
+            "budget_callbacks": 0,
+            "elapsed_seconds": 0.02101654100988526
+          },
+          "base_construction_check": {
+            "budget_callbacks": 5,
+            "elapsed_seconds": 0.01200208299269434
+          },
+          "engine_setup": {
+            "budget_callbacks": 4,
+            "elapsed_seconds": 0.02855241698853206
+          },
+          "evidence_preparation": {
+            "budget_callbacks": 1,
+            "elapsed_seconds": 8.083006832748652e-06
+          },
+          "histories_expected_sets": {
+            "budget_callbacks": 310,
+            "elapsed_seconds": 0.017277082995860837
+          },
+          "post_result_verification_restore": {
+            "budget_callbacks": 1,
+            "elapsed_seconds": 0.020495290998951532
+          },
+          "solve_with_audits": {
+            "budget_callbacks": 198,
+            "elapsed_seconds": 0.9079614999936894
+          },
+          "treatment_construction_check": null
+        },
+        "positive_oracle_calls_before_serialization": {
+          "state_verify_erasure": 0,
+          "state_verify_extension": 0,
+          "state_verify_full_solution": 0
+        },
+        "scope": "MAIN_ENTRY_AFTER_STARTUP_IMPORTS_BEFORE_ARGS_AUTH_LOAD; PRE_SERIALIZATION_SAMPLES",
+        "self_lifetime_highwater_bytes_before_serialization": 92749824,
+        "stable_audits": 69,
+        "worker_budget_callbacks_before_serialization": 519
+      },
+      "full_post_readback_costs": {
+        "capture_site": "AFTER_FULL_RESULT_SERIALIZE_FSYNC_READBACK_SHA_AND_PRE_CAPTURE_BUDGET; RESOURCE_SAMPLES_PRECEDE_FINAL_BUDGET; CALLBACK_COUNT_FOLLOWS_FINAL_BUDGET",
+        "elapsed_origin": "WORKER_MAIN_ENTRY_MONOTONIC_BEFORE_ARGS_AUTH_LOAD_AFTER_STARTUP_IMPORTS",
+        "elapsed_seconds": 1.0806270000030054,
+        "rss_scope": "DARWIN_RUSAGE_SELF_LIFETIME_MAXRSS_BYTES",
+        "self_lifetime_highwater_bytes": 114589696,
+        "worker_budget_callbacks_before_terminal_encoding": 523
+      },
+      "nodes": 31,
+      "resource_clock_scope": {
+        "Root_reported_cumulative_bytes_association_only": 47158150,
+        "allowance_bytes": 16777216,
+        "budget_decomposition": {
+          "before_serialization": 519,
+          "engine_callbacks": 62,
+          "history_callbacks": 309,
+          "six_phasefinish_gates": 6,
+          "stable_audit_brackets": 138,
+          "terminal_after4late_gates": 523,
+          "two_purecompile_brackets": 4
+        },
+        "child_lifetime_highwater_bytes": 114589696,
+        "current_named_artifact_bytes": 10289771,
+        "late_observer_lifetime_highwater_bytes": 24821760,
+        "named_cap_bytes": 402653184,
+        "outer_through_last_observation_seconds": 1.1485366659908323,
+        "postPopen_return_through_wait_seconds": 1.124706000002334,
+        "scope": "Current fullworkflow costs with exactSource clockorigins anddeclaredtails. Equal limits do not mean equalprimitivework; no priorcasecomparison/speed/causalallocation/statisticalgain. Resource gate uses separate lifetime maxima and allowance, not process-tree hardquota.",
+        "sum_separate_maxima_plus_allowance_bytes": 156188672
+      },
+      "solve_with_audits_seconds": 0.9079614999936894,
+      "stable_audits": 69,
+      "status": "EXHAUSTED_FINITE_SEARCH",
+      "whole_case_adoption": {
+        "bytes": 14620,
+        "path": "/private/tmp/gcts-state-propagation-20261027-active-v1/root/state-propagation-negative-base-v1-case-0-Root-complete-whole-actual-adoption-v1.json",
+        "sha256": "6b5ed359ba9ac3088c632381ac635ab42aa92c7bc801488492bc970b53275ce5"
+      },
+      "whole_result_rawpin": {
+        "bytes": 10255587,
+        "path": "/private/tmp/gcts-state-propagation-20261027-active-v1/actual/state-propagation-negative-base-v1-case-0/worker-result.json",
+        "sha256": "efacde68d6bb68f2b2f3a7840aee67c247f604f24cbd55409cd00e8f5565e93a"
+      },
+      "worker_lifetime_peak_bytes": 114589696,
+      "worker_post_full_readback_seconds": 1.0806270000030054,
+      "worker_pre_serialization_seconds": 1.0075249159999657
+    }
+  ],
+  "runtime": {
+    "bytes": 18058560,
+    "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+    "sha256": "d90bce0f5ac3aa40e2ee5900ad243bad0b2205ce17408278f088b34aed737840"
+  },
+  "schema": "Root-state-propagation-wholecohort-admitted-publication-facts-v1",
+  "scope": "Descriptive comparison of two supplied boundary conditions for one finite deterministic table. Sameengine/Sources/runtime/inventory/t/Q/IDs/WANG/seed policy/limits; STATE adds manually proved-redundant point agreements. No learned/RL/cluster/theorem/universal/FOL/infinite/practical or conventional-proof-search superiority established. No replication/randomized/cold-host timing control.",
+  "status": "ALL_FIVE_PREDECLARED_ONCE_ATTEMPTS_ADMITTED_COMPLETE",
+  "whole_case_adoptions": [
+    {
+      "bytes": 7445,
+      "path": "/private/tmp/gcts-state-propagation-20261027-active-v1/root/state-propagation-api-v1-case-0-Root-complete-whole-actual-adoption-v1.json",
+      "sha256": "adc02e4d919cd1abc1d2be6e1e67b002f81838caaa8ec18b715ed82778ca317c"
+    },
+    {
+      "bytes": 8402,
+      "path": "/private/tmp/gcts-state-propagation-20261027-active-v1/root/state-propagation-positive-base-v1-case-0-Root-complete-whole-actual-adoption-v1.json",
+      "sha256": "b3e1d43b6e8ba5cfb1964f35f2d0f0b3f6bccc73081cffa0a1c0ef935c6ae2c4"
+    },
+    {
+      "bytes": 10029,
+      "path": "/private/tmp/gcts-state-propagation-20261027-active-v1/root/state-propagation-positive-state-v1-case-0-Root-complete-whole-actual-adoption-v1.json",
+      "sha256": "fdc26d348ea802fbdee12cf9e3e668bfdea5b46ebd2fa27798b1c55e502e8b0c"
+    },
+    {
+      "bytes": 10722,
+      "path": "/private/tmp/gcts-state-propagation-20261027-active-v1/root/state-propagation-negative-state-v1-case-0-Root-complete-whole-actual-adoption-v1.json",
+      "sha256": "706b2050eba06f9eb60cadacca8f9da1a6e48f57f5e5c0782ace0296566cbe7c"
+    },
+    {
+      "bytes": 14620,
+      "path": "/private/tmp/gcts-state-propagation-20261027-active-v1/root/state-propagation-negative-base-v1-case-0-Root-complete-whole-actual-adoption-v1.json",
+      "sha256": "6b5ed359ba9ac3088c632381ac635ab42aa92c7bc801488492bc970b53275ce5"
+    }
+  ]
+}
