@@ -1,0 +1,4757 @@
+{
+  "all_eight_cases": [
+    {
+      "audit_records": 74,
+      "complete_returned_inverse_value": {
+        "canonical_value_bytes": 2826,
+        "canonical_value_sha256": "179362cfb948f14a003e5ae9a12c6244279a60dfa013e88349566718795b6b9d"
+      },
+      "complete_selected_ids_value": {
+        "canonical_value_bytes": 892,
+        "canonical_value_sha256": "112ebb7a0c56de019cfa61f0a3454a11e26812f20810094073a2be7dedabb4c2"
+      },
+      "dimensions": {
+        "state_rows": 3,
+        "tile_rows": 4,
+        "transitions": 2,
+        "width": 5
+      },
+      "final": [
+        "#",
+        "1",
+        "0",
+        "1",
+        "#"
+      ],
+      "full_original_control_value": {
+        "canonical_value_bytes": 10786712,
+        "canonical_value_sha256": "9b533a035131021840414c456dec592959705547d3428dfd554154a5787a9847"
+      },
+      "full_restore_to_entry": true,
+      "histories": {
+        "accepted": [
+          [
+            [
+              "#",
+              "1",
+              "0",
+              "0",
+              "#"
+            ],
+            [
+              "#",
+              "0",
+              "1",
+              "0",
+              "#"
+            ],
+            [
+              "#",
+              "1",
+              "0",
+              "1",
+              "#"
+            ]
+          ]
+        ],
+        "budget_callbacks": 309,
+        "complete": true,
+        "domain": {
+          "alphabet": [
+            "#",
+            "0",
+            "1"
+          ],
+          "declared_history_count": 19683,
+          "free_positions": [
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              3
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              3
+            ]
+          ],
+          "guards": "BOTH_ENDPOINTS_FIXED_HASH"
+        },
+        "examined": 19683,
+        "rejections": {
+          "FINAL": 702,
+          "INITIAL": 18954,
+          "TRANSITION": 26
+        },
+        "schema": "GCTS-finite-tableau-independent-histories-v1"
+      },
+      "id": "primary-accepted",
+      "initial": [
+        "#",
+        "1",
+        "0",
+        "0",
+        "#"
+      ],
+      "metrics": {
+        "accepted_base_placements": 44,
+        "attempts": 44,
+        "backtracks": 6,
+        "branch_decisions": 9,
+        "candidate_removals": {
+          "CAPACITY": 11,
+          "EXCLUDED": 6,
+          "MARKING": 250,
+          "NO_FRONTIER": 0,
+          "SELECTED": 26
+        },
+        "final_active_candidates": 0,
+        "final_edges": 0,
+        "final_frontier_points": 0,
+        "forced_placements": 17,
+        "max_active_candidates": 220,
+        "max_edges": 220,
+        "max_frontier_points": 20,
+        "seed_placements": 18
+      },
+      "model_counts": {
+        "collar_seeds": 18,
+        "complete": true,
+        "ordinary_placements": 660,
+        "palette_types": 33,
+        "point_model": {
+          "collar_seeds": 18,
+          "exact": true,
+          "multiple_inward_seeds": 0,
+          "ordinary": 660,
+          "seed_order_scope": "EXACT_LEXICOGRAPHIC_EXTERIOR_COORDINATE_ORDER"
+        },
+        "region_cells": 20,
+        "required_points": 38
+      },
+      "nodes": 33,
+      "raw_result_locator": "/controls/0",
+      "reason": "SOLUTION",
+      "returned_state_rows": [
+        [
+          "#",
+          "1",
+          "0",
+          "0",
+          "#"
+        ],
+        [
+          "#",
+          "0",
+          "1",
+          "0",
+          "#"
+        ],
+        [
+          "#",
+          "1",
+          "0",
+          "1",
+          "#"
+        ]
+      ],
+      "selected_ids_count": 38,
+      "source_provided_checks": {
+        "bundle_model": {
+          "collar_seeds": 18,
+          "complete": true,
+          "ordinary_placements": 660,
+          "palette_types": 33,
+          "point_model": {
+            "collar_seeds": 18,
+            "exact": true,
+            "multiple_inward_seeds": 0,
+            "ordinary": 660,
+            "seed_order_scope": "EXACT_LEXICOGRAPHIC_EXTERIOR_COORDINATE_ORDER"
+          },
+          "region_cells": 20,
+          "required_points": 38
+        },
+        "compile_input_detached": true,
+        "solve_result": {
+          "complete": true,
+          "exact_solution_count": 1,
+          "status": "FINITE_EXACT_SOLUTION"
+        },
+        "whole_entry_rollback": true
+      },
+      "status": "FINITE_EXACT_SOLUTION",
+      "table": "primary"
+    },
+    {
+      "audit_records": 69,
+      "complete_returned_inverse_value": {
+        "canonical_value_bytes": 4,
+        "canonical_value_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+      },
+      "complete_selected_ids_value": {
+        "canonical_value_bytes": 352,
+        "canonical_value_sha256": "5e58f6b91fc51ae0f369a50b8742057b5d994f7e083d6952a58fed336d95ba75"
+      },
+      "dimensions": {
+        "state_rows": 3,
+        "tile_rows": 4,
+        "transitions": 2,
+        "width": 5
+      },
+      "final": [
+        "#",
+        "1",
+        "0",
+        "0",
+        "#"
+      ],
+      "full_original_control_value": {
+        "canonical_value_bytes": 10119139,
+        "canonical_value_sha256": "0488e4e0cbd8cec788d74f42aa86a33558a3c5ed695fd42e806c692017e19bfa"
+      },
+      "full_restore_to_entry": true,
+      "histories": {
+        "accepted": [],
+        "budget_callbacks": 309,
+        "complete": true,
+        "domain": {
+          "alphabet": [
+            "#",
+            "0",
+            "1"
+          ],
+          "declared_history_count": 19683,
+          "free_positions": [
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              3
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              3
+            ]
+          ],
+          "guards": "BOTH_ENDPOINTS_FIXED_HASH"
+        },
+        "examined": 19683,
+        "rejections": {
+          "FINAL": 702,
+          "INITIAL": 18954,
+          "TRANSITION": 27
+        },
+        "schema": "GCTS-finite-tableau-independent-histories-v1"
+      },
+      "id": "primary-impossible-final",
+      "initial": [
+        "#",
+        "1",
+        "0",
+        "0",
+        "#"
+      ],
+      "metrics": {
+        "accepted_base_placements": 42,
+        "attempts": 42,
+        "backtracks": 6,
+        "branch_decisions": 6,
+        "candidate_removals": {
+          "CAPACITY": 8,
+          "EXCLUDED": 6,
+          "MARKING": 269,
+          "NO_FRONTIER": 0,
+          "SELECTED": 24
+        },
+        "final_active_candidates": 220,
+        "final_edges": 220,
+        "final_frontier_points": 20,
+        "forced_placements": 18,
+        "max_active_candidates": 220,
+        "max_edges": 220,
+        "max_frontier_points": 20,
+        "seed_placements": 18
+      },
+      "model_counts": {
+        "collar_seeds": 18,
+        "complete": true,
+        "ordinary_placements": 660,
+        "palette_types": 33,
+        "point_model": {
+          "collar_seeds": 18,
+          "exact": true,
+          "multiple_inward_seeds": 0,
+          "ordinary": 660,
+          "seed_order_scope": "EXACT_LEXICOGRAPHIC_EXTERIOR_COORDINATE_ORDER"
+        },
+        "region_cells": 20,
+        "required_points": 38
+      },
+      "nodes": 31,
+      "raw_result_locator": "/controls/1",
+      "reason": "EXHAUSTED",
+      "returned_state_rows": null,
+      "selected_ids_count": 18,
+      "source_provided_checks": {
+        "bundle_model": {
+          "collar_seeds": 18,
+          "complete": true,
+          "ordinary_placements": 660,
+          "palette_types": 33,
+          "point_model": {
+            "collar_seeds": 18,
+            "exact": true,
+            "multiple_inward_seeds": 0,
+            "ordinary": 660,
+            "seed_order_scope": "EXACT_LEXICOGRAPHIC_EXTERIOR_COORDINATE_ORDER"
+          },
+          "region_cells": 20,
+          "required_points": 38
+        },
+        "compile_input_detached": true,
+        "solve_result": {
+          "complete": true,
+          "exact_solution_count": 0,
+          "status": "EXHAUSTED_FINITE_SEARCH"
+        },
+        "whole_entry_rollback": true
+      },
+      "status": "EXHAUSTED_FINITE_SEARCH",
+      "table": "primary"
+    },
+    {
+      "audit_records": 16,
+      "complete_returned_inverse_value": {
+        "canonical_value_bytes": 1106,
+        "canonical_value_sha256": "9fa06bbca0adb1b42db2d7b450fa9c4e864ed64d8aa2a61d8ca2675630787677"
+      },
+      "complete_selected_ids_value": {
+        "canonical_value_bytes": 346,
+        "canonical_value_sha256": "40a32892a774f7007c2aa7ec94b2a9d0fc38f669d84da08d2096f808c23f5c4a"
+      },
+      "dimensions": {
+        "state_rows": 1,
+        "tile_rows": 2,
+        "transitions": 0,
+        "width": 3
+      },
+      "final": [
+        "#",
+        "1",
+        "#"
+      ],
+      "full_original_control_value": {
+        "canonical_value_bytes": 878179,
+        "canonical_value_sha256": "3033d17d5704ce25d62432acd0fc285acefc0a25831ec133c08ec370407190d6"
+      },
+      "full_restore_to_entry": true,
+      "histories": {
+        "accepted": [
+          [
+            [
+              "#",
+              "1",
+              "#"
+            ]
+          ]
+        ],
+        "budget_callbacks": 2,
+        "complete": true,
+        "domain": {
+          "alphabet": [
+            "#",
+            "0",
+            "1"
+          ],
+          "declared_history_count": 3,
+          "free_positions": [
+            [
+              0,
+              1
+            ]
+          ],
+          "guards": "BOTH_ENDPOINTS_FIXED_HASH"
+        },
+        "examined": 3,
+        "rejections": {
+          "FINAL": 0,
+          "INITIAL": 2,
+          "TRANSITION": 0
+        },
+        "schema": "GCTS-finite-tableau-independent-histories-v1"
+      },
+      "id": "zero-step-equal-minwidth",
+      "initial": [
+        "#",
+        "1",
+        "#"
+      ],
+      "metrics": {
+        "accepted_base_placements": 16,
+        "attempts": 16,
+        "backtracks": 0,
+        "branch_decisions": 0,
+        "candidate_removals": {
+          "CAPACITY": 0,
+          "EXCLUDED": 0,
+          "MARKING": 0,
+          "NO_FRONTIER": 0,
+          "SELECTED": 6
+        },
+        "final_active_candidates": 0,
+        "final_edges": 0,
+        "final_frontier_points": 0,
+        "forced_placements": 6,
+        "max_active_candidates": 6,
+        "max_edges": 6,
+        "max_frontier_points": 6,
+        "seed_placements": 10
+      },
+      "model_counts": {
+        "collar_seeds": 10,
+        "complete": true,
+        "ordinary_placements": 198,
+        "palette_types": 33,
+        "point_model": {
+          "collar_seeds": 10,
+          "exact": true,
+          "multiple_inward_seeds": 0,
+          "ordinary": 198,
+          "seed_order_scope": "EXACT_LEXICOGRAPHIC_EXTERIOR_COORDINATE_ORDER"
+        },
+        "region_cells": 6,
+        "required_points": 16
+      },
+      "nodes": 7,
+      "raw_result_locator": "/controls/2",
+      "reason": "SOLUTION",
+      "returned_state_rows": [
+        [
+          "#",
+          "1",
+          "#"
+        ]
+      ],
+      "selected_ids_count": 16,
+      "source_provided_checks": {
+        "bundle_model": {
+          "collar_seeds": 10,
+          "complete": true,
+          "ordinary_placements": 198,
+          "palette_types": 33,
+          "point_model": {
+            "collar_seeds": 10,
+            "exact": true,
+            "multiple_inward_seeds": 0,
+            "ordinary": 198,
+            "seed_order_scope": "EXACT_LEXICOGRAPHIC_EXTERIOR_COORDINATE_ORDER"
+          },
+          "region_cells": 6,
+          "required_points": 16
+        },
+        "compile_input_detached": true,
+        "solve_result": {
+          "complete": true,
+          "exact_solution_count": 1,
+          "status": "FINITE_EXACT_SOLUTION"
+        },
+        "whole_entry_rollback": true
+      },
+      "status": "FINITE_EXACT_SOLUTION",
+      "table": "primary"
+    },
+    {
+      "audit_records": 9,
+      "complete_returned_inverse_value": {
+        "canonical_value_bytes": 4,
+        "canonical_value_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+      },
+      "complete_selected_ids_value": {
+        "canonical_value_bytes": 196,
+        "canonical_value_sha256": "c6a87d4c7710a56ccfd18841c2d444669a3bb0ba49d7518904956b64bb1f9340"
+      },
+      "dimensions": {
+        "state_rows": 1,
+        "tile_rows": 2,
+        "transitions": 0,
+        "width": 3
+      },
+      "final": [
+        "#",
+        "0",
+        "#"
+      ],
+      "full_original_control_value": {
+        "canonical_value_bytes": 572649,
+        "canonical_value_sha256": "7e2a3727e3139435928442e9c2da59c3ea459d16669ac65f5d0663ae62ab1054"
+      },
+      "full_restore_to_entry": true,
+      "histories": {
+        "accepted": [],
+        "budget_callbacks": 2,
+        "complete": true,
+        "domain": {
+          "alphabet": [
+            "#",
+            "0",
+            "1"
+          ],
+          "declared_history_count": 3,
+          "free_positions": [
+            [
+              0,
+              1
+            ]
+          ],
+          "guards": "BOTH_ENDPOINTS_FIXED_HASH"
+        },
+        "examined": 3,
+        "rejections": {
+          "FINAL": 1,
+          "INITIAL": 2,
+          "TRANSITION": 0
+        },
+        "schema": "GCTS-finite-tableau-independent-histories-v1"
+      },
+      "id": "zero-step-unequal-minwidth",
+      "initial": [
+        "#",
+        "1",
+        "#"
+      ],
+      "metrics": {
+        "accepted_base_placements": 13,
+        "attempts": 13,
+        "backtracks": 0,
+        "branch_decisions": 0,
+        "candidate_removals": {
+          "CAPACITY": 0,
+          "EXCLUDED": 0,
+          "MARKING": 1,
+          "NO_FRONTIER": 0,
+          "SELECTED": 3
+        },
+        "final_active_candidates": 6,
+        "final_edges": 6,
+        "final_frontier_points": 6,
+        "forced_placements": 3,
+        "max_active_candidates": 6,
+        "max_edges": 6,
+        "max_frontier_points": 6,
+        "seed_placements": 10
+      },
+      "model_counts": {
+        "collar_seeds": 10,
+        "complete": true,
+        "ordinary_placements": 198,
+        "palette_types": 33,
+        "point_model": {
+          "collar_seeds": 10,
+          "exact": true,
+          "multiple_inward_seeds": 0,
+          "ordinary": 198,
+          "seed_order_scope": "EXACT_LEXICOGRAPHIC_EXTERIOR_COORDINATE_ORDER"
+        },
+        "region_cells": 6,
+        "required_points": 16
+      },
+      "nodes": 4,
+      "raw_result_locator": "/controls/3",
+      "reason": "EXHAUSTED",
+      "returned_state_rows": null,
+      "selected_ids_count": 10,
+      "source_provided_checks": {
+        "bundle_model": {
+          "collar_seeds": 10,
+          "complete": true,
+          "ordinary_placements": 198,
+          "palette_types": 33,
+          "point_model": {
+            "collar_seeds": 10,
+            "exact": true,
+            "multiple_inward_seeds": 0,
+            "ordinary": 198,
+            "seed_order_scope": "EXACT_LEXICOGRAPHIC_EXTERIOR_COORDINATE_ORDER"
+          },
+          "region_cells": 6,
+          "required_points": 16
+        },
+        "compile_input_detached": true,
+        "solve_result": {
+          "complete": true,
+          "exact_solution_count": 0,
+          "status": "EXHAUSTED_FINITE_SEARCH"
+        },
+        "whole_entry_rollback": true
+      },
+      "status": "EXHAUSTED_FINITE_SEARCH",
+      "table": "primary"
+    },
+    {
+      "audit_records": 2,
+      "complete_returned_inverse_value": {
+        "canonical_value_bytes": 4,
+        "canonical_value_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+      },
+      "complete_selected_ids_value": {
+        "canonical_value_bytes": 352,
+        "canonical_value_sha256": "5e58f6b91fc51ae0f369a50b8742057b5d994f7e083d6952a58fed336d95ba75"
+      },
+      "dimensions": {
+        "state_rows": 3,
+        "tile_rows": 4,
+        "transitions": 2,
+        "width": 5
+      },
+      "final": [
+        "#",
+        "1",
+        "0",
+        "1",
+        "#"
+      ],
+      "full_original_control_value": {
+        "canonical_value_bytes": 1066335,
+        "canonical_value_sha256": "c131d9259ecd09b1ab6c33d72f39212497050e11b0d473ef3f1fb572e866f596"
+      },
+      "full_restore_to_entry": true,
+      "histories": {
+        "accepted": [
+          [
+            [
+              "#",
+              "1",
+              "0",
+              "0",
+              "#"
+            ],
+            [
+              "#",
+              "0",
+              "1",
+              "0",
+              "#"
+            ],
+            [
+              "#",
+              "1",
+              "0",
+              "1",
+              "#"
+            ]
+          ]
+        ],
+        "budget_callbacks": 309,
+        "complete": true,
+        "domain": {
+          "alphabet": [
+            "#",
+            "0",
+            "1"
+          ],
+          "declared_history_count": 19683,
+          "free_positions": [
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              3
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              3
+            ]
+          ],
+          "guards": "BOTH_ENDPOINTS_FIXED_HASH"
+        },
+        "examined": 19683,
+        "rejections": {
+          "FINAL": 702,
+          "INITIAL": 18954,
+          "TRANSITION": 26
+        },
+        "schema": "GCTS-finite-tableau-independent-histories-v1"
+      },
+      "id": "primary-node-zero",
+      "initial": [
+        "#",
+        "1",
+        "0",
+        "0",
+        "#"
+      ],
+      "metrics": {
+        "accepted_base_placements": 18,
+        "attempts": 18,
+        "backtracks": 0,
+        "branch_decisions": 0,
+        "candidate_removals": {
+          "CAPACITY": 0,
+          "EXCLUDED": 0,
+          "MARKING": 0,
+          "NO_FRONTIER": 0,
+          "SELECTED": 0
+        },
+        "final_active_candidates": 220,
+        "final_edges": 220,
+        "final_frontier_points": 20,
+        "forced_placements": 0,
+        "max_active_candidates": 220,
+        "max_edges": 220,
+        "max_frontier_points": 20,
+        "seed_placements": 18
+      },
+      "model_counts": {
+        "collar_seeds": 18,
+        "complete": true,
+        "ordinary_placements": 660,
+        "palette_types": 33,
+        "point_model": {
+          "collar_seeds": 18,
+          "exact": true,
+          "multiple_inward_seeds": 0,
+          "ordinary": 660,
+          "seed_order_scope": "EXACT_LEXICOGRAPHIC_EXTERIOR_COORDINATE_ORDER"
+        },
+        "region_cells": 20,
+        "required_points": 38
+      },
+      "nodes": 0,
+      "raw_result_locator": "/controls/4",
+      "reason": "NODE_LIMIT",
+      "returned_state_rows": null,
+      "selected_ids_count": 18,
+      "source_provided_checks": {
+        "bundle_model": {
+          "collar_seeds": 18,
+          "complete": true,
+          "ordinary_placements": 660,
+          "palette_types": 33,
+          "point_model": {
+            "collar_seeds": 18,
+            "exact": true,
+            "multiple_inward_seeds": 0,
+            "ordinary": 660,
+            "seed_order_scope": "EXACT_LEXICOGRAPHIC_EXTERIOR_COORDINATE_ORDER"
+          },
+          "region_cells": 20,
+          "required_points": 38
+        },
+        "compile_input_detached": true,
+        "solve_result": {
+          "complete": true,
+          "exact_solution_count": 1,
+          "status": "UNKNOWN"
+        },
+        "whole_entry_rollback": true
+      },
+      "status": "UNKNOWN",
+      "table": "primary"
+    },
+    {
+      "audit_records": 4,
+      "complete_returned_inverse_value": {
+        "canonical_value_bytes": 4,
+        "canonical_value_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+      },
+      "complete_selected_ids_value": {
+        "canonical_value_bytes": 352,
+        "canonical_value_sha256": "5e58f6b91fc51ae0f369a50b8742057b5d994f7e083d6952a58fed336d95ba75"
+      },
+      "dimensions": {
+        "state_rows": 3,
+        "tile_rows": 4,
+        "transitions": 2,
+        "width": 5
+      },
+      "final": [
+        "#",
+        "1",
+        "0",
+        "1",
+        "#"
+      ],
+      "full_original_control_value": {
+        "canonical_value_bytes": 1350187,
+        "canonical_value_sha256": "8e62214635644cb6ff6f97817888172ef993300a69cf7a6a549940970eadb7f5"
+      },
+      "full_restore_to_entry": true,
+      "histories": {
+        "accepted": [
+          [
+            [
+              "#",
+              "1",
+              "0",
+              "0",
+              "#"
+            ],
+            [
+              "#",
+              "0",
+              "1",
+              "0",
+              "#"
+            ],
+            [
+              "#",
+              "1",
+              "0",
+              "1",
+              "#"
+            ]
+          ]
+        ],
+        "budget_callbacks": 309,
+        "complete": true,
+        "domain": {
+          "alphabet": [
+            "#",
+            "0",
+            "1"
+          ],
+          "declared_history_count": 19683,
+          "free_positions": [
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              3
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              3
+            ]
+          ],
+          "guards": "BOTH_ENDPOINTS_FIXED_HASH"
+        },
+        "examined": 19683,
+        "rejections": {
+          "FINAL": 702,
+          "INITIAL": 18954,
+          "TRANSITION": 26
+        },
+        "schema": "GCTS-finite-tableau-independent-histories-v1"
+      },
+      "id": "primary-node-one-rollback",
+      "initial": [
+        "#",
+        "1",
+        "0",
+        "0",
+        "#"
+      ],
+      "metrics": {
+        "accepted_base_placements": 19,
+        "attempts": 19,
+        "backtracks": 0,
+        "branch_decisions": 0,
+        "candidate_removals": {
+          "CAPACITY": 0,
+          "EXCLUDED": 0,
+          "MARKING": 0,
+          "NO_FRONTIER": 0,
+          "SELECTED": 1
+        },
+        "final_active_candidates": 220,
+        "final_edges": 220,
+        "final_frontier_points": 20,
+        "forced_placements": 1,
+        "max_active_candidates": 220,
+        "max_edges": 220,
+        "max_frontier_points": 20,
+        "seed_placements": 18
+      },
+      "model_counts": {
+        "collar_seeds": 18,
+        "complete": true,
+        "ordinary_placements": 660,
+        "palette_types": 33,
+        "point_model": {
+          "collar_seeds": 18,
+          "exact": true,
+          "multiple_inward_seeds": 0,
+          "ordinary": 660,
+          "seed_order_scope": "EXACT_LEXICOGRAPHIC_EXTERIOR_COORDINATE_ORDER"
+        },
+        "region_cells": 20,
+        "required_points": 38
+      },
+      "nodes": 1,
+      "raw_result_locator": "/controls/5",
+      "reason": "NODE_LIMIT",
+      "returned_state_rows": null,
+      "selected_ids_count": 18,
+      "source_provided_checks": {
+        "bundle_model": {
+          "collar_seeds": 18,
+          "complete": true,
+          "ordinary_placements": 660,
+          "palette_types": 33,
+          "point_model": {
+            "collar_seeds": 18,
+            "exact": true,
+            "multiple_inward_seeds": 0,
+            "ordinary": 660,
+            "seed_order_scope": "EXACT_LEXICOGRAPHIC_EXTERIOR_COORDINATE_ORDER"
+          },
+          "region_cells": 20,
+          "required_points": 38
+        },
+        "compile_input_detached": true,
+        "solve_result": {
+          "complete": true,
+          "exact_solution_count": 1,
+          "status": "UNKNOWN"
+        },
+        "whole_entry_rollback": true
+      },
+      "status": "UNKNOWN",
+      "table": "primary"
+    },
+    {
+      "audit_records": 2,
+      "complete_returned_inverse_value": {
+        "canonical_value_bytes": 4,
+        "canonical_value_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+      },
+      "complete_selected_ids_value": {
+        "canonical_value_bytes": 352,
+        "canonical_value_sha256": "5e58f6b91fc51ae0f369a50b8742057b5d994f7e083d6952a58fed336d95ba75"
+      },
+      "dimensions": {
+        "state_rows": 3,
+        "tile_rows": 4,
+        "transitions": 2,
+        "width": 5
+      },
+      "final": [
+        "#",
+        "1",
+        "0",
+        "1",
+        "#"
+      ],
+      "full_original_control_value": {
+        "canonical_value_bytes": 1066351,
+        "canonical_value_sha256": "bd0f9960cc63eb1392d089365f3fc4d339365fc613c33efe55958344d98370b3"
+      },
+      "full_restore_to_entry": true,
+      "histories": {
+        "accepted": [
+          [
+            [
+              "#",
+              "1",
+              "0",
+              "0",
+              "#"
+            ],
+            [
+              "#",
+              "0",
+              "1",
+              "0",
+              "#"
+            ],
+            [
+              "#",
+              "1",
+              "0",
+              "1",
+              "#"
+            ]
+          ]
+        ],
+        "budget_callbacks": 309,
+        "complete": true,
+        "domain": {
+          "alphabet": [
+            "#",
+            "0",
+            "1"
+          ],
+          "declared_history_count": 19683,
+          "free_positions": [
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              3
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              3
+            ]
+          ],
+          "guards": "BOTH_ENDPOINTS_FIXED_HASH"
+        },
+        "examined": 19683,
+        "rejections": {
+          "FINAL": 702,
+          "INITIAL": 18954,
+          "TRANSITION": 26
+        },
+        "schema": "GCTS-finite-tableau-independent-histories-v1"
+      },
+      "id": "primary-external-refusal",
+      "initial": [
+        "#",
+        "1",
+        "0",
+        "0",
+        "#"
+      ],
+      "metrics": {
+        "accepted_base_placements": 18,
+        "attempts": 18,
+        "backtracks": 0,
+        "branch_decisions": 0,
+        "candidate_removals": {
+          "CAPACITY": 0,
+          "EXCLUDED": 0,
+          "MARKING": 0,
+          "NO_FRONTIER": 0,
+          "SELECTED": 0
+        },
+        "final_active_candidates": 220,
+        "final_edges": 220,
+        "final_frontier_points": 20,
+        "forced_placements": 0,
+        "max_active_candidates": 220,
+        "max_edges": 220,
+        "max_frontier_points": 20,
+        "seed_placements": 18
+      },
+      "model_counts": {
+        "collar_seeds": 18,
+        "complete": true,
+        "ordinary_placements": 660,
+        "palette_types": 33,
+        "point_model": {
+          "collar_seeds": 18,
+          "exact": true,
+          "multiple_inward_seeds": 0,
+          "ordinary": 660,
+          "seed_order_scope": "EXACT_LEXICOGRAPHIC_EXTERIOR_COORDINATE_ORDER"
+        },
+        "region_cells": 20,
+        "required_points": 38
+      },
+      "nodes": 0,
+      "raw_result_locator": "/controls/6",
+      "reason": "EXTERNAL_BUDGET",
+      "returned_state_rows": null,
+      "selected_ids_count": 18,
+      "source_provided_checks": {
+        "bundle_model": {
+          "collar_seeds": 18,
+          "complete": true,
+          "ordinary_placements": 660,
+          "palette_types": 33,
+          "point_model": {
+            "collar_seeds": 18,
+            "exact": true,
+            "multiple_inward_seeds": 0,
+            "ordinary": 660,
+            "seed_order_scope": "EXACT_LEXICOGRAPHIC_EXTERIOR_COORDINATE_ORDER"
+          },
+          "region_cells": 20,
+          "required_points": 38
+        },
+        "compile_input_detached": true,
+        "solve_result": {
+          "complete": true,
+          "exact_solution_count": 1,
+          "status": "UNKNOWN"
+        },
+        "whole_entry_rollback": true
+      },
+      "status": "UNKNOWN",
+      "table": "primary"
+    },
+    {
+      "audit_records": 32,
+      "complete_returned_inverse_value": {
+        "canonical_value_bytes": 1503,
+        "canonical_value_sha256": "c615e765f4c0c933d62ab5fe9670ca8da9382650c14d111de0097f02f7a18f7e"
+      },
+      "complete_selected_ids_value": {
+        "canonical_value_bytes": 472,
+        "canonical_value_sha256": "c20b10e1f28fe8c2d5e288a66c6843cb7a79be2fa4714fca5d1cf2c791e3a724"
+      },
+      "dimensions": {
+        "state_rows": 2,
+        "tile_rows": 3,
+        "transitions": 1,
+        "width": 3
+      },
+      "final": [
+        "#",
+        "1",
+        "#"
+      ],
+      "full_original_control_value": {
+        "canonical_value_bytes": 2306872,
+        "canonical_value_sha256": "588d650ef12adc51ef1e1c86e238174da83710ce26b2c21a2b8381df7bd4b786"
+      },
+      "full_restore_to_entry": true,
+      "histories": {
+        "accepted": [
+          [
+            [
+              "#",
+              "1",
+              "#"
+            ],
+            [
+              "#",
+              "1",
+              "#"
+            ]
+          ]
+        ],
+        "budget_callbacks": 2,
+        "complete": true,
+        "domain": {
+          "alphabet": [
+            "#",
+            "0",
+            "1"
+          ],
+          "declared_history_count": 9,
+          "free_positions": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "guards": "BOTH_ENDPOINTS_FIXED_HASH"
+        },
+        "examined": 9,
+        "rejections": {
+          "FINAL": 2,
+          "INITIAL": 6,
+          "TRANSITION": 0
+        },
+        "schema": "GCTS-finite-tableau-independent-histories-v1"
+      },
+      "id": "alternate-supplied-table",
+      "initial": [
+        "#",
+        "1",
+        "#"
+      ],
+      "metrics": {
+        "accepted_base_placements": 23,
+        "attempts": 23,
+        "backtracks": 2,
+        "branch_decisions": 3,
+        "candidate_removals": {
+          "CAPACITY": 4,
+          "EXCLUDED": 2,
+          "MARKING": 43,
+          "NO_FRONTIER": 0,
+          "SELECTED": 11
+        },
+        "final_active_candidates": 0,
+        "final_edges": 0,
+        "final_frontier_points": 0,
+        "forced_placements": 8,
+        "max_active_candidates": 45,
+        "max_edges": 45,
+        "max_frontier_points": 9,
+        "seed_placements": 12
+      },
+      "model_counts": {
+        "collar_seeds": 12,
+        "complete": true,
+        "ordinary_placements": 297,
+        "palette_types": 33,
+        "point_model": {
+          "collar_seeds": 12,
+          "exact": true,
+          "multiple_inward_seeds": 0,
+          "ordinary": 297,
+          "seed_order_scope": "EXACT_LEXICOGRAPHIC_EXTERIOR_COORDINATE_ORDER"
+        },
+        "region_cells": 9,
+        "required_points": 21
+      },
+      "nodes": 14,
+      "raw_result_locator": "/controls/7",
+      "reason": "SOLUTION",
+      "returned_state_rows": [
+        [
+          "#",
+          "1",
+          "#"
+        ],
+        [
+          "#",
+          "1",
+          "#"
+        ]
+      ],
+      "selected_ids_count": 21,
+      "source_provided_checks": {
+        "bundle_model": {
+          "collar_seeds": 12,
+          "complete": true,
+          "ordinary_placements": 297,
+          "palette_types": 33,
+          "point_model": {
+            "collar_seeds": 12,
+            "exact": true,
+            "multiple_inward_seeds": 0,
+            "ordinary": 297,
+            "seed_order_scope": "EXACT_LEXICOGRAPHIC_EXTERIOR_COORDINATE_ORDER"
+          },
+          "region_cells": 9,
+          "required_points": 21
+        },
+        "compile_input_detached": true,
+        "solve_result": {
+          "complete": true,
+          "exact_solution_count": 1,
+          "status": "FINITE_EXACT_SOLUTION"
+        },
+        "whole_entry_rollback": true
+      },
+      "status": "FINITE_EXACT_SOLUTION",
+      "table": "alternate_single_triple_output"
+    }
+  ],
+  "case_id": "finite-tableau-qualification-v1-case-0",
+  "content_scope": "Saved single finite supplied-table qualification; Source publication content only until separate content/package/publication gates. No new computation or replay.",
+  "content_to_evidence_map": {
+    "SVG_twenty_cells": "Raw result /controls/0/inverse/production/assignment, saved selected /model/placements and exact /bundle/palette; figure mapping retained in primary_plot.",
+    "all33_palette_inspection": "Raw result /controls/0/bundle/palette, exact order and raw N/E/S/W strings.",
+    "audit_history_negative_and_rollback_counts": "Raw result /costs,/counts,/controls/*/events,/histories,/checks,/restored,/malformed; all208 retained in original evidence.",
+    "lead_and_eight_case_table": "Raw result /counts and complete /controls; complete independent whole review and Root passive full-value join.",
+    "open_efficiency_question": "Saved primary nodes33/branch_decisions9/backtracks6; deterministic supplied transition table. No comparative measurement or speedup claim.",
+    "resource_table": "Raw result /costs and original observer receipt/terminal/full outer stdout; complete whole review resource capture sites.",
+    "three_state_rows_and_rule": "Raw result primary spec/transitions and accepted histories/inverses; adopted mathematical proposal and Root mathematical adoption. Rule formula is a human reading of that supplied literal table, not a new evaluation."
+  },
+  "counter_interpretation": "Nodes count reviewed solve iterations including forced and terminal decisions, not theorem-proof lines or only genuine branches. Accepted-base counter includes seeds and placements later rolled back. Causal allocation recount not claimed.",
+  "counts": {
+    "accepted_history_records_including_repeats": 6,
+    "compiler_calls": 26,
+    "deliberate_unknown_returns": 3,
+    "engine_instances": 8,
+    "finite_exhausted_returns": 2,
+    "malformed_assignment_cases": 8,
+    "malformed_bundle_cases": 4,
+    "malformed_spec_cases": 17,
+    "positive_returns": 3,
+    "production_decode_calls": 16,
+    "raw_history_examinations": 98430,
+    "solve_calls": 8,
+    "valid_reversed_assignment_controls": 1,
+    "valid_shuffled_table_controls": 1
+  },
+  "evidence": {
+    "actual/finite-tableau-qualification-v1-case-0/CONSUMED.json": {
+      "bytes": 2580,
+      "sha256": "5593269d4a9f0a6027476e4bf121d475380989119fc6b6014a85f5a1cf169ef0",
+      "study_relative_path": "actual/finite-tableau-qualification-v1-case-0/CONSUMED.json"
+    },
+    "actual/finite-tableau-qualification-v1-case-0/observer-receipt.json": {
+      "bytes": 16905,
+      "sha256": "ba9075c4902dbd539396c37510765f01210d840ecd03db510360a2a2c2bfd5aa",
+      "study_relative_path": "actual/finite-tableau-qualification-v1-case-0/observer-receipt.json"
+    },
+    "actual/finite-tableau-qualification-v1-case-0/observer-terminal.json": {
+      "bytes": 2050,
+      "sha256": "92d0df0f8b8305e0f417a3666fad9c3fd2f6628cdfd1f00b3d89cc81b8d2068f",
+      "study_relative_path": "actual/finite-tableau-qualification-v1-case-0/observer-terminal.json"
+    },
+    "actual/finite-tableau-qualification-v1-case-0/stderr.bin": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "study_relative_path": "actual/finite-tableau-qualification-v1-case-0/stderr.bin"
+    },
+    "actual/finite-tableau-qualification-v1-case-0/stdout.bin": {
+      "bytes": 197,
+      "sha256": "019bd36e0681bb16bf8dd4c9a28d1d76040faec1ec7687cf1d58040557a8d5ea",
+      "study_relative_path": "actual/finite-tableau-qualification-v1-case-0/stdout.bin"
+    },
+    "actual/finite-tableau-qualification-v1-case-0/worker-result.json": {
+      "bytes": 28189716,
+      "sha256": "62de07752d5b728272ae17737d48a65f29c2def0c07111df2d59522709f90581",
+      "study_relative_path": "actual/finite-tableau-qualification-v1-case-0/worker-result.json"
+    },
+    "custody-L/tableau-once-plan-and-worker-ABI-v1.json": {
+      "bytes": 7999,
+      "sha256": "fc57935727ddca090ac8d14f5fda4f8cfe57a499dabd3e09095a9d8b4b4d4e98",
+      "study_relative_path": "custody-L/tableau-once-plan-and-worker-ABI-v1.json"
+    },
+    "implementation-B/finite-tableau-case0-complete-independent-whole-actual-review-v1.json": {
+      "bytes": 132696,
+      "sha256": "70875611322cdbb34eda6d5f5b72c49c05beb159d6e8ad98078febdd104b5de3",
+      "study_relative_path": "implementation-B/finite-tableau-case0-complete-independent-whole-actual-review-v1.json"
+    },
+    "implementation-B/finite-tableau-case0-complete-passive-saved-evidence-audit-v1.json": {
+      "bytes": 337918,
+      "sha256": "68cf71060010920dbd63df0fcc7c782b1aebaeb0edc09b8392a45c8390ab5084",
+      "study_relative_path": "implementation-B/finite-tableau-case0-complete-passive-saved-evidence-audit-v1.json"
+    },
+    "implementation-B/supplied-local-table-tableau-next-milestone-proposal-v1.json": {
+      "bytes": 22950,
+      "sha256": "3ed98381f3675a6756544d94b2070beb02a63c02f0317774a2a7980a39bbc5f3",
+      "study_relative_path": "implementation-B/supplied-local-table-tableau-next-milestone-proposal-v1.json"
+    },
+    "implementation-B/supplied-local-table-tableau-public-API-v1.json": {
+      "bytes": 5684,
+      "sha256": "6ea040e9a48458f23f784c2fc30995916f1d947cf0da9d4e2d643f6e56b28367",
+      "study_relative_path": "implementation-B/supplied-local-table-tableau-public-API-v1.json"
+    },
+    "independent-C/finite-tableau-independent-and-qualification-complete-API-v1.json": {
+      "bytes": 11448,
+      "sha256": "9cf9787545a2347f66cb89ccfaa3e9905deadfa67623dcc6e668cc562d5d503b",
+      "study_relative_path": "independent-C/finite-tableau-independent-and-qualification-complete-API-v1.json"
+    },
+    "independent-C/finite-tableau-independent-and-qualification-exact-control-census-v1.json": {
+      "bytes": 7892,
+      "sha256": "20f95c6f6424af0c319413e13771662d615b713e5f28296fae711d04d593c491",
+      "study_relative_path": "independent-C/finite-tableau-independent-and-qualification-exact-control-census-v1.json"
+    },
+    "root/finite-tableau-case0-Root-complete-passive-value-join-v1.json": {
+      "bytes": 174469,
+      "sha256": "3dacbb3f63e806680d3126248bbebfaad30e632890444ebe55168f78681913fc",
+      "study_relative_path": "root/finite-tableau-case0-Root-complete-passive-value-join-v1.json"
+    },
+    "root/finite-tableau-case0-Root-once-invocation-and-normal-transport-v1.json": {
+      "bytes": 5289,
+      "sha256": "172e945b01f88814e69316238c2aefd4b2d3d18f9d3145e285caf901dacb0642",
+      "study_relative_path": "root/finite-tableau-case0-Root-once-invocation-and-normal-transport-v1.json"
+    },
+    "root/finite-tableau-five-role-Root-complete-Source-adoption-v1.json": {
+      "bytes": 6672,
+      "sha256": "86e9ac3b1d7198d87455befaccd8d7566dab7b277733a00a742bbbe011f4b4ee",
+      "study_relative_path": "root/finite-tableau-five-role-Root-complete-Source-adoption-v1.json"
+    },
+    "root/finite-tableau-publication-preparer-Source-contract-v1.json": {
+      "bytes": 3422,
+      "sha256": "cfbcc9e762784db0dc8c8f1cfd755888551e2cc9350045dc22652531e511d53b",
+      "study_relative_path": "root/finite-tableau-publication-preparer-Source-contract-v1.json"
+    },
+    "root/supplied-local-table-tableau-Root-complete-mathematical-adoption-v1.json": {
+      "bytes": 2583,
+      "sha256": "cd82cfbfda3cc144cb0262533849ddb9a84256830df81e42f874697e877be392",
+      "study_relative_path": "root/supplied-local-table-tableau-Root-complete-mathematical-adoption-v1.json"
+    },
+    "root/supplied-local-table-tableau-Source-CONTRACT-v1.json": {
+      "bytes": 15580,
+      "sha256": "f2133ed0d39c5d00385ad43bcb31a289aa476587dec660aafcab9962d3e473f1",
+      "study_relative_path": "root/supplied-local-table-tableau-Source-CONTRACT-v1.json"
+    }
+  },
+  "history_partition": {
+    "ACCEPTED": 6,
+    "FINAL": 3513,
+    "INITIAL": 94780,
+    "TRANSITION": 131
+  },
+  "limitations": [
+    "Finite supplied deterministic local table and guarded words only; no single fixed universal palette or FOL verifier/compiler/controller/certificate proof search.",
+    "This is computation-tableau qualification, not a discovered theorem or an engine-discovered mathematical proof. Adopted construction is agent-derived and not machine-checked by this content authoring.",
+    "All required points are roots of generation zero; ordinary placements generation one. Tableau time rows do not establish unequal growth-generation scheduling or infinite extension.",
+    "No learned markings, reinforcement learning, cluster library, holdout result or comparative performance gain. Problem-defining literal Wang marks are not learned or proved-redundant acceleration.",
+    "Independent expected accepted histories remain distinct from returned engine solutions; deliberate UNKNOWN stays UNKNOWN, and resource refusal is never a certified nogood.",
+    "Expected completeness is independent raw-history enumeration plus adopted finite Wang/point bijection, not all point-subset enumeration or a standalone checker for fabricated history metadata.",
+    "All raw case evidence and full current Sources are intended for explicit full archive; previous experiments retain their own dated outcomes and evidence, not merged new claims.",
+    "Counter causal increments, hard OS caps, exact simultaneous/process-tree memory and final outer tail proof remain outside this qualification. Broader GCTS+RL/FOL program remains incomplete."
+  ],
+  "malformed_API_controls": {
+    "assignment_cases": [
+      {
+        "canonical_bundle_control": "primary-accepted",
+        "complete_record_value": {
+          "canonical_value_bytes": 555,
+          "canonical_value_sha256": "6eb2666e06186024455c9956350f7dab80717891c26b890a314cf78a0d19f2d7"
+        },
+        "expected_code": "ASSIGNMENT",
+        "id": "missing",
+        "independent_rejection": {
+          "args": [
+            "ASSIGNMENT"
+          ],
+          "message": "ASSIGNMENT",
+          "type": "tableau_Error"
+        },
+        "input_value": {
+          "canonical_value_bytes": 269,
+          "canonical_value_sha256": "3cfb6713c4c901fc1529a0f3e0de9992f4e02d222cdb42b169c766e2adf1e7b8"
+        },
+        "production_rejection": {
+          "args": [
+            "ASSIGNMENT"
+          ],
+          "message": "ASSIGNMENT",
+          "type": "TableauError"
+        },
+        "raw_result_locator": "/malformed/assignment_cases/0"
+      },
+      {
+        "canonical_bundle_control": "primary-accepted",
+        "complete_record_value": {
+          "canonical_value_bytes": 581,
+          "canonical_value_sha256": "e6f56a2bdebc750ac24cf69ca7ca2119ed8eb49b3783cf1b03b57b9bee77cb41"
+        },
+        "expected_code": "ASSIGNMENT",
+        "id": "duplicate",
+        "independent_rejection": {
+          "args": [
+            "ASSIGNMENT"
+          ],
+          "message": "ASSIGNMENT",
+          "type": "tableau_Error"
+        },
+        "input_value": {
+          "canonical_value_bytes": 293,
+          "canonical_value_sha256": "69bb234dbaff0b80e09c5de62938d26f467108c6c53b855036097196ddfb7c21"
+        },
+        "production_rejection": {
+          "args": [
+            "ASSIGNMENT"
+          ],
+          "message": "ASSIGNMENT",
+          "type": "TableauError"
+        },
+        "raw_result_locator": "/malformed/assignment_cases/1"
+      },
+      {
+        "canonical_bundle_control": "primary-accepted",
+        "complete_record_value": {
+          "canonical_value_bytes": 570,
+          "canonical_value_sha256": "30b3c362bd3625f615c71b495d5036b0850be6b182c912dc1c2d6b34339b3de4"
+        },
+        "expected_code": "ASSIGNMENT",
+        "id": "nonregion",
+        "independent_rejection": {
+          "args": [
+            "ASSIGNMENT"
+          ],
+          "message": "ASSIGNMENT",
+          "type": "tableau_Error"
+        },
+        "input_value": {
+          "canonical_value_bytes": 282,
+          "canonical_value_sha256": "3ab4f9a3cb431e7be43483d97c6d07e4ceaba614755b01512355125784cc8589"
+        },
+        "production_rejection": {
+          "args": [
+            "ASSIGNMENT"
+          ],
+          "message": "ASSIGNMENT",
+          "type": "TableauError"
+        },
+        "raw_result_locator": "/malformed/assignment_cases/2"
+      },
+      {
+        "canonical_bundle_control": "primary-accepted",
+        "complete_record_value": {
+          "canonical_value_bytes": 578,
+          "canonical_value_sha256": "9a90693ee74bc8ceda768f3e683dd36655235a59ff6c8e61a57db97aa8549ed9"
+        },
+        "expected_code": "ASSIGNMENT",
+        "id": "bool-coordinate",
+        "independent_rejection": {
+          "args": [
+            "ASSIGNMENT"
+          ],
+          "message": "ASSIGNMENT",
+          "type": "tableau_Error"
+        },
+        "input_value": {
+          "canonical_value_bytes": 284,
+          "canonical_value_sha256": "add249c9ae89e1b5f84a9d442dd4d8f34c3a3a33efadf46c9fdd9515c448cb6b"
+        },
+        "production_rejection": {
+          "args": [
+            "ASSIGNMENT"
+          ],
+          "message": "ASSIGNMENT",
+          "type": "TableauError"
+        },
+        "raw_result_locator": "/malformed/assignment_cases/3"
+      },
+      {
+        "canonical_bundle_control": "primary-accepted",
+        "complete_record_value": {
+          "canonical_value_bytes": 578,
+          "canonical_value_sha256": "24c0993f35d0800abd5f0d2555ebe7135c410de1168d484eb52abff1f066a9c1"
+        },
+        "expected_code": "ASSIGNMENT",
+        "id": "float-coordinate",
+        "independent_rejection": {
+          "args": [
+            "ASSIGNMENT"
+          ],
+          "message": "ASSIGNMENT",
+          "type": "tableau_Error"
+        },
+        "input_value": {
+          "canonical_value_bytes": 283,
+          "canonical_value_sha256": "467c3bf90a921fddc3f00d39966db6c6a451e62e063b6db755c47bce224324e2"
+        },
+        "production_rejection": {
+          "args": [
+            "ASSIGNMENT"
+          ],
+          "message": "ASSIGNMENT",
+          "type": "TableauError"
+        },
+        "raw_result_locator": "/malformed/assignment_cases/4"
+      },
+      {
+        "canonical_bundle_control": "primary-accepted",
+        "complete_record_value": {
+          "canonical_value_bytes": 574,
+          "canonical_value_sha256": "e0e90a89ed2ad70958cf7858444d3e9d10581377a2e47a5a8cf6d80f4c34cff4"
+        },
+        "expected_code": "ASSIGNMENT",
+        "id": "unknown-ID",
+        "independent_rejection": {
+          "args": [
+            "ASSIGNMENT"
+          ],
+          "message": "ASSIGNMENT",
+          "type": "tableau_Error"
+        },
+        "input_value": {
+          "canonical_value_bytes": 285,
+          "canonical_value_sha256": "e664f93125bc8ef484fc7e0fe023cb6a5db2e2340e0174c070c5aa6f7f302299"
+        },
+        "production_rejection": {
+          "args": [
+            "ASSIGNMENT"
+          ],
+          "message": "ASSIGNMENT",
+          "type": "TableauError"
+        },
+        "raw_result_locator": "/malformed/assignment_cases/5"
+      },
+      {
+        "canonical_bundle_control": "primary-accepted",
+        "complete_record_value": {
+          "canonical_value_bytes": 577,
+          "canonical_value_sha256": "cd5638133f49ab12c4feb2533782d11f2598be5e38197352d94edfb22a87f1d0"
+        },
+        "expected_code": "ASSIGNMENT",
+        "id": "wrong-rowkind",
+        "independent_rejection": {
+          "args": [
+            "ASSIGNMENT"
+          ],
+          "message": "ASSIGNMENT",
+          "type": "tableau_Error"
+        },
+        "input_value": {
+          "canonical_value_bytes": 285,
+          "canonical_value_sha256": "c8cd83982806ce12f227bda9a1635d58f2a0156653186aba5d49209cb0dc7c6a"
+        },
+        "production_rejection": {
+          "args": [
+            "ASSIGNMENT"
+          ],
+          "message": "ASSIGNMENT",
+          "type": "TableauError"
+        },
+        "raw_result_locator": "/malformed/assignment_cases/6"
+      },
+      {
+        "canonical_bundle_control": "primary-accepted",
+        "complete_record_value": {
+          "canonical_value_bytes": 573,
+          "canonical_value_sha256": "335023c8941f007063779a89b49dd59586e52e17ac95dcab45faea20814c7a58"
+        },
+        "expected_code": "ASSIGNMENT",
+        "id": "edge-conflict",
+        "independent_rejection": {
+          "args": [
+            "ASSIGNMENT"
+          ],
+          "message": "ASSIGNMENT",
+          "type": "tableau_Error"
+        },
+        "input_value": {
+          "canonical_value_bytes": 281,
+          "canonical_value_sha256": "90e45aabd2f3407d1c798b25b08140c30df2e3d30c7179e7def8ff13005c28b6"
+        },
+        "production_rejection": {
+          "args": [
+            "ASSIGNMENT"
+          ],
+          "message": "ASSIGNMENT",
+          "type": "TableauError"
+        },
+        "raw_result_locator": "/malformed/assignment_cases/7"
+      }
+    ],
+    "bundle_cases": [
+      {
+        "canonical_assignment_control": "primary-accepted",
+        "complete_record_value": {
+          "canonical_value_bytes": 3528,
+          "canonical_value_sha256": "459a4f87bc4f98f918dedf7727ece83158e115192309e3cccf2af02efddd97fb"
+        },
+        "expected_code": "BUNDLE_CANONICAL",
+        "id": "bundle-extra",
+        "independent_rejection": {
+          "args": [
+            "BUNDLE_CANONICAL"
+          ],
+          "message": "BUNDLE_CANONICAL",
+          "type": "tableau_Error"
+        },
+        "input_value": {
+          "canonical_value_bytes": 3203,
+          "canonical_value_sha256": "9a1ead0a63f7096aa332b06a7a8b3c7b1a46302d6391bd201a26ddead4e13bbf"
+        },
+        "production_rejection": {
+          "args": [
+            "BUNDLE_CANONICAL"
+          ],
+          "message": "BUNDLE_CANONICAL",
+          "type": "TableauError"
+        },
+        "raw_result_locator": "/malformed/bundle_cases/0"
+      },
+      {
+        "canonical_assignment_control": "primary-accepted",
+        "complete_record_value": {
+          "canonical_value_bytes": 3526,
+          "canonical_value_sha256": "93cf7cffaa2143269e6447f4a5edc19357b8dd04a22e8524c9dc527c7780710e"
+        },
+        "expected_code": "BUNDLE_CANONICAL",
+        "id": "bundle-palette-order",
+        "independent_rejection": {
+          "args": [
+            "BUNDLE_CANONICAL"
+          ],
+          "message": "BUNDLE_CANONICAL",
+          "type": "tableau_Error"
+        },
+        "input_value": {
+          "canonical_value_bytes": 3193,
+          "canonical_value_sha256": "d6f85124b36d7d976e03794f475bed4fe279096f5d05df6d6b18a46f549b8e36"
+        },
+        "production_rejection": {
+          "args": [
+            "BUNDLE_CANONICAL"
+          ],
+          "message": "BUNDLE_CANONICAL",
+          "type": "TableauError"
+        },
+        "raw_result_locator": "/malformed/bundle_cases/1"
+      },
+      {
+        "canonical_assignment_control": "primary-accepted",
+        "complete_record_value": {
+          "canonical_value_bytes": 3525,
+          "canonical_value_sha256": "4b59d01d1054b1d98ad19aeb5ea5549619eedd217a8b4044b2f8b2845d9b2320"
+        },
+        "expected_code": "BUNDLE_CANONICAL",
+        "id": "bundle-spec-float",
+        "independent_rejection": {
+          "args": [
+            "BUNDLE_CANONICAL"
+          ],
+          "message": "BUNDLE_CANONICAL",
+          "type": "tableau_Error"
+        },
+        "input_value": {
+          "canonical_value_bytes": 3195,
+          "canonical_value_sha256": "d8ce11394554c926634f2d68af313d4e98bb827e42a9dea55fd937128fa98b68"
+        },
+        "production_rejection": {
+          "args": [
+            "BUNDLE_CANONICAL"
+          ],
+          "message": "BUNDLE_CANONICAL",
+          "type": "TableauError"
+        },
+        "raw_result_locator": "/malformed/bundle_cases/2"
+      },
+      {
+        "canonical_assignment_control": "primary-accepted",
+        "complete_record_value": {
+          "canonical_value_bytes": 3529,
+          "canonical_value_sha256": "8c54dc8a5f9d0ae7fa247d078b6b139eba0f4fe9843c447ef420542cb509b339"
+        },
+        "expected_code": "BUNDLE_CANONICAL",
+        "id": "bundle-spec-table-order",
+        "independent_rejection": {
+          "args": [
+            "BUNDLE_CANONICAL"
+          ],
+          "message": "BUNDLE_CANONICAL",
+          "type": "tableau_Error"
+        },
+        "input_value": {
+          "canonical_value_bytes": 3193,
+          "canonical_value_sha256": "091f9e48b6d777ed2079cf01dd2c06f81d728a0e2e0d109e4cb02b5b2bcb2996"
+        },
+        "production_rejection": {
+          "args": [
+            "BUNDLE_CANONICAL"
+          ],
+          "message": "BUNDLE_CANONICAL",
+          "type": "TableauError"
+        },
+        "raw_result_locator": "/malformed/bundle_cases/3"
+      }
+    ],
+    "spec_cases": [
+      {
+        "complete_record_value": {
+          "canonical_value_bytes": 914,
+          "canonical_value_sha256": "9ba0a75ff046e5bbef38577c8120296da6b4d1418a20b0700dbc013dbe7cd4a0"
+        },
+        "expected_code": "SPEC_SCHEMA",
+        "id": "extra-field",
+        "independent_rejection": {
+          "args": [
+            "SPEC_SCHEMA"
+          ],
+          "message": "SPEC_SCHEMA",
+          "type": "tableau_Error"
+        },
+        "input_value": {
+          "canonical_value_bytes": 665,
+          "canonical_value_sha256": "85965b057cd5c668d46ee57f2a790da7109f83c58a2b564ea962e7a69d7f5d57"
+        },
+        "production_rejection": {
+          "args": [
+            "SPEC_SCHEMA"
+          ],
+          "message": "SPEC_SCHEMA",
+          "type": "TableauError"
+        },
+        "raw_result_locator": "/malformed/spec_cases/0"
+      },
+      {
+        "complete_record_value": {
+          "canonical_value_bytes": 877,
+          "canonical_value_sha256": "eec4a58e611345d5188f505c23d846e4e18c2ea122334806c2190577ff11959e"
+        },
+        "expected_code": "SPEC_SCHEMA",
+        "id": "wrong-schema",
+        "independent_rejection": {
+          "args": [
+            "SPEC_SCHEMA"
+          ],
+          "message": "SPEC_SCHEMA",
+          "type": "tableau_Error"
+        },
+        "input_value": {
+          "canonical_value_bytes": 627,
+          "canonical_value_sha256": "1114db532406951fa540b39b275e9eba854a3334de0f97378afc4b229bee21e3"
+        },
+        "production_rejection": {
+          "args": [
+            "SPEC_SCHEMA"
+          ],
+          "message": "SPEC_SCHEMA",
+          "type": "TableauError"
+        },
+        "raw_result_locator": "/malformed/spec_cases/1"
+      },
+      {
+        "complete_record_value": {
+          "canonical_value_bytes": 917,
+          "canonical_value_sha256": "935c153c97b9ba40aeddfb76219d775727fffcca043b9e744d12a215d4d80b77"
+        },
+        "expected_code": "SPEC_ALPHABET",
+        "id": "alphabet-order",
+        "independent_rejection": {
+          "args": [
+            "SPEC_ALPHABET"
+          ],
+          "message": "SPEC_ALPHABET",
+          "type": "tableau_Error"
+        },
+        "input_value": {
+          "canonical_value_bytes": 655,
+          "canonical_value_sha256": "15afbe5a87538ea6e335a1c911959594f5873ecbb0f033d78349d451198b05ce"
+        },
+        "production_rejection": {
+          "args": [
+            "SPEC_ALPHABET"
+          ],
+          "message": "SPEC_ALPHABET",
+          "type": "TableauError"
+        },
+        "raw_result_locator": "/malformed/spec_cases/2"
+      },
+      {
+        "complete_record_value": {
+          "canonical_value_bytes": 914,
+          "canonical_value_sha256": "f715a913f0500d4b735c383da32438ec8f891a11d28c4756ce26f60cd9725460"
+        },
+        "expected_code": "SPEC_TRANSITIONS",
+        "id": "missing-triple",
+        "independent_rejection": {
+          "args": [
+            "SPEC_TRANSITIONS"
+          ],
+          "message": "SPEC_TRANSITIONS",
+          "type": "tableau_Error"
+        },
+        "input_value": {
+          "canonical_value_bytes": 637,
+          "canonical_value_sha256": "eeb335749aa3d528cd2d92dfc13abff9d51e40e71216b27a36f069a072bc5822"
+        },
+        "production_rejection": {
+          "args": [
+            "SPEC_TRANSITIONS"
+          ],
+          "message": "SPEC_TRANSITIONS",
+          "type": "TableauError"
+        },
+        "raw_result_locator": "/malformed/spec_cases/3"
+      },
+      {
+        "complete_record_value": {
+          "canonical_value_bytes": 934,
+          "canonical_value_sha256": "f73d96481f6a00e7d6687b569ff88d06df08f15b80191e0699d3d4ec5469ad23"
+        },
+        "expected_code": "SPEC_TRANSITIONS",
+        "id": "duplicate-triple",
+        "independent_rejection": {
+          "args": [
+            "SPEC_TRANSITIONS"
+          ],
+          "message": "SPEC_TRANSITIONS",
+          "type": "tableau_Error"
+        },
+        "input_value": {
+          "canonical_value_bytes": 655,
+          "canonical_value_sha256": "13d5c85da2f0dbdc1e75c0abba3fda38f721817bf6f51de9908b325a79d4624f"
+        },
+        "production_rejection": {
+          "args": [
+            "SPEC_TRANSITIONS"
+          ],
+          "message": "SPEC_TRANSITIONS",
+          "type": "TableauError"
+        },
+        "raw_result_locator": "/malformed/spec_cases/4"
+      },
+      {
+        "complete_record_value": {
+          "canonical_value_bytes": 932,
+          "canonical_value_sha256": "e340261e9664505fbc4ee8f426f6ae05f4251095d9d4cb3af8552737c00f4000"
+        },
+        "expected_code": "SPEC_TRANSITIONS",
+        "id": "output-outside",
+        "independent_rejection": {
+          "args": [
+            "SPEC_TRANSITIONS"
+          ],
+          "message": "SPEC_TRANSITIONS",
+          "type": "tableau_Error"
+        },
+        "input_value": {
+          "canonical_value_bytes": 655,
+          "canonical_value_sha256": "8801c4b11a80ea2aa5551f5d22e7cd3af37c71827c508c51404fb3065d32f7f4"
+        },
+        "production_rejection": {
+          "args": [
+            "SPEC_TRANSITIONS"
+          ],
+          "message": "SPEC_TRANSITIONS",
+          "type": "TableauError"
+        },
+        "raw_result_locator": "/malformed/spec_cases/5"
+      },
+      {
+        "complete_record_value": {
+          "canonical_value_bytes": 929,
+          "canonical_value_sha256": "367b9f3fb5098d5b3b4cc93975a0aec48c9882bb266d23b6a665341a0af105df"
+        },
+        "expected_code": "SPEC_TRANSITIONS",
+        "id": "wall-output",
+        "independent_rejection": {
+          "args": [
+            "SPEC_TRANSITIONS"
+          ],
+          "message": "SPEC_TRANSITIONS",
+          "type": "tableau_Error"
+        },
+        "input_value": {
+          "canonical_value_bytes": 655,
+          "canonical_value_sha256": "43ea25d5f25eff3953dcfa5f9605ac72083448976cf3ffa652471d3ea37c1c1b"
+        },
+        "production_rejection": {
+          "args": [
+            "SPEC_TRANSITIONS"
+          ],
+          "message": "SPEC_TRANSITIONS",
+          "type": "TableauError"
+        },
+        "raw_result_locator": "/malformed/spec_cases/6"
+      },
+      {
+        "complete_record_value": {
+          "canonical_value_bytes": 926,
+          "canonical_value_sha256": "737424106ae67c36b4a31d69c897d215d6b477b07d40037a403dd20f011816a3"
+        },
+        "expected_code": "SPEC_DIMENSIONS",
+        "id": "bool-width",
+        "independent_rejection": {
+          "args": [
+            "SPEC_DIMENSIONS"
+          ],
+          "message": "SPEC_DIMENSIONS",
+          "type": "tableau_Error"
+        },
+        "input_value": {
+          "canonical_value_bytes": 658,
+          "canonical_value_sha256": "fa0280230aec6417d5689459d191954eb66ee193434f636dcb25856fe7be1fbb"
+        },
+        "production_rejection": {
+          "args": [
+            "SPEC_DIMENSIONS"
+          ],
+          "message": "SPEC_DIMENSIONS",
+          "type": "TableauError"
+        },
+        "raw_result_locator": "/malformed/spec_cases/7"
+      },
+      {
+        "complete_record_value": {
+          "canonical_value_bytes": 926,
+          "canonical_value_sha256": "9c75a6b89f8630942700d247c6ff6775fff39b191ff7e375809d50751bdaeda0"
+        },
+        "expected_code": "SPEC_DIMENSIONS",
+        "id": "float-steps",
+        "independent_rejection": {
+          "args": [
+            "SPEC_DIMENSIONS"
+          ],
+          "message": "SPEC_DIMENSIONS",
+          "type": "tableau_Error"
+        },
+        "input_value": {
+          "canonical_value_bytes": 657,
+          "canonical_value_sha256": "4b5b58daac588e56daee3d60050b94dd27a36794959f1159358ac238d92024c5"
+        },
+        "production_rejection": {
+          "args": [
+            "SPEC_DIMENSIONS"
+          ],
+          "message": "SPEC_DIMENSIONS",
+          "type": "TableauError"
+        },
+        "raw_result_locator": "/malformed/spec_cases/8"
+      },
+      {
+        "complete_record_value": {
+          "canonical_value_bytes": 930,
+          "canonical_value_sha256": "fde4f8f963f166739bec55ca386829cebef8a56535a7f417e8faeae97c2070eb"
+        },
+        "expected_code": "SPEC_DIMENSIONS",
+        "id": "dimension-outside",
+        "independent_rejection": {
+          "args": [
+            "SPEC_DIMENSIONS"
+          ],
+          "message": "SPEC_DIMENSIONS",
+          "type": "tableau_Error"
+        },
+        "input_value": {
+          "canonical_value_bytes": 655,
+          "canonical_value_sha256": "4cc683f938d4d71d1ec81be39e3db1bc40b2fc8a99cb62861bfe783c89e4267e"
+        },
+        "production_rejection": {
+          "args": [
+            "SPEC_DIMENSIONS"
+          ],
+          "message": "SPEC_DIMENSIONS",
+          "type": "TableauError"
+        },
+        "raw_result_locator": "/malformed/spec_cases/9"
+      },
+      {
+        "complete_record_value": {
+          "canonical_value_bytes": 895,
+          "canonical_value_sha256": "6593df470250e1c5910a978649fa5b28f6d91777da6a5aa6cb0459fcd5e761ce"
+        },
+        "expected_code": "SPEC_WORDS",
+        "id": "word-length",
+        "independent_rejection": {
+          "args": [
+            "SPEC_WORDS"
+          ],
+          "message": "SPEC_WORDS",
+          "type": "tableau_Error"
+        },
+        "input_value": {
+          "canonical_value_bytes": 651,
+          "canonical_value_sha256": "81a50bdb671b5844765bf78edb0338cd537e74e7db7f3363ab0bcce9572fce66"
+        },
+        "production_rejection": {
+          "args": [
+            "SPEC_WORDS"
+          ],
+          "message": "SPEC_WORDS",
+          "type": "TableauError"
+        },
+        "raw_result_locator": "/malformed/spec_cases/10"
+      },
+      {
+        "complete_record_value": {
+          "canonical_value_bytes": 899,
+          "canonical_value_sha256": "c16a005ce431acc4848780e96aa10c1fde6aeea9dbce80757b82f8258fea4436"
+        },
+        "expected_code": "SPEC_WORDS",
+        "id": "word-symbol",
+        "independent_rejection": {
+          "args": [
+            "SPEC_WORDS"
+          ],
+          "message": "SPEC_WORDS",
+          "type": "tableau_Error"
+        },
+        "input_value": {
+          "canonical_value_bytes": 655,
+          "canonical_value_sha256": "424880a00f050348c0bc5270fde842196cbd929fa5a9ad344c4951999f729628"
+        },
+        "production_rejection": {
+          "args": [
+            "SPEC_WORDS"
+          ],
+          "message": "SPEC_WORDS",
+          "type": "TableauError"
+        },
+        "raw_result_locator": "/malformed/spec_cases/11"
+      },
+      {
+        "complete_record_value": {
+          "canonical_value_bytes": 898,
+          "canonical_value_sha256": "95262f42e9ae710648b69761aeb2e9fa99a3be1e4a200b39b278a681723b6bbc"
+        },
+        "expected_code": "SPEC_WORDS",
+        "id": "word-guard",
+        "independent_rejection": {
+          "args": [
+            "SPEC_WORDS"
+          ],
+          "message": "SPEC_WORDS",
+          "type": "tableau_Error"
+        },
+        "input_value": {
+          "canonical_value_bytes": 655,
+          "canonical_value_sha256": "f879091d70fa70b9ac287ba5ac1e94e30c8f1c87c7daa1a30c6848a756066a3e"
+        },
+        "production_rejection": {
+          "args": [
+            "SPEC_WORDS"
+          ],
+          "message": "SPEC_WORDS",
+          "type": "TableauError"
+        },
+        "raw_result_locator": "/malformed/spec_cases/12"
+      },
+      {
+        "complete_record_value": {
+          "canonical_value_bytes": 918,
+          "canonical_value_sha256": "bee6ae9db4aadc8b9d80a0354e1bb0e30ed7feb6a83017d229b14b523330ce71"
+        },
+        "expected_code": "SPEC_SCHEMA",
+        "id": "priority-schema",
+        "independent_rejection": {
+          "args": [
+            "SPEC_SCHEMA"
+          ],
+          "message": "SPEC_SCHEMA",
+          "type": "tableau_Error"
+        },
+        "input_value": {
+          "canonical_value_bytes": 665,
+          "canonical_value_sha256": "57b0a17e13f16b351689b4893e09ed1df6ecd2f57dc932f2c996e6615f8ed800"
+        },
+        "production_rejection": {
+          "args": [
+            "SPEC_SCHEMA"
+          ],
+          "message": "SPEC_SCHEMA",
+          "type": "TableauError"
+        },
+        "raw_result_locator": "/malformed/spec_cases/13"
+      },
+      {
+        "complete_record_value": {
+          "canonical_value_bytes": 902,
+          "canonical_value_sha256": "f158b7b4630f62f54fc896e2394c0256d4a847dd31421f6c850460e5f8b133fc"
+        },
+        "expected_code": "SPEC_ALPHABET",
+        "id": "priority-alphabet",
+        "independent_rejection": {
+          "args": [
+            "SPEC_ALPHABET"
+          ],
+          "message": "SPEC_ALPHABET",
+          "type": "tableau_Error"
+        },
+        "input_value": {
+          "canonical_value_bytes": 637,
+          "canonical_value_sha256": "b2cd7ec71d8ebafe3fa4f352aea5cb5b8f76fa3e3934dc67f2bcaaff42d660c4"
+        },
+        "production_rejection": {
+          "args": [
+            "SPEC_ALPHABET"
+          ],
+          "message": "SPEC_ALPHABET",
+          "type": "TableauError"
+        },
+        "raw_result_locator": "/malformed/spec_cases/14"
+      },
+      {
+        "complete_record_value": {
+          "canonical_value_bytes": 923,
+          "canonical_value_sha256": "093b0e866b7ddf2024a69be793a68ea174e17e11cfb9f51237902f5aab1ff084"
+        },
+        "expected_code": "SPEC_TRANSITIONS",
+        "id": "priority-transitions",
+        "independent_rejection": {
+          "args": [
+            "SPEC_TRANSITIONS"
+          ],
+          "message": "SPEC_TRANSITIONS",
+          "type": "tableau_Error"
+        },
+        "input_value": {
+          "canonical_value_bytes": 640,
+          "canonical_value_sha256": "1bb8a759789aee3c06e45b897172e1571bbb969d0b27de382b2acef4620e740e"
+        },
+        "production_rejection": {
+          "args": [
+            "SPEC_TRANSITIONS"
+          ],
+          "message": "SPEC_TRANSITIONS",
+          "type": "TableauError"
+        },
+        "raw_result_locator": "/malformed/spec_cases/15"
+      },
+      {
+        "complete_record_value": {
+          "canonical_value_bytes": 916,
+          "canonical_value_sha256": "0d540b38234d2a88b0864dbf55955161e55a6eeb8a1a55ad47cb70dc05c998f5"
+        },
+        "expected_code": "SPEC_DIMENSIONS",
+        "id": "priority-dimensions",
+        "independent_rejection": {
+          "args": [
+            "SPEC_DIMENSIONS"
+          ],
+          "message": "SPEC_DIMENSIONS",
+          "type": "tableau_Error"
+        },
+        "input_value": {
+          "canonical_value_bytes": 639,
+          "canonical_value_sha256": "b90f9b1ea973b8fc2ef05d1f3f9424eade44d045de145830f0e2ea578c79f210"
+        },
+        "production_rejection": {
+          "args": [
+            "SPEC_DIMENSIONS"
+          ],
+          "message": "SPEC_DIMENSIONS",
+          "type": "TableauError"
+        },
+        "raw_result_locator": "/malformed/spec_cases/16"
+      }
+    ],
+    "valid_reversed_assignment": {
+      "complete_record_value": {
+        "canonical_value_bytes": 1243,
+        "canonical_value_sha256": "455d4bc4eb444d319b54e790e1ffcd0679a11fd5b0f6d4584ea38ebb14f98988"
+      },
+      "raw_result_locator": "/malformed/valid_reversed_assignment",
+      "result": "full normalization/purity/detachment checks passed; exact complete bodies in raw evidence"
+    },
+    "valid_shuffled_table": {
+      "complete_record_value": {
+        "canonical_value_bytes": 3895,
+        "canonical_value_sha256": "9ba246605c6f2323d6e30444d85efd453c85641ce8f932eedc4f99db539df3d7"
+      },
+      "raw_result_locator": "/malformed/valid_shuffled_table",
+      "result": "full normalization/purity/detachment checks passed; exact complete bodies in raw evidence"
+    }
+  },
+  "open_question": "The supplied table determines the next state directly, yet generic point search used33 solve iterations,9 branch decisions and6 backtracks on the main case. Whether marking design or future validated cluster proposals improve total cost against appropriate direct-evaluation and point-engine comparisons remains unmeasured.",
+  "primary_model": {
+    "all_current_sources": {
+      "compiler": {
+        "bytes": 9319,
+        "sha256": "37753b8faf9c655ce18edf1ed150645d829fb8c335119eea91303536af5d37e8",
+        "study_relative_path": "implementation-B/finite_local_table_tableau_v1.py"
+      },
+      "engine": {
+        "bytes": 28697,
+        "sha256": "ef8332761c5f5a8902ff122199f5938b65db90fe9bf46355e185926dccb6a897",
+        "study_relative_path": "root/recovered-current-sources-v1/finite_point_engine_v1.py"
+      },
+      "observer": {
+        "bytes": 30992,
+        "sha256": "0679a551d17eb84886c4a6e2bee10f1fae52a2901a423a98cc01ceca8d4a7829",
+        "study_relative_path": "custody-L/tableau_once_observer_v1.py"
+      },
+      "oracle": {
+        "bytes": 43915,
+        "sha256": "aae21a2fa7ba003741d26612da2e1b19046084e3154f82d9cef085a86fe2ed7c",
+        "study_relative_path": "independent-C/finite_tableau_independent_v1.py"
+      },
+      "worker": {
+        "bytes": 32708,
+        "sha256": "cb3c93272d3e99f7497e0a0b7f0658bfe5dee87b69edece60139ab702193374f",
+        "study_relative_path": "independent-C/finite_tableau_qualification_v1.py"
+      }
+    },
+    "boundary": [
+      [
+        0,
+        0,
+        "N",
+        "I:#"
+      ],
+      [
+        1,
+        0,
+        "N",
+        "I:1"
+      ],
+      [
+        2,
+        0,
+        "N",
+        "I:0"
+      ],
+      [
+        3,
+        0,
+        "N",
+        "I:0"
+      ],
+      [
+        4,
+        0,
+        "N",
+        "I:#"
+      ],
+      [
+        0,
+        3,
+        "S",
+        "O:#"
+      ],
+      [
+        1,
+        3,
+        "S",
+        "O:1"
+      ],
+      [
+        2,
+        3,
+        "S",
+        "O:0"
+      ],
+      [
+        3,
+        3,
+        "S",
+        "O:1"
+      ],
+      [
+        4,
+        3,
+        "S",
+        "O:#"
+      ],
+      [
+        0,
+        0,
+        "W",
+        "ROW:TOP"
+      ],
+      [
+        4,
+        0,
+        "E",
+        "ROW:TOP"
+      ],
+      [
+        0,
+        1,
+        "W",
+        "P:#:#"
+      ],
+      [
+        4,
+        1,
+        "E",
+        "P:#:#"
+      ],
+      [
+        0,
+        2,
+        "W",
+        "P:#:#"
+      ],
+      [
+        4,
+        2,
+        "E",
+        "P:#:#"
+      ],
+      [
+        0,
+        3,
+        "W",
+        "ROW:BOT"
+      ],
+      [
+        4,
+        3,
+        "E",
+        "ROW:BOT"
+      ]
+    ],
+    "capacity": 1,
+    "collar_seed_placements": 18,
+    "ordinary_candidate_placements": 660,
+    "palette": [
+      {
+        "E": "P:#:#",
+        "N": "S:#",
+        "S": "S:#",
+        "W": "P:#:#",
+        "id": "C:#:#:#"
+      },
+      {
+        "E": "P:#:0",
+        "N": "S:#",
+        "S": "S:#",
+        "W": "P:#:#",
+        "id": "C:#:#:0"
+      },
+      {
+        "E": "P:#:1",
+        "N": "S:#",
+        "S": "S:#",
+        "W": "P:#:#",
+        "id": "C:#:#:1"
+      },
+      {
+        "E": "P:0:#",
+        "N": "S:0",
+        "S": "S:0",
+        "W": "P:#:0",
+        "id": "C:#:0:#"
+      },
+      {
+        "E": "P:0:0",
+        "N": "S:0",
+        "S": "S:0",
+        "W": "P:#:0",
+        "id": "C:#:0:0"
+      },
+      {
+        "E": "P:0:1",
+        "N": "S:0",
+        "S": "S:1",
+        "W": "P:#:0",
+        "id": "C:#:0:1"
+      },
+      {
+        "E": "P:1:#",
+        "N": "S:1",
+        "S": "S:0",
+        "W": "P:#:1",
+        "id": "C:#:1:#"
+      },
+      {
+        "E": "P:1:0",
+        "N": "S:1",
+        "S": "S:0",
+        "W": "P:#:1",
+        "id": "C:#:1:0"
+      },
+      {
+        "E": "P:1:1",
+        "N": "S:1",
+        "S": "S:1",
+        "W": "P:#:1",
+        "id": "C:#:1:1"
+      },
+      {
+        "E": "P:#:#",
+        "N": "S:#",
+        "S": "S:#",
+        "W": "P:0:#",
+        "id": "C:0:#:#"
+      },
+      {
+        "E": "P:#:0",
+        "N": "S:#",
+        "S": "S:#",
+        "W": "P:0:#",
+        "id": "C:0:#:0"
+      },
+      {
+        "E": "P:#:1",
+        "N": "S:#",
+        "S": "S:#",
+        "W": "P:0:#",
+        "id": "C:0:#:1"
+      },
+      {
+        "E": "P:0:#",
+        "N": "S:0",
+        "S": "S:0",
+        "W": "P:0:0",
+        "id": "C:0:0:#"
+      },
+      {
+        "E": "P:0:0",
+        "N": "S:0",
+        "S": "S:0",
+        "W": "P:0:0",
+        "id": "C:0:0:0"
+      },
+      {
+        "E": "P:0:1",
+        "N": "S:0",
+        "S": "S:1",
+        "W": "P:0:0",
+        "id": "C:0:0:1"
+      },
+      {
+        "E": "P:1:#",
+        "N": "S:1",
+        "S": "S:0",
+        "W": "P:0:1",
+        "id": "C:0:1:#"
+      },
+      {
+        "E": "P:1:0",
+        "N": "S:1",
+        "S": "S:0",
+        "W": "P:0:1",
+        "id": "C:0:1:0"
+      },
+      {
+        "E": "P:1:1",
+        "N": "S:1",
+        "S": "S:1",
+        "W": "P:0:1",
+        "id": "C:0:1:1"
+      },
+      {
+        "E": "P:#:#",
+        "N": "S:#",
+        "S": "S:#",
+        "W": "P:1:#",
+        "id": "C:1:#:#"
+      },
+      {
+        "E": "P:#:0",
+        "N": "S:#",
+        "S": "S:#",
+        "W": "P:1:#",
+        "id": "C:1:#:0"
+      },
+      {
+        "E": "P:#:1",
+        "N": "S:#",
+        "S": "S:#",
+        "W": "P:1:#",
+        "id": "C:1:#:1"
+      },
+      {
+        "E": "P:0:#",
+        "N": "S:0",
+        "S": "S:1",
+        "W": "P:1:0",
+        "id": "C:1:0:#"
+      },
+      {
+        "E": "P:0:0",
+        "N": "S:0",
+        "S": "S:1",
+        "W": "P:1:0",
+        "id": "C:1:0:0"
+      },
+      {
+        "E": "P:0:1",
+        "N": "S:0",
+        "S": "S:0",
+        "W": "P:1:0",
+        "id": "C:1:0:1"
+      },
+      {
+        "E": "P:1:#",
+        "N": "S:1",
+        "S": "S:1",
+        "W": "P:1:1",
+        "id": "C:1:1:#"
+      },
+      {
+        "E": "P:1:0",
+        "N": "S:1",
+        "S": "S:1",
+        "W": "P:1:1",
+        "id": "C:1:1:0"
+      },
+      {
+        "E": "P:1:1",
+        "N": "S:1",
+        "S": "S:0",
+        "W": "P:1:1",
+        "id": "C:1:1:1"
+      },
+      {
+        "E": "ROW:TOP",
+        "N": "I:#",
+        "S": "S:#",
+        "W": "ROW:TOP",
+        "id": "I:#"
+      },
+      {
+        "E": "ROW:TOP",
+        "N": "I:0",
+        "S": "S:0",
+        "W": "ROW:TOP",
+        "id": "I:0"
+      },
+      {
+        "E": "ROW:TOP",
+        "N": "I:1",
+        "S": "S:1",
+        "W": "ROW:TOP",
+        "id": "I:1"
+      },
+      {
+        "E": "ROW:BOT",
+        "N": "S:#",
+        "S": "O:#",
+        "W": "ROW:BOT",
+        "id": "O:#"
+      },
+      {
+        "E": "ROW:BOT",
+        "N": "S:0",
+        "S": "O:0",
+        "W": "ROW:BOT",
+        "id": "O:0"
+      },
+      {
+        "E": "ROW:BOT",
+        "N": "S:1",
+        "S": "O:1",
+        "W": "ROW:BOT",
+        "id": "O:1"
+      }
+    ],
+    "point_domain_L_latex": "\\mathbb{Z}^2",
+    "primary_supplied_table": [
+      [
+        "#",
+        "#",
+        "#",
+        "#"
+      ],
+      [
+        "#",
+        "#",
+        "0",
+        "#"
+      ],
+      [
+        "#",
+        "#",
+        "1",
+        "#"
+      ],
+      [
+        "#",
+        "0",
+        "#",
+        "0"
+      ],
+      [
+        "#",
+        "0",
+        "0",
+        "0"
+      ],
+      [
+        "#",
+        "0",
+        "1",
+        "1"
+      ],
+      [
+        "#",
+        "1",
+        "#",
+        "0"
+      ],
+      [
+        "#",
+        "1",
+        "0",
+        "0"
+      ],
+      [
+        "#",
+        "1",
+        "1",
+        "1"
+      ],
+      [
+        "0",
+        "#",
+        "#",
+        "#"
+      ],
+      [
+        "0",
+        "#",
+        "0",
+        "#"
+      ],
+      [
+        "0",
+        "#",
+        "1",
+        "#"
+      ],
+      [
+        "0",
+        "0",
+        "#",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "1",
+        "1"
+      ],
+      [
+        "0",
+        "1",
+        "#",
+        "0"
+      ],
+      [
+        "0",
+        "1",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "1",
+        "1",
+        "1"
+      ],
+      [
+        "1",
+        "#",
+        "#",
+        "#"
+      ],
+      [
+        "1",
+        "#",
+        "0",
+        "#"
+      ],
+      [
+        "1",
+        "#",
+        "1",
+        "#"
+      ],
+      [
+        "1",
+        "0",
+        "#",
+        "1"
+      ],
+      [
+        "1",
+        "0",
+        "0",
+        "1"
+      ],
+      [
+        "1",
+        "0",
+        "1",
+        "0"
+      ],
+      [
+        "1",
+        "1",
+        "#",
+        "1"
+      ],
+      [
+        "1",
+        "1",
+        "0",
+        "1"
+      ],
+      [
+        "1",
+        "1",
+        "1",
+        "0"
+      ]
+    ],
+    "region": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        3,
+        0
+      ],
+      [
+        4,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        3,
+        1
+      ],
+      [
+        4,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        3,
+        2
+      ],
+      [
+        4,
+        2
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        3
+      ],
+      [
+        4,
+        3
+      ]
+    ],
+    "required": [
+      [
+        -2,
+        0
+      ],
+      [
+        -2,
+        2
+      ],
+      [
+        -2,
+        4
+      ],
+      [
+        -2,
+        6
+      ],
+      [
+        0,
+        -2
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        0,
+        8
+      ],
+      [
+        2,
+        -2
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        2,
+        8
+      ],
+      [
+        4,
+        -2
+      ],
+      [
+        4,
+        0
+      ],
+      [
+        4,
+        2
+      ],
+      [
+        4,
+        4
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        6,
+        -2
+      ],
+      [
+        6,
+        0
+      ],
+      [
+        6,
+        2
+      ],
+      [
+        6,
+        4
+      ],
+      [
+        6,
+        6
+      ],
+      [
+        6,
+        8
+      ],
+      [
+        8,
+        -2
+      ],
+      [
+        8,
+        0
+      ],
+      [
+        8,
+        2
+      ],
+      [
+        8,
+        4
+      ],
+      [
+        8,
+        6
+      ],
+      [
+        8,
+        8
+      ],
+      [
+        10,
+        0
+      ],
+      [
+        10,
+        2
+      ],
+      [
+        10,
+        4
+      ],
+      [
+        10,
+        6
+      ]
+    ],
+    "required_points": 38,
+    "seeds": [
+      "[\"COLLAR\",-1,0]",
+      "[\"COLLAR\",-1,1]",
+      "[\"COLLAR\",-1,2]",
+      "[\"COLLAR\",-1,3]",
+      "[\"COLLAR\",0,-1]",
+      "[\"COLLAR\",0,4]",
+      "[\"COLLAR\",1,-1]",
+      "[\"COLLAR\",1,4]",
+      "[\"COLLAR\",2,-1]",
+      "[\"COLLAR\",2,4]",
+      "[\"COLLAR\",3,-1]",
+      "[\"COLLAR\",3,4]",
+      "[\"COLLAR\",4,-1]",
+      "[\"COLLAR\",4,4]",
+      "[\"COLLAR\",5,0]",
+      "[\"COLLAR\",5,1]",
+      "[\"COLLAR\",5,2]",
+      "[\"COLLAR\",5,3]"
+    ],
+    "selected_assignment": [
+      [
+        0,
+        0,
+        "I:#"
+      ],
+      [
+        1,
+        0,
+        "I:1"
+      ],
+      [
+        2,
+        0,
+        "I:0"
+      ],
+      [
+        3,
+        0,
+        "I:0"
+      ],
+      [
+        4,
+        0,
+        "I:#"
+      ],
+      [
+        0,
+        1,
+        "C:#:#:1"
+      ],
+      [
+        1,
+        1,
+        "C:#:1:0"
+      ],
+      [
+        2,
+        1,
+        "C:1:0:0"
+      ],
+      [
+        3,
+        1,
+        "C:0:0:#"
+      ],
+      [
+        4,
+        1,
+        "C:0:#:#"
+      ],
+      [
+        0,
+        2,
+        "C:#:#:0"
+      ],
+      [
+        1,
+        2,
+        "C:#:0:1"
+      ],
+      [
+        2,
+        2,
+        "C:0:1:0"
+      ],
+      [
+        3,
+        2,
+        "C:1:0:#"
+      ],
+      [
+        4,
+        2,
+        "C:0:#:#"
+      ],
+      [
+        0,
+        3,
+        "O:#"
+      ],
+      [
+        1,
+        3,
+        "O:1"
+      ],
+      [
+        2,
+        3,
+        "O:0"
+      ],
+      [
+        3,
+        3,
+        "O:1"
+      ],
+      [
+        4,
+        3,
+        "O:#"
+      ]
+    ],
+    "selected_ordinary_placements": 20,
+    "state_row_count": 3,
+    "state_rows": [
+      [
+        "#",
+        "1",
+        "0",
+        "0",
+        "#"
+      ],
+      [
+        "#",
+        "0",
+        "1",
+        "0",
+        "#"
+      ],
+      [
+        "#",
+        "1",
+        "0",
+        "1",
+        "#"
+      ]
+    ],
+    "tile_row_roles": [
+      "input caps",
+      "first transition",
+      "second transition",
+      "output caps"
+    ],
+    "tile_rows": 4,
+    "transform_scope": "Translations only; exact finite palette-by-region ordinary universe, fixed collar seeds. No rotations/reflections or continuous geometric placements."
+  },
+  "primary_nodes": 33,
+  "primary_plot": {
+    "SVG_viewBox": [
+      0,
+      0,
+      660,
+      432
+    ],
+    "all49_drawn_mark_slots": [
+      {
+        "channel": "WANG",
+        "literal_value": "ROW:TOP",
+        "ordinary_placement_ids": [
+          "[\"WANG\",\"I:#\",0,0]"
+        ],
+        "point": [
+          -1,
+          0
+        ]
+      },
+      {
+        "channel": "WANG",
+        "literal_value": "P:#:#",
+        "ordinary_placement_ids": [
+          "[\"WANG\",\"C:#:#:1\",0,1]"
+        ],
+        "point": [
+          -1,
+          2
+        ]
+      },
+      {
+        "channel": "WANG",
+        "literal_value": "P:#:#",
+        "ordinary_placement_ids": [
+          "[\"WANG\",\"C:#:#:0\",0,2]"
+        ],
+        "point": [
+          -1,
+          4
+        ]
+      },
+      {
+        "channel": "WANG",
+        "literal_value": "ROW:BOT",
+        "ordinary_placement_ids": [
+          "[\"WANG\",\"O:#\",0,3]"
+        ],
+        "point": [
+          -1,
+          6
+        ]
+      },
+      {
+        "channel": "WANG",
+        "literal_value": "I:#",
+        "ordinary_placement_ids": [
+          "[\"WANG\",\"I:#\",0,0]"
+        ],
+        "point": [
+          0,
+          -1
+        ]
+      },
+      {
+        "channel": "WANG",
+        "literal_value": "S:#",
+        "ordinary_placement_ids": [
+          "[\"WANG\",\"I:#\",0,0]",
+          "[\"WANG\",\"C:#:#:1\",0,1]"
+        ],
+        "point": [
+          0,
+          1
+        ]
+      },
+      {
+        "channel": "WANG",
+        "literal_value": "S:#",
+        "ordinary_placement_ids": [
+          "[\"WANG\",\"C:#:#:1\",0,1]",
+          "[\"WANG\",\"C:#:#:0\",0,2]"
+        ],
+        "point": [
+          0,
+          3
+        ]
+      },
+      {
+        "channel": "WANG",
+        "literal_value": "S:#",
+        "ordinary_placement_ids": [
+          "[\"WANG\",\"C:#:#:0\",0,2]",
+          "[\"WANG\",\"O:#\",0,3]"
+        ],
+        "point": [
+          0,
+          5
+        ]
+      },
+      {
+        "channel": "WANG",
+        "literal_value": "O:#",
+        "ordinary_placement_ids": [
+          "[\"WANG\",\"O:#\",0,3]"
+        ],
+        "point": [
+          0,
+          7
+        ]
+      },
+      {
+        "channel": "WANG",
+        "literal_value": "ROW:TOP",
+        "ordinary_placement_ids": [
+          "[\"WANG\",\"I:#\",0,0]",
+          "[\"WANG\",\"I:1\",1,0]"
+        ],
+        "point": [
+          1,
+          0
+        ]
+      },
+      {
+        "channel": "WANG",
+        "literal_value": "P:#:1",
+        "ordinary_placement_ids": [
+          "[\"WANG\",\"C:#:#:1\",0,1]",
+          "[\"WANG\",\"C:#:1:0\",1,1]"
+        ],
+        "point": [
+          1,
+          2
+        ]
+      },
+      {
+        "channel": "WANG",
+        "literal_value": "P:#:0",
+        "ordinary_placement_ids": [
+          "[\"WANG\",\"C:#:#:0\",0,2]",
+          "[\"WANG\",\"C:#:0:1\",1,2]"
+        ],
+        "point": [
+          1,
+          4
+        ]
+      },
+      {
+        "channel": "WANG",
+        "literal_value": "ROW:BOT",
+        "ordinary_placement_ids": [
+          "[\"WANG\",\"O:#\",0,3]",
+          "[\"WANG\",\"O:1\",1,3]"
+        ],
+        "point": [
+          1,
+          6
+        ]
+      },
+      {
+        "channel": "WANG",
+        "literal_value": "I:1",
+        "ordinary_placement_ids": [
+          "[\"WANG\",\"I:1\",1,0]"
+        ],
+        "point": [
+          2,
+          -1
+        ]
+      },
+      {
+        "channel": "WANG",
+        "literal_value": "S:1",
+        "ordinary_placement_ids": [
+          "[\"WANG\",\"I:1\",1,0]",
+          "[\"WANG\",\"C:#:1:0\",1,1]"
+        ],
+        "point": [
+          2,
+          1
+        ]
+      },
+      {
+        "channel": "WANG",
+        "literal_value": "S:0",
+        "ordinary_placement_ids": [
+          "[\"WANG\",\"C:#:1:0\",1,1]",
+          "[\"WANG\",\"C:#:0:1\",1,2]"
+        ],
+        "point": [
+          2,
+          3
+        ]
+      },
+      {
+        "channel": "WANG",
+        "literal_value": "S:1",
+        "ordinary_placement_ids": [
+          "[\"WANG\",\"C:#:0:1\",1,2]",
+          "[\"WANG\",\"O:1\",1,3]"
+        ],
+        "point": [
+          2,
+          5
+        ]
+      },
+      {
+        "channel": "WANG",
+        "literal_value": "O:1",
+        "ordinary_placement_ids": [
+          "[\"WANG\",\"O:1\",1,3]"
+        ],
+        "point": [
+          2,
+          7
+        ]
+      },
+      {
+        "channel": "WANG",
+        "literal_value": "ROW:TOP",
+        "ordinary_placement_ids": [
+          "[\"WANG\",\"I:1\",1,0]",
+          "[\"WANG\",\"I:0\",2,0]"
+        ],
+        "point": [
+          3,
+          0
+        ]
+      },
+      {
+        "channel": "WANG",
+        "literal_value": "P:1:0",
+        "ordinary_placement_ids": [
+          "[\"WANG\",\"C:#:1:0\",1,1]",
+          "[\"WANG\",\"C:1:0:0\",2,1]"
+        ],
+        "point": [
+          3,
+          2
+        ]
+      },
+      {
+        "channel": "WANG",
+        "literal_value": "P:0:1",
+        "ordinary_placement_ids": [
+          "[\"WANG\",\"C:#:0:1\",1,2]",
+          "[\"WANG\",\"C:0:1:0\",2,2]"
+        ],
+        "point": [
+          3,
+          4
+        ]
+      },
+      {
+        "channel": "WANG",
+        "literal_value": "ROW:BOT",
+        "ordinary_placement_ids": [
+          "[\"WANG\",\"O:1\",1,3]",
+          "[\"WANG\",\"O:0\",2,3]"
+        ],
+        "point": [
+          3,
+          6
+        ]
+      },
+      {
+        "channel": "WANG",
+        "literal_value": "I:0",
+        "ordinary_placement_ids": [
+          "[\"WANG\",\"I:0\",2,0]"
+        ],
+        "point": [
+          4,
+          -1
+        ]
+      },
+      {
+        "channel": "WANG",
+        "literal_value": "S:0",
+        "ordinary_placement_ids": [
+          "[\"WANG\",\"I:0\",2,0]",
+          "[\"WANG\",\"C:1:0:0\",2,1]"
+        ],
+        "point": [
+          4,
+          1
+        ]
+      },
+      {
+        "channel": "WANG",
+        "literal_value": "S:1",
+        "ordinary_placement_ids": [
+          "[\"WANG\",\"C:1:0:0\",2,1]",
+          "[\"WANG\",\"C:0:1:0\",2,2]"
+        ],
+        "point": [
+          4,
+          3
+        ]
+      },
+      {
+        "channel": "WANG",
+        "literal_value": "S:0",
+        "ordinary_placement_ids": [
+          "[\"WANG\",\"C:0:1:0\",2,2]",
+          "[\"WANG\",\"O:0\",2,3]"
+        ],
+        "point": [
+          4,
+          5
+        ]
+      },
+      {
+        "channel": "WANG",
+        "literal_value": "O:0",
+        "ordinary_placement_ids": [
+          "[\"WANG\",\"O:0\",2,3]"
+        ],
+        "point": [
+          4,
+          7
+        ]
+      },
+      {
+        "channel": "WANG",
+        "literal_value": "ROW:TOP",
+        "ordinary_placement_ids": [
+          "[\"WANG\",\"I:0\",2,0]",
+          "[\"WANG\",\"I:0\",3,0]"
+        ],
+        "point": [
+          5,
+          0
+        ]
+      },
+      {
+        "channel": "WANG",
+        "literal_value": "P:0:0",
+        "ordinary_placement_ids": [
+          "[\"WANG\",\"C:1:0:0\",2,1]",
+          "[\"WANG\",\"C:0:0:#\",3,1]"
+        ],
+        "point": [
+          5,
+          2
+        ]
+      },
+      {
+        "channel": "WANG",
+        "literal_value": "P:1:0",
+        "ordinary_placement_ids": [
+          "[\"WANG\",\"C:0:1:0\",2,2]",
+          "[\"WANG\",\"C:1:0:#\",3,2]"
+        ],
+        "point": [
+          5,
+          4
+        ]
+      },
+      {
+        "channel": "WANG",
+        "literal_value": "ROW:BOT",
+        "ordinary_placement_ids": [
+          "[\"WANG\",\"O:0\",2,3]",
+          "[\"WANG\",\"O:1\",3,3]"
+        ],
+        "point": [
+          5,
+          6
+        ]
+      },
+      {
+        "channel": "WANG",
+        "literal_value": "I:0",
+        "ordinary_placement_ids": [
+          "[\"WANG\",\"I:0\",3,0]"
+        ],
+        "point": [
+          6,
+          -1
+        ]
+      },
+      {
+        "channel": "WANG",
+        "literal_value": "S:0",
+        "ordinary_placement_ids": [
+          "[\"WANG\",\"I:0\",3,0]",
+          "[\"WANG\",\"C:0:0:#\",3,1]"
+        ],
+        "point": [
+          6,
+          1
+        ]
+      },
+      {
+        "channel": "WANG",
+        "literal_value": "S:0",
+        "ordinary_placement_ids": [
+          "[\"WANG\",\"C:0:0:#\",3,1]",
+          "[\"WANG\",\"C:1:0:#\",3,2]"
+        ],
+        "point": [
+          6,
+          3
+        ]
+      },
+      {
+        "channel": "WANG",
+        "literal_value": "S:1",
+        "ordinary_placement_ids": [
+          "[\"WANG\",\"C:1:0:#\",3,2]",
+          "[\"WANG\",\"O:1\",3,3]"
+        ],
+        "point": [
+          6,
+          5
+        ]
+      },
+      {
+        "channel": "WANG",
+        "literal_value": "O:1",
+        "ordinary_placement_ids": [
+          "[\"WANG\",\"O:1\",3,3]"
+        ],
+        "point": [
+          6,
+          7
+        ]
+      },
+      {
+        "channel": "WANG",
+        "literal_value": "ROW:TOP",
+        "ordinary_placement_ids": [
+          "[\"WANG\",\"I:0\",3,0]",
+          "[\"WANG\",\"I:#\",4,0]"
+        ],
+        "point": [
+          7,
+          0
+        ]
+      },
+      {
+        "channel": "WANG",
+        "literal_value": "P:0:#",
+        "ordinary_placement_ids": [
+          "[\"WANG\",\"C:0:0:#\",3,1]",
+          "[\"WANG\",\"C:0:#:#\",4,1]"
+        ],
+        "point": [
+          7,
+          2
+        ]
+      },
+      {
+        "channel": "WANG",
+        "literal_value": "P:0:#",
+        "ordinary_placement_ids": [
+          "[\"WANG\",\"C:1:0:#\",3,2]",
+          "[\"WANG\",\"C:0:#:#\",4,2]"
+        ],
+        "point": [
+          7,
+          4
+        ]
+      },
+      {
+        "channel": "WANG",
+        "literal_value": "ROW:BOT",
+        "ordinary_placement_ids": [
+          "[\"WANG\",\"O:1\",3,3]",
+          "[\"WANG\",\"O:#\",4,3]"
+        ],
+        "point": [
+          7,
+          6
+        ]
+      },
+      {
+        "channel": "WANG",
+        "literal_value": "I:#",
+        "ordinary_placement_ids": [
+          "[\"WANG\",\"I:#\",4,0]"
+        ],
+        "point": [
+          8,
+          -1
+        ]
+      },
+      {
+        "channel": "WANG",
+        "literal_value": "S:#",
+        "ordinary_placement_ids": [
+          "[\"WANG\",\"I:#\",4,0]",
+          "[\"WANG\",\"C:0:#:#\",4,1]"
+        ],
+        "point": [
+          8,
+          1
+        ]
+      },
+      {
+        "channel": "WANG",
+        "literal_value": "S:#",
+        "ordinary_placement_ids": [
+          "[\"WANG\",\"C:0:#:#\",4,1]",
+          "[\"WANG\",\"C:0:#:#\",4,2]"
+        ],
+        "point": [
+          8,
+          3
+        ]
+      },
+      {
+        "channel": "WANG",
+        "literal_value": "S:#",
+        "ordinary_placement_ids": [
+          "[\"WANG\",\"C:0:#:#\",4,2]",
+          "[\"WANG\",\"O:#\",4,3]"
+        ],
+        "point": [
+          8,
+          5
+        ]
+      },
+      {
+        "channel": "WANG",
+        "literal_value": "O:#",
+        "ordinary_placement_ids": [
+          "[\"WANG\",\"O:#\",4,3]"
+        ],
+        "point": [
+          8,
+          7
+        ]
+      },
+      {
+        "channel": "WANG",
+        "literal_value": "ROW:TOP",
+        "ordinary_placement_ids": [
+          "[\"WANG\",\"I:#\",4,0]"
+        ],
+        "point": [
+          9,
+          0
+        ]
+      },
+      {
+        "channel": "WANG",
+        "literal_value": "P:#:#",
+        "ordinary_placement_ids": [
+          "[\"WANG\",\"C:0:#:#\",4,1]"
+        ],
+        "point": [
+          9,
+          2
+        ]
+      },
+      {
+        "channel": "WANG",
+        "literal_value": "P:#:#",
+        "ordinary_placement_ids": [
+          "[\"WANG\",\"C:0:#:#\",4,2]"
+        ],
+        "point": [
+          9,
+          4
+        ]
+      },
+      {
+        "channel": "WANG",
+        "literal_value": "ROW:BOT",
+        "ordinary_placement_ids": [
+          "[\"WANG\",\"O:#\",4,3]"
+        ],
+        "point": [
+          9,
+          6
+        ]
+      }
+    ],
+    "cell_outlines": "Visual guides only; no filled area, polygon overlap or edge geometry legality in point engine.",
+    "collar_scope": "Eighteen fixed exterior collar placements are not drawn as cells; their imposed boundary marks coincide with shown exposed midpoint marks. Collar anchors remain included in required point list and full evidence.",
+    "colored_midpoint_dots_and_short_bars": "Literal WANG-channel m-values at mark-only points; bars are glyphs, not positive base support.",
+    "coordinate_map": {
+      "x": "66 + 66 * saved_point_x",
+      "y": "54 + 54 * saved_point_y"
+    },
+    "gray_anchor_dots": "Positive unit base support of selected ordinary placements.",
+    "grid_columns": 5,
+    "grid_tile_rows": 4,
+    "kind": "Static explanatory rendering of the saved complete selected assignment, not a new search/fixture/result.",
+    "literal_label_colors": {
+      "I:#": "#1d4ed8",
+      "I:0": "#b45309",
+      "I:1": "#047857",
+      "O:#": "#7c3aed",
+      "O:0": "#be185d",
+      "O:1": "#0e7490",
+      "P:#:#": "#c2410c",
+      "P:#:0": "#4d7c0f",
+      "P:#:1": "#4338ca",
+      "P:0:#": "#9d174d",
+      "P:0:0": "#0369a1",
+      "P:0:1": "#92400e",
+      "P:1:#": "#0f766e",
+      "P:1:0": "#6d28d9",
+      "P:1:1": "#a21caf",
+      "ROW:BOT": "#075985",
+      "ROW:TOP": "#a16207",
+      "S:#": "#166534",
+      "S:0": "#5b21b6",
+      "S:1": "#9f1239"
+    },
+    "selected_ordinary_records": [
+      {
+        "cell": [
+          0,
+          0
+        ],
+        "m": [
+          [
+            -1,
+            0,
+            "WANG",
+            "ROW:TOP"
+          ],
+          [
+            0,
+            -1,
+            "WANG",
+            "I:#"
+          ],
+          [
+            0,
+            1,
+            "WANG",
+            "S:#"
+          ],
+          [
+            1,
+            0,
+            "WANG",
+            "ROW:TOP"
+          ]
+        ],
+        "palette_id": "I:#",
+        "placement_id": "[\"WANG\",\"I:#\",0,0]",
+        "t": [
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      {
+        "cell": [
+          1,
+          0
+        ],
+        "m": [
+          [
+            1,
+            0,
+            "WANG",
+            "ROW:TOP"
+          ],
+          [
+            2,
+            -1,
+            "WANG",
+            "I:1"
+          ],
+          [
+            2,
+            1,
+            "WANG",
+            "S:1"
+          ],
+          [
+            3,
+            0,
+            "WANG",
+            "ROW:TOP"
+          ]
+        ],
+        "palette_id": "I:1",
+        "placement_id": "[\"WANG\",\"I:1\",1,0]",
+        "t": [
+          [
+            2,
+            0,
+            1
+          ]
+        ]
+      },
+      {
+        "cell": [
+          2,
+          0
+        ],
+        "m": [
+          [
+            3,
+            0,
+            "WANG",
+            "ROW:TOP"
+          ],
+          [
+            4,
+            -1,
+            "WANG",
+            "I:0"
+          ],
+          [
+            4,
+            1,
+            "WANG",
+            "S:0"
+          ],
+          [
+            5,
+            0,
+            "WANG",
+            "ROW:TOP"
+          ]
+        ],
+        "palette_id": "I:0",
+        "placement_id": "[\"WANG\",\"I:0\",2,0]",
+        "t": [
+          [
+            4,
+            0,
+            1
+          ]
+        ]
+      },
+      {
+        "cell": [
+          3,
+          0
+        ],
+        "m": [
+          [
+            5,
+            0,
+            "WANG",
+            "ROW:TOP"
+          ],
+          [
+            6,
+            -1,
+            "WANG",
+            "I:0"
+          ],
+          [
+            6,
+            1,
+            "WANG",
+            "S:0"
+          ],
+          [
+            7,
+            0,
+            "WANG",
+            "ROW:TOP"
+          ]
+        ],
+        "palette_id": "I:0",
+        "placement_id": "[\"WANG\",\"I:0\",3,0]",
+        "t": [
+          [
+            6,
+            0,
+            1
+          ]
+        ]
+      },
+      {
+        "cell": [
+          4,
+          0
+        ],
+        "m": [
+          [
+            7,
+            0,
+            "WANG",
+            "ROW:TOP"
+          ],
+          [
+            8,
+            -1,
+            "WANG",
+            "I:#"
+          ],
+          [
+            8,
+            1,
+            "WANG",
+            "S:#"
+          ],
+          [
+            9,
+            0,
+            "WANG",
+            "ROW:TOP"
+          ]
+        ],
+        "palette_id": "I:#",
+        "placement_id": "[\"WANG\",\"I:#\",4,0]",
+        "t": [
+          [
+            8,
+            0,
+            1
+          ]
+        ]
+      },
+      {
+        "cell": [
+          0,
+          1
+        ],
+        "m": [
+          [
+            -1,
+            2,
+            "WANG",
+            "P:#:#"
+          ],
+          [
+            0,
+            1,
+            "WANG",
+            "S:#"
+          ],
+          [
+            0,
+            3,
+            "WANG",
+            "S:#"
+          ],
+          [
+            1,
+            2,
+            "WANG",
+            "P:#:1"
+          ]
+        ],
+        "palette_id": "C:#:#:1",
+        "placement_id": "[\"WANG\",\"C:#:#:1\",0,1]",
+        "t": [
+          [
+            0,
+            2,
+            1
+          ]
+        ]
+      },
+      {
+        "cell": [
+          1,
+          1
+        ],
+        "m": [
+          [
+            1,
+            2,
+            "WANG",
+            "P:#:1"
+          ],
+          [
+            2,
+            1,
+            "WANG",
+            "S:1"
+          ],
+          [
+            2,
+            3,
+            "WANG",
+            "S:0"
+          ],
+          [
+            3,
+            2,
+            "WANG",
+            "P:1:0"
+          ]
+        ],
+        "palette_id": "C:#:1:0",
+        "placement_id": "[\"WANG\",\"C:#:1:0\",1,1]",
+        "t": [
+          [
+            2,
+            2,
+            1
+          ]
+        ]
+      },
+      {
+        "cell": [
+          2,
+          1
+        ],
+        "m": [
+          [
+            3,
+            2,
+            "WANG",
+            "P:1:0"
+          ],
+          [
+            4,
+            1,
+            "WANG",
+            "S:0"
+          ],
+          [
+            4,
+            3,
+            "WANG",
+            "S:1"
+          ],
+          [
+            5,
+            2,
+            "WANG",
+            "P:0:0"
+          ]
+        ],
+        "palette_id": "C:1:0:0",
+        "placement_id": "[\"WANG\",\"C:1:0:0\",2,1]",
+        "t": [
+          [
+            4,
+            2,
+            1
+          ]
+        ]
+      },
+      {
+        "cell": [
+          3,
+          1
+        ],
+        "m": [
+          [
+            5,
+            2,
+            "WANG",
+            "P:0:0"
+          ],
+          [
+            6,
+            1,
+            "WANG",
+            "S:0"
+          ],
+          [
+            6,
+            3,
+            "WANG",
+            "S:0"
+          ],
+          [
+            7,
+            2,
+            "WANG",
+            "P:0:#"
+          ]
+        ],
+        "palette_id": "C:0:0:#",
+        "placement_id": "[\"WANG\",\"C:0:0:#\",3,1]",
+        "t": [
+          [
+            6,
+            2,
+            1
+          ]
+        ]
+      },
+      {
+        "cell": [
+          4,
+          1
+        ],
+        "m": [
+          [
+            7,
+            2,
+            "WANG",
+            "P:0:#"
+          ],
+          [
+            8,
+            1,
+            "WANG",
+            "S:#"
+          ],
+          [
+            8,
+            3,
+            "WANG",
+            "S:#"
+          ],
+          [
+            9,
+            2,
+            "WANG",
+            "P:#:#"
+          ]
+        ],
+        "palette_id": "C:0:#:#",
+        "placement_id": "[\"WANG\",\"C:0:#:#\",4,1]",
+        "t": [
+          [
+            8,
+            2,
+            1
+          ]
+        ]
+      },
+      {
+        "cell": [
+          0,
+          2
+        ],
+        "m": [
+          [
+            -1,
+            4,
+            "WANG",
+            "P:#:#"
+          ],
+          [
+            0,
+            3,
+            "WANG",
+            "S:#"
+          ],
+          [
+            0,
+            5,
+            "WANG",
+            "S:#"
+          ],
+          [
+            1,
+            4,
+            "WANG",
+            "P:#:0"
+          ]
+        ],
+        "palette_id": "C:#:#:0",
+        "placement_id": "[\"WANG\",\"C:#:#:0\",0,2]",
+        "t": [
+          [
+            0,
+            4,
+            1
+          ]
+        ]
+      },
+      {
+        "cell": [
+          1,
+          2
+        ],
+        "m": [
+          [
+            1,
+            4,
+            "WANG",
+            "P:#:0"
+          ],
+          [
+            2,
+            3,
+            "WANG",
+            "S:0"
+          ],
+          [
+            2,
+            5,
+            "WANG",
+            "S:1"
+          ],
+          [
+            3,
+            4,
+            "WANG",
+            "P:0:1"
+          ]
+        ],
+        "palette_id": "C:#:0:1",
+        "placement_id": "[\"WANG\",\"C:#:0:1\",1,2]",
+        "t": [
+          [
+            2,
+            4,
+            1
+          ]
+        ]
+      },
+      {
+        "cell": [
+          2,
+          2
+        ],
+        "m": [
+          [
+            3,
+            4,
+            "WANG",
+            "P:0:1"
+          ],
+          [
+            4,
+            3,
+            "WANG",
+            "S:1"
+          ],
+          [
+            4,
+            5,
+            "WANG",
+            "S:0"
+          ],
+          [
+            5,
+            4,
+            "WANG",
+            "P:1:0"
+          ]
+        ],
+        "palette_id": "C:0:1:0",
+        "placement_id": "[\"WANG\",\"C:0:1:0\",2,2]",
+        "t": [
+          [
+            4,
+            4,
+            1
+          ]
+        ]
+      },
+      {
+        "cell": [
+          3,
+          2
+        ],
+        "m": [
+          [
+            5,
+            4,
+            "WANG",
+            "P:1:0"
+          ],
+          [
+            6,
+            3,
+            "WANG",
+            "S:0"
+          ],
+          [
+            6,
+            5,
+            "WANG",
+            "S:1"
+          ],
+          [
+            7,
+            4,
+            "WANG",
+            "P:0:#"
+          ]
+        ],
+        "palette_id": "C:1:0:#",
+        "placement_id": "[\"WANG\",\"C:1:0:#\",3,2]",
+        "t": [
+          [
+            6,
+            4,
+            1
+          ]
+        ]
+      },
+      {
+        "cell": [
+          4,
+          2
+        ],
+        "m": [
+          [
+            7,
+            4,
+            "WANG",
+            "P:0:#"
+          ],
+          [
+            8,
+            3,
+            "WANG",
+            "S:#"
+          ],
+          [
+            8,
+            5,
+            "WANG",
+            "S:#"
+          ],
+          [
+            9,
+            4,
+            "WANG",
+            "P:#:#"
+          ]
+        ],
+        "palette_id": "C:0:#:#",
+        "placement_id": "[\"WANG\",\"C:0:#:#\",4,2]",
+        "t": [
+          [
+            8,
+            4,
+            1
+          ]
+        ]
+      },
+      {
+        "cell": [
+          0,
+          3
+        ],
+        "m": [
+          [
+            -1,
+            6,
+            "WANG",
+            "ROW:BOT"
+          ],
+          [
+            0,
+            5,
+            "WANG",
+            "S:#"
+          ],
+          [
+            0,
+            7,
+            "WANG",
+            "O:#"
+          ],
+          [
+            1,
+            6,
+            "WANG",
+            "ROW:BOT"
+          ]
+        ],
+        "palette_id": "O:#",
+        "placement_id": "[\"WANG\",\"O:#\",0,3]",
+        "t": [
+          [
+            0,
+            6,
+            1
+          ]
+        ]
+      },
+      {
+        "cell": [
+          1,
+          3
+        ],
+        "m": [
+          [
+            1,
+            6,
+            "WANG",
+            "ROW:BOT"
+          ],
+          [
+            2,
+            5,
+            "WANG",
+            "S:1"
+          ],
+          [
+            2,
+            7,
+            "WANG",
+            "O:1"
+          ],
+          [
+            3,
+            6,
+            "WANG",
+            "ROW:BOT"
+          ]
+        ],
+        "palette_id": "O:1",
+        "placement_id": "[\"WANG\",\"O:1\",1,3]",
+        "t": [
+          [
+            2,
+            6,
+            1
+          ]
+        ]
+      },
+      {
+        "cell": [
+          2,
+          3
+        ],
+        "m": [
+          [
+            3,
+            6,
+            "WANG",
+            "ROW:BOT"
+          ],
+          [
+            4,
+            5,
+            "WANG",
+            "S:0"
+          ],
+          [
+            4,
+            7,
+            "WANG",
+            "O:0"
+          ],
+          [
+            5,
+            6,
+            "WANG",
+            "ROW:BOT"
+          ]
+        ],
+        "palette_id": "O:0",
+        "placement_id": "[\"WANG\",\"O:0\",2,3]",
+        "t": [
+          [
+            4,
+            6,
+            1
+          ]
+        ]
+      },
+      {
+        "cell": [
+          3,
+          3
+        ],
+        "m": [
+          [
+            5,
+            6,
+            "WANG",
+            "ROW:BOT"
+          ],
+          [
+            6,
+            5,
+            "WANG",
+            "S:1"
+          ],
+          [
+            6,
+            7,
+            "WANG",
+            "O:1"
+          ],
+          [
+            7,
+            6,
+            "WANG",
+            "ROW:BOT"
+          ]
+        ],
+        "palette_id": "O:1",
+        "placement_id": "[\"WANG\",\"O:1\",3,3]",
+        "t": [
+          [
+            6,
+            6,
+            1
+          ]
+        ]
+      },
+      {
+        "cell": [
+          4,
+          3
+        ],
+        "m": [
+          [
+            7,
+            6,
+            "WANG",
+            "ROW:BOT"
+          ],
+          [
+            8,
+            5,
+            "WANG",
+            "S:#"
+          ],
+          [
+            8,
+            7,
+            "WANG",
+            "O:#"
+          ],
+          [
+            9,
+            6,
+            "WANG",
+            "ROW:BOT"
+          ]
+        ],
+        "palette_id": "O:#",
+        "placement_id": "[\"WANG\",\"O:#\",4,3]",
+        "t": [
+          [
+            8,
+            6,
+            1
+          ]
+        ]
+      }
+    ],
+    "source_locator": "/controls/0/inverse/production/assignment and /controls/0/model/placements restricted to returned selected IDs"
+  },
+  "primary_search_counters": {
+    "accepted_base_placements": 44,
+    "attempts": 44,
+    "backtracks": 6,
+    "branch_decisions": 9,
+    "candidate_removals": {
+      "CAPACITY": 11,
+      "EXCLUDED": 6,
+      "MARKING": 250,
+      "NO_FRONTIER": 0,
+      "SELECTED": 26
+    },
+    "final_active_candidates": 0,
+    "final_edges": 0,
+    "final_frontier_points": 0,
+    "forced_placements": 17,
+    "max_active_candidates": 220,
+    "max_edges": 220,
+    "max_frontier_points": 20,
+    "seed_placements": 18
+  },
+  "publication": {
+    "archive_membership_gate": "Final exact membership/catalogue/full-original equality belongs to separately reviewed package preparation; this content authoring creates no package or publication authority.",
+    "archive_scope": "Complete current finite-tableau case and current five Sources, with explicit associated administrative/review metadata in the final archive catalogue. Previous published evidence archives remain separate under historical report sections.",
+    "full_evidence_relative_filename": "point-proof-finite-tableau-qualification-evidence-v1.zip",
+    "report_relative_filename": "point-proof-parallel-progress-v1.html",
+    "summary_relative_filename": "point-proof-finite-tableau-qualification-summary-v1.json"
+  },
+  "reported_local_date": "2026-10-26 PDT",
+  "resources": {
+    "ceilings": {
+      "custody_seconds": 120,
+      "log_bytes": 1048576,
+      "memory_bytes": 1073741824,
+      "observer_reserve_bytes": 16777216,
+      "observer_seconds": 150,
+      "result_bytes": 67108864,
+      "worker_seconds": 90
+    },
+    "child_lifetime_highwater_bytes": 241385472,
+    "combined_worker_log_bytes": 197,
+    "declared_allowance_bytes": 16777216,
+    "late_observer_lifetime_highwater_bytes": 24494080,
+    "observer_launch_to_wait_seconds": 4.3696212920040125,
+    "outer_elapsed_through_last_observation_seconds": 4.4058432079909835,
+    "raw_result_bytes": 28189716,
+    "scope": "Worker scalar precedes serialization/readback; launch-to-wait covers the complete worker lifetime. Outer capture includes named cleanup/readback/guard sites through last observation; final outer serialization/flush/shutdown tail unmeasured. Memory is sum of separate child/observer lifetime maxima plus declared allowance, not exact simultaneous/process-tree peak or hardRSS cap/causal allocation benefit.",
+    "separate_lifetime_maxima_sum_plus_allowance_bytes": 282656768,
+    "worker_pre_serialization_elapsed_seconds": 4.026241665997077,
+    "worker_pre_serialization_self_lifetime_highwater_bytes": 140427264
+  },
+  "runtime": {
+    "binary_bytes": 18058560,
+    "binary_sha256": "d90bce0f5ac3aa40e2ee5900ad243bad0b2205ce17408278f088b34aed737840",
+    "flags": [
+      "-I",
+      "-S",
+      "-B"
+    ],
+    "implementation": "CPython",
+    "path_scope": "Exact original path and all process guards remain in the complete evidence; public summary uses the binary identity.",
+    "platform": "Darwin",
+    "version": "3.12.14"
+  },
+  "schema": "GCTS-finite-tableau-public-summary-v1",
+  "stable_audit_records": 208,
+  "status": "COMPLETE_INDEPENDENT_WHOLE_QUALIFICATION_REVIEW_PASS"
+}
