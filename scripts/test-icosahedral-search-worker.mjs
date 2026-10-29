@@ -16,5 +16,9 @@ try{
  p=await request({type:'pause'},snapshot(m=>!m.running));assert.equal(p.summary.tiles,2);
  const exported=await request({type:'export'},m=>m.type==='export');const json=JSON.parse(exported.json);assert.equal(json.config.target,14);assert.equal(json.tiles.length,2);assert.equal(json.windowFilter,false);assert.equal(json.markings,null);assert.equal(typeof json.tiles[0].origin[0][0],'string');
  p=await request({type:'start',target:14},snapshot(m=>m.summary.state==='checkpoint'));assert.equal(p.summary.tiles,14);assert.equal(p.summary.dead,0);
+ p=await request({type:'init',config:{target:6,seed:4,markings:'ammann'},auto:false},snapshot(m=>m.summary.tiles===1));
+ assert.equal(p.summary.markingPoints,6);assert.equal(p.summary.markingComponents,12);assert(p.display.tiles[0].dots.length===6);assert(p.display.prototypes.every(t=>t.decoration));
+ await request({type:'step',target:6},snapshot(m=>m.summary.tiles===2));
+ const marked=JSON.parse((await request({type:'export'},m=>m.type==='export')).json);assert.equal(marked.markings.source,'supplied');assert.equal(marked.markings.learned,false);assert(marked.pointMarkingState.length>6);
  console.log('ok: real worker init, single-step, pause, resume, changed targets, reset to oblate root, exact JSON export, viable checkpoint');
 }finally{await worker.terminate();}

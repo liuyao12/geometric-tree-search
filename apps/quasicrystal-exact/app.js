@@ -1,14 +1,24 @@
-import { CrystalScene } from './scene.js';
+import { CrystalScene } from './scene.js?v=ammann-point-v2';
 const $ = s => document.querySelector(s);
 const generate = $('#generate'), download = $('#download'), status = $('#status');
 let exportJSON = null, exportRadius = 1, selected = null, scene = null, mode = 'search';
-let referenceDisplay=null,liveDisplay=null,referenceJSON=null,searchRunning=false,searchSummary=null;
+let referenceDisplay=null,liveDisplay=null,referenceJSON=null,searchRunning=false,searchSummary=null,searchEpoch=0,exactSelection=false;
 const texScalar = ([a,b,d]) => {
   let n = a === '0' ? '' : a;
   if(b !== '0') n += `${b.startsWith('-') || !n ? '' : '+'}${b === '1' ? '' : b === '-1' ? '-' : b}\\tau`;
   n ||= '0'; return d === '1' ? n : `\\frac{${n}}{${d}}`;
 };
 const typeset = e => window.MathJax?.typesetPromise?.([e]);
+const texPoint=p=>`\\left(${p.map(texScalar).join(',\\;')}\\right)`;
+function showPointValues(values){
+  const details=$('#point-markings-details');details.hidden=!values?.length;if(!values?.length)return;
+  const host=$('#point-markings-table');window.MathJax?.typesetClear?.([host]);host.replaceChildren();
+  const table=document.createElement('table'),head=document.createElement('tr');
+  for(const text of ['\\(p\\)','\\(m_B(p)\\)','\\(m_R(p)\\)']){const th=document.createElement('th');th.textContent=text;head.append(th);}table.append(head);
+  for(const mark of values){const tr=document.createElement('tr');for(const v of [mark.point,...['black','red'].map(c=>typeof mark.components[c]==='string'?mark.components[c].split(';').map(x=>x.split(',')):mark.components[c])]){
+    const td=document.createElement('td');td.textContent=Array.isArray(v)?`\\(${texPoint(v)}\\)`:JSON.stringify(v);tr.append(td);
+  }table.append(tr);}host.append(table);typeset(host);
+}
 function showExact(vertices) {
   const sample = $('#sample'); window.MathJax?.typesetClear?.([sample]);
   sample.textContent = `\\[\\begin{aligned}${vertices.map((p,i) => `v_{${i}}&=\\left(${p.map(texScalar).join(',\\;')}\\right)`).join('\\\\')}\\end{aligned}\\]`;
@@ -18,7 +28,8 @@ try {
   scene = new CrystalScene($('#scene'), tile => {
     selected = tile; $('#inspector').hidden = !tile;
     if(!tile) return;
-    $('#tile-kind').textContent = `${tile.kind === 'prolate' ? 'Prolate' : 'Oblate'} rhombohedron`;
+    $('#tile-kind').textContent = `${tile.kind === 'prolate' ? 'Prolate' : 'Oblate'} rhombohedron${tile.decoration?' · '+tile.decoration.hand+' handed':''}`;
+    $('#inspect-exact').textContent=tile.pointValues?.length?'Exact vertices & point markings ↓':'Show exact vertices ↓';
     const target = $('#tile-data'); window.MathJax?.typesetClear?.([target]);
     target.textContent = `Axes \\((${tile.axes.join(',')})\\) · exact volume \\(${texScalar(tile.volume)}\\).`; typeset(target);
   });
@@ -27,7 +38,7 @@ try {
   $('#loading p').textContent = '3D graphics are unavailable in this browser. Exact JSON export is still available.';
   status.textContent = error.message;
 }
-const worker = new Worker(new URL('./worker.js',import.meta.url),{type:'module'});
+const worker = new Worker(new URL('./worker.js?v=ammann-point-v2',import.meta.url),{type:'module'});
 generate.onclick = () => {
   exportJSON = null; generate.disabled = true; download.disabled = true;
   if(mode!=='search'){$('#loading').hidden = false; $('#loading p').textContent = 'Constructing the exact patch';}
@@ -60,7 +71,16 @@ function updateHeading() {
   const [heading,description,caption,title]=descriptions[mode]; $('#view-heading').textContent=heading; $('#view-description').textContent=description; $('#caption').textContent=caption; $('#scene-title').textContent=title;
   $('.caption-index').textContent=`0${Object.keys(descriptions).indexOf(mode)+1} / 05`;
   $('#search-live-counts').hidden=mode!=='search';$('#search-controls').hidden=mode!=='search';$('#search-monitor').hidden=mode!=='search';$('.generation-controls').hidden=mode==='search';$('#fragments').parentElement.hidden=mode==='search';
-  $('#regularity').textContent=mode==='search'?'Exact geometry · no added markings':'Exact geometry · regular grid certified';
+  const marked=$('#search-rules').value==='ammann';
+  $('#regularity').textContent=mode==='search'?(marked?'Supplied face rules · exact point values':'Unmarked geometric control'):'Exact geometry · regular grid certified';
+  $('#search-hand').disabled=!marked;
+  $('#marking-provenance').textContent=marked?'Supplied local rules → exact point values. No learned restriction is active.':'Unmarked control. Periodic parallelotope tilings are valid in this problem.';
+  $('.point-support-toggle').hidden=!marked||mode==='window'||mode==='crystal'||mode==='exploded';
+  if(mode==='search'){
+    $('#view-heading').textContent=marked?'Face rules through point markings':'Unmarked face-to-face growth';
+    $('#view-description').textContent=marked?'Black and red face dots must coincide. The engine enforces their agreement as two assigned values at each exact face center.':'Bare geometry only. Either rhombohedron can tile periodically by translations.';
+    $('#scene-title').textContent=marked?'Ammann rules · exact point markings':'Unmarked face-to-face search';
+  }
   const applicable=mode==='crystal'||mode==='exploded'||mode==='search'; $('#separation').disabled=!applicable; $('#cutaway').disabled=!applicable;
   $('#show-prolate').disabled=mode==='window'; $('#show-oblate').disabled=mode==='window';
 }
@@ -68,15 +88,15 @@ for(const button of document.querySelectorAll('[data-mode]')) button.onclick=()=
   mode=button.dataset.mode; document.querySelectorAll('[data-mode]').forEach(b=>{b.classList.toggle('active',b===button);b.setAttribute('aria-pressed',String(b===button));});
   $('#separation').value=mode==='exploded'?'35':'0'; $('#separation-value').textContent=`${$('#separation').value}%`; $('#cutaway').value='0'; $('#cutaway-value').textContent='0%';
   if(mode!=='search')searchWorker.postMessage({type:'pause'});
-  if(scene){scene.options.separation=Number($('#separation').value);scene.options.cutaway=0;scene.mode=mode;const model=mode==='search'?liveDisplay:referenceDisplay;if(model){scene.setModel(model);$('#loading').hidden=true;}}
-  if(mode!=='search'){exportJSON=referenceJSON;status.textContent='Constructed reference patch. This lane is separate from the undecorated live search.';}else if(searchSummary){status.textContent=searchRunning?'Searching exact face attachments.':'Search paused. Start to resume the preserved branch.';}updateHeading();
+  if(scene){scene.options.separation=Number($('#separation').value);scene.options.cutaway=0;scene.mode=mode;const model=mode==='search'?liveDisplay:mode==='tiles'&&liveDisplay?.prototypes?{...referenceDisplay,prototypes:liveDisplay.prototypes}:referenceDisplay;if(model){scene.setModel(model);$('#loading').hidden=true;}}
+  if(mode!=='search'){exportJSON=referenceJSON;status.textContent='Constructed reference patch. This lane is separate from the live search.';}else if(searchSummary){status.textContent=searchRunning?'Searching exact face attachments.':'Search paused. Start to resume the preserved branch.';}updateHeading();
 };
 let pending=false;
 function updateDisplay(){
   $('#separation-value').textContent=`${$('#separation').value}%`; $('#cutaway-value').textContent=`${$('#cutaway').value}%`;
-  if(pending)return;pending=true;requestAnimationFrame(()=>{pending=false;scene?.setOptions({separation:Number($('#separation').value),cutaway:Number($('#cutaway').value),prolate:$('#show-prolate').checked,oblate:$('#show-oblate').checked,edges:$('#edges').checked,fragments:$('#fragments').checked});});
+  if(pending)return;pending=true;requestAnimationFrame(()=>{pending=false;scene?.setOptions({separation:Number($('#separation').value),cutaway:Number($('#cutaway').value),prolate:$('#show-prolate').checked,oblate:$('#show-oblate').checked,edges:$('#edges').checked,fragments:$('#fragments').checked,pointSupport:$('#show-marking-points').checked});});
 }
-for(const id of ['separation','cutaway','show-prolate','show-oblate','edges','fragments']) $(`#${id}`).addEventListener('input',updateDisplay);
+for(const id of ['separation','cutaway','show-prolate','show-oblate','edges','fragments','show-marking-points']) $(`#${id}`).addEventListener('input',updateDisplay);
 $('#spin').onchange=()=>{if(scene)scene.controls.autoRotate=$('#spin').checked;};
 for(const b of document.querySelectorAll('[data-camera]')) b.onclick=()=>{
   document.querySelectorAll('[data-camera]').forEach(x=>x.classList.toggle('active',x===b));if(scene){scene.controls.autoRotate=false;scene.fit(b.dataset.camera);$('#spin').checked=false;}
@@ -86,17 +106,17 @@ for(const b of document.querySelectorAll('[data-material]')) b.onclick=()=>{
 };
 $('#reset-view').onclick=()=>scene?.fit(); $('#snapshot').onclick=()=>scene?.saveImage(); $('#close-inspector').onclick=()=>scene?.select(null);
 $('.math-link').onclick=()=>{ $('#mathematics').open=true; };
-$('#inspect-exact').onclick=()=>{if(!selected)return;showExact(selected.exact);$('#mathematics').open=true;$('#sample-details').open=true;$('#sample-details').scrollIntoView({behavior:'smooth',block:'center'});};
+$('#inspect-exact').onclick=()=>{if(!selected)return;exactSelection=true;showExact(selected.exact);showPointValues(selected.pointValues);$('#mathematics').open=true;$('#sample-details').open=true;if(selected.pointValues?.length)$('#point-markings-details').open=true;$('#sample-details').scrollIntoView({behavior:'smooth',block:'center'});};
 $('#sample-details').ontoggle=e=>{if(e.target.open)typeset($('#sample'));};
 download.onclick=()=>{if(mode==='search'){searchWorker.postMessage({type:'export'});return;}if(!exportJSON)return;const url=URL.createObjectURL(new Blob([exportJSON],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download=`icosahedral-exact-radius-${exportRadius}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
 
 
 
-const searchWorker=new Worker(new URL('./search-worker.js',import.meta.url),{type:'module'});
-function searchConfig(){return {seed:Number($('#search-seed').value)||4,seedKind:$('#search-root').value,target:Number($('#search-target').value),budget:10000};}
+const searchWorker=new Worker(new URL('./search-worker.js?v=ammann-point-v2',import.meta.url),{type:'module'});
+function searchConfig(){return {seed:Number($('#search-seed').value)||4,seedKind:$('#search-root').value,target:Number($('#search-target').value),budget:10000,markings:$('#search-rules').value,seedHand:$('#search-hand').value};}
 function resetSearch(){
-  scene?.select(null);liveDisplay=null;$('#loading').hidden=false;$('#loading p').textContent='Enumerating exact face attachments';
-  searchWorker.postMessage({type:'init',config:searchConfig(),delay:Number($('#search-speed').value),auto:true});
+  exactSelection=false;showPointValues(null);scene?.select(null);liveDisplay=null;$('#loading').hidden=false;$('#loading p').textContent='Enumerating exact face attachments';
+  searchWorker.postMessage({type:'init',epoch:++searchEpoch,config:searchConfig(),delay:Number($('#search-speed').value),auto:true});
 }
 function drawTrace(trace){
  const svg=$('#search-trace');svg.replaceChildren();if(!trace.length)return;
@@ -106,6 +126,7 @@ function drawTrace(trace){
  trace.forEach((e,i)=>{const dot=document.createElementNS(NS,'circle');dot.setAttribute('cx',points[i][0]);dot.setAttribute('cy',points[i][1]);dot.setAttribute('r',e.type==='remove'?'3.5':'2.4');dot.setAttribute('fill',e.type==='remove'?'#df8278':e.forced?'#6fc8b6':'#e9b865');svg.append(dot);});
 }
 searchWorker.onmessage=({data})=>{
+ if(data.epoch!==undefined&&data.epoch!==searchEpoch)return;
  if(data.type==='error'){status.textContent=data.error;$('#loading p').textContent=data.error;return;}
  if(data.type==='export'){
   const url=URL.createObjectURL(new Blob([data.json],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='icosahedral-live-search.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);return;
@@ -117,13 +138,14 @@ searchWorker.onmessage=({data})=>{
  for(const key of ['tiles','forced','branches','backtracks','frontier','candidates'])$(`#metric-${key}`).textContent=data.summary[key].toLocaleString();
  const event=data.event;
  $('#search-event').textContent=event.type==='remove'?'Dead face → rolled back one tile':event.type==='add'?`${event.forced?'Forced placement':'Branch decision'} · generation ${event.generation}`:event.type==='checkpoint'?'Finite checkpoint · viable frontier':event.type==='budget'?'Budget reached · result unknown':'Seed tile · complete local domains';
+ $('#search-marking-stats').textContent=data.summary.markingComponents?`${data.summary.markingPoints} exact support points · ${data.summary.markingComponents} assigned components · ${data.summary.eliminatedMarking} incremental marking removals · supplied rules`:'No point markings assigned · geometric control';
  $('#search-graph-stats').textContent=`${data.summary.incidences} graph edges · ${Math.round(data.summary.elapsedMs)} ms search`;
  drawTrace(data.trace);
  if(mode==='search'){
   if(scene){scene.mode='search';scene.updateModel(data.display,first);scene.setSearchFocus(data.nextFace,data.summary.dead>0);$('#loading').hidden=true;}
-  status.textContent=data.summary.state==='checkpoint'?`Paused at ${data.summary.tiles} tiles with no dead frontier faces. Increase the target and Continue to extend.`:data.summary.state==='budget'?'Search budget reached. Extension remains unknown.':data.running?'Searching exact face attachments. No decorations or window filter.':'Search paused. The branch stack and exact graph are preserved.';
+  status.textContent=data.summary.state==='checkpoint'?`Paused at ${data.summary.tiles} tiles with no dead frontier faces. Increase the target and Continue to extend.`:data.summary.state==='budget'?'Search budget reached. Extension remains unknown.':data.running?($('#search-rules').value==='ammann'?'Searching supplied Ammann rules through exact point markings.':'Searching undecorated face attachments.'):'Search paused. The branch stack and exact graph are preserved.';
   $('#regularity').textContent='Exact geometry · no added markings';
-  if(data.display.tiles.length)showExact(data.display.tiles.at(-1).exact);
+  if(data.display.tiles.length&&!exactSelection)showExact(data.display.tiles.at(-1).exact);
  }
  updateHeading();
 };
@@ -135,6 +157,6 @@ $('#search-run').onclick=()=>{
  searchWorker.postMessage({type:searchRunning?'pause':'start',target:Number($('#search-target').value)});
 };
 $('#search-step').onclick=()=>searchWorker.postMessage({type:'step',target:Number($('#search-target').value)});
-$('#search-reset').onclick=resetSearch;$('#search-export').onclick=()=>searchWorker.postMessage({type:'export'});
+$('#search-reset').onclick=resetSearch;$('#search-rules').onchange=()=>{updateHeading();resetSearch();};$('#search-export').onclick=()=>searchWorker.postMessage({type:'export'});
 $('#search-speed').oninput=()=>searchWorker.postMessage({type:'speed',delay:Number($('#search-speed').value)});
 updateHeading();resetSearch();generate.click();

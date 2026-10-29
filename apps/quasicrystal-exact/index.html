@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Exact icosahedral tilings · GCTS</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=ammann-point-v2">
   <script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
   <script type="importmap">{"imports":{"three":"../3d-lattice-tiler/vendor/three.module.min.js"}}</script>
-  <script type="module" src="app.js"></script>
+  <script type="module" src="app.js?v=ammann-point-v2"></script>
 </head>
 <body>
 <main>
@@ -16,7 +16,7 @@
   <header>
     <div><p class="eyebrow">AN EXPLORATION OF ICOSAHEDRAL ORDER</p>
     <h1>Two shapes. A space to explore.</h1>
-    <p class="lede">Watch an exact search assemble undecorated golden rhombohedra, or explore a constructed quasicrystalline patch.</p></div>
+    <p class="lede">Watch local face rules become markings at exact points, and see the search assemble decorated golden rhombohedra.</p></div>
     <a class="math-link" href="#mathematics">Explore the mathematics <span>↗</span></a>
   </header>
   <section class="visual-lab" aria-label="Interactive quasicrystal explorer">
@@ -40,12 +40,14 @@
       </div>
       <aside class="studio-controls" aria-label="Display controls">
         <div id="search-controls" class="search-controls">
-          <p class="eyebrow">EXACT · UNDECORATED · FACE TO FACE</p>
+          <p class="eyebrow">EXACT · POINT MARKINGS · FACE TO FACE</p>
+          <label for="search-rules">Problem-defining rules</label><select id="search-rules"><option value="ammann" selected>Supplied Ammann face dots</option><option value="none">Unmarked geometric control</option></select>
+          <p class="marking-provenance" id="marking-provenance">Supplied local rules → exact point values. No learned restriction is active.</p>
           <div class="search-buttons"><button id="search-run">Pause</button><button id="search-step">Step</button><button id="search-reset">Reset</button></div>
           <label for="search-target">Pause at tile count</label><select id="search-target"><option value="60" selected>60 tiles</option><option value="120">120 tiles</option><option value="240">240 tiles</option><option value="480">480 tiles</option></select>
-          <div class="search-config"><label>Root tile<select id="search-root"><option value="prolate">Prolate</option><option value="oblate">Oblate</option></select></label><label>Branch order seed<input id="search-seed" type="number" min="1" max="99999" value="4"></label></div>
+          <div class="search-config"><label>Root tile<select id="search-root"><option value="prolate">Prolate</option><option value="oblate">Oblate</option></select></label><label>Seed decoration<select id="search-hand"><option value="left">Left handed</option><option value="right">Right handed</option></select></label></div><div class="search-config"><label>Branch order seed<input id="search-seed" type="number" min="1" max="99999" value="4"></label></div>
           <label for="search-speed">Pace <span>fast → slow</span></label><input id="search-speed" type="range" min="30" max="600" step="10" value="130">
-          <button id="search-export" class="search-export" disabled>Export exact search ↓</button><p class="search-note">No decorations or window filter. Root and branch-order changes apply on Reset.</p>
+          <button id="search-export" class="search-export" disabled>Export exact search ↓</button><p class="search-note">Changing rules starts a new run. Root, hand and branch-order changes apply on Reset. The search uses no window filter.</p>
         </div>
         <p class="eyebrow">THE ASSEMBLY</p><h2 id="view-heading">Golden rhombohedra</h2><p id="view-description">A finite patch of an exact six-grid construction. Every tile is built from the same six directions.</p>
         <div class="legend"><label><input id="show-prolate" type="checkbox" checked><span class="swatch amber"></span><span>Prolate</span><strong id="prolate-count">—</strong></label><label><input id="show-oblate" type="checkbox" checked><span class="swatch teal"></span><span>Oblate</span><strong id="oblate-count">—</strong></label></div>
@@ -53,6 +55,7 @@
         <label class="range-label" for="cutaway">Reveal interior <output id="cutaway-value">0%</output></label><input id="cutaway" type="range" min="0" max="90" value="0">
         <label class="fragment-toggle"><input id="fragments" type="checkbox"> Include outer fragments</label>
         <div class="toggle-row"><label><input id="edges" type="checkbox" checked> Tile edges</label><label><input id="spin" type="checkbox" checked> Slow orbit</label></div>
+        <label class="point-support-toggle"><input id="show-marking-points" type="checkbox"> Show marking support points</label>
         <div class="material-controls" role="group" aria-label="Material"><button data-material="solid" class="active" aria-pressed="true">Satin</button><button data-material="glass" aria-pressed="false">Glass</button></div>
         <div class="generation-controls"><label for="radius">Patch size</label><select id="radius"><option value="0">Small · 20 tiles</option><option value="1" selected>Medium · 540 tiles</option><option value="2">Large · 2,500 tiles</option></select><button id="generate">Rebuild exact patch</button><button id="download" disabled>Download exact JSON ↓</button></div>
         <p class="exact-badge"><span>●</span> <span id="regularity">Exact algebraic construction</span></p>
@@ -62,7 +65,7 @@
   </section>
   <section class="search-monitor" id="search-monitor" aria-label="Live search statistics">
     <div class="search-metrics"><div><span>Placed now</span><strong id="metric-tiles">1</strong></div><div><span>Forced</span><strong id="metric-forced">0</strong></div><div><span>Branches</span><strong id="metric-branches">0</strong></div><div><span>Backtracks</span><strong id="metric-backtracks">0</strong></div><div><span>Open faces</span><strong id="metric-frontier">6</strong></div><div><span>Live candidates</span><strong id="metric-candidates">24</strong></div></div>
-    <div class="search-trace"><div><span class="eyebrow">LIVE DEPTH TRACE</span><span id="search-event">Starting from one tile</span></div><svg id="search-trace" viewBox="0 0 900 72" role="img" aria-label="Search depth over actual placement and rollback events"></svg><p><span class="trace-key forced-key">● Forced</span><span class="trace-key branch-key">● Branch</span><span class="trace-key backtrack-key">● Rollback</span><span id="search-graph-stats"></span></p></div>
+    <div class="search-trace"><div><span class="eyebrow">LIVE DEPTH TRACE</span><span id="search-event">Starting from one tile</span></div><svg id="search-trace" viewBox="0 0 900 72" role="img" aria-label="Search depth over actual placement and rollback events"></svg><p><span class="trace-key forced-key">● Forced</span><span class="trace-key branch-key">● Branch</span><span class="trace-key backtrack-key">● Rollback</span><span id="search-graph-stats"></span><span id="search-marking-stats"></span></p></div>
   </section>
   <div class="visual-caption"><p><span class="caption-index">01 / 04</span><span id="caption">The two shapes meet face to face. Their golden rhombi reveal the structure of the assembly.</span></p><p id="status" role="status" aria-live="polite">Building the exact patch…</p></div>
   <details class="reference" id="mathematics"><summary>Mathematics, exact coordinates &amp; source references <span>+</span></summary>
@@ -91,6 +94,7 @@
     <p>The download contains the complete generated patch. Display filters, separation and material choices do not change its coordinates or its exact construction.</p>
     <dl id="summary"></dl>
     <details id="sample-details" hidden><summary>Inspect eight exact vertices of a generated tile</summary><div id="sample"></div></details>
+    <details id="point-markings-details" hidden><summary>Inspect exact point m-values of the selected tile</summary><p>Each face center carries two exact vectors pointing to the indicated corners. Missing channels are unconstrained; assigned zero remains a value.</p><div id="point-markings-table" class="table-wrap"></div></details>
     <p class="small">Coordinates serialize as canonical <code>[a,b,d]</code> integer strings, meaning \((a+b\tau)/d\). Lift coordinates and plane levels are integer strings too.</p>
   </section>
 
@@ -141,12 +145,12 @@ const json = JSON.stringify(patch,
 
   <section class="scope">
     <h2>Geometry, matching rules, and the search contract</h2>
-    <p>The two undecorated shapes alone allow periodic arrangements. A six-grid construction selects a structured quasiperiodic family; it does not discover local matching rules. Ammann face-dot decorations are additional problem data. The 2016 growth paper describes both chiral decorations of each shape, but explicitly distinguishes weak matching rules from an unproved claim of perfect matching for those particular decorations. This toolkit does not encode those dots, nor claim a single Penrose local-isomorphism class.</p>
+    <p>The two undecorated shapes alone allow periodic arrangements. A six-grid construction selects a structured quasiperiodic family; it does not discover local matching rules. Ammann face-dot decorations are additional problem data. The 2016 growth paper describes both chiral decorations of each shape, but explicitly distinguishes weak matching rules from an unproved claim of perfect matching for those particular decorations. The marked live lane now encodes those dots through exact point values. It does not claim a single Penrose local-isomorphism class or an infinite-extension certificate.</p>
     <p>Under the <a href="../../docs/basic-tiling-algorithm.md">shared algorithm contract</a>, this is a <strong>specialized geometric construction</strong>. Exact geometry is not a finite point-value capacity model. Corner coordinates alone do not supply exact occupancy weights; 3D solid angles must not be presumed to belong to the coordinate field.</p>
     <p>The following audit describes the constructed-patch lane. The live search has its separate audit below.</p>
     <div class="table-wrap"><table><thead><tr><th>Conformance item</th><th>Status</th></tr></thead><tbody>
       <tr><td>Arithmetic, point identity, orientations, geometric predicates</td><td>Implemented exactly; all twenty undecorated orientations and every vertex alignment within that declared set.</td></tr>
-      <tr><td>Point domain, capacity and marking data</td><td>Integer lifts and exact physical coordinates are available. A faithful finite-support capacity model and transformed marking channels remain unspecified.</td></tr>
+      <tr><td>Point domain, capacity and marking data</td><td>Integer lifts and exact physical coordinates are available. A faithful finite-support capacity model remains unspecified. The marked live lane supplies exact face-center marking channels, as described below.</td></tr>
       <tr><td>Target and activation</td><td>All triple intersections in a declared finite grid-index crop. No claim that the crop fills a prescribed target.</td></tr>
       <tr><td>Frontier graph, generations, dead/forced priority, rollback</td><td>Direct construction has no search scheduler. The live geometric lane is audited below.</td></tr>
       <tr><td>GCTS, RL, learned restrictions</td><td>None enabled. The multigrid rule is a declared construction, not learned pruning.</td></tr>
@@ -157,15 +161,36 @@ const json = JSON.stringify(patch,
 
   <section>
     <h2>The live face-to-face search</h2>
-    <p>The live lane starts from one undecorated tile and uses no multigrid patch, acceptance-window predicate, known matching rules, or learned restrictions. Translations are infinite globally. At each exposed golden-rhombus face the complete domain has four placements: two of each shape. Exact rigid face-isometry tests verify closure of the twenty orientations under attachments, starting from a fixed root. This is a <strong>geometric face-obligation search</strong>, distinct from the master contract’s finite point-capacity baseline. Face-to-face does not mean a discrete physical translation lattice.</p>
+    <p>The unmarked control starts from one undecorated tile and uses no multigrid patch, acceptance-window predicate, matching decorations, or learned restrictions. The supplied-rule lane adds the point assignments described below. Translations are infinite globally. At each exposed golden-rhombus face the complete domain has four placements: two of each shape. Exact rigid face-isometry tests verify closure of the twenty orientations under attachments, starting from a fixed root. This is a <strong>geometric face-obligation search</strong>, distinct from the master contract’s finite point-capacity baseline. Face-to-face does not mean a discrete physical translation lattice.</p>
     <p>A shared face–candidate graph checks global zero-degree faces first, propagates global singletons, and then branches at the earliest face generation, breaking generation ties by degree. Seed faces have generation zero; a new tile has one plus the minimum generation of its covered frontier faces. Complete rollback restores placements, generations, candidate validity, both spatial indexes, frontier incidence, owners, and parent-context failed-child exclusions. The spatial indexes use exact integer cell coordinates and conservative closed bounds. All legality comparisons use exact field arithmetic.</p>
-    <p>Interior overlap is forbidden. Every other intersection must be empty or a whole common face, including edges and vertices; exact convex-intersection tests reject partial contacts and T-junctions. The trace records real additions and removals; a rollback shown there follows a detected dead face. Tile-count targets pause only after checking the entire frontier for dead faces. A viable finite patch does not certify infinite extension, full coverage, or quasicrystalline order. Budget exhaustion means unknown. This geometric experiment has no finite-support capacity data or point marking channels and makes no claim of conformance to that baseline. The JSON download records exact placements, configuration, events, parent-linked tree nodes, and statistics for replay.</p>
+    <p>Interior overlap is forbidden. Every other intersection must be empty or a whole common face, including edges and vertices; exact convex-intersection tests reject partial contacts and T-junctions. The trace records real additions and removals; a rollback shown there follows a detected dead face. Tile-count targets pause only after checking the entire frontier for dead faces. A viable finite patch does not certify infinite extension, full coverage, or quasicrystalline order. Budget exhaustion means unknown. This geometric experiment has no finite-support capacity data and makes no claim of conformance to the pure point-capacity baseline. Its supplied point-marking layer is audited below. The JSON download records exact placements, configuration, events, parent-linked tree nodes, and statistics for replay.</p>
+    <h2>Supplied local rules → markings at exact points</h2>
+    <p>Dents and bumps, face decorations, and a logical compatibility relation are alternative presentations of local constraints. Candidate elimination here runs through a global point-value assignment, not a runtime face-pair classifier. For each face center \(p\), let \(v_B\) and \(v_R\) be the corners indicated by the supplied black and red dots. Assign</p>
+    \[
+      m_B(p)=v_B-p,\qquad m_R(p)=v_R-p.
+    \]
+    <p>Two tiles sharing that center must agree in both components. The support point moves as \(p\mapsto Rp+a\); each value transforms as \(m\mapsto Rm\). The visible dots are drawn at \(p+\frac34m_B(p)\) and \(p+\frac34m_R(p)\). Moving their ink within the same indicated corner does not change the logical rule.</p>
+    <p>Each placement has six support points and twelve assigned vector components. Face centers belong to the abstract module \(\frac12M\); its physical embedding is dense, so the engine enumerates finite placement support rather than scanning all module points in a region. The active support of a finite patch is finite. Values at shared centers have reference counts. Dependency indexes include marking-only support outside the geometric bounds and outside the frontier; rollback restores those indexes, assignments and counts exactly. Missing components are unconstrained, while zero is an assigned value. The display reports current world support points and assigned vector components, including interior faces. Each three-coordinate vector counts as one component.</p>
+    <p>The interface distinguishes supplied problem-defining rules from learned restrictions. These Ammann rules are supplied input, compiled to point values; this is not a learner rediscovering them from unmarked labels. The unmarked model permits periodic tilings, so a learner preserving that model cannot reject those tilings as impossible. No learning lane, saved learned model or learned restriction is enabled here. A future learner can supply additional point components through the same assignment and dependency layer, with the provenance and validation required by the master contract.</p>
+    <h3>Source transcription and inventory</h3>
+    <p>The four decorated prototypes are the two chiral versions of each shape in <a href="https://arxiv.org/html/1604.02479#S2">Hann, Socolar &amp; Steinhardt, Figure 1 and its caption</a>. The six decorated variants at a given bare geometric orientation are distinct: after proper rotations and exact deduplication there are 120 decorated orientations in total, with six variants per bare geometric orientation. The labels “left” and “right” follow the two source-figure columns; an exact reflection test verifies their exchange.</p>
+    <p>For an auditable transcription, use \(e=(-u_0,u_1,u_4)\) for the prolate and \(e=(-u_0,u_1,u_2)\) for the oblate. A coefficient vertex is indexed by \(b_0+2b_1+4b_2\), and a face is identified by a fixed coefficient axis and side. The visible-face records below are \((\text{axis},\text{side},B,R)\). Opposite-face data are completed using the source caption: on a prolate the black corner translates and the red corner switches across the face diagonal; on an oblate the colors exchange these roles.</p>
+    <div class="table-wrap"><table><thead><tr><th>Prototype</th><th>Three visible-face records</th></tr></thead><tbody>
+    <tr><td>Prolate, left</td><td>\((0,0,2,6),\ (1,1,2,6),\ (2,0,0,1)\)</td></tr>
+    <tr><td>Prolate, right</td><td>\((0,0,2,6),\ (1,1,2,6),\ (2,0,3,1)\)</td></tr>
+    <tr><td>Oblate, left</td><td>\((0,0,0,4),\ (1,0,0,1),\ (2,0,0,1)\)</td></tr>
+    <tr><td>Oblate, right</td><td>\((0,0,0,4),\ (1,0,0,4),\ (2,0,0,1)\)</td></tr>
+    </tbody></table></div>
+    <p>The tests verify the source corner-angle convention, opposite-face relationships, chirality under reflection, and the rejection of every simple periodic copy along a tile edge. A separate constraint solver finds a consistent decoration of an independently constructed 540-tile reference patch; that witness never filters the live search. The supplied four-prototype rules are known to provide at least weak matching constraints, while a proof that these particular decorations force one local-isomorphism class is not asserted by the source. A finite marked patch is not a certificate of infinite extension.</p>
+    <p><a href="../../assets/exact-point-marking-state.js">Generic point-value assignment layer</a> · <a href="../../assets/icosahedral-ammann-markings.js">Supplied decoration transcription</a></p>
     <h2>Reproduce and verify</h2>
     <p>The visual adapter makes a one-way approximate copy for WebGL. The exact arithmetic and construction modules import no rendering code. Display controls never alter the exported patch. The initial view shows its largest component connected through complete shared faces; enable outer fragments to see the entire grid-index crop. The acceptance window is authored with exact supporting-plane predicates. The renderer and camera use floating-point coordinates only for display.</p>
     <pre><code>node scripts/test-icosahedral-exact.mjs
 node scripts/test-icosahedral-display.mjs
 node scripts/test-icosahedral-face-search.mjs
 node scripts/test-icosahedral-search-worker.mjs
+node scripts/test-icosahedral-point-markings.mjs
+node scripts/test-icosahedral-ammann.mjs
 node scripts/export-icosahedral-exact.mjs 1 &gt; patch.json</code></pre>
     <p>The test covers 867 scalar cases against independent rational bounds, cancellation involving the thousandth Fibonacci number, inverses and oriented faces, 540 generated tiles, 4,320 grid-cell and window witnesses, all 145,530 tile pairs, and exact rejection of singular grids. JSON preserves every coefficient for replay. The finite crop has equal shape counts by enumeration; this is not an estimate of infinite tiling frequencies.</p>
     <p><a href="../../scripts/test-icosahedral-exact.mjs">Test source</a> · <a href="../../scripts/export-icosahedral-exact.mjs">Command-line exporter</a></p>

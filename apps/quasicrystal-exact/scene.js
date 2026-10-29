@@ -14,7 +14,7 @@ const dispose = group => { while (group.children.length) { const child = group.c
 export class CrystalScene {
   constructor(canvas, onSelect) {
     this.canvas = canvas; this.onSelect = onSelect; this.mode = 'crystal';
-    this.options = { separation: 0, cutaway: 0, prolate: true, oblate: true, edges: true, glass: false, fragments: false };
+    this.options = { separation: 0, cutaway: 0, prolate: true, oblate: true, edges: true, glass: false, fragments: false, pointSupport: false };
     this.scene = new THREE.Scene();
     this.renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, preserveDrawingBuffer: true });
     this.renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
@@ -76,7 +76,7 @@ export class CrystalScene {
   updateModel(model, first = false) {
     const oldRadius = this.bounds?.radius;
     this.model = model; this.rebuild(first);
-    if (!first && oldRadius && this.bounds?.radius > oldRadius) {
+    if (!first && oldRadius && this.bounds?.radius) {
       this.camera.position.sub(this.controls.target).multiplyScalar(this.bounds.radius / oldRadius).add(this.controls.target);
     }
   }
@@ -143,7 +143,7 @@ export class CrystalScene {
       const incidence = new Map();
       for (const t of drawTiles) for (const f of t.faces) { const key = f.map(i => t.keys[i]).sort().join('|'); incidence.set(key, (incidence.get(key) ?? 0) + 1); }
       const buckets = { prolate: { positions: [], tiles: [], colors: [] }, oblate: { positions: [], tiles: [], colors: [] } };
-      const lines = [], edgeSet = new Set();
+      const lines = [], edgeSet = new Set(), dotBuckets={black:[],red:[],rim:[],support:[]};
       for (const t of drawTiles) for (const f of t.faces) {
         const faceKey = f.map(i => t.keys[i]).sort().join('|');
         if (!tileMode && opt.separation === 0 && incidence.get(faceKey) > 1 && !opt.glass) continue;
@@ -153,6 +153,25 @@ export class CrystalScene {
         for (const tri of [[f[0], f[1], f[2]], [f[0], f[2], f[3]]]) {
           bucket.positions.push(...tri.flatMap(i => t.drawVertices[i])); bucket.tiles.push(t);
           for (let i = 0; i < 3; i++) bucket.colors.push(color.r, color.g, color.b);
+        }
+        const dotSpec=t.dots?.find(d=>d.face===t.faces.indexOf(f));
+        if(dotSpec){
+          const center=f.reduce((s,i)=>s.add(new THREE.Vector3(...t.drawVertices[i])),new THREE.Vector3()).multiplyScalar(0.25);
+          const u=new THREE.Vector3(...t.drawVertices[f[1]]).sub(new THREE.Vector3(...t.drawVertices[f[0]])).normalize();
+          const n=u.clone().cross(new THREE.Vector3(...t.drawVertices[f[3]]).sub(new THREE.Vector3(...t.drawVertices[f[0]]))).normalize();
+          const v=n.clone().cross(u).normalize();
+          const circle=(out,p,r,lift)=>{
+            const c=p.clone().addScaledVector(n,lift);
+            for(let j=0;j<18;j++){
+              const a=j/18*Math.PI*2,b=(j+1)/18*Math.PI*2;
+              out.push(c.x,c.y,c.z,...c.clone().addScaledVector(u,Math.cos(a)*r).addScaledVector(v,Math.sin(a)*r).toArray(),...c.clone().addScaledVector(u,Math.cos(b)*r).addScaledVector(v,Math.sin(b)*r).toArray());
+            }
+          };
+          for(const color of ['black','red']){
+            const p=new THREE.Vector3(...t.drawVertices[dotSpec[color]]).multiplyScalar(0.75).addScaledVector(center,0.25);
+            circle(dotBuckets.rim,p,0.095,0.011);circle(dotBuckets[color],p,0.075,0.015);
+          }
+          if(opt.pointSupport)circle(dotBuckets.support,center,0.036,0.018);
         }
         if (opt.edges) f.forEach((a, i) => {
           const b = f[(i + 1) % f.length];
@@ -167,6 +186,10 @@ export class CrystalScene {
           transparent: opt.glass, opacity: opt.glass ? 0.22 : 1, depthWrite: !opt.glass, side: opt.glass ? THREE.DoubleSide : THREE.FrontSide });
         const mesh = new THREE.Mesh(g, material); mesh.castShadow = !opt.glass; mesh.receiveShadow = true; mesh.userData.tiles = bucket.tiles;
         this.group.add(mesh);
+      }
+      for(const [key,positions]of Object.entries(dotBuckets))if(positions.length){
+        const color={black:0x121c25,red:0xf45149,rim:0xffefdc,support:0xffffff}[key];
+        const mesh=new THREE.Mesh(geometry(positions),new THREE.MeshBasicMaterial({color}));this.group.add(mesh);
       }
       if (lines.length) { const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(lines, 3)); this.group.add(new THREE.LineSegments(g, new THREE.LineBasicMaterial({ color: opt.glass ? 0xb0ded6 : 0x223a3d, transparent: true, opacity: opt.glass ? 0.32 : 0.56 }))); }
     }

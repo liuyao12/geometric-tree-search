@@ -1,10 +1,12 @@
-/** Exact, undecorated face-to-face geometric experiment.
+/** Exact face-to-face geometric experiment with optional supplied point markings.
  * Domain: the fixed icosahedral star and its integer translation module.
  * This is a face-obligation analogue of the GCTS scheduler, not a finite
  * point-capacity baseline. No window, multigrid witness or markings filter it.
  */
 import { ONE, vector, vadd, vsub, vscale, dot, cross, pointKey } from './golden-field.js';
 import { STAR, ORIENTATIONS, makeRhombohedron, containsPoint } from './icosahedral-exact.js';
+import { AMMANN_ORIENTATIONS, AMMANN_RULE_VERSION, decorateGeometry } from './icosahedral-ammann-markings.js?v=ammann-point-v2';
+import { PointMarkingState } from './exact-point-marking-state.js?v=ammann-point-v2';
 
 export const faceKey = (tile, face) => face.map(i => pointKey(tile.vertices[i])).sort().join('|');
 const CARTESIAN = [vector(1n,0n,0n),vector(0n,1n,0n),vector(0n,0n,1n)];
@@ -17,6 +19,7 @@ const projection = (t,n) => {
 };
 const cache = new WeakMap();
 export function prepare(tile) {
+  if(tile.geometry)return prepare(tile.geometry);
   if(cache.has(tile))return cache.get(tile);
   const vertexKeys=tile.vertices.map(pointKey), faces=tile.faces.map(f=>faceKey(tile,f));
   const edges=[];
@@ -109,16 +112,18 @@ export function chooseFace(frontier) {
 }
 
 export class FaceSearch {
-  constructor({seed=1,seedKind='prolate',target=40,budget=10000}={}){
+  constructor({seed=1,seedKind='prolate',seedHand='left',target=40,budget=10000,markings='none'}={}){
     const started=performance.now();
     if(!Number.isSafeInteger(seed)||!Number.isSafeInteger(target)||target<2||!Number.isSafeInteger(budget)||budget<1)throw new TypeError('Invalid finite search configuration');
-    this.config={seed,seedKind,target,budget};this.trail=[];this.frames=[];
+    if(!['none','ammann'].includes(markings)||!['left','right'].includes(seedHand))throw new TypeError('Unknown marking model or seed hand');
+    this.config={seed,seedKind,seedHand,target,budget,markings};this.trail=[];this.frames=[];
+    this.pointMarkings=new PointMarkingState({set:(m,k,v)=>this.set(m,k,v),add:(s,k)=>this.add(s,k)});
     this.placed=new Map();this.frontier=new Map();this.faceOwners=new Map();this.candidates=new Map();
     this.placedBuckets=new Map();this.candidateBuckets=new Map();this.events=[];this.tree=[{id:0,parent:null,depth:0,status:'active'}];this.currentNode=0;
-    this.stats={attempts:0,accepted:0,forced:0,branches:0,backtracks:0,eliminatedOverlap:0,eliminatedContact:0,checks:0,maxTiles:1,elapsedMs:0};
+    this.stats={attempts:0,accepted:0,forced:0,branches:0,backtracks:0,eliminatedOverlap:0,eliminatedContact:0,eliminatedMarking:0,checks:0,maxTiles:1,elapsedMs:0};
     this.state='ready';this.lastEvent={type:'seed'};
-    const prototype=ORIENTATIONS.find(t=>t.kind===seedKind);if(!prototype)throw new TypeError('Unknown seed shape');
-    this.seed=prototype;this.placed.set(prototype.id,{tile:prototype,generation:0});this.addIndex(this.placedBuckets,prototype,prototype.id);
+    const prototype=markings==='ammann'?AMMANN_ORIENTATIONS.find(t=>t.kind===seedKind&&t.decoration.hand===seedHand):ORIENTATIONS.find(t=>t.kind===seedKind);if(!prototype)throw new TypeError('Unknown seed shape');
+    this.seed=prototype;this.pointMarkings.assign(prototype);this.placed.set(prototype.id,{tile:prototype,generation:0});this.addIndex(this.placedBuckets,prototype,prototype.id);
     for(let i=0;i<6;i++)this.faceOwners.set(prepare(prototype).faces[i],[{tile:prototype,faceIndex:i,generation:0}]);
     this.sync();this.trail=[];this.stats.elapsedMs=performance.now()-started;
   }
@@ -131,7 +136,7 @@ export class FaceSearch {
   near(index,tile){return new Set(cells(tile).flatMap(key=>[...(index.get(key)||[])]));}
   relation(a,b){this.stats.checks++;return pairRelation(a,b);}
   legal(tile){
-    if(this.placed.has(tile.id))return false;
+    if(this.placed.has(tile.id)||!this.pointMarkings.compatible(tile))return false;
     for(const id of this.near(this.placedBuckets,tile)){
       const relation=this.relation(tile,this.placed.get(id).tile);
       if(relation==='overlap'||relation==='partial-contact')return false;
@@ -142,18 +147,18 @@ export class FaceSearch {
     this.trail.push(()=>{record.legal=true;});record.legal=false;
     for(const key of record.faces){const point=this.frontier.get(key);if(point)this.drop(point.candidates,record.tile.id);}
     if(reason==='failed-child'){const old=record.excluded;this.trail.push(()=>{record.excluded=old;});record.excluded=true;}
-    if(reason==='overlap')this.stats.eliminatedOverlap++;else if(reason==='partial-contact')this.stats.eliminatedContact++;
+    if(reason==='overlap')this.stats.eliminatedOverlap++;else if(reason==='partial-contact')this.stats.eliminatedContact++;else if(reason==='marking')this.stats.eliminatedMarking++;
   }
   ensure(tile){
     let record=this.candidates.get(tile.id);
-    if(!record){record={tile,faces:prepare(tile).faces,legal:this.legal(tile),excluded:false};this.set(this.candidates,tile.id,record);this.addIndex(this.candidateBuckets,tile,tile.id);}
+    if(!record){record={tile,faces:prepare(tile).faces,legal:this.legal(tile),excluded:false};this.set(this.candidates,tile.id,record);this.addIndex(this.candidateBuckets,tile,tile.id);this.pointMarkings.register(tile);}
     if(record.legal)for(const key of record.faces){const point=this.frontier.get(key);if(point)this.add(point.candidates,tile.id);}
   }
   sync(){
     for(const [key] of this.frontier)if(this.faceOwners.get(key)?.length!==1)this.del(this.frontier,key);
     for(const [key,owners] of this.faceOwners)if(owners.length===1&&!this.frontier.has(key)){
       const owner=owners[0],point={key,generation:owner.generation,owner,candidates:new Set()};this.set(this.frontier,key,point);
-      for(const tile of faceAttachments(owner.tile,owner.faceIndex))this.ensure(tile);
+      for(const tile of faceAttachments(owner.tile,owner.faceIndex))for(const candidate of this.config.markings==='ammann'?decorateGeometry(tile):[tile])this.ensure(candidate);
     }
   }
   apply(tile){
@@ -166,6 +171,8 @@ export class FaceSearch {
       const relation=this.relation(record.tile,tile);
       if(relation==='overlap'||relation==='partial-contact')this.invalidate(record,relation);
     }
+    this.pointMarkings.assign(tile);
+    for(const id of this.pointMarkings.affected(tile)){const record=this.candidates.get(id);if(record?.legal&&!this.pointMarkings.compatible(record.tile))this.invalidate(record,'marking');}
     this.set(this.placed,tile.id,{tile,generation});this.addIndex(this.placedBuckets,tile,tile.id);
     prepare(tile).faces.forEach((key,faceIndex)=>this.set(this.faceOwners,key,[...(this.faceOwners.get(key)||[]),{tile,faceIndex,generation}]));
     this.sync();return generation;
@@ -196,7 +203,7 @@ export class FaceSearch {
     this.stats.elapsedMs+=performance.now()-start;this.events.push({...this.lastEvent,depth:this.frames.length,tiles:this.placed.size});return this.lastEvent;
   }
   summary(){let incidence=0;const live=new Set();for(const p of this.frontier.values())for(const id of p.candidates){incidence++;live.add(id);}
-    return {state:this.state,tiles:this.placed.size,frontier:this.frontier.size,candidates:live.size,incidences:incidence,dead:[...this.frontier.values()].filter(p=>!p.candidates.size).length,...this.stats};}
-  inspect(){const result={placed:[...this.placed].map(([id,r])=>[id,r.generation]),frontier:[...this.frontier].map(([k,p])=>[k,p.generation,[...p.candidates].sort()]),candidates:[...this.candidates].map(([id,r])=>[id,r.legal,r.excluded]),placedBuckets:[...this.placedBuckets].map(([k,s])=>[k,[...s].sort()]),candidateBuckets:[...this.candidateBuckets].map(([k,s])=>[k,[...s].sort()]),owners:[...this.faceOwners].map(([k,v])=>[k,v.map(o=>o.tile.id)])};for(const values of Object.values(result))values.sort((a,b)=>a[0].localeCompare(b[0]));return result;}
-  export(){return {format:'icosahedral-face-search-v1',model:'undecorated face-to-face geometric search',arithmetic:'Q(tau), exact BigInt',orientations:20,markings:null,windowFilter:false,config:this.config,result:this.state==='checkpoint'?'consistent finite patch with viable frontier':'unknown',stats:this.summary(),tiles:[...this.placed.values()].map(r=>({...r.tile,generation:r.generation})),tree:this.tree,events:this.events};}
+    return {state:this.state,tiles:this.placed.size,frontier:this.frontier.size,candidates:live.size,incidences:incidence,dead:[...this.frontier.values()].filter(p=>!p.candidates.size).length,markingPoints:this.pointMarkings.pointCount,markingComponents:this.pointMarkings.componentCount,...this.stats};}
+  inspect(){const result={placed:[...this.placed].map(([id,r])=>[id,r.generation]),frontier:[...this.frontier].map(([k,p])=>[k,p.generation,[...p.candidates].sort()]),candidates:[...this.candidates].map(([id,r])=>[id,r.legal,r.excluded]),placedBuckets:[...this.placedBuckets].map(([k,s])=>[k,[...s].sort()]),candidateBuckets:[...this.candidateBuckets].map(([k,s])=>[k,[...s].sort()]),owners:[...this.faceOwners].map(([k,v])=>[k,v.map(o=>o.tile.id)])};const marks=this.pointMarkings.inspect();result.markingValues=marks.values;result.markingDependencies=marks.dependencies;for(const values of Object.values(result))values.sort((a,b)=>a[0].localeCompare(b[0]));return result;}
+  export(){return {format:'icosahedral-face-search-v1',model:this.config.markings==='ammann'?'supplied Ammann rules through exact point markings':'undecorated face-to-face geometric search',arithmetic:'Q(tau), exact BigInt',orientations:20,decoratedOrientations:this.config.markings==='ammann'?120:20,markings:this.config.markings==='ammann'?{version:AMMANN_RULE_VERSION,source:'supplied',sourceURL:'https://arxiv.org/html/1604.02479#S2',support:'face centers',channels:['black','red'],values:'exact center-to-corner vectors; rotation-covariant and translation-invariant',learned:false}:null,pointMarkingState:this.pointMarkings.inspect().values,windowFilter:false,config:this.config,result:this.state==='checkpoint'?'consistent finite patch with viable frontier':'unknown',stats:this.summary(),tiles:[...this.placed.values()].map(r=>({...r.tile,generation:r.generation})),tree:this.tree,events:this.events};}
 }

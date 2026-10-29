@@ -10,7 +10,9 @@ export const displayTile = t => ({
   kind: t.kind, axes: t.axes, vertices: t.vertices.map(displayPoint),
   keys: t.vertices.map(pointKey), faces: t.faces,
   exact: t.vertices.map(p => p.map(x => x.toJSON())),
-  volume: t.volume.toJSON(), lift: t.lift?.map(String)
+  volume: t.volume.toJSON(), lift: t.lift?.map(String), decoration: t.decoration,
+  dots: t.faceDots?.map((mark,face)=>({face,black:t.vertices.findIndex(v=>pointKey(v)===pointKey(mark.blackCorner)),red:t.vertices.findIndex(v=>pointKey(v)===pointKey(mark.redCorner))})),
+  pointValues: t.pointMarkings?.map(m=>({point:m.point.map(x=>x.toJSON()),components:m.components}))
 });
 
 export function makeDisplayModel(patch) {
