@@ -39,6 +39,7 @@ export class CrystalScene {
     const fill = new THREE.DirectionalLight(0xd2e6ff, 0.9); fill.position.set(4, -2, 15); this.scene.add(fill);
     this.group = new THREE.Group(); this.scene.add(this.group);
     this.highlight = new THREE.Group(); this.scene.add(this.highlight);
+    this.searchFocus = new THREE.Group(); this.scene.add(this.searchFocus);
     this.floor = new THREE.Mesh(new THREE.CircleGeometry(100, 96), new THREE.MeshStandardMaterial({ color: 0x14262c, roughness: 1, transparent: true, opacity: 0.45 }));
     this.floor.rotation.x = -Math.PI / 2; this.floor.receiveShadow = true; this.scene.add(this.floor);
     this.raycaster = new THREE.Raycaster();
@@ -72,6 +73,20 @@ export class CrystalScene {
     this.camera.updateProjectionMatrix(); if (this.bounds) this.fit(this.preset ?? 'perspective');
   }
   setModel(model) { this.model = model; this.rebuild(true); }
+  updateModel(model, first = false) {
+    const oldRadius = this.bounds?.radius;
+    this.model = model; this.rebuild(first);
+    if (!first && oldRadius && this.bounds?.radius > oldRadius) {
+      this.camera.position.sub(this.controls.target).multiplyScalar(this.bounds.radius / oldRadius).add(this.controls.target);
+    }
+  }
+  setSearchFocus(points, dead = false) {
+    dispose(this.searchFocus); if (this.mode !== 'search' || !points || !this.model) return;
+    const phi = (1 + Math.sqrt(5)) / 2, c = centerOf(this.model.tiles.flatMap(t => t.vertices));
+    const vertices = points.map(p => p.map(([a,b,d],i) => (Number(a)+Number(b)*phi)/Number(d)-c[i]));
+    const g = new THREE.BufferGeometry(); g.setAttribute('position',new THREE.Float32BufferAttribute(vertices.flat(),3));
+    this.searchFocus.add(new THREE.LineLoop(g,new THREE.LineBasicMaterial({color:dead?0xff6e65:0xfff4c7,depthTest:false,transparent:true,opacity:0.9})));
+  }
   setMode(mode) { this.mode = mode; this.rebuild(true); }
   setOptions(options) { const refit = options.fragments !== undefined && options.fragments !== this.options.fragments; Object.assign(this.options, options); this.rebuild(refit); }
   fit(preset = 'perspective') {
@@ -97,7 +112,7 @@ export class CrystalScene {
   }
   rebuild(refit) {
     if (!this.model) return;
-    dispose(this.group); this.select(null);
+    dispose(this.group); dispose(this.searchFocus); this.select(null);
     const opt = this.options;
     const tileMode = this.mode === 'tiles', windowMode = this.mode === 'window';
     let tiles = tileMode ? this.model.prototypes : opt.fragments ? this.model.tiles : this.model.connected.map(i => this.model.tiles[i]);
