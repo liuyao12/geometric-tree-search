@@ -1,7 +1,8 @@
-import { CrystalScene } from './scene.js?v=ammann-point-v2';
+import { setupCatalog } from './catalog-ui.js?v=polyhedra-library-v1';
+import { CrystalScene } from './scene.js?v=polyhedra-library-v1';
 const $ = s => document.querySelector(s);
 const generate = $('#generate'), download = $('#download'), status = $('#status');
-let exportJSON = null, exportRadius = 1, selected = null, scene = null, mode = 'search';
+let exportJSON = null, exportRadius = 1, selected = null, scene = null, mode = 'search', catalog=null;
 let referenceDisplay=null,liveDisplay=null,referenceJSON=null,searchRunning=false,searchSummary=null,searchEpoch=0,exactSelection=false;
 const texScalar = ([a,b,d]) => {
   let n = a === '0' ? '' : a;
@@ -38,7 +39,7 @@ try {
   $('#loading p').textContent = '3D graphics are unavailable in this browser. Exact JSON export is still available.';
   status.textContent = error.message;
 }
-const worker = new Worker(new URL('./worker.js?v=ammann-point-v2',import.meta.url),{type:'module'});
+const worker = new Worker(new URL('./worker.js?v=polyhedra-library-v1',import.meta.url),{type:'module'});
 generate.onclick = () => {
   exportJSON = null; generate.disabled = true; download.disabled = true;
   if(mode!=='search'){$('#loading').hidden = false; $('#loading p').textContent = 'Constructing the exact patch';}
@@ -63,40 +64,43 @@ worker.onerror = () => { generate.disabled=false; status.textContent='The constr
 const descriptions = {
   search:['Live face-to-face growth','Two undecorated shapes. Four candidates per exposed face before exact overlap and contact checks. No window or multigrid filter.','The graph checks every open face for dead ends, then forced moves, then branches at the earliest generation. A finite patch is not an infinite-tiling certificate.','Exact face-to-face tree search'],
   crystal:['Golden rhombohedra','The central connected patch from six grid directions. Click either color to inspect a tile, or reveal the interior to see how the pieces fit.','The two shapes meet face to face. Their golden rhombi reveal the structure of the assembly.','A finite icosahedral patch'],
-  exploded:['Space between the pieces','Pull the assembly apart along the line from its center to each tile. Every piece retains its original shape and orientation.','Separation is a display transform. Set it to zero to return every tile to its exact placement.','Exploded assembly'],
-  tiles:['Two shapes. One edge length.','Compare the elongated prolate tile with the flattened oblate tile. Both have six golden-rhombus faces and exactly the same edge length.','Both tiles are shown at the same scale. The prolate tile has the golden ratio times the volume of the oblate tile.','The golden rhombohedra'],
+  library:['Individual polyhedra','Each tile has its own camera. Select a specimen on the side to inspect its faces and exact data.','Source-backed specimens. Viewing a tile does not assert that its bare geometry enforces aperiodicity.','Polyhedral tile library'],
   window:['The hidden selection rule','In the complementary internal space, accepted vertices lie inside this rhombic triacontahedron. Gold points come from the current patch.','Thirty golden faces bound the acceptance window. Its exact supporting planes decide which integer lifts become vertices.','Internal space · acceptance window']
 };
 function updateHeading() {
   const [heading,description,caption,title]=descriptions[mode]; $('#view-heading').textContent=heading; $('#view-description').textContent=description; $('#caption').textContent=caption; $('#scene-title').textContent=title;
-  $('.caption-index').textContent=`0${Object.keys(descriptions).indexOf(mode)+1} / 05`;
+  catalog?.syncMode(mode);$('.assembly-controls').hidden=mode==='library';$('.stage-actions').hidden=mode==='library';$('.camera-presets').hidden=mode==='library';$('.gesture-hint').hidden=mode==='library';
+  $('.caption-index').textContent=`0${Object.keys(descriptions).indexOf(mode)+1} / 04`;
   $('#search-live-counts').hidden=mode!=='search';$('#search-controls').hidden=mode!=='search';$('#search-monitor').hidden=mode!=='search';$('.generation-controls').hidden=mode==='search';$('#fragments').parentElement.hidden=mode==='search';
   const marked=$('#search-rules').value==='ammann';
   $('#regularity').textContent=mode==='search'?(marked?'Supplied face rules · exact point values':'Unmarked geometric control'):'Exact geometry · regular grid certified';
   $('#search-hand').disabled=!marked;
   $('#marking-provenance').textContent=marked?'Supplied local rules → exact point values. No learned restriction is active.':'Unmarked control. Periodic parallelotope tilings are valid in this problem.';
-  $('.point-support-toggle').hidden=!marked||mode==='window'||mode==='crystal'||mode==='exploded';
+  $('.point-support-toggle').hidden=!marked||mode==='window'||mode==='crystal'||mode==='library';
   if(mode==='search'){
     $('#view-heading').textContent=marked?'Face rules through point markings':'Unmarked face-to-face growth';
     $('#view-description').textContent=marked?'Black and red face dots must coincide. The engine enforces their agreement as two assigned values at each exact face center.':'Bare geometry only. Either rhombohedron can tile periodically by translations.';
     $('#scene-title').textContent=marked?'Ammann rules · exact point markings':'Unmarked face-to-face search';
   }
-  const applicable=mode==='crystal'||mode==='exploded'||mode==='search'; $('#separation').disabled=!applicable; $('#cutaway').disabled=!applicable;
+  const applicable=mode==='crystal'||mode==='search'; $('#cutaway').disabled=!applicable;
   $('#show-prolate').disabled=mode==='window'; $('#show-oblate').disabled=mode==='window';
+  if(mode!=='library')$('#geometry-badge').textContent='Exact geometry · approximate rendering only';
+  if(mode==='library'){const sys=catalog?.system;$('#scene-title').textContent=sys?.name||'Polyhedral tile library';$('#visible-count').textContent=sys?.count||'Tile library';$('#status').textContent=sys?.implementation||'Loading specimens';}
 }
 for(const button of document.querySelectorAll('[data-mode]')) button.onclick=()=>{
   mode=button.dataset.mode; document.querySelectorAll('[data-mode]').forEach(b=>{b.classList.toggle('active',b===button);b.setAttribute('aria-pressed',String(b===button));});
-  $('#separation').value=mode==='exploded'?'35':'0'; $('#separation-value').textContent=`${$('#separation').value}%`; $('#cutaway').value='0'; $('#cutaway-value').textContent='0%';
+  $('#cutaway').value='0'; $('#cutaway-value').textContent='0%';
   if(mode!=='search')searchWorker.postMessage({type:'pause'});
-  if(scene){scene.options.separation=Number($('#separation').value);scene.options.cutaway=0;scene.mode=mode;const model=mode==='search'?liveDisplay:mode==='tiles'&&liveDisplay?.prototypes?{...referenceDisplay,prototypes:liveDisplay.prototypes}:referenceDisplay;if(model){scene.setModel(model);$('#loading').hidden=true;}}
+  if(mode==='search')catalog?.showAmmann();
+  if(scene&&mode!=='library'){scene.options.separation=0;scene.options.cutaway=0;scene.mode=mode;const model=mode==='search'?liveDisplay:referenceDisplay;if(model){scene.setModel(model);$('#loading').hidden=true;}}else if(mode==='library')$('#loading').hidden=true;
   if(mode!=='search'){exportJSON=referenceJSON;status.textContent='Constructed reference patch. This lane is separate from the live search.';}else if(searchSummary){status.textContent=searchRunning?'Searching exact face attachments.':'Search paused. Start to resume the preserved branch.';}updateHeading();
 };
 let pending=false;
 function updateDisplay(){
-  $('#separation-value').textContent=`${$('#separation').value}%`; $('#cutaway-value').textContent=`${$('#cutaway').value}%`;
-  if(pending)return;pending=true;requestAnimationFrame(()=>{pending=false;scene?.setOptions({separation:Number($('#separation').value),cutaway:Number($('#cutaway').value),prolate:$('#show-prolate').checked,oblate:$('#show-oblate').checked,edges:$('#edges').checked,fragments:$('#fragments').checked,pointSupport:$('#show-marking-points').checked});});
+  $('#cutaway-value').textContent=`${$('#cutaway').value}%`;
+  if(pending)return;pending=true;requestAnimationFrame(()=>{pending=false;scene?.setOptions({cutaway:Number($('#cutaway').value),prolate:$('#show-prolate').checked,oblate:$('#show-oblate').checked,edges:$('#edges').checked,fragments:$('#fragments').checked,pointSupport:$('#show-marking-points').checked});});
 }
-for(const id of ['separation','cutaway','show-prolate','show-oblate','edges','fragments','show-marking-points']) $(`#${id}`).addEventListener('input',updateDisplay);
+for(const id of ['cutaway','show-prolate','show-oblate','edges','fragments','show-marking-points']) $(`#${id}`).addEventListener('input',updateDisplay);
 $('#spin').onchange=()=>{if(scene)scene.controls.autoRotate=$('#spin').checked;};
 for(const b of document.querySelectorAll('[data-camera]')) b.onclick=()=>{
   document.querySelectorAll('[data-camera]').forEach(x=>x.classList.toggle('active',x===b));if(scene){scene.controls.autoRotate=false;scene.fit(b.dataset.camera);$('#spin').checked=false;}
@@ -104,7 +108,7 @@ for(const b of document.querySelectorAll('[data-camera]')) b.onclick=()=>{
 for(const b of document.querySelectorAll('[data-material]')) b.onclick=()=>{
   document.querySelectorAll('[data-material]').forEach(x=>{x.classList.toggle('active',x===b);x.setAttribute('aria-pressed',String(x===b));});scene?.setOptions({glass:b.dataset.material==='glass'});
 };
-$('#reset-view').onclick=()=>scene?.fit(); $('#snapshot').onclick=()=>scene?.saveImage(); $('#close-inspector').onclick=()=>scene?.select(null);
+$('#reset-view').onclick=()=>mode==='library'?catalog?.fit():scene?.fit(); $('#snapshot').onclick=()=>mode==='library'?catalog?.save():scene?.saveImage(); $('#close-inspector').onclick=()=>scene?.select(null);
 $('.math-link').onclick=()=>{ $('#mathematics').open=true; };
 $('#inspect-exact').onclick=()=>{if(!selected)return;exactSelection=true;showExact(selected.exact);showPointValues(selected.pointValues);$('#mathematics').open=true;$('#sample-details').open=true;if(selected.pointValues?.length)$('#point-markings-details').open=true;$('#sample-details').scrollIntoView({behavior:'smooth',block:'center'});};
 $('#sample-details').ontoggle=e=>{if(e.target.open)typeset($('#sample'));};
@@ -112,7 +116,7 @@ download.onclick=()=>{if(mode==='search'){searchWorker.postMessage({type:'export
 
 
 
-const searchWorker=new Worker(new URL('./search-worker.js?v=ammann-point-v2',import.meta.url),{type:'module'});
+const searchWorker=new Worker(new URL('./search-worker.js?v=polyhedra-library-v1',import.meta.url),{type:'module'});
 function searchConfig(){return {seed:Number($('#search-seed').value)||4,seedKind:$('#search-root').value,target:Number($('#search-target').value),budget:10000,markings:$('#search-rules').value,seedHand:$('#search-hand').value};}
 function resetSearch(){
   exactSelection=false;showPointValues(null);scene?.select(null);liveDisplay=null;$('#loading').hidden=false;$('#loading p').textContent='Enumerating exact face attachments';
@@ -159,4 +163,5 @@ $('#search-run').onclick=()=>{
 $('#search-step').onclick=()=>searchWorker.postMessage({type:'step',target:Number($('#search-target').value)});
 $('#search-reset').onclick=resetSearch;$('#search-rules').onchange=()=>{updateHeading();resetSearch();};$('#search-export').onclick=()=>searchWorker.postMessage({type:'export'});
 $('#search-speed').oninput=()=>searchWorker.postMessage({type:'speed',delay:Number($('#search-speed').value)});
+catalog=setupCatalog({enter:()=>document.querySelector('[data-mode=library]').click(),onHeading:(sys,tile)=>{if(mode==='library'){$('#geometry-badge').textContent=tile?.displayOnly?'Display mesh · rounded source coordinates':'Exact geometry · approximate rendering only';$('#scene-title').textContent=sys.name;$('#view-heading').textContent=tile?.name||sys.name;$('#view-description').textContent=sys.summary;$('#visible-count').textContent=sys.count;$('#status').textContent=sys.implementation;}}});
 updateHeading();resetSearch();generate.click();
