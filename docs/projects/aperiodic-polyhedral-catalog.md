@@ -60,8 +60,14 @@ it as a GCTS point-capacity solver.
 
 Each specimen canvas has its own camera and OrbitControls. One shared WebGL
 renderer copies into separate canvas surfaces, avoiding one graphics context
-per tile. Rotation, reset, reflection inspection, and selection are independent.
-The combined tile layout and separation slider have been removed from the UI.
+per tile. The tile scenes form the left column; dragging rotates each scene
+independently and clicking a face opens its exact data below the search.
+There are no per-tile action buttons. The main view is exclusively live search,
+with visible Run/Pause, Step and Reset controls above the scene. It starts idle,
+from the seed, without generating a reference patch. Catalog entries without
+a connected engine explicitly disable search and retain their prototype scenes.
+The former constructed-patch, library and acceptance-window tabs are removed.
+The exact search engine and its existing conformance limits are unchanged.
 
 ## Verification
 
@@ -73,7 +79,9 @@ The combined tile layout and separation slider have been removed from the UI.
 - Existing exact/search/worker suites remain the regression checks for the
   unchanged live engine.
 - Browser checks cover loading each finite family, all 21 paginated cube
-  viewers, exact inspection, absent-mesh entries, mode switching, and the
-  unmarked control. Aligned screenshot comparisons verify that rotating one
-  side specimen changes that canvas while preserving the main and second
-  specimen canvases.
+  viewers, exact inspection, absent-mesh entries, search availability, Run/Pause,
+  Step and Reset, and the unmarked control. An actual pointer drag and aligned screenshot comparisons verify that
+  rotating one left specimen changes only its canvas. Browser checks also
+  verify idle initialization, Step, Run/Pause, Reset, a 60-tile checkpoint
+  with 93 placement trials and 34 backtracks, and preserved state while
+  inspecting catalog entries without a connected search engine.

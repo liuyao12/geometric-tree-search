@@ -3,49 +3,31 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Aperiodic polyhedra · exact tile library · GCTS</title>
-  <link rel="stylesheet" href="style.css?v=polyhedra-library-v1">
+  <title>Exact 3D geometric tree search · GCTS</title>
+  <link rel="stylesheet" href="style.css?v=live-search-workspace-v2">
   <script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
   <script type="importmap">{"imports":{"three":"../3d-lattice-tiler/vendor/three.module.min.js"}}</script>
-  <script type="module" src="app.js?v=polyhedra-library-v1"></script>
+  <script type="module" src="app.js?v=live-search-workspace-v2"></script>
 </head>
 <body>
 <main>
   <nav><a href="../../">GCTS</a><span> / Exact polyhedral tilings</span></nav>
   <header>
     <div><p class="eyebrow">THREE-DIMENSIONAL TILING SYSTEMS</p>
-    <h1>Aperiodic solids. Up close.</h1>
-    <p class="lede">Explore three-dimensional aperiodic tile systems, rotate each solid on its own, and inspect the exact coordinates and matching rules.</p></div>
+    <h1>Geometric tree search. Live.</h1>
+    <p class="lede">Run the exact search and watch real trial placements, forced moves, and backtracking. Rotate the individual tiles in the left column.</p></div>
     <a class="math-link" href="#mathematics">Explore the mathematics <span>↗</span></a>
   </header>
   <section class="visual-lab" aria-label="Interactive quasicrystal explorer">
     <div class="system-toolbar"><div><span class="eyebrow">3D POLYHEDRAL SYSTEMS</span><label for="system-select">Choose a tile system</label></div><select id="system-select" aria-describedby="catalog-state"></select><p id="catalog-state">Loading tile library…</p></div>
-    <div class="view-tabs" role="group" aria-label="Visualization">
-      <button data-mode="search" class="active" aria-pressed="true">Live search</button>
-      <button data-mode="crystal" aria-pressed="false">Constructed patch</button>
-      <button data-mode="library" aria-pressed="false">Tile library</button>
-      <button data-mode="window" aria-pressed="false">Acceptance window</button>
-    </div>
     <div class="lab-body">
-      <div class="stage" id="stage">
-        <canvas id="scene" aria-label="Interactive three-dimensional quasicrystal. Drag to rotate and scroll to zoom."></canvas>
-        <canvas id="library-scene" aria-label="Rotate and inspect the selected polyhedral tile" hidden></canvas><div id="library-badge" hidden><strong id="catalog-tile-name"></strong><span>Drag to rotate · click a face to inspect</span></div><div id="catalog-unavailable" hidden></div><div id="catalog-view-options" hidden><button id="library-fit">Reset tile view</button><button id="catalog-download">Download tile data ↓</button><label hidden><input type="checkbox" id="enlarge-features"> Enlarge feature details (display)</label></div>
-        <div class="scene-title"><span class="live-dot"></span><span id="scene-title">Constructing exact geometry…</span></div><div id="search-live-counts" class="search-live-counts"></div>
-        <div class="stage-actions"><button id="reset-view" title="Fit the model">Fit view</button><button id="snapshot" title="Save a PNG of the current view">Save image ↗</button></div>
-        <div class="loading" id="loading"><span></span><p>Constructing the exact patch</p></div>
-        <div id="tile-labels" hidden><span class="tile-label prolate-label">PROLATE <small>Slender · larger volume</small></span><span class="tile-label oblate-label">OBLATE <small>Flattened · smaller volume</small></span></div>
-        <div class="camera-presets" role="group" aria-label="Camera direction"><button data-camera="perspective" class="active">Perspective</button><button data-camera="five">5-fold</button><button data-camera="three">3-fold</button><button data-camera="two">2-fold</button></div>
-        <div class="gesture-hint">Drag to orbit <span>·</span> Scroll to zoom <span>·</span> Click to inspect</div>
-        <div class="inspector" id="inspector" hidden><button id="close-inspector" aria-label="Close tile inspector">×</button><p class="eyebrow">SELECTED TILE</p><h3 id="tile-kind"></h3><p id="tile-data"></p><button id="inspect-exact">Show exact vertices ↓</button></div>
-      </div>
       <aside class="studio-controls" aria-label="Tile shelf and display controls">
-        <section class="specimens-panel" aria-label="Individual tile viewers"><div class="shelf-heading"><p class="eyebrow">INDIVIDUAL TILES</p><span>Independent views</span></div><div id="tile-shelf"></div><button id="catalog-more" hidden>Show more tiles</button></section>
+        <section class="specimens-panel" aria-label="Individual tile viewers"><div class="shelf-heading"><p class="eyebrow">INDIVIDUAL TILES</p><span>Drag to rotate</span></div><div id="tile-shelf"></div><button id="catalog-more" hidden>Show more tiles</button></section>
         <div id="search-controls" class="search-controls">
           <p class="eyebrow">EXACT · POINT MARKINGS · FACE TO FACE</p>
           <label for="search-rules">Problem-defining rules</label><select id="search-rules"><option value="ammann" selected>Supplied Ammann face dots</option><option value="none">Unmarked geometric control</option></select>
           <p class="marking-provenance" id="marking-provenance">Supplied local rules → exact point values. No learned restriction is active.</p>
-          <div class="search-buttons"><button id="search-run">Pause</button><button id="search-step">Step</button><button id="search-reset">Reset</button></div>
           <label for="search-target">Pause at tile count</label><select id="search-target"><option value="60" selected>60 tiles</option><option value="120">120 tiles</option><option value="240">240 tiles</option><option value="480">480 tiles</option></select>
           <div class="search-config"><label>Root tile<select id="search-root"><option value="prolate">Prolate</option><option value="oblate">Oblate</option></select></label><label>Seed decoration<select id="search-hand"><option value="left">Left handed</option><option value="right">Right handed</option></select></label></div><div class="search-config"><label>Branch order seed<input id="search-seed" type="number" min="1" max="99999" value="4"></label></div>
           <label for="search-speed">Pace <span>fast → slow</span></label><input id="search-speed" type="range" min="30" max="600" step="10" value="130">
@@ -54,27 +36,39 @@
         <div class="assembly-controls"><p class="eyebrow">THE ASSEMBLY</p><h2 id="view-heading">Golden rhombohedra</h2><p id="view-description">A finite patch of an exact six-grid construction. Every tile is built from the same six directions.</p>
         <div class="legend"><label><input id="show-prolate" type="checkbox" checked><span class="swatch amber"></span><span>Prolate</span><strong id="prolate-count">—</strong></label><label><input id="show-oblate" type="checkbox" checked><span class="swatch teal"></span><span>Oblate</span><strong id="oblate-count">—</strong></label></div>
         <label class="range-label" for="cutaway">Reveal interior <output id="cutaway-value">0%</output></label><input id="cutaway" type="range" min="0" max="90" value="0">
-        <label class="fragment-toggle"><input id="fragments" type="checkbox"> Include outer fragments</label>
         <div class="toggle-row"><label><input id="edges" type="checkbox" checked> Tile edges</label><label><input id="spin" type="checkbox" checked> Slow orbit</label></div>
         <label class="point-support-toggle"><input id="show-marking-points" type="checkbox"> Show marking support points</label>
         <div class="material-controls" role="group" aria-label="Material"><button data-material="solid" class="active" aria-pressed="true">Satin</button><button data-material="glass" aria-pressed="false">Glass</button></div>
-        <div class="generation-controls"><label for="radius">Patch size</label><select id="radius"><option value="0">Small · 20 tiles</option><option value="1" selected>Medium · 540 tiles</option><option value="2">Large · 2,500 tiles</option></select><button id="generate">Rebuild exact patch</button><button id="download" disabled>Download exact JSON ↓</button></div>
         <p class="exact-badge"><span>●</span> <span id="regularity">Exact algebraic construction</span></p></div>
       </aside>
+      <div class="main-view">
+        <div class="search-transport" role="group" aria-label="Live tree search controls"><span class="eyebrow">LIVE TREE SEARCH</span><div class="search-buttons"><button id="search-run">Run search</button><button id="search-step">Step</button><button id="search-reset">Reset</button></div></div>
+      <div class="stage" id="stage">
+        <canvas id="scene" aria-label="Interactive three-dimensional quasicrystal. Drag to rotate and scroll to zoom."></canvas>
+        <div id="catalog-unavailable" hidden></div>
+        <div class="scene-title"><span class="live-dot"></span><span id="scene-title">Constructing exact geometry…</span></div><div id="search-live-counts" class="search-live-counts"></div>
+        <div class="stage-actions"><button id="reset-view" title="Fit the model">Fit view</button><button id="snapshot" title="Save a PNG of the current view">Save image ↗</button></div>
+        <div class="loading" id="loading"><span></span><p>Constructing the exact patch</p></div>
+        <div id="tile-labels" hidden><span class="tile-label prolate-label">PROLATE <small>Slender · larger volume</small></span><span class="tile-label oblate-label">OBLATE <small>Flattened · smaller volume</small></span></div>
+        <div class="camera-presets" role="group" aria-label="Camera direction"><button data-camera="perspective" class="active">Perspective</button><button data-camera="five">5-fold</button><button data-camera="three">3-fold</button><button data-camera="two">2-fold</button></div>
+        <div class="gesture-hint">Drag to orbit <span>·</span> Scroll to zoom <span>·</span> Click to inspect</div>
+        <div class="inspector" id="inspector" hidden><button id="close-inspector" aria-label="Close tile inspector">×</button><p class="eyebrow">SELECTED TILE</p><h3 id="tile-kind"></h3><p id="tile-data"></p><button id="inspect-exact">Show exact vertices ↓</button></div>
+      </div>
+      </div>
     </div>
     <div class="scene-footer"><span id="visible-count">Preparing geometry</span><span id="geometry-badge">Exact geometry · approximate rendering only</span></div>
   </section>
-  <section id="catalog-meta" class="catalog-meta" aria-label="Selected system rules and sources" hidden></section>
-  <section id="catalog-inspector" class="catalog-inspector" aria-label="Exact specimen inspection" hidden></section>
   <section class="search-monitor" id="search-monitor" aria-label="Live search statistics">
-    <div class="search-metrics"><div><span>Placed now</span><strong id="metric-tiles">1</strong></div><div><span>Forced</span><strong id="metric-forced">0</strong></div><div><span>Branches</span><strong id="metric-branches">0</strong></div><div><span>Backtracks</span><strong id="metric-backtracks">0</strong></div><div><span>Open faces</span><strong id="metric-frontier">6</strong></div><div><span>Live candidates</span><strong id="metric-candidates">24</strong></div></div>
+    <div class="search-metrics"><div><span>Placed now</span><strong id="metric-tiles">1</strong></div><div><span>Placement trials</span><strong id="metric-attempts">0</strong></div><div><span>Forced</span><strong id="metric-forced">0</strong></div><div><span>Branches</span><strong id="metric-branches">0</strong></div><div><span>Backtracks</span><strong id="metric-backtracks">0</strong></div><div><span>Open faces</span><strong id="metric-frontier">6</strong></div><div><span>Live candidates</span><strong id="metric-candidates">24</strong></div></div>
     <div class="search-trace"><div><span class="eyebrow">LIVE DEPTH TRACE</span><span id="search-event">Starting from one tile</span></div><svg id="search-trace" viewBox="0 0 900 72" role="img" aria-label="Search depth over actual placement and rollback events"></svg><p><span class="trace-key forced-key">● Forced</span><span class="trace-key branch-key">● Branch</span><span class="trace-key backtrack-key">● Rollback</span><span id="search-graph-stats"></span><span id="search-marking-stats"></span></p></div>
   </section>
-  <div class="visual-caption"><p><span class="caption-index">01 / 04</span><span id="caption">The two shapes meet face to face. Their golden rhombi reveal the structure of the assembly.</span></p><p id="status" role="status" aria-live="polite">Building the exact patch…</p></div>
+  <div class="visual-caption"><p><span class="caption-index">SEARCH</span><span id="caption">Every placement trial and backtrack comes from the search. The graph checks global dead ends, then forced moves, then branches at the earliest generation.</span></p><p id="status" role="status" aria-live="polite">Building the exact patch…</p></div>
+  <details class="system-reference"><summary>Selected system: matching rules and sources</summary><section id="catalog-meta" class="catalog-meta" aria-label="Selected system rules and sources"></section></details>
+  <details class="system-reference" id="prototype-inspection"><summary>Individual tile: exact coordinates and point values</summary><section id="catalog-inspector" class="catalog-inspector" aria-label="Exact specimen inspection"></section><button id="catalog-download">Download selected tile data ↓</button></details>
   <section class="catalog-coverage" aria-labelledby="coverage-title">
     <div><p class="eyebrow">SOURCE-BACKED CATALOG · REVIEWED 28 OCTOBER 2026</p><h2 id="coverage-title">The spatial families, and what is known</h2><p>Named Euclidean polyhedral systems with lattice or algebraic descriptions, plus general construction families. There are infinitely many variants obtained by decoration and simulation; this is a documented coverage map, not a completeness theorem. Planar tiles and hyperbolic polyhedra are outside this page’s scope.</p></div>
     <details><summary>Browse all systems and implementation status</summary><div class="table-wrap"><table><thead><tr><th>System</th><th>Inventory</th><th>Coordinate field</th><th>Status</th></tr></thead><tbody id="catalog-index"></tbody></table></div></details>
-    <details><summary>Exactness, coverage gaps, and transcription audit</summary><p>The library inspects prototypes; it does not add search engines for every catalog entry. Only the Ammann lane has live search here, and its geometric coverage audit remains below. Source rules are problem data, never presented as learned constraints. Exact vertex records use \((a+b\tau)/d\), \(\tau^2=\tau+1\), with integer strings. Rational specimens have \(b=0\). Camera motion and lighting use approximate copies.</p><p>Socolar–Steinhardt and Goodman–Strauss currently show exact carrier shapes; their full markings have not been ported. Schmitt’s three-tile compiler is referenced without invented specimen meshes. The spatial Socolar–Taylor entry uses Edmund Harriss’s rounded print mesh, labelled display-only; an exact \(\mathbb Q(\sqrt3)\) construction remains to be transcribed.</p><p>The Wang cube records follow Figure 4 and the construction in Theorem 3. The printed formula twice names the transition \((0',1,1,\tfrac12)\), absent from Figure 4. Here it is consistently replaced by the actual transition \((0',1,0',\tfrac12)\), both in the removal list and its cube lift. The formal tuple follows the figure’s cyclic order: left, front, back, right, top, bottom; opposite pairs are \((0,3),(1,2),(4,5)\). This correction is explicit, verified by projection of all 21 cubes to the 13-tile table, and not advertised as an independent proof of the corrected set’s aperiodicity.</p><p>The spatial Socolar–Taylor print mesh is by Edmund Harriss: <a href="https://commons.wikimedia.org/wiki/File:Socolar-Taylor_3D_monotile.stl">source</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>; converted to JSON under the same license.</p><p>Strong aperiodicity excludes infinite-order symmetries. SCD excludes translations under its stated chirality and incommensurability assumptions but allows screw symmetries. The spatial Socolar–Taylor construction permits a stacking translation. Nonperiodic substitution examples such as the bare chair and quaquaversal prism are not listed as aperiodic prototile sets; their carriers also admit periodic arrangements. Products, colour refinements, general Wang-cube simulations and marked substitution constructions are represented as families, not a finite enumeration of every derived encoding.</p></details>
+    <details><summary>Exactness, coverage gaps, and transcription audit</summary><p>The left column inspects prototypes. Only the Ammann set currently has a live search engine; other sets explicitly show that search is unavailable. Its geometric coverage audit remains below. Source rules are problem data, never presented as learned constraints. Exact vertex records use \((a+b\tau)/d\), \(\tau^2=\tau+1\), with integer strings. Rational specimens have \(b=0\). Camera motion and lighting use approximate copies.</p><p>Socolar–Steinhardt and Goodman–Strauss currently show exact carrier shapes; their full markings have not been ported. Schmitt’s three-tile compiler is referenced without invented specimen meshes. The spatial Socolar–Taylor entry uses Edmund Harriss’s rounded print mesh, labelled display-only; an exact \(\mathbb Q(\sqrt3)\) construction remains to be transcribed.</p><p>The Wang cube records follow Figure 4 and the construction in Theorem 3. The printed formula twice names the transition \((0',1,1,\tfrac12)\), absent from Figure 4. Here it is consistently replaced by the actual transition \((0',1,0',\tfrac12)\), both in the removal list and its cube lift. The formal tuple follows the figure’s cyclic order: left, front, back, right, top, bottom; opposite pairs are \((0,3),(1,2),(4,5)\). This correction is explicit, verified by projection of all 21 cubes to the 13-tile table, and not advertised as an independent proof of the corrected set’s aperiodicity.</p><p>The spatial Socolar–Taylor print mesh is by Edmund Harriss: <a href="https://commons.wikimedia.org/wiki/File:Socolar-Taylor_3D_monotile.stl">source</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>; converted to JSON under the same license.</p><p>Strong aperiodicity excludes infinite-order symmetries. SCD excludes translations under its stated chirality and incommensurability assumptions but allows screw symmetries. The spatial Socolar–Taylor construction permits a stacking translation. Nonperiodic substitution examples such as the bare chair and quaquaversal prism are not listed as aperiodic prototile sets; their carriers also admit periodic arrangements. Products, colour refinements, general Wang-cube simulations and marked substitution constructions are represented as families, not a finite enumeration of every derived encoding.</p></details>
   </section>
   <details class="reference" id="mathematics"><summary>Mathematics, exact coordinates &amp; source references <span>+</span></summary>
   <section>
@@ -98,10 +92,9 @@
   </section>
 
   <section class="panel">
-    <h2>Exact patch data</h2>
-    <p>The download contains the complete generated patch. Display filters and material choices do not change its coordinates or its exact construction.</p>
-    <dl id="summary"></dl>
-    <details id="sample-details" hidden><summary>Inspect eight exact vertices of a generated tile</summary><div id="sample"></div></details>
+    <h2>Exact search data</h2>
+    <p>The search export contains the current exact placements, supplied rules, configuration, events and branch tree. Display choices do not change search legality.</p>
+    <details id="sample-details" hidden><summary>Inspect eight exact vertices of a search tile</summary><div id="sample"></div></details>
     <details id="point-markings-details" hidden><summary>Inspect exact point m-values of the selected tile</summary><p>Each face center carries two exact vectors pointing to the indicated corners. Missing channels are unconstrained; assigned zero remains a value.</p><div id="point-markings-table" class="table-wrap"></div></details>
     <p class="small">Coordinates serialize as canonical <code>[a,b,d]</code> integer strings, meaning \((a+b\tau)/d\). Lift coordinates and plane levels are integer strings too.</p>
   </section>
@@ -155,7 +148,7 @@ const json = JSON.stringify(patch,
     <h2>Geometry, matching rules, and the search contract</h2>
     <p>The two undecorated shapes alone allow periodic arrangements. A six-grid construction selects a structured quasiperiodic family; it does not discover local matching rules. Ammann face-dot decorations are additional problem data. The 2016 growth paper describes both chiral decorations of each shape, but explicitly distinguishes weak matching rules from an unproved claim of perfect matching for those particular decorations. The marked live lane now encodes those dots through exact point values. It does not claim a single Penrose local-isomorphism class or an infinite-extension certificate.</p>
     <p>Under the <a href="../../docs/basic-tiling-algorithm.md">shared algorithm contract</a>, this is a <strong>specialized geometric construction</strong>. Exact geometry is not a finite point-value capacity model. Corner coordinates alone do not supply exact occupancy weights; 3D solid angles must not be presumed to belong to the coordinate field.</p>
-    <p>The following audit describes the constructed-patch lane. The live search has its separate audit below.</p>
+    <p>The following audit describes the reference multigrid construction retained in the source modules. That construction is not run by this interface. The live search has its separate audit below.</p>
     <div class="table-wrap"><table><thead><tr><th>Conformance item</th><th>Status</th></tr></thead><tbody>
       <tr><td>Arithmetic, point identity, orientations, geometric predicates</td><td>Implemented exactly; all twenty undecorated orientations and every vertex alignment within that declared set.</td></tr>
       <tr><td>Point domain, capacity and marking data</td><td>Integer lifts and exact physical coordinates are available. A faithful finite-support capacity model remains unspecified. The marked live lane supplies exact face-center marking channels, as described below.</td></tr>
@@ -192,7 +185,7 @@ const json = JSON.stringify(patch,
     <p>The tests verify the source corner-angle convention, opposite-face relationships, chirality under reflection, and the rejection of every simple periodic copy along a tile edge. A separate constraint solver finds a consistent decoration of an independently constructed 540-tile reference patch; that witness never filters the live search. The supplied four-prototype rules are known to provide at least weak matching constraints, while a proof that these particular decorations force one local-isomorphism class is not asserted by the source. A finite marked patch is not a certificate of infinite extension.</p>
     <p><a href="../../assets/exact-point-marking-state.js">Generic point-value assignment layer</a> · <a href="../../assets/icosahedral-ammann-markings.js">Supplied decoration transcription</a></p>
     <h2>Reproduce and verify</h2>
-    <p>The visual adapter makes a one-way approximate copy for WebGL. The exact arithmetic and construction modules import no rendering code. Display controls never alter the exported patch. The initial view shows its largest component connected through complete shared faces; enable outer fragments to see the entire grid-index crop. The acceptance window is authored with exact supporting-plane predicates. The renderer and camera use floating-point coordinates only for display.</p>
+    <p>The visual adapter makes a one-way approximate copy for WebGL. The exact arithmetic and construction modules import no rendering code. Display controls never alter the exported patch. The live interface starts from one tile and waits for Run search. The reference construction and acceptance-window checks remain available in the source modules and tests. The renderer and camera use floating-point coordinates only for display.</p>
     <pre><code>node scripts/test-icosahedral-exact.mjs
 node scripts/test-icosahedral-display.mjs
 node scripts/test-icosahedral-face-search.mjs
