@@ -56,13 +56,13 @@ function updateHeading(){
  $('#learning-monitor').hidden=!supported||!learningData;$('#marking-inset').hidden=!supported||!learningData;
  $('#scene').hidden=!supported;$('#catalog-unavailable').hidden=supported;$('#search-controls').hidden=!supported;$('.assembly-controls').hidden=!supported;$('#search-monitor').hidden=!supported;$('#search-live-counts').hidden=!supported;
  for(const selector of ['.stage-actions','.camera-presets','.gesture-hint'])$(selector).hidden=!supported;
- $('#loading').hidden=!supported||!!liveDisplay;
+ $('#loading').hidden=!supported||(!validatingSaved&&!!liveDisplay);
  if(supported){
-  $('#scene-title').textContent=learningPhase?'Learning · real corona search':learnedModel?'GCTS · learned point marking':marked?'Ammann · exact tree search':'Unmarked · exact tree search';
+  $('#scene-title').textContent=validatingSaved?'Validating saved marking':learningPhase?'Learning · real corona search':learnedModel?'GCTS · learned point marking':marked?'Ammann · exact tree search':'Unmarked · exact tree search';
   $('#view-heading').textContent=marked?'Face rules through point markings':'Unmarked face-to-face growth';
   $('#view-description').textContent=marked?'Black and red dots agree through exact point values. Every placement and rollback shown comes from the search.':'Bare geometry allows periodic tilings. Every placement and rollback shown comes from the search.';
-  $('#regularity').textContent=learningPhase?'Oracle: supplied rules, no learned filter':learnedModel?'Supplied rules + frozen learned restriction':marked?'Supplied rules · exact point values':'Unmarked geometric control';
-  $('#marking-provenance').textContent=learnedModel&&!learningPhase?'Learned restriction active. Point values filter the global graph; finite pair evidence does not certify infinite extension.':marked?'Supplied Ammann rules → exact point values. No learned restriction is active.':'Unmarked control. Periodic parallelotope tilings are valid in this problem.';
+  $('#regularity').textContent=validatingSaved?'Replaying saved evidence':learningPhase?'Oracle: supplied rules, no learned filter':learnedModel?'Supplied rules + frozen learned restriction':marked?'Supplied rules · exact point values':'Unmarked geometric control';
+  $('#marking-provenance').textContent=validatingSaved?'Validating the saved model before any learned field is used.':learnedModel&&!learningPhase?'Learned restriction active. Point values filter the global graph; finite pair evidence does not certify infinite extension.':marked?'Supplied Ammann rules → exact point values. No learned restriction is active.':'Unmarked control. Periodic parallelotope tilings are valid in this problem.';
   $('#search-hand').disabled=!marked;$('.point-support-toggle').hidden=!marked;
   $('#geometry-badge').textContent='Exact search · approximate rendering';
  }else{
@@ -73,7 +73,7 @@ function updateHeading(){
  updateControls();
 }
 function searchStatus(){
- if(!hasSearch()||!searchSummary)return;if(learningPhase){status.textContent=learningData?.state==='incomplete'?'Learning is incomplete. Unresolved pairs impose no constraints; Continue learning increases the oracle budget.':learningData?.state==='complete'?'The complete catalog did not pass the marking gate. No learned restriction was activated.':searchRunning?'Learning from actual corona attempts. Provisional values do not filter this search.':'Learning paused. Resume learning preserves the current corona stack.';return;}const s=searchSummary;
+ if(!hasSearch()||!searchSummary)return;if(validatingSaved){status.textContent='Replaying saved positive witnesses, classification scores and the rotation action…';return;}if(learningPhase){status.textContent=learningData?.state==='incomplete'?'Learning is incomplete. Unresolved pairs impose no constraints; Continue learning increases the oracle budget.':learningData?.state==='complete'?'The complete catalog did not pass the marking gate. No learned restriction was activated.':searchRunning?'Learning from actual corona attempts. Provisional values do not filter this search.':'Learning paused. Resume learning preserves the current corona stack.';return;}const s=searchSummary;
  status.textContent=s.state==='checkpoint'?`Paused at ${s.tiles} tiles with no dead frontier faces. Continue search to extend.`:s.state==='budget'?'Search budget reached. Extension remains unknown.':s.state==='exhausted'?(learnedModel?'This learned restriction exhausted the rooted search. The supplied-rule problem remains unresolved. Disable the learned marking or learn another support.':'The current search tree is exhausted. Reset to start another configuration.'):searchRunning?'Searching: trial placements, forced moves and backtracking.':!s.attempts?'Ready. Press Run search to begin.':'Search paused. Run search resumes the preserved branch stack.';
 }
 function resetSearch(){
