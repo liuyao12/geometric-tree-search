@@ -53,6 +53,7 @@ function updateControls(){
 }
 function updateHeading(){
  const supported=hasSearch(),marked=$('#search-rules').value==='ammann';
+ $('#learning-monitor').hidden=!supported||!learningData;$('#marking-inset').hidden=!supported||!learningData;
  $('#scene').hidden=!supported;$('#catalog-unavailable').hidden=supported;$('#search-controls').hidden=!supported;$('.assembly-controls').hidden=!supported;$('#search-monitor').hidden=!supported;$('#search-live-counts').hidden=!supported;
  for(const selector of ['.stage-actions','.camera-presets','.gesture-hint'])$(selector).hidden=!supported;
  $('#loading').hidden=!supported||!!liveDisplay;
