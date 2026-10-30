@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css?v=20260831-lower-closer-sidenote">
 
   <link rel="stylesheet" href="assets/tile-learning.css?v=20260921-domain-names">
-  <link rel="stylesheet" href="assets/hat-rank3-marking.css?v=20261030-kagome-signs">
+  <link rel="stylesheet" href="assets/hat-rank3-marking.css?v=20261030-kagome-sparse">
   <script>
     window.MathJax = {
       tex: {
@@ -70,7 +70,7 @@
                       <div class="hat-marking-options">
                         <label>Stripes <select id="hat-marking-component"><option value="all">All components</option><option value="0">First component</option><option value="1">Second component</option><option value="2">Third component</option></select></label>
                         <label><input id="hat-marking-zeros" type="checkbox" checked> Show assigned zeros</label>
-                        <label>Signs <select id="hat-marking-extension-pattern"><option value="more">Canonical</option><option value="alternate">Reverse colors</option></select></label>
+                        <label>Signs <select id="hat-marking-extension-pattern"><option value="sparse">Sparse core</option><option value="sparse-reverse">Sparse reversed</option><option value="more">Full Kagome</option><option value="alternate">Full reversed</option></select></label>
                       </div>
                       <div class="hat-marking-legend" aria-label="Hat marking values">
                         <span><i class="hat-marking-swatch" aria-hidden="true"></i>\(+1\)</span>
@@ -78,7 +78,7 @@
                         <span><i class="hat-marking-swatch zero" aria-hidden="true"></i>\(0\) assigned</span>
                         <span>Gap: \(\ast\) unassigned</span>
                       </div>
-                      <p>Hat rank 3 uses both Kagome directions at each of the eight rank 1 points. Gray stripes are assigned zeros; gaps are unassigned.</p>
+                      <p>Hat rank 3 uses the two Kagome directions at the eight rank 1 points. Gray stripes are assigned zeros; gaps are unassigned.</p>
                       <p id="hat-extension-evidence" class="hat-extension-evidence"></p>
                     </div>
                     <canvas id="turtle-tiling" width="960" height="520" aria-label="Interactive Turtle tiling canvas. Start a rudimentary frontier tiling, drag to pan, and use the mouse wheel or trackpad to zoom.">
@@ -159,7 +159,7 @@
     import {savedMarkings,rememberMarking,markingDomain,markingName} from './assets/marking-library.js?v=20260921-component-stars';
     import {reduceMarking,activeMarkingSupport,CompactA2Marking} from './assets/marking-reduction.js?v=20260921-component-stars';
     import {markingSegmentEndpoints} from './assets/marking-segments.js?v=20260920-centered';
-    import {createHatRank3Marking,HAT_RANK3_ID,HAT_RANK3_MAX_EXTENT,HAT_RANK3_CERTIFIED_EXTENT,normalizeHatRank3Extent} from './assets/hat-rank3-marking.js?v=20261030-kagome-signs';
+    import {createHatRank3Marking,HAT_RANK3_ID,HAT_RANK3_MAX_EXTENT,HAT_RANK3_CERTIFIED_EXTENT,normalizeHatRank3Extent} from './assets/hat-rank3-marking.js?v=20261030-kagome-sparse';
     (() => {
       const canvas = document.getElementById('turtle-tiling');
       if (!canvas) return;
@@ -1876,18 +1876,21 @@
       }
 
       function updateMarkExtensionControl() {
-        const disabled = markingSource !== 'standard';
+        const sparse = usingHatRank3() && hatMarkingPatternInput.value.startsWith('sparse');
+        const disabled = markingSource !== 'standard' || sparse;
         markExtensionControl.hidden = false;
         hatMarkingPanel.hidden = !usingHatRank3();
         markExtensionInput.max = String(usingHatRank3() ? HAT_RANK3_MAX_EXTENT : 9);
-        markExtensionLabel.textContent = usingHatRank3() ? 'Kagome extent' : 'extent';
+        markExtensionLabel.textContent = sparse ? 'core extent' : usingHatRank3() ? 'Kagome extent' : 'extent';
         markExtensionInput.setAttribute('aria-label', usingHatRank3() ? 'Hat Kagome marking extent in lattice steps' : 'Marking extent in lattice steps');
         if (usingHatRank3()) {
           const experimental = markingExtension > HAT_RANK3_CERTIFIED_EXTENT;
           hatExtensionEvidence.classList.toggle('is-experimental', experimental);
           hatExtensionEvidence.textContent = experimental
             ? 'Extended Kagome markings agree on the known 7,921-Hat patch. Preservation of all Hat tilings at positive extent, and mixed Hat/Turtle compatibility, remain unproved.'
-            : 'Core marking: all 228 excluded Hat pairs have independent unmarked dead-end certificates. Extent adds primitive steps along the rank 1 Kagome bars. Mixed Hat/Turtle compatibility remains unproved.';
+            : sparse
+              ? 'Sparse core: ten signs, six unassigned line entries, and 56 zeros. All 115 excluded Hat pairs are independently certified impossible. Select Full Kagome to inspect extensions. Mixed Hat/Turtle compatibility remains unproved.'
+              : 'Full core: all 228 excluded Hat pairs have independent unmarked dead-end certificates. Extent adds primitive steps along the rank 1 Kagome bars. Mixed Hat/Turtle compatibility remains unproved.';
         }
         markExtensionInput.disabled = disabled;
         markExtensionControl.classList.toggle('is-disabled', disabled);
@@ -2557,7 +2560,7 @@
         manualPanelMode = true;
         stopTiling(); liveSearchIterator?.cancel?.(); liveSearchIterator = null;
         selectedTileSet = setId; markingSource = source; tileSetInputs.forEach(input=>{input.checked=input.value===setId;});
-        if(usingHatRank3()){markingExtension=normalizeHatRank3Extent(markExtensionInput.value);markExtensionInput.value=String(markingExtension);}
+        if(usingHatRank3()){markingExtension=hatMarkingPatternInput.value.startsWith('sparse')?0:normalizeHatRank3Extent(markExtensionInput.value);markExtensionInput.value=String(markingExtension);}
         if(markingId){const model=markingLibrary.get(markingId);if(model&&markingDomain(model)===markingContext(setId))learnedModels.set(markingContext(setId),model);}
         displayMarking = source === 'learned' ? learnedModels.get(markingContext(setId))??null : null;
         if(source==='learned'&&!displayMarking)source=markingSource='none';
@@ -2718,7 +2721,8 @@
         markingRank=3;
         markingExtension=normalizeHatRank3Extent(params.get('extend'));
         markExtensionInput.value=String(markingExtension);
-        if(params.get('pattern')==='alternate')hatMarkingPatternInput.value='alternate';
+        const requestedPattern=params.get('pattern');
+        hatMarkingPatternInput.value=['sparse','sparse-reverse','more','alternate'].includes(requestedPattern)?requestedPattern:markingExtension>0?'more':'sparse';
         configurePanel('hat','standard');
       }
     })();
