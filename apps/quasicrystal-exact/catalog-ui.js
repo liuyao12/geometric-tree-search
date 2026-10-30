@@ -1,5 +1,5 @@
 import {SYSTEMS,loadSpecimens} from './polyhedral-catalog.js?v=live-search-workspace-v2';
-import {TileViewer} from './tile-viewer.js?v=gcts-learning-v1';
+import {TileViewer} from './tile-viewer.js?v=gcts-learning-v2';
 const $=s=>document.querySelector(s),typeset=e=>window.MathJax?.typesetPromise?.([e]);
 const scalar=([a,b,d])=>{let n=a==='0'?'':a;if(b!=='0')n+=`${b.startsWith('-')||!n?'':'+'}${b==='1'?'':b==='-1'?'-':b}\\tau`;n||='0';return d==='1'?n:`\\frac{${n}}{${d}}`;};
 const texPoint=p=>`\\left(${p.map(scalar).join(',\\;')}\\right)`;

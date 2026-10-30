@@ -2,7 +2,7 @@
  * The oracle never receives provisional learned fields. This is an explicitly
  * labeled face-corona adaptation, not the pure point-capacity oracle.
  */
-import { FaceSearch, faceAttachments, prepare, compatiblePair, chooseFace } from './icosahedral-face-search.js?v=gcts-learning-v1';
+import { FaceSearch, faceAttachments, prepare, compatiblePair, chooseFace } from './icosahedral-face-search.js?v=gcts-learning-v2';
 import { AMMANN_ORIENTATIONS, decorateGeometry, pointMarkingsAgree, AMMANN_RULE_VERSION } from './icosahedral-ammann-markings.js?v=ammann-point-v2';
 import { OnlineFields, properRotations, placementOf, tileOf, canonicalPair, pairKey, fieldsAgree, markingGate, verifyFieldAction, LearnedPointModel, LEARNING_VERSION } from './icosahedral-gcts-fields.js';
 
@@ -29,7 +29,14 @@ export function* coronaSteps(pair,{attempts=128,maxTiles=48,seed=4}={}){
  if(!pointMarkingsAgree(a,b))return {status:'negative',reason:'supplied face-rule conflict',attempts:0,backtracks:0,placements:pair};
  const search=new FaceSearch({seed,seedTile:a,seedKind:a.kind,seedHand:a.decoration.hand,markings:'ammann',target:Number.MAX_SAFE_INTEGER,budget:attempts});
  if(!search.legal(b))throw Error('Seed pair rejected despite exact compatibility');
- search.apply(b);search.trail=[];search.frames=[];
+ search.apply(b);
+ // Both fixed tiles are root seeds, not a growth placement and its child.
+ // Set all initial face obligations to generation zero before retaining the
+ // fixed-pair state; later placements and rollback use the ordinary trail.
+ for(const record of search.placed.values())record.generation=0;
+ for(const owners of search.faceOwners.values())for(const owner of owners)owner.generation=0;
+ for(const point of search.frontier.values())point.generation=0;
+ search.stats.maxTiles=2;search.trail=[];search.frames=[];
  const core=new Set([...prepare(a).faces,...prepare(b).faces]);
  while(true){
   const choice=chooseFace(search.frontier),placements=[...search.placed.values()].map(r=>placementOf(r.tile));
@@ -60,7 +67,7 @@ export function verifyCorona(pair,placements){
  return true;
 }
 export class LearningSession{
- constructor({extent=1,attempts=256,maxTiles=96}={}){
+ constructor({extent=1,attempts=1024,maxTiles=96}={}){
   this.config={extent,attempts,maxTiles};this.catalog=facePairCatalog();this.pending=[...this.catalog];this.trainer=new OnlineFields({extent});this.index=0;this.iterator=null;this.rows=[];this.current=null;this.running=false;this.state='ready';this.started=performance.now();this.oracleMs=0;this.learningMs=0;this.totalAttempts=0;this.totalBacktracks=0;this.model=null;
  }
  step(){

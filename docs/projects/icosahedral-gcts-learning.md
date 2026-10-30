@@ -49,10 +49,11 @@ training examples.
 
 Each oracle fixes both seed tiles, completes all their exposed faces and checks
 that every exposed face of the resulting patch has a nonempty exact domain.
+Both fixed seed tiles and their initial face obligations have generation zero.
 It uses global dead/forced checks, earliest-generation branching and exact
 rollback. Provisional fields never enter this oracle. A completed face-corona
 with viable frontier is positive; a supplied-rule conflict or exhausted complete
-search is negative. Attempt and tile limits are unresolved. Defaults are 256
+search is negative. Attempt and tile limits are unresolved. Defaults are 1,024
 attempts and 96 tiles per pair. Continue learning keeps resolved evidence and
 retries unresolved pairs with larger budgets.
 

@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Exact 3D geometric tree search · GCTS</title>
-  <link rel="stylesheet" href="style.css?v=gcts-learning-v1">
+  <link rel="stylesheet" href="style.css?v=gcts-learning-v2">
   <script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
   <script type="importmap">{"imports":{"three":"../3d-lattice-tiler/vendor/three.module.min.js"}}</script>
-  <script type="module" src="app.js?v=gcts-learning-v1"></script>
+  <script type="module" src="app.js?v=gcts-learning-v2"></script>
 </head>
 <body>
 <main>
@@ -44,7 +44,7 @@
       </aside>
       <div class="main-view">
         <div class="search-transport" role="group" aria-label="Live tree search controls"><span class="eyebrow">LIVE TREE SEARCH</span><div class="search-buttons"><button id="search-run">Run search</button><button id="search-step">Step</button><button id="search-reset">Reset</button></div></div>
-        <div class="learning-launch" id="learning-launch"><button id="learn-new">Learn GCTS marking</button><label>Support<select id="learn-extent"><option value="1" selected>Compact halo</option><option value="2">Extended halo</option><option value="3">Wide halo</option></select></label><label>Attempts / pair<select id="learn-budget"><option value="64">64</option><option value="256" selected>256</option><option value="1024">1024</option></select></label><button id="learn-continue" hidden>Continue learning</button><button id="learn-reuse" hidden>Use saved marking</button><label class="learn-use" hidden><input type="checkbox" id="use-learned">Use learned marking</label></div>
+        <div class="learning-launch" id="learning-launch"><button id="learn-new">Learn GCTS marking</button><label>Support<select id="learn-extent"><option value="1" selected>Compact halo</option><option value="2">Extended halo</option><option value="3">Wide halo</option></select></label><label>Attempts / pair<select id="learn-budget"><option value="64">64</option><option value="256">256</option><option value="1024" selected>1024</option></select></label><button id="learn-continue" hidden>Continue learning</button><button id="learn-reuse" hidden>Use saved marking</button><label class="learn-use" hidden><input type="checkbox" id="use-learned">Use learned marking</label></div>
       <div class="stage" id="stage">
         <canvas id="scene" aria-label="Interactive three-dimensional quasicrystal. Drag to rotate and scroll to zoom."></canvas>
         <div id="catalog-unavailable" hidden></div>

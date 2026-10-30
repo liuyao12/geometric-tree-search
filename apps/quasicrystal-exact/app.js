@@ -1,6 +1,6 @@
-import { setupCatalog } from './catalog-ui.js?v=gcts-learning-v1';
-import { TileViewer } from './tile-viewer.js?v=gcts-learning-v1';
-import { CrystalScene } from './scene.js?v=gcts-learning-v1';
+import { setupCatalog } from './catalog-ui.js?v=gcts-learning-v2';
+import { TileViewer } from './tile-viewer.js?v=gcts-learning-v2';
+import { CrystalScene } from './scene.js?v=gcts-learning-v2';
 const $ = s => document.querySelector(s);
 const status = $('#status');
 let selected=null,scene=null,activeSystem=null;
@@ -41,7 +41,7 @@ try {
   status.textContent = error.message;
 }
 
-const searchWorker=new Worker(new URL('./search-worker.js?v=gcts-learning-v1',import.meta.url),{type:'module'});
+const searchWorker=new Worker(new URL('./search-worker.js?v=gcts-learning-v2',import.meta.url),{type:'module'});
 const hasSearch=()=>activeSystem?.id==='ammann';
 function searchConfig(){return {seed:Number($('#search-seed').value)||4,seedKind:$('#search-root').value,target:Number($('#search-target').value),budget:10000,markings:$('#search-rules').value,seedHand:$('#search-hand').value};}
 function updateControls(){
