@@ -2,7 +2,7 @@
  * The oracle never receives provisional learned fields. This is an explicitly
  * labeled face-corona adaptation, not the pure point-capacity oracle.
  */
-import { FaceSearch, faceAttachments, prepare, compatiblePair, chooseFace } from './icosahedral-face-search.js?v=gcts-learning-v2';
+import { FaceSearch, faceAttachments, prepare, compatiblePair, chooseFace } from './icosahedral-face-search.js?v=gcts-learning-v3';
 import { AMMANN_ORIENTATIONS, decorateGeometry, pointMarkingsAgree, AMMANN_RULE_VERSION } from './icosahedral-ammann-markings.js?v=ammann-point-v2';
 import { OnlineFields, properRotations, placementOf, tileOf, canonicalPair, pairKey, fieldsAgree, markingGate, verifyFieldAction, LearnedPointModel, LEARNING_VERSION } from './icosahedral-gcts-fields.js';
 

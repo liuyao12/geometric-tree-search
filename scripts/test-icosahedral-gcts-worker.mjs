@@ -1,6 +1,9 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
+import {learnedDisplaySection} from '../apps/quasicrystal-exact/display-model.js';
 import {Worker} from 'node:worker_threads';
+const point={point:[0,0,0],exact:[['0','0','1'],['0','0','1'],['0','0','1']]};
+const conflict=learnedDisplaySection([{learnedPoints:[{...point,components:{'gcts:0':0}}]},{learnedPoints:[{...point,components:{'gcts:0':1}}]},{learnedPoints:[{...point,components:{'gcts:1':0}}]}])[0];assert.equal(conflict.conflict,true);assert.deepEqual(conflict.options['gcts:0'],[0,1]);assert.deepEqual(conflict.options['gcts:1'],[0]);assert.equal(conflict.refs,3);
 const workerURL=new URL('../apps/quasicrystal-exact/search-worker.js',import.meta.url).href;
 const worker=new Worker(`const {parentPort}=require('node:worker_threads');globalThis.self={postMessage:m=>parentPort.postMessage(m)};import(${JSON.stringify(workerURL)}).then(()=>{parentPort.on('message',data=>self.onmessage({data}));parentPort.postMessage({type:'ready'});});`,{eval:true});
 function wait(predicate){return new Promise((resolve,reject)=>{const timer=setTimeout(()=>{cleanup();reject(Error('GCTS worker response timeout'));},120000),listener=m=>{if(m.type==='error'){cleanup();reject(Error(m.error));}else if(predicate(m)){cleanup();resolve(m);}},error=e=>{cleanup();reject(e);};function cleanup(){clearTimeout(timer);worker.off('message',listener);worker.off('error',error);}worker.on('message',listener);worker.on('error',error);});}

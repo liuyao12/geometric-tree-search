@@ -1,5 +1,6 @@
 // Rendering only: this module consumes one-way approximate display geometry.
 import * as THREE from 'three';
+import { learnedDisplaySection } from './display-model.js?v=gcts-learning-v3';
 import { OrbitControls } from '../3d-lattice-tiler/vendor/OrbitControls.js';
 
 const AMBER = '#e4b269', TEAL = '#65bdb5';
@@ -44,7 +45,7 @@ export class CrystalScene {
     this.floor.rotation.x = -Math.PI / 2; this.floor.receiveShadow = true; this.scene.add(this.floor);
     this.raycaster = new THREE.Raycaster();this.raycaster.params.Points.threshold=.18;
     canvas.addEventListener('pointermove',e=>{
-      const tooltip=document.querySelector('#marking-tooltip');if(!tooltip)return;const box=canvas.getBoundingClientRect();this.raycaster.setFromCamera(new THREE.Vector2((e.clientX-box.left)/box.width*2-1,1-(e.clientY-box.top)/box.height*2),this.camera);const hit=this.raycaster.intersectObjects(this.group.children).find(h=>h.object.userData.markingPoints);tooltip.hidden=!hit;if(hit){const m=hit.object.userData.markingPoints[hit.index];tooltip.textContent=`Learned point: ${JSON.stringify(m.exact)} · ${Object.entries(m.components).map(([k,v])=>`${k} = ${v}`).join(', ')} · ${m.refs} agreeing tile assignments`;}
+      const tooltip=document.querySelector('#marking-tooltip');if(!tooltip)return;const box=canvas.getBoundingClientRect();this.raycaster.setFromCamera(new THREE.Vector2((e.clientX-box.left)/box.width*2-1,1-(e.clientY-box.top)/box.height*2),this.camera);const hit=this.raycaster.intersectObjects(this.group.children).find(h=>h.object.userData.markingPoints);tooltip.hidden=!hit;if(hit){const m=hit.object.userData.markingPoints[hit.index];tooltip.textContent=`Learned point: ${JSON.stringify(m.exact)} · ${Object.entries(m.options).map(([k,v])=>`${k} = ${v.join(' / ')}${v.length>1?' (conflict)':''}`).join(', ')} · ${m.refs} tile assignments`;}
     });canvas.addEventListener('pointerleave',()=>{const t=document.querySelector('#marking-tooltip');if(t)t.hidden=true;});
     let down;
     canvas.addEventListener('pointerdown', e => { down = [e.clientX, e.clientY]; });
@@ -195,8 +196,7 @@ export class CrystalScene {
         const mesh=new THREE.Mesh(geometry(positions),new THREE.MeshBasicMaterial({color}));this.group.add(mesh);
       }
       if(opt.learned){
-        const section=new Map();for(const t of drawTiles)for(const mark of t.learnedPoints||[]){const key=JSON.stringify(mark.exact);if(!section.has(key))section.set(key,{...mark,refs:0,components:{}});const m=section.get(key);m.refs++;Object.assign(m.components,mark.components);}
-        const marks=[...section.values()],positions=marks.flatMap(m=>m.point.map((v,i)=>v-fullCenter[i])),colors=marks.flatMap(m=>{const value=Object.values(m.components)[0]??0,col=new THREE.Color().setHSL((Number(value)*.61803398875)%1,.65,.67);return [col.r,col.g,col.b];});
+        const marks=learnedDisplaySection(drawTiles),positions=marks.flatMap(m=>m.point.map((v,i)=>v-fullCenter[i])),colors=marks.flatMap(m=>{const value=Object.values(m.components)[0]??0,col=m.conflict?new THREE.Color('#ff6b65'):new THREE.Color().setHSL((Number(value)*.61803398875)%1,.65,.67);return [col.r,col.g,col.b];});
         if(marks.length){const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(positions,3));g.setAttribute('color',new THREE.Float32BufferAttribute(colors,3));const points=new THREE.Points(g,new THREE.PointsMaterial({vertexColors:true,size:.13,depthTest:false,transparent:true,opacity:.95}));points.renderOrder=3;points.userData.markingPoints=marks;this.group.add(points);}
       }
       if (lines.length) { const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(lines, 3)); this.group.add(new THREE.LineSegments(g, new THREE.LineBasicMaterial({ color: opt.glass ? 0xb0ded6 : 0x223a3d, transparent: true, opacity: opt.glass ? 0.32 : 0.56 }))); }

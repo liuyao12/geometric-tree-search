@@ -59,3 +59,13 @@ export function makeDisplayModel(patch) {
   return { tiles: displayTiles, connected, prototypes: ["prolate", "oblate"].map(kind => displayTile(ORIENTATIONS.find(t => t.kind === kind))),
     window: { vertices, faces, points: [...points.values()] } };
 }
+
+// Display projection only: retain every assigned value when inspecting a
+// rejected pair. A conflict must never be flattened into apparent agreement.
+export function learnedDisplaySection(tiles){
+ const section=new Map();for(const tile of tiles)for(const mark of tile.learnedPoints||[]){
+  const key=JSON.stringify(mark.exact);if(!section.has(key))section.set(key,{...mark,refs:0,components:{},options:{}});const point=section.get(key);point.refs++;
+  for(const [channel,value]of Object.entries(mark.components)){point.components[channel]=value;point.options[channel]??=[];if(!point.options[channel].includes(value))point.options[channel].push(value);}
+ }
+ return [...section.values()].map(point=>({...point,conflict:Object.values(point.options).some(values=>values.length>1)}));
+}

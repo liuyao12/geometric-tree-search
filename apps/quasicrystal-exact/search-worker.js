@@ -1,9 +1,9 @@
-import { FaceSearch, chooseFace } from '../../assets/icosahedral-face-search.js?v=gcts-learning-v2';
+import { FaceSearch, chooseFace } from '../../assets/icosahedral-face-search.js?v=gcts-learning-v3';
 import { ORIENTATIONS } from '../../assets/icosahedral-exact.js';
 import { AMMANN_ORIENTATIONS } from '../../assets/icosahedral-ammann-markings.js?v=ammann-point-v2';
-import { LearningSession, validateLearnedModel } from '../../assets/icosahedral-gcts-learning.js?v=gcts-learning-v2';
+import { LearningSession, validateLearnedModel } from '../../assets/icosahedral-gcts-learning.js?v=gcts-learning-v3';
 import { LearnedPointModel, tileOf, halfPoint, fieldsAgree, supportSlots, orientationIndex } from '../../assets/icosahedral-gcts-fields.js';
-import { displayTile } from './display-model.js?v=gcts-learning-v2';
+import { displayTile } from './display-model.js?v=gcts-learning-v3';
 let previewCache=null,reuseMs=0;
 const previewSlots=(oi,model)=>supportSlots(oi,model.extent).map(slot=>({point:halfPoint(slot.pos).map(x=>x.toJSON()),values:[0,1,2].map(channel=>model.fields[oi].find(m=>m.channel===channel&&m.pos.join(',')===slot.pos.join(','))?.value??null)}));
 let search=null,learning=null,phase='growth',running=false,timer=null,delay=130,epoch=0,config=null;
