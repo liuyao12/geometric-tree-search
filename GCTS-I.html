@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css?v=20260831-lower-closer-sidenote">
 
   <link rel="stylesheet" href="assets/tile-learning.css?v=20260921-domain-names">
-  <link rel="stylesheet" href="assets/hat-rank3-marking.css?v=20261030-hat-rank3-outside">
+  <link rel="stylesheet" href="assets/hat-rank3-marking.css?v=20261030-kagome-signs">
   <script>
     window.MathJax = {
       tex: {
@@ -70,7 +70,7 @@
                       <div class="hat-marking-options">
                         <label>Stripes <select id="hat-marking-component"><option value="all">All components</option><option value="0">First component</option><option value="1">Second component</option><option value="2">Third component</option></select></label>
                         <label><input id="hat-marking-zeros" type="checkbox" checked> Show assigned zeros</label>
-                        <label>Pattern <select id="hat-marking-extension-pattern"><option value="more">Standard stripes</option><option value="alternate">Alternate stripes</option></select></label>
+                        <label>Signs <select id="hat-marking-extension-pattern"><option value="more">Canonical</option><option value="alternate">Reverse colors</option></select></label>
                       </div>
                       <div class="hat-marking-legend" aria-label="Hat marking values">
                         <span><i class="hat-marking-swatch" aria-hidden="true"></i>\(+1\)</span>
@@ -78,7 +78,7 @@
                         <span><i class="hat-marking-swatch zero" aria-hidden="true"></i>\(0\) assigned</span>
                         <span>Gap: \(\ast\) unassigned</span>
                       </div>
-                      <p>Hat rank 3 marking. Gray stripes are assigned zeros; gaps are unassigned. Preservation of every unmarked Hat tiling remains unproved.</p>
+                      <p>Hat rank 3 uses both Kagome directions at each of the eight rank 1 points. Gray stripes are assigned zeros; gaps are unassigned.</p>
                       <p id="hat-extension-evidence" class="hat-extension-evidence"></p>
                     </div>
                     <canvas id="turtle-tiling" width="960" height="520" aria-label="Interactive Turtle tiling canvas. Start a rudimentary frontier tiling, drag to pan, and use the mouse wheel or trackpad to zoom.">
@@ -159,7 +159,7 @@
     import {savedMarkings,rememberMarking,markingDomain,markingName} from './assets/marking-library.js?v=20260921-component-stars';
     import {reduceMarking,activeMarkingSupport,CompactA2Marking} from './assets/marking-reduction.js?v=20260921-component-stars';
     import {markingSegmentEndpoints} from './assets/marking-segments.js?v=20260920-centered';
-    import {createHatRank3Marking,HAT_RANK3_ID,HAT_RANK3_MAX_EXTENT,HAT_RANK3_CERTIFIED_EXTENT,normalizeHatRank3Extent} from './assets/hat-rank3-marking.js?v=20261030-hat-rank3-outside';
+    import {createHatRank3Marking,HAT_RANK3_ID,HAT_RANK3_MAX_EXTENT,HAT_RANK3_CERTIFIED_EXTENT,normalizeHatRank3Extent} from './assets/hat-rank3-marking.js?v=20261030-kagome-signs';
     (() => {
       const canvas = document.getElementById('turtle-tiling');
       if (!canvas) return;
@@ -1880,14 +1880,14 @@
         markExtensionControl.hidden = false;
         hatMarkingPanel.hidden = !usingHatRank3();
         markExtensionInput.max = String(usingHatRank3() ? HAT_RANK3_MAX_EXTENT : 9);
-        markExtensionLabel.textContent = usingHatRank3() ? 'outside extent' : 'extent';
-        markExtensionInput.setAttribute('aria-label', usingHatRank3() ? 'Hat outside marking extent in lattice steps' : 'Marking extent in lattice steps');
+        markExtensionLabel.textContent = usingHatRank3() ? 'Kagome extent' : 'extent';
+        markExtensionInput.setAttribute('aria-label', usingHatRank3() ? 'Hat Kagome marking extent in lattice steps' : 'Marking extent in lattice steps');
         if (usingHatRank3()) {
           const experimental = markingExtension > HAT_RANK3_CERTIFIED_EXTENT;
           hatExtensionEvidence.classList.toggle('is-experimental', experimental);
           hatExtensionEvidence.textContent = experimental
-            ? 'Extents 2–3 are experimental and exclude some known Hat tilings. Extent counts added lattice points outside the tile; internal stripe values stay fixed.'
-            : 'Extent counts added lattice points outside the tile. Internal stripe values stay fixed. Extents 0–1 preserve the previously tested rule’s infinite Hat tilings.';
+            ? 'Extended Kagome markings agree on the known 7,921-Hat patch. Preservation of all Hat tilings at positive extent, and mixed Hat/Turtle compatibility, remain unproved.'
+            : 'Core marking: all 228 excluded Hat pairs have independent unmarked dead-end certificates. Extent adds primitive steps along the rank 1 Kagome bars. Mixed Hat/Turtle compatibility remains unproved.';
         }
         markExtensionInput.disabled = disabled;
         markExtensionControl.classList.toggle('is-disabled', disabled);
@@ -2345,7 +2345,7 @@
         if (!playbackPlacements) playbackPlacements = tilingOrder.slice(0, Math.max(1, shownTiles));
         trialGhost = null;
         statusText = `${markingEnabled()
-          ? usingHatRank3() ? `branching with Hat rank 3 · outside extent ${markingExtension}` : markingSource === 'learned' ? 'branching with provisional learned marking' : `branching with rank-${markingRank} marking constraints`
+          ? usingHatRank3() ? `branching with Hat rank 3 Kagome · extent ${markingExtension}` : markingSource === 'learned' ? 'branching with provisional learned marking' : `branching with rank-${markingRank} marking constraints`
           : 'branching without marking constraints'}${usingSublattice() ? ' on the turtle sublattice' : ''}`;
         showMarkings = markingEnabled() ? true : showMarkings;
         updateMarkingButton();
@@ -2664,6 +2664,9 @@
         learningFrame.contentWindow.postMessage({type:'gcts-start-learning',setId,lattice:learningLattice,requestId:`article-${setId}-learning`},location.origin);
       }
       function syncDemoStageToScroll() {
+        // Keep an explicitly selected Hat marking stable while its controls
+        // scroll into view; article section changes must not replace it.
+        if (manualPanelMode && usingHatRank3()) return;
         const heading = document.getElementById('anchor-learning');
         const anchor = heading.getBoundingClientRect().top <= window.innerHeight * .65
           ? 'learning' : demoStageForScroll();
