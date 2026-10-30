@@ -38,6 +38,10 @@ export class TileViewer{
   for(const e of t.rightAngleEdges||[]){const p=e.flatMap(j=>vertices[j].toArray());this.group.add(new THREE.LineSegments(new THREE.BufferGeometry().setAttribute('position',new THREE.Float32BufferAttribute(p,3)),new THREE.LineBasicMaterial({color:'#4d9dff',linewidth:2})));}
   for(const a of t.arrows||[]){const f=t.faces[a.face],c=f.reduce((s,i)=>s.add(vertices[i]),new THREE.Vector3()).multiplyScalar(1/f.length),n=vertices[f[1]].clone().sub(vertices[f[0]]).cross(vertices[f[2]].clone().sub(vertices[f[0]])).normalize(),dir=new THREE.Vector3(...a.direction).normalize();c.addScaledVector(n,0.004);const len=0.28/radius;this.group.add(new THREE.ArrowHelper(dir,c.clone().addScaledVector(dir,-len/2),len,a.color,len*0.32,len*0.24));}
   if(t.features)for(const feature of t.features){const p=feature.base.map(x=>new THREE.Vector3(...x)),n=p[1].clone().sub(p[0]).cross(p[2].clone().sub(p[0])).normalize(),c=p.reduce((s,p)=>s.add(p),new THREE.Vector3()).multiplyScalar(0.25);disk(local(c),n,feature.coefficient>0?'#e8b373':'#64b7be',this.enlarged?0.018:0.009);}
+  for(const mark of t.learnedPoints||[]){
+   const p=local(new THREE.Vector3(...mark.point));const value=Object.values(mark.components)[0]??0;
+   const sphere=new THREE.Mesh(new THREE.SphereGeometry(.042,10,8),new THREE.MeshBasicMaterial({color:new THREE.Color().setHSL((Number(value)*.61803398875)%1,.65,.67),depthTest:false}));sphere.position.copy(p);this.group.add(sphere);this.fitPoints.push(p);
+  }
   this.dirty=true;
  }
  render(){if(!this.width||!this.height)this.resize();if(!this.width)return;renderer.setSize(this.width,this.height,false);renderer.render(this.scene,this.camera);this.context.clearRect(0,0,this.width,this.height);this.context.drawImage(renderer.domElement,0,0);this.dirty=false;}

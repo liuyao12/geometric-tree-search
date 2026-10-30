@@ -14,7 +14,7 @@ const dispose = group => { while (group.children.length) { const child = group.c
 export class CrystalScene {
   constructor(canvas, onSelect) {
     this.canvas = canvas; this.onSelect = onSelect; this.mode = 'crystal';
-    this.options = { separation: 0, cutaway: 0, prolate: true, oblate: true, edges: true, glass: false, fragments: false, pointSupport: false };
+    this.options = { separation: 0, cutaway: 0, prolate: true, oblate: true, edges: true, glass: false, fragments: false, pointSupport: false, learned: true };
     this.scene = new THREE.Scene();
     this.renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, preserveDrawingBuffer: true });
     this.renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
@@ -42,7 +42,10 @@ export class CrystalScene {
     this.searchFocus = new THREE.Group(); this.scene.add(this.searchFocus);
     this.floor = new THREE.Mesh(new THREE.CircleGeometry(100, 96), new THREE.MeshStandardMaterial({ color: 0x14262c, roughness: 1, transparent: true, opacity: 0.45 }));
     this.floor.rotation.x = -Math.PI / 2; this.floor.receiveShadow = true; this.scene.add(this.floor);
-    this.raycaster = new THREE.Raycaster();
+    this.raycaster = new THREE.Raycaster();this.raycaster.params.Points.threshold=.18;
+    canvas.addEventListener('pointermove',e=>{
+      const tooltip=document.querySelector('#marking-tooltip');if(!tooltip)return;const box=canvas.getBoundingClientRect();this.raycaster.setFromCamera(new THREE.Vector2((e.clientX-box.left)/box.width*2-1,1-(e.clientY-box.top)/box.height*2),this.camera);const hit=this.raycaster.intersectObjects(this.group.children).find(h=>h.object.userData.markingPoints);tooltip.hidden=!hit;if(hit){const m=hit.object.userData.markingPoints[hit.index];tooltip.textContent=`Learned point: ${JSON.stringify(m.exact)} · ${Object.entries(m.components).map(([k,v])=>`${k} = ${v}`).join(', ')} · ${m.refs} agreeing tile assignments`;}
+    });canvas.addEventListener('pointerleave',()=>{const t=document.querySelector('#marking-tooltip');if(t)t.hidden=true;});
     let down;
     canvas.addEventListener('pointerdown', e => { down = [e.clientX, e.clientY]; });
     canvas.addEventListener('pointerup', e => {
@@ -190,6 +193,11 @@ export class CrystalScene {
       for(const [key,positions]of Object.entries(dotBuckets))if(positions.length){
         const color={black:0x121c25,red:0xf45149,rim:0xffefdc,support:0xffffff}[key];
         const mesh=new THREE.Mesh(geometry(positions),new THREE.MeshBasicMaterial({color}));this.group.add(mesh);
+      }
+      if(opt.learned){
+        const section=new Map();for(const t of drawTiles)for(const mark of t.learnedPoints||[]){const key=JSON.stringify(mark.exact);if(!section.has(key))section.set(key,{...mark,refs:0,components:{}});const m=section.get(key);m.refs++;Object.assign(m.components,mark.components);}
+        const marks=[...section.values()],positions=marks.flatMap(m=>m.point.map((v,i)=>v-fullCenter[i])),colors=marks.flatMap(m=>{const value=Object.values(m.components)[0]??0,col=new THREE.Color().setHSL((Number(value)*.61803398875)%1,.65,.67);return [col.r,col.g,col.b];});
+        if(marks.length){const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(positions,3));g.setAttribute('color',new THREE.Float32BufferAttribute(colors,3));const points=new THREE.Points(g,new THREE.PointsMaterial({vertexColors:true,size:.13,depthTest:false,transparent:true,opacity:.95}));points.renderOrder=3;points.userData.markingPoints=marks;this.group.add(points);}
       }
       if (lines.length) { const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(lines, 3)); this.group.add(new THREE.LineSegments(g, new THREE.LineBasicMaterial({ color: opt.glass ? 0xb0ded6 : 0x223a3d, transparent: true, opacity: opt.glass ? 0.32 : 0.56 }))); }
     }

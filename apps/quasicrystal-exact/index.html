@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Exact 3D geometric tree search · GCTS</title>
-  <link rel="stylesheet" href="style.css?v=live-search-workspace-v2">
+  <link rel="stylesheet" href="style.css?v=gcts-learning-v1">
   <script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
   <script type="importmap">{"imports":{"three":"../3d-lattice-tiler/vendor/three.module.min.js"}}</script>
-  <script type="module" src="app.js?v=live-search-workspace-v2"></script>
+  <script type="module" src="app.js?v=gcts-learning-v1"></script>
 </head>
 <body>
 <main>
@@ -16,7 +16,7 @@
   <header>
     <div><p class="eyebrow">THREE-DIMENSIONAL TILING SYSTEMS</p>
     <h1>Geometric tree search. Live.</h1>
-    <p class="lede">Run the exact search and watch real trial placements, forced moves, and backtracking. Rotate the individual tiles in the left column.</p></div>
+    <p class="lede">Run the exact search, or learn GCTS point values from live local-extension tests. Watch real trials and backtracking; rotate each tile in the left column.</p></div>
     <a class="math-link" href="#mathematics">Explore the mathematics <span>↗</span></a>
   </header>
   <section class="visual-lab" aria-label="Interactive quasicrystal explorer">
@@ -37,17 +37,20 @@
         <div class="legend"><label><input id="show-prolate" type="checkbox" checked><span class="swatch amber"></span><span>Prolate</span><strong id="prolate-count">—</strong></label><label><input id="show-oblate" type="checkbox" checked><span class="swatch teal"></span><span>Oblate</span><strong id="oblate-count">—</strong></label></div>
         <label class="range-label" for="cutaway">Reveal interior <output id="cutaway-value">0%</output></label><input id="cutaway" type="range" min="0" max="90" value="0">
         <div class="toggle-row"><label><input id="edges" type="checkbox" checked> Tile edges</label><label><input id="spin" type="checkbox" checked> Slow orbit</label></div>
+        <label class="point-support-toggle"><input id="show-learned" type="checkbox" checked> Show learned point values</label>
         <label class="point-support-toggle"><input id="show-marking-points" type="checkbox"> Show marking support points</label>
         <div class="material-controls" role="group" aria-label="Material"><button data-material="solid" class="active" aria-pressed="true">Satin</button><button data-material="glass" aria-pressed="false">Glass</button></div>
         <p class="exact-badge"><span>●</span> <span id="regularity">Exact algebraic construction</span></p></div>
       </aside>
       <div class="main-view">
         <div class="search-transport" role="group" aria-label="Live tree search controls"><span class="eyebrow">LIVE TREE SEARCH</span><div class="search-buttons"><button id="search-run">Run search</button><button id="search-step">Step</button><button id="search-reset">Reset</button></div></div>
+        <div class="learning-launch" id="learning-launch"><button id="learn-new">Learn GCTS marking</button><label>Support<select id="learn-extent"><option value="1" selected>Compact halo</option><option value="2">Extended halo</option><option value="3">Wide halo</option></select></label><label>Attempts / pair<select id="learn-budget"><option value="64">64</option><option value="256" selected>256</option><option value="1024">1024</option></select></label><button id="learn-continue" hidden>Continue learning</button><button id="learn-reuse" hidden>Use saved marking</button><label class="learn-use" hidden><input type="checkbox" id="use-learned">Use learned marking</label></div>
       <div class="stage" id="stage">
         <canvas id="scene" aria-label="Interactive three-dimensional quasicrystal. Drag to rotate and scroll to zoom."></canvas>
         <div id="catalog-unavailable" hidden></div>
         <div class="scene-title"><span class="live-dot"></span><span id="scene-title">Constructing exact geometry…</span></div><div id="search-live-counts" class="search-live-counts"></div>
         <div class="stage-actions"><button id="reset-view" title="Fit the model">Fit view</button><button id="snapshot" title="Save a PNG of the current view">Save image ↗</button></div>
+        <div class="marking-inset" id="marking-inset" hidden><div><span id="marking-inset-title">Provisional marking</span><label><input type="checkbox" id="marking-inset-toggle" checked> Show</label></div><canvas id="learned-preview" aria-label="Rotate the current learned marking independently"></canvas><small id="marking-inset-counts"></small></div><div id="marking-tooltip" hidden></div>
         <div class="loading" id="loading"><span></span><p>Constructing the exact patch</p></div>
         <div id="tile-labels" hidden><span class="tile-label prolate-label">PROLATE <small>Slender · larger volume</small></span><span class="tile-label oblate-label">OBLATE <small>Flattened · smaller volume</small></span></div>
         <div class="camera-presets" role="group" aria-label="Camera direction"><button data-camera="perspective" class="active">Perspective</button><button data-camera="five">5-fold</button><button data-camera="three">3-fold</button><button data-camera="two">2-fold</button></div>
@@ -57,6 +60,12 @@
       </div>
     </div>
     <div class="scene-footer"><span id="visible-count">Preparing geometry</span><span id="geometry-badge">Exact geometry · approximate rendering only</span></div>
+  </section>
+  <section id="learning-monitor" class="learning-monitor" hidden aria-label="GCTS marking learning">
+    <div class="learning-heading"><div><p class="eyebrow">GCTS · LOCAL EXTENSION LEARNING</p><h2 id="learning-state">Collecting neighboring pairs</h2></div><span id="learning-progress"></span></div>
+    <progress id="learning-bar" max="156" value="0"></progress><div class="learning-scores"><span id="learning-counts"></span><span id="learning-scores"></span><span id="learning-cost"></span></div><p id="learning-reason"></p>
+    <p class="learning-scope">The main scene shows the real supplied-rule corona search. Provisional values stay in the inset and never filter their own oracle. Learned halo constraints remain a restricted experiment; they do not certify infinite extension.</p>
+    <details><summary>Samples, exact support and individual free values</summary><label>Inspect resolved pair <select id="learning-pair"></select></label><p id="learning-pair-result"></p><button id="learning-live">Return to live search</button><p id="learned-field-scope"></p><div class="table-wrap learning-table"><table><thead><tr><th>Exact point</th><th>Component 0</th><th>Component 1</th><th>Component 2</th></tr></thead><tbody id="learned-field"></tbody></table></div></details>
   </section>
   <section class="search-monitor" id="search-monitor" aria-label="Live search statistics">
     <div class="search-metrics"><div><span>Placed now</span><strong id="metric-tiles">1</strong></div><div><span>Placement trials</span><strong id="metric-attempts">0</strong></div><div><span>Forced</span><strong id="metric-forced">0</strong></div><div><span>Branches</span><strong id="metric-branches">0</strong></div><div><span>Backtracks</span><strong id="metric-backtracks">0</strong></div><div><span>Open faces</span><strong id="metric-frontier">6</strong></div><div><span>Live candidates</span><strong id="metric-candidates">24</strong></div></div>
@@ -93,9 +102,9 @@
 
   <section class="panel">
     <h2>Exact search data</h2>
-    <p>The search export contains the current exact placements, supplied rules, configuration, events and branch tree. Display choices do not change search legality.</p>
+    <p>The search export contains exact placements, supplied rules, any frozen learned field and its evidence, configuration, events and branch tree. Display choices do not change search legality.</p>
     <details id="sample-details" hidden><summary>Inspect eight exact vertices of a search tile</summary><div id="sample"></div></details>
-    <details id="point-markings-details" hidden><summary>Inspect exact point m-values of the selected tile</summary><p>Each face center carries two exact vectors pointing to the indicated corners. Missing channels are unconstrained; assigned zero remains a value.</p><div id="point-markings-table" class="table-wrap"></div></details>
+    <details id="point-markings-details" hidden><summary>Inspect exact point m-values of the selected tile</summary><p>Supplied face-center channels carry exact corner vectors. Learned halo channels carry categorical point values. Missing components are free; assigned zero remains a value.</p><div id="point-markings-table" class="table-wrap"></div></details>
     <p class="small">Coordinates serialize as canonical <code>[a,b,d]</code> integer strings, meaning \((a+b\tau)/d\). Lift coordinates and plane levels are integer strings too.</p>
   </section>
 
@@ -172,7 +181,13 @@ const json = JSON.stringify(patch,
     \]
     <p>Two tiles sharing that center must agree in both components. The support point moves as \(p\mapsto Rp+a\); each value transforms as \(m\mapsto Rm\). The visible dots are drawn at \(p+\frac34m_B(p)\) and \(p+\frac34m_R(p)\). Moving their ink within the same indicated corner does not change the logical rule.</p>
     <p>Each placement has six support points and twelve assigned vector components. Face centers belong to the abstract module \(\frac12M\); its physical embedding is dense, so the engine enumerates finite placement support rather than scanning all module points in a region. The active support of a finite patch is finite. Values at shared centers have reference counts. Dependency indexes include marking-only support outside the geometric bounds and outside the frontier; rollback restores those indexes, assignments and counts exactly. Missing components are unconstrained, while zero is an assigned value. The display reports current world support points and assigned vector components, including interior faces. Each three-coordinate vector counts as one component.</p>
-    <p>The interface distinguishes supplied problem-defining rules from learned restrictions. These Ammann rules are supplied input, compiled to point values; this is not a learner rediscovering them from unmarked labels. The unmarked model permits periodic tilings, so a learner preserving that model cannot reject those tilings as impossible. No learning lane, saved learned model or learned restriction is enabled here. A future learner can supply additional point components through the same assignment and dependency layer, with the provenance and validation required by the master contract.</p>
+    <p>The interface distinguishes supplied problem-defining rules from learned restrictions. The GCTS lane fixes the supplied decorated inventory as its oracle problem, then learns additional categorical point values from local extension labels. It does not copy the dot vectors into its variables. Bare geometry remains a separate periodic control. This is a face-corona adaptation of the shared learning loop, not the pure point-capacity baseline.</p>
+    <h3>Live learning and its exact scope</h3><p><a href="../../docs/projects/icosahedral-gcts-learning.md">Implementation audit, measured outcomes and limitations</a></p>
+    <p>The learner enumerates all 156 face-neighbor classes under verified proper rotations and pair exchange. These represent all face attachments of the 120 decorated orientations. It fixes both seed tiles and fills every exposed face of the seed pair, requiring a viable complete frontier at success. Exhaustion is negative; attempt and tile limits remain unresolved. Pairs meeting only along an edge or vertex are outside this training catalog.</p>
+    <p>For an oriented tile with center \(c\), the finite marking support is \(c+\frac12\sum_i n_i u_i\), with \(n_i\in\mathbb Z\) and \(\sum_i|n_i|\leq h\). The support includes interior, face and exterior points, depending on \(h\). Exact integer lift keys identify its points. Proper rotations act as signed permutations of the six lift axes; component indices stay fixed and categorical values carry the verified induced permutation. Scalar code zero is assigned; a missing component is free.</p>
+    <p>Every positive merges equality variables at overlapping assigned points. Each negative requires at least one unequal overlap. An incremental equality encoder searches rotation-invariant free-value masks and up to three independent components; it is bounded constraint synthesis, not a minimum-support theorem. A later positive can change earlier provisional values. All resolved samples are used. No learned assignments ship with the application.</p>
+    <p>Activation requires the complete face catalog, no unresolved labels, acceptance of every positive and rejection of more than half the negatives. Positive witnesses are independently replayed for exact geometry, supplied-rule agreement, completed seed faces and viable frontier. The learned values are then frozen, saved as a named browser-local run, and a new marked search starts automatically. Reset replays from a fresh seed. Changing or disabling a field never retains a stale search trail.</p>
+    <p>The ordinary reference-counted point section and complete marking dependencies enforce the learned components, including halo points beyond tile bounds. Runtime growth uses no learned pair lookup or corona lookahead. Pair replay is finite evidence only: unsampled marking-only contacts can still block larger patches. A learned-search failure is a restricted-model failure, and the supplied-rule baseline remains available. Learning and validation time are reported separately from growth; no speedup claim follows from classification alone.</p>
     <h3>Source transcription and inventory</h3>
     <p>The four decorated prototypes are the two chiral versions of each shape in <a href="https://arxiv.org/html/1604.02479#S2">Hann, Socolar &amp; Steinhardt, Figure 1 and its caption</a>. The six decorated variants at a given bare geometric orientation are distinct: after proper rotations and exact deduplication there are 120 decorated orientations in total, with six variants per bare geometric orientation. The labels “left” and “right” follow the two source-figure columns; an exact reflection test verifies their exchange.</p>
     <p>For an auditable transcription, use \(e=(-u_0,u_1,u_4)\) for the prolate and \(e=(-u_0,u_1,u_2)\) for the oblate. A coefficient vertex is indexed by \(b_0+2b_1+4b_2\), and a face is identified by a fixed coefficient axis and side. The visible-face records below are \((\text{axis},\text{side},B,R)\). Opposite-face data are completed using the source caption: on a prolate the black corner translates and the red corner switches across the face diagonal; on an oblate the colors exchange these roles.</p>
@@ -189,6 +204,8 @@ const json = JSON.stringify(patch,
     <pre><code>node scripts/test-icosahedral-exact.mjs
 node scripts/test-icosahedral-display.mjs
 node scripts/test-icosahedral-face-search.mjs
+node scripts/test-icosahedral-gcts-learning.mjs
+node scripts/test-icosahedral-gcts-worker.mjs
 node scripts/test-icosahedral-search-worker.mjs
 node scripts/test-icosahedral-point-markings.mjs
 node scripts/test-icosahedral-ammann.mjs

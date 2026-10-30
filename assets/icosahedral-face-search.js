@@ -1,11 +1,13 @@
-/** Exact face-to-face geometric experiment with optional supplied point markings.
+/** Exact face-to-face geometric experiment with supplied and learned point markings.
  * Domain: the fixed icosahedral star and its integer translation module.
  * This is a face-obligation analogue of the GCTS scheduler, not a finite
- * point-capacity baseline. No window, multigrid witness or markings filter it.
+ * point-capacity baseline. No window or multigrid witness filters it.
+ * Frozen learned fields share the ordinary exact point-value section.
  */
 import { ONE, vector, vadd, vsub, vscale, dot, cross, pointKey } from './golden-field.js';
 import { STAR, ORIENTATIONS, makeRhombohedron, containsPoint } from './icosahedral-exact.js';
 import { AMMANN_ORIENTATIONS, AMMANN_RULE_VERSION, decorateGeometry } from './icosahedral-ammann-markings.js?v=ammann-point-v2';
+import { LearnedPointModel } from './icosahedral-gcts-fields.js';
 import { PointMarkingState } from './exact-point-marking-state.js?v=ammann-point-v2';
 
 export const faceKey = (tile, face) => face.map(i => pointKey(tile.vertices[i])).sort().join('|');
@@ -112,21 +114,24 @@ export function chooseFace(frontier) {
 }
 
 export class FaceSearch {
-  constructor({seed=1,seedKind='prolate',seedHand='left',target=40,budget=10000,markings='none'}={}){
+  constructor({seed=1,seedKind='prolate',seedHand='left',target=40,budget=10000,markings='none',learnedMarking=null,seedTile=null}={}){
     const started=performance.now();
     if(!Number.isSafeInteger(seed)||!Number.isSafeInteger(target)||target<2||!Number.isSafeInteger(budget)||budget<1)throw new TypeError('Invalid finite search configuration');
     if(!['none','ammann'].includes(markings)||!['left','right'].includes(seedHand))throw new TypeError('Unknown marking model or seed hand');
-    this.config={seed,seedKind,seedHand,target,budget,markings};this.trail=[];this.frames=[];
+    this.config={seed,seedKind,seedHand,target,budget,markings};this.learnedModel=learnedMarking?new LearnedPointModel(learnedMarking):null;
+    if(this.learnedModel&&markings!=='ammann')throw new TypeError('Learned model requires its supplied-rule oracle system');
+    this.trail=[];this.frames=[];
     this.pointMarkings=new PointMarkingState({set:(m,k,v)=>this.set(m,k,v),add:(s,k)=>this.add(s,k)});
     this.placed=new Map();this.frontier=new Map();this.faceOwners=new Map();this.candidates=new Map();
     this.placedBuckets=new Map();this.candidateBuckets=new Map();this.events=[];this.tree=[{id:0,parent:null,depth:0,status:'active'}];this.currentNode=0;
-    this.stats={attempts:0,accepted:0,forced:0,branches:0,backtracks:0,eliminatedOverlap:0,eliminatedContact:0,eliminatedMarking:0,checks:0,maxTiles:1,elapsedMs:0};
+    this.stats={attempts:0,accepted:0,forced:0,branches:0,backtracks:0,eliminatedOverlap:0,eliminatedContact:0,eliminatedMarking:0,eliminatedLearned:0,checks:0,maxTiles:1,elapsedMs:0};
     this.state='ready';this.lastEvent={type:'seed'};
-    const prototype=markings==='ammann'?AMMANN_ORIENTATIONS.find(t=>t.kind===seedKind&&t.decoration.hand===seedHand):ORIENTATIONS.find(t=>t.kind===seedKind);if(!prototype)throw new TypeError('Unknown seed shape');
+    const source=seedTile||(markings==='ammann'?AMMANN_ORIENTATIONS.find(t=>t.kind===seedKind&&t.decoration.hand===seedHand):ORIENTATIONS.find(t=>t.kind===seedKind));const prototype=this.markTile(source);if(!prototype)throw new TypeError('Unknown seed shape');
     this.seed=prototype;this.pointMarkings.assign(prototype);this.placed.set(prototype.id,{tile:prototype,generation:0});this.addIndex(this.placedBuckets,prototype,prototype.id);
     for(let i=0;i<6;i++)this.faceOwners.set(prepare(prototype).faces[i],[{tile:prototype,faceIndex:i,generation:0}]);
     this.sync();this.trail=[];this.stats.elapsedMs=performance.now()-started;
   }
+  markTile(tile){return tile&&this.learnedModel?this.learnedModel.decorate(tile):tile;}
   set(map,key,value){const had=map.has(key),old=map.get(key);this.trail.push(()=>had?map.set(key,old):map.delete(key));map.set(key,value);}
   del(map,key){if(!map.has(key))return;const old=map.get(key);this.trail.push(()=>map.set(key,old));map.delete(key);}
   add(set,key){if(set.has(key))return;this.trail.push(()=>set.delete(key));set.add(key);}
@@ -147,10 +152,10 @@ export class FaceSearch {
     this.trail.push(()=>{record.legal=true;});record.legal=false;
     for(const key of record.faces){const point=this.frontier.get(key);if(point)this.drop(point.candidates,record.tile.id);}
     if(reason==='failed-child'){const old=record.excluded;this.trail.push(()=>{record.excluded=old;});record.excluded=true;}
-    if(reason==='overlap')this.stats.eliminatedOverlap++;else if(reason==='partial-contact')this.stats.eliminatedContact++;else if(reason==='marking')this.stats.eliminatedMarking++;
+    if(reason==='overlap')this.stats.eliminatedOverlap++;else if(reason==='partial-contact')this.stats.eliminatedContact++;else if(reason==='marking'){this.stats.eliminatedMarking++;if(record.tile.learnedMarkings?.length&&this.pointMarkings.compatible({pointMarkings:record.tile.pointMarkings.filter(m=>m.source!=='learned')})&&!this.pointMarkings.compatible({pointMarkings:record.tile.learnedMarkings}))this.stats.eliminatedLearned++;}
   }
   ensure(tile){
-    let record=this.candidates.get(tile.id);
+    tile=this.markTile(tile);let record=this.candidates.get(tile.id);
     if(!record){record={tile,faces:prepare(tile).faces,legal:this.legal(tile),excluded:false};this.set(this.candidates,tile.id,record);this.addIndex(this.candidateBuckets,tile,tile.id);this.pointMarkings.register(tile);}
     if(record.legal)for(const key of record.faces){const point=this.frontier.get(key);if(point)this.add(point.candidates,tile.id);}
   }
@@ -162,7 +167,7 @@ export class FaceSearch {
     }
   }
   apply(tile){
-    if(!this.legal(tile))throw new Error('Attempted illegal placement');
+    tile=this.markTile(tile);if(!this.legal(tile))throw new Error('Attempted illegal placement');
     const touched=prepare(tile).faces.map(k=>this.frontier.get(k)).filter(Boolean);
     if(!touched.length)throw new Error('Disconnected candidate');
     const generation=1+Math.min(...touched.map(p=>p.generation));
@@ -205,5 +210,5 @@ export class FaceSearch {
   summary(){let incidence=0;const live=new Set();for(const p of this.frontier.values())for(const id of p.candidates){incidence++;live.add(id);}
     return {state:this.state,tiles:this.placed.size,frontier:this.frontier.size,candidates:live.size,incidences:incidence,dead:[...this.frontier.values()].filter(p=>!p.candidates.size).length,markingPoints:this.pointMarkings.pointCount,markingComponents:this.pointMarkings.componentCount,...this.stats};}
   inspect(){const result={placed:[...this.placed].map(([id,r])=>[id,r.generation]),frontier:[...this.frontier].map(([k,p])=>[k,p.generation,[...p.candidates].sort()]),candidates:[...this.candidates].map(([id,r])=>[id,r.legal,r.excluded]),placedBuckets:[...this.placedBuckets].map(([k,s])=>[k,[...s].sort()]),candidateBuckets:[...this.candidateBuckets].map(([k,s])=>[k,[...s].sort()]),owners:[...this.faceOwners].map(([k,v])=>[k,v.map(o=>o.tile.id)])};const marks=this.pointMarkings.inspect();result.markingValues=marks.values;result.markingDependencies=marks.dependencies;for(const values of Object.values(result))values.sort((a,b)=>a[0].localeCompare(b[0]));return result;}
-  export(){return {format:'icosahedral-face-search-v1',model:this.config.markings==='ammann'?'supplied Ammann rules through exact point markings':'undecorated face-to-face geometric search',arithmetic:'Q(tau), exact BigInt',orientations:20,decoratedOrientations:this.config.markings==='ammann'?120:20,markings:this.config.markings==='ammann'?{version:AMMANN_RULE_VERSION,source:'supplied',sourceURL:'https://arxiv.org/html/1604.02479#S2',support:'face centers',channels:['black','red'],values:'exact center-to-corner vectors; rotation-covariant and translation-invariant',learned:false}:null,pointMarkingState:this.pointMarkings.inspect().values,windowFilter:false,config:this.config,result:this.state==='checkpoint'?'consistent finite patch with viable frontier':'unknown',stats:this.summary(),tiles:[...this.placed.values()].map(r=>({...r.tile,generation:r.generation})),tree:this.tree,events:this.events};}
+  export(){return {format:'icosahedral-face-search-v1',model:this.config.markings==='ammann'?'supplied Ammann rules through exact point markings':'undecorated face-to-face geometric search',arithmetic:'Q(tau), exact BigInt',orientations:20,decoratedOrientations:this.config.markings==='ammann'?120:20,markings:this.config.markings==='ammann'?{version:AMMANN_RULE_VERSION,source:'supplied',sourceURL:'https://arxiv.org/html/1604.02479#S2',support:'face centers',channels:['black','red'],values:'exact center-to-corner vectors; rotation-covariant and translation-invariant',learned:false}:null,learnedMarking:this.learnedModel?.model||null,pointMarkingState:this.pointMarkings.inspect().values,windowFilter:false,config:this.config,result:this.state==='checkpoint'?'consistent finite patch with viable frontier':this.state==='exhausted'&&this.learnedModel?'restricted-model failure for the fixed root':'unknown',stats:this.summary(),tiles:[...this.placed.values()].map(r=>({...r.tile,generation:r.generation})),tree:this.tree,events:this.events};}
 }

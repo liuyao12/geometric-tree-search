@@ -17,7 +17,7 @@ families without inventing prototype meshes.
 
 | Entry | Geometry and rules available in this page |
 | --- | --- |
-| Ammann golden rhombohedra | Four chiral decorated prototypes, exact face-centre markings, existing live geometric search. |
+| Ammann golden rhombohedra | Four chiral decorated prototypes, exact face-centre markings, live geometric search and local GCTS field learning. |
 | Socolar–Steinhardt | Four exact zonohedral carriers; full three-mark face table not ported. |
 | Danzer ABCK | Four exact tetrahedra; exact identification of right dihedral angles and the source's reflection rule. |
 | Danzer octahedral compounds | Four exact, possibly nonconvex reflected compounds; source's face-to-face theorem cited. |
@@ -67,7 +67,10 @@ with visible Run/Pause, Step and Reset controls above the scene. It starts idle,
 from the seed, without generating a reference patch. Catalog entries without
 a connected engine explicitly disable search and retain their prototype scenes.
 The former constructed-patch, library and acceptance-window tabs are removed.
-The exact search engine and its existing conformance limits are unchanged.
+The geometric conformance limits remain. The later GCTS lane adds learned point
+fields through the same global section and dependency graph; see the
+[learning audit and measured checks](icosahedral-gcts-learning.md). It does not
+automatically enable the other catalog entries as search systems.
 
 ## Verification
 
