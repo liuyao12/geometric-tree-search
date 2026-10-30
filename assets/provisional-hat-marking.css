@@ -1,0 +1,12 @@
+.hat-marking-panel { margin: 2px 12px 8px; color: #405b50; font: 12px/1.45 system-ui, sans-serif; }
+.hat-marking-panel[hidden] { display: none; }
+.hat-marking-options, .hat-marking-legend { display: flex; align-items: center; flex-wrap: wrap; gap: 5px 13px; }
+.hat-marking-options label { display: inline-flex; align-items: center; gap: 5px; }
+.hat-marking-options select { font: inherit; max-width: 150px; }
+.hat-marking-legend { margin-top: 5px; }
+.hat-marking-legend > span { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
+.hat-marking-swatch { display: inline-block; width: 18px; height: 0; border-top: 3px solid #d55e00; }
+.hat-marking-swatch.negative { border-color: #0072b2; }
+.hat-marking-swatch.zero { border-top: 1px dashed #6b7c73; }
+.hat-marking-panel p { font: inherit; margin: 4px 0 0; max-width: 100%; }
+.hat-marking-panel mjx-container { margin: 0 !important; }
