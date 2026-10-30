@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css?v=20260831-lower-closer-sidenote">
 
   <link rel="stylesheet" href="assets/tile-learning.css?v=20260921-domain-names">
-  <link rel="stylesheet" href="assets/provisional-hat-marking.css?v=20261030-hat-stripes">
+  <link rel="stylesheet" href="assets/provisional-hat-marking.css?v=20261030-hat-extent">
   <script>
     window.MathJax = {
       tex: {
@@ -70,6 +70,8 @@
                       <div class="hat-marking-options">
                         <label>Stripes <select id="hat-marking-component"><option value="all">All components</option><option value="0">First component</option><option value="1">Second component</option><option value="2">Third component</option></select></label>
                         <label><input id="hat-marking-zeros" type="checkbox" checked> Show assigned zeros</label>
+                        <label>Extend <input id="hat-marking-extent" type="number" min="0" max="1" step="1" value="0" inputmode="numeric" aria-label="Hat marking extension in lattice steps"></label>
+                        <label>Pattern <select id="hat-marking-extension-pattern"><option value="more">Three stripe ends</option><option value="alternate">Alternate stripe end</option></select></label>
                       </div>
                       <div class="hat-marking-legend" aria-label="Hat marking values">
                         <span><i class="hat-marking-swatch" aria-hidden="true"></i>\(+1\)</span>
@@ -78,6 +80,7 @@
                         <span>Gap: \(\ast\) unassigned</span>
                       </div>
                       <p>Provisional Hat marking. Tested on finite Hat patches; preservation of every tiling is unproved. Hover over a lattice point to inspect its values.</p>
+                      <p id="hat-extension-evidence" class="hat-extension-evidence">One extra lattice step at the selected ends preserves the base marking's Hat tilings. Choose one pattern: combining them or extending farther rejects known Hat patches. The base marking remains provisional.</p>
                     </div>
                     <canvas id="turtle-tiling" width="960" height="520" aria-label="Interactive Turtle tiling canvas. Start a rudimentary frontier tiling, drag to pan, and use the mouse wheel or trackpad to zoom.">
         </canvas>
@@ -157,7 +160,7 @@
     import {savedMarkings,rememberMarking,markingDomain,markingName} from './assets/marking-library.js?v=20260921-component-stars';
     import {reduceMarking,activeMarkingSupport,CompactA2Marking} from './assets/marking-reduction.js?v=20260921-component-stars';
     import {markingSegmentEndpoints} from './assets/marking-segments.js?v=20260920-centered';
-    import {createProvisionalHatMarking,PROVISIONAL_HAT_ID} from './assets/provisional-hat-marking.js?v=20261030-hat-stripes';
+    import {createProvisionalHatMarking,PROVISIONAL_HAT_ID,normalizedHatExtent} from './assets/provisional-hat-marking.js?v=20261030-hat-extent';
     (() => {
       const canvas = document.getElementById('turtle-tiling');
       if (!canvas) return;
@@ -183,6 +186,9 @@
       const hatMarkingPanel = document.getElementById('hat-marking-panel');
       const hatMarkingComponent = document.getElementById('hat-marking-component');
       const hatMarkingZeros = document.getElementById('hat-marking-zeros');
+      const hatMarkingExtentInput = document.getElementById('hat-marking-extent');
+      const hatMarkingPatternInput = document.getElementById('hat-marking-extension-pattern');
+      const hatExtensionOptions = () => ({extent:normalizedHatExtent(hatMarkingExtentInput.value),pattern:hatMarkingPatternInput.value});
       const learningFrame = document.getElementById('tiling-learning-frame');
       let selectedTileSet = 'turtle', markingSource = 'none', manualPanelMode = false;
       const learnedModels = new Map(), customModels = new Set(), markingLibrary = new Map();
@@ -1367,7 +1373,14 @@
 
       function centerSeedView({ resetScale = false } = {}) {
         const rect = canvas.getBoundingClientRect();
-        const bounds = placementBounds([makeSeedPlacement()]);
+        const seed = makeSeedPlacement();
+        const bounds = placementBounds([seed]);
+        if(bounds&&markingSource==='hat-provisional'&&showMarkings)for(const entry of seed.markings){
+          for(const p of markingSegmentEndpoints(entry).map(projectA2)){
+            bounds.minX=Math.min(bounds.minX,p.x);bounds.maxX=Math.max(bounds.maxX,p.x);
+            bounds.minY=Math.min(bounds.minY,p.y);bounds.maxY=Math.max(bounds.maxY,p.y);
+          }
+        }
         if (!bounds || rect.width <= 0 || rect.height <= 0) {
           centerView(rect);
           return false;
@@ -1715,7 +1728,7 @@
         const visible = visiblePlacements();
         const keys = visible.map(placement => `${placement.sharedSpec?.tile||'turtle'}:${placement.orientation.orientationIndex}|${key3(placement.translation)}`);
         const viewKey = [canvas.width, canvas.height, ratio, scale, offset.x, offset.y,
-          showMarkings, markingSource, hatMarkingComponent.value, hatMarkingZeros.checked, markingRank, markingExtension, latticeToggle.checked, usingSublattice(), seedOrientationIndex].join('|');
+          showMarkings, markingSource, hatMarkingComponent.value, hatMarkingZeros.checked, hatMarkingExtentInput.value, hatMarkingPatternInput.value, markingRank, markingExtension, latticeToggle.checked, usingSublattice(), seedOrientationIndex].join('|');
         // Shared-engine events reconstruct placement objects, so compare stable
         // geometric keys rather than object identities to recognize an append.
         const fullRedraw = !renderCache || renderCache.viewKey !== viewKey
@@ -2048,8 +2061,8 @@
       }
       let fixedDisplayCache = null;
       function fixedPanelMarking() {
-        const key = `${markingSource}:${selectedTileSet}:${markingRank}:${markingExtension}:${usingSublattice()}`;
-        if (fixedDisplayCache?.key !== key) fixedDisplayCache = {key, marking:markingSource==='hat-provisional'?createProvisionalHatMarking():new FixedA2Marking(markingExtension, {pointFilter:usingSublattice()?isTurtleSublatticeVector:null,rank:markingRank, tiles:TILE_SETS[selectedTileSet].tiles})};
+        const key = `${markingSource}:${selectedTileSet}:${markingRank}:${markingExtension}:${usingSublattice()}:${hatMarkingExtentInput.value}:${hatMarkingPatternInput.value}`;
+        if (fixedDisplayCache?.key !== key) fixedDisplayCache = {key, marking:markingSource==='hat-provisional'?createProvisionalHatMarking(hatExtensionOptions()):new FixedA2Marking(markingExtension, {pointFilter:usingSublattice()?isTurtleSublatticeVector:null,rank:markingRank, tiles:TILE_SETS[selectedTileSet].tiles})};
         return fixedDisplayCache.marking;
       }
       function demoPlacementFromShared(placement, extras = {}) {
@@ -2121,7 +2134,7 @@
           maximize: true,
           targetPlacements: 1000,
           nodeLimit: 1000000,
-          marking: useMarking ? (markingSource === 'hat-provisional' ? createProvisionalHatMarking() : markingSource === 'learned' ? new CompactA2Marking(displayMarking) : new FixedA2Marking(markingExtension, { pointFilter: latticePointFilter, rank: markingRank, tiles:TILE_SETS[selectedTileSet].tiles })) : new NoA2Marking(),
+          marking: useMarking ? (markingSource === 'hat-provisional' ? createProvisionalHatMarking(hatExtensionOptions()) : markingSource === 'learned' ? new CompactA2Marking(displayMarking) : new FixedA2Marking(markingExtension, { pointFilter: latticePointFilter, rank: markingRank, tiles:TILE_SETS[selectedTileSet].tiles })) : new NoA2Marking(),
           rescanAfterBacktrack: markingSource === 'hat-provisional',
           latticePointFilter,
           // These deterministic branch orders keep both comparison modes
@@ -2456,6 +2469,15 @@
       markExtensionInput?.addEventListener('change', resetTilingForMarkingExtension);
       hatMarkingComponent.addEventListener('change',draw);
       hatMarkingZeros.addEventListener('change',draw);
+      function resetHatExtension(){
+        hatMarkingExtentInput.value=String(normalizedHatExtent(hatMarkingExtentInput.value));
+        // A changed domain can weaken a rule. Cancel and rebuild the search,
+        // including its graph and rollback state, instead of retaining a prefix.
+        if(markingSource==='hat-provisional')configurePanel('hat','hat-provisional');
+      }
+      hatMarkingExtentInput.addEventListener('change',resetHatExtension);
+      hatMarkingExtentInput.addEventListener('input',resetHatExtension);
+      hatMarkingPatternInput.addEventListener('change',resetHatExtension);
       markExtensionInput?.addEventListener('input', () => {
         const next = normalizedMarkingExtension();
         if (next !== markingExtension) resetTilingForMarkingExtension();
@@ -2598,7 +2620,7 @@
       updatePanelControls();
       try {const value=sessionStorage.getItem('gcts-requested-marking');sessionStorage.removeItem('gcts-requested-marking');if(value){const model=registerMarking(JSON.parse(value),{origin:'legacy',select:true}).model;learningSectionEntered=true;learningTileSet=model.setId;learningLattice=model.lattice??'A2';sublatticeToggle.checked=learningLattice==='turtle-sublattice';configurePanel(model.setId,'learned',model.marking.id);panelView('tiling');}}catch{}
       // Small inspectable state for integration tests and exported screenshots.
-      window.gctsPanelState=()=>({setId:selectedTileSet,source:markingSource,lattice:usingSublattice()?'turtle-sublattice':'A2',rank:markingRank,extent:markingExtension,usesMarking:markingEnabled(),placements:visiblePlacements().filter(p=>p.sharedSpec).map(p=>p.sharedSpec),model:displayMarking,candidate:markingSource==='hat-provisional'?PROVISIONAL_HAT_ID:null,stripeComponent:hatMarkingComponent.value,showAssignedZeros:hatMarkingZeros.checked});
+      window.gctsPanelState=()=>({setId:selectedTileSet,source:markingSource,lattice:usingSublattice()?'turtle-sublattice':'A2',rank:markingRank,extent:markingSource==='hat-provisional'?hatExtensionOptions().extent:markingExtension,usesMarking:markingEnabled(),placements:visiblePlacements().filter(p=>p.sharedSpec).map(p=>p.sharedSpec),model:displayMarking,candidate:markingSource==='hat-provisional'?PROVISIONAL_HAT_ID:null,stripeComponent:hatMarkingComponent.value,showAssignedZeros:hatMarkingZeros.checked,extensionPattern:hatMarkingPatternInput.value});
       function demoStageForScroll() {
         const demoRect = demoCard?.getBoundingClientRect();
         const triggerLine = demoRect
@@ -2664,7 +2686,12 @@
       updateMarkExtensionControl();
       resizeCanvas();
       syncDemoStageToScroll();
-      if(new URLSearchParams(location.search).get('marking')==='hat-provisional')configurePanel('hat','hat-provisional');
+      if(new URLSearchParams(location.search).get('marking')==='hat-provisional'){
+        const params=new URLSearchParams(location.search);
+        hatMarkingExtentInput.value=String(normalizedHatExtent(params.get('extend')));
+        if(params.get('pattern')==='alternate')hatMarkingPatternInput.value='alternate';
+        configurePanel('hat','hat-provisional');
+      }
     })();
   </script>
 
