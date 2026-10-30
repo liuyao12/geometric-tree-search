@@ -71,7 +71,7 @@ function updateHeading(){
   $('#geometry-badge').textContent='Exact search · approximate rendering';
  }else if(supported){
   const entry=SEARCH_MODELS[activeSystem.id],geometry=$('#search-rules').value!=='source',registered=$('#search-rules').value==='registered';
-  $('#scene-title').textContent=activeSystem.name+' · live search';
+  $('#scene-title').textContent=activeSystem.name+' · '+(registered?(activeSystem.id==='scd'?'restricted layer control':'registered geometry only'):geometry?'geometry only':'supplied rules');
   $('#view-heading').textContent=registered?'Restricted construction control':geometry?'Exact carrier geometry control':entry.rules;
   $('#view-description').textContent=domainScope||entry.scope;
   $('#regularity').textContent=registered?'Restricted point domain':geometry?'Geometry only · source markings absent':entry.rules;
