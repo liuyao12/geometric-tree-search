@@ -1,6 +1,6 @@
 // Rendering only: this module consumes one-way approximate display geometry.
 import * as THREE from 'three';
-import { learnedDisplaySection } from './display-model.js?v=gcts-learning-v3';
+import { learnedDisplaySection } from './display-model.js?v=allsets-search-v1';
 import { OrbitControls } from '../3d-lattice-tiler/vendor/OrbitControls.js';
 
 const AMBER = '#e4b269', TEAL = '#65bdb5';
@@ -123,7 +123,7 @@ export class CrystalScene {
     const fullCenter = centerOf(tiles.flatMap(t => t.vertices));
     const limit = Math.max(...tiles.map(t => centerOf(t.vertices)[0] - fullCenter[0]));
     const min = Math.min(...tiles.map(t => centerOf(t.vertices)[0] - fullCenter[0]));
-    tiles = tiles.filter(t => opt[t.kind] && (tileMode || centerOf(t.vertices)[0] - fullCenter[0] <= limit - (limit - min) * opt.cutaway / 100));
+    tiles = tiles.filter(t => opt[t.kind] !== false && (tileMode || centerOf(t.vertices)[0] - fullCenter[0] <= limit - (limit - min) * opt.cutaway / 100));
     const drawTiles = tiles.map((t, index) => {
       const c = centerOf(t.vertices);
       let vertices;
@@ -146,15 +146,16 @@ export class CrystalScene {
     } else {
       const incidence = new Map();
       for (const t of drawTiles) for (const f of t.faces) { const key = f.map(i => t.keys[i]).sort().join('|'); incidence.set(key, (incidence.get(key) ?? 0) + 1); }
-      const buckets = { prolate: { positions: [], tiles: [], colors: [] }, oblate: { positions: [], tiles: [], colors: [] } };
+      const buckets = {};
       const lines = [], edgeSet = new Set(), dotBuckets={black:[],red:[],rim:[],support:[]};
       for (const t of drawTiles) for (const f of t.faces) {
         const faceKey = f.map(i => t.keys[i]).sort().join('|');
         if (!tileMode && opt.separation === 0 && incidence.get(faceKey) > 1 && !opt.glass) continue;
-        const bucket = buckets[t.kind];
-        const color = new THREE.Color(t.kind === 'prolate' ? AMBER : TEAL);
+        const bucket = buckets[t.kind] ??= {positions:[],tiles:[],colors:[]};
+        const color = new THREE.Color(t.faceColors?.[t.faces.indexOf(f)] || t.color || (t.kind === 'prolate' ? AMBER : TEAL));
         color.multiplyScalar(0.88 + (t.axes.reduce((a, b) => a + b, 0) % 7) * 0.025);
-        for (const tri of [[f[0], f[1], f[2]], [f[0], f[2], f[3]]]) {
+        for (let j=1;j+1<f.length;j++) {
+          const tri=[f[0],f[j],f[j+1]];
           bucket.positions.push(...tri.flatMap(i => t.drawVertices[i])); bucket.tiles.push(t);
           for (let i = 0; i < 3; i++) bucket.colors.push(color.r, color.g, color.b);
         }

@@ -7,7 +7,7 @@ const PHI_DISPLAY = (1 + Math.sqrt(5)) / 2;
 export const displayScalar = x => (Number(x.a) + Number(x.b) * PHI_DISPLAY) / Number(x.d);
 const displayPoint = v => v.map(displayScalar);
 export const displayTile = t => ({
-  kind: t.kind, axes: t.axes, vertices: t.vertices.map(displayPoint),
+  kind: t.kind, name:t.name, color:t.color, faceColors:t.faceColors, faceSymbols:t.faceSymbols, axes: t.axes, vertices: t.vertices.map(displayPoint),
   keys: t.vertices.map(pointKey), faces: t.faces,
   exact: t.vertices.map(p => p.map(x => x.toJSON())),
   volume: t.volume.toJSON(), lift: t.lift?.map(String), decoration: t.decoration,

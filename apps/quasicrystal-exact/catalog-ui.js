@@ -1,12 +1,13 @@
-import {SYSTEMS,loadSpecimens} from './polyhedral-catalog.js?v=live-search-workspace-v2';
-import {TileViewer} from './tile-viewer.js?v=gcts-learning-v3';
+import {CONCRETE_SYSTEMS} from './search-models.js';
+import {SYSTEMS,loadSpecimens} from './polyhedral-catalog.js?v=allsets-search-v1';
+import {TileViewer} from './tile-viewer.js?v=allsets-search-v1';
 const $=s=>document.querySelector(s),typeset=e=>window.MathJax?.typesetPromise?.([e]);
 const scalar=([a,b,d])=>{let n=a==='0'?'':a;if(b!=='0')n+=`${b.startsWith('-')||!n?'':'+'}${b==='1'?'':b==='-1'?'-':b}\\tau`;n||='0';return d==='1'?n:`\\frac{${n}}{${d}}`;};
 const texPoint=p=>`\\left(${p.map(scalar).join(',\\;')}\\right)`;
 const escape=s=>s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 export function setupCatalog({onSystem=()=>{}}={}){
  const select=$('#system-select'),shelf=$('#tile-shelf'),meta=$('#catalog-meta');let system=SYSTEMS[0],tiles=[],cards=[],selected=null,epoch=0,shown=0;
- for(const s of SYSTEMS){const o=document.createElement('option');o.value=s.id;o.textContent=`${s.name} · ${s.id==='ammann'?'live search':s.count+' · prototypes'}`;select.append(o);}
+ for(const s of SYSTEMS){const o=document.createElement('option');o.value=s.id;o.textContent=`${s.name} · ${CONCRETE_SYSTEMS.includes(s.id)?'live search':s.id==='taylor'?'display only':'reference family'}`;select.append(o);}
  function inspect(t,face=null){
   const panel=$('#catalog-inspector');window.MathJax?.typesetClear?.([panel]);panel.replaceChildren();const title=document.createElement('h3');title.textContent=`${t.name}${t.mirrored?' · mirrored':''}${face===null?'':` · face ${face+1}`}`;panel.append(title);
   const info=document.createElement('p');info.textContent=t.displayOnly?'Author’s rounded print mesh · display only':`${t.exact.length.toLocaleString()} exact vertices · ${t.faces.length.toLocaleString()} boundary facets`;panel.append(info);
@@ -29,7 +30,7 @@ export function setupCatalog({onSystem=()=>{}}={}){
    const chooseTile=face=>{show(t,face);$('#prototype-inspection').open=true;$('#prototype-inspection').scrollIntoView({behavior:'smooth',block:'start'});};
    const viewer=new TileViewer(canvas,{onFace:(_,face)=>chooseTile(face),color:t.id.includes('oblate')?'#70b9b2':'#ddb475'});viewer.setModel(t);
    canvas.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();chooseTile(null);}});
-   const note=document.createElement('small');note.textContent=t.displayOnly?'Display mesh':t.note||t.id==='X1'?'Carrier · marking identity retained':system.id==='wang'?'View rotates; placements do not':'Exact coordinates';if(t.note)note.textContent=t.note;card.append(note);cards.push({id:t.id,element:card,viewer});
+   const note=document.createElement('small');note.textContent=t.displayOnly?'Display mesh':t.id==='X1'?'Carrier · marking identity retained':system.id==='wang'?'View rotates; placements do not':'Exact coordinates';if(t.note)note.textContent=t.note;card.append(note);cards.push({id:t.id,element:card,viewer});
   }shown=Math.min(tiles.length,shown+6);$('#catalog-more').hidden=shown>=tiles.length;$('#catalog-more').textContent=`Show next ${Math.min(6,tiles.length-shown)} of ${tiles.length} tiles`;
  }
  select.onchange=()=>choose(select.value);$('#catalog-more').onclick=addCards;

@@ -64,7 +64,7 @@ export function buildSpecimens(){
  const L=voxelUnion('L','L tile',cells,grid),half=sign=>convexFaces([O,...[q('1/4'),ONE].flatMap(x=>[-1,1].flatMap(y=>[-1,1].map(z=>V([x.mul(BigInt(sign)),q(y).div(4n),q(z).div(4n)]))))]);
  const I=mesh('I','I tile',[...half(1),...half(-1)],{note:'Two solid components meet at one point; the interior is disconnected.'});out.goodman=[I,L];
  const X=voxelUnion('X0','Unmarked cross',cells,['-1','-1/4','1/4','1']);out.goodmanCross=[L,X,{...X,id:'X1',name:'Marked cross',endpointMarks:true}];
- const a=V([5,0,0]),b=V([3,4,0]),c=V(['3/2',2,1]),d=V(['5/2',0,-1]);out.scd=[mesh('scd','SCD biprism',convexFaces([O,a,b,vadd(a,b),c,vadd(a,c),d,vadd(b,d)]),{recipe:{lambda:'1/2',b1:'3',b2:'4',height:'1',rotation:[['4/5','3/5','0'],['-3/5','4/5','0'],['0','0','1']]}})];
+ const a=V([5,0,0]),b=V([3,4,0]),c=V(['3/2',2,1]),d=V(['5/2',0,-1]);out.scd=[mesh('scd','SCD biprism',convexFaces([O,a,b,vadd(a,b),c,vadd(a,c),d,vadd(b,d)]),{recipe:{lambda:'1/2',b1:'3',b2:'4',height:'1',rotation:[['3/5','4/5','0'],['-4/5','3/5','0'],['0','0','1']]}})];
 
  return out;
 }
