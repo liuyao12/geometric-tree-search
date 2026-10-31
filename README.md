@@ -22,14 +22,11 @@ All new or revised tiling tree searches must use the [basic tiling algorithm](./
   unit disk. The browser solver removes rotational and reflectional symmetry,
   requires every circle to be locally held by surrounding contacts, and ships
   with a catalog of verified positive examples.
-- [Materials Growth Lab: imported atomic structures and off-lattice growth](https://liuyao12.github.io/geometric-tree-search/iqc-growth-live/)
-  A live 3D, multi-species GCTS laboratory for crystalline, quasiperiodic, and
-  amorphous controls. Choose one to eight species from a mini periodic table to
-  sample a random public bulk structure with exactly that element set from
-  NOMAD, or use the advanced local CIF/POSCAR/XYZ/JSON import.
-  It learns overlapping environments and finite SE(3) attachment
-  rules, trains bounded connection sections, and continues the same explicit
-  tree search beyond the observed configuration.
+- [Crystallography toy models](https://liuyao12.github.io/geometric-tree-search/3d-lattice-tiler/)
+  Basic 3D lattice tilings and polyhedral geometry remain available as geometric
+  toy models for crystallography. The materials reconstruction and atomistic
+  growth research lane has been retired.
+
 - [Penrose Model-Set Tiler](./penrose-model-set/)
   An exact cyclotomic search laboratory for genuine P2 kite–dart and P3 rhomb
   prototiles. Family presets stage a catalog that can be edited before running;
@@ -137,31 +134,6 @@ or go directly to the local app preview:
 ```text
 http://127.0.0.1:5174/3d-lattice-tiler/
 ```
-
-### Materials structure import
-
-The primary Materials Growth Lab input queries public [NOMAD](https://nomad-lab.eu/)
-bulk entries containing exactly the selected element set, chooses a random
-matching entry, reads its normalized atomic archive, and expands a small unit
-cell into a roughly 128–512 atom learning supercell. The entry identifier,
-database link, original atom count, replication, symmetry metadata, and query
-population remain visible as provenance. NOMAD public reads require no API key.
-
-Local import remains available under the advanced disclosure and is parsed
-entirely in the browser; files are not uploaded. The import contract preserves
-atomic species,
-Cartesian coordinates in ångströms, three general cell vectors, per-axis
-periodicity, occupancies, provenance, and a supplied CIF space-group label.
-CIF symmetry operations are expanded before validation. Imports are rejected
-for singular cells, invalid coordinates, unresolved duplicate atoms closer
-than 0.1 Å, or more than 1,200 atoms. Partial occupancies are retained and
-warned about, not stochastically resolved.
-
-The published page is still a static application, not a remote simulation
-service. Its current O(N²) neighbor and overlap construction is appropriate for
-the intended hundreds-of-atoms learning window; a worker/job backend is needed
-before direct database queries, trajectory ingestion, or substantially larger
-training sets. See the [Materials Growth Lab architecture and audit](./docs/projects/materials-growth-lab-architecture.md).
 
 ### A₂ marking-learning benchmark
 

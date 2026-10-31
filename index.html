@@ -3,12 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="A directory of GCTS projects in pure math, applied math, and meta math: interactive tilings, materials, packing, learning, and proof.">
+  <meta name="description" content="A directory of GCTS projects in pure math, applied math, and meta math: interactive tilings, geometry, packing, learning, and proof.">
   <title>GCTS — Pure Math, Applied Math &amp; Meta Math</title>
   <link rel="stylesheet" href="./assets/project-directory.css?v=20261020">
   <script>window.MathJax = {tex: {inlineMath: [['\\(', '\\)']]}, options: {enableMenu: false}};</script>
   <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
   <script defer src="./assets/project-directory.js?v=20261020"></script>
+  <!-- Materials research retired 2026-10-31; basic 3D tilings retained. -->
 </head>
 <body>
   <a class="skip-link" href="#projects">Skip to projects</a>
@@ -31,7 +32,7 @@
       </nav>
       <div class="directory-toolbar" id="projects">
         <div><p class="eyebrow">Project directory</p><p id="project-count">16 projects across three perspectives</p></div>
-        <div class="search" hidden><label for="project-search">Find a project</label><div class="search-field"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input id="project-search" type="search" placeholder="Try tiling, materials, or proof…" autocomplete="off" aria-controls="project-groups"></div></div>
+        <div class="search" hidden><label for="project-search">Find a project</label><div class="search-field"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input id="project-search" type="search" placeholder="Try tiling, packing, or proof…" autocomplete="off" aria-controls="project-groups"></div></div>
       </div>
       <p class="sr-only" id="search-status" role="status" aria-live="polite"></p>
       <div id="project-groups">
@@ -87,13 +88,13 @@
           </div>
         </section>
         <section class="project-section applied-math" id="applied-math" aria-labelledby="applied-math-title">
-          <div class="section-heading"><div><span class="section-number" aria-hidden="true">02</span><h2 id="applied-math-title">Applied Math</h2><span class="section-count" aria-label="4 projects">04</span></div><p>Investigate materials, constrained packings, and models you can build.</p></div>
+          <div class="section-heading"><div><span class="section-number" aria-hidden="true">02</span><h2 id="applied-math-title">Applied Math</h2><span class="section-count" aria-label="4 projects">04</span></div><p>Explore geometric toy models, constrained packings, and models you can build.</p></div>
           <div class="project-grid">
-            <article class="project-card" data-search="Materials Growth Lab Materials Explore structural growth in crystals and quasicrystals, with interactive investigations and an auditable evidence ledger. atoms physics crystal matter molecular Growth workbench">
-              <p class="project-kind">Materials</p>
-              <h3><a href="./iqc-growth-live/"><span class="project-title">Materials Growth Lab</span><span aria-hidden="true">↗</span></a></h3>
-              <p class="project-description">Explore structural growth in crystals and quasicrystals, with interactive investigations and an auditable evidence ledger.</p>
-              <div class="related-links"><a href="./apps/iqc-growth-live/">Growth workbench <span aria-hidden="true">→</span></a></div>
+            <article class="project-card" data-search="Crystallography Toy Models Basic 3D tilings lattice geometry polyhedra cubes crystals">
+              <p class="project-kind">Geometric toy models</p>
+              <h3><a href="./3d-lattice-tiler/"><span class="project-title">Crystallography Toy Models</span><span aria-hidden="true">↗</span></a></h3>
+              <p class="project-description">Explore basic 3D lattice tilings as geometric toy models for crystallography.</p>
+              <div class="related-links"><a href="./3d-reptiles/">3D reptile tilings <span aria-hidden="true">→</span></a></div>
             </article>
             <article class="project-card" data-search="Held Circle Packings Constrained packing Search for circle arrangements under geometric constraints and inspect how local choices shape the packing. sphere disk disc optimization ">
               <p class="project-kind">Constrained packing</p>
