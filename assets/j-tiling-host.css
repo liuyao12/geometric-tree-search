@@ -1,1 +1,1 @@
-#j-panel-page[hidden]{display:none!important}#j-search-frame{display:block;border:0;width:100%;height:min(480px,66vh);min-height:400px;background:#fbfaf7}.j-search-mode #turtle-tile-set{display:none}.panel-tabs #panel-j-tab{white-space:nowrap}
+#j-panel-page[hidden]{display:none!important}#j-search-frame{display:block;border:0;width:100%;height:min(480px,calc(100dvh - 88px));min-height:350px;background:#fbfaf7}.j-search-mode #turtle-tile-set{display:none}.panel-tabs #panel-j-tab{white-space:nowrap}
