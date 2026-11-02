@@ -8,6 +8,7 @@
 
   <link rel="stylesheet" href="assets/tile-learning.css?v=20260921-domain-names">
   <link rel="stylesheet" href="assets/hat-rank3-marking.css?v=20261030-kagome-sparse">
+  <link rel="stylesheet" href="assets/j-tiling-host.css?v=20261101-j30">
   <script>
     window.MathJax = {
       tex: {
@@ -41,6 +42,7 @@
                       <div class="panel-tabs" role="tablist" aria-label="Panel view">
                         <button id="panel-tiling-tab" type="button" role="tab" aria-controls="tiling-panel-page" aria-selected="true">Tiling</button>
                         <button id="panel-learning-tab" type="button" role="tab" aria-controls="learning-panel-page" aria-selected="false" tabindex="-1">Learn markings</button>
+                        <button id="panel-j-tab" type="button" role="tab" aria-controls="j-panel-page" aria-selected="false" tabindex="-1">4D J search</button>
                       </div>
                       <div id="turtle-tile-set" class="tile-set-options" role="radiogroup" aria-label="Tiles">
                         <label><input type="radio" name="tiling-tiles" value="turtle" checked> Turtle</label>
@@ -89,6 +91,7 @@
                     </figcaption>
                     </div>
                     <div id="learning-panel-page" role="tabpanel" aria-labelledby="panel-learning-tab" hidden><iframe id="tiling-learning-frame" title="Learn geometric matching rules" src="GCTS-learning.html?embedded=1&amp;set=turtle&amp;v=20260921-online-marking" loading="lazy"></iframe></div>
+                    <div id="j-panel-page" role="tabpanel" aria-labelledby="panel-j-tab" hidden><iframe id="j-search-frame" title="J-rule search and morphing projections" src="GCTS-J.html?embedded=1&amp;v=20261101-j30" loading="lazy"></iframe></div>
                     <span class="demo-resize-handle" id="turtle-window-resize" role="button" tabindex="0" aria-label="Resize turtle demo window from lower left">
         </span>
                   </figure>
@@ -1355,7 +1358,16 @@
           const available = Math.max(240, demoRect.left - articleRect.left - gutter);
           target.style.maxWidth = `${Math.min(normalWidth, available)}px`;
         });
+        fitJPanelToViewport();
       }
+
+      function fitJPanelToViewport(){
+        if(document.getElementById('j-panel-page').hidden)return;
+        const rect=demoCard.getBoundingClientRect();
+        demoSafeY+=clamp(rect.top,12,Math.max(12,window.innerHeight-rect.height-12))-rect.top;
+        syncDemoPosition();
+      }
+      new ResizeObserver(()=>{if(!document.getElementById('j-panel-page').hidden)window.requestAnimationFrame(fitJPanelToViewport);}).observe(demoCard);
 
       function centerView(rect = canvas.getBoundingClientRect()) {
         offset = { x: rect.width / 2, y: rect.height / 2 };
@@ -2578,6 +2590,12 @@
         stopTiling();
         document.getElementById('tiling-panel-page').hidden = view !== 'tiling';
         document.getElementById('learning-panel-page').hidden = view !== 'learning';
+        document.getElementById('j-panel-page').hidden = view !== 'j';
+        demoCard.classList.toggle('j-search-mode',view==='j');
+        document.getElementById('panel-j-tab').setAttribute('aria-selected',String(view==='j'));
+        document.getElementById('panel-j-tab').tabIndex=view==='j'?0:-1;
+        if(view==='j')document.getElementById('j-search-frame').loading='eager';
+        else document.getElementById('j-search-frame').contentWindow?.postMessage({type:'j-pause'},location.origin);
         document.getElementById('panel-tiling-tab').setAttribute('aria-selected',String(view==='tiling'));
         document.getElementById('panel-learning-tab').setAttribute('aria-selected',String(view==='learning'));
         document.getElementById('panel-tiling-tab').tabIndex=view==='tiling'?0:-1;
@@ -2594,6 +2612,8 @@
       });
       document.getElementById('panel-tiling-tab').onclick=()=>panelView('tiling');
       document.getElementById('panel-learning-tab').onclick=()=>panelView('learning');
+      document.getElementById('panel-j-tab').onclick=()=>{panelView('j');window.requestAnimationFrame(()=>{updateTextWrap();window.requestAnimationFrame(fitJPanelToViewport);});};
+      document.getElementById('j-search-frame').addEventListener('load',()=>{if(!document.getElementById('j-panel-page').hidden)window.requestAnimationFrame(()=>{updateTextWrap();window.requestAnimationFrame(fitJPanelToViewport);});});
       document.getElementById('open-marking-lab').onclick=()=>{panelView('learning');demoCard.scrollIntoView({block:'nearest'});};
       tileSetInputs.forEach(input=>input.addEventListener('change',()=>{
         if(!input.checked)return;
@@ -2667,6 +2687,7 @@
         learningFrame.contentWindow.postMessage({type:'gcts-start-learning',setId,lattice:learningLattice,requestId:`article-${setId}-learning`},location.origin);
       }
       function syncDemoStageToScroll() {
+        if(!document.getElementById('j-panel-page').hidden)return;
         // Keep an explicitly selected Hat marking stable while its controls
         // scroll into view; article section changes must not replace it.
         if (manualPanelMode && usingHatRank3()) return;
@@ -2717,6 +2738,8 @@
       resizeCanvas();
       syncDemoStageToScroll();
       const params=new URLSearchParams(location.search);
+      if(params.get('rule')==='j'||params.get('view')==='j'){panelView('j');window.requestAnimationFrame(()=>{updateTextWrap();window.requestAnimationFrame(fitJPanelToViewport);});window.addEventListener('load',()=>{updateTextWrap();window.requestAnimationFrame(fitJPanelToViewport);});}
+      else
       if(['hat-provisional','hat-rank3'].includes(params.get('marking'))||(params.get('marking')==='rank3'&&params.get('tiles')==='hat')){
         markingRank=3;
         markingExtension=normalizeHatRank3Extent(params.get('extend'));

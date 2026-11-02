@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>J-rule tiling search — Hat/Turtle and Spectre projections</title>
+  <link rel="stylesheet" href="assets/j-tiling-view.css?v=20261101-j30">
+</head>
+<body>
+  <header><strong><code>J</code>-rule search</strong><span>One fixed 4D patch, changing projection</span></header>
+  <div class="toolbar">
+    <button id="run" type="button">Run from one tile</button><button id="pause" type="button" disabled>Pause</button>
+    <label>Target <select id="target"><option>30</option><option>60</option><option>100</option></select></label>
+    <button id="saved" type="button">Saved 30-tile patch</button><button id="fit" type="button">Fit</button>
+  </div>
+  <div class="view"><canvas id="projection" aria-label="Projection of the search-generated four-dimensional tile patch"></canvas>
+    <div class="legend"><span><i class="even"></i><span id="even-label">Hats</span></span><span><i class="odd"></i><span id="odd-label">Turtles</span></span></div>
+    <div class="hint">Drag to pan · scroll to zoom</div>
+  </div>
+  <div class="morph">
+    <label for="morph">Morph projection <output id="projection-name">Hats in turtles</output></label>
+    <input id="morph" type="range" min="0" max="1000" step="1" value="0" aria-label="Morph from hats in turtles to the Spectre polygon">
+    <div class="endpoints"><button id="mixed" type="button">Hats in turtles</button><button id="equilateral" type="button">Spectre polygon</button></div>
+  </div>
+  <p id="status" role="status">Loading the saved search result…</p>
+  <p id="counts" class="counts"></p>
+  <footer>Finite patch, with an open boundary. The equilateral view uses the straight-edged Spectre polygon.</footer>
+  <script type="module" src="assets/j-tiling-view.js?v=20261101-j30"></script>
+</body>
+</html>
