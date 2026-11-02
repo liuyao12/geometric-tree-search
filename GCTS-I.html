@@ -42,7 +42,7 @@
                       <div class="panel-tabs" role="tablist" aria-label="Panel view">
                         <button id="panel-tiling-tab" type="button" role="tab" aria-controls="tiling-panel-page" aria-selected="true">Tiling</button>
                         <button id="panel-learning-tab" type="button" role="tab" aria-controls="learning-panel-page" aria-selected="false" tabindex="-1">Learn markings</button>
-                        <button id="panel-j-tab" type="button" role="tab" aria-controls="j-panel-page" aria-selected="false" tabindex="-1">4D J search</button>
+                        <button id="panel-j-tab" type="button" role="tab" aria-controls="j-panel-page" aria-selected="false" tabindex="-1">4D J</button>
                       </div>
                       <div id="turtle-tile-set" class="tile-set-options" role="radiogroup" aria-label="Tiles">
                         <label><input type="radio" name="tiling-tiles" value="turtle" checked> Turtle</label>
@@ -2738,7 +2738,7 @@
       resizeCanvas();
       syncDemoStageToScroll();
       const params=new URLSearchParams(location.search);
-      if(params.get('rule')==='j'||params.get('view')==='j'){panelView('j');window.requestAnimationFrame(()=>{updateTextWrap();window.requestAnimationFrame(fitJPanelToViewport);});window.addEventListener('load',()=>{updateTextWrap();window.requestAnimationFrame(fitJPanelToViewport);});}
+      if(params.get('rule')==='j'||params.get('view')==='j'){if(params.get('demo')==='rotation')document.getElementById('j-search-frame').src='GCTS-J-rotation.html?embedded=1&v=20261102-j-rotation';panelView('j');window.requestAnimationFrame(()=>{updateTextWrap();window.requestAnimationFrame(fitJPanelToViewport);});window.addEventListener('load',()=>{updateTextWrap();window.requestAnimationFrame(fitJPanelToViewport);});}
       else
       if(['hat-provisional','hat-rank3'].includes(params.get('marking'))||(params.get('marking')==='rank3'&&params.get('tiles')==='hat')){
         markingRank=3;

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+ <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+ <title>Click J — a four-dimensional lattice rotation</title>
+ <link rel="stylesheet" href="assets/j-rotation.css?v=20261102-j-rotation">
+ <script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]}};</script>
+ <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head>
+<body>
+ <header><a href="GCTS-J.html?embedded=1">← Tiling patch</a><strong>One tile, rotated in 4D</strong></header>
+ <div class="controls">
+  <button id="apply-j" type="button" aria-label="Apply J once"><span>\(J\)</span><small>click to rotate</small></button>
+  <div class="settings"><label for="projection-choice">Projection</label><select id="projection-choice"><option value="all">All three</option><option value="hat">Hat</option><option value="turtle">Turtle</option><option value="spectre">Spectre</option></select></div>
+  <button id="reset" type="button">Reset</button>
+  <span class="cycle">\(J^{12}=I\)</span>
+ </div>
+ <div class="stage"><canvas id="rotation" aria-label="Three projections of the same four-dimensional tile"></canvas></div>
+ <div class="legend"><span><i class="family-a"></i>First edge family</span><span><i class="family-b"></i>Second edge family</span><span><i class="tracked"></i>Tracked vertex</span></div>
+ <p id="step-status" role="status">Original orientation · 0 applications</p>
+ <p class="hint">Click J once for the next orientation. The dashed outline shows the previous pose; colors follow the same edges.</p>
+ <details><summary>What is moving?</summary><p>This is a continuous 4D rotation, with exact lattice orientations at each stop. In its two invariant planes, one click turns by \(30^\circ\) and \(-150^\circ\). The Spectre projection shows a \(30^\circ\) planar rotation; the Hat and Turtle projections also exchange shapes.</p><p>The small cross marks the fixed lattice origin.</p></details>
+ <script type="module" src="assets/j-rotation-view.js?v=20261102-j-rotation"></script>
+</body>
+</html>
