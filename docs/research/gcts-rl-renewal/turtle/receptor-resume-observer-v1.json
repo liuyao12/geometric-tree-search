@@ -1,0 +1,22 @@
+{
+  "status": "TERMINAL",
+  "mode": "run",
+  "pid": 65586,
+  "native_exit": 0,
+  "external_stop_reason": null,
+  "elapsed_seconds": 484.8983712079935,
+  "observed_peak_rss_bytes": 985677824,
+  "rss_samples": 241,
+  "rss_observation_failures": 0,
+  "runtime": {
+    "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+    "bytes": 18058560,
+    "sha256": "0048df8bc66cbf4cc964f31eb89321e762902aeecf95dfbde306a36601d27034",
+    "version": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]"
+  },
+  "logs": {
+    "stdout": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-turtle-receptors-20261103-v1/execution-resume-v1.log",
+    "stderr": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-turtle-receptors-20261103-v1/execution-resume-v1.stderr"
+  },
+  "scope": "Observer uses current child poll and sampled RSS. An observation failure does not stop or restart the child. A guard termination is incomplete evidence/UNKNOWN, never exhausted failure. Native ru_maxrss remains the whole-process memory measurement when completed."
+}
