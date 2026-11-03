@@ -1,0 +1,149 @@
+{
+  "schema": "Shared-resource-first-attempt-passive-audit-v1",
+  "status": "PASS_PASSIVE_SAVED_PROOF_JOINS_WITH_FAILED_EXECUTION",
+  "source_root": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1",
+  "phase": "seen-off-dsgb-alternate-l10-v1",
+  "source_case_id": "dsgb-alternate-l10-v1",
+  "method": "Independent stdlib-only saved JSON, compressed-byte/hash and literal value comparisons, plus direct inspection of the five-line ground implication derivation. No scientific Source, engine, model builder, decoder or native checker was imported or rerun. No new candidate universe, model, proof search or graph trace was generated.",
+  "source_and_custody": {
+    "frozen_file_count": 35,
+    "exact_frozen_file_set_matches": true,
+    "all_frozen_file_bytes_and_hashes_match": true,
+    "protocol": {
+      "path": "data/protocol-frozen-v1.json",
+      "bytes": 7532,
+      "sha256": "daeebf249980f56279ae80a2c129d4e405ad5c1eb674c1bf9df9529af7723e70"
+    },
+    "driver": {
+      "path": "source/run_resource_diagnostic_v1.py",
+      "bytes": 20885,
+      "sha256": "9d9995b3db26e889b22b40fdd8ceca45c1f7325427e83ff13520fce7ec8610c9"
+    },
+    "runtime_executable": {
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+      "bytes": 18058560,
+      "sha256": "0048df8bc66cbf4cc964f31eb89321e762902aeecf95dfbde306a36601d27034",
+      "current_bytes_match": true
+    },
+    "primary_and_local_master": {
+      "bytes": 21657,
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "current_bytes_match": true
+    },
+    "all_six_saved_stage_reference_bytes_and_hashes_match": true,
+    "all_six_saved_stage_captures_complete": true,
+    "compact_actual_outcome_matches_full_raw_projection": true,
+    "scope": "Current immutable frozen bytes and saved artifact associations were checked independently. This does not rewrite the original recorded postcheck status or make the native process successful."
+  },
+  "execution": {
+    "status": "FAILED_POSTCHECK_AFTER_SCIENCE",
+    "execution_admitted": false,
+    "native_exit_code": 1,
+    "started_pid": 32085,
+    "invocation_pid": 32085,
+    "observer_pid": 32085,
+    "phase_names_match": true,
+    "started_protocol_digest_matches": true,
+    "observer_status": "TERMINAL",
+    "invocation_status": "ERROR",
+    "invocation_scientific_status": "VERIFIED_POSITIVE",
+    "worker_recorded_frozen_postcheck": "FAILED",
+    "supervisor_recorded_frozen_postcheck": "FAILED",
+    "postcheck_error": "tuple indices must be integers or slices, not str",
+    "guard_reason": null,
+    "guard_interpretation": "NO_GUARD_TRIGGER_RECORDED; not a guard PASS or native-success claim",
+    "observer_error": null,
+    "reap_error": null,
+    "source_failure": "unchanged() returns (protocol, plan), while both worker and supervisor postchecks index that tuple with ['status']. The log records the final worker RuntimeError after native-B VERIFIED. Original Source/data and exit status remain unchanged.",
+    "started_ref": {"path": "data/seen-off-dsgb-alternate-l10-v1-started.json", "bytes": 183, "sha256": "8c2f9954dca32011f4138bc9c2a0e608f9338a8e1345067782fcd09fa49aa619"},
+    "invocation_ref": {"path": "review/seen-off-dsgb-alternate-l10-v1-invocation.json", "bytes": 298, "sha256": "2538f6d7e2e65b6f7d9afb44d00bc89920c73bd96c2dadc155c85892d3fb0b3c"},
+    "observer_ref": {"path": "review/seen-off-dsgb-alternate-l10-v1-observer.json", "bytes": 832, "sha256": "f61e4e4830152e4bb718ede27c2fadb43b480c16a1e122da9d304e3f3bd11ac4"},
+    "log_ref": {"path": "review/seen-off-dsgb-alternate-l10-v1-native.log", "bytes": 1546, "sha256": "9520c2e8781300283c373f76c2d1550830c8f47a109727dd5fdd734cdb827b72"}
+  },
+  "logical_evidence": {
+    "status": "VERIFIED_SAVED_POSITIVE_ASSOCIATION",
+    "raw_engine_status": "SAT",
+    "saved_scientific_status": "VERIFIED_POSITIVE",
+    "saved_fresh_basis_model_admission": "VERIFIED",
+    "model_sha256": "00f317bfc800ba42be2ec0da6336849b2766fb10d577cb85151b041f3f38c315",
+    "universe_sha256": "f3d22e77254adb2d968a873b2bbf453e2d0a03c52c943242c83a9b60cce98221",
+    "original_statement_sha256": "c7357acc985db7d3ab49047f6cc5b1c132fd07c04e919c2aec73ebe91539e524",
+    "selected_sha256": "75d0a7452a28d41524ec9faba6ff0810521f815a65824f1b10bc01a08d8a7eaf",
+    "proof_sha256": "18e9a21f1499abc39239cdb9b37b4218a69e156f6940354e75bdacdac494c6c8",
+    "selected_placements": 10,
+    "padding_slots": [0, 1, 2, 3, 4],
+    "active_slots": [5, 6, 7, 8, 9],
+    "slot_to_native": [null, null, null, null, null, 0, 1, 2, 3, 4],
+    "native_to_slot": [5, 6, 7, 8, 9],
+    "whole_decoder_semantic_fields_match": true,
+    "selected_rows_are_exact_members_of_saved_complete_universe": true,
+    "static_selected_point_checks": {
+      "all_required_roots": 10,
+      "all_root_totals_equal_capacity_one": true,
+      "distinct_owner_placements": true,
+      "assigned_mark_points": 20,
+      "global_seed_and_selected_mark_agreement": true,
+      "mark_reference_counts_match_raw_certificate": true,
+      "entire_raw_point_certificate_matches_selected_aggregate": true
+    },
+    "reference_maps": [
+      {"slot": 8, "native_line": 3, "slot_references": {"antecedent": 7, "implication": 5}, "native_references": {"antecedent": 2, "implication": 0}},
+      {"slot": 9, "native_line": 4, "slot_references": {"antecedent": 8, "implication": 6}, "native_references": {"antecedent": 3, "implication": 1}}
+    ],
+    "native_receipt": {
+      "status": "VERIFIED",
+      "reason": "WHOLE_PROOF_VERIFIED",
+      "checked_lines": 5,
+      "rule_counts": {"axiom": 3, "mp": 2, "distribute": 0, "eq_subst": 0, "generalize": 0, "instantiate": 0, "refl": 0, "tautology": 0},
+      "operations": 1636,
+      "limits_match_original_protocol": true,
+      "sha256": "78f356ec441c0c68fdc61c9a9ea7aa447971eadbdff52afbd12bf0ec523b7d7d",
+      "input_association": "Frozen reviewed driver calls native B on the freshly saved independent-decoder proof under the copied original theory/goal; saved result binds proof/statement/selected and native-receipt hashes. Native receipt has no independent cryptographic input self-binding."
+    },
+    "direct_five_line_inspection": "The saved proof uses original assumptions link A implies B, live_terminal B implies G, and origin A. Native line 3 derives B from native lines 2 and 0; native line 4 derives G from native lines 3 and 1. References are strictly prior and all literal formulas match the original declaration. Indices here are zero based. No native kernel was rerun.",
+    "scope": "Separately valid saved positive-proof evidence survives the later execution-postcheck reporting failure. It does not make this attempt an admitted native process."
+  },
+  "retained_record_checks": {
+    "raw_capture_logical_json_bytes": 8176751,
+    "entry_final_restored_state_hashes_match": true,
+    "entry_and_restored_saved_values_equal": true,
+    "event_journal_total": 694,
+    "event_journal_retained": 694,
+    "event_journal_stream_hash_matches": true,
+    "rollback_journal_total": 147,
+    "rollback_journal_retained": 147,
+    "rollback_journal_stream_hash_matches": true,
+    "actual_audit_callbacks": 0,
+    "full_graph_conformance": "NOT_MEASURED",
+    "absence": "NOT_CLAIMED",
+    "scope": "Saved checkpoint and journal digest checks are custody/consistency joins only. They are not a fresh internal-graph, scheduler, branch-exhaustion or whole-search replay certificate."
+  },
+  "artifacts": {
+    "result": {"path": "data/seen-off-dsgb-alternate-l10-v1-result.json", "bytes": 4711, "sha256": "7e3e5d3b9b7080d6d09be28874a8a0c5326db926d8ef577fbb8d4014df504c53"},
+    "actual_outcome": {"path": "data/runs/seen-off-dsgb-alternate-l10-v1/actual-engine-outcome.json.gz", "bytes": 1468, "sha256": "122e3fd7aed2ae22b87d41df81ae2af51efcea28a95c00289373e1bd1e91fe71"},
+    "raw_result": {"path": "data/runs/seen-off-dsgb-alternate-l10-v1/raw-engine-result.json.gz", "bytes": 153547, "sha256": "d5ca8625dc8d3554c6bbdc7d81b5b4e5eabcc58b57e6bfbe2464a81015bd0495"},
+    "fresh_input_admission": {"path": "data/runs/seen-off-dsgb-alternate-l10-v1/fresh-input-admission.json", "bytes": 1279, "sha256": "f8c3e3bfdbfa44da8dd8ca4a08d7cf4b7d39d65c8ac4f46c0aad92191388f0f1"},
+    "adapter_decode": {"path": "data/runs/seen-off-dsgb-alternate-l10-v1/adapter-decoding.json.gz", "bytes": 1141, "sha256": "a05110c840735de651446fc672b9c20a329c37a0379c96c00476139a6d5a6c99"},
+    "independent_decode": {"path": "data/runs/seen-off-dsgb-alternate-l10-v1/independent-decoding.json.gz", "bytes": 1401, "sha256": "5facc3777e1e40ba19d52eab02542c282d0da3944fcbd570074b59ae74721e2f"},
+    "native_B": {"path": "data/runs/seen-off-dsgb-alternate-l10-v1/native-B.json", "bytes": 785, "sha256": "78f356ec441c0c68fdc61c9a9ea7aa447971eadbdff52afbd12bf0ec523b7d7d"}
+  },
+  "observed_failed_attempt_costs": {
+    "search_call_seconds": 0.16470079199643806,
+    "fresh_input_admission_call_seconds": 0.03439833302400075,
+    "raw_capture_seconds": 0.15379345801193267,
+    "static_decode_native_call_seconds": 0.05177620900212787,
+    "diagnostic_function_seconds": 0.4464803749870043,
+    "worker_seconds": 0.4779334579943679,
+    "observer_seconds": 0.648023416986689,
+    "sampled_peak_rss_bytes": 59113472,
+    "native_lifetime_maxrss_bytes": 60342272,
+    "scope": "Retain and charge the actual failed first attempt. Component clocks overlap broader clocks and are not summed into an invented clean-run total. No rerun or omitted first-attempt cost is authorized by this review."
+  },
+  "limitations": [
+    "The first native process exited 1 and both recorded postchecks FAILED; execution admission remains false even though the saved proof evidence is valid.",
+    "No first-case search, decoder or native checker was rerun; the remaining seven-case continuation must be separately frozen and audited.",
+    "Audit-off has no full callback graph stream. Complete retained event/journal hashes do not establish per-run full graph conformance or independent absence.",
+    "These are seen finite assumption/MP cases. No held-out generalization, RL, algorithmic speed advantage, causal callback-only overhead estimate, unrestricted logic completeness or Wang-grid search claim follows.",
+    "Original CALv1 files and the published DAG study/archive remain unchanged. This receipt belongs only to the new CALv2 review directory."
+  ]
+}

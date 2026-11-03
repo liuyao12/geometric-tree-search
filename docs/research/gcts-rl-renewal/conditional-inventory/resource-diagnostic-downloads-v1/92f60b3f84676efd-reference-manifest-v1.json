@@ -1,0 +1,322 @@
+{
+  "child_saved_scientific_status": "VERIFIED_POSITIVE",
+  "classification": "FAILED_POSTCHECK_AFTER_SCIENCE",
+  "execution_admitted": false,
+  "files": [
+    {
+      "bytes": 7532,
+      "origin": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1/data/protocol-frozen-v1.json",
+      "path": "data/protocol-frozen-v1.json",
+      "sha256": "daeebf249980f56279ae80a2c129d4e405ad5c1eb674c1bf9df9529af7723e70"
+    },
+    {
+      "bytes": 1468,
+      "origin": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1/data/runs/seen-off-dsgb-alternate-l10-v1/actual-engine-outcome.json.gz",
+      "path": "data/runs/seen-off-dsgb-alternate-l10-v1/actual-engine-outcome.json.gz",
+      "sha256": "122e3fd7aed2ae22b87d41df81ae2af51efcea28a95c00289373e1bd1e91fe71"
+    },
+    {
+      "bytes": 1141,
+      "origin": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1/data/runs/seen-off-dsgb-alternate-l10-v1/adapter-decoding.json.gz",
+      "path": "data/runs/seen-off-dsgb-alternate-l10-v1/adapter-decoding.json.gz",
+      "sha256": "a05110c840735de651446fc672b9c20a329c37a0379c96c00476139a6d5a6c99"
+    },
+    {
+      "bytes": 1279,
+      "origin": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1/data/runs/seen-off-dsgb-alternate-l10-v1/fresh-input-admission.json",
+      "path": "data/runs/seen-off-dsgb-alternate-l10-v1/fresh-input-admission.json",
+      "sha256": "f8c3e3bfdbfa44da8dd8ca4a08d7cf4b7d39d65c8ac4f46c0aad92191388f0f1"
+    },
+    {
+      "bytes": 1401,
+      "origin": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1/data/runs/seen-off-dsgb-alternate-l10-v1/independent-decoding.json.gz",
+      "path": "data/runs/seen-off-dsgb-alternate-l10-v1/independent-decoding.json.gz",
+      "sha256": "5facc3777e1e40ba19d52eab02542c282d0da3944fcbd570074b59ae74721e2f"
+    },
+    {
+      "bytes": 785,
+      "origin": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1/data/runs/seen-off-dsgb-alternate-l10-v1/native-B.json",
+      "path": "data/runs/seen-off-dsgb-alternate-l10-v1/native-B.json",
+      "sha256": "78f356ec441c0c68fdc61c9a9ea7aa447971eadbdff52afbd12bf0ec523b7d7d"
+    },
+    {
+      "bytes": 153547,
+      "origin": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1/data/runs/seen-off-dsgb-alternate-l10-v1/raw-engine-result.json.gz",
+      "path": "data/runs/seen-off-dsgb-alternate-l10-v1/raw-engine-result.json.gz",
+      "sha256": "d5ca8625dc8d3554c6bbdc7d81b5b4e5eabcc58b57e6bfbe2464a81015bd0495"
+    },
+    {
+      "bytes": 4711,
+      "origin": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1/data/seen-off-dsgb-alternate-l10-v1-result.json",
+      "path": "data/seen-off-dsgb-alternate-l10-v1-result.json",
+      "sha256": "7e3e5d3b9b7080d6d09be28874a8a0c5326db926d8ef577fbb8d4014df504c53"
+    },
+    {
+      "bytes": 183,
+      "origin": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1/data/seen-off-dsgb-alternate-l10-v1-started.json",
+      "path": "data/seen-off-dsgb-alternate-l10-v1-started.json",
+      "sha256": "8c2f9954dca32011f4138bc9c2a0e608f9338a8e1345067782fcd09fa49aa619"
+    },
+    {
+      "bytes": 1257,
+      "origin": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1/input/dsgb-alternate-l10-v1/declaration.json",
+      "path": "input/dsgb-alternate-l10-v1/declaration.json",
+      "sha256": "6b174d95a6846b8c0c4b8d6b3ee51b671727794a2c4de99c541c5c335766604b"
+    },
+    {
+      "bytes": 1280,
+      "origin": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1/input/dsgb-alternate-l10-v1/original-basis-model-receipt.json",
+      "path": "input/dsgb-alternate-l10-v1/original-basis-model-receipt.json",
+      "sha256": "eb43c96e6d7c3036a5fe83368ce4c0f89c90fc52a29816bea4fcd2b1238914c3"
+    },
+    {
+      "bytes": 28011,
+      "origin": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1/input/dsgb-alternate-l10-v1/prepared.json.gz",
+      "path": "input/dsgb-alternate-l10-v1/prepared.json.gz",
+      "sha256": "97d976db87abfc9c370b8e1068ba8bd4a771594b3753cd3b3756bd80ed4ebfb4"
+    },
+    {
+      "bytes": 1255,
+      "origin": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1/input/dsgb-alternate-l6-v1/declaration.json",
+      "path": "input/dsgb-alternate-l6-v1/declaration.json",
+      "sha256": "ce8d6bbcabe7f485f61e7b11cc0675e6d9f2d8814804c0d53c18099aa6e96911"
+    },
+    {
+      "bytes": 1272,
+      "origin": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1/input/dsgb-alternate-l6-v1/original-basis-model-receipt.json",
+      "path": "input/dsgb-alternate-l6-v1/original-basis-model-receipt.json",
+      "sha256": "cfcde9d6a7269720ca52a95190bbe1ead950dd94ee4c33b0453031ec3e5c227e"
+    },
+    {
+      "bytes": 7021,
+      "origin": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1/input/dsgb-alternate-l6-v1/prepared.json.gz",
+      "path": "input/dsgb-alternate-l6-v1/prepared.json.gz",
+      "sha256": "93bad15b8286d80060b8a8e1b6a6104ac7b0829e813c1d79419f4d8bfb43e747"
+    },
+    {
+      "bytes": 969,
+      "origin": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1/input/dsgb-shared-l10-v1/declaration.json",
+      "path": "input/dsgb-shared-l10-v1/declaration.json",
+      "sha256": "9cb0636ae518e770d0ad7c6031143423caabcb44e574c48b80e85c14528e192b"
+    },
+    {
+      "bytes": 1277,
+      "origin": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1/input/dsgb-shared-l10-v1/original-basis-model-receipt.json",
+      "path": "input/dsgb-shared-l10-v1/original-basis-model-receipt.json",
+      "sha256": "f1428dc2fe30f95c0f42206488e08774c0a37e91d17912e8999a8096cf10ad24"
+    },
+    {
+      "bytes": 17805,
+      "origin": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1/input/dsgb-shared-l10-v1/prepared.json.gz",
+      "path": "input/dsgb-shared-l10-v1/prepared.json.gz",
+      "sha256": "c1bace453cac9fe61400adcee3c3144ec3adcdde840b3b6943064554279fe02d"
+    },
+    {
+      "bytes": 967,
+      "origin": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1/input/dsgb-shared-l6-v1/declaration.json",
+      "path": "input/dsgb-shared-l6-v1/declaration.json",
+      "sha256": "1d50da8fcc71d4736920de89b279c47a1ab9eac4b66fec26fd180b09254dc829"
+    },
+    {
+      "bytes": 1271,
+      "origin": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1/input/dsgb-shared-l6-v1/original-basis-model-receipt.json",
+      "path": "input/dsgb-shared-l6-v1/original-basis-model-receipt.json",
+      "sha256": "1a7f192fce6b2099684dca3589110fc9babc5ee876f18b717dad083ae4efe88c"
+    },
+    {
+      "bytes": 4972,
+      "origin": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1/input/dsgb-shared-l6-v1/prepared.json.gz",
+      "path": "input/dsgb-shared-l6-v1/prepared.json.gz",
+      "sha256": "5cc5243bc4486e64b60cc23c763e1a04d17efc8210de046a16f25d455bcd9163"
+    },
+    {
+      "bytes": 1142,
+      "origin": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1/input/dsgb-shared-tail-l10-v1/declaration.json",
+      "path": "input/dsgb-shared-tail-l10-v1/declaration.json",
+      "sha256": "318bc0eea5ab6dcab08afd89657dd31e188b54119e94466c060e325a2cc2938a"
+    },
+    {
+      "bytes": 1278,
+      "origin": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1/input/dsgb-shared-tail-l10-v1/original-basis-model-receipt.json",
+      "path": "input/dsgb-shared-tail-l10-v1/original-basis-model-receipt.json",
+      "sha256": "55eb80b5fb2b967a32266b5888afb249f525abde4eefd754e7d35a1f5a5f730d"
+    },
+    {
+      "bytes": 22941,
+      "origin": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1/input/dsgb-shared-tail-l10-v1/prepared.json.gz",
+      "path": "input/dsgb-shared-tail-l10-v1/prepared.json.gz",
+      "sha256": "cb659f052f4b8cff959d2d2e210d7741926c44504063e421e727ab5972a71d23"
+    },
+    {
+      "bytes": 1140,
+      "origin": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1/input/dsgb-shared-tail-l6-v1/declaration.json",
+      "path": "input/dsgb-shared-tail-l6-v1/declaration.json",
+      "sha256": "6fd72605fb7a8917c1b2a424c758e4d883f69d13bc55e32aa69527f09e9d9c54"
+    },
+    {
+      "bytes": 1271,
+      "origin": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1/input/dsgb-shared-tail-l6-v1/original-basis-model-receipt.json",
+      "path": "input/dsgb-shared-tail-l6-v1/original-basis-model-receipt.json",
+      "sha256": "f9ec394668282a1178b7717e529bc905b1b87ef02101c801f0174eeafe859bff"
+    },
+    {
+      "bytes": 6023,
+      "origin": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1/input/dsgb-shared-tail-l6-v1/prepared.json.gz",
+      "path": "input/dsgb-shared-tail-l6-v1/prepared.json.gz",
+      "sha256": "7ae42461847f45b3e4e640533d5bd3dc9aa36cd7f63dfaddea3548155e1d2ffe"
+    },
+    {
+      "bytes": 1222,
+      "origin": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1/input/dsgb-ungrounded-l10-v1/declaration.json",
+      "path": "input/dsgb-ungrounded-l10-v1/declaration.json",
+      "sha256": "528a81aaf6247fc4fbd89fd9fa81bc2cb14451f373c791b7560364d7afb3fd3f"
+    },
+    {
+      "bytes": 1280,
+      "origin": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1/input/dsgb-ungrounded-l10-v1/original-basis-model-receipt.json",
+      "path": "input/dsgb-ungrounded-l10-v1/original-basis-model-receipt.json",
+      "sha256": "499ea87b75211d493d2b5a59c58aec6adb58088d0b087c92e0b6751703d75760"
+    },
+    {
+      "bytes": 27897,
+      "origin": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1/input/dsgb-ungrounded-l10-v1/prepared.json.gz",
+      "path": "input/dsgb-ungrounded-l10-v1/prepared.json.gz",
+      "sha256": "8746161140ba91b9be5b8fcba3265d9026ba059c571006db44bea58d2a561c72"
+    },
+    {
+      "bytes": 1220,
+      "origin": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1/input/dsgb-ungrounded-l6-v1/declaration.json",
+      "path": "input/dsgb-ungrounded-l6-v1/declaration.json",
+      "sha256": "49749de74ce76a28586555ed24920605a64b479257c1c3fe15b29753463a9fba"
+    },
+    {
+      "bytes": 1272,
+      "origin": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1/input/dsgb-ungrounded-l6-v1/original-basis-model-receipt.json",
+      "path": "input/dsgb-ungrounded-l6-v1/original-basis-model-receipt.json",
+      "sha256": "9de003d716e34a7b37bc320d386c7824bf86d61d2010243d9dd8e06bd2559859"
+    },
+    {
+      "bytes": 6946,
+      "origin": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1/input/dsgb-ungrounded-l6-v1/prepared.json.gz",
+      "path": "input/dsgb-ungrounded-l6-v1/prepared.json.gz",
+      "sha256": "71c0cb59ee91ca5f11dd238596484dd56a1bbbff95181047c3a9d87d7b08088e"
+    },
+    {
+      "bytes": 9433,
+      "origin": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1/plan/budget-calibration-plan-v1.md",
+      "path": "plan/budget-calibration-plan-v1.md",
+      "sha256": "ecaa4a4a262478106c803d19a915e9d858d333bc496d39d0ff47f8d6c162a75c"
+    },
+    {
+      "bytes": 19596,
+      "origin": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1/plan/input-declarations-v1.json",
+      "path": "plan/input-declarations-v1.json",
+      "sha256": "220e2649f75a428b85aae12081a075adbc4bf7edc1a1782e8dcf70915008673a"
+    },
+    {
+      "bytes": 2535,
+      "origin": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1/plan/root-review-v1.md",
+      "path": "plan/root-review-v1.md",
+      "sha256": "e9388f3a64adb75a233298e5fddee7e18d2e3b6496b7c5ca88fa0e4b03592acc"
+    },
+    {
+      "bytes": 17217,
+      "origin": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1/plan/saved-metrics-context-v1.json",
+      "path": "plan/saved-metrics-context-v1.json",
+      "sha256": "2535f8260764d73e82b7fbc57e45ae6ed6ac9a02f049442f3ac5d2c86919385d"
+    },
+    {
+      "bytes": 21657,
+      "origin": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1/reference/basic-tiling-algorithm.md",
+      "path": "reference/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    {
+      "bytes": 39556,
+      "origin": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1/reference/upstream/growing_point_search_v2.py",
+      "path": "reference/upstream/growing_point_search_v2.py",
+      "sha256": "6e9687145ec2c86719266e07f7ddee4077d88a386c67152dec368657eae43cbb"
+    },
+    {
+      "bytes": 21560,
+      "origin": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1/reference/upstream/native_fol_checker_v1.py",
+      "path": "reference/upstream/native_fol_checker_v1.py",
+      "sha256": "099454304f3a67c8ec49b1a3685c0dc0896662ae0bc26a18db9320d6cb3404b1"
+    },
+    {
+      "bytes": 34073,
+      "origin": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1/reference/upstream/shared_fact_checker_v1.py",
+      "path": "reference/upstream/shared_fact_checker_v1.py",
+      "sha256": "d550bbd3b4a773cef2a9c54cd7850c0b6587fd46263c6e43365b62e44c44a48e"
+    },
+    {
+      "bytes": 22422,
+      "origin": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1/reference/upstream/shared_fact_model_v1.py",
+      "path": "reference/upstream/shared_fact_model_v1.py",
+      "sha256": "455fadf33dea5150b5e35fde599a8edb59c1adac1041d2214a44156a97b6e32e"
+    },
+    {
+      "bytes": 1355,
+      "origin": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1/review/Source-handoff-v1.json",
+      "path": "review/Source-handoff-v1.json",
+      "sha256": "22b021c94cabba2ba40f391979ff455c395e46557e4338e31d916b26c6cf4482"
+    },
+    {
+      "bytes": 4931,
+      "origin": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1/review/driver-Source-API-v1.md",
+      "path": "review/driver-Source-API-v1.md",
+      "sha256": "d5154ba0c877bc6ba50089e9f4aaa59b957466aa22828d45d0ba353178a055b1"
+    },
+    {
+      "bytes": 20094,
+      "origin": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1/review/driver-before-reporting-closure-v1.py",
+      "path": "review/driver-before-reporting-closure-v1.py",
+      "sha256": "20ebaf20883e91126061e0639d30ce44345c2723aece4fa137bf24575c90f32c"
+    },
+    {
+      "bytes": 10837,
+      "origin": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1/review/input-dependency-snapshot-v1.json",
+      "path": "review/input-dependency-snapshot-v1.json",
+      "sha256": "48fcaaf49df3b29ecaa878db92df791a9d3f9d9353c60291066b9f4335313ec2"
+    },
+    {
+      "bytes": 8283,
+      "origin": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1/review/peer-resource-driver-v1.md",
+      "path": "review/peer-resource-driver-v1.md",
+      "sha256": "550d319832c441b52396c75d84305d364efee69a4f0aa0772c2d66fc32211802"
+    },
+    {
+      "bytes": 298,
+      "origin": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1/review/seen-off-dsgb-alternate-l10-v1-invocation.json",
+      "path": "review/seen-off-dsgb-alternate-l10-v1-invocation.json",
+      "sha256": "2538f6d7e2e65b6f7d9afb44d00bc89920c73bd96c2dadc155c85892d3fb0b3c"
+    },
+    {
+      "bytes": 1546,
+      "origin": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1/review/seen-off-dsgb-alternate-l10-v1-native.log",
+      "path": "review/seen-off-dsgb-alternate-l10-v1-native.log",
+      "sha256": "9520c2e8781300283c373f76c2d1550830c8f47a109727dd5fdd734cdb827b72"
+    },
+    {
+      "bytes": 832,
+      "origin": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1/review/seen-off-dsgb-alternate-l10-v1-observer.json",
+      "path": "review/seen-off-dsgb-alternate-l10-v1-observer.json",
+      "sha256": "f61e4e4830152e4bb718ede27c2fadb43b480c16a1e122da9d304e3f3bd11ac4"
+    },
+    {
+      "bytes": 20885,
+      "origin": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1/source/run_resource_diagnostic_v1.py",
+      "path": "source/run_resource_diagnostic_v1.py",
+      "sha256": "9d9995b3db26e889b22b40fdd8ceca45c1f7325427e83ff13520fce7ec8610c9"
+    }
+  ],
+  "logical_proof_validity": "SEPARATE_PASSIVE_AUDIT_NOT_READ_OR_ASSUMED_BY_CONTINUATION_SOLVER",
+  "materialization_scope": "References only now. Root may materialize all original bytes for archiving after review; no alias-only public archive claim. No history selected/decoded proof file is read by the continuation driver.",
+  "native_exit_code": 1,
+  "origin_root": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-shared-resource-calibration-20261103-v1",
+  "original_files": 51,
+  "phase_id": "seen-off-dsgb-alternate-l10-v1",
+  "postcheck_error": "tuple indices must be integers or slices, not str",
+  "schema": "CALv1-first-attempt-archive-reference-v1",
+  "status": "REFERENCE_ONLY_PENDING_ROOT_ARCHIVE_REVIEW"
+}
