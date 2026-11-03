@@ -1,0 +1,1590 @@
+{
+  "schema": "RF-full-evidence-v1",
+  "original_files": 262,
+  "original_bytes": 27471481,
+  "files": [
+    {
+      "path": "README-evidence-v1.txt",
+      "bytes": 1664,
+      "sha256": "aca9b58191ff9dd548f45db9c42f510e3cec3a62b824d38b20bccb1c2078a94e",
+      "part": 1
+    },
+    {
+      "path": "data/RL_BINDING_GCTS-weights-frozen-v1.json",
+      "bytes": 2161,
+      "sha256": "c6485077d336fb3fd5b88e126bad24109d9d05809c94737ec62763cc813399d3",
+      "part": 1
+    },
+    {
+      "path": "data/RL_SHAPE_GCTS-weights-frozen-v1.json",
+      "bytes": 2097,
+      "sha256": "9ce45b5a6c392a54200c63c40af3301c73918a0acaa6150b15ffd84787f11615",
+      "part": 1
+    },
+    {
+      "path": "data/cohort-frozen-v1.json",
+      "bytes": 71311,
+      "sha256": "9dea8dcf04eaabd4ae17139dbb18195c86a8037aeeb48e99023e5aea73c813d6",
+      "part": 1
+    },
+    {
+      "path": "data/donors-v1.json.gz",
+      "bytes": 9686,
+      "sha256": "f40516409470e15b796ff050d994763c16d08f7657fff8747df13618c2b28d7f",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-horn-0--CLUSTER_DFS_CONTROL.json.gz",
+      "bytes": 303,
+      "sha256": "adb96b65afa3cdb6f16e06a95c6cb9b9a6dfa8bd14b6970d9be35774fac420d7",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-horn-0--DP_CONTROL.json.gz",
+      "bytes": 806,
+      "sha256": "ff7f231661cd6c9a4ad27cc6f4cf2e680932ef8090bf40bf69633b12566a03a5",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-horn-0--LEXICAL_GCTS.json.gz",
+      "bytes": 4971,
+      "sha256": "37abb612b6ef97a0afccad3262801480cddaff3cd84fcd39419a3c8c39d6dd67",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-horn-0--RL_BINDING_GCTS.json.gz",
+      "bytes": 5067,
+      "sha256": "1d22d066895b0a65e7bc586c15a3e8b06655a46305a90a367ba8cb398a0e62eb",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-horn-0--RL_BINDING_LEADER_ONLY_GCTS.json.gz",
+      "bytes": 5076,
+      "sha256": "f02e711695012366ce525baae04d8cf775621e19eb014028df6756e5c79779cc",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-horn-0--RL_SHAPE_GCTS.json.gz",
+      "bytes": 5067,
+      "sha256": "d501d56798717dae1cb4a5ba061c4d08e104c9d7aa2538940d9f2f12594efae1",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-horn-0--SEM_HEURISTIC_GCTS.json.gz",
+      "bytes": 5073,
+      "sha256": "d997ec766ad0b9e0ece29d91c5094ed0004487bcbf8d8df41b3e51af3ab0d5fa",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-horn-0--SEM_UNIFORM_GCTS.json.gz",
+      "bytes": 5073,
+      "sha256": "5cad461e25f9b6b4a141e8869bf6b7c64b505cdcd8729680f0aec2379d0b57a9",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-horn-1--CLUSTER_DFS_CONTROL.json.gz",
+      "bytes": 304,
+      "sha256": "d5836621478fb96d39ac7abd118f4e3e1ee198233fe81fa48695145714d0e30e",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-horn-1--DP_CONTROL.json.gz",
+      "bytes": 807,
+      "sha256": "bf5f9754c5e5b9b20038af153ef13ac17f740c81bb24781ab71ff188d20a9420",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-horn-1--LEXICAL_GCTS.json.gz",
+      "bytes": 4966,
+      "sha256": "947b11814fe8f4515791c4509a599654cec71aa9133b08f8143a1d106462cdf2",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-horn-1--RL_BINDING_GCTS.json.gz",
+      "bytes": 5066,
+      "sha256": "fb275363f97a6a1f58c376b6792c951907dc7f1c02df71568169f12a12ff342b",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-horn-1--RL_BINDING_LEADER_ONLY_GCTS.json.gz",
+      "bytes": 5073,
+      "sha256": "ab1ae2bd612b1b0409a7622b0099bce85c6a4e0b747197f2eee2fd6b73ec7018",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-horn-1--RL_SHAPE_GCTS.json.gz",
+      "bytes": 5063,
+      "sha256": "634499d295153e2386e83f3acc6580bbe57863158e613ee9098820ae49346ee1",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-horn-1--SEM_HEURISTIC_GCTS.json.gz",
+      "bytes": 5071,
+      "sha256": "5d59ed8a4cb570297ad557e5d60348a91ccc74296d994998b1d6b3fc6b03b65a",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-horn-1--SEM_UNIFORM_GCTS.json.gz",
+      "bytes": 5062,
+      "sha256": "5bb4f5e9510ef739dd459091748a63ddb107d2dc5901325072505b859b4e8768",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-horn-2--CLUSTER_DFS_CONTROL.json.gz",
+      "bytes": 305,
+      "sha256": "a0ec148cf6eb0787bd8642819a5d1e10644e904096db1fd8ad8eb390d5d50624",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-horn-2--DP_CONTROL.json.gz",
+      "bytes": 802,
+      "sha256": "e0a6acef9bdd1538817447b95624daa9a031b543cc5a9f1e4cd1634c36410d96",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-horn-2--LEXICAL_GCTS.json.gz",
+      "bytes": 4972,
+      "sha256": "ecb449fdc55d54a05e32a8a847d4be9c35ba937bf2a3d29e95f35deaccb419b2",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-horn-2--RL_BINDING_GCTS.json.gz",
+      "bytes": 5068,
+      "sha256": "3e99fe35405e8c2fa3abc9a5b5610c06f63c2410f124b4c549efeeb85dd82dc0",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-horn-2--RL_BINDING_LEADER_ONLY_GCTS.json.gz",
+      "bytes": 5082,
+      "sha256": "5b98ad23da158aaf947e984d21a5ea03751121dae2e20193d2f5000f2ea72d4e",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-horn-2--RL_SHAPE_GCTS.json.gz",
+      "bytes": 5072,
+      "sha256": "45dec1558d88118938f0eec9e485b3dadee519c34f812d70f42ca82832511277",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-horn-2--SEM_HEURISTIC_GCTS.json.gz",
+      "bytes": 5074,
+      "sha256": "131edf3ab2479a600a85bb0403615ee8e2f92d21b89e809457a661a63d4fa676",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-horn-2--SEM_UNIFORM_GCTS.json.gz",
+      "bytes": 5074,
+      "sha256": "aaf33694220466a23584b9ede8fa24e52e28d62310e03310f51f1dbf8dcc3225",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-horn-3--CLUSTER_DFS_CONTROL.json.gz",
+      "bytes": 306,
+      "sha256": "81783c8a4c839928985d7b4eb9d99dee9b13f9ecaf0b102a6dbbed84ad59b1ee",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-horn-3--DP_CONTROL.json.gz",
+      "bytes": 798,
+      "sha256": "965981030bca40ae55b9aa527aba39b2a9a850714ec104a4c0c53d83df265e6e",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-horn-3--LEXICAL_GCTS.json.gz",
+      "bytes": 4969,
+      "sha256": "ec195a9a545753b913bffe6dd2c7e1bb73d1d7592f4023b83224b5fa16b8cabc",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-horn-3--RL_BINDING_GCTS.json.gz",
+      "bytes": 5065,
+      "sha256": "83f75ae6e4d8f9e4b26fb652f99503df24497abedfac54bcc740f50e091e80b5",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-horn-3--RL_BINDING_LEADER_ONLY_GCTS.json.gz",
+      "bytes": 5078,
+      "sha256": "3aa334c9faecbc14bb783fdf4fc024cd62f21fa6b4fcf9679b2942df9e77f060",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-horn-3--RL_SHAPE_GCTS.json.gz",
+      "bytes": 5066,
+      "sha256": "fb7a089384df354178b1d7f75e084953ed519f13279a318dc9a39fcf92c8cef1",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-horn-3--SEM_HEURISTIC_GCTS.json.gz",
+      "bytes": 5071,
+      "sha256": "4c309b4791de25da8c3df706887cbecebccd9672b17fb07f316eb885b6e03820",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-horn-3--SEM_UNIFORM_GCTS.json.gz",
+      "bytes": 5068,
+      "sha256": "05340a1bc0a5ddcaf0737b32ba2651fd30050bf0dd6a03581acab84705e72afd",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-horn-4--CLUSTER_DFS_CONTROL.json.gz",
+      "bytes": 2963,
+      "sha256": "d40057b0e029947a1c2b270750920a10bc469b20ac1f15ebaa22ef846444a3c1",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-horn-4--DP_CONTROL.json.gz",
+      "bytes": 804,
+      "sha256": "3f0442e54e4f47bf2d44f2aa46a095f5ef54880991c1462a38393465255da395",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-horn-4--LEXICAL_GCTS.json.gz",
+      "bytes": 90250,
+      "sha256": "892c6482beb6fb79af28747504fd8aa71fa66125cbec7f945281760d844f2e28",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-horn-4--RL_BINDING_GCTS.json.gz",
+      "bytes": 93127,
+      "sha256": "35b4beba529442a765d58ea525640826607b44831726b1b7e0656331b3fb7851",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-horn-4--RL_BINDING_LEADER_ONLY_GCTS.json.gz",
+      "bytes": 93006,
+      "sha256": "958941d9933d1c2eafcdb3cda5ffc2d7d1da9d2299bcb8213f911a96eab32e36",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-horn-4--RL_SHAPE_GCTS.json.gz",
+      "bytes": 93102,
+      "sha256": "4e23d82e51711c0a9857b5daf5b104f4e03f2c1fc8c45529b468cbfe48504174",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-horn-4--SEM_HEURISTIC_GCTS.json.gz",
+      "bytes": 93139,
+      "sha256": "ac5d3932b13236863437298303ed50264cb5d6c17b219ba240d3745dc9f91d0e",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-horn-4--SEM_UNIFORM_GCTS.json.gz",
+      "bytes": 93133,
+      "sha256": "504553c5a70346d44370ed3a316d1e04df99004aaf91ceb964c01732cff075f9",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-horn-5--CLUSTER_DFS_CONTROL.json.gz",
+      "bytes": 12606,
+      "sha256": "bdd9dff3e69915072f2e157e604eb691bd60f3e21b756e672fe78421ecfa8b26",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-horn-5--DP_CONTROL.json.gz",
+      "bytes": 6958,
+      "sha256": "d62bfc40904ba0f0ebf9be475cd6ec6298abe5ac096c8af83058d100371282d6",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-horn-5--LEXICAL_GCTS.json.gz",
+      "bytes": 170915,
+      "sha256": "89c8ec76df2fa91506b8b4690e659d088d0b24fa4418aa2fcea225fe931eb0d1",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-horn-5--RL_BINDING_GCTS.json.gz",
+      "bytes": 110365,
+      "sha256": "f16f21006cfffcd8085411700ede0482dec14a93e3e42ac2130b413761921612",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-horn-5--RL_BINDING_LEADER_ONLY_GCTS.json.gz",
+      "bytes": 109530,
+      "sha256": "5cf088777b68bf3e6b8fa5bd78211109f91ab4f658b023b26453397d862b9e2e",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-horn-5--RL_SHAPE_GCTS.json.gz",
+      "bytes": 94589,
+      "sha256": "ecc1614aa90d339bd564b25353be63aa483951dc2a40e690b037a9086a3a31f8",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-horn-5--SEM_HEURISTIC_GCTS.json.gz",
+      "bytes": 109766,
+      "sha256": "8e31320031483ae4244c8cb4ff2036b7d2fc17564fc2e66885d4afb84a1a6936",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-horn-5--SEM_UNIFORM_GCTS.json.gz",
+      "bytes": 111014,
+      "sha256": "3b58f16a9a4bf0b78112e6e7469289ee904ef529a7c3a88d3d815b3e70ebdcaa",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-incidence-mark-1--CLUSTER_DFS_CONTROL.json.gz",
+      "bytes": 26000,
+      "sha256": "3a5e1e37d7a35875fc6b8f047dc8f16a25e86e70e959da445e692de6cdc8ecc7",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-incidence-mark-1--DP_CONTROL.json.gz",
+      "bytes": 3633,
+      "sha256": "099a855807282453f966aad263a1efe4e8957de1e0f1fea05d1780b47debb081",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-incidence-mark-1--LEXICAL_GCTS.json.gz",
+      "bytes": 859882,
+      "sha256": "da076a290484efa54e1f2dae2835073add7f80f5097a0294cdba0d365c2392b8",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-incidence-mark-1--RL_BINDING_GCTS.json.gz",
+      "bytes": 58472,
+      "sha256": "34a427a37bc78a28d73a73c36e74fce225c1d4f48e165d6f1df311d672ed294e",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-incidence-mark-1--RL_BINDING_LEADER_ONLY_GCTS.json.gz",
+      "bytes": 45038,
+      "sha256": "89631871017016274aef801d8d3e95090a15ac62ad9c5026b87da053022c97d7",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-incidence-mark-1--RL_SHAPE_GCTS.json.gz",
+      "bytes": 11991,
+      "sha256": "88ba11a97acf386b6d0aa2c62a7d352b6d2283ab448b79835b4385704dba9829",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-incidence-mark-1--SEM_HEURISTIC_GCTS.json.gz",
+      "bytes": 15386,
+      "sha256": "58d8b1c677179b6c3d101ced62cd081ea424f92acbd47d2df9e50586d23d57eb",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-incidence-mark-1--SEM_UNIFORM_GCTS.json.gz",
+      "bytes": 12611,
+      "sha256": "688bad6af8c065d3bcb0c558f14052b0445cd310404e477e38132f4ce951f5a8",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-incidence-mark-2--CLUSTER_DFS_CONTROL.json.gz",
+      "bytes": 29406,
+      "sha256": "5409faf46af4caeb1026fd4a61036c372e509f7183424dc5b794c7ce4f5f6866",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-incidence-mark-2--DP_CONTROL.json.gz",
+      "bytes": 3684,
+      "sha256": "80a9fd7123c9695b288f9c38d803b1b9076ec6e022a9add5847af570f97b193a",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-incidence-mark-2--LEXICAL_GCTS.json.gz",
+      "bytes": 814220,
+      "sha256": "f6c64e8b2f5596f8bb42ce70f4297fee4d307edcd380ec81a4ccf34151c5f4dc",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-incidence-mark-2--RL_BINDING_GCTS.json.gz",
+      "bytes": 45618,
+      "sha256": "77530261c1d95a5003a5c4c38e464c0de1b18df3323068e454595d5141100d38",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-incidence-mark-2--RL_BINDING_LEADER_ONLY_GCTS.json.gz",
+      "bytes": 52362,
+      "sha256": "608bd4ae62b5c1b233222a6108f82b450526dc353da03013940d3229d798d656",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-incidence-mark-2--RL_SHAPE_GCTS.json.gz",
+      "bytes": 31267,
+      "sha256": "d5c2781bb191d51dc06934ce4959c273c7a66561c3480125bf1e4e1e6feeef82",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-incidence-mark-2--SEM_HEURISTIC_GCTS.json.gz",
+      "bytes": 17214,
+      "sha256": "5c5ad77769a0a50550fc46bd6438f272326c3675c5d0571b0c19dab2623c3e33",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-incidence-mark-2--SEM_UNIFORM_GCTS.json.gz",
+      "bytes": 17471,
+      "sha256": "b66db79735a613c2d594b73aa46aa798b775717f47359702a4ca03bae0b9f2ff",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-incidence-mark-3--CLUSTER_DFS_CONTROL.json.gz",
+      "bytes": 25391,
+      "sha256": "b0f0a1f59d340e773014b9b52736f80ff301c4b7a6b873139307a44c9559535f",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-incidence-mark-3--DP_CONTROL.json.gz",
+      "bytes": 3785,
+      "sha256": "1101eedf89a2ff0d9e6d54e0c97b425467b0f64779ab923ebf3cbb14ad51a194",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-incidence-mark-3--LEXICAL_GCTS.json.gz",
+      "bytes": 1211960,
+      "sha256": "e5ded96d2103afbd559a80d73b8c3463396fdefdcc9fec4e40e96f4026d8f2f1",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-incidence-mark-3--RL_BINDING_GCTS.json.gz",
+      "bytes": 47257,
+      "sha256": "56eb02f0dcf7f2870ef3139fabe626851093b989a426c075e806aa68bf549c44",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-incidence-mark-3--RL_BINDING_LEADER_ONLY_GCTS.json.gz",
+      "bytes": 55425,
+      "sha256": "c435ddecf061cdcf0faa6741ead269c068da045e1acb023768fe3f1ee14657e6",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-incidence-mark-3--RL_SHAPE_GCTS.json.gz",
+      "bytes": 18780,
+      "sha256": "edfbdf0ce62bf055298ec6c9db5fce8db2ffdde711014c7e2e89df1211997917",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-incidence-mark-3--SEM_HEURISTIC_GCTS.json.gz",
+      "bytes": 19455,
+      "sha256": "29aa39708cafd264f853faef8e0c1c6fbad33f4b3c2e96d232c2485d28af37d6",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-incidence-mark-3--SEM_UNIFORM_GCTS.json.gz",
+      "bytes": 19464,
+      "sha256": "ff3785c4188d52e329dccae03f809828e2a57941b2db85b28fb6b3bd0dce1892",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-incidence-mark-4--CLUSTER_DFS_CONTROL.json.gz",
+      "bytes": 14744,
+      "sha256": "f6e30a3f109024eab8bc79388e072b75ee3e83e05474be5370457dd5bc98d0f2",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-incidence-mark-4--DP_CONTROL.json.gz",
+      "bytes": 3815,
+      "sha256": "9aac3368183809943e9190b6365a155e75fcd64f462fc9f8bc7207cc15a3d858",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-incidence-mark-4--LEXICAL_GCTS.json.gz",
+      "bytes": 951209,
+      "sha256": "5b0cf8e5d7f64793a3459054948ac4ac26bcc901d6860ba2842c5b134aa527ce",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-incidence-mark-4--RL_BINDING_GCTS.json.gz",
+      "bytes": 51131,
+      "sha256": "4e0bd66eee3c2c459ae362a1501a5d8f45f6b9ec6aa01bdc3d0902dc8c135e7a",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-incidence-mark-4--RL_BINDING_LEADER_ONLY_GCTS.json.gz",
+      "bytes": 85837,
+      "sha256": "0972dc817babb4056d685e817f456e18c380e94810636bf711b924a604113735",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-incidence-mark-4--RL_SHAPE_GCTS.json.gz",
+      "bytes": 58615,
+      "sha256": "11911ab9700b1906acc17e805c0a1f5d1764da2c1c31b8d1b48e15bb61d0f1d0",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-incidence-mark-4--SEM_HEURISTIC_GCTS.json.gz",
+      "bytes": 66669,
+      "sha256": "7a8505c433374debab70a53efaced454f4bf93d3968d63c0a6de9fac41d15fa9",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-incidence-mark-4--SEM_UNIFORM_GCTS.json.gz",
+      "bytes": 64710,
+      "sha256": "4540c2d6752bff04f4faaa50945fa3ecdc4cb58bef08e92ab913b0f06e462d4b",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-pa-d2-k3--CLUSTER_DFS_CONTROL.json.gz",
+      "bytes": 5975,
+      "sha256": "2bfb74979ac81cb5d8265d58b24cb0298e06e7b6183293030fb58c4512096046",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-pa-d2-k3--DP_CONTROL.json.gz",
+      "bytes": 2827,
+      "sha256": "2d531867eed9f6e01ff4afbb3914ffd3323a87a64d88f9932b6eedfdf9ebb94c",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-pa-d2-k3--LEXICAL_GCTS.json.gz",
+      "bytes": 649829,
+      "sha256": "73da9b5ee3a5dd03b7f33008286c7ecc8520c7d4936909431add448201a773e7",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-pa-d2-k3--RL_BINDING_GCTS.json.gz",
+      "bytes": 49114,
+      "sha256": "da0943c92f6f3ec9653604116b2226f1fadc559477bec4266a9d5f472657fb5b",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-pa-d2-k3--RL_BINDING_LEADER_ONLY_GCTS.json.gz",
+      "bytes": 110911,
+      "sha256": "70afcce5ce9bc669082f5ad9a5e059b7e4b138d6555723da5674c33b1effab4a",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-pa-d2-k3--RL_SHAPE_GCTS.json.gz",
+      "bytes": 46732,
+      "sha256": "92ae1f89ac73d17812dab4e9269cc05daa16a968f09c8d04bacfee469f4896ee",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-pa-d2-k3--SEM_HEURISTIC_GCTS.json.gz",
+      "bytes": 18825,
+      "sha256": "175c730a5004cb072bb22125f610ad14223d4e120dec1e517bb5bf0f8ba61294",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-pa-d2-k3--SEM_UNIFORM_GCTS.json.gz",
+      "bytes": 12080,
+      "sha256": "1f2a2e6f9c875ff690d7f7005cf677664a55bbbf362000e111781f95f9d16729",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-pa-d2-k4--CLUSTER_DFS_CONTROL.json.gz",
+      "bytes": 6043,
+      "sha256": "9c5a1b39a196c65b7a0fa147c5c616c0c7cf76d7129a736ddd74132859ff8f59",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-pa-d2-k4--DP_CONTROL.json.gz",
+      "bytes": 3115,
+      "sha256": "351f231763afa7f6ed7454d4250679444f8d073de6c6b409809e0ae4e4c8ca55",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-pa-d2-k4--LEXICAL_GCTS.json.gz",
+      "bytes": 199276,
+      "sha256": "06750297562df1196bd34280d6c5ece785488259f3eb059e29bdea1bb850e53b",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-pa-d2-k4--RL_BINDING_GCTS.json.gz",
+      "bytes": 49043,
+      "sha256": "451a7f350e1365be2c938c2c1f32d8d6b1b9dc86b8e14e0d41e2fcc5522e5915",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-pa-d2-k4--RL_BINDING_LEADER_ONLY_GCTS.json.gz",
+      "bytes": 111533,
+      "sha256": "f7c2ff42667ac292d72cd16913df43ae267fd506268c2767daf6c015f0758af3",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-pa-d2-k4--RL_SHAPE_GCTS.json.gz",
+      "bytes": 25092,
+      "sha256": "a9ea7b3fe744d93a0006ac65213cb14e51dde30625abcaeb44730f741875a41f",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-pa-d2-k4--SEM_HEURISTIC_GCTS.json.gz",
+      "bytes": 19411,
+      "sha256": "575c0697702afdedb1fafaf1018fd68ee1bcb1138036818ba20980c3d75737b5",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-pa-d2-k4--SEM_UNIFORM_GCTS.json.gz",
+      "bytes": 30395,
+      "sha256": "a5121a9fdf5a68d34d29207586b261c85baaea7a83699c99f4b1df6a733d4fca",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-pa-d2-k5--CLUSTER_DFS_CONTROL.json.gz",
+      "bytes": 6105,
+      "sha256": "14e1a5190ccd96401b04cc9dc0a81b0ed83923dffab05f838d05f7a99ad194db",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-pa-d2-k5--DP_CONTROL.json.gz",
+      "bytes": 3225,
+      "sha256": "875fb3704b9aa39a5e00152e6de098c768694a28fc0c2dc3f12f065dbb9300eb",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-pa-d2-k5--LEXICAL_GCTS.json.gz",
+      "bytes": 289562,
+      "sha256": "1f3ae91a183c07d9e6ac0c6a933f3ab35a3187da5ca4acf85939b57fe1856545",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-pa-d2-k5--RL_BINDING_GCTS.json.gz",
+      "bytes": 49349,
+      "sha256": "0f256d227ad208631a6858373be1f03f558ef002b17cefcc243a518ab78fff50",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-pa-d2-k5--RL_BINDING_LEADER_ONLY_GCTS.json.gz",
+      "bytes": 105682,
+      "sha256": "48573ac0be8aff24596f74dfe46fa403b3b17a844b0dacca3d185e51c509aa80",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-pa-d2-k5--RL_SHAPE_GCTS.json.gz",
+      "bytes": 26391,
+      "sha256": "730793564a34b956c965558c437865e8418d60e88c7dd63cd78483e08f441db5",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-pa-d2-k5--SEM_HEURISTIC_GCTS.json.gz",
+      "bytes": 20386,
+      "sha256": "4bc027e3b62b60892bec2af37356419c1a04829e262debe0640279aab078eb4e",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-pa-d2-k5--SEM_UNIFORM_GCTS.json.gz",
+      "bytes": 17989,
+      "sha256": "168bd898ca7319823f80ff7820d48bcd4a3ad9d592a7892bf49012b04dada4dc",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-pa-d3-k3--CLUSTER_DFS_CONTROL.json.gz",
+      "bytes": 6034,
+      "sha256": "2aed3157f071f3071b2cb37da121010c8caeb9318c8a04322eeb5d49b44b5c2f",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-pa-d3-k3--DP_CONTROL.json.gz",
+      "bytes": 3094,
+      "sha256": "6446d7983bbe25a8c25e92dbb9f361bc103b73dc49db6d0d2cec4f7a4fd86035",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-pa-d3-k3--LEXICAL_GCTS.json.gz",
+      "bytes": 544457,
+      "sha256": "471da1cfc6a24a7cedcbd7ad268c3aa8e099a19ff65537a3675f1c7c7496c622",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-pa-d3-k3--RL_BINDING_GCTS.json.gz",
+      "bytes": 48003,
+      "sha256": "ff53e027332e417cac473c2a34b33cc5bb5d8380628fc19aa8910583a4b5641b",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-pa-d3-k3--RL_BINDING_LEADER_ONLY_GCTS.json.gz",
+      "bytes": 99334,
+      "sha256": "ebfb3cc4f5a8332a5859679df6adbe488c7cf1d9cc8dce1de7c9080cceac9fbd",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-pa-d3-k3--RL_SHAPE_GCTS.json.gz",
+      "bytes": 18266,
+      "sha256": "82406f3a69edd92791d9e08fe608c0d7486d987b74f5530d0ad48ef03d37c640",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-pa-d3-k3--SEM_HEURISTIC_GCTS.json.gz",
+      "bytes": 19962,
+      "sha256": "de569d340299cc5de8fe7aaea1da9144391c5209fcceed8e3827c6c17628357e",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-pa-d3-k3--SEM_UNIFORM_GCTS.json.gz",
+      "bytes": 103925,
+      "sha256": "4b78a469673a6e80953b0297b136f86715c8037c8c89aab9e22893547d9d12db",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-pa-d3-k4--CLUSTER_DFS_CONTROL.json.gz",
+      "bytes": 6111,
+      "sha256": "216ac6b7aee465fde9cdfb122265f16a862a526b5b6ee61f14e805729b2df892",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-pa-d3-k4--DP_CONTROL.json.gz",
+      "bytes": 3205,
+      "sha256": "aa5fc467d0ae23eb9de87e6d3bb8d01b6ae5e3f9cb93206d068cc70e063518c8",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-pa-d3-k4--LEXICAL_GCTS.json.gz",
+      "bytes": 761968,
+      "sha256": "7d0d87278a3e674fc4705e773eb1369cb688d6a52b374bef09010edb6c3eb3c9",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-pa-d3-k4--RL_BINDING_GCTS.json.gz",
+      "bytes": 48223,
+      "sha256": "d882225a9ada66eb32a8bba7a00d1b71bb1e98d8b13e4d22863b6f7ea290810b",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-pa-d3-k4--RL_BINDING_LEADER_ONLY_GCTS.json.gz",
+      "bytes": 96344,
+      "sha256": "b83d8fdddca1601ee5eee2f01ac640533490956e7858f251df70e2c675811451",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-pa-d3-k4--RL_SHAPE_GCTS.json.gz",
+      "bytes": 19479,
+      "sha256": "f814c4e08b94293b7effe40142cdda19a8b66892966a83ff787cb76c7637bf36",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-pa-d3-k4--SEM_HEURISTIC_GCTS.json.gz",
+      "bytes": 21089,
+      "sha256": "ea44b954518ab6ebe931f8379851d8b50ea743fc4fe0279deec00d757475d955",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-pa-d3-k4--SEM_UNIFORM_GCTS.json.gz",
+      "bytes": 41567,
+      "sha256": "fa66f759cf7b18b44cbb3ba8a66424026828f8aafb8e2c7bc91ecfbc5e14169e",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-pa-d3-k5--CLUSTER_DFS_CONTROL.json.gz",
+      "bytes": 6195,
+      "sha256": "aadbfac3e7e8bb8c5d4fdb667f0fab29086bcd0894a7b0a17554e6e460303c80",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-pa-d3-k5--DP_CONTROL.json.gz",
+      "bytes": 3288,
+      "sha256": "748404a467c659fcc77138ad873f46ca5038a5af189bedb69e40eebb322ca776",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-pa-d3-k5--LEXICAL_GCTS.json.gz",
+      "bytes": 480232,
+      "sha256": "3c47e2f693f34cc5902f90494a17e01150236471e0b1341d85497a54e2af6356",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-pa-d3-k5--RL_BINDING_GCTS.json.gz",
+      "bytes": 43353,
+      "sha256": "cd785381bb13638d717cd6a2887a0d27fac0a4ac9fe464c83238ab3ca9961dcf",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-pa-d3-k5--RL_BINDING_LEADER_ONLY_GCTS.json.gz",
+      "bytes": 88983,
+      "sha256": "d3d5d815718ff9e878eb4b12b263b6a549da0289fa21880901a31967e2d5191c",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-pa-d3-k5--RL_SHAPE_GCTS.json.gz",
+      "bytes": 47429,
+      "sha256": "38e5fcccc735d10f077252ab3ea460dc74c1b05063e233c50b440ba2567d1db3",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-pa-d3-k5--SEM_HEURISTIC_GCTS.json.gz",
+      "bytes": 23034,
+      "sha256": "a25cec504aced02294fc5ef016cb0f4e987464ab2a4b305ba16e498d798b3d58",
+      "part": 1
+    },
+    {
+      "path": "data/evaluation/test-pa-d3-k5--SEM_UNIFORM_GCTS.json.gz",
+      "bytes": 46032,
+      "sha256": "66c085d84c0dbfab3f9254273e34903bb8162bbda235f8ab409570b9266c434e",
+      "part": 1
+    },
+    {
+      "path": "data/library-frozen-v1.json",
+      "bytes": 281513,
+      "sha256": "9ed490623cbef7f13f25ea8e17d9d3b285cdb51bc494561a3af35312a8ca2e46",
+      "part": 1
+    },
+    {
+      "path": "data/prepared/test-horn-0.json.gz",
+      "bytes": 12060,
+      "sha256": "5efe7824ebbb3eaade0be2484f4fa41124dd085d500fd47611582949bef81ef8",
+      "part": 1
+    },
+    {
+      "path": "data/prepared/test-horn-1.json.gz",
+      "bytes": 11848,
+      "sha256": "001d20cc69e89bfac912bfbb394cebf6f37f3950c224b1986589b6db08e41544",
+      "part": 1
+    },
+    {
+      "path": "data/prepared/test-horn-2.json.gz",
+      "bytes": 13883,
+      "sha256": "410afc8797b0852034a5e641f587b8238ca7631be6dc8c1d1ba3db8aaf564a7b",
+      "part": 1
+    },
+    {
+      "path": "data/prepared/test-horn-3.json.gz",
+      "bytes": 12391,
+      "sha256": "11914723fa10f9ff913c7c5f3a6bb92b5b3f88cc0c1b00bd4a54e39a774634c9",
+      "part": 1
+    },
+    {
+      "path": "data/prepared/test-horn-4.json.gz",
+      "bytes": 12615,
+      "sha256": "dfdea0620c08b74e4c2fb7d4ea85a884d6aaf1b3c271b0418c06371c6c783736",
+      "part": 1
+    },
+    {
+      "path": "data/prepared/test-horn-5.json.gz",
+      "bytes": 13463,
+      "sha256": "8542fcad1def717c4d052686f3ef950f943b41264571fe0a5f91fd1bde5a2b44",
+      "part": 1
+    },
+    {
+      "path": "data/prepared/test-incidence-mark-1.json.gz",
+      "bytes": 29102,
+      "sha256": "b14f17f80c56a4b8c0fa2fc6e2ebbb3247fa3a4cb92ce591f5b1745303567c1d",
+      "part": 1
+    },
+    {
+      "path": "data/prepared/test-incidence-mark-2.json.gz",
+      "bytes": 45402,
+      "sha256": "12f12f91f2c860b511ef1de775cd76027caad6311ba947d1deaab2c2a92caae0",
+      "part": 1
+    },
+    {
+      "path": "data/prepared/test-incidence-mark-3.json.gz",
+      "bytes": 69795,
+      "sha256": "a0cb9028d83493e6cea91ab1f26cb0783b5236502014abb5d6bce8b3093dfc76",
+      "part": 1
+    },
+    {
+      "path": "data/prepared/test-incidence-mark-4.json.gz",
+      "bytes": 98238,
+      "sha256": "82635ab8970b04a6a193531c93e81bd20ab42432e6d03797f1e3ef9043893933",
+      "part": 1
+    },
+    {
+      "path": "data/prepared/test-pa-d2-k3.json.gz",
+      "bytes": 58589,
+      "sha256": "02f2dcfcba2535084e4a9acd146049cb1ad91e3b45d865e24f28dab7fe71b538",
+      "part": 1
+    },
+    {
+      "path": "data/prepared/test-pa-d2-k4.json.gz",
+      "bytes": 72562,
+      "sha256": "a0a50c5f09006d0ed3ad85512fb5ab71a40317153b0ebbb892e66689d57e4e08",
+      "part": 1
+    },
+    {
+      "path": "data/prepared/test-pa-d2-k5.json.gz",
+      "bytes": 88939,
+      "sha256": "24511ce3348e74cb6c3c2100c4871c1035b56a480ebc6fb9da6cc8787f930c3e",
+      "part": 1
+    },
+    {
+      "path": "data/prepared/test-pa-d3-k3.json.gz",
+      "bytes": 87555,
+      "sha256": "e6dc8c493b07d595a6c633a09df2326563e478cec9f1a07b71746b63089212e6",
+      "part": 1
+    },
+    {
+      "path": "data/prepared/test-pa-d3-k4.json.gz",
+      "bytes": 106631,
+      "sha256": "b1df9933b650c37e896e76bf7fb99cca2f3b12aeec7c5439c06a79064e4a698b",
+      "part": 1
+    },
+    {
+      "path": "data/prepared/test-pa-d3-k5.json.gz",
+      "bytes": 125444,
+      "sha256": "4722ed08521de12358f8d3c9b6b713c61be422353e17822bade3df40b2ca00b0",
+      "part": 1
+    },
+    {
+      "path": "data/prepared/train-horn-0.json.gz",
+      "bytes": 5388,
+      "sha256": "a6feef45a34706db6f69f5dd2908ce5056e56246a287751e9f7ae5510529864a",
+      "part": 1
+    },
+    {
+      "path": "data/prepared/train-horn-1.json.gz",
+      "bytes": 7153,
+      "sha256": "9a4f0d4355f1839b7cbb0f60c5e239205c64ae06e1cf8690d7a85bffa621b944",
+      "part": 1
+    },
+    {
+      "path": "data/prepared/train-horn-2.json.gz",
+      "bytes": 5191,
+      "sha256": "bd6059c044d64c34070a7edc608e39c864a3b246132d52c62d40cc6a7da8d1f2",
+      "part": 1
+    },
+    {
+      "path": "data/prepared/train-horn-3.json.gz",
+      "bytes": 6934,
+      "sha256": "55d28b65801f8b6070c42b550fab0bef393be72045c8b0d87b8c2a4305bf790e",
+      "part": 1
+    },
+    {
+      "path": "data/prepared/train-pa-d1-k1.json.gz",
+      "bytes": 20747,
+      "sha256": "aa704fc4babb2cd2177997cd10fed4aaa2094bf8bc709e689b35756b452414f0",
+      "part": 1
+    },
+    {
+      "path": "data/prepared/train-pa-d1-k2.json.gz",
+      "bytes": 27944,
+      "sha256": "ff741f381856f281300075fc897bf8c5c44fd7b3a9d83b70ffb1ad1da8bee0b3",
+      "part": 1
+    },
+    {
+      "path": "data/prepared/train-pa-d2-k1.json.gz",
+      "bytes": 35906,
+      "sha256": "eed80958c80a543f6515d5eb02ae61b63d6e075c1e9444116d2055555fa3e3c6",
+      "part": 1
+    },
+    {
+      "path": "data/prepared/train-pa-d2-k2.json.gz",
+      "bytes": 45949,
+      "sha256": "f8befc5048d09ea9ab060e7dd0d8e4427a33e707045b451d71bc1ddc67e9120d",
+      "part": 1
+    },
+    {
+      "path": "data/results-v1.json.gz",
+      "bytes": 10577023,
+      "sha256": "b3483916597396ca4a8a051dce979b5374ec8f41c90ad542d482df46d15865d2",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_BINDING_GCTS-00.json.gz",
+      "bytes": 6455,
+      "sha256": "c0a1669b4cf14b689e5ec058aa5cf8c5045548d5560801ecbd5b4aa687e80f52",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_BINDING_GCTS-01.json.gz",
+      "bytes": 7218,
+      "sha256": "e51671373e00128018fdca538d4a5e80f878765a1a5a7bc537667015bbd1f39d",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_BINDING_GCTS-02.json.gz",
+      "bytes": 7623,
+      "sha256": "3f656d8859eee81025c7ba7be7aa743bf168b2d93e04af33db9cfccb40fc899b",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_BINDING_GCTS-03.json.gz",
+      "bytes": 10578,
+      "sha256": "0f35263a45b860ff67d8b1f4619d4f8e00905153dd33c1fb247435db33e20f5e",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_BINDING_GCTS-04.json.gz",
+      "bytes": 36260,
+      "sha256": "92c781b2622e5e65fc462c5d420ec4b0b7f13a57f1617460b584bab81897c10d",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_BINDING_GCTS-05.json.gz",
+      "bytes": 11476,
+      "sha256": "e3f73bf5af4e06f88effcb5e5a8821c8a70a9637d0ffd1bcc4a9f01f074fbb53",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_BINDING_GCTS-06.json.gz",
+      "bytes": 40102,
+      "sha256": "379cb888701f984c6fad9cb6eada7a78cc81a3db145a2bfdcff99d19155cfb3a",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_BINDING_GCTS-07.json.gz",
+      "bytes": 22698,
+      "sha256": "1c8c7b111e5b8dd89c9d25e3093b6a9c5c14c6b61e6a24c7970b186d7a646d1c",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_BINDING_GCTS-08.json.gz",
+      "bytes": 7342,
+      "sha256": "d2f69444d5130f02e194f2cbe22c895c52897408f954ee14daa2ba94d49b9863",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_BINDING_GCTS-09.json.gz",
+      "bytes": 11372,
+      "sha256": "49483c995c7376c92be46cb82b5b3a99ff368404f593af4845f5e1fc147fcbc7",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_BINDING_GCTS-10.json.gz",
+      "bytes": 8459,
+      "sha256": "249e8df95871f6d183cd09defc67dee3f6900c12438e4dd588b29260934a065c",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_BINDING_GCTS-11.json.gz",
+      "bytes": 11308,
+      "sha256": "d8c2db49417c24026de6ea8b639759f0676f7819c80b8f05a4f40473de4029de",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_BINDING_GCTS-12.json.gz",
+      "bytes": 21130,
+      "sha256": "b09eed6c6752e401331764c31d15f016930de9c53274e4e5168ce6334618126c",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_BINDING_GCTS-13.json.gz",
+      "bytes": 47383,
+      "sha256": "552e4e84fc671e644d66c73acb899850b644c0d7e141395fa11bdb2d6c9f702d",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_BINDING_GCTS-14.json.gz",
+      "bytes": 26650,
+      "sha256": "49ce783bc324d35003c44e2a4e1ba400b8e988bc683b4e23154f5e8187ce5371",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_BINDING_GCTS-15.json.gz",
+      "bytes": 25291,
+      "sha256": "6504667a2c4cd8e725a4b9bae4b5c34b572f7a7c4ab4185f5a0c08cff87e32fb",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_BINDING_GCTS-16.json.gz",
+      "bytes": 7390,
+      "sha256": "3dcdc970a843eda174bc53865ee70ac91b99588122e38f3d04f57aac61c72964",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_BINDING_GCTS-17.json.gz",
+      "bytes": 12184,
+      "sha256": "e8a82b6bd7294927626f72113c4f759dc33d561ec7b2086fdac2b1024a0c282e",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_BINDING_GCTS-18.json.gz",
+      "bytes": 8476,
+      "sha256": "95912c271a976877563ffad3ac63a6f1e8c922a074ae18805a77dfbb9b2b60a3",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_BINDING_GCTS-19.json.gz",
+      "bytes": 11330,
+      "sha256": "85c659b6033d29656f4252ad7af08e4b94df50f905643aa090ffcef1cb1cb059",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_BINDING_GCTS-20.json.gz",
+      "bytes": 36662,
+      "sha256": "0612696ca1680b5f0c1b9b6a924748c031344d6f6a05f00b019b28cda21a36f0",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_BINDING_GCTS-21.json.gz",
+      "bytes": 25574,
+      "sha256": "d93eebedc76b4087587c90d6737a334373919ef83135d538e8d059fac77350fd",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_BINDING_GCTS-22.json.gz",
+      "bytes": 33861,
+      "sha256": "89ef83283bc0b2187a61e09b286042a10ea691fa73236ac535d577465d168eba",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_BINDING_GCTS-23.json.gz",
+      "bytes": 29757,
+      "sha256": "c61f875f3e179e204455403892571a39082a1d429f4e1bdcea4bcc4cbec20217",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_BINDING_GCTS-24.json.gz",
+      "bytes": 7436,
+      "sha256": "6db3bc081d9b429099a9d99d254b61edef4f11b6f6e5e86c4b6515d783386c4b",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_BINDING_GCTS-25.json.gz",
+      "bytes": 11461,
+      "sha256": "4c88158fca4d19a61f3eadf2a4048213dc54a99a4fa29f7fdd6caac7e6688b56",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_BINDING_GCTS-26.json.gz",
+      "bytes": 8523,
+      "sha256": "1d8da2078bba420d36184afe6645f4c6448186a1e5288c6c64187e3b4bebd06a",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_BINDING_GCTS-27.json.gz",
+      "bytes": 12217,
+      "sha256": "ca13ffa58a60301a5d25a5e6096c26302b016f3763b0396e098c504ae6f1e0cf",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_BINDING_GCTS-28.json.gz",
+      "bytes": 29535,
+      "sha256": "4bb35c6a774238f7cd0bf2b341c3f527db67ad11d1ba4a51110495bb3aace1c5",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_BINDING_GCTS-29.json.gz",
+      "bytes": 11759,
+      "sha256": "1c716d2920381129171d6973a4aa275248dd9ee88057889da092a2354e90c89d",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_BINDING_GCTS-30.json.gz",
+      "bytes": 19540,
+      "sha256": "be2f04ed093362a4c0220e87bf6611acae74b26e48f707c2e8612aaadd884955",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_BINDING_GCTS-31.json.gz",
+      "bytes": 50115,
+      "sha256": "6c4c67fa649dd1ed3f05fd17781b762dd2e1dc0007f63ca1db7e58d1dac11a26",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_SHAPE_GCTS-00.json.gz",
+      "bytes": 6453,
+      "sha256": "bc15256208975ebb3fe53d62953346d88308ff457f097ea6251c517ba73c3c35",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_SHAPE_GCTS-01.json.gz",
+      "bytes": 7076,
+      "sha256": "7b61d259e4d2e88eca024d6aa9d98d0fe2e4304fd4fd81d88e2fce978501857b",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_SHAPE_GCTS-02.json.gz",
+      "bytes": 7575,
+      "sha256": "5e9809d327c364cd9a4a64774b40dc9d5c9a4e9a14ab5813a1a1275c886e2b6a",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_SHAPE_GCTS-03.json.gz",
+      "bytes": 10373,
+      "sha256": "c8422add6ca2357c0537ec5dffcac35528596bc8bc9a635b90770d279948ab83",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_SHAPE_GCTS-04.json.gz",
+      "bytes": 35045,
+      "sha256": "95f5ed883c5c51d9e458a810607e4e0bfd793e896e57d0037f96d71128e0fde2",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_SHAPE_GCTS-05.json.gz",
+      "bytes": 10761,
+      "sha256": "f747b00e15b9c38237dc6c2ce5461fd84c6db3c1c0065dfb8bc986009c007440",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_SHAPE_GCTS-06.json.gz",
+      "bytes": 34105,
+      "sha256": "977881fa4f281e70ac243b2f8f2216d562b4e3990ffc5ed2ac626c74a46b817a",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_SHAPE_GCTS-07.json.gz",
+      "bytes": 16568,
+      "sha256": "7ed962c128d4b247516b62c3aadff9fe8f6dcab1d323c70a0ae068fc11291343",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_SHAPE_GCTS-08.json.gz",
+      "bytes": 7131,
+      "sha256": "96de462ec2691a47d6cbf27654ad74132510d60ae7c886ed6d1548559ae419e6",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_SHAPE_GCTS-09.json.gz",
+      "bytes": 11022,
+      "sha256": "a58a89fc15d604e8eb1fb3371500d3412983a203d72a362bef4869c89c8fbafd",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_SHAPE_GCTS-10.json.gz",
+      "bytes": 8222,
+      "sha256": "9abf5dae21df489797998a3ca154327d4266cf755633f88a88253aa36e3a822a",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_SHAPE_GCTS-11.json.gz",
+      "bytes": 10948,
+      "sha256": "0699f01970905b6420f4d5a43782c06db61fb998db473210b4492f8c86e29d2d",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_SHAPE_GCTS-12.json.gz",
+      "bytes": 20104,
+      "sha256": "ce486b57f17c517bc884cd05c9aecf82f7963ee4dce5d709b47e59726590dbcc",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_SHAPE_GCTS-13.json.gz",
+      "bytes": 28649,
+      "sha256": "f6d80534c0a054c08bebfb7683027b653f32de2074bfa81cb7f52ef55fd8d2b7",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_SHAPE_GCTS-14.json.gz",
+      "bytes": 39146,
+      "sha256": "ebe8d629df346a07bf7f0fb92eeec4c1041c6d3edeffc53a3a9182a66fdbc068",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_SHAPE_GCTS-15.json.gz",
+      "bytes": 11834,
+      "sha256": "03abd2f98fd6925dee2aa045f190f04a6bb71f5d88171523a5f1406a25612238",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_SHAPE_GCTS-16.json.gz",
+      "bytes": 7212,
+      "sha256": "258aae9ebea23898f0e95266ad8799fb5df0a036548d68a469d5546a63f427b3",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_SHAPE_GCTS-17.json.gz",
+      "bytes": 11878,
+      "sha256": "a81ce83d94132ff50f7bfa88806a3098bd5d7b06b8dbdcf9239e6023b6a8751d",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_SHAPE_GCTS-18.json.gz",
+      "bytes": 8281,
+      "sha256": "93c49bf1b58872912a0f0a1f8d03822ec0a94407e9c90c5e0b04f2b044be7c86",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_SHAPE_GCTS-19.json.gz",
+      "bytes": 11029,
+      "sha256": "8d80bf45507dcca507019f30eeaa8793052b74dc821f30adb77f0e5bafbfeb72",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_SHAPE_GCTS-20.json.gz",
+      "bytes": 62554,
+      "sha256": "6eedd6fd465df1016506ee664f31b43bcea38f2da2e1da507631438ca4a03d93",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_SHAPE_GCTS-21.json.gz",
+      "bytes": 24553,
+      "sha256": "4c89608f20420c3d9c84f2daaa59c9ca0e10efac42a336ef0025d623523320de",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_SHAPE_GCTS-22.json.gz",
+      "bytes": 28975,
+      "sha256": "b13a10b6bda0cab490f4f19dbbad24008882a5a09be0f26b9eed49fbd0fd97c8",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_SHAPE_GCTS-23.json.gz",
+      "bytes": 35812,
+      "sha256": "da3d9db0ba00c6b85b24c878ace212c361d4520ce6b5681f6d3684ef82a444ce",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_SHAPE_GCTS-24.json.gz",
+      "bytes": 7265,
+      "sha256": "c84784c74167fa87e2a5db8203334418d20173602a434ddb12d3f5e486bd1b64",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_SHAPE_GCTS-25.json.gz",
+      "bytes": 11182,
+      "sha256": "c7f7e9b0a1488e6b70b707768d28718be0cdd6c7d87b4fa01a3979c6c6209334",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_SHAPE_GCTS-26.json.gz",
+      "bytes": 8350,
+      "sha256": "1798084f35ffc8cc801cccecbb31e6df5e13c34398e04858444d65b70308c15a",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_SHAPE_GCTS-27.json.gz",
+      "bytes": 11923,
+      "sha256": "270547dbcf84fea8e76d506e6c563d0967b311e97ac73cf86b0bfd0f53fa8745",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_SHAPE_GCTS-28.json.gz",
+      "bytes": 28057,
+      "sha256": "cb7f265ee8db5778dd3ff26b7dde2f86c039dfe8d53189e378b3ab7cdbd4c087",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_SHAPE_GCTS-29.json.gz",
+      "bytes": 11133,
+      "sha256": "bf394583a1b1fb319914ab679ed6a32aa433fde430330e1b1dccec7cc3742422",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_SHAPE_GCTS-30.json.gz",
+      "bytes": 40045,
+      "sha256": "280e4588f61e717704b655ed4d0ba4dfc2312707b818c9ee0bb45c4d0952b37a",
+      "part": 1
+    },
+    {
+      "path": "data/training/RL_SHAPE_GCTS-31.json.gz",
+      "bytes": 32053,
+      "sha256": "42541519ff14f7ee9dfa57b2edfd04b5932ccda948770e8a95933d1a165e73d9",
+      "part": 1
+    },
+    {
+      "path": "execution-v1.log",
+      "bytes": 24659,
+      "sha256": "fb65446d6592aca5d86e96d92952cacf77345515c2009de1426d118055085106",
+      "part": 1
+    },
+    {
+      "path": "execution-v1.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "part": 1
+    },
+    {
+      "path": "qualification-run-v1/automatic-donor-control.json",
+      "bytes": 8204,
+      "sha256": "a58545d91a3e5bc07a995674107a20948b65030d348225f7bfd036b5511b194e",
+      "part": 1
+    },
+    {
+      "path": "qualification-run-v1/completion.json",
+      "bytes": 518,
+      "sha256": "dd1046da1217c9d2eb693b458d07232c16353e1305ba9a41a9d4b939c5f93b07",
+      "part": 1
+    },
+    {
+      "path": "qualification-run-v1/declared-fixture.json",
+      "bytes": 901,
+      "sha256": "1073e3e7270202d5b195bb5f37468493b256585fcacb59336397dc7a4a05f41b",
+      "part": 1
+    },
+    {
+      "path": "qualification-run-v1/qualification-result.json.gz",
+      "bytes": 16120,
+      "sha256": "cc64bc5787eb528136762e6f36d9325aec5ce4d4fbe398c0a9ca8757ab6b121f",
+      "part": 1
+    },
+    {
+      "path": "reference/cluster_verifier_v2.py",
+      "bytes": 14408,
+      "sha256": "5af38096efc85aa3947eea5028f806b156d61646f010bb25ad9d3c45dbea0f10",
+      "part": 1
+    },
+    {
+      "path": "reference/cluster_verifier_v3.py",
+      "bytes": 14409,
+      "sha256": "e59d08f310f802c23d29c4c1759c19a78ff4c28b650af7fbb106e9ebcc3e2caf",
+      "part": 1
+    },
+    {
+      "path": "reference/design-protocol-review-v1.html",
+      "bytes": 10739,
+      "sha256": "0accf423727ed03ccfb688cb9d3eb335f3ffd0bc9b62e9bd440565c657b557a7",
+      "part": 1
+    },
+    {
+      "path": "reference/design-protocol-review-v1.json",
+      "bytes": 6608,
+      "sha256": "5bb7b047e8040e094f6889a795c84ae61c507d59935baaa18d9a6b8d30f9d18e",
+      "part": 1
+    },
+    {
+      "path": "reference/design-protocol-review-v2.html",
+      "bytes": 3173,
+      "sha256": "6908a2465c887a6ac8b93b82da560972da9a6680ce3590cd6e4eb60f75ad6de8",
+      "part": 1
+    },
+    {
+      "path": "reference/design-protocol-review-v2.json",
+      "bytes": 2898,
+      "sha256": "8848493c5a4338cdacf16b01c5878ccc19f6c2b8e333ef7a350b038680584c77",
+      "part": 1
+    },
+    {
+      "path": "reference/design-v1.txt",
+      "bytes": 3039,
+      "sha256": "1942a91074fc0440e82a4d8837b2c27d8173338dd2e29e36767b51c6fff7c32f",
+      "part": 1
+    },
+    {
+      "path": "reference/qualification_v1.py",
+      "bytes": 12845,
+      "sha256": "972c2f47f5736994a47ebab31715da440417bb2766975aadd37c81050f6e418b",
+      "part": 1
+    },
+    {
+      "path": "reference/receptor-family-checker-API-v1.json",
+      "bytes": 3257,
+      "sha256": "ac91c9edde1c1fae7c283c3b4e142c22f91db558dd3566cc47488d71fa4e8e60",
+      "part": 1
+    },
+    {
+      "path": "reference/receptor_family_checker_v1.py",
+      "bytes": 13220,
+      "sha256": "e7931ab4c631df7e55d1f87260759543b16eaa9d7b5124675d1c0a36feb8d556",
+      "part": 1
+    },
+    {
+      "path": "report/build_report_v1.py",
+      "bytes": 39989,
+      "sha256": "6a8083ae20fa825155427a7654ed660a2958a3fc83f39cf9fde015487dc42707",
+      "part": 1
+    },
+    {
+      "path": "report/initial-reader-summary-v1.json",
+      "bytes": 772780,
+      "sha256": "c3e645a0cbf6657f106b9c671ee9caaed0d397697d3024212980e0dc4316e4da",
+      "part": 1
+    },
+    {
+      "path": "report/initial-reader-v1.html",
+      "bytes": 798330,
+      "sha256": "a1207e75122b9856ab52ade6ed31ec3ac8e5d86dad6d4bc93cc3d0c72f315eff",
+      "part": 1
+    },
+    {
+      "path": "report/receptor-families-v1.html",
+      "bytes": 830079,
+      "sha256": "12047afa1bc595a63b94973fa193a4d7dd6115920068949eb75f9acabfc91e29",
+      "part": 1
+    },
+    {
+      "path": "report/results-summary-v1.json",
+      "bytes": 803251,
+      "sha256": "e6dd934fe1fa2b80e6b71c51658bfcc890bd2cba8e07ddf5875654f94cfcc978",
+      "part": 1
+    },
+    {
+      "path": "review/base-cluster-cap-static-review-v1.json",
+      "bytes": 1571,
+      "sha256": "942156257f4edd15461f78438d021ceba166f5ead38eb35d8d32cb37c4360f88",
+      "part": 1
+    },
+    {
+      "path": "review/conformance-v1.json",
+      "bytes": 2560,
+      "sha256": "cd33e52a9a03e0a4dbd6bea3ac6615ca529db7b9b14e4b7bcdacb1453f9c6c6b",
+      "part": 1
+    },
+    {
+      "path": "review/current-policy-static-v1.json",
+      "bytes": 4922,
+      "sha256": "d81c9ebb9b05ead656da82457b00c13c5386201ae818cdf431502c238cc2b100",
+      "part": 1
+    },
+    {
+      "path": "review/execution-completion-v1.json",
+      "bytes": 2375,
+      "sha256": "6e732454ae6159c3d3f3e0876c8323085a9f54a7b69d5b9876e83e491883cbb8",
+      "part": 1
+    },
+    {
+      "path": "review/local-reader-QA-v1.json",
+      "bytes": 599,
+      "sha256": "82ac3de1f9ec4bff1880d9e6bd4f00b7825fed5a973c27ebd59a32a9a47def26",
+      "part": 1
+    },
+    {
+      "path": "review/results-independent-review-v1.json",
+      "bytes": 61238,
+      "sha256": "65459a558e8524e89f45f1d8febef187deac5c33888a16c365dfa3f80844d51c",
+      "part": 1
+    },
+    {
+      "path": "review/strict-transfer-saved-data-v1.json",
+      "bytes": 26514,
+      "sha256": "e9ef72c2ca1a7ffe52463b0bd57dde2bd9edde1957de2abe6c71bc2d9d50b858",
+      "part": 1
+    },
+    {
+      "path": "source/cases_v1.py",
+      "bytes": 8634,
+      "sha256": "4c91742ccbdf72be61e674339bca9c57fd5047736aa8469c51c1b9eb743c0035",
+      "part": 1
+    },
+    {
+      "path": "source/experiment_v1.py",
+      "bytes": 11678,
+      "sha256": "7bd30258d517ceda308e3b20aece93bca107b2d652c84a73f33a68c127b5c0dc",
+      "part": 1
+    },
+    {
+      "path": "source/family_policy_v1.py",
+      "bytes": 8909,
+      "sha256": "3fb4946dadfae736a319e41eefe9bc124a6ef8159cd0f19658963ae53e738680",
+      "part": 1
+    },
+    {
+      "path": "source/finite_basis_v1.py",
+      "bytes": 14044,
+      "sha256": "97225dcffd98dd5386aeb560a2fc5634dfcc4606ff475a46536207768932a0dc",
+      "part": 1
+    },
+    {
+      "path": "source/proof_core_v1.py",
+      "bytes": 5508,
+      "sha256": "d363b72e6f4355225d3dbbdc66c64f746d27bf96de5c4d8a17471cc95b70091c",
+      "part": 1
+    },
+    {
+      "path": "source/semantic_families_v1.py",
+      "bytes": 10257,
+      "sha256": "ec706b797ce49392855e51cb7f5febee08ddedf0efc2e6d37793ed698ee22976",
+      "part": 1
+    },
+    {
+      "path": "upstream/adoption-v1.json",
+      "bytes": 1595,
+      "sha256": "cfd2c6e108805a06a5393897c3eb188a7b10a699c4b11731d22ed3b036372095",
+      "part": 1
+    },
+    {
+      "path": "upstream/growing_point_search_v2.py",
+      "bytes": 39556,
+      "sha256": "6e9687145ec2c86719266e07f7ddee4077d88a386c67152dec368657eae43cbb",
+      "part": 1
+    },
+    {
+      "path": "upstream/growing_proof_verifier_v2.py",
+      "bytes": 69970,
+      "sha256": "6286d6b151d460e6ee0b97983fd9f081168a6d76256a33c3e0f9ead0ffae3aa1",
+      "part": 1
+    },
+    {
+      "path": "upstream/independent_fol_checker_v1.py",
+      "bytes": 21560,
+      "sha256": "099454304f3a67c8ec49b1a3685c0dc0896662ae0bc26a18db9320d6cb3404b1",
+      "part": 1
+    },
+    {
+      "path": "upstream/indexed_proof_provider_v1.py",
+      "bytes": 26917,
+      "sha256": "5261bf552924105f3c9ac3a4e9ddce0490869105b1812a8d897610267623b26e",
+      "part": 1
+    }
+  ],
+  "exclusions": [
+    "package/ generated archives",
+    "publication/ later deployment receipts"
+  ],
+  "parts": [
+    {
+      "name": "receptor-family-evidence-v1-part01.zip",
+      "bytes": 18715849,
+      "sha256": "4b9e38ec267442b96b7309888b1b35e965c4e09d37c4c88f9d20ef9d526cd2a2"
+    }
+  ]
+}
