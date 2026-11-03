@@ -1,0 +1,34 @@
+{
+  "executed": false,
+  "implemented": false,
+  "models_or_datasets_created": false,
+  "plans": [
+    {
+      "bytes": 11454,
+      "path": "plan/shared-fact-design-v1.md",
+      "sha256": "9719d9c9737d74921ff2daf00346e481e0bda100476d6abd1bce16218b0b2c6a"
+    },
+    {
+      "bytes": 9751,
+      "path": "plan/point-model-ABI-v1.md",
+      "sha256": "d299236d9ce27f45da8922ceccd1d3cdb6f7449391f69230983aa5e32cddcf7f"
+    }
+  ],
+  "proofs_supplied": false,
+  "read_only_inputs": [
+    {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    {
+      "bytes": 39556,
+      "path": "/Users/liuyao/.codex/visualizations/2026/10/09/01a11e8d-0cf0-7ed2-8930-2aa7f4aab37b/gcts-proof-frontier-audit-20261103-v1/reference/growing_point_search_v2.py",
+      "sha256": "6e9687145ec2c86719266e07f7ddee4077d88a386c67152dec368657eae43cbb"
+    }
+  ],
+  "schema": "Shared-fact-search-design-only-handoff-v1",
+  "scientific_code_imported": false,
+  "scope": "New sibling plan files only. Prior reuse/backend Sources, data and publication untouched. No science code, preparation, proof transformation, search, native checking or publication operation ran.",
+  "status": "DESIGN_ONLY"
+}

@@ -1,0 +1,1391 @@
+{
+  "abstract_scheduler_fixture_recipes": [
+    {
+      "construction": "Two explicit roots at zero. One has a singleton legal incident candidate; the other has no candidate. Freeze a fresh tiny explicit model before execution.",
+      "expected": "Initial global dead event precedes all forced placements.",
+      "id": "dsgq-dead-before-forced-recipe-v1",
+      "status": "RECIPE_ONLY_NOT_A_MODEL"
+    },
+    {
+      "construction": "Three explicit roots: first forced candidate assigns a remote mark value incompatible with both candidates at another root, while a later-key independent singleton remains. Freeze exact keys and rows before execution.",
+      "expected": "After the first forced placement, the newly dead root beats the remaining forced move.",
+      "id": "dsgq-forced-remote-dead-recipe-v1",
+      "status": "RECIPE_ONLY_NOT_A_MODEL"
+    },
+    {
+      "construction": "Two equal-generation two-candidate root domains. First root is the deterministic tie winner; its lexical-first candidate assigns remote literal zero, while both candidates at the other root assign literal one. Its second candidate agrees with one. Freeze exact keys/CIDs before execution.",
+      "expected": "At least one failed child, exact rollback and parent-local exclusion; the alternative remains available. Restore state and mark reference counts exactly.",
+      "id": "dsgq-remote-rollback-recipe-v1",
+      "status": "RECIPE_ONLY_NOT_A_MODEL"
+    }
+  ],
+  "benchmark_cases": [
+    {
+      "case": {
+        "generation": {
+          "generator_version": "DSG-declarations-only-qualification-v1",
+          "seed": null,
+          "structural_group": "shared",
+          "structural_partition": "benchmark"
+        },
+        "id": "dsgb-shared-l6-v1",
+        "limits": {
+          "max_depth": 128,
+          "max_formulas": 48,
+          "max_items": 2000000,
+          "max_rows": 25000,
+          "max_slots": 64,
+          "max_zero_definitions": 256,
+          "wall_seconds": 10.0
+        },
+        "profile": {
+          "allow_gen": false,
+          "formula_universe_version": "LITERAL_SORTED_CANONICAL_JSON_V1",
+          "kind": "GROUND_HORN_SUBFORMULAS_V1",
+          "slots": 6,
+          "variables": [],
+          "zero_instance_profile": "ASSUMPTIONS_ONLY"
+        },
+        "schema": "Shared-fact-proof-case-v1",
+        "statement": {
+          "goal": [
+            "pred",
+            "dsgb_shared_v1_G",
+            []
+          ],
+          "theory": {
+            "axioms": {
+              "branch_one": [
+                "imp",
+                [
+                  "pred",
+                  "dsgb_shared_v1_A",
+                  []
+                ],
+                [
+                  "pred",
+                  "dsgb_shared_v1_B",
+                  []
+                ]
+              ],
+              "branch_two": [
+                "imp",
+                [
+                  "pred",
+                  "dsgb_shared_v1_A",
+                  []
+                ],
+                [
+                  "imp",
+                  [
+                    "pred",
+                    "dsgb_shared_v1_B",
+                    []
+                  ],
+                  [
+                    "pred",
+                    "dsgb_shared_v1_G",
+                    []
+                  ]
+                ]
+              ],
+              "origin": [
+                "pred",
+                "dsgb_shared_v1_A",
+                []
+              ]
+            },
+            "functions": {},
+            "predicates": {
+              "dsgb_shared_v1_A": 0,
+              "dsgb_shared_v1_B": 0,
+              "dsgb_shared_v1_G": 0
+            }
+          }
+        }
+      },
+      "comparison_unit": "one frozen declaration at one slot bound",
+      "expectation_status": "PROSPECTIVE_CHECK_NOT_OBSERVED",
+      "expected_bounded_existence": true,
+      "purpose": "A single acquired premise is useful to different consumers; require actual shared-reference evidence in any completed six-slot proof.",
+      "related_bound_cases_are_not_independent_theorems": true,
+      "tiny_point_oracle_required": false
+    },
+    {
+      "case": {
+        "generation": {
+          "generator_version": "DSG-declarations-only-qualification-v1",
+          "seed": null,
+          "structural_group": "shared",
+          "structural_partition": "benchmark"
+        },
+        "id": "dsgb-shared-l10-v1",
+        "limits": {
+          "max_depth": 128,
+          "max_formulas": 48,
+          "max_items": 2000000,
+          "max_rows": 25000,
+          "max_slots": 64,
+          "max_zero_definitions": 256,
+          "wall_seconds": 10.0
+        },
+        "profile": {
+          "allow_gen": false,
+          "formula_universe_version": "LITERAL_SORTED_CANONICAL_JSON_V1",
+          "kind": "GROUND_HORN_SUBFORMULAS_V1",
+          "slots": 10,
+          "variables": [],
+          "zero_instance_profile": "ASSUMPTIONS_ONLY"
+        },
+        "schema": "Shared-fact-proof-case-v1",
+        "statement": {
+          "goal": [
+            "pred",
+            "dsgb_shared_v1_G",
+            []
+          ],
+          "theory": {
+            "axioms": {
+              "branch_one": [
+                "imp",
+                [
+                  "pred",
+                  "dsgb_shared_v1_A",
+                  []
+                ],
+                [
+                  "pred",
+                  "dsgb_shared_v1_B",
+                  []
+                ]
+              ],
+              "branch_two": [
+                "imp",
+                [
+                  "pred",
+                  "dsgb_shared_v1_A",
+                  []
+                ],
+                [
+                  "imp",
+                  [
+                    "pred",
+                    "dsgb_shared_v1_B",
+                    []
+                  ],
+                  [
+                    "pred",
+                    "dsgb_shared_v1_G",
+                    []
+                  ]
+                ]
+              ],
+              "origin": [
+                "pred",
+                "dsgb_shared_v1_A",
+                []
+              ]
+            },
+            "functions": {},
+            "predicates": {
+              "dsgb_shared_v1_A": 0,
+              "dsgb_shared_v1_B": 0,
+              "dsgb_shared_v1_G": 0
+            }
+          }
+        }
+      },
+      "comparison_unit": "one frozen declaration at one slot bound",
+      "expectation_status": "PROSPECTIVE_CHECK_NOT_OBSERVED",
+      "expected_bounded_existence": true,
+      "purpose": "A single acquired premise is useful to different consumers; require actual shared-reference evidence in any completed six-slot proof.",
+      "related_bound_cases_are_not_independent_theorems": true,
+      "tiny_point_oracle_required": false
+    },
+    {
+      "case": {
+        "generation": {
+          "generator_version": "DSG-declarations-only-qualification-v1",
+          "seed": null,
+          "structural_group": "shared-tail",
+          "structural_partition": "benchmark"
+        },
+        "id": "dsgb-shared-tail-l6-v1",
+        "limits": {
+          "max_depth": 128,
+          "max_formulas": 48,
+          "max_items": 2000000,
+          "max_rows": 25000,
+          "max_slots": 64,
+          "max_zero_definitions": 256,
+          "wall_seconds": 10.0
+        },
+        "profile": {
+          "allow_gen": false,
+          "formula_universe_version": "LITERAL_SORTED_CANONICAL_JSON_V1",
+          "kind": "GROUND_HORN_SUBFORMULAS_V1",
+          "slots": 6,
+          "variables": [],
+          "zero_instance_profile": "ASSUMPTIONS_ONLY"
+        },
+        "schema": "Shared-fact-proof-case-v1",
+        "statement": {
+          "goal": [
+            "pred",
+            "dsgb_shared_tail_v1_G",
+            []
+          ],
+          "theory": {
+            "axioms": {
+              "branch_one": [
+                "imp",
+                [
+                  "pred",
+                  "dsgb_shared_tail_v1_A",
+                  []
+                ],
+                [
+                  "pred",
+                  "dsgb_shared_tail_v1_B",
+                  []
+                ]
+              ],
+              "branch_two": [
+                "imp",
+                [
+                  "pred",
+                  "dsgb_shared_tail_v1_A",
+                  []
+                ],
+                [
+                  "imp",
+                  [
+                    "pred",
+                    "dsgb_shared_tail_v1_B",
+                    []
+                  ],
+                  [
+                    "pred",
+                    "dsgb_shared_tail_v1_C",
+                    []
+                  ]
+                ]
+              ],
+              "origin": [
+                "pred",
+                "dsgb_shared_tail_v1_A",
+                []
+              ],
+              "tail": [
+                "imp",
+                [
+                  "pred",
+                  "dsgb_shared_tail_v1_C",
+                  []
+                ],
+                [
+                  "pred",
+                  "dsgb_shared_tail_v1_G",
+                  []
+                ]
+              ]
+            },
+            "functions": {},
+            "predicates": {
+              "dsgb_shared_tail_v1_A": 0,
+              "dsgb_shared_tail_v1_B": 0,
+              "dsgb_shared_tail_v1_C": 0,
+              "dsgb_shared_tail_v1_G": 0
+            }
+          }
+        }
+      },
+      "comparison_unit": "one frozen declaration at one slot bound",
+      "expectation_status": "PROSPECTIVE_CHECK_NOT_OBSERVED",
+      "expected_bounded_existence": false,
+      "purpose": "Related shared-read motif plus an additional counted terminal implication gives a bounded-negative/positive pair.",
+      "related_bound_cases_are_not_independent_theorems": true,
+      "tiny_point_oracle_required": false
+    },
+    {
+      "case": {
+        "generation": {
+          "generator_version": "DSG-declarations-only-qualification-v1",
+          "seed": null,
+          "structural_group": "shared-tail",
+          "structural_partition": "benchmark"
+        },
+        "id": "dsgb-shared-tail-l10-v1",
+        "limits": {
+          "max_depth": 128,
+          "max_formulas": 48,
+          "max_items": 2000000,
+          "max_rows": 25000,
+          "max_slots": 64,
+          "max_zero_definitions": 256,
+          "wall_seconds": 10.0
+        },
+        "profile": {
+          "allow_gen": false,
+          "formula_universe_version": "LITERAL_SORTED_CANONICAL_JSON_V1",
+          "kind": "GROUND_HORN_SUBFORMULAS_V1",
+          "slots": 10,
+          "variables": [],
+          "zero_instance_profile": "ASSUMPTIONS_ONLY"
+        },
+        "schema": "Shared-fact-proof-case-v1",
+        "statement": {
+          "goal": [
+            "pred",
+            "dsgb_shared_tail_v1_G",
+            []
+          ],
+          "theory": {
+            "axioms": {
+              "branch_one": [
+                "imp",
+                [
+                  "pred",
+                  "dsgb_shared_tail_v1_A",
+                  []
+                ],
+                [
+                  "pred",
+                  "dsgb_shared_tail_v1_B",
+                  []
+                ]
+              ],
+              "branch_two": [
+                "imp",
+                [
+                  "pred",
+                  "dsgb_shared_tail_v1_A",
+                  []
+                ],
+                [
+                  "imp",
+                  [
+                    "pred",
+                    "dsgb_shared_tail_v1_B",
+                    []
+                  ],
+                  [
+                    "pred",
+                    "dsgb_shared_tail_v1_C",
+                    []
+                  ]
+                ]
+              ],
+              "origin": [
+                "pred",
+                "dsgb_shared_tail_v1_A",
+                []
+              ],
+              "tail": [
+                "imp",
+                [
+                  "pred",
+                  "dsgb_shared_tail_v1_C",
+                  []
+                ],
+                [
+                  "pred",
+                  "dsgb_shared_tail_v1_G",
+                  []
+                ]
+              ]
+            },
+            "functions": {},
+            "predicates": {
+              "dsgb_shared_tail_v1_A": 0,
+              "dsgb_shared_tail_v1_B": 0,
+              "dsgb_shared_tail_v1_C": 0,
+              "dsgb_shared_tail_v1_G": 0
+            }
+          }
+        }
+      },
+      "comparison_unit": "one frozen declaration at one slot bound",
+      "expectation_status": "PROSPECTIVE_CHECK_NOT_OBSERVED",
+      "expected_bounded_existence": true,
+      "purpose": "Related shared-read motif plus an additional counted terminal implication gives a bounded-negative/positive pair.",
+      "related_bound_cases_are_not_independent_theorems": true,
+      "tiny_point_oracle_required": false
+    },
+    {
+      "case": {
+        "generation": {
+          "generator_version": "DSG-declarations-only-qualification-v1",
+          "seed": null,
+          "structural_group": "alternate",
+          "structural_partition": "benchmark"
+        },
+        "id": "dsgb-alternate-l6-v1",
+        "limits": {
+          "max_depth": 128,
+          "max_formulas": 48,
+          "max_items": 2000000,
+          "max_rows": 25000,
+          "max_slots": 64,
+          "max_zero_definitions": 256,
+          "wall_seconds": 10.0
+        },
+        "profile": {
+          "allow_gen": false,
+          "formula_universe_version": "LITERAL_SORTED_CANONICAL_JSON_V1",
+          "kind": "GROUND_HORN_SUBFORMULAS_V1",
+          "slots": 6,
+          "variables": [],
+          "zero_instance_profile": "ASSUMPTIONS_ONLY"
+        },
+        "schema": "Shared-fact-proof-case-v1",
+        "statement": {
+          "goal": [
+            "pred",
+            "dsgb_alternate_v1_G",
+            []
+          ],
+          "theory": {
+            "axioms": {
+              "dead_cycle": [
+                "imp",
+                [
+                  "pred",
+                  "dsgb_alternate_v1_U",
+                  []
+                ],
+                [
+                  "pred",
+                  "dsgb_alternate_v1_U",
+                  []
+                ]
+              ],
+              "dead_terminal": [
+                "imp",
+                [
+                  "pred",
+                  "dsgb_alternate_v1_U",
+                  []
+                ],
+                [
+                  "pred",
+                  "dsgb_alternate_v1_G",
+                  []
+                ]
+              ],
+              "link": [
+                "imp",
+                [
+                  "pred",
+                  "dsgb_alternate_v1_A",
+                  []
+                ],
+                [
+                  "pred",
+                  "dsgb_alternate_v1_B",
+                  []
+                ]
+              ],
+              "live_terminal": [
+                "imp",
+                [
+                  "pred",
+                  "dsgb_alternate_v1_B",
+                  []
+                ],
+                [
+                  "pred",
+                  "dsgb_alternate_v1_G",
+                  []
+                ]
+              ],
+              "origin": [
+                "pred",
+                "dsgb_alternate_v1_A",
+                []
+              ],
+              "padding_cycle": [
+                "imp",
+                [
+                  "pred",
+                  "dsgb_alternate_v1_B",
+                  []
+                ],
+                [
+                  "pred",
+                  "dsgb_alternate_v1_B",
+                  []
+                ]
+              ]
+            },
+            "functions": {},
+            "predicates": {
+              "dsgb_alternate_v1_A": 0,
+              "dsgb_alternate_v1_B": 0,
+              "dsgb_alternate_v1_G": 0,
+              "dsgb_alternate_v1_U": 0
+            }
+          }
+        }
+      },
+      "comparison_unit": "one frozen declaration at one slot bound",
+      "expectation_status": "PROSPECTIVE_CHECK_NOT_OBSERVED",
+      "expected_bounded_existence": true,
+      "purpose": "Alternative terminal implications include an ungrounded premise and a harmless grounded cycle; failed choices and rollback are measured, not assumed.",
+      "related_bound_cases_are_not_independent_theorems": true,
+      "tiny_point_oracle_required": false
+    },
+    {
+      "case": {
+        "generation": {
+          "generator_version": "DSG-declarations-only-qualification-v1",
+          "seed": null,
+          "structural_group": "alternate",
+          "structural_partition": "benchmark"
+        },
+        "id": "dsgb-alternate-l10-v1",
+        "limits": {
+          "max_depth": 128,
+          "max_formulas": 48,
+          "max_items": 2000000,
+          "max_rows": 25000,
+          "max_slots": 64,
+          "max_zero_definitions": 256,
+          "wall_seconds": 10.0
+        },
+        "profile": {
+          "allow_gen": false,
+          "formula_universe_version": "LITERAL_SORTED_CANONICAL_JSON_V1",
+          "kind": "GROUND_HORN_SUBFORMULAS_V1",
+          "slots": 10,
+          "variables": [],
+          "zero_instance_profile": "ASSUMPTIONS_ONLY"
+        },
+        "schema": "Shared-fact-proof-case-v1",
+        "statement": {
+          "goal": [
+            "pred",
+            "dsgb_alternate_v1_G",
+            []
+          ],
+          "theory": {
+            "axioms": {
+              "dead_cycle": [
+                "imp",
+                [
+                  "pred",
+                  "dsgb_alternate_v1_U",
+                  []
+                ],
+                [
+                  "pred",
+                  "dsgb_alternate_v1_U",
+                  []
+                ]
+              ],
+              "dead_terminal": [
+                "imp",
+                [
+                  "pred",
+                  "dsgb_alternate_v1_U",
+                  []
+                ],
+                [
+                  "pred",
+                  "dsgb_alternate_v1_G",
+                  []
+                ]
+              ],
+              "link": [
+                "imp",
+                [
+                  "pred",
+                  "dsgb_alternate_v1_A",
+                  []
+                ],
+                [
+                  "pred",
+                  "dsgb_alternate_v1_B",
+                  []
+                ]
+              ],
+              "live_terminal": [
+                "imp",
+                [
+                  "pred",
+                  "dsgb_alternate_v1_B",
+                  []
+                ],
+                [
+                  "pred",
+                  "dsgb_alternate_v1_G",
+                  []
+                ]
+              ],
+              "origin": [
+                "pred",
+                "dsgb_alternate_v1_A",
+                []
+              ],
+              "padding_cycle": [
+                "imp",
+                [
+                  "pred",
+                  "dsgb_alternate_v1_B",
+                  []
+                ],
+                [
+                  "pred",
+                  "dsgb_alternate_v1_B",
+                  []
+                ]
+              ]
+            },
+            "functions": {},
+            "predicates": {
+              "dsgb_alternate_v1_A": 0,
+              "dsgb_alternate_v1_B": 0,
+              "dsgb_alternate_v1_G": 0,
+              "dsgb_alternate_v1_U": 0
+            }
+          }
+        }
+      },
+      "comparison_unit": "one frozen declaration at one slot bound",
+      "expectation_status": "PROSPECTIVE_CHECK_NOT_OBSERVED",
+      "expected_bounded_existence": true,
+      "purpose": "Alternative terminal implications include an ungrounded premise and a harmless grounded cycle; failed choices and rollback are measured, not assumed.",
+      "related_bound_cases_are_not_independent_theorems": true,
+      "tiny_point_oracle_required": false
+    },
+    {
+      "case": {
+        "generation": {
+          "generator_version": "DSG-declarations-only-qualification-v1",
+          "seed": null,
+          "structural_group": "ungrounded",
+          "structural_partition": "benchmark"
+        },
+        "id": "dsgb-ungrounded-l6-v1",
+        "limits": {
+          "max_depth": 128,
+          "max_formulas": 48,
+          "max_items": 2000000,
+          "max_rows": 25000,
+          "max_slots": 64,
+          "max_zero_definitions": 256,
+          "wall_seconds": 10.0
+        },
+        "profile": {
+          "allow_gen": false,
+          "formula_universe_version": "LITERAL_SORTED_CANONICAL_JSON_V1",
+          "kind": "GROUND_HORN_SUBFORMULAS_V1",
+          "slots": 6,
+          "variables": [],
+          "zero_instance_profile": "ASSUMPTIONS_ONLY"
+        },
+        "schema": "Shared-fact-proof-case-v1",
+        "statement": {
+          "goal": [
+            "pred",
+            "dsgb_ungrounded_v1_G",
+            []
+          ],
+          "theory": {
+            "axioms": {
+              "cycle_ab": [
+                "imp",
+                [
+                  "pred",
+                  "dsgb_ungrounded_v1_A",
+                  []
+                ],
+                [
+                  "pred",
+                  "dsgb_ungrounded_v1_B",
+                  []
+                ]
+              ],
+              "cycle_ba": [
+                "imp",
+                [
+                  "pred",
+                  "dsgb_ungrounded_v1_B",
+                  []
+                ],
+                [
+                  "pred",
+                  "dsgb_ungrounded_v1_A",
+                  []
+                ]
+              ],
+              "cycle_uu": [
+                "imp",
+                [
+                  "pred",
+                  "dsgb_ungrounded_v1_U",
+                  []
+                ],
+                [
+                  "pred",
+                  "dsgb_ungrounded_v1_U",
+                  []
+                ]
+              ],
+              "terminal_a": [
+                "imp",
+                [
+                  "pred",
+                  "dsgb_ungrounded_v1_A",
+                  []
+                ],
+                [
+                  "pred",
+                  "dsgb_ungrounded_v1_G",
+                  []
+                ]
+              ],
+              "terminal_u": [
+                "imp",
+                [
+                  "pred",
+                  "dsgb_ungrounded_v1_U",
+                  []
+                ],
+                [
+                  "pred",
+                  "dsgb_ungrounded_v1_G",
+                  []
+                ]
+              ]
+            },
+            "functions": {},
+            "predicates": {
+              "dsgb_ungrounded_v1_A": 0,
+              "dsgb_ungrounded_v1_B": 0,
+              "dsgb_ungrounded_v1_G": 0,
+              "dsgb_ungrounded_v1_U": 0
+            }
+          }
+        }
+      },
+      "comparison_unit": "one frozen declaration at one slot bound",
+      "expectation_status": "PROSPECTIVE_CHECK_NOT_OBSERVED",
+      "expected_bounded_existence": false,
+      "purpose": "Several implication cycles and terminal alternatives are present, but no atomic assumption is free.",
+      "related_bound_cases_are_not_independent_theorems": true,
+      "tiny_point_oracle_required": false
+    },
+    {
+      "case": {
+        "generation": {
+          "generator_version": "DSG-declarations-only-qualification-v1",
+          "seed": null,
+          "structural_group": "ungrounded",
+          "structural_partition": "benchmark"
+        },
+        "id": "dsgb-ungrounded-l10-v1",
+        "limits": {
+          "max_depth": 128,
+          "max_formulas": 48,
+          "max_items": 2000000,
+          "max_rows": 25000,
+          "max_slots": 64,
+          "max_zero_definitions": 256,
+          "wall_seconds": 10.0
+        },
+        "profile": {
+          "allow_gen": false,
+          "formula_universe_version": "LITERAL_SORTED_CANONICAL_JSON_V1",
+          "kind": "GROUND_HORN_SUBFORMULAS_V1",
+          "slots": 10,
+          "variables": [],
+          "zero_instance_profile": "ASSUMPTIONS_ONLY"
+        },
+        "schema": "Shared-fact-proof-case-v1",
+        "statement": {
+          "goal": [
+            "pred",
+            "dsgb_ungrounded_v1_G",
+            []
+          ],
+          "theory": {
+            "axioms": {
+              "cycle_ab": [
+                "imp",
+                [
+                  "pred",
+                  "dsgb_ungrounded_v1_A",
+                  []
+                ],
+                [
+                  "pred",
+                  "dsgb_ungrounded_v1_B",
+                  []
+                ]
+              ],
+              "cycle_ba": [
+                "imp",
+                [
+                  "pred",
+                  "dsgb_ungrounded_v1_B",
+                  []
+                ],
+                [
+                  "pred",
+                  "dsgb_ungrounded_v1_A",
+                  []
+                ]
+              ],
+              "cycle_uu": [
+                "imp",
+                [
+                  "pred",
+                  "dsgb_ungrounded_v1_U",
+                  []
+                ],
+                [
+                  "pred",
+                  "dsgb_ungrounded_v1_U",
+                  []
+                ]
+              ],
+              "terminal_a": [
+                "imp",
+                [
+                  "pred",
+                  "dsgb_ungrounded_v1_A",
+                  []
+                ],
+                [
+                  "pred",
+                  "dsgb_ungrounded_v1_G",
+                  []
+                ]
+              ],
+              "terminal_u": [
+                "imp",
+                [
+                  "pred",
+                  "dsgb_ungrounded_v1_U",
+                  []
+                ],
+                [
+                  "pred",
+                  "dsgb_ungrounded_v1_G",
+                  []
+                ]
+              ]
+            },
+            "functions": {},
+            "predicates": {
+              "dsgb_ungrounded_v1_A": 0,
+              "dsgb_ungrounded_v1_B": 0,
+              "dsgb_ungrounded_v1_G": 0,
+              "dsgb_ungrounded_v1_U": 0
+            }
+          }
+        }
+      },
+      "comparison_unit": "one frozen declaration at one slot bound",
+      "expectation_status": "PROSPECTIVE_CHECK_NOT_OBSERVED",
+      "expected_bounded_existence": false,
+      "purpose": "Several implication cycles and terminal alternatives are present, but no atomic assumption is free.",
+      "related_bound_cases_are_not_independent_theorems": true,
+      "tiny_point_oracle_required": false
+    }
+  ],
+  "declarations_authored": true,
+  "experiment_scope": {
+    "benchmark_declarations": 8,
+    "benchmark_slot_bounds": [
+      6,
+      10
+    ],
+    "benchmark_structural_templates": 4,
+    "general_ATP_or_RL_claim": false,
+    "profile": "Closed zero-arity predicates and implication, all original assumption/goal subformulas, assumption-only ZERO, structural MP, no GEN",
+    "qualification_declarations": 7,
+    "qualification_expectations_are_solver_inputs": false
+  },
+  "model_or_catalogue_constructed": false,
+  "proof_or_prior_witness_supplied": false,
+  "qualification_cases": [
+    {
+      "case": {
+        "generation": {
+          "generator_version": "DSG-declarations-only-qualification-v1",
+          "seed": null,
+          "structural_group": "fact-target",
+          "structural_partition": "qualification"
+        },
+        "id": "dsgq-fact-l1-v1",
+        "limits": {
+          "max_depth": 128,
+          "max_formulas": 48,
+          "max_items": 2000000,
+          "max_rows": 25000,
+          "max_slots": 64,
+          "max_zero_definitions": 256,
+          "wall_seconds": 10.0
+        },
+        "profile": {
+          "allow_gen": false,
+          "formula_universe_version": "LITERAL_SORTED_CANONICAL_JSON_V1",
+          "kind": "GROUND_HORN_SUBFORMULAS_V1",
+          "slots": 1,
+          "variables": [],
+          "zero_instance_profile": "ASSUMPTIONS_ONLY"
+        },
+        "schema": "Shared-fact-proof-case-v1",
+        "statement": {
+          "goal": [
+            "pred",
+            "dsgq_fact_v1_A",
+            []
+          ],
+          "theory": {
+            "axioms": {
+              "fact": [
+                "pred",
+                "dsgq_fact_v1_A",
+                []
+              ]
+            },
+            "functions": {},
+            "predicates": {
+              "dsgq_fact_v1_A": 0
+            }
+          }
+        }
+      },
+      "expectation_status": "PROSPECTIVE_CHECK_NOT_OBSERVED",
+      "expected_bounded_existence": true,
+      "purpose": "Target pin and single counted assumption.",
+      "tiny_point_oracle_required": true
+    },
+    {
+      "case": {
+        "generation": {
+          "generator_version": "DSG-declarations-only-qualification-v1",
+          "seed": null,
+          "structural_group": "empty-target",
+          "structural_partition": "qualification"
+        },
+        "id": "dsgq-empty-l2-v1",
+        "limits": {
+          "max_depth": 128,
+          "max_formulas": 48,
+          "max_items": 2000000,
+          "max_rows": 25000,
+          "max_slots": 64,
+          "max_zero_definitions": 256,
+          "wall_seconds": 10.0
+        },
+        "profile": {
+          "allow_gen": false,
+          "formula_universe_version": "LITERAL_SORTED_CANONICAL_JSON_V1",
+          "kind": "GROUND_HORN_SUBFORMULAS_V1",
+          "slots": 2,
+          "variables": [],
+          "zero_instance_profile": "ASSUMPTIONS_ONLY"
+        },
+        "schema": "Shared-fact-proof-case-v1",
+        "statement": {
+          "goal": [
+            "pred",
+            "dsgq_empty_v1_A",
+            []
+          ],
+          "theory": {
+            "axioms": {},
+            "functions": {},
+            "predicates": {
+              "dsgq_empty_v1_A": 0
+            }
+          }
+        }
+      },
+      "expectation_status": "PROSPECTIVE_CHECK_NOT_OBSERVED",
+      "expected_bounded_existence": false,
+      "purpose": "Untouched required last center has no active goal producer; PAD is not a fact.",
+      "tiny_point_oracle_required": true
+    },
+    {
+      "case": {
+        "generation": {
+          "generator_version": "DSG-declarations-only-qualification-v1",
+          "seed": null,
+          "structural_group": "one-MP-bound-pair",
+          "structural_partition": "qualification"
+        },
+        "id": "dsgq-mp-l2-v1",
+        "limits": {
+          "max_depth": 128,
+          "max_formulas": 48,
+          "max_items": 2000000,
+          "max_rows": 25000,
+          "max_slots": 64,
+          "max_zero_definitions": 256,
+          "wall_seconds": 10.0
+        },
+        "profile": {
+          "allow_gen": false,
+          "formula_universe_version": "LITERAL_SORTED_CANONICAL_JSON_V1",
+          "kind": "GROUND_HORN_SUBFORMULAS_V1",
+          "slots": 2,
+          "variables": [],
+          "zero_instance_profile": "ASSUMPTIONS_ONLY"
+        },
+        "schema": "Shared-fact-proof-case-v1",
+        "statement": {
+          "goal": [
+            "pred",
+            "dsgq_mp_v1_B",
+            []
+          ],
+          "theory": {
+            "axioms": {
+              "fact": [
+                "pred",
+                "dsgq_mp_v1_A",
+                []
+              ],
+              "rule": [
+                "imp",
+                [
+                  "pred",
+                  "dsgq_mp_v1_A",
+                  []
+                ],
+                [
+                  "pred",
+                  "dsgq_mp_v1_B",
+                  []
+                ]
+              ]
+            },
+            "functions": {},
+            "predicates": {
+              "dsgq_mp_v1_A": 0,
+              "dsgq_mp_v1_B": 0
+            }
+          }
+        }
+      },
+      "decoder_gap_evidence_required": false,
+      "expectation_status": "PROSPECTIVE_CHECK_NOT_OBSERVED",
+      "expected_bounded_existence": false,
+      "purpose": "Used assumptions cost lines; a short bound cannot treat them as free facts.",
+      "tiny_point_oracle_required": true
+    },
+    {
+      "case": {
+        "generation": {
+          "generator_version": "DSG-declarations-only-qualification-v1",
+          "seed": null,
+          "structural_group": "one-MP-bound-pair",
+          "structural_partition": "qualification"
+        },
+        "id": "dsgq-mp-l3-v1",
+        "limits": {
+          "max_depth": 128,
+          "max_formulas": 48,
+          "max_items": 2000000,
+          "max_rows": 25000,
+          "max_slots": 64,
+          "max_zero_definitions": 256,
+          "wall_seconds": 10.0
+        },
+        "profile": {
+          "allow_gen": false,
+          "formula_universe_version": "LITERAL_SORTED_CANONICAL_JSON_V1",
+          "kind": "GROUND_HORN_SUBFORMULAS_V1",
+          "slots": 3,
+          "variables": [],
+          "zero_instance_profile": "ASSUMPTIONS_ONLY"
+        },
+        "schema": "Shared-fact-proof-case-v1",
+        "statement": {
+          "goal": [
+            "pred",
+            "dsgq_mp_v1_B",
+            []
+          ],
+          "theory": {
+            "axioms": {
+              "fact": [
+                "pred",
+                "dsgq_mp_v1_A",
+                []
+              ],
+              "rule": [
+                "imp",
+                [
+                  "pred",
+                  "dsgq_mp_v1_A",
+                  []
+                ],
+                [
+                  "pred",
+                  "dsgq_mp_v1_B",
+                  []
+                ]
+              ]
+            },
+            "functions": {},
+            "predicates": {
+              "dsgq_mp_v1_A": 0,
+              "dsgq_mp_v1_B": 0
+            }
+          }
+        }
+      },
+      "decoder_gap_evidence_required": false,
+      "expectation_status": "PROSPECTIVE_CHECK_NOT_OBSERVED",
+      "expected_bounded_existence": true,
+      "purpose": "One small MP target with both premises acquired during search.",
+      "tiny_point_oracle_required": true
+    },
+    {
+      "case": {
+        "generation": {
+          "generator_version": "DSG-declarations-only-qualification-v1",
+          "seed": null,
+          "structural_group": "one-MP-bound-pair",
+          "structural_partition": "qualification"
+        },
+        "id": "dsgq-mp-l4-v1",
+        "limits": {
+          "max_depth": 128,
+          "max_formulas": 48,
+          "max_items": 2000000,
+          "max_rows": 25000,
+          "max_slots": 64,
+          "max_zero_definitions": 256,
+          "wall_seconds": 10.0
+        },
+        "profile": {
+          "allow_gen": false,
+          "formula_universe_version": "LITERAL_SORTED_CANONICAL_JSON_V1",
+          "kind": "GROUND_HORN_SUBFORMULAS_V1",
+          "slots": 4,
+          "variables": [],
+          "zero_instance_profile": "ASSUMPTIONS_ONLY"
+        },
+        "schema": "Shared-fact-proof-case-v1",
+        "statement": {
+          "goal": [
+            "pred",
+            "dsgq_mp_v1_B",
+            []
+          ],
+          "theory": {
+            "axioms": {
+              "fact": [
+                "pred",
+                "dsgq_mp_v1_A",
+                []
+              ],
+              "rule": [
+                "imp",
+                [
+                  "pred",
+                  "dsgq_mp_v1_A",
+                  []
+                ],
+                [
+                  "pred",
+                  "dsgq_mp_v1_B",
+                  []
+                ]
+              ]
+            },
+            "functions": {},
+            "predicates": {
+              "dsgq_mp_v1_A": 0,
+              "dsgq_mp_v1_B": 0
+            }
+          }
+        }
+      },
+      "decoder_gap_evidence_required": true,
+      "expectation_status": "PROSPECTIVE_CHECK_NOT_OBSERVED",
+      "expected_bounded_existence": true,
+      "purpose": "Extra slot permits PAD and noncontiguous active embeddings; tiny oracle must exercise decoder gaps.",
+      "tiny_point_oracle_required": true
+    },
+    {
+      "case": {
+        "generation": {
+          "generator_version": "DSG-declarations-only-qualification-v1",
+          "seed": null,
+          "structural_group": "duplicate-ZERO-identities",
+          "structural_partition": "qualification"
+        },
+        "id": "dsgq-duplicate-zero-l1-v1",
+        "limits": {
+          "max_depth": 128,
+          "max_formulas": 48,
+          "max_items": 2000000,
+          "max_rows": 25000,
+          "max_slots": 64,
+          "max_zero_definitions": 256,
+          "wall_seconds": 10.0
+        },
+        "profile": {
+          "allow_gen": false,
+          "formula_universe_version": "LITERAL_SORTED_CANONICAL_JSON_V1",
+          "kind": "GROUND_HORN_SUBFORMULAS_V1",
+          "slots": 1,
+          "variables": [],
+          "zero_instance_profile": "ASSUMPTIONS_ONLY"
+        },
+        "schema": "Shared-fact-proof-case-v1",
+        "statement": {
+          "goal": [
+            "pred",
+            "dsgq_dup_v1_A",
+            []
+          ],
+          "theory": {
+            "axioms": {
+              "fact_one": [
+                "pred",
+                "dsgq_dup_v1_A",
+                []
+              ],
+              "fact_two": [
+                "pred",
+                "dsgq_dup_v1_A",
+                []
+              ]
+            },
+            "functions": {},
+            "predicates": {
+              "dsgq_dup_v1_A": 0
+            }
+          }
+        }
+      },
+      "expectation_status": "PROSPECTIVE_CHECK_NOT_OBSERVED",
+      "expected_bounded_existence": true,
+      "purpose": "Distinct named primitive justifications of the same formula retain different CIDs.",
+      "tiny_point_oracle_required": true
+    },
+    {
+      "case": {
+        "generation": {
+          "generator_version": "DSG-declarations-only-qualification-v1",
+          "seed": null,
+          "structural_group": "ungrounded-cycle",
+          "structural_partition": "qualification"
+        },
+        "id": "dsgq-cycle-l4-v1",
+        "limits": {
+          "max_depth": 128,
+          "max_formulas": 48,
+          "max_items": 2000000,
+          "max_rows": 25000,
+          "max_slots": 64,
+          "max_zero_definitions": 256,
+          "wall_seconds": 10.0
+        },
+        "profile": {
+          "allow_gen": false,
+          "formula_universe_version": "LITERAL_SORTED_CANONICAL_JSON_V1",
+          "kind": "GROUND_HORN_SUBFORMULAS_V1",
+          "slots": 4,
+          "variables": [],
+          "zero_instance_profile": "ASSUMPTIONS_ONLY"
+        },
+        "schema": "Shared-fact-proof-case-v1",
+        "statement": {
+          "goal": [
+            "pred",
+            "dsgq_cycle_v1_B",
+            []
+          ],
+          "theory": {
+            "axioms": {
+              "cycle_ab": [
+                "imp",
+                [
+                  "pred",
+                  "dsgq_cycle_v1_A",
+                  []
+                ],
+                [
+                  "pred",
+                  "dsgq_cycle_v1_B",
+                  []
+                ]
+              ],
+              "cycle_ba": [
+                "imp",
+                [
+                  "pred",
+                  "dsgq_cycle_v1_B",
+                  []
+                ],
+                [
+                  "pred",
+                  "dsgq_cycle_v1_A",
+                  []
+                ]
+              ]
+            },
+            "functions": {},
+            "predicates": {
+              "dsgq_cycle_v1_A": 0,
+              "dsgq_cycle_v1_B": 0
+            }
+          }
+        }
+      },
+      "expectation_status": "PROSPECTIVE_CHECK_NOT_OBSERVED",
+      "expected_bounded_existence": false,
+      "purpose": "A cycle of implications supplies no free ground fact.",
+      "tiny_point_oracle_required": true
+    }
+  ],
+  "readiness_rule": "Root must review and freeze literal declarations, scheduler-fixture models, Sources/runtime/master/limits and independent oracle before any model construction or execution. No current success, failure, rollback or performance result is claimed.",
+  "required_postfreeze_oracles": [
+    "Independent exhaustive selected-CID point assignment enumeration on all seven tiny declarations, full owner domains and literal t/m/seed agreement; no engine/model-adapter/forward/SAT helper imports.",
+    "Compare SAT selector projections, not all auxiliary assignments, with the independent tiny point oracle. Independently verify all SAT/UNSAT DPLL certificates.",
+    "Compare bounded existence across point, forward and SAT only on completed admitted results; UNKNOWN remains UNKNOWN.",
+    "Inspect actual decoded references for sharing; a bank motif or fewer lines is not itself observed sharing.",
+    "For the four-slot MP case, independent exhaustive positive assignments must include and decode a noncontiguous active-slot example. Do not supply that example to any search."
+  ],
+  "schema": "Shared-fact-prospective-qualification-proposal-v1",
+  "scientific_code_imported_or_executed": false,
+  "solver_data_boundary": "Only each entry.case may be passed to the basis compiler. Expected labels, purpose, recipes and observed-coverage requirements stay in the driver, outside catalogue/model/control inputs.",
+  "source_context": [
+    {
+      "bytes": 11454,
+      "path": "plan/shared-fact-design-v1.md",
+      "sha256": "9719d9c9737d74921ff2daf00346e481e0bda100476d6abd1bce16218b0b2c6a"
+    },
+    {
+      "bytes": 9751,
+      "path": "plan/point-model-ABI-v1.md",
+      "sha256": "d299236d9ce27f45da8922ceccd1d3cdb6f7449391f69230983aa5e32cddcf7f"
+    },
+    {
+      "bytes": 21657,
+      "path": "reference/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    {
+      "bytes": 8093,
+      "path": "source/ground_horn_basis_v1.py",
+      "sha256": "03a921908b04cb5b459e832748979fc5f7ae81b20bc6646ade64f6c1b88ba5ae"
+    },
+    {
+      "bytes": 22422,
+      "path": "source/shared_fact_model_v1.py",
+      "sha256": "455fadf33dea5150b5e35fde599a8edb59c1adac1041d2214a44156a97b6e32e"
+    }
+  ],
+  "status": "PROPOSED_UNREVIEWED_NOT_FROZEN"
+}
