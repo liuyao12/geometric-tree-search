@@ -1,0 +1,85 @@
+{
+  "schema": "Turtle-original-angular-packing-equivalence-review-v1",
+  "status": "PASS_STATIC_PROOF_REVIEW",
+  "proof_kind": "Human metatheorem with a complete exact finite-pair certificate component; not a proof-assistant execution.",
+  "actions": "Read saved JSON and current driver Source, and reason mathematically. No scientific module imported, geometric oracle executed, tiling search, marking learner or substitution computation run.",
+  "evidence": {
+    "results": {
+      "path": "data/results-v1.json.gz",
+      "bytes": 289492,
+      "sha256": "754f92acbe29b075d2d67ec3c8617d2ec1b75b37ff396551790e2cd53e3f73cf",
+      "status": "COMPLETE",
+      "catalogue_complete": true,
+      "raw_positions": 2444,
+      "checked_nonidentical_pairs": 2443,
+      "excluded_root_identical": 1,
+      "duplicate_positions": 0,
+      "overlapping_pairs": 1047,
+      "interior_disjoint_pairs": 1396,
+      "pairs_without_common_original_support": 1092,
+      "point_legal_geometric_overlap": 0,
+      "point_illegal_geometric_disjoint": 0
+    },
+    "independent_carrier_receipt": {
+      "path": "data/carrier-check-v1.json",
+      "status": "VERIFIED",
+      "original_angular_points": 28,
+      "occupancy_points": 240,
+      "combined_points": 268,
+      "periodic_cells": 12,
+      "scale": 18,
+      "angular_method": "Twelve off-edge sector rays with exact first-positive-hit epsilon and independent winding; exact sparse support including its zero complement."
+    },
+    "source_pins_from_frozen_protocol": {
+      "source/experiment_v1.py": {"bytes": 11420, "sha256": "f1586391f8fcb4b90cf8c08e158318c88426b75a05c2a2a1762d0b7c20207ea8"},
+      "source/turtle_points_v1.py": {"bytes": 7688, "sha256": "7962e545935677d1cff40bb793fc682bc3acec1461cf178ed7a39253ca9bdfc0"},
+      "source/triangle_geometry_v1.py": {"bytes": 9600, "sha256": "4715c6f612b196d257c858d695d604d800ce832cc5f8a1bfee8ae58e400a79ed"},
+      "reference/slab_geometry_checker_v1.py": {"bytes": 9643, "sha256": "1ec3cb1afc481226e1d665dccb45958b4957194bf4bd96e1ddedbb9ba829ed08"},
+      "reference/carrier_checker_v1.py": {"bytes": 16726, "sha256": "ebbd2642d6313f59630104c05b03021b494a9485bf7cd8aaaa71e22627163055"}
+    },
+    "pin_scope": "Pins recorded from the frozen protocol embedded in COMPLETE results; its pin map equals the separately saved protocol map. This review is not a new full filesystem custody audit."
+  },
+  "statement": {
+    "objects": "Let \\(P\\) be this exact normalized Turtle polygon, \\(G\\) the twelve verified signed A2-coordinate permutations, and \\(\\Lambda=\\mathbb Z^2\\) its axial translation lattice. A patch is a finite set of distinct allowed geometric placements \\(gP+a\\), with no duplicate placement and empty markings.",
+    "field": "Let \\(u_{gP+a}(p)\\in\\{0,\\ldots,12\\}\\) be the transformed original 28-point angular field, zero off its finite support. It counts the occupied local sectors of angle \\(\\pi/6\\) at \\(p\\in\\Lambda\\). Define normalized occupancy \\(t=u/12\\).",
+    "theorem": "For every such finite patch \\(S\\), \\(\\sum_{Q\\in S}u_Q(p)\\leq12\\) for every \\(p\\in\\Lambda\\) if and only if \\(\\operatorname{int}Q\\cap\\operatorname{int}R=\\varnothing\\) for all distinct \\(Q,R\\in S\\)."
+  },
+  "proof": [
+    {
+      "step": "Complete normalization of pairs",
+      "argument": "For two allowed placements \\(gP+a\\) and \\(hP+b\\), apply \\(x\\mapsto g^{-1}(x-a)\\). Their relative placement becomes \\(P\\) and \\(g^{-1}hP+g^{-1}(b-a)\\). Group closure and integer unimodularity put the latter in the declared orientation/translation universe. The map permutes lattice points, preserves polygon interiors and carries angular weights correctly."
+    },
+    {
+      "step": "Why the finite catalogue covers the infinite translation set",
+      "argument": "For each oriented second polygon, closed axial boxes intersect only when \\(\\min P_i-\\max(gP)_i\\leq a_i\\leq\\max P_i-\\min(gP)_i\\), in each coordinate. The driver exhausts every integer in these inclusive intervals, including pure boundary contacts and pairs sharing no sampled point. Outside them, polygons are disjoint and their angular supports, being contained in the corresponding closed polygons, cannot share a point. Thus both geometry and pair capacity are legal outside the catalogue. The excluded coincident root is the same placement, forbidden to occur twice in a patch set."
+    },
+    {
+      "step": "Global capacity implies a polygon packing",
+      "argument": "All weights are nonnegative. Therefore global capacity legality implies capacity legality for every two-element subset. Normalize each pair as above. Complete catalogue equivalence or the disjoint-box argument makes its polygon interiors disjoint. Hence every pair of polygon interiors in the patch is disjoint."
+    },
+    {
+      "step": "Polygon packing implies aggregate angular capacity",
+      "argument": "Fix any lattice point. Every allowed edge direction belongs to the twelve sector-boundary directions. In a sufficiently small neighborhood, each polygon occupies a subset of the twelve open sectors; its field value is that subset's cardinality. Interior-disjoint polygons cannot occupy the same local sector, since a shared sufficiently short off-edge ray would then be strictly inside both. For a finite patch one common sufficiently small neighborhood exists. The occupied subsets are disjoint, so their total cardinality is at most twelve. This proves the aggregate inequality at every lattice point."
+    },
+    {
+      "step": "Sector covariance under the allowed group",
+      "argument": "The axial drawing map is \\((x,y)\\mapsto(x+y/2,\\sqrt{3} y/2)\\). A coordinate swap is reflection across the thirty-degree axis, a three-cycle gives a one-hundred-twenty-degree rotation, and common sign is a half-turn. These generate the declared group and permute the twelve thirty-degree sector boundaries. They consequently preserve sector counts, including reflections. Root exact sector-density verification and translations therefore justify the field interpretation for every allowed placement."
+    }
+  ],
+  "proof_obligations_and_coverage": [
+    "The prototype is a valid regular closed simple polygon with integer A2 vertices; geometric predicates concern interiors and permit boundary-only contacts.",
+    "The twelve matrices are the declared signed-coordinate actions, preserve the A2 metric, are closed under composition/inverse and preserve the integer lattice. These are supported by the saved group/carrier checks.",
+    "The original field equals local sector density at every integer point, including explicit checking of zero-valued bbox points and no positive support outside the bbox. The independent carrier checker supplies this prototype certificate; sector covariance supplies its orbit.",
+    "The native catalogue has no early resource exit, includes all inclusive-box integer positions for every orientation, and performs no shared-support prefilter. Source inspection and the COMPLETE catalogue record support this coverage obligation.",
+    "Each catalogue row compares capacity with independent ear/SAT and vertical-slab exact polygon-interior oracles. Both mismatch directions must be zero; a one-sided no-false-accept check alone would not establish equivalence.",
+    "Geometric/field deduplication must preserve the exact placement object and its empty markings. The saved run reports no duplicate pair positions and exactly one excluded root-identical position. Distinct inventory copies or unrestricted multiplicities are outside the stated patch-set convention."
+  ],
+  "essential_caveat": "Pairwise capacity legality does not generally imply aggregate capacity legality: arbitrary three weights can exceed capacity although every pair fits. The reverse implication here uses geometric sector disjointness, not such an invalid weighted-pair inference.",
+  "interpretation": "This is a finite exact coverage argument yielding a theorem about every finite allowed patch, not statistical extrapolation from a selection of contacts. The conclusion concerns the original exact 28-point model. The newly checked cell carrier is useful independent corroboration, not needed to replace an original-model counterexample in this zero-mismatch run.",
+  "not_claimed": [
+    "No plane tiling exists merely because finite packing legality is faithful.",
+    "No saturation-to-plane-coverage theorem is added here; that optional question is deliberately left outside this milestone.",
+    "No infinite extension, fair untouched-point activation, substitution rule, learned marking, practical arbitrary-region algorithm or RL advantage is established.",
+    "The historical floating-point/browser authoring or implementation is not certified by equivalence of this separately frozen exact model."
+  ]
+}
