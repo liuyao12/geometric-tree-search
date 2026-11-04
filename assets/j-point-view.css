@@ -1,0 +1,2 @@
+@import url('./j-tiling-view.css?v=20261101-j30r2');
+header a{font-size:11px;color:#496a63}header strong{font-size:14px}#verification{font-size:11px;color:#286459}#verification.bad{color:#a34331}.view{min-height:150px}details{font-size:10px;color:#62746d}summary{cursor:pointer}details p{font-size:11px;margin-top:7px}details[open]{max-height:145px;overflow:auto;flex-shrink:0}#status{font-size:11px}@media(max-width:600px){header strong{font-size:12px}.toolbar label{font-size:10px}body{min-height:440px}.legend{font-size:10px}}
