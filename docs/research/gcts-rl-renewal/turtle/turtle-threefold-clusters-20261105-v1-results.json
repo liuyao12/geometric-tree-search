@@ -1,0 +1,380 @@
+{
+  "conflict": {
+    "case": "2/11",
+    "checks": [
+      {
+        "assigned": 80,
+        "depth": 3,
+        "status": "LOCAL_WITNESS",
+        "tiles": 118,
+        "visits": 81
+      },
+      {
+        "depth": 4,
+        "status": "EXCLUDED",
+        "visits": 49
+      }
+    ],
+    "kind": "pair",
+    "poses": [
+      [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          6,
+          0,
+          0
+        ]
+      ],
+      [
+        [
+          3,
+          -7,
+          5
+        ],
+        [
+          9,
+          -7,
+          5
+        ]
+      ],
+      [
+        [
+          3,
+          7,
+          -5
+        ],
+        [
+          9,
+          7,
+          -5
+        ]
+      ],
+      [
+        [
+          4,
+          -2,
+          7
+        ],
+        [
+          10,
+          -2,
+          7
+        ]
+      ],
+      [
+        [
+          4,
+          2,
+          -7
+        ],
+        [
+          10,
+          2,
+          -7
+        ]
+      ]
+    ],
+    "rule": 1
+  },
+  "extended": {
+    "rules": [
+      {
+        "kinds": [
+          {
+            "collisions": {},
+            "kind": "core",
+            "replayed": 17,
+            "shapes": {
+              "LOCAL_WITNESS": 1
+            }
+          },
+          {
+            "collisions": {
+              "LOCAL_WITNESS": 1
+            },
+            "kind": "pair",
+            "replayed": 15,
+            "shapes": {
+              "LOCAL_WITNESS": 2
+            }
+          },
+          {
+            "collisions": {},
+            "kind": "single",
+            "replayed": 8,
+            "shapes": {
+              "EXCLUDED": 1,
+              "LOCAL_WITNESS": 1
+            }
+          }
+        ],
+        "rule": 1
+      },
+      {
+        "kinds": [
+          {
+            "collisions": {},
+            "kind": "core",
+            "replayed": 14,
+            "shapes": {
+              "EXCLUDED": 1
+            }
+          },
+          {
+            "collisions": {},
+            "kind": "pair",
+            "replayed": 20,
+            "shapes": {
+              "LOCAL_WITNESS": 4
+            }
+          },
+          {
+            "collisions": {},
+            "kind": "single",
+            "replayed": 8,
+            "shapes": {
+              "EXCLUDED": 1,
+              "LOCAL_WITNESS": 1
+            }
+          }
+        ],
+        "rule": 2
+      }
+    ],
+    "status": "CHECKED_EXTENDED_COLLARS"
+  },
+  "first_layer_atlas": {
+    "rules": [
+      {
+        "by_pair": {
+          "core/core": 7,
+          "core/pair": 8,
+          "core/single": 6,
+          "pair/core": 8,
+          "pair/pair": 2,
+          "pair/single": 3,
+          "single/core": 6,
+          "single/pair": 3,
+          "single/single": 4
+        },
+        "clusters": {
+          "core": 262,
+          "pair": 383,
+          "single": 533
+        },
+        "contacts": 5708,
+        "exact_directed_interface_types": 47,
+        "omitted": 1,
+        "role": [
+          6,
+          0,
+          0
+        ]
+      },
+      {
+        "by_pair": {
+          "core/core": 6,
+          "core/pair": 5,
+          "core/single": 9,
+          "pair/core": 5,
+          "pair/pair": 4,
+          "pair/single": 3,
+          "single/core": 9,
+          "single/pair": 3,
+          "single/single": 6
+        },
+        "clusters": {
+          "core": 272,
+          "pair": 316,
+          "single": 606
+        },
+        "contacts": 5766,
+        "exact_directed_interface_types": 50,
+        "omitted": 2,
+        "role": [
+          6,
+          0,
+          0
+        ]
+      }
+    ],
+    "scope": "Exact contact segments in both directions from 20 depth-eight tilings, with a depth-six guard. This is a finite macro interface inventory, not an exhaustive plane atlas.",
+    "status": "CHECKED_FINITE_MACRO_INTERFACE_ATLAS"
+  },
+  "status": "CHECKED_TURTLE_THREEFOLD_REPORT",
+  "study": {
+    "holdout_status": {
+      "POSITIVE": 5
+    },
+    "rules": [
+      {
+        "holdout": {
+          "fully_guarded_contacts": {
+            "pair": 8,
+            "single": 27
+          },
+          "guarded_clusters": {
+            "core": 126,
+            "pair": 166,
+            "single": 228
+          },
+          "motifs": {
+            "core": 1,
+            "pair": 16,
+            "single": 45
+          },
+          "patches": 5,
+          "reused_macros": 0,
+          "shapes": {
+            "core": 1,
+            "pair": 1,
+            "single": 1
+          }
+        },
+        "local": [
+          {
+            "kind": "core",
+            "local_survivors": 1,
+            "observed_shapes": 1,
+            "possible_collisions": 0,
+            "rooted_candidates": 17,
+            "survivor_shapes": 1,
+            "tested_collisions": 0
+          },
+          {
+            "kind": "pair",
+            "local_survivors": 2,
+            "observed_shapes": 1,
+            "possible_collisions": 1,
+            "rooted_candidates": 14,
+            "survivor_shapes": 1,
+            "tested_collisions": 1
+          },
+          {
+            "kind": "single",
+            "local_survivors": 2,
+            "observed_shapes": 1,
+            "possible_collisions": 0,
+            "rooted_candidates": 7,
+            "survivor_shapes": 2,
+            "tested_collisions": 1
+          }
+        ],
+        "omitted": 1,
+        "original": {
+          "fully_guarded_contacts": {
+            "pair": 18,
+            "single": 36
+          },
+          "guarded_clusters": {
+            "core": 262,
+            "pair": 383,
+            "single": 533
+          },
+          "motifs": {
+            "pair": 40,
+            "single": 100
+          },
+          "patches": 20,
+          "reused_macros": 0,
+          "shapes": {
+            "core": 0,
+            "pair": 1,
+            "single": 1
+          }
+        },
+        "role": [
+          6,
+          0,
+          0
+        ]
+      },
+      {
+        "holdout": {
+          "fully_guarded_contacts": {
+            "pair": 6,
+            "single": 7
+          },
+          "guarded_clusters": {
+            "core": 128,
+            "pair": 146,
+            "single": 264
+          },
+          "motifs": {
+            "pair": 14,
+            "single": 8
+          },
+          "patches": 5,
+          "reused_macros": 0,
+          "shapes": {
+            "core": 0,
+            "pair": 2,
+            "single": 1
+          }
+        },
+        "local": [
+          {
+            "kind": "core",
+            "local_survivors": 1,
+            "observed_shapes": 0,
+            "possible_collisions": 0,
+            "rooted_candidates": 14,
+            "survivor_shapes": 1,
+            "tested_collisions": 0
+          },
+          {
+            "kind": "pair",
+            "local_survivors": 4,
+            "observed_shapes": 2,
+            "possible_collisions": 0,
+            "rooted_candidates": 14,
+            "survivor_shapes": 2,
+            "tested_collisions": 6
+          },
+          {
+            "kind": "single",
+            "local_survivors": 2,
+            "observed_shapes": 1,
+            "possible_collisions": 0,
+            "rooted_candidates": 7,
+            "survivor_shapes": 2,
+            "tested_collisions": 1
+          }
+        ],
+        "omitted": 2,
+        "original": {
+          "fully_guarded_contacts": {
+            "pair": 5,
+            "single": 3
+          },
+          "guarded_clusters": {
+            "core": 272,
+            "pair": 316,
+            "single": 606
+          },
+          "motifs": {
+            "pair": 26,
+            "single": 5
+          },
+          "patches": 20,
+          "reused_macros": 0,
+          "shapes": {
+            "core": 0,
+            "pair": 2,
+            "single": 1
+          }
+        },
+        "role": [
+          6,
+          0,
+          0
+        ]
+      }
+    ],
+    "status": "CHECKED_TURTLE_SECOND_LAYER_TRIPLES"
+  }
+}
