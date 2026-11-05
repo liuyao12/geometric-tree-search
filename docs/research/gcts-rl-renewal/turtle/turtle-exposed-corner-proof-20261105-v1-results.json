@@ -1,0 +1,19 @@
+{
+  "certified": 192,
+  "checked_tree_nodes": 264,
+  "classification_by_sector_count": {
+    "1": 12,
+    "2": 48,
+    "3": 72,
+    "4": 48,
+    "5": 12
+  },
+  "max_tree_nodes": 5,
+  "prior_three_tile_finite_cases": 20169,
+  "scope": "Exact partitions by Turtle copies under lattice translations and allowed point actions. Closed finite libraries refined by one common expansive lattice-preserving similarity.",
+  "status": "CHECKED_ALL_STRICT_EXTREME_CONES",
+  "three_tile_all_multipliers": {
+    "integer_ray": 2241,
+    "thirty_degree_ray": 2241
+  }
+}

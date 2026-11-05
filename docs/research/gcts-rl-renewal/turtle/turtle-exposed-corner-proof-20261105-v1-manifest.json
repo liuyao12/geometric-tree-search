@@ -1,0 +1,222 @@
+{
+  "archive": {
+    "bytes": 318662,
+    "sha256": "cdb808c70e369172268bf49adb88735d55c35521c38a9f306479c87005092885"
+  },
+  "files": {
+    "input/carrier-check-v1.json": {
+      "bytes": 878,
+      "sha256": "f274ae5f926d1266f09a5cb07a2c582f6fc6446b3bfcadf0e0569f1371ffa77b"
+    },
+    "input/cones/data/cone-proofs-v1.json": {
+      "bytes": 184434,
+      "sha256": "c298fc4d8971c6b3f9257b40e22f182216100c2561db23eecf8801c36d42fb64"
+    },
+    "input/cones/data/execution.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "input/cones/data/execution.stdout.log": {
+      "bytes": 673,
+      "sha256": "e8cdb31151acbc760ed70226ca5c9c1020cdbc4bb3114dfcbba5d987670d2d88"
+    },
+    "input/cones/data/ratio-36-cone-v1.jsonl": {
+      "bytes": 669900,
+      "sha256": "73541f9e2f6b2747dab6311182b1daa1f81846812fb0f55909b7b551209eb417"
+    },
+    "input/cones/data/ratio-48-cone-v1.jsonl": {
+      "bytes": 234243,
+      "sha256": "672d9cd2415866bede7f7199a9679abea0682b366e0d12f85397dcd3ea3eb118"
+    },
+    "input/cones/data/summary-v1.json": {
+      "bytes": 556,
+      "sha256": "e74143eee08bc4f3710442fcf02a0a41adb502f4c27be293ce707eaf28418156"
+    },
+    "input/cones/input/exact-point-model-v1.json": {
+      "bytes": 10642,
+      "sha256": "775ce3ac20489ef64d8d8266238edde36f87919461b68ccbd232763dd2da3eb0"
+    },
+    "input/cones/input/patterns-v1.json": {
+      "bytes": 17382,
+      "sha256": "918722d1040519ff6a18476364a489082332891c646ec850a347032cce3f6654"
+    },
+    "input/cones/input/ratio-36-tail-v1.jsonl": {
+      "bytes": 720854,
+      "sha256": "98cf71b027a773fbcb092c5e3e89cf878058030f89c1afed43d52b49c0a650be"
+    },
+    "input/cones/input/ratio-48-tail-v1.jsonl": {
+      "bytes": 461227,
+      "sha256": "66af49a8a205a50f3211358e6016e39cc0ba3a0cfe249e9c7c16943949dffeca"
+    },
+    "input/cones/input/tail-protocol-v1.json": {
+      "bytes": 3321,
+      "sha256": "678469d87610ef127243590632a8b6a371c279936e5d48076b26c453e37fa6a7"
+    },
+    "input/cones/input/three-bank-v1.json": {
+      "bytes": 64002,
+      "sha256": "56e9f9cf00db85d5237c5b13343603a38365d23d7e19c682afe55df155c4bfcb"
+    },
+    "input/cones/protocol-v1.json": {
+      "bytes": 3528,
+      "sha256": "359d6edb77bfc86819d7309e57a2c7a204bcc0157dd757865c3eae226cc2fea1"
+    },
+    "input/cones/source/cluster_v1.py": {
+      "bytes": 15717,
+      "sha256": "a2eec032406feaf45f7c5ca66b235727db26e414996337981f6b0ff865859b85"
+    },
+    "input/cones/source/cone_v1.py": {
+      "bytes": 9956,
+      "sha256": "4b5019ce347bf28034e5ff4fa6fef488635021d2492cf2b2090e26efd27f390a"
+    },
+    "input/cones/source/screen_v1.py": {
+      "bytes": 5871,
+      "sha256": "d98b8f0bd131c1bef973da5e60554ef4d421b282f1feb0421febb8d3b180935a"
+    },
+    "input/cones/source/stencil_v1.py": {
+      "bytes": 8216,
+      "sha256": "0834d7d1d7c1007daf4d76a032f6147f5078b10e496cdb8a1963ca1fd3cea554"
+    },
+    "input/cones/source/tail_v1.py": {
+      "bytes": 8315,
+      "sha256": "007a3df21dedc8410061b93839b5869cf4ab5066771a42c126753aa8229a639c"
+    },
+    "input/cones/source/triangle_geometry_v1.py": {
+      "bytes": 9600,
+      "sha256": "4715c6f612b196d257c858d695d604d800ce832cc5f8a1bfee8ae58e400a79ed"
+    },
+    "input/cones/source/turtle_points_v1.py": {
+      "bytes": 7688,
+      "sha256": "7962e545935677d1cff40bb793fc682bc3acec1461cf178ed7a39253ca9bdfc0"
+    },
+    "input/cones/source/wide_v1.py": {
+      "bytes": 9868,
+      "sha256": "427ddf3c9a35609af51c1c13ee2f4d855ae451ce322f789366077cc4f3db88bf"
+    },
+    "input/extreme/data/execution.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "input/extreme/data/execution.stdout.log": {
+      "bytes": 444,
+      "sha256": "d750c54ac996fa510c2a76c144e4fa7524abb92dbcd4d6aac3dc8002633fe55b"
+    },
+    "input/extreme/data/extreme-proofs-v1.json": {
+      "bytes": 68594,
+      "sha256": "09f5600526113ebcfe23936eca735da9cec9e7aa41bfde7bd95cfcd3556c7fdf"
+    },
+    "input/extreme/data/summary-v1.json": {
+      "bytes": 420,
+      "sha256": "e996a8f423a3bc2a3edb2b57be89c72a2cacb7412241643963ba10dbbc65d7cf"
+    },
+    "input/extreme/input/cone-proofs-v1.json": {
+      "bytes": 184434,
+      "sha256": "c298fc4d8971c6b3f9257b40e22f182216100c2561db23eecf8801c36d42fb64"
+    },
+    "input/extreme/input/cone-protocol-v1.json": {
+      "bytes": 3528,
+      "sha256": "359d6edb77bfc86819d7309e57a2c7a204bcc0157dd757865c3eae226cc2fea1"
+    },
+    "input/extreme/input/cone-summary-v1.json": {
+      "bytes": 556,
+      "sha256": "e74143eee08bc4f3710442fcf02a0a41adb502f4c27be293ce707eaf28418156"
+    },
+    "input/extreme/input/exact-point-model-v1.json": {
+      "bytes": 10642,
+      "sha256": "775ce3ac20489ef64d8d8266238edde36f87919461b68ccbd232763dd2da3eb0"
+    },
+    "input/extreme/input/patterns-v1.json": {
+      "bytes": 17382,
+      "sha256": "918722d1040519ff6a18476364a489082332891c646ec850a347032cce3f6654"
+    },
+    "input/extreme/protocol-v1.json": {
+      "bytes": 3172,
+      "sha256": "6774aa311e32f2e3a1fc0bfb6c2db35432aaa08f256ae8210fe244d7740cc9a0"
+    },
+    "input/extreme/source/cluster_v1.py": {
+      "bytes": 15717,
+      "sha256": "a2eec032406feaf45f7c5ca66b235727db26e414996337981f6b0ff865859b85"
+    },
+    "input/extreme/source/cone_v1.py": {
+      "bytes": 9956,
+      "sha256": "4b5019ce347bf28034e5ff4fa6fef488635021d2492cf2b2090e26efd27f390a"
+    },
+    "input/extreme/source/extreme_v1.py": {
+      "bytes": 4439,
+      "sha256": "278d58d0626852f96ca8526f98575253154ed9ddc0c9b564fb26fa066d92ee43"
+    },
+    "input/extreme/source/screen_v1.py": {
+      "bytes": 5871,
+      "sha256": "d98b8f0bd131c1bef973da5e60554ef4d421b282f1feb0421febb8d3b180935a"
+    },
+    "input/extreme/source/stencil_v1.py": {
+      "bytes": 8216,
+      "sha256": "0834d7d1d7c1007daf4d76a032f6147f5078b10e496cdb8a1963ca1fd3cea554"
+    },
+    "input/extreme/source/tail_v1.py": {
+      "bytes": 8315,
+      "sha256": "007a3df21dedc8410061b93839b5869cf4ab5066771a42c126753aa8229a639c"
+    },
+    "input/extreme/source/triangle_geometry_v1.py": {
+      "bytes": 9600,
+      "sha256": "4715c6f612b196d257c858d695d604d800ce832cc5f8a1bfee8ae58e400a79ed"
+    },
+    "input/extreme/source/turtle_points_v1.py": {
+      "bytes": 7688,
+      "sha256": "7962e545935677d1cff40bb793fc682bc3acec1461cf178ed7a39253ca9bdfc0"
+    },
+    "input/extreme/source/wide_v1.py": {
+      "bytes": 9868,
+      "sha256": "427ddf3c9a35609af51c1c13ee2f4d855ae451ce322f789366077cc4f3db88bf"
+    },
+    "input/three-screen-results-v1.json": {
+      "bytes": 6644,
+      "sha256": "840ea72ddaa3cc89b8a22616ef443ed94a58127c92676a79d7b1351b5958a233"
+    },
+    "publication/basic-tiling-algorithm-at-parent.md": {
+      "bytes": 36240,
+      "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+    },
+    "publication/browser-v1.json": {
+      "bytes": 126,
+      "sha256": "274984506acc1e7e7f6161bf42c09f956423f1b8b16f4739bc2937006ed56368"
+    },
+    "publication/browser-view-v1.png": {
+      "bytes": 77870,
+      "sha256": "56efa67fd586333de68143b75a1ebfa0450818eee134d37bee07dfd76b32c407"
+    },
+    "publication/browser_v1.cjs": {
+      "bytes": 3184,
+      "sha256": "16d3bd9887829e7d376687d869e5e30811034b763180740c132c65810fa2cbbb"
+    },
+    "publication/previous-report-with-backlink-v1.html": {
+      "bytes": 11320,
+      "sha256": "844ffdbc942755699480d5877549adf7027ab5cea77f3136113926ec31b1ee11"
+    },
+    "publication/release_v1.py": {
+      "bytes": 10236,
+      "sha256": "7d35d2de97fbfed1dd8e08e4882438103c0b9a8a735b167e7403ca3904d14a12"
+    },
+    "publication/remote-base-v1.json": {
+      "bytes": 397,
+      "sha256": "391ec3f5b987932dd51a595e03bb65b695492fb4ed9ea0b3b2d7e49cd5a8939b"
+    },
+    "publication/render_v1.py": {
+      "bytes": 14427,
+      "sha256": "49a24e35e0af55e3fbeef4b9e4b86b215c876cda9035e810e66788a11476c0b5"
+    },
+    "publication/static-v1.json": {
+      "bytes": 437,
+      "sha256": "9eeefb8c9eeba8da66cfc85d833692a5867f31aa9703c4fadff5246a8f3440dc"
+    },
+    "report/turtle-exposed-corner-proof-20261105-v1-results.json": {
+      "bytes": 555,
+      "sha256": "54f3112c18dd80a237c1096aacafeba91ae181ce205f0140cafc9a64e2729c18"
+    },
+    "report/turtle-exposed-corner-proof-20261105-v1.html": {
+      "bytes": 57173,
+      "sha256": "cd6bf9932f4a4dd580f92cc4beb68c80dc1433c6e9ec8c117ecd9835ab131c74"
+    }
+  },
+  "schema": "Turtle-exposed-corner-evidence-v1",
+  "scope": "All original run paths present at the cut. Package and later publication receipts are separate."
+}
