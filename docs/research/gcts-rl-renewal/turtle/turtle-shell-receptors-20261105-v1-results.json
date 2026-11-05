@@ -1,0 +1,397 @@
+{
+  "actions": {
+    "methods": {
+      "FROZEN_RL": {
+        "max_tiles": 99,
+        "multi_action_nodes": 112,
+        "seconds": 0.4276010439971287,
+        "status": {
+          "POSITIVE": 18
+        },
+        "visits": 899
+      },
+      "HEURISTIC": {
+        "max_tiles": 99,
+        "multi_action_nodes": 91,
+        "seconds": 0.5183222929990734,
+        "status": {
+          "POSITIVE": 18
+        },
+        "visits": 902
+      },
+      "RANDOM": {
+        "max_tiles": 100,
+        "multi_action_nodes": 90,
+        "seconds": 0.49923041600231954,
+        "status": {
+          "POSITIVE": 18
+        },
+        "visits": 903
+      },
+      "TRAIN": {
+        "max_tiles": 67,
+        "multi_action_nodes": 148,
+        "seconds": 0.5099745020070259,
+        "status": {
+          "POSITIVE": 48
+        },
+        "visits": 1477
+      }
+    },
+    "scope": "Whole shell actions add every member simultaneously. Positive witnesses are independently checked by atom occupancy and exact contact-graph closure. Bounded or internally exhausted outcomes without a verified witness establish no plane-level conclusion.",
+    "status": "CHECKED_SHELL_ACTION_RL_EXPERIMENT",
+    "test": [
+      212,
+      210,
+      61,
+      46,
+      201,
+      155,
+      123,
+      66,
+      206
+    ],
+    "train": [
+      204,
+      58,
+      44,
+      68,
+      69,
+      208,
+      154,
+      49,
+      237,
+      236,
+      36,
+      209,
+      60,
+      213,
+      43,
+      211
+    ],
+    "updates": 42,
+    "weights": [
+      0.000740654863640313,
+      0.0007406548636403373,
+      4.282766495570953e-17,
+      -3.7665947184407117e-17,
+      0.02003238332197139,
+      -0.0148621262948402
+    ]
+  },
+  "closure": {
+    "complete_local_collars": 66,
+    "deep_replay_nodes": 1064,
+    "deep_replays": 18,
+    "exact_degree_distributions": [
+      {
+        "4": 13,
+        "5": 9,
+        "6": 30,
+        "7": 14
+      },
+      {
+        "4": 9,
+        "5": 13,
+        "6": 31,
+        "7": 13
+      },
+      {
+        "5": 20,
+        "6": 46
+      },
+      {
+        "5": 17,
+        "6": 49
+      }
+    ],
+    "first_eliminated": [
+      154,
+      155,
+      206,
+      211,
+      237
+    ],
+    "retained": [
+      36,
+      43,
+      44,
+      46,
+      49,
+      58,
+      60,
+      61,
+      66,
+      68,
+      69,
+      123,
+      201,
+      204,
+      208,
+      209,
+      210,
+      212,
+      213,
+      236
+    ],
+    "rounds": [
+      {
+        "active": 20,
+        "outcomes": {
+          "POSITIVE": 20
+        },
+        "removed": []
+      }
+    ],
+    "scope": "Every eliminated kind has a checked finite obstruction under a necessary shell inventory. All compatible one-layer collar assignments of the retained inventory are exhausted. Exact degree counts constrain any plane tiling but do not establish its existence or any substitution.",
+    "status": "CHECKED_DEEP_SHELL_AND_COMPOUND_CLOSURE"
+  },
+  "compound": {
+    "arms": {
+      "FROZEN_RL": {
+        "largest": 302,
+        "seconds": 8.847442833999594,
+        "status": {
+          "NEGATIVE": 4,
+          "POSITIVE": 14
+        },
+        "visits": 2960
+      },
+      "HEURISTIC": {
+        "largest": 301,
+        "seconds": 7.838850751000791,
+        "status": {
+          "NEGATIVE": 4,
+          "POSITIVE": 14
+        },
+        "visits": 3181
+      },
+      "RANDOM": {
+        "largest": 303,
+        "seconds": 8.986372791001486,
+        "status": {
+          "NEGATIVE": 4,
+          "POSITIVE": 14
+        },
+        "visits": 3367
+      }
+    },
+    "degrees": [
+      {
+        "4": 525,
+        "5": 458,
+        "6": 1920,
+        "7": 433
+      },
+      {
+        "4": 458,
+        "5": 525,
+        "6": 2037,
+        "7": 394
+      },
+      {
+        "5": 986,
+        "6": 2446
+      },
+      {
+        "5": 1036,
+        "6": 2360
+      }
+    ],
+    "heuristic_patches": 40,
+    "projected_polarities": 222,
+    "roles": [
+      [
+        5,
+        -8,
+        4
+      ],
+      [
+        11,
+        4,
+        -2
+      ],
+      [
+        2,
+        -1,
+        5
+      ],
+      [
+        2,
+        -5,
+        1
+      ]
+    ],
+    "scope": "A grammar-consistent full tiling would have a single handedness frame on each connected component. The special shell has four opposite-hand neighbors. Every other shell has at most one. Each rule pairs the special center to a fixed role with no overlap. Degree profiles are observations on certified finite collars only.",
+    "special": 123,
+    "status": "CHECKED_HAND_AND_COMPOUND_RECEPTORS"
+  },
+  "cuts": {
+    "cases_per_margin": 24,
+    "certified_infeasible_by_margin": {
+      "0": 24,
+      "1": 24,
+      "2": 8
+    },
+    "checked_nodes": 264,
+    "cuts": 192,
+    "envelope_cases": 216,
+    "excluded_sizes": {
+      "2": 156,
+      "3": 14,
+      "4": 16,
+      "6": 6
+    },
+    "false_cuts": 0,
+    "positives": 128,
+    "required_sizes": {
+      "1": 156,
+      "2": 30,
+      "4": 6
+    },
+    "scope": "A required atom must be tiled, and an excluded atom may not be tiled. Any envelope satisfying a cut is impossible. A missing cut remains unresolved. Margins are integers in the primitive-normal sample coordinate, not Euclidean distances.",
+    "status": "CHECKED_TRANSFERABLE_REQUIRED_AND_EXCLUDED_CORNER_CUTS"
+  },
+  "first": {
+    "by_neighbors": {
+      "4": 4,
+      "5": 54,
+      "6": 156,
+      "7": 28
+    },
+    "contacts": 82,
+    "distinct_observed": 33,
+    "edge_atoms": 14,
+    "extension_screen": {
+      "BLOCKED": 192,
+      "NO_GAP": 50,
+      "observed_NO_GAP": 33
+    },
+    "methods": [
+      {
+        "seconds": 0.0007210000003396999,
+        "shells": 242,
+        "status": "EXHAUSTED",
+        "visits": 541
+      },
+      {
+        "seconds": 0.0005584589998761658,
+        "shells": 242,
+        "status": "EXHAUSTED",
+        "visits": 1082
+      }
+    ],
+    "scope": "Complete first shells in the lattice model. A boundary gap forbids further surrounding. No-gap status imposes only individual support and does not prove any simultaneous extension.",
+    "shells": 242,
+    "status": "CHECKED_EXACT_FIRST_SHELL_CATALOGUE"
+  },
+  "grammar": {
+    "initial": 37,
+    "interface_candidates": {
+      "NEGATIVE": 70,
+      "POSITIVE": 222
+    },
+    "interface_roles": 141,
+    "retained": [
+      36,
+      43,
+      44,
+      46,
+      49,
+      58,
+      60,
+      61,
+      66,
+      68,
+      69,
+      123,
+      154,
+      155,
+      201,
+      204,
+      206,
+      208,
+      209,
+      210,
+      211,
+      212,
+      213,
+      236,
+      237
+    ],
+    "rounds": [
+      {
+        "active": 37,
+        "outcomes": {
+          "NEGATIVE": 11,
+          "POSITIVE": 26
+        },
+        "removed": 11
+      },
+      {
+        "active": 26,
+        "outcomes": {
+          "NEGATIVE": 1,
+          "POSITIVE": 25
+        },
+        "removed": 1
+      },
+      {
+        "active": 25,
+        "outcomes": {
+          "POSITIVE": 25
+        },
+        "removed": 0
+      }
+    ],
+    "scope": "Every surviving witness is one simultaneous assignment of compatible first shells to the neighbors of a central first shell. Iterated removal is necessary for full-plane extension, while retained cases remain finite witnesses.",
+    "status": "CHECKED_JOINT_SHELL_GRAMMAR"
+  },
+  "learning": {
+    "admitted": 10,
+    "counts": {
+      "evaluation": {
+        "minority_surrounded": 49,
+        "neighbor_4": 47,
+        "neighbor_5": 115,
+        "neighbor_6": 143,
+        "patches": 144,
+        "patches_with_shell": 144,
+        "placements": 1578,
+        "surrounded": 305
+      },
+      "training": {
+        "minority_surrounded": 5,
+        "neighbor_4": 5,
+        "neighbor_5": 15,
+        "neighbor_6": 28,
+        "patches": 48,
+        "patches_with_shell": 48,
+        "placements": 379,
+        "surrounded": 48
+      }
+    },
+    "distinct_training_signatures": 23,
+    "evaluation": {
+      "covered_minority_shells": 49,
+      "covered_shells": 163,
+      "pairs": 67,
+      "pairs_share_primitive": 67,
+      "patches_with_reusable_shell": 112
+    },
+    "scope": "Completely surrounded primitive centers in saved finite patches. Shells are exact local macro candidates. No forced-shell theorem, layer substitution or plane-tiling claim.",
+    "status": "CHECKED_TILE_FRAME_SHELL_DISCOVERY"
+  },
+  "second": {
+    "counts": {
+      "NEGATIVE": 13,
+      "POSITIVE": 37,
+      "observed_NEGATIVE": 3,
+      "observed_POSITIVE": 30
+    },
+    "scope": "A positive adds disjoint primitive neighbors covering every exposed segment of the first shell. No claim that the new boundary extends again or tiles the plane.",
+    "status": "CHECKED_SIMULTANEOUS_SECOND_RING"
+  },
+  "status": "CHECKED_TURTLE_SHELL_PROGRESS_REPORT",
+  "viewer_tiles": 271
+}
