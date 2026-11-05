@@ -1,0 +1,166 @@
+{
+  "archive": {
+    "bytes": 1605964,
+    "sha256": "e419bc62351c2cb07ce737c406bb1ee85d1b7711fae1969dad4581b296295ce7"
+  },
+  "files": {
+    "README.txt": {
+      "bytes": 990,
+      "sha256": "e3dfeb5e46f86384c84605b5edde165d6da88f921e272b57facd4685ac7881d5"
+    },
+    "data/certificate-footprints-v1.json": {
+      "bytes": 249354,
+      "sha256": "6654779265c501b55d0fbd8f8be449ad269441b50890f7b1d8b1d88bb843e9a7"
+    },
+    "data/indexed-model-v1.json": {
+      "bytes": 49446,
+      "sha256": "b8d7e9a35b5e5511e35ee5a7f5ea88eab9c9ee7943f94e499095b70d31a1a6d3"
+    },
+    "data/sparse-model-v1.json": {
+      "bytes": 14078,
+      "sha256": "4824a637b5040ea043fbc34720016c70617e7236efac52a48ef32e45ddea142f"
+    },
+    "data/synthesis-v1.json": {
+      "bytes": 3000,
+      "sha256": "34e5affb1a07d3184bad6228ca28e24f9f159a993cd7bb8e2bf34477426e4d22"
+    },
+    "data/synthesis.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/synthesis.stdout.log": {
+      "bytes": 334,
+      "sha256": "da9fd9b0cb8631572721f0a1ccd5bc5871ec0c197cb7aa9e5ef210141e2ba651"
+    },
+    "data/verification-v1.json": {
+      "bytes": 5028,
+      "sha256": "09fcaf3cd1bfb7ca3dbba14a21739d06d497fb069f01abc12d7d2ce8b0670d3b"
+    },
+    "data/verification.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/verification.stdout.log": {
+      "bytes": 5925,
+      "sha256": "028630503484830d79e235d1af8e7f86acdb86509c831d14578657c0ebc90285"
+    },
+    "input/basic-tiling-algorithm.md": {
+      "bytes": 36240,
+      "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+    },
+    "input/completion-v1.json": {
+      "bytes": 1857,
+      "sha256": "9509998881628ff483eff4f0fc31febb84cdb289462f539ce2eecf0e54b0b2f8"
+    },
+    "input/contact-catalogue-v1.json": {
+      "bytes": 2834,
+      "sha256": "dfea64f1e6e36aa266caffd87d5e5a895acc3c39dede443c869a4b6d79e29bb9"
+    },
+    "input/corona-decorated-action-audit-v1.json": {
+      "bytes": 39859,
+      "sha256": "4d28f9e89e04a4244b5358c142c0405d92eed8290208a8e752d54ee8cb4d7c55"
+    },
+    "input/corona-learned-marking-v1.json": {
+      "bytes": 49674,
+      "sha256": "f17fcecd18569b42cafe3eac45785204cd37b5513ab9535c1d5513957f5169a4"
+    },
+    "input/corona-marked-point-model-v1.json": {
+      "bytes": 26140,
+      "sha256": "d328291b700cc5c97b9bfd5d3e16a88dd2ff08065475a2fee7b49e5bc0feb389"
+    },
+    "input/corona-publication-v1.json": {
+      "bytes": 2300,
+      "sha256": "93d97aaf34319c3635cf30d3d23176256228004990e513808ac356273e00f9ec"
+    },
+    "input/input-point-model-v1.json": {
+      "bytes": 10642,
+      "sha256": "775ce3ac20489ef64d8d8266238edde36f87919461b68ccbd232763dd2da3eb0"
+    },
+    "input/point-model-v1.json": {
+      "bytes": 3441,
+      "sha256": "cf4d98077baa3ea3465e28852a2be28ddbb34901df310971ed6afbae1d378faa"
+    },
+    "input/protocol-frozen-v1.json": {
+      "bytes": 3049,
+      "sha256": "4879dc380cd58bfffacde3d4b258dae8f25bd9542146dbfa2b007c00be8a5212"
+    },
+    "input/results-v1.json.gz": {
+      "bytes": 1365689,
+      "sha256": "dca97e78217e657934c7f1c25ed6e63b33bb84b6e904dda757a7f12b5e87683e"
+    },
+    "input/turtle-mark-coverage-check-v1.json": {
+      "bytes": 369,
+      "sha256": "2c5b97354571802c0f95685e8af64c09fd44672f469ee87c5a32cde9ab811919"
+    },
+    "input/turtle-mark-coverage-v1.json": {
+      "bytes": 11195,
+      "sha256": "cf8c00ccc8e2a3d484c31a680280454a374bcdc6199e2326e17dd1d491dff848"
+    },
+    "plan/protocol-v1.md": {
+      "bytes": 2852,
+      "sha256": "18586750c069e74465f1f942d542784d2a24f275bb30ff33a57cbf190680223b"
+    },
+    "plan/source-review-v1.json": {
+      "bytes": 1006,
+      "sha256": "b450f53162adb806af824a28cb2c43dd99ec9a90490a62fad1a0dfc77f1b23c9"
+    },
+    "protocol-v1.json": {
+      "bytes": 3248,
+      "sha256": "2286c3fadee1f6745011f17c6516b3c56779de51dfd5778f4d28ccb6748692ad"
+    },
+    "publication/admission-v1.json": {
+      "bytes": 1481,
+      "sha256": "b5dab74ca9c2e48fc2957aec2f147b81fb9dbc20126da35933c8389c2bd18336"
+    },
+    "publication/backlink-hydration-v1.json": {
+      "bytes": 322,
+      "sha256": "60d5cdf1d088cc33955ba848f04d7198a2b10a71c8b704488902ab63fcd5cc01"
+    },
+    "publication/backlink-source-github-v1.json": {
+      "bytes": 538686,
+      "sha256": "3a88e51d8bfd39ea9069c703b40564d9c54281f8494d803da57b8f53d9b4e0e8"
+    },
+    "publication/previous-report-with-backlink-v1.html": {
+      "bytes": 390875,
+      "sha256": "3d091f9849ee2987bae46dffdb47296897f644926eb2b835b46c29317d522eb4"
+    },
+    "publication/release_v1.py": {
+      "bytes": 9519,
+      "sha256": "c1712624f9d51732f2555e5ad180718a08d31af7f51552f51e25032ecd4517e5"
+    },
+    "publication/remote-base-first-prepare-v1.json": {
+      "bytes": 397,
+      "sha256": "cb16178bcaf57dc2161b78ab73c5f76249db483f0ff2690932fb61495566c1e0"
+    },
+    "publication/remote-base-v1.json": {
+      "bytes": 397,
+      "sha256": "cb16178bcaf57dc2161b78ab73c5f76249db483f0ff2690932fb61495566c1e0"
+    },
+    "publication/render_v1.py": {
+      "bytes": 11896,
+      "sha256": "63a0880dd765e7fae828f038c3ff15eba30c528a2a0b9e9db99ed2bd8b7f169d"
+    },
+    "publication/static-v1.json": {
+      "bytes": 437,
+      "sha256": "d4f2bbeb5988a529427b4a2674544efe030a8f7aec8d684db24fbe1199531f41"
+    },
+    "report/certified-sparse-marking-20261105-v1.html": {
+      "bytes": 30309,
+      "sha256": "d05c20c91c93bec7739752812317cc0eb8f03631255296fc1419e1a86e9143c7"
+    },
+    "source/independent_checker_v1.py": {
+      "bytes": 25945,
+      "sha256": "b059d13b341b63a37654086f185add721af9f500f94affd573faa986458bcb01"
+    },
+    "source/synthesize_v1.py": {
+      "bytes": 10736,
+      "sha256": "177b3682ea57762231decab415596c33635c40cc5b63bb386880fe6f56972e44"
+    },
+    "source/verify_v1.py": {
+      "bytes": 8710,
+      "sha256": "a765f76c479faca1636b7e1936a6e25c77188fc0e9429187e2e4df36f2b1bb84"
+    }
+  },
+  "schema": "Turtle-marking-evidence-v1",
+  "scope": "All original run paths present at the cut. Package and later publication receipts are separate."
+}
