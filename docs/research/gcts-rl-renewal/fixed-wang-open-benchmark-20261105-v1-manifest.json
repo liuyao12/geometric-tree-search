@@ -1,0 +1,622 @@
+{
+  "archive": {
+    "bytes": 8871763,
+    "sha256": "ac99058c0383d8af1cd29c55bad210eb76cdd54f6d5ad29b710f38196cf34790"
+  },
+  "files": {
+    "blocks-protocol-v1.json": {
+      "bytes": 2138,
+      "sha256": "2d9a4df9c54868c6c85ab8e8a5de7105547b32e94c8f754ffafe8c478c58986c"
+    },
+    "data/blocks-v1.json": {
+      "bytes": 1857608,
+      "sha256": "a695e3886f1102daae45690dc95227ff9d4f10c1b7291e00adb98542392b360d"
+    },
+    "data/blocks.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/blocks.stdout.log": {
+      "bytes": 1585,
+      "sha256": "5dff93931be0396892a5e6cf84a0429cf22d56b748f7ec34b2b7774f95c57731"
+    },
+    "data/exists-map-activity-serial-wang-v1.json.gz": {
+      "bytes": 24461,
+      "sha256": "388c57d3f4e6a05618e353c1873b68905e5d7d749ffcb660c756f66e1696d8f3"
+    },
+    "data/exists-map-block-marked-wang-v1.json.gz": {
+      "bytes": 24458,
+      "sha256": "78affd75376097cc3509faaf2ca23ca8f25786b113bde9e7e348c368f0728263"
+    },
+    "data/exists-map-cadical195-serial-wang-v1.json.gz": {
+      "bytes": 24471,
+      "sha256": "a8cd0daad63170b0ab019e16616eec6bae197b2baf5d8a4f79d5706e312207e8"
+    },
+    "data/exists-map-glucose4-serial-wang-v1.json.gz": {
+      "bytes": 24491,
+      "sha256": "683aa8da471088a253b4dcdd5ae2cd6b613c4ab9ebf880874acf322cc795e4a9"
+    },
+    "data/fast.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/fast.stdout.log": {
+      "bytes": 3489,
+      "sha256": "92409046dbe5a57f35b8444854f84f307d39198114c72eaaad83387e3a20909a"
+    },
+    "data/fast/exists-map-activity-wang-v1.json.gz": {
+      "bytes": 24454,
+      "sha256": "dbf1d267ecab8dfb4aebd5fde11dcca23e41a732730c2c3e34eb80c818245936"
+    },
+    "data/fast/exists-map-cadical195-wang-v1.json.gz": {
+      "bytes": 24458,
+      "sha256": "92ddea8650816fa9664ca4075fafc632a937c4c52482a1b504891bb071f4b4d4"
+    },
+    "data/fast/exists-map-learned-wang-v1.json.gz": {
+      "bytes": 24453,
+      "sha256": "7ea9c256bc75e04b178d0b77bafb85d43f5d0a81c9e6793bc907535cef83e80f"
+    },
+    "data/fast/incidence-existence-activity-wang-v1.json.gz": {
+      "bytes": 14245,
+      "sha256": "37279bb98c9c9dadb607041e66cb3f89bec017ab5ce6e12e6a08a0050915467f"
+    },
+    "data/fast/incidence-existence-cadical195-wang-v1.json.gz": {
+      "bytes": 14243,
+      "sha256": "53f1fc6356a83880c1ac420e0a62a41b57a105a52fdc576ca338c902d900522c"
+    },
+    "data/fast/incidence-existence-learned-wang-v1.json.gz": {
+      "bytes": 14244,
+      "sha256": "3f4218b9925c3a0c983fc00af7d3f873bdee7339af844858fd2eebdaa71069ef"
+    },
+    "data/fast/nested-choice-activity-wang-v1.json.gz": {
+      "bytes": 27160,
+      "sha256": "3ca5e455aea63024a0537e3d0c6eed5670b0bb63f6b333897d3405664d19901b"
+    },
+    "data/fast/nested-choice-cadical195-wang-v1.json.gz": {
+      "bytes": 27177,
+      "sha256": "cdb3d770ef21c57cde3563f784700627137500b577d8ac9954b97ecd8a3ee96c"
+    },
+    "data/fast/nested-choice-learned-wang-v1.json.gz": {
+      "bytes": 27159,
+      "sha256": "ef646e7f9cd41ee37c1df01bd16186742a4ceea3069019932533e74620b87df5"
+    },
+    "data/fast/peano-nonzero-successor-activity-wang-v1.json.gz": {
+      "bytes": 50124,
+      "sha256": "4dda83c78219beb463f86a8439e05f22df7c8859b83b8a22404acf20bbf41786"
+    },
+    "data/fast/peano-nonzero-successor-cadical195-wang-v1.json.gz": {
+      "bytes": 50073,
+      "sha256": "763fba00ec467986f41acd4f60c255381302d77a90b579e9603e0cfc640d695b"
+    },
+    "data/fast/peano-nonzero-successor-learned-wang-v1.json.gz": {
+      "bytes": 50123,
+      "sha256": "6c9eadefe0d4a0971d40923d91ead1c7a941bd0a85e0414184e5dc54531b440e"
+    },
+    "data/fast/quantifier-duality-activity-wang-v1.json.gz": {
+      "bytes": 32840,
+      "sha256": "73e3d9be448d38a3c5d8fe6df7cf1d83a13984d0d658950fbe1ee3315e61a532"
+    },
+    "data/fast/quantifier-duality-cadical195-wang-v1.json.gz": {
+      "bytes": 32813,
+      "sha256": "aea5fb6739c22a569a58d4f90f6f4ab2a6237aece598181527b98aefddce00dc"
+    },
+    "data/fast/quantifier-duality-learned-wang-v1.json.gz": {
+      "bytes": 32839,
+      "sha256": "58fa33885fd909860360f9f8d1faf3fc6c70d6bfb773ec575d4bec51c210cb29"
+    },
+    "data/fast/results-v1.json": {
+      "bytes": 9613312,
+      "sha256": "c18324e8d606cffd57c9a7a60245c808f20a8576d768602dc9ef72b050517976"
+    },
+    "data/fast/shadowed-existential-activity-wang-v1.json.gz": {
+      "bytes": 37332,
+      "sha256": "a3aa70688f50fa438df7ca3a9e8eca475de22f62cccaeeab8c18f758dbd77e99"
+    },
+    "data/fast/shadowed-existential-cadical195-wang-v1.json.gz": {
+      "bytes": 37338,
+      "sha256": "300fdf3ec168d71f707e8f75edf4689b7bef5e6ffc5fd73292bce9a82d2ba5c1"
+    },
+    "data/fast/shadowed-existential-learned-wang-v1.json.gz": {
+      "bytes": 37331,
+      "sha256": "b1fc90a676469f8dbcc82a2d43844957103a9e9904cc3a952136e2c2f9cc7f4f"
+    },
+    "data/hilbert-incidence-uniqueness-block-marked-wang-v1.json.gz": {
+      "bytes": 576657,
+      "sha256": "d6965e7f2bd022e4b33d1a99de72c9b03aece77b32bd2883aad1f033e48811a1"
+    },
+    "data/hilbert-incidence-uniqueness-cadical195-serial-wang-v1.json.gz": {
+      "bytes": 576831,
+      "sha256": "034e287fbccaaf9b2d6cde60d65eb2de9a984edf8a11b95e116c56cbceb787b5"
+    },
+    "data/hilbert-incidence-uniqueness-glucose4-serial-wang-v1.json.gz": {
+      "bytes": 577003,
+      "sha256": "0025f5594159cf34a15ba7091cd90fd25a9114ccc6aacb245dc0797675a3b87e"
+    },
+    "data/incidence-existence-activity-serial-wang-v1.json.gz": {
+      "bytes": 14252,
+      "sha256": "cb9e4ed7a5dbb5b6629d0d0ff88a5408ae62d4afb1904b6b5ff233b433e6e60a"
+    },
+    "data/incidence-existence-block-marked-wang-v1.json.gz": {
+      "bytes": 14249,
+      "sha256": "7f88f72315d7716227c985bfa2eaf8838100593df7607a4310e1d6d45588f8db"
+    },
+    "data/incidence-existence-cadical195-serial-wang-v1.json.gz": {
+      "bytes": 14250,
+      "sha256": "cd3f25337253a4ed8bcd05a04f22308948cda460a1e01f2aefef089bde3d9429"
+    },
+    "data/incidence-existence-glucose4-serial-wang-v1.json.gz": {
+      "bytes": 14253,
+      "sha256": "f822a1f2b065fa130be9119f71a70681b53ae43050edd0bce5dcf4b0fb641f74"
+    },
+    "data/nested-choice-activity-serial-wang-v1.json.gz": {
+      "bytes": 27167,
+      "sha256": "3a81a96a201471b24e8c319152496c5575a152534ff19ab0fdd05fe7a156f769"
+    },
+    "data/nested-choice-block-marked-wang-v1.json.gz": {
+      "bytes": 27164,
+      "sha256": "606b82649725788ee9a2d429e60cb7adc372a59074041cc9108eaa60645fe98b"
+    },
+    "data/nested-choice-cadical195-serial-wang-v1.json.gz": {
+      "bytes": 27184,
+      "sha256": "0464c6470bad2512f3a5317a386d1d88bfc174ca548b707e54551ddd634129b1"
+    },
+    "data/nested-choice-glucose4-serial-wang-v1.json.gz": {
+      "bytes": 27160,
+      "sha256": "a8278fe82e21250ba8b3e5b0f8c8f932ec79ce34bf96aed9f31bd29a18bc1354"
+    },
+    "data/peano-nonzero-successor-activity-serial-wang-v1.json.gz": {
+      "bytes": 50131,
+      "sha256": "07185e9057993b1aec97fefd82f670936b1a3fa3f1e0eca9f03334ddfc031ed5"
+    },
+    "data/peano-nonzero-successor-block-marked-wang-v1.json.gz": {
+      "bytes": 50128,
+      "sha256": "49b5572f91536baca5ae1842aa1f763776c8421dfdbb922b752e9e2109a8486b"
+    },
+    "data/peano-nonzero-successor-cadical195-serial-wang-v1.json.gz": {
+      "bytes": 50080,
+      "sha256": "c1ad43236f8aa2ccf62173e5494c58817c50b31db9de68f6778a864c29592c84"
+    },
+    "data/peano-nonzero-successor-glucose4-serial-wang-v1.json.gz": {
+      "bytes": 50073,
+      "sha256": "c8d6840a2ecfde8d50cd23b2d07f082b6930865b52029d4da2e7674ab6594fca"
+    },
+    "data/quantifier-duality-activity-serial-wang-v1.json.gz": {
+      "bytes": 32824,
+      "sha256": "28775ba3e408cfdf86c0fcaa6631ad1bbb9050cfb716f90d807669917177b542"
+    },
+    "data/quantifier-duality-block-marked-wang-v1.json.gz": {
+      "bytes": 32821,
+      "sha256": "fb969f829778679d8b4a8ce7ce05f5a49d367391d47e72e725b74c99a7bebe0f"
+    },
+    "data/quantifier-duality-cadical195-serial-wang-v1.json.gz": {
+      "bytes": 32850,
+      "sha256": "0f70c669e2ecccd771e308d0f2d97224bf8ef67f06f4ba33ba0089c9655e9244"
+    },
+    "data/quantifier-duality-glucose4-serial-wang-v1.json.gz": {
+      "bytes": 32870,
+      "sha256": "7abf8b0870c31730bdf94eb4b7c2f4ae0f274ac64b0f232b8b1e1725fd98975a"
+    },
+    "data/replay-qualification-v1.json": {
+      "bytes": 143,
+      "sha256": "c8a7c704ab16f41f22ef3f6792aa13b4dbf9c09f0306a83ec923c49e84c8e4f0"
+    },
+    "data/serial-v1.json": {
+      "bytes": 176962,
+      "sha256": "506224b91fb80699d6052f684bd52ba784cd731c425968d351260205991438cd"
+    },
+    "data/serial.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/serial.stdout.log": {
+      "bytes": 3449,
+      "sha256": "83f1668b2003750e8add255a75a823cd353e39c6ca0fa90db8a7f10b73b30edd"
+    },
+    "data/shadowed-existential-activity-serial-wang-v1.json.gz": {
+      "bytes": 37339,
+      "sha256": "0a0851055fe178152fe48150d69d1daae23fbfa1c114c9bb8571df54d6a9b8f8"
+    },
+    "data/shadowed-existential-block-marked-wang-v1.json.gz": {
+      "bytes": 37336,
+      "sha256": "2bb479a56a5a25bc4d923ef18229aa80f151035fbe78288f542a7c000afeaea4"
+    },
+    "data/shadowed-existential-cadical195-serial-wang-v1.json.gz": {
+      "bytes": 37389,
+      "sha256": "cff8c5cdab0894b4b67bef5342efbdcb8c1857f0b89bdc8078e990621bd58672"
+    },
+    "data/shadowed-existential-glucose4-serial-wang-v1.json.gz": {
+      "bytes": 37323,
+      "sha256": "79af6fc5e109c5e8920ee888deb4d38fa1f76857653cb3855c0117ca6bb28479"
+    },
+    "data/tptp-tutorial-family-cadical195-serial-wang-v1.json.gz": {
+      "bytes": 1924715,
+      "sha256": "8f3b87730810bdb20fddf6c2a975ad151c6dd7aeaae46020e4aa7334df5e5103"
+    },
+    "data/tptp-tutorial-family-glucose4-serial-wang-v1.json.gz": {
+      "bytes": 1924514,
+      "sha256": "e2350839cb77f2ede371e5f652dfcd0f3713ebdff9a2048816656d25aad4be39"
+    },
+    "failed-missing-control/blocks/blocks-protocol-v1.json": {
+      "bytes": 2138,
+      "sha256": "b66b803090d8bd15203320b79ba4f00fe9566adc030f580f4f2f2391e6ff9753"
+    },
+    "failed-missing-control/blocks/blocks.stderr.log": {
+      "bytes": 566,
+      "sha256": "c2c313b608a4048e23eff454f7534a00d5c193e910f270fdc4f80efe839943ba"
+    },
+    "failed-missing-control/blocks/blocks.stdout.log": {
+      "bytes": 1236,
+      "sha256": "9ac9352de767911810e5f71fd292e0681292d65b5bf8e7dd9e8f74c8de9de51c"
+    },
+    "failed-missing-control/blocks/exists-map-block-marked-wang-v1.json.gz": {
+      "bytes": 24458,
+      "sha256": "78affd75376097cc3509faaf2ca23ca8f25786b113bde9e7e348c368f0728263"
+    },
+    "failed-missing-control/blocks/hilbert-incidence-uniqueness-block-marked-wang-v1.json.gz": {
+      "bytes": 576657,
+      "sha256": "d6965e7f2bd022e4b33d1a99de72c9b03aece77b32bd2883aad1f033e48811a1"
+    },
+    "failed-missing-control/blocks/incidence-existence-block-marked-wang-v1.json.gz": {
+      "bytes": 14249,
+      "sha256": "7f88f72315d7716227c985bfa2eaf8838100593df7607a4310e1d6d45588f8db"
+    },
+    "failed-missing-control/blocks/nested-choice-block-marked-wang-v1.json.gz": {
+      "bytes": 27164,
+      "sha256": "606b82649725788ee9a2d429e60cb7adc372a59074041cc9108eaa60645fe98b"
+    },
+    "failed-missing-control/blocks/peano-nonzero-successor-block-marked-wang-v1.json.gz": {
+      "bytes": 50128,
+      "sha256": "49b5572f91536baca5ae1842aa1f763776c8421dfdbb922b752e9e2109a8486b"
+    },
+    "failed-missing-control/blocks/quantifier-duality-block-marked-wang-v1.json.gz": {
+      "bytes": 32821,
+      "sha256": "fb969f829778679d8b4a8ce7ce05f5a49d367391d47e72e725b74c99a7bebe0f"
+    },
+    "failed-missing-control/blocks/serial_blocks_v1.py": {
+      "bytes": 7577,
+      "sha256": "e4a0ee08a1ea57aef4365120114246fd3205a781012ec3e787be312d123484d7"
+    },
+    "failed-missing-control/blocks/shadowed-existential-block-marked-wang-v1.json.gz": {
+      "bytes": 37336,
+      "sha256": "2bb479a56a5a25bc4d923ef18229aa80f151035fbe78288f542a7c000afeaea4"
+    },
+    "failed-missing-control/serial/exists-map-activity-serial-wang-v1.json.gz": {
+      "bytes": 24461,
+      "sha256": "388c57d3f4e6a05618e353c1873b68905e5d7d749ffcb660c756f66e1696d8f3"
+    },
+    "failed-missing-control/serial/exists-map-cadical195-serial-wang-v1.json.gz": {
+      "bytes": 24471,
+      "sha256": "a8cd0daad63170b0ab019e16616eec6bae197b2baf5d8a4f79d5706e312207e8"
+    },
+    "failed-missing-control/serial/exists-map-glucose4-serial-wang-v1.json.gz": {
+      "bytes": 24491,
+      "sha256": "683aa8da471088a253b4dcdd5ae2cd6b613c4ab9ebf880874acf322cc795e4a9"
+    },
+    "failed-missing-control/serial/hilbert-incidence-uniqueness-cadical195-serial-wang-v1.json.gz": {
+      "bytes": 576831,
+      "sha256": "034e287fbccaaf9b2d6cde60d65eb2de9a984edf8a11b95e116c56cbceb787b5"
+    },
+    "failed-missing-control/serial/hilbert-incidence-uniqueness-glucose4-serial-wang-v1.json.gz": {
+      "bytes": 577003,
+      "sha256": "0025f5594159cf34a15ba7091cd90fd25a9114ccc6aacb245dc0797675a3b87e"
+    },
+    "failed-missing-control/serial/incidence-existence-activity-serial-wang-v1.json.gz": {
+      "bytes": 14252,
+      "sha256": "cb9e4ed7a5dbb5b6629d0d0ff88a5408ae62d4afb1904b6b5ff233b433e6e60a"
+    },
+    "failed-missing-control/serial/incidence-existence-cadical195-serial-wang-v1.json.gz": {
+      "bytes": 14250,
+      "sha256": "cd3f25337253a4ed8bcd05a04f22308948cda460a1e01f2aefef089bde3d9429"
+    },
+    "failed-missing-control/serial/incidence-existence-glucose4-serial-wang-v1.json.gz": {
+      "bytes": 14253,
+      "sha256": "f822a1f2b065fa130be9119f71a70681b53ae43050edd0bce5dcf4b0fb641f74"
+    },
+    "failed-missing-control/serial/nested-choice-activity-serial-wang-v1.json.gz": {
+      "bytes": 27167,
+      "sha256": "3a81a96a201471b24e8c319152496c5575a152534ff19ab0fdd05fe7a156f769"
+    },
+    "failed-missing-control/serial/nested-choice-cadical195-serial-wang-v1.json.gz": {
+      "bytes": 27184,
+      "sha256": "0464c6470bad2512f3a5317a386d1d88bfc174ca548b707e54551ddd634129b1"
+    },
+    "failed-missing-control/serial/nested-choice-glucose4-serial-wang-v1.json.gz": {
+      "bytes": 27160,
+      "sha256": "a8278fe82e21250ba8b3e5b0f8c8f932ec79ce34bf96aed9f31bd29a18bc1354"
+    },
+    "failed-missing-control/serial/peano-nonzero-successor-activity-serial-wang-v1.json.gz": {
+      "bytes": 50131,
+      "sha256": "07185e9057993b1aec97fefd82f670936b1a3fa3f1e0eca9f03334ddfc031ed5"
+    },
+    "failed-missing-control/serial/peano-nonzero-successor-cadical195-serial-wang-v1.json.gz": {
+      "bytes": 50080,
+      "sha256": "c1ad43236f8aa2ccf62173e5494c58817c50b31db9de68f6778a864c29592c84"
+    },
+    "failed-missing-control/serial/peano-nonzero-successor-glucose4-serial-wang-v1.json.gz": {
+      "bytes": 50073,
+      "sha256": "c8d6840a2ecfde8d50cd23b2d07f082b6930865b52029d4da2e7674ab6594fca"
+    },
+    "failed-missing-control/serial/quantifier-duality-activity-serial-wang-v1.json.gz": {
+      "bytes": 32824,
+      "sha256": "28775ba3e408cfdf86c0fcaa6631ad1bbb9050cfb716f90d807669917177b542"
+    },
+    "failed-missing-control/serial/quantifier-duality-cadical195-serial-wang-v1.json.gz": {
+      "bytes": 32850,
+      "sha256": "0f70c669e2ecccd771e308d0f2d97224bf8ef67f06f4ba33ba0089c9655e9244"
+    },
+    "failed-missing-control/serial/quantifier-duality-glucose4-serial-wang-v1.json.gz": {
+      "bytes": 32870,
+      "sha256": "7abf8b0870c31730bdf94eb4b7c2f4ae0f274ac64b0f232b8b1e1725fd98975a"
+    },
+    "failed-missing-control/serial/serial-protocol-v1.json": {
+      "bytes": 2178,
+      "sha256": "5084fd4f7359d26e3efaf4c008de00077ef125c2342a297eef56c61a6970dc43"
+    },
+    "failed-missing-control/serial/serial.stderr.log": {
+      "bytes": 556,
+      "sha256": "eaea0ff48057ad0a7cbe7e0afc627a9a90bf6231ea908bdd9cf5f776bcb59df8"
+    },
+    "failed-missing-control/serial/serial.stdout.log": {
+      "bytes": 2742,
+      "sha256": "4ee17a0ece1257d2de455ce8dbef49f9e0964096b4690b83b04669759c891a1b"
+    },
+    "failed-missing-control/serial/serial_v1.py": {
+      "bytes": 3098,
+      "sha256": "5e11cb36dd19b36997698d06b164e83a3b57191fe6f422b4eb393a0c30810040"
+    },
+    "failed-missing-control/serial/shadowed-existential-activity-serial-wang-v1.json.gz": {
+      "bytes": 37339,
+      "sha256": "0a0851055fe178152fe48150d69d1daae23fbfa1c114c9bb8571df54d6a9b8f8"
+    },
+    "failed-missing-control/serial/shadowed-existential-cadical195-serial-wang-v1.json.gz": {
+      "bytes": 37389,
+      "sha256": "cff8c5cdab0894b4b67bef5342efbdcb8c1857f0b89bdc8078e990621bd58672"
+    },
+    "failed-missing-control/serial/shadowed-existential-glucose4-serial-wang-v1.json.gz": {
+      "bytes": 37323,
+      "sha256": "79af6fc5e109c5e8920ee888deb4d38fa1f76857653cb3855c0117ca6bb28479"
+    },
+    "fast-protocol-v1.json": {
+      "bytes": 621,
+      "sha256": "767c54bdbd5930010f5a612739ccd062962df8ce47bcea2264bc5f5c9c9a4b19"
+    },
+    "input/cases-v1.json": {
+      "bytes": 3716,
+      "sha256": "4a16a1564632dc11374550f000666c77dc9a52e1f21a2e79d6ddb546b710ab31"
+    },
+    "input/forgery-v1.json": {
+      "bytes": 400,
+      "sha256": "a2f2f770406ddbf9b7de244eb34693bf30b841ad6b4031180b3d5ee9bd47e581"
+    },
+    "input/front-protocol-v1.json": {
+      "bytes": 2206,
+      "sha256": "b5cfb835f237dadefd0b907319d24cb527f6d82d6d5fbe19bdf33cabbe3088a0"
+    },
+    "input/ground-grid-receipt-v1.json": {
+      "bytes": 438,
+      "sha256": "baa2a342f45f5aaa05d5722ccdc3768a26772a67489dbc38528393347f28830a"
+    },
+    "input/new-cases-v1.json": {
+      "bytes": 4658,
+      "sha256": "2816f73f996fc56bdc7940e69642105a511f3c6fb203023d5387786c38fa9d17"
+    },
+    "input/tutorial-cases-v1.json": {
+      "bytes": 12093,
+      "sha256": "1a2fa0337763836752ce73aaa27f5c06cfd5f6b40706be8b8c4f4e53ff78f8d3"
+    },
+    "prior/canonical-replay-v1.json": {
+      "bytes": 194,
+      "sha256": "cb8447b07545ca182994e5e5e8a418e8846de8626b0a53881f371134ed18c948"
+    },
+    "prior/exists-map-window-wang-v1.json.gz": {
+      "bytes": 24452,
+      "sha256": "e6c48787007386ec8c4b0756472db936e72b08b39c91a225b339af3ba8c9d03a"
+    },
+    "prior/incidence-existence-window-wang-v1.json.gz": {
+      "bytes": 14243,
+      "sha256": "5b0090e06636c9b33799433bb43d96e14de810f247db59d3b23f04468717f21e"
+    },
+    "prior/nested-choice-window-wang-v1.json.gz": {
+      "bytes": 27158,
+      "sha256": "efd8a9ea5d8c4e05980aa73573f86b9135ea4d35b00cbb2a424d72a91bde8171"
+    },
+    "prior/peano-nonzero-successor-window-wang-v1.json.gz": {
+      "bytes": 50122,
+      "sha256": "e0189455db64b6f197b1b9fa3869617d2f22f0325976cdd7ce8c3889e11f065b"
+    },
+    "prior/propagation-protocol-v1.json": {
+      "bytes": 693,
+      "sha256": "1e3764d4f2595d27b11e1f772e1ece30c46b923546efb7622ba4afaf99a8c72f"
+    },
+    "prior/propagation-results-v1.json": {
+      "bytes": 167887,
+      "sha256": "73f7a8c1b81ca8a017f90379d10434fd7afc207aa58fcf9ceabeaaa1377a7ecf"
+    },
+    "prior/protocol-v1.json": {
+      "bytes": 3746,
+      "sha256": "05743f65af605b03226fca1ebc0f1e8747ea8be61b968c007c0bc1548ad5a207"
+    },
+    "prior/quantifier-duality-window-wang-v1.json.gz": {
+      "bytes": 32839,
+      "sha256": "967ab57ad1c692e1f5230517bcc24a47f8dbc4b0114963241abad3c3d4505990"
+    },
+    "prior/replay/origin_v1.py": {
+      "bytes": 13121,
+      "sha256": "231f67674aed7ecfdaa556f3d685442f1a4275bd68c2d654e41acab0808e4a83"
+    },
+    "prior/results-v1.json": {
+      "bytes": 41290,
+      "sha256": "8ca52eb851b3b85a034ff4ded27b3e5c5a5693ff0290b173e583d1645dc1c429"
+    },
+    "prior/shadowed-existential-window-wang-v1.json.gz": {
+      "bytes": 37330,
+      "sha256": "09cc9b424e2a0781bc2a816d6ea637b5e118b6001ff54ddd14f3993b786587d2"
+    },
+    "prior/slow-verifier-prefix-v1.log": {
+      "bytes": 2475,
+      "sha256": "32e5fa17a1f51a199c4dd2fee25608bfb63cc334b7363711c6a2387f582da43e"
+    },
+    "prior/slow-verifier-stderr-at-cut-v1.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "prior/summary-v1.json": {
+      "bytes": 296,
+      "sha256": "9312191dad29a6f31d8238a762c13494d9a1f59c887dadb402e61337fb0df36e"
+    },
+    "prior/transfer-protocol-v1.json": {
+      "bytes": 1056,
+      "sha256": "0eb3dc85c604cbdccbe394654c30a6019c00c2d33a280f54830f19181254d662"
+    },
+    "prior/transfer-v1.json": {
+      "bytes": 42686,
+      "sha256": "040dbdbec5361dcb4ebff6f4666614fd8bc2b68585d0d2d2106e607c06b9261d"
+    },
+    "prior/tutorial-results-v1.json": {
+      "bytes": 42044,
+      "sha256": "d993c30ae350333b6e88515305a7f680792c3615d07820a7a5d3ca98d4a4f749"
+    },
+    "prior/window-search-protocol-v1.json": {
+      "bytes": 1412,
+      "sha256": "dea1a7c668c35745f15ed97622a5aed5915fd4d992526a150db3aa7f815c9423"
+    },
+    "prior/window-search-v1.json": {
+      "bytes": 33717,
+      "sha256": "c2477e312ce1ab894ef47fd70bedf165859a304e6323e3f63d16d627130e4c13"
+    },
+    "protocol-v1.json": {
+      "bytes": 8197,
+      "sha256": "ab7e1526801a7c1fa29c3c7873c29f1c7661f4b2ad5aaafa0ea2bab3ba8ade4a"
+    },
+    "publication/basic-tiling-algorithm-at-parent.md": {
+      "bytes": 36240,
+      "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+    },
+    "publication/browser-v1.json": {
+      "bytes": 146,
+      "sha256": "5e269eab83797a932ffc1d730c7ff240f89c201de251cfbff4d9aea5245ad9d0"
+    },
+    "publication/browser-v1.png": {
+      "bytes": 70506,
+      "sha256": "cae16670dfd45688a39da97ca43421de4739e1a72160e109a476d437be62b213"
+    },
+    "publication/browser_v1.cjs": {
+      "bytes": 2971,
+      "sha256": "06b85e45dfa49f17b7053fbe7b608d54ee8151a83b7cae444e9325c9556b1f5e"
+    },
+    "publication/previous-report-with-backlink-v1.html": {
+      "bytes": 166471,
+      "sha256": "d4238ade9e6de85c2ffbf8f843db9fa4ec1fef8c2aaa6dc8790449494e5bce92"
+    },
+    "publication/proof_presentation.py": {
+      "bytes": 14608,
+      "sha256": "eecea0f54db12481f30c7f0bd806001e1caa91ac7d91fd1696d9f18f826c22ab"
+    },
+    "publication/release_v1.py": {
+      "bytes": 10684,
+      "sha256": "34dc88be1008b663c196cde758016d9497e4f98f1e5f80c19a369531dd6849e5"
+    },
+    "publication/remote-base-v1.json": {
+      "bytes": 397,
+      "sha256": "e643a65e8d64fc5163b6a35823e51c5aa0aa8cbd55a0e15e4c52f286977b606c"
+    },
+    "publication/render_v1.py": {
+      "bytes": 16917,
+      "sha256": "b2d5bbadc1f7ce0014a37d965f820202b04dea01cd4a9225cba82126d919d4eb"
+    },
+    "publication/static-v1.json": {
+      "bytes": 444,
+      "sha256": "955ccf62552fc5f1b4c3b2a416141628a35b1475d8fae7b59d55da7e057987c9"
+    },
+    "report/fixed-wang-open-benchmark-20261105-v1-results.json": {
+      "bytes": 128209,
+      "sha256": "76bb1db79f34e69c42b54ad60db86112332e2f90b70c68e1de444a187519b791"
+    },
+    "report/fixed-wang-open-benchmark-20261105-v1.html": {
+      "bytes": 135703,
+      "sha256": "7693e8db5b3a55f1bba9c3bf21267133605902704f63d3930fcb388df2f57b82"
+    },
+    "serial-protocol-v1.json": {
+      "bytes": 2178,
+      "sha256": "ef47d361ba96f62b068611444cd248e7c50746a78235ba146b954e91d9e33f53"
+    },
+    "source/backjump_v1.py": {
+      "bytes": 5124,
+      "sha256": "f53c10693182152b5d8c5027779f340fb205c6c17145ae3cf560f2b3c0bf22d6"
+    },
+    "source/benchmark_fast_v1.py": {
+      "bytes": 2268,
+      "sha256": "9d668e55f1dffb0f5ab4e5cb0982a2394c525c1eae139401b449d003958a791d"
+    },
+    "source/benchmark_v1.py": {
+      "bytes": 6697,
+      "sha256": "6c869e022a9d71296b58a97cbfd4b615520199368b67c9310dd5184429c6744c"
+    },
+    "source/comparison_v1.py": {
+      "bytes": 6230,
+      "sha256": "0a6e43e1bff8db28dfc6de423aa6955c0fa1f6dd32d931862e73150f91da97cc"
+    },
+    "source/cut_transfer_v1.py": {
+      "bytes": 3985,
+      "sha256": "b63e1b4da47a2936177b14f3d52ad19410631384760c6827cc05ceb1b8cce787"
+    },
+    "source/fixed_palette_v1.py": {
+      "bytes": 8368,
+      "sha256": "8d4c09e1977302fd89454f1ab6d8b752d475c0a1a318ddcedac3f434518635fc"
+    },
+    "source/front_v1.py": {
+      "bytes": 8895,
+      "sha256": "b8e354933c9bd76c8f5ec687694bc154062da941123b890dd431ce88071871f8"
+    },
+    "source/herbrand_v1.py": {
+      "bytes": 10499,
+      "sha256": "ab1698fa88166e33afa446d9f8ca18da25d257c4d07c76da0e261ecedd36e8db"
+    },
+    "source/in_grid_v1.py": {
+      "bytes": 7880,
+      "sha256": "2c2e794b894a41998a3ded276cae78ffaa3012ebb0bdead1cb104293ea246157"
+    },
+    "source/open_wang_v1.py": {
+      "bytes": 10062,
+      "sha256": "cdd05ab2711f630814a106da47351f979e85e5cdd02d4e836a46f69efe3e46fe"
+    },
+    "source/origin_v1.py": {
+      "bytes": 13179,
+      "sha256": "9c436af9b7944fcd262b934260d31f0a491021255284c90deead009bb8ae7339"
+    },
+    "source/propagated_cuts_v1.py": {
+      "bytes": 6369,
+      "sha256": "c74ef564d50e22fa3fc62094c1da513d894b7dd245908777ca4368f335c5fb0e"
+    },
+    "source/qualification_v1.py": {
+      "bytes": 912,
+      "sha256": "33a91adfd122453adf6166023e268c42d71d00b14ea685ffe2e08b8aecf499a9"
+    },
+    "source/replay_fast_v1.cpp": {
+      "bytes": 3502,
+      "sha256": "18c04f2d61dd8c75a10ac9e2200f50812447c22c50a207acf9fcd8071d2ed99c"
+    },
+    "source/resolution_v1.py": {
+      "bytes": 14299,
+      "sha256": "8aa3e79d0fecf09a47ef7e7a9c2670f57747b571f30c0ed9cf4a65fba93e9536"
+    },
+    "source/ribbon_checker_v3.py": {
+      "bytes": 14489,
+      "sha256": "e346951922cfe71366f6c31b474c77955a51715eb3e043ff053c169dc8b0adbd"
+    },
+    "source/serial_blocks_v1.py": {
+      "bytes": 7614,
+      "sha256": "1bfa9be4ebb6ad9623e1090f2e648f3c1c7e276e74b3f2b628ccb1346bb61928"
+    },
+    "source/serial_v1.py": {
+      "bytes": 3135,
+      "sha256": "f8012e38cb9275c16a33534a8443232e7dc6852a10348b86a478dbc85c4faef1"
+    },
+    "source/window_search_v1.py": {
+      "bytes": 2486,
+      "sha256": "5578161e309f3f5115b198c5f436c42fae171bc5638c231ba19173d6604025c9"
+    }
+  },
+  "schema": "Wang-open-benchmark-evidence-v1",
+  "scope": "All completed reported experiments and the prefix snapshot of the separate slower Python replay. The latter's active outputs and packaging receipts are separate."
+}

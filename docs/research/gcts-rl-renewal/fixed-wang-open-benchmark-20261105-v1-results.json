@@ -1,0 +1,3354 @@
+{
+  "cases": [
+    {
+      "gates": 1240,
+      "id": "exists-map",
+      "methods": [
+        {
+          "counts": {
+            "conflicts": 10,
+            "decisions": 17,
+            "skipped_levels": 1
+          },
+          "mode": "static",
+          "rectangle": {
+            "active_cells": 3146,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 1633080,
+            "certificate_sha256": "4d3d63ef81be74fb263aea9d9e4f79cc2af969b3f2b9fdc5d1c491e746901cd4",
+            "circuit_sha256": "707ae61499cb9ec0e4b7f5f2151376585d3eb293391006fcc49ad0ffd85b57db",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 1240,
+            "output_column": 1316,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 1629934,
+            "ribbon_intervals": 3382,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 1317
+          },
+          "replay_seconds": 0.011480124998342944,
+          "seconds": 0.006599917000130517,
+          "status": "SAT"
+        },
+        {
+          "counts": {
+            "conflicts": 10,
+            "decisions": 17,
+            "skipped_levels": 1
+          },
+          "mode": "activity",
+          "rectangle": {
+            "active_cells": 3146,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 1633080,
+            "certificate_sha256": "4d3d63ef81be74fb263aea9d9e4f79cc2af969b3f2b9fdc5d1c491e746901cd4",
+            "circuit_sha256": "707ae61499cb9ec0e4b7f5f2151376585d3eb293391006fcc49ad0ffd85b57db",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 1240,
+            "output_column": 1316,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 1629934,
+            "ribbon_intervals": 3382,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 1317
+          },
+          "replay_seconds": 0.009989874997700099,
+          "seconds": 0.006258958001126302,
+          "status": "SAT"
+        },
+        {
+          "counts": {
+            "conflicts": 10,
+            "decisions": 17,
+            "skipped_levels": 1
+          },
+          "mode": "learned",
+          "rectangle": {
+            "active_cells": 3146,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 1633080,
+            "certificate_sha256": "4d3d63ef81be74fb263aea9d9e4f79cc2af969b3f2b9fdc5d1c491e746901cd4",
+            "circuit_sha256": "707ae61499cb9ec0e4b7f5f2151376585d3eb293391006fcc49ad0ffd85b57db",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 1240,
+            "output_column": 1316,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 1629934,
+            "ribbon_intervals": 3382,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 1317
+          },
+          "replay_seconds": 0.00996004099943093,
+          "seconds": 0.006469624997407664,
+          "status": "SAT"
+        },
+        {
+          "counts": {
+            "conflicts": 5,
+            "decisions": 13,
+            "propagations": 1474,
+            "restarts": 1
+          },
+          "mode": "cadical195",
+          "rectangle": {
+            "active_cells": 3146,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 1633080,
+            "certificate_sha256": "068c7e07c501ad15b6b9d8280dad6743d8b40f0c32a7d3b0c9c0c14b6eb53190",
+            "circuit_sha256": "707ae61499cb9ec0e4b7f5f2151376585d3eb293391006fcc49ad0ffd85b57db",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 1240,
+            "output_column": 1316,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 1629934,
+            "ribbon_intervals": 3382,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 1317
+          },
+          "seconds": 0.0010309160024917219,
+          "seeded": 0,
+          "status": "SAT"
+        },
+        {
+          "counts": {
+            "conflicts": 1,
+            "decisions": 13,
+            "propagations": 1531,
+            "restarts": 1
+          },
+          "mode": "glucose4",
+          "rectangle": {
+            "active_cells": 3146,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 1633080,
+            "certificate_sha256": "be701bd211572db0fc9792a5cfc5c323ea18f95d6837309e5a1dda2a48b3bff9",
+            "circuit_sha256": "707ae61499cb9ec0e4b7f5f2151376585d3eb293391006fcc49ad0ffd85b57db",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 1240,
+            "output_column": 1316,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 1629934,
+            "ribbon_intervals": 3382,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 1317
+          },
+          "seconds": 0.0008244579985330347,
+          "seeded": 0,
+          "status": "SAT"
+        },
+        {
+          "counts": {
+            "conflicts": 5,
+            "decisions": 15,
+            "propagations": 1569,
+            "restarts": 0
+          },
+          "mode": "cadical195-seeded",
+          "rectangle": {
+            "active_cells": 3146,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 1633080,
+            "certificate_sha256": "068c7e07c501ad15b6b9d8280dad6743d8b40f0c32a7d3b0c9c0c14b6eb53190",
+            "circuit_sha256": "707ae61499cb9ec0e4b7f5f2151376585d3eb293391006fcc49ad0ffd85b57db",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 1240,
+            "output_column": 1316,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 1629934,
+            "ribbon_intervals": 3382,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 1317
+          },
+          "seconds": 0.000924916999792913,
+          "seeded": 10,
+          "status": "SAT"
+        }
+      ],
+      "spec": {
+        "depth": 0,
+        "id": "exists-map",
+        "premises": 3,
+        "resolutions": 2
+      }
+    },
+    {
+      "gates": 731,
+      "id": "incidence-existence",
+      "methods": [
+        {
+          "counts": {
+            "decisions": 3
+          },
+          "mode": "static",
+          "rectangle": {
+            "active_cells": 1873,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 580414,
+            "certificate_sha256": "fcd835335591a2176ceca069bebc5b3a554f12971f1a5bc64ce8a1ca6f5b539d",
+            "circuit_sha256": "3be65132506eb4e1a485d4e0a811e366c47557169d364e9050fef0ea85a24682",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 731,
+            "output_column": 793,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 578541,
+            "ribbon_intervals": 2003,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 794
+          },
+          "replay_seconds": 1.7079983081202954e-06,
+          "seconds": 0.002000708002015017,
+          "status": "SAT"
+        },
+        {
+          "counts": {
+            "decisions": 3
+          },
+          "mode": "activity",
+          "rectangle": {
+            "active_cells": 1873,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 580414,
+            "certificate_sha256": "fcd835335591a2176ceca069bebc5b3a554f12971f1a5bc64ce8a1ca6f5b539d",
+            "circuit_sha256": "3be65132506eb4e1a485d4e0a811e366c47557169d364e9050fef0ea85a24682",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 731,
+            "output_column": 793,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 578541,
+            "ribbon_intervals": 2003,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 794
+          },
+          "replay_seconds": 7.499984349124134e-07,
+          "seconds": 0.002047875001153443,
+          "status": "SAT"
+        },
+        {
+          "counts": {
+            "decisions": 3
+          },
+          "mode": "learned",
+          "rectangle": {
+            "active_cells": 1873,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 580414,
+            "certificate_sha256": "fcd835335591a2176ceca069bebc5b3a554f12971f1a5bc64ce8a1ca6f5b539d",
+            "circuit_sha256": "3be65132506eb4e1a485d4e0a811e366c47557169d364e9050fef0ea85a24682",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 731,
+            "output_column": 793,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 578541,
+            "ribbon_intervals": 2003,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 794
+          },
+          "replay_seconds": 9.169998520519584e-07,
+          "seconds": 0.0020774170006916393,
+          "status": "SAT"
+        },
+        {
+          "counts": {
+            "conflicts": 0,
+            "decisions": 0,
+            "propagations": 510,
+            "restarts": 0
+          },
+          "mode": "cadical195",
+          "rectangle": {
+            "active_cells": 1873,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 580414,
+            "certificate_sha256": "e87e4fe6b3c9119328c340061e7292d8181edc9028d1906eb96805e431631959",
+            "circuit_sha256": "3be65132506eb4e1a485d4e0a811e366c47557169d364e9050fef0ea85a24682",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 731,
+            "output_column": 793,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 578541,
+            "ribbon_intervals": 2003,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 794
+          },
+          "seconds": 0.0005172910023247823,
+          "seeded": 0,
+          "status": "SAT"
+        },
+        {
+          "counts": {
+            "conflicts": 1,
+            "decisions": 10,
+            "propagations": 1062,
+            "restarts": 1
+          },
+          "mode": "glucose4",
+          "rectangle": {
+            "active_cells": 1873,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 580414,
+            "certificate_sha256": "49dab441dc092af3a044b216d2d668a5112cb7fa7de7ba0631e3ca3cbcb46cfc",
+            "circuit_sha256": "3be65132506eb4e1a485d4e0a811e366c47557169d364e9050fef0ea85a24682",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 731,
+            "output_column": 793,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 578541,
+            "ribbon_intervals": 2003,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 794
+          },
+          "seconds": 0.0004710000030172523,
+          "seeded": 0,
+          "status": "SAT"
+        }
+      ],
+      "spec": {
+        "depth": 1,
+        "id": "incidence-existence",
+        "premises": 2,
+        "resolutions": 1
+      }
+    },
+    {
+      "gates": 1382,
+      "id": "nested-choice",
+      "methods": [
+        {
+          "counts": {
+            "decisions": 3
+          },
+          "mode": "static",
+          "rectangle": {
+            "active_cells": 3500,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 2053652,
+            "certificate_sha256": "242ced6552f37e58512e2e753e4299eff5fa7203b82779abd3bf087383bdcb72",
+            "circuit_sha256": "27b85a1eb7c4784937c0b013c953c800fd84271d41ae97c947142b7c76d39987",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 1382,
+            "output_column": 1485,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 2050152,
+            "ribbon_intervals": 3764,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 1486
+          },
+          "replay_seconds": 1.2499986041802913e-06,
+          "seconds": 0.005038416999013862,
+          "status": "SAT"
+        },
+        {
+          "counts": {
+            "decisions": 3
+          },
+          "mode": "activity",
+          "rectangle": {
+            "active_cells": 3500,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 2053652,
+            "certificate_sha256": "242ced6552f37e58512e2e753e4299eff5fa7203b82779abd3bf087383bdcb72",
+            "circuit_sha256": "27b85a1eb7c4784937c0b013c953c800fd84271d41ae97c947142b7c76d39987",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 1382,
+            "output_column": 1485,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 2050152,
+            "ribbon_intervals": 3764,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 1486
+          },
+          "replay_seconds": 1.625001459615305e-06,
+          "seconds": 0.0034816669976862613,
+          "status": "SAT"
+        },
+        {
+          "counts": {
+            "decisions": 3
+          },
+          "mode": "learned",
+          "rectangle": {
+            "active_cells": 3500,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 2053652,
+            "certificate_sha256": "242ced6552f37e58512e2e753e4299eff5fa7203b82779abd3bf087383bdcb72",
+            "circuit_sha256": "27b85a1eb7c4784937c0b013c953c800fd84271d41ae97c947142b7c76d39987",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 1382,
+            "output_column": 1485,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 2050152,
+            "ribbon_intervals": 3764,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 1486
+          },
+          "replay_seconds": 1.4170000213198364e-06,
+          "seconds": 0.003664124997158069,
+          "status": "SAT"
+        },
+        {
+          "counts": {
+            "conflicts": 0,
+            "decisions": 0,
+            "propagations": 1234,
+            "restarts": 0
+          },
+          "mode": "cadical195",
+          "rectangle": {
+            "active_cells": 3500,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 2053652,
+            "certificate_sha256": "79573ff038774f9ce10edc6502131089245a3d64197e10337e4d6b28eca19b43",
+            "circuit_sha256": "27b85a1eb7c4784937c0b013c953c800fd84271d41ae97c947142b7c76d39987",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 1382,
+            "output_column": 1485,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 2050152,
+            "ribbon_intervals": 3764,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 1486
+          },
+          "seconds": 0.0010068749979836866,
+          "seeded": 0,
+          "status": "SAT"
+        },
+        {
+          "counts": {
+            "conflicts": 1,
+            "decisions": 7,
+            "propagations": 1724,
+            "restarts": 1
+          },
+          "mode": "glucose4",
+          "rectangle": {
+            "active_cells": 3500,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 2053652,
+            "certificate_sha256": "eb40ef4238028d9d23fdea26d23ecbbe2effb0d0831727fe6c8a0b3ac7bd6aad",
+            "circuit_sha256": "27b85a1eb7c4784937c0b013c953c800fd84271d41ae97c947142b7c76d39987",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 1382,
+            "output_column": 1485,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 2050152,
+            "ribbon_intervals": 3764,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 1486
+          },
+          "seconds": 0.0008448750013485551,
+          "seeded": 0,
+          "status": "SAT"
+        }
+      ],
+      "spec": {
+        "depth": 1,
+        "id": "nested-choice",
+        "premises": 2,
+        "resolutions": 1
+      }
+    },
+    {
+      "gates": 1692,
+      "id": "quantifier-duality",
+      "methods": [
+        {
+          "counts": {
+            "conflicts": 19,
+            "decisions": 44,
+            "skipped_levels": 12
+          },
+          "mode": "static",
+          "rectangle": {
+            "active_cells": 4279,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 3025296,
+            "certificate_sha256": "d4a0302ec221a92ce2b2ce790370e383f2cca78feb5f918f54324d382537f5e0",
+            "circuit_sha256": "917b62a9afe001a080eca92bbfc43598fa8e7e94585ae666922b680f99113531",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 1692,
+            "output_column": 1787,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 3021017,
+            "ribbon_intervals": 4593,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 1788
+          },
+          "replay_seconds": 0.013208707998273894,
+          "seconds": 0.00826766699901782,
+          "status": "SAT"
+        },
+        {
+          "counts": {
+            "conflicts": 17,
+            "decisions": 40,
+            "skipped_levels": 12
+          },
+          "mode": "activity",
+          "rectangle": {
+            "active_cells": 4279,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 3025296,
+            "certificate_sha256": "d4a0302ec221a92ce2b2ce790370e383f2cca78feb5f918f54324d382537f5e0",
+            "circuit_sha256": "917b62a9afe001a080eca92bbfc43598fa8e7e94585ae666922b680f99113531",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 1692,
+            "output_column": 1787,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 3021017,
+            "ribbon_intervals": 4593,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 1788
+          },
+          "replay_seconds": 0.013034667001193156,
+          "seconds": 0.008003749997442355,
+          "status": "SAT"
+        },
+        {
+          "counts": {
+            "conflicts": 19,
+            "decisions": 43,
+            "skipped_levels": 12
+          },
+          "mode": "learned",
+          "rectangle": {
+            "active_cells": 4279,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 3025296,
+            "certificate_sha256": "d4a0302ec221a92ce2b2ce790370e383f2cca78feb5f918f54324d382537f5e0",
+            "circuit_sha256": "917b62a9afe001a080eca92bbfc43598fa8e7e94585ae666922b680f99113531",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 1692,
+            "output_column": 1787,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 3021017,
+            "ribbon_intervals": 4593,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 1788
+          },
+          "replay_seconds": 0.01309854200007976,
+          "seconds": 0.009513665998383658,
+          "status": "SAT"
+        },
+        {
+          "counts": {
+            "conflicts": 8,
+            "decisions": 19,
+            "propagations": 3764,
+            "restarts": 0
+          },
+          "mode": "cadical195",
+          "rectangle": {
+            "active_cells": 4279,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 3025296,
+            "certificate_sha256": "2a3db272870e73f2e4a579dfd91bde8d37cb3aaed68e320b712ba9a26da6752b",
+            "circuit_sha256": "917b62a9afe001a080eca92bbfc43598fa8e7e94585ae666922b680f99113531",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 1692,
+            "output_column": 1787,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 3021017,
+            "ribbon_intervals": 4593,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 1788
+          },
+          "seconds": 0.00142483300078311,
+          "seeded": 0,
+          "status": "SAT"
+        },
+        {
+          "counts": {
+            "conflicts": 3,
+            "decisions": 34,
+            "propagations": 3568,
+            "restarts": 1
+          },
+          "mode": "glucose4",
+          "rectangle": {
+            "active_cells": 4279,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 3025296,
+            "certificate_sha256": "c8eed5e4505519ee40bae39bfa51fe1bc11f0df4ff1549ee9c055f207bd6f960",
+            "circuit_sha256": "917b62a9afe001a080eca92bbfc43598fa8e7e94585ae666922b680f99113531",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 1692,
+            "output_column": 1787,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 3021017,
+            "ribbon_intervals": 4593,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 1788
+          },
+          "seconds": 0.001083417002519127,
+          "seeded": 0,
+          "status": "SAT"
+        },
+        {
+          "counts": {
+            "conflicts": 6,
+            "decisions": 17,
+            "propagations": 2689,
+            "restarts": 0
+          },
+          "mode": "cadical195-seeded",
+          "rectangle": {
+            "active_cells": 4279,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 3025296,
+            "certificate_sha256": "2a3db272870e73f2e4a579dfd91bde8d37cb3aaed68e320b712ba9a26da6752b",
+            "circuit_sha256": "917b62a9afe001a080eca92bbfc43598fa8e7e94585ae666922b680f99113531",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 1692,
+            "output_column": 1787,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 3021017,
+            "ribbon_intervals": 4593,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 1788
+          },
+          "seconds": 0.0012527500002761371,
+          "seeded": 17,
+          "status": "SAT"
+        }
+      ],
+      "spec": {
+        "depth": 0,
+        "id": "quantifier-duality",
+        "premises": 3,
+        "resolutions": 2
+      }
+    },
+    {
+      "gates": 2591,
+      "id": "peano-nonzero-successor",
+      "methods": [
+        {
+          "counts": {
+            "conflicts": 58,
+            "decisions": 153,
+            "skipped_levels": 64
+          },
+          "mode": "static",
+          "rectangle": {
+            "active_cells": 6459,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 6949062,
+            "certificate_sha256": "c90b421a9c23f7aa880d68f251ce0e0fba18d624c1bf7975ed879130550d3860",
+            "circuit_sha256": "f592c690f52fed4dd8e07d870d7a900bc0441bcb901804b98ab9478979657237",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 2591,
+            "output_column": 2681,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 6942603,
+            "ribbon_intervals": 6847,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 2682
+          },
+          "replay_seconds": 0.020269792003091425,
+          "seconds": 0.022305292000964982,
+          "status": "SAT"
+        },
+        {
+          "counts": {
+            "conflicts": 38,
+            "decisions": 100,
+            "skipped_levels": 33
+          },
+          "mode": "activity",
+          "rectangle": {
+            "active_cells": 6459,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 6949062,
+            "certificate_sha256": "c90b421a9c23f7aa880d68f251ce0e0fba18d624c1bf7975ed879130550d3860",
+            "circuit_sha256": "f592c690f52fed4dd8e07d870d7a900bc0441bcb901804b98ab9478979657237",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 2591,
+            "output_column": 2681,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 6942603,
+            "ribbon_intervals": 6847,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 2682
+          },
+          "replay_seconds": 0.019498833000398008,
+          "seconds": 0.019092999998974847,
+          "status": "SAT"
+        },
+        {
+          "counts": {
+            "conflicts": 38,
+            "decisions": 111,
+            "skipped_levels": 43
+          },
+          "mode": "learned",
+          "rectangle": {
+            "active_cells": 6459,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 6949062,
+            "certificate_sha256": "c90b421a9c23f7aa880d68f251ce0e0fba18d624c1bf7975ed879130550d3860",
+            "circuit_sha256": "f592c690f52fed4dd8e07d870d7a900bc0441bcb901804b98ab9478979657237",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 2591,
+            "output_column": 2681,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 6942603,
+            "ribbon_intervals": 6847,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 2682
+          },
+          "replay_seconds": 0.01960624999992433,
+          "seconds": 0.02479375000257278,
+          "status": "SAT"
+        },
+        {
+          "counts": {
+            "conflicts": 23,
+            "decisions": 62,
+            "propagations": 12765,
+            "restarts": 0
+          },
+          "mode": "cadical195",
+          "rectangle": {
+            "active_cells": 6459,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 6949062,
+            "certificate_sha256": "8f2903c3600bd88ff8cfdf5902e20a8f361bcece8d4036db63993b7c8a86c574",
+            "circuit_sha256": "f592c690f52fed4dd8e07d870d7a900bc0441bcb901804b98ab9478979657237",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 2591,
+            "output_column": 2681,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 6942603,
+            "ribbon_intervals": 6847,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 2682
+          },
+          "seconds": 0.002563583999290131,
+          "seeded": 0,
+          "status": "SAT"
+        },
+        {
+          "counts": {
+            "conflicts": 16,
+            "decisions": 54,
+            "propagations": 7068,
+            "restarts": 1
+          },
+          "mode": "glucose4",
+          "rectangle": {
+            "active_cells": 6459,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 6949062,
+            "certificate_sha256": "b0c376b71adf2c88d705c019b4cb79530107bd861902eeb6edd87687f68f6da5",
+            "circuit_sha256": "f592c690f52fed4dd8e07d870d7a900bc0441bcb901804b98ab9478979657237",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 2591,
+            "output_column": 2681,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 6942603,
+            "ribbon_intervals": 6847,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 2682
+          },
+          "seconds": 0.0019237920023442712,
+          "seeded": 0,
+          "status": "SAT"
+        },
+        {
+          "counts": {
+            "conflicts": 0,
+            "decisions": 0,
+            "propagations": 854,
+            "restarts": 0
+          },
+          "mode": "cadical195-seeded",
+          "rectangle": {
+            "active_cells": 6459,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 6949062,
+            "certificate_sha256": "c90b421a9c23f7aa880d68f251ce0e0fba18d624c1bf7975ed879130550d3860",
+            "circuit_sha256": "f592c690f52fed4dd8e07d870d7a900bc0441bcb901804b98ab9478979657237",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 2591,
+            "output_column": 2681,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 6942603,
+            "ribbon_intervals": 6847,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 2682
+          },
+          "seconds": 0.001968832999409642,
+          "seeded": 38,
+          "status": "SAT"
+        }
+      ],
+      "spec": {
+        "depth": 2,
+        "id": "peano-nonzero-successor",
+        "premises": 2,
+        "resolutions": 1
+      }
+    },
+    {
+      "gates": 29140,
+      "id": "hilbert-incidence-uniqueness",
+      "methods": [
+        {
+          "counts": {
+            "conflicts": 651,
+            "decisions": 2342,
+            "skipped_levels": 1531
+          },
+          "mode": "static",
+          "replay_seconds": 0.381487582999398,
+          "seconds": 0.6591312500022468,
+          "status": "BOUNDED"
+        },
+        {
+          "counts": {
+            "conflicts": 651,
+            "decisions": 1224,
+            "skipped_levels": 419
+          },
+          "mode": "activity",
+          "replay_seconds": 0.3981685420003487,
+          "seconds": 0.503103374998318,
+          "status": "BOUNDED"
+        },
+        {
+          "counts": {
+            "conflicts": 651,
+            "decisions": 1249,
+            "skipped_levels": 442
+          },
+          "mode": "learned",
+          "replay_seconds": 0.3853627919997962,
+          "seconds": 0.5518618750029418,
+          "status": "BOUNDED"
+        },
+        {
+          "counts": {
+            "conflicts": 12001,
+            "decisions": 59765,
+            "propagations": 10229224,
+            "restarts": 636
+          },
+          "mode": "cadical195",
+          "seconds": 0.5345821660012007,
+          "seeded": 0,
+          "status": "BOUNDED"
+        },
+        {
+          "counts": {
+            "conflicts": 12176,
+            "decisions": 39984,
+            "propagations": 13963646,
+            "restarts": 60
+          },
+          "mode": "glucose4",
+          "seconds": 0.6330333330006397,
+          "seeded": 0,
+          "status": "BOUNDED"
+        },
+        {
+          "counts": {
+            "conflicts": 12004,
+            "decisions": 56913,
+            "propagations": 10254509,
+            "restarts": 559
+          },
+          "mode": "cadical195-seeded",
+          "seconds": 0.5419947500013222,
+          "seeded": 64,
+          "status": "BOUNDED"
+        }
+      ],
+      "spec": {
+        "depth": 0,
+        "id": "hilbert-incidence-uniqueness",
+        "premises": 7,
+        "resolutions": 6
+      }
+    },
+    {
+      "gates": 1902,
+      "id": "shadowed-existential",
+      "methods": [
+        {
+          "counts": {
+            "conflicts": 10,
+            "decisions": 22,
+            "skipped_levels": 6
+          },
+          "mode": "static",
+          "rectangle": {
+            "active_cells": 4797,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 3823020,
+            "certificate_sha256": "12630c205a50246d4022eb57a580cbada69e0e18e50e66a4802f39aaa5561960",
+            "circuit_sha256": "8eb28df1264d4f71bd99a8c12573799e612ea53f0d4ddcb8e0577b032c21e56b",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 1902,
+            "output_column": 2009,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 3818223,
+            "ribbon_intervals": 5172,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 2010
+          },
+          "replay_seconds": 0.016194709001865704,
+          "seconds": 0.0088947919975908,
+          "status": "SAT"
+        },
+        {
+          "counts": {
+            "conflicts": 10,
+            "decisions": 22,
+            "skipped_levels": 6
+          },
+          "mode": "activity",
+          "rectangle": {
+            "active_cells": 4797,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 3823020,
+            "certificate_sha256": "12630c205a50246d4022eb57a580cbada69e0e18e50e66a4802f39aaa5561960",
+            "circuit_sha256": "8eb28df1264d4f71bd99a8c12573799e612ea53f0d4ddcb8e0577b032c21e56b",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 1902,
+            "output_column": 2009,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 3818223,
+            "ribbon_intervals": 5172,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 2010
+          },
+          "replay_seconds": 0.015328957997553516,
+          "seconds": 0.00947983399964869,
+          "status": "SAT"
+        },
+        {
+          "counts": {
+            "conflicts": 10,
+            "decisions": 22,
+            "skipped_levels": 6
+          },
+          "mode": "learned",
+          "rectangle": {
+            "active_cells": 4797,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 3823020,
+            "certificate_sha256": "12630c205a50246d4022eb57a580cbada69e0e18e50e66a4802f39aaa5561960",
+            "circuit_sha256": "8eb28df1264d4f71bd99a8c12573799e612ea53f0d4ddcb8e0577b032c21e56b",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 1902,
+            "output_column": 2009,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 3818223,
+            "ribbon_intervals": 5172,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 2010
+          },
+          "replay_seconds": 0.015041209000628442,
+          "seconds": 0.009633375000703381,
+          "status": "SAT"
+        },
+        {
+          "counts": {
+            "conflicts": 5,
+            "decisions": 18,
+            "propagations": 2514,
+            "restarts": 1
+          },
+          "mode": "cadical195",
+          "rectangle": {
+            "active_cells": 4797,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 3823020,
+            "certificate_sha256": "38ef98b125b7e362883557c04c71be07db84ce8d6006939e754a96baeaec549c",
+            "circuit_sha256": "8eb28df1264d4f71bd99a8c12573799e612ea53f0d4ddcb8e0577b032c21e56b",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 1902,
+            "output_column": 2009,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 3818223,
+            "ribbon_intervals": 5172,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 2010
+          },
+          "seconds": 0.0015540420026809443,
+          "seeded": 0,
+          "status": "SAT"
+        },
+        {
+          "counts": {
+            "conflicts": 3,
+            "decisions": 16,
+            "propagations": 2151,
+            "restarts": 1
+          },
+          "mode": "glucose4",
+          "rectangle": {
+            "active_cells": 4797,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 3823020,
+            "certificate_sha256": "71d8f73f088eb38306ffffaefe2648d2ea657e8288bfbb3e4432cb30b4046b84",
+            "circuit_sha256": "8eb28df1264d4f71bd99a8c12573799e612ea53f0d4ddcb8e0577b032c21e56b",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 1902,
+            "output_column": 2009,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 3818223,
+            "ribbon_intervals": 5172,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 2010
+          },
+          "seconds": 0.0013599999983853195,
+          "seeded": 0,
+          "status": "SAT"
+        },
+        {
+          "counts": {
+            "conflicts": 5,
+            "decisions": 17,
+            "propagations": 2327,
+            "restarts": 0
+          },
+          "mode": "cadical195-seeded",
+          "rectangle": {
+            "active_cells": 4797,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 3823020,
+            "certificate_sha256": "38ef98b125b7e362883557c04c71be07db84ce8d6006939e754a96baeaec549c",
+            "circuit_sha256": "8eb28df1264d4f71bd99a8c12573799e612ea53f0d4ddcb8e0577b032c21e56b",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 1902,
+            "output_column": 2009,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 3818223,
+            "ribbon_intervals": 5172,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 2010
+          },
+          "seconds": 0.0014626250012952369,
+          "seeded": 10,
+          "status": "SAT"
+        }
+      ],
+      "spec": {
+        "depth": 1,
+        "id": "shadowed-existential",
+        "premises": 3,
+        "resolutions": 2
+      }
+    },
+    {
+      "gates": 2949,
+      "id": "quantifier-swap-control",
+      "methods": [
+        {
+          "counts": {
+            "conflicts": 1
+          },
+          "mode": "static",
+          "replay_seconds": 0.02167679199919803,
+          "seconds": 0.00465670799894724,
+          "status": "UNSAT"
+        },
+        {
+          "counts": {
+            "conflicts": 1
+          },
+          "mode": "activity",
+          "replay_seconds": 0.022211374998732936,
+          "seconds": 0.007035416998405708,
+          "status": "UNSAT"
+        },
+        {
+          "counts": {
+            "conflicts": 1
+          },
+          "mode": "learned",
+          "replay_seconds": 0.021007583000027807,
+          "seconds": 0.004492666997975903,
+          "status": "UNSAT"
+        },
+        {
+          "counts": {
+            "conflicts": 1,
+            "decisions": 0,
+            "propagations": 2306,
+            "restarts": 0
+          },
+          "mode": "cadical195",
+          "seconds": 0.0020907079997414257,
+          "seeded": 0,
+          "status": "UNSAT"
+        },
+        {
+          "counts": {
+            "conflicts": 0,
+            "decisions": 0,
+            "propagations": 2306,
+            "restarts": 0
+          },
+          "mode": "glucose4",
+          "seconds": 0.0015093750007508788,
+          "seeded": 0,
+          "status": "UNSAT"
+        },
+        {
+          "counts": {
+            "conflicts": 1,
+            "decisions": 0,
+            "propagations": 2306,
+            "restarts": 0
+          },
+          "mode": "cadical195-seeded",
+          "seconds": 0.001904208998894319,
+          "seeded": 1,
+          "status": "UNSAT"
+        }
+      ],
+      "spec": {
+        "depth": 1,
+        "id": "quantifier-swap-control",
+        "premises": 3,
+        "resolutions": 2
+      }
+    },
+    {
+      "gates": 485,
+      "id": "forged-source-clause",
+      "methods": [
+        {
+          "counts": {
+            "conflicts": 1
+          },
+          "mode": "static",
+          "replay_seconds": 0.0056462499996996485,
+          "seconds": 0.0007286250001925509,
+          "status": "UNSAT"
+        },
+        {
+          "counts": {
+            "conflicts": 1
+          },
+          "mode": "activity",
+          "replay_seconds": 0.005066958001407329,
+          "seconds": 0.0007453340003849007,
+          "status": "UNSAT"
+        },
+        {
+          "counts": {
+            "conflicts": 1
+          },
+          "mode": "learned",
+          "replay_seconds": 0.005057375001342734,
+          "seconds": 0.0007447089992638212,
+          "status": "UNSAT"
+        },
+        {
+          "counts": {
+            "conflicts": 1,
+            "decisions": 0,
+            "propagations": 360,
+            "restarts": 0
+          },
+          "mode": "cadical195",
+          "seconds": 0.000439291001384845,
+          "seeded": 0,
+          "status": "UNSAT"
+        },
+        {
+          "counts": {
+            "conflicts": 0,
+            "decisions": 0,
+            "propagations": 120,
+            "restarts": 0
+          },
+          "mode": "glucose4",
+          "seconds": 0.0003109169992967509,
+          "seeded": 0,
+          "status": "UNSAT"
+        },
+        {
+          "counts": {
+            "conflicts": 1,
+            "decisions": 0,
+            "propagations": 360,
+            "restarts": 0
+          },
+          "mode": "cadical195-seeded",
+          "seconds": 0.0003263750004407484,
+          "seeded": 1,
+          "status": "UNSAT"
+        }
+      ],
+      "spec": {
+        "depth": 0,
+        "id": "forged-source-clause",
+        "premises": 2,
+        "resolutions": 1
+      }
+    },
+    {
+      "gates": 75128,
+      "id": "tptp-tutorial-capital",
+      "methods": [
+        {
+          "counts": {
+            "conflicts": 651,
+            "decisions": 5271,
+            "skipped_levels": 4204
+          },
+          "mode": "static",
+          "replay_seconds": 0.9714420829986921,
+          "seconds": 2.211304000000382,
+          "status": "BOUNDED"
+        },
+        {
+          "counts": {
+            "conflicts": 651,
+            "decisions": 2015,
+            "skipped_levels": 971
+          },
+          "mode": "activity",
+          "replay_seconds": 1.0312272500013933,
+          "seconds": 1.4659022500018182,
+          "status": "BOUNDED"
+        },
+        {
+          "counts": {
+            "conflicts": 651,
+            "decisions": 2235,
+            "skipped_levels": 1190
+          },
+          "mode": "learned",
+          "replay_seconds": 0.9970245830008935,
+          "seconds": 1.5370169160014484,
+          "status": "BOUNDED"
+        },
+        {
+          "counts": {
+            "conflicts": 12001,
+            "decisions": 59805,
+            "propagations": 22956203,
+            "restarts": 396
+          },
+          "mode": "cadical195",
+          "seconds": 1.0408428750015446,
+          "seeded": 0,
+          "status": "BOUNDED"
+        },
+        {
+          "counts": {
+            "conflicts": 12178,
+            "decisions": 60405,
+            "propagations": 33402582,
+            "restarts": 74
+          },
+          "mode": "glucose4",
+          "seconds": 1.017011125000863,
+          "seeded": 0,
+          "status": "BOUNDED"
+        },
+        {
+          "counts": {
+            "conflicts": 12001,
+            "decisions": 65982,
+            "propagations": 22105133,
+            "restarts": 416
+          },
+          "mode": "cadical195-seeded",
+          "seconds": 1.0217117909996887,
+          "seeded": 64,
+          "status": "BOUNDED"
+        }
+      ],
+      "spec": {
+        "depth": 1,
+        "id": "tptp-tutorial-capital",
+        "premises": 6,
+        "resolutions": 7
+      }
+    },
+    {
+      "gates": 96494,
+      "id": "tptp-tutorial-family",
+      "methods": [
+        {
+          "counts": {
+            "conflicts": 651,
+            "decisions": 6335,
+            "skipped_levels": 5114
+          },
+          "mode": "static",
+          "replay_seconds": 1.3100012079994485,
+          "seconds": 2.5244227500006673,
+          "status": "BOUNDED"
+        },
+        {
+          "counts": {
+            "conflicts": 651,
+            "decisions": 1884,
+            "skipped_levels": 694
+          },
+          "mode": "activity",
+          "replay_seconds": 1.3859869160005474,
+          "seconds": 1.466587625000102,
+          "status": "BOUNDED"
+        },
+        {
+          "counts": {
+            "conflicts": 651,
+            "decisions": 1924,
+            "skipped_levels": 736
+          },
+          "mode": "learned",
+          "replay_seconds": 1.4352222079978674,
+          "seconds": 1.5998450000006414,
+          "status": "BOUNDED"
+        },
+        {
+          "counts": {
+            "conflicts": 12002,
+            "decisions": 70209,
+            "propagations": 22022014,
+            "restarts": 425
+          },
+          "mode": "cadical195",
+          "seconds": 1.137962000000698,
+          "seeded": 0,
+          "status": "BOUNDED"
+        },
+        {
+          "counts": {
+            "conflicts": 12221,
+            "decisions": 77842,
+            "propagations": 43749607,
+            "restarts": 91
+          },
+          "mode": "glucose4",
+          "seconds": 1.235859291999077,
+          "seeded": 0,
+          "status": "BOUNDED"
+        },
+        {
+          "counts": {
+            "conflicts": 12002,
+            "decisions": 70209,
+            "propagations": 22022014,
+            "restarts": 425
+          },
+          "mode": "cadical195-seeded",
+          "seconds": 1.1360476250010834,
+          "seeded": 64,
+          "status": "BOUNDED"
+        }
+      ],
+      "spec": {
+        "depth": 0,
+        "id": "tptp-tutorial-family",
+        "premises": 8,
+        "resolutions": 7
+      }
+    },
+    {
+      "gates": 96494,
+      "id": "tptp-tutorial-family-mutation",
+      "methods": [
+        {
+          "counts": {
+            "conflicts": 651,
+            "decisions": 6449,
+            "skipped_levels": 5239
+          },
+          "mode": "static",
+          "replay_seconds": 1.6696300830008113,
+          "seconds": 2.7786271669974667,
+          "status": "BOUNDED"
+        },
+        {
+          "counts": {
+            "conflicts": 651,
+            "decisions": 1792,
+            "skipped_levels": 604
+          },
+          "mode": "activity",
+          "replay_seconds": 1.6151091669999005,
+          "seconds": 1.6790478749971953,
+          "status": "BOUNDED"
+        },
+        {
+          "counts": {
+            "conflicts": 651,
+            "decisions": 1739,
+            "skipped_levels": 554
+          },
+          "mode": "learned",
+          "replay_seconds": 1.6038356669996574,
+          "seconds": 1.6553434589986864,
+          "status": "BOUNDED"
+        },
+        {
+          "counts": {
+            "conflicts": 12000,
+            "decisions": 68426,
+            "propagations": 23955509,
+            "restarts": 355
+          },
+          "mode": "cadical195",
+          "seconds": 1.1922109160004766,
+          "seeded": 0,
+          "status": "BOUNDED"
+        },
+        {
+          "counts": {
+            "conflicts": 12020,
+            "decisions": 75189,
+            "propagations": 40704483,
+            "restarts": 72
+          },
+          "mode": "glucose4",
+          "seconds": 1.1944309580030676,
+          "seeded": 0,
+          "status": "BOUNDED"
+        },
+        {
+          "counts": {
+            "conflicts": 12000,
+            "decisions": 68426,
+            "propagations": 23955509,
+            "restarts": 355
+          },
+          "mode": "cadical195-seeded",
+          "seconds": 1.1718108329987444,
+          "seeded": 64,
+          "status": "BOUNDED"
+        }
+      ],
+      "spec": {
+        "depth": 0,
+        "id": "tptp-tutorial-family-mutation",
+        "premises": 8,
+        "resolutions": 7
+      }
+    }
+  ],
+  "displayed_cut": [
+    [
+      36,
+      "premise0:positive:0",
+      0
+    ],
+    [
+      37,
+      "premise0:positive:1",
+      0
+    ],
+    [
+      38,
+      "premise0:positive:2",
+      0
+    ],
+    [
+      39,
+      "premise0:positive:3",
+      0
+    ],
+    [
+      40,
+      "premise0:positive:4",
+      0
+    ],
+    [
+      41,
+      "premise0:positive:5",
+      0
+    ],
+    [
+      42,
+      "premise0:positive:6",
+      0
+    ],
+    [
+      43,
+      "premise0:positive:7",
+      0
+    ],
+    [
+      44,
+      "premise0:positive:8",
+      0
+    ],
+    [
+      45,
+      "premise0:negative:0",
+      0
+    ],
+    [
+      46,
+      "premise0:negative:1",
+      0
+    ],
+    [
+      47,
+      "premise0:negative:2",
+      0
+    ]
+  ],
+  "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+  "readers": [
+    "hilbert-incidence-uniqueness",
+    "peano-nonzero-successor",
+    "tptp-tutorial-family"
+  ],
+  "serial": [
+    {
+      "blocks": [
+        {
+          "counts": {
+            "nodes": 3
+          },
+          "marks": 0,
+          "mode": "block-plain",
+          "rectangle": {
+            "active_cells": 3146,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 1633080,
+            "certificate_sha256": "4d3d63ef81be74fb263aea9d9e4f79cc2af969b3f2b9fdc5d1c491e746901cd4",
+            "circuit_sha256": "707ae61499cb9ec0e4b7f5f2151376585d3eb293391006fcc49ad0ffd85b57db",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 1240,
+            "output_column": 1316,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 1629934,
+            "ribbon_intervals": 3382,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 1317
+          },
+          "seconds": 1.745799818309024e-05,
+          "status": "SAT"
+        },
+        {
+          "counts": {
+            "nodes": 3
+          },
+          "marks": 0,
+          "mode": "block-marked",
+          "rectangle": {
+            "active_cells": 3146,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 1633080,
+            "certificate_sha256": "4d3d63ef81be74fb263aea9d9e4f79cc2af969b3f2b9fdc5d1c491e746901cd4",
+            "circuit_sha256": "707ae61499cb9ec0e4b7f5f2151376585d3eb293391006fcc49ad0ffd85b57db",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 1240,
+            "output_column": 1316,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 1629934,
+            "ribbon_intervals": 3382,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 1317
+          },
+          "seconds": 1.3249999028630555e-05,
+          "status": "SAT"
+        }
+      ],
+      "id": "exists-map",
+      "sat": [
+        {
+          "counts": {
+            "conflicts": 2,
+            "decisions": 6,
+            "skipped_levels": 0
+          },
+          "mode": "activity",
+          "rectangle": {
+            "active_cells": 3146,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 1633080,
+            "certificate_sha256": "4d3d63ef81be74fb263aea9d9e4f79cc2af969b3f2b9fdc5d1c491e746901cd4",
+            "circuit_sha256": "707ae61499cb9ec0e4b7f5f2151376585d3eb293391006fcc49ad0ffd85b57db",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 1240,
+            "output_column": 1316,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 1629934,
+            "ribbon_intervals": 3382,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 1317
+          },
+          "seconds": 0.0035290830019221175,
+          "status": "SAT"
+        },
+        {
+          "counts": {
+            "conflicts": 0,
+            "decisions": 0,
+            "propagations": 794,
+            "restarts": 0
+          },
+          "mode": "cadical195",
+          "rectangle": {
+            "active_cells": 3146,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 1633080,
+            "certificate_sha256": "be701bd211572db0fc9792a5cfc5c323ea18f95d6837309e5a1dda2a48b3bff9",
+            "circuit_sha256": "707ae61499cb9ec0e4b7f5f2151376585d3eb293391006fcc49ad0ffd85b57db",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 1240,
+            "output_column": 1316,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 1629934,
+            "ribbon_intervals": 3382,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 1317
+          },
+          "seconds": 0.000979249998636078,
+          "seeded": 0,
+          "status": "SAT"
+        },
+        {
+          "counts": {
+            "conflicts": 2,
+            "decisions": 7,
+            "propagations": 1417,
+            "restarts": 1
+          },
+          "mode": "glucose4",
+          "rectangle": {
+            "active_cells": 3146,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 1633080,
+            "certificate_sha256": "0bfed70a5c2d49581c9559eb2886347974664e3acf4c79a68cf02182facbfb66",
+            "circuit_sha256": "707ae61499cb9ec0e4b7f5f2151376585d3eb293391006fcc49ad0ffd85b57db",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 1240,
+            "output_column": 1316,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 1629934,
+            "ribbon_intervals": 3382,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 1317
+          },
+          "seconds": 0.0007817080004315358,
+          "seeded": 0,
+          "status": "SAT"
+        }
+      ]
+    },
+    {
+      "blocks": [
+        {
+          "counts": {
+            "nodes": 3
+          },
+          "marks": 0,
+          "mode": "block-plain",
+          "rectangle": {
+            "active_cells": 1873,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 580414,
+            "certificate_sha256": "fcd835335591a2176ceca069bebc5b3a554f12971f1a5bc64ce8a1ca6f5b539d",
+            "circuit_sha256": "3be65132506eb4e1a485d4e0a811e366c47557169d364e9050fef0ea85a24682",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 731,
+            "output_column": 793,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 578541,
+            "ribbon_intervals": 2003,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 794
+          },
+          "seconds": 1.0083997040055692e-05,
+          "status": "SAT"
+        },
+        {
+          "counts": {
+            "nodes": 3
+          },
+          "marks": 1,
+          "mode": "block-marked",
+          "rectangle": {
+            "active_cells": 1873,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 580414,
+            "certificate_sha256": "fcd835335591a2176ceca069bebc5b3a554f12971f1a5bc64ce8a1ca6f5b539d",
+            "circuit_sha256": "3be65132506eb4e1a485d4e0a811e366c47557169d364e9050fef0ea85a24682",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 731,
+            "output_column": 793,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 578541,
+            "ribbon_intervals": 2003,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 794
+          },
+          "seconds": 9.374998626299202e-06,
+          "status": "SAT"
+        }
+      ],
+      "id": "incidence-existence",
+      "sat": [
+        {
+          "counts": {
+            "decisions": 3
+          },
+          "mode": "activity",
+          "rectangle": {
+            "active_cells": 1873,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 580414,
+            "certificate_sha256": "fcd835335591a2176ceca069bebc5b3a554f12971f1a5bc64ce8a1ca6f5b539d",
+            "circuit_sha256": "3be65132506eb4e1a485d4e0a811e366c47557169d364e9050fef0ea85a24682",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 731,
+            "output_column": 793,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 578541,
+            "ribbon_intervals": 2003,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 794
+          },
+          "seconds": 0.002016958998865448,
+          "status": "SAT"
+        },
+        {
+          "counts": {
+            "conflicts": 0,
+            "decisions": 0,
+            "propagations": 510,
+            "restarts": 0
+          },
+          "mode": "cadical195",
+          "rectangle": {
+            "active_cells": 1873,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 580414,
+            "certificate_sha256": "e87e4fe6b3c9119328c340061e7292d8181edc9028d1906eb96805e431631959",
+            "circuit_sha256": "3be65132506eb4e1a485d4e0a811e366c47557169d364e9050fef0ea85a24682",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 731,
+            "output_column": 793,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 578541,
+            "ribbon_intervals": 2003,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 794
+          },
+          "seconds": 0.0005533340008696541,
+          "seeded": 0,
+          "status": "SAT"
+        },
+        {
+          "counts": {
+            "conflicts": 1,
+            "decisions": 10,
+            "propagations": 1062,
+            "restarts": 1
+          },
+          "mode": "glucose4",
+          "rectangle": {
+            "active_cells": 1873,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 580414,
+            "certificate_sha256": "49dab441dc092af3a044b216d2d668a5112cb7fa7de7ba0631e3ca3cbcb46cfc",
+            "circuit_sha256": "3be65132506eb4e1a485d4e0a811e366c47557169d364e9050fef0ea85a24682",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 731,
+            "output_column": 793,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 578541,
+            "ribbon_intervals": 2003,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 794
+          },
+          "seconds": 0.000474374999612337,
+          "seeded": 0,
+          "status": "SAT"
+        }
+      ]
+    },
+    {
+      "blocks": [
+        {
+          "counts": {
+            "nodes": 2
+          },
+          "marks": 0,
+          "mode": "block-plain",
+          "rectangle": {
+            "active_cells": 3500,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 2053652,
+            "certificate_sha256": "242ced6552f37e58512e2e753e4299eff5fa7203b82779abd3bf087383bdcb72",
+            "circuit_sha256": "27b85a1eb7c4784937c0b013c953c800fd84271d41ae97c947142b7c76d39987",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 1382,
+            "output_column": 1485,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 2050152,
+            "ribbon_intervals": 3764,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 1486
+          },
+          "seconds": 7.70800033933483e-06,
+          "status": "SAT"
+        },
+        {
+          "counts": {
+            "nodes": 2
+          },
+          "marks": 0,
+          "mode": "block-marked",
+          "rectangle": {
+            "active_cells": 3500,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 2053652,
+            "certificate_sha256": "242ced6552f37e58512e2e753e4299eff5fa7203b82779abd3bf087383bdcb72",
+            "circuit_sha256": "27b85a1eb7c4784937c0b013c953c800fd84271d41ae97c947142b7c76d39987",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 1382,
+            "output_column": 1485,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 2050152,
+            "ribbon_intervals": 3764,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 1486
+          },
+          "seconds": 7.4169984145555645e-06,
+          "status": "SAT"
+        }
+      ],
+      "id": "nested-choice",
+      "sat": [
+        {
+          "counts": {
+            "decisions": 3
+          },
+          "mode": "activity",
+          "rectangle": {
+            "active_cells": 3500,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 2053652,
+            "certificate_sha256": "242ced6552f37e58512e2e753e4299eff5fa7203b82779abd3bf087383bdcb72",
+            "circuit_sha256": "27b85a1eb7c4784937c0b013c953c800fd84271d41ae97c947142b7c76d39987",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 1382,
+            "output_column": 1485,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 2050152,
+            "ribbon_intervals": 3764,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 1486
+          },
+          "seconds": 0.004845667001063703,
+          "status": "SAT"
+        },
+        {
+          "counts": {
+            "conflicts": 0,
+            "decisions": 0,
+            "propagations": 1234,
+            "restarts": 0
+          },
+          "mode": "cadical195",
+          "rectangle": {
+            "active_cells": 3500,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 2053652,
+            "certificate_sha256": "79573ff038774f9ce10edc6502131089245a3d64197e10337e4d6b28eca19b43",
+            "circuit_sha256": "27b85a1eb7c4784937c0b013c953c800fd84271d41ae97c947142b7c76d39987",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 1382,
+            "output_column": 1485,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 2050152,
+            "ribbon_intervals": 3764,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 1486
+          },
+          "seconds": 0.0010099579994857777,
+          "seeded": 0,
+          "status": "SAT"
+        },
+        {
+          "counts": {
+            "conflicts": 1,
+            "decisions": 7,
+            "propagations": 1724,
+            "restarts": 1
+          },
+          "mode": "glucose4",
+          "rectangle": {
+            "active_cells": 3500,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 2053652,
+            "certificate_sha256": "eb40ef4238028d9d23fdea26d23ecbbe2effb0d0831727fe6c8a0b3ac7bd6aad",
+            "circuit_sha256": "27b85a1eb7c4784937c0b013c953c800fd84271d41ae97c947142b7c76d39987",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 1382,
+            "output_column": 1485,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 2050152,
+            "ribbon_intervals": 3764,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 1486
+          },
+          "seconds": 0.0008328750009241048,
+          "seeded": 0,
+          "status": "SAT"
+        }
+      ]
+    },
+    {
+      "blocks": [
+        {
+          "counts": {
+            "nodes": 3
+          },
+          "marks": 0,
+          "mode": "block-plain",
+          "rectangle": {
+            "active_cells": 4279,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 3025296,
+            "certificate_sha256": "3e89b67f50ee80ef15c0cd1ab578b2eb69bf17e4bd8caede7d0a34c54220e161",
+            "circuit_sha256": "917b62a9afe001a080eca92bbfc43598fa8e7e94585ae666922b680f99113531",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 1692,
+            "output_column": 1787,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 3021017,
+            "ribbon_intervals": 4593,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 1788
+          },
+          "seconds": 1.4999997802078724e-05,
+          "status": "SAT"
+        },
+        {
+          "counts": {
+            "nodes": 3
+          },
+          "marks": 0,
+          "mode": "block-marked",
+          "rectangle": {
+            "active_cells": 4279,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 3025296,
+            "certificate_sha256": "3e89b67f50ee80ef15c0cd1ab578b2eb69bf17e4bd8caede7d0a34c54220e161",
+            "circuit_sha256": "917b62a9afe001a080eca92bbfc43598fa8e7e94585ae666922b680f99113531",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 1692,
+            "output_column": 1787,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 3021017,
+            "ribbon_intervals": 4593,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 1788
+          },
+          "seconds": 1.4582998119294643e-05,
+          "status": "SAT"
+        }
+      ],
+      "id": "quantifier-duality",
+      "sat": [
+        {
+          "counts": {
+            "conflicts": 4,
+            "decisions": 12,
+            "skipped_levels": 2
+          },
+          "mode": "activity",
+          "rectangle": {
+            "active_cells": 4279,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 3025296,
+            "certificate_sha256": "c96126db83599ed680c2b844d941836f439055aaa5bb5b9e2d406294716338f3",
+            "circuit_sha256": "917b62a9afe001a080eca92bbfc43598fa8e7e94585ae666922b680f99113531",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 1692,
+            "output_column": 1787,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 3021017,
+            "ribbon_intervals": 4593,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 1788
+          },
+          "seconds": 0.005521625000255881,
+          "status": "SAT"
+        },
+        {
+          "counts": {
+            "conflicts": 5,
+            "decisions": 14,
+            "propagations": 2540,
+            "restarts": 0
+          },
+          "mode": "cadical195",
+          "rectangle": {
+            "active_cells": 4279,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 3025296,
+            "certificate_sha256": "80069745cb7df306df668fb916602608cdd6c55b2a9dca0d71a7b1c5555dbaab",
+            "circuit_sha256": "917b62a9afe001a080eca92bbfc43598fa8e7e94585ae666922b680f99113531",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 1692,
+            "output_column": 1787,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 3021017,
+            "ribbon_intervals": 4593,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 1788
+          },
+          "seconds": 0.0012982920015929267,
+          "seeded": 0,
+          "status": "SAT"
+        },
+        {
+          "counts": {
+            "conflicts": 2,
+            "decisions": 19,
+            "propagations": 2545,
+            "restarts": 1
+          },
+          "mode": "glucose4",
+          "rectangle": {
+            "active_cells": 4279,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 3025296,
+            "certificate_sha256": "c8eed5e4505519ee40bae39bfa51fe1bc11f0df4ff1549ee9c055f207bd6f960",
+            "circuit_sha256": "917b62a9afe001a080eca92bbfc43598fa8e7e94585ae666922b680f99113531",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 1692,
+            "output_column": 1787,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 3021017,
+            "ribbon_intervals": 4593,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 1788
+          },
+          "seconds": 0.0010725409993028734,
+          "seeded": 0,
+          "status": "SAT"
+        }
+      ]
+    },
+    {
+      "blocks": [
+        {
+          "counts": {
+            "nodes": 2
+          },
+          "marks": 0,
+          "mode": "block-plain",
+          "rectangle": {
+            "active_cells": 6459,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 6949062,
+            "certificate_sha256": "c90b421a9c23f7aa880d68f251ce0e0fba18d624c1bf7975ed879130550d3860",
+            "circuit_sha256": "f592c690f52fed4dd8e07d870d7a900bc0441bcb901804b98ab9478979657237",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 2591,
+            "output_column": 2681,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 6942603,
+            "ribbon_intervals": 6847,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 2682
+          },
+          "seconds": 2.0874998881481588e-05,
+          "status": "SAT"
+        },
+        {
+          "counts": {
+            "nodes": 2
+          },
+          "marks": 0,
+          "mode": "block-marked",
+          "rectangle": {
+            "active_cells": 6459,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 6949062,
+            "certificate_sha256": "c90b421a9c23f7aa880d68f251ce0e0fba18d624c1bf7975ed879130550d3860",
+            "circuit_sha256": "f592c690f52fed4dd8e07d870d7a900bc0441bcb901804b98ab9478979657237",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 2591,
+            "output_column": 2681,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 6942603,
+            "ribbon_intervals": 6847,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 2682
+          },
+          "seconds": 2.0957999367965385e-05,
+          "status": "SAT"
+        }
+      ],
+      "id": "peano-nonzero-successor",
+      "sat": [
+        {
+          "counts": {
+            "conflicts": 29,
+            "decisions": 62,
+            "skipped_levels": 9
+          },
+          "mode": "activity",
+          "rectangle": {
+            "active_cells": 6459,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 6949062,
+            "certificate_sha256": "c90b421a9c23f7aa880d68f251ce0e0fba18d624c1bf7975ed879130550d3860",
+            "circuit_sha256": "f592c690f52fed4dd8e07d870d7a900bc0441bcb901804b98ab9478979657237",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 2591,
+            "output_column": 2681,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 6942603,
+            "ribbon_intervals": 6847,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 2682
+          },
+          "seconds": 0.017021415998897282,
+          "status": "SAT"
+        },
+        {
+          "counts": {
+            "conflicts": 23,
+            "decisions": 62,
+            "propagations": 12765,
+            "restarts": 0
+          },
+          "mode": "cadical195",
+          "rectangle": {
+            "active_cells": 6459,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 6949062,
+            "certificate_sha256": "8f2903c3600bd88ff8cfdf5902e20a8f361bcece8d4036db63993b7c8a86c574",
+            "circuit_sha256": "f592c690f52fed4dd8e07d870d7a900bc0441bcb901804b98ab9478979657237",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 2591,
+            "output_column": 2681,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 6942603,
+            "ribbon_intervals": 6847,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 2682
+          },
+          "seconds": 0.0025600830012990627,
+          "seeded": 0,
+          "status": "SAT"
+        },
+        {
+          "counts": {
+            "conflicts": 16,
+            "decisions": 61,
+            "propagations": 8143,
+            "restarts": 1
+          },
+          "mode": "glucose4",
+          "rectangle": {
+            "active_cells": 6459,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 6949062,
+            "certificate_sha256": "1b0383a92860b9e796bc3dc7bcbfbc3ff9644fea802d1d4e61fbda38c662d2a4",
+            "circuit_sha256": "f592c690f52fed4dd8e07d870d7a900bc0441bcb901804b98ab9478979657237",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 2591,
+            "output_column": 2681,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 6942603,
+            "ribbon_intervals": 6847,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 2682
+          },
+          "seconds": 0.0018459169987181667,
+          "seeded": 0,
+          "status": "SAT"
+        }
+      ]
+    },
+    {
+      "blocks": [
+        {
+          "counts": {
+            "nodes": 120000
+          },
+          "marks": 0,
+          "mode": "block-plain",
+          "seconds": 0.06360941700040712,
+          "status": "BOUNDED"
+        },
+        {
+          "counts": {
+            "hits": 449,
+            "nodes": 1351
+          },
+          "marks": 895,
+          "mode": "block-marked",
+          "rectangle": {
+            "active_cells": 71683,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 867760060,
+            "certificate_sha256": "98d6a574cae67b6e8f3f428fa687bbbb65e5461ebbfa77dfe533bc3f963c11c3",
+            "circuit_sha256": "95a52e9ebe537e08c8c8187c10fa9d669352021f973fa145df2bc2900a0d83ec",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 29140,
+            "output_column": 29778,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 867688377,
+            "ribbon_intervals": 78843,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 29779
+          },
+          "seconds": 0.0031104170011531096,
+          "status": "SAT"
+        }
+      ],
+      "id": "hilbert-incidence-uniqueness",
+      "sat": [
+        {
+          "counts": {
+            "conflicts": 301,
+            "decisions": 2429,
+            "skipped_levels": 2091
+          },
+          "mode": "activity",
+          "seconds": 0.47138608299792395,
+          "status": "BOUNDED"
+        },
+        {
+          "counts": {
+            "conflicts": 3217,
+            "decisions": 9726,
+            "propagations": 5192101,
+            "restarts": 167
+          },
+          "mode": "cadical195",
+          "rectangle": {
+            "active_cells": 71683,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 867760060,
+            "certificate_sha256": "e365f749e12ba96b86ff77750885b5505cb11d77495fe1f24f0133993dddbf3f",
+            "circuit_sha256": "95a52e9ebe537e08c8c8187c10fa9d669352021f973fa145df2bc2900a0d83ec",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 29140,
+            "output_column": 29778,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 867688377,
+            "ribbon_intervals": 78843,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 29779
+          },
+          "seconds": 0.21915033299956121,
+          "seeded": 0,
+          "status": "SAT"
+        },
+        {
+          "counts": {
+            "conflicts": 3681,
+            "decisions": 9250,
+            "propagations": 3861458,
+            "restarts": 22
+          },
+          "mode": "glucose4",
+          "rectangle": {
+            "active_cells": 71683,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 867760060,
+            "certificate_sha256": "f9df2000c2e2ea7e7a73a4caf0d0039db6751f0a64db94f5df5e6dddb99ff227",
+            "circuit_sha256": "95a52e9ebe537e08c8c8187c10fa9d669352021f973fa145df2bc2900a0d83ec",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 29140,
+            "output_column": 29778,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 867688377,
+            "ribbon_intervals": 78843,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 29779
+          },
+          "seconds": 0.19246229199779918,
+          "seeded": 0,
+          "status": "SAT"
+        }
+      ]
+    },
+    {
+      "blocks": [
+        {
+          "counts": {
+            "nodes": 3
+          },
+          "marks": 0,
+          "mode": "block-plain",
+          "rectangle": {
+            "active_cells": 4797,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 3823020,
+            "certificate_sha256": "12630c205a50246d4022eb57a580cbada69e0e18e50e66a4802f39aaa5561960",
+            "circuit_sha256": "8eb28df1264d4f71bd99a8c12573799e612ea53f0d4ddcb8e0577b032c21e56b",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 1902,
+            "output_column": 2009,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 3818223,
+            "ribbon_intervals": 5172,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 2010
+          },
+          "seconds": 8.604200047557242e-05,
+          "status": "SAT"
+        },
+        {
+          "counts": {
+            "nodes": 3
+          },
+          "marks": 0,
+          "mode": "block-marked",
+          "rectangle": {
+            "active_cells": 4797,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 3823020,
+            "certificate_sha256": "12630c205a50246d4022eb57a580cbada69e0e18e50e66a4802f39aaa5561960",
+            "circuit_sha256": "8eb28df1264d4f71bd99a8c12573799e612ea53f0d4ddcb8e0577b032c21e56b",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 1902,
+            "output_column": 2009,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 3818223,
+            "ribbon_intervals": 5172,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 2010
+          },
+          "seconds": 1.416700251866132e-05,
+          "status": "SAT"
+        }
+      ],
+      "id": "shadowed-existential",
+      "sat": [
+        {
+          "counts": {
+            "conflicts": 2,
+            "decisions": 8,
+            "skipped_levels": 2
+          },
+          "mode": "activity",
+          "rectangle": {
+            "active_cells": 4797,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 3823020,
+            "certificate_sha256": "12630c205a50246d4022eb57a580cbada69e0e18e50e66a4802f39aaa5561960",
+            "circuit_sha256": "8eb28df1264d4f71bd99a8c12573799e612ea53f0d4ddcb8e0577b032c21e56b",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 1902,
+            "output_column": 2009,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 3818223,
+            "ribbon_intervals": 5172,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 2010
+          },
+          "seconds": 0.005363792002754053,
+          "status": "SAT"
+        },
+        {
+          "counts": {
+            "conflicts": 0,
+            "decisions": 0,
+            "propagations": 1291,
+            "restarts": 0
+          },
+          "mode": "cadical195",
+          "rectangle": {
+            "active_cells": 4797,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 3823020,
+            "certificate_sha256": "ade4722bf265b80353d1e131bd56770cbe5e1f1fe53926603a746805c92e11c1",
+            "circuit_sha256": "8eb28df1264d4f71bd99a8c12573799e612ea53f0d4ddcb8e0577b032c21e56b",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 1902,
+            "output_column": 2009,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 3818223,
+            "ribbon_intervals": 5172,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 2010
+          },
+          "seconds": 0.0013888749999750871,
+          "seeded": 0,
+          "status": "SAT"
+        },
+        {
+          "counts": {
+            "conflicts": 2,
+            "decisions": 9,
+            "propagations": 2012,
+            "restarts": 1
+          },
+          "mode": "glucose4",
+          "rectangle": {
+            "active_cells": 4797,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 3823020,
+            "certificate_sha256": "693dcb3997ecd200eb892411031d18795a778874b477d184d4a285f74bffa1e8",
+            "circuit_sha256": "8eb28df1264d4f71bd99a8c12573799e612ea53f0d4ddcb8e0577b032c21e56b",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 1902,
+            "output_column": 2009,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 3818223,
+            "ribbon_intervals": 5172,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 2010
+          },
+          "seconds": 0.001114458998927148,
+          "seeded": 0,
+          "status": "SAT"
+        }
+      ]
+    },
+    {
+      "blocks": [
+        {
+          "counts": {
+            "nodes": 2
+          },
+          "marks": 0,
+          "mode": "block-plain",
+          "seconds": 8.666000212542713e-06,
+          "status": "UNSAT"
+        },
+        {
+          "counts": {
+            "nodes": 2
+          },
+          "marks": 2,
+          "mode": "block-marked",
+          "seconds": 2.958000550279394e-06,
+          "status": "UNSAT"
+        }
+      ],
+      "id": "quantifier-swap-control",
+      "sat": [
+        {
+          "counts": {
+            "conflicts": 1
+          },
+          "mode": "activity",
+          "seconds": 0.004600583000865299,
+          "status": "UNSAT"
+        },
+        {
+          "counts": {
+            "conflicts": 1,
+            "decisions": 0,
+            "propagations": 2306,
+            "restarts": 0
+          },
+          "mode": "cadical195",
+          "seconds": 0.001935583000886254,
+          "seeded": 0,
+          "status": "UNSAT"
+        },
+        {
+          "counts": {
+            "conflicts": 0,
+            "decisions": 0,
+            "propagations": 2306,
+            "restarts": 0
+          },
+          "mode": "glucose4",
+          "seconds": 0.0014337920001707971,
+          "seeded": 0,
+          "status": "UNSAT"
+        }
+      ]
+    },
+    {
+      "blocks": [
+        {
+          "counts": {
+            "nodes": 2
+          },
+          "marks": 0,
+          "mode": "block-plain",
+          "seconds": 5.500001861946657e-06,
+          "status": "UNSAT"
+        },
+        {
+          "counts": {
+            "nodes": 2
+          },
+          "marks": 2,
+          "mode": "block-marked",
+          "seconds": 2.3330030671786517e-06,
+          "status": "UNSAT"
+        }
+      ],
+      "id": "forged-source-clause",
+      "sat": [
+        {
+          "counts": {
+            "conflicts": 1
+          },
+          "mode": "activity",
+          "seconds": 0.0007762080022075679,
+          "status": "UNSAT"
+        },
+        {
+          "counts": {
+            "conflicts": 1,
+            "decisions": 0,
+            "propagations": 360,
+            "restarts": 0
+          },
+          "mode": "cadical195",
+          "seconds": 0.0003339590002724435,
+          "seeded": 0,
+          "status": "UNSAT"
+        },
+        {
+          "counts": {
+            "conflicts": 0,
+            "decisions": 0,
+            "propagations": 120,
+            "restarts": 0
+          },
+          "mode": "glucose4",
+          "seconds": 0.0002493330030119978,
+          "seeded": 0,
+          "status": "UNSAT"
+        }
+      ]
+    },
+    {
+      "blocks": [
+        {
+          "counts": {
+            "nodes": 120000
+          },
+          "marks": 0,
+          "mode": "block-plain",
+          "seconds": 0.05690587500066613,
+          "status": "BOUNDED"
+        },
+        {
+          "counts": {
+            "hits": 70600,
+            "nodes": 120000
+          },
+          "marks": 49397,
+          "mode": "block-marked",
+          "seconds": 0.3011700419992849,
+          "status": "BOUNDED"
+        }
+      ],
+      "id": "tptp-tutorial-family",
+      "sat": [
+        {
+          "counts": {
+            "conflicts": 301,
+            "decisions": 3539,
+            "skipped_levels": 3143
+          },
+          "mode": "activity",
+          "seconds": 1.326032375000068,
+          "status": "BOUNDED"
+        },
+        {
+          "counts": {
+            "conflicts": 8690,
+            "decisions": 58607,
+            "propagations": 28438370,
+            "restarts": 704
+          },
+          "mode": "cadical195",
+          "rectangle": {
+            "active_cells": 236438,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 9478123150,
+            "certificate_sha256": "ae2716fbde9a652c962d61ac473888a136a574d6b91b936249973a40ae2e3e39",
+            "circuit_sha256": "c722f10f0e75399bce7cae59bc33f21b98d6b1287bf6e86c73955884e63c35de",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 96494,
+            "output_column": 98224,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 9477886712,
+            "ribbon_intervals": 262345,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 98225
+          },
+          "seconds": 0.9665265000003274,
+          "seeded": 0,
+          "status": "SAT"
+        },
+        {
+          "counts": {
+            "conflicts": 11283,
+            "decisions": 35223,
+            "propagations": 27597290,
+            "restarts": 65
+          },
+          "mode": "glucose4",
+          "rectangle": {
+            "active_cells": 236438,
+            "all_literal_edge_interfaces_agree": true,
+            "all_vertical_op_selectors_bound_to_circuit": true,
+            "bottom_op_selector": "CROSS",
+            "bottom_output_bit": 1,
+            "cells": 9478123150,
+            "certificate_sha256": "b55fdbb8c34639252cc1c2fcbb6e72dfdd57827bfadf94c419f88ef3ba2c32b2",
+            "circuit_sha256": "c722f10f0e75399bce7cae59bc33f21b98d6b1287bf6e86c73955884e63c35de",
+            "cross_transport_cases": 20,
+            "empty_grid_coincident_top_bottom": false,
+            "exact_cell_partition_t1": true,
+            "expanded_cells": 0,
+            "height": 96494,
+            "output_column": 98224,
+            "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+            "reason": "EXACT_RIBBON_CERTIFICATE",
+            "ribbon_cells": 9477886712,
+            "ribbon_intervals": 262345,
+            "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+            "status": "VERIFIED",
+            "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+            "width": 98225
+          },
+          "seconds": 1.1493037500003993,
+          "seeded": 0,
+          "status": "SAT"
+        }
+      ]
+    }
+  ],
+  "status": "CHECKED_OPEN_WANG_BENCHMARK_REPORT",
+  "totals": {
+    "activity": {
+      "BOUNDED": 4,
+      "SAT": 6,
+      "UNSAT": 2
+    },
+    "cadical195": {
+      "BOUNDED": 4,
+      "SAT": 6,
+      "UNSAT": 2
+    },
+    "cadical195-seeded": {
+      "BOUNDED": 4,
+      "SAT": 4,
+      "UNSAT": 2
+    },
+    "glucose4": {
+      "BOUNDED": 4,
+      "SAT": 6,
+      "UNSAT": 2
+    },
+    "learned": {
+      "BOUNDED": 4,
+      "SAT": 6,
+      "UNSAT": 2
+    },
+    "static": {
+      "BOUNDED": 4,
+      "SAT": 6,
+      "UNSAT": 2
+    }
+  },
+  "transfer": [
+    {
+      "accepted": 1,
+      "cold": 44,
+      "id": "peano-successor-1",
+      "mapped": 44,
+      "shuffled": 44
+    },
+    {
+      "accepted": 8,
+      "cold": 307,
+      "id": "peano-successor-3",
+      "mapped": 296,
+      "shuffled": 307
+    },
+    {
+      "accepted": 8,
+      "cold": 666,
+      "id": "peano-successor-4",
+      "mapped": 657,
+      "shuffled": 666
+    }
+  ],
+  "weights": [
+    0.8778396324373097,
+    0.6984550493477982,
+    -0.033373613409074174,
+    -0.022625562629690916,
+    0.11047961362574796,
+    -0.054480437586982886,
+    0.00010319911947643135
+  ],
+  "windows": [
+    {
+      "attempts": 8,
+      "depth": 0,
+      "id": "exists-map",
+      "premises": 3,
+      "resolutions": 2
+    },
+    {
+      "attempts": 3,
+      "depth": 1,
+      "id": "incidence-existence",
+      "premises": 2,
+      "resolutions": 1
+    },
+    {
+      "attempts": 3,
+      "depth": 1,
+      "id": "nested-choice",
+      "premises": 2,
+      "resolutions": 1
+    },
+    {
+      "attempts": 8,
+      "depth": 0,
+      "id": "quantifier-duality",
+      "premises": 3,
+      "resolutions": 2
+    },
+    {
+      "attempts": 7,
+      "depth": 2,
+      "id": "peano-nonzero-successor",
+      "premises": 2,
+      "resolutions": 1
+    },
+    {
+      "attempts": 14,
+      "depth": 1,
+      "id": "shadowed-existential",
+      "premises": 3,
+      "resolutions": 2
+    },
+    {
+      "attempts": 27,
+      "depth": "\u2014",
+      "id": "quantifier-swap-control",
+      "premises": "\u2014",
+      "resolutions": "\u2014"
+    }
+  ]
+}
