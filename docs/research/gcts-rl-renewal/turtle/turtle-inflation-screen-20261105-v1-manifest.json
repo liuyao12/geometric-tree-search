@@ -1,0 +1,290 @@
+{
+  "archive": {
+    "bytes": 13698757,
+    "sha256": "5b4785d3b833fe97cf4a50e00187bacbce9b84b9ad213b650c139e67f906445e"
+  },
+  "files": {
+    "README.txt": {
+      "bytes": 979,
+      "sha256": "dbf0a840ced79537908da8f9f91c7e74a9c2b0a4de462113e037c196b3343324"
+    },
+    "clusters/data/execution.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "clusters/data/execution.stdout.log": {
+      "bytes": 1363,
+      "sha256": "50743f6aa4c507fe2b27ea1d79d7a2943dba353641d0d3d27cbbd435214048d9"
+    },
+    "clusters/data/results-v1.json.gz": {
+      "bytes": 182882,
+      "sha256": "dd5f0edfc4bb34021755659e98938c4851dda24b2488f71d0d638fd1081ae6be"
+    },
+    "clusters/input/carrier-check-v1.json": {
+      "bytes": 878,
+      "sha256": "f274ae5f926d1266f09a5cb07a2c582f6fc6446b3bfcadf0e0569f1371ffa77b"
+    },
+    "clusters/input/contact-catalogue-v1.json.gz": {
+      "bytes": 289492,
+      "sha256": "754f92acbe29b075d2d67ec3c8617d2ec1b75b37ff396551790e2cd53e3f73cf"
+    },
+    "clusters/input/exact-point-model-v1.json": {
+      "bytes": 10642,
+      "sha256": "775ce3ac20489ef64d8d8266238edde36f87919461b68ccbd232763dd2da3eb0"
+    },
+    "clusters/input/previous-publication-v1.json": {
+      "bytes": 2039,
+      "sha256": "c4e9475232a9ea53cb58294eb41258ce5ab23178f65be355e06a1e1e5f3af256"
+    },
+    "clusters/plan/protocol-v1.md": {
+      "bytes": 1413,
+      "sha256": "8b103e586f824592e37d622550ada2ee9031e599f336cb0141e014d46f6fdf26"
+    },
+    "clusters/protocol-v1.json": {
+      "bytes": 2335,
+      "sha256": "e7e50178ded098c00d9f0aafe739200aeccf05d4e3f24accf67998dcf4bbfa1f"
+    },
+    "clusters/source/cluster_v1.py": {
+      "bytes": 14553,
+      "sha256": "1871566736458a2d31e784073cebc40cd5430ab80e738ca4898ec699d29e8a93"
+    },
+    "clusters/source/cover_v1.py": {
+      "bytes": 7543,
+      "sha256": "46f571897d551acb89b88092cffccfc9dd913e1d141048a50701031477ca518b"
+    },
+    "clusters/source/triangle_geometry_v1.py": {
+      "bytes": 9600,
+      "sha256": "4715c6f612b196d257c858d695d604d800ce832cc5f8a1bfee8ae58e400a79ed"
+    },
+    "clusters/source/turtle_points_v1.py": {
+      "bytes": 7688,
+      "sha256": "7962e545935677d1cff40bb793fc682bc3acec1461cf178ed7a39253ca9bdfc0"
+    },
+    "cover/data/exact-cover-results-v1.json.gz": {
+      "bytes": 293,
+      "sha256": "af00f72688fb1221eedb68f60d656109e7371afd11d795b7af83181d7eb633f6"
+    },
+    "cover/data/execution.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "cover/data/execution.stdout.log": {
+      "bytes": 459,
+      "sha256": "8406156b13efc569daed622d8843f24d87b2422d6ac6fc8a1b0dc0da2ec9a774"
+    },
+    "cover/input/contained-coverage-v1.json": {
+      "bytes": 763699,
+      "sha256": "acf6f9a78a90fd3183a50c713c487bbe7390c1c94b3119dc8c97ef2434b4c09d"
+    },
+    "cover/input/coverage-protocol-v1.json": {
+      "bytes": 1981,
+      "sha256": "63c752949714a6aec694698d2fa8fb9d7e13f819f3953a059bb77ad8401f1e57"
+    },
+    "cover/input/exact-point-model-v1.json": {
+      "bytes": 10642,
+      "sha256": "775ce3ac20489ef64d8d8266238edde36f87919461b68ccbd232763dd2da3eb0"
+    },
+    "cover/protocol-v1.json": {
+      "bytes": 1346,
+      "sha256": "80aed161615586a59d23210cb32112eda5d05907656ea538aa2328dca72ff5d2"
+    },
+    "cover/source/cover_v1.py": {
+      "bytes": 7543,
+      "sha256": "46f571897d551acb89b88092cffccfc9dd913e1d141048a50701031477ca518b"
+    },
+    "cover/source/triangle_geometry_v1.py": {
+      "bytes": 9600,
+      "sha256": "4715c6f612b196d257c858d695d604d800ce832cc5f8a1bfee8ae58e400a79ed"
+    },
+    "data/contained-coverage-v1.json": {
+      "bytes": 763699,
+      "sha256": "acf6f9a78a90fd3183a50c713c487bbe7390c1c94b3119dc8c97ef2434b4c09d"
+    },
+    "data/execution.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/execution.stdout.log": {
+      "bytes": 1299,
+      "sha256": "5365bbb93b5aa258202e230ca7b436e34ce80918f16c8ca95b27fdeb8d92153c"
+    },
+    "data/matrix-scope-audit-v1.json": {
+      "bytes": 6215,
+      "sha256": "9fec02d63dbfcf17a3269198013e3343cd888c8916a8a0a90827d0b08310f2c8"
+    },
+    "input/carrier-check-v1.json": {
+      "bytes": 878,
+      "sha256": "f274ae5f926d1266f09a5cb07a2c582f6fc6446b3bfcadf0e0569f1371ffa77b"
+    },
+    "input/exact-point-model-v1.json": {
+      "bytes": 10642,
+      "sha256": "775ce3ac20489ef64d8d8266238edde36f87919461b68ccbd232763dd2da3eb0"
+    },
+    "input/previous-publication-v1.json": {
+      "bytes": 2039,
+      "sha256": "c4e9475232a9ea53cb58294eb41258ce5ab23178f65be355e06a1e1e5f3af256"
+    },
+    "plan/cluster-screen-next-v1.md": {
+      "bytes": 1869,
+      "sha256": "45f74443db21471aae7f94c2c036f1be54e2481b33254094c3581fcffb82c653"
+    },
+    "plan/finite-scope-v1.md": {
+      "bytes": 1894,
+      "sha256": "50c477924da95e9fd22e7b0549580820b00bf3a74b34e46eb8ab5b5f108a5b37"
+    },
+    "plan/scope_audit_v1.py": {
+      "bytes": 2231,
+      "sha256": "86ebdd58441e05302961c16f0baadb9ce6956e2b076de2ee41349652dd9a43b1"
+    },
+    "protocol-v1.json": {
+      "bytes": 1981,
+      "sha256": "63c752949714a6aec694698d2fa8fb9d7e13f819f3953a059bb77ad8401f1e57"
+    },
+    "publication/admission-v1.json": {
+      "bytes": 2101,
+      "sha256": "0e2ac7fea16b65e0116996f4bd60d3af8bec76ca9bc6da15f3974fab06e5df1c"
+    },
+    "publication/basic-tiling-algorithm-at-parent.md": {
+      "bytes": 36240,
+      "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+    },
+    "publication/previous-milestone-v1.json": {
+      "bytes": 1260,
+      "sha256": "65dbf227dd1660f13092ef30f28f004b62e683e78e57f3ff351f8fac5c387ffb"
+    },
+    "publication/previous-report-with-backlink-v1.html": {
+      "bytes": 337035,
+      "sha256": "3a1946e39707bb22cc9666dabed3c88d27f3bf659d328b7051aa6953cb2fdef7"
+    },
+    "publication/release_v1.py": {
+      "bytes": 9606,
+      "sha256": "a7ad397c92b840d76c01eff5eb2a3c9fecdeba12531fc261203b58cd0029a0c1"
+    },
+    "publication/remote-base-v1.json": {
+      "bytes": 397,
+      "sha256": "da7acc8597c2b5dc5814697cba19941cc8e0160d71515d2e1861507f27c17926"
+    },
+    "publication/render_v1.py": {
+      "bytes": 16930,
+      "sha256": "6c2038b4c9862fcc1816b08995c4dd89cbba547ddc07625b6032c8969c973264"
+    },
+    "publication/static-v1.json": {
+      "bytes": 439,
+      "sha256": "3efd0822ab5487153c0b652b86fecbdb628d767efac9bdeee697659085679265"
+    },
+    "report/turtle-inflation-screen-20261105-v1-results.json": {
+      "bytes": 8428,
+      "sha256": "14faddaf03734fad0a945929d46447af7ae39ee8cdf1f40a1fc86b8f6dd35dbc"
+    },
+    "report/turtle-inflation-screen-20261105-v1.html": {
+      "bytes": 49389,
+      "sha256": "9ed614b90550c028e368e2445a1f532e626d8c264318f209ad155834b69ad49e"
+    },
+    "source/preflight_v1.py": {
+      "bytes": 5125,
+      "sha256": "89286132eba4574a88f94011302871a0f8278a5eb736659a6d3c188ab9579d31"
+    },
+    "source/turtle_points_v1.py": {
+      "bytes": 7688,
+      "sha256": "7962e545935677d1cff40bb793fc682bc3acec1461cf178ed7a39253ca9bdfc0"
+    },
+    "wide/data/execution.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "wide/data/execution.stdout.log": {
+      "bytes": 1680,
+      "sha256": "def6bda1fddba4052a9816a36f1492865e368603fc4d164427a0d8b7694ce504"
+    },
+    "wide/data/ratio-09-v1.json.gz": {
+      "bytes": 625174,
+      "sha256": "b65faef13854d3cfcb26f359e37cc33972988bcbba193a95bb195dc58783a5f5"
+    },
+    "wide/data/ratio-12-v1.json.gz": {
+      "bytes": 880524,
+      "sha256": "d0af3710f72fff019f57b6a0acd51b8cb1ba014670d76ada908bdbfcea877e8f"
+    },
+    "wide/data/ratio-16-v1.json.gz": {
+      "bytes": 1278331,
+      "sha256": "0fdbc6981185056a0fd58df8228b31e4a36f4f535e1d4e74538ce5437a9179a2"
+    },
+    "wide/data/ratio-25-v1.json.gz": {
+      "bytes": 2280018,
+      "sha256": "9c9558b65c7ee102d5fa199ffa90b19a37dd2304066931062e619efc6e20cd35"
+    },
+    "wide/data/ratio-27-v1.json.gz": {
+      "bytes": 2555957,
+      "sha256": "e3d9dd15fcc2105581c0e68717fdc27ca4255e4f27cd7181c3398353a0b9937e"
+    },
+    "wide/data/ratio-36-v1.json.gz": {
+      "bytes": 3452562,
+      "sha256": "d9a6d506bd46c7ddb16e1705e08953d44c88919f5d2a647fa3933a8ce1435d2a"
+    },
+    "wide/data/ratio-48-v1.json.gz": {
+      "bytes": 4802197,
+      "sha256": "e02518ac6f56b9fe6076314d4895dfbab86fb4641e04fa050694cae787565de0"
+    },
+    "wide/data/results-v1.json.gz": {
+      "bytes": 876,
+      "sha256": "f6cb193066c70d853fad78dc7b27744b4df958a2504145622e466e8a6ef5d30e"
+    },
+    "wide/input/carrier-check-v1.json": {
+      "bytes": 878,
+      "sha256": "f274ae5f926d1266f09a5cb07a2c582f6fc6446b3bfcadf0e0569f1371ffa77b"
+    },
+    "wide/input/contact-catalogue-v1.json.gz": {
+      "bytes": 289492,
+      "sha256": "754f92acbe29b075d2d67ec3c8617d2ec1b75b37ff396551790e2cd53e3f73cf"
+    },
+    "wide/input/exact-point-model-v1.json": {
+      "bytes": 10642,
+      "sha256": "775ce3ac20489ef64d8d8266238edde36f87919461b68ccbd232763dd2da3eb0"
+    },
+    "wide/input/matrix-protocol-v1.json": {
+      "bytes": 1981,
+      "sha256": "63c752949714a6aec694698d2fa8fb9d7e13f819f3953a059bb77ad8401f1e57"
+    },
+    "wide/input/previous-publication-v1.json": {
+      "bytes": 2039,
+      "sha256": "c4e9475232a9ea53cb58294eb41258ce5ab23178f65be355e06a1e1e5f3af256"
+    },
+    "wide/input/small-protocol-v1.json": {
+      "bytes": 2335,
+      "sha256": "e7e50178ded098c00d9f0aafe739200aeccf05d4e3f24accf67998dcf4bbfa1f"
+    },
+    "wide/input/small-results-v1.json.gz": {
+      "bytes": 182882,
+      "sha256": "dd5f0edfc4bb34021755659e98938c4851dda24b2488f71d0d638fd1081ae6be"
+    },
+    "wide/plan/coverage-first-v1.patch": {
+      "bytes": 5395,
+      "sha256": "d3759d358d8ec0df7cc7f9f2fd25c2f0e5bbe07f48d2a5e92a87dab8a54414c2"
+    },
+    "wide/plan/protocol-v1.md": {
+      "bytes": 1413,
+      "sha256": "8b103e586f824592e37d622550ada2ee9031e599f336cb0141e014d46f6fdf26"
+    },
+    "wide/protocol-v1.json": {
+      "bytes": 3746,
+      "sha256": "89f1439addfaf1566071a1bc45577125759509534454cea48a593d017c303281"
+    },
+    "wide/source/cluster_v1.py": {
+      "bytes": 15717,
+      "sha256": "a2eec032406feaf45f7c5ca66b235727db26e414996337981f6b0ff865859b85"
+    },
+    "wide/source/cover_v1.py": {
+      "bytes": 7543,
+      "sha256": "46f571897d551acb89b88092cffccfc9dd913e1d141048a50701031477ca518b"
+    },
+    "wide/source/triangle_geometry_v1.py": {
+      "bytes": 9600,
+      "sha256": "4715c6f612b196d257c858d695d604d800ce832cc5f8a1bfee8ae58e400a79ed"
+    },
+    "wide/source/turtle_points_v1.py": {
+      "bytes": 7688,
+      "sha256": "7962e545935677d1cff40bb793fc682bc3acec1461cf178ed7a39253ca9bdfc0"
+    }
+  },
+  "schema": "Turtle-inflation-evidence-v1",
+  "scope": "All original run paths present at the cut. Package and later publication receipts are separate."
+}
