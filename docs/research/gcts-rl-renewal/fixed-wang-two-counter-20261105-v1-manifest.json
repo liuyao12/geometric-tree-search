@@ -1,0 +1,138 @@
+{
+  "archive": {
+    "bytes": 5106319,
+    "sha256": "475eb0e72bb8d2ec84517835b1dfd5b8f2476bdb82e9f6d8a03ae4874b13919a"
+  },
+  "files": {
+    "README.txt": {
+      "bytes": 911,
+      "sha256": "aa90d5f80e959d2369e89d7307bf3b5a0bf8e469f705c99a897aa4d9b38038fe"
+    },
+    "data/execution.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/execution.stdout.log": {
+      "bytes": 2429,
+      "sha256": "afaa14004d56862480507c57cc26df110161383c9554188e15cceecb476bee0b"
+    },
+    "data/frames-v1.json.gz": {
+      "bytes": 5012114,
+      "sha256": "f0531080dfa482dfd511861dc9a7f627cc51a215b85b7e1730a2a8808bf595d6"
+    },
+    "data/machine-v1.json": {
+      "bytes": 1679509,
+      "sha256": "bd94d1e4755c969f874286949620c2dd2eac2e5c7cc7d221cfb8057276389d1e"
+    },
+    "data/qualification-v1.json": {
+      "bytes": 108,
+      "sha256": "a2eab79f9c6df0e220c5566033f0b27380ba16ff05195071ea6de366a203a721"
+    },
+    "data/search-v1.json.gz": {
+      "bytes": 2805,
+      "sha256": "403bf7f43afeac909f0fd6221e38b352a132fddf6531f9430c3958a03698396b"
+    },
+    "data/summary-v1.json": {
+      "bytes": 4241,
+      "sha256": "f7ed57798179860d2007aee86d02a625a8858179673c155303579af5a055fc85"
+    },
+    "input/basic-tiling-algorithm.md": {
+      "bytes": 36240,
+      "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+    },
+    "input/completion-v1.json": {
+      "bytes": 1216,
+      "sha256": "46e21238d4f91c7c1ed3c25a355c00609fd6230744d47d6068ae08891375c869"
+    },
+    "input/counter-extension-preview-v1.md": {
+      "bytes": 1633,
+      "sha256": "e64d29a86af2d7e902a9b9e4ebbd0535009a7f85165c9ba0dbbe43e4747af5b4"
+    },
+    "input/programs-v1.json": {
+      "bytes": 559,
+      "sha256": "bceb5def794dc550b38e5075e90dfd7d2462b0eb8627f39fdb36d4f38580e8c0"
+    },
+    "input/sparse-local-replay-v1.json": {
+      "bytes": 513,
+      "sha256": "c5bf911b764d7d5d79266ef71fc48f7cbfe35bf9698ba65641d89fa172d283de"
+    },
+    "plan/protocol-v1.md": {
+      "bytes": 2556,
+      "sha256": "3ad3da69ec76bc882e24e47e1e3c46706a8431657d598875895a0308ec96e84d"
+    },
+    "plan/three-fields-v1.patch": {
+      "bytes": 7918,
+      "sha256": "4982626c55986cc5f6b4eb2ea96b7f79297464c14991a112506cfc28795e904e"
+    },
+    "protocol-v1.json": {
+      "bytes": 2532,
+      "sha256": "11c3a6df70e577f36e332a625406dfe2129278e46b88a4c0e6e8136fe7e7c3ab"
+    },
+    "publication/admission-v1.json": {
+      "bytes": 1668,
+      "sha256": "3a4fb32b242b214defe4b8c26a5c58f966f3332ead764b6f8708c452746e3cdf"
+    },
+    "publication/compiler-audit-admission-v1.json": {
+      "bytes": 286,
+      "sha256": "a12388741c3d9eefd1922045b41916ad5c44b703eb26810057db53902891eca7"
+    },
+    "publication/compiler-audit-v1.json": {
+      "bytes": 463,
+      "sha256": "db8e7e5597efe2a24eea1cfc6bb8eae4dd504dd744a05476dddecb105353d32d"
+    },
+    "publication/compiler-audit-v1.py": {
+      "bytes": 2404,
+      "sha256": "f2c919ad6d35b8f711238c6281d6fe0af5ed55d5682d651a93ba06b2de67d4df"
+    },
+    "publication/previous-report-with-backlink-v1.html": {
+      "bytes": 111705,
+      "sha256": "299682712e868024451faa793455bf997c0de0d2db634e6735627e160cd0b88d"
+    },
+    "publication/release_v1.py": {
+      "bytes": 9609,
+      "sha256": "99aa90f536b74fc015d27c5056a3fedf57796dc4aeb54decd2490e1771bc2587"
+    },
+    "publication/remote-base-v1.json": {
+      "bytes": 397,
+      "sha256": "bb61358639e5e57d782476e9c461f4f1ef6577c254652a6f5ede8ca21572f387"
+    },
+    "publication/render_v1.py": {
+      "bytes": 15378,
+      "sha256": "a0f6e8ffbdf29debd2f78bc2824bb37c99a44a890fa98faeb88c4221d9f7053b"
+    },
+    "publication/static-v1.json": {
+      "bytes": 442,
+      "sha256": "7755ab2476e1210d5e43c796f613dd98047f301cabb38f31c50d1ead898629a3"
+    },
+    "report/fixed-wang-two-counter-20261105-v1-results.json": {
+      "bytes": 14128,
+      "sha256": "3d982395cbed0b7fc68e34fe028b41c782efc82b20dd11c1b0016673d6f7a1ad"
+    },
+    "report/fixed-wang-two-counter-20261105-v1.html": {
+      "bytes": 156682,
+      "sha256": "15d66c819a5f70c8f16aca64a2768b1cb3ac01e29a07bc9afc2c28d306d70c69"
+    },
+    "source/deterministic_tm_wang_v1.py": {
+      "bytes": 21321,
+      "sha256": "54ae552084743639181f416f5ca02d9acf25c031c61c60c4550d34ac7883d7dd"
+    },
+    "source/frame_v1.py": {
+      "bytes": 3141,
+      "sha256": "a9e2d31939ecbbf5efbe99812b667057f57894f8fe353698f7eebef21c2410f9"
+    },
+    "source/kernel_v1.py": {
+      "bytes": 8077,
+      "sha256": "3942c3f9e56d22437cf00018f8c171828ce757d0ff2024c63a611a12446519bb"
+    },
+    "source/run_v1.py": {
+      "bytes": 10917,
+      "sha256": "11cc6a134dd757af3a13c9dd2cc32af57fcda3de43b4a5d2bc929f5200ca2827"
+    },
+    "source/tiles_v1.py": {
+      "bytes": 6290,
+      "sha256": "54cb133bb7139d4b88013ffd45089d8c9a0145e0a770b2b87296f24d9a3bb38a"
+    }
+  },
+  "schema": "Fixed-Wang-CM2-evidence-v1",
+  "scope": "All original run paths present at the cut. Package and later publication receipts are separate."
+}
