@@ -1,0 +1,315 @@
+{
+  "early": {
+    "inflations": {
+      "exact_ns": 195907000,
+      "hybrid_faster": 251,
+      "hybrid_ns": 147834000,
+      "hybrid_vs_exact": 0.754613158284288,
+      "median_paired_hybrid_vs_exact": 0.7357791418888676,
+      "n": 256,
+      "ties": 0
+    },
+    "mixed": {
+      "exact_ns": 234337000,
+      "hybrid_faster": 251,
+      "hybrid_ns": 547725000,
+      "hybrid_vs_exact": 2.337338960556805,
+      "median_paired_hybrid_vs_exact": 0.7867621825669183,
+      "n": 352,
+      "ties": 0
+    },
+    "tileable_controls": {
+      "exact_ns": 38430000,
+      "hybrid_faster": 0,
+      "hybrid_ns": 399891000,
+      "hybrid_vs_exact": 10.405698672911788,
+      "median_paired_hybrid_vs_exact": 10.52002583979328,
+      "n": 96,
+      "ties": 0
+    }
+  },
+  "examples": {
+    "forced": {
+      "case": 2,
+      "spec": {
+        "matrix": [
+          [
+            4,
+            -4
+          ],
+          [
+            4,
+            8
+          ]
+        ],
+        "ratio": 48
+      },
+      "tree": {
+        "children": [
+          [
+            [
+              5,
+              -35,
+              78
+            ],
+            {
+              "children": [],
+              "mark": {
+                "origin": {
+                  "case": [
+                    4,
+                    48
+                  ],
+                  "point": [
+                    79,
+                    -2
+                  ]
+                },
+                "point": [
+                  -646,
+                  1355
+                ],
+                "stencil": [
+                  [
+                    -9,
+                    -3
+                  ],
+                  [
+                    -9,
+                    18
+                  ],
+                  [
+                    27,
+                    -93
+                  ],
+                  [
+                    50,
+                    8
+                  ]
+                ]
+              },
+              "point": [
+                -646,
+                1355
+              ],
+              "status": "NEGATIVE"
+            }
+          ]
+        ],
+        "point": [
+          -646,
+          1481
+        ],
+        "status": "NEGATIVE"
+      }
+    },
+    "root": {
+      "case": 0,
+      "spec": {
+        "matrix": [
+          [
+            3,
+            0
+          ],
+          [
+            0,
+            3
+          ]
+        ],
+        "ratio": 9
+      },
+      "tree": {
+        "children": [],
+        "mark": {
+          "origin": {
+            "case": [
+              3,
+              9
+            ],
+            "point": [
+              -106,
+              275
+            ]
+          },
+          "point": [
+            2,
+            5
+          ],
+          "stencil": [
+            [
+              -7,
+              20
+            ],
+            [
+              3,
+              51
+            ],
+            [
+              5,
+              -10
+            ]
+          ]
+        },
+        "point": [
+          2,
+          5
+        ],
+        "status": "NEGATIVE"
+      }
+    }
+  },
+  "finite_cases": 20169,
+  "finite_negatives": 20169,
+  "interleaved": {
+    "inflations": {
+      "certified_hits": 483,
+      "exact_ns": 384999000,
+      "interleaved_faster": 497,
+      "interleaved_ns": 306709000,
+      "interleaved_vs_exact": 0.7966488224644739,
+      "median_paired_interleaved_vs_exact": 0.7098477427780929,
+      "n": 512,
+      "ties": 0
+    },
+    "mixed": {
+      "certified_hits": 483,
+      "exact_ns": 456238000,
+      "interleaved_faster": 578,
+      "interleaved_ns": 381543000,
+      "interleaved_vs_exact": 0.8362806254630258,
+      "median_paired_interleaved_vs_exact": 0.8168553401932703,
+      "n": 704,
+      "ties": 2
+    },
+    "tileable_controls": {
+      "certified_hits": 0,
+      "exact_ns": 71239000,
+      "interleaved_faster": 81,
+      "interleaved_ns": 74834000,
+      "interleaved_vs_exact": 1.0504639312736002,
+      "median_paired_interleaved_vs_exact": 1.0544721407624633,
+      "n": 192,
+      "ties": 2
+    }
+  },
+  "learned_patterns": 168,
+  "matrices": 162,
+  "matrices_excluded_by_edge_directions": 108,
+  "roots": {
+    "HIT": 4473,
+    "cases": 4482,
+    "empty_root": 4481,
+    "exact_ns": 67849661000,
+    "full_root": 1,
+    "hybrid_ns": 2454796000
+  },
+  "scale_cap": 48,
+  "shapes": 2241,
+  "status": "CHECKED_THREE_TILE_INFLATION_REPORT",
+  "tails": [
+    {
+      "counts": {
+        "fully_contiguous": 114,
+        "gap_cases": 0,
+        "tail": 114,
+        "unresolved_tail": 2127
+      },
+      "ratio": 36,
+      "seconds": 6.0966109999990294,
+      "thresholds": {
+        "11": 9,
+        "12": 21,
+        "13": 1,
+        "15": 3,
+        "7": 13,
+        "9": 67
+      }
+    },
+    {
+      "counts": {
+        "fully_contiguous": 1499,
+        "gap_cases": 0,
+        "tail": 1499,
+        "unresolved_tail": 742
+      },
+      "ratio": 48,
+      "seconds": 19.96666895799899,
+      "thresholds": {
+        "10": 15,
+        "5": 1088,
+        "7": 245,
+        "8": 30,
+        "9": 121
+      }
+    }
+  ],
+  "wide": {
+    "12": {
+      "NEGATIVE": 2241,
+      "domain_checks": 23266,
+      "geometry_replays": 18,
+      "mark_hits": 3190,
+      "negative_nodes_1": 840,
+      "negative_nodes_2": 452,
+      "negative_nodes_3": 949,
+      "nodes": 4591
+    },
+    "16": {
+      "NEGATIVE": 2241,
+      "domain_checks": 412,
+      "geometry_replays": 18,
+      "mark_hits": 2258,
+      "negative_nodes_1": 2220,
+      "negative_nodes_2": 4,
+      "negative_nodes_3": 17,
+      "nodes": 2279
+    },
+    "25": {
+      "NEGATIVE": 2241,
+      "domain_checks": 505,
+      "geometry_replays": 18,
+      "mark_hits": 2258,
+      "negative_nodes_1": 2127,
+      "negative_nodes_2": 97,
+      "negative_nodes_3": 17,
+      "nodes": 2372
+    },
+    "27": {
+      "NEGATIVE": 2241,
+      "domain_checks": 35100,
+      "geometry_replays": 18,
+      "mark_hits": 3218,
+      "negative_nodes_2": 1264,
+      "negative_nodes_3": 977,
+      "nodes": 5459
+    },
+    "36": {
+      "NEGATIVE": 2241,
+      "domain_checks": 505,
+      "geometry_replays": 18,
+      "mark_hits": 2258,
+      "negative_nodes_1": 2127,
+      "negative_nodes_2": 97,
+      "negative_nodes_3": 17,
+      "nodes": 2372
+    },
+    "48": {
+      "NEGATIVE": 2241,
+      "domain_checks": 39552,
+      "geometry_replays": 18,
+      "mark_hits": 3218,
+      "negative_nodes_2": 1264,
+      "negative_nodes_3": 977,
+      "nodes": 5459
+    },
+    "9": {
+      "NEGATIVE": 2241,
+      "domain_checks": 89,
+      "geometry_replays": 18,
+      "mark_hits": 2241,
+      "negative_nodes_1": 2220,
+      "negative_nodes_2": 21,
+      "nodes": 2262
+    }
+  }
+}

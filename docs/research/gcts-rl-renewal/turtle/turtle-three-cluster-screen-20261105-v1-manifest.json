@@ -1,0 +1,634 @@
+{
+  "archive": {
+    "bytes": 14238137,
+    "sha256": "dd3737708dcc3a4adb1e45cf29c5ab7c8d545d361683da893a80441ac2e14ad6"
+  },
+  "files": {
+    "input/bank/data/execution.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "input/bank/data/execution.stdout.log": {
+      "bytes": 390,
+      "sha256": "c033dd1c1d2a97f35b3054562efa88e351009cd16d8d729633df133519bf4cb5"
+    },
+    "input/bank/data/three-bank-v1.json": {
+      "bytes": 64002,
+      "sha256": "56e9f9cf00db85d5237c5b13343603a38365d23d7e19c682afe55df155c4bfcb"
+    },
+    "input/bank/input/contact-catalogue-v1.json.gz": {
+      "bytes": 289492,
+      "sha256": "754f92acbe29b075d2d67ec3c8617d2ec1b75b37ff396551790e2cd53e3f73cf"
+    },
+    "input/bank/input/exact-point-model-v1.json": {
+      "bytes": 10642,
+      "sha256": "775ce3ac20489ef64d8d8266238edde36f87919461b68ccbd232763dd2da3eb0"
+    },
+    "input/bank/input/two-bank-v1.json.gz": {
+      "bytes": 182882,
+      "sha256": "dd5f0edfc4bb34021755659e98938c4851dda24b2488f71d0d638fd1081ae6be"
+    },
+    "input/bank/protocol-v1.json": {
+      "bytes": 1455,
+      "sha256": "79d54910e6c4133c6e69da7a6a47fec74bb8fa23422ed858a5f81a6d700c3a26"
+    },
+    "input/bank/source/build_v1.py": {
+      "bytes": 3801,
+      "sha256": "322552eea0a3c0d3597783e5fae007ac14499c270271a44fcc105fd409d191bb"
+    },
+    "input/bank/source/cluster_v1.py": {
+      "bytes": 14553,
+      "sha256": "1871566736458a2d31e784073cebc40cd5430ab80e738ca4898ec699d29e8a93"
+    },
+    "input/learning/data/evaluation-v1.json": {
+      "bytes": 79822,
+      "sha256": "76dece59463177b0b202f85c51a32b2945f02debc268467a1fd0ff936e77de25"
+    },
+    "input/learning/data/execution.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "input/learning/data/execution.stdout.log": {
+      "bytes": 1121,
+      "sha256": "9f236c6fb6ba0a685d1438cf9081db621822d5e44df48e59c4d745b2e0370bbd"
+    },
+    "input/learning/data/patterns-v1.json": {
+      "bytes": 17382,
+      "sha256": "918722d1040519ff6a18476364a489082332891c646ec850a347032cce3f6654"
+    },
+    "input/learning/data/summary-v1.json": {
+      "bytes": 765,
+      "sha256": "b03c88791a20c4fc837b9703aec9b25b3fdc4604a3b360d41c823861c7e236be"
+    },
+    "input/learning/input/exact-point-model-v1.json": {
+      "bytes": 10642,
+      "sha256": "775ce3ac20489ef64d8d8266238edde36f87919461b68ccbd232763dd2da3eb0"
+    },
+    "input/learning/input/ratio-09-v1.json.gz": {
+      "bytes": 625174,
+      "sha256": "b65faef13854d3cfcb26f359e37cc33972988bcbba193a95bb195dc58783a5f5"
+    },
+    "input/learning/input/ratio-12-v1.json.gz": {
+      "bytes": 880524,
+      "sha256": "d0af3710f72fff019f57b6a0acd51b8cb1ba014670d76ada908bdbfcea877e8f"
+    },
+    "input/learning/input/ratio-16-v1.json.gz": {
+      "bytes": 1278331,
+      "sha256": "0fdbc6981185056a0fd58df8228b31e4a36f4f535e1d4e74538ce5437a9179a2"
+    },
+    "input/learning/input/ratio-25-v1.json.gz": {
+      "bytes": 2280018,
+      "sha256": "9c9558b65c7ee102d5fa199ffa90b19a37dd2304066931062e619efc6e20cd35"
+    },
+    "input/learning/input/ratio-27-v1.json.gz": {
+      "bytes": 2555957,
+      "sha256": "e3d9dd15fcc2105581c0e68717fdc27ca4255e4f27cd7181c3398353a0b9937e"
+    },
+    "input/learning/input/ratio-36-v1.json.gz": {
+      "bytes": 3452562,
+      "sha256": "d9a6d506bd46c7ddb16e1705e08953d44c88919f5d2a647fa3933a8ce1435d2a"
+    },
+    "input/learning/input/ratio-48-v1.json.gz": {
+      "bytes": 4802197,
+      "sha256": "e02518ac6f56b9fe6076314d4895dfbab86fb4641e04fa050694cae787565de0"
+    },
+    "input/learning/input/small-results-v1.json.gz": {
+      "bytes": 182882,
+      "sha256": "dd5f0edfc4bb34021755659e98938c4851dda24b2488f71d0d638fd1081ae6be"
+    },
+    "input/learning/input/wide-summary-v1.json.gz": {
+      "bytes": 876,
+      "sha256": "f6cb193066c70d853fad78dc7b27744b4df958a2504145622e466e8a6ef5d30e"
+    },
+    "input/learning/protocol-v1.json": {
+      "bytes": 2340,
+      "sha256": "665f982358419406358975c3d268eb329ebd32a8e968a533cb6221700a21b0d1"
+    },
+    "input/learning/source/stencil_v1.py": {
+      "bytes": 8216,
+      "sha256": "0834d7d1d7c1007daf4d76a032f6147f5078b10e496cdb8a1963ca1fd3cea554"
+    },
+    "input/small/data/closure-receipt-v1.json": {
+      "bytes": 5471,
+      "sha256": "9766e676c87be2705924afcc22eb88f5411506053e37d609d80e6e6d0e774584"
+    },
+    "input/small/data/execution.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "input/small/data/execution.stdout.log": {
+      "bytes": 2780,
+      "sha256": "1da6f4ed9354dfa8461690ac09af00e2acba076ca31faa44f1493a3bffa5cc0e"
+    },
+    "input/small/data/ratio-01-v1.jsonl": {
+      "bytes": 22234,
+      "sha256": "b780b9271240892f6fcbd944506ebf327089579dc823767ff983e267f7341df6"
+    },
+    "input/small/data/ratio-03-v1.jsonl": {
+      "bytes": 663646,
+      "sha256": "7db48ea82c2522d7c775a8ee3d9a3679db5051d515d5650ac009afdc470f4e9e"
+    },
+    "input/small/data/ratio-04-v1.jsonl": {
+      "bytes": 628037,
+      "sha256": "d57e582ec26afbc1b2dc405df47dfb744806d975dc93b4bc9e4af72203319095"
+    },
+    "input/small/data/summary-v1.json": {
+      "bytes": 707,
+      "sha256": "427af497ca0bba07f387d060b16061173139370f64adaa3e0856cee5a3700238"
+    },
+    "input/small/early-stop-control/data/cases-v1.jsonl": {
+      "bytes": 99264,
+      "sha256": "f9148e0e17ca5e945dd3a14039c5c04171292646f443c85e4b1fdfe36123e25e"
+    },
+    "input/small/early-stop-control/data/closure-v1.json": {
+      "bytes": 3255,
+      "sha256": "4fed3ace3e2f09ba2fe24c3568ae65d5ab2db1ac8bc0bac1d1c2841afc43ad74"
+    },
+    "input/small/early-stop-control/data/execution.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "input/small/early-stop-control/data/execution.stdout.log": {
+      "bytes": 448,
+      "sha256": "06798b1055c36092da408ed2a3cd09643b3e4e4a10facaa01d8a8a405d77a75a"
+    },
+    "input/small/early-stop-control/data/summary-v1.json": {
+      "bytes": 607,
+      "sha256": "03112b7e2ff78f4edd7e9ce453bc08c5099d8bf1ff3d4744767023dfb48f08b0"
+    },
+    "input/small/early-stop-control/input/closure-receipt-v1.json": {
+      "bytes": 5471,
+      "sha256": "9766e676c87be2705924afcc22eb88f5411506053e37d609d80e6e6d0e774584"
+    },
+    "input/small/early-stop-control/input/exact-point-model-v1.json": {
+      "bytes": 10642,
+      "sha256": "775ce3ac20489ef64d8d8266238edde36f87919461b68ccbd232763dd2da3eb0"
+    },
+    "input/small/early-stop-control/input/patterns-v1.json": {
+      "bytes": 17382,
+      "sha256": "918722d1040519ff6a18476364a489082332891c646ec850a347032cce3f6654"
+    },
+    "input/small/early-stop-control/input/ratio-01-v1.jsonl": {
+      "bytes": 22234,
+      "sha256": "b780b9271240892f6fcbd944506ebf327089579dc823767ff983e267f7341df6"
+    },
+    "input/small/early-stop-control/input/ratio-03-v1.jsonl": {
+      "bytes": 663646,
+      "sha256": "7db48ea82c2522d7c775a8ee3d9a3679db5051d515d5650ac009afdc470f4e9e"
+    },
+    "input/small/early-stop-control/input/ratio-04-v1.jsonl": {
+      "bytes": 628037,
+      "sha256": "d57e582ec26afbc1b2dc405df47dfb744806d975dc93b4bc9e4af72203319095"
+    },
+    "input/small/early-stop-control/input/three-bank-v1.json": {
+      "bytes": 64002,
+      "sha256": "56e9f9cf00db85d5237c5b13343603a38365d23d7e19c682afe55df155c4bfcb"
+    },
+    "input/small/early-stop-control/protocol-v1.json": {
+      "bytes": 3030,
+      "sha256": "32fe09d57f5b30cc139df2a0361f5f4c23b6e2226b8d0317caf61f225164b72b"
+    },
+    "input/small/early-stop-control/source/cluster_v1.py": {
+      "bytes": 15717,
+      "sha256": "a2eec032406feaf45f7c5ca66b235727db26e414996337981f6b0ff865859b85"
+    },
+    "input/small/early-stop-control/source/early_v1.py": {
+      "bytes": 4340,
+      "sha256": "f426d56ad52926b0de76e8537fc19b75fa05edf23d2627ce6107b458a87a8a68"
+    },
+    "input/small/early-stop-control/source/screen_v1.py": {
+      "bytes": 5871,
+      "sha256": "d98b8f0bd131c1bef973da5e60554ef4d421b282f1feb0421febb8d3b180935a"
+    },
+    "input/small/early-stop-control/source/stencil_v1.py": {
+      "bytes": 8216,
+      "sha256": "0834d7d1d7c1007daf4d76a032f6147f5078b10e496cdb8a1963ca1fd3cea554"
+    },
+    "input/small/early-stop-control/source/turtle_points_v1.py": {
+      "bytes": 7688,
+      "sha256": "7962e545935677d1cff40bb793fc682bc3acec1461cf178ed7a39253ca9bdfc0"
+    },
+    "input/small/input/exact-point-model-v1.json": {
+      "bytes": 10642,
+      "sha256": "775ce3ac20489ef64d8d8266238edde36f87919461b68ccbd232763dd2da3eb0"
+    },
+    "input/small/input/patterns-v1.json": {
+      "bytes": 17382,
+      "sha256": "918722d1040519ff6a18476364a489082332891c646ec850a347032cce3f6654"
+    },
+    "input/small/input/three-bank-v1.json": {
+      "bytes": 64002,
+      "sha256": "56e9f9cf00db85d5237c5b13343603a38365d23d7e19c682afe55df155c4bfcb"
+    },
+    "input/small/interleaved-control/data/cases-v1.jsonl": {
+      "bytes": 203736,
+      "sha256": "7f3e5831c3899c16eb4f7ea2665f89ef2848788038522ce0ceb2a1d485e2f441"
+    },
+    "input/small/interleaved-control/data/closure-v1.json": {
+      "bytes": 3696,
+      "sha256": "cdd47b5e144e6d8e7e16e33e08695ca5566840239a964fa027bf38ca7df9b7b4"
+    },
+    "input/small/interleaved-control/data/execution.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "input/small/interleaved-control/data/execution.stdout.log": {
+      "bytes": 522,
+      "sha256": "62d1f03b4410259b779e10a60dd0cccd2f167616d8285e46e9b735417e28d2e9"
+    },
+    "input/small/interleaved-control/data/summary-v1.json": {
+      "bytes": 720,
+      "sha256": "398167cfaae833c8d2a7bbb9e3ae7a309be8660ee9fbb13e40d8eaac0b80a67a"
+    },
+    "input/small/interleaved-control/input/early-cases-v1.jsonl": {
+      "bytes": 99264,
+      "sha256": "f9148e0e17ca5e945dd3a14039c5c04171292646f443c85e4b1fdfe36123e25e"
+    },
+    "input/small/interleaved-control/input/early-closure-v1.json": {
+      "bytes": 3255,
+      "sha256": "4fed3ace3e2f09ba2fe24c3568ae65d5ab2db1ac8bc0bac1d1c2841afc43ad74"
+    },
+    "input/small/interleaved-control/input/exact-point-model-v1.json": {
+      "bytes": 10642,
+      "sha256": "775ce3ac20489ef64d8d8266238edde36f87919461b68ccbd232763dd2da3eb0"
+    },
+    "input/small/interleaved-control/input/patterns-v1.json": {
+      "bytes": 17382,
+      "sha256": "918722d1040519ff6a18476364a489082332891c646ec850a347032cce3f6654"
+    },
+    "input/small/interleaved-control/input/ratio-01-v1.jsonl": {
+      "bytes": 22234,
+      "sha256": "b780b9271240892f6fcbd944506ebf327089579dc823767ff983e267f7341df6"
+    },
+    "input/small/interleaved-control/input/ratio-03-v1.jsonl": {
+      "bytes": 663646,
+      "sha256": "7db48ea82c2522d7c775a8ee3d9a3679db5051d515d5650ac009afdc470f4e9e"
+    },
+    "input/small/interleaved-control/input/ratio-04-v1.jsonl": {
+      "bytes": 628037,
+      "sha256": "d57e582ec26afbc1b2dc405df47dfb744806d975dc93b4bc9e4af72203319095"
+    },
+    "input/small/interleaved-control/input/three-bank-v1.json": {
+      "bytes": 64002,
+      "sha256": "56e9f9cf00db85d5237c5b13343603a38365d23d7e19c682afe55df155c4bfcb"
+    },
+    "input/small/interleaved-control/protocol-v1.json": {
+      "bytes": 3452,
+      "sha256": "3f2457da2558864d8d3788b03e783379baefe03638db22249ba3b94d84069abb"
+    },
+    "input/small/interleaved-control/source/cluster_v1.py": {
+      "bytes": 15717,
+      "sha256": "a2eec032406feaf45f7c5ca66b235727db26e414996337981f6b0ff865859b85"
+    },
+    "input/small/interleaved-control/source/early_v1.py": {
+      "bytes": 4555,
+      "sha256": "6277021ecb0615cec32db3ce119eff27d0a07c612fb156f475935ff45a0374c5"
+    },
+    "input/small/interleaved-control/source/interleaved_v1.py": {
+      "bytes": 4890,
+      "sha256": "2c7e446e256d333db202e36e9e87ed1c4b3be2ebc2572ab7817f9181e447487b"
+    },
+    "input/small/interleaved-control/source/screen_v1.py": {
+      "bytes": 5871,
+      "sha256": "d98b8f0bd131c1bef973da5e60554ef4d421b282f1feb0421febb8d3b180935a"
+    },
+    "input/small/interleaved-control/source/stencil_v1.py": {
+      "bytes": 8216,
+      "sha256": "0834d7d1d7c1007daf4d76a032f6147f5078b10e496cdb8a1963ca1fd3cea554"
+    },
+    "input/small/interleaved-control/source/turtle_points_v1.py": {
+      "bytes": 7688,
+      "sha256": "7962e545935677d1cff40bb793fc682bc3acec1461cf178ed7a39253ca9bdfc0"
+    },
+    "input/small/protocol-v1.json": {
+      "bytes": 2296,
+      "sha256": "87ae58ccaa3240a67a34cc3cb57344e833aba532c7094212620f922435025d43"
+    },
+    "input/small/source/cluster_v1.py": {
+      "bytes": 15717,
+      "sha256": "a2eec032406feaf45f7c5ca66b235727db26e414996337981f6b0ff865859b85"
+    },
+    "input/small/source/screen_v1.py": {
+      "bytes": 5871,
+      "sha256": "d98b8f0bd131c1bef973da5e60554ef4d421b282f1feb0421febb8d3b180935a"
+    },
+    "input/small/source/stencil_v1.py": {
+      "bytes": 8216,
+      "sha256": "0834d7d1d7c1007daf4d76a032f6147f5078b10e496cdb8a1963ca1fd3cea554"
+    },
+    "input/small/source/turtle_points_v1.py": {
+      "bytes": 7688,
+      "sha256": "7962e545935677d1cff40bb793fc682bc3acec1461cf178ed7a39253ca9bdfc0"
+    },
+    "input/small/survivor/data/execution.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "input/small/survivor/data/execution.stdout.log": {
+      "bytes": 418,
+      "sha256": "17fa0f11fbf0f55b4f766a3be1a56c29e474291c6085cbff957752ac16253c38"
+    },
+    "input/small/survivor/data/result-v1.json": {
+      "bytes": 41723,
+      "sha256": "218ad3758795ba87574354c332cbd9c51c9c765cc59012f6f777fa6c1dae8a2d"
+    },
+    "input/small/survivor/input/exact-point-model-v1.json": {
+      "bytes": 10642,
+      "sha256": "775ce3ac20489ef64d8d8266238edde36f87919461b68ccbd232763dd2da3eb0"
+    },
+    "input/small/survivor/input/ratio-04-v1.jsonl": {
+      "bytes": 628037,
+      "sha256": "d57e582ec26afbc1b2dc405df47dfb744806d975dc93b4bc9e4af72203319095"
+    },
+    "input/small/survivor/input/root-protocol-v1.json": {
+      "bytes": 2296,
+      "sha256": "87ae58ccaa3240a67a34cc3cb57344e833aba532c7094212620f922435025d43"
+    },
+    "input/small/survivor/input/three-bank-v1.json": {
+      "bytes": 64002,
+      "sha256": "56e9f9cf00db85d5237c5b13343603a38365d23d7e19c682afe55df155c4bfcb"
+    },
+    "input/small/survivor/protocol-v1.json": {
+      "bytes": 2328,
+      "sha256": "c87cf07dc9e7f13211a70bba30d453a7f735a6f577d6cd0e82fdaa17ec9c1083"
+    },
+    "input/small/survivor/source/cluster_v1.py": {
+      "bytes": 15717,
+      "sha256": "a2eec032406feaf45f7c5ca66b235727db26e414996337981f6b0ff865859b85"
+    },
+    "input/small/survivor/source/cover_v1.py": {
+      "bytes": 7543,
+      "sha256": "46f571897d551acb89b88092cffccfc9dd913e1d141048a50701031477ca518b"
+    },
+    "input/small/survivor/source/screen_v1.py": {
+      "bytes": 5871,
+      "sha256": "d98b8f0bd131c1bef973da5e60554ef4d421b282f1feb0421febb8d3b180935a"
+    },
+    "input/small/survivor/source/stencil_v1.py": {
+      "bytes": 8216,
+      "sha256": "0834d7d1d7c1007daf4d76a032f6147f5078b10e496cdb8a1963ca1fd3cea554"
+    },
+    "input/small/survivor/source/survivor_v1.py": {
+      "bytes": 2638,
+      "sha256": "edab6768cc41d8f521aaf583c4418a4483766562051b4d9c12e2ca0df749d18c"
+    },
+    "input/small/survivor/source/triangle_geometry_v1.py": {
+      "bytes": 9600,
+      "sha256": "4715c6f612b196d257c858d695d604d800ce832cc5f8a1bfee8ae58e400a79ed"
+    },
+    "input/small/survivor/source/turtle_points_v1.py": {
+      "bytes": 7688,
+      "sha256": "7962e545935677d1cff40bb793fc682bc3acec1461cf178ed7a39253ca9bdfc0"
+    },
+    "input/wide/data/execution.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "input/wide/data/execution.stdout.log": {
+      "bytes": 6179,
+      "sha256": "1973710357568a500480df0e39e744d10f679fa20abba078febe4d1943c9bcbf"
+    },
+    "input/wide/data/ratio-09-v1.jsonl": {
+      "bytes": 881860,
+      "sha256": "152082c8534dc9c9a1b91bf5d7c6c1ea2733cd3531eec00c21724dfbfcc43b91"
+    },
+    "input/wide/data/ratio-12-v1.jsonl": {
+      "bytes": 1159099,
+      "sha256": "4169cdedcc733ee9dddf2ab5644142adc415a8e9a71eb572dec41a6d70e3ae78"
+    },
+    "input/wide/data/ratio-16-v1.jsonl": {
+      "bytes": 899108,
+      "sha256": "f1a2fd26984f72e6f167f83e8ef5e691c2f819af652238dbaa72be55a378d048"
+    },
+    "input/wide/data/ratio-25-v1.jsonl": {
+      "bytes": 914260,
+      "sha256": "aa8efc86bc4fb26f15a1d6b034ac9846412de83698611e5b19ff322b1f7ef172"
+    },
+    "input/wide/data/ratio-27-v1.jsonl": {
+      "bytes": 1216277,
+      "sha256": "2bba761cdfe223aabf86fb4f075b877ae246f82829bbdadf434e1feae3d08a30"
+    },
+    "input/wide/data/ratio-36-v1.jsonl": {
+      "bytes": 917998,
+      "sha256": "3d2e637871ced1892d3edc47a2b7ec35edfb281e1e126c5cc56ee1a1b0b004b3"
+    },
+    "input/wide/data/ratio-48-v1.jsonl": {
+      "bytes": 1218994,
+      "sha256": "9208fb70e77071819db05d0c22a9d829a7d7b9668376cdc1297a67cf3074281e"
+    },
+    "input/wide/data/summary-v1.json": {
+      "bytes": 1337,
+      "sha256": "5a3d3ff839fe1b07656018275c30cc453810216da910385a1f8677baa6443f3e"
+    },
+    "input/wide/input/carrier-check-v1.json": {
+      "bytes": 878,
+      "sha256": "f274ae5f926d1266f09a5cb07a2c582f6fc6446b3bfcadf0e0569f1371ffa77b"
+    },
+    "input/wide/input/closure-receipt-v1.json": {
+      "bytes": 5471,
+      "sha256": "9766e676c87be2705924afcc22eb88f5411506053e37d609d80e6e6d0e774584"
+    },
+    "input/wide/input/exact-point-model-v1.json": {
+      "bytes": 10642,
+      "sha256": "775ce3ac20489ef64d8d8266238edde36f87919461b68ccbd232763dd2da3eb0"
+    },
+    "input/wide/input/matrix-scope-audit-v1.json": {
+      "bytes": 6215,
+      "sha256": "9fec02d63dbfcf17a3269198013e3343cd888c8916a8a0a90827d0b08310f2c8"
+    },
+    "input/wide/input/patterns-v1.json": {
+      "bytes": 17382,
+      "sha256": "918722d1040519ff6a18476364a489082332891c646ec850a347032cce3f6654"
+    },
+    "input/wide/input/previous-wide-protocol-v1.json": {
+      "bytes": 3746,
+      "sha256": "89f1439addfaf1566071a1bc45577125759509534454cea48a593d017c303281"
+    },
+    "input/wide/input/result-v1.json": {
+      "bytes": 41723,
+      "sha256": "218ad3758795ba87574354c332cbd9c51c9c765cc59012f6f777fa6c1dae8a2d"
+    },
+    "input/wide/input/three-bank-v1.json": {
+      "bytes": 64002,
+      "sha256": "56e9f9cf00db85d5237c5b13343603a38365d23d7e19c682afe55df155c4bfcb"
+    },
+    "input/wide/protocol-v1.json": {
+      "bytes": 4347,
+      "sha256": "4698a3385d44f14db8e4f9ec59aff746fa8627f860f4a17e75dfec8e52e912f0"
+    },
+    "input/wide/scope/data/execution.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "input/wide/scope/data/execution.stdout.log": {
+      "bytes": 806,
+      "sha256": "f8c486650fc9286193aed4cbe3eca54bcf417a35150c87559da1ff76aa6aff63"
+    },
+    "input/wide/scope/data/scope-v1.json": {
+      "bytes": 10321,
+      "sha256": "491e8ea6611a0b7da437c621152f27f93f3e185e0373496ed68ba2c2b6298330"
+    },
+    "input/wide/scope/input/exact-point-model-v1.json": {
+      "bytes": 10642,
+      "sha256": "775ce3ac20489ef64d8d8266238edde36f87919461b68ccbd232763dd2da3eb0"
+    },
+    "input/wide/scope/input/matrix-scope-audit-v1.json": {
+      "bytes": 6215,
+      "sha256": "9fec02d63dbfcf17a3269198013e3343cd888c8916a8a0a90827d0b08310f2c8"
+    },
+    "input/wide/scope/input/previous-small-protocol-v1.json": {
+      "bytes": 2296,
+      "sha256": "87ae58ccaa3240a67a34cc3cb57344e833aba532c7094212620f922435025d43"
+    },
+    "input/wide/scope/input/previous-wide-protocol-v1.json": {
+      "bytes": 3746,
+      "sha256": "89f1439addfaf1566071a1bc45577125759509534454cea48a593d017c303281"
+    },
+    "input/wide/scope/protocol-v1.json": {
+      "bytes": 1673,
+      "sha256": "db113a02780d063363f0d6532f81e904fa508387b311ad495a47d6d8ef006b36"
+    },
+    "input/wide/scope/source/scope_v1.py": {
+      "bytes": 3807,
+      "sha256": "e2a7a8a71b6452bc91bb432c2ad5107db0b55c0f88ebef25e68f59678ed2d86f"
+    },
+    "input/wide/source/cluster_v1.py": {
+      "bytes": 15717,
+      "sha256": "a2eec032406feaf45f7c5ca66b235727db26e414996337981f6b0ff865859b85"
+    },
+    "input/wide/source/screen_v1.py": {
+      "bytes": 5871,
+      "sha256": "d98b8f0bd131c1bef973da5e60554ef4d421b282f1feb0421febb8d3b180935a"
+    },
+    "input/wide/source/stencil_v1.py": {
+      "bytes": 8216,
+      "sha256": "0834d7d1d7c1007daf4d76a032f6147f5078b10e496cdb8a1963ca1fd3cea554"
+    },
+    "input/wide/source/triangle_geometry_v1.py": {
+      "bytes": 9600,
+      "sha256": "4715c6f612b196d257c858d695d604d800ce832cc5f8a1bfee8ae58e400a79ed"
+    },
+    "input/wide/source/turtle_points_v1.py": {
+      "bytes": 7688,
+      "sha256": "7962e545935677d1cff40bb793fc682bc3acec1461cf178ed7a39253ca9bdfc0"
+    },
+    "input/wide/source/wide_v1.py": {
+      "bytes": 9868,
+      "sha256": "427ddf3c9a35609af51c1c13ee2f4d855ae451ce322f789366077cc4f3db88bf"
+    },
+    "input/wide/tail/data/execution.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "input/wide/tail/data/execution.stdout.log": {
+      "bytes": 1054,
+      "sha256": "9e0c03b89ada3e5e65905bb8f8d40bf2db26cf806341ad5501f45428a52807a7"
+    },
+    "input/wide/tail/data/ratio-36-tail-v1.jsonl": {
+      "bytes": 720854,
+      "sha256": "98cf71b027a773fbcb092c5e3e89cf878058030f89c1afed43d52b49c0a650be"
+    },
+    "input/wide/tail/data/ratio-48-tail-v1.jsonl": {
+      "bytes": 461227,
+      "sha256": "66af49a8a205a50f3211358e6016e39cc0ba3a0cfe249e9c7c16943949dffeca"
+    },
+    "input/wide/tail/data/summary-v1.json": {
+      "bytes": 619,
+      "sha256": "1a988c2f5cb1a84559adbe76d79743c2dd72bdd6ca5f3896b2be2487e5534a9d"
+    },
+    "input/wide/tail/input/exact-point-model-v1.json": {
+      "bytes": 10642,
+      "sha256": "775ce3ac20489ef64d8d8266238edde36f87919461b68ccbd232763dd2da3eb0"
+    },
+    "input/wide/tail/input/patterns-v1.json": {
+      "bytes": 17382,
+      "sha256": "918722d1040519ff6a18476364a489082332891c646ec850a347032cce3f6654"
+    },
+    "input/wide/tail/input/ratio-36-v1.jsonl": {
+      "bytes": 917998,
+      "sha256": "3d2e637871ced1892d3edc47a2b7ec35edfb281e1e126c5cc56ee1a1b0b004b3"
+    },
+    "input/wide/tail/input/ratio-48-v1.jsonl": {
+      "bytes": 1218994,
+      "sha256": "9208fb70e77071819db05d0c22a9d829a7d7b9668376cdc1297a67cf3074281e"
+    },
+    "input/wide/tail/input/three-bank-v1.json": {
+      "bytes": 64002,
+      "sha256": "56e9f9cf00db85d5237c5b13343603a38365d23d7e19c682afe55df155c4bfcb"
+    },
+    "input/wide/tail/input/wide-protocol-v1.json": {
+      "bytes": 4347,
+      "sha256": "4698a3385d44f14db8e4f9ec59aff746fa8627f860f4a17e75dfec8e52e912f0"
+    },
+    "input/wide/tail/protocol-v1.json": {
+      "bytes": 3321,
+      "sha256": "678469d87610ef127243590632a8b6a371c279936e5d48076b26c453e37fa6a7"
+    },
+    "input/wide/tail/source/cluster_v1.py": {
+      "bytes": 15717,
+      "sha256": "a2eec032406feaf45f7c5ca66b235727db26e414996337981f6b0ff865859b85"
+    },
+    "input/wide/tail/source/screen_v1.py": {
+      "bytes": 5871,
+      "sha256": "d98b8f0bd131c1bef973da5e60554ef4d421b282f1feb0421febb8d3b180935a"
+    },
+    "input/wide/tail/source/stencil_v1.py": {
+      "bytes": 8216,
+      "sha256": "0834d7d1d7c1007daf4d76a032f6147f5078b10e496cdb8a1963ca1fd3cea554"
+    },
+    "input/wide/tail/source/tail_v1.py": {
+      "bytes": 8315,
+      "sha256": "007a3df21dedc8410061b93839b5869cf4ab5066771a42c126753aa8229a639c"
+    },
+    "input/wide/tail/source/triangle_geometry_v1.py": {
+      "bytes": 9600,
+      "sha256": "4715c6f612b196d257c858d695d604d800ce832cc5f8a1bfee8ae58e400a79ed"
+    },
+    "input/wide/tail/source/turtle_points_v1.py": {
+      "bytes": 7688,
+      "sha256": "7962e545935677d1cff40bb793fc682bc3acec1461cf178ed7a39253ca9bdfc0"
+    },
+    "input/wide/tail/source/wide_v1.py": {
+      "bytes": 9868,
+      "sha256": "427ddf3c9a35609af51c1c13ee2f4d855ae451ce322f789366077cc4f3db88bf"
+    },
+    "publication/basic-tiling-algorithm-at-parent.md": {
+      "bytes": 36240,
+      "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+    },
+    "publication/previous-report-with-backlink-v1.html": {
+      "bytes": 49535,
+      "sha256": "ce22d91d56cb4f3e1c02ee1af0c32ed10e542ffb9b17a91d0dcb75dc2d932890"
+    },
+    "publication/release_v1.py": {
+      "bytes": 9930,
+      "sha256": "f1c314e8e34990c0cbe55e9a8bf48f6224505b735791c712c7cc33a2a856c001"
+    },
+    "publication/remote-base-v1.json": {
+      "bytes": 397,
+      "sha256": "d4a900d96a87ae1c88c90c204f4758822bfcca47c8d9d77c38433deebf0ea2a5"
+    },
+    "publication/render_v1.py": {
+      "bytes": 16212,
+      "sha256": "985e0c03911ffc72ae57ece58df93c8582c133d5808c3212d4255fcf4c783431"
+    },
+    "publication/static-v1.json": {
+      "bytes": 439,
+      "sha256": "79bba8efb0bb805e865f4fcc6657a62d4244635634f9681fd22350323cbf145d"
+    },
+    "publication/visual-check-v2.png": {
+      "bytes": 341504,
+      "sha256": "c5dc9f29cf38d23d03495bf7ea3e22ba731695f3f0e85b8b9598ce10b21de577"
+    },
+    "report/turtle-three-cluster-screen-20261105-v1-results.json": {
+      "bytes": 6644,
+      "sha256": "840ea72ddaa3cc89b8a22616ef443ed94a58127c92676a79d7b1351b5958a233"
+    },
+    "report/turtle-three-cluster-screen-20261105-v1.html": {
+      "bytes": 11177,
+      "sha256": "ba914ebad98d3b72174b6b7683663cf70a753836326c8ac700f22a28b2275aeb"
+    }
+  },
+  "schema": "Turtle-three-cluster-evidence-v1",
+  "scope": "All original run paths present at the cut. Package and later publication receipts are separate."
+}
