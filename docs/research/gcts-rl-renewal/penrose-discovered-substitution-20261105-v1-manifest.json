@@ -1,0 +1,138 @@
+{
+  "archive": {
+    "bytes": 184907,
+    "sha256": "9b9bd4cfcd3c3d41ad41278546475929e8e3bc5e26df77b6cf179728330a5b3e"
+  },
+  "files": {
+    "input/discovery/data/execution.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "input/discovery/data/execution.stdout.log": {
+      "bytes": 808,
+      "sha256": "ce2c5c5b6c4d80d04554eb0a6001672373fef772666b1be3eb4572d9db102dcf"
+    },
+    "input/discovery/data/results-v1.json": {
+      "bytes": 51979,
+      "sha256": "8136dba861567e82c09690aec45c225dde455252ca70574c68d134af654c5ea9"
+    },
+    "input/discovery/data/summary-v1.json": {
+      "bytes": 562,
+      "sha256": "674914a644928ddbb4b652d646e21b1d9804d14ceb20737f438682e386c8f59b"
+    },
+    "input/discovery/input/penrose-contact-receipt-v1.json": {
+      "bytes": 1266,
+      "sha256": "f406cec54e551391dca21801920f4c47005b2551b30babb2085195c968e5ec01"
+    },
+    "input/discovery/protocol-v1.json": {
+      "bytes": 1704,
+      "sha256": "5ac7f2cdc66c6681a7b25451eefe4fc93e730a8682ff079289442c250c094678"
+    },
+    "input/discovery/source/check_v1.py": {
+      "bytes": 4131,
+      "sha256": "edd28b8b5b611059b47d8b2b55964c27a1a5b268dabdaf06c2f4f7b340eaf76c"
+    },
+    "input/discovery/source/discover_v1.py": {
+      "bytes": 10812,
+      "sha256": "cc97a5f67ff2473f83ee1cb5445609fea1fc1d3ac99fa276cd7001bc42b1160b"
+    },
+    "input/discovery/source/model_v1.py": {
+      "bytes": 4432,
+      "sha256": "df86798cfa969b57bdca56f4928b3fd12fe908a275ec5e47031546e74bef43f4"
+    },
+    "input/standard/data/execution.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "input/standard/data/execution.stdout.log": {
+      "bytes": 508,
+      "sha256": "50dd1064eb9d62e4f52200dbc774ef5dbad1581edd64f1fee86bbec550fefa8a"
+    },
+    "input/standard/data/proof-v1.json": {
+      "bytes": 2917,
+      "sha256": "c24f85fe684748886b6026a5acc1d58695f0ed5d1083314d1a8127dd8c1c2c57"
+    },
+    "input/standard/data/summary-v1.json": {
+      "bytes": 471,
+      "sha256": "66085c87f0db3bede23e866c2220d0a946166c534932fa1289a6e1191b644c6a"
+    },
+    "input/standard/input/discovery-results-v1.json": {
+      "bytes": 51979,
+      "sha256": "8136dba861567e82c09690aec45c225dde455252ca70574c68d134af654c5ea9"
+    },
+    "input/standard/input/discovery-summary-v1.json": {
+      "bytes": 562,
+      "sha256": "674914a644928ddbb4b652d646e21b1d9804d14ceb20737f438682e386c8f59b"
+    },
+    "input/standard/input/standard-figure-v1.json": {
+      "bytes": 977,
+      "sha256": "464c548e8c504330254f7e5431922d4c78d782c8cd3278dfaf5b427bb707cafb"
+    },
+    "input/standard/protocol-v1.json": {
+      "bytes": 1640,
+      "sha256": "568957df217d7233bf2b3104c80db32d372388cdeedf1b7fd5a64f36d2ad20d8"
+    },
+    "input/standard/source/check_v1.py": {
+      "bytes": 4131,
+      "sha256": "edd28b8b5b611059b47d8b2b55964c27a1a5b268dabdaf06c2f4f7b340eaf76c"
+    },
+    "input/standard/source/model_v1.py": {
+      "bytes": 4432,
+      "sha256": "df86798cfa969b57bdca56f4928b3fd12fe908a275ec5e47031546e74bef43f4"
+    },
+    "input/standard/source/standard_v1.py": {
+      "bytes": 7429,
+      "sha256": "2fcf8a2f85b4d29a3d6a14976acdea3273cbec97f291c611dd490571e43d1689"
+    },
+    "publication/basic-tiling-algorithm-at-parent.md": {
+      "bytes": 36240,
+      "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+    },
+    "publication/browser-nest-v1.png": {
+      "bytes": 41569,
+      "sha256": "b1c0110c5de0be2ef48c4001573e78333b7b40ef32527561464aa9c96fbd0694"
+    },
+    "publication/browser-rules-v1.png": {
+      "bytes": 88681,
+      "sha256": "14ad886a4599526403d1c4cd6977453635f0a476ad12a2004f3c07d68ee9a9a9"
+    },
+    "publication/browser-v1.json": {
+      "bytes": 146,
+      "sha256": "32fb15faf808e556d8a92aa65cb0692c91e62806620c9c87d38bc67a212190e5"
+    },
+    "publication/browser_v1.cjs": {
+      "bytes": 2381,
+      "sha256": "380b7f8c714ef57d78c1fef29b477ec090aeaf0429d965a463fb484a92ba438f"
+    },
+    "publication/previous-report-with-backlink-v1.html": {
+      "bytes": 25725,
+      "sha256": "b3745de674f4fca902d99157bf71c8a3aa2b4b7e6e67b8b1c0804f1c2e5149c0"
+    },
+    "publication/release_v1.py": {
+      "bytes": 10102,
+      "sha256": "292f330dfb2d4439866f22ee5d4f3c1e90796077f4227973998136fa60d6804d"
+    },
+    "publication/remote-base-v1.json": {
+      "bytes": 397,
+      "sha256": "ec62b74f91843738478d6fdfc727838e09b4d39d0a89ca364fae050ee9ccc0b3"
+    },
+    "publication/render_v1.py": {
+      "bytes": 12048,
+      "sha256": "ce8481c6d498b0d64fe8554f2d0f81fce9121dcb5eaa029fd7c2216b3c7999eb"
+    },
+    "publication/static-v1.json": {
+      "bytes": 439,
+      "sha256": "4b9b9e1356f5ff8dc929b65011fffa87e5ef0940e66ffa29c2a6b3bf8857e798"
+    },
+    "report/penrose-discovered-substitution-20261105-v1-results.json": {
+      "bytes": 18612,
+      "sha256": "46fd4b80b6323b223d0ce08845ddb8a9bda48404f9223aa02b0ebec58ea7ebe4"
+    },
+    "report/penrose-discovered-substitution-20261105-v1.html": {
+      "bytes": 18041,
+      "sha256": "e00f257ba97353f25f622268a5f1145f8bd2e232a7d3d14c565285f3211f846c"
+    }
+  },
+  "schema": "Penrose-discovered-substitution-evidence-v1",
+  "scope": "All original run paths present at the cut. Package and later publication receipts are separate."
+}

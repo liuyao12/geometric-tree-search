@@ -1,0 +1,1166 @@
+{
+  "discovery": {
+    "marks": {
+      "mark_checks": 7168,
+      "marked_systems": 32,
+      "oriented_candidates": [
+        8,
+        24
+      ]
+    },
+    "nested_systems": 32,
+    "scope": "Exact candidate search from two unmarked half-rhomb shapes. Compatible marked subdivisions preserve edge matching. A nested seed certifies a plane tiling for its recovered marking system. Standard Penrose arrow equivalence is a separate comparison.",
+    "smallest_nested_depth": 4,
+    "stages": [
+      {
+        "geometric_partitions": 2,
+        "placements": 9,
+        "visits": 16
+      },
+      {
+        "geometric_partitions": 3,
+        "placements": 24,
+        "visits": 107
+      }
+    ],
+    "status": "CHECKED_CYCLOTOMIC_GOLDEN_TRIANGLE_DISCOVERY"
+  },
+  "proof": {
+    "boundary_receptors": [
+      {
+        "channel": [
+          -1,
+          3
+        ],
+        "word": [
+          [
+            [
+              1,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            2
+          ]
+        ]
+      },
+      {
+        "channel": [
+          0,
+          1
+        ],
+        "word": [
+          [
+            [
+              1,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              -1,
+              -1
+            ],
+            3
+          ],
+          [
+            [
+              1,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            2
+          ]
+        ]
+      },
+      {
+        "channel": [
+          0,
+          2
+        ],
+        "word": [
+          [
+            [
+              0,
+              0,
+              -1,
+              -1
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            3
+          ]
+        ]
+      },
+      {
+        "channel": [
+          1,
+          3
+        ],
+        "word": [
+          [
+            [
+              0,
+              0,
+              -1,
+              -1
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            3
+          ],
+          [
+            [
+              1,
+              0,
+              -1,
+              -1
+            ],
+            [
+              0,
+              0,
+              -1,
+              -1
+            ],
+            1
+          ]
+        ]
+      }
+    ],
+    "child_counts": [
+      {
+        "children": {
+          "0": 1,
+          "1": 1
+        },
+        "interior_rhombs": 0,
+        "kind": 0
+      },
+      {
+        "children": {
+          "0": 1,
+          "1": 2
+        },
+        "interior_rhombs": 0,
+        "kind": 1
+      }
+    ],
+    "marks": [
+      [
+        1,
+        3,
+        -2
+      ],
+      [
+        -1,
+        3,
+        -2
+      ]
+    ],
+    "nest": {
+      "depth": 4,
+      "kind": 0,
+      "matched_rhombs": [
+        {
+          "kind": 0,
+          "triangles": [
+            0,
+            3
+          ],
+          "vertices": [
+            [
+              1,
+              0,
+              -3,
+              -3
+            ],
+            [
+              1,
+              0,
+              -2,
+              -3
+            ],
+            [
+              2,
+              1,
+              -2,
+              -2
+            ],
+            [
+              2,
+              1,
+              -1,
+              -2
+            ]
+          ]
+        },
+        {
+          "kind": 1,
+          "triangles": [
+            1,
+            22
+          ],
+          "vertices": [
+            [
+              1,
+              0,
+              -2,
+              -3
+            ],
+            [
+              1,
+              0,
+              -2,
+              -2
+            ],
+            [
+              2,
+              1,
+              -1,
+              -2
+            ],
+            [
+              2,
+              1,
+              -1,
+              -1
+            ]
+          ]
+        },
+        {
+          "kind": 1,
+          "triangles": [
+            4,
+            7
+          ],
+          "vertices": [
+            [
+              1,
+              0,
+              -3,
+              -3
+            ],
+            [
+              2,
+              0,
+              -3,
+              -3
+            ],
+            [
+              2,
+              1,
+              -2,
+              -2
+            ],
+            [
+              3,
+              1,
+              -2,
+              -2
+            ]
+          ]
+        },
+        {
+          "kind": 0,
+          "triangles": [
+            6,
+            8
+          ],
+          "vertices": [
+            [
+              2,
+              1,
+              -2,
+              -2
+            ],
+            [
+              2,
+              1,
+              -1,
+              -2
+            ],
+            [
+              3,
+              1,
+              -2,
+              -2
+            ],
+            [
+              3,
+              1,
+              -1,
+              -2
+            ]
+          ]
+        },
+        {
+          "kind": 1,
+          "triangles": [
+            9,
+            12
+          ],
+          "vertices": [
+            [
+              2,
+              1,
+              -1,
+              -2
+            ],
+            [
+              2,
+              2,
+              -1,
+              -2
+            ],
+            [
+              3,
+              1,
+              -1,
+              -2
+            ],
+            [
+              3,
+              2,
+              -1,
+              -2
+            ]
+          ]
+        },
+        {
+          "kind": 1,
+          "triangles": [
+            10,
+            18
+          ],
+          "vertices": [
+            [
+              2,
+              2,
+              -1,
+              -3
+            ],
+            [
+              2,
+              2,
+              -1,
+              -2
+            ],
+            [
+              3,
+              3,
+              0,
+              -2
+            ],
+            [
+              3,
+              3,
+              0,
+              -1
+            ]
+          ]
+        },
+        {
+          "kind": 0,
+          "triangles": [
+            14,
+            16
+          ],
+          "vertices": [
+            [
+              1,
+              1,
+              -1,
+              -2
+            ],
+            [
+              1,
+              1,
+              0,
+              -2
+            ],
+            [
+              2,
+              1,
+              -1,
+              -2
+            ],
+            [
+              2,
+              1,
+              0,
+              -2
+            ]
+          ]
+        },
+        {
+          "kind": 1,
+          "triangles": [
+            15,
+            25
+          ],
+          "vertices": [
+            [
+              1,
+              1,
+              -1,
+              -2
+            ],
+            [
+              1,
+              1,
+              -1,
+              -1
+            ],
+            [
+              1,
+              1,
+              0,
+              -2
+            ],
+            [
+              1,
+              1,
+              0,
+              -1
+            ]
+          ]
+        },
+        {
+          "kind": 1,
+          "triangles": [
+            17,
+            20
+          ],
+          "vertices": [
+            [
+              2,
+              1,
+              -1,
+              -2
+            ],
+            [
+              2,
+              1,
+              0,
+              -2
+            ],
+            [
+              2,
+              2,
+              -1,
+              -2
+            ],
+            [
+              2,
+              2,
+              0,
+              -2
+            ]
+          ]
+        },
+        {
+          "kind": 0,
+          "triangles": [
+            21,
+            24
+          ],
+          "vertices": [
+            [
+              1,
+              1,
+              -1,
+              -2
+            ],
+            [
+              1,
+              1,
+              -1,
+              -1
+            ],
+            [
+              2,
+              1,
+              -1,
+              -2
+            ],
+            [
+              2,
+              1,
+              -1,
+              -1
+            ]
+          ]
+        },
+        {
+          "kind": 1,
+          "triangles": [
+            23,
+            31
+          ],
+          "vertices": [
+            [
+              0,
+              0,
+              -2,
+              -2
+            ],
+            [
+              1,
+              0,
+              -2,
+              -2
+            ],
+            [
+              1,
+              1,
+              -1,
+              -1
+            ],
+            [
+              2,
+              1,
+              -1,
+              -1
+            ]
+          ]
+        },
+        {
+          "kind": 0,
+          "triangles": [
+            27,
+            29
+          ],
+          "vertices": [
+            [
+              1,
+              0,
+              0,
+              -1
+            ],
+            [
+              1,
+              0,
+              0,
+              0
+            ],
+            [
+              1,
+              1,
+              0,
+              -1
+            ],
+            [
+              1,
+              1,
+              0,
+              0
+            ]
+          ]
+        },
+        {
+          "kind": 1,
+          "triangles": [
+            30,
+            33
+          ],
+          "vertices": [
+            [
+              1,
+              0,
+              -1,
+              -1
+            ],
+            [
+              1,
+              0,
+              0,
+              -1
+            ],
+            [
+              1,
+              1,
+              -1,
+              -1
+            ],
+            [
+              1,
+              1,
+              0,
+              -1
+            ]
+          ]
+        }
+      ],
+      "parent": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          -3,
+          -3
+        ],
+        [
+          3,
+          3,
+          0,
+          -2
+        ]
+      ],
+      "parent_after_alignment": [
+        [
+          -2,
+          -4,
+          -3,
+          -1
+        ],
+        [
+          1,
+          1,
+          0,
+          -1
+        ],
+        [
+          0,
+          1,
+          2,
+          1
+        ]
+      ],
+      "seed": [
+        0,
+        8,
+        false,
+        [
+          2,
+          1,
+          -1,
+          -2
+        ]
+      ],
+      "triangles": [
+        [
+          0,
+          8,
+          false,
+          [
+            2,
+            1,
+            -1,
+            -2
+          ]
+        ],
+        [
+          1,
+          3,
+          false,
+          [
+            1,
+            0,
+            -2,
+            -3
+          ]
+        ],
+        [
+          1,
+          9,
+          true,
+          [
+            1,
+            0,
+            -2,
+            -3
+          ]
+        ],
+        [
+          0,
+          4,
+          true,
+          [
+            1,
+            0,
+            -3,
+            -3
+          ]
+        ],
+        [
+          1,
+          0,
+          false,
+          [
+            1,
+            0,
+            -3,
+            -3
+          ]
+        ],
+        [
+          1,
+          9,
+          false,
+          [
+            3,
+            1,
+            -1,
+            -2
+          ]
+        ],
+        [
+          0,
+          4,
+          false,
+          [
+            3,
+            1,
+            -2,
+            -2
+          ]
+        ],
+        [
+          1,
+          8,
+          true,
+          [
+            3,
+            1,
+            -2,
+            -2
+          ]
+        ],
+        [
+          0,
+          0,
+          true,
+          [
+            2,
+            1,
+            -1,
+            -2
+          ]
+        ],
+        [
+          1,
+          5,
+          true,
+          [
+            3,
+            1,
+            -1,
+            -2
+          ]
+        ],
+        [
+          1,
+          6,
+          true,
+          [
+            2,
+            2,
+            -1,
+            -3
+          ]
+        ],
+        [
+          0,
+          1,
+          true,
+          [
+            2,
+            2,
+            -1,
+            -2
+          ]
+        ],
+        [
+          1,
+          7,
+          false,
+          [
+            2,
+            2,
+            -1,
+            -2
+          ]
+        ],
+        [
+          1,
+          5,
+          true,
+          [
+            2,
+            1,
+            0,
+            -2
+          ]
+        ],
+        [
+          0,
+          0,
+          true,
+          [
+            1,
+            1,
+            0,
+            -2
+          ]
+        ],
+        [
+          1,
+          6,
+          false,
+          [
+            1,
+            1,
+            0,
+            -2
+          ]
+        ],
+        [
+          0,
+          4,
+          false,
+          [
+            2,
+            1,
+            -1,
+            -2
+          ]
+        ],
+        [
+          1,
+          9,
+          false,
+          [
+            2,
+            1,
+            0,
+            -2
+          ]
+        ],
+        [
+          1,
+          8,
+          false,
+          [
+            3,
+            3,
+            0,
+            -1
+          ]
+        ],
+        [
+          0,
+          3,
+          false,
+          [
+            2,
+            2,
+            -1,
+            -2
+          ]
+        ],
+        [
+          1,
+          7,
+          true,
+          [
+            2,
+            2,
+            -1,
+            -2
+          ]
+        ],
+        [
+          0,
+          6,
+          true,
+          [
+            2,
+            1,
+            -1,
+            -2
+          ]
+        ],
+        [
+          1,
+          1,
+          true,
+          [
+            2,
+            1,
+            -1,
+            -1
+          ]
+        ],
+        [
+          1,
+          5,
+          false,
+          [
+            2,
+            1,
+            -1,
+            -1
+          ]
+        ],
+        [
+          0,
+          0,
+          false,
+          [
+            1,
+            1,
+            -1,
+            -1
+          ]
+        ],
+        [
+          1,
+          4,
+          true,
+          [
+            1,
+            1,
+            -1,
+            -1
+          ]
+        ],
+        [
+          1,
+          6,
+          false,
+          [
+            1,
+            0,
+            0,
+            -1
+          ]
+        ],
+        [
+          0,
+          1,
+          false,
+          [
+            1,
+            0,
+            0,
+            0
+          ]
+        ],
+        [
+          1,
+          5,
+          true,
+          [
+            1,
+            0,
+            0,
+            0
+          ]
+        ],
+        [
+          0,
+          7,
+          true,
+          [
+            1,
+            1,
+            0,
+            -1
+          ]
+        ],
+        [
+          1,
+          2,
+          true,
+          [
+            1,
+            0,
+            0,
+            -1
+          ]
+        ],
+        [
+          1,
+          3,
+          true,
+          [
+            0,
+            0,
+            -2,
+            -2
+          ]
+        ],
+        [
+          0,
+          8,
+          true,
+          [
+            1,
+            1,
+            -1,
+            -1
+          ]
+        ],
+        [
+          1,
+          4,
+          false,
+          [
+            1,
+            1,
+            -1,
+            -1
+          ]
+        ]
+      ]
+    },
+    "rules": [
+      [
+        [
+          0,
+          7,
+          false,
+          [
+            1,
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          1,
+          2,
+          false,
+          [
+            1,
+            0,
+            0,
+            0
+          ]
+        ]
+      ],
+      [
+        [
+          1,
+          3,
+          true,
+          [
+            -1,
+            0,
+            -1,
+            -1
+          ]
+        ],
+        [
+          0,
+          8,
+          true,
+          [
+            0,
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          1,
+          4,
+          false,
+          [
+            0,
+            1,
+            0,
+            0
+          ]
+        ]
+      ]
+    ],
+    "scope": "Exact geometry, de Bruijn standard rhomb arrows, common-edge subdivision compatibility, and a strictly nested affine seed.",
+    "status": "VERIFIED_STANDARD_P3_SUBSTITUTION",
+    "system": 17
+  },
+  "source": {
+    "doi": "https://doi.org/10.1016/0019-3577%2890%2990005-8",
+    "figure": 2,
+    "printed_page": 204,
+    "reading": [
+      "The acute thin half has an outward single arrow on one unit edge and an outward double arrow on the other. Choose the reflected representative whose short diagonal goes from the single-arrow endpoint to the double-arrow endpoint.",
+      "The obtuse thick half has an inward single arrow on the left unit edge and an outward double arrow on the right unit edge. The long diagonal points left to right.",
+      "The signed list follows the apex, first unit endpoint, second unit endpoint, apex order. This figure comparison was performed after unmarked search completion."
+    ],
+    "signed_edge_arrows": [
+      [
+        1,
+        3,
+        -2
+      ],
+      [
+        -1,
+        3,
+        -2
+      ]
+    ],
+    "source_pdf": "https://pure.tue.nl/ws/portalfiles/portal/2467905/597583.pdf",
+    "source_pdf_sha256": "c805fc3ffd0270c3a9a60103c94129069acf6c191da7907b4691ac36eec53858"
+  },
+  "standard": {
+    "boundary_receptors": 4,
+    "child_counts": [
+      {
+        "children": {
+          "0": 1,
+          "1": 1
+        },
+        "interior_rhombs": 0,
+        "kind": 0
+      },
+      {
+        "children": {
+          "0": 1,
+          "1": 2
+        },
+        "interior_rhombs": 0,
+        "kind": 1
+      }
+    ],
+    "depth": 4,
+    "interior_rhombs": {
+      "0": 5,
+      "1": 8
+    },
+    "nested_triangles": 34,
+    "reference": "https://doi.org/10.1016/0019-3577%2890%2990005-8",
+    "scope": "Exact geometry, de Bruijn standard rhomb arrows, common-edge subdivision compatibility, and a strictly nested affine seed.",
+    "status": "VERIFIED_STANDARD_P3_SUBSTITUTION",
+    "system": 17
+  },
+  "status": "CHECKED_PUBLISHED_PENROSE_SUBSTITUTION"
+}
