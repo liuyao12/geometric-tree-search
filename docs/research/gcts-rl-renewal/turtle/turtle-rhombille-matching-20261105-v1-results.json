@@ -1,0 +1,615 @@
+{
+  "attachment": [
+    {
+      "clauses": 24,
+      "demand_sizes": {
+        "1": 6,
+        "2": 48,
+        "3": 4
+      },
+      "demands": 18,
+      "radius": 0,
+      "status": "UNSAT",
+      "variables": 6,
+      "visits": 1
+    },
+    {
+      "clauses": 58,
+      "demand_sizes": {
+        "1": 6,
+        "2": 48,
+        "3": 22
+      },
+      "demands": 28,
+      "radius": 1,
+      "status": "UNSAT",
+      "variables": 21,
+      "visits": 1
+    },
+    {
+      "clauses": 151,
+      "demand_sizes": {
+        "1": 12,
+        "2": 96,
+        "3": 22
+      },
+      "demands": 70,
+      "radius": 2,
+      "status": "UNSAT",
+      "variables": 42,
+      "visits": 1
+    },
+    {
+      "clauses": 286,
+      "demand_sizes": {
+        "1": 42,
+        "2": 138,
+        "3": 22
+      },
+      "demands": 127,
+      "radius": 3,
+      "status": "UNSAT",
+      "variables": 96,
+      "visits": 1
+    },
+    {
+      "clauses": 313,
+      "demand_sizes": {
+        "1": 60,
+        "2": 210,
+        "3": 22
+      },
+      "demands": 142,
+      "radius": 4,
+      "status": "UNSAT",
+      "variables": 135,
+      "visits": 1
+    },
+    {
+      "clauses": 433,
+      "demand_sizes": {
+        "1": 60,
+        "2": 210,
+        "3": 58
+      },
+      "demands": 214,
+      "radius": 5,
+      "status": "UNSAT",
+      "variables": 192,
+      "visits": 1
+    }
+  ],
+  "bridge": {
+    "banks": {
+      "deeper": {
+        "holes": 1942,
+        "patches": 5,
+        "rhombs": 8580,
+        "seam_colors": {
+          "black/red": 4061
+        },
+        "turtles": 2145
+      },
+      "original": {
+        "holes": 5218,
+        "patches": 20,
+        "rhombs": 23332,
+        "seam_colors": {
+          "black/red": 10837
+        },
+        "turtles": 5833
+      }
+    },
+    "edge_search": {
+      "edge_colorings": 28,
+      "footprints": 1
+    },
+    "phase_contacts": 114,
+    "phases": [
+      [
+        1,
+        0,
+        3
+      ]
+    ],
+    "status": "CHECKED_EXACT_TURTLE_RHOMBILLE_BRIDGE"
+  },
+  "clusters": {
+    "banks": {
+      "holdout": {
+        "center_shapes": 2,
+        "contact_types": 18,
+        "contracted": 15,
+        "directed_contacts": 167,
+        "guarded_profiles": [
+          5,
+          5
+        ]
+      },
+      "original": {
+        "center_shapes": 2,
+        "contact_types": 13,
+        "contracted": 12,
+        "directed_contacts": 123,
+        "guarded_profiles": [
+          3,
+          6
+        ]
+      }
+    },
+    "scope": "Only contacts between blocks with known membership inside the two-ring guard. Profiles at the guard boundary can be partial.",
+    "status": "CHECKED_FINITE_THIRD_LAYER_ATLAS"
+  },
+  "construct": {
+    "runs": [
+      {
+        "checked_wedges": 3960,
+        "covered_rhombs": 369,
+        "radius": 10,
+        "seconds": 0.0227,
+        "target_radius": 6,
+        "tree_roots": 18,
+        "turtles": 198
+      },
+      {
+        "checked_wedges": 23300,
+        "covered_rhombs": 4149,
+        "radius": 25,
+        "seconds": 0.0874,
+        "target_radius": 21,
+        "tree_roots": 27,
+        "turtles": 1165
+      },
+      {
+        "checked_wedges": 91840,
+        "covered_rhombs": 19449,
+        "radius": 50,
+        "seconds": 0.4049,
+        "target_radius": 46,
+        "tree_roots": 56,
+        "turtles": 4592
+      },
+      {
+        "checked_wedges": 364480,
+        "covered_rhombs": 83799,
+        "radius": 100,
+        "seconds": 1.9226,
+        "target_radius": 96,
+        "tree_roots": 134,
+        "turtles": 18224
+      }
+    ],
+    "scope": "Every target rhomb wedge is covered exactly once. Matched Turtle tiles may extend beyond the target. The bounded matching proof applies to the checked radii.",
+    "status": "CHECKED_FINITE_TURTLE_CONSTRUCTION"
+  },
+  "graph": [
+    {
+      "closed": {},
+      "counterexamples": 0,
+      "hexes": 216,
+      "open": {
+        "-1": 18
+      },
+      "radius": 10,
+      "red_edges": 198
+    },
+    {
+      "closed": {},
+      "counterexamples": 0,
+      "hexes": 1192,
+      "open": {
+        "-1": 27
+      },
+      "radius": 25,
+      "red_edges": 1165
+    },
+    {
+      "closed": {},
+      "counterexamples": 0,
+      "hexes": 4648,
+      "open": {
+        "-1": 56
+      },
+      "radius": 50,
+      "red_edges": 4592
+    },
+    {
+      "closed": {},
+      "counterexamples": 0,
+      "hexes": 18358,
+      "open": {
+        "-1": 134
+      },
+      "radius": 100,
+      "red_edges": 18224
+    }
+  ],
+  "line": {
+    "banks": {
+      "deeper": {
+        "colors": [
+          [
+            "hex",
+            "matched",
+            6435
+          ],
+          [
+            "hole",
+            "matched",
+            1942
+          ],
+          [
+            "red",
+            "matched",
+            2111
+          ],
+          [
+            "red",
+            "unresolved",
+            34
+          ]
+        ],
+        "gaps": {
+          "3": 43,
+          "4": 69
+        },
+        "length_range": [
+          30,
+          32
+        ],
+        "line_words": 15,
+        "slope_bounds": [
+          "5/18",
+          "7/25"
+        ],
+        "slope_interval_nonempty": true
+      },
+      "original": {
+        "colors": [
+          [
+            "hex",
+            "matched",
+            17499
+          ],
+          [
+            "hole",
+            "matched",
+            5218
+          ],
+          [
+            "red",
+            "matched",
+            5718
+          ],
+          [
+            "red",
+            "unresolved",
+            115
+          ]
+        ],
+        "gaps": {
+          "3": 159,
+          "4": 202
+        },
+        "length_range": [
+          24,
+          27
+        ],
+        "line_words": 60,
+        "slope_bounds": [
+          "7/25",
+          "5/18"
+        ],
+        "slope_interval_nonempty": false
+      }
+    },
+    "morphisms": [
+      {
+        "deeper": 11,
+        "morphism": {
+          "L": "SL",
+          "S": "L"
+        },
+        "train": 37
+      },
+      {
+        "deeper": 11,
+        "morphism": {
+          "L": "LS",
+          "S": "L"
+        },
+        "train": 37
+      },
+      {
+        "deeper": 0,
+        "morphism": {
+          "L": "S",
+          "S": "SL"
+        },
+        "train": 1
+      },
+      {
+        "deeper": 0,
+        "morphism": {
+          "L": "SS",
+          "S": "SL"
+        },
+        "train": 21
+      },
+      {
+        "deeper": 1,
+        "morphism": {
+          "L": "SL",
+          "S": "SL"
+        },
+        "train": 21
+      },
+      {
+        "deeper": 1,
+        "morphism": {
+          "L": "LS",
+          "S": "SL"
+        },
+        "train": 18
+      },
+      {
+        "deeper": 0,
+        "morphism": {
+          "L": "S",
+          "S": "LS"
+        },
+        "train": 1
+      },
+      {
+        "deeper": 0,
+        "morphism": {
+          "L": "SS",
+          "S": "LS"
+        },
+        "train": 21
+      },
+      {
+        "deeper": 1,
+        "morphism": {
+          "L": "SL",
+          "S": "LS"
+        },
+        "train": 18
+      },
+      {
+        "deeper": 1,
+        "morphism": {
+          "L": "LS",
+          "S": "LS"
+        },
+        "train": 21
+      },
+      {
+        "deeper": 4,
+        "morphism": {
+          "L": "SL",
+          "S": "LL"
+        },
+        "train": 41
+      },
+      {
+        "deeper": 4,
+        "morphism": {
+          "L": "LS",
+          "S": "LL"
+        },
+        "train": 41
+      }
+    ],
+    "status": "CHECKED_RHOMBILLE_LINE_WORDS"
+  },
+  "phase": {
+    "status": "CHECKED_PHASE_SELECTED_HEX_OWNERS",
+    "trials": [
+      {
+        "beta": [
+          "0",
+          "0"
+        ],
+        "cases": {
+          "-1": 144,
+          "-2": 144
+        },
+        "examples": {},
+        "failures": {},
+        "hex_degrees": {
+          "1": 6,
+          "2": 48,
+          "3": 22
+        },
+        "radius": 3,
+        "red_degrees": {
+          "2": 96
+        }
+      },
+      {
+        "beta": [
+          "1/20",
+          "0"
+        ],
+        "cases": {
+          "-1": 192,
+          "-2": 192
+        },
+        "examples": {
+          "neighbor ownership": {
+            "height": 1,
+            "layer": -2,
+            "pattern": [
+              [
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                0,
+                1,
+                0,
+                0,
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          },
+          "rhomb ownership": {
+            "height": 1,
+            "layer": -2,
+            "pattern": [
+              [
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                0,
+                1,
+                0,
+                0,
+                1,
+                0,
+                0
+              ]
+            ]
+          }
+        },
+        "failures": {
+          "neighbor ownership": 10,
+          "rhomb ownership": 2
+        },
+        "hex_degrees": {
+          "1": 15,
+          "2": 54,
+          "3": 31
+        },
+        "radius": 3,
+        "red_degrees": {
+          "2": 117
+        }
+      },
+      {
+        "beta": [
+          "-1/20",
+          "0"
+        ],
+        "cases": {
+          "-1": 192,
+          "-2": 192
+        },
+        "examples": {
+          "neighbor ownership": {
+            "height": 2,
+            "layer": -2,
+            "pattern": [
+              [
+                0,
+                0,
+                1,
+                0,
+                0,
+                1,
+                0
+              ],
+              [
+                0,
+                1,
+                0,
+                0,
+                0,
+                1,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0
+              ]
+            ]
+          },
+          "rhomb ownership": {
+            "height": 3,
+            "layer": -2,
+            "pattern": [
+              [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                1
+              ]
+            ]
+          }
+        },
+        "failures": {
+          "neighbor ownership": 10,
+          "rhomb ownership": 2
+        },
+        "hex_degrees": {
+          "1": 9,
+          "2": 54,
+          "3": 31
+        },
+        "radius": 3,
+        "red_degrees": {
+          "2": 123
+        }
+      }
+    ]
+  },
+  "status": "CHECKED_RHOMBILLE_MATCHING_REPORT"
+}
