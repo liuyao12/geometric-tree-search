@@ -1,0 +1,207 @@
+{
+  "archive_entries": {
+    "data/bridge-v1.json": {
+      "bytes": 1107,
+      "sha256": "91b3a75172f9e854d6a799ee1a5741554ce1fd4c00a9e15c0d6b178c952cbaf3"
+    },
+    "data/bridge.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/bridge.stdout.log": {
+      "bytes": 91,
+      "sha256": "e1c842046f5d2f322d9ac256c57021419d807a31b5227326486f49bf3f6487b4"
+    },
+    "data/coordinate-v1.json": {
+      "bytes": 5416,
+      "sha256": "61561c6359a2877ee309fb93f3c6d04a6e29c72d19a51259bb6f467fac4f3a20"
+    },
+    "data/coordinate.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/coordinate.stdout.log": {
+      "bytes": 114,
+      "sha256": "69f4da05490ae3d92360fbd609450f3729757afeed609596d626dd8e393059fa"
+    },
+    "data/plane-replay-v1.json": {
+      "bytes": 330,
+      "sha256": "7ff0eb715b4c6b7bad24b3340a4ce467e57c60b37317158e9a4b0c34afcbd470"
+    },
+    "data/plane.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/plane.stdout.log": {
+      "bytes": 51,
+      "sha256": "be580f7bab3083e43e6eeccc9d0db555df3b47834c9a956ee1a9c627e6ff4a79"
+    },
+    "data/predictions-v1.json": {
+      "bytes": 867780,
+      "sha256": "ce98082675f0b79ba875c4a809cc00590f7868bbd5d083d557fba2b031c7f671"
+    },
+    "input/capped-orbits-v1.json": {
+      "bytes": 166402,
+      "sha256": "2d48c6b06710ab00a08a8e95dc0e5c3ddcee81bb1fd37c827f5b756b35b5ef34"
+    },
+    "input/exact-point-model-v1.json": {
+      "bytes": 5154,
+      "sha256": "1095add09e7ace5846706dc2559ff3482459a6a854290d77d22e731562a230de"
+    },
+    "input/frame-transfer-v1.json": {
+      "bytes": 645984,
+      "sha256": "e3171eac9406eb8c3a96ef78ee04aeff820b15a79f541de1be02f713dc7e1073"
+    },
+    "input/recovered-production-v1.json": {
+      "bytes": 8620,
+      "sha256": "bdca684ea78a331222e7f016e449781cf7ffae8df5722a4b1d9e2961374fb2dd"
+    },
+    "input/reference-bases-v1.json": {
+      "bytes": 88,
+      "sha256": "9a9f9a8485dd515d638c84aeae9367bc4600d9dbc60a666b1b0e72f98345ace0"
+    },
+    "input/reference-origin-v1.json": {
+      "bytes": 520,
+      "sha256": "98345358b55b8b35060c11cde2fcd9a4280ef13361317a94e82e6c2b088b77e3"
+    },
+    "input/reference-plane-v1.zip": {
+      "bytes": 428939,
+      "sha256": "6c8c377cd7456f161fee5ca2662db6ced60b583caa551417dd71de4b6bbc850e"
+    },
+    "input/reference-witnesses-v1.json": {
+      "bytes": 872001,
+      "sha256": "0af652d6b68ca7b52a417360d2842dbd0bf97cacca898ddca1371db168bbdb5b"
+    },
+    "input/triangle-transfer-v1.json": {
+      "bytes": 118597,
+      "sha256": "2586a2c9df73da9f1ba98641300cee1efcd05d0b4e687a161f9bb0bee1f7796c"
+    },
+    "input/word-promotion-v1.json": {
+      "bytes": 105951,
+      "sha256": "af7a0859e6e311614706abdbefbf7aae55da5d7cfad9dd08ec6fb5c49e417d7d"
+    },
+    "publication/REPLAY.md": {
+      "bytes": 1017,
+      "sha256": "ae8463776f948eebcf91cacaebdd311d064ea8f62e9588477be50e73bf8a302f"
+    },
+    "publication/browser-v1.json": {
+      "bytes": 195,
+      "sha256": "6ed8ede1263deae1755e938b2e51fd1abb25100b5b50325767a4a681b7fc79b7"
+    },
+    "publication/check_v1.cjs": {
+      "bytes": 2427,
+      "sha256": "1ddd1d01d32bd4cc6ddec6ae24beeeeb3ecdf32fc7df6c7b6a95eceabf913653"
+    },
+    "publication/notebook-v1.html": {
+      "bytes": 9025,
+      "sha256": "e2acaa06c001db555f72b794cf425e5878ce6fa1fad13b1be1f452e38114830f"
+    },
+    "publication/package_v1.py": {
+      "bytes": 2913,
+      "sha256": "16a630571ca4698d79729340204c0524a86ba857578a713b37a2f865c8af0fea"
+    },
+    "publication/render_v1.py": {
+      "bytes": 6176,
+      "sha256": "14812d18db72eba9083d620b61c12b05fa5a963d3281dc5a4c0db4bafefab194"
+    },
+    "publication/replay-v1.json": {
+      "bytes": 732,
+      "sha256": "52d25789032f00dea627b2d9862bb3fe34746c8273159ded6716c02ee88f79ab"
+    },
+    "report/turtle-coordinate-rule-20261106-v1-results.json": {
+      "bytes": 34637,
+      "sha256": "7c2559089b5bcb62df7be29970d6a9ba5c0ba47374bcf883371ccd63ace9e3f6"
+    },
+    "report/turtle-coordinate-rule-20261106-v1.html": {
+      "bytes": 458500,
+      "sha256": "6729de8f7d80dd5b1a4ef2a305115252dfc4c2ebcad8c2664fc42734ff253d1d"
+    },
+    "source/assemble_v1.py": {
+      "bytes": 5378,
+      "sha256": "d1120c67801723e42bb8aca10a333e54f3348a8a2a5d4aaade6fe3333bceb4c7"
+    },
+    "source/bridge_v1.py": {
+      "bytes": 5545,
+      "sha256": "d10efc692b8686d9c0dc88d0040cc2ff78b1c35980dc7558d31d93bd6af67923"
+    },
+    "source/capped_orbits_v1.py": {
+      "bytes": 4958,
+      "sha256": "b2a61fd9b539dcb75f4fde748339850c998a2cfa0b59d4b1372f115cec5a6379"
+    },
+    "source/cluster_v1.py": {
+      "bytes": 15717,
+      "sha256": "a2eec032406feaf45f7c5ca66b235727db26e414996337981f6b0ff865859b85"
+    },
+    "source/collar_audit_v1.py": {
+      "bytes": 15050,
+      "sha256": "441bbfce0bbe5632b6b26a467c677be775ccae748d3358a7334752f44ec97835"
+    },
+    "source/collar_experiment_v1.py": {
+      "bytes": 4931,
+      "sha256": "1b278165312553bc1daff1ca9067cd1595cec9c3ff03e0b84e9b5685d1085b59"
+    },
+    "source/collars_v1.py": {
+      "bytes": 9009,
+      "sha256": "3ffbbb443ad4ca62bbe9a6594ef28b579fbfd13e254ec6a7bdf1b1fb0e8502bd"
+    },
+    "source/coordinate_v1.py": {
+      "bytes": 8261,
+      "sha256": "9aebbc05a4ec7728744fd1450ba29a7e822a45bad3ca358f1e04988061e409b0"
+    },
+    "source/golden_geometry_v1.py": {
+      "bytes": 4899,
+      "sha256": "528407dae32299ac9982998ffd396687633fe1107d99f782ab8b74f8f5ded786"
+    },
+    "source/golden_growth_v1.py": {
+      "bytes": 6506,
+      "sha256": "469dfa023bce9f49ef471d05d549f5cb45c925f23eae47119155be67e720a991"
+    },
+    "source/layer_audit_v1.py": {
+      "bytes": 6861,
+      "sha256": "1376983393741a45f6788c55c2acde481684fe1dbb0d8430286859f93d4ddf6b"
+    },
+    "source/mixed_orbits_v1.py": {
+      "bytes": 6362,
+      "sha256": "42feb552dd443d36a7864e0f87679756f36c99c941fa069d1b38cf40b34bdde2"
+    },
+    "source/port_score_v1.py": {
+      "bytes": 3846,
+      "sha256": "283c9c05528799e417f903543733593a4fd7f14d8e0089c8094a4bba5b53b617"
+    },
+    "source/reference_replay_v1.py": {
+      "bytes": 3124,
+      "sha256": "d2a32261bcaa666170742d8afadc27f1f10dae7514f71e5d93b97141084252ca"
+    },
+    "source/scaffold_v1.py": {
+      "bytes": 7216,
+      "sha256": "ce412c5ad4982ea96030255cbf081a861a239aa13c99e2565686ec254a5d8026"
+    },
+    "source/strip_fit_v1.py": {
+      "bytes": 7861,
+      "sha256": "de5644533283f3fb634534453c56c08312505ae5cc5e92df5634a5087a1e34f4"
+    },
+    "source/triangle_geometry_v1.py": {
+      "bytes": 9600,
+      "sha256": "4715c6f612b196d257c858d695d604d800ce832cc5f8a1bfee8ae58e400a79ed"
+    },
+    "source/word_promotion_v1.py": {
+      "bytes": 6337,
+      "sha256": "2e75a86404a3fc6eac932f9b76fda8598822ea8388eb3f8eca591b723f31e590"
+    }
+  },
+  "assets": {
+    "turtle-coordinate-rule-20261106-v1-evidence.zip": {
+      "bytes": 1269824,
+      "sha256": "53fd99d8b215c4d7bbd8b65a4eee5c4bb5cd923d573c4259b0449a9dca7f4234"
+    },
+    "turtle-coordinate-rule-20261106-v1-results.json": {
+      "bytes": 34637,
+      "sha256": "7c2559089b5bcb62df7be29970d6a9ba5c0ba47374bcf883371ccd63ace9e3f6"
+    },
+    "turtle-coordinate-rule-20261106-v1.html": {
+      "bytes": 458500,
+      "sha256": "6729de8f7d80dd5b1a4ef2a305115252dfc4c2ebcad8c2664fc42734ff253d1d"
+    }
+  },
+  "schema": "GCTS-TURTLE-COORDINATE-RULE-MANIFEST-v1"
+}
