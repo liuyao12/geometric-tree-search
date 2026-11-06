@@ -1,0 +1,135 @@
+{
+  "archive_entries": {
+    "data/assemblies-v1.json": {
+      "bytes": 28324,
+      "sha256": "00200a2463966859fd7c3aafec4aab8f2fab8da82734de2854ad84a4e1b7d5f7"
+    },
+    "data/audit-v1.json": {
+      "bytes": 783,
+      "sha256": "0e89b3e90c5596ef96bef464645a84ffcd856450b17588e0c7545274f9d74b7b"
+    },
+    "data/audit.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/audit.stdout.log": {
+      "bytes": 1187,
+      "sha256": "89d54e7b7aea40b0bd68015fae1678d9bd9907ec0618f0e72433f776b8407692"
+    },
+    "data/collars-v1.json": {
+      "bytes": 235933,
+      "sha256": "74f14901b68726d679696126d67d3cf2eee053cbebaa848c48d1c236bb7e0c9b"
+    },
+    "data/motifs-v1.json": {
+      "bytes": 280065,
+      "sha256": "6ba94f8af3bcacea76baaab48da0ecdf960a14a7a340440f6403d52fb16a0fe1"
+    },
+    "data/motifs.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/motifs.stdout.log": {
+      "bytes": 86,
+      "sha256": "c4030ad2b51949b2b0c6dfe9cc3cb4562743032852d7387c084006222347826b"
+    },
+    "data/run.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/run.stdout.log": {
+      "bytes": 1140,
+      "sha256": "f2df089e7270b2bee6dcd41c64a068e550992cf26bc823212ebae41dd8d8f722"
+    },
+    "input/comparison-v1.json": {
+      "bytes": 1011,
+      "sha256": "1c4f2214951972e248240ecd08416daabf67b60166fb6b7c849b5cfa3fdbcd50"
+    },
+    "input/exact-point-model-v1.json": {
+      "bytes": 5154,
+      "sha256": "1095add09e7ace5846706dc2559ff3482459a6a854290d77d22e731562a230de"
+    },
+    "publication/REPLAY.md": {
+      "bytes": 1473,
+      "sha256": "642edc0a5b9b7ef01a764e3207e13b8fa67a5fad24bef046afcc4f0cce1a8d7a"
+    },
+    "publication/browser-v1.json": {
+      "bytes": 153,
+      "sha256": "1b43e45d3064188fbb72883b5ca7a78781638e408738772ebde9251171c50c25"
+    },
+    "publication/check_v1.cjs": {
+      "bytes": 2800,
+      "sha256": "102e208ddb39fb18b6d59b90cfbef4bf4b5a5ab2e71b62d5c5788a559a622755"
+    },
+    "publication/notebook-v1.html": {
+      "bytes": 11102,
+      "sha256": "65deb4267cfb8030fba67916ff8c127e4525c78072ba8ee3e79a332e7e759d7c"
+    },
+    "publication/package_v1.py": {
+      "bytes": 2774,
+      "sha256": "a56dbfae551d2b18ca74a369531b44839e35fbacc61f10077a73654d62f4e3cc"
+    },
+    "publication/render_v1.py": {
+      "bytes": 9115,
+      "sha256": "76f18370aafa90b8c8503b0427dd00ec4a0fd521f7dd37d90d4b4c3a0e3b5aa8"
+    },
+    "publication/replay-v1.json": {
+      "bytes": 826,
+      "sha256": "6c8dc7107cd109682122c09f35d2424ec9fdd221598d5ca00c46f2bab97c7854"
+    },
+    "report/turtle-shape-only-bases-20261106-v1-results.json": {
+      "bytes": 4779687,
+      "sha256": "6252a116a7626dda5994e68fca10f686a2d4b9d92cda3b7064da6c95fcdb79d1"
+    },
+    "report/turtle-shape-only-bases-20261106-v1.html": {
+      "bytes": 282027,
+      "sha256": "089ab00090b689f28f003343b32ecf1144c7c229e1adcfbae38c5eb7596417d2"
+    },
+    "source/assemble_v1.py": {
+      "bytes": 5378,
+      "sha256": "d1120c67801723e42bb8aca10a333e54f3348a8a2a5d4aaade6fe3333bceb4c7"
+    },
+    "source/cluster_v1.py": {
+      "bytes": 15717,
+      "sha256": "a2eec032406feaf45f7c5ca66b235727db26e414996337981f6b0ff865859b85"
+    },
+    "source/collar_audit_v1.py": {
+      "bytes": 15050,
+      "sha256": "441bbfce0bbe5632b6b26a467c677be775ccae748d3358a7334752f44ec97835"
+    },
+    "source/collar_experiment_v1.py": {
+      "bytes": 4931,
+      "sha256": "1b278165312553bc1daff1ca9067cd1595cec9c3ff03e0b84e9b5685d1085b59"
+    },
+    "source/collars_v1.py": {
+      "bytes": 9009,
+      "sha256": "3ffbbb443ad4ca62bbe9a6594ef28b579fbfd13e254ec6a7bdf1b1fb0e8502bd"
+    },
+    "source/golden_geometry_v1.py": {
+      "bytes": 4899,
+      "sha256": "528407dae32299ac9982998ffd396687633fe1107d99f782ab8b74f8f5ded786"
+    },
+    "source/motif_inventory_v1.py": {
+      "bytes": 3992,
+      "sha256": "86afcd79792d655ee49ad0d09b8ac74d45e6c14278edfe91946f713ad92af05a"
+    },
+    "source/triangle_geometry_v1.py": {
+      "bytes": 9600,
+      "sha256": "4715c6f612b196d257c858d695d604d800ce832cc5f8a1bfee8ae58e400a79ed"
+    }
+  },
+  "assets": {
+    "turtle-shape-only-bases-20261106-v1-evidence.zip": {
+      "bytes": 272989,
+      "sha256": "43f6c86bc2a7ce148a5cb702643d6be0ff525691d33086c9b7dbed1ab8b04f41"
+    },
+    "turtle-shape-only-bases-20261106-v1-results.json": {
+      "bytes": 4779687,
+      "sha256": "6252a116a7626dda5994e68fca10f686a2d4b9d92cda3b7064da6c95fcdb79d1"
+    },
+    "turtle-shape-only-bases-20261106-v1.html": {
+      "bytes": 282027,
+      "sha256": "089ab00090b689f28f003343b32ecf1144c7c229e1adcfbae38c5eb7596417d2"
+    }
+  },
+  "schema": "GCTS-TURTLE-SHAPE-ONLY-BASES-MANIFEST-v1"
+}
