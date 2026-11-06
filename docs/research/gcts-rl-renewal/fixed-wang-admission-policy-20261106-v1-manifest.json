@@ -1,0 +1,514 @@
+{
+  "archive": {
+    "bytes": 19913105,
+    "sha256": "07cd447dade43dcba42c32b5918b27d9e7646437effdd0006e1e89271c159fc7"
+  },
+  "files": {
+    "admission-protocol-v1.json": {
+      "bytes": 10466,
+      "sha256": "4ed358a2b2adb80d5ddb737589b12ef123c5ae55223e6d46a5cb20c71f18989a"
+    },
+    "atom-slice-protocol-v1.json": {
+      "bytes": 6430,
+      "sha256": "dec0e9b4e1aef740b406c4fa422f56967b79ac6dd402d81b7b491f885816e1c5"
+    },
+    "data/admission-training-v1.json": {
+      "bytes": 39244,
+      "sha256": "9a91a0d2c983fc2948961292308131bfb14f0a8a66453bcb3cc8a7f2beefa8ef"
+    },
+    "data/admission-v1.json": {
+      "bytes": 471601,
+      "sha256": "24e31c317e67f4a7bf2c06051c99b8c4c3d39028eef96340505ca430c3d0f209"
+    },
+    "data/admission.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/admission.stdout.log": {
+      "bytes": 12124,
+      "sha256": "75676413ea6583b6f3b21b0bb75223269c0030f365d7306be85bce9050b28b5b"
+    },
+    "data/agatha-vampire-guide-atom-slice-wang-v1.json.gz": {
+      "bytes": 1296192,
+      "sha256": "9aeb988b9b93f717a21b4cf635c7fcf0500a4755738dc960a36e23da08971a16"
+    },
+    "data/atom-slice-v1.json": {
+      "bytes": 9252,
+      "sha256": "87ea7cd53dc7c4f8d54f0bd30cb17cc1288f49a61e5e2dbe095ab53b96b7747c"
+    },
+    "data/atom-slice.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/atom-slice.stdout.log": {
+      "bytes": 441,
+      "sha256": "b0ee64e8c22611f94cddade194020f2b38b21ae1b98607c07beb2f267860f821"
+    },
+    "data/ground-marks-v1.json": {
+      "bytes": 57232,
+      "sha256": "93189b29e12b809108171c43c7b62d4617f25235148f330f23844ff0bd3cf750"
+    },
+    "data/ground-marks.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/ground-marks.stdout.log": {
+      "bytes": 613,
+      "sha256": "c8cbfc77bc7cf9c85061e3baa7e96f7ac56c387c4c4c2d255868a8b1c19e5ac7"
+    },
+    "data/hilbert-incidence-uniqueness-atom-slice-wang-v1.json.gz": {
+      "bytes": 185238,
+      "sha256": "a1a28159fdb1901a664fd2f24acd8867a4dbeb0def36a7b888c3b55ab9333baf"
+    },
+    "data/odd-cycle-11-fresh-learned-admission-wang-v1.json.gz": {
+      "bytes": 2114812,
+      "sha256": "1979f2186c5eb39cef8ec7d1ebf644a810e8a8f16b35709f5cd29120ac8cfae6"
+    },
+    "data/odd-cycle-13-fresh-learned-admission-wang-v1.json.gz": {
+      "bytes": 3625393,
+      "sha256": "858ee16e769abfc04b9af73a7add75f5523d298ff61a7d952e87c629557b0fd0"
+    },
+    "data/odd-cycle-7-learned-admission-wang-v1.json.gz": {
+      "bytes": 526412,
+      "sha256": "6f4476219119a582c5874f28f2c9346fa53dcd878d824ca1f77f9d86e25142fb"
+    },
+    "data/pigeonhole-4-3-learned-admission-wang-v1.json.gz": {
+      "bytes": 2017737,
+      "sha256": "050a5b474bc5e2b72a6fbd46bb66c6545880b4e77368758e37a58131c05ac7d5"
+    },
+    "data/pigeonhole-5-4-fresh-ground-cuts-admission-wang-v1.json.gz": {
+      "bytes": 11833814,
+      "sha256": "d09836d3dd0aa88a5c73948b219b951035f99a01d2bb645c82ed3c02fed1b3e4"
+    },
+    "data/wide-context-v1.json": {
+      "bytes": 3999,
+      "sha256": "11328881ca73a2f17316257e77121ca40b2eb057f84f88696f3de7711230d1d9"
+    },
+    "data/wide-context.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/wide-context.stdout.log": {
+      "bytes": 1511,
+      "sha256": "0162f976bf1a760e35ccf055899b1beb742bb44b9c57723a4a0999d3dd329703"
+    },
+    "ground-marks-protocol-v1.json": {
+      "bytes": 7023,
+      "sha256": "09b46e6e9e39d92e504fa56874959b48193974d05dbf3c4ca4848846c92c82b9"
+    },
+    "input/cases-v1.json": {
+      "bytes": 3716,
+      "sha256": "4a16a1564632dc11374550f000666c77dc9a52e1f21a2e79d6ddb546b710ab31"
+    },
+    "input/forgery-v1.json": {
+      "bytes": 400,
+      "sha256": "a2f2f770406ddbf9b7de244eb34693bf30b841ad6b4031180b3d5ee9bd47e581"
+    },
+    "input/front-protocol-v1.json": {
+      "bytes": 2206,
+      "sha256": "b5cfb835f237dadefd0b907319d24cb527f6d82d6d5fbe19bdf33cabbe3088a0"
+    },
+    "input/ground-grid-receipt-v1.json": {
+      "bytes": 438,
+      "sha256": "baa2a342f45f5aaa05d5722ccdc3768a26772a67489dbc38528393347f28830a"
+    },
+    "input/new-cases-at-parent-v1.json": {
+      "bytes": 4658,
+      "sha256": "2816f73f996fc56bdc7940e69642105a511f3c6fb203023d5387786c38fa9d17"
+    },
+    "input/new-cases-v1.json": {
+      "bytes": 55081,
+      "sha256": "850f832d08aa0048f0f987fb970cd32d3472ae6f6debccf93cd43897dc4edbc6"
+    },
+    "input/tutorial-cases-v1.json": {
+      "bytes": 12093,
+      "sha256": "1a2fa0337763836752ce73aaa27f5c06cfd5f6b40706be8b8c4f4e53ff78f8d3"
+    },
+    "lazy-protocol-v1.json": {
+      "bytes": 5744,
+      "sha256": "0289b6c4816c77b5f24ba710bda0dd4b0aa9debbf22101a77a859eac1b223dc6"
+    },
+    "marks-protocol-v1.json": {
+      "bytes": 5559,
+      "sha256": "5eba3bc83905930b0a13540f0ac0ffc19863197a526b82db448c11e6d7f1a40f"
+    },
+    "prior/context-v1.json": {
+      "bytes": 1959398,
+      "sha256": "700480b05794663e37f3f1a4804672d18a3b613807befe674ed48b32d81d665d"
+    },
+    "prior/hilbert-slice-input-v1.json": {
+      "bytes": 7369,
+      "sha256": "08d9e2104666c7a52b73b58dafdcbbf3ede4084bea5be8cc771915be8b785346"
+    },
+    "prior/marked-pilot/agatha-v1.json": {
+      "bytes": 14985,
+      "sha256": "a4c37d942001ca5e6be07611886870bafb0ffc10708bbc38e1406bd7e5846457"
+    },
+    "prior/marked-pilot/agatha.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "prior/marked-pilot/agatha.stdout.log": {
+      "bytes": 355,
+      "sha256": "dc0ec0a376430c4f741e2d7a7f86ad1d0af0dd5bc181e29a77810e886d25716d"
+    },
+    "prior/marked-pilot/broken-cycle-3-cold-cuts-v1.json.gz": {
+      "bytes": 288,
+      "sha256": "070f0098eabaf4c7ac512b8f54f8aaebbaf89bc5f3342c76a842c8c37608230a"
+    },
+    "prior/marked-pilot/broken-cycle-3-receptor-cuts-v1.json.gz": {
+      "bytes": 292,
+      "sha256": "be73ba609b4220f2e60925ba21678492d86e25e1173ad23624224a02a17dc14d"
+    },
+    "prior/marked-pilot/broken-cycle-3-seeded-cuts-v1.json.gz": {
+      "bytes": 290,
+      "sha256": "4140acb373a33109d916a4d5989e879ab614206276efa94ccc21ac6784f8ddb7"
+    },
+    "prior/marked-pilot/broken-cycle-5-cold-cuts-v1.json.gz": {
+      "bytes": 717,
+      "sha256": "c92825b56b4453fbc3349608a19a2495053abd9121998ad582f4704bc44a0693"
+    },
+    "prior/marked-pilot/broken-cycle-5-receptor-cuts-v1.json.gz": {
+      "bytes": 733,
+      "sha256": "30ec59c1d8d3b2d33288375f2e34839005be996d4f8c94ad364f41e49d7f13bf"
+    },
+    "prior/marked-pilot/broken-cycle-5-seeded-cuts-v1.json.gz": {
+      "bytes": 731,
+      "sha256": "883b87fe400cf6e0fa530c4f384378d7f619b23f4375814cbadf78ad0ea54a95"
+    },
+    "prior/marked-pilot/broken-cycle-7-cold-cuts-v1.json.gz": {
+      "bytes": 1401,
+      "sha256": "477abb892e24553678b695ccad4e0e54af09fb09372da8b576258b962eb87710"
+    },
+    "prior/marked-pilot/broken-cycle-7-receptor-cuts-v1.json.gz": {
+      "bytes": 1455,
+      "sha256": "7e5cf37ca085354b56540a4f3f40e648ff21368283ce78cae908e15a1754b595"
+    },
+    "prior/marked-pilot/broken-cycle-7-seeded-cuts-v1.json.gz": {
+      "bytes": 1448,
+      "sha256": "09e4ec93f5c7c6a3f516e0561ab93ea969aa3d64998c9d9380eab27d4e2b553c"
+    },
+    "prior/marked-pilot/lazy-v1.json": {
+      "bytes": 46877,
+      "sha256": "8447adcb9286001f7e693f413f9dbe39af165bce445ef247cdfe60b8f99de5df"
+    },
+    "prior/marked-pilot/lazy.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "prior/marked-pilot/lazy.stdout.log": {
+      "bytes": 2816,
+      "sha256": "63d1e273174a2aa4d0e88673c8913fee2219f92620210314785b781649ab49ea"
+    },
+    "prior/marked-pilot/marks-v1.json": {
+      "bytes": 65210,
+      "sha256": "b383208950316ce1f403fc820b01f300c6ef4f6f68ba2aeb7566c43bd093fd80"
+    },
+    "prior/marked-pilot/marks.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "prior/marked-pilot/marks.stdout.log": {
+      "bytes": 2378,
+      "sha256": "669501f3bed02cba6f31e27972fe46420d57f729d6ee7db59156b16029b8f7a9"
+    },
+    "prior/marked-pilot/odd-cycle-5-cold-cuts-v1.json.gz": {
+      "bytes": 1244,
+      "sha256": "44d4cb6b8dd33b4d1d5e8e0511cc2b0f5a4793c96422c2873bb91dcfd00407ed"
+    },
+    "prior/marked-pilot/odd-cycle-5-receptor-cuts-v1.json.gz": {
+      "bytes": 718,
+      "sha256": "16233903b21ea77ff35c9df90480ed4c024b8a90a3076da6b5f341c55a28cafc"
+    },
+    "prior/marked-pilot/odd-cycle-7-cold-cuts-v1.json.gz": {
+      "bytes": 2214,
+      "sha256": "7b694080b312401505a16405a897b69c42aed6e56ecc832a60a0aadfa6687052"
+    },
+    "prior/marked-pilot/odd-cycle-7-lazy-wang-v1.json.gz": {
+      "bytes": 541352,
+      "sha256": "cbd685d519ed67a4ee300f4e0f39ff00fb9dad916c2a2c512def8e43d3b0f6cb"
+    },
+    "prior/marked-pilot/odd-cycle-7-receptor-cuts-v1.json.gz": {
+      "bytes": 1215,
+      "sha256": "680251a6fc25a653d0a4d3a69bf6d4ef878a4af6dbadd5bd7355392d8ba1227b"
+    },
+    "prior/marked-pilot/original-lemma-search_v1.py": {
+      "bytes": 8619,
+      "sha256": "7a3f638118d613b548ca98f4f6508c0d2c4b4a6fa5ad06ecff15c99126501521"
+    },
+    "prior/marked-pilot/pigeonhole-2-2-cold-cuts-v1.json.gz": {
+      "bytes": 480,
+      "sha256": "2060e6a398e3d3446261a7e11a45f8a2854f8948fb560e1418f8556c0d895c4f"
+    },
+    "prior/marked-pilot/pigeonhole-2-2-receptor-cuts-v1.json.gz": {
+      "bytes": 486,
+      "sha256": "8de1ca9476a9634ecb850ec0d9a4f8af02f8247f6ff99532828d0d660a0507a5"
+    },
+    "prior/marked-pilot/pigeonhole-2-2-seeded-cuts-v1.json.gz": {
+      "bytes": 481,
+      "sha256": "370d07d00200a6569e611dc15ed86717515f070b14f4ebb9a963fa359087d7a7"
+    },
+    "prior/marked-pilot/pigeonhole-3-3-cold-cuts-v1.json.gz": {
+      "bytes": 133752,
+      "sha256": "22e270081508ab5f1df7026a673d44b095d9d66ce3ba0f9bc961edee4e4b9837"
+    },
+    "prior/marked-pilot/pigeonhole-3-3-receptor-cuts-v1.json.gz": {
+      "bytes": 87021,
+      "sha256": "8d3d70a2bb46f10c715b0e3945b5d445d0a234e68cb3f025ac46edd315c7ea2f"
+    },
+    "prior/marked-pilot/pigeonhole-3-3-seeded-cuts-v1.json.gz": {
+      "bytes": 87140,
+      "sha256": "e8045dbe1f0da6c4009192c9ff45718e048053b2ec19bf92fd8ffeb58a568c1b"
+    },
+    "prior/marked-pilot/pigeonhole-4-3-cold-cuts-v1.json.gz": {
+      "bytes": 56927,
+      "sha256": "b960f0b084d49520adbe34fc6823c03b8388fc56496684862fef298ecfd97c5d"
+    },
+    "prior/marked-pilot/pigeonhole-4-3-lazy-wang-v1.json.gz": {
+      "bytes": 2049740,
+      "sha256": "501c0a35a0e86de8fe34085d78c1500ef60f078562745e82c55686b2434aa760"
+    },
+    "prior/marked-pilot/pigeonhole-4-3-receptor-cuts-v1.json.gz": {
+      "bytes": 28848,
+      "sha256": "b9a2b8f47a68f4157dde8f8fd4555082d22e829e87dfbf740aa4888588e464b7"
+    },
+    "prior/marked-pilot/pigeonhole-4-3-seeded-cuts-v1.json.gz": {
+      "bytes": 28202,
+      "sha256": "8d0e2f5016102210c0b605fb759ba0ae93d173d1f526c860a0177e2211ece95f"
+    },
+    "prior/transfer-v1.json": {
+      "bytes": 127510,
+      "sha256": "90bc969a92863a65e630e2b5c55c92b0250eab4c107e46e317a5164c83f44ab3"
+    },
+    "protocol-v1.json": {
+      "bytes": 7903,
+      "sha256": "e95283e8ac8e4d1ac1ed8d72bea3fd9a7ac055e417c4d4d132a34db707eed520"
+    },
+    "publication/basic-tiling-algorithm-at-parent.md": {
+      "bytes": 36240,
+      "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+    },
+    "publication/browser-v1.json": {
+      "bytes": 143,
+      "sha256": "0f804577ab9ee60104159e0634036b99060ebe36be39cab50cf52cd965d5f12e"
+    },
+    "publication/browser-v1.png": {
+      "bytes": 720261,
+      "sha256": "9c3230033ba11578945b799524df0cb0d4258fd034b6db8099cafa30e159f76e"
+    },
+    "publication/browser_v1.cjs": {
+      "bytes": 3249,
+      "sha256": "2ea0bff54d7c140e4719d4ec7f674d4069bee459e9a71e046bd923013d1dcddb"
+    },
+    "publication/previous-report-with-backlink-v1.html": {
+      "bytes": 552438,
+      "sha256": "140235cbb6513929cba78a2ed170dadcaef562faecc26cd6650a6fb9d77d84c3"
+    },
+    "publication/proof_presentation.py": {
+      "bytes": 14608,
+      "sha256": "eecea0f54db12481f30c7f0bd806001e1caa91ac7d91fd1696d9f18f826c22ab"
+    },
+    "publication/release_v1.py": {
+      "bytes": 10230,
+      "sha256": "b1bb4e8bb2d66dd1a6373527832e4388660d7ce1503c585dffde95cc34f5303b"
+    },
+    "publication/remote-base-v1.json": {
+      "bytes": 397,
+      "sha256": "5b2556e1e6340bd1eddd79429f9bbac08a1a205afa7f18536c6602fc75b53324"
+    },
+    "publication/render_admission_v1.py": {
+      "bytes": 15523,
+      "sha256": "0dbe6121c60fd7c6a59b4a38671e2104ff4d5677bfcf4af285d518f683ddf73f"
+    },
+    "publication/replay_phase_v1.py": {
+      "bytes": 1686,
+      "sha256": "525a8cdac517d29037c421cbc180e09cef95f38ebb5772c2401dfe4ebf18f035"
+    },
+    "publication/shared_reader_v1.py": {
+      "bytes": 12646,
+      "sha256": "5a1f4d053b603101f9fcf9231b5f5a28940509a2c6841e49ecbd410832fbd98b"
+    },
+    "publication/static-v1.json": {
+      "bytes": 446,
+      "sha256": "4dbb9a5583a9e7d1c580db8886a8bfbd72e92156b3bd6504b808e6d74d515414"
+    },
+    "report/fixed-wang-admission-policy-20261106-v1-results.json": {
+      "bytes": 6014,
+      "sha256": "6d2a71b16bdbe08cfa2f0199e391d1f809589e20c1e16a3ebe23b7712279fdd5"
+    },
+    "report/fixed-wang-admission-policy-20261106-v1.html": {
+      "bytes": 1639084,
+      "sha256": "a931c670f394e4976f81e5ec1ad1b61d2996a3181880475dd840e2721d326c0e"
+    },
+    "source/admission_experiment_v1.py": {
+      "bytes": 10409,
+      "sha256": "500420b885d67152a637e1f69b6ecfe15796a79d257399d95d07f76c84b9f264"
+    },
+    "source/admission_policy_v1.py": {
+      "bytes": 5809,
+      "sha256": "40395ffdb878d2ea96e9536465548c14922ddd049e48dd11cb180b90db5d7ae9"
+    },
+    "source/agatha_pilot_v1.py": {
+      "bytes": 5024,
+      "sha256": "71977708c15b078035e55bb909cca143c804a68fbb95f43dcedb25eb21fc59d9"
+    },
+    "source/atom_slice_v1.py": {
+      "bytes": 5306,
+      "sha256": "860b8e2e37f9920d6d52fdbd9dcd0463d1f299033c8e9527b9c0f1cc9df3eca4"
+    },
+    "source/backjump_v1.py": {
+      "bytes": 5124,
+      "sha256": "f53c10693182152b5d8c5027779f340fb205c6c17145ae3cf560f2b3c0bf22d6"
+    },
+    "source/benchmark_fast_v1.py": {
+      "bytes": 2268,
+      "sha256": "9d668e55f1dffb0f5ab4e5cb0982a2394c525c1eae139401b449d003958a791d"
+    },
+    "source/benchmark_v1.py": {
+      "bytes": 6697,
+      "sha256": "6c869e022a9d71296b58a97cbfd4b615520199368b67c9310dd5184429c6744c"
+    },
+    "source/calibration_bank_v1.py": {
+      "bytes": 3411,
+      "sha256": "577a373566c55598fac0bdb72fb28b2dbd5c819d8a27440c926f98bd0382ff6d"
+    },
+    "source/calibration_receipt_v1.py": {
+      "bytes": 2919,
+      "sha256": "1e14cb152dc61444c0945087652b50363a94497517bfe12d74ba36eb2b99e2d2"
+    },
+    "source/comparison_v1.py": {
+      "bytes": 6230,
+      "sha256": "0a6e43e1bff8db28dfc6de423aa6955c0fa1f6dd32d931862e73150f91da97cc"
+    },
+    "source/context_experiment_v1.py": {
+      "bytes": 7610,
+      "sha256": "dcaefcf6fca0a714e827d9f08a21dc7f95b52281bf4f4b5c1b12366b40e4192b"
+    },
+    "source/cut_transfer_v1.py": {
+      "bytes": 3985,
+      "sha256": "b63e1b4da47a2936177b14f3d52ad19410631384760c6827cc05ceb1b8cce787"
+    },
+    "source/fixed_palette_v1.py": {
+      "bytes": 8368,
+      "sha256": "8d4c09e1977302fd89454f1ab6d8b752d475c0a1a318ddcedac3f434518635fc"
+    },
+    "source/front_v1.py": {
+      "bytes": 8895,
+      "sha256": "b8e354933c9bd76c8f5ec687694bc154062da941123b890dd431ce88071871f8"
+    },
+    "source/ground_control_v1.py": {
+      "bytes": 7356,
+      "sha256": "b6c08e818cd69866a5d73021720e2a55b2e4470ad753e035f92b79665f8b100a"
+    },
+    "source/ground_marks_v1.py": {
+      "bytes": 4650,
+      "sha256": "14cf33cb21696f3d101d10692a0d3a11724d572ae1e4b03e9410294b33826bdf"
+    },
+    "source/herbrand_v1.py": {
+      "bytes": 10499,
+      "sha256": "ab1698fa88166e33afa446d9f8ca18da25d257c4d07c76da0e261ecedd36e8db"
+    },
+    "source/in_grid_v1.py": {
+      "bytes": 7880,
+      "sha256": "2c2e794b894a41998a3ded276cae78ffaa3012ebb0bdead1cb104293ea246157"
+    },
+    "source/indexed_receptors_v1.py": {
+      "bytes": 6259,
+      "sha256": "c53583783c2d0de515ec568043e5b9afce7914c76a75a8f55c9b507f41ed2cc1"
+    },
+    "source/lazy_experiment_v1.py": {
+      "bytes": 3970,
+      "sha256": "58c3781edb18179ae9d71aaa3cff62c854440778b5c8db9e9b02c5d78b2cbb0b"
+    },
+    "source/lazy_lemmas_v1.py": {
+      "bytes": 1920,
+      "sha256": "6390558b5113666f39cf466a369c648d96944723a47d68fd05afcf2c08610c15"
+    },
+    "source/lemma_receptors_v1.py": {
+      "bytes": 5484,
+      "sha256": "1971936f11deb89634bfab89ef479645919d4f9d4b6f326e844af48f40a59eb7"
+    },
+    "source/lemma_search_v1.py": {
+      "bytes": 8802,
+      "sha256": "ab37309151464dc862a0498cfb905119fd8c53e902ec849bc75978832346a85f"
+    },
+    "source/marked_lemma_pilot_v1.py": {
+      "bytes": 3664,
+      "sha256": "7002cf24d14e9fb94813aa5218df05fa6e38a76ac67b45542c9c5e379e8dfb2d"
+    },
+    "source/nonunit_open_v1.py": {
+      "bytes": 2998,
+      "sha256": "c7fd7b00f04a381d6c100bcbe50ee8d40ef43c6c087a4fa773502f4f501e8a1a"
+    },
+    "source/open_wang_v1.py": {
+      "bytes": 10062,
+      "sha256": "cdd05ab2711f630814a106da47351f979e85e5cdd02d4e836a46f69efe3e46fe"
+    },
+    "source/origin_v1.py": {
+      "bytes": 13179,
+      "sha256": "9c436af9b7944fcd262b934260d31f0a491021255284c90deead009bb8ae7339"
+    },
+    "source/propagated_cuts_v1.py": {
+      "bytes": 6369,
+      "sha256": "c74ef564d50e22fa3fc62094c1da513d894b7dd245908777ca4368f335c5fb0e"
+    },
+    "source/qualification_v1.py": {
+      "bytes": 912,
+      "sha256": "33a91adfd122453adf6166023e268c42d71d00b14ea685ffe2e08b8aecf499a9"
+    },
+    "source/rank_ablation_v1.py": {
+      "bytes": 2077,
+      "sha256": "0a2129fed3a879ed692079b43fc3420b91e33e57a5920d7eef607523007f42a7"
+    },
+    "source/replay_fast_v1.cpp": {
+      "bytes": 3502,
+      "sha256": "18c04f2d61dd8c75a10ac9e2200f50812447c22c50a207acf9fcd8071d2ed99c"
+    },
+    "source/resolution_v1.py": {
+      "bytes": 14299,
+      "sha256": "8aa3e79d0fecf09a47ef7e7a9c2670f57747b571f30c0ed9cf4a65fba93e9536"
+    },
+    "source/ribbon_checker_v3.py": {
+      "bytes": 14489,
+      "sha256": "e346951922cfe71366f6c31b474c77955a51715eb3e043ff053c169dc8b0adbd"
+    },
+    "source/serial_blocks_v1.py": {
+      "bytes": 7614,
+      "sha256": "1bfa9be4ebb6ad9623e1090f2e648f3c1c7e276e74b3f2b628ccb1346bb61928"
+    },
+    "source/serial_v1.py": {
+      "bytes": 3135,
+      "sha256": "f8012e38cb9275c16a33534a8443232e7dc6852a10348b86a478dbc85c4faef1"
+    },
+    "source/suffix_qualification_v1.py": {
+      "bytes": 2007,
+      "sha256": "52696ea9032660cf28635ab21e7bf165d4110913ca5910b2fe9614e16600c9db"
+    },
+    "source/suffix_v1.py": {
+      "bytes": 8603,
+      "sha256": "23d2ad30f4ebe2267497edfc8fb1a28910a504d9e0f07459821228db53c9d3e8"
+    },
+    "source/transfer_experiment_v1.py": {
+      "bytes": 8341,
+      "sha256": "c1284bf85abedf21e828d97da5952d81000301aef09b6383834d41141c1472bd"
+    },
+    "source/widened_context_v1.py": {
+      "bytes": 3577,
+      "sha256": "0f18f646852e1e12f82ec37eec7f1cdb5a94c98e5e44f3a5a39b92c061892045"
+    },
+    "source/window_search_v1.py": {
+      "bytes": 2486,
+      "sha256": "5578161e309f3f5115b198c5f436c42fae171bc5638c231ba19173d6604025c9"
+    },
+    "source/wired_replay_v1.py": {
+      "bytes": 5268,
+      "sha256": "4c68e5ea689f33683a3d1ba1640d7c5a8a47b1cb9473f3ce56e873327fa014cb"
+    },
+    "wide-context-protocol-v1.json": {
+      "bytes": 6966,
+      "sha256": "acfaceeb13724d39cbd3d1302e4f01c4fad1afb5453aa5f4b51a6947c8bac78b"
+    }
+  },
+  "schema": "Wang-admission-atom-cut-evidence-v1",
+  "scope": "All completed admission and ground cut experiments, atom slice checks, source snapshots, and the marked and deferred pilots."
+}

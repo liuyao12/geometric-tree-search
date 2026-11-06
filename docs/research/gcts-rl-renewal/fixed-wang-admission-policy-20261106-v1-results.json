@@ -1,0 +1,485 @@
+{
+  "activity": [
+    [
+      "Broken cycle 3",
+      0,
+      54,
+      54,
+      24,
+      0,
+      0,
+      12
+    ],
+    [
+      "Odd cycle 5",
+      171,
+      33,
+      28,
+      13,
+      8,
+      8,
+      1
+    ],
+    [
+      "Broken cycle 5",
+      23,
+      340,
+      340,
+      82,
+      5,
+      0,
+      40
+    ],
+    [
+      "Odd cycle 7",
+      596,
+      45,
+      40,
+      21,
+      12,
+      12,
+      1
+    ],
+    [
+      "Broken cycle 7",
+      132,
+      1050,
+      1050,
+      210,
+      9,
+      0,
+      84
+    ],
+    [
+      "Two pigeons, two holes",
+      4,
+      156,
+      156,
+      60,
+      2,
+      0,
+      24
+    ],
+    [
+      "Four pigeons, three holes",
+      16618,
+      1425,
+      2211,
+      5022,
+      33,
+      52,
+      1388
+    ],
+    [
+      "Three pigeons, three holes",
+      612,
+      16261,
+      26644,
+      309050,
+      16,
+      0,
+      19384
+    ],
+    [
+      "Odd cycle 11",
+      1088,
+      2267,
+      2267,
+      1512,
+      20,
+      0,
+      403
+    ],
+    [
+      "Broken cycle 11",
+      502,
+      3858,
+      3576,
+      2580,
+      16,
+      0,
+      590
+    ],
+    [
+      "Odd cycle 13",
+      1280,
+      3437,
+      3437,
+      2372,
+      24,
+      0,
+      628
+    ],
+    [
+      "Broken cycle 13",
+      704,
+      7181,
+      6953,
+      2589,
+      19,
+      0,
+      672
+    ],
+    [
+      "Five pigeons, four holes",
+      0,
+      200000,
+      200000,
+      1200000,
+      0,
+      0,
+      92556
+    ],
+    [
+      "Four pigeons, four holes",
+      0,
+      200000,
+      200000,
+      1200000,
+      0,
+      0,
+      105485
+    ]
+  ],
+  "atom_cuts": [
+    [
+      "Five pigeons, four holes",
+      "static",
+      0,
+      "UNSAT",
+      38,
+      26,
+      225,
+      "VERIFIED"
+    ],
+    [
+      "Five pigeons, four holes",
+      "activity",
+      0,
+      "UNSAT",
+      37,
+      26,
+      225,
+      "\u2014"
+    ],
+    [
+      "Five pigeons, four holes",
+      "activity",
+      1120,
+      "UNSAT",
+      12,
+      12,
+      263,
+      "\u2014"
+    ],
+    [
+      "Four pigeons, four holes",
+      "static",
+      0,
+      "SAT",
+      6,
+      0,
+      0,
+      "\u2014"
+    ],
+    [
+      "Four pigeons, four holes",
+      "activity",
+      0,
+      "SAT",
+      6,
+      0,
+      0,
+      "\u2014"
+    ],
+    [
+      "Four pigeons, four holes",
+      "activity",
+      456,
+      "SAT",
+      6,
+      0,
+      0,
+      "\u2014"
+    ]
+  ],
+  "comparison": [
+    [
+      "Broken cycle 3",
+      "EXHAUSTED",
+      0,
+      60,
+      60,
+      60,
+      60,
+      60,
+      "fixed-0"
+    ],
+    [
+      "Odd cycle 5",
+      "REFUTED",
+      45,
+      400,
+      132,
+      72,
+      133,
+      158,
+      "fixed-2"
+    ],
+    [
+      "Broken cycle 5",
+      "EXHAUSTED",
+      7,
+      368,
+      386,
+      381,
+      386,
+      386,
+      "fixed-0"
+    ],
+    [
+      "Odd cycle 7",
+      "REFUTED",
+      119,
+      829,
+      209,
+      106,
+      202,
+      306,
+      "fixed-2"
+    ],
+    [
+      "Broken cycle 7",
+      "EXHAUSTED",
+      31,
+      1116,
+      1171,
+      1139,
+      1171,
+      1171,
+      "fixed-0"
+    ],
+    [
+      "Two pigeons, two holes",
+      "EXHAUSTED",
+      2,
+      174,
+      179,
+      179,
+      179,
+      179,
+      "fixed-0"
+    ],
+    [
+      "Four pigeons, three holes",
+      "REFUTED",
+      2068,
+      33176,
+      2343,
+      3651,
+      22115,
+      11203,
+      "fixed-8"
+    ],
+    [
+      "Three pigeons, three holes",
+      "EXHAUSTED",
+      108,
+      165829,
+      68841,
+      103971,
+      150268,
+      100523,
+      "fixed-8"
+    ],
+    [
+      "Odd cycle 11",
+      "REFUTED",
+      209,
+      2688,
+      2818,
+      2725,
+      2829,
+      2970,
+      "fixed-0"
+    ],
+    [
+      "Broken cycle 11",
+      "EXHAUSTED",
+      104,
+      4149,
+      4560,
+      4285,
+      4598,
+      4694,
+      "fixed-0"
+    ],
+    [
+      "Odd cycle 13",
+      "REFUTED",
+      247,
+      4079,
+      4241,
+      4126,
+      4238,
+      4370,
+      "fixed-0"
+    ],
+    [
+      "Broken cycle 13",
+      "EXHAUSTED",
+      142,
+      7554,
+      7900,
+      7677,
+      7915,
+      8059,
+      "fixed-0"
+    ],
+    [
+      "Five pigeons, four holes",
+      "BOUNDED",
+      0,
+      500000,
+      500000,
+      500000,
+      500000,
+      500000,
+      "Bounded"
+    ],
+    [
+      "Four pigeons, four holes",
+      "BOUNDED",
+      0,
+      500000,
+      500000,
+      500000,
+      500000,
+      500000,
+      "Bounded"
+    ]
+  ],
+  "deferred_pilot": [
+    [
+      "seeded",
+      "Eager",
+      4236,
+      16618,
+      0
+    ],
+    [
+      "seeded",
+      "Deferred",
+      4236,
+      0,
+      80
+    ],
+    [
+      "receptor",
+      "Eager",
+      4021,
+      16618,
+      0
+    ],
+    [
+      "receptor",
+      "Deferred",
+      4021,
+      0,
+      70
+    ]
+  ],
+  "marked_pilot": [
+    [
+      "cold",
+      "Plain",
+      96958,
+      0,
+      0
+    ],
+    [
+      "cold",
+      "Marked",
+      16545,
+      11518,
+      66524
+    ],
+    [
+      "seeded",
+      "Plain",
+      12769,
+      0,
+      0
+    ],
+    [
+      "seeded",
+      "Marked",
+      4236,
+      710,
+      2125
+    ],
+    [
+      "receptor",
+      "Plain",
+      12769,
+      0,
+      0
+    ],
+    [
+      "receptor",
+      "Marked",
+      4021,
+      722,
+      2130
+    ]
+  ],
+  "readers": [
+    "agatha-vampire-guide",
+    "hilbert-incidence-uniqueness",
+    "odd-cycle-7",
+    "pigeonhole-4-3",
+    "pigeonhole-5-4-fresh"
+  ],
+  "slices": [
+    [
+      "Agatha",
+      264,
+      18,
+      482951,
+      67686,
+      "REJECTED"
+    ],
+    [
+      "Hilbert incidence",
+      12,
+      6,
+      14630,
+      9668,
+      "REJECTED"
+    ]
+  ],
+  "status": "CHECKED_WANG_ADMISSION_AND_ATOM_CUTS",
+  "training": {
+    "actions": {
+      "1": 93
+    },
+    "cases": 11,
+    "contexts": 30
+  },
+  "widened": [
+    [
+      "Five pigeons, four holes",
+      0,
+      1120,
+      5,
+      18
+    ],
+    [
+      "Four pigeons, four holes",
+      0,
+      456,
+      5,
+      0
+    ]
+  ]
+}
