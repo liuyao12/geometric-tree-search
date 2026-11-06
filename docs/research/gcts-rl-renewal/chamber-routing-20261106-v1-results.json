@@ -1,0 +1,7536 @@
+{
+  "audit": {
+    "status": "CHECKED_ROUTED_COVERS_AND_REFUTATIONS",
+    "systems": {
+      "penrose": {
+        "checks": {
+          "checked_routing_actions": 54,
+          "compaction_reference_checks": 30,
+          "identical_resumptions": 14,
+          "orbit_roundtrips": 260,
+          "rejected_wrong_turn": 1,
+          "site_checks": 0
+        },
+        "geometry": {
+          "pose": {
+            "checked_library_records": 33,
+            "checked_options": 11172,
+            "checked_proposals": 17,
+            "checked_split_events": 24,
+            "negative_split_uses": 7,
+            "negative_witnesses": 32,
+            "positive_witnesses": 67
+          },
+          "translation": {
+            "checked_library_records": 9,
+            "checked_options": 1600,
+            "checked_split_events": 2,
+            "negative_split_uses": 1,
+            "negative_witnesses": 7,
+            "positive_witnesses": 14
+          }
+        }
+      },
+      "turtle": {
+        "checks": {
+          "checked_routing_actions": 34,
+          "compaction_reference_checks": 30,
+          "identical_resumptions": 7,
+          "orbit_roundtrips": 312,
+          "rejected_wrong_turn": 1,
+          "site_checks": 26
+        },
+        "geometry": {
+          "pose": {
+            "checked_library_records": 13,
+            "checked_options": 1272,
+            "checked_proposals": 28,
+            "checked_split_events": 32,
+            "negative_split_uses": 16,
+            "negative_witnesses": 45,
+            "positive_witnesses": 49
+          },
+          "translation": {
+            "checked_library_records": 11,
+            "checked_options": 548,
+            "checked_proposals": 4,
+            "checked_split_events": 7,
+            "negative_split_uses": 5,
+            "negative_witnesses": 13,
+            "positive_witnesses": 13
+          }
+        }
+      }
+    }
+  },
+  "browser": {
+    "comparisonRows": 70,
+    "diagrams": 2,
+    "mathTypeset": true,
+    "mobileNoOverflow": true,
+    "status": "CHECKED_ROUTING_READER",
+    "timeBars": 12
+  },
+  "cases": {
+    "penrose": [
+      {
+        "arms": {
+          "learned": {
+            "counts": {
+              "nodes": 29,
+              "tile_tests": 232
+            },
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "status": "POSITIVE",
+            "work": 580
+          },
+          "plain": {
+            "counts": {
+              "nodes": 29,
+              "tile_tests": 232
+            },
+            "decisions": [],
+            "status": "POSITIVE",
+            "work": 580
+          },
+          "prefix2": {
+            "counts": {
+              "chambers": 2,
+              "cross_request_hits": 1,
+              "isolated_searches": 1,
+              "join_tests": 21,
+              "nodes": 11,
+              "nonidentity_reuse_hits": 1,
+              "portal_containment_checks": 1,
+              "portal_hits": 1,
+              "portal_poses": 1,
+              "portal_split_checks": 1,
+              "receptor_tests": 78,
+              "reuse_hits": 1,
+              "splits": 1,
+              "tile_tests": 56
+            },
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "status": "POSITIVE",
+            "work": 268
+          },
+          "prefix8": {
+            "counts": {
+              "chambers": 2,
+              "cross_request_hits": 1,
+              "isolated_searches": 1,
+              "join_tests": 21,
+              "nodes": 17,
+              "nonidentity_reuse_hits": 1,
+              "portal_containment_checks": 1,
+              "portal_hits": 1,
+              "portal_poses": 1,
+              "portal_split_checks": 1,
+              "receptor_tests": 78,
+              "reuse_hits": 1,
+              "splits": 1,
+              "tile_tests": 104
+            },
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "probe"
+              ],
+              [
+                [
+                  "penrose",
+                  8,
+                  true,
+                  false,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "status": "POSITIVE",
+            "work": 388
+          },
+          "receptor": {
+            "counts": {
+              "chambers": 2,
+              "cross_request_hits": 1,
+              "isolated_searches": 1,
+              "join_tests": 21,
+              "nodes": 9,
+              "nonidentity_reuse_hits": 1,
+              "portal_containment_checks": 1,
+              "portal_hits": 1,
+              "portal_poses": 1,
+              "portal_split_checks": 1,
+              "receptor_tests": 78,
+              "reuse_hits": 1,
+              "splits": 1,
+              "tile_tests": 36
+            },
+            "decisions": [],
+            "status": "POSITIVE",
+            "work": 220
+          },
+          "receptor-translate": {
+            "counts": {
+              "nodes": 29,
+              "portal_containment_checks": 1,
+              "portal_poses": 1,
+              "portal_split_checks": 1,
+              "receptor_tests": 78,
+              "tile_tests": 232
+            },
+            "decisions": [],
+            "status": "POSITIVE",
+            "work": 608
+          }
+        },
+        "id": "penrose-route-test-12",
+        "kind": "grafted"
+      },
+      {
+        "arms": {
+          "learned": {
+            "counts": {
+              "nodes": 250,
+              "tile_tests": 2336
+            },
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "status": "BOUNDED",
+            "work": 5672
+          },
+          "plain": {
+            "counts": {
+              "nodes": 250,
+              "tile_tests": 2336
+            },
+            "decisions": [],
+            "status": "BOUNDED",
+            "work": 5672
+          },
+          "prefix2": {
+            "counts": {
+              "nodes": 250,
+              "portal_containment_checks": 1,
+              "portal_poses": 1,
+              "portal_split_checks": 1,
+              "receptor_tests": 102,
+              "tile_tests": 2332
+            },
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "status": "BOUNDED",
+            "work": 5694
+          },
+          "prefix8": {
+            "counts": {
+              "nodes": 250,
+              "portal_containment_checks": 1,
+              "portal_poses": 1,
+              "portal_split_checks": 1,
+              "receptor_tests": 102,
+              "tile_tests": 2324
+            },
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "probe"
+              ],
+              [
+                [
+                  "penrose",
+                  8,
+                  true,
+                  false,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "status": "BOUNDED",
+            "work": 5678
+          },
+          "receptor": {
+            "counts": {
+              "nodes": 250,
+              "portal_containment_checks": 1,
+              "portal_poses": 1,
+              "portal_split_checks": 1,
+              "receptor_tests": 102,
+              "tile_tests": 2336
+            },
+            "decisions": [],
+            "status": "BOUNDED",
+            "work": 5702
+          },
+          "receptor-translate": {
+            "counts": {
+              "nodes": 250,
+              "portal_containment_checks": 1,
+              "portal_poses": 1,
+              "portal_split_checks": 1,
+              "receptor_tests": 102,
+              "tile_tests": 2336
+            },
+            "decisions": [],
+            "status": "BOUNDED",
+            "work": 5702
+          }
+        },
+        "id": "penrose-route-test-13",
+        "kind": "grafted"
+      },
+      {
+        "arms": {
+          "learned": {
+            "counts": {
+              "nodes": 250,
+              "tile_tests": 2392
+            },
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "status": "BOUNDED",
+            "work": 5784
+          },
+          "plain": {
+            "counts": {
+              "nodes": 250,
+              "tile_tests": 2392
+            },
+            "decisions": [],
+            "status": "BOUNDED",
+            "work": 5784
+          },
+          "prefix2": {
+            "counts": {
+              "chambers": 2,
+              "cross_request_hits": 1,
+              "isolated_searches": 1,
+              "nodes": 250,
+              "portal_containment_checks": 1,
+              "portal_hits": 1,
+              "portal_poses": 1,
+              "portal_split_checks": 1,
+              "receptor_tests": 102,
+              "reuse_hits": 1,
+              "splits": 1,
+              "tile_tests": 2104
+            },
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "status": "BOUNDED",
+            "work": 5238
+          },
+          "prefix8": {
+            "counts": {
+              "chambers": 2,
+              "cross_request_hits": 1,
+              "isolated_searches": 1,
+              "nodes": 250,
+              "portal_containment_checks": 1,
+              "portal_hits": 1,
+              "portal_poses": 1,
+              "portal_split_checks": 1,
+              "receptor_tests": 102,
+              "reuse_hits": 1,
+              "splits": 1,
+              "tile_tests": 2096
+            },
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "probe"
+              ],
+              [
+                [
+                  "penrose",
+                  8,
+                  true,
+                  false,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "status": "BOUNDED",
+            "work": 5222
+          },
+          "receptor": {
+            "counts": {
+              "chambers": 2,
+              "cross_request_hits": 1,
+              "isolated_searches": 1,
+              "nodes": 250,
+              "portal_containment_checks": 1,
+              "portal_hits": 1,
+              "portal_poses": 1,
+              "portal_split_checks": 1,
+              "receptor_tests": 102,
+              "reuse_hits": 1,
+              "splits": 1,
+              "tile_tests": 2096
+            },
+            "decisions": [],
+            "status": "BOUNDED",
+            "work": 5222
+          },
+          "receptor-translate": {
+            "counts": {
+              "nodes": 250,
+              "portal_containment_checks": 1,
+              "portal_poses": 1,
+              "portal_split_checks": 1,
+              "receptor_tests": 102,
+              "tile_tests": 2392
+            },
+            "decisions": [],
+            "status": "BOUNDED",
+            "work": 5814
+          }
+        },
+        "id": "penrose-route-test-14",
+        "kind": "grafted"
+      },
+      {
+        "arms": {
+          "learned": {
+            "counts": {
+              "nodes": 77,
+              "tile_tests": 740
+            },
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "status": "POSITIVE",
+            "work": 1788
+          },
+          "plain": {
+            "counts": {
+              "nodes": 77,
+              "tile_tests": 740
+            },
+            "decisions": [],
+            "status": "POSITIVE",
+            "work": 1788
+          },
+          "prefix2": {
+            "counts": {
+              "nodes": 79,
+              "portal_poses": 0,
+              "receptor_tests": 96,
+              "tile_tests": 764
+            },
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "status": "POSITIVE",
+            "work": 1848
+          },
+          "prefix8": {
+            "counts": {
+              "nodes": 85,
+              "portal_poses": 0,
+              "receptor_tests": 96,
+              "tile_tests": 828
+            },
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "probe"
+              ],
+              [
+                [
+                  "penrose",
+                  8,
+                  true,
+                  false,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "status": "POSITIVE",
+            "work": 2000
+          },
+          "receptor": {
+            "counts": {
+              "nodes": 77,
+              "portal_poses": 0,
+              "receptor_tests": 96,
+              "tile_tests": 740
+            },
+            "decisions": [],
+            "status": "POSITIVE",
+            "work": 1792
+          },
+          "receptor-translate": {
+            "counts": {
+              "nodes": 77,
+              "portal_poses": 0,
+              "receptor_tests": 96,
+              "tile_tests": 740
+            },
+            "decisions": [],
+            "status": "POSITIVE",
+            "work": 1792
+          }
+        },
+        "id": "penrose-route-test-15",
+        "kind": "grafted"
+      },
+      {
+        "arms": {
+          "learned": {
+            "counts": {
+              "nodes": 5,
+              "tile_tests": 20
+            },
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  true,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "status": "NEGATIVE",
+            "work": 60
+          },
+          "plain": {
+            "counts": {
+              "nodes": 5,
+              "tile_tests": 20
+            },
+            "decisions": [],
+            "status": "NEGATIVE",
+            "work": 60
+          },
+          "prefix2": {
+            "counts": {
+              "chambers": 2,
+              "cross_request_hits": 1,
+              "isolated_searches": 1,
+              "nodes": 200,
+              "nonidentity_reuse_hits": 1,
+              "portal_containment_checks": 1,
+              "portal_hits": 1,
+              "portal_poses": 1,
+              "portal_split_checks": 1,
+              "receptor_tests": 84,
+              "reuse_hits": 1,
+              "splits": 1,
+              "tile_tests": 1784
+            },
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  true,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "status": "NEGATIVE",
+            "work": 4397
+          },
+          "prefix8": {
+            "counts": {
+              "nodes": 5,
+              "tile_tests": 20
+            },
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  true,
+                  false
+                ],
+                "probe"
+              ]
+            ],
+            "status": "NEGATIVE",
+            "work": 60
+          },
+          "receptor": {
+            "counts": {
+              "chambers": 2,
+              "cross_request_hits": 1,
+              "isolated_searches": 1,
+              "nodes": 198,
+              "nonidentity_reuse_hits": 1,
+              "portal_containment_checks": 1,
+              "portal_hits": 1,
+              "portal_poses": 1,
+              "portal_split_checks": 1,
+              "receptor_tests": 84,
+              "reuse_hits": 1,
+              "splits": 1,
+              "tile_tests": 1776
+            },
+            "decisions": [],
+            "status": "NEGATIVE",
+            "work": 4373
+          },
+          "receptor-translate": {
+            "counts": {
+              "nodes": 5,
+              "portal_containment_checks": 1,
+              "portal_poses": 1,
+              "portal_split_checks": 1,
+              "receptor_tests": 84,
+              "tile_tests": 20
+            },
+            "decisions": [],
+            "status": "NEGATIVE",
+            "work": 89
+          }
+        },
+        "id": "penrose-route-test-16",
+        "kind": "grafted"
+      },
+      {
+        "arms": {
+          "learned": {
+            "counts": {
+              "nodes": 132,
+              "tile_tests": 1148
+            },
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "status": "NEGATIVE",
+            "work": 2824
+          },
+          "plain": {
+            "counts": {
+              "nodes": 132,
+              "tile_tests": 1148
+            },
+            "decisions": [],
+            "status": "NEGATIVE",
+            "work": 2824
+          },
+          "prefix2": {
+            "counts": {
+              "nodes": 134,
+              "portal_poses": 0,
+              "receptor_tests": 84,
+              "tile_tests": 1180
+            },
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "status": "NEGATIVE",
+            "work": 2900
+          },
+          "prefix8": {
+            "counts": {
+              "nodes": 140,
+              "portal_poses": 0,
+              "receptor_tests": 84,
+              "tile_tests": 1260
+            },
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "probe"
+              ],
+              [
+                [
+                  "penrose",
+                  8,
+                  true,
+                  false,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "status": "NEGATIVE",
+            "work": 3084
+          },
+          "receptor": {
+            "counts": {
+              "nodes": 132,
+              "portal_poses": 0,
+              "receptor_tests": 84,
+              "tile_tests": 1148
+            },
+            "decisions": [],
+            "status": "NEGATIVE",
+            "work": 2828
+          },
+          "receptor-translate": {
+            "counts": {
+              "nodes": 132,
+              "portal_poses": 0,
+              "receptor_tests": 84,
+              "tile_tests": 1148
+            },
+            "decisions": [],
+            "status": "NEGATIVE",
+            "work": 2828
+          }
+        },
+        "id": "penrose-route-test-17",
+        "kind": "grafted"
+      },
+      {
+        "arms": {
+          "learned": {
+            "counts": {
+              "chambers": 2,
+              "isolated_searches": 2,
+              "join_tests": 5,
+              "nodes": 14,
+              "splits": 1,
+              "tile_tests": 52
+            },
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  false,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "status": "POSITIVE",
+            "work": 180
+          },
+          "plain": {
+            "counts": {
+              "chambers": 2,
+              "isolated_searches": 2,
+              "join_tests": 5,
+              "nodes": 14,
+              "splits": 1,
+              "tile_tests": 52
+            },
+            "decisions": [],
+            "status": "POSITIVE",
+            "work": 180
+          },
+          "prefix2": {
+            "counts": {
+              "chambers": 2,
+              "isolated_searches": 2,
+              "join_tests": 5,
+              "nodes": 16,
+              "portal_containment_checks": 1,
+              "portal_poses": 1,
+              "portal_split_checks": 1,
+              "receptor_tests": 54,
+              "splits": 1,
+              "tile_tests": 64
+            },
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  false,
+                  false,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "status": "POSITIVE",
+            "work": 239
+          },
+          "prefix8": {
+            "counts": {
+              "chambers": 4,
+              "isolated_searches": 3,
+              "join_tests": 5,
+              "nodes": 22,
+              "portal_containment_checks": 1,
+              "portal_poses": 1,
+              "portal_split_checks": 1,
+              "receptor_tests": 54,
+              "splits": 2,
+              "tile_tests": 88
+            },
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  false,
+                  false,
+                  false
+                ],
+                "probe"
+              ],
+              [
+                [
+                  "penrose",
+                  8,
+                  false,
+                  false,
+                  true
+                ],
+                "receptor"
+              ]
+            ],
+            "status": "POSITIVE",
+            "work": 311
+          },
+          "receptor": {
+            "counts": {
+              "chambers": 2,
+              "isolated_searches": 2,
+              "join_tests": 5,
+              "nodes": 14,
+              "portal_containment_checks": 1,
+              "portal_poses": 1,
+              "portal_split_checks": 1,
+              "receptor_tests": 54,
+              "splits": 1,
+              "tile_tests": 52
+            },
+            "decisions": [],
+            "status": "POSITIVE",
+            "work": 207
+          },
+          "receptor-translate": {
+            "counts": {
+              "chambers": 2,
+              "isolated_searches": 2,
+              "join_tests": 5,
+              "nodes": 14,
+              "portal_containment_checks": 1,
+              "portal_poses": 1,
+              "portal_split_checks": 1,
+              "receptor_tests": 54,
+              "splits": 1,
+              "tile_tests": 52
+            },
+            "decisions": [],
+            "status": "POSITIVE",
+            "work": 207
+          }
+        },
+        "id": "penrose-route-test-18",
+        "kind": "grafted"
+      },
+      {
+        "arms": {
+          "learned": {
+            "counts": {
+              "chambers": 2,
+              "isolated_searches": 2,
+              "nodes": 20,
+              "splits": 1,
+              "tile_tests": 152
+            },
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "status": "NEGATIVE",
+            "work": 384
+          },
+          "plain": {
+            "counts": {
+              "chambers": 2,
+              "isolated_searches": 2,
+              "nodes": 20,
+              "splits": 1,
+              "tile_tests": 152
+            },
+            "decisions": [],
+            "status": "NEGATIVE",
+            "work": 384
+          },
+          "prefix2": {
+            "counts": {
+              "chambers": 2,
+              "cross_request_hits": 1,
+              "nodes": 24,
+              "nonidentity_reuse_hits": 1,
+              "portal_containment_checks": 1,
+              "portal_hits": 1,
+              "portal_poses": 1,
+              "portal_split_checks": 1,
+              "receptor_tests": 72,
+              "reuse_hits": 1,
+              "splits": 1,
+              "tile_tests": 172
+            },
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "status": "NEGATIVE",
+            "work": 468
+          },
+          "prefix8": {
+            "counts": {
+              "chambers": 2,
+              "cross_request_hits": 1,
+              "nodes": 30,
+              "nonidentity_reuse_hits": 1,
+              "portal_containment_checks": 1,
+              "portal_hits": 1,
+              "portal_poses": 1,
+              "portal_split_checks": 1,
+              "receptor_tests": 72,
+              "reuse_hits": 1,
+              "splits": 1,
+              "tile_tests": 224
+            },
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "probe"
+              ],
+              [
+                [
+                  "penrose",
+                  8,
+                  true,
+                  false,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "status": "NEGATIVE",
+            "work": 596
+          },
+          "receptor": {
+            "counts": {
+              "chambers": 2,
+              "cross_request_hits": 1,
+              "nodes": 22,
+              "nonidentity_reuse_hits": 1,
+              "portal_containment_checks": 1,
+              "portal_hits": 1,
+              "portal_poses": 1,
+              "portal_split_checks": 1,
+              "receptor_tests": 72,
+              "reuse_hits": 1,
+              "splits": 1,
+              "tile_tests": 144
+            },
+            "decisions": [],
+            "status": "NEGATIVE",
+            "work": 404
+          },
+          "receptor-translate": {
+            "counts": {
+              "chambers": 2,
+              "isolated_searches": 2,
+              "nodes": 19,
+              "portal_containment_checks": 1,
+              "portal_poses": 1,
+              "portal_split_checks": 1,
+              "receptor_tests": 72,
+              "splits": 1,
+              "tile_tests": 148
+            },
+            "decisions": [],
+            "status": "NEGATIVE",
+            "work": 400
+          }
+        },
+        "id": "penrose-route-test-19",
+        "kind": "grafted"
+      },
+      {
+        "arms": {
+          "learned": {
+            "counts": {
+              "nodes": 250,
+              "tile_tests": 2492
+            },
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "status": "BOUNDED",
+            "work": 5984
+          },
+          "plain": {
+            "counts": {
+              "nodes": 250,
+              "tile_tests": 2492
+            },
+            "decisions": [],
+            "status": "BOUNDED",
+            "work": 5984
+          },
+          "prefix2": {
+            "counts": {
+              "chambers": 2,
+              "cross_request_hits": 1,
+              "isolated_searches": 1,
+              "nodes": 250,
+              "nonidentity_reuse_hits": 1,
+              "portal_containment_checks": 1,
+              "portal_hits": 1,
+              "portal_poses": 1,
+              "portal_split_checks": 1,
+              "receptor_tests": 96,
+              "reuse_hits": 1,
+              "splits": 1,
+              "tile_tests": 2360
+            },
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "status": "BOUNDED",
+            "work": 5749
+          },
+          "prefix8": {
+            "counts": {
+              "chambers": 2,
+              "cross_request_hits": 1,
+              "isolated_searches": 1,
+              "nodes": 250,
+              "nonidentity_reuse_hits": 1,
+              "portal_containment_checks": 1,
+              "portal_hits": 1,
+              "portal_poses": 1,
+              "portal_split_checks": 1,
+              "receptor_tests": 96,
+              "reuse_hits": 1,
+              "splits": 1,
+              "tile_tests": 2384
+            },
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "probe"
+              ],
+              [
+                [
+                  "penrose",
+                  8,
+                  true,
+                  false,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "status": "BOUNDED",
+            "work": 5797
+          },
+          "receptor": {
+            "counts": {
+              "chambers": 2,
+              "cross_request_hits": 1,
+              "isolated_searches": 1,
+              "nodes": 250,
+              "nonidentity_reuse_hits": 1,
+              "portal_containment_checks": 1,
+              "portal_hits": 1,
+              "portal_poses": 1,
+              "portal_split_checks": 1,
+              "receptor_tests": 96,
+              "reuse_hits": 1,
+              "splits": 1,
+              "tile_tests": 2352
+            },
+            "decisions": [],
+            "status": "BOUNDED",
+            "work": 5733
+          },
+          "receptor-translate": {
+            "counts": {
+              "nodes": 250,
+              "portal_containment_checks": 1,
+              "portal_poses": 1,
+              "portal_split_checks": 1,
+              "receptor_tests": 96,
+              "tile_tests": 2492
+            },
+            "decisions": [],
+            "status": "BOUNDED",
+            "work": 6013
+          }
+        },
+        "id": "penrose-route-test-20",
+        "kind": "grafted"
+      },
+      {
+        "arms": {
+          "learned": {
+            "counts": {
+              "nodes": 14,
+              "tile_tests": 96
+            },
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "status": "POSITIVE",
+            "work": 248
+          },
+          "plain": {
+            "counts": {
+              "nodes": 14,
+              "tile_tests": 96
+            },
+            "decisions": [],
+            "status": "POSITIVE",
+            "work": 248
+          },
+          "prefix2": {
+            "counts": {
+              "chambers": 2,
+              "cross_request_hits": 1,
+              "isolated_searches": 1,
+              "join_tests": 12,
+              "nodes": 11,
+              "nonidentity_reuse_hits": 1,
+              "portal_containment_checks": 1,
+              "portal_hits": 1,
+              "portal_poses": 1,
+              "portal_split_checks": 1,
+              "receptor_tests": 60,
+              "reuse_hits": 1,
+              "splits": 1,
+              "tile_tests": 60
+            },
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "status": "POSITIVE",
+            "work": 240
+          },
+          "prefix8": {
+            "counts": {
+              "chambers": 2,
+              "cross_request_hits": 1,
+              "isolated_searches": 1,
+              "join_tests": 12,
+              "nodes": 17,
+              "nonidentity_reuse_hits": 1,
+              "portal_containment_checks": 1,
+              "portal_hits": 1,
+              "portal_poses": 1,
+              "portal_split_checks": 1,
+              "receptor_tests": 60,
+              "reuse_hits": 1,
+              "splits": 1,
+              "tile_tests": 112
+            },
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "probe"
+              ],
+              [
+                [
+                  "penrose",
+                  8,
+                  true,
+                  false,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "status": "POSITIVE",
+            "work": 368
+          },
+          "receptor": {
+            "counts": {
+              "chambers": 2,
+              "cross_request_hits": 1,
+              "isolated_searches": 1,
+              "join_tests": 12,
+              "nodes": 9,
+              "nonidentity_reuse_hits": 1,
+              "portal_containment_checks": 1,
+              "portal_hits": 1,
+              "portal_poses": 1,
+              "portal_split_checks": 1,
+              "receptor_tests": 60,
+              "reuse_hits": 1,
+              "splits": 1,
+              "tile_tests": 36
+            },
+            "decisions": [],
+            "status": "POSITIVE",
+            "work": 184
+          },
+          "receptor-translate": {
+            "counts": {
+              "nodes": 14,
+              "portal_containment_checks": 1,
+              "portal_poses": 1,
+              "portal_split_checks": 1,
+              "receptor_tests": 60,
+              "tile_tests": 96
+            },
+            "decisions": [],
+            "status": "POSITIVE",
+            "work": 276
+          }
+        },
+        "id": "penrose-route-test-21",
+        "kind": "grafted"
+      },
+      {
+        "arms": {
+          "learned": {
+            "counts": {
+              "nodes": 20,
+              "tile_tests": 76
+            },
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "status": "POSITIVE",
+            "work": 232
+          },
+          "plain": {
+            "counts": {
+              "nodes": 20,
+              "tile_tests": 76
+            },
+            "decisions": [],
+            "status": "POSITIVE",
+            "work": 232
+          },
+          "prefix2": {
+            "counts": {
+              "nodes": 22,
+              "portal_poses": 0,
+              "receptor_tests": 54,
+              "tile_tests": 84
+            },
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "status": "POSITIVE",
+            "work": 258
+          },
+          "prefix8": {
+            "counts": {
+              "nodes": 28,
+              "portal_poses": 0,
+              "receptor_tests": 54,
+              "tile_tests": 108
+            },
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "probe"
+              ],
+              [
+                [
+                  "penrose",
+                  8,
+                  true,
+                  false,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "status": "POSITIVE",
+            "work": 330
+          },
+          "receptor": {
+            "counts": {
+              "nodes": 20,
+              "portal_poses": 0,
+              "receptor_tests": 54,
+              "tile_tests": 76
+            },
+            "decisions": [],
+            "status": "POSITIVE",
+            "work": 234
+          },
+          "receptor-translate": {
+            "counts": {
+              "nodes": 20,
+              "portal_poses": 0,
+              "receptor_tests": 54,
+              "tile_tests": 76
+            },
+            "decisions": [],
+            "status": "POSITIVE",
+            "work": 234
+          }
+        },
+        "id": "penrose-route-test-22",
+        "kind": "control"
+      },
+      {
+        "arms": {
+          "learned": {
+            "counts": {
+              "nodes": 15,
+              "tile_tests": 80
+            },
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "status": "POSITIVE",
+            "work": 220
+          },
+          "plain": {
+            "counts": {
+              "nodes": 15,
+              "tile_tests": 80
+            },
+            "decisions": [],
+            "status": "POSITIVE",
+            "work": 220
+          },
+          "prefix2": {
+            "counts": {
+              "nodes": 17,
+              "portal_poses": 0,
+              "receptor_tests": 48,
+              "tile_tests": 104
+            },
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "status": "POSITIVE",
+            "work": 278
+          },
+          "prefix8": {
+            "counts": {
+              "nodes": 23,
+              "portal_poses": 0,
+              "receptor_tests": 48,
+              "tile_tests": 136
+            },
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "probe"
+              ],
+              [
+                [
+                  "penrose",
+                  8,
+                  true,
+                  false,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "status": "POSITIVE",
+            "work": 366
+          },
+          "receptor": {
+            "counts": {
+              "nodes": 15,
+              "portal_poses": 0,
+              "receptor_tests": 48,
+              "tile_tests": 80
+            },
+            "decisions": [],
+            "status": "POSITIVE",
+            "work": 222
+          },
+          "receptor-translate": {
+            "counts": {
+              "nodes": 15,
+              "portal_poses": 0,
+              "receptor_tests": 48,
+              "tile_tests": 80
+            },
+            "decisions": [],
+            "status": "POSITIVE",
+            "work": 222
+          }
+        },
+        "id": "penrose-route-test-23",
+        "kind": "control"
+      },
+      {
+        "arms": {
+          "learned": {
+            "counts": {
+              "nodes": 87,
+              "tile_tests": 576
+            },
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "status": "NEGATIVE",
+            "work": 1500
+          },
+          "plain": {
+            "counts": {
+              "nodes": 87,
+              "tile_tests": 576
+            },
+            "decisions": [],
+            "status": "NEGATIVE",
+            "work": 1500
+          },
+          "prefix2": {
+            "counts": {
+              "nodes": 89,
+              "portal_poses": 0,
+              "receptor_tests": 54,
+              "tile_tests": 596
+            },
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "status": "NEGATIVE",
+            "work": 1550
+          },
+          "prefix8": {
+            "counts": {
+              "nodes": 95,
+              "portal_poses": 0,
+              "receptor_tests": 54,
+              "tile_tests": 656
+            },
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "probe"
+              ],
+              [
+                [
+                  "penrose",
+                  8,
+                  true,
+                  false,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "status": "NEGATIVE",
+            "work": 1694
+          },
+          "receptor": {
+            "counts": {
+              "nodes": 87,
+              "portal_poses": 0,
+              "receptor_tests": 54,
+              "tile_tests": 576
+            },
+            "decisions": [],
+            "status": "NEGATIVE",
+            "work": 1502
+          },
+          "receptor-translate": {
+            "counts": {
+              "nodes": 87,
+              "portal_poses": 0,
+              "receptor_tests": 54,
+              "tile_tests": 576
+            },
+            "decisions": [],
+            "status": "NEGATIVE",
+            "work": 1502
+          }
+        },
+        "id": "penrose-route-test-24",
+        "kind": "control"
+      },
+      {
+        "arms": {
+          "learned": {
+            "counts": {
+              "nodes": 4,
+              "tile_tests": 24
+            },
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  false,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "status": "POSITIVE",
+            "work": 64
+          },
+          "plain": {
+            "counts": {
+              "nodes": 4,
+              "tile_tests": 24
+            },
+            "decisions": [],
+            "status": "POSITIVE",
+            "work": 64
+          },
+          "prefix2": {
+            "counts": {
+              "nodes": 6,
+              "portal_poses": 0,
+              "receptor_tests": 18,
+              "tile_tests": 44
+            },
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  false,
+                  false,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "status": "POSITIVE",
+            "work": 112
+          },
+          "prefix8": {
+            "counts": {
+              "nodes": 4,
+              "tile_tests": 24
+            },
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  false,
+                  false,
+                  false
+                ],
+                "probe"
+              ]
+            ],
+            "status": "POSITIVE",
+            "work": 64
+          },
+          "receptor": {
+            "counts": {
+              "nodes": 4,
+              "portal_poses": 0,
+              "receptor_tests": 18,
+              "tile_tests": 24
+            },
+            "decisions": [],
+            "status": "POSITIVE",
+            "work": 64
+          },
+          "receptor-translate": {
+            "counts": {
+              "nodes": 4,
+              "portal_poses": 0,
+              "receptor_tests": 18,
+              "tile_tests": 24
+            },
+            "decisions": [],
+            "status": "POSITIVE",
+            "work": 64
+          }
+        },
+        "id": "penrose-route-test-25",
+        "kind": "control"
+      }
+    ],
+    "turtle": [
+      {
+        "arms": {
+          "learned": {
+            "counts": {
+              "chambers": 2,
+              "cross_request_hits": 2,
+              "join_tests": 21,
+              "nodes": 4,
+              "nonidentity_reuse_hits": 2,
+              "portal_containment_checks": 5,
+              "portal_hits": 1,
+              "portal_poses": 22,
+              "portal_split_checks": 5,
+              "receptor_tests": 888,
+              "reuse_hits": 2,
+              "splits": 1,
+              "tile_tests": 100
+            },
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  true,
+                  true,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "status": "POSITIVE",
+            "work": 469
+          },
+          "plain": {
+            "counts": {
+              "nodes": 25,
+              "tile_tests": 564
+            },
+            "decisions": [],
+            "status": "POSITIVE",
+            "work": 1228
+          },
+          "prefix2": {
+            "counts": {
+              "chambers": 2,
+              "cross_request_hits": 2,
+              "join_tests": 21,
+              "nodes": 4,
+              "nonidentity_reuse_hits": 2,
+              "portal_containment_checks": 5,
+              "portal_hits": 1,
+              "portal_poses": 22,
+              "portal_split_checks": 5,
+              "receptor_tests": 888,
+              "reuse_hits": 2,
+              "splits": 1,
+              "tile_tests": 100
+            },
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  true,
+                  true,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "status": "POSITIVE",
+            "work": 469
+          },
+          "prefix8": {
+            "counts": {
+              "chambers": 2,
+              "cross_request_hits": 2,
+              "join_tests": 21,
+              "nodes": 10,
+              "nonidentity_reuse_hits": 2,
+              "portal_containment_checks": 5,
+              "portal_hits": 1,
+              "portal_poses": 22,
+              "portal_split_checks": 5,
+              "receptor_tests": 888,
+              "reuse_hits": 2,
+              "splits": 1,
+              "tile_tests": 244
+            },
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  true,
+                  true,
+                  false
+                ],
+                "probe"
+              ],
+              [
+                [
+                  "turtle",
+                  8,
+                  true,
+                  true,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "status": "POSITIVE",
+            "work": 781
+          },
+          "receptor": {
+            "counts": {
+              "chambers": 2,
+              "cross_request_hits": 2,
+              "join_tests": 21,
+              "nodes": 2,
+              "nonidentity_reuse_hits": 2,
+              "portal_containment_checks": 5,
+              "portal_hits": 1,
+              "portal_poses": 22,
+              "portal_split_checks": 5,
+              "receptor_tests": 888,
+              "reuse_hits": 2,
+              "splits": 1,
+              "tile_tests": 16
+            },
+            "decisions": [],
+            "status": "POSITIVE",
+            "work": 293
+          },
+          "receptor-translate": {
+            "counts": {
+              "nodes": 25,
+              "portal_containment_checks": 22,
+              "portal_poses": 22,
+              "portal_split_checks": 14,
+              "receptor_tests": 888,
+              "tile_tests": 564
+            },
+            "decisions": [],
+            "status": "POSITIVE",
+            "work": 1662
+          }
+        },
+        "id": "turtle-route-test-12",
+        "kind": "grafted"
+      },
+      {
+        "arms": {
+          "learned": {
+            "counts": {
+              "nodes": 2,
+              "tile_tests": 60
+            },
+            "decisions": [],
+            "status": "NEGATIVE",
+            "work": 128
+          },
+          "plain": {
+            "counts": {
+              "nodes": 2,
+              "tile_tests": 60
+            },
+            "decisions": [],
+            "status": "NEGATIVE",
+            "work": 128
+          },
+          "prefix2": {
+            "counts": {
+              "nodes": 2,
+              "tile_tests": 60
+            },
+            "decisions": [],
+            "status": "NEGATIVE",
+            "work": 128
+          },
+          "prefix8": {
+            "counts": {
+              "nodes": 2,
+              "tile_tests": 60
+            },
+            "decisions": [],
+            "status": "NEGATIVE",
+            "work": 128
+          },
+          "receptor": {
+            "counts": {
+              "chambers": 2,
+              "cross_request_hits": 1,
+              "nodes": 2,
+              "nonidentity_reuse_hits": 1,
+              "portal_containment_checks": 4,
+              "portal_hits": 1,
+              "portal_poses": 24,
+              "portal_split_checks": 4,
+              "receptor_tests": 1068,
+              "reuse_hits": 1,
+              "splits": 1,
+              "tile_tests": 16
+            },
+            "decisions": [],
+            "status": "NEGATIVE",
+            "work": 193
+          },
+          "receptor-translate": {
+            "counts": {
+              "chambers": 2,
+              "isolated_searches": 1,
+              "nodes": 3,
+              "portal_containment_checks": 4,
+              "portal_hits": 1,
+              "portal_poses": 24,
+              "portal_split_checks": 4,
+              "receptor_tests": 1068,
+              "splits": 1,
+              "tile_tests": 28
+            },
+            "decisions": [],
+            "status": "NEGATIVE",
+            "work": 221
+          }
+        },
+        "id": "turtle-route-test-13",
+        "kind": "grafted"
+      },
+      {
+        "arms": {
+          "learned": {
+            "counts": {
+              "chambers": 2,
+              "cross_request_hits": 2,
+              "nodes": 4,
+              "nonidentity_reuse_hits": 2,
+              "portal_containment_checks": 2,
+              "portal_hits": 1,
+              "portal_poses": 28,
+              "portal_split_checks": 2,
+              "receptor_tests": 876,
+              "reuse_hits": 2,
+              "splits": 1,
+              "tile_tests": 40
+            },
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  true,
+                  true,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "status": "NEGATIVE",
+            "work": 189
+          },
+          "plain": {
+            "counts": {
+              "chambers": 2,
+              "isolated_searches": 2,
+              "nodes": 13,
+              "splits": 1,
+              "tile_tests": 180
+            },
+            "decisions": [],
+            "status": "NEGATIVE",
+            "work": 412
+          },
+          "prefix2": {
+            "counts": {
+              "chambers": 2,
+              "cross_request_hits": 2,
+              "nodes": 4,
+              "nonidentity_reuse_hits": 2,
+              "portal_containment_checks": 2,
+              "portal_hits": 1,
+              "portal_poses": 28,
+              "portal_split_checks": 2,
+              "receptor_tests": 876,
+              "reuse_hits": 2,
+              "splits": 1,
+              "tile_tests": 40
+            },
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  true,
+                  true,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "status": "NEGATIVE",
+            "work": 189
+          },
+          "prefix8": {
+            "counts": {
+              "chambers": 2,
+              "cross_request_hits": 2,
+              "nodes": 10,
+              "nonidentity_reuse_hits": 2,
+              "portal_containment_checks": 2,
+              "portal_hits": 1,
+              "portal_poses": 28,
+              "portal_split_checks": 2,
+              "receptor_tests": 876,
+              "reuse_hits": 2,
+              "splits": 1,
+              "tile_tests": 148
+            },
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  true,
+                  true,
+                  false
+                ],
+                "probe"
+              ],
+              [
+                [
+                  "turtle",
+                  8,
+                  true,
+                  true,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "status": "NEGATIVE",
+            "work": 429
+          },
+          "receptor": {
+            "counts": {
+              "chambers": 2,
+              "cross_request_hits": 2,
+              "nodes": 2,
+              "nonidentity_reuse_hits": 2,
+              "portal_containment_checks": 2,
+              "portal_hits": 1,
+              "portal_poses": 28,
+              "portal_split_checks": 2,
+              "receptor_tests": 876,
+              "reuse_hits": 2,
+              "splits": 1,
+              "tile_tests": 16
+            },
+            "decisions": [],
+            "status": "NEGATIVE",
+            "work": 133
+          },
+          "receptor-translate": {
+            "counts": {
+              "chambers": 2,
+              "isolated_searches": 2,
+              "nodes": 14,
+              "portal_containment_checks": 28,
+              "portal_poses": 28,
+              "portal_split_checks": 18,
+              "receptor_tests": 876,
+              "splits": 1,
+              "tile_tests": 216
+            },
+            "decisions": [],
+            "status": "NEGATIVE",
+            "work": 1031
+          }
+        },
+        "id": "turtle-route-test-14",
+        "kind": "grafted"
+      },
+      {
+        "arms": {
+          "learned": {
+            "counts": {
+              "chambers": 2,
+              "cross_request_hits": 1,
+              "isolated_searches": 1,
+              "join_tests": 18,
+              "nodes": 19,
+              "nonidentity_reuse_hits": 1,
+              "portal_containment_checks": 1,
+              "portal_hits": 1,
+              "portal_poses": 31,
+              "portal_split_checks": 1,
+              "receptor_tests": 1120,
+              "reuse_hits": 1,
+              "splits": 1,
+              "tile_tests": 360
+            },
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  true,
+                  true,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "status": "POSITIVE",
+            "work": 949
+          },
+          "plain": {
+            "counts": {
+              "nodes": 20,
+              "tile_tests": 324
+            },
+            "decisions": [],
+            "status": "POSITIVE",
+            "work": 728
+          },
+          "prefix2": {
+            "counts": {
+              "chambers": 2,
+              "cross_request_hits": 1,
+              "isolated_searches": 1,
+              "join_tests": 18,
+              "nodes": 19,
+              "nonidentity_reuse_hits": 1,
+              "portal_containment_checks": 1,
+              "portal_hits": 1,
+              "portal_poses": 31,
+              "portal_split_checks": 1,
+              "receptor_tests": 1120,
+              "reuse_hits": 1,
+              "splits": 1,
+              "tile_tests": 360
+            },
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  true,
+                  true,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "status": "POSITIVE",
+            "work": 949
+          },
+          "prefix8": {
+            "counts": {
+              "chambers": 2,
+              "cross_request_hits": 1,
+              "isolated_searches": 1,
+              "join_tests": 18,
+              "nodes": 25,
+              "nonidentity_reuse_hits": 1,
+              "portal_containment_checks": 1,
+              "portal_hits": 1,
+              "portal_poses": 31,
+              "portal_split_checks": 1,
+              "receptor_tests": 1120,
+              "reuse_hits": 1,
+              "splits": 1,
+              "tile_tests": 492
+            },
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  true,
+                  true,
+                  false
+                ],
+                "probe"
+              ],
+              [
+                [
+                  "turtle",
+                  8,
+                  true,
+                  true,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "status": "POSITIVE",
+            "work": 1237
+          },
+          "receptor": {
+            "counts": {
+              "chambers": 2,
+              "cross_request_hits": 1,
+              "isolated_searches": 1,
+              "join_tests": 18,
+              "nodes": 17,
+              "nonidentity_reuse_hits": 1,
+              "portal_containment_checks": 1,
+              "portal_hits": 1,
+              "portal_poses": 31,
+              "portal_split_checks": 1,
+              "receptor_tests": 1120,
+              "reuse_hits": 1,
+              "splits": 1,
+              "tile_tests": 324
+            },
+            "decisions": [],
+            "status": "POSITIVE",
+            "work": 869
+          },
+          "receptor-translate": {
+            "counts": {
+              "chambers": 2,
+              "cross_request_hits": 1,
+              "isolated_searches": 1,
+              "join_tests": 18,
+              "nodes": 15,
+              "portal_containment_checks": 1,
+              "portal_hits": 1,
+              "portal_poses": 31,
+              "portal_split_checks": 1,
+              "receptor_tests": 1120,
+              "reuse_hits": 1,
+              "splits": 1,
+              "tile_tests": 228
+            },
+            "decisions": [],
+            "status": "POSITIVE",
+            "work": 669
+          }
+        },
+        "id": "turtle-route-test-15",
+        "kind": "grafted"
+      },
+      {
+        "arms": {
+          "learned": {
+            "counts": {
+              "nodes": 2,
+              "tile_tests": 36
+            },
+            "decisions": [],
+            "status": "NEGATIVE",
+            "work": 80
+          },
+          "plain": {
+            "counts": {
+              "nodes": 2,
+              "tile_tests": 36
+            },
+            "decisions": [],
+            "status": "NEGATIVE",
+            "work": 80
+          },
+          "prefix2": {
+            "counts": {
+              "nodes": 2,
+              "tile_tests": 36
+            },
+            "decisions": [],
+            "status": "NEGATIVE",
+            "work": 80
+          },
+          "prefix8": {
+            "counts": {
+              "nodes": 2,
+              "tile_tests": 36
+            },
+            "decisions": [],
+            "status": "NEGATIVE",
+            "work": 80
+          },
+          "receptor": {
+            "counts": {
+              "chambers": 4,
+              "cross_request_hits": 1,
+              "isolated_searches": 1,
+              "nodes": 3,
+              "nonidentity_reuse_hits": 1,
+              "portal_containment_checks": 2,
+              "portal_hits": 1,
+              "portal_poses": 32,
+              "portal_split_checks": 2,
+              "receptor_tests": 1192,
+              "reuse_hits": 1,
+              "splits": 2,
+              "tile_tests": 16
+            },
+            "decisions": [],
+            "status": "NEGATIVE",
+            "work": 153
+          },
+          "receptor-translate": {
+            "counts": {
+              "nodes": 2,
+              "portal_containment_checks": 32,
+              "portal_poses": 32,
+              "portal_split_checks": 22,
+              "receptor_tests": 1192,
+              "tile_tests": 36
+            },
+            "decisions": [],
+            "status": "NEGATIVE",
+            "work": 739
+          }
+        },
+        "id": "turtle-route-test-16",
+        "kind": "grafted"
+      },
+      {
+        "arms": {
+          "learned": {
+            "counts": {
+              "chambers": 2,
+              "cross_request_hits": 1,
+              "nodes": 4,
+              "nonidentity_reuse_hits": 1,
+              "portal_containment_checks": 1,
+              "portal_hits": 1,
+              "portal_poses": 25,
+              "portal_split_checks": 1,
+              "receptor_tests": 1024,
+              "reuse_hits": 1,
+              "splits": 1,
+              "tile_tests": 40
+            },
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  true,
+                  true,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "status": "NEGATIVE",
+            "work": 172
+          },
+          "plain": {
+            "counts": {
+              "chambers": 4,
+              "isolated_searches": 1,
+              "nodes": 22,
+              "reuse_hits": 1,
+              "splits": 2,
+              "tile_tests": 384
+            },
+            "decisions": [],
+            "status": "NEGATIVE",
+            "work": 856
+          },
+          "prefix2": {
+            "counts": {
+              "chambers": 2,
+              "cross_request_hits": 1,
+              "nodes": 4,
+              "nonidentity_reuse_hits": 1,
+              "portal_containment_checks": 1,
+              "portal_hits": 1,
+              "portal_poses": 25,
+              "portal_split_checks": 1,
+              "receptor_tests": 1024,
+              "reuse_hits": 1,
+              "splits": 1,
+              "tile_tests": 40
+            },
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  true,
+                  true,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "status": "NEGATIVE",
+            "work": 172
+          },
+          "prefix8": {
+            "counts": {
+              "chambers": 2,
+              "cross_request_hits": 1,
+              "nodes": 10,
+              "nonidentity_reuse_hits": 1,
+              "portal_containment_checks": 1,
+              "portal_hits": 1,
+              "portal_poses": 25,
+              "portal_split_checks": 1,
+              "receptor_tests": 1024,
+              "reuse_hits": 1,
+              "splits": 1,
+              "tile_tests": 208
+            },
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  true,
+                  true,
+                  false
+                ],
+                "probe"
+              ],
+              [
+                [
+                  "turtle",
+                  8,
+                  true,
+                  true,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "status": "NEGATIVE",
+            "work": 532
+          },
+          "receptor": {
+            "counts": {
+              "chambers": 2,
+              "cross_request_hits": 1,
+              "nodes": 2,
+              "nonidentity_reuse_hits": 1,
+              "portal_containment_checks": 1,
+              "portal_hits": 1,
+              "portal_poses": 25,
+              "portal_split_checks": 1,
+              "receptor_tests": 1024,
+              "reuse_hits": 1,
+              "splits": 1,
+              "tile_tests": 16
+            },
+            "decisions": [],
+            "status": "NEGATIVE",
+            "work": 116
+          },
+          "receptor-translate": {
+            "counts": {
+              "chambers": 4,
+              "isolated_searches": 1,
+              "nodes": 22,
+              "portal_containment_checks": 25,
+              "portal_poses": 25,
+              "portal_split_checks": 16,
+              "receptor_tests": 1024,
+              "reuse_hits": 1,
+              "splits": 2,
+              "tile_tests": 384
+            },
+            "decisions": [],
+            "status": "NEGATIVE",
+            "work": 1352
+          }
+        },
+        "id": "turtle-route-test-17",
+        "kind": "grafted"
+      },
+      {
+        "arms": {
+          "learned": {
+            "counts": {
+              "chambers": 2,
+              "cross_request_hits": 2,
+              "join_tests": 24,
+              "nodes": 4,
+              "nonidentity_reuse_hits": 2,
+              "portal_containment_checks": 1,
+              "portal_hits": 1,
+              "portal_poses": 24,
+              "portal_split_checks": 1,
+              "receptor_tests": 1004,
+              "reuse_hits": 2,
+              "splits": 1,
+              "tile_tests": 100
+            },
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  true,
+                  true,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "status": "POSITIVE",
+            "work": 387
+          },
+          "plain": {
+            "counts": {
+              "nodes": 28,
+              "tile_tests": 660
+            },
+            "decisions": [],
+            "status": "POSITIVE",
+            "work": 1432
+          },
+          "prefix2": {
+            "counts": {
+              "chambers": 2,
+              "cross_request_hits": 2,
+              "join_tests": 24,
+              "nodes": 4,
+              "nonidentity_reuse_hits": 2,
+              "portal_containment_checks": 1,
+              "portal_hits": 1,
+              "portal_poses": 24,
+              "portal_split_checks": 1,
+              "receptor_tests": 1004,
+              "reuse_hits": 2,
+              "splits": 1,
+              "tile_tests": 100
+            },
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  true,
+                  true,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "status": "POSITIVE",
+            "work": 387
+          },
+          "prefix8": {
+            "counts": {
+              "chambers": 2,
+              "cross_request_hits": 2,
+              "join_tests": 24,
+              "nodes": 10,
+              "nonidentity_reuse_hits": 2,
+              "portal_containment_checks": 1,
+              "portal_hits": 1,
+              "portal_poses": 24,
+              "portal_split_checks": 1,
+              "receptor_tests": 1004,
+              "reuse_hits": 2,
+              "splits": 1,
+              "tile_tests": 244
+            },
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  true,
+                  true,
+                  false
+                ],
+                "probe"
+              ],
+              [
+                [
+                  "turtle",
+                  8,
+                  true,
+                  true,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "status": "POSITIVE",
+            "work": 699
+          },
+          "receptor": {
+            "counts": {
+              "chambers": 2,
+              "cross_request_hits": 2,
+              "join_tests": 24,
+              "nodes": 2,
+              "nonidentity_reuse_hits": 2,
+              "portal_containment_checks": 1,
+              "portal_hits": 1,
+              "portal_poses": 24,
+              "portal_split_checks": 1,
+              "receptor_tests": 1004,
+              "reuse_hits": 2,
+              "splits": 1,
+              "tile_tests": 16
+            },
+            "decisions": [],
+            "status": "POSITIVE",
+            "work": 211
+          },
+          "receptor-translate": {
+            "counts": {
+              "nodes": 28,
+              "portal_containment_checks": 24,
+              "portal_poses": 24,
+              "portal_split_checks": 15,
+              "receptor_tests": 1004,
+              "tile_tests": 660
+            },
+            "decisions": [],
+            "status": "POSITIVE",
+            "work": 1902
+          }
+        },
+        "id": "turtle-route-test-18",
+        "kind": "grafted"
+      },
+      {
+        "arms": {
+          "learned": {
+            "counts": {
+              "nodes": 2,
+              "tile_tests": 36
+            },
+            "decisions": [],
+            "status": "NEGATIVE",
+            "work": 80
+          },
+          "plain": {
+            "counts": {
+              "nodes": 2,
+              "tile_tests": 36
+            },
+            "decisions": [],
+            "status": "NEGATIVE",
+            "work": 80
+          },
+          "prefix2": {
+            "counts": {
+              "nodes": 2,
+              "tile_tests": 36
+            },
+            "decisions": [],
+            "status": "NEGATIVE",
+            "work": 80
+          },
+          "prefix8": {
+            "counts": {
+              "nodes": 2,
+              "tile_tests": 36
+            },
+            "decisions": [],
+            "status": "NEGATIVE",
+            "work": 80
+          },
+          "receptor": {
+            "counts": {
+              "chambers": 2,
+              "cross_request_hits": 1,
+              "nodes": 2,
+              "nonidentity_reuse_hits": 1,
+              "portal_containment_checks": 1,
+              "portal_hits": 1,
+              "portal_poses": 26,
+              "portal_split_checks": 1,
+              "receptor_tests": 1024,
+              "reuse_hits": 1,
+              "splits": 1,
+              "tile_tests": 16
+            },
+            "decisions": [],
+            "status": "NEGATIVE",
+            "work": 116
+          },
+          "receptor-translate": {
+            "counts": {
+              "chambers": 2,
+              "cross_request_hits": 1,
+              "nodes": 2,
+              "portal_containment_checks": 1,
+              "portal_hits": 1,
+              "portal_poses": 26,
+              "portal_split_checks": 1,
+              "receptor_tests": 1024,
+              "reuse_hits": 1,
+              "splits": 1,
+              "tile_tests": 16
+            },
+            "decisions": [],
+            "status": "NEGATIVE",
+            "work": 116
+          }
+        },
+        "id": "turtle-route-test-19",
+        "kind": "grafted"
+      },
+      {
+        "arms": {
+          "learned": {
+            "counts": {
+              "nodes": 1,
+              "tile_tests": 12
+            },
+            "decisions": [],
+            "status": "NEGATIVE",
+            "work": 28
+          },
+          "plain": {
+            "counts": {
+              "nodes": 1,
+              "tile_tests": 12
+            },
+            "decisions": [],
+            "status": "NEGATIVE",
+            "work": 28
+          },
+          "prefix2": {
+            "counts": {
+              "nodes": 1,
+              "tile_tests": 12
+            },
+            "decisions": [],
+            "status": "NEGATIVE",
+            "work": 28
+          },
+          "prefix8": {
+            "counts": {
+              "nodes": 1,
+              "tile_tests": 12
+            },
+            "decisions": [],
+            "status": "NEGATIVE",
+            "work": 28
+          },
+          "receptor": {
+            "counts": {
+              "chambers": 2,
+              "cross_request_hits": 1,
+              "nodes": 2,
+              "nonidentity_reuse_hits": 1,
+              "portal_containment_checks": 1,
+              "portal_hits": 1,
+              "portal_poses": 29,
+              "portal_split_checks": 1,
+              "receptor_tests": 1120,
+              "reuse_hits": 1,
+              "splits": 1,
+              "tile_tests": 16
+            },
+            "decisions": [],
+            "status": "NEGATIVE",
+            "work": 121
+          },
+          "receptor-translate": {
+            "counts": {
+              "nodes": 1,
+              "portal_containment_checks": 29,
+              "portal_poses": 29,
+              "portal_split_checks": 17,
+              "receptor_tests": 1120,
+              "tile_tests": 12
+            },
+            "decisions": [],
+            "status": "NEGATIVE",
+            "work": 569
+          }
+        },
+        "id": "turtle-route-test-20",
+        "kind": "grafted"
+      },
+      {
+        "arms": {
+          "learned": {
+            "counts": {
+              "chambers": 2,
+              "cross_request_hits": 2,
+              "join_tests": 21,
+              "nodes": 4,
+              "nonidentity_reuse_hits": 2,
+              "portal_containment_checks": 2,
+              "portal_hits": 1,
+              "portal_poses": 28,
+              "portal_split_checks": 2,
+              "receptor_tests": 920,
+              "reuse_hits": 2,
+              "splits": 1,
+              "tile_tests": 60
+            },
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  true,
+                  true,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "status": "POSITIVE",
+            "work": 316
+          },
+          "plain": {
+            "counts": {
+              "nodes": 25,
+              "tile_tests": 540
+            },
+            "decisions": [],
+            "status": "POSITIVE",
+            "work": 1180
+          },
+          "prefix2": {
+            "counts": {
+              "chambers": 2,
+              "cross_request_hits": 2,
+              "join_tests": 21,
+              "nodes": 4,
+              "nonidentity_reuse_hits": 2,
+              "portal_containment_checks": 2,
+              "portal_hits": 1,
+              "portal_poses": 28,
+              "portal_split_checks": 2,
+              "receptor_tests": 920,
+              "reuse_hits": 2,
+              "splits": 1,
+              "tile_tests": 60
+            },
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  true,
+                  true,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "status": "POSITIVE",
+            "work": 316
+          },
+          "prefix8": {
+            "counts": {
+              "chambers": 2,
+              "cross_request_hits": 2,
+              "join_tests": 21,
+              "nodes": 10,
+              "nonidentity_reuse_hits": 2,
+              "portal_containment_checks": 2,
+              "portal_hits": 1,
+              "portal_poses": 28,
+              "portal_split_checks": 2,
+              "receptor_tests": 920,
+              "reuse_hits": 2,
+              "splits": 1,
+              "tile_tests": 264
+            },
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  true,
+                  true,
+                  false
+                ],
+                "probe"
+              ],
+              [
+                [
+                  "turtle",
+                  8,
+                  true,
+                  true,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "status": "POSITIVE",
+            "work": 748
+          },
+          "receptor": {
+            "counts": {
+              "chambers": 2,
+              "cross_request_hits": 2,
+              "join_tests": 21,
+              "nodes": 2,
+              "nonidentity_reuse_hits": 2,
+              "portal_containment_checks": 2,
+              "portal_hits": 1,
+              "portal_poses": 28,
+              "portal_split_checks": 2,
+              "receptor_tests": 920,
+              "reuse_hits": 2,
+              "splits": 1,
+              "tile_tests": 12
+            },
+            "decisions": [],
+            "status": "POSITIVE",
+            "work": 212
+          },
+          "receptor-translate": {
+            "counts": {
+              "chambers": 2,
+              "cross_request_hits": 1,
+              "isolated_searches": 1,
+              "join_tests": 21,
+              "nodes": 6,
+              "portal_containment_checks": 2,
+              "portal_hits": 1,
+              "portal_poses": 28,
+              "portal_split_checks": 2,
+              "receptor_tests": 920,
+              "reuse_hits": 1,
+              "splits": 1,
+              "tile_tests": 72
+            },
+            "decisions": [],
+            "status": "POSITIVE",
+            "work": 348
+          }
+        },
+        "id": "turtle-route-test-21",
+        "kind": "grafted"
+      },
+      {
+        "arms": {
+          "learned": {
+            "counts": {
+              "nodes": 5,
+              "tile_tests": 96
+            },
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  false,
+                  true,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "status": "NEGATIVE",
+            "work": 212
+          },
+          "plain": {
+            "counts": {
+              "nodes": 5,
+              "tile_tests": 96
+            },
+            "decisions": [],
+            "status": "NEGATIVE",
+            "work": 212
+          },
+          "prefix2": {
+            "counts": {
+              "nodes": 7,
+              "portal_containment_checks": 13,
+              "portal_poses": 13,
+              "portal_split_checks": 8,
+              "receptor_tests": 444,
+              "tile_tests": 120
+            },
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  false,
+                  true,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "status": "NEGATIVE",
+            "work": 515
+          },
+          "prefix8": {
+            "counts": {
+              "nodes": 5,
+              "tile_tests": 96
+            },
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  false,
+                  true,
+                  false
+                ],
+                "probe"
+              ]
+            ],
+            "status": "NEGATIVE",
+            "work": 212
+          },
+          "receptor": {
+            "counts": {
+              "nodes": 5,
+              "portal_containment_checks": 13,
+              "portal_poses": 13,
+              "portal_split_checks": 8,
+              "receptor_tests": 444,
+              "tile_tests": 96
+            },
+            "decisions": [],
+            "status": "NEGATIVE",
+            "work": 459
+          },
+          "receptor-translate": {
+            "counts": {
+              "nodes": 5,
+              "portal_containment_checks": 13,
+              "portal_poses": 13,
+              "portal_split_checks": 8,
+              "receptor_tests": 444,
+              "tile_tests": 96
+            },
+            "decisions": [],
+            "status": "NEGATIVE",
+            "work": 459
+          }
+        },
+        "id": "turtle-route-test-22",
+        "kind": "control"
+      },
+      {
+        "arms": {
+          "learned": {
+            "counts": {
+              "nodes": 1,
+              "tile_tests": 12
+            },
+            "decisions": [],
+            "status": "NEGATIVE",
+            "work": 28
+          },
+          "plain": {
+            "counts": {
+              "nodes": 1,
+              "tile_tests": 12
+            },
+            "decisions": [],
+            "status": "NEGATIVE",
+            "work": 28
+          },
+          "prefix2": {
+            "counts": {
+              "nodes": 1,
+              "tile_tests": 12
+            },
+            "decisions": [],
+            "status": "NEGATIVE",
+            "work": 28
+          },
+          "prefix8": {
+            "counts": {
+              "nodes": 1,
+              "tile_tests": 12
+            },
+            "decisions": [],
+            "status": "NEGATIVE",
+            "work": 28
+          },
+          "receptor": {
+            "counts": {
+              "nodes": 1,
+              "portal_containment_checks": 11,
+              "portal_poses": 11,
+              "portal_split_checks": 7,
+              "receptor_tests": 348,
+              "tile_tests": 12
+            },
+            "decisions": [],
+            "status": "NEGATIVE",
+            "work": 240
+          },
+          "receptor-translate": {
+            "counts": {
+              "nodes": 1,
+              "portal_containment_checks": 11,
+              "portal_poses": 11,
+              "portal_split_checks": 7,
+              "receptor_tests": 348,
+              "tile_tests": 12
+            },
+            "decisions": [],
+            "status": "NEGATIVE",
+            "work": 240
+          }
+        },
+        "id": "turtle-route-test-23",
+        "kind": "control"
+      },
+      {
+        "arms": {
+          "learned": {
+            "counts": {
+              "nodes": 250,
+              "portal_containment_checks": 27,
+              "portal_poses": 27,
+              "portal_split_checks": 24,
+              "receptor_tests": 1296,
+              "tile_tests": 6912
+            },
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  true,
+                  true,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "status": "BOUNDED",
+            "work": 15503
+          },
+          "plain": {
+            "counts": {
+              "nodes": 250,
+              "tile_tests": 6876
+            },
+            "decisions": [],
+            "status": "BOUNDED",
+            "work": 14752
+          },
+          "prefix2": {
+            "counts": {
+              "nodes": 250,
+              "portal_containment_checks": 27,
+              "portal_poses": 27,
+              "portal_split_checks": 24,
+              "receptor_tests": 1296,
+              "tile_tests": 6912
+            },
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  true,
+                  true,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "status": "BOUNDED",
+            "work": 15503
+          },
+          "prefix8": {
+            "counts": {
+              "nodes": 250,
+              "portal_containment_checks": 27,
+              "portal_poses": 27,
+              "portal_split_checks": 24,
+              "receptor_tests": 1296,
+              "tile_tests": 6900
+            },
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  true,
+                  true,
+                  false
+                ],
+                "probe"
+              ],
+              [
+                [
+                  "turtle",
+                  8,
+                  true,
+                  true,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "status": "BOUNDED",
+            "work": 15479
+          },
+          "receptor": {
+            "counts": {
+              "nodes": 250,
+              "portal_containment_checks": 27,
+              "portal_poses": 27,
+              "portal_split_checks": 24,
+              "receptor_tests": 1296,
+              "tile_tests": 6876
+            },
+            "decisions": [],
+            "status": "BOUNDED",
+            "work": 15431
+          },
+          "receptor-translate": {
+            "counts": {
+              "nodes": 250,
+              "portal_containment_checks": 27,
+              "portal_poses": 27,
+              "portal_split_checks": 24,
+              "receptor_tests": 1296,
+              "tile_tests": 6876
+            },
+            "decisions": [],
+            "status": "BOUNDED",
+            "work": 15431
+          }
+        },
+        "id": "turtle-route-test-24",
+        "kind": "control"
+      },
+      {
+        "arms": {
+          "learned": {
+            "counts": {
+              "nodes": 3,
+              "tile_tests": 24
+            },
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  false,
+                  true,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "status": "POSITIVE",
+            "work": 60
+          },
+          "plain": {
+            "counts": {
+              "nodes": 3,
+              "tile_tests": 24
+            },
+            "decisions": [],
+            "status": "POSITIVE",
+            "work": 60
+          },
+          "prefix2": {
+            "counts": {
+              "nodes": 5,
+              "portal_containment_checks": 8,
+              "portal_poses": 8,
+              "portal_split_checks": 2,
+              "receptor_tests": 200,
+              "tile_tests": 48
+            },
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  false,
+                  true,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "status": "POSITIVE",
+            "work": 206
+          },
+          "prefix8": {
+            "counts": {
+              "nodes": 3,
+              "tile_tests": 24
+            },
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  false,
+                  true,
+                  false
+                ],
+                "probe"
+              ]
+            ],
+            "status": "POSITIVE",
+            "work": 60
+          },
+          "receptor": {
+            "counts": {
+              "nodes": 3,
+              "portal_containment_checks": 8,
+              "portal_poses": 8,
+              "portal_split_checks": 2,
+              "receptor_tests": 200,
+              "tile_tests": 24
+            },
+            "decisions": [],
+            "status": "POSITIVE",
+            "work": 150
+          },
+          "receptor-translate": {
+            "counts": {
+              "nodes": 3,
+              "portal_containment_checks": 8,
+              "portal_poses": 8,
+              "portal_split_checks": 2,
+              "receptor_tests": 200,
+              "tile_tests": 24
+            },
+            "decisions": [],
+            "status": "POSITIVE",
+            "work": 150
+          }
+        },
+        "id": "turtle-route-test-25",
+        "kind": "control"
+      }
+    ]
+  },
+  "replay": {
+    "sha256": {
+      "data/routing-audit-v1.json": "b52a904054146080c717a640b20ac06ab7217f5f32f6724b410165ea72e95edc",
+      "data/routing-experiment-v1.json": "fedfe09d97f9e97718d71739e65ab766e0335e88f8ac1de2f5fa2c5b3a308587",
+      "data/routing-policy-v1.json": "21c86eda5509cdcdc11edd4055f75257c0f212c713625b79454be17e0ad3b400",
+      "input/routing-cases-v1.json": "337ada6f781a045cfbf869b99be5362e1d9a9cf0d50e81d3603cec9121130eda",
+      "report/chamber-routing-20261106-v1.html": "09ad37266c025a9c8ad280f633ec8e58d9b51a71e71a4aa504c77f2980d8f849"
+    },
+    "status": "CHECKED_CLEAN_REPLAY",
+    "timing_sha256": {
+      "data/routing-timing-before-v1.json": "e7f4a97c7042de950102798264ec04f6431fbe373f98f2c91badaf1afdca6fa7",
+      "data/routing-timing-v1.json": "aa51735eba566c0b11a5849ec96e45d4ecb1cf17c850b05e655ff21d4ced3bd4"
+    }
+  },
+  "schema": "CHAMBER-ROUTING-RESULTS-v1",
+  "timing": {
+    "repeats": 5,
+    "systems": {
+      "penrose": {
+        "learned": {
+          "donor_ns": [
+            179664042,
+            163940500,
+            162832708,
+            153151125,
+            154147042
+          ],
+          "test_ns": [
+            1119232875,
+            1164018083,
+            1122337125,
+            1159476000,
+            1130498083
+          ]
+        },
+        "plain": {
+          "donor_ns": [
+            108584625,
+            134923750,
+            160865167,
+            158678542,
+            146656208
+          ],
+          "test_ns": [
+            1297426167,
+            1110007334,
+            1064965625,
+            1038364833,
+            1119758416
+          ]
+        },
+        "prefix2": {
+          "donor_ns": [
+            161671166,
+            170684667,
+            237722834,
+            145488916,
+            144809375
+          ],
+          "test_ns": [
+            1260533375,
+            1297583959,
+            1139598709,
+            1169640583,
+            1280948625
+          ]
+        },
+        "prefix8": {
+          "donor_ns": [
+            141858208,
+            157715000,
+            166566042,
+            160729292,
+            158784167
+          ],
+          "test_ns": [
+            1121805625,
+            1142160167,
+            1048036750,
+            1077330959,
+            1026724833
+          ]
+        },
+        "receptor": {
+          "donor_ns": [
+            222116083,
+            184793708,
+            234752958,
+            155666625,
+            162890167
+          ],
+          "test_ns": [
+            1242935167,
+            1189528333,
+            1049683916,
+            1113146583,
+            1159660042
+          ]
+        },
+        "receptor-translate": {
+          "donor_ns": [
+            143233375,
+            166093750,
+            151622000,
+            130369042,
+            148927167
+          ],
+          "test_ns": [
+            1171950250,
+            1204970375,
+            1131778042,
+            1146875833,
+            1080248208
+          ]
+        }
+      },
+      "turtle": {
+        "learned": {
+          "donor_ns": [
+            381132917,
+            371818875,
+            414302791,
+            397576916,
+            390965875
+          ],
+          "test_ns": [
+            1449488958,
+            1400549125,
+            1411755833,
+            1397125375,
+            1688038750
+          ]
+        },
+        "plain": {
+          "donor_ns": [
+            407168500,
+            406208667,
+            374959583,
+            394191459,
+            404305917
+          ],
+          "test_ns": [
+            1413421041,
+            1291358750,
+            1551051041,
+            1341962125,
+            1355195375
+          ]
+        },
+        "prefix2": {
+          "donor_ns": [
+            365701375,
+            360310375,
+            613524041,
+            377819167,
+            344151291
+          ],
+          "test_ns": [
+            1418099042,
+            1625677250,
+            1457676959,
+            1453495959,
+            1462506875
+          ]
+        },
+        "prefix8": {
+          "donor_ns": [
+            391494375,
+            398838500,
+            398028458,
+            410791000,
+            383921500
+          ],
+          "test_ns": [
+            1645553542,
+            1493585458,
+            1438514708,
+            1449672292,
+            1797729833
+          ]
+        },
+        "receptor": {
+          "donor_ns": [
+            403930666,
+            408724916,
+            397768000,
+            360137375,
+            394067500
+          ],
+          "test_ns": [
+            1707026417,
+            1776505334,
+            1750833584,
+            1774278042,
+            1753883875
+          ]
+        },
+        "receptor-translate": {
+          "donor_ns": [
+            351665750,
+            381258625,
+            410985291,
+            376806708,
+            390969042
+          ],
+          "test_ns": [
+            1599144458,
+            1462021917,
+            1574919667,
+            1748659166,
+            1562927375
+          ]
+        }
+      }
+    }
+  },
+  "timing_before": {
+    "repeats": 5,
+    "systems": {
+      "penrose": {
+        "learned": {
+          "donor_ns": [
+            123562292,
+            152912667,
+            166542833,
+            149965833,
+            177725000
+          ],
+          "test_ns": [
+            993668333,
+            1038015042,
+            1013682958,
+            1187454000,
+            1194115791
+          ]
+        },
+        "plain": {
+          "donor_ns": [
+            172480125,
+            142002959,
+            182514208,
+            245286375,
+            268743125
+          ],
+          "test_ns": [
+            1168940000,
+            954022750,
+            1085147542,
+            1042839458,
+            1095377042
+          ]
+        },
+        "prefix2": {
+          "donor_ns": [
+            154170500,
+            144960083,
+            225686833,
+            182351125,
+            150922083
+          ],
+          "test_ns": [
+            1105523416,
+            1065056000,
+            1005158833,
+            1258621625,
+            1071724500
+          ]
+        },
+        "prefix8": {
+          "donor_ns": [
+            174522500,
+            153469416,
+            151143416,
+            175025792,
+            161967208
+          ],
+          "test_ns": [
+            1025525542,
+            1006896667,
+            906612083,
+            999402833,
+            1055961459
+          ]
+        },
+        "receptor": {
+          "donor_ns": [
+            196832333,
+            162830834,
+            291709417,
+            160794709,
+            146949375
+          ],
+          "test_ns": [
+            1120097583,
+            1044440333,
+            1134290833,
+            1137556666,
+            1175203750
+          ]
+        },
+        "receptor-translate": {
+          "donor_ns": [
+            142113083,
+            134701209,
+            139002542,
+            157800125,
+            146691667
+          ],
+          "test_ns": [
+            1001589167,
+            1051577541,
+            1238361500,
+            1042197708,
+            1137567041
+          ]
+        }
+      },
+      "turtle": {
+        "learned": {
+          "donor_ns": [
+            421414292,
+            466814250,
+            474975833,
+            706555250,
+            532632791
+          ],
+          "test_ns": [
+            2032688666,
+            2193652917,
+            2445187334,
+            2237659500,
+            2377916792
+          ]
+        },
+        "plain": {
+          "donor_ns": [
+            476841375,
+            419634000,
+            471380875,
+            558996625,
+            498490625
+          ],
+          "test_ns": [
+            1465029333,
+            1361836125,
+            1559244958,
+            1763600333,
+            1538414416
+          ]
+        },
+        "prefix2": {
+          "donor_ns": [
+            424616208,
+            465003291,
+            407463417,
+            515256250,
+            474951334
+          ],
+          "test_ns": [
+            2259918583,
+            2245727791,
+            2187847209,
+            2859979791,
+            2518770291
+          ]
+        },
+        "prefix8": {
+          "donor_ns": [
+            416380916,
+            472075792,
+            432008833,
+            475567250,
+            474403292
+          ],
+          "test_ns": [
+            2087790875,
+            2289495417,
+            2224208208,
+            2263353708,
+            2238330458
+          ]
+        },
+        "receptor": {
+          "donor_ns": [
+            419760125,
+            727467542,
+            453344500,
+            507079458,
+            447225042
+          ],
+          "test_ns": [
+            2438047958,
+            2662683375,
+            2701310875,
+            3045162958,
+            2770333833
+          ]
+        },
+        "receptor-translate": {
+          "donor_ns": [
+            408987417,
+            428644584,
+            475287541,
+            549650834,
+            483561875
+          ],
+          "test_ns": [
+            4445715875,
+            4588106292,
+            4746161791,
+            5032863125,
+            4682491208
+          ]
+        }
+      }
+    }
+  },
+  "training": {
+    "status": "FROZEN_TRAINED_ROUTING",
+    "systems": {
+      "penrose": {
+        "champion": "receptor",
+        "episodes": [
+          {
+            "case": "penrose-route-train-11",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 0,
+            "reward": 11940,
+            "status": "NEGATIVE",
+            "work": 60
+          },
+          {
+            "case": "penrose-route-train-09",
+            "decisions": [],
+            "epoch": 0,
+            "reward": 11988,
+            "status": "NEGATIVE",
+            "work": 12
+          },
+          {
+            "case": "penrose-route-train-00",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 0,
+            "reward": 11616,
+            "status": "POSITIVE",
+            "work": 384
+          },
+          {
+            "case": "penrose-route-train-04",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 0,
+            "reward": 10404,
+            "status": "NEGATIVE",
+            "work": 1596
+          },
+          {
+            "case": "penrose-route-train-08",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  false,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 0,
+            "reward": 11884,
+            "status": "POSITIVE",
+            "work": 116
+          },
+          {
+            "case": "penrose-route-train-07",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "probe"
+              ],
+              [
+                [
+                  "penrose",
+                  8,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 0,
+            "reward": 11796,
+            "status": "NEGATIVE",
+            "work": 204
+          },
+          {
+            "case": "penrose-route-train-02",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "probe"
+              ],
+              [
+                [
+                  "penrose",
+                  8,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 0,
+            "reward": -17648,
+            "status": "BOUNDED",
+            "work": 5648
+          },
+          {
+            "case": "penrose-route-train-01",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 0,
+            "reward": 11940,
+            "status": "NEGATIVE",
+            "work": 60
+          },
+          {
+            "case": "penrose-route-train-06",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 0,
+            "reward": 11352,
+            "status": "POSITIVE",
+            "work": 648
+          },
+          {
+            "case": "penrose-route-train-05",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 0,
+            "reward": 10572,
+            "status": "NEGATIVE",
+            "work": 1428
+          },
+          {
+            "case": "penrose-route-train-10",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 0,
+            "reward": 11816,
+            "status": "POSITIVE",
+            "work": 184
+          },
+          {
+            "case": "penrose-route-train-03",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 0,
+            "reward": 11400,
+            "status": "POSITIVE",
+            "work": 600
+          },
+          {
+            "case": "penrose-route-train-02",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 1,
+            "reward": -17648,
+            "status": "BOUNDED",
+            "work": 5648
+          },
+          {
+            "case": "penrose-route-train-07",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 1,
+            "reward": 11796,
+            "status": "NEGATIVE",
+            "work": 204
+          },
+          {
+            "case": "penrose-route-train-08",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  false,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 1,
+            "reward": 11884,
+            "status": "POSITIVE",
+            "work": 116
+          },
+          {
+            "case": "penrose-route-train-04",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 1,
+            "reward": 10404,
+            "status": "NEGATIVE",
+            "work": 1596
+          },
+          {
+            "case": "penrose-route-train-01",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 1,
+            "reward": 11940,
+            "status": "NEGATIVE",
+            "work": 60
+          },
+          {
+            "case": "penrose-route-train-09",
+            "decisions": [],
+            "epoch": 1,
+            "reward": 11988,
+            "status": "NEGATIVE",
+            "work": 12
+          },
+          {
+            "case": "penrose-route-train-11",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "probe"
+              ]
+            ],
+            "epoch": 1,
+            "reward": 11940,
+            "status": "NEGATIVE",
+            "work": 60
+          },
+          {
+            "case": "penrose-route-train-05",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 1,
+            "reward": 10572,
+            "status": "NEGATIVE",
+            "work": 1428
+          },
+          {
+            "case": "penrose-route-train-10",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 1,
+            "reward": 11816,
+            "status": "POSITIVE",
+            "work": 184
+          },
+          {
+            "case": "penrose-route-train-06",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 1,
+            "reward": 11352,
+            "status": "POSITIVE",
+            "work": 648
+          },
+          {
+            "case": "penrose-route-train-00",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 1,
+            "reward": 11616,
+            "status": "POSITIVE",
+            "work": 384
+          },
+          {
+            "case": "penrose-route-train-03",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 1,
+            "reward": 11400,
+            "status": "POSITIVE",
+            "work": 600
+          },
+          {
+            "case": "penrose-route-train-10",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 2,
+            "reward": 11816,
+            "status": "POSITIVE",
+            "work": 184
+          },
+          {
+            "case": "penrose-route-train-03",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "epoch": 2,
+            "reward": 11744,
+            "status": "POSITIVE",
+            "work": 256
+          },
+          {
+            "case": "penrose-route-train-02",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "epoch": 2,
+            "reward": -17692,
+            "status": "BOUNDED",
+            "work": 5692
+          },
+          {
+            "case": "penrose-route-train-04",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 2,
+            "reward": 10404,
+            "status": "NEGATIVE",
+            "work": 1596
+          },
+          {
+            "case": "penrose-route-train-05",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 2,
+            "reward": 10572,
+            "status": "NEGATIVE",
+            "work": 1428
+          },
+          {
+            "case": "penrose-route-train-00",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 2,
+            "reward": 11616,
+            "status": "POSITIVE",
+            "work": 384
+          },
+          {
+            "case": "penrose-route-train-06",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 2,
+            "reward": 11352,
+            "status": "POSITIVE",
+            "work": 648
+          },
+          {
+            "case": "penrose-route-train-07",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 2,
+            "reward": 11796,
+            "status": "NEGATIVE",
+            "work": 204
+          },
+          {
+            "case": "penrose-route-train-09",
+            "decisions": [],
+            "epoch": 2,
+            "reward": 11988,
+            "status": "NEGATIVE",
+            "work": 12
+          },
+          {
+            "case": "penrose-route-train-11",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 2,
+            "reward": 11940,
+            "status": "NEGATIVE",
+            "work": 60
+          },
+          {
+            "case": "penrose-route-train-01",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 2,
+            "reward": 11940,
+            "status": "NEGATIVE",
+            "work": 60
+          },
+          {
+            "case": "penrose-route-train-08",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  false,
+                  false,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "epoch": 2,
+            "reward": 11851,
+            "status": "POSITIVE",
+            "work": 149
+          },
+          {
+            "case": "penrose-route-train-02",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 3,
+            "reward": -17648,
+            "status": "BOUNDED",
+            "work": 5648
+          },
+          {
+            "case": "penrose-route-train-01",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 3,
+            "reward": 11940,
+            "status": "NEGATIVE",
+            "work": 60
+          },
+          {
+            "case": "penrose-route-train-05",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 3,
+            "reward": 10572,
+            "status": "NEGATIVE",
+            "work": 1428
+          },
+          {
+            "case": "penrose-route-train-06",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "probe"
+              ],
+              [
+                [
+                  "penrose",
+                  8,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 3,
+            "reward": 11352,
+            "status": "POSITIVE",
+            "work": 648
+          },
+          {
+            "case": "penrose-route-train-08",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  false,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 3,
+            "reward": 11884,
+            "status": "POSITIVE",
+            "work": 116
+          },
+          {
+            "case": "penrose-route-train-07",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 3,
+            "reward": 11796,
+            "status": "NEGATIVE",
+            "work": 204
+          },
+          {
+            "case": "penrose-route-train-03",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 3,
+            "reward": 11400,
+            "status": "POSITIVE",
+            "work": 600
+          },
+          {
+            "case": "penrose-route-train-04",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 3,
+            "reward": 10404,
+            "status": "NEGATIVE",
+            "work": 1596
+          },
+          {
+            "case": "penrose-route-train-00",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "epoch": 3,
+            "reward": 11532,
+            "status": "POSITIVE",
+            "work": 468
+          },
+          {
+            "case": "penrose-route-train-11",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 3,
+            "reward": 11940,
+            "status": "NEGATIVE",
+            "work": 60
+          },
+          {
+            "case": "penrose-route-train-10",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 3,
+            "reward": 11816,
+            "status": "POSITIVE",
+            "work": 184
+          },
+          {
+            "case": "penrose-route-train-09",
+            "decisions": [],
+            "epoch": 3,
+            "reward": 11988,
+            "status": "NEGATIVE",
+            "work": 12
+          },
+          {
+            "case": "penrose-route-train-08",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  false,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 4,
+            "reward": 11884,
+            "status": "POSITIVE",
+            "work": 116
+          },
+          {
+            "case": "penrose-route-train-09",
+            "decisions": [],
+            "epoch": 4,
+            "reward": 11988,
+            "status": "NEGATIVE",
+            "work": 12
+          },
+          {
+            "case": "penrose-route-train-04",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 4,
+            "reward": 10404,
+            "status": "NEGATIVE",
+            "work": 1596
+          },
+          {
+            "case": "penrose-route-train-07",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 4,
+            "reward": 11796,
+            "status": "NEGATIVE",
+            "work": 204
+          },
+          {
+            "case": "penrose-route-train-05",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "probe"
+              ],
+              [
+                [
+                  "penrose",
+                  8,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 4,
+            "reward": 10572,
+            "status": "NEGATIVE",
+            "work": 1428
+          },
+          {
+            "case": "penrose-route-train-06",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 4,
+            "reward": 11352,
+            "status": "POSITIVE",
+            "work": 648
+          },
+          {
+            "case": "penrose-route-train-02",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 4,
+            "reward": -17648,
+            "status": "BOUNDED",
+            "work": 5648
+          },
+          {
+            "case": "penrose-route-train-03",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 4,
+            "reward": 11400,
+            "status": "POSITIVE",
+            "work": 600
+          },
+          {
+            "case": "penrose-route-train-10",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 4,
+            "reward": 11816,
+            "status": "POSITIVE",
+            "work": 184
+          },
+          {
+            "case": "penrose-route-train-01",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 4,
+            "reward": 11940,
+            "status": "NEGATIVE",
+            "work": 60
+          },
+          {
+            "case": "penrose-route-train-11",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 4,
+            "reward": 11940,
+            "status": "NEGATIVE",
+            "work": 60
+          },
+          {
+            "case": "penrose-route-train-00",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "epoch": 4,
+            "reward": 11532,
+            "status": "POSITIVE",
+            "work": 468
+          },
+          {
+            "case": "penrose-route-train-05",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 5,
+            "reward": 10572,
+            "status": "NEGATIVE",
+            "work": 1428
+          },
+          {
+            "case": "penrose-route-train-04",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 5,
+            "reward": 10404,
+            "status": "NEGATIVE",
+            "work": 1596
+          },
+          {
+            "case": "penrose-route-train-11",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 5,
+            "reward": 11940,
+            "status": "NEGATIVE",
+            "work": 60
+          },
+          {
+            "case": "penrose-route-train-03",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 5,
+            "reward": 11400,
+            "status": "POSITIVE",
+            "work": 600
+          },
+          {
+            "case": "penrose-route-train-10",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "probe"
+              ],
+              [
+                [
+                  "penrose",
+                  8,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 5,
+            "reward": 11816,
+            "status": "POSITIVE",
+            "work": 184
+          },
+          {
+            "case": "penrose-route-train-00",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 5,
+            "reward": 11616,
+            "status": "POSITIVE",
+            "work": 384
+          },
+          {
+            "case": "penrose-route-train-02",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 5,
+            "reward": -17648,
+            "status": "BOUNDED",
+            "work": 5648
+          },
+          {
+            "case": "penrose-route-train-01",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "epoch": 5,
+            "reward": 11886,
+            "status": "NEGATIVE",
+            "work": 114
+          },
+          {
+            "case": "penrose-route-train-07",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 5,
+            "reward": 11796,
+            "status": "NEGATIVE",
+            "work": 204
+          },
+          {
+            "case": "penrose-route-train-09",
+            "decisions": [],
+            "epoch": 5,
+            "reward": 11988,
+            "status": "NEGATIVE",
+            "work": 12
+          },
+          {
+            "case": "penrose-route-train-08",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  false,
+                  false,
+                  false
+                ],
+                "probe"
+              ],
+              [
+                [
+                  "penrose",
+                  8,
+                  false,
+                  false,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "epoch": 5,
+            "reward": 11771,
+            "status": "POSITIVE",
+            "work": 229
+          },
+          {
+            "case": "penrose-route-train-06",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 5,
+            "reward": 11352,
+            "status": "POSITIVE",
+            "work": 648
+          },
+          {
+            "case": "penrose-route-train-02",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 6,
+            "reward": -17648,
+            "status": "BOUNDED",
+            "work": 5648
+          },
+          {
+            "case": "penrose-route-train-00",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 6,
+            "reward": 11616,
+            "status": "POSITIVE",
+            "work": 384
+          },
+          {
+            "case": "penrose-route-train-03",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "epoch": 6,
+            "reward": 11744,
+            "status": "POSITIVE",
+            "work": 256
+          },
+          {
+            "case": "penrose-route-train-11",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 6,
+            "reward": 11940,
+            "status": "NEGATIVE",
+            "work": 60
+          },
+          {
+            "case": "penrose-route-train-09",
+            "decisions": [],
+            "epoch": 6,
+            "reward": 11988,
+            "status": "NEGATIVE",
+            "work": 12
+          },
+          {
+            "case": "penrose-route-train-01",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 6,
+            "reward": 11940,
+            "status": "NEGATIVE",
+            "work": 60
+          },
+          {
+            "case": "penrose-route-train-10",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 6,
+            "reward": 11816,
+            "status": "POSITIVE",
+            "work": 184
+          },
+          {
+            "case": "penrose-route-train-05",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 6,
+            "reward": 10572,
+            "status": "NEGATIVE",
+            "work": 1428
+          },
+          {
+            "case": "penrose-route-train-08",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  false,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 6,
+            "reward": 11884,
+            "status": "POSITIVE",
+            "work": 116
+          },
+          {
+            "case": "penrose-route-train-04",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 6,
+            "reward": 10404,
+            "status": "NEGATIVE",
+            "work": 1596
+          },
+          {
+            "case": "penrose-route-train-07",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 6,
+            "reward": 11796,
+            "status": "NEGATIVE",
+            "work": 204
+          },
+          {
+            "case": "penrose-route-train-06",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 6,
+            "reward": 11352,
+            "status": "POSITIVE",
+            "work": 648
+          },
+          {
+            "case": "penrose-route-train-08",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  false,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 7,
+            "reward": 11884,
+            "status": "POSITIVE",
+            "work": 116
+          },
+          {
+            "case": "penrose-route-train-01",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 7,
+            "reward": 11940,
+            "status": "NEGATIVE",
+            "work": 60
+          },
+          {
+            "case": "penrose-route-train-05",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "probe"
+              ],
+              [
+                [
+                  "penrose",
+                  8,
+                  true,
+                  false,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "epoch": 7,
+            "reward": 10329,
+            "status": "NEGATIVE",
+            "work": 1671
+          },
+          {
+            "case": "penrose-route-train-11",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "probe"
+              ]
+            ],
+            "epoch": 7,
+            "reward": 11940,
+            "status": "NEGATIVE",
+            "work": 60
+          },
+          {
+            "case": "penrose-route-train-04",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 7,
+            "reward": 10404,
+            "status": "NEGATIVE",
+            "work": 1596
+          },
+          {
+            "case": "penrose-route-train-06",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 7,
+            "reward": 11352,
+            "status": "POSITIVE",
+            "work": 648
+          },
+          {
+            "case": "penrose-route-train-07",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 7,
+            "reward": 11796,
+            "status": "NEGATIVE",
+            "work": 204
+          },
+          {
+            "case": "penrose-route-train-10",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 7,
+            "reward": 11816,
+            "status": "POSITIVE",
+            "work": 184
+          },
+          {
+            "case": "penrose-route-train-00",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 7,
+            "reward": 11616,
+            "status": "POSITIVE",
+            "work": 384
+          },
+          {
+            "case": "penrose-route-train-09",
+            "decisions": [],
+            "epoch": 7,
+            "reward": 11988,
+            "status": "NEGATIVE",
+            "work": 12
+          },
+          {
+            "case": "penrose-route-train-03",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 7,
+            "reward": 11400,
+            "status": "POSITIVE",
+            "work": 600
+          },
+          {
+            "case": "penrose-route-train-02",
+            "decisions": [
+              [
+                [
+                  "penrose",
+                  2,
+                  true,
+                  false,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 7,
+            "reward": -17648,
+            "status": "BOUNDED",
+            "work": 5648
+          }
+        ],
+        "policy": {
+          "backoff": [
+            {
+              "state": [
+                "penrose",
+                2
+              ],
+              "values": {
+                "continue": [
+                  72,
+                  650144
+                ],
+                "probe": [
+                  9,
+                  68865
+                ],
+                "receptor": [
+                  7,
+                  52597
+                ]
+              }
+            },
+            {
+              "state": [
+                "penrose",
+                8
+              ],
+              "values": {
+                "continue": [
+                  5,
+                  27888
+                ],
+                "receptor": [
+                  2,
+                  22100
+                ]
+              }
+            }
+          ],
+          "specific": [
+            {
+              "state": [
+                "penrose",
+                2,
+                false,
+                false,
+                false
+              ],
+              "values": {
+                "continue": [
+                  6,
+                  71304
+                ],
+                "probe": [
+                  1,
+                  10593
+                ],
+                "receptor": [
+                  1,
+                  11851
+                ]
+              }
+            },
+            {
+              "state": [
+                "penrose",
+                2,
+                true,
+                false,
+                false
+              ],
+              "values": {
+                "continue": [
+                  66,
+                  578840
+                ],
+                "probe": [
+                  8,
+                  58272
+                ],
+                "receptor": [
+                  6,
+                  40746
+                ]
+              }
+            },
+            {
+              "state": [
+                "penrose",
+                8,
+                false,
+                false,
+                false
+              ],
+              "values": {
+                "continue": [
+                  0,
+                  0
+                ],
+                "receptor": [
+                  1,
+                  11771
+                ]
+              }
+            },
+            {
+              "state": [
+                "penrose",
+                8,
+                true,
+                false,
+                false
+              ],
+              "values": {
+                "continue": [
+                  5,
+                  27888
+                ],
+                "receptor": [
+                  1,
+                  10329
+                ]
+              }
+            }
+          ]
+        },
+        "static_reward": {
+          "plain": 109060,
+          "prefix2": 108961,
+          "prefix8": 107953,
+          "receptor": 109384
+        },
+        "training_ids": [
+          "penrose-route-train-00",
+          "penrose-route-train-01",
+          "penrose-route-train-02",
+          "penrose-route-train-03",
+          "penrose-route-train-04",
+          "penrose-route-train-05",
+          "penrose-route-train-06",
+          "penrose-route-train-07",
+          "penrose-route-train-08",
+          "penrose-route-train-09",
+          "penrose-route-train-10",
+          "penrose-route-train-11"
+        ],
+        "weights": {
+          "join_tests": 4,
+          "nodes": 4,
+          "portal_containment_checks": 5,
+          "portal_split_checks": 20,
+          "tile_tests": 2
+        }
+      },
+      "turtle": {
+        "champion": "receptor",
+        "episodes": [
+          {
+            "case": "turtle-route-train-09",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  false,
+                  true,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 0,
+            "reward": 11728,
+            "status": "POSITIVE",
+            "work": 272
+          },
+          {
+            "case": "turtle-route-train-07",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  false,
+                  true,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 0,
+            "reward": 11888,
+            "status": "NEGATIVE",
+            "work": 112
+          },
+          {
+            "case": "turtle-route-train-05",
+            "decisions": [],
+            "epoch": 0,
+            "reward": 11972,
+            "status": "NEGATIVE",
+            "work": 28
+          },
+          {
+            "case": "turtle-route-train-10",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  false,
+                  true,
+                  false
+                ],
+                "probe"
+              ],
+              [
+                [
+                  "turtle",
+                  8,
+                  false,
+                  true,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 0,
+            "reward": 11360,
+            "status": "POSITIVE",
+            "work": 640
+          },
+          {
+            "case": "turtle-route-train-00",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  true,
+                  true,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 0,
+            "reward": 10884,
+            "status": "POSITIVE",
+            "work": 1116
+          },
+          {
+            "case": "turtle-route-train-11",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  false,
+                  true,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 0,
+            "reward": 11680,
+            "status": "POSITIVE",
+            "work": 320
+          },
+          {
+            "case": "turtle-route-train-03",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  true,
+                  true,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 0,
+            "reward": 10772,
+            "status": "POSITIVE",
+            "work": 1228
+          },
+          {
+            "case": "turtle-route-train-02",
+            "decisions": [],
+            "epoch": 0,
+            "reward": 11944,
+            "status": "NEGATIVE",
+            "work": 56
+          },
+          {
+            "case": "turtle-route-train-01",
+            "decisions": [],
+            "epoch": 0,
+            "reward": 11944,
+            "status": "NEGATIVE",
+            "work": 56
+          },
+          {
+            "case": "turtle-route-train-08",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  true,
+                  true,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 0,
+            "reward": 9368,
+            "status": "POSITIVE",
+            "work": 2632
+          },
+          {
+            "case": "turtle-route-train-04",
+            "decisions": [],
+            "epoch": 0,
+            "reward": 11972,
+            "status": "NEGATIVE",
+            "work": 28
+          },
+          {
+            "case": "turtle-route-train-06",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  false,
+                  true,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 0,
+            "reward": 11624,
+            "status": "POSITIVE",
+            "work": 376
+          },
+          {
+            "case": "turtle-route-train-07",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  false,
+                  true,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 1,
+            "reward": 11888,
+            "status": "NEGATIVE",
+            "work": 112
+          },
+          {
+            "case": "turtle-route-train-10",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  false,
+                  true,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 1,
+            "reward": 11360,
+            "status": "POSITIVE",
+            "work": 640
+          },
+          {
+            "case": "turtle-route-train-09",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  false,
+                  true,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "epoch": 1,
+            "reward": 11343,
+            "status": "POSITIVE",
+            "work": 657
+          },
+          {
+            "case": "turtle-route-train-03",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  true,
+                  true,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "epoch": 1,
+            "reward": 11628,
+            "status": "POSITIVE",
+            "work": 372
+          },
+          {
+            "case": "turtle-route-train-11",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  false,
+                  true,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 1,
+            "reward": 11680,
+            "status": "POSITIVE",
+            "work": 320
+          },
+          {
+            "case": "turtle-route-train-02",
+            "decisions": [],
+            "epoch": 1,
+            "reward": 11944,
+            "status": "NEGATIVE",
+            "work": 56
+          },
+          {
+            "case": "turtle-route-train-01",
+            "decisions": [],
+            "epoch": 1,
+            "reward": 11944,
+            "status": "NEGATIVE",
+            "work": 56
+          },
+          {
+            "case": "turtle-route-train-05",
+            "decisions": [],
+            "epoch": 1,
+            "reward": 11972,
+            "status": "NEGATIVE",
+            "work": 28
+          },
+          {
+            "case": "turtle-route-train-00",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  true,
+                  true,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "epoch": 1,
+            "reward": 11732,
+            "status": "POSITIVE",
+            "work": 268
+          },
+          {
+            "case": "turtle-route-train-08",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  true,
+                  true,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 1,
+            "reward": 9368,
+            "status": "POSITIVE",
+            "work": 2632
+          },
+          {
+            "case": "turtle-route-train-06",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  false,
+                  true,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 1,
+            "reward": 11624,
+            "status": "POSITIVE",
+            "work": 376
+          },
+          {
+            "case": "turtle-route-train-04",
+            "decisions": [],
+            "epoch": 1,
+            "reward": 11972,
+            "status": "NEGATIVE",
+            "work": 28
+          },
+          {
+            "case": "turtle-route-train-06",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  false,
+                  true,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 2,
+            "reward": 11624,
+            "status": "POSITIVE",
+            "work": 376
+          },
+          {
+            "case": "turtle-route-train-02",
+            "decisions": [],
+            "epoch": 2,
+            "reward": 11944,
+            "status": "NEGATIVE",
+            "work": 56
+          },
+          {
+            "case": "turtle-route-train-04",
+            "decisions": [],
+            "epoch": 2,
+            "reward": 11972,
+            "status": "NEGATIVE",
+            "work": 28
+          },
+          {
+            "case": "turtle-route-train-05",
+            "decisions": [],
+            "epoch": 2,
+            "reward": 11972,
+            "status": "NEGATIVE",
+            "work": 28
+          },
+          {
+            "case": "turtle-route-train-11",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  false,
+                  true,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "epoch": 2,
+            "reward": 11332,
+            "status": "POSITIVE",
+            "work": 668
+          },
+          {
+            "case": "turtle-route-train-00",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  true,
+                  true,
+                  false
+                ],
+                "probe"
+              ],
+              [
+                [
+                  "turtle",
+                  8,
+                  true,
+                  true,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 2,
+            "reward": 10884,
+            "status": "POSITIVE",
+            "work": 1116
+          },
+          {
+            "case": "turtle-route-train-01",
+            "decisions": [],
+            "epoch": 2,
+            "reward": 11944,
+            "status": "NEGATIVE",
+            "work": 56
+          },
+          {
+            "case": "turtle-route-train-10",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  false,
+                  true,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 2,
+            "reward": 11360,
+            "status": "POSITIVE",
+            "work": 640
+          },
+          {
+            "case": "turtle-route-train-08",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  true,
+                  true,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "epoch": 2,
+            "reward": 9063,
+            "status": "POSITIVE",
+            "work": 2937
+          },
+          {
+            "case": "turtle-route-train-09",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  false,
+                  true,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 2,
+            "reward": 11728,
+            "status": "POSITIVE",
+            "work": 272
+          },
+          {
+            "case": "turtle-route-train-03",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  true,
+                  true,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "epoch": 2,
+            "reward": 11628,
+            "status": "POSITIVE",
+            "work": 372
+          },
+          {
+            "case": "turtle-route-train-07",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  false,
+                  true,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 2,
+            "reward": 11888,
+            "status": "NEGATIVE",
+            "work": 112
+          },
+          {
+            "case": "turtle-route-train-02",
+            "decisions": [],
+            "epoch": 3,
+            "reward": 11944,
+            "status": "NEGATIVE",
+            "work": 56
+          },
+          {
+            "case": "turtle-route-train-05",
+            "decisions": [],
+            "epoch": 3,
+            "reward": 11972,
+            "status": "NEGATIVE",
+            "work": 28
+          },
+          {
+            "case": "turtle-route-train-04",
+            "decisions": [],
+            "epoch": 3,
+            "reward": 11972,
+            "status": "NEGATIVE",
+            "work": 28
+          },
+          {
+            "case": "turtle-route-train-10",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  false,
+                  true,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 3,
+            "reward": 11360,
+            "status": "POSITIVE",
+            "work": 640
+          },
+          {
+            "case": "turtle-route-train-09",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  false,
+                  true,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 3,
+            "reward": 11728,
+            "status": "POSITIVE",
+            "work": 272
+          },
+          {
+            "case": "turtle-route-train-06",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  false,
+                  true,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 3,
+            "reward": 11624,
+            "status": "POSITIVE",
+            "work": 376
+          },
+          {
+            "case": "turtle-route-train-11",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  false,
+                  true,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 3,
+            "reward": 11680,
+            "status": "POSITIVE",
+            "work": 320
+          },
+          {
+            "case": "turtle-route-train-08",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  true,
+                  true,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "epoch": 3,
+            "reward": 9063,
+            "status": "POSITIVE",
+            "work": 2937
+          },
+          {
+            "case": "turtle-route-train-01",
+            "decisions": [],
+            "epoch": 3,
+            "reward": 11944,
+            "status": "NEGATIVE",
+            "work": 56
+          },
+          {
+            "case": "turtle-route-train-07",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  false,
+                  true,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 3,
+            "reward": 11888,
+            "status": "NEGATIVE",
+            "work": 112
+          },
+          {
+            "case": "turtle-route-train-00",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  true,
+                  true,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "epoch": 3,
+            "reward": 11732,
+            "status": "POSITIVE",
+            "work": 268
+          },
+          {
+            "case": "turtle-route-train-03",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  true,
+                  true,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "epoch": 3,
+            "reward": 11628,
+            "status": "POSITIVE",
+            "work": 372
+          },
+          {
+            "case": "turtle-route-train-11",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  false,
+                  true,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 4,
+            "reward": 11680,
+            "status": "POSITIVE",
+            "work": 320
+          },
+          {
+            "case": "turtle-route-train-00",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  true,
+                  true,
+                  false
+                ],
+                "probe"
+              ],
+              [
+                [
+                  "turtle",
+                  8,
+                  true,
+                  true,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 4,
+            "reward": 10884,
+            "status": "POSITIVE",
+            "work": 1116
+          },
+          {
+            "case": "turtle-route-train-05",
+            "decisions": [],
+            "epoch": 4,
+            "reward": 11972,
+            "status": "NEGATIVE",
+            "work": 28
+          },
+          {
+            "case": "turtle-route-train-09",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  false,
+                  true,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 4,
+            "reward": 11728,
+            "status": "POSITIVE",
+            "work": 272
+          },
+          {
+            "case": "turtle-route-train-08",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  true,
+                  true,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "epoch": 4,
+            "reward": 9063,
+            "status": "POSITIVE",
+            "work": 2937
+          },
+          {
+            "case": "turtle-route-train-01",
+            "decisions": [],
+            "epoch": 4,
+            "reward": 11944,
+            "status": "NEGATIVE",
+            "work": 56
+          },
+          {
+            "case": "turtle-route-train-03",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  true,
+                  true,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "epoch": 4,
+            "reward": 11628,
+            "status": "POSITIVE",
+            "work": 372
+          },
+          {
+            "case": "turtle-route-train-06",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  false,
+                  true,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 4,
+            "reward": 11624,
+            "status": "POSITIVE",
+            "work": 376
+          },
+          {
+            "case": "turtle-route-train-04",
+            "decisions": [],
+            "epoch": 4,
+            "reward": 11972,
+            "status": "NEGATIVE",
+            "work": 28
+          },
+          {
+            "case": "turtle-route-train-07",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  false,
+                  true,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 4,
+            "reward": 11888,
+            "status": "NEGATIVE",
+            "work": 112
+          },
+          {
+            "case": "turtle-route-train-10",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  false,
+                  true,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 4,
+            "reward": 11360,
+            "status": "POSITIVE",
+            "work": 640
+          },
+          {
+            "case": "turtle-route-train-02",
+            "decisions": [],
+            "epoch": 4,
+            "reward": 11944,
+            "status": "NEGATIVE",
+            "work": 56
+          },
+          {
+            "case": "turtle-route-train-05",
+            "decisions": [],
+            "epoch": 5,
+            "reward": 11972,
+            "status": "NEGATIVE",
+            "work": 28
+          },
+          {
+            "case": "turtle-route-train-06",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  false,
+                  true,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 5,
+            "reward": 11624,
+            "status": "POSITIVE",
+            "work": 376
+          },
+          {
+            "case": "turtle-route-train-00",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  true,
+                  true,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "epoch": 5,
+            "reward": 11732,
+            "status": "POSITIVE",
+            "work": 268
+          },
+          {
+            "case": "turtle-route-train-04",
+            "decisions": [],
+            "epoch": 5,
+            "reward": 11972,
+            "status": "NEGATIVE",
+            "work": 28
+          },
+          {
+            "case": "turtle-route-train-07",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  false,
+                  true,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 5,
+            "reward": 11888,
+            "status": "NEGATIVE",
+            "work": 112
+          },
+          {
+            "case": "turtle-route-train-09",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  false,
+                  true,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 5,
+            "reward": 11728,
+            "status": "POSITIVE",
+            "work": 272
+          },
+          {
+            "case": "turtle-route-train-11",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  false,
+                  true,
+                  false
+                ],
+                "probe"
+              ]
+            ],
+            "epoch": 5,
+            "reward": 11680,
+            "status": "POSITIVE",
+            "work": 320
+          },
+          {
+            "case": "turtle-route-train-03",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  true,
+                  true,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "epoch": 5,
+            "reward": 11628,
+            "status": "POSITIVE",
+            "work": 372
+          },
+          {
+            "case": "turtle-route-train-08",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  true,
+                  true,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "epoch": 5,
+            "reward": 9063,
+            "status": "POSITIVE",
+            "work": 2937
+          },
+          {
+            "case": "turtle-route-train-10",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  false,
+                  true,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 5,
+            "reward": 11360,
+            "status": "POSITIVE",
+            "work": 640
+          },
+          {
+            "case": "turtle-route-train-01",
+            "decisions": [],
+            "epoch": 5,
+            "reward": 11944,
+            "status": "NEGATIVE",
+            "work": 56
+          },
+          {
+            "case": "turtle-route-train-02",
+            "decisions": [],
+            "epoch": 5,
+            "reward": 11944,
+            "status": "NEGATIVE",
+            "work": 56
+          },
+          {
+            "case": "turtle-route-train-08",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  true,
+                  true,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "epoch": 6,
+            "reward": 9063,
+            "status": "POSITIVE",
+            "work": 2937
+          },
+          {
+            "case": "turtle-route-train-01",
+            "decisions": [],
+            "epoch": 6,
+            "reward": 11944,
+            "status": "NEGATIVE",
+            "work": 56
+          },
+          {
+            "case": "turtle-route-train-02",
+            "decisions": [],
+            "epoch": 6,
+            "reward": 11944,
+            "status": "NEGATIVE",
+            "work": 56
+          },
+          {
+            "case": "turtle-route-train-00",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  true,
+                  true,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "epoch": 6,
+            "reward": 11732,
+            "status": "POSITIVE",
+            "work": 268
+          },
+          {
+            "case": "turtle-route-train-06",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  false,
+                  true,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 6,
+            "reward": 11624,
+            "status": "POSITIVE",
+            "work": 376
+          },
+          {
+            "case": "turtle-route-train-05",
+            "decisions": [],
+            "epoch": 6,
+            "reward": 11972,
+            "status": "NEGATIVE",
+            "work": 28
+          },
+          {
+            "case": "turtle-route-train-10",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  false,
+                  true,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 6,
+            "reward": 11360,
+            "status": "POSITIVE",
+            "work": 640
+          },
+          {
+            "case": "turtle-route-train-04",
+            "decisions": [],
+            "epoch": 6,
+            "reward": 11972,
+            "status": "NEGATIVE",
+            "work": 28
+          },
+          {
+            "case": "turtle-route-train-07",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  false,
+                  true,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 6,
+            "reward": 11888,
+            "status": "NEGATIVE",
+            "work": 112
+          },
+          {
+            "case": "turtle-route-train-09",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  false,
+                  true,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 6,
+            "reward": 11728,
+            "status": "POSITIVE",
+            "work": 272
+          },
+          {
+            "case": "turtle-route-train-03",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  true,
+                  true,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "epoch": 6,
+            "reward": 11628,
+            "status": "POSITIVE",
+            "work": 372
+          },
+          {
+            "case": "turtle-route-train-11",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  false,
+                  true,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 6,
+            "reward": 11680,
+            "status": "POSITIVE",
+            "work": 320
+          },
+          {
+            "case": "turtle-route-train-00",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  true,
+                  true,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "epoch": 7,
+            "reward": 11732,
+            "status": "POSITIVE",
+            "work": 268
+          },
+          {
+            "case": "turtle-route-train-04",
+            "decisions": [],
+            "epoch": 7,
+            "reward": 11972,
+            "status": "NEGATIVE",
+            "work": 28
+          },
+          {
+            "case": "turtle-route-train-11",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  false,
+                  true,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 7,
+            "reward": 11680,
+            "status": "POSITIVE",
+            "work": 320
+          },
+          {
+            "case": "turtle-route-train-07",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  false,
+                  true,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 7,
+            "reward": 11888,
+            "status": "NEGATIVE",
+            "work": 112
+          },
+          {
+            "case": "turtle-route-train-02",
+            "decisions": [],
+            "epoch": 7,
+            "reward": 11944,
+            "status": "NEGATIVE",
+            "work": 56
+          },
+          {
+            "case": "turtle-route-train-06",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  false,
+                  true,
+                  false
+                ],
+                "probe"
+              ],
+              [
+                [
+                  "turtle",
+                  8,
+                  false,
+                  true,
+                  true
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 7,
+            "reward": 11624,
+            "status": "POSITIVE",
+            "work": 376
+          },
+          {
+            "case": "turtle-route-train-08",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  true,
+                  true,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "epoch": 7,
+            "reward": 9063,
+            "status": "POSITIVE",
+            "work": 2937
+          },
+          {
+            "case": "turtle-route-train-01",
+            "decisions": [],
+            "epoch": 7,
+            "reward": 11944,
+            "status": "NEGATIVE",
+            "work": 56
+          },
+          {
+            "case": "turtle-route-train-09",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  false,
+                  true,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "epoch": 7,
+            "reward": 11343,
+            "status": "POSITIVE",
+            "work": 657
+          },
+          {
+            "case": "turtle-route-train-10",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  false,
+                  true,
+                  false
+                ],
+                "continue"
+              ]
+            ],
+            "epoch": 7,
+            "reward": 11360,
+            "status": "POSITIVE",
+            "work": 640
+          },
+          {
+            "case": "turtle-route-train-05",
+            "decisions": [],
+            "epoch": 7,
+            "reward": 11972,
+            "status": "NEGATIVE",
+            "work": 28
+          },
+          {
+            "case": "turtle-route-train-03",
+            "decisions": [
+              [
+                [
+                  "turtle",
+                  2,
+                  true,
+                  true,
+                  false
+                ],
+                "receptor"
+              ]
+            ],
+            "epoch": 7,
+            "reward": 11628,
+            "status": "POSITIVE",
+            "work": 372
+          }
+        ],
+        "policy": {
+          "backoff": [
+            {
+              "state": [
+                "turtle",
+                2
+              ],
+              "values": {
+                "continue": [
+                  38,
+                  436832
+                ],
+                "probe": [
+                  5,
+                  51955
+                ],
+                "receptor": [
+                  21,
+                  228452
+                ]
+              }
+            },
+            {
+              "state": [
+                "turtle",
+                8
+              ],
+              "values": {
+                "continue": [
+                  4,
+                  44752
+                ],
+                "receptor": [
+                  0,
+                  0
+                ]
+              }
+            }
+          ],
+          "specific": [
+            {
+              "state": [
+                "turtle",
+                2,
+                false,
+                true,
+                false
+              ],
+              "values": {
+                "continue": [
+                  34,
+                  396440
+                ],
+                "probe": [
+                  3,
+                  32365
+                ],
+                "receptor": [
+                  3,
+                  34018
+                ]
+              }
+            },
+            {
+              "state": [
+                "turtle",
+                2,
+                true,
+                true,
+                false
+              ],
+              "values": {
+                "continue": [
+                  4,
+                  40392
+                ],
+                "probe": [
+                  2,
+                  19590
+                ],
+                "receptor": [
+                  18,
+                  194434
+                ]
+              }
+            },
+            {
+              "state": [
+                "turtle",
+                8,
+                false,
+                true,
+                false
+              ],
+              "values": {
+                "continue": [
+                  1,
+                  11360
+                ],
+                "receptor": [
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "state": [
+                "turtle",
+                8,
+                false,
+                true,
+                true
+              ],
+              "values": {
+                "continue": [
+                  1,
+                  11624
+                ],
+                "receptor": [
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "state": [
+                "turtle",
+                8,
+                true,
+                true,
+                false
+              ],
+              "values": {
+                "continue": [
+                  2,
+                  21768
+                ],
+                "receptor": [
+                  0,
+                  0
+                ]
+              }
+            }
+          ]
+        },
+        "static_reward": {
+          "plain": 137136,
+          "prefix2": 137267,
+          "prefix8": 136897,
+          "receptor": 137592
+        },
+        "training_ids": [
+          "turtle-route-train-00",
+          "turtle-route-train-01",
+          "turtle-route-train-02",
+          "turtle-route-train-03",
+          "turtle-route-train-04",
+          "turtle-route-train-05",
+          "turtle-route-train-06",
+          "turtle-route-train-07",
+          "turtle-route-train-08",
+          "turtle-route-train-09",
+          "turtle-route-train-10",
+          "turtle-route-train-11"
+        ],
+        "weights": {
+          "join_tests": 4,
+          "nodes": 4,
+          "portal_containment_checks": 5,
+          "portal_split_checks": 20,
+          "tile_tests": 2
+        }
+      }
+    }
+  }
+}

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en"><head><script src="/geometric-tree-search/_pages-evidence/router.js"></script><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Which lemmas should enter a Wang proof?</title>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 <style>
@@ -78,7 +78,7 @@ figure{margin-inline:0}
 <div class="scroll"><table><thead><tr><th scope="col">Statement</th><th scope="col">Full atoms</th><th scope="col">Reduced atoms</th><th scope="col">Full gates</th><th scope="col">Reduced gates</th><th scope="col">Omission attack</th></tr></thead><tbody><tr><td>Agatha</td><td>264</td><td>18</td><td>482951</td><td>67686</td><td>REJECTED</td></tr><tr><td>Hilbert incidence</td><td>12</td><td>6</td><td>14630</td><td>9668</td><td>REJECTED</td></tr></tbody></table></div>
 <p>Both full circuits accept their respective derivations. Ground unit propagation found the quantified Agatha proof at term depth one. The earlier marked serial search found Hilbert incidence uniqueness. <a href="https://vprover.github.io/vampireGuide/docs/tutorial/intro/#example-who-killed-agatha-puz0011">Vampire guide example</a></p></section>
 <section id="evidence"><h2>Replay the experiments</h2>
-<ul><li><a href="fixed-wang-admission-policy-20261106-v1-results.json">Results summary</a></li><li><a href="fixed-wang-admission-policy-20261106-v1-evidence.zip">Full experiment archive</a></li>
+<ul><li><a href="fixed-wang-admission-policy-20261106-v1-results.json">Results summary</a></li><li><a href="https://raw.githubusercontent.com/liuyao12/geometric-tree-search/d8fdbd6c701565e3f62a1c8316ab2d1ad55c93bb/docs/research/gcts-rl-renewal/fixed-wang-admission-policy-20261106-v1-evidence.zip">Full experiment archive</a></li>
 <li><a href="fixed-wang-admission-policy-20261106-v1-manifest.json">SHA-256 manifest</a></li></ul>
 <p>Each phase replays from its pinned inputs in a fresh subdirectory. The archive also includes the marked and deferred pilots.</p>
 <pre><code>python3.12 -I -S -B publication/replay_phase_v1.py admission /tmp/wang-admission /tmp/wang-pysat

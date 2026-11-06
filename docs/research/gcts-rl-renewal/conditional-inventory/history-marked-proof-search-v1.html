@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<!doctype html><html lang="en"><head><script src="/geometric-tree-search/_pages-evidence/router.js"></script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>History markings for proof search · GCTS research</title>
 <script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
@@ -8,7 +8,7 @@
 </style></head><body><main>
 <div class="eyebrow">GCTS research · proof normal-form markings</div><h1>Give proof receptors a memory</h1>
 <p>Can a marking that remembers ancestor formulas help automated search avoid proof detours? Four searches use the same fifteen arithmetic and symbolic geometry assertions. The two history implementations share a marked inventory; the unmarked reference admits a different proof set.</p>
-<p><a href="indexed-proof-search-v1.html#reader">Previous indexing study</a> · <a href="history-marked-proof-search-results-v1.json">Results JSON</a> · <a href="history-marked-proof-search-evidence-v1.zip">Full evidence archive</a></p>
+<p><a href="indexed-proof-search-v1.html#reader">Previous indexing study</a> · <a href="https://raw.githubusercontent.com/liuyao12/geometric-tree-search/d8fdbd6c701565e3f62a1c8316ab2d1ad55c93bb/docs/research/gcts-rl-renewal/conditional-inventory/history-marked-proof-search-results-v1.json">Results JSON</a> · <a href="https://raw.githubusercontent.com/liuyao12/geometric-tree-search/d8fdbd6c701565e3f62a1c8316ab2d1ad55c93bb/docs/research/gcts-rl-renewal/conditional-inventory/history-marked-proof-search-evidence-v1.zip">Full evidence archive</a></p>
 <div id="loading" class="panel">Loading saved results. This page does not run a prover.</div>
 <section class="panel finding"><h2>What happened</h2><div id="summary"></div><div id="findings"></div></section>
 <section class="panel"><h2>A family of receptive tiles</h2><div class="flow"><div><strong>Receive the history</strong><p>A placement at site \(v\) carries a set \(S\) of literal ancestor formulas on a separate marking point. Its formula and occupancy values remain explicit.</p></div><div><strong>Produce without repeating</strong><p>A producer concluding \(F\) has a history variant only when \(F\notin S\). It sends \(S\cup\{F\}\) to each premise receptor. These are literal marking values and placement parameters.</p></div><div><strong>Keep the frontier search</strong><p>Global dead points, global forced moves and earliest-generation branching determine the next move. A producer that fits now remains available even when a future child will fail.</p></div></div></section>

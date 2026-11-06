@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-<head>
+<head><script src="/geometric-tree-search/_pages-evidence/router.js"></script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Learned clauses, no added point pruning · GCTS experiment</title>
@@ -166,7 +166,7 @@ F\models C_P,\qquad C_P=\bigvee_{\ell\in P}\neg\ell
 <div class="table-scroll"><table class="slots"><thead><tr><th>Complete record</th><th>Link</th></tr></thead><tbody>
 <tr><td>Frozen original cases, query order, Source and actual plan</td><td><a href="plan.json">Frozen plan and Source hashes</a> · <a href="runner.py">runner</a> / <a href="runner-review.json">review</a> · <a href="ordinary.py">ordinary solver</a> / <a href="ordinary-review.json">review</a></td></tr>
 <tr><td>Whole discovery catalogue, proposals and automatic selected clauses</td><td><a href="learned-certificates.json">All selected consequences and discovery traces</a> · <a href="summary.json">complete summary</a></td></tr>
-<tr><td>All four replay arms and raw traces</td><td><a href="comparison-results.json.gz">All raw results and traces, gzip JSON</a> · <a href="mechanism-diagnosis.json">paired graph/activation diagnosis</a></td></tr>
+<tr><td>All four replay arms and raw traces</td><td><a href="https://raw.githubusercontent.com/liuyao12/geometric-tree-search/d8fdbd6c701565e3f62a1c8316ab2d1ad55c93bb/docs/research/gcts-rl-renewal/learned-nogoods/comparison-results.json.gz">All raw results and traces, gzip JSON</a> · <a href="mechanism-diagnosis.json">paired graph/activation diagnosis</a></td></tr>
 <tr><td>Independent whole truth/trace/point-inventory audit</td><td><a href="independent-verifier.py">Independent verifier</a> / <a href="verifier-review.json">review</a> · <a href="point-auditor.py">point trace auditor</a> · <a href="independent-saved-review.json">independent saved reconciliation</a></td></tr>
 <tr><td>Native owned/caller evidence, full costs and every failure</td><td><a href="native-terminal.json">Native terminal record</a> · <a href="external-observation.json">command/probe observations</a> · <a href="ROOT-disposition.json">scope and costs</a></td></tr>
 <tr><td>Raw reproduction archive and scope disposition</td><td><a href="scope.json">Exact artifact manifest and raw archive hash</a> · <a href="point-engine.py">point engine</a> · <a href="boolean-oracle.py">Boolean oracle</a> · <a href="cases.json">original declarations</a></td></tr>

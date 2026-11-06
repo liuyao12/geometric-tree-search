@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-<head>
+<head><script src="/geometric-tree-search/_pages-evidence/router.js"></script>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Can tilings find a proof? · GCTS research notebook 28</title>
   <link rel="stylesheet" href="report.css?v=20261009-r28.1"><link rel="stylesheet" href="proof-gallery.css?v=20261009-r28.1">
@@ -23,7 +23,7 @@
       <tr><td>Has RL added practical value?</td><td>Not established.</td><td>Notebook 27's RL lane explores fewer fallback nodes but takes more proposal and full-check time than plain lemma reuse. Tiny earlier RL proposals mainly guide Wang search toward an already found derivation.</td></tr>
     </tbody></table></div>
     <p>We do not need to beat mature proof assistants to make a contribution. We do need GCTS itself to make consequential choices in a cold proof search, with every result expanded and checked. A Turing-complete encoding establishes expressiveness; it does not establish a useful search algorithm or a decision procedure for all mathematical truth.</p>
-    <p class="small">Historical evidence: <a href="proof-search-001.json">word-proof Wang searches</a> · <a href="kernel-machine-001.json">finite first-order searches</a> · <a href="learned-proof-blocks-001.json">lemma and RL comparison</a>. These snapshots are reused unchanged, with their original audits and costs.</p>
+    <p class="small">Historical evidence: <a href="https://raw.githubusercontent.com/liuyao12/geometric-tree-search/d8fdbd6c701565e3f62a1c8316ab2d1ad55c93bb/docs/research/gcts-rl-renewal/proof-search-001.json">word-proof Wang searches</a> · <a href="https://raw.githubusercontent.com/liuyao12/geometric-tree-search/d8fdbd6c701565e3f62a1c8316ab2d1ad55c93bb/docs/research/gcts-rl-renewal/kernel-machine-001.json">finite first-order searches</a> · <a href="https://raw.githubusercontent.com/liuyao12/geometric-tree-search/d8fdbd6c701565e3f62a1c8316ab2d1ad55c93bb/docs/research/gcts-rl-renewal/learned-proof-blocks-001.json">lemma and RL comparison</a>. These snapshots are reused unchanged, with their original audits and costs.</p>
   </section>
   <section class="panel" id="theorems"><p class="eyebrow">ACTUAL FOUND CERTIFICATES</p><h2>Peano arithmetic and Euclid-style examples</h2>
     <p>Arithmetic starts with the six usual successor, addition and multiplication axioms and a registered induction schema. Induction is on the innermost quantified variable, with bounded recursive base-case attempts. Every equality path and induction base/step is searched. No proof library is imported.</p>
@@ -42,7 +42,7 @@
     <div id="gallery-compaction" class="callout"></div><p id="gallery-compaction-cost" class="caption"></p>
     <p>The old large left-zero response case has the same external problem: its block shrinks from \(50\) lines to \(28\), and complete tree instructions from \(2{,}309{,}467\) to \(1{,}223{,}779\). This turn has not built a new accepting tape-response certificate for it. Its previous response-builder cutoff remains unknown.</p>
     <p>Geometry also exposes the cost of verbose interfaces. Two preserved prototypes expand all point/noncollinearity guards in SAS and hit three machine-check cutoffs each. The final representation names those guards as triangle interfaces, with explicit defining axioms, and fully checks I.1, I.5 and their composition. Its midpoint check still reaches the instruction limit. The prototypes have different pinned theory/statement representations; this is not a speed comparison of an unchanged problem.</p>
-    <p class="small"><a href="proof-compaction-001.json">All 66 matched normalization runs</a> · <a href="euclid-pilot-001.json">First geometry prototype</a> · <a href="euclid-interface-pilot-001.json">Intermediate prototype</a> · <a href="theorem-tests-001.json">Complete test ledger</a></p>
+    <p class="small"><a href="https://raw.githubusercontent.com/liuyao12/geometric-tree-search/d8fdbd6c701565e3f62a1c8316ab2d1ad55c93bb/docs/research/gcts-rl-renewal/proof-compaction-001.json">All 66 matched normalization runs</a> · <a href="https://raw.githubusercontent.com/liuyao12/geometric-tree-search/d8fdbd6c701565e3f62a1c8316ab2d1ad55c93bb/docs/research/gcts-rl-renewal/euclid-pilot-001.json">First geometry prototype</a> · <a href="https://raw.githubusercontent.com/liuyao12/geometric-tree-search/d8fdbd6c701565e3f62a1c8316ab2d1ad55c93bb/docs/research/gcts-rl-renewal/euclid-interface-pilot-001.json">Intermediate prototype</a> · <a href="theorem-tests-001.json">Complete test ledger</a></p>
   </section>
   <section class="panel" id="next-experiment"><p class="eyebrow">NEXT CENTRAL EXPERIMENT · DESIGN, NOT A COMPLETED ENGINE</p><h2>Search over semantic proof tiles.</h2>
     <p>Concentrate on Wang-style tiles with GCTS's more general finite point support. Keep Turtle and Penrose as regression and occasional geometric controls. Revisit them when they answer a specific question about proof interfaces, hierarchy or distant dependencies.</p>

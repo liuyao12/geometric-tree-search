@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<!doctype html><html lang="en"><head><script src="/geometric-tree-search/_pages-evidence/router.js"></script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Indexed producer search · GCTS research</title>
 <script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
@@ -7,7 +7,7 @@
 </style></head><body><main>
 <div class="eyebrow">GCTS research · exact indexing experiment</div><h1>Index the markings before building the tiles</h1>
 <p>Can we preserve the same proof search while avoiding construction of placements that already conflict with the current point values? This experiment compares eager GCTS, indexed GCTS and a conventional proof-tree control on the same fifteen arithmetic and symbolic geometry assertions.</p>
-<p><a href="growing-proof-search-v1.html#reader">Previous growing-proof study</a> · <a href="indexed-proof-search-results-v1.json">Results JSON</a> · <a href="indexed-proof-search-evidence-v1.zip">Full evidence archive</a></p>
+<p><a href="growing-proof-search-v1.html#reader">Previous growing-proof study</a> · <a href="https://raw.githubusercontent.com/liuyao12/geometric-tree-search/d8fdbd6c701565e3f62a1c8316ab2d1ad55c93bb/docs/research/gcts-rl-renewal/conditional-inventory/indexed-proof-search-results-v1.json">Results JSON</a> · <a href="https://raw.githubusercontent.com/liuyao12/geometric-tree-search/d8fdbd6c701565e3f62a1c8316ab2d1ad55c93bb/docs/research/gcts-rl-renewal/conditional-inventory/indexed-proof-search-evidence-v1.zip">Full evidence archive</a></p>
 <div id="loading" class="panel">Loading saved results. This page does not run a prover.</div>
 <section class="panel finding"><h2>What happened</h2><div id="summary"></div><div id="findings"></div></section>
 <section class="panel"><h2>Same inventory, fewer materialized conflicts</h2><div class="flow"><div><strong>Declare the complete inventory</strong><p>Every allowed zero-premise, modus ponens and generalization producer remains available at its permitted sites. Parent contacts and distinct axiom aliases retain their identities.</p></div><div><strong>Index exact point values</strong><p>The provider intersects literal marking postings and checks capacity across every support point. It returns all compatible incident placements, before the engine filters selected or branch-excluded IDs.</p></div><div><strong>Keep the frontier rules</strong><p>The engine maintains the explicit legal candidate graph: global dead points, then global forced moves, then the earliest generation. No learned shortlist replaces the base domain.</p></div></div></section>

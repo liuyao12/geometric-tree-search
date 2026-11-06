@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en"><head><script src="/geometric-tree-search/_pages-evidence/router.js"></script><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Typed receptors for reusable Wang proof fragments</title>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 <style>
@@ -74,7 +74,7 @@ figure{margin-inline:0}
 <p>One diagonal schedule tried the same depths and resource multipliers for every source. It discovered six refutations. Two controls had finite models throughout the tested windows. The earlier Peano and TPTP capital derivations also have checked Wang rectangles in the archive.</p>
 <div class="scroll"><table><thead><tr><th scope="col">Statement</th><th scope="col">Windows tried in order</th><th scope="col">First refuting depth</th></tr></thead><tbody><tr><td>Agatha</td><td>0 ground model, 0 reused ground model, 1 refuted</td><td>1</td></tr><tr><td>Hilbert incidence uniqueness</td><td>0 refuted</td><td>0</td></tr><tr><td>Peano nonzero successor</td><td>0 ground model, 0 reused ground model, 1 ground model, 0 reused ground model, 1 reused ground model, 2 refuted</td><td>2</td></tr><tr><td>TPTP capital</td><td>0 ground model, 0 reused ground model, 1 refuted</td><td>1</td></tr><tr><td>TPTP family</td><td>0 refuted</td><td>0</td></tr><tr><td>pigeonhole-5-4-fresh</td><td>0 refuted</td><td>0</td></tr><tr><td>pigeonhole-4-4-fresh</td><td>0 ground model, 0 reused ground model, 1 reused ground model, 0 reused ground model, 1 reused ground model, 2 reused ground model</td><td>—</td></tr><tr><td>quantifier-swap control</td><td>0 ground model, 0 reused ground model, 1 ground model, 0 reused ground model, 1 reused ground model, 2 ground model</td><td>—</td></tr></tbody></table></div></section>
 <section id="evidence"><h2>Replay the experiments</h2>
-<ul><li><a href="fixed-wang-lifted-receptors-20261106-v1-results.json">Results summary</a></li><li><a href="fixed-wang-lifted-receptors-20261106-v1-evidence.zip">Full source, protocols, recipes, logs and Wang rectangles</a></li>
+<ul><li><a href="fixed-wang-lifted-receptors-20261106-v1-results.json">Results summary</a></li><li><a href="https://raw.githubusercontent.com/liuyao12/geometric-tree-search/d8fdbd6c701565e3f62a1c8316ab2d1ad55c93bb/docs/research/gcts-rl-renewal/fixed-wang-lifted-receptors-20261106-v1-evidence.zip">Full source, protocols, recipes, logs and Wang rectangles</a></li>
 <li><a href="fixed-wang-lifted-receptors-20261106-v1-manifest.json">SHA-256 manifest</a></li></ul>
 <p>The replay helper copies each phase's pinned inputs into a fresh subdirectory. The archived demand pilot includes the typed matcher qualification and the depth schedule.</p>
 <pre><code>python3.12 -I -S -B publication/replay_phase_v1.py lifted /tmp/wang-receptors /tmp/wang-pysat

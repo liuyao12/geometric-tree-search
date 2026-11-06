@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<!doctype html><html lang="en"><head><script src="/geometric-tree-search/_pages-evidence/router.js"></script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Grow the proof obligations · GCTS research</title>
 <script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
@@ -7,7 +7,7 @@
 </style></head><body><main>
 <div class="eyebrow">GCTS research · milestone Z</div><h1>Grow the proof obligations</h1>
 <p>A selected rule now opens explicit premise sites below it, rather than choosing references among empty proof rows. The experiment compares this anchored point model with an independent, goal-directed proof-tree control over the same finite rule inventory and depth bound.</p>
-<p><a href="receptor-family-proof-search-v1.html#reader">Previous formula-family study</a> · <a href="growing-proof-search-results-v1.json">Complete readable results</a> · <a href="growing-proof-search-evidence-v1.zip">Full evidence archive</a></p>
+<p><a href="receptor-family-proof-search-v1.html#reader">Previous formula-family study</a> · <a href="https://raw.githubusercontent.com/liuyao12/geometric-tree-search/d8fdbd6c701565e3f62a1c8316ab2d1ad55c93bb/docs/research/gcts-rl-renewal/conditional-inventory/growing-proof-search-results-v1.json">Complete readable results</a> · <a href="https://raw.githubusercontent.com/liuyao12/geometric-tree-search/d8fdbd6c701565e3f62a1c8316ab2d1ad55c93bb/docs/research/gcts-rl-renewal/conditional-inventory/growing-proof-search-evidence-v1.zip">Full evidence archive</a></p>
 <div id="loading" class="panel">Loading saved report data. This page does not run a prover.</div>
 <section class="panel finding"><h2>What happened</h2><div id="findings"></div></section>
 <section class="panel"><h2>Two matched search methods</h2><div class="flow"><div><strong>One finite inventory</strong><p>Regenerate the same eligible certified lemmas and complete Y formula/rule catalogue for both methods. Independent catalogue and zero-schema checks come before search.</p></div><div><strong>Grow the premises</strong><p>GCTS keeps the complete active frontier graph, checks global dead and forced moves, then branches at the earliest generation. The control searches the same producers by goal and remaining depth.</p></div><div><strong>Expand and check</strong><p>Every positive needs an independent rooted-tree/decode check, C1 and B checking, certified lemma expansion, and both checks again in the original theory.</p></div></div></section>

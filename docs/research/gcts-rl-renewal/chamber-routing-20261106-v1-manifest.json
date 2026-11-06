@@ -1,0 +1,167 @@
+{
+  "archive_entries": {
+    "data/routing-audit-v1.json": {
+      "bytes": 1153,
+      "sha256": "b52a904054146080c717a640b20ac06ab7217f5f32f6724b410165ea72e95edc"
+    },
+    "data/routing-experiment-v1.json": {
+      "bytes": 1593239,
+      "sha256": "fedfe09d97f9e97718d71739e65ab766e0335e88f8ac1de2f5fa2c5b3a308587"
+    },
+    "data/routing-policy-v1.json": {
+      "bytes": 29394,
+      "sha256": "21c86eda5509cdcdc11edd4055f75257c0f212c713625b79454be17e0ad3b400"
+    },
+    "data/routing-timing-before-v1.json": {
+      "bytes": 1769,
+      "sha256": "e7f4a97c7042de950102798264ec04f6431fbe373f98f2c91badaf1afdca6fa7"
+    },
+    "data/routing-timing-v1.json": {
+      "bytes": 1773,
+      "sha256": "aa51735eba566c0b11a5849ec96e45d4ecb1cf17c850b05e655ff21d4ced3bd4"
+    },
+    "input/chamber-origins-v1.json": {
+      "bytes": 7592,
+      "sha256": "5902e99c9d27aece556990967b3aba3c051b8147567fc338c48c1a6595c0c619"
+    },
+    "input/chambers-v1.json": {
+      "bytes": 58295,
+      "sha256": "69513852f519b37e583c2f2c3d7bbebe735faa81cad7e3ae4ab78a6b4225d327"
+    },
+    "input/exact-point-model-v1.json": {
+      "bytes": 10642,
+      "sha256": "775ce3ac20489ef64d8d8266238edde36f87919461b68ccbd232763dd2da3eb0"
+    },
+    "input/routing-cases-v1.json": {
+      "bytes": 103798,
+      "sha256": "337ada6f781a045cfbf869b99be5362e1d9a9cf0d50e81d3603cec9121130eda"
+    },
+    "publication/REPLAY.md": {
+      "bytes": 1000,
+      "sha256": "2624546b7ff5a3832eeafdd5d54768f4bd8ffe21b94d9b28f9d2b90d3ac727d8"
+    },
+    "publication/browser-v1.json": {
+      "bytes": 151,
+      "sha256": "584d5afc4dcfbc8195dabe6f8f2d91011950999fe1cbd0fa1a10bf359acb434c"
+    },
+    "publication/check_v1.cjs": {
+      "bytes": 2486,
+      "sha256": "9b95113c424c4b8fdc97eaf9c0be05e03ce84fee3a879299b5b3e55bbb0d9ebf"
+    },
+    "publication/notebook-v1.html": {
+      "bytes": 6547,
+      "sha256": "5fa9ec7524c2403c1f2d2b10f921998502a349756c3fb4060dcc1604a77239ad"
+    },
+    "publication/package_v1.py": {
+      "bytes": 2933,
+      "sha256": "b4e6172045fc76010aac18a3dc3370c5ccf91f4c2303568ff75d011ca1d84348"
+    },
+    "publication/render_v1.py": {
+      "bytes": 7366,
+      "sha256": "a620f7850c7b7f1a9a6254105c1ff31e5cc324f95bd2800fbfbfe137b0a00774"
+    },
+    "publication/replay-v1.json": {
+      "bytes": 825,
+      "sha256": "377f240b86eec735ee01dd10b983ed3e18670a781f998fc66b7443d3fa9be4d1"
+    },
+    "publication/replay_v1.py": {
+      "bytes": 2372,
+      "sha256": "7e2054abe84e8bcfd4c983bb48109bcb0e823148c0659a443958e12cba2b8c5a"
+    },
+    "report/chamber-routing-20261106-v1-results.json": {
+      "bytes": 184508,
+      "sha256": "5a780ef84bb22093b10f049b710cab7fcce90a82dbc8d9506523136ff1ddf1d5"
+    },
+    "report/chamber-routing-20261106-v1.html": {
+      "bytes": 25734,
+      "sha256": "09ad37266c025a9c8ad280f633ec8e58d9b51a71e71a4aa504c77f2980d8f849"
+    },
+    "source/boundary_search_v1.py": {
+      "bytes": 11523,
+      "sha256": "ea15d14561f7b39f58e7cc62d9fcc736d89377888922e6c454f0cedfa8b1b112"
+    },
+    "source/cases_v1.py": {
+      "bytes": 8451,
+      "sha256": "70ff43195c11a970f45d6acc319bddb7b90d4b394afced7ea4f98ba294b80af3"
+    },
+    "source/chamber_audit_v1.py": {
+      "bytes": 9147,
+      "sha256": "396ff044fce8cd4ae95cacbe6d77c1c121c48b4536e40a2ea2f112570045d19b"
+    },
+    "source/chamber_cases_v1.py": {
+      "bytes": 5212,
+      "sha256": "252a9ba66fe4fb9993196ccab524b926a5bc7fb61d4eaa16c69003ce607d8a38"
+    },
+    "source/chamber_check_v1.py": {
+      "bytes": 4360,
+      "sha256": "9e10c029063cd7d6930ceca98ce016e0367faa7243abe618cb4a05c0f9abeb73"
+    },
+    "source/chamber_experiment_v1.py": {
+      "bytes": 2445,
+      "sha256": "0e774268c160132662f748988a43b54cb730d4026237bb2f3e7cbd90be23b1c3"
+    },
+    "source/chambers_v1.py": {
+      "bytes": 14741,
+      "sha256": "c92e6fd3b3c4d9f58fdb91c87c917e5517023d6a09084425e78259d96922fab5"
+    },
+    "source/check_v1.py": {
+      "bytes": 4131,
+      "sha256": "edd28b8b5b611059b47d8b2b55964c27a1a5b268dabdaf06c2f4f7b340eaf76c"
+    },
+    "source/clipping_v1.py": {
+      "bytes": 5276,
+      "sha256": "a649384ab8e810d88d28e79906346946b869292c0de2bf81d07469778fc59281"
+    },
+    "source/cluster_v1.py": {
+      "bytes": 15717,
+      "sha256": "a2eec032406feaf45f7c5ca66b235727db26e414996337981f6b0ff865859b85"
+    },
+    "source/geometry_v1.py": {
+      "bytes": 10780,
+      "sha256": "4e4bb142b18da50a0c7aee100e650e9f8287b078c9ed53e0b205cf55a50f602d"
+    },
+    "source/model_v1.py": {
+      "bytes": 4432,
+      "sha256": "df86798cfa969b57bdca56f4928b3fd12fe908a275ec5e47031546e74bef43f4"
+    },
+    "source/routing_audit_v1.py": {
+      "bytes": 9183,
+      "sha256": "64ab3c773c45d6db94a848e8c7130cf3f51248ba91baf4668833f22160685bb4"
+    },
+    "source/routing_cases_v1.py": {
+      "bytes": 4526,
+      "sha256": "9c0b45226c5ba97a49a3d02d4b265c1ee6ab1bf8a412f0dedbd241b50098df70"
+    },
+    "source/routing_experiment_v1.py": {
+      "bytes": 2023,
+      "sha256": "1e6686ea1d7a05e5af2026e229d953d7ecf09d4225ab456bf9cf11282d651ff4"
+    },
+    "source/routing_policy_v1.py": {
+      "bytes": 6624,
+      "sha256": "a4e79dde8d8e96d21be2918a0e8118f050a6162c496a3cbe9a64724fccb7ce17"
+    },
+    "source/routing_timing_v1.py": {
+      "bytes": 2066,
+      "sha256": "88fa18c5ff398101a3c1b4885b0c22109092d9e509ca28c04b55efa3309aea5f"
+    },
+    "source/triangle_geometry_v1.py": {
+      "bytes": 9600,
+      "sha256": "4715c6f612b196d257c858d695d604d800ce832cc5f8a1bfee8ae58e400a79ed"
+    }
+  },
+  "assets": {
+    "chamber-routing-20261106-v1-evidence.zip": {
+      "bytes": 162307,
+      "sha256": "e762bb86c0e81b6a83d7ae805fd9d91ccb372328bbb0818d6443d83c676aff95"
+    },
+    "chamber-routing-20261106-v1-results.json": {
+      "bytes": 184508,
+      "sha256": "5a780ef84bb22093b10f049b710cab7fcce90a82dbc8d9506523136ff1ddf1d5"
+    },
+    "chamber-routing-20261106-v1.html": {
+      "bytes": 25734,
+      "sha256": "09ad37266c025a9c8ad280f633ec8e58d9b51a71e71a4aa504c77f2980d8f849"
+    }
+  },
+  "schema": "CHAMBER-ROUTING-MANIFEST-v1"
+}

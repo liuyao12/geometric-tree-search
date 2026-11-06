@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en"><head><script src="/geometric-tree-search/_pages-evidence/router.js"></script><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Finding proofs in open Wang rectangles</title><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 <style>
 *{box-sizing:border-box}body{margin:0;background:#f6f5ef;color:#263b33;font-family:system-ui,-apple-system,sans-serif;line-height:1.55}
@@ -68,7 +68,7 @@ pre{white-space:pre-wrap;overflow:auto;background:#e5eee6;padding:.7rem}</style>
 <div class="scroll"><table><thead><tr><th scope="col">Successor count</th><th scope="col">Cold nodes</th><th scope="col">Mapped-cut nodes</th><th scope="col">Shuffled-cut nodes</th><th scope="col">Mapped cuts admitted</th></tr></thead><tbody><tr><td>1</td><td>44</td><td>44</td><td>44</td><td>1</td></tr><tr><td>3</td><td>307</td><td>296</td><td>307</td><td>8</td></tr><tr><td>4</td><td>666</td><td>657</td><td>666</td><td>8</td></tr></tbody></table></div>
 </section>
 <section id="evidence"><h2>Replay the experiments</h2>
-<ul><li><a href="fixed-wang-open-benchmark-20261105-v1-results.json">Benchmark and reader summary</a></li><li><a href="fixed-wang-open-benchmark-20261105-v1-evidence.zip">Source, cuts, checked rectangles and prior runs</a></li><li><a href="fixed-wang-open-benchmark-20261105-v1-manifest.json">SHA-256 manifest</a></li><li><a href="fixed-wang-quantified-origins-20261105-v1.html">How source clauses enter the grid</a></li></ul>
+<ul><li><a href="https://raw.githubusercontent.com/liuyao12/geometric-tree-search/d8fdbd6c701565e3f62a1c8316ab2d1ad55c93bb/docs/research/gcts-rl-renewal/fixed-wang-open-benchmark-20261105-v1-results.json">Benchmark and reader summary</a></li><li><a href="https://raw.githubusercontent.com/liuyao12/geometric-tree-search/d8fdbd6c701565e3f62a1c8316ab2d1ad55c93bb/docs/research/gcts-rl-renewal/fixed-wang-open-benchmark-20261105-v1-evidence.zip">Source, cuts, checked rectangles and prior runs</a></li><li><a href="fixed-wang-open-benchmark-20261105-v1-manifest.json">SHA-256 manifest</a></li><li><a href="fixed-wang-quantified-origins-20261105-v1.html">How source clauses enter the grid</a></li></ul>
 <p>The protocol pins the compiled PySAT extension used for the conventional controls. Its two packages can be installed in a temporary directory. The source compiler uses canonical variable order for this release. The C++ checker caches root-level propagation while replaying cuts.</p>
 <pre><code>python3.12 -m pip install --target /tmp/wang-pysat python-sat==1.9.dev21 six==1.17.0
 clang++ -O3 -std=c++17 -Wall -Wextra source/replay_fast_v1.cpp -o /tmp/gcts-wang-rup-20261105-v1

@@ -1,0 +1,6073 @@
+{
+  "bank": {
+    "donors": [
+      {
+        "counts": {
+          "age_slots": 229,
+          "duplicates": 1846,
+          "equations": 34747,
+          "failed_unifications": 397,
+          "given": 917,
+          "offers": 11174,
+          "shallow_skips": 2390,
+          "stored": 6549,
+          "successful_factors": 1056,
+          "successful_resolutions": 7331,
+          "support_skips": 62,
+          "unifications": 8784
+        },
+        "id": "GRP003-2",
+        "observations": [],
+        "status": "PROVED"
+      },
+      {
+        "counts": {
+          "age_slots": 241,
+          "duplicates": 2065,
+          "equations": 37694,
+          "failed_unifications": 466,
+          "given": 966,
+          "offers": 11970,
+          "shallow_skips": 2460,
+          "stored": 6987,
+          "successful_factors": 1079,
+          "successful_resolutions": 7965,
+          "support_skips": 62,
+          "unifications": 9510
+        },
+        "id": "GRP004-2",
+        "observations": [],
+        "status": "PROVED"
+      },
+      {
+        "counts": {
+          "age_slots": 2,
+          "equations": 31,
+          "failed_unifications": 1,
+          "given": 10,
+          "offers": 13,
+          "shallow_skips": 2,
+          "stored": 19,
+          "successful_factors": 1,
+          "successful_resolutions": 9,
+          "support_skips": 28,
+          "unifications": 11
+        },
+        "id": "GRP005-1",
+        "observations": [],
+        "status": "PROVED"
+      },
+      {
+        "counts": {
+          "age_slots": 4,
+          "duplicates": 5,
+          "equations": 175,
+          "failed_unifications": 2,
+          "given": 19,
+          "offers": 84,
+          "shallow_skips": 26,
+          "stored": 60,
+          "successful_factors": 6,
+          "successful_resolutions": 50,
+          "support_skips": 53,
+          "unifications": 58
+        },
+        "id": "GRP006-1",
+        "observations": [],
+        "status": "PROVED"
+      },
+      {
+        "counts": {
+          "age_slots": 90,
+          "duplicates": 17179,
+          "equations": 117449,
+          "failed_unifications": 277,
+          "given": 360,
+          "offers": 92367,
+          "raw_rewrite_pairs": 26301,
+          "rewrite_unification_failures": 1234,
+          "rewrite_unifications": 26301,
+          "rewrites_offered": 26301,
+          "rewrites_unified": 25067,
+          "shallow_skips": 43599,
+          "stored": 30000,
+          "successful_factors": 179,
+          "successful_resolutions": 22011,
+          "support_skips": 71,
+          "tautologies": 88,
+          "unifications": 22467
+        },
+        "id": "GRP001-1",
+        "observations": [],
+        "status": "BOUNDED"
+      },
+      {
+        "counts": {
+          "age_slots": 114,
+          "duplicates": 1383,
+          "equations": 24062,
+          "failed_unifications": 700,
+          "given": 458,
+          "offers": 9410,
+          "shallow_skips": 3338,
+          "stored": 3996,
+          "successful_factors": 811,
+          "successful_resolutions": 4561,
+          "support_skips": 42,
+          "unifications": 6072
+        },
+        "id": "GRP001-5",
+        "observations": [],
+        "status": "PROVED"
+      },
+      {
+        "counts": {
+          "age_slots": 186,
+          "duplicates": 2252,
+          "equality_resolutions_offered": 1,
+          "equations": 36284,
+          "failed_unifications": 911,
+          "given": 747,
+          "offers": 17051,
+          "shallow_skips": 7991,
+          "stored": 5907,
+          "successful_factors": 949,
+          "successful_resolutions": 7199,
+          "support_skips": 79,
+          "unifications": 9059
+        },
+        "id": "GRP009-1",
+        "observations": [],
+        "status": "PROVED"
+      },
+      {
+        "counts": {
+          "age_slots": 65,
+          "duplicates": 2598,
+          "equality_resolutions_offered": 1,
+          "equations": 265620,
+          "failed_unifications": 21,
+          "given": 261,
+          "offers": 120001,
+          "raw_rewrite_pairs": 119740,
+          "rewrite_unification_failures": 115252,
+          "rewrite_unifications": 119739,
+          "rewrites_offered": 119740,
+          "rewrites_unified": 4487,
+          "shallow_skips": 239,
+          "stored": 1901,
+          "support_skips": 50,
+          "unifications": 21
+        },
+        "id": "GRP002-2",
+        "observations": [
+          {
+            "count": 25,
+            "hits": 0,
+            "mark": [
+              "alias",
+              0,
+              [
+                0,
+                0
+              ],
+              [
+                1
+              ],
+              []
+            ],
+            "terms": [
+              [
+                "multiply",
+                [
+                  "inverse",
+                  "?v0"
+                ],
+                "?v0"
+              ],
+              [
+                "multiply",
+                [
+                  "multiply",
+                  [
+                    "a"
+                  ],
+                  [
+                    "b"
+                  ]
+                ],
+                [
+                  "identity"
+                ]
+              ]
+            ]
+          },
+          {
+            "count": 256,
+            "hits": 0,
+            "mark": [
+              "alias",
+              0,
+              [
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              []
+            ],
+            "terms": [
+              [
+                "multiply",
+                "?v0",
+                [
+                  "inverse",
+                  "?v0"
+                ]
+              ],
+              [
+                "multiply",
+                [
+                  "c"
+                ],
+                [
+                  "inverse",
+                  [
+                    "a"
+                  ]
+                ]
+              ]
+            ]
+          },
+          {
+            "count": 2,
+            "hits": 0,
+            "mark": [
+              "alias",
+              0,
+              [
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                0
+              ]
+            ],
+            "terms": [
+              [
+                "multiply",
+                "?v0",
+                [
+                  "inverse",
+                  "?v0"
+                ]
+              ],
+              [
+                "multiply",
+                [
+                  "inverse",
+                  [
+                    "a"
+                  ]
+                ],
+                [
+                  "multiply",
+                  [
+                    "inverse",
+                    [
+                      "b"
+                    ]
+                  ],
+                  "?v0"
+                ]
+              ]
+            ]
+          },
+          {
+            "count": 61,
+            "hits": 0,
+            "mark": [
+              "alias",
+              0,
+              [
+                0
+              ],
+              [
+                1,
+                1
+              ],
+              []
+            ],
+            "terms": [
+              [
+                "multiply",
+                "?v0",
+                [
+                  "multiply",
+                  "?v0",
+                  "?v0"
+                ]
+              ],
+              [
+                "multiply",
+                [
+                  "a"
+                ],
+                [
+                  "multiply",
+                  [
+                    "b"
+                  ],
+                  [
+                    "identity"
+                  ]
+                ]
+              ]
+            ]
+          },
+          {
+            "count": 44,
+            "hits": 0,
+            "mark": [
+              "alias",
+              0,
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                1
+              ],
+              []
+            ],
+            "terms": [
+              [
+                "multiply",
+                "?v0",
+                [
+                  "multiply",
+                  "?v0",
+                  "?v0"
+                ]
+              ],
+              [
+                "multiply",
+                [
+                  "a"
+                ],
+                [
+                  "multiply",
+                  [
+                    "b"
+                  ],
+                  [
+                    "identity"
+                  ]
+                ]
+              ]
+            ]
+          },
+          {
+            "count": 3,
+            "hits": 0,
+            "mark": [
+              "alias",
+              0,
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                0
+              ]
+            ],
+            "terms": [
+              [
+                "multiply",
+                "?v0",
+                [
+                  "multiply",
+                  "?v0",
+                  "?v0"
+                ]
+              ],
+              [
+                "multiply",
+                [
+                  "c"
+                ],
+                [
+                  "multiply",
+                  [
+                    "inverse",
+                    [
+                      "a"
+                    ]
+                  ],
+                  [
+                    "inverse",
+                    [
+                      "b"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          },
+          {
+            "count": 13,
+            "hits": 0,
+            "mark": [
+              "alias",
+              1,
+              [
+                0,
+                0
+              ],
+              [
+                1
+              ],
+              []
+            ],
+            "terms": [
+              [
+                "multiply",
+                [
+                  "multiply",
+                  [
+                    "a"
+                  ],
+                  [
+                    "b"
+                  ]
+                ],
+                [
+                  "identity"
+                ]
+              ],
+              [
+                "multiply",
+                [
+                  "inverse",
+                  "?v0"
+                ],
+                "?v0"
+              ]
+            ]
+          },
+          {
+            "count": 216,
+            "hits": 0,
+            "mark": [
+              "alias",
+              1,
+              [
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              []
+            ],
+            "terms": [
+              [
+                "multiply",
+                [
+                  "c"
+                ],
+                [
+                  "inverse",
+                  [
+                    "a"
+                  ]
+                ]
+              ],
+              [
+                "multiply",
+                "?v0",
+                [
+                  "inverse",
+                  "?v0"
+                ]
+              ]
+            ]
+          },
+          {
+            "count": 56,
+            "hits": 0,
+            "mark": [
+              "alias",
+              1,
+              [
+                0
+              ],
+              [
+                1,
+                1
+              ],
+              []
+            ],
+            "terms": [
+              [
+                "multiply",
+                [
+                  "a"
+                ],
+                [
+                  "multiply",
+                  [
+                    "b"
+                  ],
+                  [
+                    "identity"
+                  ]
+                ]
+              ],
+              [
+                "multiply",
+                "?v0",
+                [
+                  "multiply",
+                  "?v0",
+                  "?v0"
+                ]
+              ]
+            ]
+          },
+          {
+            "count": 217,
+            "hits": 0,
+            "mark": [
+              "alias",
+              1,
+              [
+                0
+              ],
+              [
+                1
+              ],
+              []
+            ],
+            "terms": [
+              [
+                "multiply",
+                [
+                  "a"
+                ],
+                [
+                  "b"
+                ]
+              ],
+              [
+                "multiply",
+                "?v0",
+                "?v0"
+              ]
+            ]
+          },
+          {
+            "count": 1,
+            "hits": 0,
+            "mark": [
+              "alias",
+              1,
+              [
+                0
+              ],
+              [
+                1
+              ],
+              [
+                0
+              ]
+            ],
+            "terms": [
+              [
+                "multiply",
+                [
+                  "multiply",
+                  [
+                    "a"
+                  ],
+                  [
+                    "b"
+                  ]
+                ],
+                [
+                  "multiply",
+                  [
+                    "identity"
+                  ],
+                  "?v0"
+                ]
+              ],
+              [
+                "multiply",
+                "?v0",
+                "?v0"
+              ]
+            ]
+          },
+          {
+            "count": 2,
+            "hits": 0,
+            "mark": [
+              "alias",
+              1,
+              [
+                0
+              ],
+              [
+                1
+              ],
+              [
+                1
+              ]
+            ],
+            "terms": [
+              [
+                "multiply",
+                [
+                  "multiply",
+                  "?v0",
+                  [
+                    "a"
+                  ]
+                ],
+                [
+                  "multiply",
+                  [
+                    "b"
+                  ],
+                  [
+                    "identity"
+                  ]
+                ]
+              ],
+              [
+                "multiply",
+                "?v0",
+                "?v0"
+              ]
+            ]
+          },
+          {
+            "count": 41,
+            "hits": 0,
+            "mark": [
+              "alias",
+              1,
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                1
+              ],
+              []
+            ],
+            "terms": [
+              [
+                "multiply",
+                [
+                  "a"
+                ],
+                [
+                  "multiply",
+                  [
+                    "b"
+                  ],
+                  [
+                    "identity"
+                  ]
+                ]
+              ],
+              [
+                "multiply",
+                "?v0",
+                [
+                  "multiply",
+                  "?v0",
+                  "?v0"
+                ]
+              ]
+            ]
+          },
+          {
+            "count": 3,
+            "hits": 0,
+            "mark": [
+              "alias",
+              1,
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                0
+              ]
+            ],
+            "terms": [
+              [
+                "multiply",
+                [
+                  "c"
+                ],
+                [
+                  "multiply",
+                  [
+                    "inverse",
+                    [
+                      "a"
+                    ]
+                  ],
+                  [
+                    "inverse",
+                    [
+                      "b"
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "multiply",
+                "?v0",
+                [
+                  "multiply",
+                  "?v0",
+                  "?v0"
+                ]
+              ]
+            ]
+          },
+          {
+            "count": 700,
+            "hits": 0,
+            "mark": [
+              "rigid",
+              [
+                0,
+                0
+              ]
+            ],
+            "terms": [
+              [
+                "multiply",
+                [
+                  "multiply",
+                  [
+                    "h"
+                  ],
+                  [
+                    "b"
+                  ]
+                ],
+                [
+                  "identity"
+                ]
+              ],
+              [
+                "multiply",
+                [
+                  "multiply",
+                  [
+                    "a"
+                  ],
+                  [
+                    "b"
+                  ]
+                ],
+                [
+                  "identity"
+                ]
+              ]
+            ]
+          },
+          {
+            "count": 1301,
+            "hits": 0,
+            "mark": [
+              "rigid",
+              [
+                0,
+                1
+              ]
+            ],
+            "terms": [
+              [
+                "multiply",
+                [
+                  "multiply",
+                  "?v0",
+                  [
+                    "a"
+                  ]
+                ],
+                [
+                  "b"
+                ]
+              ],
+              [
+                "multiply",
+                [
+                  "multiply",
+                  [
+                    "a"
+                  ],
+                  [
+                    "b"
+                  ]
+                ],
+                [
+                  "identity"
+                ]
+              ]
+            ]
+          },
+          {
+            "count": 2,
+            "hits": 0,
+            "mark": [
+              "rigid",
+              [
+                0,
+                1,
+                0
+              ]
+            ],
+            "terms": [
+              [
+                "multiply",
+                [
+                  "multiply",
+                  [
+                    "d"
+                  ],
+                  [
+                    "inverse",
+                    [
+                      "b"
+                    ]
+                  ]
+                ],
+                "?v0"
+              ],
+              [
+                "multiply",
+                [
+                  "multiply",
+                  [
+                    "c"
+                  ],
+                  [
+                    "inverse",
+                    [
+                      "a"
+                    ]
+                  ]
+                ],
+                "?v0"
+              ]
+            ]
+          },
+          {
+            "count": 8898,
+            "hits": 0,
+            "mark": [
+              "rigid",
+              [
+                1,
+                0
+              ]
+            ],
+            "terms": [
+              [
+                "multiply",
+                [
+                  "d"
+                ],
+                [
+                  "inverse",
+                  [
+                    "b"
+                  ]
+                ]
+              ],
+              [
+                "multiply",
+                [
+                  "c"
+                ],
+                [
+                  "inverse",
+                  [
+                    "a"
+                  ]
+                ]
+              ]
+            ]
+          },
+          {
+            "count": 216,
+            "hits": 0,
+            "mark": [
+              "rigid",
+              [
+                1,
+                0,
+                0
+              ]
+            ],
+            "terms": [
+              [
+                "multiply",
+                [
+                  "d"
+                ],
+                [
+                  "multiply",
+                  [
+                    "inverse",
+                    [
+                      "b"
+                    ]
+                  ],
+                  "?v0"
+                ]
+              ],
+              [
+                "multiply",
+                [
+                  "c"
+                ],
+                [
+                  "multiply",
+                  [
+                    "inverse",
+                    [
+                      "a"
+                    ]
+                  ],
+                  "?v0"
+                ]
+              ]
+            ]
+          },
+          {
+            "count": 2,
+            "hits": 0,
+            "mark": [
+              "rigid",
+              [
+                1,
+                0,
+                0,
+                0
+              ]
+            ],
+            "terms": [
+              [
+                "multiply",
+                [
+                  "d"
+                ],
+                [
+                  "multiply",
+                  [
+                    "multiply",
+                    [
+                      "inverse",
+                      [
+                        "b"
+                      ]
+                    ],
+                    "?v0"
+                  ],
+                  "?v1"
+                ]
+              ],
+              [
+                "multiply",
+                [
+                  "c"
+                ],
+                [
+                  "multiply",
+                  [
+                    "multiply",
+                    [
+                      "inverse",
+                      [
+                        "a"
+                      ]
+                    ],
+                    "?v0"
+                  ],
+                  "?v1"
+                ]
+              ]
+            ]
+          },
+          {
+            "count": 4287,
+            "hits": 0,
+            "mark": [
+              "rigid",
+              [
+                1,
+                1
+              ]
+            ],
+            "terms": [
+              [
+                "multiply",
+                [
+                  "a"
+                ],
+                [
+                  "multiply",
+                  [
+                    "b"
+                  ],
+                  [
+                    "inverse",
+                    [
+                      "a"
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "multiply",
+                [
+                  "a"
+                ],
+                [
+                  "multiply",
+                  [
+                    "b"
+                  ],
+                  [
+                    "identity"
+                  ]
+                ]
+              ]
+            ]
+          },
+          {
+            "count": 118,
+            "hits": 0,
+            "mark": [
+              "rigid",
+              [
+                1,
+                1,
+                0
+              ]
+            ],
+            "terms": [
+              [
+                "multiply",
+                [
+                  "a"
+                ],
+                [
+                  "multiply",
+                  [
+                    "b"
+                  ],
+                  [
+                    "inverse",
+                    [
+                      "c"
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "multiply",
+                [
+                  "a"
+                ],
+                [
+                  "multiply",
+                  [
+                    "b"
+                  ],
+                  [
+                    "inverse",
+                    [
+                      "a"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          },
+          {
+            "count": 2,
+            "hits": 0,
+            "mark": [
+              "rigid",
+              [
+                1,
+                1,
+                0,
+                0
+              ]
+            ],
+            "terms": [
+              [
+                "multiply",
+                [
+                  "c"
+                ],
+                [
+                  "multiply",
+                  [
+                    "inverse",
+                    [
+                      "a"
+                    ]
+                  ],
+                  [
+                    "multiply",
+                    [
+                      "inverse",
+                      [
+                        "b"
+                      ]
+                    ],
+                    "?v0"
+                  ]
+                ]
+              ],
+              [
+                "multiply",
+                [
+                  "a"
+                ],
+                [
+                  "multiply",
+                  [
+                    "b"
+                  ],
+                  [
+                    "multiply",
+                    [
+                      "inverse",
+                      [
+                        "a"
+                      ]
+                    ],
+                    "?v0"
+                  ]
+                ]
+              ]
+            ]
+          },
+          {
+            "count": 20,
+            "hits": 0,
+            "mark": [
+              "rigid",
+              [
+                1,
+                1,
+                1
+              ]
+            ],
+            "terms": [
+              [
+                "multiply",
+                [
+                  "h"
+                ],
+                [
+                  "multiply",
+                  [
+                    "b"
+                  ],
+                  [
+                    "multiply",
+                    [
+                      "j"
+                    ],
+                    [
+                      "j"
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "multiply",
+                [
+                  "a"
+                ],
+                [
+                  "multiply",
+                  [
+                    "b"
+                  ],
+                  [
+                    "multiply",
+                    [
+                      "c"
+                    ],
+                    [
+                      "c"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          }
+        ],
+        "status": "BOUNDED"
+      },
+      {
+        "counts": {
+          "age_slots": 5,
+          "equality_resolutions_offered": 1,
+          "equations": 7,
+          "given": 20,
+          "offers": 23,
+          "raw_rewrite_pairs": 3,
+          "rewrite_unification_failures": 3,
+          "rewrite_unifications": 3,
+          "rewrites_offered": 3,
+          "shallow_skips": 19,
+          "stored": 20,
+          "support_skips": 322
+        },
+        "id": "GRP167-1",
+        "observations": [
+          {
+            "count": 1,
+            "hits": 0,
+            "mark": [
+              "alias",
+              0,
+              [
+                0,
+                0
+              ],
+              [
+                1
+              ],
+              []
+            ],
+            "terms": [
+              [
+                "multiply",
+                [
+                  "inverse",
+                  "?v0"
+                ],
+                "?v0"
+              ],
+              [
+                "multiply",
+                [
+                  "positive_part",
+                  [
+                    "a"
+                  ]
+                ],
+                [
+                  "negative_part",
+                  [
+                    "a"
+                  ]
+                ]
+              ]
+            ]
+          }
+        ],
+        "status": "SATURATED_WITHOUT_REFUTATION"
+      }
+    ],
+    "marks": [
+      [
+        "rigid",
+        [
+          1,
+          0
+        ]
+      ],
+      [
+        "rigid",
+        [
+          1,
+          1
+        ]
+      ],
+      [
+        "rigid",
+        [
+          0,
+          1
+        ]
+      ],
+      [
+        "rigid",
+        [
+          0,
+          0
+        ]
+      ],
+      [
+        "alias",
+        0,
+        [
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        []
+      ],
+      [
+        "alias",
+        1,
+        [
+          0
+        ],
+        [
+          1
+        ],
+        []
+      ],
+      [
+        "alias",
+        1,
+        [
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        []
+      ],
+      [
+        "rigid",
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      [
+        "rigid",
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      [
+        "alias",
+        0,
+        [
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        []
+      ],
+      [
+        "alias",
+        1,
+        [
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        []
+      ],
+      [
+        "alias",
+        0,
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        []
+      ]
+    ],
+    "ranking": "descending failed-pair frequency; stable repr tie-break"
+  },
+  "cohort": {
+    "cases": {
+      "GRP001-1": {
+        "clauses": 11,
+        "sources": [
+          "Axioms/GRP003-0.ax",
+          "GRP001-1.p"
+        ]
+      },
+      "GRP001-5": {
+        "clauses": 7,
+        "sources": [
+          "GRP001-5.p"
+        ]
+      },
+      "GRP002-2": {
+        "clauses": 12,
+        "sources": [
+          "Axioms/GRP004-0.ax",
+          "GRP002-2.p"
+        ]
+      },
+      "GRP003-2": {
+        "clauses": 8,
+        "sources": [
+          "Axioms/GRP005-0.ax",
+          "GRP003-2.p"
+        ]
+      },
+      "GRP004-2": {
+        "clauses": 8,
+        "sources": [
+          "Axioms/GRP005-0.ax",
+          "GRP004-2.p"
+        ]
+      },
+      "GRP005-1": {
+        "clauses": 9,
+        "sources": [
+          "GRP005-1.p"
+        ]
+      },
+      "GRP006-1": {
+        "clauses": 9,
+        "sources": [
+          "GRP006-1.p"
+        ]
+      },
+      "GRP007-1": {
+        "clauses": 11,
+        "sources": [
+          "Axioms/GRP003-0.ax",
+          "GRP007-1.p"
+        ]
+      },
+      "GRP008-1": {
+        "clauses": 12,
+        "sources": [
+          "Axioms/GRP003-0.ax",
+          "GRP008-1.p"
+        ]
+      },
+      "GRP009-1": {
+        "clauses": 11,
+        "sources": [
+          "Axioms/GRP003-0.ax",
+          "GRP009-1.p"
+        ]
+      },
+      "GRP010-1": {
+        "clauses": 10,
+        "sources": [
+          "Axioms/GRP003-0.ax",
+          "GRP010-1.p"
+        ]
+      },
+      "GRP012-2": {
+        "clauses": 11,
+        "sources": [
+          "Axioms/GRP003-0.ax",
+          "GRP012-2.p"
+        ]
+      },
+      "GRP013-1": {
+        "clauses": 13,
+        "sources": [
+          "Axioms/GRP003-0.ax",
+          "GRP013-1.p"
+        ]
+      },
+      "GRP014-1": {
+        "clauses": 2,
+        "sources": [
+          "GRP014-1.p"
+        ]
+      },
+      "GRP167-1": {
+        "clauses": 20,
+        "sources": [
+          "Axioms/GRP004-0.ax",
+          "Axioms/GRP004-2.ax",
+          "GRP167-1.p"
+        ]
+      }
+    },
+    "development": [
+      "GRP001-1",
+      "GRP001-5",
+      "GRP009-1",
+      "GRP002-2",
+      "GRP167-1"
+    ],
+    "held_out": [
+      "GRP007-1",
+      "GRP008-1",
+      "GRP010-1",
+      "GRP012-2",
+      "GRP013-1",
+      "GRP014-1"
+    ],
+    "rule": "TPTP v9.3.1 GRP003 through GRP014 inclusive, official CNF unsatisfiable, one version per number (-2 if present, otherwise -1), exclude pilot GRP009; GRP011 absent; lowest four numbers train, remaining six held out.",
+    "training": [
+      "GRP003-2",
+      "GRP004-2",
+      "GRP005-1",
+      "GRP006-1"
+    ]
+  },
+  "held_out_proofs": {
+    "learned": 3,
+    "rigid": 3,
+    "rigid-learned": 3,
+    "subsumption": 4,
+    "support": 3
+  },
+  "results": [
+    {
+      "arm": "support",
+      "counts": {
+        "age_slots": 90,
+        "duplicates": 17179,
+        "equations": 117449,
+        "failed_unifications": 277,
+        "given": 360,
+        "offers": 92367,
+        "raw_rewrite_pairs": 26301,
+        "rewrite_unification_failures": 1234,
+        "rewrite_unifications": 26301,
+        "rewrites_offered": 26301,
+        "rewrites_unified": 25067,
+        "shallow_skips": 43599,
+        "stored": 30000,
+        "successful_factors": 179,
+        "successful_resolutions": 22011,
+        "support_skips": 71,
+        "tautologies": 88,
+        "unifications": 22467
+      },
+      "examples": [],
+      "id": "GRP001-1",
+      "node_count": 30000,
+      "seconds": 4.293919,
+      "status": "BOUNDED"
+    },
+    {
+      "arm": "subsumption",
+      "counts": {
+        "age_slots": 86,
+        "duplicates": 15101,
+        "equations": 135133,
+        "failed_unifications": 349,
+        "forward_subsumed": 7336,
+        "given": 347,
+        "offers": 98891,
+        "raw_rewrite_pairs": 29354,
+        "rewrite_unification_failures": 2270,
+        "rewrite_unifications": 29354,
+        "rewrites_offered": 29354,
+        "rewrites_unified": 27084,
+        "shallow_skips": 43774,
+        "stored": 30000,
+        "subsumption_probes": 1399670,
+        "successful_factors": 187,
+        "successful_resolutions": 25227,
+        "support_skips": 71,
+        "tautologies": 71,
+        "unifications": 25763
+      },
+      "examples": [],
+      "id": "GRP001-1",
+      "node_count": 30000,
+      "seconds": 23.09656,
+      "status": "BOUNDED",
+      "subsumption_example": {
+        "bindings": {
+          "?v0": "?v0"
+        },
+        "candidate": [
+          [
+            false,
+            [
+              "product",
+              "?v0",
+              [
+                "b"
+              ],
+              [
+                "a"
+              ]
+            ]
+          ],
+          [
+            false,
+            [
+              "product",
+              [
+                "a"
+              ],
+              [
+                "b"
+              ],
+              [
+                "c"
+              ]
+            ]
+          ],
+          [
+            false,
+            [
+              "product",
+              [
+                "b"
+              ],
+              "?v0",
+              [
+                "a"
+              ]
+            ]
+          ]
+        ],
+        "donor": 55,
+        "instance": [
+          [
+            false,
+            [
+              "product",
+              "?v0",
+              [
+                "b"
+              ],
+              [
+                "a"
+              ]
+            ]
+          ],
+          [
+            false,
+            [
+              "product",
+              [
+                "b"
+              ],
+              "?v0",
+              [
+                "a"
+              ]
+            ]
+          ]
+        ],
+        "pattern": [
+          [
+            false,
+            [
+              "product",
+              "?v0",
+              [
+                "b"
+              ],
+              [
+                "a"
+              ]
+            ]
+          ],
+          [
+            false,
+            [
+              "product",
+              [
+                "b"
+              ],
+              "?v0",
+              [
+                "a"
+              ]
+            ]
+          ]
+        ],
+        "types": {
+          "?v0": "U"
+        }
+      }
+    },
+    {
+      "arm": "rigid",
+      "counts": {
+        "age_slots": 90,
+        "duplicates": 17179,
+        "equations": 114857,
+        "failed_unifications": 277,
+        "given": 360,
+        "offers": 91133,
+        "raw_rewrite_pairs": 26301,
+        "rewrite_unifications": 25067,
+        "rewrites_offered": 25067,
+        "rewrites_unified": 25067,
+        "rigid_skips": 1234,
+        "rigid_tests": 26301,
+        "shallow_skips": 43599,
+        "stored": 30000,
+        "successful_factors": 179,
+        "successful_resolutions": 22011,
+        "support_skips": 71,
+        "tautologies": 88,
+        "unifications": 22467
+      },
+      "examples": [
+        {
+          "hits": 1110,
+          "mark": [
+            "rigid",
+            [
+              0
+            ]
+          ],
+          "terms": [
+            [
+              "multiply",
+              [
+                "a"
+              ],
+              [
+                "b"
+              ]
+            ],
+            [
+              "multiply",
+              [
+                "b"
+              ],
+              [
+                "a"
+              ]
+            ]
+          ]
+        },
+        {
+          "hits": 124,
+          "mark": [
+            "rigid",
+            [
+              1
+            ]
+          ],
+          "terms": [
+            [
+              "multiply",
+              [
+                "identity"
+              ],
+              [
+                "c"
+              ]
+            ],
+            [
+              "multiply",
+              [
+                "identity"
+              ],
+              [
+                "b"
+              ]
+            ]
+          ]
+        }
+      ],
+      "id": "GRP001-1",
+      "node_count": 30000,
+      "seconds": 4.687928,
+      "status": "BOUNDED"
+    },
+    {
+      "arm": "learned",
+      "counts": {
+        "age_slots": 90,
+        "duplicates": 17179,
+        "equations": 117449,
+        "failed_unifications": 277,
+        "given": 360,
+        "learned_tests": 315612,
+        "offers": 92367,
+        "raw_rewrite_pairs": 26301,
+        "rewrite_unification_failures": 1234,
+        "rewrite_unifications": 26301,
+        "rewrites_offered": 26301,
+        "rewrites_unified": 25067,
+        "shallow_skips": 43599,
+        "stored": 30000,
+        "successful_factors": 179,
+        "successful_resolutions": 22011,
+        "support_skips": 71,
+        "tautologies": 88,
+        "unifications": 22467
+      },
+      "examples": [],
+      "id": "GRP001-1",
+      "node_count": 30000,
+      "seconds": 4.654623,
+      "status": "BOUNDED"
+    },
+    {
+      "arm": "rigid-learned",
+      "counts": {
+        "age_slots": 90,
+        "duplicates": 17179,
+        "equations": 114857,
+        "failed_unifications": 277,
+        "given": 360,
+        "learned_tests": 150402,
+        "offers": 91133,
+        "raw_rewrite_pairs": 26301,
+        "rewrite_unifications": 25067,
+        "rewrites_offered": 25067,
+        "rewrites_unified": 25067,
+        "rigid_skips": 1234,
+        "rigid_tests": 26301,
+        "shallow_skips": 43599,
+        "stored": 30000,
+        "successful_factors": 179,
+        "successful_resolutions": 22011,
+        "support_skips": 71,
+        "tautologies": 88,
+        "unifications": 22467
+      },
+      "examples": [
+        {
+          "hits": 1110,
+          "mark": [
+            "rigid",
+            [
+              0
+            ]
+          ],
+          "terms": [
+            [
+              "multiply",
+              [
+                "a"
+              ],
+              [
+                "b"
+              ]
+            ],
+            [
+              "multiply",
+              [
+                "b"
+              ],
+              [
+                "a"
+              ]
+            ]
+          ]
+        },
+        {
+          "hits": 124,
+          "mark": [
+            "rigid",
+            [
+              1
+            ]
+          ],
+          "terms": [
+            [
+              "multiply",
+              [
+                "identity"
+              ],
+              [
+                "c"
+              ]
+            ],
+            [
+              "multiply",
+              [
+                "identity"
+              ],
+              [
+                "b"
+              ]
+            ]
+          ]
+        }
+      ],
+      "id": "GRP001-1",
+      "node_count": 30000,
+      "seconds": 4.53904,
+      "status": "BOUNDED"
+    },
+    {
+      "arm": "support",
+      "counts": {
+        "age_slots": 114,
+        "duplicates": 1383,
+        "equations": 24062,
+        "failed_unifications": 700,
+        "given": 458,
+        "offers": 9410,
+        "shallow_skips": 3338,
+        "stored": 3996,
+        "successful_factors": 811,
+        "successful_resolutions": 4561,
+        "support_skips": 42,
+        "unifications": 6072
+      },
+      "direct_lines": 21,
+      "examples": [],
+      "id": "GRP001-5",
+      "node_count": 3996,
+      "receipt": {
+        "records": 87,
+        "status": "CHECKED_LOGICAL_RECORDS",
+        "unique_records": 81
+      },
+      "seconds": 0.479078,
+      "status": "PROVED"
+    },
+    {
+      "arm": "subsumption",
+      "counts": {
+        "age_slots": 80,
+        "duplicates": 728,
+        "equations": 17197,
+        "failed_unifications": 576,
+        "forward_subsumed": 451,
+        "given": 322,
+        "offers": 6500,
+        "shallow_skips": 2160,
+        "stored": 2592,
+        "subsumption_probes": 90894,
+        "successful_factors": 535,
+        "successful_resolutions": 3229,
+        "support_skips": 42,
+        "unifications": 4340
+      },
+      "direct_lines": 21,
+      "examples": [],
+      "id": "GRP001-5",
+      "node_count": 2592,
+      "receipt": {
+        "records": 87,
+        "status": "CHECKED_LOGICAL_RECORDS",
+        "unique_records": 81
+      },
+      "seconds": 1.48803,
+      "status": "PROVED",
+      "subsumption_example": {
+        "bindings": {
+          "?v0": [
+            "b"
+          ]
+        },
+        "candidate": [
+          [
+            false,
+            [
+              "product",
+              "?v0",
+              "?v1",
+              [
+                "b"
+              ]
+            ]
+          ],
+          [
+            false,
+            [
+              "product",
+              "?v2",
+              "?v1",
+              [
+                "c"
+              ]
+            ]
+          ],
+          [
+            false,
+            [
+              "product",
+              [
+                "a"
+              ],
+              "?v0",
+              "?v2"
+            ]
+          ],
+          [
+            false,
+            [
+              "product",
+              [
+                "b"
+              ],
+              [
+                "b"
+              ],
+              [
+                "a"
+              ]
+            ]
+          ]
+        ],
+        "donor": 15,
+        "instance": [
+          [
+            false,
+            [
+              "product",
+              [
+                "b"
+              ],
+              [
+                "b"
+              ],
+              [
+                "a"
+              ]
+            ]
+          ],
+          [
+            false,
+            [
+              "product",
+              [
+                "b"
+              ],
+              [
+                "b"
+              ],
+              [
+                "a"
+              ]
+            ]
+          ]
+        ],
+        "pattern": [
+          [
+            false,
+            [
+              "product",
+              "?v0",
+              [
+                "b"
+              ],
+              [
+                "a"
+              ]
+            ]
+          ],
+          [
+            false,
+            [
+              "product",
+              [
+                "b"
+              ],
+              "?v0",
+              [
+                "a"
+              ]
+            ]
+          ]
+        ],
+        "types": {
+          "?v0": "U",
+          "?v1": "U",
+          "?v2": "U"
+        }
+      }
+    },
+    {
+      "arm": "rigid",
+      "counts": {
+        "age_slots": 114,
+        "duplicates": 1383,
+        "equations": 24062,
+        "failed_unifications": 700,
+        "given": 458,
+        "offers": 9410,
+        "shallow_skips": 3338,
+        "stored": 3996,
+        "successful_factors": 811,
+        "successful_resolutions": 4561,
+        "support_skips": 42,
+        "unifications": 6072
+      },
+      "direct_lines": 21,
+      "examples": [],
+      "id": "GRP001-5",
+      "node_count": 3996,
+      "receipt": {
+        "records": 87,
+        "status": "CHECKED_LOGICAL_RECORDS",
+        "unique_records": 81
+      },
+      "seconds": 0.537892,
+      "status": "PROVED"
+    },
+    {
+      "arm": "learned",
+      "counts": {
+        "age_slots": 114,
+        "duplicates": 1383,
+        "equations": 24062,
+        "failed_unifications": 700,
+        "given": 458,
+        "offers": 9410,
+        "shallow_skips": 3338,
+        "stored": 3996,
+        "successful_factors": 811,
+        "successful_resolutions": 4561,
+        "support_skips": 42,
+        "unifications": 6072
+      },
+      "direct_lines": 21,
+      "examples": [],
+      "id": "GRP001-5",
+      "node_count": 3996,
+      "receipt": {
+        "records": 87,
+        "status": "CHECKED_LOGICAL_RECORDS",
+        "unique_records": 81
+      },
+      "seconds": 0.519964,
+      "status": "PROVED"
+    },
+    {
+      "arm": "rigid-learned",
+      "counts": {
+        "age_slots": 114,
+        "duplicates": 1383,
+        "equations": 24062,
+        "failed_unifications": 700,
+        "given": 458,
+        "offers": 9410,
+        "shallow_skips": 3338,
+        "stored": 3996,
+        "successful_factors": 811,
+        "successful_resolutions": 4561,
+        "support_skips": 42,
+        "unifications": 6072
+      },
+      "direct_lines": 21,
+      "examples": [],
+      "id": "GRP001-5",
+      "node_count": 3996,
+      "receipt": {
+        "records": 87,
+        "status": "CHECKED_LOGICAL_RECORDS",
+        "unique_records": 81
+      },
+      "seconds": 0.576752,
+      "status": "PROVED"
+    },
+    {
+      "arm": "support",
+      "counts": {
+        "age_slots": 186,
+        "duplicates": 2252,
+        "equality_resolutions_offered": 1,
+        "equations": 36284,
+        "failed_unifications": 911,
+        "given": 747,
+        "offers": 17051,
+        "shallow_skips": 7991,
+        "stored": 5907,
+        "successful_factors": 949,
+        "successful_resolutions": 7199,
+        "support_skips": 79,
+        "unifications": 9059
+      },
+      "direct_lines": 18,
+      "examples": [],
+      "id": "GRP009-1",
+      "node_count": 5907,
+      "receipt": {
+        "records": 72,
+        "status": "CHECKED_LOGICAL_RECORDS",
+        "unique_records": 71
+      },
+      "seconds": 0.801,
+      "status": "PROVED"
+    },
+    {
+      "arm": "subsumption",
+      "counts": {
+        "age_slots": 164,
+        "duplicates": 1985,
+        "equality_resolutions_offered": 1,
+        "equations": 32546,
+        "failed_unifications": 770,
+        "forward_subsumed": 312,
+        "given": 659,
+        "offers": 14953,
+        "shallow_skips": 6827,
+        "stored": 5069,
+        "subsumption_probes": 159757,
+        "successful_factors": 883,
+        "successful_resolutions": 6472,
+        "support_skips": 79,
+        "unifications": 8125
+      },
+      "direct_lines": 18,
+      "examples": [],
+      "id": "GRP009-1",
+      "node_count": 5069,
+      "receipt": {
+        "records": 72,
+        "status": "CHECKED_LOGICAL_RECORDS",
+        "unique_records": 71
+      },
+      "seconds": 2.824465,
+      "status": "PROVED",
+      "subsumption_example": {
+        "bindings": {
+          "?v0": [
+            "identity"
+          ],
+          "?v1": "?v0"
+        },
+        "candidate": [
+          [
+            false,
+            [
+              "product",
+              [
+                "identity"
+              ],
+              "?v0",
+              [
+                "a"
+              ]
+            ]
+          ],
+          [
+            false,
+            [
+              "product",
+              [
+                "identity"
+              ],
+              "?v0",
+              [
+                "c"
+              ]
+            ]
+          ]
+        ],
+        "donor": 11,
+        "instance": [
+          [
+            false,
+            [
+              "product",
+              [
+                "identity"
+              ],
+              "?v0",
+              [
+                "a"
+              ]
+            ]
+          ],
+          [
+            false,
+            [
+              "product",
+              [
+                "identity"
+              ],
+              "?v0",
+              [
+                "c"
+              ]
+            ]
+          ]
+        ],
+        "pattern": [
+          [
+            false,
+            [
+              "product",
+              "?v0",
+              "?v1",
+              [
+                "a"
+              ]
+            ]
+          ],
+          [
+            false,
+            [
+              "product",
+              "?v0",
+              "?v1",
+              [
+                "c"
+              ]
+            ]
+          ]
+        ],
+        "types": {
+          "?v0": "U"
+        }
+      }
+    },
+    {
+      "arm": "rigid",
+      "counts": {
+        "age_slots": 186,
+        "duplicates": 2252,
+        "equality_resolutions_offered": 1,
+        "equations": 36284,
+        "failed_unifications": 911,
+        "given": 747,
+        "offers": 17051,
+        "shallow_skips": 7991,
+        "stored": 5907,
+        "successful_factors": 949,
+        "successful_resolutions": 7199,
+        "support_skips": 79,
+        "unifications": 9059
+      },
+      "direct_lines": 18,
+      "examples": [],
+      "id": "GRP009-1",
+      "node_count": 5907,
+      "receipt": {
+        "records": 72,
+        "status": "CHECKED_LOGICAL_RECORDS",
+        "unique_records": 71
+      },
+      "seconds": 0.805453,
+      "status": "PROVED"
+    },
+    {
+      "arm": "learned",
+      "counts": {
+        "age_slots": 186,
+        "duplicates": 2252,
+        "equality_resolutions_offered": 1,
+        "equations": 36284,
+        "failed_unifications": 911,
+        "given": 747,
+        "offers": 17051,
+        "shallow_skips": 7991,
+        "stored": 5907,
+        "successful_factors": 949,
+        "successful_resolutions": 7199,
+        "support_skips": 79,
+        "unifications": 9059
+      },
+      "direct_lines": 18,
+      "examples": [],
+      "id": "GRP009-1",
+      "node_count": 5907,
+      "receipt": {
+        "records": 72,
+        "status": "CHECKED_LOGICAL_RECORDS",
+        "unique_records": 71
+      },
+      "seconds": 0.829271,
+      "status": "PROVED"
+    },
+    {
+      "arm": "rigid-learned",
+      "counts": {
+        "age_slots": 186,
+        "duplicates": 2252,
+        "equality_resolutions_offered": 1,
+        "equations": 36284,
+        "failed_unifications": 911,
+        "given": 747,
+        "offers": 17051,
+        "shallow_skips": 7991,
+        "stored": 5907,
+        "successful_factors": 949,
+        "successful_resolutions": 7199,
+        "support_skips": 79,
+        "unifications": 9059
+      },
+      "direct_lines": 18,
+      "examples": [],
+      "id": "GRP009-1",
+      "node_count": 5907,
+      "receipt": {
+        "records": 72,
+        "status": "CHECKED_LOGICAL_RECORDS",
+        "unique_records": 71
+      },
+      "seconds": 0.871759,
+      "status": "PROVED"
+    },
+    {
+      "arm": "support",
+      "counts": {
+        "age_slots": 65,
+        "duplicates": 2598,
+        "equality_resolutions_offered": 1,
+        "equations": 265620,
+        "failed_unifications": 21,
+        "given": 261,
+        "offers": 120001,
+        "raw_rewrite_pairs": 119740,
+        "rewrite_unification_failures": 115252,
+        "rewrite_unifications": 119739,
+        "rewrites_offered": 119740,
+        "rewrites_unified": 4487,
+        "shallow_skips": 239,
+        "stored": 1901,
+        "support_skips": 50,
+        "unifications": 21
+      },
+      "examples": [],
+      "id": "GRP002-2",
+      "node_count": 1901,
+      "seconds": 3.505731,
+      "status": "BOUNDED"
+    },
+    {
+      "arm": "subsumption",
+      "counts": {
+        "age_slots": 64,
+        "duplicates": 2600,
+        "equality_resolutions_offered": 1,
+        "equations": 265338,
+        "failed_unifications": 22,
+        "forward_subsumed": 104,
+        "given": 258,
+        "offers": 120001,
+        "raw_rewrite_pairs": 119743,
+        "rewrite_unification_failures": 115252,
+        "rewrite_unifications": 119742,
+        "rewrites_offered": 119743,
+        "rewrites_unified": 4490,
+        "shallow_skips": 235,
+        "stored": 1798,
+        "subsumption_probes": 68331,
+        "support_skips": 50,
+        "unifications": 22
+      },
+      "examples": [],
+      "id": "GRP002-2",
+      "node_count": 1798,
+      "seconds": 3.915899,
+      "status": "BOUNDED",
+      "subsumption_example": {
+        "bindings": {
+          "?v0": [
+            "identity"
+          ]
+        },
+        "candidate": [
+          [
+            true,
+            [
+              "=U",
+              [
+                "multiply",
+                [
+                  "c"
+                ],
+                [
+                  "identity"
+                ]
+              ],
+              [
+                "multiply",
+                [
+                  "a"
+                ],
+                [
+                  "multiply",
+                  [
+                    "b"
+                  ],
+                  [
+                    "identity"
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        "donor": 12,
+        "instance": [
+          [
+            true,
+            [
+              "=U",
+              [
+                "multiply",
+                [
+                  "c"
+                ],
+                [
+                  "identity"
+                ]
+              ],
+              [
+                "multiply",
+                [
+                  "a"
+                ],
+                [
+                  "multiply",
+                  [
+                    "b"
+                  ],
+                  [
+                    "identity"
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        "pattern": [
+          [
+            true,
+            [
+              "=U",
+              [
+                "multiply",
+                [
+                  "c"
+                ],
+                "?v0"
+              ],
+              [
+                "multiply",
+                [
+                  "a"
+                ],
+                [
+                  "multiply",
+                  [
+                    "b"
+                  ],
+                  "?v0"
+                ]
+              ]
+            ]
+          ]
+        ],
+        "types": {}
+      }
+    },
+    {
+      "arm": "rigid",
+      "counts": {
+        "age_slots": 142,
+        "duplicates": 12352,
+        "equality_resolutions_offered": 1,
+        "equations": 68087,
+        "failed_unifications": 46,
+        "given": 570,
+        "offers": 23629,
+        "raw_rewrite_pairs": 600001,
+        "rewrite_unification_failures": 1022,
+        "rewrite_unifications": 23059,
+        "rewrites_offered": 23059,
+        "rewrites_unified": 22037,
+        "rigid_skips": 576941,
+        "rigid_tests": 600000,
+        "shallow_skips": 523,
+        "stored": 9697,
+        "support_skips": 50,
+        "unifications": 46
+      },
+      "examples": [
+        {
+          "hits": 8859,
+          "mark": [
+            "rigid",
+            [
+              0,
+              0
+            ]
+          ],
+          "terms": [
+            [
+              "multiply",
+              [
+                "multiply",
+                [
+                  "h"
+                ],
+                [
+                  "b"
+                ]
+              ],
+              [
+                "identity"
+              ]
+            ],
+            [
+              "multiply",
+              [
+                "multiply",
+                [
+                  "a"
+                ],
+                [
+                  "b"
+                ]
+              ],
+              [
+                "identity"
+              ]
+            ]
+          ]
+        },
+        {
+          "hits": 23,
+          "mark": [
+            "rigid",
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "terms": [
+            [
+              "multiply",
+              [
+                "multiply",
+                [
+                  "inverse",
+                  [
+                    "c"
+                  ]
+                ],
+                [
+                  "a"
+                ]
+              ],
+              [
+                "b"
+              ]
+            ],
+            [
+              "multiply",
+              [
+                "multiply",
+                [
+                  "inverse",
+                  [
+                    "a"
+                  ]
+                ],
+                "?v0"
+              ],
+              "?v1"
+            ]
+          ]
+        },
+        {
+          "hits": 8760,
+          "mark": [
+            "rigid",
+            [
+              0,
+              1
+            ]
+          ],
+          "terms": [
+            [
+              "multiply",
+              [
+                "multiply",
+                "?v0",
+                [
+                  "a"
+                ]
+              ],
+              [
+                "b"
+              ]
+            ],
+            [
+              "multiply",
+              [
+                "multiply",
+                [
+                  "a"
+                ],
+                [
+                  "b"
+                ]
+              ],
+              [
+                "identity"
+              ]
+            ]
+          ]
+        },
+        {
+          "hits": 2,
+          "mark": [
+            "rigid",
+            [
+              0,
+              1,
+              0
+            ]
+          ],
+          "terms": [
+            [
+              "multiply",
+              [
+                "multiply",
+                "?v0",
+                [
+                  "multiply",
+                  [
+                    "h"
+                  ],
+                  [
+                    "b"
+                  ]
+                ]
+              ],
+              [
+                "identity"
+              ]
+            ],
+            [
+              "multiply",
+              [
+                "multiply",
+                "?v0",
+                [
+                  "multiply",
+                  [
+                    "a"
+                  ],
+                  [
+                    "b"
+                  ]
+                ]
+              ],
+              [
+                "identity"
+              ]
+            ]
+          ]
+        },
+        {
+          "hits": 120,
+          "mark": [
+            "rigid",
+            [
+              0,
+              1,
+              1
+            ]
+          ],
+          "terms": [
+            [
+              "multiply",
+              [
+                "multiply",
+                "?v0",
+                [
+                  "multiply",
+                  "?v1",
+                  [
+                    "a"
+                  ]
+                ]
+              ],
+              [
+                "b"
+              ]
+            ],
+            [
+              "multiply",
+              [
+                "multiply",
+                "?v0",
+                [
+                  "multiply",
+                  [
+                    "a"
+                  ],
+                  [
+                    "b"
+                  ]
+                ]
+              ],
+              [
+                "identity"
+              ]
+            ]
+          ]
+        },
+        {
+          "hits": 444843,
+          "mark": [
+            "rigid",
+            [
+              0
+            ]
+          ],
+          "terms": [
+            [
+              "multiply",
+              [
+                "h"
+              ],
+              [
+                "b"
+              ]
+            ],
+            [
+              "multiply",
+              [
+                "a"
+              ],
+              [
+                "b"
+              ]
+            ]
+          ]
+        },
+        {
+          "hits": 8015,
+          "mark": [
+            "rigid",
+            [
+              1,
+              0
+            ]
+          ],
+          "terms": [
+            [
+              "multiply",
+              [
+                "a"
+              ],
+              [
+                "multiply",
+                [
+                  "multiply",
+                  [
+                    "b"
+                  ],
+                  "?v0"
+                ],
+                "?v1"
+              ]
+            ],
+            [
+              "multiply",
+              [
+                "a"
+              ],
+              [
+                "multiply",
+                [
+                  "b"
+                ],
+                "?v0"
+              ]
+            ]
+          ]
+        },
+        {
+          "hits": 38,
+          "mark": [
+            "rigid",
+            [
+              1,
+              0,
+              0
+            ]
+          ],
+          "terms": [
+            [
+              "multiply",
+              [
+                "d"
+              ],
+              [
+                "multiply",
+                [
+                  "inverse",
+                  [
+                    "a"
+                  ]
+                ],
+                [
+                  "inverse",
+                  [
+                    "a"
+                  ]
+                ]
+              ]
+            ],
+            [
+              "multiply",
+              [
+                "d"
+              ],
+              [
+                "multiply",
+                [
+                  "inverse",
+                  [
+                    "b"
+                  ]
+                ],
+                "?v0"
+              ]
+            ]
+          ]
+        },
+        {
+          "hits": 2962,
+          "mark": [
+            "rigid",
+            [
+              1,
+              1
+            ]
+          ],
+          "terms": [
+            [
+              "multiply",
+              [
+                "a"
+              ],
+              [
+                "multiply",
+                [
+                  "b"
+                ],
+                [
+                  "inverse",
+                  [
+                    "a"
+                  ]
+                ]
+              ]
+            ],
+            [
+              "multiply",
+              [
+                "a"
+              ],
+              [
+                "multiply",
+                [
+                  "b"
+                ],
+                [
+                  "identity"
+                ]
+              ]
+            ]
+          ]
+        },
+        {
+          "hits": 16,
+          "mark": [
+            "rigid",
+            [
+              1,
+              1,
+              0
+            ]
+          ],
+          "terms": [
+            [
+              "multiply",
+              [
+                "a"
+              ],
+              [
+                "multiply",
+                [
+                  "b"
+                ],
+                [
+                  "inverse",
+                  [
+                    "c"
+                  ]
+                ]
+              ]
+            ],
+            [
+              "multiply",
+              [
+                "a"
+              ],
+              [
+                "multiply",
+                [
+                  "b"
+                ],
+                [
+                  "inverse",
+                  [
+                    "a"
+                  ]
+                ]
+              ]
+            ]
+          ]
+        },
+        {
+          "hits": 103303,
+          "mark": [
+            "rigid",
+            [
+              1
+            ]
+          ],
+          "terms": [
+            [
+              "multiply",
+              "?v0",
+              [
+                "identity"
+              ]
+            ],
+            [
+              "multiply",
+              [
+                "a"
+              ],
+              [
+                "b"
+              ]
+            ]
+          ]
+        }
+      ],
+      "id": "GRP002-2",
+      "node_count": 9697,
+      "seconds": 4.425339,
+      "status": "BOUNDED"
+    },
+    {
+      "arm": "learned",
+      "counts": {
+        "age_slots": 70,
+        "duplicates": 2928,
+        "equality_resolutions_offered": 1,
+        "equations": 260636,
+        "failed_unifications": 26,
+        "given": 283,
+        "learned_skips": 24272,
+        "learned_tests": 1475159,
+        "offers": 120001,
+        "raw_rewrite_pairs": 143990,
+        "rewrite_unification_failures": 114636,
+        "rewrite_unifications": 119717,
+        "rewrites_offered": 119718,
+        "rewrites_unified": 5081,
+        "shallow_skips": 256,
+        "stored": 2165,
+        "support_skips": 50,
+        "unifications": 26
+      },
+      "examples": [
+        {
+          "hits": 284,
+          "mark": [
+            "alias",
+            0,
+            [
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            []
+          ],
+          "terms": [
+            [
+              "multiply",
+              "?v0",
+              [
+                "inverse",
+                "?v0"
+              ]
+            ],
+            [
+              "multiply",
+              [
+                "c"
+              ],
+              [
+                "inverse",
+                [
+                  "a"
+                ]
+              ]
+            ]
+          ]
+        },
+        {
+          "hits": 4,
+          "mark": [
+            "alias",
+            0,
+            [
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            []
+          ],
+          "terms": [
+            [
+              "multiply",
+              "?v0",
+              [
+                "multiply",
+                "?v0",
+                "?v0"
+              ]
+            ],
+            [
+              "multiply",
+              [
+                "j"
+              ],
+              [
+                "multiply",
+                [
+                  "j"
+                ],
+                [
+                  "d"
+                ]
+              ]
+            ]
+          ]
+        },
+        {
+          "hits": 2,
+          "mark": [
+            "alias",
+            0,
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            []
+          ],
+          "terms": [
+            [
+              "multiply",
+              "?v0",
+              [
+                "multiply",
+                "?v0",
+                "?v0"
+              ]
+            ],
+            [
+              "multiply",
+              "?v0",
+              [
+                "multiply",
+                [
+                  "a"
+                ],
+                [
+                  "b"
+                ]
+              ]
+            ]
+          ]
+        },
+        {
+          "hits": 240,
+          "mark": [
+            "alias",
+            1,
+            [
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            []
+          ],
+          "terms": [
+            [
+              "multiply",
+              [
+                "c"
+              ],
+              [
+                "inverse",
+                [
+                  "a"
+                ]
+              ]
+            ],
+            [
+              "multiply",
+              "?v0",
+              [
+                "inverse",
+                "?v0"
+              ]
+            ]
+          ]
+        },
+        {
+          "hits": 4,
+          "mark": [
+            "alias",
+            1,
+            [
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            []
+          ],
+          "terms": [
+            [
+              "multiply",
+              [
+                "j"
+              ],
+              [
+                "multiply",
+                [
+                  "j"
+                ],
+                [
+                  "d"
+                ]
+              ]
+            ],
+            [
+              "multiply",
+              "?v0",
+              [
+                "multiply",
+                "?v0",
+                "?v0"
+              ]
+            ]
+          ]
+        },
+        {
+          "hits": 237,
+          "mark": [
+            "alias",
+            1,
+            [
+              0
+            ],
+            [
+              1
+            ],
+            []
+          ],
+          "terms": [
+            [
+              "multiply",
+              [
+                "a"
+              ],
+              [
+                "b"
+              ]
+            ],
+            [
+              "multiply",
+              "?v0",
+              "?v0"
+            ]
+          ]
+        },
+        {
+          "hits": 1145,
+          "mark": [
+            "rigid",
+            [
+              0,
+              0
+            ]
+          ],
+          "terms": [
+            [
+              "multiply",
+              [
+                "multiply",
+                [
+                  "a"
+                ],
+                [
+                  "b"
+                ]
+              ],
+              [
+                "identity"
+              ]
+            ],
+            [
+              "multiply",
+              [
+                "inverse",
+                [
+                  "b"
+                ]
+              ],
+              "?v0"
+            ]
+          ]
+        },
+        {
+          "hits": 1592,
+          "mark": [
+            "rigid",
+            [
+              0,
+              1
+            ]
+          ],
+          "terms": [
+            [
+              "multiply",
+              [
+                "multiply",
+                "?v0",
+                [
+                  "a"
+                ]
+              ],
+              [
+                "b"
+              ]
+            ],
+            [
+              "multiply",
+              [
+                "multiply",
+                [
+                  "a"
+                ],
+                [
+                  "b"
+                ]
+              ],
+              [
+                "identity"
+              ]
+            ]
+          ]
+        },
+        {
+          "hits": 19545,
+          "mark": [
+            "rigid",
+            [
+              1,
+              0
+            ]
+          ],
+          "terms": [
+            [
+              "multiply",
+              [
+                "d"
+              ],
+              [
+                "inverse",
+                [
+                  "b"
+                ]
+              ]
+            ],
+            [
+              "multiply",
+              [
+                "c"
+              ],
+              [
+                "inverse",
+                [
+                  "a"
+                ]
+              ]
+            ]
+          ]
+        },
+        {
+          "hits": 387,
+          "mark": [
+            "rigid",
+            [
+              1,
+              0,
+              0
+            ]
+          ],
+          "terms": [
+            [
+              "multiply",
+              [
+                "d"
+              ],
+              [
+                "multiply",
+                [
+                  "inverse",
+                  [
+                    "b"
+                  ]
+                ],
+                "?v0"
+              ]
+            ],
+            [
+              "multiply",
+              [
+                "c"
+              ],
+              [
+                "multiply",
+                [
+                  "inverse",
+                  [
+                    "a"
+                  ]
+                ],
+                "?v0"
+              ]
+            ]
+          ]
+        },
+        {
+          "hits": 796,
+          "mark": [
+            "rigid",
+            [
+              1,
+              1
+            ]
+          ],
+          "terms": [
+            [
+              "multiply",
+              [
+                "a"
+              ],
+              [
+                "multiply",
+                [
+                  "b"
+                ],
+                [
+                  "inverse",
+                  [
+                    "a"
+                  ]
+                ]
+              ]
+            ],
+            [
+              "multiply",
+              [
+                "a"
+              ],
+              [
+                "multiply",
+                [
+                  "b"
+                ],
+                [
+                  "identity"
+                ]
+              ]
+            ]
+          ]
+        },
+        {
+          "hits": 36,
+          "mark": [
+            "rigid",
+            [
+              1,
+              1,
+              0
+            ]
+          ],
+          "terms": [
+            [
+              "multiply",
+              [
+                "a"
+              ],
+              [
+                "multiply",
+                [
+                  "b"
+                ],
+                [
+                  "inverse",
+                  [
+                    "c"
+                  ]
+                ]
+              ]
+            ],
+            [
+              "multiply",
+              [
+                "a"
+              ],
+              [
+                "multiply",
+                [
+                  "b"
+                ],
+                [
+                  "inverse",
+                  [
+                    "a"
+                  ]
+                ]
+              ]
+            ]
+          ]
+        }
+      ],
+      "id": "GRP002-2",
+      "node_count": 2165,
+      "seconds": 4.534259,
+      "status": "BOUNDED"
+    },
+    {
+      "arm": "rigid-learned",
+      "counts": {
+        "age_slots": 142,
+        "duplicates": 12352,
+        "equality_resolutions_offered": 1,
+        "equations": 64765,
+        "failed_unifications": 46,
+        "given": 570,
+        "learned_skips": 936,
+        "learned_tests": 134708,
+        "offers": 22693,
+        "raw_rewrite_pairs": 600001,
+        "rewrite_unification_failures": 86,
+        "rewrite_unifications": 22123,
+        "rewrites_offered": 22123,
+        "rewrites_unified": 22037,
+        "rigid_skips": 576941,
+        "rigid_tests": 600000,
+        "shallow_skips": 523,
+        "stored": 9697,
+        "support_skips": 50,
+        "unifications": 46
+      },
+      "examples": [
+        {
+          "hits": 231,
+          "mark": [
+            "alias",
+            0,
+            [
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            []
+          ],
+          "terms": [
+            [
+              "multiply",
+              "?v0",
+              [
+                "inverse",
+                "?v0"
+              ]
+            ],
+            [
+              "multiply",
+              [
+                "c"
+              ],
+              [
+                "inverse",
+                [
+                  "a"
+                ]
+              ]
+            ]
+          ]
+        },
+        {
+          "hits": 14,
+          "mark": [
+            "alias",
+            0,
+            [
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            []
+          ],
+          "terms": [
+            [
+              "multiply",
+              "?v0",
+              [
+                "multiply",
+                "?v0",
+                "?v0"
+              ]
+            ],
+            [
+              "multiply",
+              [
+                "j"
+              ],
+              [
+                "multiply",
+                [
+                  "j"
+                ],
+                [
+                  "d"
+                ]
+              ]
+            ]
+          ]
+        },
+        {
+          "hits": 16,
+          "mark": [
+            "alias",
+            0,
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            []
+          ],
+          "terms": [
+            [
+              "multiply",
+              "?v0",
+              [
+                "multiply",
+                "?v0",
+                "?v0"
+              ]
+            ],
+            [
+              "multiply",
+              "?v0",
+              [
+                "multiply",
+                [
+                  "a"
+                ],
+                [
+                  "b"
+                ]
+              ]
+            ]
+          ]
+        },
+        {
+          "hits": 195,
+          "mark": [
+            "alias",
+            1,
+            [
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            []
+          ],
+          "terms": [
+            [
+              "multiply",
+              [
+                "c"
+              ],
+              [
+                "inverse",
+                [
+                  "a"
+                ]
+              ]
+            ],
+            [
+              "multiply",
+              "?v0",
+              [
+                "inverse",
+                "?v0"
+              ]
+            ]
+          ]
+        },
+        {
+          "hits": 14,
+          "mark": [
+            "alias",
+            1,
+            [
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            []
+          ],
+          "terms": [
+            [
+              "multiply",
+              [
+                "j"
+              ],
+              [
+                "multiply",
+                [
+                  "j"
+                ],
+                [
+                  "d"
+                ]
+              ]
+            ],
+            [
+              "multiply",
+              "?v0",
+              [
+                "multiply",
+                "?v0",
+                "?v0"
+              ]
+            ]
+          ]
+        },
+        {
+          "hits": 466,
+          "mark": [
+            "alias",
+            1,
+            [
+              0
+            ],
+            [
+              1
+            ],
+            []
+          ],
+          "terms": [
+            [
+              "multiply",
+              [
+                "a"
+              ],
+              [
+                "b"
+              ]
+            ],
+            [
+              "multiply",
+              "?v0",
+              "?v0"
+            ]
+          ]
+        },
+        {
+          "hits": 8859,
+          "mark": [
+            "rigid",
+            [
+              0,
+              0
+            ]
+          ],
+          "terms": [
+            [
+              "multiply",
+              [
+                "multiply",
+                [
+                  "h"
+                ],
+                [
+                  "b"
+                ]
+              ],
+              [
+                "identity"
+              ]
+            ],
+            [
+              "multiply",
+              [
+                "multiply",
+                [
+                  "a"
+                ],
+                [
+                  "b"
+                ]
+              ],
+              [
+                "identity"
+              ]
+            ]
+          ]
+        },
+        {
+          "hits": 23,
+          "mark": [
+            "rigid",
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "terms": [
+            [
+              "multiply",
+              [
+                "multiply",
+                [
+                  "inverse",
+                  [
+                    "c"
+                  ]
+                ],
+                [
+                  "a"
+                ]
+              ],
+              [
+                "b"
+              ]
+            ],
+            [
+              "multiply",
+              [
+                "multiply",
+                [
+                  "inverse",
+                  [
+                    "a"
+                  ]
+                ],
+                "?v0"
+              ],
+              "?v1"
+            ]
+          ]
+        },
+        {
+          "hits": 8760,
+          "mark": [
+            "rigid",
+            [
+              0,
+              1
+            ]
+          ],
+          "terms": [
+            [
+              "multiply",
+              [
+                "multiply",
+                "?v0",
+                [
+                  "a"
+                ]
+              ],
+              [
+                "b"
+              ]
+            ],
+            [
+              "multiply",
+              [
+                "multiply",
+                [
+                  "a"
+                ],
+                [
+                  "b"
+                ]
+              ],
+              [
+                "identity"
+              ]
+            ]
+          ]
+        },
+        {
+          "hits": 2,
+          "mark": [
+            "rigid",
+            [
+              0,
+              1,
+              0
+            ]
+          ],
+          "terms": [
+            [
+              "multiply",
+              [
+                "multiply",
+                "?v0",
+                [
+                  "multiply",
+                  [
+                    "h"
+                  ],
+                  [
+                    "b"
+                  ]
+                ]
+              ],
+              [
+                "identity"
+              ]
+            ],
+            [
+              "multiply",
+              [
+                "multiply",
+                "?v0",
+                [
+                  "multiply",
+                  [
+                    "a"
+                  ],
+                  [
+                    "b"
+                  ]
+                ]
+              ],
+              [
+                "identity"
+              ]
+            ]
+          ]
+        },
+        {
+          "hits": 120,
+          "mark": [
+            "rigid",
+            [
+              0,
+              1,
+              1
+            ]
+          ],
+          "terms": [
+            [
+              "multiply",
+              [
+                "multiply",
+                "?v0",
+                [
+                  "multiply",
+                  "?v1",
+                  [
+                    "a"
+                  ]
+                ]
+              ],
+              [
+                "b"
+              ]
+            ],
+            [
+              "multiply",
+              [
+                "multiply",
+                "?v0",
+                [
+                  "multiply",
+                  [
+                    "a"
+                  ],
+                  [
+                    "b"
+                  ]
+                ]
+              ],
+              [
+                "identity"
+              ]
+            ]
+          ]
+        },
+        {
+          "hits": 444843,
+          "mark": [
+            "rigid",
+            [
+              0
+            ]
+          ],
+          "terms": [
+            [
+              "multiply",
+              [
+                "h"
+              ],
+              [
+                "b"
+              ]
+            ],
+            [
+              "multiply",
+              [
+                "a"
+              ],
+              [
+                "b"
+              ]
+            ]
+          ]
+        },
+        {
+          "hits": 8015,
+          "mark": [
+            "rigid",
+            [
+              1,
+              0
+            ]
+          ],
+          "terms": [
+            [
+              "multiply",
+              [
+                "a"
+              ],
+              [
+                "multiply",
+                [
+                  "multiply",
+                  [
+                    "b"
+                  ],
+                  "?v0"
+                ],
+                "?v1"
+              ]
+            ],
+            [
+              "multiply",
+              [
+                "a"
+              ],
+              [
+                "multiply",
+                [
+                  "b"
+                ],
+                "?v0"
+              ]
+            ]
+          ]
+        },
+        {
+          "hits": 38,
+          "mark": [
+            "rigid",
+            [
+              1,
+              0,
+              0
+            ]
+          ],
+          "terms": [
+            [
+              "multiply",
+              [
+                "d"
+              ],
+              [
+                "multiply",
+                [
+                  "inverse",
+                  [
+                    "a"
+                  ]
+                ],
+                [
+                  "inverse",
+                  [
+                    "a"
+                  ]
+                ]
+              ]
+            ],
+            [
+              "multiply",
+              [
+                "d"
+              ],
+              [
+                "multiply",
+                [
+                  "inverse",
+                  [
+                    "b"
+                  ]
+                ],
+                "?v0"
+              ]
+            ]
+          ]
+        },
+        {
+          "hits": 2962,
+          "mark": [
+            "rigid",
+            [
+              1,
+              1
+            ]
+          ],
+          "terms": [
+            [
+              "multiply",
+              [
+                "a"
+              ],
+              [
+                "multiply",
+                [
+                  "b"
+                ],
+                [
+                  "inverse",
+                  [
+                    "a"
+                  ]
+                ]
+              ]
+            ],
+            [
+              "multiply",
+              [
+                "a"
+              ],
+              [
+                "multiply",
+                [
+                  "b"
+                ],
+                [
+                  "identity"
+                ]
+              ]
+            ]
+          ]
+        },
+        {
+          "hits": 16,
+          "mark": [
+            "rigid",
+            [
+              1,
+              1,
+              0
+            ]
+          ],
+          "terms": [
+            [
+              "multiply",
+              [
+                "a"
+              ],
+              [
+                "multiply",
+                [
+                  "b"
+                ],
+                [
+                  "inverse",
+                  [
+                    "c"
+                  ]
+                ]
+              ]
+            ],
+            [
+              "multiply",
+              [
+                "a"
+              ],
+              [
+                "multiply",
+                [
+                  "b"
+                ],
+                [
+                  "inverse",
+                  [
+                    "a"
+                  ]
+                ]
+              ]
+            ]
+          ]
+        },
+        {
+          "hits": 103303,
+          "mark": [
+            "rigid",
+            [
+              1
+            ]
+          ],
+          "terms": [
+            [
+              "multiply",
+              "?v0",
+              [
+                "identity"
+              ]
+            ],
+            [
+              "multiply",
+              [
+                "a"
+              ],
+              [
+                "b"
+              ]
+            ]
+          ]
+        }
+      ],
+      "id": "GRP002-2",
+      "node_count": 9697,
+      "seconds": 4.69148,
+      "status": "BOUNDED"
+    },
+    {
+      "arm": "support",
+      "counts": {
+        "age_slots": 5,
+        "equality_resolutions_offered": 1,
+        "equations": 7,
+        "given": 20,
+        "offers": 23,
+        "raw_rewrite_pairs": 3,
+        "rewrite_unification_failures": 3,
+        "rewrite_unifications": 3,
+        "rewrites_offered": 3,
+        "shallow_skips": 19,
+        "stored": 20,
+        "support_skips": 322
+      },
+      "examples": [],
+      "id": "GRP167-1",
+      "node_count": 20,
+      "seconds": 0.000482,
+      "status": "SATURATED_WITHOUT_REFUTATION"
+    },
+    {
+      "arm": "subsumption",
+      "counts": {
+        "age_slots": 5,
+        "equality_resolutions_offered": 1,
+        "equations": 7,
+        "given": 20,
+        "offers": 23,
+        "raw_rewrite_pairs": 3,
+        "rewrite_unification_failures": 3,
+        "rewrite_unifications": 3,
+        "rewrites_offered": 3,
+        "shallow_skips": 19,
+        "stored": 20,
+        "support_skips": 322
+      },
+      "examples": [],
+      "id": "GRP167-1",
+      "node_count": 20,
+      "seconds": 0.000539,
+      "status": "SATURATED_WITHOUT_REFUTATION"
+    },
+    {
+      "arm": "rigid",
+      "counts": {
+        "age_slots": 5,
+        "equality_resolutions_offered": 1,
+        "equations": 1,
+        "given": 20,
+        "offers": 20,
+        "raw_rewrite_pairs": 3,
+        "rigid_skips": 3,
+        "rigid_tests": 3,
+        "shallow_skips": 19,
+        "stored": 20,
+        "support_skips": 322
+      },
+      "examples": [
+        {
+          "hits": 3,
+          "mark": [
+            "rigid",
+            [
+              0
+            ]
+          ],
+          "terms": [
+            [
+              "multiply",
+              [
+                "identity"
+              ],
+              "?v0"
+            ],
+            [
+              "multiply",
+              [
+                "positive_part",
+                [
+                  "a"
+                ]
+              ],
+              [
+                "negative_part",
+                [
+                  "a"
+                ]
+              ]
+            ]
+          ]
+        }
+      ],
+      "id": "GRP167-1",
+      "node_count": 20,
+      "seconds": 0.000425,
+      "status": "SATURATED_WITHOUT_REFUTATION"
+    },
+    {
+      "arm": "learned",
+      "counts": {
+        "age_slots": 5,
+        "equality_resolutions_offered": 1,
+        "equations": 7,
+        "given": 20,
+        "learned_tests": 36,
+        "offers": 23,
+        "raw_rewrite_pairs": 3,
+        "rewrite_unification_failures": 3,
+        "rewrite_unifications": 3,
+        "rewrites_offered": 3,
+        "shallow_skips": 19,
+        "stored": 20,
+        "support_skips": 322
+      },
+      "examples": [],
+      "id": "GRP167-1",
+      "node_count": 20,
+      "seconds": 0.000451,
+      "status": "SATURATED_WITHOUT_REFUTATION"
+    },
+    {
+      "arm": "rigid-learned",
+      "counts": {
+        "age_slots": 5,
+        "equality_resolutions_offered": 1,
+        "equations": 1,
+        "given": 20,
+        "offers": 20,
+        "raw_rewrite_pairs": 3,
+        "rigid_skips": 3,
+        "rigid_tests": 3,
+        "shallow_skips": 19,
+        "stored": 20,
+        "support_skips": 322
+      },
+      "examples": [
+        {
+          "hits": 3,
+          "mark": [
+            "rigid",
+            [
+              0
+            ]
+          ],
+          "terms": [
+            [
+              "multiply",
+              [
+                "identity"
+              ],
+              "?v0"
+            ],
+            [
+              "multiply",
+              [
+                "positive_part",
+                [
+                  "a"
+                ]
+              ],
+              [
+                "negative_part",
+                [
+                  "a"
+                ]
+              ]
+            ]
+          ]
+        }
+      ],
+      "id": "GRP167-1",
+      "node_count": 20,
+      "seconds": 0.000395,
+      "status": "SATURATED_WITHOUT_REFUTATION"
+    },
+    {
+      "arm": "support",
+      "counts": {
+        "age_slots": 2,
+        "duplicates": 2,
+        "equality_resolutions_offered": 1,
+        "equations": 52,
+        "failed_unifications": 1,
+        "given": 11,
+        "offers": 22,
+        "shallow_skips": 8,
+        "stored": 21,
+        "successful_resolutions": 12,
+        "support_skips": 15,
+        "unifications": 13
+      },
+      "direct_lines": 7,
+      "examples": [],
+      "id": "GRP007-1",
+      "node_count": 21,
+      "receipt": {
+        "records": 23,
+        "status": "CHECKED_LOGICAL_RECORDS",
+        "unique_records": 23
+      },
+      "seconds": 0.000365,
+      "status": "PROVED"
+    },
+    {
+      "arm": "subsumption",
+      "counts": {
+        "age_slots": 2,
+        "duplicates": 2,
+        "equality_resolutions_offered": 1,
+        "equations": 52,
+        "failed_unifications": 1,
+        "given": 11,
+        "offers": 22,
+        "shallow_skips": 8,
+        "stored": 21,
+        "subsumption_probes": 8,
+        "successful_resolutions": 12,
+        "support_skips": 15,
+        "unifications": 13
+      },
+      "direct_lines": 7,
+      "examples": [],
+      "id": "GRP007-1",
+      "node_count": 21,
+      "receipt": {
+        "records": 23,
+        "status": "CHECKED_LOGICAL_RECORDS",
+        "unique_records": 23
+      },
+      "seconds": 0.001132,
+      "status": "PROVED"
+    },
+    {
+      "arm": "rigid",
+      "counts": {
+        "age_slots": 2,
+        "duplicates": 2,
+        "equality_resolutions_offered": 1,
+        "equations": 52,
+        "failed_unifications": 1,
+        "given": 11,
+        "offers": 22,
+        "shallow_skips": 8,
+        "stored": 21,
+        "successful_resolutions": 12,
+        "support_skips": 15,
+        "unifications": 13
+      },
+      "direct_lines": 7,
+      "examples": [],
+      "id": "GRP007-1",
+      "node_count": 21,
+      "receipt": {
+        "records": 23,
+        "status": "CHECKED_LOGICAL_RECORDS",
+        "unique_records": 23
+      },
+      "seconds": 0.000824,
+      "status": "PROVED"
+    },
+    {
+      "arm": "learned",
+      "counts": {
+        "age_slots": 2,
+        "duplicates": 2,
+        "equality_resolutions_offered": 1,
+        "equations": 52,
+        "failed_unifications": 1,
+        "given": 11,
+        "offers": 22,
+        "shallow_skips": 8,
+        "stored": 21,
+        "successful_resolutions": 12,
+        "support_skips": 15,
+        "unifications": 13
+      },
+      "direct_lines": 7,
+      "examples": [],
+      "id": "GRP007-1",
+      "node_count": 21,
+      "receipt": {
+        "records": 23,
+        "status": "CHECKED_LOGICAL_RECORDS",
+        "unique_records": 23
+      },
+      "seconds": 0.000393,
+      "status": "PROVED"
+    },
+    {
+      "arm": "rigid-learned",
+      "counts": {
+        "age_slots": 2,
+        "duplicates": 2,
+        "equality_resolutions_offered": 1,
+        "equations": 52,
+        "failed_unifications": 1,
+        "given": 11,
+        "offers": 22,
+        "shallow_skips": 8,
+        "stored": 21,
+        "successful_resolutions": 12,
+        "support_skips": 15,
+        "unifications": 13
+      },
+      "direct_lines": 7,
+      "examples": [],
+      "id": "GRP007-1",
+      "node_count": 21,
+      "receipt": {
+        "records": 23,
+        "status": "CHECKED_LOGICAL_RECORDS",
+        "unique_records": 23
+      },
+      "seconds": 0.000387,
+      "status": "PROVED"
+    },
+    {
+      "arm": "support",
+      "counts": {
+        "age_slots": 102,
+        "duplicates": 30099,
+        "equations": 124567,
+        "failed_unifications": 285,
+        "given": 408,
+        "offers": 107904,
+        "raw_rewrite_pairs": 44165,
+        "rewrite_unification_failures": 3428,
+        "rewrite_unifications": 44165,
+        "rewrites_offered": 44165,
+        "rewrites_unified": 40737,
+        "shallow_skips": 40107,
+        "stored": 30000,
+        "successful_factors": 62,
+        "successful_resolutions": 23285,
+        "support_skips": 121,
+        "tautologies": 3996,
+        "unifications": 23632
+      },
+      "examples": [],
+      "id": "GRP008-1",
+      "node_count": 30000,
+      "seconds": 7.407348,
+      "status": "BOUNDED"
+    },
+    {
+      "arm": "subsumption",
+      "counts": {
+        "age_slots": 22,
+        "duplicates": 695,
+        "equations": 8977,
+        "failed_unifications": 52,
+        "forward_subsumed": 2543,
+        "given": 91,
+        "offers": 6915,
+        "raw_rewrite_pairs": 2663,
+        "rewrite_unification_failures": 50,
+        "rewrite_unifications": 2663,
+        "rewrites_offered": 2663,
+        "rewrites_unified": 2613,
+        "shallow_skips": 2479,
+        "stored": 831,
+        "subsumption_probes": 8395,
+        "successful_factors": 5,
+        "successful_resolutions": 1716,
+        "support_skips": 121,
+        "tautologies": 277,
+        "unifications": 1773
+      },
+      "direct_lines": 37,
+      "examples": [],
+      "full_wang": {
+        "fragment_calls": 81,
+        "fresh_tile_runs": 73,
+        "implied_steps": 1583296651,
+        "kind": "fol",
+        "machine_sha256": "3d97b22704bf8da27992d74dfb897c312da9274d0cb6298ef447498a7db2c4b6",
+        "status": "CHECKED"
+      },
+      "id": "GRP008-1",
+      "node_count": 831,
+      "receipt": {
+        "records": 81,
+        "status": "CHECKED_LOGICAL_RECORDS",
+        "unique_records": 73
+      },
+      "seconds": 0.617082,
+      "status": "PROVED",
+      "subsumption_example": {
+        "bindings": {},
+        "candidate": [
+          [
+            false,
+            [
+              "q",
+              [
+                "identity"
+              ]
+            ]
+          ],
+          [
+            true,
+            [
+              "product",
+              [
+                "j",
+                [
+                  "identity"
+                ]
+              ],
+              [
+                "identity"
+              ],
+              [
+                "h",
+                [
+                  "identity"
+                ]
+              ]
+            ]
+          ]
+        ],
+        "donor": 11,
+        "instance": [
+          [
+            false,
+            [
+              "q",
+              [
+                "identity"
+              ]
+            ]
+          ]
+        ],
+        "pattern": [
+          [
+            false,
+            [
+              "q",
+              [
+                "identity"
+              ]
+            ]
+          ]
+        ],
+        "types": {}
+      }
+    },
+    {
+      "arm": "rigid",
+      "counts": {
+        "age_slots": 102,
+        "duplicates": 30099,
+        "equations": 117502,
+        "failed_unifications": 285,
+        "given": 408,
+        "offers": 104476,
+        "raw_rewrite_pairs": 44165,
+        "rewrite_unifications": 40737,
+        "rewrites_offered": 40737,
+        "rewrites_unified": 40737,
+        "rigid_skips": 3428,
+        "rigid_tests": 44165,
+        "shallow_skips": 40107,
+        "stored": 30000,
+        "successful_factors": 62,
+        "successful_resolutions": 23285,
+        "support_skips": 121,
+        "tautologies": 3996,
+        "unifications": 23632
+      },
+      "examples": [
+        {
+          "hits": 3219,
+          "mark": [
+            "rigid",
+            [
+              0
+            ]
+          ],
+          "terms": [
+            [
+              "multiply",
+              [
+                "h",
+                [
+                  "identity"
+                ]
+              ],
+              [
+                "identity"
+              ]
+            ],
+            [
+              "multiply",
+              [
+                "j",
+                [
+                  "identity"
+                ]
+              ],
+              [
+                "identity"
+              ]
+            ]
+          ]
+        },
+        {
+          "hits": 209,
+          "mark": [
+            "rigid",
+            [
+              1
+            ]
+          ],
+          "terms": [
+            [
+              "multiply",
+              [
+                "identity"
+              ],
+              [
+                "h",
+                [
+                  "identity"
+                ]
+              ]
+            ],
+            [
+              "multiply",
+              [
+                "identity"
+              ],
+              [
+                "j",
+                [
+                  "identity"
+                ]
+              ]
+            ]
+          ]
+        }
+      ],
+      "id": "GRP008-1",
+      "node_count": 30000,
+      "seconds": 7.291817,
+      "status": "BOUNDED"
+    },
+    {
+      "arm": "learned",
+      "counts": {
+        "age_slots": 102,
+        "duplicates": 30099,
+        "equations": 124387,
+        "failed_unifications": 285,
+        "given": 408,
+        "learned_skips": 90,
+        "learned_tests": 529260,
+        "offers": 107814,
+        "raw_rewrite_pairs": 44165,
+        "rewrite_unification_failures": 3338,
+        "rewrite_unifications": 44075,
+        "rewrites_offered": 44075,
+        "rewrites_unified": 40737,
+        "shallow_skips": 40107,
+        "stored": 30000,
+        "successful_factors": 62,
+        "successful_resolutions": 23285,
+        "support_skips": 121,
+        "tautologies": 3996,
+        "unifications": 23632
+      },
+      "examples": [
+        {
+          "hits": 90,
+          "mark": [
+            "rigid",
+            [
+              0,
+              0
+            ]
+          ],
+          "terms": [
+            [
+              "multiply",
+              [
+                "multiply",
+                [
+                  "j",
+                  [
+                    "identity"
+                  ]
+                ],
+                [
+                  "identity"
+                ]
+              ],
+              [
+                "identity"
+              ]
+            ],
+            [
+              "multiply",
+              [
+                "j",
+                [
+                  "identity"
+                ]
+              ],
+              [
+                "identity"
+              ]
+            ]
+          ]
+        }
+      ],
+      "id": "GRP008-1",
+      "node_count": 30000,
+      "seconds": 7.658712,
+      "status": "BOUNDED"
+    },
+    {
+      "arm": "rigid-learned",
+      "counts": {
+        "age_slots": 102,
+        "duplicates": 30099,
+        "equations": 117502,
+        "failed_unifications": 285,
+        "given": 408,
+        "learned_tests": 244422,
+        "offers": 104476,
+        "raw_rewrite_pairs": 44165,
+        "rewrite_unifications": 40737,
+        "rewrites_offered": 40737,
+        "rewrites_unified": 40737,
+        "rigid_skips": 3428,
+        "rigid_tests": 44165,
+        "shallow_skips": 40107,
+        "stored": 30000,
+        "successful_factors": 62,
+        "successful_resolutions": 23285,
+        "support_skips": 121,
+        "tautologies": 3996,
+        "unifications": 23632
+      },
+      "examples": [
+        {
+          "hits": 3219,
+          "mark": [
+            "rigid",
+            [
+              0
+            ]
+          ],
+          "terms": [
+            [
+              "multiply",
+              [
+                "h",
+                [
+                  "identity"
+                ]
+              ],
+              [
+                "identity"
+              ]
+            ],
+            [
+              "multiply",
+              [
+                "j",
+                [
+                  "identity"
+                ]
+              ],
+              [
+                "identity"
+              ]
+            ]
+          ]
+        },
+        {
+          "hits": 209,
+          "mark": [
+            "rigid",
+            [
+              1
+            ]
+          ],
+          "terms": [
+            [
+              "multiply",
+              [
+                "identity"
+              ],
+              [
+                "h",
+                [
+                  "identity"
+                ]
+              ]
+            ],
+            [
+              "multiply",
+              [
+                "identity"
+              ],
+              [
+                "j",
+                [
+                  "identity"
+                ]
+              ]
+            ]
+          ]
+        }
+      ],
+      "id": "GRP008-1",
+      "node_count": 30000,
+      "seconds": 8.142656,
+      "status": "BOUNDED"
+    },
+    {
+      "arm": "support",
+      "counts": {
+        "age_slots": 87,
+        "duplicates": 899,
+        "equations": 16333,
+        "failed_unifications": 437,
+        "given": 350,
+        "offers": 6943,
+        "shallow_skips": 2863,
+        "stored": 2754,
+        "successful_factors": 442,
+        "successful_resolutions": 3201,
+        "support_skips": 71,
+        "unifications": 4080
+      },
+      "direct_lines": 14,
+      "examples": [],
+      "id": "GRP010-1",
+      "node_count": 2754,
+      "receipt": {
+        "records": 56,
+        "status": "CHECKED_LOGICAL_RECORDS",
+        "unique_records": 55
+      },
+      "seconds": 0.478067,
+      "status": "PROVED"
+    },
+    {
+      "arm": "subsumption",
+      "counts": {
+        "age_slots": 85,
+        "duplicates": 858,
+        "equations": 16110,
+        "failed_unifications": 429,
+        "forward_subsumed": 143,
+        "given": 342,
+        "offers": 6834,
+        "shallow_skips": 2805,
+        "stored": 2609,
+        "subsumption_probes": 60873,
+        "successful_factors": 437,
+        "successful_resolutions": 3163,
+        "support_skips": 71,
+        "unifications": 4029
+      },
+      "direct_lines": 14,
+      "examples": [],
+      "id": "GRP010-1",
+      "node_count": 2609,
+      "receipt": {
+        "records": 56,
+        "status": "CHECKED_LOGICAL_RECORDS",
+        "unique_records": 55
+      },
+      "seconds": 1.231018,
+      "status": "PROVED",
+      "subsumption_example": {
+        "bindings": {
+          "?v0": "?v0"
+        },
+        "candidate": [
+          [
+            false,
+            [
+              "product",
+              [
+                "b"
+              ],
+              "?v0",
+              [
+                "identity"
+              ]
+            ]
+          ],
+          [
+            false,
+            [
+              "product",
+              [
+                "b"
+              ],
+              [
+                "identity"
+              ],
+              [
+                "b"
+              ]
+            ]
+          ],
+          [
+            false,
+            [
+              "product",
+              [
+                "identity"
+              ],
+              "?v0",
+              [
+                "a"
+              ]
+            ]
+          ]
+        ],
+        "donor": 20,
+        "instance": [
+          [
+            false,
+            [
+              "product",
+              [
+                "b"
+              ],
+              "?v0",
+              [
+                "identity"
+              ]
+            ]
+          ],
+          [
+            false,
+            [
+              "product",
+              [
+                "identity"
+              ],
+              "?v0",
+              [
+                "a"
+              ]
+            ]
+          ]
+        ],
+        "pattern": [
+          [
+            false,
+            [
+              "product",
+              [
+                "b"
+              ],
+              "?v0",
+              [
+                "identity"
+              ]
+            ]
+          ],
+          [
+            false,
+            [
+              "product",
+              [
+                "identity"
+              ],
+              "?v0",
+              [
+                "a"
+              ]
+            ]
+          ]
+        ],
+        "types": {
+          "?v0": "U"
+        }
+      }
+    },
+    {
+      "arm": "rigid",
+      "counts": {
+        "age_slots": 87,
+        "duplicates": 899,
+        "equations": 16333,
+        "failed_unifications": 437,
+        "given": 350,
+        "offers": 6943,
+        "shallow_skips": 2863,
+        "stored": 2754,
+        "successful_factors": 442,
+        "successful_resolutions": 3201,
+        "support_skips": 71,
+        "unifications": 4080
+      },
+      "direct_lines": 14,
+      "examples": [],
+      "id": "GRP010-1",
+      "node_count": 2754,
+      "receipt": {
+        "records": 56,
+        "status": "CHECKED_LOGICAL_RECORDS",
+        "unique_records": 55
+      },
+      "seconds": 0.435653,
+      "status": "PROVED"
+    },
+    {
+      "arm": "learned",
+      "counts": {
+        "age_slots": 87,
+        "duplicates": 899,
+        "equations": 16333,
+        "failed_unifications": 437,
+        "given": 350,
+        "offers": 6943,
+        "shallow_skips": 2863,
+        "stored": 2754,
+        "successful_factors": 442,
+        "successful_resolutions": 3201,
+        "support_skips": 71,
+        "unifications": 4080
+      },
+      "direct_lines": 14,
+      "examples": [],
+      "id": "GRP010-1",
+      "node_count": 2754,
+      "receipt": {
+        "records": 56,
+        "status": "CHECKED_LOGICAL_RECORDS",
+        "unique_records": 55
+      },
+      "seconds": 0.420585,
+      "status": "PROVED"
+    },
+    {
+      "arm": "rigid-learned",
+      "counts": {
+        "age_slots": 87,
+        "duplicates": 899,
+        "equations": 16333,
+        "failed_unifications": 437,
+        "given": 350,
+        "offers": 6943,
+        "shallow_skips": 2863,
+        "stored": 2754,
+        "successful_factors": 442,
+        "successful_resolutions": 3201,
+        "support_skips": 71,
+        "unifications": 4080
+      },
+      "direct_lines": 14,
+      "examples": [],
+      "id": "GRP010-1",
+      "node_count": 2754,
+      "receipt": {
+        "records": 56,
+        "status": "CHECKED_LOGICAL_RECORDS",
+        "unique_records": 55
+      },
+      "seconds": 0.375797,
+      "status": "PROVED"
+    },
+    {
+      "arm": "support",
+      "counts": {
+        "age_slots": 391,
+        "duplicates": 5144,
+        "equality_resolutions_offered": 1,
+        "equations": 82746,
+        "failed_unifications": 2436,
+        "given": 1567,
+        "offers": 38517,
+        "shallow_skips": 17885,
+        "stored": 13062,
+        "successful_factors": 2137,
+        "successful_resolutions": 16058,
+        "support_skips": 79,
+        "unifications": 20631
+      },
+      "direct_lines": 25,
+      "examples": [],
+      "id": "GRP012-2",
+      "node_count": 13062,
+      "receipt": {
+        "records": 103,
+        "status": "CHECKED_LOGICAL_RECORDS",
+        "unique_records": 100
+      },
+      "seconds": 2.32916,
+      "status": "PROVED"
+    },
+    {
+      "arm": "subsumption",
+      "counts": {
+        "age_slots": 313,
+        "duplicates": 3752,
+        "equality_resolutions_offered": 1,
+        "equations": 65729,
+        "failed_unifications": 1825,
+        "forward_subsumed": 781,
+        "given": 1255,
+        "offers": 29898,
+        "shallow_skips": 13532,
+        "stored": 10018,
+        "subsumption_probes": 398170,
+        "successful_factors": 1695,
+        "successful_resolutions": 12845,
+        "support_skips": 79,
+        "unifications": 16365
+      },
+      "direct_lines": 25,
+      "examples": [],
+      "id": "GRP012-2",
+      "node_count": 10018,
+      "receipt": {
+        "records": 103,
+        "status": "CHECKED_LOGICAL_RECORDS",
+        "unique_records": 100
+      },
+      "seconds": 7.463627,
+      "status": "PROVED",
+      "subsumption_example": {
+        "bindings": {
+          "?v0": [
+            "identity"
+          ],
+          "?v1": "?v0"
+        },
+        "candidate": [
+          [
+            false,
+            [
+              "product",
+              [
+                "identity"
+              ],
+              "?v0",
+              [
+                "d"
+              ]
+            ]
+          ],
+          [
+            false,
+            [
+              "product",
+              [
+                "identity"
+              ],
+              "?v0",
+              [
+                "inverse",
+                [
+                  "c"
+                ]
+              ]
+            ]
+          ]
+        ],
+        "donor": 11,
+        "instance": [
+          [
+            false,
+            [
+              "product",
+              [
+                "identity"
+              ],
+              "?v0",
+              [
+                "d"
+              ]
+            ]
+          ],
+          [
+            false,
+            [
+              "product",
+              [
+                "identity"
+              ],
+              "?v0",
+              [
+                "inverse",
+                [
+                  "c"
+                ]
+              ]
+            ]
+          ]
+        ],
+        "pattern": [
+          [
+            false,
+            [
+              "product",
+              "?v0",
+              "?v1",
+              [
+                "d"
+              ]
+            ]
+          ],
+          [
+            false,
+            [
+              "product",
+              "?v0",
+              "?v1",
+              [
+                "inverse",
+                [
+                  "c"
+                ]
+              ]
+            ]
+          ]
+        ],
+        "types": {
+          "?v0": "U"
+        }
+      }
+    },
+    {
+      "arm": "rigid",
+      "counts": {
+        "age_slots": 391,
+        "duplicates": 5144,
+        "equality_resolutions_offered": 1,
+        "equations": 82746,
+        "failed_unifications": 2436,
+        "given": 1567,
+        "offers": 38517,
+        "shallow_skips": 17885,
+        "stored": 13062,
+        "successful_factors": 2137,
+        "successful_resolutions": 16058,
+        "support_skips": 79,
+        "unifications": 20631
+      },
+      "direct_lines": 25,
+      "examples": [],
+      "id": "GRP012-2",
+      "node_count": 13062,
+      "receipt": {
+        "records": 103,
+        "status": "CHECKED_LOGICAL_RECORDS",
+        "unique_records": 100
+      },
+      "seconds": 2.378231,
+      "status": "PROVED"
+    },
+    {
+      "arm": "learned",
+      "counts": {
+        "age_slots": 391,
+        "duplicates": 5144,
+        "equality_resolutions_offered": 1,
+        "equations": 82746,
+        "failed_unifications": 2436,
+        "given": 1567,
+        "offers": 38517,
+        "shallow_skips": 17885,
+        "stored": 13062,
+        "successful_factors": 2137,
+        "successful_resolutions": 16058,
+        "support_skips": 79,
+        "unifications": 20631
+      },
+      "direct_lines": 25,
+      "examples": [],
+      "id": "GRP012-2",
+      "node_count": 13062,
+      "receipt": {
+        "records": 103,
+        "status": "CHECKED_LOGICAL_RECORDS",
+        "unique_records": 100
+      },
+      "seconds": 2.427706,
+      "status": "PROVED"
+    },
+    {
+      "arm": "rigid-learned",
+      "counts": {
+        "age_slots": 391,
+        "duplicates": 5144,
+        "equality_resolutions_offered": 1,
+        "equations": 82746,
+        "failed_unifications": 2436,
+        "given": 1567,
+        "offers": 38517,
+        "shallow_skips": 17885,
+        "stored": 13062,
+        "successful_factors": 2137,
+        "successful_resolutions": 16058,
+        "support_skips": 79,
+        "unifications": 20631
+      },
+      "direct_lines": 25,
+      "examples": [],
+      "id": "GRP012-2",
+      "node_count": 13062,
+      "receipt": {
+        "records": 103,
+        "status": "CHECKED_LOGICAL_RECORDS",
+        "unique_records": 100
+      },
+      "seconds": 2.340127,
+      "status": "PROVED"
+    },
+    {
+      "arm": "support",
+      "counts": {
+        "age_slots": 1039,
+        "duplicates": 8777,
+        "equations": 170808,
+        "failed_unifications": 3153,
+        "given": 4156,
+        "offers": 81743,
+        "shallow_skips": 39825,
+        "stored": 30000,
+        "successful_factors": 3594,
+        "successful_resolutions": 35171,
+        "support_skips": 106,
+        "unifications": 41918
+      },
+      "examples": [],
+      "id": "GRP013-1",
+      "node_count": 30000,
+      "seconds": 7.792599,
+      "status": "BOUNDED"
+    },
+    {
+      "arm": "subsumption",
+      "counts": {
+        "age_slots": 1053,
+        "duplicates": 8433,
+        "equations": 172884,
+        "failed_unifications": 3201,
+        "forward_subsumed": 780,
+        "given": 4214,
+        "offers": 82741,
+        "shallow_skips": 40339,
+        "stored": 30000,
+        "subsumption_probes": 1379849,
+        "successful_factors": 3625,
+        "successful_resolutions": 35576,
+        "support_skips": 106,
+        "unifications": 42402
+      },
+      "examples": [],
+      "id": "GRP013-1",
+      "node_count": 30000,
+      "seconds": 32.273523,
+      "status": "BOUNDED",
+      "subsumption_example": {
+        "bindings": {
+          "?v0": "?v0",
+          "?v1": [
+            "identity"
+          ]
+        },
+        "candidate": [
+          [
+            false,
+            [
+              "product",
+              "?v0",
+              [
+                "identity"
+              ],
+              [
+                "d"
+              ]
+            ]
+          ],
+          [
+            false,
+            [
+              "product",
+              [
+                "c"
+              ],
+              "?v0",
+              [
+                "inverse",
+                [
+                  "identity"
+                ]
+              ]
+            ]
+          ]
+        ],
+        "donor": 54,
+        "instance": [
+          [
+            false,
+            [
+              "product",
+              "?v0",
+              [
+                "identity"
+              ],
+              [
+                "d"
+              ]
+            ]
+          ],
+          [
+            false,
+            [
+              "product",
+              [
+                "c"
+              ],
+              "?v0",
+              [
+                "inverse",
+                [
+                  "identity"
+                ]
+              ]
+            ]
+          ]
+        ],
+        "pattern": [
+          [
+            false,
+            [
+              "product",
+              "?v0",
+              "?v1",
+              [
+                "d"
+              ]
+            ]
+          ],
+          [
+            false,
+            [
+              "product",
+              [
+                "c"
+              ],
+              "?v0",
+              [
+                "inverse",
+                "?v1"
+              ]
+            ]
+          ]
+        ],
+        "types": {
+          "?v0": "U"
+        }
+      }
+    },
+    {
+      "arm": "rigid",
+      "counts": {
+        "age_slots": 1039,
+        "duplicates": 8777,
+        "equations": 170808,
+        "failed_unifications": 3153,
+        "given": 4156,
+        "offers": 81743,
+        "shallow_skips": 39825,
+        "stored": 30000,
+        "successful_factors": 3594,
+        "successful_resolutions": 35171,
+        "support_skips": 106,
+        "unifications": 41918
+      },
+      "examples": [],
+      "id": "GRP013-1",
+      "node_count": 30000,
+      "seconds": 8.199127,
+      "status": "BOUNDED"
+    },
+    {
+      "arm": "learned",
+      "counts": {
+        "age_slots": 1039,
+        "duplicates": 8777,
+        "equations": 170808,
+        "failed_unifications": 3153,
+        "given": 4156,
+        "offers": 81743,
+        "shallow_skips": 39825,
+        "stored": 30000,
+        "successful_factors": 3594,
+        "successful_resolutions": 35171,
+        "support_skips": 106,
+        "unifications": 41918
+      },
+      "examples": [],
+      "id": "GRP013-1",
+      "node_count": 30000,
+      "seconds": 7.931302,
+      "status": "BOUNDED"
+    },
+    {
+      "arm": "rigid-learned",
+      "counts": {
+        "age_slots": 1039,
+        "duplicates": 8777,
+        "equations": 170808,
+        "failed_unifications": 3153,
+        "given": 4156,
+        "offers": 81743,
+        "shallow_skips": 39825,
+        "stored": 30000,
+        "successful_factors": 3594,
+        "successful_resolutions": 35171,
+        "support_skips": 106,
+        "unifications": 41918
+      },
+      "examples": [],
+      "id": "GRP013-1",
+      "node_count": 30000,
+      "seconds": 8.249166,
+      "status": "BOUNDED"
+    },
+    {
+      "arm": "support",
+      "counts": {
+        "equality_resolutions_offered": 1,
+        "equations": 18,
+        "failed_unifications": 1,
+        "given": 2,
+        "offers": 6,
+        "raw_rewrite_pairs": 4,
+        "rewrite_unification_failures": 4,
+        "rewrite_unifications": 4,
+        "rewrites_offered": 4,
+        "stored": 2,
+        "unifications": 1
+      },
+      "examples": [],
+      "id": "GRP014-1",
+      "node_count": 2,
+      "seconds": 0.000186,
+      "status": "SATURATED_WITHOUT_REFUTATION"
+    },
+    {
+      "arm": "subsumption",
+      "counts": {
+        "equality_resolutions_offered": 1,
+        "equations": 18,
+        "failed_unifications": 1,
+        "given": 2,
+        "offers": 6,
+        "raw_rewrite_pairs": 4,
+        "rewrite_unification_failures": 4,
+        "rewrite_unifications": 4,
+        "rewrites_offered": 4,
+        "stored": 2,
+        "unifications": 1
+      },
+      "examples": [],
+      "id": "GRP014-1",
+      "node_count": 2,
+      "seconds": 0.000441,
+      "status": "SATURATED_WITHOUT_REFUTATION"
+    },
+    {
+      "arm": "rigid",
+      "counts": {
+        "equality_resolutions_offered": 1,
+        "equations": 6,
+        "failed_unifications": 1,
+        "given": 2,
+        "offers": 2,
+        "raw_rewrite_pairs": 4,
+        "rigid_skips": 4,
+        "rigid_tests": 4,
+        "stored": 2,
+        "unifications": 1
+      },
+      "examples": [
+        {
+          "hits": 4,
+          "mark": [
+            "rigid",
+            [
+              1
+            ]
+          ],
+          "terms": [
+            [
+              "multiply",
+              "?v0",
+              [
+                "inverse",
+                [
+                  "multiply",
+                  [
+                    "multiply",
+                    [
+                      "inverse",
+                      [
+                        "multiply",
+                        [
+                          "inverse",
+                          "?v1"
+                        ],
+                        [
+                          "multiply",
+                          [
+                            "inverse",
+                            "?v0"
+                          ],
+                          "?v2"
+                        ]
+                      ]
+                    ],
+                    "?v3"
+                  ],
+                  [
+                    "inverse",
+                    [
+                      "multiply",
+                      "?v1",
+                      "?v3"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "multiply",
+              [
+                "a"
+              ],
+              [
+                "multiply",
+                [
+                  "b"
+                ],
+                [
+                  "c"
+                ]
+              ]
+            ]
+          ]
+        }
+      ],
+      "id": "GRP014-1",
+      "node_count": 2,
+      "seconds": 0.00022,
+      "status": "SATURATED_WITHOUT_REFUTATION"
+    },
+    {
+      "arm": "learned",
+      "counts": {
+        "equality_resolutions_offered": 1,
+        "equations": 15,
+        "failed_unifications": 1,
+        "given": 2,
+        "learned_skips": 1,
+        "learned_tests": 37,
+        "offers": 5,
+        "raw_rewrite_pairs": 4,
+        "rewrite_unification_failures": 3,
+        "rewrite_unifications": 3,
+        "rewrites_offered": 3,
+        "stored": 2,
+        "unifications": 1
+      },
+      "examples": [
+        {
+          "hits": 1,
+          "mark": [
+            "rigid",
+            [
+              1,
+              0
+            ]
+          ],
+          "terms": [
+            [
+              "multiply",
+              "?v0",
+              [
+                "inverse",
+                [
+                  "multiply",
+                  [
+                    "multiply",
+                    [
+                      "inverse",
+                      [
+                        "multiply",
+                        [
+                          "inverse",
+                          "?v1"
+                        ],
+                        [
+                          "multiply",
+                          [
+                            "inverse",
+                            "?v0"
+                          ],
+                          "?v2"
+                        ]
+                      ]
+                    ],
+                    "?v3"
+                  ],
+                  [
+                    "inverse",
+                    [
+                      "multiply",
+                      "?v1",
+                      "?v3"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "multiply",
+              [
+                "a"
+              ],
+              [
+                "multiply",
+                [
+                  "b"
+                ],
+                [
+                  "c"
+                ]
+              ]
+            ]
+          ]
+        }
+      ],
+      "id": "GRP014-1",
+      "node_count": 2,
+      "seconds": 0.00036,
+      "status": "SATURATED_WITHOUT_REFUTATION"
+    },
+    {
+      "arm": "rigid-learned",
+      "counts": {
+        "equality_resolutions_offered": 1,
+        "equations": 6,
+        "failed_unifications": 1,
+        "given": 2,
+        "offers": 2,
+        "raw_rewrite_pairs": 4,
+        "rigid_skips": 4,
+        "rigid_tests": 4,
+        "stored": 2,
+        "unifications": 1
+      },
+      "examples": [
+        {
+          "hits": 4,
+          "mark": [
+            "rigid",
+            [
+              1
+            ]
+          ],
+          "terms": [
+            [
+              "multiply",
+              "?v0",
+              [
+                "inverse",
+                [
+                  "multiply",
+                  [
+                    "multiply",
+                    [
+                      "inverse",
+                      [
+                        "multiply",
+                        [
+                          "inverse",
+                          "?v1"
+                        ],
+                        [
+                          "multiply",
+                          [
+                            "inverse",
+                            "?v0"
+                          ],
+                          "?v2"
+                        ]
+                      ]
+                    ],
+                    "?v3"
+                  ],
+                  [
+                    "inverse",
+                    [
+                      "multiply",
+                      "?v1",
+                      "?v3"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "multiply",
+              [
+                "a"
+              ],
+              [
+                "multiply",
+                [
+                  "b"
+                ],
+                [
+                  "c"
+                ]
+              ]
+            ]
+          ]
+        }
+      ],
+      "id": "GRP014-1",
+      "node_count": 2,
+      "seconds": 0.000113,
+      "status": "SATURATED_WITHOUT_REFUTATION"
+    }
+  ],
+  "z3": {
+    "GRP007-1": "unsat",
+    "GRP008-1": "unsat",
+    "GRP010-1": "unsat",
+    "GRP012-2": "unsat",
+    "GRP013-1": "unsat",
+    "GRP014-1": "unknown"
+  }
+}

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en"><head><script src="/geometric-tree-search/_pages-evidence/router.js"></script><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>A plane Turtle tiling from a self-similar matching graph</title>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 <style>
@@ -57,7 +57,7 @@ q'_i=\left\lfloor\frac{r_i-\gamma_i}{\lambda}\right\rfloor-r_i+1,
 <p>The red-rhomb graph therefore consists of infinite trees. Each locally finite tree has an infinite ray. Choose an end in every component and orient edges away from it. Every hexagon receives exactly one red rhomb. For every eligible black hexagon edge there is exactly one Turtle orientation attaching the red rhomb there. The audit checks all 12 local orientation cases. Replacing straight seams by the checked 20-wedge Turtle shapes covers each Rhombille cell exactly, including holes, and yields the plane tiling.</p>
 <p>The substitution here is on the matching graph. It supplies a smaller index graph and an inverse expansion of links and junctions. The construction uses the published dual geometry and the Fibonacci slope as hypotheses, and verifies the phase selection and renormalization separately. The proof applies to this generated family. The finite patch search and bounded attachment-rule failures are recorded in the preceding notebook. <a href="https://arxiv.org/abs/2403.01911">James Smith's Turtle constructions</a>.</p></section>
 <section id="evidence"><h2>Replay the certificate</h2>
-<ul><li><a href="turtle-plane-renormalization-20261105-v1-results.json">Machine-readable proof checkpoints</a></li><li><a href="turtle-plane-renormalization-20261105-v1-evidence.zip">Source and full certificate archive</a></li><li><a href="turtle-plane-renormalization-20261105-v1-manifest.json">Archive manifest</a></li></ul>
+<ul><li><a href="turtle-plane-renormalization-20261105-v1-results.json">Machine-readable proof checkpoints</a></li><li><a href="https://raw.githubusercontent.com/liuyao12/geometric-tree-search/d8fdbd6c701565e3f62a1c8316ab2d1ad55c93bb/docs/research/gcts-rl-renewal/turtle/turtle-plane-renormalization-20261105-v1-evidence.zip">Source and full certificate archive</a></li><li><a href="turtle-plane-renormalization-20261105-v1-manifest.json">Archive manifest</a></li></ul>
 <pre><code>python3.12 -I -S -B source/coarse_components_v1.py
 python3.12 -I -S -B source/coarse_rule_v1.py
 python3.12 -I -S -B source/renormalize_v1.py

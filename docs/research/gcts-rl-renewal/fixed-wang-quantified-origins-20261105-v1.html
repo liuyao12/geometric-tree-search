@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en"><head><script src="/geometric-tree-search/_pages-evidence/router.js"></script><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Quantified proofs in one Wang palette</title>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 <style>
@@ -80,7 +80,7 @@ code{font-size:.88em;overflow-wrap:anywhere}[hidden]{display:none!important}.key
 <div class="scroll"><table><thead><tr><th>Search</th><th>Proved</th><th>Selections</th><th>Pivot attempts</th><th>Checked marks</th></tr></thead><tbody><tr><td>Shortest clause</td><td>6</td><td>700</td><td>50714</td><td>0</td></tr><tr><td>Shortest with marks</td><td>7</td><td>75</td><td>264</td><td>274</td></tr><tr><td>Frozen learned ranking with marks</td><td>7</td><td>72</td><td>266</td><td>270</td></tr><tr><td>Variable elimination</td><td>7</td><td>33</td><td>189</td><td>0</td></tr></tbody></table></div>
 <p>Every arm saw the same grounded inputs, with depths fixed by the earlier proof run. The marked arms certify tautological pairs and subsumed resolvents. The plain given-clause arm exhausted its budget on one case. The frozen policy trained on synthetic Horn chains. It chose slightly fewer clauses than marked shortest-first and attempted slightly more pivots. Variable elimination had the fewest pivot attempts in this sample. Selections mean variables for elimination and clauses for the other arms.</p></section>
 <section id="evidence"><h2>Inspect or replay the evidence</h2>
-<ul><li><a href="fixed-wang-quantified-origins-20261105-v1-results.json">Machine-readable proof and comparison summary</a></li><li><a href="fixed-wang-quantified-origins-20261105-v1-evidence.zip">Full archive with original formulas, certificates and source</a></li><li><a href="fixed-wang-quantified-origins-20261105-v1-manifest.json">SHA-256 manifest</a></li><li><a href="fixed-wang-ground-resolution-20261105-v1.html">Previous ground-proof notebook</a></li></ul></section>
+<ul><li><a href="fixed-wang-quantified-origins-20261105-v1-results.json">Machine-readable proof and comparison summary</a></li><li><a href="https://raw.githubusercontent.com/liuyao12/geometric-tree-search/d8fdbd6c701565e3f62a1c8316ab2d1ad55c93bb/docs/research/gcts-rl-renewal/fixed-wang-quantified-origins-20261105-v1-evidence.zip">Full archive with original formulas, certificates and source</a></li><li><a href="fixed-wang-quantified-origins-20261105-v1-manifest.json">SHA-256 manifest</a></li><li><a href="fixed-wang-ground-resolution-20261105-v1.html">Previous ground-proof notebook</a></li></ul></section>
 </main><script>
 const menu=document.getElementById("case-menu");
 function choose(){for(const panel of document.querySelectorAll(".proof"))panel.hidden=panel.id!=="case-"+menu.value;}

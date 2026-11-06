@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-<head>
+<head><script src="/geometric-tree-search/_pages-evidence/router.js"></script>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Split and reuse residual tiling chambers</title>
 <script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]}};</script>
@@ -50,7 +50,7 @@ svg polygon{vector-effect:non-scaling-stroke;stroke-width:1.25}.left{fill:#b8dfe
 <p>Every admissible completion puts a tile along the selected segment of the exposed boundary. That segment anchors a finite catalogue of poses even in the Penrose coordinate module. Each placement uses positive area, so a bounded region limits the depth of an exhaustive proof.</p>
 <p>The verifier reconstructs the boundary at every certified branch, regenerates that edge’s placement catalogue, and checks conflicts with exact clipping and contact tests. It rejects a refutation with a missing placement or an incorrectly translated chamber.</p>
 <div class="table"><table><thead><tr><th scope="col">System</th><th scope="col">Arm</th><th scope="col">Placement options checked</th><th scope="col">Library records checked</th><th scope="col">Split events checked</th><th scope="col">Proposals checked</th></tr></thead><tbody><tr><td>Penrose</td><td>Direct</td><td>3036</td><td>0</td><td>0</td><td>0</td></tr><tr><td>Penrose</td><td>Boundary scan</td><td>4356</td><td>12</td><td>17</td><td>5</td></tr><tr><td>Penrose</td><td>Unhinted reuse</td><td>3556</td><td>10</td><td>13</td><td>0</td></tr><tr><td>Penrose</td><td>Learned two-contact receptor</td><td>4356</td><td>12</td><td>17</td><td>5</td></tr><tr><td>Penrose</td><td>Reuse</td><td>4228</td><td>17</td><td>35</td><td>0</td></tr><tr><td>Penrose</td><td>Fresh split</td><td>3412</td><td>43</td><td>22</td><td>0</td></tr><tr><td>Turtle</td><td>Direct</td><td>196</td><td>0</td><td>0</td><td>0</td></tr><tr><td>Turtle</td><td>Boundary scan</td><td>120</td><td>6</td><td>10</td><td>10</td></tr><tr><td>Turtle</td><td>Unhinted reuse</td><td>96</td><td>7</td><td>1</td><td>0</td></tr><tr><td>Turtle</td><td>Learned two-contact receptor</td><td>244</td><td>6</td><td>10</td><td>10</td></tr><tr><td>Turtle</td><td>Reuse</td><td>112</td><td>6</td><td>14</td><td>0</td></tr><tr><td>Turtle</td><td>Fresh split</td><td>160</td><td>21</td><td>14</td><td>0</td></tr></tbody></table></div>
-<p><a href="residual-chambers-20261106-v1-evidence.zip">Source and evidence archive</a> · <a href="residual-chambers-20261106-v1-results.json">Machine-readable results</a> · <a href="residual-chambers-20261106-v1-manifest.json">File hashes</a></p>
+<p><a href="https://raw.githubusercontent.com/liuyao12/geometric-tree-search/d8fdbd6c701565e3f62a1c8316ab2d1ad55c93bb/docs/research/gcts-rl-renewal/residual-chambers-20261106-v1-evidence.zip">Source and evidence archive</a> · <a href="residual-chambers-20261106-v1-results.json">Machine-readable results</a> · <a href="residual-chambers-20261106-v1-manifest.json">File hashes</a></p>
 <p>Extract the archive and follow <code>publication/REPLAY.md</code>. The replay reconstructs the fixtures, matched searches, certificate checks, and this reader.</p>
 </section>
 </main></body></html>
