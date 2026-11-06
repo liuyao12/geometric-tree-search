@@ -1,0 +1,183 @@
+{
+  "archive_entries": {
+    "data/plane-v1.json": {
+      "bytes": 1176,
+      "sha256": "49c40029b28a83a59172a0d9d6fd382c94718d080bb069814778b850ff30801d"
+    },
+    "data/plane.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/plane.stdout.log": {
+      "bytes": 1314,
+      "sha256": "63ebcc5782098252c55dc47a3acb2220ac9f491f563b814c16245fb2b58c2f34"
+    },
+    "data/symbolic-v1.json": {
+      "bytes": 1723,
+      "sha256": "3dcff1e1f6dd6b7813b78e4d96ab42f37d95f91fea538d3777c9e20833722353"
+    },
+    "data/symbolic.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/symbolic.stdout.log": {
+      "bytes": 363,
+      "sha256": "3d5df650446fe7403ccf2f28ec60f43ec4b03ca185a7baed1fd5213606954bd9"
+    },
+    "data/topology-v1.json": {
+      "bytes": 572,
+      "sha256": "4c9e0d5e8e782c56d3bc6e51ddd24854d862e56a4bd983ac076c3d3bcc8a9d05"
+    },
+    "data/topology.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/topology.stdout.log": {
+      "bytes": 564,
+      "sha256": "089d058dabc7b5a3e2ce074d94d92a22677a6d75c3b087248a8f640c384598db"
+    },
+    "data/wang-p-v1.json.gz": {
+      "bytes": 27612,
+      "sha256": "cf7c8c3203b9584d9a17f246ee1ff90a1d6bab0b8065b322f2b1261135f28a36"
+    },
+    "data/wang-t-v1.json.gz": {
+      "bytes": 20035,
+      "sha256": "cc24275958b1ebc2da8028a8f1b2a0672c6afaaa2494761edf6c78d27fa75558"
+    },
+    "data/wang-v1.json": {
+      "bytes": 2239,
+      "sha256": "716c0211d31ebc24c61a713c2c8654459d2fadbd205c1fb5a73b7f0a34c38288"
+    },
+    "data/wang.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/wang.stdout.log": {
+      "bytes": 2311,
+      "sha256": "281b1ed4a8022177e800c0ca230cb97b88d6e76438ae659a1da1394f2a9f1697"
+    },
+    "input/exact-point-model-v1.json": {
+      "bytes": 10642,
+      "sha256": "775ce3ac20489ef64d8d8266238edde36f87919461b68ccbd232763dd2da3eb0"
+    },
+    "input/growth-v1.json": {
+      "bytes": 1123194,
+      "sha256": "acd6b9575663228bbcffbace4d8de4fcd0d84ecebee111dbebbc04e33734f436"
+    },
+    "input/inventory-replay-v1.json": {
+      "bytes": 919,
+      "sha256": "c2928afc05ccbabd4e7ed110c3030f57c0b444eba3d7d48533eef8cfba3cbcd3"
+    },
+    "input/recovery-v1.json": {
+      "bytes": 40746,
+      "sha256": "129a344be2441cffb3bc913e9e6488e40f2ecbe60e145b99ce092285da837c1b"
+    },
+    "input/seams-v1.json": {
+      "bytes": 3143,
+      "sha256": "d7489cdc4e050602d1715bd699610b13225ceb73ee2ef3e540b35a894a195976"
+    },
+    "input/windows-v1.json": {
+      "bytes": 6811,
+      "sha256": "c0902d2b190c8de9a9af001b8ffcee03f33bcadf12a4cac66a4332ccd49f0084"
+    },
+    "protocol-v1.json": {
+      "bytes": 2669,
+      "sha256": "46123b1f9fd01a2f6652fc3b4ae77c9679a3077d71154cd26557aee95a060c21"
+    },
+    "publication/REPLAY.md": {
+      "bytes": 2077,
+      "sha256": "05b292a966f35d512efbb395bad6cf3b7ace49465d056180284bc85d77fbfcbf"
+    },
+    "publication/browser-v1.json": {
+      "bytes": 184,
+      "sha256": "d6bf7e21e94aaee61188499d6232932a7a0f20968409ffe019eaa0e7fee722c6"
+    },
+    "publication/check_v1.cjs": {
+      "bytes": 2617,
+      "sha256": "5e7db7ea53d13512c8f9bf7c9d7f7719564b7976141da93c8698654bca742137"
+    },
+    "publication/notebook-v1.html": {
+      "bytes": 13171,
+      "sha256": "da6c6f59ec757c16e4cf84cede2d2d6f8c7ed7515493a07495e5657e3f608f97"
+    },
+    "publication/package_v1.py": {
+      "bytes": 3048,
+      "sha256": "c229800dfb3c3d1d49515f4ee4308dc60dc4338b53b3251fe14cdb933053b283"
+    },
+    "publication/render_v1.py": {
+      "bytes": 6970,
+      "sha256": "b54a897a570a2ca2310478c61c9f0f7f8732fb69ba2cc0952597867581d9eda4"
+    },
+    "publication/replay-v1.json": {
+      "bytes": 608,
+      "sha256": "39518330c6bc9b3d660b70bd8cb7b952ae945cfd646b07b9f0cb342af6a95b77"
+    },
+    "report/turtle-golden-hex-plane-proof-20261106-v1-results.json": {
+      "bytes": 17599,
+      "sha256": "fa5a17f99da83bc02398241975aded82ceb2da422bf79552319e28f6615985b8"
+    },
+    "report/turtle-golden-hex-plane-proof-20261106-v1.html": {
+      "bytes": 161688,
+      "sha256": "045681dac375b950531ffa3f66ca1bc663ffaf0f8a57f4848207a0954e0e41d8"
+    },
+    "source/cluster_v1.py": {
+      "bytes": 15717,
+      "sha256": "a2eec032406feaf45f7c5ca66b235727db26e414996337981f6b0ff865859b85"
+    },
+    "source/fixed_palette_v1.py": {
+      "bytes": 8368,
+      "sha256": "8d4c09e1977302fd89454f1ab6d8b752d475c0a1a318ddcedac3f434518635fc"
+    },
+    "source/golden_geometry_v1.py": {
+      "bytes": 4899,
+      "sha256": "528407dae32299ac9982998ffd396687633fe1107d99f782ab8b74f8f5ded786"
+    },
+    "source/golden_growth_v1.py": {
+      "bytes": 6506,
+      "sha256": "469dfa023bce9f49ef471d05d549f5cb45c925f23eae47119155be67e720a991"
+    },
+    "source/golden_seams_v1.py": {
+      "bytes": 4353,
+      "sha256": "555bdf98c07c6864b6863e3e4e575cee136bcb30d1dcaf80fe9cb7749f134c17"
+    },
+    "source/ribbon_checker_v3.py": {
+      "bytes": 14489,
+      "sha256": "e346951922cfe71366f6c31b474c77955a51715eb3e043ff053c169dc8b0adbd"
+    },
+    "source/symbolic_v1.py": {
+      "bytes": 11865,
+      "sha256": "d67aae8fae4ea0ba97811945553b8b55e744328dbd57c75aaabe75f6890085fb"
+    },
+    "source/topology_v1.py": {
+      "bytes": 6649,
+      "sha256": "4a641366dfaea6633bf53caf5e300f0c2299d7c47876a525e69b75d801edaa95"
+    },
+    "source/triangle_geometry_v1.py": {
+      "bytes": 9600,
+      "sha256": "4715c6f612b196d257c858d695d604d800ce832cc5f8a1bfee8ae58e400a79ed"
+    },
+    "source/verify_plane_v1.py": {
+      "bytes": 8028,
+      "sha256": "041abae8f1037b82538911fab6bd3ef6b12c558a848d90a6eaa4ec0ed74bb997"
+    },
+    "source/wang_seams_v1.py": {
+      "bytes": 4945,
+      "sha256": "f41f4f6362fe33a00ab68a00cd62ded1eb27cc043490c6847426eaca4549bae6"
+    }
+  },
+  "assets": {
+    "turtle-golden-hex-plane-proof-20261106-v1-evidence.zip": {
+      "bytes": 428939,
+      "sha256": "6c8c377cd7456f161fee5ca2662db6ced60b583caa551417dd71de4b6bbc850e"
+    },
+    "turtle-golden-hex-plane-proof-20261106-v1-results.json": {
+      "bytes": 17599,
+      "sha256": "fa5a17f99da83bc02398241975aded82ceb2da422bf79552319e28f6615985b8"
+    },
+    "turtle-golden-hex-plane-proof-20261106-v1.html": {
+      "bytes": 161688,
+      "sha256": "045681dac375b950531ffa3f66ca1bc663ffaf0f8a57f4848207a0954e0e41d8"
+    }
+  },
+  "schema": "GCTS-PUBLICATION-MANIFEST-v1"
+}

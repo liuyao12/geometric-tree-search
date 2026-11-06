@@ -1,0 +1,927 @@
+{
+  "plane": {
+    "bases_and_strips": {
+      "base": [
+        {
+          "disk_radius": 15,
+          "name": "T2",
+          "tiles": 72
+        },
+        {
+          "disk_radius": 18,
+          "name": "P2",
+          "tiles": 124
+        },
+        {
+          "disk_radius": 44,
+          "name": "T3",
+          "tiles": 594
+        },
+        {
+          "disk_radius": 45,
+          "name": "P3",
+          "tiles": 834
+        }
+      ],
+      "strip_pair_checks": 4,
+      "strip_x_span": 5
+    },
+    "disk_bound": "length(p[2*n+1]) - 1",
+    "identity": [
+      {
+        "kind": "T",
+        "numeric_expansion_checks": 54,
+        "shifted_first_seam_nonzero_coefficients": 856,
+        "sites": 27
+      },
+      {
+        "kind": "P",
+        "numeric_expansion_checks": 76,
+        "shifted_first_seam_nonzero_coefficients": 943,
+        "sites": 38
+      }
+    ],
+    "induction_from": 4,
+    "local_path_transitions": 46,
+    "nested_odd_levels": true,
+    "status": "CHECKED_GOLDEN_HEX_ALL_LEVEL_CERTIFICATE",
+    "topology": [
+      {
+        "kind": "T",
+        "pairs": [
+          {
+            "checks": 1,
+            "kind": "corner",
+            "offsets": [
+              [
+                0
+              ],
+              [
+                0
+              ]
+            ]
+          },
+          {
+            "checks": 1,
+            "kind": "corner",
+            "offsets": [
+              [
+                0
+              ],
+              [
+                0
+              ]
+            ]
+          },
+          {
+            "checks": 1,
+            "kind": "corner",
+            "offsets": [
+              [
+                0
+              ],
+              [
+                0
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "P",
+        "pairs": [
+          {
+            "checks": 1,
+            "kind": "parallel"
+          },
+          {
+            "checks": 3,
+            "kind": "corner",
+            "offsets": [
+              [
+                0
+              ],
+              [
+                -2,
+                -1,
+                0
+              ]
+            ]
+          },
+          {
+            "checks": 3,
+            "kind": "corner",
+            "offsets": [
+              [
+                0
+              ],
+              [
+                0,
+                1,
+                2
+              ]
+            ]
+          },
+          {
+            "checks": 3,
+            "kind": "corner",
+            "offsets": [
+              [
+                0
+              ],
+              [
+                0,
+                1,
+                2
+              ]
+            ]
+          },
+          {
+            "checks": 3,
+            "kind": "corner",
+            "offsets": [
+              [
+                0
+              ],
+              [
+                -2,
+                -1,
+                0
+              ]
+            ]
+          },
+          {
+            "checks": 1,
+            "kind": "parallel"
+          }
+        ]
+      }
+    ],
+    "words": {
+      "base_palindromes": [
+        "0",
+        "00"
+      ],
+      "cycle_from": 6,
+      "period": 2,
+      "states": 7
+    }
+  },
+  "reader": {
+    "choiceRows": 65,
+    "figures": 5,
+    "formulas": 113,
+    "mobileNoOverflow": true,
+    "seamFigures": [
+      3,
+      4
+    ],
+    "status": "CHECKED_PLANE_PROOF_READER",
+    "wangCells": 64
+  },
+  "reference": "https://doi.org/10.1007/s00454-025-00717-6",
+  "replay": {
+    "outputs": {
+      "plane-v1.json": "49c40029b28a83a59172a0d9d6fd382c94718d080bb069814778b850ff30801d",
+      "symbolic-v1.json": "3dcff1e1f6dd6b7813b78e4d96ab42f37d95f91fea538d3777c9e20833722353",
+      "topology-v1.json": "4c9e0d5e8e782c56d3bc6e51ddd24854d862e56a4bd983ac076c3d3bcc8a9d05",
+      "wang-p-v1.json.gz": "cf7c8c3203b9584d9a17f246ee1ff90a1d6bab0b8065b322f2b1261135f28a36",
+      "wang-t-v1.json.gz": "cc24275958b1ebc2da8028a8f1b2a0672c6afaaa2494761edf6c78d27fa75558",
+      "wang-v1.json": "716c0211d31ebc24c61a713c2c8654459d2fadbd205c1fb5a73b7f0a34c38288"
+    },
+    "status": "CLEAN_BYTE_EXACT_REPLAY"
+  },
+  "schema": "GCTS-GOLDEN-HEX-PLANE-RESULTS-v1",
+  "search": {
+    "rows": [
+      {
+        "expansions": [
+          [
+            "V",
+            "1",
+            "0",
+            "U",
+            "0",
+            "1",
+            "V",
+            "1",
+            "0",
+            "V",
+            "1",
+            "0",
+            "U"
+          ],
+          [
+            "V",
+            "1",
+            "0",
+            "U",
+            "0",
+            "1",
+            "V",
+            "1",
+            "0",
+            "V",
+            "1",
+            "0",
+            "U"
+          ],
+          [
+            "V",
+            "1",
+            "0",
+            "U",
+            "0",
+            "1",
+            "V",
+            "1",
+            "0",
+            "V",
+            "1",
+            "0",
+            "U"
+          ],
+          [
+            "V",
+            "1",
+            "0",
+            "U"
+          ],
+          [
+            "V",
+            "1",
+            "0",
+            "U"
+          ],
+          [
+            "V",
+            "1",
+            "0",
+            "U"
+          ],
+          [
+            "V",
+            "1",
+            "0",
+            "U"
+          ],
+          [
+            "V",
+            "1",
+            "0",
+            "U"
+          ],
+          [
+            "V",
+            "1",
+            "0",
+            "U"
+          ],
+          [
+            "V",
+            "1",
+            "0",
+            "U"
+          ],
+          [
+            "V",
+            "1",
+            "0",
+            "U"
+          ],
+          [
+            "V",
+            "1",
+            "0",
+            "U"
+          ],
+          [
+            "U",
+            "0",
+            "1",
+            "V"
+          ],
+          [
+            "V",
+            "1",
+            "0",
+            "U"
+          ],
+          [
+            "0",
+            "1",
+            "V",
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "V",
+            "1",
+            "0"
+          ],
+          [
+            "U",
+            "0",
+            "1",
+            "V"
+          ],
+          [
+            "V",
+            "1",
+            "0",
+            "U"
+          ],
+          [
+            "0",
+            "1",
+            "V",
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "V",
+            "1",
+            "0"
+          ],
+          [
+            "U",
+            "0",
+            "1",
+            "V"
+          ],
+          [
+            "V",
+            "1",
+            "0",
+            "U"
+          ],
+          [
+            "0",
+            "1",
+            "V",
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "V",
+            "1",
+            "0"
+          ],
+          [
+            "U"
+          ],
+          [
+            "U"
+          ],
+          [
+            "U"
+          ]
+        ],
+        "kind": "T",
+        "sites": 27,
+        "solution": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stats": {
+          "nodes": 10
+        },
+        "term_keys": 4752
+      },
+      {
+        "expansions": [
+          [
+            "V",
+            "1",
+            "0",
+            "U",
+            "0",
+            "1",
+            "V",
+            "1",
+            "0",
+            "V",
+            "1",
+            "0",
+            "U"
+          ],
+          [
+            "V",
+            "1",
+            "0",
+            "U",
+            "0",
+            "1",
+            "V",
+            "1",
+            "0",
+            "V",
+            "1",
+            "0",
+            "U"
+          ],
+          [
+            "0",
+            "1",
+            "V",
+            "1",
+            "0",
+            "V",
+            "1",
+            "0",
+            "U",
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "V",
+            "1",
+            "0",
+            "V",
+            "1",
+            "0",
+            "U",
+            "1",
+            "0"
+          ],
+          [
+            "V",
+            "1",
+            "0",
+            "U"
+          ],
+          [
+            "V",
+            "1",
+            "0",
+            "U"
+          ],
+          [
+            "0",
+            "1",
+            "V",
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "V",
+            "1",
+            "0"
+          ],
+          [
+            "V",
+            "1",
+            "0",
+            "U"
+          ],
+          [
+            "V",
+            "1",
+            "0",
+            "U"
+          ],
+          [
+            "0",
+            "1",
+            "V",
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "V",
+            "1",
+            "0"
+          ],
+          [
+            "V",
+            "1",
+            "0",
+            "U"
+          ],
+          [
+            "V",
+            "1",
+            "0",
+            "U"
+          ],
+          [
+            "0",
+            "1",
+            "V",
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "V",
+            "1",
+            "0"
+          ],
+          [
+            "V",
+            "1",
+            "0",
+            "U"
+          ],
+          [
+            "V",
+            "1",
+            "0",
+            "U"
+          ],
+          [
+            "0",
+            "1",
+            "V",
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "V",
+            "1",
+            "0"
+          ],
+          [
+            "V",
+            "1",
+            "0",
+            "U"
+          ],
+          [
+            "V",
+            "1",
+            "0",
+            "U"
+          ],
+          [
+            "0",
+            "1",
+            "V",
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "V",
+            "1",
+            "0"
+          ],
+          [
+            "V",
+            "1",
+            "0",
+            "U",
+            "0",
+            "1",
+            "V",
+            "1",
+            "0"
+          ],
+          [
+            "V",
+            "1",
+            "0",
+            "U",
+            "0",
+            "1",
+            "V",
+            "1",
+            "0"
+          ],
+          [
+            "V",
+            "1",
+            "0",
+            "U"
+          ],
+          [
+            "V",
+            "1",
+            "0",
+            "U"
+          ],
+          [
+            "U",
+            "0",
+            "1",
+            "V"
+          ],
+          [
+            "V",
+            "1",
+            "0",
+            "U"
+          ],
+          [
+            "V",
+            "1",
+            "0",
+            "U"
+          ],
+          [
+            "U",
+            "0",
+            "1",
+            "V"
+          ],
+          [
+            "U"
+          ],
+          [
+            "U"
+          ],
+          [
+            "U"
+          ],
+          [
+            "U"
+          ],
+          [
+            "U"
+          ],
+          [
+            "U"
+          ]
+        ],
+        "kind": "P",
+        "sites": 38,
+        "solution": [
+          0,
+          0,
+          2,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stats": {
+          "nodes": 11
+        },
+        "term_keys": 6602
+      }
+    ]
+  },
+  "topology": {
+    "local_transitions": 46,
+    "rows": [
+      {
+        "cases": [
+          {
+            "checks": 1,
+            "kind": "corner",
+            "offsets": [
+              [
+                0
+              ],
+              [
+                0
+              ]
+            ]
+          },
+          {
+            "checks": 1,
+            "kind": "corner",
+            "offsets": [
+              [
+                0
+              ],
+              [
+                0
+              ]
+            ]
+          },
+          {
+            "checks": 1,
+            "kind": "corner",
+            "offsets": [
+              [
+                0
+              ],
+              [
+                0
+              ]
+            ]
+          }
+        ],
+        "kind": "T",
+        "sides": 3
+      },
+      {
+        "cases": [
+          {
+            "checks": 1,
+            "kind": "parallel"
+          },
+          {
+            "checks": 3,
+            "kind": "corner",
+            "offsets": [
+              [
+                0
+              ],
+              [
+                -2,
+                -1,
+                0
+              ]
+            ]
+          },
+          {
+            "checks": 3,
+            "kind": "corner",
+            "offsets": [
+              [
+                0
+              ],
+              [
+                0,
+                1,
+                2
+              ]
+            ]
+          },
+          {
+            "checks": 3,
+            "kind": "corner",
+            "offsets": [
+              [
+                0
+              ],
+              [
+                0,
+                1,
+                2
+              ]
+            ]
+          },
+          {
+            "checks": 3,
+            "kind": "corner",
+            "offsets": [
+              [
+                0
+              ],
+              [
+                -2,
+                -1,
+                0
+              ]
+            ]
+          },
+          {
+            "checks": 1,
+            "kind": "parallel"
+          }
+        ],
+        "kind": "P",
+        "sides": 4
+      }
+    ],
+    "status": "CHECKED_ALL_LEVEL_SIMPLE_BOUNDARIES"
+  },
+  "wang": {
+    "rows": [
+      {
+        "bits": 24,
+        "certificate": "data/wang-t-v1.json.gz",
+        "controls": 136,
+        "distinct_constraints": 91,
+        "gates": 1073,
+        "kind": "T",
+        "rejected": 136,
+        "terms": 4752,
+        "wang": {
+          "active_cells": 2705,
+          "all_literal_edge_interfaces_agree": true,
+          "all_vertical_op_selectors_bound_to_circuit": true,
+          "bottom_op_selector": "CROSS",
+          "bottom_output_bit": 1,
+          "cells": 1179227,
+          "certificate_sha256": "6ac9849e9f2b3ac2b3732668b9f8f863843b6cb91ad07f7b460301b7df6a7dc0",
+          "circuit_sha256": "adab9347faf44ae41842416b555ba4851a2d57de2b62f08cd51e98624c1fe4eb",
+          "cross_transport_cases": 20,
+          "empty_grid_coincident_top_bottom": false,
+          "exact_cell_partition_t1": true,
+          "expanded_cells": 0,
+          "height": 1073,
+          "output_column": 1098,
+          "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+          "reason": "EXACT_RIBBON_CERTIFICATE",
+          "ribbon_cells": 1176522,
+          "ribbon_intervals": 2857,
+          "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+          "status": "VERIFIED",
+          "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+          "width": 1099
+        }
+      },
+      {
+        "bits": 30,
+        "certificate": "data/wang-p-v1.json.gz",
+        "controls": 142,
+        "distinct_constraints": 141,
+        "gates": 1454,
+        "kind": "P",
+        "rejected": 140,
+        "terms": 6602,
+        "wang": {
+          "active_cells": 3667,
+          "all_literal_edge_interfaces_agree": true,
+          "all_vertical_op_selectors_bound_to_circuit": true,
+          "bottom_op_selector": "CROSS",
+          "bottom_output_bit": 1,
+          "cells": 2160644,
+          "certificate_sha256": "623ed510a0194b02dc5e9d54a21bbf71510b2b3fefa74ce45e60773b01cd41d1",
+          "circuit_sha256": "25fb6835281b42f6b9e41f83ffc497f164ba9d473cc698a543312bd49f4fce41",
+          "cross_transport_cases": 20,
+          "empty_grid_coincident_top_bottom": false,
+          "exact_cell_partition_t1": true,
+          "expanded_cells": 0,
+          "height": 1454,
+          "output_column": 1485,
+          "palette_sha256": "87a94455a10f66b7cee25749fdb027448cec838b90898ee4e28296ef33d5c330",
+          "reason": "EXACT_RIBBON_CERTIFICATE",
+          "ribbon_cells": 2156977,
+          "ribbon_intervals": 3886,
+          "scope": "Finite translation-only Wang grid certificate. Ribbons prove bit transport with template-selected full south colors. No grid search or external semantic-logic admission is claimed.",
+          "status": "VERIFIED",
+          "version": "FP-INDEPENDENT-RIBBON-CHECKER-v3-NK",
+          "width": 1486
+        }
+      }
+    ],
+    "status": "CHECKED_WANG_SEAM_CHOICES"
+  }
+}
