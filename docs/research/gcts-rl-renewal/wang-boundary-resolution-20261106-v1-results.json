@@ -1,0 +1,4063 @@
+{
+  "alphabet_size": 37,
+  "audit": {
+    "differential": {
+      "accepted": 4,
+      "rejected": 126
+    },
+    "fully_expanded": {
+      "columns": 228,
+      "rows": 10322,
+      "squares": 2353416
+    },
+    "independently_decoded_rows": 47,
+    "machine_sha256": "3d97b22704bf8da27992d74dfb897c312da9274d0cb6298ef447498a7db2c4b6",
+    "quantifier_swap_countermodel": {
+      "domain": [
+        0,
+        1
+      ],
+      "relation": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    "status": "CHECKED_BOUNDARY_PROOF_AUDIT"
+  },
+  "machine_sha256": "3d97b22704bf8da27992d74dfb897c312da9274d0cb6298ef447498a7db2c4b6",
+  "machine_states": 4037,
+  "reader": {
+    "math": 146,
+    "mobileNoOverflow": true,
+    "proofs": 5,
+    "records": 47,
+    "status": "CHECKED_BOUNDARY_PROOF_READER",
+    "wangCells": 225
+  },
+  "replay": {
+    "outputs": {
+      "data/audit-v1.json": {
+        "bytes": 504,
+        "sha256": "6ad8e739f94d76b956dfd71db42774d4f9651d3c00e6a5a5eacade026de5d0f3"
+      },
+      "data/counter-halt-frame-v1.json.gz": {
+        "bytes": 130226,
+        "sha256": "d4ed5086570722dd5e03268057942982095dcee3b95953e1f14a4a5cec61f633"
+      },
+      "data/exists-map-frame-v1.json.gz": {
+        "bytes": 37643,
+        "sha256": "67dcb7b97c69bad871984af1a76eb99f8d2d4012772ab49e104a8464c9c472b0"
+      },
+      "data/hilbert-incidence-uniqueness-frame-v1.json.gz": {
+        "bytes": 862798,
+        "sha256": "d7e54951075daa9eeb8431c1112951c97d7fe9b217f4ee571ce261ac97987dcb"
+      },
+      "data/incidence-existence-frame-v1.json.gz": {
+        "bytes": 127643,
+        "sha256": "102e81d205d322f93bcd3f840aa5df3e3238cc7c546808ede0c4057a3f147f01"
+      },
+      "data/peano-nonzero-successor-frame-v1.json.gz": {
+        "bytes": 28061,
+        "sha256": "99dd06e715055a647ed25c0d13bd2de4b450d17e38c3b34e763d3c02ec28eb0f"
+      },
+      "data/results-v1.json": {
+        "bytes": 21996,
+        "sha256": "2a372128aafe1fac751ffd5c967cc500e909e7057c9f501f889571c68edc94de"
+      }
+    },
+    "status": "CLEAN_BYTE_EXACT_REPLAY"
+  },
+  "rows": [
+    {
+      "code_names": {
+        "P": "0",
+        "Q": "1",
+        "witness0": "10"
+      },
+      "controls": {
+        "forward-reference": 3891657,
+        "malformed-substitution-term": 109411,
+        "nonempty-conclusion": 5800065,
+        "omitted-clause-literal": 214791,
+        "reversed-physical-sweep": true,
+        "wrong-pivot-sign": 4593167
+      },
+      "evidence": "exists-map-frame-v1.json.gz",
+      "id": "exists-map",
+      "layers": [
+        {
+          "depth": 0,
+          "ground_instances": 3,
+          "marked": {
+            "pivots": 3,
+            "selected": 4
+          },
+          "outcome": "UNSAT",
+          "plain": {
+            "pivots": 3,
+            "selected": 4
+          },
+          "plain_outcome": "UNSAT",
+          "verified_marks": 0
+        }
+      ],
+      "lines": [
+        {
+          "bindings": {
+            "?v0": [
+              "witness0"
+            ]
+          },
+          "clause": [
+            [
+              false,
+              [
+                "P",
+                [
+                  "witness0"
+                ]
+              ]
+            ],
+            [
+              true,
+              [
+                "Q",
+                [
+                  "witness0"
+                ]
+              ]
+            ]
+          ],
+          "rule": "G",
+          "source": "formula1-clause1"
+        },
+        {
+          "bindings": {},
+          "clause": [
+            [
+              true,
+              [
+                "P",
+                [
+                  "witness0"
+                ]
+              ]
+            ]
+          ],
+          "rule": "G",
+          "source": "formula1-clause2"
+        },
+        {
+          "bindings": {
+            "?v1": [
+              "witness0"
+            ]
+          },
+          "clause": [
+            [
+              false,
+              [
+                "Q",
+                [
+                  "witness0"
+                ]
+              ]
+            ]
+          ],
+          "rule": "G",
+          "source": "formula1-clause3"
+        },
+        {
+          "clause": [
+            [
+              true,
+              [
+                "Q",
+                [
+                  "witness0"
+                ]
+              ]
+            ]
+          ],
+          "left": 1,
+          "pivot": [
+            "P",
+            [
+              "witness0"
+            ]
+          ],
+          "right": 0,
+          "rule": "R"
+        },
+        {
+          "clause": [],
+          "left": 3,
+          "pivot": [
+            "Q",
+            [
+              "witness0"
+            ]
+          ],
+          "right": 2,
+          "rule": "R"
+        }
+      ],
+      "machine": {
+        "commits": [
+          [
+            308829,
+            1245
+          ],
+          [
+            572002,
+            1500
+          ],
+          [
+            1043079,
+            1905
+          ],
+          [
+            2788383,
+            1245
+          ],
+          [
+            5538147,
+            1905
+          ]
+        ],
+        "status": "ACCEPT",
+        "steps": 5596112
+      },
+      "skolem": [
+        {
+          "arguments": [],
+          "eliminated": "?y",
+          "sort": "U",
+          "symbol": "witness0"
+        }
+      ],
+      "source": {
+        "equality": false,
+        "functions": {},
+        "goal": [
+          "implies",
+          [
+            "all",
+            "?x",
+            "U",
+            [
+              "implies",
+              [
+                "atom",
+                "P",
+                "?x"
+              ],
+              [
+                "atom",
+                "Q",
+                "?x"
+              ]
+            ]
+          ],
+          [
+            "implies",
+            [
+              "exists",
+              "?y",
+              "U",
+              [
+                "atom",
+                "P",
+                "?y"
+              ]
+            ],
+            [
+              "exists",
+              "?z",
+              "U",
+              [
+                "atom",
+                "Q",
+                "?z"
+              ]
+            ]
+          ]
+        ],
+        "id": "exists-map",
+        "predicates": {
+          "P": [
+            "U"
+          ],
+          "Q": [
+            "U"
+          ]
+        },
+        "premises": [],
+        "sorts": [
+          "U"
+        ]
+      },
+      "source_clauses": [
+        {
+          "clause": [
+            [
+              false,
+              [
+                "P",
+                "?v0"
+              ]
+            ],
+            [
+              true,
+              [
+                "Q",
+                "?v0"
+              ]
+            ]
+          ],
+          "id": "formula1-clause1",
+          "variables": {
+            "?v0": "U"
+          }
+        },
+        {
+          "clause": [
+            [
+              true,
+              [
+                "P",
+                [
+                  "witness0"
+                ]
+              ]
+            ]
+          ],
+          "id": "formula1-clause2",
+          "variables": {}
+        },
+        {
+          "clause": [
+            [
+              false,
+              [
+                "Q",
+                "?v1"
+              ]
+            ]
+          ],
+          "id": "formula1-clause3",
+          "variables": {
+            "?v1": "U"
+          }
+        }
+      ],
+      "status": "PROVED",
+      "tile_receipt": {
+        "columns": 2748,
+        "explicit_active_checks": 81169,
+        "open_characters": 133,
+        "operation_pins": 0,
+        "rows": 5596114,
+        "squares": 15378121272,
+        "status": "CHECKED_SPARSE_FRAME",
+        "steps": 5596112,
+        "sweep_runs": 4719,
+        "trace_events": 32567
+      }
+    },
+    {
+      "code_names": {
+        "$type:Line": "0",
+        "$type:Point": "1",
+        "I": "10",
+        "inhabitant0": "11",
+        "inhabitant1": "100",
+        "witness0": "101"
+      },
+      "controls": {
+        "forward-reference": 61584369,
+        "malformed-substitution-term": 542089,
+        "nonempty-conclusion": 70837103,
+        "omitted-clause-literal": 765129,
+        "reversed-physical-sweep": true,
+        "wrong-pivot-sign": 64152016
+      },
+      "evidence": "incidence-existence-frame-v1.json.gz",
+      "id": "incidence-existence",
+      "layers": [
+        {
+          "depth": 0,
+          "ground_instances": 1,
+          "marked": {
+            "selected": 1
+          },
+          "outcome": "SAT",
+          "plain": {
+            "selected": 1
+          },
+          "plain_outcome": "SAT",
+          "verified_marks": 0
+        },
+        {
+          "depth": 1,
+          "ground_instances": 3,
+          "marked": {
+            "pivots": 1,
+            "selected": 3
+          },
+          "outcome": "UNSAT",
+          "plain": {
+            "pivots": 1,
+            "selected": 3
+          },
+          "plain_outcome": "UNSAT",
+          "verified_marks": 0
+        }
+      ],
+      "lines": [
+        {
+          "bindings": {
+            "?v0": [
+              "inhabitant0"
+            ]
+          },
+          "clause": [
+            [
+              false,
+              [
+                "$type:Point",
+                [
+                  "inhabitant0"
+                ]
+              ]
+            ],
+            [
+              true,
+              [
+                "I",
+                [
+                  "inhabitant0"
+                ],
+                [
+                  "witness0",
+                  [
+                    "inhabitant0"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "rule": "G",
+          "source": "formula1-clause1"
+        },
+        {
+          "bindings": {},
+          "clause": [
+            [
+              true,
+              [
+                "$type:Point",
+                [
+                  "inhabitant0"
+                ]
+              ]
+            ]
+          ],
+          "rule": "G",
+          "source": "$type-function:0"
+        },
+        {
+          "clause": [
+            [
+              true,
+              [
+                "I",
+                [
+                  "inhabitant0"
+                ],
+                [
+                  "witness0",
+                  [
+                    "inhabitant0"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "left": 1,
+          "pivot": [
+            "$type:Point",
+            [
+              "inhabitant0"
+            ]
+          ],
+          "right": 0,
+          "rule": "R"
+        },
+        {
+          "bindings": {
+            "?v1": [
+              "witness0",
+              [
+                "inhabitant0"
+              ]
+            ],
+            "?v2": [
+              "inhabitant0"
+            ]
+          },
+          "clause": [
+            [
+              false,
+              [
+                "$type:Line",
+                [
+                  "witness0",
+                  [
+                    "inhabitant0"
+                  ]
+                ]
+              ]
+            ],
+            [
+              false,
+              [
+                "$type:Point",
+                [
+                  "inhabitant0"
+                ]
+              ]
+            ],
+            [
+              false,
+              [
+                "I",
+                [
+                  "inhabitant0"
+                ],
+                [
+                  "witness0",
+                  [
+                    "inhabitant0"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "rule": "G",
+          "source": "formula1-clause2"
+        },
+        {
+          "bindings": {
+            "?input0": [
+              "inhabitant0"
+            ]
+          },
+          "clause": [
+            [
+              false,
+              [
+                "$type:Point",
+                [
+                  "inhabitant0"
+                ]
+              ]
+            ],
+            [
+              true,
+              [
+                "$type:Line",
+                [
+                  "witness0",
+                  [
+                    "inhabitant0"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "rule": "G",
+          "source": "$type-function:2"
+        },
+        {
+          "clause": [
+            [
+              true,
+              [
+                "$type:Line",
+                [
+                  "witness0",
+                  [
+                    "inhabitant0"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "left": 1,
+          "pivot": [
+            "$type:Point",
+            [
+              "inhabitant0"
+            ]
+          ],
+          "right": 4,
+          "rule": "R"
+        },
+        {
+          "clause": [
+            [
+              false,
+              [
+                "$type:Point",
+                [
+                  "inhabitant0"
+                ]
+              ]
+            ],
+            [
+              false,
+              [
+                "I",
+                [
+                  "inhabitant0"
+                ],
+                [
+                  "witness0",
+                  [
+                    "inhabitant0"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "left": 5,
+          "pivot": [
+            "$type:Line",
+            [
+              "witness0",
+              [
+                "inhabitant0"
+              ]
+            ]
+          ],
+          "right": 3,
+          "rule": "R"
+        },
+        {
+          "clause": [
+            [
+              false,
+              [
+                "I",
+                [
+                  "inhabitant0"
+                ],
+                [
+                  "witness0",
+                  [
+                    "inhabitant0"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "left": 1,
+          "pivot": [
+            "$type:Point",
+            [
+              "inhabitant0"
+            ]
+          ],
+          "right": 6,
+          "rule": "R"
+        },
+        {
+          "clause": [],
+          "left": 2,
+          "pivot": [
+            "I",
+            [
+              "inhabitant0"
+            ],
+            [
+              "witness0",
+              [
+                "inhabitant0"
+              ]
+            ]
+          ],
+          "right": 7,
+          "rule": "R"
+        }
+      ],
+      "machine": {
+        "commits": [
+          [
+            1170081,
+            2535
+          ],
+          [
+            1974775,
+            2805
+          ],
+          [
+            6290275,
+            2535
+          ],
+          [
+            9375964,
+            4590
+          ],
+          [
+            12356767,
+            5265
+          ],
+          [
+            21824109,
+            5265
+          ],
+          [
+            37816456,
+            4590
+          ],
+          [
+            51991958,
+            6750
+          ],
+          [
+            69278924,
+            7410
+          ]
+        ],
+        "status": "ACCEPT",
+        "steps": 69452854
+      },
+      "skolem": [
+        {
+          "arguments": [
+            [
+              "?v0",
+              "Point"
+            ]
+          ],
+          "eliminated": "?y",
+          "sort": "Line",
+          "symbol": "witness0"
+        }
+      ],
+      "source": {
+        "equality": false,
+        "functions": {},
+        "goal": [
+          "implies",
+          [
+            "all",
+            "?x",
+            "Point",
+            [
+              "exists",
+              "?y",
+              "Line",
+              [
+                "atom",
+                "I",
+                "?x",
+                "?y"
+              ]
+            ]
+          ],
+          [
+            "exists",
+            "?y",
+            "Line",
+            [
+              "exists",
+              "?x",
+              "Point",
+              [
+                "atom",
+                "I",
+                "?x",
+                "?y"
+              ]
+            ]
+          ]
+        ],
+        "id": "incidence-existence",
+        "predicates": {
+          "I": [
+            "Point",
+            "Line"
+          ]
+        },
+        "premises": [],
+        "sorts": [
+          "Point",
+          "Line"
+        ]
+      },
+      "source_clauses": [
+        {
+          "clause": [
+            [
+              false,
+              [
+                "$type:Point",
+                "?v0"
+              ]
+            ],
+            [
+              true,
+              [
+                "I",
+                "?v0",
+                [
+                  "witness0",
+                  "?v0"
+                ]
+              ]
+            ]
+          ],
+          "id": "formula1-clause1",
+          "variables": {
+            "?v0": "Point"
+          }
+        },
+        {
+          "clause": [
+            [
+              false,
+              [
+                "$type:Line",
+                "?v1"
+              ]
+            ],
+            [
+              false,
+              [
+                "$type:Point",
+                "?v2"
+              ]
+            ],
+            [
+              false,
+              [
+                "I",
+                "?v2",
+                "?v1"
+              ]
+            ]
+          ],
+          "id": "formula1-clause2",
+          "variables": {
+            "?v1": "Line",
+            "?v2": "Point"
+          }
+        },
+        {
+          "clause": [
+            [
+              true,
+              [
+                "$type:Point",
+                [
+                  "inhabitant0"
+                ]
+              ]
+            ]
+          ],
+          "id": "$type-function:0",
+          "variables": {}
+        },
+        {
+          "clause": [
+            [
+              true,
+              [
+                "$type:Line",
+                [
+                  "inhabitant1"
+                ]
+              ]
+            ]
+          ],
+          "id": "$type-function:1",
+          "variables": {}
+        },
+        {
+          "clause": [
+            [
+              false,
+              [
+                "$type:Point",
+                "?input0"
+              ]
+            ],
+            [
+              true,
+              [
+                "$type:Line",
+                [
+                  "witness0",
+                  "?input0"
+                ]
+              ]
+            ]
+          ],
+          "id": "$type-function:2",
+          "variables": {
+            "?input0": "Point"
+          }
+        }
+      ],
+      "status": "PROVED",
+      "tile_receipt": {
+        "columns": 8028,
+        "explicit_active_checks": 384481,
+        "open_characters": 411,
+        "operation_pins": 0,
+        "rows": 69452856,
+        "squares": 557567527968,
+        "status": "CHECKED_SPARSE_FRAME",
+        "steps": 69452854,
+        "sweep_runs": 21722,
+        "trace_events": 153515
+      }
+    },
+    {
+      "id": "quantifier-swap-control",
+      "layers": [
+        {
+          "depth": 0,
+          "ground_instances": 0,
+          "marked": {},
+          "outcome": "SAT",
+          "plain": {},
+          "plain_outcome": "SAT",
+          "verified_marks": 0
+        },
+        {
+          "depth": 1,
+          "ground_instances": 2,
+          "marked": {
+            "selected": 2
+          },
+          "outcome": "SAT",
+          "plain": {
+            "selected": 2
+          },
+          "plain_outcome": "SAT",
+          "verified_marks": 0
+        }
+      ],
+      "skolem": [
+        {
+          "arguments": [
+            [
+              "?v0",
+              "U"
+            ]
+          ],
+          "eliminated": "?y",
+          "sort": "U",
+          "symbol": "witness0"
+        },
+        {
+          "arguments": [
+            [
+              "?v1",
+              "U"
+            ]
+          ],
+          "eliminated": "?x",
+          "sort": "U",
+          "symbol": "witness1"
+        }
+      ],
+      "source": {
+        "equality": false,
+        "functions": {},
+        "goal": [
+          "implies",
+          [
+            "all",
+            "?x",
+            "U",
+            [
+              "exists",
+              "?y",
+              "U",
+              [
+                "atom",
+                "R",
+                "?x",
+                "?y"
+              ]
+            ]
+          ],
+          [
+            "exists",
+            "?y",
+            "U",
+            [
+              "all",
+              "?x",
+              "U",
+              [
+                "atom",
+                "R",
+                "?x",
+                "?y"
+              ]
+            ]
+          ]
+        ],
+        "id": "quantifier-swap-control",
+        "predicates": {
+          "R": [
+            "U",
+            "U"
+          ]
+        },
+        "premises": [],
+        "sorts": [
+          "U"
+        ]
+      },
+      "source_clauses": [
+        {
+          "clause": [
+            [
+              true,
+              [
+                "R",
+                "?v0",
+                [
+                  "witness0",
+                  "?v0"
+                ]
+              ]
+            ]
+          ],
+          "id": "formula1-clause1",
+          "variables": {
+            "?v0": "U"
+          }
+        },
+        {
+          "clause": [
+            [
+              false,
+              [
+                "R",
+                [
+                  "witness1",
+                  "?v1"
+                ],
+                "?v1"
+              ]
+            ]
+          ],
+          "id": "formula1-clause2",
+          "variables": {
+            "?v1": "U"
+          }
+        }
+      ],
+      "status": "NO_REFUTATION_IN_TESTED_LAYERS"
+    },
+    {
+      "code_names": {
+        "=Nat": "0",
+        "S": "1",
+        "zero": "10"
+      },
+      "controls": {
+        "forward-reference": 4743842,
+        "malformed-substitution-term": 987508,
+        "nonempty-conclusion": 10251543,
+        "omitted-clause-literal": 1103824,
+        "reversed-physical-sweep": true,
+        "wrong-pivot-sign": 6280559
+      },
+      "evidence": "peano-nonzero-successor-frame-v1.json.gz",
+      "id": "peano-nonzero-successor",
+      "layers": [
+        {
+          "depth": 0,
+          "ground_instances": 1,
+          "marked": {
+            "selected": 1
+          },
+          "outcome": "SAT",
+          "plain": {
+            "selected": 1
+          },
+          "plain_outcome": "SAT",
+          "verified_marks": 0
+        },
+        {
+          "depth": 1,
+          "ground_instances": 8,
+          "marked": {
+            "duplicates": 3,
+            "pivots": 8,
+            "selected": 9,
+            "skipped_pivots": 2,
+            "subsumptions": 4,
+            "tautological_pairs": 1
+          },
+          "outcome": "SAT",
+          "plain": {
+            "duplicates": 9,
+            "pivots": 16,
+            "selected": 13,
+            "tautologies": 2
+          },
+          "plain_outcome": "SAT",
+          "verified_marks": 5
+        },
+        {
+          "depth": 2,
+          "ground_instances": 28,
+          "marked": {
+            "pivots": 1,
+            "selected": 3
+          },
+          "outcome": "UNSAT",
+          "plain": {
+            "pivots": 1,
+            "selected": 3
+          },
+          "plain_outcome": "UNSAT",
+          "verified_marks": 0
+        }
+      ],
+      "lines": [
+        {
+          "bindings": {
+            "?v0": [
+              "S",
+              [
+                "zero"
+              ]
+            ]
+          },
+          "clause": [
+            [
+              false,
+              [
+                "=Nat",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "zero"
+                    ]
+                  ]
+                ],
+                [
+                  "zero"
+                ]
+              ]
+            ]
+          ],
+          "rule": "G",
+          "source": "formula1-clause1"
+        },
+        {
+          "bindings": {},
+          "clause": [
+            [
+              true,
+              [
+                "=Nat",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "zero"
+                    ]
+                  ]
+                ],
+                [
+                  "zero"
+                ]
+              ]
+            ]
+          ],
+          "rule": "G",
+          "source": "formula2-clause1"
+        },
+        {
+          "clause": [],
+          "left": 1,
+          "pivot": [
+            "=Nat",
+            [
+              "S",
+              [
+                "S",
+                [
+                  "zero"
+                ]
+              ]
+            ],
+            [
+              "zero"
+            ]
+          ],
+          "right": 0,
+          "rule": "R"
+        }
+      ],
+      "machine": {
+        "commits": [
+          [
+            1547085,
+            3165
+          ],
+          [
+            2415453,
+            3615
+          ],
+          [
+            9398501,
+            3165
+          ]
+        ],
+        "status": "ACCEPT",
+        "steps": 9487351
+      },
+      "skolem": [],
+      "source": {
+        "equality": true,
+        "functions": {
+          "S": [
+            [
+              "Nat"
+            ],
+            "Nat"
+          ],
+          "zero": [
+            [],
+            "Nat"
+          ]
+        },
+        "goal": [
+          "not",
+          [
+            "atom",
+            "=Nat",
+            [
+              "S",
+              [
+                "S",
+                [
+                  "zero"
+                ]
+              ]
+            ],
+            [
+              "zero"
+            ]
+          ]
+        ],
+        "id": "peano-nonzero-successor",
+        "predicates": {},
+        "premises": [
+          [
+            "all",
+            "?n",
+            "Nat",
+            [
+              "not",
+              [
+                "atom",
+                "=Nat",
+                [
+                  "S",
+                  "?n"
+                ],
+                [
+                  "zero"
+                ]
+              ]
+            ]
+          ]
+        ],
+        "sorts": [
+          "Nat"
+        ]
+      },
+      "source_clauses": [
+        {
+          "clause": [
+            [
+              false,
+              [
+                "=Nat",
+                [
+                  "S",
+                  "?v0"
+                ],
+                [
+                  "zero"
+                ]
+              ]
+            ]
+          ],
+          "id": "formula1-clause1",
+          "variables": {
+            "?v0": "Nat"
+          }
+        },
+        {
+          "clause": [
+            [
+              true,
+              [
+                "=Nat",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "zero"
+                    ]
+                  ]
+                ],
+                [
+                  "zero"
+                ]
+              ]
+            ]
+          ],
+          "id": "formula2-clause1",
+          "variables": {}
+        },
+        {
+          "clause": [
+            [
+              true,
+              [
+                "=Nat",
+                "?x",
+                "?x"
+              ]
+            ]
+          ],
+          "id": "reflexive-Nat",
+          "variables": {
+            "?x": "Nat"
+          }
+        },
+        {
+          "clause": [
+            [
+              false,
+              [
+                "=Nat",
+                "?x",
+                "?y"
+              ]
+            ],
+            [
+              true,
+              [
+                "=Nat",
+                "?y",
+                "?x"
+              ]
+            ]
+          ],
+          "id": "symmetric-Nat",
+          "variables": {
+            "?x": "Nat",
+            "?y": "Nat"
+          }
+        },
+        {
+          "clause": [
+            [
+              false,
+              [
+                "=Nat",
+                "?x",
+                "?y"
+              ]
+            ],
+            [
+              false,
+              [
+                "=Nat",
+                "?y",
+                "?z"
+              ]
+            ],
+            [
+              true,
+              [
+                "=Nat",
+                "?x",
+                "?z"
+              ]
+            ]
+          ],
+          "id": "transitive-Nat",
+          "variables": {
+            "?x": "Nat",
+            "?y": "Nat",
+            "?z": "Nat"
+          }
+        },
+        {
+          "clause": [
+            [
+              false,
+              [
+                "=Nat",
+                "?l0",
+                "?r0"
+              ]
+            ],
+            [
+              true,
+              [
+                "=Nat",
+                [
+                  "S",
+                  "?l0"
+                ],
+                [
+                  "S",
+                  "?r0"
+                ]
+              ]
+            ]
+          ],
+          "id": "congruence-S",
+          "variables": {
+            "?l0": "Nat",
+            "?r0": "Nat"
+          }
+        }
+      ],
+      "status": "PROVED",
+      "tile_receipt": {
+        "columns": 4173,
+        "explicit_active_checks": 78886,
+        "open_characters": 107,
+        "operation_pins": 0,
+        "rows": 9487353,
+        "squares": 39590724069,
+        "status": "CHECKED_SPARSE_FRAME",
+        "steps": 9487351,
+        "sweep_runs": 4464,
+        "trace_events": 31506
+      }
+    },
+    {
+      "code_names": {
+        "$type:Line": "0",
+        "$type:Point": "1",
+        "=Line": "10",
+        "=Point": "11",
+        "I": "100",
+        "a": "101",
+        "b": "110",
+        "ell": "111",
+        "witness0": "1000"
+      },
+      "controls": {
+        "forward-reference": 2743439877,
+        "malformed-substitution-term": 16314760,
+        "nonempty-conclusion": 2889179494,
+        "omitted-clause-literal": 45599737,
+        "reversed-physical-sweep": true,
+        "wrong-pivot-sign": 2858938488
+      },
+      "evidence": "hilbert-incidence-uniqueness-frame-v1.json.gz",
+      "id": "hilbert-incidence-uniqueness",
+      "layers": [
+        {
+          "depth": 0,
+          "ground_instances": 46,
+          "marked": {
+            "duplicates": 12,
+            "pivots": 246,
+            "selected": 50,
+            "skipped_pivots": 131,
+            "subsumptions": 211,
+            "tautological_pairs": 61
+          },
+          "outcome": "UNSAT",
+          "plain": {
+            "duplicates": 71099,
+            "pivots": 93379,
+            "selected": 870,
+            "tautologies": 12326
+          },
+          "plain_outcome": "BOUNDED",
+          "verified_marks": 272
+        }
+      ],
+      "lines": [
+        {
+          "bindings": {
+            "?v0": [
+              "a"
+            ],
+            "?v1": [
+              "b"
+            ],
+            "?v2": [
+              "ell"
+            ],
+            "?v3": [
+              "witness0"
+            ]
+          },
+          "clause": [
+            [
+              false,
+              [
+                "$type:Point",
+                [
+                  "a"
+                ]
+              ]
+            ],
+            [
+              false,
+              [
+                "$type:Point",
+                [
+                  "b"
+                ]
+              ]
+            ],
+            [
+              false,
+              [
+                "$type:Line",
+                [
+                  "ell"
+                ]
+              ]
+            ],
+            [
+              false,
+              [
+                "$type:Line",
+                [
+                  "witness0"
+                ]
+              ]
+            ],
+            [
+              false,
+              [
+                "I",
+                [
+                  "a"
+                ],
+                [
+                  "ell"
+                ]
+              ]
+            ],
+            [
+              false,
+              [
+                "I",
+                [
+                  "a"
+                ],
+                [
+                  "witness0"
+                ]
+              ]
+            ],
+            [
+              false,
+              [
+                "I",
+                [
+                  "b"
+                ],
+                [
+                  "ell"
+                ]
+              ]
+            ],
+            [
+              false,
+              [
+                "I",
+                [
+                  "b"
+                ],
+                [
+                  "witness0"
+                ]
+              ]
+            ],
+            [
+              true,
+              [
+                "=Line",
+                [
+                  "ell"
+                ],
+                [
+                  "witness0"
+                ]
+              ]
+            ],
+            [
+              true,
+              [
+                "=Point",
+                [
+                  "a"
+                ],
+                [
+                  "b"
+                ]
+              ]
+            ]
+          ],
+          "rule": "G",
+          "source": "formula1-clause1"
+        },
+        {
+          "bindings": {},
+          "clause": [
+            [
+              true,
+              [
+                "$type:Point",
+                [
+                  "a"
+                ]
+              ]
+            ]
+          ],
+          "rule": "G",
+          "source": "$type-function:0"
+        },
+        {
+          "clause": [
+            [
+              false,
+              [
+                "$type:Line",
+                [
+                  "ell"
+                ]
+              ]
+            ],
+            [
+              false,
+              [
+                "$type:Line",
+                [
+                  "witness0"
+                ]
+              ]
+            ],
+            [
+              false,
+              [
+                "$type:Point",
+                [
+                  "b"
+                ]
+              ]
+            ],
+            [
+              false,
+              [
+                "I",
+                [
+                  "a"
+                ],
+                [
+                  "ell"
+                ]
+              ]
+            ],
+            [
+              false,
+              [
+                "I",
+                [
+                  "a"
+                ],
+                [
+                  "witness0"
+                ]
+              ]
+            ],
+            [
+              false,
+              [
+                "I",
+                [
+                  "b"
+                ],
+                [
+                  "ell"
+                ]
+              ]
+            ],
+            [
+              false,
+              [
+                "I",
+                [
+                  "b"
+                ],
+                [
+                  "witness0"
+                ]
+              ]
+            ],
+            [
+              true,
+              [
+                "=Line",
+                [
+                  "ell"
+                ],
+                [
+                  "witness0"
+                ]
+              ]
+            ],
+            [
+              true,
+              [
+                "=Point",
+                [
+                  "a"
+                ],
+                [
+                  "b"
+                ]
+              ]
+            ]
+          ],
+          "left": 1,
+          "pivot": [
+            "$type:Point",
+            [
+              "a"
+            ]
+          ],
+          "right": 0,
+          "rule": "R"
+        },
+        {
+          "bindings": {},
+          "clause": [
+            [
+              true,
+              [
+                "$type:Point",
+                [
+                  "b"
+                ]
+              ]
+            ]
+          ],
+          "rule": "G",
+          "source": "$type-function:1"
+        },
+        {
+          "clause": [
+            [
+              false,
+              [
+                "$type:Line",
+                [
+                  "ell"
+                ]
+              ]
+            ],
+            [
+              false,
+              [
+                "$type:Line",
+                [
+                  "witness0"
+                ]
+              ]
+            ],
+            [
+              false,
+              [
+                "I",
+                [
+                  "a"
+                ],
+                [
+                  "ell"
+                ]
+              ]
+            ],
+            [
+              false,
+              [
+                "I",
+                [
+                  "a"
+                ],
+                [
+                  "witness0"
+                ]
+              ]
+            ],
+            [
+              false,
+              [
+                "I",
+                [
+                  "b"
+                ],
+                [
+                  "ell"
+                ]
+              ]
+            ],
+            [
+              false,
+              [
+                "I",
+                [
+                  "b"
+                ],
+                [
+                  "witness0"
+                ]
+              ]
+            ],
+            [
+              true,
+              [
+                "=Line",
+                [
+                  "ell"
+                ],
+                [
+                  "witness0"
+                ]
+              ]
+            ],
+            [
+              true,
+              [
+                "=Point",
+                [
+                  "a"
+                ],
+                [
+                  "b"
+                ]
+              ]
+            ]
+          ],
+          "left": 3,
+          "pivot": [
+            "$type:Point",
+            [
+              "b"
+            ]
+          ],
+          "right": 2,
+          "rule": "R"
+        },
+        {
+          "bindings": {},
+          "clause": [
+            [
+              true,
+              [
+                "$type:Line",
+                [
+                  "ell"
+                ]
+              ]
+            ]
+          ],
+          "rule": "G",
+          "source": "$type-function:2"
+        },
+        {
+          "clause": [
+            [
+              false,
+              [
+                "$type:Line",
+                [
+                  "witness0"
+                ]
+              ]
+            ],
+            [
+              false,
+              [
+                "I",
+                [
+                  "a"
+                ],
+                [
+                  "ell"
+                ]
+              ]
+            ],
+            [
+              false,
+              [
+                "I",
+                [
+                  "a"
+                ],
+                [
+                  "witness0"
+                ]
+              ]
+            ],
+            [
+              false,
+              [
+                "I",
+                [
+                  "b"
+                ],
+                [
+                  "ell"
+                ]
+              ]
+            ],
+            [
+              false,
+              [
+                "I",
+                [
+                  "b"
+                ],
+                [
+                  "witness0"
+                ]
+              ]
+            ],
+            [
+              true,
+              [
+                "=Line",
+                [
+                  "ell"
+                ],
+                [
+                  "witness0"
+                ]
+              ]
+            ],
+            [
+              true,
+              [
+                "=Point",
+                [
+                  "a"
+                ],
+                [
+                  "b"
+                ]
+              ]
+            ]
+          ],
+          "left": 5,
+          "pivot": [
+            "$type:Line",
+            [
+              "ell"
+            ]
+          ],
+          "right": 4,
+          "rule": "R"
+        },
+        {
+          "bindings": {},
+          "clause": [
+            [
+              true,
+              [
+                "$type:Line",
+                [
+                  "witness0"
+                ]
+              ]
+            ]
+          ],
+          "rule": "G",
+          "source": "$type-function:3"
+        },
+        {
+          "clause": [
+            [
+              false,
+              [
+                "I",
+                [
+                  "a"
+                ],
+                [
+                  "ell"
+                ]
+              ]
+            ],
+            [
+              false,
+              [
+                "I",
+                [
+                  "a"
+                ],
+                [
+                  "witness0"
+                ]
+              ]
+            ],
+            [
+              false,
+              [
+                "I",
+                [
+                  "b"
+                ],
+                [
+                  "ell"
+                ]
+              ]
+            ],
+            [
+              false,
+              [
+                "I",
+                [
+                  "b"
+                ],
+                [
+                  "witness0"
+                ]
+              ]
+            ],
+            [
+              true,
+              [
+                "=Line",
+                [
+                  "ell"
+                ],
+                [
+                  "witness0"
+                ]
+              ]
+            ],
+            [
+              true,
+              [
+                "=Point",
+                [
+                  "a"
+                ],
+                [
+                  "b"
+                ]
+              ]
+            ]
+          ],
+          "left": 7,
+          "pivot": [
+            "$type:Line",
+            [
+              "witness0"
+            ]
+          ],
+          "right": 6,
+          "rule": "R"
+        },
+        {
+          "bindings": {},
+          "clause": [
+            [
+              false,
+              [
+                "=Point",
+                [
+                  "a"
+                ],
+                [
+                  "b"
+                ]
+              ]
+            ]
+          ],
+          "rule": "G",
+          "source": "formula2-clause1"
+        },
+        {
+          "bindings": {},
+          "clause": [
+            [
+              true,
+              [
+                "I",
+                [
+                  "a"
+                ],
+                [
+                  "ell"
+                ]
+              ]
+            ]
+          ],
+          "rule": "G",
+          "source": "formula3-clause1"
+        },
+        {
+          "bindings": {},
+          "clause": [
+            [
+              true,
+              [
+                "I",
+                [
+                  "b"
+                ],
+                [
+                  "ell"
+                ]
+              ]
+            ]
+          ],
+          "rule": "G",
+          "source": "formula4-clause1"
+        },
+        {
+          "bindings": {},
+          "clause": [
+            [
+              true,
+              [
+                "I",
+                [
+                  "a"
+                ],
+                [
+                  "witness0"
+                ]
+              ]
+            ]
+          ],
+          "rule": "G",
+          "source": "formula5-clause1"
+        },
+        {
+          "bindings": {},
+          "clause": [
+            [
+              true,
+              [
+                "I",
+                [
+                  "b"
+                ],
+                [
+                  "witness0"
+                ]
+              ]
+            ]
+          ],
+          "rule": "G",
+          "source": "formula5-clause2"
+        },
+        {
+          "bindings": {},
+          "clause": [
+            [
+              false,
+              [
+                "=Line",
+                [
+                  "ell"
+                ],
+                [
+                  "witness0"
+                ]
+              ]
+            ]
+          ],
+          "rule": "G",
+          "source": "formula5-clause3"
+        },
+        {
+          "clause": [
+            [
+              false,
+              [
+                "I",
+                [
+                  "a"
+                ],
+                [
+                  "ell"
+                ]
+              ]
+            ],
+            [
+              false,
+              [
+                "I",
+                [
+                  "a"
+                ],
+                [
+                  "witness0"
+                ]
+              ]
+            ],
+            [
+              false,
+              [
+                "I",
+                [
+                  "b"
+                ],
+                [
+                  "ell"
+                ]
+              ]
+            ],
+            [
+              false,
+              [
+                "I",
+                [
+                  "b"
+                ],
+                [
+                  "witness0"
+                ]
+              ]
+            ],
+            [
+              true,
+              [
+                "=Line",
+                [
+                  "ell"
+                ],
+                [
+                  "witness0"
+                ]
+              ]
+            ]
+          ],
+          "left": 8,
+          "pivot": [
+            "=Point",
+            [
+              "a"
+            ],
+            [
+              "b"
+            ]
+          ],
+          "right": 9,
+          "rule": "R"
+        },
+        {
+          "clause": [
+            [
+              false,
+              [
+                "I",
+                [
+                  "a"
+                ],
+                [
+                  "witness0"
+                ]
+              ]
+            ],
+            [
+              false,
+              [
+                "I",
+                [
+                  "b"
+                ],
+                [
+                  "ell"
+                ]
+              ]
+            ],
+            [
+              false,
+              [
+                "I",
+                [
+                  "b"
+                ],
+                [
+                  "witness0"
+                ]
+              ]
+            ],
+            [
+              true,
+              [
+                "=Line",
+                [
+                  "ell"
+                ],
+                [
+                  "witness0"
+                ]
+              ]
+            ]
+          ],
+          "left": 10,
+          "pivot": [
+            "I",
+            [
+              "a"
+            ],
+            [
+              "ell"
+            ]
+          ],
+          "right": 15,
+          "rule": "R"
+        },
+        {
+          "clause": [
+            [
+              false,
+              [
+                "I",
+                [
+                  "a"
+                ],
+                [
+                  "witness0"
+                ]
+              ]
+            ],
+            [
+              false,
+              [
+                "I",
+                [
+                  "b"
+                ],
+                [
+                  "witness0"
+                ]
+              ]
+            ],
+            [
+              true,
+              [
+                "=Line",
+                [
+                  "ell"
+                ],
+                [
+                  "witness0"
+                ]
+              ]
+            ]
+          ],
+          "left": 11,
+          "pivot": [
+            "I",
+            [
+              "b"
+            ],
+            [
+              "ell"
+            ]
+          ],
+          "right": 16,
+          "rule": "R"
+        },
+        {
+          "clause": [
+            [
+              false,
+              [
+                "I",
+                [
+                  "b"
+                ],
+                [
+                  "witness0"
+                ]
+              ]
+            ],
+            [
+              true,
+              [
+                "=Line",
+                [
+                  "ell"
+                ],
+                [
+                  "witness0"
+                ]
+              ]
+            ]
+          ],
+          "left": 12,
+          "pivot": [
+            "I",
+            [
+              "a"
+            ],
+            [
+              "witness0"
+            ]
+          ],
+          "right": 17,
+          "rule": "R"
+        },
+        {
+          "clause": [
+            [
+              true,
+              [
+                "=Line",
+                [
+                  "ell"
+                ],
+                [
+                  "witness0"
+                ]
+              ]
+            ]
+          ],
+          "left": 13,
+          "pivot": [
+            "I",
+            [
+              "b"
+            ],
+            [
+              "witness0"
+            ]
+          ],
+          "right": 18,
+          "rule": "R"
+        },
+        {
+          "clause": [],
+          "left": 19,
+          "pivot": [
+            "=Line",
+            [
+              "ell"
+            ],
+            [
+              "witness0"
+            ]
+          ],
+          "right": 14,
+          "rule": "R"
+        }
+      ],
+      "machine": {
+        "commits": [
+          [
+            48225627,
+            13965
+          ],
+          [
+            74753826,
+            14280
+          ],
+          [
+            219352937,
+            13965
+          ],
+          [
+            249267693,
+            17145
+          ],
+          [
+            425448073,
+            16815
+          ],
+          [
+            458694996,
+            19920
+          ],
+          [
+            663401860,
+            19560
+          ],
+          [
+            699842349,
+            22575
+          ],
+          [
+            935242184,
+            22200
+          ],
+          [
+            950593439,
+            25125
+          ],
+          [
+            957574375,
+            25575
+          ],
+          [
+            965313547,
+            26025
+          ],
+          [
+            974216681,
+            26505
+          ],
+          [
+            984147183,
+            26985
+          ],
+          [
+            994696874,
+            27450
+          ],
+          [
+            1280016277,
+            25125
+          ],
+          [
+            1599772592,
+            29430
+          ],
+          [
+            1923536769,
+            31155
+          ],
+          [
+            2241620748,
+            32610
+          ],
+          [
+            2561131296,
+            33780
+          ],
+          [
+            2883260794,
+            27450
+          ]
+        ],
+        "status": "ACCEPT",
+        "steps": 2884027374
+      },
+      "skolem": [
+        {
+          "arguments": [],
+          "eliminated": "?m",
+          "sort": "Line",
+          "symbol": "witness0"
+        }
+      ],
+      "source": {
+        "equality": true,
+        "functions": {
+          "a": [
+            [],
+            "Point"
+          ],
+          "b": [
+            [],
+            "Point"
+          ],
+          "ell": [
+            [],
+            "Line"
+          ]
+        },
+        "goal": [
+          "all",
+          "?m",
+          "Line",
+          [
+            "implies",
+            [
+              "and",
+              [
+                "atom",
+                "I",
+                [
+                  "a"
+                ],
+                "?m"
+              ],
+              [
+                "atom",
+                "I",
+                [
+                  "b"
+                ],
+                "?m"
+              ]
+            ],
+            [
+              "atom",
+              "=Line",
+              [
+                "ell"
+              ],
+              "?m"
+            ]
+          ]
+        ],
+        "id": "hilbert-incidence-uniqueness",
+        "predicates": {
+          "I": [
+            "Point",
+            "Line"
+          ]
+        },
+        "premises": [
+          [
+            "all",
+            "?a",
+            "Point",
+            [
+              "all",
+              "?b",
+              "Point",
+              [
+                "all",
+                "?l",
+                "Line",
+                [
+                  "all",
+                  "?m",
+                  "Line",
+                  [
+                    "implies",
+                    [
+                      "and",
+                      [
+                        "not",
+                        [
+                          "atom",
+                          "=Point",
+                          "?a",
+                          "?b"
+                        ]
+                      ],
+                      [
+                        "and",
+                        [
+                          "atom",
+                          "I",
+                          "?a",
+                          "?l"
+                        ],
+                        [
+                          "and",
+                          [
+                            "atom",
+                            "I",
+                            "?b",
+                            "?l"
+                          ],
+                          [
+                            "and",
+                            [
+                              "atom",
+                              "I",
+                              "?a",
+                              "?m"
+                            ],
+                            [
+                              "atom",
+                              "I",
+                              "?b",
+                              "?m"
+                            ]
+                          ]
+                        ]
+                      ]
+                    ],
+                    [
+                      "atom",
+                      "=Line",
+                      "?l",
+                      "?m"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          [
+            "not",
+            [
+              "atom",
+              "=Point",
+              [
+                "a"
+              ],
+              [
+                "b"
+              ]
+            ]
+          ],
+          [
+            "atom",
+            "I",
+            [
+              "a"
+            ],
+            [
+              "ell"
+            ]
+          ],
+          [
+            "atom",
+            "I",
+            [
+              "b"
+            ],
+            [
+              "ell"
+            ]
+          ]
+        ],
+        "sorts": [
+          "Point",
+          "Line"
+        ]
+      },
+      "source_clauses": [
+        {
+          "clause": [
+            [
+              false,
+              [
+                "$type:Point",
+                "?v0"
+              ]
+            ],
+            [
+              false,
+              [
+                "$type:Point",
+                "?v1"
+              ]
+            ],
+            [
+              false,
+              [
+                "$type:Line",
+                "?v2"
+              ]
+            ],
+            [
+              false,
+              [
+                "$type:Line",
+                "?v3"
+              ]
+            ],
+            [
+              false,
+              [
+                "I",
+                "?v0",
+                "?v2"
+              ]
+            ],
+            [
+              false,
+              [
+                "I",
+                "?v0",
+                "?v3"
+              ]
+            ],
+            [
+              false,
+              [
+                "I",
+                "?v1",
+                "?v2"
+              ]
+            ],
+            [
+              false,
+              [
+                "I",
+                "?v1",
+                "?v3"
+              ]
+            ],
+            [
+              true,
+              [
+                "=Line",
+                "?v2",
+                "?v3"
+              ]
+            ],
+            [
+              true,
+              [
+                "=Point",
+                "?v0",
+                "?v1"
+              ]
+            ]
+          ],
+          "id": "formula1-clause1",
+          "variables": {
+            "?v0": "Point",
+            "?v1": "Point",
+            "?v2": "Line",
+            "?v3": "Line"
+          }
+        },
+        {
+          "clause": [
+            [
+              false,
+              [
+                "=Point",
+                [
+                  "a"
+                ],
+                [
+                  "b"
+                ]
+              ]
+            ]
+          ],
+          "id": "formula2-clause1",
+          "variables": {}
+        },
+        {
+          "clause": [
+            [
+              true,
+              [
+                "I",
+                [
+                  "a"
+                ],
+                [
+                  "ell"
+                ]
+              ]
+            ]
+          ],
+          "id": "formula3-clause1",
+          "variables": {}
+        },
+        {
+          "clause": [
+            [
+              true,
+              [
+                "I",
+                [
+                  "b"
+                ],
+                [
+                  "ell"
+                ]
+              ]
+            ]
+          ],
+          "id": "formula4-clause1",
+          "variables": {}
+        },
+        {
+          "clause": [
+            [
+              true,
+              [
+                "I",
+                [
+                  "a"
+                ],
+                [
+                  "witness0"
+                ]
+              ]
+            ]
+          ],
+          "id": "formula5-clause1",
+          "variables": {}
+        },
+        {
+          "clause": [
+            [
+              true,
+              [
+                "I",
+                [
+                  "b"
+                ],
+                [
+                  "witness0"
+                ]
+              ]
+            ]
+          ],
+          "id": "formula5-clause2",
+          "variables": {}
+        },
+        {
+          "clause": [
+            [
+              false,
+              [
+                "=Line",
+                [
+                  "ell"
+                ],
+                [
+                  "witness0"
+                ]
+              ]
+            ]
+          ],
+          "id": "formula5-clause3",
+          "variables": {}
+        },
+        {
+          "clause": [
+            [
+              false,
+              [
+                "$type:Point",
+                "?x"
+              ]
+            ],
+            [
+              true,
+              [
+                "=Point",
+                "?x",
+                "?x"
+              ]
+            ]
+          ],
+          "id": "reflexive-Point",
+          "variables": {
+            "?x": "Point"
+          }
+        },
+        {
+          "clause": [
+            [
+              false,
+              [
+                "$type:Point",
+                "?x"
+              ]
+            ],
+            [
+              false,
+              [
+                "$type:Point",
+                "?y"
+              ]
+            ],
+            [
+              false,
+              [
+                "=Point",
+                "?x",
+                "?y"
+              ]
+            ],
+            [
+              true,
+              [
+                "=Point",
+                "?y",
+                "?x"
+              ]
+            ]
+          ],
+          "id": "symmetric-Point",
+          "variables": {
+            "?x": "Point",
+            "?y": "Point"
+          }
+        },
+        {
+          "clause": [
+            [
+              false,
+              [
+                "$type:Point",
+                "?x"
+              ]
+            ],
+            [
+              false,
+              [
+                "$type:Point",
+                "?y"
+              ]
+            ],
+            [
+              false,
+              [
+                "$type:Point",
+                "?z"
+              ]
+            ],
+            [
+              false,
+              [
+                "=Point",
+                "?x",
+                "?y"
+              ]
+            ],
+            [
+              false,
+              [
+                "=Point",
+                "?y",
+                "?z"
+              ]
+            ],
+            [
+              true,
+              [
+                "=Point",
+                "?x",
+                "?z"
+              ]
+            ]
+          ],
+          "id": "transitive-Point",
+          "variables": {
+            "?x": "Point",
+            "?y": "Point",
+            "?z": "Point"
+          }
+        },
+        {
+          "clause": [
+            [
+              false,
+              [
+                "$type:Line",
+                "?x"
+              ]
+            ],
+            [
+              true,
+              [
+                "=Line",
+                "?x",
+                "?x"
+              ]
+            ]
+          ],
+          "id": "reflexive-Line",
+          "variables": {
+            "?x": "Line"
+          }
+        },
+        {
+          "clause": [
+            [
+              false,
+              [
+                "$type:Line",
+                "?x"
+              ]
+            ],
+            [
+              false,
+              [
+                "$type:Line",
+                "?y"
+              ]
+            ],
+            [
+              false,
+              [
+                "=Line",
+                "?x",
+                "?y"
+              ]
+            ],
+            [
+              true,
+              [
+                "=Line",
+                "?y",
+                "?x"
+              ]
+            ]
+          ],
+          "id": "symmetric-Line",
+          "variables": {
+            "?x": "Line",
+            "?y": "Line"
+          }
+        },
+        {
+          "clause": [
+            [
+              false,
+              [
+                "$type:Line",
+                "?x"
+              ]
+            ],
+            [
+              false,
+              [
+                "$type:Line",
+                "?y"
+              ]
+            ],
+            [
+              false,
+              [
+                "$type:Line",
+                "?z"
+              ]
+            ],
+            [
+              false,
+              [
+                "=Line",
+                "?x",
+                "?y"
+              ]
+            ],
+            [
+              false,
+              [
+                "=Line",
+                "?y",
+                "?z"
+              ]
+            ],
+            [
+              true,
+              [
+                "=Line",
+                "?x",
+                "?z"
+              ]
+            ]
+          ],
+          "id": "transitive-Line",
+          "variables": {
+            "?x": "Line",
+            "?y": "Line",
+            "?z": "Line"
+          }
+        },
+        {
+          "clause": [
+            [
+              false,
+              [
+                "$type:Point",
+                "?l0"
+              ]
+            ],
+            [
+              false,
+              [
+                "$type:Line",
+                "?l1"
+              ]
+            ],
+            [
+              false,
+              [
+                "$type:Point",
+                "?r0"
+              ]
+            ],
+            [
+              false,
+              [
+                "$type:Line",
+                "?r1"
+              ]
+            ],
+            [
+              false,
+              [
+                "=Point",
+                "?l0",
+                "?r0"
+              ]
+            ],
+            [
+              false,
+              [
+                "=Line",
+                "?l1",
+                "?r1"
+              ]
+            ],
+            [
+              false,
+              [
+                "I",
+                "?l0",
+                "?l1"
+              ]
+            ],
+            [
+              true,
+              [
+                "I",
+                "?r0",
+                "?r1"
+              ]
+            ]
+          ],
+          "id": "substitution-I",
+          "variables": {
+            "?l0": "Point",
+            "?l1": "Line",
+            "?r0": "Point",
+            "?r1": "Line"
+          }
+        },
+        {
+          "clause": [
+            [
+              true,
+              [
+                "$type:Point",
+                [
+                  "a"
+                ]
+              ]
+            ]
+          ],
+          "id": "$type-function:0",
+          "variables": {}
+        },
+        {
+          "clause": [
+            [
+              true,
+              [
+                "$type:Point",
+                [
+                  "b"
+                ]
+              ]
+            ]
+          ],
+          "id": "$type-function:1",
+          "variables": {}
+        },
+        {
+          "clause": [
+            [
+              true,
+              [
+                "$type:Line",
+                [
+                  "ell"
+                ]
+              ]
+            ]
+          ],
+          "id": "$type-function:2",
+          "variables": {}
+        },
+        {
+          "clause": [
+            [
+              true,
+              [
+                "$type:Line",
+                [
+                  "witness0"
+                ]
+              ]
+            ]
+          ],
+          "id": "$type-function:3",
+          "variables": {}
+        }
+      ],
+      "status": "PROVED",
+      "tile_receipt": {
+        "columns": 35298,
+        "explicit_active_checks": 3679787,
+        "open_characters": 1626,
+        "operation_pins": 0,
+        "rows": 2884027376,
+        "squares": 101800398318048,
+        "status": "CHECKED_SPARSE_FRAME",
+        "steps": 2884027374,
+        "sweep_runs": 202141,
+        "trace_events": 1462472
+      }
+    },
+    {
+      "code_names": {
+        "At0": "0",
+        "At1": "1",
+        "At2": "10",
+        "At3": "11",
+        "Halt": "100",
+        "S": "101",
+        "zero": "110"
+      },
+      "controls": {
+        "forward-reference": 74944981,
+        "malformed-substitution-term": 1978465,
+        "nonempty-conclusion": 92260212,
+        "omitted-clause-literal": 1284991,
+        "reversed-physical-sweep": true,
+        "wrong-pivot-sign": 84960488
+      },
+      "evidence": "counter-halt-frame-v1.json.gz",
+      "id": "counter-halt",
+      "layers": [
+        {
+          "depth": 0,
+          "ground_instances": 4,
+          "marked": {
+            "pivots": 1,
+            "selected": 5
+          },
+          "outcome": "SAT",
+          "plain": {
+            "pivots": 1,
+            "selected": 5
+          },
+          "plain_outcome": "SAT",
+          "verified_marks": 0
+        },
+        {
+          "depth": 1,
+          "ground_instances": 14,
+          "marked": {
+            "pivots": 21,
+            "selected": 25
+          },
+          "outcome": "UNSAT",
+          "plain": {
+            "pivots": 21,
+            "selected": 25
+          },
+          "plain_outcome": "UNSAT",
+          "verified_marks": 0
+        }
+      ],
+      "lines": [
+        {
+          "bindings": {},
+          "clause": [
+            [
+              true,
+              [
+                "At0",
+                [
+                  "zero"
+                ],
+                [
+                  "zero"
+                ]
+              ]
+            ]
+          ],
+          "rule": "G",
+          "source": "formula1-clause1"
+        },
+        {
+          "bindings": {
+            "?v0": [
+              "zero"
+            ],
+            "?v1": [
+              "zero"
+            ]
+          },
+          "clause": [
+            [
+              false,
+              [
+                "At0",
+                [
+                  "zero"
+                ],
+                [
+                  "zero"
+                ]
+              ]
+            ],
+            [
+              true,
+              [
+                "At1",
+                [
+                  "S",
+                  [
+                    "zero"
+                  ]
+                ],
+                [
+                  "zero"
+                ]
+              ]
+            ]
+          ],
+          "rule": "G",
+          "source": "formula2-clause1"
+        },
+        {
+          "bindings": {
+            "?v2": [
+              "zero"
+            ],
+            "?v3": [
+              "zero"
+            ]
+          },
+          "clause": [
+            [
+              false,
+              [
+                "At1",
+                [
+                  "S",
+                  [
+                    "zero"
+                  ]
+                ],
+                [
+                  "zero"
+                ]
+              ]
+            ],
+            [
+              true,
+              [
+                "At3",
+                [
+                  "zero"
+                ],
+                [
+                  "zero"
+                ]
+              ]
+            ]
+          ],
+          "rule": "G",
+          "source": "formula3-clause1"
+        },
+        {
+          "bindings": {
+            "?v7": [
+              "zero"
+            ],
+            "?v8": [
+              "zero"
+            ]
+          },
+          "clause": [
+            [
+              false,
+              [
+                "At3",
+                [
+                  "zero"
+                ],
+                [
+                  "zero"
+                ]
+              ]
+            ],
+            [
+              true,
+              [
+                "Halt"
+              ]
+            ]
+          ],
+          "rule": "G",
+          "source": "formula6-clause1"
+        },
+        {
+          "bindings": {},
+          "clause": [
+            [
+              false,
+              [
+                "Halt"
+              ]
+            ]
+          ],
+          "rule": "G",
+          "source": "formula7-clause1"
+        },
+        {
+          "clause": [
+            [
+              true,
+              [
+                "At1",
+                [
+                  "S",
+                  [
+                    "zero"
+                  ]
+                ],
+                [
+                  "zero"
+                ]
+              ]
+            ]
+          ],
+          "left": 0,
+          "pivot": [
+            "At0",
+            [
+              "zero"
+            ],
+            [
+              "zero"
+            ]
+          ],
+          "right": 1,
+          "rule": "R"
+        },
+        {
+          "clause": [
+            [
+              true,
+              [
+                "At3",
+                [
+                  "zero"
+                ],
+                [
+                  "zero"
+                ]
+              ]
+            ]
+          ],
+          "left": 5,
+          "pivot": [
+            "At1",
+            [
+              "S",
+              [
+                "zero"
+              ]
+            ],
+            [
+              "zero"
+            ]
+          ],
+          "right": 2,
+          "rule": "R"
+        },
+        {
+          "clause": [
+            [
+              false,
+              [
+                "At3",
+                [
+                  "zero"
+                ],
+                [
+                  "zero"
+                ]
+              ]
+            ]
+          ],
+          "left": 3,
+          "pivot": [
+            "Halt"
+          ],
+          "right": 4,
+          "rule": "R"
+        },
+        {
+          "clause": [],
+          "left": 6,
+          "pivot": [
+            "At3",
+            [
+              "zero"
+            ],
+            [
+              "zero"
+            ]
+          ],
+          "right": 7,
+          "rule": "R"
+        }
+      ],
+      "machine": {
+        "commits": [
+          [
+            1515052,
+            3300
+          ],
+          [
+            3898619,
+            4275
+          ],
+          [
+            7567943,
+            5295
+          ],
+          [
+            11982284,
+            6090
+          ],
+          [
+            14899518,
+            6360
+          ],
+          [
+            24855921,
+            4275
+          ],
+          [
+            45473829,
+            5295
+          ],
+          [
+            62775888,
+            6360
+          ],
+          [
+            90801310,
+            8490
+          ]
+        ],
+        "status": "ACCEPT",
+        "steps": 90998145
+      },
+      "skolem": [],
+      "source": {
+        "equality": false,
+        "functions": {
+          "S": [
+            [
+              "Nat"
+            ],
+            "Nat"
+          ],
+          "zero": [
+            [],
+            "Nat"
+          ]
+        },
+        "goal": [
+          "atom",
+          "Halt"
+        ],
+        "id": "counter-halt",
+        "predicates": {
+          "At0": [
+            "Nat",
+            "Nat"
+          ],
+          "At1": [
+            "Nat",
+            "Nat"
+          ],
+          "At2": [
+            "Nat",
+            "Nat"
+          ],
+          "At3": [
+            "Nat",
+            "Nat"
+          ],
+          "Halt": []
+        },
+        "premises": [
+          [
+            "atom",
+            "At0",
+            [
+              "zero"
+            ],
+            [
+              "zero"
+            ]
+          ],
+          [
+            "all",
+            "?x",
+            "Nat",
+            [
+              "all",
+              "?y",
+              "Nat",
+              [
+                "implies",
+                [
+                  "atom",
+                  "At0",
+                  "?x",
+                  "?y"
+                ],
+                [
+                  "atom",
+                  "At1",
+                  [
+                    "S",
+                    "?x"
+                  ],
+                  "?y"
+                ]
+              ]
+            ]
+          ],
+          [
+            "all",
+            "?x",
+            "Nat",
+            [
+              "all",
+              "?y",
+              "Nat",
+              [
+                "implies",
+                [
+                  "atom",
+                  "At1",
+                  [
+                    "S",
+                    "?x"
+                  ],
+                  "?y"
+                ],
+                [
+                  "atom",
+                  "At3",
+                  "?x",
+                  "?y"
+                ]
+              ]
+            ]
+          ],
+          [
+            "all",
+            "?y",
+            "Nat",
+            [
+              "implies",
+              [
+                "atom",
+                "At1",
+                [
+                  "zero"
+                ],
+                "?y"
+              ],
+              [
+                "atom",
+                "At2",
+                [
+                  "zero"
+                ],
+                "?y"
+              ]
+            ]
+          ],
+          [
+            "all",
+            "?x",
+            "Nat",
+            [
+              "all",
+              "?y",
+              "Nat",
+              [
+                "implies",
+                [
+                  "atom",
+                  "At2",
+                  "?x",
+                  "?y"
+                ],
+                [
+                  "atom",
+                  "At3",
+                  "?x",
+                  [
+                    "S",
+                    "?y"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          [
+            "all",
+            "?x",
+            "Nat",
+            [
+              "all",
+              "?y",
+              "Nat",
+              [
+                "implies",
+                [
+                  "atom",
+                  "At3",
+                  "?x",
+                  "?y"
+                ],
+                [
+                  "atom",
+                  "Halt"
+                ]
+              ]
+            ]
+          ]
+        ],
+        "program": [
+          [
+            "inc",
+            0
+          ],
+          [
+            "dec",
+            0,
+            3
+          ],
+          [
+            "inc",
+            1
+          ]
+        ],
+        "sorts": [
+          "Nat"
+        ]
+      },
+      "source_clauses": [
+        {
+          "clause": [
+            [
+              true,
+              [
+                "At0",
+                [
+                  "zero"
+                ],
+                [
+                  "zero"
+                ]
+              ]
+            ]
+          ],
+          "id": "formula1-clause1",
+          "variables": {}
+        },
+        {
+          "clause": [
+            [
+              false,
+              [
+                "At0",
+                "?v0",
+                "?v1"
+              ]
+            ],
+            [
+              true,
+              [
+                "At1",
+                [
+                  "S",
+                  "?v0"
+                ],
+                "?v1"
+              ]
+            ]
+          ],
+          "id": "formula2-clause1",
+          "variables": {
+            "?v0": "Nat",
+            "?v1": "Nat"
+          }
+        },
+        {
+          "clause": [
+            [
+              false,
+              [
+                "At1",
+                [
+                  "S",
+                  "?v2"
+                ],
+                "?v3"
+              ]
+            ],
+            [
+              true,
+              [
+                "At3",
+                "?v2",
+                "?v3"
+              ]
+            ]
+          ],
+          "id": "formula3-clause1",
+          "variables": {
+            "?v2": "Nat",
+            "?v3": "Nat"
+          }
+        },
+        {
+          "clause": [
+            [
+              false,
+              [
+                "At1",
+                [
+                  "zero"
+                ],
+                "?v4"
+              ]
+            ],
+            [
+              true,
+              [
+                "At2",
+                [
+                  "zero"
+                ],
+                "?v4"
+              ]
+            ]
+          ],
+          "id": "formula4-clause1",
+          "variables": {
+            "?v4": "Nat"
+          }
+        },
+        {
+          "clause": [
+            [
+              false,
+              [
+                "At2",
+                "?v5",
+                "?v6"
+              ]
+            ],
+            [
+              true,
+              [
+                "At3",
+                "?v5",
+                [
+                  "S",
+                  "?v6"
+                ]
+              ]
+            ]
+          ],
+          "id": "formula5-clause1",
+          "variables": {
+            "?v5": "Nat",
+            "?v6": "Nat"
+          }
+        },
+        {
+          "clause": [
+            [
+              false,
+              [
+                "At3",
+                "?v7",
+                "?v8"
+              ]
+            ],
+            [
+              true,
+              [
+                "Halt"
+              ]
+            ]
+          ],
+          "id": "formula6-clause1",
+          "variables": {
+            "?v7": "Nat",
+            "?v8": "Nat"
+          }
+        },
+        {
+          "clause": [
+            [
+              false,
+              [
+                "Halt"
+              ]
+            ]
+          ],
+          "id": "formula7-clause1",
+          "variables": {}
+        }
+      ],
+      "status": "PROVED",
+      "tile_receipt": {
+        "columns": 9063,
+        "explicit_active_checks": 422963,
+        "open_characters": 406,
+        "operation_pins": 0,
+        "rows": 90998147,
+        "squares": 824716206261,
+        "status": "CHECKED_SPARSE_FRAME",
+        "steps": 90998145,
+        "sweep_runs": 23831,
+        "trace_events": 168802
+      }
+    }
+  ],
+  "status": "CHECKED_BOUNDARY_ONLY_FIRST_ORDER_REFUTATIONS",
+  "transitions": 131022
+}
