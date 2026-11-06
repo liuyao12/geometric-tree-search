@@ -1,0 +1,348 @@
+{
+  "clean_replay": {
+    "sha256": {
+      "growth-v1.json": "3e0316b66420b0ceff5bc6c54dd3e6396dcaf45b8a9483a17764dcf77efa3aee",
+      "recovery-v1.json": "220e9f9ed45ef8bf59d4c23846751af3f225d7e96b26c3cf39a1ff0bd62f95e9",
+      "seams-v1.json": "68fcabf959a683645134a06b2ba15df8dfec822c3f1b596266a737a083f66d39",
+      "windows-v1.json": "677403f0787d5cac70611fcba4289ce3faa473c40aab760f0b0763fd256d5c30"
+    },
+    "status": "FOUR_CLEAN_REPLAYS_AGREE",
+    "wall_seconds": {
+      "growth": 0.2,
+      "recovery": 1.11,
+      "seams": 0.09,
+      "windows": 5.49
+    }
+  },
+  "recovery": [
+    {
+      "calls": 3,
+      "name": "P0",
+      "notes": "Silhouette only.",
+      "observations": 0,
+      "pose_candidates": 6
+    },
+    {
+      "calls": 7,
+      "name": "T1",
+      "notes": "Silhouette only.",
+      "observations": 0,
+      "pose_candidates": 228
+    },
+    {
+      "calls": 8,
+      "domains": {
+        "P0": 5,
+        "S2": 2
+      },
+      "name": "P1",
+      "observations": 18,
+      "solutions": 1
+    },
+    {
+      "calls": 7,
+      "domains": {
+        "P1": 3,
+        "T1": 9
+      },
+      "name": "T2",
+      "observations": 72,
+      "solutions": 1
+    },
+    {
+      "calls": 10,
+      "domains": {
+        "P1": 5,
+        "S4": 2,
+        "T1": 12
+      },
+      "name": "P2",
+      "observations": 124,
+      "solutions": 1
+    },
+    {
+      "calls": 7,
+      "domains": {
+        "P2": 5,
+        "T1": 63,
+        "T2": 9
+      },
+      "name": "T3",
+      "observations": 538,
+      "solutions": 1
+    },
+    {
+      "calls": 10,
+      "domains": {
+        "P2": 5,
+        "S6": 2,
+        "T1": 78,
+        "T2": 12
+      },
+      "name": "P3",
+      "observations": 723,
+      "solutions": 1
+    }
+  ],
+  "reference": "https://doi.org/10.1007/s00454-025-00717-6",
+  "rhombille": {
+    "coordinate_extent": 48,
+    "periodic_local_window": 12,
+    "phase_cells": 48672
+  },
+  "seam_labels": 18,
+  "shapes": [
+    {
+      "boundary_edges": 42,
+      "disk_radius": 4,
+      "kind": "T",
+      "level": 1,
+      "ring_sha256": "a0958cbf29db67669759cd304e89cb6621ac01ffaf07bb7433e5f2d9019122dd",
+      "size": 6
+    },
+    {
+      "boundary_edges": 72,
+      "disk_radius": 7,
+      "kind": "P",
+      "level": 1,
+      "ring_sha256": "0918b3f0b9902c6838b9580582f6e3742cf1fac7555ca705208b359840348a05",
+      "size": 18
+    },
+    {
+      "boundary_edges": 156,
+      "disk_radius": 15,
+      "kind": "T",
+      "level": 2,
+      "ring_sha256": "52864c749120a99092122e8db1a2ab2416caf1d1c5d9f4047d2e1959efa9b972",
+      "size": 72
+    },
+    {
+      "boundary_edges": 196,
+      "disk_radius": 18,
+      "kind": "P",
+      "level": 2,
+      "ring_sha256": "40936d755635ffe6119f7d2355c96d032d138e9af09352f5dd7f52e3f3fef387",
+      "size": 124
+    },
+    {
+      "boundary_edges": 456,
+      "disk_radius": 44,
+      "kind": "T",
+      "level": 3,
+      "ring_sha256": "5ace9d5525849be53035326540014b6722fae38b863dd060a5eef78e6ee73719",
+      "size": 594
+    },
+    {
+      "boundary_edges": 520,
+      "disk_radius": 45,
+      "kind": "P",
+      "level": 3,
+      "ring_sha256": "ef10359485288af61f33708eee39b8428c9dd51a641f0040ed4047bba042bc16",
+      "size": 834
+    },
+    {
+      "boundary_edges": 1242,
+      "disk_radius": 120,
+      "kind": "T",
+      "level": 4,
+      "ring_sha256": "2b599b7af58d137bb26e86ec62813aed2837415a1b1ab1f7a55805f269cdb8e1",
+      "size": 4356
+    },
+    {
+      "boundary_edges": 1368,
+      "disk_radius": 115,
+      "kind": "P",
+      "level": 4,
+      "ring_sha256": "a634074f6679474dd38d968847637779e4d1c6f55c7d7fac9938455c66ebd347",
+      "size": 5654
+    },
+    {
+      "boundary_edges": 3300,
+      "disk_radius": 319,
+      "kind": "T",
+      "level": 5,
+      "ring_sha256": "f2fe06d55ff4d0f8cb10548c17b29c6b31d28a764807e1fb7605c8305189694a",
+      "size": 30624
+    },
+    {
+      "boundary_edges": 3588,
+      "disk_radius": 300,
+      "kind": "P",
+      "level": 5,
+      "ring_sha256": "a8dc1b8df848e71ea16a9ea15c16fac3dab3dc5a17cf46c2ab4cd5a065b908ea",
+      "size": 38568
+    },
+    {
+      "boundary_edges": 8688,
+      "disk_radius": 840,
+      "kind": "T",
+      "level": 6,
+      "ring_sha256": "ac5f6670c6e4866e0892021a4d435298e2e9dc24538a5dd6bf67363468b08efa",
+      "size": 211932
+    },
+    {
+      "boundary_edges": 9400,
+      "disk_radius": 783,
+      "kind": "P",
+      "level": 6,
+      "ring_sha256": "913e912644ada86e7336d4777971def4b571a8902cb4f42ed3a7d4c2c22ba564",
+      "size": 263842
+    },
+    {
+      "boundary_edges": 22794,
+      "disk_radius": 2204,
+      "kind": "T",
+      "level": 7,
+      "ring_sha256": "905b649c191afe33c8fe1950ce6de6c5cf84c947dee2393260107ab97268fe65",
+      "size": 1457946
+    },
+    {
+      "boundary_edges": 24616,
+      "disk_radius": 2047,
+      "kind": "P",
+      "level": 7,
+      "ring_sha256": "81f6cd2b83389a4fc122eec9abd67176d16c8d8c23fa9f52577d4d7a9a4971c8",
+      "size": 1807050
+    },
+    {
+      "boundary_edges": 59724,
+      "disk_radius": 5775,
+      "kind": "T",
+      "level": 8,
+      "ring_sha256": "abe15e7461fa114ce5d2bd45fbc49180d1c798fab4e39b806d7eca65adbb6d58",
+      "size": 10006920
+    },
+    {
+      "boundary_edges": 64452,
+      "disk_radius": 5358,
+      "kind": "P",
+      "level": 8,
+      "ring_sha256": "4d62413a0746584a899868fa9f4e2213bcd02a1682dc177822e732bc10c9cce9",
+      "size": 12382148
+    },
+    {
+      "boundary_edges": 156408,
+      "disk_radius": 15124,
+      "kind": "T",
+      "level": 9,
+      "ring_sha256": "2d75ae0f0a3154d4afa6cb2c4c1976c4627805c9c1950a94c5a98436ac4c7ac8",
+      "size": 68625150
+    },
+    {
+      "boundary_edges": 168744,
+      "disk_radius": 14025,
+      "kind": "P",
+      "level": 9,
+      "ring_sha256": "83d0edc49e51d4ad6ac861e6a18f9247c39e590aa0ffcdcb3ace962ed09adaaa",
+      "size": 84859170
+    }
+  ],
+  "status": "CHECKED_TURTLE_GOLDEN_HEX",
+  "windows": [
+    {
+      "counts": {
+        "checked_clusters": 159,
+        "checked_leaf_boxes": 140,
+        "exact_tile_window_tests": 52,
+        "pruned_clusters": 108
+      },
+      "kind": "T",
+      "level": 4,
+      "literal_comparison": true,
+      "root_tiles": 4356,
+      "seconds": 0.007266041997354478,
+      "target_atoms": 8556,
+      "window": [
+        -17,
+        14,
+        -10,
+        13
+      ],
+      "window_tiles": 52
+    },
+    {
+      "counts": {
+        "checked_clusters": 121,
+        "checked_leaf_boxes": 268,
+        "exact_tile_window_tests": 33,
+        "pruned_clusters": 76
+      },
+      "kind": "P",
+      "level": 4,
+      "literal_comparison": true,
+      "root_tiles": 5654,
+      "seconds": 0.004875165999692399,
+      "target_atoms": 5292,
+      "window": [
+        20,
+        41,
+        -19,
+        2
+      ],
+      "window_tiles": 33
+    },
+    {
+      "counts": {
+        "checked_clusters": 473,
+        "checked_leaf_boxes": 1711,
+        "exact_tile_window_tests": 51,
+        "pruned_clusters": 390
+      },
+      "kind": "T",
+      "level": 9,
+      "literal_comparison": false,
+      "root_tiles": 68625150,
+      "seconds": 0.010046999996120576,
+      "target_atoms": 8556,
+      "window": [
+        -17,
+        14,
+        -10,
+        13
+      ],
+      "window_tiles": 51
+    },
+    {
+      "counts": {
+        "checked_clusters": 284,
+        "checked_leaf_boxes": 10469,
+        "exact_tile_window_tests": 36,
+        "pruned_clusters": 224
+      },
+      "kind": "T",
+      "level": 9,
+      "literal_comparison": false,
+      "root_tiles": 68625150,
+      "seconds": 0.02975454199622618,
+      "target_atoms": 5244,
+      "window": [
+        10000,
+        10023,
+        -6000,
+        -5981
+      ],
+      "window_tiles": 36
+    },
+    {
+      "counts": {
+        "checked_clusters": 316,
+        "checked_leaf_boxes": 779,
+        "exact_tile_window_tests": 36,
+        "pruned_clusters": 257
+      },
+      "kind": "P",
+      "level": 9,
+      "literal_comparison": false,
+      "root_tiles": 84859170,
+      "seconds": 0.006283458998950664,
+      "target_atoms": 5472,
+      "window": [
+        -8500,
+        -8481,
+        7000,
+        7024
+      ],
+      "window_tiles": 35
+    }
+  ]
+}

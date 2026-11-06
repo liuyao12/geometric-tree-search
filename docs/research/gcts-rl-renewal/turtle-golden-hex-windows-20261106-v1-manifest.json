@@ -1,0 +1,264 @@
+{
+  "archive": {
+    "bytes": 647700,
+    "sha256": "8fb09a7ac2a8b1a1882e9f3fb40e6ee583a0c4877c0dfc10fc6494cc8c5ed696"
+  },
+  "files": {
+    "data/growth-v1.json": {
+      "bytes": 1123194,
+      "sha256": "acd6b9575663228bbcffbace4d8de4fcd0d84ecebee111dbebbc04e33734f436"
+    },
+    "data/growth.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/growth.stdout.log": {
+      "bytes": 960,
+      "sha256": "19f92079cd9517a1eaa1a4748e8cd8f04967b229f27dd2cb60b029d2668a33f1"
+    },
+    "data/recovery-v1.json": {
+      "bytes": 40746,
+      "sha256": "129a344be2441cffb3bc913e9e6488e40f2ecbe60e145b99ce092285da837c1b"
+    },
+    "data/recovery.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/recovery.stdout.log": {
+      "bytes": 515,
+      "sha256": "99a195d21c1ff2cc9ddc299396d6e98f6330946888204dfda13fe20ea3b232c3"
+    },
+    "data/seams-v1.json": {
+      "bytes": 3143,
+      "sha256": "d7489cdc4e050602d1715bd699610b13225ceb73ee2ef3e540b35a894a195976"
+    },
+    "data/seams.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/seams.stdout.log": {
+      "bytes": 1437,
+      "sha256": "4c1e4f963fe0b976603106c14c2023f8d5cf62a8ce0b9d91a531b64c9d2349ee"
+    },
+    "data/windows-v1.json": {
+      "bytes": 6811,
+      "sha256": "c0902d2b190c8de9a9af001b8ffcee03f33bcadf12a4cac66a4332ccd49f0084"
+    },
+    "data/windows.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/windows.stdout.log": {
+      "bytes": 4546,
+      "sha256": "e0bd1ad05dda4848f6697b8e3c4615ede2c94bd83e2e6680c6efa8bbdd230a71"
+    },
+    "growth-protocol-v1.json": {
+      "bytes": 1096,
+      "sha256": "b060e4e5473e768696dc333030149fd8e1645fede5e1f013449c7ce4f5b2fb17"
+    },
+    "input/attachment-average-v1.json": {
+      "bytes": 1151519,
+      "sha256": "1d6f636507f9c99e8a658d1ab98d65f87f065d2f0b74d9dc0af9df16309b640d"
+    },
+    "input/component-box-v1.json": {
+      "bytes": 540,
+      "sha256": "505273a40e092d77a7f60381714b3ed1f5c1d710a1d23bf2e8bc2922a6d00c47"
+    },
+    "input/component-v1.json": {
+      "bytes": 477,
+      "sha256": "44a8e159552adfc69174194c2d2ccb42034e039b8d6dc4befbedb3f97ae28292"
+    },
+    "input/exact-point-model-v1.json": {
+      "bytes": 10642,
+      "sha256": "775ce3ac20489ef64d8d8266238edde36f87919461b68ccbd232763dd2da3eb0"
+    },
+    "input/figure-vectors-v1.json": {
+      "bytes": 286359,
+      "sha256": "67c1ed859d3732f2c535167aaa1fbb0284be7f6058671cd0182b459203993cb1"
+    },
+    "protocol-v1.json": {
+      "bytes": 6320,
+      "sha256": "737b6f6c4c279c981b83100af25b0f6d8ef167d8bfd200354cfffcd13bda42b0"
+    },
+    "publication/REPLAY.md": {
+      "bytes": 1344,
+      "sha256": "05f28aa4b149aa20c9beaaea671f7ca490e1da30fe3b9a28a3c30adfb617495e"
+    },
+    "publication/assembly-v1.png": {
+      "bytes": 67079,
+      "sha256": "34d25130596a1b6eec0ca2d9d4e8fd5f8df0221c5446a3052a75df41286bb21d"
+    },
+    "publication/browser-v1.json": {
+      "bytes": 177,
+      "sha256": "609ba19ff630dc8286aea77b078b0d43a0fed19cd84d097d06f559be09bc65ae"
+    },
+    "publication/check_v1.cjs": {
+      "bytes": 2429,
+      "sha256": "dcb5a467d8f871ce9f27c590ac2e861f6c2db7d5a3449944a6beac47bdbcd89f"
+    },
+    "publication/render_v1.py": {
+      "bytes": 12902,
+      "sha256": "429815e8d52f91ec876fd31412ea9b3ae45ab35cdc5537de7aba53f8489d4e30"
+    },
+    "publication/replays-v1.json": {
+      "bytes": 528,
+      "sha256": "eb83d2167ad871b1c52535bbe979b527a24fb0f71658373b8ae298685d5299ea"
+    },
+    "publication/windows-v1.png": {
+      "bytes": 41843,
+      "sha256": "c2959dbfe5606ed046f58106ab3611cd476f3957079c1b31bcb801d6e16252b7"
+    },
+    "report/turtle-golden-hex-windows-20261106-v1-results.json": {
+      "bytes": 8134,
+      "sha256": "2904e988b8e10fd6a303c09e3d544332da0a36aa61e056e7a31a68365986f684"
+    },
+    "report/turtle-golden-hex-windows-20261106-v1.html": {
+      "bytes": 220319,
+      "sha256": "8dd9bf6e5baac4f784b972c8c5fd30383de7587c3b0aaea94cda0f71f72b09af"
+    },
+    "seam-protocol-v1.json": {
+      "bytes": 1284,
+      "sha256": "a120c91ed95fe56b6dffee44a8c0023b90aa9034ee2cc708fa590bb46dbdee37"
+    },
+    "source/actions_v1.py": {
+      "bytes": 12175,
+      "sha256": "04b8d054275a4dd6a3b4baf2c74798512295772537bfbc6226e0a14823ac7294"
+    },
+    "source/atlas_v1.py": {
+      "bytes": 5424,
+      "sha256": "c860e0ba37c39234d1967291d17f604d2a7d2899498bb0529c8756334c7961a1"
+    },
+    "source/attachment_average_v1.py": {
+      "bytes": 2611,
+      "sha256": "f3dbb536ddc2d0ea007f45886f3cbc207005c2d615cf2616d41c25cc58182f46"
+    },
+    "source/attachment_solver_v1.py": {
+      "bytes": 5110,
+      "sha256": "ac0d1ec352b28dc61aa767bcac4e191eb8dff9d1730d6997de77f042ced5088e"
+    },
+    "source/catalogue_v1.py": {
+      "bytes": 6563,
+      "sha256": "7795d8c1371f3a64727a96aa2b005470f93b9d9350af32a279d1e7382dceccb0"
+    },
+    "source/closure_v1.py": {
+      "bytes": 8786,
+      "sha256": "b321fac8410944c679561872214907adcac94e648e217483ce3e8ee85dad403f"
+    },
+    "source/cluster_v1.py": {
+      "bytes": 15717,
+      "sha256": "a2eec032406feaf45f7c5ca66b235727db26e414996337981f6b0ff865859b85"
+    },
+    "source/component_audit_v1.py": {
+      "bytes": 5826,
+      "sha256": "655630923a2f19f0f2541edee9331f85c79dbcf3240db61dc8dcf2bb72ad64f0"
+    },
+    "source/component_box_v1.py": {
+      "bytes": 2300,
+      "sha256": "2bbe042fa4fbbedc2a38ade30bfb15f7b9726e2d012478a4666ea901d94c9df2"
+    },
+    "source/compound_v1.py": {
+      "bytes": 5890,
+      "sha256": "ca66c2b68a161e8e4a3f22aa1afb9a5727cf30c88e2eb372225c37f773b432c7"
+    },
+    "source/core_arm_closure_v1.py": {
+      "bytes": 4366,
+      "sha256": "c2f7d45c71329463fefe19e42eef744bf75c22a327fad27c60c5ecabbaf129da"
+    },
+    "source/extend_v1.py": {
+      "bytes": 8282,
+      "sha256": "49bc14efe3c3738562cb791ed071940d5d87181df555f2db3364a761ea27e5a7"
+    },
+    "source/finite_construct_v1.py": {
+      "bytes": 6419,
+      "sha256": "4d6029229f33405de3112cb47e2ad5424c38e1d62541dec256273ef26f2e9aff"
+    },
+    "source/golden_geometry_v1.py": {
+      "bytes": 4899,
+      "sha256": "528407dae32299ac9982998ffd396687633fe1107d99f782ab8b74f8f5ded786"
+    },
+    "source/golden_growth_v1.py": {
+      "bytes": 6482,
+      "sha256": "5aabc3a29c45c5fe9462bda4d62a2829275980949de29421c263fcd80f5d05a0"
+    },
+    "source/golden_recovery_v1.py": {
+      "bytes": 6538,
+      "sha256": "c8397d829525d8747323b0eee28ac63a26014b565c6d75087ba60c85320928be"
+    },
+    "source/golden_seams_v1.py": {
+      "bytes": 4353,
+      "sha256": "555bdf98c07c6864b6863e3e4e575cee136bcb30d1dcaf80fe9cb7749f134c17"
+    },
+    "source/golden_windows_v1.py": {
+      "bytes": 5533,
+      "sha256": "0488546d3e7fab3c09c737ab1df0c3b8e322f670e9a1ae98bc9a2f1c99c87bee"
+    },
+    "source/grammar_v1.py": {
+      "bytes": 8390,
+      "sha256": "cb09d7166d2fa752bd80a6edcfc9e88173a05ea7f5476065818f429d4cc2be45"
+    },
+    "source/line_words_v1.py": {
+      "bytes": 5968,
+      "sha256": "e14fccad665ccc6a4791f2520c09489c01951290aee048dbb29dc32bf3fd8f60"
+    },
+    "source/local_v1.py": {
+      "bytes": 5788,
+      "sha256": "2153e137332180c3ce3d55d5051960d3e12a82f9183f94c1aa97eebee739f105"
+    },
+    "source/matching_graph_v1.py": {
+      "bytes": 4242,
+      "sha256": "f1b2f06c1413e0b13fc127a4ebabe79dc5b818b1172352a84c1b485e5ddd7cdc"
+    },
+    "source/mechanical_v1.py": {
+      "bytes": 8772,
+      "sha256": "2f69a873f3cffc21eae4b31e2a99163a9b44ad305a7c51b0771a670c717a1209"
+    },
+    "source/partition_v1.py": {
+      "bytes": 6983,
+      "sha256": "eb41fba9f8f244191a3a0ef09e5c8eedc64a0e63f7ccad37113da6ba628140bc"
+    },
+    "source/phase_owner_v1.py": {
+      "bytes": 4692,
+      "sha256": "5109d3445a5b7bde82023db103ee0dd516ac9231cf702e63dc9031a5122ceba1"
+    },
+    "source/receptors_v1.py": {
+      "bytes": 7568,
+      "sha256": "bebc93041af59df46b964350555e17420942d038019f36c72220a657388b8c33"
+    },
+    "source/reference_vectors_v1.py": {
+      "bytes": 2817,
+      "sha256": "f0dc029013dc59427b579f1986201c27fc9cba175cfd96c73554a163f0003b7b"
+    },
+    "source/rhombille_v1.py": {
+      "bytes": 11597,
+      "sha256": "d79607a5d61bbc3c61db9d7372cd96269b6bf35fbdaa11c413061d25e6e20464"
+    },
+    "source/second_v1.py": {
+      "bytes": 5723,
+      "sha256": "23e6ddf6c53d34400a0e62bff9c902105d59094f65d9c4555226c04bf6263058"
+    },
+    "source/shell_v1.py": {
+      "bytes": 6558,
+      "sha256": "e1545c050562f51227403f952aca0081be06ace34f5f7bd2c62d676dcce0f61e"
+    },
+    "source/third_atlas_v1.py": {
+      "bytes": 4101,
+      "sha256": "3904319c511354f1edc075b6fa2453633f19bdf0982bcabc0ae1a79b6545c786"
+    },
+    "source/triangle_geometry_v1.py": {
+      "bytes": 9600,
+      "sha256": "4715c6f612b196d257c858d695d604d800ce832cc5f8a1bfee8ae58e400a79ed"
+    },
+    "source/triples_v1.py": {
+      "bytes": 14972,
+      "sha256": "d9ca3bc6d4d647b06f9d9b4fcb1d119a1477e66c4ecdb436e65ecc28631c0f16"
+    },
+    "source/turtle_points_v1.py": {
+      "bytes": 7688,
+      "sha256": "7962e545935677d1cff40bb793fc682bc3acec1461cf178ed7a39253ca9bdfc0"
+    },
+    "window-protocol-v1.json": {
+      "bytes": 2190,
+      "sha256": "ef38f3a39e7f029711fab1ffe46d69fc94d886cb4a2f3f7859c0bfa21852ac0f"
+    }
+  }
+}
