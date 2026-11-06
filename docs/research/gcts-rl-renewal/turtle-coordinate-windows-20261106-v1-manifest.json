@@ -1,0 +1,171 @@
+{
+  "archive_entries": {
+    "data/origin.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/origin.stdout.log": {
+      "bytes": 57,
+      "sha256": "8b8e92acf0474987df9ef6ad60b9a7e80ce9fe7bf37c9d76e523b4926b005596"
+    },
+    "data/windows-v1.json": {
+      "bytes": 18781,
+      "sha256": "afab1037a314172fb16fa276b3b0f8a8af887bfdc4f3e7fc10156fef802c0890"
+    },
+    "data/windows.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/windows.stdout.log": {
+      "bytes": 2498,
+      "sha256": "9d956feaeb04699fd0da02dc9099be715b00df4a9e9de545330dfa34b1ce3926"
+    },
+    "input/bridge-v1.json": {
+      "bytes": 1107,
+      "sha256": "91b3a75172f9e854d6a799ee1a5741554ce1fd4c00a9e15c0d6b178c952cbaf3"
+    },
+    "input/coordinate-evidence-v1.zip": {
+      "bytes": 1269824,
+      "sha256": "53fd99d8b215c4d7bbd8b65a4eee5c4bb5cd923d573c4259b0449a9dca7f4234"
+    },
+    "input/coordinate-v1.json": {
+      "bytes": 5416,
+      "sha256": "61561c6359a2877ee309fb93f3c6d04a6e29c72d19a51259bb6f467fac4f3a20"
+    },
+    "input/exact-point-model-v1.json": {
+      "bytes": 5154,
+      "sha256": "1095add09e7ace5846706dc2559ff3482459a6a854290d77d22e731562a230de"
+    },
+    "input/plane-replay-v1.json": {
+      "bytes": 330,
+      "sha256": "7ff0eb715b4c6b7bad24b3340a4ce467e57c60b37317158e9a4b0c34afcbd470"
+    },
+    "input/predictions-v1.json": {
+      "bytes": 867780,
+      "sha256": "ce98082675f0b79ba875c4a809cc00590f7868bbd5d083d557fba2b031c7f671"
+    },
+    "input/recovered-production-v1.json": {
+      "bytes": 8620,
+      "sha256": "bdca684ea78a331222e7f016e449781cf7ffae8df5722a4b1d9e2961374fb2dd"
+    },
+    "publication/REPLAY.md": {
+      "bytes": 716,
+      "sha256": "be4b8fb2458895dcb56127f89d201276987392ad1cd3a9114cfa6875802487d2"
+    },
+    "publication/browser-v1.json": {
+      "bytes": 138,
+      "sha256": "ff03ced3424bb3a943ff0acf47608065a3602d1c47b3c9f50d5effc2eb2e3c18"
+    },
+    "publication/check_v1.cjs": {
+      "bytes": 2112,
+      "sha256": "4548d536db176bb98fae2bfe01a5165fa60d260cdfe5e0a53f538b1489f7290c"
+    },
+    "publication/notebook-v1.html": {
+      "bytes": 9034,
+      "sha256": "eabfb3801ca0a43c9a5ca62fa3e4ecfdbd221e30fe606dcb345366dd55843992"
+    },
+    "publication/package_v1.py": {
+      "bytes": 2774,
+      "sha256": "1977f0d7d8c00e091a570a3e92ab44134e7b4eca6b0b7798910447f5f986ff6b"
+    },
+    "publication/render_v1.py": {
+      "bytes": 3858,
+      "sha256": "b12196be560ccce2b2fd792b5f9dada1b92a3acadaa129c23c5efbc5ad400b4b"
+    },
+    "publication/replay-v1.json": {
+      "bytes": 207,
+      "sha256": "9219914e422384dbf7084be5078ce1152dcb121d34e37c6965c32b2943874605"
+    },
+    "report/turtle-coordinate-windows-20261106-v1-results.json": {
+      "bytes": 43309,
+      "sha256": "3ab8d62e57541435950a47f9f37564e2df5af9ead2a52a95fb0603a903a369da"
+    },
+    "report/turtle-coordinate-windows-20261106-v1.html": {
+      "bytes": 97745,
+      "sha256": "0251bd985c763bf496814ef38b4e50900ba572612ff0737cd00751b6a62e077a"
+    },
+    "source/assemble_v1.py": {
+      "bytes": 5378,
+      "sha256": "d1120c67801723e42bb8aca10a333e54f3348a8a2a5d4aaade6fe3333bceb4c7"
+    },
+    "source/capped_orbits_v1.py": {
+      "bytes": 4958,
+      "sha256": "b2a61fd9b539dcb75f4fde748339850c998a2cfa0b59d4b1372f115cec5a6379"
+    },
+    "source/cluster_v1.py": {
+      "bytes": 15717,
+      "sha256": "a2eec032406feaf45f7c5ca66b235727db26e414996337981f6b0ff865859b85"
+    },
+    "source/collar_audit_v1.py": {
+      "bytes": 15050,
+      "sha256": "441bbfce0bbe5632b6b26a467c677be775ccae748d3358a7334752f44ec97835"
+    },
+    "source/collar_experiment_v1.py": {
+      "bytes": 4931,
+      "sha256": "1b278165312553bc1daff1ca9067cd1595cec9c3ff03e0b84e9b5685d1085b59"
+    },
+    "source/collars_v1.py": {
+      "bytes": 9009,
+      "sha256": "3ffbbb443ad4ca62bbe9a6594ef28b579fbfd13e254ec6a7bdf1b1fb0e8502bd"
+    },
+    "source/coordinate_v1.py": {
+      "bytes": 8261,
+      "sha256": "9aebbc05a4ec7728744fd1450ba29a7e822a45bad3ca358f1e04988061e409b0"
+    },
+    "source/golden_geometry_v1.py": {
+      "bytes": 4899,
+      "sha256": "528407dae32299ac9982998ffd396687633fe1107d99f782ab8b74f8f5ded786"
+    },
+    "source/layer_audit_v1.py": {
+      "bytes": 6861,
+      "sha256": "1376983393741a45f6788c55c2acde481684fe1dbb0d8430286859f93d4ddf6b"
+    },
+    "source/mixed_orbits_v1.py": {
+      "bytes": 6362,
+      "sha256": "42feb552dd443d36a7864e0f87679756f36c99c941fa069d1b38cf40b34bdde2"
+    },
+    "source/port_score_v1.py": {
+      "bytes": 3846,
+      "sha256": "283c9c05528799e417f903543733593a4fd7f14d8e0089c8094a4bba5b53b617"
+    },
+    "source/scaffold_v1.py": {
+      "bytes": 7216,
+      "sha256": "ce412c5ad4982ea96030255cbf081a861a239aa13c99e2565686ec254a5d8026"
+    },
+    "source/strip_fit_v1.py": {
+      "bytes": 7861,
+      "sha256": "de5644533283f3fb634534453c56c08312505ae5cc5e92df5634a5087a1e34f4"
+    },
+    "source/triangle_geometry_v1.py": {
+      "bytes": 9600,
+      "sha256": "4715c6f612b196d257c858d695d604d800ce832cc5f8a1bfee8ae58e400a79ed"
+    },
+    "source/window_origin_v1.py": {
+      "bytes": 1231,
+      "sha256": "013583927b2656c8f7a05a9857e4ef147291383c32e214b792d4ad062b76e0c1"
+    },
+    "source/window_v1.py": {
+      "bytes": 9632,
+      "sha256": "1c8830f751579e4631cbcc70827a55f3e48bae1cbbf615d12cd35d97a6deee92"
+    },
+    "source/word_promotion_v1.py": {
+      "bytes": 6337,
+      "sha256": "2e75a86404a3fc6eac932f9b76fda8598822ea8388eb3f8eca591b723f31e590"
+    }
+  },
+  "assets": {
+    "turtle-coordinate-windows-20261106-v1-evidence.zip": {
+      "bytes": 1555508,
+      "sha256": "41696158311bdc4857bf3afadb2234fd01c13edcae6ad421af6c423ca6a9bc42"
+    },
+    "turtle-coordinate-windows-20261106-v1-results.json": {
+      "bytes": 43309,
+      "sha256": "3ab8d62e57541435950a47f9f37564e2df5af9ead2a52a95fb0603a903a369da"
+    },
+    "turtle-coordinate-windows-20261106-v1.html": {
+      "bytes": 97745,
+      "sha256": "0251bd985c763bf496814ef38b4e50900ba572612ff0737cd00751b6a62e077a"
+    }
+  },
+  "schema": "GCTS-TURTLE-COORDINATE-WINDOWS-MANIFEST-v1"
+}
