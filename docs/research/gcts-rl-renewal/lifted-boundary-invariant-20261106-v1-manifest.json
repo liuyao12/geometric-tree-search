@@ -1,0 +1,399 @@
+{
+  "archive_entries": {
+    "data/boundary-invariant-v1.json": {
+      "bytes": 6909,
+      "sha256": "51f13a26e8a1762287a80270f7b5a06012c708db73f431fa78517014dcb53fda"
+    },
+    "data/direction-control-v1.json": {
+      "bytes": 1773,
+      "sha256": "5494d07f97557d4c94997cba11a6c23f8ec1b41b606162de78161036d3f12928"
+    },
+    "data/discovered-direction-marks-v1.json": {
+      "bytes": 2792,
+      "sha256": "975844e0370c1233632dbd0a3ce3f076a70cb64b9044dce2c641f4cc83290020"
+    },
+    "data/flux-bindings-v1.json": {
+      "bytes": 1003,
+      "sha256": "a8d56c77837303e52bbce52a8833634159c45d65a554ffc3e80878919425dcaa"
+    },
+    "data/joint-directions-v1.json": {
+      "bytes": 2134,
+      "sha256": "4c1859da4cf0d514924f87d7e633d4474093aa6f2e24968de77c4e7ba8e95c0c"
+    },
+    "data/movable-direction-v1.json": {
+      "bytes": 11553,
+      "sha256": "161d640892d09d6e318a763f8099ca7a8cae81b0bb7eec092404415dbfb3e5a7"
+    },
+    "data/periodic-experiment-v1.json": {
+      "bytes": 34278,
+      "sha256": "0bbc78c71de02d814d782e0171d7ab132ef2ff88062a8455936c998a23a27110"
+    },
+    "data/periodic-run.stdout.log": {
+      "bytes": 1885,
+      "sha256": "4be03ff8008fd4baa89dafa770459a1be5162df52bdf3101899482c22097c2ba"
+    },
+    "input/cavity-cases-v1.json": {
+      "bytes": 25549,
+      "sha256": "42e715edc04a2d42fc75c282bc6f9d364a9e8203375cc078d5c72561b4a82085"
+    },
+    "input/cavity-comparison-v1.json": {
+      "bytes": 58637,
+      "sha256": "a644ca7f5d33bb9cccd79ae280f1a4a6b12686c34fc5fe6fb4861f271a1388b1"
+    },
+    "input/exact-point-model-v1.json": {
+      "bytes": 5154,
+      "sha256": "1095add09e7ace5846706dc2559ff3482459a6a854290d77d22e731562a230de"
+    },
+    "input/turtle-control-patches-v1.json": {
+      "bytes": 1015,
+      "sha256": "bee7ebdba30aa93b20583ea210450185a7fb02d6067ef99bd5d17829ce4ecdb2"
+    },
+    "publication/REPLAY.md": {
+      "bytes": 1272,
+      "sha256": "8f5ea09604271fcf14190c63b16fef68411704eabb80e89a2aa8fe09622266de"
+    },
+    "publication/browser-v1.json": {
+      "bytes": 182,
+      "sha256": "587d7fbf5e07a968c5edadae09ebe95bb26245bf36b760f89b67581ebe5096fe"
+    },
+    "publication/check_v1.cjs": {
+      "bytes": 2434,
+      "sha256": "28f82fd798ac3fa862e690afc828e1c00e41b567fa938d9bd0437ea90467b2c0"
+    },
+    "publication/notebook-v1.html": {
+      "bytes": 14415,
+      "sha256": "5f3fcea0caaafffc2a192087eb57de0be7d76b69379fd65e1f27cb521a7631b7"
+    },
+    "publication/package_v1.py": {
+      "bytes": 2454,
+      "sha256": "201d99e8c5231548aa5d485ccc983735f71a6fba89bfde5bf336929e83e36f38"
+    },
+    "publication/proof_views_v1.py": {
+      "bytes": 6864,
+      "sha256": "c2f89d498e5fd11d7a8e0940aec3784a9c14ae924c4af721b732364c2680e867"
+    },
+    "publication/render_v1.py": {
+      "bytes": 6648,
+      "sha256": "a09762476720f9b17fb23c0112acf4eff7058aec096d3e50814a4e0d84f2c8d3"
+    },
+    "publication/replay-v1.json": {
+      "bytes": 2602,
+      "sha256": "88bb8d1e4391b43c8a2662d460769a28456f57fac41fac95937e09ad82ea91e9"
+    },
+    "publication/replay_v1.py": {
+      "bytes": 3359,
+      "sha256": "aa7c62d3c6d2765d596af0cc3b791e195026cac51ba6980912c93c2a52dc5797"
+    },
+    "publication/signed-chain-v1.png": {
+      "bytes": 19169,
+      "sha256": "dc35408c5a924bbc351f3803ec0260059e34a67c1ae5f4a16ac3d3d230807b84"
+    },
+    "publication/turtle-edits-v1.png": {
+      "bytes": 24201,
+      "sha256": "48584739d393b7758514984ca9e27f598f0a926a07d02019b3bdb54e17ba9c02"
+    },
+    "report/lifted-boundary-invariant-20261106-v1-results.json": {
+      "bytes": 385968,
+      "sha256": "cd0d15d74fa0c0604234007a7719ded45172caff7014c69f2cbc2d83a4f26658"
+    },
+    "report/lifted-boundary-invariant-20261106-v1.html": {
+      "bytes": 73076,
+      "sha256": "b9e43d0f9ee6aa44c1eb07953bf35e3ee2ebba237ca151a7170eb46c169d86b6"
+    },
+    "source/bind_flux_v1.py": {
+      "bytes": 3562,
+      "sha256": "cae5758c76aa8c61be7f665075230735a448db23b10f08820e6fc28577968b62"
+    },
+    "source/boundary_invariant_v1.py": {
+      "bytes": 3515,
+      "sha256": "9beb4b2ec1beaa9dcd4b98c689649dac84658ce3e5ca06d4afc0ba9aa0f593dc"
+    },
+    "source/boundary_search_v1.py": {
+      "bytes": 11523,
+      "sha256": "ea15d14561f7b39f58e7cc62d9fcc736d89377888922e6c454f0cedfa8b1b112"
+    },
+    "source/cases_v1.py": {
+      "bytes": 8451,
+      "sha256": "70ff43195c11a970f45d6acc319bddb7b90d4b394afced7ea4f98ba294b80af3"
+    },
+    "source/cavity_cases_v1.py": {
+      "bytes": 7942,
+      "sha256": "8d2806f6fa945fb4e579789a4fd26348835c3c209b709348ca008c699c02708e"
+    },
+    "source/cavity_experiment_v1.py": {
+      "bytes": 2559,
+      "sha256": "1aaf4600b56f727516a45a9fd192f4cfbcc71f5075431eac8617abe6f0b62768"
+    },
+    "source/cavity_marks_v1.py": {
+      "bytes": 3013,
+      "sha256": "f1a8160edd193aca77ca134f9ca1c7837d5601ebecaf7ed23a07a7362f794d61"
+    },
+    "source/cavity_pilot_v1.py": {
+      "bytes": 4511,
+      "sha256": "24a238e67d695db2de8623ad8509b2accfd02fae7f6f96a2edf00aca5024705f"
+    },
+    "source/check_v1.py": {
+      "bytes": 4131,
+      "sha256": "edd28b8b5b611059b47d8b2b55964c27a1a5b268dabdaf06c2f4f7b340eaf76c"
+    },
+    "source/clipping_v1.py": {
+      "bytes": 5276,
+      "sha256": "a649384ab8e810d88d28e79906346946b869292c0de2bf81d07469778fc59281"
+    },
+    "source/cluster_v1.py": {
+      "bytes": 15717,
+      "sha256": "a2eec032406feaf45f7c5ca66b235727db26e414996337981f6b0ff865859b85"
+    },
+    "source/direction_control_v1.py": {
+      "bytes": 2024,
+      "sha256": "8f0cb8d5a9c44a339db566d35ee7b06dcdd9adac62c40127245ee37cc5e7018a"
+    },
+    "source/discover_directions_v1.py": {
+      "bytes": 5123,
+      "sha256": "fb44f0b81db952f816074aff5ce2d34207ed904d5761905dfa10c97c775f1fe3"
+    },
+    "source/geometry_v1.py": {
+      "bytes": 10489,
+      "sha256": "304b06d9930a9725cd9c4208cc5daa0572bda3e32097a86a682e95a9c98282d6"
+    },
+    "source/joint_directions_v1.py": {
+      "bytes": 3804,
+      "sha256": "ed81b0b2494a98c1f7a1dedd453147929a9acd30af01d952e3342bf648554302"
+    },
+    "source/model_v1.py": {
+      "bytes": 4432,
+      "sha256": "df86798cfa969b57bdca56f4928b3fd12fe908a275ec5e47031546e74bef43f4"
+    },
+    "source/movable_direction_v1.py": {
+      "bytes": 3731,
+      "sha256": "514d67e4bae10b343f8b8a7ff5b6125bf2a4a98a8f0c04d8d495f6b1353cdf31"
+    },
+    "source/open_cases_v1.py": {
+      "bytes": 6839,
+      "sha256": "9f0a3671704ced9b3aa29024db4ff6925112c263c92db9a9b8ffda3fbcfd0a12"
+    },
+    "source/open_cover_v1.py": {
+      "bytes": 8775,
+      "sha256": "e8fc28cb68f2bb3d3671a243df0844602c650cefa7f9ea0a12b3cd189f6af086"
+    },
+    "source/penrose_signed_fill_v1.py": {
+      "bytes": 1989,
+      "sha256": "2840d573d7e1b2c00435ef92dc425c4d79172b483535952c58d6e7e32e299e64"
+    },
+    "source/periodic_experiment_v1.py": {
+      "bytes": 12761,
+      "sha256": "86a5650107220e45269cbb65176d65bdb15f14b28286b5392e2a1a1d69da30d4"
+    },
+    "source/periodic_marks_v1.py": {
+      "bytes": 3961,
+      "sha256": "97e47136791729a0b10124e880849b553cab1d424275ca8a90c599443700a5f9"
+    },
+    "source/triangle_geometry_v1.py": {
+      "bytes": 9600,
+      "sha256": "4715c6f612b196d257c858d695d604d800ce832cc5f8a1bfee8ae58e400a79ed"
+    },
+    "wang/data/flux-induction-logical-v1.json": {
+      "bytes": 14550,
+      "sha256": "f57166b8a7402e1b36a1fd203328e18bc36f7507dbc0cae25c1568c8bd54da1e"
+    },
+    "wang/data/flux-induction-v1.json": {
+      "bytes": 364,
+      "sha256": "dd3538d0b06285389d31e407d39f6d948e61dab539e7373d63b1a86e0b7c3359"
+    },
+    "wang/data/flux-induction-wang-v1.json": {
+      "bytes": 3500957,
+      "sha256": "3f3316435feb61fdd54b1f03df16820c63960461b377cd3f41351062f374f3ba"
+    },
+    "wang/input/flux-induction-v1.json": {
+      "bytes": 623,
+      "sha256": "57988a26e0738d9f19ef7ef5ba56b8b5222bcde3f7e61c64641ba9ad5a463870"
+    },
+    "wang/source/boundary_kernel_v1.py": {
+      "bytes": 8190,
+      "sha256": "7bc2bcf58ce1d2de90db1000a6c82c51fb6339631199c00c55872f6bdaf04298"
+    },
+    "wang/source/cm2_horn_v1.py": {
+      "bytes": 4702,
+      "sha256": "9fad48db15d018a252dcd2ed1d858872fd5da0c3c414d2e53d0d539505cbf5f2"
+    },
+    "wang/source/decode_v1.py": {
+      "bytes": 3902,
+      "sha256": "262e0cdb36a86f42df3fd762e2c20f7fda697779ec0033ed5fc714929cb5ab99"
+    },
+    "wang/source/definition_cases_v1.py": {
+      "bytes": 1946,
+      "sha256": "46e77436ae1174c7cd5adf9e05d1e1c3d070aa7b1d0278132da26a5c2a96175b"
+    },
+    "wang/source/definition_check_v1.py": {
+      "bytes": 6057,
+      "sha256": "561d5a3a6823a956426e619565c8775021d22b4343831c6a671e20aea61c91ba"
+    },
+    "wang/source/definition_composition_v1.py": {
+      "bytes": 7218,
+      "sha256": "7763abee9fd2d5b542a6a8eefcb49767c1745165bb0ed7da280ef6b3b5f9699e"
+    },
+    "wang/source/definition_experiment_v1.py": {
+      "bytes": 2180,
+      "sha256": "297e55bde875783c768c8fd0eb6e571eddb9f25c2392d3b1830ef5c72f81008d"
+    },
+    "wang/source/definitions_v1.py": {
+      "bytes": 4559,
+      "sha256": "dcd85319e3837825010570811c7b4c961361369f3f0350e46bf78f95e6e6b399"
+    },
+    "wang/source/depth_ground_v1.py": {
+      "bytes": 3675,
+      "sha256": "b5108c74c562a7d4d5a06c07c528fb9e325f654f89726865c1f967bb70be182a"
+    },
+    "wang/source/deterministic_tm_wang_v1.py": {
+      "bytes": 21321,
+      "sha256": "54ae552084743639181f416f5ca02d9acf25c031c61c60c4550d34ac7883d7dd"
+    },
+    "wang/source/fair_ground_v1.py": {
+      "bytes": 3432,
+      "sha256": "47fb33f62bd506ec1311b7d1bbc8b1c55eafacae2784ba2546e576458b51270b"
+    },
+    "wang/source/fixed_palette_v1.py": {
+      "bytes": 8368,
+      "sha256": "8d4c09e1977302fd89454f1ab6d8b752d475c0a1a318ddcedac3f434518635fc"
+    },
+    "wang/source/flux_induction_v1.py": {
+      "bytes": 2684,
+      "sha256": "652c88bf4e9461083b794f04a8e3b250a76fbc08d6d7da63f6a76cd9943ce69b"
+    },
+    "wang/source/flux_statement_v1.py": {
+      "bytes": 898,
+      "sha256": "60fc3209409b1e643eda587189dc752797b8f2b7486bc871bf3171d8f2b7a368"
+    },
+    "wang/source/fragment_receptors_v1.py": {
+      "bytes": 4904,
+      "sha256": "f80e298a3241cc7b6f56dc40b0febb7124e866881fb77ae898f36c878a6a29ef"
+    },
+    "wang/source/front_v1.py": {
+      "bytes": 8957,
+      "sha256": "5f03c273e72467b70672b9d4ff851b43ba61afa57ca00f84a5c43a2464d612cc"
+    },
+    "wang/source/ground_unit_v1.py": {
+      "bytes": 3772,
+      "sha256": "2914f52d0c6edf1fbeddf03e723fbfc277ea98305cea344af47bd4efb8416fe0"
+    },
+    "wang/source/herbrand_v1.py": {
+      "bytes": 10499,
+      "sha256": "ab1698fa88166e33afa446d9f8ca18da25d257c4d07c76da0e261ecedd36e8db"
+    },
+    "wang/source/in_grid_v1.py": {
+      "bytes": 7880,
+      "sha256": "2c2e794b894a41998a3ded276cae78ffaa3012ebb0bdead1cb104293ea246157"
+    },
+    "wang/source/lifted_audit_v1.py": {
+      "bytes": 9454,
+      "sha256": "8e87eb91c348f9a5fe19ce6fcece1ee37c9ab9314cee8e290895e407f8d8c836"
+    },
+    "wang/source/lifted_cases_v1.py": {
+      "bytes": 3908,
+      "sha256": "50f5c3917ca283542828d5428632213ca826a84dcf881a9cfbddc525e56e3517"
+    },
+    "wang/source/lifted_experiment_v1.py": {
+      "bytes": 4824,
+      "sha256": "81d7d0b4b4fb0243387cff3946e4cbb3e5462631e8837cb4617a06984591dc05"
+    },
+    "wang/source/lifted_frames_v1.py": {
+      "bytes": 2671,
+      "sha256": "21631c5e6fa76435a0f19f5a47c9ee85cab26308460e2883e154dd121e91cc4f"
+    },
+    "wang/source/lifted_ground_v1.py": {
+      "bytes": 3157,
+      "sha256": "926016f8790a32e2297e7e727fad60d82ba254759eed7fd2e0bf7e68def1788f"
+    },
+    "wang/source/lifted_marks_v1.py": {
+      "bytes": 1778,
+      "sha256": "4a6f33e35e2947aafdcb887adbedb6c3fca1dc5033c9498f93ea4c5eda994fda"
+    },
+    "wang/source/lifted_native_v1.py": {
+      "bytes": 5758,
+      "sha256": "f2c73193dc1da7812ec9d9fe658c385fb67570b9e8b491cfc2e2c790e74824d3"
+    },
+    "wang/source/lifted_prover_v1.py": {
+      "bytes": 10188,
+      "sha256": "189bd727708b7bd224643edb3df5af126b9636ef8e62815827ef0310093e8f29"
+    },
+    "wang/source/logical_projection_v1.py": {
+      "bytes": 3968,
+      "sha256": "af824d0b1964a8da87a547b74e96ee7c6574ed4439a07ae9ba5c6e95eed6d223"
+    },
+    "wang/source/logical_records_cli_v1.py": {
+      "bytes": 1504,
+      "sha256": "55083fd3859471c3b5bead8b23e46ce8be3dfc02e3532d01843591187292d8a2"
+    },
+    "wang/source/marker_tm_v1.py": {
+      "bytes": 7658,
+      "sha256": "4e6162f52098ba256d4f64c2d32074d3f3a8914ba341b56f5805226c12d32122"
+    },
+    "wang/source/native_audit_v1.py": {
+      "bytes": 10324,
+      "sha256": "1cc5e347ecf73e006f46e819169d4c57074a401ca92281075de6ee604e839a07"
+    },
+    "wang/source/native_experiment_v1.py": {
+      "bytes": 6751,
+      "sha256": "7659de81ad4993cce94f89a830f2b0781f56fe432c37f8520425874ec6532a28"
+    },
+    "wang/source/native_marked_v1.py": {
+      "bytes": 4695,
+      "sha256": "07ee0d52687cef18f586bbfe51646e39776a617a67f8ae0edf7b18ccee85b353"
+    },
+    "wang/source/native_v1.py": {
+      "bytes": 6288,
+      "sha256": "b3dea50c5556d911e9f2a80e073c1aac7c1645cd534a7c40e3a03520c22961e5"
+    },
+    "wang/source/receptor_receivers_v1.py": {
+      "bytes": 4187,
+      "sha256": "931d47810424a50bb870e4a7cf091a6cc88d970ac483e5e46fb2b62b660fdbce"
+    },
+    "wang/source/resolution_v1.py": {
+      "bytes": 14299,
+      "sha256": "8aa3e79d0fecf09a47ef7e7a9c2670f57747b571f30c0ed9cf4a65fba93e9536"
+    },
+    "wang/source/ribbon_checker_v3.py": {
+      "bytes": 14489,
+      "sha256": "e346951922cfe71366f6c31b474c77955a51715eb3e043ff053c169dc8b0adbd"
+    },
+    "wang/source/shared_wang_v1.py": {
+      "bytes": 5446,
+      "sha256": "2670b3400eb9848de0baaf784ba79325cf851bb490b7c28aecc95c695a6217c7"
+    },
+    "wang/source/sparse_frame_v1.py": {
+      "bytes": 6487,
+      "sha256": "00ca9a90012c5bef798280664e9f4a4583a0c638d196de005c0998bee4a9c9fe"
+    },
+    "wang/source/study_v1.py": {
+      "bytes": 12409,
+      "sha256": "7a617ee77bc551b96cd9583bc0d3b08085e8ad02ec06d586cd694bb39fd68a62"
+    },
+    "wang/source/tactic_cohort_v1.py": {
+      "bytes": 2880,
+      "sha256": "d47e9740f173187fa4b6fcd2d8d74812c3536ed55f2e4f2a51d5757425a7b3a8"
+    },
+    "wang/source/tactic_policy_v1.py": {
+      "bytes": 5575,
+      "sha256": "40b5041cc74528b60846214c4c89c89c839abd4f9126525e121c68a1db095f8d"
+    },
+    "wang/source/tiles_v1.py": {
+      "bytes": 6290,
+      "sha256": "54cb133bb7139d4b88013ffd45089d8c9a0145e0a770b2b87296f24d9a3bb38a"
+    }
+  },
+  "assets": {
+    "lifted-boundary-invariant-20261106-v1-evidence.zip": {
+      "bytes": 565562,
+      "sha256": "0d79a4e81db165d861a4ce5ef566533e01d7b4bc7520bd04478a08390f3966ba"
+    },
+    "lifted-boundary-invariant-20261106-v1-results.json": {
+      "bytes": 385968,
+      "sha256": "cd0d15d74fa0c0604234007a7719ded45172caff7014c69f2cbc2d83a4f26658"
+    },
+    "lifted-boundary-invariant-20261106-v1.html": {
+      "bytes": 73076,
+      "sha256": "b9e43d0f9ee6aa44c1eb07953bf35e3ee2ebba237ca151a7170eb46c169d86b6"
+    }
+  },
+  "schema": "LIFTED-BOUNDARY-INVARIANT-MANIFEST-v1"
+}
