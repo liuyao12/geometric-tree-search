@@ -1,0 +1,307 @@
+{
+  "archive_entries": {
+    "data/canonical-fragments-v1.json.gz": {
+      "bytes": 1954280,
+      "sha256": "f3ba42922abf70728365d681bcde3abe12169663384fe883b8097055088bf008"
+    },
+    "data/depth-audit-v1.json": {
+      "bytes": 14471,
+      "sha256": "6dc4ac0197ec7556563f3b382b57e20bf8399eec20b0ae8fb1aa2115c96c9a09"
+    },
+    "data/depth-audit.stdout.log": {
+      "bytes": 37,
+      "sha256": "76c904dbb4cc49fe7b6106ed4836f716e587b4b9742c652e73fa389863752c5b"
+    },
+    "data/receptors-v1.json": {
+      "bytes": 74194,
+      "sha256": "61b85e43bf6f190c871e5951e3d1aa3cdc3e0ec45c579ad9d86475b33ca3e3bb"
+    },
+    "data/receptors.stdout.log": {
+      "bytes": 1217,
+      "sha256": "dc950e00006b4bfef9c4aa3b8f26236efd2e075be5f88df0c248fc4acaa289f4"
+    },
+    "data/tactic-audit-v1.json": {
+      "bytes": 285311,
+      "sha256": "c0ce6e241db11569fa0a34578b5de8956c22229bb268cb914df5d8b6bbd732c2"
+    },
+    "data/tactic-audit.stdout.log": {
+      "bytes": 2390,
+      "sha256": "bd582f443b471e6d7b0ce377d8e909280e93d98d0051a2e56e1f34579c525ca6"
+    },
+    "data/tactic-execution-v1.json": {
+      "bytes": 1783,
+      "sha256": "4ef83552471599b048d6ea4b7a01839d1809473e731040fa50fbda5914c46617"
+    },
+    "data/tactic-execution.stdout.log": {
+      "bytes": 40,
+      "sha256": "83c1e160bbf97209bf95f6755f4eaf5846e7b2c50f37657307201ad9cba70df9"
+    },
+    "data/tactic-new-fragments-v1.json.gz": {
+      "bytes": 2862432,
+      "sha256": "b6b7102ad06f31b535e29fe5e209cf2c09f7bf2db30eaa729e35bfd0759c576e"
+    },
+    "data/tactic-policy.stdout.log": {
+      "bytes": 1181,
+      "sha256": "23755af4f542942440277dbb8c1ce3df719cdf500eb947e2684199c0b5f2b9e1"
+    },
+    "data/tactic-receivers-v1.json": {
+      "bytes": 525253,
+      "sha256": "501f2b54b2e3d12c8e974fca65ff449132230cd8dab0f15084dacb4d9e501d1d"
+    },
+    "data/tactic-training-v1.json": {
+      "bytes": 32013,
+      "sha256": "83015f88a9fdc0b502391f0b5fe7643103f30bda85a9201bdb75e13b8a7394ca"
+    },
+    "input/cases-v1.json": {
+      "bytes": 3716,
+      "sha256": "4a16a1564632dc11374550f000666c77dc9a52e1f21a2e79d6ddb546b710ab31"
+    },
+    "input/composed-audit-v1.json": {
+      "bytes": 925,
+      "sha256": "1eb12d4414223fed53da85b41aae1e193fbb368eca20b8ba50ceefa71f266e2d"
+    },
+    "input/composed-fragments-v1.json.gz": {
+      "bytes": 5147192,
+      "sha256": "137e924e34b4b6f12382a0dad5aa5a4e384c574d2a2c677a2527967817c74cd6"
+    },
+    "input/composed-v1.json": {
+      "bytes": 32288,
+      "sha256": "f6efc7e3ccb4497685c5fdc067d1132d34cf3ed7f3c30252887e366867c6cefd"
+    },
+    "input/new-cases-v1.json": {
+      "bytes": 4658,
+      "sha256": "2816f73f996fc56bdc7940e69642105a511f3c6fb203023d5387786c38fa9d17"
+    },
+    "input/origin-v1.json": {
+      "bytes": 2147,
+      "sha256": "1ee74aba5fb3b2cc2cee3268755bba8133bfd09f3b1ee08b5b89a6fbbd329ad1"
+    },
+    "input/search-v1.json": {
+      "bytes": 199999,
+      "sha256": "7b5097c7153923ba11e46e567ee66bb39ec5dcda12643f6557366b120879d6d3"
+    },
+    "input/tutorial-cases-v1.json": {
+      "bytes": 12093,
+      "sha256": "1a2fa0337763836752ce73aaa27f5c06cfd5f6b40706be8b8c4f4e53ff78f8d3"
+    },
+    "publication/REPLAY.md": {
+      "bytes": 1170,
+      "sha256": "d9bcbc01d831ae1003d22c60a6248f7998d0da8a87cf8a98ddb372988eb2a32f"
+    },
+    "publication/browser-v1.json": {
+      "bytes": 190,
+      "sha256": "9da1ae126052c93eebca44719b609158709ea6391e8ccdfbef66cf0d362f8ed8"
+    },
+    "publication/check_v1.cjs": {
+      "bytes": 3471,
+      "sha256": "d48424f282f44f3c2a2e30f470e9652c63d9c36a0a93dcca51b1b4a358b13391"
+    },
+    "publication/notebook-v1.html": {
+      "bytes": 13629,
+      "sha256": "6bdd57da10977761f9d5be556446e767f0a30e45e0cbcf3352a2cb93c88bf122"
+    },
+    "publication/package_v1.py": {
+      "bytes": 3151,
+      "sha256": "69d48b9b00d863dda9b9e596f5a68915356519e86a585f653ee58decafe51cb8"
+    },
+    "publication/proof_views_v1.py": {
+      "bytes": 6864,
+      "sha256": "c2f89d498e5fd11d7a8e0940aec3784a9c14ae924c4af721b732364c2680e867"
+    },
+    "publication/render_v1.py": {
+      "bytes": 8742,
+      "sha256": "f978c8702b15d3eef7ebb7f7f3406ea5bd38625ebbb7a34d12d8e268bbf8d00d"
+    },
+    "publication/replay-v1.json": {
+      "bytes": 1274,
+      "sha256": "eb8cea9fe5c620d9c2b52ab5313cbc91023f2e976a5ab8f3a15912b9711e503f"
+    },
+    "publication/viewer_v1.js": {
+      "bytes": 4331,
+      "sha256": "5c97a6799ec132bc68b484711545e5a9cd3621549618b4e56413d8e3f380bfed"
+    },
+    "report/wang-fragment-receptors-20261106-v1-results.json": {
+      "bytes": 2622778,
+      "sha256": "f2be43d94e8478d005a59a43f4d3d2bc1fbd42bd2ad4983da104b1dcc0e3ca00"
+    },
+    "report/wang-fragment-receptors-20261106-v1.html": {
+      "bytes": 1102475,
+      "sha256": "80a98ff3ac2dbeadecc859163f0186d439c3016ee9083d9d04ce6aa298e06d3d"
+    },
+    "source/boundary_kernel_v1.py": {
+      "bytes": 8190,
+      "sha256": "7bc2bcf58ce1d2de90db1000a6c82c51fb6339631199c00c55872f6bdaf04298"
+    },
+    "source/decode_v1.py": {
+      "bytes": 3902,
+      "sha256": "262e0cdb36a86f42df3fd762e2c20f7fda697779ec0033ed5fc714929cb5ab99"
+    },
+    "source/definition_cases_v1.py": {
+      "bytes": 1946,
+      "sha256": "46e77436ae1174c7cd5adf9e05d1e1c3d070aa7b1d0278132da26a5c2a96175b"
+    },
+    "source/definition_check_v1.py": {
+      "bytes": 6057,
+      "sha256": "561d5a3a6823a956426e619565c8775021d22b4343831c6a671e20aea61c91ba"
+    },
+    "source/definition_composition_v1.py": {
+      "bytes": 7218,
+      "sha256": "7763abee9fd2d5b542a6a8eefcb49767c1745165bb0ed7da280ef6b3b5f9699e"
+    },
+    "source/definition_experiment_v1.py": {
+      "bytes": 2180,
+      "sha256": "297e55bde875783c768c8fd0eb6e571eddb9f25c2392d3b1830ef5c72f81008d"
+    },
+    "source/definitions_v1.py": {
+      "bytes": 4559,
+      "sha256": "dcd85319e3837825010570811c7b4c961361369f3f0350e46bf78f95e6e6b399"
+    },
+    "source/depth_ground_audit_v1.py": {
+      "bytes": 2016,
+      "sha256": "405bbfaf459574af39b4260697ec46df20bce5bab1c71ade9338d51f46cd26fa"
+    },
+    "source/depth_ground_v1.py": {
+      "bytes": 3675,
+      "sha256": "b5108c74c562a7d4d5a06c07c528fb9e325f654f89726865c1f967bb70be182a"
+    },
+    "source/deterministic_tm_wang_v1.py": {
+      "bytes": 21321,
+      "sha256": "54ae552084743639181f416f5ca02d9acf25c031c61c60c4550d34ac7883d7dd"
+    },
+    "source/fixed_palette_v1.py": {
+      "bytes": 8368,
+      "sha256": "8d4c09e1977302fd89454f1ab6d8b752d475c0a1a318ddcedac3f434518635fc"
+    },
+    "source/fragment_receptors_v1.py": {
+      "bytes": 4904,
+      "sha256": "f80e298a3241cc7b6f56dc40b0febb7124e866881fb77ae898f36c878a6a29ef"
+    },
+    "source/front_v1.py": {
+      "bytes": 8957,
+      "sha256": "5f03c273e72467b70672b9d4ff851b43ba61afa57ca00f84a5c43a2464d612cc"
+    },
+    "source/ground_unit_audit_v1.py": {
+      "bytes": 3739,
+      "sha256": "029538f16105cf4a266dbbb0130a68ab025f4403e32711474e39ec0bedf7370d"
+    },
+    "source/ground_unit_v1.py": {
+      "bytes": 3772,
+      "sha256": "2914f52d0c6edf1fbeddf03e723fbfc277ea98305cea344af47bd4efb8416fe0"
+    },
+    "source/herbrand_v1.py": {
+      "bytes": 10499,
+      "sha256": "ab1698fa88166e33afa446d9f8ca18da25d257c4d07c76da0e261ecedd36e8db"
+    },
+    "source/in_grid_v1.py": {
+      "bytes": 7880,
+      "sha256": "2c2e794b894a41998a3ded276cae78ffaa3012ebb0bdead1cb104293ea246157"
+    },
+    "source/lifted_audit_v1.py": {
+      "bytes": 9454,
+      "sha256": "8e87eb91c348f9a5fe19ce6fcece1ee37c9ab9314cee8e290895e407f8d8c836"
+    },
+    "source/lifted_cases_v1.py": {
+      "bytes": 3908,
+      "sha256": "50f5c3917ca283542828d5428632213ca826a84dcf881a9cfbddc525e56e3517"
+    },
+    "source/lifted_experiment_v1.py": {
+      "bytes": 4824,
+      "sha256": "81d7d0b4b4fb0243387cff3946e4cbb3e5462631e8837cb4617a06984591dc05"
+    },
+    "source/lifted_frames_v1.py": {
+      "bytes": 2671,
+      "sha256": "21631c5e6fa76435a0f19f5a47c9ee85cab26308460e2883e154dd121e91cc4f"
+    },
+    "source/lifted_ground_v1.py": {
+      "bytes": 3157,
+      "sha256": "926016f8790a32e2297e7e727fad60d82ba254759eed7fd2e0bf7e68def1788f"
+    },
+    "source/lifted_marks_v1.py": {
+      "bytes": 1778,
+      "sha256": "4a6f33e35e2947aafdcb887adbedb6c3fca1dc5033c9498f93ea4c5eda994fda"
+    },
+    "source/lifted_native_v1.py": {
+      "bytes": 5750,
+      "sha256": "4a987afbd95984180aa99c1862df560622ad44e3113f80833f63ef23e932a13e"
+    },
+    "source/lifted_prover_v1.py": {
+      "bytes": 10188,
+      "sha256": "189bd727708b7bd224643edb3df5af126b9636ef8e62815827ef0310093e8f29"
+    },
+    "source/marker_tm_v1.py": {
+      "bytes": 7658,
+      "sha256": "4e6162f52098ba256d4f64c2d32074d3f3a8914ba341b56f5805226c12d32122"
+    },
+    "source/native_audit_v1.py": {
+      "bytes": 10324,
+      "sha256": "1cc5e347ecf73e006f46e819169d4c57074a401ca92281075de6ee604e839a07"
+    },
+    "source/native_experiment_v1.py": {
+      "bytes": 6751,
+      "sha256": "7659de81ad4993cce94f89a830f2b0781f56fe432c37f8520425874ec6532a28"
+    },
+    "source/native_marked_v1.py": {
+      "bytes": 4695,
+      "sha256": "07ee0d52687cef18f586bbfe51646e39776a617a67f8ae0edf7b18ccee85b353"
+    },
+    "source/native_v1.py": {
+      "bytes": 6288,
+      "sha256": "b3dea50c5556d911e9f2a80e073c1aac7c1645cd534a7c40e3a03520c22961e5"
+    },
+    "source/receptor_origin_v1.py": {
+      "bytes": 967,
+      "sha256": "8925419e3a3e5680119a76710e9e627edc48f59fd2c7635b5f1c6df2cc114b98"
+    },
+    "source/receptor_receivers_v1.py": {
+      "bytes": 4187,
+      "sha256": "931d47810424a50bb870e4a7cf091a6cc88d970ac483e5e46fb2b62b660fdbce"
+    },
+    "source/resolution_v1.py": {
+      "bytes": 14299,
+      "sha256": "8aa3e79d0fecf09a47ef7e7a9c2670f57747b571f30c0ed9cf4a65fba93e9536"
+    },
+    "source/ribbon_checker_v3.py": {
+      "bytes": 14489,
+      "sha256": "e346951922cfe71366f6c31b474c77955a51715eb3e043ff053c169dc8b0adbd"
+    },
+    "source/sparse_frame_v1.py": {
+      "bytes": 6487,
+      "sha256": "00ca9a90012c5bef798280664e9f4a4583a0c638d196de005c0998bee4a9c9fe"
+    },
+    "source/study_v1.py": {
+      "bytes": 12409,
+      "sha256": "7a617ee77bc551b96cd9583bc0d3b08085e8ad02ec06d586cd694bb39fd68a62"
+    },
+    "source/tactic_cohort_v1.py": {
+      "bytes": 2880,
+      "sha256": "d47e9740f173187fa4b6fcd2d8d74812c3536ed55f2e4f2a51d5757425a7b3a8"
+    },
+    "source/tactic_policy_audit_v1.py": {
+      "bytes": 1870,
+      "sha256": "c6d37e8ceebebc098fe6fef70e172dad180c81f709aeb3db05341a2fde0404b9"
+    },
+    "source/tactic_policy_v1.py": {
+      "bytes": 5575,
+      "sha256": "40b5041cc74528b60846214c4c89c89c839abd4f9126525e121c68a1db095f8d"
+    },
+    "source/tiles_v1.py": {
+      "bytes": 6290,
+      "sha256": "54cb133bb7139d4b88013ffd45089d8c9a0145e0a770b2b87296f24d9a3bb38a"
+    }
+  },
+  "assets": {
+    "wang-fragment-receptors-20261106-v1-evidence.zip": {
+      "bytes": 9920296,
+      "sha256": "a04f5351a4010bb5c7581a556a5f601ce7dce9292e3ccc3851c0cb9cbc7e1274"
+    },
+    "wang-fragment-receptors-20261106-v1-results.json": {
+      "bytes": 2622778,
+      "sha256": "f2be43d94e8478d005a59a43f4d3d2bc1fbd42bd2ad4983da104b1dcc0e3ca00"
+    },
+    "wang-fragment-receptors-20261106-v1.html": {
+      "bytes": 1102475,
+      "sha256": "80a98ff3ac2dbeadecc859163f0186d439c3016ee9083d9d04ce6aa298e06d3d"
+    }
+  },
+  "schema": "GCTS-WANG-RECEPTOR-TACTICS-MANIFEST-v1"
+}
