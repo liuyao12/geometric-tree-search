@@ -1,0 +1,139 @@
+{
+  "archive_entries": {
+    "data/audit-v1.json": {
+      "bytes": 1413,
+      "sha256": "28aa4b75605efa1a4dea8b8cb7de1647effa05f075feff8ee006693bb705b42d"
+    },
+    "data/audit.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/audit.stdout.log": {
+      "bytes": 1360,
+      "sha256": "2b2832c39b1245f63c87f68ddbcccbc6a477df5500e0f3643e35f355680ce262"
+    },
+    "data/results-v1.json": {
+      "bytes": 200634,
+      "sha256": "8936e28c13bc2e5ea319b051c43d4c1fb9f39665c4b97f947542c3df8d07db0f"
+    },
+    "data/run.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/run.stdout.log": {
+      "bytes": 1277,
+      "sha256": "dac4add58655033cf89ad1dfbfa951ac091212dd4e66c0b384fc8333f850e432"
+    },
+    "data/timing-v1.json": {
+      "bytes": 862,
+      "sha256": "b2e4878459142a06c73127c72c43ce0701cace3b391836e164523bd6073f2d46"
+    },
+    "input/cases-v1.json": {
+      "bytes": 7378,
+      "sha256": "e63761f458fda28680c5b5d15e86335f257757ad5463007bee0061a489174fdf"
+    },
+    "input/standard-proof-v1.json": {
+      "bytes": 2917,
+      "sha256": "c24f85fe684748886b6026a5acc1d58695f0ed5d1083314d1a8127dd8c1c2c57"
+    },
+    "publication/REPLAY.md": {
+      "bytes": 1398,
+      "sha256": "7e6e30dd995926633c2cf04f5f70def7421b8bd00a593ee8f360ab51eb8ba296"
+    },
+    "publication/browser-v1.json": {
+      "bytes": 151,
+      "sha256": "c76e999150abd8ea30754b043d4a4b94b276b1f20b27c2069a743ca4f1484b95"
+    },
+    "publication/check_v1.cjs": {
+      "bytes": 2998,
+      "sha256": "c25e470f6918da250a2d6c83b819c3d574ad281152733dc5e50eb1942955c160"
+    },
+    "publication/notebook-v1.html": {
+      "bytes": 11662,
+      "sha256": "4f50f9128ccd24fa46b32fe8d9e4ea3b7be062adc2834757a89a2ac9fff35889"
+    },
+    "publication/package_v1.py": {
+      "bytes": 2769,
+      "sha256": "02cd28ede604dcb50db1af4b2a4c952210d98220e0e4cb74f8863dd4ed387cf5"
+    },
+    "publication/render_v1.py": {
+      "bytes": 9925,
+      "sha256": "d416a6a89382e1f20b9f7ade566fc3ee022c0b0e055fadf21baf4a6744591641"
+    },
+    "publication/replay-v1.json": {
+      "bytes": 487,
+      "sha256": "928aa7c5c7e4c973c3a003447d01bedf784272568a311afaeab3fd70af2c0fe8"
+    },
+    "report/penrose-hierarchical-windows-20261106-v1-results.json": {
+      "bytes": 1261252,
+      "sha256": "fb77dc56724531238fa1b5bcb7809b46cb2f815b31b30edd040c0d1d3da54711"
+    },
+    "report/penrose-hierarchical-windows-20261106-v1.html": {
+      "bytes": 214401,
+      "sha256": "fe7ceef711f6a9ab09be1c371fa825e15c731a399e526545865549707909a219"
+    },
+    "source/check_v1.py": {
+      "bytes": 4131,
+      "sha256": "edd28b8b5b611059b47d8b2b55964c27a1a5b268dabdaf06c2f4f7b340eaf76c"
+    },
+    "source/clipping_v1.py": {
+      "bytes": 5276,
+      "sha256": "a649384ab8e810d88d28e79906346946b869292c0de2bf81d07469778fc59281"
+    },
+    "source/cluster_v1.py": {
+      "bytes": 15717,
+      "sha256": "a2eec032406feaf45f7c5ca66b235727db26e414996337981f6b0ff865859b85"
+    },
+    "source/geometry_v1.py": {
+      "bytes": 10392,
+      "sha256": "9869ab1c6a2fb3928366a8c50e114ff4c4ba14960cb7f28cb8cc5541b8c3936e"
+    },
+    "source/model_v1.py": {
+      "bytes": 4432,
+      "sha256": "df86798cfa969b57bdca56f4928b3fd12fe908a275ec5e47031546e74bef43f4"
+    },
+    "source/standard_v1.py": {
+      "bytes": 7429,
+      "sha256": "2fcf8a2f85b4d29a3d6a14976acdea3273cbec97f291c611dd490571e43d1689"
+    },
+    "source/triangle_geometry_v1.py": {
+      "bytes": 9600,
+      "sha256": "4715c6f612b196d257c858d695d604d800ce832cc5f8a1bfee8ae58e400a79ed"
+    },
+    "source/window_audit_v1.py": {
+      "bytes": 11762,
+      "sha256": "83d4da9bbe8f4f41fa9cf3a25880c6df1a89b42ccea106b2ed4de5ddb9d99f55"
+    },
+    "source/window_cases_v1.py": {
+      "bytes": 2388,
+      "sha256": "1d3ff5e513dda8e22c8b72dfa6a6fc3e80b581d254a4ef36442c7cd756d541bb"
+    },
+    "source/window_experiment_v1.py": {
+      "bytes": 3027,
+      "sha256": "c8494172ff8c5c6d258a02fa7170f1836689dc6dc078b692ba2d472f313bc551"
+    },
+    "source/window_model_v1.py": {
+      "bytes": 8805,
+      "sha256": "0e5cc87abc6cd7124607ae316e5f16eb06bf33d3a515e5a5966e7db9f3128197"
+    },
+    "source/window_timing_v1.py": {
+      "bytes": 1202,
+      "sha256": "9fe9b941034ee512f009a941f70750e465082549cc45db4761f6136e3ea2fa36"
+    }
+  },
+  "assets": {
+    "penrose-hierarchical-windows-20261106-v1-evidence.zip": {
+      "bytes": 151769,
+      "sha256": "842b9c904b1d750d9fa99bd85de6b2f33b842d7a80469b23c13f020f987de55c"
+    },
+    "penrose-hierarchical-windows-20261106-v1-results.json": {
+      "bytes": 1261252,
+      "sha256": "fb77dc56724531238fa1b5bcb7809b46cb2f815b31b30edd040c0d1d3da54711"
+    },
+    "penrose-hierarchical-windows-20261106-v1.html": {
+      "bytes": 214401,
+      "sha256": "fe7ceef711f6a9ab09be1c371fa825e15c731a399e526545865549707909a219"
+    }
+  },
+  "schema": "GCTS-PENROSE-HIERARCHICAL-WINDOWS-MANIFEST-v1"
+}
