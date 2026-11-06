@@ -1,0 +1,183 @@
+{
+  "archive_entries": {
+    "data/audit.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/audit.stdout.log": {
+      "bytes": 80,
+      "sha256": "628e60e09c3971e7f638dbf17f503e5a1b0e8a4eafeb00f2d699097da949b73a"
+    },
+    "data/grammar.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/grammar.stdout.log": {
+      "bytes": 275,
+      "sha256": "ec54a5835b163ef305bc9725a2229a7846b7c4fefe7f909dd6a64583ed390511"
+    },
+    "data/strip-audit-v1.json": {
+      "bytes": 9351,
+      "sha256": "afe1bbd6b2a9e408c354c245823e64c3282b1a9b95474afd48604a6ae67e6b7c"
+    },
+    "data/strip-receiver-one-v1.json": {
+      "bytes": 165428,
+      "sha256": "0c8ebe58a686639cfc22946107abbb2783da959aaa9676521fd0da073362efa3"
+    },
+    "data/strip-receiver-two-v1.json": {
+      "bytes": 1684046,
+      "sha256": "2fe735645781dc6a9227cee15bc7deae4d89b00e278977c50a92179b2e64e6f7"
+    },
+    "data/strip-rules-v1.json": {
+      "bytes": 117181,
+      "sha256": "893e830703ae6585bdfbe97cac10340324659ed0d2697e04d4d19137783cc714"
+    },
+    "input/exact-point-model-v1.json": {
+      "bytes": 5154,
+      "sha256": "1095add09e7ace5846706dc2559ff3482459a6a854290d77d22e731562a230de"
+    },
+    "input/observed-second-layer-v1.json": {
+      "bytes": 166402,
+      "sha256": "2d48c6b06710ab00a08a8e95dc0e5c3ddcee81bb1fd37c827f5b756b35b5ef34"
+    },
+    "input/recovered-production-v1.json": {
+      "bytes": 8620,
+      "sha256": "bdca684ea78a331222e7f016e449781cf7ffae8df5722a4b1d9e2961374fb2dd"
+    },
+    "input/reference-patches-v1.json": {
+      "bytes": 135318,
+      "sha256": "764625b91598a2ffbb2d58a445256c52b0bd43fe4f2e510d441dd79796c92594"
+    },
+    "input/reference-rule-v1.json": {
+      "bytes": 3197,
+      "sha256": "cc54d151243dc0dedf01a9762cedd62939cd36bdb5af06a2ed6686f39525ba20"
+    },
+    "publication/REPLAY.md": {
+      "bytes": 1454,
+      "sha256": "eb911a85c47f6b20e895105ea032fdc13e801dca6953936477fa3e028c4da8fe"
+    },
+    "publication/branch-view-v1.png": {
+      "bytes": 36217,
+      "sha256": "6db6f1b6ace416e4fefe65ad64538ab1ee5eb5ad79f5a2dc1a692f0944ab883c"
+    },
+    "publication/browser-v1.json": {
+      "bytes": 183,
+      "sha256": "84711ce8d86258f6f9d4bc477af3ab78d91caf7d2f88860605b328f72e5fa0f5"
+    },
+    "publication/check_v1.cjs": {
+      "bytes": 2435,
+      "sha256": "62934820bf365723f8a0f42a11632c2fb779a7341183104c58ccb2ea5e2e580b"
+    },
+    "publication/notebook-v1.html": {
+      "bytes": 10111,
+      "sha256": "6ce60287d78234a67d9dafac512d8d65c4767cfd986760de892cfd9cd0d77369"
+    },
+    "publication/package_v1.py": {
+      "bytes": 2813,
+      "sha256": "250f9e65f78a76c64d1e56b0901a2f7992ba86a0556a596a739417b92b1051ca"
+    },
+    "publication/render_v1.py": {
+      "bytes": 5951,
+      "sha256": "ec962b89c6f310072b01048760186ee6e57302762f0cee32a4b503082b4eb9be"
+    },
+    "publication/replay-v1.json": {
+      "bytes": 910,
+      "sha256": "14e4cdb94af2f09d993e607487fd9c47a0a2d2f46da4179f0dd6052915a376a3"
+    },
+    "publication/replay_v1.py": {
+      "bytes": 1992,
+      "sha256": "e23da09bbfec30996f54a6386082bdef09e5d6bcd670ca19d94658f7ce7aa690"
+    },
+    "report/turtle-strip-grammar-20261106-v1-results.json": {
+      "bytes": 87519,
+      "sha256": "566aba2f7716422865b3d34c1571b2679f6f2de5396e999d5b291340057be751"
+    },
+    "report/turtle-strip-grammar-20261106-v1.html": {
+      "bytes": 259821,
+      "sha256": "c0c67ad2216cd3423e461f7945ef13d1cbd755483ec218ea64e95178149459d0"
+    },
+    "source/assemble_v1.py": {
+      "bytes": 5378,
+      "sha256": "d1120c67801723e42bb8aca10a333e54f3348a8a2a5d4aaade6fe3333bceb4c7"
+    },
+    "source/capped_orbits_v1.py": {
+      "bytes": 4958,
+      "sha256": "b2a61fd9b539dcb75f4fde748339850c998a2cfa0b59d4b1372f115cec5a6379"
+    },
+    "source/cluster_v1.py": {
+      "bytes": 15717,
+      "sha256": "a2eec032406feaf45f7c5ca66b235727db26e414996337981f6b0ff865859b85"
+    },
+    "source/collar_audit_v1.py": {
+      "bytes": 15050,
+      "sha256": "441bbfce0bbe5632b6b26a467c677be775ccae748d3358a7334752f44ec97835"
+    },
+    "source/collar_experiment_v1.py": {
+      "bytes": 4931,
+      "sha256": "1b278165312553bc1daff1ca9067cd1595cec9c3ff03e0b84e9b5685d1085b59"
+    },
+    "source/collars_v1.py": {
+      "bytes": 9009,
+      "sha256": "3ffbbb443ad4ca62bbe9a6594ef28b579fbfd13e254ec6a7bdf1b1fb0e8502bd"
+    },
+    "source/golden_geometry_v1.py": {
+      "bytes": 4899,
+      "sha256": "528407dae32299ac9982998ffd396687633fe1107d99f782ab8b74f8f5ded786"
+    },
+    "source/large_collision_v1.py": {
+      "bytes": 1186,
+      "sha256": "790b0e02395fa8fe336b37d4e21cdf638d5ec940f533737655385db0fb57db5e"
+    },
+    "source/layer_audit_v1.py": {
+      "bytes": 6953,
+      "sha256": "9127b953f735656e907511ec7fde5f4cb39e4b6238d0996431a509572f2a0efc"
+    },
+    "source/mixed_orbits_v1.py": {
+      "bytes": 6362,
+      "sha256": "42feb552dd443d36a7864e0f87679756f36c99c941fa069d1b38cf40b34bdde2"
+    },
+    "source/port_score_v1.py": {
+      "bytes": 3846,
+      "sha256": "283c9c05528799e417f903543733593a4fd7f14d8e0089c8094a4bba5b53b617"
+    },
+    "source/scaffold_v1.py": {
+      "bytes": 7216,
+      "sha256": "ce412c5ad4982ea96030255cbf081a861a239aa13c99e2565686ec254a5d8026"
+    },
+    "source/strip_fit_v1.py": {
+      "bytes": 7861,
+      "sha256": "de5644533283f3fb634534453c56c08312505ae5cc5e92df5634a5087a1e34f4"
+    },
+    "source/strip_grammar_audit_v1.py": {
+      "bytes": 9913,
+      "sha256": "e05f8e8befc45d37b216bb8607b17a242230cad17a5e6f336464a2c9f5aeb26a"
+    },
+    "source/strip_grammar_v1.py": {
+      "bytes": 12824,
+      "sha256": "0bf8558064d0c57df96124af8e9d09695c3e39afc8437c158c1e5a478d63c5e6"
+    },
+    "source/triangle_geometry_v1.py": {
+      "bytes": 9600,
+      "sha256": "4715c6f612b196d257c858d695d604d800ce832cc5f8a1bfee8ae58e400a79ed"
+    },
+    "source/word_promotion_v1.py": {
+      "bytes": 6337,
+      "sha256": "2e75a86404a3fc6eac932f9b76fda8598822ea8388eb3f8eca591b723f31e590"
+    }
+  },
+  "assets": {
+    "turtle-strip-grammar-20261106-v1-evidence.zip": {
+      "bytes": 693852,
+      "sha256": "5eb9ce1bbf28ffff9c2253756a95aa603151ed02b2462abc97a721695d5358d5"
+    },
+    "turtle-strip-grammar-20261106-v1-results.json": {
+      "bytes": 87519,
+      "sha256": "566aba2f7716422865b3d34c1571b2679f6f2de5396e999d5b291340057be751"
+    },
+    "turtle-strip-grammar-20261106-v1.html": {
+      "bytes": 259821,
+      "sha256": "c0c67ad2216cd3423e461f7945ef13d1cbd755483ec218ea64e95178149459d0"
+    }
+  },
+  "schema": "TURTLE-STRIP-GRAMMAR-MANIFEST-v1"
+}
