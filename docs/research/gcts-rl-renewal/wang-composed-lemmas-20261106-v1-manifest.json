@@ -1,0 +1,227 @@
+{
+  "archive_entries": {
+    "data/audit-v1.json": {
+      "bytes": 475,
+      "sha256": "5a06eef745f07ffebd1de0d140b92118849f537a6314e6ac99e912984f679675"
+    },
+    "data/audit.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/audit.stdout.log": {
+      "bytes": 529,
+      "sha256": "3a6bd889c49258784a9be96ed78495bab995984298ddc5ff7464a2acdbf4338d"
+    },
+    "data/discharge-donor-frame-v1.json.gz": {
+      "bytes": 58483,
+      "sha256": "48c9b6cdd91743f8e2b3781b3b80925506bd9921f045f6e37c78b7227a0799e0"
+    },
+    "data/hilbert-incidence-transport-2-composed-frame-v1.json.gz": {
+      "bytes": 1832971,
+      "sha256": "e54fb4ced44174dfc1156b079ca6f464eacfe735c6921c45b3af3903c2da2ebb"
+    },
+    "data/hilbert-incidence-transport-2-frame-v1.json.gz": {
+      "bytes": 1832707,
+      "sha256": "2716af9433f650e87409c647cec0c0a57c785fcac8b9468751dab15f53f8cb5d"
+    },
+    "data/hilbert-incidence-transport-4-composed-frame-v1.json.gz": {
+      "bytes": 3495330,
+      "sha256": "b903104db912deef53dc31f5b86b0f6966a60faf2fa7c4a4de17c62d3008588a"
+    },
+    "data/hilbert-incidence-transport-4-frame-v1.json.gz": {
+      "bytes": 3494751,
+      "sha256": "fbaf27e9b26f5d328391abf068878a9035f8f179b173e12bf22e2864efaba9e5"
+    },
+    "data/hybrid-traces-v1.json.gz": {
+      "bytes": 273010,
+      "sha256": "8ee3078fade6a182288f1b19c671e74c18bc24af4feb8b7a8363da2b1f2e4d2c"
+    },
+    "data/hybrid-v1.json": {
+      "bytes": 34363,
+      "sha256": "8f9860411b9085351608e11e4a5f2386047d4bbbfbaf5ad71292129f44ea5929"
+    },
+    "data/hybrid.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/hybrid.stdout.log": {
+      "bytes": 989,
+      "sha256": "4e0248b54098e0e4374732ec6bcb9ab1062724ea6772c53c214819daa9492d3b"
+    },
+    "data/implication-donor-frame-v1.json.gz": {
+      "bytes": 62321,
+      "sha256": "8b7aafb880d3ad87f74858ad26d2bcf21b5b217870f99fff591fa6aa0375661f"
+    },
+    "data/local-traces-v1.json.gz": {
+      "bytes": 2193401,
+      "sha256": "1cd5f053e93fa036022d0919089ea80a10258ef69d70a8c45c1cb68d398cd3c3"
+    },
+    "data/peano-injectivity-2-frame-v1.json.gz": {
+      "bytes": 86972,
+      "sha256": "f02c62b1061fff9da99ecf4bb6c180a486c272bd151fc4c6b9f0a687c6a97d95"
+    },
+    "data/peano-injectivity-4-frame-v1.json.gz": {
+      "bytes": 207748,
+      "sha256": "6b049d743a32d0f2de16ec8eefb6c26942e73ec3214dea87c03266cfee91a653"
+    },
+    "data/peano-injectivity-8-frame-v1.json.gz": {
+      "bytes": 679789,
+      "sha256": "c553312e2b242b3d3a7f5ef371b57bae3149d5db92e06cad6532c035855b2f3e"
+    },
+    "data/results-v1.json": {
+      "bytes": 115868,
+      "sha256": "8ad6e98daa7f49e147be22c9574dbf7d7e397a8001d000081d861d9af791649c"
+    },
+    "data/run.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/run.stdout.log": {
+      "bytes": 6777,
+      "sha256": "396ddd87a692796ca38d8c7f556b9dc78babb11890d19a33b6e74392b40858e9"
+    },
+    "input/cases-v1.json": {
+      "bytes": 5070,
+      "sha256": "d041dae82454345916b31d34be4715086edc750e4606604bc5d434ae47d6f1cb"
+    },
+    "publication/REPLAY.md": {
+      "bytes": 1147,
+      "sha256": "cc73e8b31e841d18c4c46f8c245ce021076337d4a7b60d961ee61adfdeadee86"
+    },
+    "publication/browser-v1.json": {
+      "bytes": 150,
+      "sha256": "11d1e82245d50d6ee01e2c010b46e9a19d0026eea3616acfebdd76160f937f16"
+    },
+    "publication/check_v1.cjs": {
+      "bytes": 2709,
+      "sha256": "035a83ad908e619a776890ac1cce987bdca4e6e9e7743e7009644c390529b7dc"
+    },
+    "publication/notebook-v1.html": {
+      "bytes": 11466,
+      "sha256": "1099b4598807cb7aa057b202215b3886d059c31567fbdb0c28ac11d218e87545"
+    },
+    "publication/package_v1.py": {
+      "bytes": 2734,
+      "sha256": "17784dd8496b003cccb08861eda0c64554ec148200d0271fc3c2434800931417"
+    },
+    "publication/proof_views_v1.py": {
+      "bytes": 9099,
+      "sha256": "c8c7708781c1f07586f8b9fecd2c5d7e801f379876b70163a86b2104e1c055f2"
+    },
+    "publication/render_v1.py": {
+      "bytes": 3825,
+      "sha256": "cf89ce30becfa85dcc208f9e1fffde0200a8aabbe890acd36c3bd3e6db471a3b"
+    },
+    "publication/replay-v1.json": {
+      "bytes": 2460,
+      "sha256": "44e02a55e7a70693a2d4deb2c742a83d6091bea1e0010d34b2f86896d1e1cb14"
+    },
+    "report/wang-composed-lemmas-20261106-v1-results.json": {
+      "bytes": 946231,
+      "sha256": "e64b801aa50e1c1a1d3c11a165657e3e198a9138b3753de27a9769158bf9d297"
+    },
+    "report/wang-composed-lemmas-20261106-v1.html": {
+      "bytes": 431087,
+      "sha256": "cc43615be7f0de67efb5a3e25f930a3c3584b9f9299a8fb4651dd613cff16042"
+    },
+    "source/boundary_kernel_v1.py": {
+      "bytes": 8190,
+      "sha256": "7bc2bcf58ce1d2de90db1000a6c82c51fb6339631199c00c55872f6bdaf04298"
+    },
+    "source/decode_v1.py": {
+      "bytes": 3859,
+      "sha256": "c94f8e3338b769f444335091de24e94552d5f454b9e512d8ff09c28f1def24e4"
+    },
+    "source/deterministic_tm_wang_v1.py": {
+      "bytes": 21321,
+      "sha256": "54ae552084743639181f416f5ca02d9acf25c031c61c60c4550d34ac7883d7dd"
+    },
+    "source/fan_v1.py": {
+      "bytes": 2100,
+      "sha256": "4c79f64897635d973d4294aa33a2c829871512898fbd22d60669b302a5a804df"
+    },
+    "source/fixed_palette_v1.py": {
+      "bytes": 8368,
+      "sha256": "8d4c09e1977302fd89454f1ab6d8b752d475c0a1a318ddcedac3f434518635fc"
+    },
+    "source/front_v1.py": {
+      "bytes": 8895,
+      "sha256": "b8e354933c9bd76c8f5ec687694bc154062da941123b890dd431ce88071871f8"
+    },
+    "source/herbrand_v1.py": {
+      "bytes": 10499,
+      "sha256": "ab1698fa88166e33afa446d9f8ca18da25d257c4d07c76da0e261ecedd36e8db"
+    },
+    "source/in_grid_v1.py": {
+      "bytes": 7880,
+      "sha256": "2c2e794b894a41998a3ded276cae78ffaa3012ebb0bdead1cb104293ea246157"
+    },
+    "source/lemma_audit_v1.py": {
+      "bytes": 8976,
+      "sha256": "dda9ac3f123b26ebf32a845fc609eb3223a3998c3ce0bffc3b34976fd56bff16"
+    },
+    "source/lemma_cases_v1.py": {
+      "bytes": 7424,
+      "sha256": "63fb0c2a5bbdc513f5e3fc95c6602af89af18964ae27e13a0c4edc02c0d54e81"
+    },
+    "source/lemma_experiment_v1.py": {
+      "bytes": 7548,
+      "sha256": "3472869c678b4b22ab9048680c82af9804b4b4a555172176c53f43a18ebd0acf"
+    },
+    "source/lemma_hybrid_v1.py": {
+      "bytes": 4172,
+      "sha256": "33dfd0ea1b72a18d9c030861c3d9d699ebfe085cb3cd16a04a68766807841e90"
+    },
+    "source/lemma_search_v1.py": {
+      "bytes": 8618,
+      "sha256": "f78dac750be371e2364889166bf2910da3ad6d5a2fbcd15451aa262d952a9f77"
+    },
+    "source/marker_tm_v1.py": {
+      "bytes": 7658,
+      "sha256": "4e6162f52098ba256d4f64c2d32074d3f3a8914ba341b56f5805226c12d32122"
+    },
+    "source/native_v1.py": {
+      "bytes": 6225,
+      "sha256": "b9d89d9b4ca28a816c00d472b4abf68e6df027f674a2800674fd1d35c7497305"
+    },
+    "source/recipe_v1.py": {
+      "bytes": 3706,
+      "sha256": "f61846f098e35057d24051c6ca836b15a6956754c174e1f4a23640542d8b3b58"
+    },
+    "source/resolution_v1.py": {
+      "bytes": 14299,
+      "sha256": "8aa3e79d0fecf09a47ef7e7a9c2670f57747b571f30c0ed9cf4a65fba93e9536"
+    },
+    "source/ribbon_checker_v3.py": {
+      "bytes": 14489,
+      "sha256": "e346951922cfe71366f6c31b474c77955a51715eb3e043ff053c169dc8b0adbd"
+    },
+    "source/sparse_frame_v1.py": {
+      "bytes": 6487,
+      "sha256": "00ca9a90012c5bef798280664e9f4a4583a0c638d196de005c0998bee4a9c9fe"
+    },
+    "source/study_v1.py": {
+      "bytes": 12409,
+      "sha256": "7a617ee77bc551b96cd9583bc0d3b08085e8ad02ec06d586cd694bb39fd68a62"
+    },
+    "source/tiles_v1.py": {
+      "bytes": 6290,
+      "sha256": "54cb133bb7139d4b88013ffd45089d8c9a0145e0a770b2b87296f24d9a3bb38a"
+    }
+  },
+  "assets": {
+    "wang-composed-lemmas-20261106-v1-evidence.zip": {
+      "bytes": 12045540,
+      "sha256": "4fd280fe94afe2aad9def7ddf0e45d22196f0837c1c71bfa4b75a2859fd219ca"
+    },
+    "wang-composed-lemmas-20261106-v1-results.json": {
+      "bytes": 946231,
+      "sha256": "e64b801aa50e1c1a1d3c11a165657e3e198a9138b3753de27a9769158bf9d297"
+    },
+    "wang-composed-lemmas-20261106-v1.html": {
+      "bytes": 431087,
+      "sha256": "cc43615be7f0de67efb5a3e25f930a3c3584b9f9299a8fb4651dd613cff16042"
+    }
+  },
+  "schema": "GCTS-COMPOSED-LEMMAS-MANIFEST-v1"
+}
