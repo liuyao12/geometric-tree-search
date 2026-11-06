@@ -1,0 +1,151 @@
+{
+  "archive_entries": {
+    "data/audit-v1.json": {
+      "bytes": 353,
+      "sha256": "f0dd9aa5dc912f14c426bca8bb030d3bb6b99004fd6184d5ca4edcdceece7843"
+    },
+    "data/audit.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/audit.stdout.log": {
+      "bytes": 383,
+      "sha256": "9a95189e1360b9b6122d51535359688bd1090388a04c49f7cc96be0718ebcb3b"
+    },
+    "data/cases.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/cases.stdout.log": {
+      "bytes": 227,
+      "sha256": "92ea169b4a68b8ec9e55ab74f2870ad9723059d365adf6d765414e0dafee5558"
+    },
+    "data/results-v1.json": {
+      "bytes": 365697,
+      "sha256": "d7bc54eb92090227777f9008516d13facfd1852542e23fa53736dc995b75675e"
+    },
+    "data/run.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/run.stdout.log": {
+      "bytes": 13604,
+      "sha256": "11996832ee94ad935b91fe4c80def5a85e9a3f689d1254909fc6276ad45341eb"
+    },
+    "data/timing-v1.json": {
+      "bytes": 1373,
+      "sha256": "bd6badd9f94d4cad3713f3bd9e7b8cc6dab8b4585b5f2609bac32f03f8e03589"
+    },
+    "data/timing.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/timing.stdout.log": {
+      "bytes": 1493,
+      "sha256": "a77ed5a7df756b75ec355261431b98d708ea310efcb632ae36fdcea3811b9c65"
+    },
+    "input/cases-v1.json": {
+      "bytes": 6814,
+      "sha256": "e06e4fa3955bdc54d9fb0e3f0f2b95f2ca3b5057f1f560c914206cb39321ae28"
+    },
+    "input/exact-point-model-v1.json": {
+      "bytes": 10642,
+      "sha256": "775ce3ac20489ef64d8d8266238edde36f87919461b68ccbd232763dd2da3eb0"
+    },
+    "input/growth-v1.json": {
+      "bytes": 1123194,
+      "sha256": "acd6b9575663228bbcffbace4d8de4fcd0d84ecebee111dbebbc04e33734f436"
+    },
+    "publication/REPLAY.md": {
+      "bytes": 1281,
+      "sha256": "b6e648eba0c677a77ba14901179c72321caad3aeb10aa72bc397f1493654c2da"
+    },
+    "publication/browser-v1.json": {
+      "bytes": 179,
+      "sha256": "b53b92446ceefca0a73d90d1eaf2a97907f2dfee6837ad15ede0197c6f897f74"
+    },
+    "publication/check_v1.cjs": {
+      "bytes": 2710,
+      "sha256": "b5103d1f76ad4a0cc6b6efbbb8f0cee169d5afc093cf8e73f74b13e025ef045d"
+    },
+    "publication/notebook-v1.html": {
+      "bytes": 9644,
+      "sha256": "e8d380000c2186bcd9cc9c1adc040ad583b41ef8af750d3a03f49971f4733245"
+    },
+    "publication/package_v1.py": {
+      "bytes": 2669,
+      "sha256": "c0c72583435baf971d8d89f771d3f1039eeeb938a8d84e4618c86978f8328dca"
+    },
+    "publication/render_v1.py": {
+      "bytes": 7989,
+      "sha256": "7a766df0789a8e151f549549c0cd130fd41f1e202e831a0e2971c666b3c8865e"
+    },
+    "publication/replay-v1.json": {
+      "bytes": 482,
+      "sha256": "283ae1bc272de6c0e69d80971431cc12161461d7985b0570436231a3a37a0b46"
+    },
+    "report/moving-boundary-tiling-20261106-v1-results.json": {
+      "bytes": 3086063,
+      "sha256": "bce39dcb215fe9c7c9eac8d47535067a5a498c5d0c3ba8c1fa4896805493f39b"
+    },
+    "report/moving-boundary-tiling-20261106-v1.html": {
+      "bytes": 77524,
+      "sha256": "aca6d741840f60906388892404f7fd9c79506a9996db182b2b1e8c87bb3194c2"
+    },
+    "source/audit_v1.py": {
+      "bytes": 5616,
+      "sha256": "3a18034f9039394f88d29ffdbd20d5261cf57759b3b4ed4a24d531a933a9b642"
+    },
+    "source/boundary_search_v1.py": {
+      "bytes": 10628,
+      "sha256": "d489fae85a0a10a50f43308cb916e3e6e444dd4121138d2784c2d4b07f1b6c64"
+    },
+    "source/cases_v1.py": {
+      "bytes": 8451,
+      "sha256": "70ff43195c11a970f45d6acc319bddb7b90d4b394afced7ea4f98ba294b80af3"
+    },
+    "source/check_v1.py": {
+      "bytes": 4131,
+      "sha256": "edd28b8b5b611059b47d8b2b55964c27a1a5b268dabdaf06c2f4f7b340eaf76c"
+    },
+    "source/cluster_v1.py": {
+      "bytes": 15717,
+      "sha256": "a2eec032406feaf45f7c5ca66b235727db26e414996337981f6b0ff865859b85"
+    },
+    "source/experiment_v1.py": {
+      "bytes": 7683,
+      "sha256": "573af1e1126a0c4d7fdd3cbb2ac3f1450e505829251626dd7b4c30311c69fbcf"
+    },
+    "source/geometry_v1.py": {
+      "bytes": 10392,
+      "sha256": "9869ab1c6a2fb3928366a8c50e114ff4c4ba14960cb7f28cb8cc5541b8c3936e"
+    },
+    "source/model_v1.py": {
+      "bytes": 4432,
+      "sha256": "df86798cfa969b57bdca56f4928b3fd12fe908a275ec5e47031546e74bef43f4"
+    },
+    "source/timing_v1.py": {
+      "bytes": 2490,
+      "sha256": "951977f489fa7de3e3136f9323e8edcf8642a544e0be167ad99ce2a5197d58db"
+    },
+    "source/triangle_geometry_v1.py": {
+      "bytes": 9600,
+      "sha256": "4715c6f612b196d257c858d695d604d800ce832cc5f8a1bfee8ae58e400a79ed"
+    }
+  },
+  "assets": {
+    "moving-boundary-tiling-20261106-v1-evidence.zip": {
+      "bytes": 427464,
+      "sha256": "0d4890b04a4a6a794ca97df9093e224992526f7d981a4c695b66f4c26cb08817"
+    },
+    "moving-boundary-tiling-20261106-v1-results.json": {
+      "bytes": 3086063,
+      "sha256": "bce39dcb215fe9c7c9eac8d47535067a5a498c5d0c3ba8c1fa4896805493f39b"
+    },
+    "moving-boundary-tiling-20261106-v1.html": {
+      "bytes": 77524,
+      "sha256": "aca6d741840f60906388892404f7fd9c79506a9996db182b2b1e8c87bb3194c2"
+    }
+  },
+  "schema": "GCTS-MOVING-BOUNDARY-MANIFEST-v1"
+}
