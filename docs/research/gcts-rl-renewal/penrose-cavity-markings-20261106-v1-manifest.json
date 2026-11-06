@@ -1,0 +1,171 @@
+{
+  "archive_entries": {
+    "data/audit.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/audit.stdout.log": {
+      "bytes": 170,
+      "sha256": "3c6f4c827d04b7e56e9d9421ea13c6d8bf57f7ce11cf8379d1bf0b3468a1e010"
+    },
+    "data/cavity-audit-v1.json": {
+      "bytes": 208,
+      "sha256": "42c39ac1fce30c98d814b7d1c59289701135eca7597ff474c989bea14c78d5b8"
+    },
+    "data/cavity-pilot-v1.json": {
+      "bytes": 5407,
+      "sha256": "3cdce17242f76db05256e45c4f0327aee1ac5ced7f89eda094b40b7a81c83620"
+    },
+    "data/cavity-search-v1.json": {
+      "bytes": 58637,
+      "sha256": "a644ca7f5d33bb9cccd79ae280f1a4a6b12686c34fc5fe6fb4861f271a1388b1"
+    },
+    "data/cavity-timing-v1.json": {
+      "bytes": 15732,
+      "sha256": "5d513aeaf52fa0696e1c9ee4c0dcf8e87021252d7801d17d68b03b1742be0fbb"
+    },
+    "data/search.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/search.stdout.log": {
+      "bytes": 2950,
+      "sha256": "3a893778d44744938dc7f996770e82ca8ba180c63d7b6595cad30f19ee00943c"
+    },
+    "data/timing.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/timing.stdout.log": {
+      "bytes": 439,
+      "sha256": "6b94288fb1e6d459f6740949c5151934e6a6f108f35ca23f6010c47b06e5a050"
+    },
+    "input/cavity-cases-v1.json": {
+      "bytes": 25549,
+      "sha256": "42e715edc04a2d42fc75c282bc6f9d364a9e8203375cc078d5c72561b4a82085"
+    },
+    "publication/REPLAY.md": {
+      "bytes": 1142,
+      "sha256": "41beace341f365444a95a905ebb7ec876dc86179e901f85ce7d0d01c2ea4ba4f"
+    },
+    "publication/browser-v1.json": {
+      "bytes": 177,
+      "sha256": "52939a3487ded0b2ea4b5808fcc10596a8d207f524afc80f83921ffb2ac3e22c"
+    },
+    "publication/cavity-view-v1.png": {
+      "bytes": 65413,
+      "sha256": "5dfb75a247df64cedbc7a60fc8b7e23e0dd8e4b8df529620fcbe47d911b0cdad"
+    },
+    "publication/check_v1.cjs": {
+      "bytes": 2360,
+      "sha256": "9d6921cd53a8e65a27b75071bf7fb8db54b4e6c2d839f66694bbb8bb17e4867c"
+    },
+    "publication/notebook-v1.html": {
+      "bytes": 8885,
+      "sha256": "679fad662bcbddcac64520415dcd3a19d56d98ecafe564bec671470836057ded"
+    },
+    "publication/package_v1.py": {
+      "bytes": 2516,
+      "sha256": "5cdbb275c01f07748a4a7115e2669b0797c345f7e4ab3c9aa7152679a43822bd"
+    },
+    "publication/render_v1.py": {
+      "bytes": 6243,
+      "sha256": "7b829a60e152bec85b3ba7779fdfa895f1210342021795363cd9ad2090030dc1"
+    },
+    "publication/replay-v1.json": {
+      "bytes": 1168,
+      "sha256": "0f0521baa7ead6e182b9bdd2c3c1564b3c932a548544b8eb356b60f157a62268"
+    },
+    "publication/replay_v1.py": {
+      "bytes": 2068,
+      "sha256": "b4522f755b615b8ea361400d4a68d219d14f1564c865c2affed62200abc341a4"
+    },
+    "report/penrose-cavity-markings-20261106-v1-results.json": {
+      "bytes": 280024,
+      "sha256": "8115a80bd98a7d93bd0d5dd79ded9f0a3303846b3819ca2074f0dad47a9a9811"
+    },
+    "report/penrose-cavity-markings-20261106-v1.html": {
+      "bytes": 19071,
+      "sha256": "a715edc8728d6fb0e5919fa88b7347db95e9c3a019dda81315fa994cae9b48c8"
+    },
+    "source/boundary_search_v1.py": {
+      "bytes": 11523,
+      "sha256": "ea15d14561f7b39f58e7cc62d9fcc736d89377888922e6c454f0cedfa8b1b112"
+    },
+    "source/cases_v1.py": {
+      "bytes": 8451,
+      "sha256": "70ff43195c11a970f45d6acc319bddb7b90d4b394afced7ea4f98ba294b80af3"
+    },
+    "source/cavity_audit_v1.py": {
+      "bytes": 6390,
+      "sha256": "afe2d897898eed3062aa4555892646f2c20ebf203b8e439ba733a972228db217"
+    },
+    "source/cavity_cases_v1.py": {
+      "bytes": 7942,
+      "sha256": "8d2806f6fa945fb4e579789a4fd26348835c3c209b709348ca008c699c02708e"
+    },
+    "source/cavity_experiment_v1.py": {
+      "bytes": 2559,
+      "sha256": "1aaf4600b56f727516a45a9fd192f4cfbcc71f5075431eac8617abe6f0b62768"
+    },
+    "source/cavity_marks_v1.py": {
+      "bytes": 3013,
+      "sha256": "f1a8160edd193aca77ca134f9ca1c7837d5601ebecaf7ed23a07a7362f794d61"
+    },
+    "source/cavity_pilot_v1.py": {
+      "bytes": 4511,
+      "sha256": "24a238e67d695db2de8623ad8509b2accfd02fae7f6f96a2edf00aca5024705f"
+    },
+    "source/cavity_timing_v1.py": {
+      "bytes": 2371,
+      "sha256": "3407c2a1ab879b59f0e5c9edccb4a6666303f6b96ed6be774050de9ff7844a79"
+    },
+    "source/check_v1.py": {
+      "bytes": 4131,
+      "sha256": "edd28b8b5b611059b47d8b2b55964c27a1a5b268dabdaf06c2f4f7b340eaf76c"
+    },
+    "source/clipping_v1.py": {
+      "bytes": 5276,
+      "sha256": "a649384ab8e810d88d28e79906346946b869292c0de2bf81d07469778fc59281"
+    },
+    "source/cluster_v1.py": {
+      "bytes": 15717,
+      "sha256": "a2eec032406feaf45f7c5ca66b235727db26e414996337981f6b0ff865859b85"
+    },
+    "source/geometry_v1.py": {
+      "bytes": 10392,
+      "sha256": "9869ab1c6a2fb3928366a8c50e114ff4c4ba14960cb7f28cb8cc5541b8c3936e"
+    },
+    "source/model_v1.py": {
+      "bytes": 4432,
+      "sha256": "df86798cfa969b57bdca56f4928b3fd12fe908a275ec5e47031546e74bef43f4"
+    },
+    "source/open_cases_v1.py": {
+      "bytes": 6839,
+      "sha256": "9f0a3671704ced9b3aa29024db4ff6925112c263c92db9a9b8ffda3fbcfd0a12"
+    },
+    "source/open_cover_v1.py": {
+      "bytes": 8775,
+      "sha256": "e8fc28cb68f2bb3d3671a243df0844602c650cefa7f9ea0a12b3cd189f6af086"
+    },
+    "source/triangle_geometry_v1.py": {
+      "bytes": 9600,
+      "sha256": "4715c6f612b196d257c858d695d604d800ce832cc5f8a1bfee8ae58e400a79ed"
+    }
+  },
+  "assets": {
+    "penrose-cavity-markings-20261106-v1-evidence.zip": {
+      "bytes": 143953,
+      "sha256": "01a952acbb9a7052c63811dcf1b7d887b841d1ec74409986a7b7fe551ce47733"
+    },
+    "penrose-cavity-markings-20261106-v1-results.json": {
+      "bytes": 280024,
+      "sha256": "8115a80bd98a7d93bd0d5dd79ded9f0a3303846b3819ca2074f0dad47a9a9811"
+    },
+    "penrose-cavity-markings-20261106-v1.html": {
+      "bytes": 19071,
+      "sha256": "a715edc8728d6fb0e5919fa88b7347db95e9c3a019dda81315fa994cae9b48c8"
+    }
+  },
+  "schema": "PENROSE-CAVITY-MARKINGS-MANIFEST-v1"
+}
