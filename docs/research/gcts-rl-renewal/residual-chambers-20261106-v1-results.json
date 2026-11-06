@@ -1,0 +1,3951 @@
+{
+  "audit": {
+    "status": "CHECKED_CHAMBER_COVERS_AND_EXHAUSTION",
+    "systems": {
+      "penrose": {
+        "direct": {
+          "checked_options": 3036,
+          "negative_witnesses": 7,
+          "omitted_option_rejected": true,
+          "positive_witnesses": 6
+        },
+        "port_automatic": {
+          "checked_library_records": 12,
+          "checked_options": 4356,
+          "checked_port_proposals": 5,
+          "checked_split_events": 17,
+          "negative_split_uses": 11,
+          "negative_witnesses": 9,
+          "positive_witnesses": 15
+        },
+        "port_plain": {
+          "checked_library_records": 10,
+          "checked_options": 3556,
+          "checked_split_events": 13,
+          "negative_split_uses": 10,
+          "negative_witnesses": 8,
+          "positive_witnesses": 12
+        },
+        "port_receptor": {
+          "checked_library_records": 12,
+          "checked_options": 4356,
+          "checked_port_proposals": 5,
+          "checked_split_events": 17,
+          "negative_split_uses": 11,
+          "negative_witnesses": 9,
+          "positive_witnesses": 15
+        },
+        "reuse": {
+          "bad_translation_rejected": true,
+          "checked_library_records": 17,
+          "checked_options": 4228,
+          "checked_split_events": 35,
+          "negative_split_uses": 27,
+          "negative_witnesses": 17,
+          "positive_witnesses": 19
+        },
+        "split": {
+          "checked_library_records": 43,
+          "checked_options": 3412,
+          "checked_split_events": 22,
+          "negative_split_uses": 6,
+          "negative_witnesses": 23,
+          "positive_witnesses": 36
+        }
+      },
+      "turtle": {
+        "direct": {
+          "checked_options": 196,
+          "negative_witnesses": 12,
+          "omitted_option_rejected": true,
+          "positive_witnesses": 6
+        },
+        "port_automatic": {
+          "checked_library_records": 6,
+          "checked_options": 120,
+          "checked_port_proposals": 10,
+          "checked_split_events": 10,
+          "negative_split_uses": 6,
+          "negative_witnesses": 8,
+          "positive_witnesses": 12
+        },
+        "port_plain": {
+          "checked_library_records": 7,
+          "checked_options": 96,
+          "checked_split_events": 1,
+          "negative_witnesses": 8,
+          "positive_witnesses": 10
+        },
+        "port_receptor": {
+          "checked_library_records": 6,
+          "checked_options": 244,
+          "checked_port_proposals": 10,
+          "checked_split_events": 10,
+          "negative_split_uses": 6,
+          "negative_witnesses": 8,
+          "positive_witnesses": 12
+        },
+        "reuse": {
+          "bad_translation_rejected": true,
+          "checked_library_records": 6,
+          "checked_options": 112,
+          "checked_split_events": 14,
+          "negative_split_uses": 9,
+          "negative_witnesses": 14,
+          "positive_witnesses": 15
+        },
+        "split": {
+          "checked_library_records": 21,
+          "checked_options": 160,
+          "checked_split_events": 14,
+          "negative_split_uses": 9,
+          "negative_witnesses": 18,
+          "positive_witnesses": 22
+        }
+      }
+    }
+  },
+  "browser": {
+    "certificateRows": 12,
+    "controls": 26,
+    "diagrams": 2,
+    "mathTypeset": true,
+    "mobileNoOverflow": true,
+    "proposalTimingRows": 18,
+    "status": "CHECKED_CHAMBER_READER"
+  },
+  "experiment": {
+    "guided": {
+      "penrose": [
+        {
+          "arms": {
+            "direct": {
+              "counts": {
+                "nodes": 1,
+                "tile_tests": 4
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            },
+            "reuse": {
+              "counts": {
+                "chambers": 2,
+                "isolated_searches": 1,
+                "nodes": 2,
+                "splits": 1,
+                "tile_tests": 4
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            },
+            "split": {
+              "counts": {
+                "chambers": 2,
+                "isolated_searches": 1,
+                "nodes": 2,
+                "splits": 1,
+                "tile_tests": 4
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            }
+          },
+          "id": "penrose-chambers-00"
+        },
+        {
+          "arms": {
+            "direct": {
+              "counts": {
+                "nodes": 19,
+                "tile_tests": 72
+              },
+              "proposal": null,
+              "status": "POSITIVE"
+            },
+            "reuse": {
+              "counts": {
+                "chambers": 2,
+                "isolated_searches": 2,
+                "join_tests": 18,
+                "nodes": 21,
+                "splits": 1,
+                "tile_tests": 72
+              },
+              "proposal": null,
+              "status": "POSITIVE"
+            },
+            "split": {
+              "counts": {
+                "chambers": 2,
+                "isolated_searches": 2,
+                "join_tests": 18,
+                "nodes": 21,
+                "splits": 1,
+                "tile_tests": 72
+              },
+              "proposal": null,
+              "status": "POSITIVE"
+            }
+          },
+          "id": "penrose-chambers-01"
+        },
+        {
+          "arms": {
+            "direct": {
+              "counts": {
+                "nodes": 1,
+                "tile_tests": 4
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            },
+            "reuse": {
+              "counts": {
+                "chambers": 2,
+                "cross_request_hits": 1,
+                "nodes": 1,
+                "reuse_hits": 1,
+                "splits": 1
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            },
+            "split": {
+              "counts": {
+                "chambers": 2,
+                "isolated_searches": 1,
+                "nodes": 2,
+                "splits": 1,
+                "tile_tests": 4
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            }
+          },
+          "id": "penrose-chambers-02"
+        },
+        {
+          "arms": {
+            "direct": {
+              "counts": {
+                "nodes": 133,
+                "tile_tests": 1448
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            },
+            "reuse": {
+              "counts": {
+                "chambers": 2,
+                "isolated_searches": 2,
+                "nodes": 177,
+                "splits": 1,
+                "tile_tests": 1712
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            },
+            "split": {
+              "counts": {
+                "chambers": 2,
+                "isolated_searches": 2,
+                "nodes": 177,
+                "splits": 1,
+                "tile_tests": 1712
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            }
+          },
+          "id": "penrose-chambers-03"
+        },
+        {
+          "arms": {
+            "direct": {
+              "counts": {
+                "nodes": 11,
+                "tile_tests": 48
+              },
+              "proposal": null,
+              "status": "POSITIVE"
+            },
+            "reuse": {
+              "counts": {
+                "chambers": 2,
+                "isolated_searches": 2,
+                "join_tests": 10,
+                "nodes": 13,
+                "splits": 1,
+                "tile_tests": 48
+              },
+              "proposal": null,
+              "status": "POSITIVE"
+            },
+            "split": {
+              "counts": {
+                "chambers": 2,
+                "isolated_searches": 2,
+                "join_tests": 10,
+                "nodes": 13,
+                "splits": 1,
+                "tile_tests": 48
+              },
+              "proposal": null,
+              "status": "POSITIVE"
+            }
+          },
+          "id": "penrose-chambers-04"
+        },
+        {
+          "arms": {
+            "direct": {
+              "counts": {
+                "nodes": 251,
+                "tile_tests": 2884
+              },
+              "proposal": null,
+              "status": "BOUNDED"
+            },
+            "reuse": {
+              "counts": {
+                "chambers": 2,
+                "cross_request_hits": 2,
+                "nodes": 251,
+                "reuse_hits": 2,
+                "splits": 1,
+                "tile_tests": 2872
+              },
+              "proposal": null,
+              "status": "BOUNDED"
+            },
+            "split": {
+              "counts": {
+                "chambers": 2,
+                "isolated_searches": 2,
+                "nodes": 251,
+                "splits": 1,
+                "tile_tests": 2748
+              },
+              "proposal": null,
+              "status": "BOUNDED"
+            }
+          },
+          "id": "penrose-chambers-05"
+        },
+        {
+          "arms": {
+            "direct": {
+              "counts": {
+                "nodes": 194,
+                "tile_tests": 2032
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            },
+            "reuse": {
+              "counts": {
+                "chambers": 2,
+                "isolated_searches": 2,
+                "nodes": 193,
+                "splits": 1,
+                "tile_tests": 1864
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            },
+            "split": {
+              "counts": {
+                "chambers": 2,
+                "isolated_searches": 2,
+                "nodes": 193,
+                "splits": 1,
+                "tile_tests": 1864
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            }
+          },
+          "id": "penrose-chambers-06"
+        },
+        {
+          "arms": {
+            "direct": {
+              "counts": {
+                "nodes": 23,
+                "tile_tests": 88
+              },
+              "proposal": null,
+              "status": "POSITIVE"
+            },
+            "reuse": {
+              "counts": {
+                "chambers": 2,
+                "cross_request_hits": 2,
+                "join_tests": 21,
+                "nodes": 2,
+                "reuse_hits": 2,
+                "splits": 1,
+                "tile_tests": 4
+              },
+              "proposal": null,
+              "status": "POSITIVE"
+            },
+            "split": {
+              "counts": {
+                "chambers": 2,
+                "isolated_searches": 2,
+                "join_tests": 21,
+                "nodes": 25,
+                "splits": 1,
+                "tile_tests": 88
+              },
+              "proposal": null,
+              "status": "POSITIVE"
+            }
+          },
+          "id": "penrose-chambers-07"
+        },
+        {
+          "arms": {
+            "direct": {
+              "counts": {
+                "nodes": 150,
+                "tile_tests": 1576
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            },
+            "reuse": {
+              "counts": {
+                "chambers": 2,
+                "cross_request_hits": 2,
+                "nodes": 1,
+                "reuse_hits": 2,
+                "splits": 1
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            },
+            "split": {
+              "counts": {
+                "chambers": 2,
+                "isolated_searches": 2,
+                "nodes": 183,
+                "splits": 1,
+                "tile_tests": 1800
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            }
+          },
+          "id": "penrose-chambers-08"
+        },
+        {
+          "arms": {
+            "direct": {
+              "counts": {
+                "nodes": 251,
+                "tile_tests": 1864
+              },
+              "proposal": null,
+              "status": "BOUNDED"
+            },
+            "reuse": {
+              "counts": {
+                "chambers": 2,
+                "cross_request_hits": 1,
+                "isolated_searches": 1,
+                "nodes": 251,
+                "reuse_hits": 1,
+                "splits": 1,
+                "tile_tests": 1804
+              },
+              "proposal": null,
+              "status": "BOUNDED"
+            },
+            "split": {
+              "counts": {
+                "chambers": 2,
+                "isolated_searches": 2,
+                "nodes": 251,
+                "splits": 1,
+                "tile_tests": 1768
+              },
+              "proposal": null,
+              "status": "BOUNDED"
+            }
+          },
+          "id": "penrose-chambers-09"
+        },
+        {
+          "arms": {
+            "direct": {
+              "counts": {
+                "nodes": 21,
+                "tile_tests": 112
+              },
+              "proposal": null,
+              "status": "POSITIVE"
+            },
+            "reuse": {
+              "counts": {
+                "chambers": 2,
+                "cross_request_hits": 2,
+                "join_tests": 20,
+                "nodes": 1,
+                "reuse_hits": 2,
+                "splits": 1
+              },
+              "proposal": null,
+              "status": "POSITIVE"
+            },
+            "split": {
+              "counts": {
+                "chambers": 2,
+                "isolated_searches": 2,
+                "join_tests": 20,
+                "nodes": 23,
+                "splits": 1,
+                "tile_tests": 112
+              },
+              "proposal": null,
+              "status": "POSITIVE"
+            }
+          },
+          "id": "penrose-chambers-10"
+        },
+        {
+          "arms": {
+            "direct": {
+              "counts": {
+                "nodes": 251,
+                "tile_tests": 1972
+              },
+              "proposal": null,
+              "status": "BOUNDED"
+            },
+            "reuse": {
+              "counts": {
+                "chambers": 22,
+                "cross_request_hits": 2,
+                "isolated_searches": 4,
+                "nodes": 220,
+                "reuse_hits": 18,
+                "splits": 11,
+                "tile_tests": 1760
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            },
+            "split": {
+              "counts": {
+                "chambers": 22,
+                "isolated_searches": 21,
+                "nodes": 251,
+                "splits": 11,
+                "tile_tests": 1848
+              },
+              "proposal": null,
+              "status": "BOUNDED"
+            }
+          },
+          "id": "penrose-chambers-11"
+        },
+        {
+          "arms": {
+            "direct": {
+              "counts": {
+                "nodes": 87,
+                "tile_tests": 796
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            },
+            "reuse": {
+              "counts": {
+                "chambers": 2,
+                "cross_request_hits": 1,
+                "isolated_searches": 1,
+                "nodes": 154,
+                "reuse_hits": 1,
+                "splits": 1,
+                "tile_tests": 1240
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            },
+            "split": {
+              "counts": {
+                "chambers": 2,
+                "isolated_searches": 2,
+                "nodes": 161,
+                "splits": 1,
+                "tile_tests": 1272
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            }
+          },
+          "id": "penrose-chambers-12"
+        },
+        {
+          "arms": {
+            "direct": {
+              "counts": {
+                "nodes": 29,
+                "tile_tests": 112
+              },
+              "proposal": null,
+              "status": "POSITIVE"
+            },
+            "reuse": {
+              "counts": {
+                "chambers": 2,
+                "cross_request_hits": 2,
+                "join_tests": 18,
+                "nodes": 11,
+                "reuse_hits": 2,
+                "splits": 1,
+                "tile_tests": 40
+              },
+              "proposal": null,
+              "status": "POSITIVE"
+            },
+            "split": {
+              "counts": {
+                "chambers": 2,
+                "isolated_searches": 2,
+                "join_tests": 18,
+                "nodes": 31,
+                "splits": 1,
+                "tile_tests": 112
+              },
+              "proposal": null,
+              "status": "POSITIVE"
+            }
+          },
+          "id": "penrose-chambers-13"
+        }
+      ],
+      "turtle": [
+        {
+          "arms": {
+            "direct": {
+              "counts": {
+                "nodes": 1,
+                "tile_tests": 12
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            },
+            "reuse": {
+              "counts": {
+                "chambers": 2,
+                "isolated_searches": 1,
+                "nodes": 2,
+                "splits": 1,
+                "tile_tests": 12
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            },
+            "split": {
+              "counts": {
+                "chambers": 2,
+                "isolated_searches": 1,
+                "nodes": 2,
+                "splits": 1,
+                "tile_tests": 12
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            }
+          },
+          "id": "turtle-chambers-00"
+        },
+        {
+          "arms": {
+            "direct": {
+              "counts": {
+                "nodes": 24,
+                "tile_tests": 444
+              },
+              "proposal": null,
+              "status": "POSITIVE"
+            },
+            "reuse": {
+              "counts": {
+                "chambers": 2,
+                "isolated_searches": 2,
+                "join_tests": 21,
+                "nodes": 26,
+                "splits": 1,
+                "tile_tests": 444
+              },
+              "proposal": null,
+              "status": "POSITIVE"
+            },
+            "split": {
+              "counts": {
+                "chambers": 2,
+                "isolated_searches": 2,
+                "join_tests": 21,
+                "nodes": 26,
+                "splits": 1,
+                "tile_tests": 444
+              },
+              "proposal": null,
+              "status": "POSITIVE"
+            }
+          },
+          "id": "turtle-chambers-01"
+        },
+        {
+          "arms": {
+            "direct": {
+              "counts": {
+                "nodes": 1,
+                "tile_tests": 12
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            },
+            "reuse": {
+              "counts": {
+                "chambers": 2,
+                "cross_request_hits": 1,
+                "nodes": 1,
+                "reuse_hits": 1,
+                "splits": 1
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            },
+            "split": {
+              "counts": {
+                "chambers": 2,
+                "isolated_searches": 1,
+                "nodes": 2,
+                "splits": 1,
+                "tile_tests": 12
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            }
+          },
+          "id": "turtle-chambers-02"
+        },
+        {
+          "arms": {
+            "direct": {
+              "counts": {
+                "nodes": 1,
+                "tile_tests": 12
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            },
+            "reuse": {
+              "counts": {
+                "chambers": 2,
+                "isolated_searches": 2,
+                "nodes": 9,
+                "splits": 1,
+                "tile_tests": 108
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            },
+            "split": {
+              "counts": {
+                "chambers": 2,
+                "isolated_searches": 2,
+                "nodes": 9,
+                "splits": 1,
+                "tile_tests": 108
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            }
+          },
+          "id": "turtle-chambers-03"
+        },
+        {
+          "arms": {
+            "direct": {
+              "counts": {
+                "nodes": 23,
+                "tile_tests": 468
+              },
+              "proposal": null,
+              "status": "POSITIVE"
+            },
+            "reuse": {
+              "counts": {
+                "chambers": 2,
+                "cross_request_hits": 1,
+                "isolated_searches": 1,
+                "join_tests": 20,
+                "nodes": 4,
+                "reuse_hits": 1,
+                "splits": 1,
+                "tile_tests": 24
+              },
+              "proposal": null,
+              "status": "POSITIVE"
+            },
+            "split": {
+              "counts": {
+                "chambers": 2,
+                "isolated_searches": 2,
+                "join_tests": 20,
+                "nodes": 25,
+                "splits": 1,
+                "tile_tests": 432
+              },
+              "proposal": null,
+              "status": "POSITIVE"
+            }
+          },
+          "id": "turtle-chambers-04"
+        },
+        {
+          "arms": {
+            "direct": {
+              "counts": {
+                "nodes": 3,
+                "tile_tests": 36
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            },
+            "reuse": {
+              "counts": {
+                "chambers": 2,
+                "cross_request_hits": 1,
+                "nodes": 3,
+                "reuse_hits": 1,
+                "splits": 1,
+                "tile_tests": 24
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            },
+            "split": {
+              "counts": {
+                "chambers": 2,
+                "isolated_searches": 1,
+                "nodes": 4,
+                "splits": 1,
+                "tile_tests": 36
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            }
+          },
+          "id": "turtle-chambers-05"
+        },
+        {
+          "arms": {
+            "direct": {
+              "counts": {
+                "nodes": 1,
+                "tile_tests": 12
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            },
+            "reuse": {
+              "counts": {
+                "chambers": 2,
+                "cross_request_hits": 1,
+                "nodes": 1,
+                "reuse_hits": 1,
+                "splits": 1
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            },
+            "split": {
+              "counts": {
+                "chambers": 2,
+                "isolated_searches": 1,
+                "nodes": 2,
+                "splits": 1,
+                "tile_tests": 12
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            }
+          },
+          "id": "turtle-chambers-06"
+        },
+        {
+          "arms": {
+            "direct": {
+              "counts": {
+                "nodes": 25,
+                "tile_tests": 460
+              },
+              "proposal": null,
+              "status": "POSITIVE"
+            },
+            "reuse": {
+              "counts": {
+                "chambers": 2,
+                "cross_request_hits": 2,
+                "join_tests": 21,
+                "nodes": 2,
+                "reuse_hits": 2,
+                "splits": 1,
+                "tile_tests": 16
+              },
+              "proposal": null,
+              "status": "POSITIVE"
+            },
+            "split": {
+              "counts": {
+                "chambers": 2,
+                "isolated_searches": 2,
+                "join_tests": 21,
+                "nodes": 27,
+                "splits": 1,
+                "tile_tests": 460
+              },
+              "proposal": null,
+              "status": "POSITIVE"
+            }
+          },
+          "id": "turtle-chambers-07"
+        },
+        {
+          "arms": {
+            "direct": {
+              "counts": {
+                "nodes": 1,
+                "tile_tests": 12
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            },
+            "reuse": {
+              "counts": {
+                "chambers": 2,
+                "cross_request_hits": 1,
+                "nodes": 1,
+                "reuse_hits": 1,
+                "splits": 1
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            },
+            "split": {
+              "counts": {
+                "chambers": 2,
+                "isolated_searches": 1,
+                "nodes": 2,
+                "splits": 1,
+                "tile_tests": 12
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            }
+          },
+          "id": "turtle-chambers-08"
+        },
+        {
+          "arms": {
+            "direct": {
+              "counts": {
+                "nodes": 2,
+                "tile_tests": 28
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            },
+            "reuse": {
+              "counts": {
+                "chambers": 2,
+                "cross_request_hits": 2,
+                "nodes": 2,
+                "reuse_hits": 2,
+                "splits": 1,
+                "tile_tests": 16
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            },
+            "split": {
+              "counts": {
+                "chambers": 2,
+                "isolated_searches": 2,
+                "nodes": 10,
+                "splits": 1,
+                "tile_tests": 124
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            }
+          },
+          "id": "turtle-chambers-09"
+        },
+        {
+          "arms": {
+            "direct": {
+              "counts": {
+                "nodes": 23,
+                "tile_tests": 432
+              },
+              "proposal": null,
+              "status": "POSITIVE"
+            },
+            "reuse": {
+              "counts": {
+                "chambers": 2,
+                "cross_request_hits": 2,
+                "join_tests": 20,
+                "nodes": 1,
+                "reuse_hits": 2,
+                "splits": 1
+              },
+              "proposal": null,
+              "status": "POSITIVE"
+            },
+            "split": {
+              "counts": {
+                "chambers": 2,
+                "isolated_searches": 2,
+                "join_tests": 20,
+                "nodes": 25,
+                "splits": 1,
+                "tile_tests": 432
+              },
+              "proposal": null,
+              "status": "POSITIVE"
+            }
+          },
+          "id": "turtle-chambers-10"
+        },
+        {
+          "arms": {
+            "direct": {
+              "counts": {
+                "nodes": 2,
+                "tile_tests": 24
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            },
+            "reuse": {
+              "counts": {
+                "chambers": 2,
+                "cross_request_hits": 1,
+                "nodes": 2,
+                "reuse_hits": 1,
+                "splits": 1,
+                "tile_tests": 12
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            },
+            "split": {
+              "counts": {
+                "chambers": 2,
+                "isolated_searches": 1,
+                "nodes": 3,
+                "splits": 1,
+                "tile_tests": 24
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            }
+          },
+          "id": "turtle-chambers-11"
+        },
+        {
+          "arms": {
+            "direct": {
+              "counts": {
+                "nodes": 1,
+                "tile_tests": 12
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            },
+            "reuse": {
+              "counts": {
+                "chambers": 2,
+                "cross_request_hits": 1,
+                "nodes": 1,
+                "reuse_hits": 1,
+                "splits": 1
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            },
+            "split": {
+              "counts": {
+                "chambers": 2,
+                "isolated_searches": 1,
+                "nodes": 2,
+                "splits": 1,
+                "tile_tests": 12
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            }
+          },
+          "id": "turtle-chambers-12"
+        },
+        {
+          "arms": {
+            "direct": {
+              "counts": {
+                "nodes": 25,
+                "tile_tests": 460
+              },
+              "proposal": null,
+              "status": "POSITIVE"
+            },
+            "reuse": {
+              "counts": {
+                "chambers": 2,
+                "cross_request_hits": 2,
+                "join_tests": 21,
+                "nodes": 2,
+                "reuse_hits": 2,
+                "splits": 1,
+                "tile_tests": 16
+              },
+              "proposal": null,
+              "status": "POSITIVE"
+            },
+            "split": {
+              "counts": {
+                "chambers": 2,
+                "isolated_searches": 2,
+                "join_tests": 21,
+                "nodes": 27,
+                "splits": 1,
+                "tile_tests": 460
+              },
+              "proposal": null,
+              "status": "POSITIVE"
+            }
+          },
+          "id": "turtle-chambers-13"
+        }
+      ]
+    },
+    "unseeded": {
+      "penrose": [
+        {
+          "arms": {
+            "automatic": {
+              "counts": {
+                "chambers": 2,
+                "isolated_searches": 2,
+                "join_tests": 5,
+                "nodes": 14,
+                "portal_containment_checks": 1,
+                "portal_poses": 64,
+                "portal_split_checks": 1,
+                "splits": 1,
+                "tile_tests": 52
+              },
+              "proposal": null,
+              "status": "POSITIVE"
+            },
+            "plain": {
+              "counts": {
+                "chambers": 2,
+                "isolated_searches": 2,
+                "join_tests": 5,
+                "nodes": 14,
+                "splits": 1,
+                "tile_tests": 52
+              },
+              "proposal": null,
+              "status": "POSITIVE"
+            },
+            "receptor": {
+              "counts": {
+                "chambers": 2,
+                "isolated_searches": 2,
+                "join_tests": 5,
+                "nodes": 14,
+                "portal_containment_checks": 1,
+                "portal_poses": 1,
+                "portal_split_checks": 1,
+                "receptor_tests": 54,
+                "splits": 1,
+                "tile_tests": 52
+              },
+              "proposal": null,
+              "status": "POSITIVE"
+            }
+          },
+          "id": "penrose-chambers-04"
+        },
+        {
+          "arms": {
+            "automatic": {
+              "counts": {
+                "chambers": 2,
+                "cross_request_hits": 2,
+                "nodes": 251,
+                "portal_containment_checks": 1,
+                "portal_hits": 1,
+                "portal_poses": 118,
+                "portal_split_checks": 1,
+                "reuse_hits": 2,
+                "splits": 1,
+                "tile_tests": 2872
+              },
+              "proposal": {
+                "edge": [
+                  [
+                    497,
+                    -756,
+                    1016,
+                    -1274
+                  ],
+                  [
+                    497,
+                    -756,
+                    1015,
+                    -1274
+                  ]
+                ],
+                "known": [
+                  4,
+                  2
+                ],
+                "tile": [
+                  [
+                    497,
+                    -756,
+                    1015,
+                    -1274
+                  ],
+                  [
+                    497,
+                    -756,
+                    1016,
+                    -1274
+                  ],
+                  [
+                    498,
+                    -756,
+                    1015,
+                    -1274
+                  ],
+                  [
+                    498,
+                    -756,
+                    1016,
+                    -1274
+                  ]
+                ]
+              },
+              "status": "BOUNDED"
+            },
+            "plain": {
+              "counts": {
+                "chambers": 2,
+                "cross_request_hits": 1,
+                "isolated_searches": 1,
+                "nodes": 251,
+                "reuse_hits": 1,
+                "splits": 1,
+                "tile_tests": 2884
+              },
+              "proposal": null,
+              "status": "BOUNDED"
+            },
+            "receptor": {
+              "counts": {
+                "chambers": 2,
+                "cross_request_hits": 2,
+                "nodes": 251,
+                "portal_containment_checks": 1,
+                "portal_hits": 1,
+                "portal_poses": 1,
+                "portal_split_checks": 1,
+                "receptor_tests": 96,
+                "reuse_hits": 2,
+                "splits": 1,
+                "tile_tests": 2872
+              },
+              "proposal": {
+                "donor": "penrose-chambers-01",
+                "edge": [
+                  [
+                    497,
+                    -756,
+                    1016,
+                    -1274
+                  ],
+                  [
+                    497,
+                    -756,
+                    1015,
+                    -1274
+                  ]
+                ],
+                "known": [
+                  4,
+                  2
+                ],
+                "other": [
+                  [
+                    498,
+                    -756,
+                    1015,
+                    -1274
+                  ],
+                  [
+                    498,
+                    -756,
+                    1016,
+                    -1274
+                  ]
+                ],
+                "tile": [
+                  [
+                    497,
+                    -756,
+                    1015,
+                    -1274
+                  ],
+                  [
+                    497,
+                    -756,
+                    1016,
+                    -1274
+                  ],
+                  [
+                    498,
+                    -756,
+                    1015,
+                    -1274
+                  ],
+                  [
+                    498,
+                    -756,
+                    1016,
+                    -1274
+                  ]
+                ]
+              },
+              "status": "BOUNDED"
+            }
+          },
+          "id": "penrose-chambers-05"
+        },
+        {
+          "arms": {
+            "automatic": {
+              "counts": {
+                "nodes": 230,
+                "portal_containment_checks": 1,
+                "portal_poses": 126,
+                "portal_split_checks": 1,
+                "tile_tests": 2328
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            },
+            "plain": {
+              "counts": {
+                "nodes": 230,
+                "tile_tests": 2328
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            },
+            "receptor": {
+              "counts": {
+                "nodes": 230,
+                "portal_containment_checks": 1,
+                "portal_poses": 1,
+                "portal_split_checks": 1,
+                "receptor_tests": 102,
+                "tile_tests": 2328
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            }
+          },
+          "id": "penrose-chambers-06"
+        },
+        {
+          "arms": {
+            "automatic": {
+              "counts": {
+                "chambers": 2,
+                "cross_request_hits": 2,
+                "join_tests": 21,
+                "nodes": 2,
+                "portal_containment_checks": 1,
+                "portal_hits": 1,
+                "portal_poses": 97,
+                "portal_split_checks": 1,
+                "reuse_hits": 2,
+                "splits": 1,
+                "tile_tests": 4
+              },
+              "proposal": {
+                "edge": [
+                  [
+                    639,
+                    -972,
+                    1305,
+                    -1638
+                  ],
+                  [
+                    640,
+                    -972,
+                    1305,
+                    -1638
+                  ]
+                ],
+                "known": [
+                  1,
+                  3
+                ],
+                "tile": [
+                  [
+                    639,
+                    -972,
+                    1305,
+                    -1638
+                  ],
+                  [
+                    639,
+                    -971,
+                    1305,
+                    -1638
+                  ],
+                  [
+                    640,
+                    -972,
+                    1305,
+                    -1638
+                  ],
+                  [
+                    640,
+                    -971,
+                    1305,
+                    -1638
+                  ]
+                ]
+              },
+              "status": "POSITIVE"
+            },
+            "plain": {
+              "counts": {
+                "nodes": 23,
+                "tile_tests": 88
+              },
+              "proposal": null,
+              "status": "POSITIVE"
+            },
+            "receptor": {
+              "counts": {
+                "chambers": 2,
+                "cross_request_hits": 2,
+                "join_tests": 21,
+                "nodes": 2,
+                "portal_containment_checks": 1,
+                "portal_hits": 1,
+                "portal_poses": 1,
+                "portal_split_checks": 1,
+                "receptor_tests": 78,
+                "reuse_hits": 2,
+                "splits": 1,
+                "tile_tests": 4
+              },
+              "proposal": {
+                "donor": "penrose-chambers-00",
+                "edge": [
+                  [
+                    639,
+                    -972,
+                    1305,
+                    -1638
+                  ],
+                  [
+                    640,
+                    -972,
+                    1305,
+                    -1638
+                  ]
+                ],
+                "known": [
+                  1,
+                  3
+                ],
+                "other": [
+                  [
+                    640,
+                    -971,
+                    1305,
+                    -1638
+                  ],
+                  [
+                    639,
+                    -971,
+                    1305,
+                    -1638
+                  ]
+                ],
+                "tile": [
+                  [
+                    639,
+                    -972,
+                    1305,
+                    -1638
+                  ],
+                  [
+                    639,
+                    -971,
+                    1305,
+                    -1638
+                  ],
+                  [
+                    640,
+                    -972,
+                    1305,
+                    -1638
+                  ],
+                  [
+                    640,
+                    -971,
+                    1305,
+                    -1638
+                  ]
+                ]
+              },
+              "status": "POSITIVE"
+            }
+          },
+          "id": "penrose-chambers-07"
+        },
+        {
+          "arms": {
+            "automatic": {
+              "counts": {
+                "nodes": 175,
+                "portal_containment_checks": 1,
+                "portal_poses": 102,
+                "portal_split_checks": 1,
+                "tile_tests": 1768
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            },
+            "plain": {
+              "counts": {
+                "nodes": 175,
+                "tile_tests": 1768
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            },
+            "receptor": {
+              "counts": {
+                "nodes": 175,
+                "portal_containment_checks": 1,
+                "portal_poses": 1,
+                "portal_split_checks": 1,
+                "receptor_tests": 84,
+                "tile_tests": 1768
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            }
+          },
+          "id": "penrose-chambers-08"
+        },
+        {
+          "arms": {
+            "automatic": {
+              "counts": {
+                "chambers": 2,
+                "cross_request_hits": 1,
+                "isolated_searches": 1,
+                "nodes": 251,
+                "portal_containment_checks": 1,
+                "portal_hits": 1,
+                "portal_poses": 118,
+                "portal_split_checks": 1,
+                "reuse_hits": 1,
+                "splits": 1,
+                "tile_tests": 1804
+              },
+              "proposal": {
+                "edge": [
+                  [
+                    782,
+                    -1188,
+                    1595,
+                    -2002
+                  ],
+                  [
+                    783,
+                    -1187,
+                    1596,
+                    -2001
+                  ]
+                ],
+                "known": [
+                  null,
+                  2
+                ],
+                "tile": [
+                  [
+                    781,
+                    -1188,
+                    1595,
+                    -2002
+                  ],
+                  [
+                    782,
+                    -1188,
+                    1595,
+                    -2002
+                  ],
+                  [
+                    782,
+                    -1187,
+                    1596,
+                    -2001
+                  ],
+                  [
+                    783,
+                    -1187,
+                    1596,
+                    -2001
+                  ]
+                ]
+              },
+              "status": "BOUNDED"
+            },
+            "plain": {
+              "counts": {
+                "nodes": 251,
+                "tile_tests": 1868
+              },
+              "proposal": null,
+              "status": "BOUNDED"
+            },
+            "receptor": {
+              "counts": {
+                "chambers": 2,
+                "cross_request_hits": 1,
+                "isolated_searches": 1,
+                "nodes": 251,
+                "portal_containment_checks": 1,
+                "portal_hits": 1,
+                "portal_poses": 1,
+                "portal_split_checks": 1,
+                "receptor_tests": 96,
+                "reuse_hits": 1,
+                "splits": 1,
+                "tile_tests": 1804
+              },
+              "proposal": {
+                "donor": "penrose-chambers-00",
+                "edge": [
+                  [
+                    782,
+                    -1188,
+                    1595,
+                    -2002
+                  ],
+                  [
+                    783,
+                    -1187,
+                    1596,
+                    -2001
+                  ]
+                ],
+                "known": [
+                  null,
+                  2
+                ],
+                "other": [
+                  [
+                    782,
+                    -1187,
+                    1596,
+                    -2001
+                  ],
+                  [
+                    781,
+                    -1188,
+                    1595,
+                    -2002
+                  ]
+                ],
+                "tile": [
+                  [
+                    781,
+                    -1188,
+                    1595,
+                    -2002
+                  ],
+                  [
+                    782,
+                    -1188,
+                    1595,
+                    -2002
+                  ],
+                  [
+                    782,
+                    -1187,
+                    1596,
+                    -2001
+                  ],
+                  [
+                    783,
+                    -1187,
+                    1596,
+                    -2001
+                  ]
+                ]
+              },
+              "status": "BOUNDED"
+            }
+          },
+          "id": "penrose-chambers-09"
+        },
+        {
+          "arms": {
+            "automatic": {
+              "counts": {
+                "chambers": 2,
+                "cross_request_hits": 1,
+                "isolated_searches": 1,
+                "join_tests": 3,
+                "nodes": 22,
+                "portal_containment_checks": 1,
+                "portal_poses": 88,
+                "portal_split_checks": 1,
+                "reuse_hits": 1,
+                "splits": 1,
+                "tile_tests": 128
+              },
+              "proposal": null,
+              "status": "POSITIVE"
+            },
+            "plain": {
+              "counts": {
+                "chambers": 2,
+                "cross_request_hits": 1,
+                "isolated_searches": 1,
+                "join_tests": 3,
+                "nodes": 22,
+                "reuse_hits": 1,
+                "splits": 1,
+                "tile_tests": 128
+              },
+              "proposal": null,
+              "status": "POSITIVE"
+            },
+            "receptor": {
+              "counts": {
+                "chambers": 2,
+                "cross_request_hits": 1,
+                "isolated_searches": 1,
+                "join_tests": 3,
+                "nodes": 22,
+                "portal_containment_checks": 1,
+                "portal_poses": 1,
+                "portal_split_checks": 1,
+                "receptor_tests": 72,
+                "reuse_hits": 1,
+                "splits": 1,
+                "tile_tests": 128
+              },
+              "proposal": null,
+              "status": "POSITIVE"
+            }
+          },
+          "id": "penrose-chambers-10"
+        },
+        {
+          "arms": {
+            "automatic": {
+              "counts": {
+                "chambers": 22,
+                "cross_request_hits": 6,
+                "isolated_searches": 3,
+                "nodes": 218,
+                "portal_containment_checks": 1,
+                "portal_hits": 1,
+                "portal_poses": 126,
+                "portal_split_checks": 1,
+                "reuse_hits": 19,
+                "splits": 11,
+                "tile_tests": 1756
+              },
+              "proposal": {
+                "edge": [
+                  [
+                    923,
+                    -1404,
+                    1885,
+                    -2365
+                  ],
+                  [
+                    923,
+                    -1404,
+                    1885,
+                    -2366
+                  ]
+                ],
+                "known": [
+                  7,
+                  3
+                ],
+                "tile": [
+                  [
+                    923,
+                    -1404,
+                    1885,
+                    -2366
+                  ],
+                  [
+                    923,
+                    -1404,
+                    1885,
+                    -2365
+                  ],
+                  [
+                    923,
+                    -1403,
+                    1885,
+                    -2366
+                  ],
+                  [
+                    923,
+                    -1403,
+                    1885,
+                    -2365
+                  ]
+                ]
+              },
+              "status": "NEGATIVE"
+            },
+            "plain": {
+              "counts": {
+                "chambers": 20,
+                "cross_request_hits": 10,
+                "isolated_searches": 1,
+                "nodes": 193,
+                "reuse_hits": 19,
+                "splits": 10,
+                "tile_tests": 1368
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            },
+            "receptor": {
+              "counts": {
+                "chambers": 22,
+                "cross_request_hits": 6,
+                "isolated_searches": 3,
+                "nodes": 218,
+                "portal_containment_checks": 1,
+                "portal_hits": 1,
+                "portal_poses": 1,
+                "portal_split_checks": 1,
+                "receptor_tests": 102,
+                "reuse_hits": 19,
+                "splits": 11,
+                "tile_tests": 1756
+              },
+              "proposal": {
+                "donor": "penrose-chambers-01",
+                "edge": [
+                  [
+                    923,
+                    -1404,
+                    1885,
+                    -2365
+                  ],
+                  [
+                    923,
+                    -1404,
+                    1885,
+                    -2366
+                  ]
+                ],
+                "known": [
+                  7,
+                  3
+                ],
+                "other": [
+                  [
+                    923,
+                    -1403,
+                    1885,
+                    -2366
+                  ],
+                  [
+                    923,
+                    -1403,
+                    1885,
+                    -2365
+                  ]
+                ],
+                "tile": [
+                  [
+                    923,
+                    -1404,
+                    1885,
+                    -2366
+                  ],
+                  [
+                    923,
+                    -1404,
+                    1885,
+                    -2365
+                  ],
+                  [
+                    923,
+                    -1403,
+                    1885,
+                    -2366
+                  ],
+                  [
+                    923,
+                    -1403,
+                    1885,
+                    -2365
+                  ]
+                ]
+              },
+              "status": "NEGATIVE"
+            }
+          },
+          "id": "penrose-chambers-11"
+        },
+        {
+          "arms": {
+            "automatic": {
+              "counts": {
+                "nodes": 139,
+                "portal_containment_checks": 1,
+                "portal_poses": 102,
+                "portal_split_checks": 1,
+                "tile_tests": 1352
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            },
+            "plain": {
+              "counts": {
+                "nodes": 139,
+                "tile_tests": 1352
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            },
+            "receptor": {
+              "counts": {
+                "nodes": 139,
+                "portal_containment_checks": 1,
+                "portal_poses": 1,
+                "portal_split_checks": 1,
+                "receptor_tests": 84,
+                "tile_tests": 1352
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            }
+          },
+          "id": "penrose-chambers-12"
+        },
+        {
+          "arms": {
+            "automatic": {
+              "counts": {
+                "chambers": 2,
+                "cross_request_hits": 2,
+                "join_tests": 18,
+                "nodes": 2,
+                "portal_containment_checks": 1,
+                "portal_hits": 1,
+                "portal_poses": 88,
+                "portal_split_checks": 1,
+                "reuse_hits": 2,
+                "splits": 1,
+                "tile_tests": 4
+              },
+              "proposal": {
+                "edge": [
+                  [
+                    1065,
+                    -1620,
+                    2176,
+                    -2730
+                  ],
+                  [
+                    1065,
+                    -1620,
+                    2175,
+                    -2730
+                  ]
+                ],
+                "known": [
+                  1,
+                  2
+                ],
+                "tile": [
+                  [
+                    1065,
+                    -1620,
+                    2175,
+                    -2730
+                  ],
+                  [
+                    1065,
+                    -1620,
+                    2176,
+                    -2730
+                  ],
+                  [
+                    1065,
+                    -1619,
+                    2175,
+                    -2730
+                  ],
+                  [
+                    1065,
+                    -1619,
+                    2176,
+                    -2730
+                  ]
+                ]
+              },
+              "status": "POSITIVE"
+            },
+            "plain": {
+              "counts": {
+                "nodes": 20,
+                "tile_tests": 84
+              },
+              "proposal": null,
+              "status": "POSITIVE"
+            },
+            "receptor": {
+              "counts": {
+                "chambers": 2,
+                "cross_request_hits": 2,
+                "join_tests": 18,
+                "nodes": 2,
+                "portal_containment_checks": 1,
+                "portal_hits": 1,
+                "portal_poses": 1,
+                "portal_split_checks": 1,
+                "receptor_tests": 72,
+                "reuse_hits": 2,
+                "splits": 1,
+                "tile_tests": 4
+              },
+              "proposal": {
+                "donor": "penrose-chambers-03",
+                "edge": [
+                  [
+                    1065,
+                    -1620,
+                    2176,
+                    -2730
+                  ],
+                  [
+                    1065,
+                    -1620,
+                    2175,
+                    -2730
+                  ]
+                ],
+                "known": [
+                  1,
+                  2
+                ],
+                "other": [
+                  [
+                    1065,
+                    -1619,
+                    2175,
+                    -2730
+                  ],
+                  [
+                    1065,
+                    -1619,
+                    2176,
+                    -2730
+                  ]
+                ],
+                "tile": [
+                  [
+                    1065,
+                    -1620,
+                    2175,
+                    -2730
+                  ],
+                  [
+                    1065,
+                    -1620,
+                    2176,
+                    -2730
+                  ],
+                  [
+                    1065,
+                    -1619,
+                    2175,
+                    -2730
+                  ],
+                  [
+                    1065,
+                    -1619,
+                    2176,
+                    -2730
+                  ]
+                ]
+              },
+              "status": "POSITIVE"
+            }
+          },
+          "id": "penrose-chambers-13"
+        }
+      ],
+      "turtle": [
+        {
+          "arms": {
+            "automatic": {
+              "counts": {
+                "chambers": 2,
+                "cross_request_hits": 1,
+                "isolated_searches": 1,
+                "join_tests": 20,
+                "nodes": 5,
+                "portal_containment_checks": 1,
+                "portal_hits": 1,
+                "portal_poses": 1065,
+                "portal_split_checks": 1,
+                "reuse_hits": 1,
+                "splits": 1,
+                "tile_tests": 36
+              },
+              "proposal": {
+                "edge": [
+                  [
+                    425,
+                    -651
+                  ],
+                  [
+                    425,
+                    -652
+                  ]
+                ],
+                "known": [
+                  null,
+                  2
+                ],
+                "tile": [
+                  4,
+                  426,
+                  -648
+                ]
+              },
+              "status": "POSITIVE"
+            },
+            "plain": {
+              "counts": {
+                "chambers": 2,
+                "isolated_searches": 2,
+                "join_tests": 12,
+                "nodes": 26,
+                "splits": 1,
+                "tile_tests": 480
+              },
+              "proposal": null,
+              "status": "POSITIVE"
+            },
+            "receptor": {
+              "counts": {
+                "chambers": 2,
+                "cross_request_hits": 1,
+                "isolated_searches": 1,
+                "join_tests": 20,
+                "nodes": 5,
+                "portal_containment_checks": 2,
+                "portal_hits": 1,
+                "portal_poses": 24,
+                "portal_split_checks": 2,
+                "receptor_tests": 868,
+                "reuse_hits": 1,
+                "splits": 1,
+                "tile_tests": 40
+              },
+              "proposal": {
+                "donor": "turtle-chambers-03",
+                "edge": [
+                  [
+                    427,
+                    -647
+                  ],
+                  [
+                    426,
+                    -648
+                  ]
+                ],
+                "known": [
+                  null,
+                  2
+                ],
+                "other": [
+                  [
+                    430,
+                    -650
+                  ],
+                  [
+                    429,
+                    -649
+                  ]
+                ],
+                "tile": [
+                  4,
+                  426,
+                  -648
+                ]
+              },
+              "status": "POSITIVE"
+            }
+          },
+          "id": "turtle-chambers-04"
+        },
+        {
+          "arms": {
+            "automatic": {
+              "counts": {
+                "chambers": 2,
+                "cross_request_hits": 1,
+                "nodes": 2,
+                "portal_containment_checks": 1,
+                "portal_hits": 1,
+                "portal_poses": 1393,
+                "portal_split_checks": 1,
+                "reuse_hits": 1,
+                "splits": 1,
+                "tile_tests": 12
+              },
+              "proposal": {
+                "edge": [
+                  [
+                    491,
+                    -752
+                  ],
+                  [
+                    491,
+                    -753
+                  ]
+                ],
+                "known": [
+                  0,
+                  null
+                ],
+                "tile": [
+                  0,
+                  496,
+                  -754
+                ]
+              },
+              "status": "NEGATIVE"
+            },
+            "plain": {
+              "counts": {
+                "nodes": 1,
+                "tile_tests": 12
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            },
+            "receptor": {
+              "counts": {
+                "chambers": 2,
+                "cross_request_hits": 1,
+                "nodes": 2,
+                "portal_containment_checks": 1,
+                "portal_hits": 1,
+                "portal_poses": 28,
+                "portal_split_checks": 1,
+                "receptor_tests": 1464,
+                "reuse_hits": 1,
+                "splits": 1,
+                "tile_tests": 16
+              },
+              "proposal": {
+                "donor": "turtle-chambers-04",
+                "edge": [
+                  [
+                    491,
+                    -750
+                  ],
+                  [
+                    492,
+                    -752
+                  ]
+                ],
+                "known": [
+                  0,
+                  null
+                ],
+                "other": [
+                  [
+                    495,
+                    -752
+                  ],
+                  [
+                    493,
+                    -751
+                  ]
+                ],
+                "tile": [
+                  0,
+                  496,
+                  -754
+                ]
+              },
+              "status": "NEGATIVE"
+            }
+          },
+          "id": "turtle-chambers-05"
+        },
+        {
+          "arms": {
+            "automatic": {
+              "counts": {
+                "chambers": 2,
+                "cross_request_hits": 1,
+                "nodes": 2,
+                "portal_containment_checks": 1,
+                "portal_hits": 1,
+                "portal_poses": 894,
+                "portal_split_checks": 1,
+                "reuse_hits": 1,
+                "splits": 1,
+                "tile_tests": 12
+              },
+              "proposal": {
+                "edge": [
+                  [
+                    571,
+                    -868
+                  ],
+                  [
+                    572,
+                    -869
+                  ]
+                ],
+                "known": [
+                  0,
+                  3
+                ],
+                "tile": [
+                  6,
+                  568,
+                  -864
+                ]
+              },
+              "status": "NEGATIVE"
+            },
+            "plain": {
+              "counts": {
+                "nodes": 1,
+                "tile_tests": 12
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            },
+            "receptor": {
+              "counts": {
+                "chambers": 2,
+                "cross_request_hits": 1,
+                "nodes": 2,
+                "portal_containment_checks": 1,
+                "portal_hits": 1,
+                "portal_poses": 28,
+                "portal_split_checks": 1,
+                "receptor_tests": 1104,
+                "reuse_hits": 1,
+                "splits": 1,
+                "tile_tests": 16
+              },
+              "proposal": {
+                "donor": "turtle-chambers-01",
+                "edge": [
+                  [
+                    568,
+                    -864
+                  ],
+                  [
+                    569,
+                    -866
+                  ]
+                ],
+                "known": [
+                  0,
+                  3
+                ],
+                "other": [
+                  [
+                    572,
+                    -869
+                  ],
+                  [
+                    573,
+                    -868
+                  ]
+                ],
+                "tile": [
+                  6,
+                  568,
+                  -864
+                ]
+              },
+              "status": "NEGATIVE"
+            }
+          },
+          "id": "turtle-chambers-06"
+        },
+        {
+          "arms": {
+            "automatic": {
+              "counts": {
+                "chambers": 2,
+                "cross_request_hits": 2,
+                "join_tests": 21,
+                "nodes": 2,
+                "portal_containment_checks": 1,
+                "portal_hits": 1,
+                "portal_poses": 1136,
+                "portal_split_checks": 1,
+                "reuse_hits": 2,
+                "splits": 1,
+                "tile_tests": 12
+              },
+              "proposal": {
+                "edge": [
+                  [
+                    639,
+                    -975
+                  ],
+                  [
+                    640,
+                    -975
+                  ]
+                ],
+                "known": [
+                  1,
+                  2
+                ],
+                "tile": [
+                  7,
+                  639,
+                  -972
+                ]
+              },
+              "status": "POSITIVE"
+            },
+            "plain": {
+              "counts": {
+                "nodes": 25,
+                "tile_tests": 468
+              },
+              "proposal": null,
+              "status": "POSITIVE"
+            },
+            "receptor": {
+              "counts": {
+                "chambers": 2,
+                "cross_request_hits": 2,
+                "join_tests": 21,
+                "nodes": 2,
+                "portal_containment_checks": 2,
+                "portal_hits": 1,
+                "portal_poses": 36,
+                "portal_split_checks": 2,
+                "receptor_tests": 1656,
+                "reuse_hits": 2,
+                "splits": 1,
+                "tile_tests": 16
+              },
+              "proposal": {
+                "donor": "turtle-chambers-06",
+                "edge": [
+                  [
+                    638,
+                    -973
+                  ],
+                  [
+                    639,
+                    -975
+                  ]
+                ],
+                "known": [
+                  1,
+                  2
+                ],
+                "other": [
+                  [
+                    640,
+                    -971
+                  ],
+                  [
+                    639,
+                    -972
+                  ]
+                ],
+                "tile": [
+                  7,
+                  639,
+                  -972
+                ]
+              },
+              "status": "POSITIVE"
+            }
+          },
+          "id": "turtle-chambers-07"
+        },
+        {
+          "arms": {
+            "automatic": {
+              "counts": {
+                "chambers": 2,
+                "cross_request_hits": 1,
+                "nodes": 3,
+                "portal_containment_checks": 20,
+                "portal_hits": 1,
+                "portal_poses": 1223,
+                "portal_split_checks": 12,
+                "reuse_hits": 1,
+                "splits": 1,
+                "tile_tests": 24
+              },
+              "proposal": {
+                "edge": [
+                  [
+                    706,
+                    -1077
+                  ],
+                  [
+                    707,
+                    -1077
+                  ]
+                ],
+                "known": [
+                  0,
+                  null
+                ],
+                "tile": [
+                  8,
+                  710,
+                  -1080
+                ]
+              },
+              "status": "NEGATIVE"
+            },
+            "plain": {
+              "counts": {
+                "nodes": 1,
+                "tile_tests": 12
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            },
+            "receptor": {
+              "counts": {
+                "chambers": 2,
+                "cross_request_hits": 1,
+                "nodes": 8,
+                "portal_containment_checks": 25,
+                "portal_hits": 1,
+                "portal_poses": 38,
+                "portal_split_checks": 19,
+                "receptor_tests": 2036,
+                "reuse_hits": 1,
+                "splits": 1,
+                "tile_tests": 88
+              },
+              "proposal": {
+                "donor": "turtle-chambers-04",
+                "edge": [
+                  [
+                    707,
+                    -1077
+                  ],
+                  [
+                    708,
+                    -1079
+                  ]
+                ],
+                "known": [
+                  0,
+                  null
+                ],
+                "other": [
+                  [
+                    708,
+                    -1076
+                  ],
+                  [
+                    706,
+                    -1075
+                  ]
+                ],
+                "tile": [
+                  8,
+                  710,
+                  -1080
+                ]
+              },
+              "status": "NEGATIVE"
+            }
+          },
+          "id": "turtle-chambers-08"
+        },
+        {
+          "arms": {
+            "automatic": {
+              "counts": {
+                "chambers": 2,
+                "cross_request_hits": 1,
+                "nodes": 2,
+                "portal_containment_checks": 1,
+                "portal_hits": 1,
+                "portal_poses": 1048,
+                "portal_split_checks": 1,
+                "reuse_hits": 1,
+                "splits": 1,
+                "tile_tests": 12
+              },
+              "proposal": {
+                "edge": [
+                  [
+                    771,
+                    -1185
+                  ],
+                  [
+                    771,
+                    -1186
+                  ]
+                ],
+                "known": [
+                  0,
+                  null
+                ],
+                "tile": [
+                  0,
+                  776,
+                  -1187
+                ]
+              },
+              "status": "NEGATIVE"
+            },
+            "plain": {
+              "counts": {
+                "nodes": 1,
+                "tile_tests": 12
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            },
+            "receptor": {
+              "counts": {
+                "chambers": 2,
+                "cross_request_hits": 1,
+                "nodes": 2,
+                "portal_containment_checks": 1,
+                "portal_hits": 1,
+                "portal_poses": 43,
+                "portal_split_checks": 1,
+                "receptor_tests": 1948,
+                "reuse_hits": 1,
+                "splits": 1,
+                "tile_tests": 12
+              },
+              "proposal": {
+                "donor": "turtle-chambers-07",
+                "edge": [
+                  [
+                    771,
+                    -1185
+                  ],
+                  [
+                    771,
+                    -1186
+                  ]
+                ],
+                "known": [
+                  0,
+                  null
+                ],
+                "other": [
+                  [
+                    776,
+                    -1190
+                  ],
+                  [
+                    777,
+                    -1189
+                  ]
+                ],
+                "tile": [
+                  0,
+                  776,
+                  -1187
+                ]
+              },
+              "status": "NEGATIVE"
+            }
+          },
+          "id": "turtle-chambers-09"
+        },
+        {
+          "arms": {
+            "automatic": {
+              "counts": {
+                "chambers": 2,
+                "cross_request_hits": 2,
+                "join_tests": 20,
+                "nodes": 2,
+                "portal_containment_checks": 1,
+                "portal_hits": 1,
+                "portal_poses": 1044,
+                "portal_split_checks": 1,
+                "reuse_hits": 2,
+                "splits": 1,
+                "tile_tests": 12
+              },
+              "proposal": {
+                "edge": [
+                  [
+                    848,
+                    -1294
+                  ],
+                  [
+                    849,
+                    -1295
+                  ]
+                ],
+                "known": [
+                  2,
+                  5
+                ],
+                "tile": [
+                  10,
+                  852,
+                  -1296
+                ]
+              },
+              "status": "POSITIVE"
+            },
+            "plain": {
+              "counts": {
+                "nodes": 24,
+                "tile_tests": 444
+              },
+              "proposal": null,
+              "status": "POSITIVE"
+            },
+            "receptor": {
+              "counts": {
+                "chambers": 2,
+                "cross_request_hits": 2,
+                "join_tests": 20,
+                "nodes": 2,
+                "portal_containment_checks": 2,
+                "portal_hits": 1,
+                "portal_poses": 34,
+                "portal_split_checks": 2,
+                "receptor_tests": 1904,
+                "reuse_hits": 2,
+                "splits": 1,
+                "tile_tests": 12
+              },
+              "proposal": {
+                "donor": "turtle-chambers-03",
+                "edge": [
+                  [
+                    848,
+                    -1294
+                  ],
+                  [
+                    849,
+                    -1295
+                  ]
+                ],
+                "known": [
+                  2,
+                  5
+                ],
+                "other": [
+                  [
+                    851,
+                    -1297
+                  ],
+                  [
+                    852,
+                    -1296
+                  ]
+                ],
+                "tile": [
+                  10,
+                  852,
+                  -1296
+                ]
+              },
+              "status": "POSITIVE"
+            }
+          },
+          "id": "turtle-chambers-10"
+        },
+        {
+          "arms": {
+            "automatic": {
+              "counts": {
+                "chambers": 2,
+                "cross_request_hits": 1,
+                "nodes": 2,
+                "portal_containment_checks": 1,
+                "portal_hits": 1,
+                "portal_poses": 1442,
+                "portal_split_checks": 1,
+                "reuse_hits": 1,
+                "splits": 1,
+                "tile_tests": 12
+              },
+              "proposal": {
+                "edge": [
+                  [
+                    914,
+                    -1400
+                  ],
+                  [
+                    914,
+                    -1401
+                  ]
+                ],
+                "known": [
+                  0,
+                  null
+                ],
+                "tile": [
+                  0,
+                  919,
+                  -1402
+                ]
+              },
+              "status": "NEGATIVE"
+            },
+            "plain": {
+              "counts": {
+                "nodes": 1,
+                "tile_tests": 12
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            },
+            "receptor": {
+              "counts": {
+                "chambers": 2,
+                "cross_request_hits": 1,
+                "nodes": 2,
+                "portal_containment_checks": 1,
+                "portal_hits": 1,
+                "portal_poses": 56,
+                "portal_split_checks": 1,
+                "receptor_tests": 2976,
+                "reuse_hits": 1,
+                "splits": 1,
+                "tile_tests": 12
+              },
+              "proposal": {
+                "donor": "turtle-chambers-08",
+                "edge": [
+                  [
+                    914,
+                    -1400
+                  ],
+                  [
+                    914,
+                    -1401
+                  ]
+                ],
+                "known": [
+                  0,
+                  null
+                ],
+                "other": [
+                  [
+                    916,
+                    -1399
+                  ],
+                  [
+                    916,
+                    -1398
+                  ]
+                ],
+                "tile": [
+                  0,
+                  919,
+                  -1402
+                ]
+              },
+              "status": "NEGATIVE"
+            }
+          },
+          "id": "turtle-chambers-11"
+        },
+        {
+          "arms": {
+            "automatic": {
+              "counts": {
+                "chambers": 2,
+                "cross_request_hits": 1,
+                "nodes": 3,
+                "portal_containment_checks": 2,
+                "portal_hits": 1,
+                "portal_poses": 861,
+                "portal_split_checks": 2,
+                "reuse_hits": 1,
+                "splits": 1,
+                "tile_tests": 24
+              },
+              "proposal": {
+                "edge": [
+                  [
+                    989,
+                    -1510
+                  ],
+                  [
+                    989,
+                    -1511
+                  ]
+                ],
+                "known": [
+                  0,
+                  3
+                ],
+                "tile": [
+                  0,
+                  994,
+                  -1512
+                ]
+              },
+              "status": "NEGATIVE"
+            },
+            "plain": {
+              "counts": {
+                "nodes": 1,
+                "tile_tests": 12
+              },
+              "proposal": null,
+              "status": "NEGATIVE"
+            },
+            "receptor": {
+              "counts": {
+                "chambers": 2,
+                "cross_request_hits": 1,
+                "nodes": 7,
+                "portal_containment_checks": 5,
+                "portal_hits": 1,
+                "portal_poses": 32,
+                "portal_split_checks": 5,
+                "receptor_tests": 1712,
+                "reuse_hits": 1,
+                "splits": 1,
+                "tile_tests": 76
+              },
+              "proposal": {
+                "donor": "turtle-chambers-10",
+                "edge": [
+                  [
+                    989,
+                    -1508
+                  ],
+                  [
+                    990,
+                    -1510
+                  ]
+                ],
+                "known": [
+                  0,
+                  3
+                ],
+                "other": [
+                  [
+                    992,
+                    -1514
+                  ],
+                  [
+                    993,
+                    -1514
+                  ]
+                ],
+                "tile": [
+                  0,
+                  994,
+                  -1512
+                ]
+              },
+              "status": "NEGATIVE"
+            }
+          },
+          "id": "turtle-chambers-12"
+        },
+        {
+          "arms": {
+            "automatic": {
+              "counts": {
+                "chambers": 2,
+                "cross_request_hits": 2,
+                "join_tests": 21,
+                "nodes": 2,
+                "portal_containment_checks": 1,
+                "portal_hits": 1,
+                "portal_poses": 1105,
+                "portal_split_checks": 1,
+                "reuse_hits": 2,
+                "splits": 1,
+                "tile_tests": 12
+              },
+              "proposal": {
+                "edge": [
+                  [
+                    1060,
+                    -1616
+                  ],
+                  [
+                    1060,
+                    -1617
+                  ]
+                ],
+                "known": [
+                  1,
+                  2
+                ],
+                "tile": [
+                  1,
+                  1065,
+                  -1620
+                ]
+              },
+              "status": "POSITIVE"
+            },
+            "plain": {
+              "counts": {
+                "nodes": 25,
+                "tile_tests": 456
+              },
+              "proposal": null,
+              "status": "POSITIVE"
+            },
+            "receptor": {
+              "counts": {
+                "chambers": 2,
+                "cross_request_hits": 2,
+                "join_tests": 21,
+                "nodes": 2,
+                "portal_containment_checks": 2,
+                "portal_hits": 1,
+                "portal_poses": 38,
+                "portal_split_checks": 2,
+                "receptor_tests": 2256,
+                "reuse_hits": 2,
+                "splits": 1,
+                "tile_tests": 16
+              },
+              "proposal": {
+                "donor": "turtle-chambers-00",
+                "edge": [
+                  [
+                    1060,
+                    -1619
+                  ],
+                  [
+                    1061,
+                    -1621
+                  ]
+                ],
+                "known": [
+                  1,
+                  2
+                ],
+                "other": [
+                  [
+                    1064,
+                    -1617
+                  ],
+                  [
+                    1063,
+                    -1616
+                  ]
+                ],
+                "tile": [
+                  1,
+                  1065,
+                  -1620
+                ]
+              },
+              "status": "POSITIVE"
+            }
+          },
+          "id": "turtle-chambers-13"
+        }
+      ]
+    }
+  },
+  "replay": {
+    "sha256": {
+      "data/chambers-audit-v1.json": "92a16d3148d2781cb2c9fc6bf8c68a0468e9bb9b9a39780eed28027702142220",
+      "data/chambers-port-v1.json": "a2e67daab425f1a59f4f44fd3ad579dc0d627432718aa7cff19a7b68e483f5a0",
+      "data/chambers-v1.json": "e266fc640c30f87fc7352ce0735e2160e5789dc738c9d1f0116958d4d27551db",
+      "input/chambers-v1.json": "69513852f519b37e583c2f2c3d7bbebe735faa81cad7e3ae4ab78a6b4225d327",
+      "report/residual-chambers-20261106-v1.html": "6020ab6cbab1020ab31ace82bbc2241de1903fac630a105d9dd8d3e7111a4271"
+    },
+    "status": "CHECKED_CLEAN_REPLAY",
+    "timing_sha256": "630e21138d361ffbde4f2ab84899aa5cd33c853896b4e2ad97f9d0f704285c99"
+  },
+  "schema": "RESIDUAL-CHAMBERS-RESULTS-v1",
+  "timing": {
+    "repeats": 5,
+    "systems": {
+      "penrose": {
+        "automatic": {
+          "donor_ns": [
+            129435958,
+            133991916,
+            139424459,
+            122798834,
+            155459750
+          ],
+          "signature": [
+            [
+              "POSITIVE",
+              14,
+              1
+            ],
+            [
+              "BOUNDED",
+              251,
+              1
+            ],
+            [
+              "NEGATIVE",
+              230,
+              1
+            ],
+            [
+              "POSITIVE",
+              2,
+              1
+            ],
+            [
+              "NEGATIVE",
+              175,
+              1
+            ],
+            [
+              "BOUNDED",
+              251,
+              1
+            ],
+            [
+              "POSITIVE",
+              22,
+              1
+            ],
+            [
+              "NEGATIVE",
+              218,
+              1
+            ],
+            [
+              "NEGATIVE",
+              139,
+              1
+            ],
+            [
+              "POSITIVE",
+              2,
+              1
+            ]
+          ],
+          "test_ns": [
+            956477417,
+            957421416,
+            1073681416,
+            1010700458,
+            1038124083
+          ]
+        },
+        "direct": {
+          "donor_ns": [
+            187300334,
+            153242209,
+            219320000,
+            155608500,
+            142638792
+          ],
+          "signature": [
+            [
+              "POSITIVE",
+              11,
+              0
+            ],
+            [
+              "BOUNDED",
+              251,
+              0
+            ],
+            [
+              "NEGATIVE",
+              194,
+              0
+            ],
+            [
+              "POSITIVE",
+              23,
+              0
+            ],
+            [
+              "NEGATIVE",
+              150,
+              0
+            ],
+            [
+              "BOUNDED",
+              251,
+              0
+            ],
+            [
+              "POSITIVE",
+              21,
+              0
+            ],
+            [
+              "BOUNDED",
+              251,
+              0
+            ],
+            [
+              "NEGATIVE",
+              87,
+              0
+            ],
+            [
+              "POSITIVE",
+              29,
+              0
+            ]
+          ],
+          "test_ns": [
+            1476947583,
+            956955042,
+            962649458,
+            971703166,
+            957756917
+          ]
+        },
+        "plain": {
+          "donor_ns": [
+            136088833,
+            129904333,
+            144541833,
+            135943417,
+            122929500
+          ],
+          "signature": [
+            [
+              "POSITIVE",
+              14,
+              0
+            ],
+            [
+              "BOUNDED",
+              251,
+              0
+            ],
+            [
+              "NEGATIVE",
+              230,
+              0
+            ],
+            [
+              "POSITIVE",
+              23,
+              0
+            ],
+            [
+              "NEGATIVE",
+              175,
+              0
+            ],
+            [
+              "BOUNDED",
+              251,
+              0
+            ],
+            [
+              "POSITIVE",
+              22,
+              0
+            ],
+            [
+              "NEGATIVE",
+              193,
+              0
+            ],
+            [
+              "NEGATIVE",
+              139,
+              0
+            ],
+            [
+              "POSITIVE",
+              20,
+              0
+            ]
+          ],
+          "test_ns": [
+            988601917,
+            1002297333,
+            1100450917,
+            1069513042,
+            1031076375
+          ]
+        },
+        "receptor": {
+          "donor_ns": [
+            130122791,
+            131845083,
+            128608125,
+            188933625,
+            204145041
+          ],
+          "signature": [
+            [
+              "POSITIVE",
+              14,
+              1
+            ],
+            [
+              "BOUNDED",
+              251,
+              1
+            ],
+            [
+              "NEGATIVE",
+              230,
+              1
+            ],
+            [
+              "POSITIVE",
+              2,
+              1
+            ],
+            [
+              "NEGATIVE",
+              175,
+              1
+            ],
+            [
+              "BOUNDED",
+              251,
+              1
+            ],
+            [
+              "POSITIVE",
+              22,
+              1
+            ],
+            [
+              "NEGATIVE",
+              218,
+              1
+            ],
+            [
+              "NEGATIVE",
+              139,
+              1
+            ],
+            [
+              "POSITIVE",
+              2,
+              1
+            ]
+          ],
+          "test_ns": [
+            946749417,
+            984750041,
+            1036149292,
+            1122201833,
+            1094855084
+          ]
+        },
+        "reuse": {
+          "donor_ns": [
+            129317291,
+            136724084,
+            138336333,
+            128607958,
+            147430209
+          ],
+          "signature": [
+            [
+              "POSITIVE",
+              13,
+              0
+            ],
+            [
+              "BOUNDED",
+              251,
+              0
+            ],
+            [
+              "NEGATIVE",
+              193,
+              0
+            ],
+            [
+              "POSITIVE",
+              2,
+              0
+            ],
+            [
+              "NEGATIVE",
+              1,
+              0
+            ],
+            [
+              "BOUNDED",
+              251,
+              0
+            ],
+            [
+              "POSITIVE",
+              1,
+              0
+            ],
+            [
+              "NEGATIVE",
+              220,
+              0
+            ],
+            [
+              "NEGATIVE",
+              154,
+              0
+            ],
+            [
+              "POSITIVE",
+              11,
+              0
+            ]
+          ],
+          "test_ns": [
+            705008750,
+            736873250,
+            758891583,
+            760639666,
+            760092875
+          ]
+        },
+        "split": {
+          "donor_ns": [
+            131522250,
+            122705000,
+            138856125,
+            135431542,
+            131802292
+          ],
+          "signature": [
+            [
+              "POSITIVE",
+              13,
+              0
+            ],
+            [
+              "BOUNDED",
+              251,
+              0
+            ],
+            [
+              "NEGATIVE",
+              193,
+              0
+            ],
+            [
+              "POSITIVE",
+              25,
+              0
+            ],
+            [
+              "NEGATIVE",
+              183,
+              0
+            ],
+            [
+              "BOUNDED",
+              251,
+              0
+            ],
+            [
+              "POSITIVE",
+              23,
+              0
+            ],
+            [
+              "BOUNDED",
+              251,
+              0
+            ],
+            [
+              "NEGATIVE",
+              161,
+              0
+            ],
+            [
+              "POSITIVE",
+              31,
+              0
+            ]
+          ],
+          "test_ns": [
+            891456459,
+            886325375,
+            998489959,
+            915167125,
+            918696416
+          ]
+        }
+      },
+      "turtle": {
+        "automatic": {
+          "donor_ns": [
+            381877125,
+            357229667,
+            407882500,
+            363200458,
+            375394167
+          ],
+          "signature": [
+            [
+              "POSITIVE",
+              5,
+              1
+            ],
+            [
+              "NEGATIVE",
+              2,
+              1
+            ],
+            [
+              "NEGATIVE",
+              2,
+              1
+            ],
+            [
+              "POSITIVE",
+              2,
+              1
+            ],
+            [
+              "NEGATIVE",
+              3,
+              12
+            ],
+            [
+              "NEGATIVE",
+              2,
+              1
+            ],
+            [
+              "POSITIVE",
+              2,
+              1
+            ],
+            [
+              "NEGATIVE",
+              2,
+              1
+            ],
+            [
+              "NEGATIVE",
+              3,
+              2
+            ],
+            [
+              "POSITIVE",
+              2,
+              1
+            ]
+          ],
+          "test_ns": [
+            1212657000,
+            1109289625,
+            1360187792,
+            1502620916,
+            1376689917
+          ]
+        },
+        "direct": {
+          "donor_ns": [
+            225375750,
+            198475084,
+            222652917,
+            244586375,
+            215838542
+          ],
+          "signature": [
+            [
+              "POSITIVE",
+              23,
+              0
+            ],
+            [
+              "NEGATIVE",
+              3,
+              0
+            ],
+            [
+              "NEGATIVE",
+              1,
+              0
+            ],
+            [
+              "POSITIVE",
+              25,
+              0
+            ],
+            [
+              "NEGATIVE",
+              1,
+              0
+            ],
+            [
+              "NEGATIVE",
+              2,
+              0
+            ],
+            [
+              "POSITIVE",
+              23,
+              0
+            ],
+            [
+              "NEGATIVE",
+              2,
+              0
+            ],
+            [
+              "NEGATIVE",
+              1,
+              0
+            ],
+            [
+              "POSITIVE",
+              25,
+              0
+            ]
+          ],
+          "test_ns": [
+            705022916,
+            596709375,
+            615554791,
+            726769167,
+            601939958
+          ]
+        },
+        "plain": {
+          "donor_ns": [
+            379170166,
+            470715625,
+            380380417,
+            384316750,
+            400464500
+          ],
+          "signature": [
+            [
+              "POSITIVE",
+              26,
+              0
+            ],
+            [
+              "NEGATIVE",
+              1,
+              0
+            ],
+            [
+              "NEGATIVE",
+              1,
+              0
+            ],
+            [
+              "POSITIVE",
+              25,
+              0
+            ],
+            [
+              "NEGATIVE",
+              1,
+              0
+            ],
+            [
+              "NEGATIVE",
+              1,
+              0
+            ],
+            [
+              "POSITIVE",
+              24,
+              0
+            ],
+            [
+              "NEGATIVE",
+              1,
+              0
+            ],
+            [
+              "NEGATIVE",
+              1,
+              0
+            ],
+            [
+              "POSITIVE",
+              25,
+              0
+            ]
+          ],
+          "test_ns": [
+            629811333,
+            612520459,
+            661272583,
+            581051792,
+            650646459
+          ]
+        },
+        "receptor": {
+          "donor_ns": [
+            355559167,
+            352480167,
+            388021166,
+            380987875,
+            392362834
+          ],
+          "signature": [
+            [
+              "POSITIVE",
+              5,
+              2
+            ],
+            [
+              "NEGATIVE",
+              2,
+              1
+            ],
+            [
+              "NEGATIVE",
+              2,
+              1
+            ],
+            [
+              "POSITIVE",
+              2,
+              2
+            ],
+            [
+              "NEGATIVE",
+              8,
+              19
+            ],
+            [
+              "NEGATIVE",
+              2,
+              1
+            ],
+            [
+              "POSITIVE",
+              2,
+              2
+            ],
+            [
+              "NEGATIVE",
+              2,
+              1
+            ],
+            [
+              "NEGATIVE",
+              7,
+              5
+            ],
+            [
+              "POSITIVE",
+              2,
+              2
+            ]
+          ],
+          "test_ns": [
+            1088986334,
+            1058538792,
+            1188540458,
+            1149684459,
+            1032372959
+          ]
+        },
+        "reuse": {
+          "donor_ns": [
+            385416875,
+            370326583,
+            365334166,
+            384983875,
+            389532959
+          ],
+          "signature": [
+            [
+              "POSITIVE",
+              4,
+              0
+            ],
+            [
+              "NEGATIVE",
+              3,
+              0
+            ],
+            [
+              "NEGATIVE",
+              1,
+              0
+            ],
+            [
+              "POSITIVE",
+              2,
+              0
+            ],
+            [
+              "NEGATIVE",
+              1,
+              0
+            ],
+            [
+              "NEGATIVE",
+              2,
+              0
+            ],
+            [
+              "POSITIVE",
+              1,
+              0
+            ],
+            [
+              "NEGATIVE",
+              2,
+              0
+            ],
+            [
+              "NEGATIVE",
+              1,
+              0
+            ],
+            [
+              "POSITIVE",
+              2,
+              0
+            ]
+          ],
+          "test_ns": [
+            677417792,
+            596604375,
+            619225000,
+            649924000,
+            664909750
+          ]
+        },
+        "split": {
+          "donor_ns": [
+            366276625,
+            361597709,
+            389365625,
+            407570625,
+            362826750
+          ],
+          "signature": [
+            [
+              "POSITIVE",
+              25,
+              0
+            ],
+            [
+              "NEGATIVE",
+              4,
+              0
+            ],
+            [
+              "NEGATIVE",
+              2,
+              0
+            ],
+            [
+              "POSITIVE",
+              27,
+              0
+            ],
+            [
+              "NEGATIVE",
+              2,
+              0
+            ],
+            [
+              "NEGATIVE",
+              10,
+              0
+            ],
+            [
+              "POSITIVE",
+              25,
+              0
+            ],
+            [
+              "NEGATIVE",
+              3,
+              0
+            ],
+            [
+              "NEGATIVE",
+              2,
+              0
+            ],
+            [
+              "POSITIVE",
+              27,
+              0
+            ]
+          ],
+          "test_ns": [
+            896121375,
+            841353459,
+            866664333,
+            869735083,
+            842260042
+          ]
+        }
+      }
+    }
+  }
+}

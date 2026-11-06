@@ -1,0 +1,147 @@
+{
+  "archive_entries": {
+    "data/chambers-audit-v1.json": {
+      "bytes": 2089,
+      "sha256": "92a16d3148d2781cb2c9fc6bf8c68a0468e9bb9b9a39780eed28027702142220"
+    },
+    "data/chambers-port-v1.json": {
+      "bytes": 1475636,
+      "sha256": "a2e67daab425f1a59f4f44fd3ad579dc0d627432718aa7cff19a7b68e483f5a0"
+    },
+    "data/chambers-timing-v1.json": {
+      "bytes": 4002,
+      "sha256": "630e21138d361ffbde4f2ab84899aa5cd33c853896b4e2ad97f9d0f704285c99"
+    },
+    "data/chambers-v1.json": {
+      "bytes": 1149246,
+      "sha256": "e266fc640c30f87fc7352ce0735e2160e5789dc738c9d1f0116958d4d27551db"
+    },
+    "input/chamber-origins-v1.json": {
+      "bytes": 7592,
+      "sha256": "5902e99c9d27aece556990967b3aba3c051b8147567fc338c48c1a6595c0c619"
+    },
+    "input/chambers-v1.json": {
+      "bytes": 58295,
+      "sha256": "69513852f519b37e583c2f2c3d7bbebe735faa81cad7e3ae4ab78a6b4225d327"
+    },
+    "input/exact-point-model-v1.json": {
+      "bytes": 10642,
+      "sha256": "775ce3ac20489ef64d8d8266238edde36f87919461b68ccbd232763dd2da3eb0"
+    },
+    "publication/REPLAY.md": {
+      "bytes": 883,
+      "sha256": "083b86c902410f8184accee039ae0f0f06f923a5833ee13d0fa93eedc73c72d6"
+    },
+    "publication/browser-v1.json": {
+      "bytes": 180,
+      "sha256": "dddab15fb48b7c46796576e9b62fdfa57a962b6269902c277bbf1c86323f38aa"
+    },
+    "publication/check_v1.cjs": {
+      "bytes": 2445,
+      "sha256": "6c29fc0cd20382d4b7af416a6e9d722e072e4512ffa06db08aadb7ddeb7f2c84"
+    },
+    "publication/notebook-v1.html": {
+      "bytes": 6206,
+      "sha256": "c3c95b9c37381a4beb2c463251e289a4bab8763e716d07abd54fa5b38405fb89"
+    },
+    "publication/package_v1.py": {
+      "bytes": 3024,
+      "sha256": "dae328140cfb5e048c72ee31081cfd60422ea40b4ccbb71082b9a51a360829fb"
+    },
+    "publication/render_v1.py": {
+      "bytes": 7606,
+      "sha256": "90792fbcfeae4b89de30f8fe027601e109dfa197ba25085bd04986ab9b972abd"
+    },
+    "publication/replay-v1.json": {
+      "bytes": 661,
+      "sha256": "e16b824a994aff5bb0a6e9596d49139742e7524736c41fb9cd80e5a4622debab"
+    },
+    "publication/replay_v1.py": {
+      "bytes": 1954,
+      "sha256": "6fecf795c68408367d26a3c04c23792de60956ccec263a1b8e77c479e493458c"
+    },
+    "report/residual-chambers-20261106-v1-results.json": {
+      "bytes": 98315,
+      "sha256": "f510f26b5224b062abc54e8f1bb5e50231beaa87e7c33bac7a17f93a9a84ace1"
+    },
+    "report/residual-chambers-20261106-v1.html": {
+      "bytes": 23298,
+      "sha256": "6020ab6cbab1020ab31ace82bbc2241de1903fac630a105d9dd8d3e7111a4271"
+    },
+    "source/boundary_search_v1.py": {
+      "bytes": 11523,
+      "sha256": "ea15d14561f7b39f58e7cc62d9fcc736d89377888922e6c454f0cedfa8b1b112"
+    },
+    "source/cases_v1.py": {
+      "bytes": 8451,
+      "sha256": "70ff43195c11a970f45d6acc319bddb7b90d4b394afced7ea4f98ba294b80af3"
+    },
+    "source/chamber_audit_v1.py": {
+      "bytes": 8869,
+      "sha256": "87ad32e86ca8acd090f7b80d17af4cf042df4ed6aa539db7bcd2f8be9a8f46de"
+    },
+    "source/chamber_cases_v1.py": {
+      "bytes": 5212,
+      "sha256": "252a9ba66fe4fb9993196ccab524b926a5bc7fb61d4eaa16c69003ce607d8a38"
+    },
+    "source/chamber_check_v1.py": {
+      "bytes": 4360,
+      "sha256": "9e10c029063cd7d6930ceca98ce016e0367faa7243abe618cb4a05c0f9abeb73"
+    },
+    "source/chamber_experiment_v1.py": {
+      "bytes": 2445,
+      "sha256": "0e774268c160132662f748988a43b54cb730d4026237bb2f3e7cbd90be23b1c3"
+    },
+    "source/chamber_port_experiment_v1.py": {
+      "bytes": 2015,
+      "sha256": "92f67df41b213fbd08a5a277f3ebae3786e6ed2fb78abd56fe9600d818244ba6"
+    },
+    "source/chamber_timing_v1.py": {
+      "bytes": 2100,
+      "sha256": "fec8b37b3949d08ec8c103f39c8d4668cbbef4ed99c6dd6225d501759b5756d2"
+    },
+    "source/chambers_v1.py": {
+      "bytes": 12243,
+      "sha256": "208a0346cc6941fd0087337f16d68f4a7312f216a25f899e90c82e1d6f78aa65"
+    },
+    "source/check_v1.py": {
+      "bytes": 4131,
+      "sha256": "edd28b8b5b611059b47d8b2b55964c27a1a5b268dabdaf06c2f4f7b340eaf76c"
+    },
+    "source/clipping_v1.py": {
+      "bytes": 5276,
+      "sha256": "a649384ab8e810d88d28e79906346946b869292c0de2bf81d07469778fc59281"
+    },
+    "source/cluster_v1.py": {
+      "bytes": 15717,
+      "sha256": "a2eec032406feaf45f7c5ca66b235727db26e414996337981f6b0ff865859b85"
+    },
+    "source/geometry_v1.py": {
+      "bytes": 10392,
+      "sha256": "9869ab1c6a2fb3928366a8c50e114ff4c4ba14960cb7f28cb8cc5541b8c3936e"
+    },
+    "source/model_v1.py": {
+      "bytes": 4432,
+      "sha256": "df86798cfa969b57bdca56f4928b3fd12fe908a275ec5e47031546e74bef43f4"
+    },
+    "source/triangle_geometry_v1.py": {
+      "bytes": 9600,
+      "sha256": "4715c6f612b196d257c858d695d604d800ce832cc5f8a1bfee8ae58e400a79ed"
+    }
+  },
+  "assets": {
+    "residual-chambers-20261106-v1-evidence.zip": {
+      "bytes": 178823,
+      "sha256": "f0433cf8f15ba96df4c476f66a81140e27c3afb07820195466ea052a796aaab0"
+    },
+    "residual-chambers-20261106-v1-results.json": {
+      "bytes": 98315,
+      "sha256": "f510f26b5224b062abc54e8f1bb5e50231beaa87e7c33bac7a17f93a9a84ace1"
+    },
+    "residual-chambers-20261106-v1.html": {
+      "bytes": 23298,
+      "sha256": "6020ab6cbab1020ab31ace82bbc2241de1903fac630a105d9dd8d3e7111a4271"
+    }
+  },
+  "schema": "RESIDUAL-CHAMBERS-MANIFEST-v1"
+}
