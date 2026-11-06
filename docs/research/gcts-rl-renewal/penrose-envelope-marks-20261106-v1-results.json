@@ -1,0 +1,941 @@
+{
+  "cluster_runs": [
+    {
+      "candidates": 213,
+      "case": "seam-2",
+      "checked_seconds": 0.020195459001115523,
+      "clusters": 4,
+      "forced": 4,
+      "proposal_seconds": 0.001594500005012378,
+      "targets": 6,
+      "tiles": 12
+    },
+    {
+      "candidates": 532,
+      "case": "seam-3",
+      "checked_seconds": 0.049924500002816785,
+      "clusters": 9,
+      "forced": 9,
+      "proposal_seconds": 0.0027628329989966005,
+      "targets": 17,
+      "tiles": 27
+    },
+    {
+      "candidates": 1002,
+      "case": "seam-4",
+      "checked_seconds": 0.09564749999844935,
+      "clusters": 16,
+      "forced": 16,
+      "proposal_seconds": 0.004550124998786487,
+      "targets": 34,
+      "tiles": 48
+    },
+    {
+      "candidates": 1621,
+      "case": "seam-5",
+      "checked_seconds": 0.1568062500009546,
+      "clusters": 25,
+      "forced": 25,
+      "proposal_seconds": 0.007207374997960869,
+      "targets": 57,
+      "tiles": 75
+    },
+    {
+      "candidates": 2055,
+      "case": "sparse-8",
+      "checked_seconds": 0.22662387500167824,
+      "clusters": 64,
+      "forced": 24,
+      "proposal_seconds": 0.006408250003005378,
+      "targets": 54,
+      "tiles": 192
+    },
+    {
+      "candidates": 4675,
+      "case": "sparse-12",
+      "checked_seconds": 0.5559917080026935,
+      "clusters": 144,
+      "forced": 52,
+      "proposal_seconds": 0.014462125000136439,
+      "targets": 129,
+      "tiles": 432
+    }
+  ],
+  "comparisons": [
+    {
+      "candidates": 6,
+      "case": "E01",
+      "decisions": 3,
+      "fresh_contacts": 4,
+      "mode": "plain",
+      "models": 4,
+      "result": "NEGATIVE",
+      "seconds": 0.0001627080055186525,
+      "transferred": 0
+    },
+    {
+      "candidates": 6,
+      "case": "E01",
+      "decisions": 0,
+      "fresh_contacts": 0,
+      "mode": "marked",
+      "models": 0,
+      "result": "NEGATIVE",
+      "seconds": 1.6291000065393746e-05,
+      "transferred": 1
+    },
+    {
+      "candidates": 6,
+      "case": "E01",
+      "decisions": 0,
+      "fresh_contacts": 0,
+      "mode": "learned",
+      "models": 0,
+      "result": "NEGATIVE",
+      "seconds": 1.308399805566296e-05,
+      "transferred": 1
+    },
+    {
+      "candidates": 6,
+      "case": "E01",
+      "decisions": 14,
+      "fresh_contacts": 4,
+      "mode": "glucose",
+      "models": 4,
+      "result": "NEGATIVE",
+      "seconds": 0.0011955420050071552,
+      "transferred": 0
+    },
+    {
+      "candidates": 6,
+      "case": "E01",
+      "decisions": 0,
+      "fresh_contacts": 0,
+      "mode": "glucose-marked",
+      "models": 0,
+      "result": "NEGATIVE",
+      "seconds": 0.00049458300054539,
+      "transferred": 1
+    },
+    {
+      "candidates": 4,
+      "case": "E02",
+      "decisions": 1,
+      "fresh_contacts": 2,
+      "mode": "plain",
+      "models": 2,
+      "result": "NEGATIVE",
+      "seconds": 0.00013808400399284437,
+      "transferred": 0
+    },
+    {
+      "candidates": 4,
+      "case": "E02",
+      "decisions": 0,
+      "fresh_contacts": 0,
+      "mode": "marked",
+      "models": 0,
+      "result": "NEGATIVE",
+      "seconds": 1.1832999007310718e-05,
+      "transferred": 1
+    },
+    {
+      "candidates": 4,
+      "case": "E02",
+      "decisions": 0,
+      "fresh_contacts": 0,
+      "mode": "learned",
+      "models": 0,
+      "result": "NEGATIVE",
+      "seconds": 1.054200401995331e-05,
+      "transferred": 1
+    },
+    {
+      "candidates": 4,
+      "case": "E02",
+      "decisions": 5,
+      "fresh_contacts": 2,
+      "mode": "glucose",
+      "models": 2,
+      "result": "NEGATIVE",
+      "seconds": 0.0004948749992763624,
+      "transferred": 0
+    },
+    {
+      "candidates": 4,
+      "case": "E02",
+      "decisions": 0,
+      "fresh_contacts": 0,
+      "mode": "glucose-marked",
+      "models": 0,
+      "result": "NEGATIVE",
+      "seconds": 9.441599831916392e-05,
+      "transferred": 1
+    },
+    {
+      "candidates": 39,
+      "case": "E03",
+      "decisions": 5,
+      "fresh_contacts": 3,
+      "mode": "plain",
+      "models": 3,
+      "result": "NEGATIVE",
+      "seconds": 0.000953665999986697,
+      "transferred": 0
+    },
+    {
+      "candidates": 39,
+      "case": "E03",
+      "decisions": 0,
+      "fresh_contacts": 0,
+      "mode": "marked",
+      "models": 0,
+      "result": "NEGATIVE",
+      "seconds": 0.00010404200293123722,
+      "transferred": 1
+    },
+    {
+      "candidates": 39,
+      "case": "E03",
+      "decisions": 0,
+      "fresh_contacts": 0,
+      "mode": "learned",
+      "models": 0,
+      "result": "NEGATIVE",
+      "seconds": 0.00010062499495688826,
+      "transferred": 1
+    },
+    {
+      "candidates": 39,
+      "case": "E03",
+      "decisions": 30,
+      "fresh_contacts": 3,
+      "mode": "glucose",
+      "models": 3,
+      "result": "NEGATIVE",
+      "seconds": 0.002494916996511165,
+      "transferred": 0
+    },
+    {
+      "candidates": 39,
+      "case": "E03",
+      "decisions": 0,
+      "fresh_contacts": 0,
+      "mode": "glucose-marked",
+      "models": 0,
+      "result": "NEGATIVE",
+      "seconds": 0.00018470900249667466,
+      "transferred": 1
+    },
+    {
+      "candidates": 2,
+      "case": "E04",
+      "decisions": 0,
+      "fresh_contacts": 0,
+      "mode": "plain",
+      "models": 1,
+      "result": "POSITIVE",
+      "seconds": 0.00017800000205170363,
+      "transferred": 0
+    },
+    {
+      "candidates": 2,
+      "case": "E04",
+      "decisions": 0,
+      "fresh_contacts": 0,
+      "mode": "marked",
+      "models": 1,
+      "result": "POSITIVE",
+      "seconds": 1.195799995912239e-05,
+      "transferred": 0
+    },
+    {
+      "candidates": 2,
+      "case": "E04",
+      "decisions": 0,
+      "fresh_contacts": 0,
+      "mode": "learned",
+      "models": 1,
+      "result": "POSITIVE",
+      "seconds": 8.625000191386789e-06,
+      "transferred": 0
+    },
+    {
+      "candidates": 2,
+      "case": "E04",
+      "decisions": 2,
+      "fresh_contacts": 0,
+      "mode": "glucose",
+      "models": 1,
+      "result": "POSITIVE",
+      "seconds": 8.966699533630162e-05,
+      "transferred": 0
+    },
+    {
+      "candidates": 2,
+      "case": "E04",
+      "decisions": 2,
+      "fresh_contacts": 0,
+      "mode": "glucose-marked",
+      "models": 1,
+      "result": "POSITIVE",
+      "seconds": 9.875000250758603e-05,
+      "transferred": 0
+    },
+    {
+      "candidates": 6,
+      "case": "E05",
+      "decisions": 1,
+      "fresh_contacts": 0,
+      "mode": "plain",
+      "models": 1,
+      "result": "POSITIVE",
+      "seconds": 0.00028158399800304323,
+      "transferred": 0
+    },
+    {
+      "candidates": 6,
+      "case": "E05",
+      "decisions": 1,
+      "fresh_contacts": 0,
+      "mode": "marked",
+      "models": 1,
+      "result": "POSITIVE",
+      "seconds": 2.5040993932634592e-05,
+      "transferred": 0
+    },
+    {
+      "candidates": 6,
+      "case": "E05",
+      "decisions": 1,
+      "fresh_contacts": 0,
+      "mode": "learned",
+      "models": 1,
+      "result": "POSITIVE",
+      "seconds": 8.820799848763272e-05,
+      "transferred": 0
+    },
+    {
+      "candidates": 6,
+      "case": "E05",
+      "decisions": 5,
+      "fresh_contacts": 0,
+      "mode": "glucose",
+      "models": 1,
+      "result": "POSITIVE",
+      "seconds": 9.950000094249845e-05,
+      "transferred": 0
+    },
+    {
+      "candidates": 6,
+      "case": "E05",
+      "decisions": 5,
+      "fresh_contacts": 0,
+      "mode": "glucose-marked",
+      "models": 1,
+      "result": "POSITIVE",
+      "seconds": 0.00016608300211373717,
+      "transferred": 0
+    },
+    {
+      "candidates": 39,
+      "case": "E06",
+      "decisions": 4,
+      "fresh_contacts": 0,
+      "mode": "plain",
+      "models": 1,
+      "result": "POSITIVE",
+      "seconds": 0.0005067079982836731,
+      "transferred": 0
+    },
+    {
+      "candidates": 39,
+      "case": "E06",
+      "decisions": 4,
+      "fresh_contacts": 0,
+      "mode": "marked",
+      "models": 1,
+      "result": "POSITIVE",
+      "seconds": 0.00020479200611589476,
+      "transferred": 1
+    },
+    {
+      "candidates": 39,
+      "case": "E06",
+      "decisions": 4,
+      "fresh_contacts": 0,
+      "mode": "learned",
+      "models": 1,
+      "result": "POSITIVE",
+      "seconds": 0.00021308300347300246,
+      "transferred": 1
+    },
+    {
+      "candidates": 39,
+      "case": "E06",
+      "decisions": 97,
+      "fresh_contacts": 12,
+      "mode": "glucose",
+      "models": 6,
+      "result": "POSITIVE",
+      "seconds": 0.002811166996252723,
+      "transferred": 0
+    },
+    {
+      "candidates": 39,
+      "case": "E06",
+      "decisions": 99,
+      "fresh_contacts": 14,
+      "mode": "glucose-marked",
+      "models": 6,
+      "result": "POSITIVE",
+      "seconds": 0.0023212910018628463,
+      "transferred": 1
+    },
+    {
+      "candidates": 38,
+      "case": "E07",
+      "decisions": 6,
+      "fresh_contacts": 2,
+      "mode": "plain",
+      "models": 2,
+      "result": "POSITIVE",
+      "seconds": 0.0007915830065030605,
+      "transferred": 0
+    },
+    {
+      "candidates": 38,
+      "case": "E07",
+      "decisions": 6,
+      "fresh_contacts": 2,
+      "mode": "marked",
+      "models": 2,
+      "result": "POSITIVE",
+      "seconds": 0.00042166699859080836,
+      "transferred": 1
+    },
+    {
+      "candidates": 38,
+      "case": "E07",
+      "decisions": 6,
+      "fresh_contacts": 2,
+      "mode": "learned",
+      "models": 2,
+      "result": "POSITIVE",
+      "seconds": 0.0003824579980573617,
+      "transferred": 1
+    },
+    {
+      "candidates": 38,
+      "case": "E07",
+      "decisions": 60,
+      "fresh_contacts": 6,
+      "mode": "glucose",
+      "models": 3,
+      "result": "POSITIVE",
+      "seconds": 0.0017470000020693988,
+      "transferred": 0
+    },
+    {
+      "candidates": 38,
+      "case": "E07",
+      "decisions": 59,
+      "fresh_contacts": 6,
+      "mode": "glucose-marked",
+      "models": 3,
+      "result": "POSITIVE",
+      "seconds": 0.0008044590067584068,
+      "transferred": 1
+    },
+    {
+      "candidates": 38,
+      "case": "E08",
+      "decisions": 3,
+      "fresh_contacts": 0,
+      "mode": "plain",
+      "models": 1,
+      "result": "POSITIVE",
+      "seconds": 0.0005357499976526015,
+      "transferred": 0
+    },
+    {
+      "candidates": 38,
+      "case": "E08",
+      "decisions": 3,
+      "fresh_contacts": 0,
+      "mode": "marked",
+      "models": 1,
+      "result": "POSITIVE",
+      "seconds": 0.0002013749981415458,
+      "transferred": 0
+    },
+    {
+      "candidates": 38,
+      "case": "E08",
+      "decisions": 3,
+      "fresh_contacts": 0,
+      "mode": "learned",
+      "models": 1,
+      "result": "POSITIVE",
+      "seconds": 0.00018962499598274007,
+      "transferred": 0
+    },
+    {
+      "candidates": 38,
+      "case": "E08",
+      "decisions": 12,
+      "fresh_contacts": 0,
+      "mode": "glucose",
+      "models": 1,
+      "result": "POSITIVE",
+      "seconds": 0.0001532500027678907,
+      "transferred": 0
+    },
+    {
+      "candidates": 38,
+      "case": "E08",
+      "decisions": 12,
+      "fresh_contacts": 0,
+      "mode": "glucose-marked",
+      "models": 1,
+      "result": "POSITIVE",
+      "seconds": 0.00015179199544945732,
+      "transferred": 0
+    },
+    {
+      "candidates": 176,
+      "case": "E09",
+      "decisions": 16,
+      "fresh_contacts": 0,
+      "mode": "plain",
+      "models": 1,
+      "result": "POSITIVE",
+      "seconds": 0.002401958998234477,
+      "transferred": 0
+    },
+    {
+      "candidates": 176,
+      "case": "E09",
+      "decisions": 16,
+      "fresh_contacts": 0,
+      "mode": "marked",
+      "models": 1,
+      "result": "POSITIVE",
+      "seconds": 0.0011925419967155904,
+      "transferred": 4
+    },
+    {
+      "candidates": 176,
+      "case": "E09",
+      "decisions": 16,
+      "fresh_contacts": 0,
+      "mode": "learned",
+      "models": 1,
+      "result": "POSITIVE",
+      "seconds": 0.0011415000044507906,
+      "transferred": 4
+    },
+    {
+      "candidates": 176,
+      "case": "E09",
+      "decisions": 421,
+      "fresh_contacts": 8,
+      "mode": "glucose",
+      "models": 4,
+      "result": "POSITIVE",
+      "seconds": 0.002853833000699524,
+      "transferred": 0
+    },
+    {
+      "candidates": 176,
+      "case": "E09",
+      "decisions": 413,
+      "fresh_contacts": 8,
+      "mode": "glucose-marked",
+      "models": 4,
+      "result": "POSITIVE",
+      "seconds": 0.0023181249998742715,
+      "transferred": 4
+    },
+    {
+      "candidates": 396,
+      "case": "E10",
+      "decisions": 70,
+      "fresh_contacts": 4,
+      "mode": "plain",
+      "models": 2,
+      "result": "POSITIVE",
+      "seconds": 0.011246124995523132,
+      "transferred": 0
+    },
+    {
+      "candidates": 396,
+      "case": "E10",
+      "decisions": 70,
+      "fresh_contacts": 4,
+      "mode": "marked",
+      "models": 2,
+      "result": "POSITIVE",
+      "seconds": 0.009274166004615836,
+      "transferred": 9
+    },
+    {
+      "candidates": 396,
+      "case": "E10",
+      "decisions": 70,
+      "fresh_contacts": 4,
+      "mode": "learned",
+      "models": 2,
+      "result": "POSITIVE",
+      "seconds": 0.007297750002180692,
+      "transferred": 9
+    },
+    {
+      "candidates": 396,
+      "case": "E10",
+      "decisions": 1411,
+      "fresh_contacts": 46,
+      "mode": "glucose",
+      "models": 6,
+      "result": "POSITIVE",
+      "seconds": 0.017482000002928544,
+      "transferred": 0
+    },
+    {
+      "candidates": 396,
+      "case": "E10",
+      "decisions": 1519,
+      "fresh_contacts": 60,
+      "mode": "glucose-marked",
+      "models": 8,
+      "result": "POSITIVE",
+      "seconds": 0.019787833000009414,
+      "transferred": 9
+    },
+    {
+      "candidates": 213,
+      "case": "Seam 2",
+      "decisions": 11,
+      "fresh_contacts": 0,
+      "mode": "plain",
+      "models": 1,
+      "result": "POSITIVE",
+      "seconds": 0.0018703749956330284,
+      "transferred": 0
+    },
+    {
+      "candidates": 213,
+      "case": "Seam 2",
+      "decisions": 11,
+      "fresh_contacts": 0,
+      "mode": "marked",
+      "models": 1,
+      "result": "POSITIVE",
+      "seconds": 0.0014398749990505166,
+      "transferred": 2
+    },
+    {
+      "candidates": 213,
+      "case": "Seam 2",
+      "decisions": 76,
+      "fresh_contacts": 63,
+      "mode": "learned",
+      "models": 6,
+      "result": "POSITIVE",
+      "seconds": 0.010847375000594184,
+      "transferred": 2
+    },
+    {
+      "candidates": 213,
+      "case": "Seam 2",
+      "decisions": 2055,
+      "fresh_contacts": 502,
+      "mode": "glucose",
+      "models": 19,
+      "result": "POSITIVE",
+      "seconds": 0.021032417003880255,
+      "transferred": 0
+    },
+    {
+      "candidates": 213,
+      "case": "Seam 2",
+      "decisions": 2055,
+      "fresh_contacts": 502,
+      "mode": "glucose-marked",
+      "models": 19,
+      "result": "POSITIVE",
+      "seconds": 0.01107179099926725,
+      "transferred": 2
+    },
+    {
+      "candidates": 532,
+      "case": "Seam 3",
+      "decisions": 73,
+      "fresh_contacts": 59,
+      "mode": "plain",
+      "models": 4,
+      "result": "POSITIVE",
+      "seconds": 0.02283016699948348,
+      "transferred": 0
+    },
+    {
+      "candidates": 532,
+      "case": "Seam 3",
+      "decisions": 73,
+      "fresh_contacts": 59,
+      "mode": "marked",
+      "models": 4,
+      "result": "POSITIVE",
+      "seconds": 0.018141708002076484,
+      "transferred": 6
+    },
+    {
+      "candidates": 532,
+      "case": "Seam 3",
+      "decisions": 119,
+      "fresh_contacts": 126,
+      "mode": "learned",
+      "models": 6,
+      "result": "POSITIVE",
+      "seconds": 0.029958665996673517,
+      "transferred": 6
+    },
+    {
+      "candidates": 532,
+      "case": "Seam 3",
+      "decisions": 4300,
+      "fresh_contacts": 994,
+      "mode": "glucose",
+      "models": 23,
+      "result": "POSITIVE",
+      "seconds": 0.11653512499469798,
+      "transferred": 0
+    },
+    {
+      "candidates": 532,
+      "case": "Seam 3",
+      "decisions": 4160,
+      "fresh_contacts": 963,
+      "mode": "glucose-marked",
+      "models": 25,
+      "result": "POSITIVE",
+      "seconds": 0.10773412499838741,
+      "transferred": 6
+    },
+    {
+      "candidates": 1002,
+      "case": "Seam 4",
+      "decisions": 131,
+      "fresh_contacts": 46,
+      "mode": "plain",
+      "models": 4,
+      "result": "POSITIVE",
+      "seconds": 0.05257629200059455,
+      "transferred": 0
+    },
+    {
+      "candidates": 1002,
+      "case": "Seam 4",
+      "decisions": 131,
+      "fresh_contacts": 46,
+      "mode": "marked",
+      "models": 4,
+      "result": "POSITIVE",
+      "seconds": 0.04396029099734733,
+      "transferred": 12
+    },
+    {
+      "candidates": 1002,
+      "case": "Seam 4",
+      "decisions": 145,
+      "fresh_contacts": 98,
+      "mode": "learned",
+      "models": 4,
+      "result": "POSITIVE",
+      "seconds": 0.05309083299653139,
+      "transferred": 12
+    },
+    {
+      "candidates": 1002,
+      "case": "Seam 4",
+      "decisions": 23132,
+      "fresh_contacts": 1840,
+      "mode": "glucose",
+      "models": 40,
+      "result": "POSITIVE",
+      "seconds": 0.3621437500041793,
+      "transferred": 0
+    },
+    {
+      "candidates": 1002,
+      "case": "Seam 4",
+      "decisions": 27297,
+      "fresh_contacts": 2013,
+      "mode": "glucose-marked",
+      "models": 48,
+      "result": "POSITIVE",
+      "seconds": 0.41682520900212694,
+      "transferred": 12
+    },
+    {
+      "candidates": 1621,
+      "case": "Seam 5",
+      "decisions": 206,
+      "fresh_contacts": 0,
+      "mode": "plain",
+      "models": 1,
+      "result": "POSITIVE",
+      "seconds": 0.07896512499428354,
+      "transferred": 0
+    },
+    {
+      "candidates": 1621,
+      "case": "Seam 5",
+      "decisions": 206,
+      "fresh_contacts": 0,
+      "mode": "marked",
+      "models": 1,
+      "result": "POSITIVE",
+      "seconds": 0.06523395799740683,
+      "transferred": 20
+    },
+    {
+      "candidates": 1621,
+      "case": "Seam 5",
+      "decisions": 512,
+      "fresh_contacts": 300,
+      "mode": "learned",
+      "models": 9,
+      "result": "POSITIVE",
+      "seconds": 0.2616764170015813,
+      "transferred": 20
+    },
+    {
+      "candidates": 1621,
+      "case": "Seam 5",
+      "decisions": 143801,
+      "fresh_contacts": 2860,
+      "mode": "glucose",
+      "models": 61,
+      "result": "POSITIVE",
+      "seconds": 0.4040197089998401,
+      "transferred": 0
+    },
+    {
+      "candidates": 1621,
+      "case": "Seam 5",
+      "decisions": 147286,
+      "fresh_contacts": 2819,
+      "mode": "glucose-marked",
+      "models": 65,
+      "result": "POSITIVE",
+      "seconds": 0.3426295830067829,
+      "transferred": 20
+    }
+  ],
+  "donor_port_trials": [
+    {
+      "port": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0
+        ]
+      ],
+      "status": "NEGATIVE"
+    },
+    {
+      "port": [
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          -1
+        ]
+      ],
+      "status": "POSITIVE"
+    },
+    {
+      "port": [
+        [
+          1,
+          0,
+          0,
+          -1
+        ],
+        [
+          1,
+          1,
+          0,
+          -1
+        ]
+      ],
+      "status": "POSITIVE"
+    },
+    {
+      "port": [
+        [
+          1,
+          1,
+          0,
+          -1
+        ],
+        [
+          0,
+          1,
+          0,
+          -1
+        ]
+      ],
+      "status": "NEGATIVE"
+    },
+    {
+      "port": [
+        [
+          0,
+          1,
+          0,
+          -1
+        ],
+        [
+          0,
+          1,
+          0,
+          0
+        ]
+      ],
+      "status": "POSITIVE"
+    },
+    {
+      "port": [
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "status": "POSITIVE"
+    }
+  ],
+  "status": "CHECKED_DIRECTED_EDGE_MARKS"
+}
