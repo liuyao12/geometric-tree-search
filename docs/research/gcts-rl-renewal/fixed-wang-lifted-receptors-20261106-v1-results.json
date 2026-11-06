@@ -1,0 +1,776 @@
+{
+  "arithmetic": [
+    [
+      "Three successors",
+      "cold",
+      "REFUTED",
+      21,
+      20,
+      272,
+      0
+    ],
+    [
+      "Three successors",
+      "demand",
+      "REFUTED",
+      21,
+      20,
+      168,
+      1
+    ],
+    [
+      "Three successors",
+      "eager",
+      "REFUTED",
+      21,
+      16,
+      110,
+      1
+    ],
+    [
+      "Four successors",
+      "cold",
+      "REFUTED",
+      43,
+      25,
+      525,
+      0
+    ],
+    [
+      "Four successors",
+      "demand",
+      "REFUTED",
+      43,
+      23,
+      271,
+      2
+    ],
+    [
+      "Four successors",
+      "eager",
+      "REFUTED",
+      43,
+      13,
+      91,
+      2
+    ],
+    [
+      "Three successors control",
+      "cold",
+      "GROUND_MODEL",
+      20,
+      8,
+      120,
+      0
+    ],
+    [
+      "Three successors control",
+      "demand",
+      "GROUND_MODEL",
+      20,
+      8,
+      120,
+      0
+    ],
+    [
+      "Three successors control",
+      "eager",
+      "GROUND_MODEL",
+      20,
+      6,
+      116,
+      0
+    ]
+  ],
+  "demand": [
+    [
+      "Agatha",
+      0,
+      "UNIT_FIXED_POINT",
+      39,
+      843,
+      1810
+    ],
+    [
+      "Agatha",
+      1,
+      "REFUTED",
+      89,
+      12803,
+      7765
+    ],
+    [
+      "Hilbert incidence uniqueness",
+      0,
+      "REFUTED",
+      11,
+      46,
+      2
+    ],
+    [
+      "Peano nonzero successor",
+      2,
+      "REFUTED",
+      3,
+      28,
+      0
+    ],
+    [
+      "TPTP capital",
+      1,
+      "REFUTED",
+      14,
+      135,
+      196
+    ],
+    [
+      "TPTP family",
+      0,
+      "REFUTED",
+      29,
+      332,
+      130
+    ],
+    [
+      "quantifier-swap control",
+      1,
+      "UNIT_FIXED_POINT",
+      2,
+      2,
+      0
+    ],
+    [
+      "alias-positive",
+      0,
+      "REFUTED",
+      3,
+      6,
+      1
+    ],
+    [
+      "alias control",
+      0,
+      "UNIT_FIXED_POINT",
+      4,
+      6,
+      12
+    ]
+  ],
+  "models": [
+    [
+      "Agatha",
+      0,
+      "GROUND_MODEL",
+      74,
+      923,
+      10,
+      0
+    ],
+    [
+      "Agatha",
+      1,
+      "REFUTED",
+      226,
+      13123,
+      11,
+      1
+    ],
+    [
+      "Hilbert incidence uniqueness",
+      0,
+      "REFUTED",
+      14,
+      62,
+      4,
+      1
+    ],
+    [
+      "Peano nonzero successor",
+      2,
+      "REFUTED",
+      6,
+      43,
+      2,
+      0
+    ],
+    [
+      "TPTP family",
+      0,
+      "REFUTED",
+      12,
+      384,
+      4,
+      1
+    ],
+    [
+      "pigeonhole-5-4-fresh",
+      0,
+      "REFUTED",
+      46,
+      46,
+      24,
+      26
+    ],
+    [
+      "pigeonhole-4-4-fresh",
+      0,
+      "GROUND_MODEL",
+      19,
+      29,
+      10,
+      0
+    ]
+  ],
+  "outcomes": [
+    [
+      "Family chain, six links",
+      "cold",
+      "REFUTED",
+      20,
+      0,
+      464,
+      1,
+      0
+    ],
+    [
+      "Family chain, six links",
+      "eager",
+      "REFUTED",
+      17,
+      389,
+      112,
+      1,
+      3
+    ],
+    [
+      "Family chain, six links",
+      "demand",
+      "REFUTED",
+      17,
+      8,
+      296,
+      1,
+      3
+    ],
+    [
+      "Family chain, six links",
+      "shuffle",
+      "REFUTED",
+      20,
+      32,
+      460,
+      1,
+      0
+    ],
+    [
+      "Family chain, six links control",
+      "cold",
+      "GROUND_MODEL",
+      15,
+      0,
+      306,
+      0,
+      0
+    ],
+    [
+      "Family chain, six links control",
+      "eager",
+      "GROUND_MODEL",
+      14,
+      388,
+      157,
+      0,
+      0
+    ],
+    [
+      "Family chain, six links control",
+      "demand",
+      "GROUND_MODEL",
+      14,
+      5,
+      247,
+      0,
+      0
+    ],
+    [
+      "Family chain, six links control",
+      "shuffle",
+      "GROUND_MODEL",
+      15,
+      16,
+      302,
+      0,
+      0
+    ],
+    [
+      "Family branch, three layers",
+      "cold",
+      "REFUTED",
+      23,
+      0,
+      774,
+      4,
+      0
+    ],
+    [
+      "Family branch, three layers",
+      "eager",
+      "REFUTED",
+      17,
+      382,
+      285,
+      6,
+      8
+    ],
+    [
+      "Family branch, three layers",
+      "demand",
+      "REFUTED",
+      21,
+      14,
+      653,
+      4,
+      5
+    ],
+    [
+      "Family branch, three layers",
+      "shuffle",
+      "REFUTED",
+      23,
+      52,
+      752,
+      4,
+      1
+    ],
+    [
+      "Family branch, three layers control",
+      "cold",
+      "GROUND_MODEL",
+      14,
+      0,
+      378,
+      0,
+      0
+    ],
+    [
+      "Family branch, three layers control",
+      "eager",
+      "GROUND_MODEL",
+      15,
+      382,
+      338,
+      2,
+      0
+    ],
+    [
+      "Family branch, three layers control",
+      "demand",
+      "GROUND_MODEL",
+      12,
+      2,
+      257,
+      0,
+      0
+    ],
+    [
+      "Family branch, three layers control",
+      "shuffle",
+      "GROUND_MODEL",
+      12,
+      12,
+      257,
+      0,
+      0
+    ],
+    [
+      "Family branch, five layers",
+      "cold",
+      "REFUTED",
+      39,
+      0,
+      2952,
+      9,
+      0
+    ],
+    [
+      "Family branch, five layers",
+      "eager",
+      "REFUTED",
+      28,
+      1438,
+      778,
+      22,
+      20
+    ],
+    [
+      "Family branch, five layers",
+      "demand",
+      "REFUTED",
+      35,
+      26,
+      2425,
+      12,
+      13
+    ],
+    [
+      "Family branch, five layers",
+      "shuffle",
+      "REFUTED",
+      39,
+      88,
+      2943,
+      9,
+      2
+    ],
+    [
+      "Family branch, five layers control",
+      "cold",
+      "GROUND_MODEL",
+      25,
+      0,
+      1389,
+      0,
+      0
+    ],
+    [
+      "Family branch, five layers control",
+      "eager",
+      "GROUND_MODEL",
+      21,
+      1438,
+      646,
+      2,
+      0
+    ],
+    [
+      "Family branch, five layers control",
+      "demand",
+      "GROUND_MODEL",
+      23,
+      11,
+      1115,
+      0,
+      0
+    ],
+    [
+      "Family branch, five layers control",
+      "shuffle",
+      "GROUND_MODEL",
+      26,
+      40,
+      1531,
+      3,
+      0
+    ],
+    [
+      "Incidence, two choices",
+      "cold",
+      "REFUTED",
+      35,
+      0,
+      141,
+      2,
+      0
+    ],
+    [
+      "Incidence, two choices",
+      "eager",
+      "REFUTED",
+      23,
+      12,
+      94,
+      3,
+      4
+    ],
+    [
+      "Incidence, two choices",
+      "demand",
+      "REFUTED",
+      35,
+      8,
+      141,
+      2,
+      0
+    ],
+    [
+      "Incidence, two choices",
+      "shuffle",
+      "REFUTED",
+      30,
+      12,
+      117,
+      2,
+      3
+    ],
+    [
+      "Incidence, two choices control",
+      "cold",
+      "GROUND_MODEL",
+      34,
+      0,
+      141,
+      1,
+      0
+    ],
+    [
+      "Incidence, two choices control",
+      "eager",
+      "GROUND_MODEL",
+      18,
+      12,
+      75,
+      0,
+      0
+    ],
+    [
+      "Incidence, two choices control",
+      "demand",
+      "GROUND_MODEL",
+      34,
+      8,
+      141,
+      1,
+      0
+    ],
+    [
+      "Incidence, two choices control",
+      "shuffle",
+      "GROUND_MODEL",
+      23,
+      12,
+      95,
+      0,
+      0
+    ],
+    [
+      "Incidence, three choices",
+      "cold",
+      "REFUTED",
+      112,
+      0,
+      475,
+      4,
+      0
+    ],
+    [
+      "Incidence, three choices",
+      "eager",
+      "REFUTED",
+      90,
+      30,
+      243,
+      6,
+      9
+    ],
+    [
+      "Incidence, three choices",
+      "demand",
+      "REFUTED",
+      112,
+      18,
+      458,
+      3,
+      0
+    ],
+    [
+      "Incidence, three choices",
+      "shuffle",
+      "REFUTED",
+      109,
+      30,
+      295,
+      8,
+      7
+    ],
+    [
+      "Incidence, three choices control",
+      "cold",
+      "GROUND_MODEL",
+      111,
+      0,
+      475,
+      3,
+      0
+    ],
+    [
+      "Incidence, three choices control",
+      "eager",
+      "GROUND_MODEL",
+      86,
+      30,
+      236,
+      4,
+      0
+    ],
+    [
+      "Incidence, three choices control",
+      "demand",
+      "GROUND_MODEL",
+      92,
+      10,
+      284,
+      0,
+      0
+    ],
+    [
+      "Incidence, three choices control",
+      "shuffle",
+      "GROUND_MODEL",
+      104,
+      30,
+      293,
+      4,
+      0
+    ]
+  ],
+  "placements": [
+    [
+      "Family chain, six links",
+      0,
+      389,
+      28531,
+      198,
+      19,
+      607
+    ],
+    [
+      "Family chain, six links control",
+      0,
+      388,
+      27976,
+      193,
+      18,
+      606
+    ],
+    [
+      "Family branch, three layers",
+      0,
+      382,
+      24365,
+      158,
+      11,
+      599
+    ],
+    [
+      "Family branch, three layers control",
+      0,
+      382,
+      24365,
+      158,
+      11,
+      599
+    ],
+    [
+      "Family branch, five layers",
+      0,
+      1438,
+      110293,
+      174,
+      15,
+      1907
+    ],
+    [
+      "Family branch, five layers control",
+      0,
+      1438,
+      110293,
+      174,
+      15,
+      1907
+    ],
+    [
+      "Incidence, two choices",
+      0,
+      12,
+      28192,
+      3720,
+      416,
+      540
+    ],
+    [
+      "Incidence, two choices control",
+      0,
+      12,
+      28192,
+      3720,
+      416,
+      540
+    ],
+    [
+      "Incidence, three choices",
+      0,
+      30,
+      99924,
+      7316,
+      672,
+      966
+    ],
+    [
+      "Incidence, three choices control",
+      0,
+      30,
+      99924,
+      7316,
+      672,
+      966
+    ]
+  ],
+  "qualification": {
+    "exact_violated_clauses": 2504,
+    "models": 400,
+    "seed": 20261106,
+    "status": "PASS",
+    "typed_banks": 100
+  },
+  "readers": [
+    "peano-iterated-injectivity-donor",
+    "peano-successor-injectivity-4",
+    "incidence-branch-2",
+    "family-branch-5",
+    "agatha-vampire-guide"
+  ],
+  "recipes": 8,
+  "schedule": [
+    [
+      "Agatha",
+      "0 ground model, 0 reused ground model, 1 refuted",
+      1
+    ],
+    [
+      "Hilbert incidence uniqueness",
+      "0 refuted",
+      0
+    ],
+    [
+      "Peano nonzero successor",
+      "0 ground model, 0 reused ground model, 1 ground model, 0 reused ground model, 1 reused ground model, 2 refuted",
+      2
+    ],
+    [
+      "TPTP capital",
+      "0 ground model, 0 reused ground model, 1 refuted",
+      1
+    ],
+    [
+      "TPTP family",
+      "0 refuted",
+      0
+    ],
+    [
+      "pigeonhole-5-4-fresh",
+      "0 refuted",
+      0
+    ],
+    [
+      "pigeonhole-4-4-fresh",
+      "0 ground model, 0 reused ground model, 1 reused ground model, 0 reused ground model, 1 reused ground model, 2 reused ground model",
+      "\u2014"
+    ],
+    [
+      "quantifier-swap control",
+      "0 ground model, 0 reused ground model, 1 ground model, 0 reused ground model, 1 reused ground model, 2 ground model",
+      "\u2014"
+    ]
+  ],
+  "status": "CHECKED_WANG_TYPED_RECEPTORS"
+}
