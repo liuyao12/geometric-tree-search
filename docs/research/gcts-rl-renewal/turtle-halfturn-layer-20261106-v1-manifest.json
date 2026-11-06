@@ -1,0 +1,223 @@
+{
+  "archive_entries": {
+    "data/audit-v1.json": {
+      "bytes": 916,
+      "sha256": "c9b1e63574a05aefb627197705d288b8fbb910d2e356c351ba300391c641dac2"
+    },
+    "data/audit.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/audit.stdout.log": {
+      "bytes": 376,
+      "sha256": "2ed0ba596dc3c8c8fcaa3e1d40b114f191377543c8c07e54008ee8dd1c391c6a"
+    },
+    "data/capped-orbits-v1.json": {
+      "bytes": 166402,
+      "sha256": "2d48c6b06710ab00a08a8e95dc0e5c3ddcee81bb1fd37c827f5b756b35b5ef34"
+    },
+    "data/capped.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/capped.stdout.log": {
+      "bytes": 1935,
+      "sha256": "417301993055bb4b55655a0ff05af2b09be2dbb59796d8d929b5f79d68bf56b8"
+    },
+    "data/frame-transfer-v1.json": {
+      "bytes": 645984,
+      "sha256": "e3171eac9406eb8c3a96ef78ee04aeff820b15a79f541de1be02f713dc7e1073"
+    },
+    "data/frame.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/frame.stdout.log": {
+      "bytes": 58,
+      "sha256": "03d80247b3d01715529472e0510132a57f95ea1cac78d42b90e062fdf2b8f05d"
+    },
+    "data/promotion.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/promotion.stdout.log": {
+      "bytes": 115,
+      "sha256": "7b68ba00024a0a5033132255f40fc4e9056fa066d9153c25e85c5edb8cf49c12"
+    },
+    "data/scaffold.stdout.log": {
+      "bytes": 1490,
+      "sha256": "fa034c54be9724f909a208386c9050281a983f070faa882e8507f6a9cc0fb5c9"
+    },
+    "data/scaffolds-v1.json": {
+      "bytes": 25970,
+      "sha256": "4b857a9150bd0a53b9e24bf8883d2b84c244dd2c04f5870799c3d570f6272b9e"
+    },
+    "data/strip-fit-all-v1.json": {
+      "bytes": 79388,
+      "sha256": "99cf7fa63659e10b56098559c157006c33e009268f8fce2ee1c2780bb700e04b"
+    },
+    "data/strip-fit-v1.json": {
+      "bytes": 77894,
+      "sha256": "0b7ffb202b648ef3ae2a34afa753907e187c15a2d3b8d1e8d54028dcd0c9b078"
+    },
+    "data/strip.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/strip.stdout.log": {
+      "bytes": 590,
+      "sha256": "4c65ee06f4f3390c062f77548e5ff9508748c5ef6074fb802150ffa826c4954a"
+    },
+    "data/transfer.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/transfer.stdout.log": {
+      "bytes": 252,
+      "sha256": "fe6b5de9b530e512edded447512bca635a76c6a38125aa3bea51a49cbeb1bc5e"
+    },
+    "data/triangle-transfer-v1.json": {
+      "bytes": 118597,
+      "sha256": "2586a2c9df73da9f1ba98641300cee1efcd05d0b4e687a161f9bb0bee1f7796c"
+    },
+    "data/word-promotion-v1.json": {
+      "bytes": 105951,
+      "sha256": "af7a0859e6e311614706abdbefbf7aae55da5d7cfad9dd08ec6fb5c49e417d7d"
+    },
+    "input/exact-point-model-v1.json": {
+      "bytes": 5154,
+      "sha256": "1095add09e7ace5846706dc2559ff3482459a6a854290d77d22e731562a230de"
+    },
+    "input/held-back-v1.json": {
+      "bytes": 135318,
+      "sha256": "764625b91598a2ffbb2d58a445256c52b0bd43fe4f2e510d441dd79796c92594"
+    },
+    "input/recovered-production-v1.json": {
+      "bytes": 8620,
+      "sha256": "bdca684ea78a331222e7f016e449781cf7ffae8df5722a4b1d9e2961374fb2dd"
+    },
+    "publication/REPLAY.md": {
+      "bytes": 993,
+      "sha256": "87c9f52f8dc17fd6151c105b94da5af70234c0d03b68da0476a8dc3f76801c33"
+    },
+    "publication/browser-v1.json": {
+      "bytes": 174,
+      "sha256": "9719e3198de11eb944db14f7a6f42fff1878be7d305d5c00d1aa9d0cd08080c8"
+    },
+    "publication/check_v1.cjs": {
+      "bytes": 2487,
+      "sha256": "cf95c413e72f4a202cbf08b64f4f363992378a95470b5515e5adfb157921d800"
+    },
+    "publication/notebook-v1.html": {
+      "bytes": 9068,
+      "sha256": "602ef0cab304fded0c3b24ebce55cd193237d7546ca605b0d9d59e684bb647f2"
+    },
+    "publication/package_v1.py": {
+      "bytes": 3197,
+      "sha256": "5f0180e6980cbe9dfbc73dc3028dff5c1068954e81402179a8afd09b6f0849ea"
+    },
+    "publication/render_v1.py": {
+      "bytes": 7322,
+      "sha256": "2883787b79398ebaa024a2cf3e3a7fcebdc8e3984e45ea12090824f549763991"
+    },
+    "publication/replay-v1.json": {
+      "bytes": 1337,
+      "sha256": "9202e5aad1809432ea5b36c9c0e3fa391c1671adfed37b3faa2b1ac02d18293f"
+    },
+    "report/turtle-halfturn-layer-20261106-v1-results.json": {
+      "bytes": 7619,
+      "sha256": "d58402a8c2539c127408fcafe4f060af6d61db4c8ad0b1c6314273c65589bc3c"
+    },
+    "report/turtle-halfturn-layer-20261106-v1.html": {
+      "bytes": 257526,
+      "sha256": "5eb84cf24a111a7009c04a3c9e4ea414c8c6b607240cb471f4618ac02a40670b"
+    },
+    "source/assemble_v1.py": {
+      "bytes": 5378,
+      "sha256": "d1120c67801723e42bb8aca10a333e54f3348a8a2a5d4aaade6fe3333bceb4c7"
+    },
+    "source/capped_orbits_v1.py": {
+      "bytes": 4958,
+      "sha256": "b2a61fd9b539dcb75f4fde748339850c998a2cfa0b59d4b1372f115cec5a6379"
+    },
+    "source/cluster_v1.py": {
+      "bytes": 15717,
+      "sha256": "a2eec032406feaf45f7c5ca66b235727db26e414996337981f6b0ff865859b85"
+    },
+    "source/collar_audit_v1.py": {
+      "bytes": 15050,
+      "sha256": "441bbfce0bbe5632b6b26a467c677be775ccae748d3358a7334752f44ec97835"
+    },
+    "source/collar_experiment_v1.py": {
+      "bytes": 4931,
+      "sha256": "1b278165312553bc1daff1ca9067cd1595cec9c3ff03e0b84e9b5685d1085b59"
+    },
+    "source/collars_v1.py": {
+      "bytes": 9009,
+      "sha256": "3ffbbb443ad4ca62bbe9a6594ef28b579fbfd13e254ec6a7bdf1b1fb0e8502bd"
+    },
+    "source/frame_transfer_v1.py": {
+      "bytes": 1739,
+      "sha256": "1e01c45d0ba8cdaed93783dc9e781071f55f21f2039e15f23c56c9a315428175"
+    },
+    "source/golden_geometry_v1.py": {
+      "bytes": 4899,
+      "sha256": "528407dae32299ac9982998ffd396687633fe1107d99f782ab8b74f8f5ded786"
+    },
+    "source/large_collision_v1.py": {
+      "bytes": 1186,
+      "sha256": "790b0e02395fa8fe336b37d4e21cdf638d5ec940f533737655385db0fb57db5e"
+    },
+    "source/layer_audit_v1.py": {
+      "bytes": 6861,
+      "sha256": "1376983393741a45f6788c55c2acde481684fe1dbb0d8430286859f93d4ddf6b"
+    },
+    "source/mixed_orbits_v1.py": {
+      "bytes": 6362,
+      "sha256": "42feb552dd443d36a7864e0f87679756f36c99c941fa069d1b38cf40b34bdde2"
+    },
+    "source/port_score_v1.py": {
+      "bytes": 3846,
+      "sha256": "283c9c05528799e417f903543733593a4fd7f14d8e0089c8094a4bba5b53b617"
+    },
+    "source/production_v1.py": {
+      "bytes": 5016,
+      "sha256": "78355b25a91f868fa73fc7457c54ec570b7f53e60792b80782010e7133aeec18"
+    },
+    "source/scaffold_v1.py": {
+      "bytes": 7216,
+      "sha256": "ce412c5ad4982ea96030255cbf081a861a239aa13c99e2565686ec254a5d8026"
+    },
+    "source/strip_fit_v1.py": {
+      "bytes": 7861,
+      "sha256": "de5644533283f3fb634534453c56c08312505ae5cc5e92df5634a5087a1e34f4"
+    },
+    "source/triangle_geometry_v1.py": {
+      "bytes": 9600,
+      "sha256": "4715c6f612b196d257c858d695d604d800ce832cc5f8a1bfee8ae58e400a79ed"
+    },
+    "source/triangle_transfer_v1.py": {
+      "bytes": 1452,
+      "sha256": "d1c5eae01321898f810e39818663c85fbeb3c37fbfa2774e25483a0b3a1e056b"
+    },
+    "source/word_promotion_v1.py": {
+      "bytes": 6337,
+      "sha256": "2e75a86404a3fc6eac932f9b76fda8598822ea8388eb3f8eca591b723f31e590"
+    }
+  },
+  "assets": {
+    "turtle-halfturn-layer-20261106-v1-evidence.zip": {
+      "bytes": 406532,
+      "sha256": "02b5c8897a95726be8ddd9bed0b202ac2a526852785aec2569cbdb466902e3ff"
+    },
+    "turtle-halfturn-layer-20261106-v1-results.json": {
+      "bytes": 7619,
+      "sha256": "d58402a8c2539c127408fcafe4f060af6d61db4c8ad0b1c6314273c65589bc3c"
+    },
+    "turtle-halfturn-layer-20261106-v1.html": {
+      "bytes": 257526,
+      "sha256": "5eb84cf24a111a7009c04a3c9e4ea414c8c6b607240cb471f4618ac02a40670b"
+    }
+  },
+  "schema": "GCTS-TURTLE-HALF-TURN-LAYER-MANIFEST-v1"
+}

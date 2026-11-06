@@ -1,0 +1,480 @@
+{
+  "audit": {
+    "exact_polygon_tests": 202,
+    "halfturn_classes": 10,
+    "layers": {
+      "P2": [
+        {
+          "candidate_tile_pairs": 904,
+          "perimeter": 196,
+          "tiles": 124
+        }
+      ],
+      "P3": [
+        {
+          "candidate_tile_pairs": 7618,
+          "perimeter": 520,
+          "tiles": 834
+        },
+        {
+          "candidate_tile_pairs": 7815,
+          "perimeter": 520,
+          "tiles": 834
+        },
+        {
+          "candidate_tile_pairs": 7724,
+          "perimeter": 520,
+          "tiles": 834
+        }
+      ],
+      "P4": [
+        {
+          "candidate_tile_pairs": 54819,
+          "perimeter": 1368,
+          "tiles": 5654
+        },
+        {
+          "candidate_tile_pairs": 55507,
+          "perimeter": 1368,
+          "tiles": 5654
+        },
+        {
+          "candidate_tile_pairs": 55077,
+          "perimeter": 1368,
+          "tiles": 5654
+        }
+      ],
+      "T3": [
+        {
+          "candidate_tile_pairs": 5377,
+          "perimeter": 456,
+          "tiles": 594
+        }
+      ],
+      "T4": [
+        {
+          "candidate_tile_pairs": 42259,
+          "perimeter": 1242,
+          "tiles": 4356
+        }
+      ]
+    },
+    "selected": "C04",
+    "standalone_rank": 5,
+    "status": "AUDITED_LEARNED_TURTLE_WORDS_AND_FINITE_PROMOTIONS",
+    "strip_control": {
+      "blocker": [
+        0,
+        -112,
+        95
+      ],
+      "letter": 0,
+      "neighbors": [
+        [
+          10,
+          -116,
+          100
+        ],
+        [
+          10,
+          -112,
+          98
+        ],
+        [
+          11,
+          -108,
+          99
+        ]
+      ],
+      "original": 0,
+      "replacement": 1,
+      "sample": [
+        -2101,
+        1784
+      ],
+      "scale": 18,
+      "tile": [
+        11,
+        -116,
+        103
+      ]
+    }
+  },
+  "candidates": [
+    {
+      "id": "C04",
+      "motif_perimeter": 196,
+      "motif_tiles": 124,
+      "triangle_perimeter": 456,
+      "triangle_score": [
+        11552,
+        33
+      ],
+      "triangle_tiles": 594
+    },
+    {
+      "id": "C00",
+      "motif_perimeter": 184,
+      "motif_tiles": 122,
+      "triangle_perimeter": 462,
+      "triangle_score": [
+        363,
+        1
+      ],
+      "triangle_tiles": 588
+    },
+    {
+      "id": "C02",
+      "motif_perimeter": 188,
+      "motif_tiles": 120,
+      "triangle_perimeter": 510,
+      "triangle_score": [
+        43350,
+        97
+      ],
+      "triangle_tiles": 582
+    },
+    {
+      "id": "C06",
+      "motif_perimeter": 192,
+      "motif_tiles": 118,
+      "triangle_perimeter": 546,
+      "triangle_score": [
+        8281,
+        16
+      ],
+      "triangle_tiles": 576
+    },
+    {
+      "id": "C01",
+      "motif_perimeter": 184,
+      "motif_tiles": 116,
+      "triangle_perimeter": 582,
+      "triangle_score": [
+        56454,
+        95
+      ],
+      "triangle_tiles": 570
+    },
+    {
+      "id": "C03",
+      "motif_perimeter": 184,
+      "motif_tiles": 110,
+      "triangle_perimeter": 852,
+      "triangle_score": [
+        30246,
+        23
+      ],
+      "triangle_tiles": 552
+    },
+    {
+      "id": "C05",
+      "motif_perimeter": 188,
+      "motif_tiles": 114,
+      "triangle_perimeter": 864,
+      "triangle_score": [
+        62208,
+        47
+      ],
+      "triangle_tiles": 564
+    },
+    {
+      "id": "C07",
+      "motif_perimeter": 188,
+      "motif_tiles": 112,
+      "triangle_perimeter": 864,
+      "triangle_score": [
+        41472,
+        31
+      ],
+      "triangle_tiles": 558
+    },
+    {
+      "id": "C08",
+      "motif_perimeter": 188,
+      "motif_tiles": 108,
+      "triangle_perimeter": 864,
+      "triangle_score": [
+        124416,
+        91
+      ],
+      "triangle_tiles": 546
+    },
+    {
+      "id": "C09",
+      "motif_perimeter": 196,
+      "motif_tiles": 116,
+      "triangle_perimeter": 888,
+      "triangle_score": [
+        131424,
+        95
+      ],
+      "triangle_tiles": 570
+    }
+  ],
+  "reader": {
+    "assemblyPanels": 5,
+    "auditRows": 5,
+    "mobileNoOverflow": true,
+    "parentTiles": 5654,
+    "rankedCandidates": 10,
+    "status": "CHECKED_TURTLE_HALF_TURN_LAYER_READER"
+  },
+  "replay": {
+    "audit_reference_available": true,
+    "outputs": {
+      "data/audit-v1.json": {
+        "bytes": 916,
+        "sha256": "c9b1e63574a05aefb627197705d288b8fbb910d2e356c351ba300391c641dac2"
+      },
+      "data/capped-orbits-v1.json": {
+        "bytes": 166402,
+        "sha256": "2d48c6b06710ab00a08a8e95dc0e5c3ddcee81bb1fd37c827f5b756b35b5ef34"
+      },
+      "data/frame-transfer-v1.json": {
+        "bytes": 645984,
+        "sha256": "e3171eac9406eb8c3a96ef78ee04aeff820b15a79f541de1be02f713dc7e1073"
+      },
+      "data/scaffolds-v1.json": {
+        "bytes": 25970,
+        "sha256": "4b857a9150bd0a53b9e24bf8883d2b84c244dd2c04f5870799c3d570f6272b9e"
+      },
+      "data/strip-fit-all-v1.json": {
+        "bytes": 79388,
+        "sha256": "99cf7fa63659e10b56098559c157006c33e009268f8fce2ee1c2780bb700e04b"
+      },
+      "data/strip-fit-v1.json": {
+        "bytes": 77894,
+        "sha256": "0b7ffb202b648ef3ae2a34afa753907e187c15a2d3b8d1e8d54028dcd0c9b078"
+      },
+      "data/triangle-transfer-v1.json": {
+        "bytes": 118597,
+        "sha256": "2586a2c9df73da9f1ba98641300cee1efcd05d0b4e687a161f9bb0bee1f7796c"
+      },
+      "data/word-promotion-v1.json": {
+        "bytes": 105951,
+        "sha256": "af7a0859e6e311614706abdbefbf7aae55da5d7cfad9dd08ec6fb5c49e417d7d"
+      }
+    },
+    "python": "3.12",
+    "search_reference_available": false,
+    "status": "BYTE_IDENTICAL_CLEAN_REPLAY"
+  },
+  "schema": "GCTS-TURTLE-HALF-TURN-LAYER-RESULTS-v1",
+  "words": {
+    "s_0": [
+      0
+    ],
+    "s_1": [
+      0,
+      0,
+      1
+    ],
+    "s_2": [
+      0,
+      0,
+      1,
+      0
+    ],
+    "s_3": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "s_4": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0
+    ],
+    "s_5": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "s_6": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0
+    ],
+    "s_7": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "s_8": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0
+    ]
+  }
+}
