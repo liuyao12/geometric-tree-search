@@ -1,0 +1,996 @@
+{
+  "calibration": {
+    "digests": {
+      "data/ground-control-v1.json": "965eae5a4be5642ad0e97bacd0f974926077b62ec65f254521a5d71cb3303c65",
+      "data/nonunit-open-v1.json": "4c37a8afea8b6679b0e32f7afdd7c503d6283eb85e6d50c7f89ce5dd69aa1c32",
+      "input/new-cases-v1.json": "850f832d08aa0048f0f987fb970cd32d3472ae6f6debccf93cd43897dc4edbc6"
+    },
+    "ground_outcomes": {
+      "GROUND_MODEL": 5,
+      "REFUTED": 5
+    },
+    "ground_verified_wang": [
+      "odd-cycle-3",
+      "odd-cycle-5",
+      "odd-cycle-7",
+      "pigeonhole-3-2"
+    ],
+    "open_outcomes": {
+      "activity": {
+        "BOUNDED": 8
+      },
+      "cadical195": {
+        "BOUNDED": 7,
+        "SAT": 1
+      },
+      "glucose4": {
+        "BOUNDED": 6,
+        "SAT": 1,
+        "UNSAT": 1
+      },
+      "learned": {
+        "BOUNDED": 8
+      },
+      "static": {
+        "BOUNDED": 8
+      }
+    },
+    "scope": "Source truth tables qualify the synthetic, single-constant formulas independently of the resolution and Wang encodings. Open grid comparisons use the discovered positive's dimensions for each pair.",
+    "source_truth": {
+      "broken-cycle-3": {
+        "atoms": 4,
+        "countermodels": 2,
+        "premises": 10,
+        "valuations": 16
+      },
+      "broken-cycle-5": {
+        "atoms": 6,
+        "countermodels": 2,
+        "premises": 34,
+        "valuations": 64
+      },
+      "broken-cycle-7": {
+        "atoms": 8,
+        "countermodels": 2,
+        "premises": 130,
+        "valuations": 256
+      },
+      "odd-cycle-3": {
+        "atoms": 4,
+        "countermodels": 0,
+        "premises": 8,
+        "valuations": 16
+      },
+      "odd-cycle-5": {
+        "atoms": 6,
+        "countermodels": 0,
+        "premises": 32,
+        "valuations": 64
+      },
+      "odd-cycle-7": {
+        "atoms": 8,
+        "countermodels": 0,
+        "premises": 128,
+        "valuations": 256
+      },
+      "pigeonhole-2-2": {
+        "atoms": 5,
+        "countermodels": 2,
+        "premises": 18,
+        "valuations": 32
+      },
+      "pigeonhole-3-2": {
+        "atoms": 7,
+        "countermodels": 0,
+        "premises": 64,
+        "valuations": 128
+      },
+      "pigeonhole-3-3": {
+        "atoms": 10,
+        "countermodels": 6,
+        "premises": 518,
+        "valuations": 1024
+      },
+      "pigeonhole-4-3": {
+        "atoms": 13,
+        "countermodels": 0,
+        "premises": 4096,
+        "valuations": 8192
+      }
+    },
+    "status": "PASS"
+  },
+  "cdcl": [
+    [
+      "Broken cycle 3",
+      0,
+      0,
+      0,
+      0,
+      "GROUND_MODEL"
+    ],
+    [
+      "A five-cycle has no two-coloring",
+      2,
+      0,
+      0,
+      0,
+      "REFUTED"
+    ],
+    [
+      "Broken cycle 5",
+      0,
+      0,
+      0,
+      0,
+      "GROUND_MODEL"
+    ],
+    [
+      "A seven-cycle has no two-coloring",
+      2,
+      2,
+      2,
+      0,
+      "REFUTED"
+    ],
+    [
+      "Broken cycle 7",
+      0,
+      0,
+      0,
+      0,
+      "GROUND_MODEL"
+    ],
+    [
+      "Pigeonhole 2-2",
+      0,
+      0,
+      0,
+      0,
+      "GROUND_MODEL"
+    ],
+    [
+      "Four pigeons cannot occupy three distinct holes",
+      7,
+      7,
+      4,
+      2,
+      "REFUTED"
+    ],
+    [
+      "Pigeonhole 3-3",
+      0,
+      0,
+      0,
+      0,
+      "GROUND_MODEL"
+    ]
+  ],
+  "checks": [
+    [
+      "A five-cycle has no two-coloring",
+      11,
+      11,
+      "Parent wires from found proof",
+      13765
+    ],
+    [
+      "A seven-cycle has no two-coloring",
+      15,
+      17,
+      "Open parent selectors",
+      97785
+    ],
+    [
+      "Four pigeons cannot occupy three distinct holes",
+      23,
+      70,
+      "Parent wires from found proof",
+      107421
+    ]
+  ],
+  "donor_patterns": 5,
+  "matching": [
+    [
+      "Broken cycle 3",
+      362,
+      90,
+      30,
+      0,
+      0,
+      0,
+      "Complete"
+    ],
+    [
+      "A five-cycle has no two-coloring",
+      5925,
+      375,
+      285,
+      20,
+      20,
+      25,
+      "Complete"
+    ],
+    [
+      "Broken cycle 5",
+      2870,
+      230,
+      122,
+      4,
+      4,
+      3,
+      "Complete"
+    ],
+    [
+      "A seven-cycle has no two-coloring",
+      19635,
+      525,
+      399,
+      21,
+      21,
+      98,
+      "Complete"
+    ],
+    [
+      "Broken cycle 7",
+      11556,
+      380,
+      234,
+      10,
+      10,
+      21,
+      "Complete"
+    ],
+    [
+      "Pigeonhole 2-2",
+      562,
+      110,
+      54,
+      2,
+      2,
+      0,
+      "Complete"
+    ],
+    [
+      "Four pigeons cannot occupy three distinct holes",
+      0,
+      0,
+      0,
+      0,
+      234,
+      1834,
+      "Capped"
+    ],
+    [
+      "Pigeonhole 3-3",
+      0,
+      0,
+      0,
+      0,
+      63,
+      45,
+      "Complete"
+    ]
+  ],
+  "pigeonhole_composed_outputs_in_proof": 7,
+  "proof_readers": [
+    "odd-cycle-5",
+    "odd-cycle-7",
+    "pigeonhole-4-3"
+  ],
+  "rank_ablation": [
+    [
+      "Broken cycle 3",
+      "exact",
+      "EXHAUSTED",
+      54,
+      "EXHAUSTED",
+      54
+    ],
+    [
+      "Broken cycle 3",
+      "flexible",
+      "EXHAUSTED",
+      54,
+      "EXHAUSTED",
+      54
+    ],
+    [
+      "Broken cycle 3",
+      "two-layer",
+      "EXHAUSTED",
+      54,
+      "EXHAUSTED",
+      54
+    ],
+    [
+      "A five-cycle has no two-coloring",
+      "exact",
+      "REFUTED",
+      119,
+      "REFUTED",
+      392
+    ],
+    [
+      "A five-cycle has no two-coloring",
+      "flexible",
+      "REFUTED",
+      119,
+      "REFUTED",
+      392
+    ],
+    [
+      "A five-cycle has no two-coloring",
+      "two-layer",
+      "REFUTED",
+      27,
+      "REFUTED",
+      363
+    ],
+    [
+      "Broken cycle 5",
+      "exact",
+      "EXHAUSTED",
+      340,
+      "EXHAUSTED",
+      340
+    ],
+    [
+      "Broken cycle 5",
+      "flexible",
+      "EXHAUSTED",
+      340,
+      "EXHAUSTED",
+      340
+    ],
+    [
+      "Broken cycle 5",
+      "two-layer",
+      "EXHAUSTED",
+      340,
+      "EXHAUSTED",
+      340
+    ],
+    [
+      "A seven-cycle has no two-coloring",
+      "exact",
+      "REFUTED",
+      479,
+      "REFUTED",
+      890
+    ],
+    [
+      "A seven-cycle has no two-coloring",
+      "flexible",
+      "REFUTED",
+      479,
+      "REFUTED",
+      890
+    ],
+    [
+      "A seven-cycle has no two-coloring",
+      "two-layer",
+      "REFUTED",
+      39,
+      "REFUTED",
+      379
+    ],
+    [
+      "Broken cycle 7",
+      "exact",
+      "EXHAUSTED",
+      1050,
+      "EXHAUSTED",
+      1050
+    ],
+    [
+      "Broken cycle 7",
+      "flexible",
+      "EXHAUSTED",
+      1050,
+      "EXHAUSTED",
+      1050
+    ],
+    [
+      "Broken cycle 7",
+      "two-layer",
+      "EXHAUSTED",
+      1050,
+      "EXHAUSTED",
+      1050
+    ],
+    [
+      "Pigeonhole 2-2",
+      "exact",
+      "EXHAUSTED",
+      156,
+      "EXHAUSTED",
+      156
+    ],
+    [
+      "Pigeonhole 2-2",
+      "flexible",
+      "EXHAUSTED",
+      156,
+      "EXHAUSTED",
+      156
+    ],
+    [
+      "Pigeonhole 2-2",
+      "two-layer",
+      "EXHAUSTED",
+      156,
+      "EXHAUSTED",
+      156
+    ],
+    [
+      "Four pigeons cannot occupy three distinct holes",
+      "exact",
+      "REFUTED",
+      9584,
+      "REFUTED",
+      96958
+    ],
+    [
+      "Four pigeons cannot occupy three distinct holes",
+      "flexible",
+      "REFUTED",
+      9872,
+      "REFUTED",
+      21370
+    ],
+    [
+      "Four pigeons cannot occupy three distinct holes",
+      "two-layer",
+      "REFUTED",
+      13186,
+      "BOUNDED",
+      200000
+    ],
+    [
+      "Pigeonhole 3-3",
+      "exact",
+      "BOUNDED",
+      200000,
+      "BOUNDED",
+      200000
+    ],
+    [
+      "Pigeonhole 3-3",
+      "flexible",
+      "BOUNDED",
+      200000,
+      "BOUNDED",
+      200000
+    ],
+    [
+      "Pigeonhole 3-3",
+      "two-layer",
+      "BOUNDED",
+      200000,
+      "BOUNDED",
+      200000
+    ]
+  ],
+  "representative_bridge": {
+    "flattened": {
+      "leaves": [
+        [
+          1,
+          -9,
+          -12
+        ],
+        [
+          1,
+          -7,
+          -13
+        ],
+        [
+          1,
+          -7,
+          -10
+        ],
+        [
+          1,
+          -2,
+          -11
+        ],
+        [
+          1,
+          -2,
+          -8
+        ],
+        [
+          1,
+          -2,
+          -5
+        ],
+        [
+          1,
+          5,
+          6,
+          7
+        ],
+        [
+          1,
+          8,
+          9,
+          10
+        ],
+        [
+          1,
+          11,
+          12,
+          13
+        ]
+      ],
+      "mapping": [
+        1,
+        9,
+        12,
+        6
+      ],
+      "pattern": 0,
+      "steps": [
+        [
+          7,
+          2,
+          10,
+          [
+            1,
+            -7,
+            8,
+            9
+          ]
+        ],
+        [
+          6,
+          9,
+          7,
+          [
+            1,
+            5,
+            6,
+            8,
+            9
+          ]
+        ],
+        [
+          10,
+          4,
+          8,
+          [
+            1,
+            -2,
+            5,
+            6,
+            9
+          ]
+        ],
+        [
+          11,
+          5,
+          5,
+          [
+            1,
+            -2,
+            6,
+            9
+          ]
+        ],
+        [
+          8,
+          1,
+          13,
+          [
+            1,
+            -7,
+            11,
+            12
+          ]
+        ],
+        [
+          6,
+          13,
+          7,
+          [
+            1,
+            5,
+            6,
+            11,
+            12
+          ]
+        ],
+        [
+          14,
+          3,
+          11,
+          [
+            1,
+            -2,
+            5,
+            6,
+            12
+          ]
+        ],
+        [
+          15,
+          5,
+          5,
+          [
+            1,
+            -2,
+            6,
+            12
+          ]
+        ],
+        [
+          16,
+          0,
+          12,
+          [
+            1,
+            -2,
+            6,
+            -9
+          ]
+        ],
+        [
+          12,
+          17,
+          9,
+          [
+            1,
+            -2,
+            6
+          ]
+        ]
+      ]
+    },
+    "outer": {
+      "leaves": [
+        [
+          1,
+          -9,
+          -12
+        ],
+        [
+          1,
+          -2,
+          6,
+          9
+        ],
+        [
+          1,
+          -2,
+          6,
+          12
+        ]
+      ],
+      "mapping": [
+        1,
+        9,
+        12,
+        6
+      ],
+      "pattern": 0,
+      "steps": [
+        [
+          2,
+          0,
+          12,
+          [
+            1,
+            -2,
+            6,
+            -9
+          ]
+        ],
+        [
+          1,
+          3,
+          9,
+          [
+            1,
+            -2,
+            6
+          ]
+        ]
+      ]
+    }
+  },
+  "saturation": [
+    [
+      "Broken cycle 3",
+      "exact",
+      "EXHAUSTED",
+      54,
+      54,
+      54,
+      0,
+      0
+    ],
+    [
+      "Broken cycle 3",
+      "flexible",
+      "EXHAUSTED",
+      54,
+      54,
+      54,
+      0,
+      0
+    ],
+    [
+      "Broken cycle 3",
+      "two-layer",
+      "EXHAUSTED",
+      54,
+      54,
+      54,
+      0,
+      0
+    ],
+    [
+      "A five-cycle has no two-coloring",
+      "exact",
+      "REFUTED",
+      411,
+      41,
+      41,
+      60,
+      0
+    ],
+    [
+      "A five-cycle has no two-coloring",
+      "flexible",
+      "REFUTED",
+      411,
+      41,
+      41,
+      60,
+      0
+    ],
+    [
+      "A five-cycle has no two-coloring",
+      "two-layer",
+      "REFUTED",
+      411,
+      10,
+      35,
+      171,
+      1
+    ],
+    [
+      "Broken cycle 5",
+      "exact",
+      "EXHAUSTED",
+      340,
+      340,
+      340,
+      10,
+      0
+    ],
+    [
+      "Broken cycle 5",
+      "flexible",
+      "EXHAUSTED",
+      340,
+      340,
+      340,
+      10,
+      0
+    ],
+    [
+      "Broken cycle 5",
+      "two-layer",
+      "EXHAUSTED",
+      340,
+      340,
+      340,
+      23,
+      0
+    ],
+    [
+      "A seven-cycle has no two-coloring",
+      "exact",
+      "REFUTED",
+      965,
+      965,
+      965,
+      56,
+      0
+    ],
+    [
+      "A seven-cycle has no two-coloring",
+      "flexible",
+      "REFUTED",
+      965,
+      965,
+      965,
+      56,
+      0
+    ],
+    [
+      "A seven-cycle has no two-coloring",
+      "two-layer",
+      "REFUTED",
+      965,
+      12,
+      55,
+      596,
+      2
+    ],
+    [
+      "Broken cycle 7",
+      "exact",
+      "EXHAUSTED",
+      1050,
+      1050,
+      1050,
+      26,
+      0
+    ],
+    [
+      "Broken cycle 7",
+      "flexible",
+      "EXHAUSTED",
+      1050,
+      1050,
+      1050,
+      26,
+      0
+    ],
+    [
+      "Broken cycle 7",
+      "two-layer",
+      "EXHAUSTED",
+      1050,
+      1050,
+      1050,
+      132,
+      0
+    ],
+    [
+      "Pigeonhole 2-2",
+      "exact",
+      "EXHAUSTED",
+      156,
+      156,
+      156,
+      4,
+      0
+    ],
+    [
+      "Pigeonhole 2-2",
+      "flexible",
+      "EXHAUSTED",
+      156,
+      156,
+      156,
+      4,
+      0
+    ],
+    [
+      "Pigeonhole 2-2",
+      "two-layer",
+      "EXHAUSTED",
+      156,
+      156,
+      156,
+      4,
+      0
+    ],
+    [
+      "Four pigeons cannot occupy three distinct holes",
+      "exact",
+      "REFUTED",
+      96958,
+      96958,
+      96958,
+      0,
+      0
+    ],
+    [
+      "Four pigeons cannot occupy three distinct holes",
+      "flexible",
+      "REFUTED",
+      96958,
+      96958,
+      96958,
+      756,
+      0
+    ],
+    [
+      "Four pigeons cannot occupy three distinct holes",
+      "two-layer",
+      "REFUTED",
+      96958,
+      12769,
+      12769,
+      16618,
+      12
+    ],
+    [
+      "Pigeonhole 3-3",
+      "exact",
+      "BOUNDED",
+      200000,
+      200000,
+      200000,
+      0,
+      0
+    ],
+    [
+      "Pigeonhole 3-3",
+      "flexible",
+      "BOUNDED",
+      200000,
+      200000,
+      200000,
+      198,
+      0
+    ],
+    [
+      "Pigeonhole 3-3",
+      "two-layer",
+      "BOUNDED",
+      200000,
+      200000,
+      200000,
+      612,
+      0
+    ]
+  ],
+  "shuffled": [
+    [
+      "Broken cycle 3",
+      54,
+      54,
+      54
+    ],
+    [
+      "A five-cycle has no two-coloring",
+      41,
+      73,
+      227
+    ],
+    [
+      "Broken cycle 5",
+      340,
+      340,
+      340
+    ],
+    [
+      "A seven-cycle has no two-coloring",
+      965,
+      965,
+      965
+    ],
+    [
+      "Broken cycle 7",
+      1050,
+      1050,
+      1050
+    ],
+    [
+      "Pigeonhole 2-2",
+      156,
+      156,
+      156
+    ],
+    [
+      "Four pigeons cannot occupy three distinct holes",
+      96958,
+      96958,
+      96958
+    ],
+    [
+      "Pigeonhole 3-3",
+      200000,
+      200000,
+      200000
+    ]
+  ],
+  "status": "CHECKED_WANG_LEMMA_TRANSFER",
+  "training_episodes": 32
+}
