@@ -1,0 +1,264 @@
+{
+  "binary": {
+    "cases": {
+      "penrose": 149,
+      "turtle": 30
+    },
+    "digest": "41c62c03a3abec959601dc794cef00a0ec20065be0d9c7f2de2f9c9d3b93d101",
+    "receipt": {
+      "records": 7,
+      "status": "CHECKED_LOGICAL_RECORDS",
+      "unique_records": 7
+    },
+    "root_arities": {
+      "penrose": [
+        4
+      ],
+      "turtle": [
+        12,
+        16
+      ]
+    }
+  },
+  "browser": {
+    "inventoryStreams": 3,
+    "mathTypeset": true,
+    "mobileNoOverflow": true,
+    "proofs": [
+      7,
+      19
+    ],
+    "status": "CHECKED_SCHEMA_READER",
+    "wangSquares": [
+      45,
+      45
+    ]
+  },
+  "four": {
+    "cases": 149,
+    "receipt": {
+      "records": 19,
+      "status": "CHECKED_LOGICAL_RECORDS",
+      "unique_records": 19
+    },
+    "schema": "79db4997ac9704784ac18a5aa91b99a3cd13ae73c9e00e377f2bef33a4c2e79b"
+  },
+  "matched": {
+    "cases": 217,
+    "counts": {
+      "fresh": 43,
+      "memory": 106,
+      "placement": 68
+    },
+    "repeats": 3,
+    "status": "MATCHED_GEOMETRIC_CONTROL",
+    "steps": 3023,
+    "times": {
+      "geometry": [
+        12153754958,
+        12759984042,
+        12191464708
+      ],
+      "geometry_with_wang": [
+        12905696042,
+        12327366375,
+        12136272875
+      ]
+    }
+  },
+  "online": {
+    "capacity": 12,
+    "fresh_tile_states": 66252,
+    "results": {
+      "by_family": {
+        "active": [
+          "receiver-163",
+          "receiver-164",
+          "receiver-165",
+          "receiver-166",
+          "receiver-180",
+          "receiver-184",
+          "receiver-135",
+          "receiver-191",
+          "receiver-196",
+          "receiver-197",
+          "receiver-199",
+          "receiver-189"
+        ],
+        "audited": 107,
+        "counts": {
+          "fresh": 42,
+          "memory": 107,
+          "placement": 68
+        },
+        "work": {
+          "anchors": 7823,
+          "branches": 5893,
+          "center_guards": 1634,
+          "cluster_offers": 0,
+          "composition_steps": 2940,
+          "interior_guards": 937,
+          "line_guards": 1942,
+          "mark_queries": 1283,
+          "nodes": 5961,
+          "placement_checks": 79104,
+          "ports": 23117,
+          "tile_states": 37564,
+          "unique_containment_tests": 21082
+        }
+      },
+      "mixed": {
+        "active": [
+          "receiver-075",
+          "receiver-047",
+          "receiver-165",
+          "receiver-049",
+          "receiver-050",
+          "receiver-042",
+          "receiver-015",
+          "receiver-069",
+          "receiver-203",
+          "receiver-189",
+          "receiver-191",
+          "receiver-020"
+        ],
+        "audited": 106,
+        "counts": {
+          "fresh": 43,
+          "memory": 106,
+          "placement": 68
+        },
+        "work": {
+          "anchors": 10549,
+          "branches": 5893,
+          "center_guards": 1615,
+          "cluster_offers": 0,
+          "composition_steps": 3023,
+          "interior_guards": 946,
+          "line_guards": 1766,
+          "mark_queries": 1521,
+          "nodes": 5961,
+          "placement_checks": 79104,
+          "ports": 23234,
+          "tile_states": 37821,
+          "unique_containment_tests": 21082
+        }
+      },
+      "reverse_mixed": {
+        "active": [
+          "receiver-102",
+          "receiver-071",
+          "receiver-155",
+          "receiver-078",
+          "receiver-064",
+          "receiver-087",
+          "receiver-112",
+          "receiver-065",
+          "receiver-027",
+          "receiver-189",
+          "receiver-069",
+          "receiver-184"
+        ],
+        "audited": 110,
+        "counts": {
+          "fresh": 39,
+          "memory": 110,
+          "placement": 68
+        },
+        "work": {
+          "anchors": 10070,
+          "branches": 5893,
+          "center_guards": 1706,
+          "cluster_offers": 0,
+          "composition_steps": 2737,
+          "interior_guards": 1032,
+          "line_guards": 1599,
+          "mark_queries": 1467,
+          "nodes": 5961,
+          "placement_checks": 79104,
+          "ports": 22531,
+          "tile_states": 36615,
+          "unique_containment_tests": 21082
+        }
+      }
+    },
+    "shared": {
+      "records": 7,
+      "status": "CHECKED_LOGICAL_RECORDS",
+      "unique_records": 7
+    },
+    "status": "CHECKED_LEARNED_CASCADE_INVENTORY"
+  },
+  "replay": {
+    "sha256": {
+      "data/binary-schema-v1.json": "f84c2c67e577ff3f8677d91d57027dcc0708fb7231080f54fe1de60cf9dd2588",
+      "data/cascade-capsule-v1.json": "301b24f06d7eac3d24abcf6a54cc614c217030a63a752123ac0f0517dfffff06",
+      "data/online-cascade-v1.json": "3374cf1f2d0c69204d0417449944d3ffe00b3bcc8d2fdc46083ef24c2d9d0704",
+      "report/wang-support-capsule-20261106-v1.html": "1c566212530041a834633e4127a601d128d36bb935f7821a593abb07d5a7cc5b",
+      "wang/data/binary-schema-logical-v1.json": "83850a888578302fd25b52d353e8dd39854b0cd6031ef152ae2df0ce9998dbbe",
+      "wang/data/binary-schema-wang-v1.json": "f6ebad40d590e7e7f94821340d523e908730e4494ad4b19c6112d22a789e85de",
+      "wang/data/support-schema-logical-v1.json": "595e4a669c73ce59b2b6e2725cea8382b0018270ce5df849ce3f0296948771f0",
+      "wang/data/support-schema-wang-v1.json": "b93d31720a84b9ac61d5aaa49728cc4eef89b155a69632e6940ee963bcbc2052",
+      "wang/input/binary-schema-v1.json": "89a13803611cab4add378f4335f36254f00ceb98ad24f6f217c3cb04ba373c14",
+      "wang/input/support-schema-v1.json": "5ba67841cccd60ce41d763f60c324b54fe6ac2e7bcf101471f00477579ebc781"
+    },
+    "status": "CHECKED_CLEAN_REPLAY"
+  },
+  "schema": "WANG-SUPPORT-CAPSULE-RESULTS-v1",
+  "symbolic_control": {
+    "donor-edits": {
+      "applications": 9,
+      "fresh_ns": 23074875,
+      "fresh_records": 135,
+      "geometry_ns": 6692583,
+      "local_steps": 38,
+      "reuse_ns": 140500
+    },
+    "new-family-1": {
+      "applications": 9,
+      "fresh_ns": 24914375,
+      "fresh_records": 139,
+      "geometry_ns": 7728916,
+      "local_steps": 42,
+      "reuse_ns": 137959
+    },
+    "new-family-3": {
+      "applications": 9,
+      "fresh_ns": 27327375,
+      "fresh_records": 139,
+      "geometry_ns": 8320375,
+      "local_steps": 42,
+      "reuse_ns": 143625
+    }
+  },
+  "timing": {
+    "repeats": 3,
+    "status": "MEASURED_ONLINE_REPLAY",
+    "timings": {
+      "grouped": {
+        "fresh_ns": [
+          15823457917,
+          15750109292,
+          15092597417
+        ],
+        "online_ns": [
+          12061185084,
+          11944482167,
+          11824152084
+        ]
+      },
+      "mixed": {
+        "fresh_ns": [
+          15181512292,
+          15099680792,
+          15226860000
+        ],
+        "online_ns": [
+          11826714250,
+          11892462167,
+          11924238750
+        ]
+      }
+    }
+  }
+}
