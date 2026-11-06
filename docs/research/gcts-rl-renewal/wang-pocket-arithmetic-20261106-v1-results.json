@@ -1,0 +1,1786 @@
+{
+  "arithmetic_spine_summary": [
+    {
+      "artifact": "peano-spine-2-1-v1.json",
+      "case": "area-coefficient-2-1",
+      "receipt": {
+        "fragment_calls": 47,
+        "fresh_tile_runs": 47,
+        "implied_steps": 476707872,
+        "kind": "fol",
+        "machine_sha256": "3d97b22704bf8da27992d74dfb897c312da9274d0cb6298ef447498a7db2c4b6",
+        "status": "CHECKED"
+      },
+      "search": {
+        "atoms": 27,
+        "selected": 28,
+        "used": 24
+      }
+    },
+    {
+      "artifact": "peano-spine-2-3-v1.json",
+      "case": "area-coefficient-2-3",
+      "receipt": {
+        "fragment_calls": 85,
+        "fresh_tile_runs": 85,
+        "implied_steps": 1948289839,
+        "kind": "fol",
+        "machine_sha256": "3d97b22704bf8da27992d74dfb897c312da9274d0cb6298ef447498a7db2c4b6",
+        "status": "CHECKED"
+      },
+      "search": {
+        "atoms": 46,
+        "selected": 47,
+        "used": 43
+      }
+    },
+    {
+      "artifact": "peano-spine-5-9-v1.json",
+      "case": "area-coefficient-5-9",
+      "receipt": {
+        "fragment_calls": 121,
+        "fresh_tile_runs": 121,
+        "implied_steps": 4521816037,
+        "kind": "fol",
+        "machine_sha256": "3d97b22704bf8da27992d74dfb897c312da9274d0cb6298ef447498a7db2c4b6",
+        "status": "CHECKED"
+      },
+      "search": {
+        "atoms": 64,
+        "selected": 65,
+        "used": 61
+      }
+    }
+  ],
+  "geometry_binding": {
+    "penrose": [
+      {
+        "area_twice": [
+          1,
+          3
+        ],
+        "cycle": [
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1,
+            1
+          ]
+        ],
+        "display_cycle": [
+          [
+            3,
+            1,
+            0,
+            -2
+          ],
+          [
+            4,
+            1,
+            0,
+            -2
+          ],
+          [
+            4,
+            2,
+            0,
+            -2
+          ],
+          [
+            4,
+            2,
+            1,
+            -2
+          ],
+          [
+            4,
+            2,
+            1,
+            -1
+          ]
+        ],
+        "display_tiles": [
+          [
+            [
+              3,
+              1,
+              0,
+              -2
+            ],
+            [
+              3,
+              1,
+              0,
+              -1
+            ],
+            [
+              4,
+              1,
+              0,
+              -1
+            ],
+            [
+              4,
+              1,
+              0,
+              -2
+            ]
+          ],
+          [
+            [
+              4,
+              1,
+              0,
+              -2
+            ],
+            [
+              5,
+              1,
+              0,
+              -2
+            ],
+            [
+              5,
+              2,
+              0,
+              -2
+            ],
+            [
+              4,
+              2,
+              0,
+              -2
+            ]
+          ],
+          [
+            [
+              4,
+              2,
+              0,
+              -2
+            ],
+            [
+              5,
+              2,
+              0,
+              -2
+            ],
+            [
+              5,
+              2,
+              1,
+              -2
+            ],
+            [
+              4,
+              2,
+              1,
+              -2
+            ]
+          ],
+          [
+            [
+              4,
+              2,
+              1,
+              -2
+            ],
+            [
+              4,
+              3,
+              1,
+              -2
+            ],
+            [
+              4,
+              3,
+              1,
+              -1
+            ],
+            [
+              4,
+              2,
+              1,
+              -1
+            ]
+          ],
+          [
+            [
+              3,
+              1,
+              0,
+              -2
+            ],
+            [
+              4,
+              2,
+              1,
+              -1
+            ],
+            [
+              4,
+              2,
+              2,
+              -1
+            ],
+            [
+              3,
+              1,
+              1,
+              -2
+            ]
+          ]
+        ],
+        "id": "penrose-regular",
+        "source": "fixed-sealed-0",
+        "status": "CHECKED_REQUIRED_PENROSE_POCKET"
+      },
+      {
+        "area_twice": [
+          1,
+          1
+        ],
+        "cycle": [
+          [
+            0,
+            0,
+            0,
+            -1
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            1,
+            0
+          ]
+        ],
+        "display_cycle": [
+          [
+            3,
+            1,
+            0,
+            -3
+          ],
+          [
+            4,
+            2,
+            1,
+            -2
+          ],
+          [
+            3,
+            2,
+            1,
+            -2
+          ],
+          [
+            3,
+            2,
+            0,
+            -2
+          ],
+          [
+            3,
+            1,
+            0,
+            -2
+          ]
+        ],
+        "display_tiles": [
+          [
+            [
+              3,
+              0,
+              0,
+              -3
+            ],
+            [
+              3,
+              1,
+              0,
+              -3
+            ],
+            [
+              3,
+              1,
+              0,
+              -2
+            ],
+            [
+              3,
+              0,
+              0,
+              -2
+            ]
+          ],
+          [
+            [
+              3,
+              1,
+              0,
+              -4
+            ],
+            [
+              4,
+              2,
+              1,
+              -3
+            ],
+            [
+              4,
+              2,
+              1,
+              -2
+            ],
+            [
+              3,
+              1,
+              0,
+              -3
+            ]
+          ],
+          [
+            [
+              3,
+              2,
+              1,
+              -3
+            ],
+            [
+              3,
+              2,
+              1,
+              -2
+            ],
+            [
+              4,
+              2,
+              1,
+              -2
+            ],
+            [
+              4,
+              2,
+              1,
+              -3
+            ]
+          ],
+          [
+            [
+              2,
+              2,
+              0,
+              -2
+            ],
+            [
+              3,
+              2,
+              0,
+              -2
+            ],
+            [
+              3,
+              2,
+              1,
+              -2
+            ],
+            [
+              2,
+              2,
+              1,
+              -2
+            ]
+          ],
+          [
+            [
+              2,
+              1,
+              0,
+              -2
+            ],
+            [
+              3,
+              1,
+              0,
+              -2
+            ],
+            [
+              3,
+              2,
+              0,
+              -2
+            ],
+            [
+              2,
+              2,
+              0,
+              -2
+            ]
+          ],
+          [
+            [
+              2,
+              0,
+              0,
+              -2
+            ],
+            [
+              3,
+              0,
+              0,
+              -2
+            ],
+            [
+              3,
+              1,
+              0,
+              -2
+            ],
+            [
+              2,
+              1,
+              0,
+              -2
+            ]
+          ],
+          [
+            [
+              3,
+              0,
+              0,
+              -4
+            ],
+            [
+              3,
+              1,
+              0,
+              -4
+            ],
+            [
+              3,
+              1,
+              0,
+              -3
+            ],
+            [
+              3,
+              0,
+              0,
+              -3
+            ]
+          ]
+        ],
+        "id": "penrose-concave",
+        "source": "fixed-concave-0",
+        "status": "CHECKED_REQUIRED_PENROSE_POCKET"
+      },
+      {
+        "area_twice": [
+          2,
+          6
+        ],
+        "cycles": [
+          [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              1,
+              0,
+              0,
+              0
+            ],
+            [
+              1,
+              1,
+              0,
+              0
+            ],
+            [
+              1,
+              1,
+              1,
+              0
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ]
+          ],
+          [
+            [
+              10,
+              0,
+              0,
+              0
+            ],
+            [
+              11,
+              0,
+              0,
+              0
+            ],
+            [
+              11,
+              1,
+              0,
+              0
+            ],
+            [
+              11,
+              1,
+              1,
+              0
+            ],
+            [
+              11,
+              1,
+              1,
+              1
+            ]
+          ]
+        ],
+        "id": "penrose-pooled-control",
+        "status": "CHECKED_SEPARATE_POCKETS"
+      }
+    ],
+    "turtle": {
+      "cycle": [
+        [
+          -81,
+          69
+        ],
+        [
+          -80,
+          69
+        ],
+        [
+          -80,
+          70
+        ],
+        [
+          -78,
+          69
+        ],
+        [
+          -77,
+          67
+        ],
+        [
+          -76,
+          67
+        ],
+        [
+          -75,
+          66
+        ],
+        [
+          -74,
+          67
+        ],
+        [
+          -72,
+          66
+        ],
+        [
+          -72,
+          65
+        ],
+        [
+          -71,
+          64
+        ],
+        [
+          -72,
+          63
+        ],
+        [
+          -74,
+          64
+        ],
+        [
+          -74,
+          63
+        ],
+        [
+          -75,
+          63
+        ],
+        [
+          -74,
+          61
+        ],
+        [
+          -75,
+          60
+        ],
+        [
+          -76,
+          61
+        ],
+        [
+          -77,
+          61
+        ],
+        [
+          -78,
+          63
+        ],
+        [
+          -77,
+          64
+        ],
+        [
+          -78,
+          65
+        ],
+        [
+          -78,
+          66
+        ],
+        [
+          -80,
+          67
+        ]
+      ],
+      "display_tiles": [
+        [
+          [
+            -75,
+            69
+          ],
+          [
+            -76,
+            71
+          ],
+          [
+            -78,
+            72
+          ],
+          [
+            -78,
+            73
+          ],
+          [
+            -79,
+            74
+          ],
+          [
+            -80,
+            73
+          ],
+          [
+            -79,
+            71
+          ],
+          [
+            -80,
+            71
+          ],
+          [
+            -80,
+            70
+          ],
+          [
+            -78,
+            69
+          ],
+          [
+            -77,
+            67
+          ],
+          [
+            -76,
+            67
+          ],
+          [
+            -75,
+            66
+          ],
+          [
+            -74,
+            67
+          ]
+        ],
+        [
+          [
+            -72,
+            60
+          ],
+          [
+            -70,
+            59
+          ],
+          [
+            -69,
+            60
+          ],
+          [
+            -68,
+            59
+          ],
+          [
+            -67,
+            59
+          ],
+          [
+            -68,
+            61
+          ],
+          [
+            -70,
+            62
+          ],
+          [
+            -70,
+            63
+          ],
+          [
+            -71,
+            64
+          ],
+          [
+            -72,
+            63
+          ],
+          [
+            -74,
+            64
+          ],
+          [
+            -74,
+            63
+          ],
+          [
+            -75,
+            63
+          ],
+          [
+            -74,
+            61
+          ]
+        ],
+        [
+          [
+            -81,
+            66
+          ],
+          [
+            -82,
+            65
+          ],
+          [
+            -81,
+            63
+          ],
+          [
+            -82,
+            63
+          ],
+          [
+            -82,
+            62
+          ],
+          [
+            -80,
+            61
+          ],
+          [
+            -79,
+            62
+          ],
+          [
+            -78,
+            61
+          ],
+          [
+            -77,
+            61
+          ],
+          [
+            -78,
+            63
+          ],
+          [
+            -77,
+            64
+          ],
+          [
+            -78,
+            65
+          ],
+          [
+            -78,
+            66
+          ],
+          [
+            -80,
+            67
+          ]
+        ],
+        [
+          [
+            -75,
+            69
+          ],
+          [
+            -74,
+            67
+          ],
+          [
+            -72,
+            66
+          ],
+          [
+            -72,
+            65
+          ],
+          [
+            -71,
+            64
+          ],
+          [
+            -70,
+            65
+          ],
+          [
+            -71,
+            67
+          ],
+          [
+            -70,
+            67
+          ],
+          [
+            -70,
+            68
+          ],
+          [
+            -72,
+            69
+          ],
+          [
+            -73,
+            71
+          ],
+          [
+            -74,
+            71
+          ],
+          [
+            -75,
+            72
+          ],
+          [
+            -76,
+            71
+          ]
+        ],
+        [
+          [
+            -72,
+            60
+          ],
+          [
+            -74,
+            61
+          ],
+          [
+            -75,
+            60
+          ],
+          [
+            -76,
+            61
+          ],
+          [
+            -77,
+            61
+          ],
+          [
+            -76,
+            59
+          ],
+          [
+            -74,
+            58
+          ],
+          [
+            -74,
+            57
+          ],
+          [
+            -73,
+            56
+          ],
+          [
+            -72,
+            57
+          ],
+          [
+            -70,
+            56
+          ],
+          [
+            -70,
+            57
+          ],
+          [
+            -69,
+            57
+          ],
+          [
+            -70,
+            59
+          ]
+        ],
+        [
+          [
+            -81,
+            66
+          ],
+          [
+            -80,
+            67
+          ],
+          [
+            -81,
+            69
+          ],
+          [
+            -80,
+            69
+          ],
+          [
+            -80,
+            70
+          ],
+          [
+            -82,
+            71
+          ],
+          [
+            -83,
+            70
+          ],
+          [
+            -84,
+            71
+          ],
+          [
+            -85,
+            71
+          ],
+          [
+            -84,
+            69
+          ],
+          [
+            -85,
+            68
+          ],
+          [
+            -84,
+            67
+          ],
+          [
+            -84,
+            66
+          ],
+          [
+            -82,
+            65
+          ]
+        ]
+      ],
+      "pocket_area_twice": 72,
+      "status": "CHECKED_SEALED_TURTLE",
+      "tested_pairs": 39091,
+      "tile_area_twice": 40,
+      "tiles": 4060
+    }
+  },
+  "inputs": {
+    "penrose": {
+      "asset": "penrose-cavity-markings-20261106-v1-evidence.zip",
+      "audit_entries": {
+        "data/cavity-search-v1.json": {
+          "bytes": 58637,
+          "sha256": "a644ca7f5d33bb9cccd79ae280f1a4a6b12686c34fc5fe6fb4861f271a1388b1"
+        },
+        "input/cavity-cases-v1.json": {
+          "bytes": 25549,
+          "sha256": "42e715edc04a2d42fc75c282bc6f9d364a9e8203375cc078d5c72561b4a82085"
+        }
+      },
+      "commit": "b0671d641adf66cabb0bfdd4550d9e55a3dc5ee6",
+      "entries": {
+        "data/cavity-pilot-v1.json": {
+          "bytes": 5407,
+          "sha256": "3cdce17242f76db05256e45c4f0327aee1ac5ced7f89eda094b40b7a81c83620"
+        }
+      }
+    },
+    "turtle": {
+      "asset": "turtle-strip-grammar-20261106-v1-evidence.zip",
+      "commit": "968b9928cbde05f1c9119cb7cf3e2c10a5720196",
+      "entries": {
+        "data/strip-receiver-two-v1.json": {
+          "bytes": 1684046,
+          "sha256": "2fe735645781dc6a9227cee15bc7deae4d89b00e278977c50a92179b2e64e6f7"
+        },
+        "input/exact-point-model-v1.json": {
+          "bytes": 5154,
+          "sha256": "1095add09e7ace5846706dc2559ff3482459a6a854290d77d22e731562a230de"
+        }
+      }
+    }
+  },
+  "logical_projection": [
+    {
+      "full_bytes": 2395620,
+      "id": "turtle-pocket",
+      "logical_bytes": 32244,
+      "raw_sha256": "32af54105e1855caf314fa0c1559d4060a73fb0e98d645d45446188ce5ff2cc0",
+      "receipt": {
+        "records": 23,
+        "status": "CHECKED_LOGICAL_RECORDS",
+        "unique_records": 23
+      },
+      "rejected": [
+        "premise",
+        "dependency",
+        "original_goal"
+      ]
+    },
+    {
+      "full_bytes": 7087668,
+      "id": "penrose-regular",
+      "logical_bytes": 41000,
+      "raw_sha256": "96d3ea849fb1cb575ce448b611a516b548dce4f946878ce49caba74586d25a19",
+      "receipt": {
+        "records": 57,
+        "status": "CHECKED_LOGICAL_RECORDS",
+        "unique_records": 57
+      },
+      "rejected": [
+        "premise",
+        "dependency",
+        "original_goal"
+      ]
+    },
+    {
+      "full_bytes": 3817988,
+      "id": "penrose-concave",
+      "logical_bytes": 22609,
+      "raw_sha256": "b28baeaf1e0b4a8fa8bfcb738e6a17d0bb921772c948ffdc9f1af31428a87c9a",
+      "receipt": {
+        "records": 33,
+        "status": "CHECKED_LOGICAL_RECORDS",
+        "unique_records": 33
+      },
+      "rejected": [
+        "premise",
+        "dependency",
+        "original_goal"
+      ]
+    }
+  ],
+  "proof_cuts": {
+    "lemmas": {
+      "area-coefficient-2-1": {
+        "receipt": {
+          "records": 47,
+          "status": "CHECKED_LOGICAL_RECORDS",
+          "unique_records": 47
+        },
+        "sha256": "520965ed909775c24a5c80e4354906c7b76e61fd57b7810b849f86e9f2ade754"
+      }
+    },
+    "matched": [
+      "fixed-sealed-0",
+      "moving-sealed-0",
+      "fixed-sealed-1",
+      "moving-sealed-1",
+      "moving-open-1",
+      "fixed-open-1",
+      "fixed-sealed-2",
+      "moving-sealed-2",
+      "moving-open-2",
+      "fixed-open-2",
+      "fixed-sealed-3",
+      "moving-sealed-3",
+      "moving-open-3",
+      "fixed-open-3",
+      "moving-optional-hole",
+      "fixed-fillable-3",
+      "moving-fillable-3",
+      "fixed-fillable-4",
+      "moving-fillable-4",
+      "fixed-fillable-5",
+      "moving-fillable-5",
+      "fixed-concave-0",
+      "moving-concave-0",
+      "fixed-concave-1",
+      "moving-concave-1",
+      "fixed-concave-2",
+      "moving-concave-2"
+    ],
+    "status": "CHECKED_ARITHMETIC_AT_SEARCH_CUTS",
+    "uses": [
+      {
+        "area_twice": [
+          1,
+          3
+        ],
+        "case": "fixed-sealed-0",
+        "coordinate": 0,
+        "lemma": "area-coefficient-2-1",
+        "mark": "cb7e94895266c9567587529d1379e58bdf6195f5366f21437825472187435f3e",
+        "reuse": false
+      },
+      {
+        "area_twice": [
+          1,
+          3
+        ],
+        "case": "moving-sealed-0",
+        "coordinate": 0,
+        "lemma": "area-coefficient-2-1",
+        "mark": "cb7e94895266c9567587529d1379e58bdf6195f5366f21437825472187435f3e",
+        "reuse": true
+      },
+      {
+        "area_twice": [
+          1,
+          3
+        ],
+        "case": "fixed-sealed-1",
+        "coordinate": 0,
+        "lemma": "area-coefficient-2-1",
+        "mark": "cb7e94895266c9567587529d1379e58bdf6195f5366f21437825472187435f3e",
+        "reuse": true
+      },
+      {
+        "area_twice": [
+          1,
+          3
+        ],
+        "case": "moving-sealed-1",
+        "coordinate": 0,
+        "lemma": "area-coefficient-2-1",
+        "mark": "cb7e94895266c9567587529d1379e58bdf6195f5366f21437825472187435f3e",
+        "reuse": true
+      },
+      {
+        "area_twice": [
+          1,
+          3
+        ],
+        "case": "moving-open-1",
+        "coordinate": 0,
+        "lemma": "area-coefficient-2-1",
+        "mark": "cb7e94895266c9567587529d1379e58bdf6195f5366f21437825472187435f3e",
+        "reuse": true
+      },
+      {
+        "area_twice": [
+          1,
+          3
+        ],
+        "case": "fixed-open-1",
+        "coordinate": 0,
+        "lemma": "area-coefficient-2-1",
+        "mark": "cb7e94895266c9567587529d1379e58bdf6195f5366f21437825472187435f3e",
+        "reuse": true
+      },
+      {
+        "area_twice": [
+          1,
+          3
+        ],
+        "case": "fixed-sealed-2",
+        "coordinate": 0,
+        "lemma": "area-coefficient-2-1",
+        "mark": "cb7e94895266c9567587529d1379e58bdf6195f5366f21437825472187435f3e",
+        "reuse": true
+      },
+      {
+        "area_twice": [
+          1,
+          3
+        ],
+        "case": "moving-sealed-2",
+        "coordinate": 0,
+        "lemma": "area-coefficient-2-1",
+        "mark": "cb7e94895266c9567587529d1379e58bdf6195f5366f21437825472187435f3e",
+        "reuse": true
+      },
+      {
+        "area_twice": [
+          1,
+          3
+        ],
+        "case": "moving-open-2",
+        "coordinate": 0,
+        "lemma": "area-coefficient-2-1",
+        "mark": "cb7e94895266c9567587529d1379e58bdf6195f5366f21437825472187435f3e",
+        "reuse": true
+      },
+      {
+        "area_twice": [
+          1,
+          3
+        ],
+        "case": "fixed-open-2",
+        "coordinate": 0,
+        "lemma": "area-coefficient-2-1",
+        "mark": "cb7e94895266c9567587529d1379e58bdf6195f5366f21437825472187435f3e",
+        "reuse": true
+      },
+      {
+        "area_twice": [
+          1,
+          3
+        ],
+        "case": "fixed-sealed-3",
+        "coordinate": 0,
+        "lemma": "area-coefficient-2-1",
+        "mark": "cb7e94895266c9567587529d1379e58bdf6195f5366f21437825472187435f3e",
+        "reuse": true
+      },
+      {
+        "area_twice": [
+          1,
+          3
+        ],
+        "case": "moving-sealed-3",
+        "coordinate": 0,
+        "lemma": "area-coefficient-2-1",
+        "mark": "cb7e94895266c9567587529d1379e58bdf6195f5366f21437825472187435f3e",
+        "reuse": true
+      },
+      {
+        "area_twice": [
+          1,
+          3
+        ],
+        "case": "moving-open-3",
+        "coordinate": 0,
+        "lemma": "area-coefficient-2-1",
+        "mark": "cb7e94895266c9567587529d1379e58bdf6195f5366f21437825472187435f3e",
+        "reuse": true
+      },
+      {
+        "area_twice": [
+          1,
+          3
+        ],
+        "case": "fixed-open-3",
+        "coordinate": 0,
+        "lemma": "area-coefficient-2-1",
+        "mark": "cb7e94895266c9567587529d1379e58bdf6195f5366f21437825472187435f3e",
+        "reuse": true
+      },
+      {
+        "area_twice": [
+          1,
+          1
+        ],
+        "case": "fixed-concave-0",
+        "coordinate": 0,
+        "lemma": "area-coefficient-2-1",
+        "mark": "7038ddb0de68eaac9a0e46fff052d6deba4df4a7fa809d7ce78f58e8b1c5cded",
+        "reuse": true
+      },
+      {
+        "area_twice": [
+          1,
+          1
+        ],
+        "case": "moving-concave-0",
+        "coordinate": 0,
+        "lemma": "area-coefficient-2-1",
+        "mark": "7038ddb0de68eaac9a0e46fff052d6deba4df4a7fa809d7ce78f58e8b1c5cded",
+        "reuse": true
+      },
+      {
+        "area_twice": [
+          1,
+          1
+        ],
+        "case": "fixed-concave-1",
+        "coordinate": 0,
+        "lemma": "area-coefficient-2-1",
+        "mark": "7038ddb0de68eaac9a0e46fff052d6deba4df4a7fa809d7ce78f58e8b1c5cded",
+        "reuse": true
+      },
+      {
+        "area_twice": [
+          1,
+          1
+        ],
+        "case": "moving-concave-1",
+        "coordinate": 0,
+        "lemma": "area-coefficient-2-1",
+        "mark": "7038ddb0de68eaac9a0e46fff052d6deba4df4a7fa809d7ce78f58e8b1c5cded",
+        "reuse": true
+      },
+      {
+        "area_twice": [
+          1,
+          1
+        ],
+        "case": "fixed-concave-2",
+        "coordinate": 0,
+        "lemma": "area-coefficient-2-1",
+        "mark": "7038ddb0de68eaac9a0e46fff052d6deba4df4a7fa809d7ce78f58e8b1c5cded",
+        "reuse": true
+      },
+      {
+        "area_twice": [
+          1,
+          1
+        ],
+        "case": "moving-concave-2",
+        "coordinate": 0,
+        "lemma": "area-coefficient-2-1",
+        "mark": "7038ddb0de68eaac9a0e46fff052d6deba4df4a7fa809d7ce78f58e8b1c5cded",
+        "reuse": true
+      }
+    ]
+  },
+  "reader": {
+    "lines": 366,
+    "mathTypeset": true,
+    "mobileNoOverflow": true,
+    "pockets": 3,
+    "proofs": 6,
+    "status": "CHECKED_POCKET_ARITHMETIC_READER",
+    "wangSquares": 45
+  },
+  "records_cli": {
+    "projection": {
+      "records": 57,
+      "status": "CHECKED_LOGICAL_RECORDS",
+      "unique_records": 57
+    },
+    "status": "CHECKED_RECORDS_CLI",
+    "turtle": {
+      "records": 121,
+      "status": "CHECKED_LOGICAL_RECORDS",
+      "unique_records": 121
+    },
+    "wrong_source": {
+      "status": "REJECTED"
+    }
+  },
+  "replay": {
+    "outputs": {
+      "data/area-coefficient-2-1-logical-v1.json": {
+        "bytes": 33661,
+        "sha256": "520965ed909775c24a5c80e4354906c7b76e61fd57b7810b849f86e9f2ade754"
+      },
+      "data/area-coefficient-2-3-logical-v1.json": {
+        "bytes": 71266,
+        "sha256": "a612b283bc04cbb22d4f7719b89571ac613058c41fb4613df1cb943b87ef7dd4"
+      },
+      "data/area-coefficient-5-9-logical-v1.json": {
+        "bytes": 118083,
+        "sha256": "37bfd446360ab7ee4ee7a476f369f2008e1af1f4bfa3637c644ed1fe574de982"
+      },
+      "data/arithmetic-spine-summary-v1.json": {
+        "bytes": 1007,
+        "sha256": "b9456551c5d09e6f0e54f13c8c70979b906e14fe6c1d552acc1866f876208e44"
+      },
+      "data/geometry-binding-v1.json": {
+        "bytes": 3010,
+        "sha256": "18f63e17161020c4c3d6511b90d3a89bf6590c72b972c91730125369c2c9d8d4"
+      },
+      "data/logical-projection-v1.json": {
+        "bytes": 896,
+        "sha256": "b0887e2470fdb2920c411159cf1588c794b47bbd7e191719e75ebe4b5f738068"
+      },
+      "data/peano-spine-2-1-v1.json": {
+        "bytes": 14504661,
+        "sha256": "af175e9e839b0b794b86e820f7497ad2ffd2c10ccf6e869219110fe8f9d81897"
+      },
+      "data/peano-spine-2-3-v1.json": {
+        "bytes": 40629722,
+        "sha256": "76418632bca652bd723e19fd2540e094c89fc7e3c358ecf136bb8ffa1c21f94b"
+      },
+      "data/peano-spine-5-9-v1.json": {
+        "bytes": 73400245,
+        "sha256": "7ffe585c6a87c402ee824099dec7f64207dcfe4b49adddb641bf491cf6135e40"
+      },
+      "data/penrose-concave-records-v1.json": {
+        "bytes": 22609,
+        "sha256": "b28baeaf1e0b4a8fa8bfcb738e6a17d0bb921772c948ffdc9f1af31428a87c9a"
+      },
+      "data/penrose-concave-wang-v1.json": {
+        "bytes": 3817988,
+        "sha256": "40fd49e4fe0a942a94bd6c8f4d18ceec56a1e513848d185ac1668dc621585440"
+      },
+      "data/penrose-regular-records-v1.json": {
+        "bytes": 41000,
+        "sha256": "96d3ea849fb1cb575ce448b611a516b548dce4f946878ce49caba74586d25a19"
+      },
+      "data/penrose-regular-wang-v1.json": {
+        "bytes": 7087668,
+        "sha256": "ef41314a7708828bf963fdbb6ae445705fce573ddbb7e84cccd40f7049b29b87"
+      },
+      "data/proof-cuts-v1.json": {
+        "bytes": 4309,
+        "sha256": "bd4be5702fecc6a456f15287e59c5bf2de588a1b526493e4ecf605ac098d75e3"
+      },
+      "data/records-cli-v1.json": {
+        "bytes": 234,
+        "sha256": "a65b47c162e78f3d63186094717538054014f5412f73b82d56e3d33ab3221335"
+      },
+      "data/residue-audit-v1.json": {
+        "bytes": 277,
+        "sha256": "fee899f5e00a24532ccf68514fbf9cfda70974f8ed75e3c706ed23568877632b"
+      },
+      "data/residue-summary-v1.json": {
+        "bytes": 1263,
+        "sha256": "3a96fc843e9a8326c03ed7fb9f847d9368ab1f18973e2f308ad218aac305e756"
+      },
+      "data/spine-transfer-v1.json": {
+        "bytes": 1020,
+        "sha256": "d9a535e6fa6ce173387fab0197b4b0d466ae28ae9bce55a3b29f3600d81340d7"
+      },
+      "data/turtle-pocket-records-v1.json": {
+        "bytes": 32244,
+        "sha256": "32af54105e1855caf314fa0c1559d4060a73fb0e98d645d45446188ce5ff2cc0"
+      },
+      "data/turtle-pocket-wang-v1.json": {
+        "bytes": 2395620,
+        "sha256": "35f66b6405b9803e24b390c4016a572093dba9bb8640698e591e529e55375885"
+      },
+      "input/coefficient-2-1.json": {
+        "bytes": 729,
+        "sha256": "bf586bc49a52858a1c610679d2597e55677ff8572df43f02de2232cb926c3810"
+      },
+      "input/coefficient-2-3.json": {
+        "bytes": 743,
+        "sha256": "888d81690c9bb9a751a76cf780f9f4ee56f4654d181ccdfde5cdd5354e41dd26"
+      },
+      "input/coefficient-5-9.json": {
+        "bytes": 806,
+        "sha256": "29fe8247e77d81bdaa09842b08088f6b1cbe3cfefbf04e2cfa37a9d9c0482381"
+      },
+      "input/penrose-concave-fol-v1.json": {
+        "bytes": 1129,
+        "sha256": "4e966a9f41a24a8631decf11d88a75d83c1f741121c87d40385d17967bfd3853"
+      },
+      "input/penrose-pooled-control-fol-v1.json": {
+        "bytes": 4520,
+        "sha256": "b2de9955c0530218262703fe060403c9e841db6086669968c10957bc0a47ee8c"
+      },
+      "input/penrose-regular-fol-v1.json": {
+        "bytes": 1975,
+        "sha256": "e02c10b97bb1f1b33c8e02197db73cb6590d09f53c100e32cfa34538545caa97"
+      },
+      "input/turtle-pocket-fol-v1.json": {
+        "bytes": 2485,
+        "sha256": "fab770fd03db8d276f4ec5f2b402819c16296fd3988d34b945c23f8bde8dd168"
+      },
+      "report/wang-pocket-arithmetic-20261106-v1.html": {
+        "bytes": 298479,
+        "sha256": "381ff14d73518fc83cac5d82ff7a9516768c1ac30ab6a5df3f4a7c95c7db7a16"
+      }
+    },
+    "python": [
+      3,
+      12,
+      14
+    ],
+    "stages": [
+      "source/pocket_arithmetic_v1.py",
+      "source/bind_geometry_v1.py",
+      "source/area_residue_wang_v1.py",
+      "source/area_residue_audit_v1.py",
+      "source/arithmetic_spine_v1.py",
+      "source/logical_projection_v1.py",
+      "source/spine_transfer_v1.py",
+      "source/run_proof_cuts_v1.py",
+      "source/records_cli_audit_v1.py",
+      "publication/render_v1.py"
+    ],
+    "status": "MATCHED_CLEAN_REPLAY"
+  },
+  "residue_audit": [
+    {
+      "id": "turtle-pocket",
+      "status": "CHECKED",
+      "truth_rows": 118
+    },
+    {
+      "id": "penrose-regular",
+      "status": "CHECKED",
+      "truth_rows": 52
+    },
+    {
+      "id": "penrose-concave",
+      "status": "CHECKED",
+      "truth_rows": 28
+    },
+    {
+      "id": "penrose-pooled-control",
+      "status": "COUNTERMODEL",
+      "truth_rows": 124
+    }
+  ],
+  "residue_summary": [
+    {
+      "id": "turtle-pocket",
+      "relation": {
+        "cap": 1,
+        "coordinate": 0,
+        "measured_area": [
+          9
+        ],
+        "modulus": 5,
+        "required_residue": 4,
+        "weights": [
+          [
+            5
+          ]
+        ]
+      },
+      "result": {
+        "fragment_calls": 23,
+        "fresh_tile_runs": 23,
+        "implied_steps": 25533025,
+        "kind": "fol",
+        "machine_sha256": "3d97b22704bf8da27992d74dfb897c312da9274d0cb6298ef447498a7db2c4b6",
+        "status": "CHECKED"
+      }
+    },
+    {
+      "id": "penrose-regular",
+      "relation": {
+        "cap": 2,
+        "coordinate": 0,
+        "measured_area": [
+          1,
+          3
+        ],
+        "modulus": 2,
+        "required_residue": 1,
+        "weights": [
+          [
+            2,
+            0
+          ],
+          [
+            0,
+            2
+          ]
+        ]
+      },
+      "result": {
+        "fragment_calls": 57,
+        "fresh_tile_runs": 57,
+        "implied_steps": 86474693,
+        "kind": "fol",
+        "machine_sha256": "3d97b22704bf8da27992d74dfb897c312da9274d0cb6298ef447498a7db2c4b6",
+        "status": "CHECKED"
+      }
+    },
+    {
+      "id": "penrose-concave",
+      "relation": {
+        "cap": 1,
+        "coordinate": 0,
+        "measured_area": [
+          1,
+          1
+        ],
+        "modulus": 2,
+        "required_residue": 1,
+        "weights": [
+          [
+            2,
+            0
+          ],
+          [
+            0,
+            2
+          ]
+        ]
+      },
+      "result": {
+        "fragment_calls": 33,
+        "fresh_tile_runs": 33,
+        "implied_steps": 43152881,
+        "kind": "fol",
+        "machine_sha256": "3d97b22704bf8da27992d74dfb897c312da9274d0cb6298ef447498a7db2c4b6",
+        "status": "CHECKED"
+      }
+    },
+    {
+      "id": "penrose-pooled-control",
+      "relation": {
+        "cap": 5,
+        "coordinate": 0,
+        "measured_area": [
+          2,
+          6
+        ],
+        "modulus": 2,
+        "required_residue": 0,
+        "weights": [
+          [
+            2,
+            0
+          ],
+          [
+            0,
+            2
+          ]
+        ]
+      },
+      "result": {
+        "status": "COUNTERMODEL",
+        "true_atoms": [
+          "a0_1",
+          "a1_2",
+          "a2_2",
+          "a3_2",
+          "a4_0",
+          "r0_0",
+          "r1_0",
+          "r2_0",
+          "r3_0",
+          "r4_0",
+          "r5_0"
+        ]
+      }
+    }
+  ],
+  "schema": "WANG-POCKET-ARITHMETIC-RESULTS-v1",
+  "spine_transfer": {
+    "bank": {
+      "area-coefficient-2-1": {
+        "path": "data/area-coefficient-2-1-logical-v1.json",
+        "receipt": {
+          "records": 47,
+          "status": "CHECKED_LOGICAL_RECORDS",
+          "unique_records": 47
+        }
+      },
+      "area-coefficient-2-3": {
+        "path": "data/area-coefficient-2-3-logical-v1.json",
+        "receipt": {
+          "records": 85,
+          "status": "CHECKED_LOGICAL_RECORDS",
+          "unique_records": 85
+        }
+      },
+      "area-coefficient-5-9": {
+        "path": "data/area-coefficient-5-9-logical-v1.json",
+        "receipt": {
+          "records": 121,
+          "status": "CHECKED_LOGICAL_RECORDS",
+          "unique_records": 121
+        }
+      }
+    },
+    "contexts": [
+      {
+        "case": "turtle-pocket",
+        "lemmas": [
+          {
+            "coordinate": 0,
+            "lemma": "area-coefficient-5-9",
+            "reuse": false
+          }
+        ]
+      },
+      {
+        "case": "penrose-regular",
+        "lemmas": [
+          {
+            "coordinate": 0,
+            "lemma": "area-coefficient-2-1",
+            "reuse": false
+          },
+          {
+            "coordinate": 1,
+            "lemma": "area-coefficient-2-3",
+            "reuse": false
+          }
+        ]
+      },
+      {
+        "case": "penrose-concave",
+        "lemmas": [
+          {
+            "coordinate": 0,
+            "lemma": "area-coefficient-2-1",
+            "reuse": true
+          },
+          {
+            "coordinate": 1,
+            "lemma": "area-coefficient-2-1",
+            "reuse": true
+          }
+        ]
+      },
+      {
+        "case": "penrose-pooled-control",
+        "lemmas": []
+      }
+    ],
+    "status": "CHECKED_AREA_LEMMA_REUSE",
+    "wrong_goal": "REJECTED"
+  }
+}

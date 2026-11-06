@@ -1,0 +1,551 @@
+{
+  "archive_entries": {
+    "data/area-coefficient-2-1-logical-v1.json": {
+      "bytes": 33661,
+      "sha256": "520965ed909775c24a5c80e4354906c7b76e61fd57b7810b849f86e9f2ade754"
+    },
+    "data/area-coefficient-2-3-logical-v1.json": {
+      "bytes": 71266,
+      "sha256": "a612b283bc04cbb22d4f7719b89571ac613058c41fb4613df1cb943b87ef7dd4"
+    },
+    "data/area-coefficient-5-9-logical-v1.json": {
+      "bytes": 118083,
+      "sha256": "37bfd446360ab7ee4ee7a476f369f2008e1af1f4bfa3637c644ed1fe574de982"
+    },
+    "data/arithmetic-spine-summary-v1.json": {
+      "bytes": 1007,
+      "sha256": "b9456551c5d09e6f0e54f13c8c70979b906e14fe6c1d552acc1866f876208e44"
+    },
+    "data/geometry-binding-v1.json": {
+      "bytes": 3010,
+      "sha256": "18f63e17161020c4c3d6511b90d3a89bf6590c72b972c91730125369c2c9d8d4"
+    },
+    "data/geometry.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/geometry.stdout.log": {
+      "bytes": 121,
+      "sha256": "61f69f1bc0b91934a584440df3418cabda7bccc9382065b9e443508da56535d1"
+    },
+    "data/logical-projection-v1.json": {
+      "bytes": 896,
+      "sha256": "b0887e2470fdb2920c411159cf1588c794b47bbd7e191719e75ebe4b5f738068"
+    },
+    "data/peano-spine-2-1-v1.json": {
+      "bytes": 14504661,
+      "sha256": "af175e9e839b0b794b86e820f7497ad2ffd2c10ccf6e869219110fe8f9d81897"
+    },
+    "data/peano-spine-2-3-v1.json": {
+      "bytes": 40629722,
+      "sha256": "76418632bca652bd723e19fd2540e094c89fc7e3c358ecf136bb8ffa1c21f94b"
+    },
+    "data/peano-spine-5-9-v1.json": {
+      "bytes": 73400245,
+      "sha256": "7ffe585c6a87c402ee824099dec7f64207dcfe4b49adddb641bf491cf6135e40"
+    },
+    "data/penrose-concave-records-v1.json": {
+      "bytes": 22609,
+      "sha256": "b28baeaf1e0b4a8fa8bfcb738e6a17d0bb921772c948ffdc9f1af31428a87c9a"
+    },
+    "data/penrose-concave-wang-v1.json": {
+      "bytes": 3817988,
+      "sha256": "40fd49e4fe0a942a94bd6c8f4d18ceec56a1e513848d185ac1668dc621585440"
+    },
+    "data/penrose-regular-records-v1.json": {
+      "bytes": 41000,
+      "sha256": "96d3ea849fb1cb575ce448b611a516b548dce4f946878ce49caba74586d25a19"
+    },
+    "data/penrose-regular-wang-v1.json": {
+      "bytes": 7087668,
+      "sha256": "ef41314a7708828bf963fdbb6ae445705fce573ddbb7e84cccd40f7049b29b87"
+    },
+    "data/projection.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/projection.stdout.log": {
+      "bytes": 892,
+      "sha256": "93fb64096e11420a4aaf674d72695a1cb3be410b10e5d4e1a160f2b236469705"
+    },
+    "data/proof-cuts-v1.json": {
+      "bytes": 4309,
+      "sha256": "bd4be5702fecc6a456f15287e59c5bf2de588a1b526493e4ecf605ac098d75e3"
+    },
+    "data/records-cli-v1.json": {
+      "bytes": 234,
+      "sha256": "a65b47c162e78f3d63186094717538054014f5412f73b82d56e3d33ab3221335"
+    },
+    "data/records-cli.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/records-cli.stdout.log": {
+      "bytes": 252,
+      "sha256": "ea359533e49ca588d5cb9d5632edc3f41b1f3856a2c5a2332f60ffbdc0a4b62b"
+    },
+    "data/residue-audit-v1.json": {
+      "bytes": 277,
+      "sha256": "fee899f5e00a24532ccf68514fbf9cfda70974f8ed75e3c706ed23568877632b"
+    },
+    "data/residue-audit.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/residue-audit.stdout.log": {
+      "bytes": 277,
+      "sha256": "0941664036f5c58cb0950e22b2d64a9086df12714a86c74efa6449e41d7c122e"
+    },
+    "data/residue-summary-v1.json": {
+      "bytes": 1263,
+      "sha256": "3a96fc843e9a8326c03ed7fb9f847d9368ab1f18973e2f308ad218aac305e756"
+    },
+    "data/residue.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/residue.stdout.log": {
+      "bytes": 1250,
+      "sha256": "eeadaa8f983fab46b9dcf4dca6871d2f7dcf1fafe436bbd85c9ccd534ae14be8"
+    },
+    "data/spine-transfer-v1.json": {
+      "bytes": 1020,
+      "sha256": "d9a535e6fa6ce173387fab0197b4b0d466ae28ae9bce55a3b29f3600d81340d7"
+    },
+    "data/spine.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/spine.stdout.log": {
+      "bytes": 781,
+      "sha256": "3a66dbede62a5d6d448bf39c99bfee848e6843e0df59a68a9ef3049caf89f03a"
+    },
+    "data/transfer.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/transfer.stdout.log": {
+      "bytes": 510,
+      "sha256": "726d33080c24089aa07cc36f4d40c0e8bafa7d16a39324798d61dc29bfb3fa00"
+    },
+    "data/turtle-pocket-records-v1.json": {
+      "bytes": 32244,
+      "sha256": "32af54105e1855caf314fa0c1559d4060a73fb0e98d645d45446188ce5ff2cc0"
+    },
+    "data/turtle-pocket-wang-v1.json": {
+      "bytes": 2395620,
+      "sha256": "35f66b6405b9803e24b390c4016a572093dba9bb8640698e591e529e55375885"
+    },
+    "geometry/penrose/data/cavity-pilot-v1.json": {
+      "bytes": 5407,
+      "sha256": "3cdce17242f76db05256e45c4f0327aee1ac5ced7f89eda094b40b7a81c83620"
+    },
+    "geometry/penrose/data/cavity-search-v1.json": {
+      "bytes": 58637,
+      "sha256": "a644ca7f5d33bb9cccd79ae280f1a4a6b12686c34fc5fe6fb4861f271a1388b1"
+    },
+    "geometry/penrose/input/cavity-cases-v1.json": {
+      "bytes": 25549,
+      "sha256": "42e715edc04a2d42fc75c282bc6f9d364a9e8203375cc078d5c72561b4a82085"
+    },
+    "geometry/penrose/source/boundary_search_v1.py": {
+      "bytes": 11523,
+      "sha256": "ea15d14561f7b39f58e7cc62d9fcc736d89377888922e6c454f0cedfa8b1b112"
+    },
+    "geometry/penrose/source/cases_v1.py": {
+      "bytes": 8451,
+      "sha256": "70ff43195c11a970f45d6acc319bddb7b90d4b394afced7ea4f98ba294b80af3"
+    },
+    "geometry/penrose/source/cavity_audit_v1.py": {
+      "bytes": 6390,
+      "sha256": "afe2d897898eed3062aa4555892646f2c20ebf203b8e439ba733a972228db217"
+    },
+    "geometry/penrose/source/cavity_experiment_v1.py": {
+      "bytes": 2559,
+      "sha256": "1aaf4600b56f727516a45a9fd192f4cfbcc71f5075431eac8617abe6f0b62768"
+    },
+    "geometry/penrose/source/cavity_marks_v1.py": {
+      "bytes": 3013,
+      "sha256": "f1a8160edd193aca77ca134f9ca1c7837d5601ebecaf7ed23a07a7362f794d61"
+    },
+    "geometry/penrose/source/cavity_pilot_v1.py": {
+      "bytes": 4511,
+      "sha256": "24a238e67d695db2de8623ad8509b2accfd02fae7f6f96a2edf00aca5024705f"
+    },
+    "geometry/penrose/source/check_v1.py": {
+      "bytes": 4131,
+      "sha256": "edd28b8b5b611059b47d8b2b55964c27a1a5b268dabdaf06c2f4f7b340eaf76c"
+    },
+    "geometry/penrose/source/clipping_v1.py": {
+      "bytes": 5276,
+      "sha256": "a649384ab8e810d88d28e79906346946b869292c0de2bf81d07469778fc59281"
+    },
+    "geometry/penrose/source/cluster_v1.py": {
+      "bytes": 15717,
+      "sha256": "a2eec032406feaf45f7c5ca66b235727db26e414996337981f6b0ff865859b85"
+    },
+    "geometry/penrose/source/geometry_v1.py": {
+      "bytes": 10392,
+      "sha256": "9869ab1c6a2fb3928366a8c50e114ff4c4ba14960cb7f28cb8cc5541b8c3936e"
+    },
+    "geometry/penrose/source/model_v1.py": {
+      "bytes": 4432,
+      "sha256": "df86798cfa969b57bdca56f4928b3fd12fe908a275ec5e47031546e74bef43f4"
+    },
+    "geometry/penrose/source/open_cover_v1.py": {
+      "bytes": 8775,
+      "sha256": "e8fc28cb68f2bb3d3671a243df0844602c650cefa7f9ea0a12b3cd189f6af086"
+    },
+    "geometry/penrose/source/proof_cuts_v1.py": {
+      "bytes": 2221,
+      "sha256": "4d1fa1001bdf80bb235ee8372bf571d31f17df904713fbe6f12741e437e80bf1"
+    },
+    "geometry/penrose/source/qualify_v1.py": {
+      "bytes": 1857,
+      "sha256": "43b1f91fadbb162d7ef445e339fda192b5c2459d639833583968e0d4e29809c1"
+    },
+    "geometry/penrose/source/triangle_geometry_v1.py": {
+      "bytes": 9600,
+      "sha256": "4715c6f612b196d257c858d695d604d800ce832cc5f8a1bfee8ae58e400a79ed"
+    },
+    "geometry/turtle/data/strip-receiver-two-v1.json": {
+      "bytes": 1684046,
+      "sha256": "2fe735645781dc6a9227cee15bc7deae4d89b00e278977c50a92179b2e64e6f7"
+    },
+    "geometry/turtle/input/exact-point-model-v1.json": {
+      "bytes": 5154,
+      "sha256": "1095add09e7ace5846706dc2559ff3482459a6a854290d77d22e731562a230de"
+    },
+    "geometry/turtle/source/assemble_v1.py": {
+      "bytes": 5378,
+      "sha256": "d1120c67801723e42bb8aca10a333e54f3348a8a2a5d4aaade6fe3333bceb4c7"
+    },
+    "geometry/turtle/source/cluster_v1.py": {
+      "bytes": 15717,
+      "sha256": "a2eec032406feaf45f7c5ca66b235727db26e414996337981f6b0ff865859b85"
+    },
+    "geometry/turtle/source/collar_audit_v1.py": {
+      "bytes": 15050,
+      "sha256": "441bbfce0bbe5632b6b26a467c677be775ccae748d3358a7334752f44ec97835"
+    },
+    "geometry/turtle/source/collar_experiment_v1.py": {
+      "bytes": 4931,
+      "sha256": "1b278165312553bc1daff1ca9067cd1595cec9c3ff03e0b84e9b5685d1085b59"
+    },
+    "geometry/turtle/source/collars_v1.py": {
+      "bytes": 9009,
+      "sha256": "3ffbbb443ad4ca62bbe9a6594ef28b579fbfd13e254ec6a7bdf1b1fb0e8502bd"
+    },
+    "geometry/turtle/source/golden_geometry_v1.py": {
+      "bytes": 4899,
+      "sha256": "528407dae32299ac9982998ffd396687633fe1107d99f782ab8b74f8f5ded786"
+    },
+    "geometry/turtle/source/qualify_v1.py": {
+      "bytes": 2179,
+      "sha256": "ff508a929fe3c31fa054f05fcf95d7d94cc0d616dfd423eef6589889cafe4c1d"
+    },
+    "geometry/turtle/source/triangle_geometry_v1.py": {
+      "bytes": 9600,
+      "sha256": "4715c6f612b196d257c858d695d604d800ce832cc5f8a1bfee8ae58e400a79ed"
+    },
+    "input/coefficient-2-1.json": {
+      "bytes": 729,
+      "sha256": "bf586bc49a52858a1c610679d2597e55677ff8572df43f02de2232cb926c3810"
+    },
+    "input/coefficient-2-3.json": {
+      "bytes": 743,
+      "sha256": "888d81690c9bb9a751a76cf780f9f4ee56f4654d181ccdfde5cdd5354e41dd26"
+    },
+    "input/coefficient-5-9.json": {
+      "bytes": 806,
+      "sha256": "29fe8247e77d81bdaa09842b08088f6b1cbe3cfefbf04e2cfa37a9d9c0482381"
+    },
+    "input/geometry-pins-v1.json": {
+      "bytes": 937,
+      "sha256": "6cce616a670f9ca49fe8eb94e3bec41cfe461d4759c8416b75055db218d09d92"
+    },
+    "input/measured-pockets-v1.json": {
+      "bytes": 1251,
+      "sha256": "7d1fb53d6d75b1dffdc5305aed2efbb0edc9821080bd831bcd6548179bd678e2"
+    },
+    "input/penrose-concave-fol-v1.json": {
+      "bytes": 1129,
+      "sha256": "4e966a9f41a24a8631decf11d88a75d83c1f741121c87d40385d17967bfd3853"
+    },
+    "input/penrose-pooled-control-fol-v1.json": {
+      "bytes": 4520,
+      "sha256": "b2de9955c0530218262703fe060403c9e841db6086669968c10957bc0a47ee8c"
+    },
+    "input/penrose-regular-fol-v1.json": {
+      "bytes": 1975,
+      "sha256": "e02c10b97bb1f1b33c8e02197db73cb6590d09f53c100e32cfa34538545caa97"
+    },
+    "input/tactic-policy-v1.json": {
+      "bytes": 413,
+      "sha256": "526387caf09e18a33941d39ad3c39542cbd363c5a8043c6c6c4e509a847fcbd8"
+    },
+    "input/turtle-pocket-fol-v1.json": {
+      "bytes": 2485,
+      "sha256": "fab770fd03db8d276f4ec5f2b402819c16296fd3988d34b945c23f8bde8dd168"
+    },
+    "publication/REPLAY.md": {
+      "bytes": 1471,
+      "sha256": "26ac192edf33b269edb024e42bd5ab019ed10c90b3716f0012b59713b8afb49f"
+    },
+    "publication/browser-v1.json": {
+      "bytes": 170,
+      "sha256": "333cca358af2a62b227d37e8a7a8bc583bfa1c3026ecba5a9d1c5432140db0a2"
+    },
+    "publication/check_v1.cjs": {
+      "bytes": 2280,
+      "sha256": "ff6433130d0ba8d5124f8676f9d8cf5bc026bac22ccbb04aa0957959d1cb2ddf"
+    },
+    "publication/notebook-v1.html": {
+      "bytes": 12004,
+      "sha256": "b71f609b6822f9014ec8f101200fc1656e858d8d9f7e7dfe4c942c6fe359dcb8"
+    },
+    "publication/package_v1.py": {
+      "bytes": 2563,
+      "sha256": "bffe5411adff51dd5012712c152a49d8e71c290619a39d910a1901416c687f3f"
+    },
+    "publication/proof_views_v1.py": {
+      "bytes": 6864,
+      "sha256": "c2f89d498e5fd11d7a8e0940aec3784a9c14ae924c4af721b732364c2680e867"
+    },
+    "publication/render_v1.py": {
+      "bytes": 5004,
+      "sha256": "dd4785374d8d2f7f3494333c3fe685697abf78cc601ef0bf798060b3c954eac4"
+    },
+    "publication/replay-v1.json": {
+      "bytes": 4790,
+      "sha256": "f986a18898012ced19af0b71ccea1d6b4266e82eeba8096d71621c99c33ff709"
+    },
+    "publication/replay_v1.py": {
+      "bytes": 3453,
+      "sha256": "fe4b460b4416ba12a73bf2ade4d4c257bac6691683c88ac63e7616eadf95b77c"
+    },
+    "publication/tile-window-v1.png": {
+      "bytes": 31769,
+      "sha256": "3257b010b9b2c972a4ae50f0b2be148094916979fb45be50835582dcb66f1164"
+    },
+    "report/wang-pocket-arithmetic-20261106-v1-results.json": {
+      "bytes": 35845,
+      "sha256": "d1920fa978a5352d5ca3bd2446aad291ad83ff2b1cdce09ee1ec144957863dd8"
+    },
+    "report/wang-pocket-arithmetic-20261106-v1.html": {
+      "bytes": 298479,
+      "sha256": "381ff14d73518fc83cac5d82ff7a9516768c1ac30ab6a5df3f4a7c95c7db7a16"
+    },
+    "source/area_residue_audit_v1.py": {
+      "bytes": 4852,
+      "sha256": "f0050394ebf17998f8a39eb822c274f805c877875cb42b8f1c241e43e86e8669"
+    },
+    "source/area_residue_wang_v1.py": {
+      "bytes": 5381,
+      "sha256": "fdf3f4d54911036aa8215090054b8dd38e6f3de828e1f80d51440cfb815aea61"
+    },
+    "source/arithmetic_spine_v1.py": {
+      "bytes": 4322,
+      "sha256": "e5ba905f3b926b30f2f1d8641df0d7c2c3dd313fa2455ddcdb6041c098101239"
+    },
+    "source/bind_geometry_v1.py": {
+      "bytes": 1521,
+      "sha256": "45fee7c5067c6ea212f86026139b55e15a4a3779bed7b62fe4f0c0b1403568c9"
+    },
+    "source/boundary_kernel_v1.py": {
+      "bytes": 8190,
+      "sha256": "7bc2bcf58ce1d2de90db1000a6c82c51fb6339631199c00c55872f6bdaf04298"
+    },
+    "source/cm2_horn_v1.py": {
+      "bytes": 4702,
+      "sha256": "9fad48db15d018a252dcd2ed1d858872fd5da0c3c414d2e53d0d539505cbf5f2"
+    },
+    "source/decode_v1.py": {
+      "bytes": 3902,
+      "sha256": "262e0cdb36a86f42df3fd762e2c20f7fda697779ec0033ed5fc714929cb5ab99"
+    },
+    "source/definition_cases_v1.py": {
+      "bytes": 1946,
+      "sha256": "46e77436ae1174c7cd5adf9e05d1e1c3d070aa7b1d0278132da26a5c2a96175b"
+    },
+    "source/definition_check_v1.py": {
+      "bytes": 6057,
+      "sha256": "561d5a3a6823a956426e619565c8775021d22b4343831c6a671e20aea61c91ba"
+    },
+    "source/definition_composition_v1.py": {
+      "bytes": 7218,
+      "sha256": "7763abee9fd2d5b542a6a8eefcb49767c1745165bb0ed7da280ef6b3b5f9699e"
+    },
+    "source/definition_experiment_v1.py": {
+      "bytes": 2180,
+      "sha256": "297e55bde875783c768c8fd0eb6e571eddb9f25c2392d3b1830ef5c72f81008d"
+    },
+    "source/definitions_v1.py": {
+      "bytes": 4559,
+      "sha256": "dcd85319e3837825010570811c7b4c961361369f3f0350e46bf78f95e6e6b399"
+    },
+    "source/depth_ground_v1.py": {
+      "bytes": 3675,
+      "sha256": "b5108c74c562a7d4d5a06c07c528fb9e325f654f89726865c1f967bb70be182a"
+    },
+    "source/deterministic_tm_wang_v1.py": {
+      "bytes": 21321,
+      "sha256": "54ae552084743639181f416f5ca02d9acf25c031c61c60c4550d34ac7883d7dd"
+    },
+    "source/fair_ground_v1.py": {
+      "bytes": 3432,
+      "sha256": "47fb33f62bd506ec1311b7d1bbc8b1c55eafacae2784ba2546e576458b51270b"
+    },
+    "source/fixed_palette_v1.py": {
+      "bytes": 8368,
+      "sha256": "8d4c09e1977302fd89454f1ab6d8b752d475c0a1a318ddcedac3f434518635fc"
+    },
+    "source/fragment_receptors_v1.py": {
+      "bytes": 4904,
+      "sha256": "f80e298a3241cc7b6f56dc40b0febb7124e866881fb77ae898f36c878a6a29ef"
+    },
+    "source/front_v1.py": {
+      "bytes": 8957,
+      "sha256": "5f03c273e72467b70672b9d4ff851b43ba61afa57ca00f84a5c43a2464d612cc"
+    },
+    "source/ground_unit_v1.py": {
+      "bytes": 3772,
+      "sha256": "2914f52d0c6edf1fbeddf03e723fbfc277ea98305cea344af47bd4efb8416fe0"
+    },
+    "source/herbrand_v1.py": {
+      "bytes": 10499,
+      "sha256": "ab1698fa88166e33afa446d9f8ca18da25d257c4d07c76da0e261ecedd36e8db"
+    },
+    "source/in_grid_v1.py": {
+      "bytes": 7880,
+      "sha256": "2c2e794b894a41998a3ded276cae78ffaa3012ebb0bdead1cb104293ea246157"
+    },
+    "source/lifted_audit_v1.py": {
+      "bytes": 9454,
+      "sha256": "8e87eb91c348f9a5fe19ce6fcece1ee37c9ab9314cee8e290895e407f8d8c836"
+    },
+    "source/lifted_cases_v1.py": {
+      "bytes": 3908,
+      "sha256": "50f5c3917ca283542828d5428632213ca826a84dcf881a9cfbddc525e56e3517"
+    },
+    "source/lifted_experiment_v1.py": {
+      "bytes": 4824,
+      "sha256": "81d7d0b4b4fb0243387cff3946e4cbb3e5462631e8837cb4617a06984591dc05"
+    },
+    "source/lifted_frames_v1.py": {
+      "bytes": 2671,
+      "sha256": "21631c5e6fa76435a0f19f5a47c9ee85cab26308460e2883e154dd121e91cc4f"
+    },
+    "source/lifted_ground_v1.py": {
+      "bytes": 3157,
+      "sha256": "926016f8790a32e2297e7e727fad60d82ba254759eed7fd2e0bf7e68def1788f"
+    },
+    "source/lifted_marks_v1.py": {
+      "bytes": 1778,
+      "sha256": "4a6f33e35e2947aafdcb887adbedb6c3fca1dc5033c9498f93ea4c5eda994fda"
+    },
+    "source/lifted_native_v1.py": {
+      "bytes": 5758,
+      "sha256": "f2c73193dc1da7812ec9d9fe658c385fb67570b9e8b491cfc2e2c790e74824d3"
+    },
+    "source/lifted_prover_v1.py": {
+      "bytes": 10188,
+      "sha256": "189bd727708b7bd224643edb3df5af126b9636ef8e62815827ef0310093e8f29"
+    },
+    "source/logical_projection_v1.py": {
+      "bytes": 3968,
+      "sha256": "af824d0b1964a8da87a547b74e96ee7c6574ed4439a07ae9ba5c6e95eed6d223"
+    },
+    "source/logical_records_cli_v1.py": {
+      "bytes": 1504,
+      "sha256": "55083fd3859471c3b5bead8b23e46ce8be3dfc02e3532d01843591187292d8a2"
+    },
+    "source/marker_tm_v1.py": {
+      "bytes": 7658,
+      "sha256": "4e6162f52098ba256d4f64c2d32074d3f3a8914ba341b56f5805226c12d32122"
+    },
+    "source/native_audit_v1.py": {
+      "bytes": 10324,
+      "sha256": "1cc5e347ecf73e006f46e819169d4c57074a401ca92281075de6ee604e839a07"
+    },
+    "source/native_experiment_v1.py": {
+      "bytes": 6751,
+      "sha256": "7659de81ad4993cce94f89a830f2b0781f56fe432c37f8520425874ec6532a28"
+    },
+    "source/native_marked_v1.py": {
+      "bytes": 4695,
+      "sha256": "07ee0d52687cef18f586bbfe51646e39776a617a67f8ae0edf7b18ccee85b353"
+    },
+    "source/native_v1.py": {
+      "bytes": 6288,
+      "sha256": "b3dea50c5556d911e9f2a80e073c1aac7c1645cd534a7c40e3a03520c22961e5"
+    },
+    "source/pocket_arithmetic_v1.py": {
+      "bytes": 1236,
+      "sha256": "b7fcb07c20c36dfa1fe49fd3633c6e5f2e72654d16f15eaa3c73f9f48c2cd5d3"
+    },
+    "source/receptor_receivers_v1.py": {
+      "bytes": 4187,
+      "sha256": "931d47810424a50bb870e4a7cf091a6cc88d970ac483e5e46fb2b62b660fdbce"
+    },
+    "source/records_cli_audit_v1.py": {
+      "bytes": 1516,
+      "sha256": "cc354045135147cc42d48848348dfd7e9f015a8b0595aa5949176269578e475f"
+    },
+    "source/resolution_v1.py": {
+      "bytes": 14299,
+      "sha256": "8aa3e79d0fecf09a47ef7e7a9c2670f57747b571f30c0ed9cf4a65fba93e9536"
+    },
+    "source/ribbon_checker_v3.py": {
+      "bytes": 14489,
+      "sha256": "e346951922cfe71366f6c31b474c77955a51715eb3e043ff053c169dc8b0adbd"
+    },
+    "source/run_proof_cuts_v1.py": {
+      "bytes": 692,
+      "sha256": "2e40031d2d30846f3f4bcc72e30cd08302d1622e336b9cbce6ca340c1d2a4487"
+    },
+    "source/shared_wang_v1.py": {
+      "bytes": 5446,
+      "sha256": "2670b3400eb9848de0baaf784ba79325cf851bb490b7c28aecc95c695a6217c7"
+    },
+    "source/sparse_frame_v1.py": {
+      "bytes": 6487,
+      "sha256": "00ca9a90012c5bef798280664e9f4a4583a0c638d196de005c0998bee4a9c9fe"
+    },
+    "source/spine_transfer_v1.py": {
+      "bytes": 2537,
+      "sha256": "00978342a14c09645c3eeab46b4128f8bdb77150bcea25f87a1af83119b3bf23"
+    },
+    "source/study_v1.py": {
+      "bytes": 12409,
+      "sha256": "7a617ee77bc551b96cd9583bc0d3b08085e8ad02ec06d586cd694bb39fd68a62"
+    },
+    "source/tactic_cohort_v1.py": {
+      "bytes": 2880,
+      "sha256": "d47e9740f173187fa4b6fcd2d8d74812c3536ed55f2e4f2a51d5757425a7b3a8"
+    },
+    "source/tactic_policy_v1.py": {
+      "bytes": 5575,
+      "sha256": "40b5041cc74528b60846214c4c89c89c839abd4f9126525e121c68a1db095f8d"
+    },
+    "source/tiles_v1.py": {
+      "bytes": 6290,
+      "sha256": "54cb133bb7139d4b88013ffd45089d8c9a0145e0a770b2b87296f24d9a3bb38a"
+    }
+  },
+  "assets": {
+    "wang-pocket-arithmetic-20261106-v1-evidence.zip": {
+      "bytes": 9784258,
+      "sha256": "64ebc3ab1e4c8f64fd789cf351579cc04dfa57b1e81513839670f78808e159b2"
+    },
+    "wang-pocket-arithmetic-20261106-v1-results.json": {
+      "bytes": 35845,
+      "sha256": "d1920fa978a5352d5ca3bd2446aad291ad83ff2b1cdce09ee1ec144957863dd8"
+    },
+    "wang-pocket-arithmetic-20261106-v1.html": {
+      "bytes": 298479,
+      "sha256": "381ff14d73518fc83cac5d82ff7a9516768c1ac30ab6a5df3f4a7c95c7db7a16"
+    }
+  },
+  "schema": "WANG-POCKET-ARITHMETIC-MANIFEST-v1"
+}
