@@ -1,0 +1,431 @@
+{
+  "archive_entries": {
+    "data/cascade-experiment-v1.json": {
+      "bytes": 29521,
+      "sha256": "60c519fa92c1909a2d5ca6090aec6bea675cb97e90f4e7620220dbcc9dbd4dd7"
+    },
+    "data/cascade-movable-v1.json": {
+      "bytes": 11860,
+      "sha256": "d4695c8e77a5357b5155101d9f96a50e7152a3d82249ff71a6d60202e8c3e05b"
+    },
+    "data/cascade-runtime-v1.json": {
+      "bytes": 1296672,
+      "sha256": "da3bdbe819a699753c421e5ccaa563fe73285ee4b151d9f43c01184359b2fc0f"
+    },
+    "data/cascade-timing-v1.json": {
+      "bytes": 2816,
+      "sha256": "3675a97b2bfc389f37ef7535c2863ee2857381db2146ac48f65fd2f6f5c123e0"
+    },
+    "data/route-bandit-v1.json": {
+      "bytes": 378284,
+      "sha256": "d30987dd8b8310a06160ebbdb39df4cf6195b1dae41599253a2f14f86dd1e258"
+    },
+    "data/transfer-v1.json": {
+      "bytes": 45191,
+      "sha256": "e410dc7b6f9a49e2dfd01c7cf72060c646c3491eb4ec42abe8a3ab2f6a6bb1c3"
+    },
+    "publication/REPLAY.md": {
+      "bytes": 1272,
+      "sha256": "063eb955263c26bb7a91ef3432f48ab95c337a4e2654dc45622c4686e683b887"
+    },
+    "publication/browser-v1.json": {
+      "bytes": 209,
+      "sha256": "697a0c4a7fe79d9b478cec3c2130a65998f3c43866128e4bf4f94380d924007e"
+    },
+    "publication/check_v1.cjs": {
+      "bytes": 3236,
+      "sha256": "f8369a02a7a9d55c09d3156627864ce0bc5727fc94cebfedeef9ac2c81661c15"
+    },
+    "publication/notebook-v1.html": {
+      "bytes": 11473,
+      "sha256": "1a62d58925df2726ba5043c52d5fa960696c37fd78b6ea94b0d9910fb222ce4a"
+    },
+    "publication/package_v1.py": {
+      "bytes": 2981,
+      "sha256": "9fd86e2317fa6677bdb6bc0f8409c3969956546eb404c601382e7afcec8ffa27"
+    },
+    "publication/proof_views_v1.py": {
+      "bytes": 6335,
+      "sha256": "bf98aa98e3e0c69d1e1a1f353a64fca2026ae13f484e8c51d1c67cfd3f65d34f"
+    },
+    "publication/receptor-view-v1.png": {
+      "bytes": 89334,
+      "sha256": "d03ea11eb48c791cf12899c90c6ec159ba33ace2816095883149434ea29b43ae"
+    },
+    "publication/render_v1.py": {
+      "bytes": 10821,
+      "sha256": "419a6b621e673ea0eab9f0f7788ec9edbbab6961e3ccbca1fa3bdbae63155874"
+    },
+    "publication/replay-v1.json": {
+      "bytes": 1119,
+      "sha256": "d63f43e461bbf3aae684a150a72ddcad52fbce05faaf0818bbcd9532e7a8f34c"
+    },
+    "publication/replay_v1.py": {
+      "bytes": 2087,
+      "sha256": "47306fec55b6b8f5431b5713d8aea8d757f3db02406a7211836d1e6e41313148"
+    },
+    "publication/tile-view-v1.png": {
+      "bytes": 64567,
+      "sha256": "e0c04f67b3d8013d43ebd8ff4b49c6cde16de8f86e7da46c5420e3d25cc8ece9"
+    },
+    "report/penrose-support-cascade-20261106-v1-results.json": {
+      "bytes": 120777,
+      "sha256": "c9d08a8e69023a6f9b825189a7adf2eca4accf73ef6e66624d07ca0564d6c285"
+    },
+    "report/penrose-support-cascade-20261106-v1.html": {
+      "bytes": 170632,
+      "sha256": "54c71a28711e4fe57287c799916c1b04baea9f912468adfa7e8d595a9b687b91"
+    },
+    "source/boundary_search_v1.py": {
+      "bytes": 11523,
+      "sha256": "ea15d14561f7b39f58e7cc62d9fcc736d89377888922e6c454f0cedfa8b1b112"
+    },
+    "source/cascade_bank_v1.py": {
+      "bytes": 5834,
+      "sha256": "73f2d58afdbee18f281e0afd71d036f189d180733fe4d83d731ffd780a006944"
+    },
+    "source/cascade_experiment_v1.py": {
+      "bytes": 3489,
+      "sha256": "96b16027563c0f3e5c252985d520b438d9ae80538c736df1f70ec68430a35fe6"
+    },
+    "source/cascade_movable_v1.py": {
+      "bytes": 6914,
+      "sha256": "84b3a49333b6b681112db54552bdd3617d93c43fe9fc2c2e2b2f08d311e0159a"
+    },
+    "source/cascade_runtime_v1.py": {
+      "bytes": 5477,
+      "sha256": "f6fc0ecad6e2fa197ef202e50699db3b70bac0a2a589d9efb95eae185c519df4"
+    },
+    "source/cascade_timing_v1.py": {
+      "bytes": 3475,
+      "sha256": "7dcae0229705d06ee78883d39f85f78ef0fd99ba31ca4f208fe7501c57e2a8c7"
+    },
+    "source/cascade_transfer_v1.py": {
+      "bytes": 4982,
+      "sha256": "5b7834d4cb936a04ab3e6eb6a59ce1a406c690552c8e232c4cf18fa35f3bc736"
+    },
+    "source/cascade_wang_v1.py": {
+      "bytes": 3514,
+      "sha256": "b5f7976a3beca238a6f33dacd1a739e3e343264d9c032da7c42f0a6691a0d06c"
+    },
+    "source/cases_v1.py": {
+      "bytes": 8451,
+      "sha256": "70ff43195c11a970f45d6acc319bddb7b90d4b394afced7ea4f98ba294b80af3"
+    },
+    "source/cavity_cases_v1.py": {
+      "bytes": 7942,
+      "sha256": "8d2806f6fa945fb4e579789a4fd26348835c3c209b709348ca008c699c02708e"
+    },
+    "source/cavity_marks_v1.py": {
+      "bytes": 3013,
+      "sha256": "f1a8160edd193aca77ca134f9ca1c7837d5601ebecaf7ed23a07a7362f794d61"
+    },
+    "source/cavity_pilot_v1.py": {
+      "bytes": 4511,
+      "sha256": "24a238e67d695db2de8623ad8509b2accfd02fae7f6f96a2edf00aca5024705f"
+    },
+    "source/check_v1.py": {
+      "bytes": 4131,
+      "sha256": "edd28b8b5b611059b47d8b2b55964c27a1a5b268dabdaf06c2f4f7b340eaf76c"
+    },
+    "source/clipping_v1.py": {
+      "bytes": 5276,
+      "sha256": "a649384ab8e810d88d28e79906346946b869292c0de2bf81d07469778fc59281"
+    },
+    "source/cluster_v1.py": {
+      "bytes": 15717,
+      "sha256": "a2eec032406feaf45f7c5ca66b235727db26e414996337981f6b0ff865859b85"
+    },
+    "source/geometry_v1.py": {
+      "bytes": 10489,
+      "sha256": "304b06d9930a9725cd9c4208cc5daa0572bda3e32097a86a682e95a9c98282d6"
+    },
+    "source/model_v1.py": {
+      "bytes": 4432,
+      "sha256": "df86798cfa969b57bdca56f4928b3fd12fe908a275ec5e47031546e74bef43f4"
+    },
+    "source/open_cases_v1.py": {
+      "bytes": 6839,
+      "sha256": "9f0a3671704ced9b3aa29024db4ff6925112c263c92db9a9b8ffda3fbcfd0a12"
+    },
+    "source/open_cover_v1.py": {
+      "bytes": 8775,
+      "sha256": "e8fc28cb68f2bb3d3671a243df0844602c650cefa7f9ea0a12b3cd189f6af086"
+    },
+    "source/route_bandit_v1.py": {
+      "bytes": 5281,
+      "sha256": "3756238cac1b7293d3bdfa0d98a45acc8f5e704e2e8affaf5f247a30d7f36ddd"
+    },
+    "source/support_cascade_v1.py": {
+      "bytes": 2829,
+      "sha256": "3095e49264ed826cfbe51f048f6c3b7ebe4d841360158e91d3b6ce21be4f6a25"
+    },
+    "source/triangle_geometry_v1.py": {
+      "bytes": 9600,
+      "sha256": "4715c6f612b196d257c858d695d604d800ce832cc5f8a1bfee8ae58e400a79ed"
+    },
+    "wang/data/cascade-receipt-v1.json": {
+      "bytes": 1804,
+      "sha256": "37065f02e546a558709126124a06f1bb5c0510aefa4c2b69dbbd2209a1cca388"
+    },
+    "wang/data/cascade-records-v1.json": {
+      "bytes": 73456,
+      "sha256": "7b8b65d57dd7948f514f09cae8e53d305575d2f4e6286fca51f9983c77029778"
+    },
+    "wang/data/cascade-wang-v1.json": {
+      "bytes": 24596031,
+      "sha256": "39ef7fc74995ed876ec5edc700e81e8fb20a22565ba6be28044a0e1fb8569973"
+    },
+    "wang/input/cascade-v1.json": {
+      "bytes": 1836,
+      "sha256": "e7ec59165f9c42bcaa94f8ac46c8ed0fc537e9d0980e90486cdf3a7cb3324ba0"
+    },
+    "wang/source/area_residue_audit_v1.py": {
+      "bytes": 4852,
+      "sha256": "f0050394ebf17998f8a39eb822c274f805c877875cb42b8f1c241e43e86e8669"
+    },
+    "wang/source/area_residue_wang_v1.py": {
+      "bytes": 5381,
+      "sha256": "fdf3f4d54911036aa8215090054b8dd38e6f3de828e1f80d51440cfb815aea61"
+    },
+    "wang/source/arithmetic_spine_v1.py": {
+      "bytes": 4322,
+      "sha256": "e5ba905f3b926b30f2f1d8641df0d7c2c3dd313fa2455ddcdb6041c098101239"
+    },
+    "wang/source/bind_geometry_v1.py": {
+      "bytes": 1521,
+      "sha256": "45fee7c5067c6ea212f86026139b55e15a4a3779bed7b62fe4f0c0b1403568c9"
+    },
+    "wang/source/boundary_kernel_v1.py": {
+      "bytes": 8190,
+      "sha256": "7bc2bcf58ce1d2de90db1000a6c82c51fb6339631199c00c55872f6bdaf04298"
+    },
+    "wang/source/cm2_horn_audit_v1.py": {
+      "bytes": 4813,
+      "sha256": "e0a8f22b2468e4e4caa9763a19d58f95ff8bad316a44ff7d7eb4ae5ce8dea0ee"
+    },
+    "wang/source/cm2_horn_v1.py": {
+      "bytes": 4702,
+      "sha256": "9fad48db15d018a252dcd2ed1d858872fd5da0c3c414d2e53d0d539505cbf5f2"
+    },
+    "wang/source/decode_v1.py": {
+      "bytes": 3902,
+      "sha256": "262e0cdb36a86f42df3fd762e2c20f7fda697779ec0033ed5fc714929cb5ab99"
+    },
+    "wang/source/definition_cases_v1.py": {
+      "bytes": 1946,
+      "sha256": "46e77436ae1174c7cd5adf9e05d1e1c3d070aa7b1d0278132da26a5c2a96175b"
+    },
+    "wang/source/definition_check_v1.py": {
+      "bytes": 6057,
+      "sha256": "561d5a3a6823a956426e619565c8775021d22b4343831c6a671e20aea61c91ba"
+    },
+    "wang/source/definition_composition_v1.py": {
+      "bytes": 7218,
+      "sha256": "7763abee9fd2d5b542a6a8eefcb49767c1745165bb0ed7da280ef6b3b5f9699e"
+    },
+    "wang/source/definition_experiment_v1.py": {
+      "bytes": 2180,
+      "sha256": "297e55bde875783c768c8fd0eb6e571eddb9f25c2392d3b1830ef5c72f81008d"
+    },
+    "wang/source/definitions_v1.py": {
+      "bytes": 4559,
+      "sha256": "dcd85319e3837825010570811c7b4c961361369f3f0350e46bf78f95e6e6b399"
+    },
+    "wang/source/depth_ground_audit_v1.py": {
+      "bytes": 2016,
+      "sha256": "405bbfaf459574af39b4260697ec46df20bce5bab1c71ade9338d51f46cd26fa"
+    },
+    "wang/source/depth_ground_v1.py": {
+      "bytes": 3675,
+      "sha256": "b5108c74c562a7d4d5a06c07c528fb9e325f654f89726865c1f967bb70be182a"
+    },
+    "wang/source/deterministic_tm_wang_v1.py": {
+      "bytes": 21321,
+      "sha256": "54ae552084743639181f416f5ca02d9acf25c031c61c60c4550d34ac7883d7dd"
+    },
+    "wang/source/fair_ground_audit_v1.py": {
+      "bytes": 2271,
+      "sha256": "d445c8f5f7e8c80e1b2264066d3a723ef5cd5c138b3b1ac98731cb8d0aada82b"
+    },
+    "wang/source/fair_ground_v1.py": {
+      "bytes": 3432,
+      "sha256": "47fb33f62bd506ec1311b7d1bbc8b1c55eafacae2784ba2546e576458b51270b"
+    },
+    "wang/source/fixed_palette_v1.py": {
+      "bytes": 8368,
+      "sha256": "8d4c09e1977302fd89454f1ab6d8b752d475c0a1a318ddcedac3f434518635fc"
+    },
+    "wang/source/flux_induction_v1.py": {
+      "bytes": 2684,
+      "sha256": "652c88bf4e9461083b794f04a8e3b250a76fbc08d6d7da63f6a76cd9943ce69b"
+    },
+    "wang/source/flux_statement_v1.py": {
+      "bytes": 898,
+      "sha256": "60fc3209409b1e643eda587189dc752797b8f2b7486bc871bf3171d8f2b7a368"
+    },
+    "wang/source/fragment_receptors_v1.py": {
+      "bytes": 4904,
+      "sha256": "f80e298a3241cc7b6f56dc40b0febb7124e866881fb77ae898f36c878a6a29ef"
+    },
+    "wang/source/front_v1.py": {
+      "bytes": 8957,
+      "sha256": "5f03c273e72467b70672b9d4ff851b43ba61afa57ca00f84a5c43a2464d612cc"
+    },
+    "wang/source/ground_unit_audit_v1.py": {
+      "bytes": 3739,
+      "sha256": "029538f16105cf4a266dbbb0130a68ab025f4403e32711474e39ec0bedf7370d"
+    },
+    "wang/source/ground_unit_v1.py": {
+      "bytes": 3772,
+      "sha256": "2914f52d0c6edf1fbeddf03e723fbfc277ea98305cea344af47bd4efb8416fe0"
+    },
+    "wang/source/herbrand_v1.py": {
+      "bytes": 10499,
+      "sha256": "ab1698fa88166e33afa446d9f8ca18da25d257c4d07c76da0e261ecedd36e8db"
+    },
+    "wang/source/in_grid_v1.py": {
+      "bytes": 7880,
+      "sha256": "2c2e794b894a41998a3ded276cae78ffaa3012ebb0bdead1cb104293ea246157"
+    },
+    "wang/source/lifted_audit_v1.py": {
+      "bytes": 9454,
+      "sha256": "8e87eb91c348f9a5fe19ce6fcece1ee37c9ab9314cee8e290895e407f8d8c836"
+    },
+    "wang/source/lifted_cases_v1.py": {
+      "bytes": 3908,
+      "sha256": "50f5c3917ca283542828d5428632213ca826a84dcf881a9cfbddc525e56e3517"
+    },
+    "wang/source/lifted_experiment_v1.py": {
+      "bytes": 4824,
+      "sha256": "81d7d0b4b4fb0243387cff3946e4cbb3e5462631e8837cb4617a06984591dc05"
+    },
+    "wang/source/lifted_frames_v1.py": {
+      "bytes": 2671,
+      "sha256": "21631c5e6fa76435a0f19f5a47c9ee85cab26308460e2883e154dd121e91cc4f"
+    },
+    "wang/source/lifted_ground_v1.py": {
+      "bytes": 3157,
+      "sha256": "926016f8790a32e2297e7e727fad60d82ba254759eed7fd2e0bf7e68def1788f"
+    },
+    "wang/source/lifted_marks_v1.py": {
+      "bytes": 1778,
+      "sha256": "4a6f33e35e2947aafdcb887adbedb6c3fca1dc5033c9498f93ea4c5eda994fda"
+    },
+    "wang/source/lifted_native_v1.py": {
+      "bytes": 5758,
+      "sha256": "f2c73193dc1da7812ec9d9fe658c385fb67570b9e8b491cfc2e2c790e74824d3"
+    },
+    "wang/source/lifted_prover_v1.py": {
+      "bytes": 10188,
+      "sha256": "189bd727708b7bd224643edb3df5af126b9636ef8e62815827ef0310093e8f29"
+    },
+    "wang/source/logical_projection_v1.py": {
+      "bytes": 3968,
+      "sha256": "af824d0b1964a8da87a547b74e96ee7c6574ed4439a07ae9ba5c6e95eed6d223"
+    },
+    "wang/source/logical_records_cli_v1.py": {
+      "bytes": 1504,
+      "sha256": "55083fd3859471c3b5bead8b23e46ce8be3dfc02e3532d01843591187292d8a2"
+    },
+    "wang/source/marker_tm_v1.py": {
+      "bytes": 7658,
+      "sha256": "4e6162f52098ba256d4f64c2d32074d3f3a8914ba341b56f5805226c12d32122"
+    },
+    "wang/source/native_audit_v1.py": {
+      "bytes": 10324,
+      "sha256": "1cc5e347ecf73e006f46e819169d4c57074a401ca92281075de6ee604e839a07"
+    },
+    "wang/source/native_experiment_v1.py": {
+      "bytes": 6751,
+      "sha256": "7659de81ad4993cce94f89a830f2b0781f56fe432c37f8520425874ec6532a28"
+    },
+    "wang/source/native_marked_v1.py": {
+      "bytes": 4695,
+      "sha256": "07ee0d52687cef18f586bbfe51646e39776a617a67f8ae0edf7b18ccee85b353"
+    },
+    "wang/source/native_v1.py": {
+      "bytes": 6288,
+      "sha256": "b3dea50c5556d911e9f2a80e073c1aac7c1645cd534a7c40e3a03520c22961e5"
+    },
+    "wang/source/pocket_arithmetic_v1.py": {
+      "bytes": 1236,
+      "sha256": "b7fcb07c20c36dfa1fe49fd3633c6e5f2e72654d16f15eaa3c73f9f48c2cd5d3"
+    },
+    "wang/source/receptor_origin_v1.py": {
+      "bytes": 967,
+      "sha256": "8925419e3a3e5680119a76710e9e627edc48f59fd2c7635b5f1c6df2cc114b98"
+    },
+    "wang/source/receptor_receivers_v1.py": {
+      "bytes": 4187,
+      "sha256": "931d47810424a50bb870e4a7cf091a6cc88d970ac483e5e46fb2b62b660fdbce"
+    },
+    "wang/source/records_cli_audit_v1.py": {
+      "bytes": 1516,
+      "sha256": "cc354045135147cc42d48848348dfd7e9f015a8b0595aa5949176269578e475f"
+    },
+    "wang/source/resolution_v1.py": {
+      "bytes": 14299,
+      "sha256": "8aa3e79d0fecf09a47ef7e7a9c2670f57747b571f30c0ed9cf4a65fba93e9536"
+    },
+    "wang/source/ribbon_checker_v3.py": {
+      "bytes": 14489,
+      "sha256": "e346951922cfe71366f6c31b474c77955a51715eb3e043ff053c169dc8b0adbd"
+    },
+    "wang/source/run_proof_cuts_v1.py": {
+      "bytes": 692,
+      "sha256": "2e40031d2d30846f3f4bcc72e30cd08302d1622e336b9cbce6ca340c1d2a4487"
+    },
+    "wang/source/shared_wang_audit_v1.py": {
+      "bytes": 3321,
+      "sha256": "d6f5f1709dfb5b7e173d23ed15aeff04398a3bff04d939a6c1b924ac88145a52"
+    },
+    "wang/source/shared_wang_v1.py": {
+      "bytes": 5446,
+      "sha256": "2670b3400eb9848de0baaf784ba79325cf851bb490b7c28aecc95c695a6217c7"
+    },
+    "wang/source/sparse_frame_v1.py": {
+      "bytes": 6487,
+      "sha256": "00ca9a90012c5bef798280664e9f4a4583a0c638d196de005c0998bee4a9c9fe"
+    },
+    "wang/source/spine_transfer_v1.py": {
+      "bytes": 2537,
+      "sha256": "00978342a14c09645c3eeab46b4128f8bdb77150bcea25f87a1af83119b3bf23"
+    },
+    "wang/source/study_v1.py": {
+      "bytes": 12409,
+      "sha256": "7a617ee77bc551b96cd9583bc0d3b08085e8ad02ec06d586cd694bb39fd68a62"
+    },
+    "wang/source/tactic_cohort_v1.py": {
+      "bytes": 2880,
+      "sha256": "d47e9740f173187fa4b6fcd2d8d74812c3536ed55f2e4f2a51d5757425a7b3a8"
+    },
+    "wang/source/tactic_policy_audit_v1.py": {
+      "bytes": 1870,
+      "sha256": "c6d37e8ceebebc098fe6fef70e172dad180c81f709aeb3db05341a2fde0404b9"
+    },
+    "wang/source/tactic_policy_v1.py": {
+      "bytes": 5575,
+      "sha256": "40b5041cc74528b60846214c4c89c89c839abd4f9126525e121c68a1db095f8d"
+    },
+    "wang/source/tiles_v1.py": {
+      "bytes": 6290,
+      "sha256": "54cb133bb7139d4b88013ffd45089d8c9a0145e0a770b2b87296f24d9a3bb38a"
+    }
+  },
+  "assets": {
+    "penrose-support-cascade-20261106-v1-evidence.zip": {
+      "bytes": 2372671,
+      "sha256": "a6bf416d9b31d760e47a5073d9d221317cd91ab5210c962c60b15f1f428567a7"
+    },
+    "penrose-support-cascade-20261106-v1-results.json": {
+      "bytes": 120777,
+      "sha256": "c9d08a8e69023a6f9b825189a7adf2eca4accf73ef6e66624d07ca0564d6c285"
+    },
+    "penrose-support-cascade-20261106-v1.html": {
+      "bytes": 170632,
+      "sha256": "54c71a28711e4fe57287c799916c1b04baea9f912468adfa7e8d595a9b687b91"
+    }
+  },
+  "schema": "PENROSE-CASCADE-MANIFEST-v1"
+}
