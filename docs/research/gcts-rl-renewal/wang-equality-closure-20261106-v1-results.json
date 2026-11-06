@@ -1,0 +1,5152 @@
+{
+  "audit": {
+    "alias_fixture": "formula1-node-0_0_0_0_0_0_1_1_1-1",
+    "altered_dependency": "REJECTED",
+    "altered_source": "REJECTED",
+    "receipt": {
+      "records": 86,
+      "status": "CHECKED_LOGICAL_RECORDS",
+      "unique_records": 86
+    },
+    "repeated_typed_bindings": 1,
+    "status": "CHECKED_EQUALITY_CERTIFICATE_AUDIT"
+  },
+  "browser": {
+    "countermodels": 3,
+    "fullWitnesses": 3,
+    "mathTypeset": true,
+    "mobileNoOverflow": true,
+    "proofs": 13,
+    "status": "CHECKED_EQUALITY_READER",
+    "wangSquares": 45
+  },
+  "cli": {
+    "attempts": [
+      {
+        "counts": {
+          "admissible_candidates": 8,
+          "cartesian_candidates": 38,
+          "certified_schemas": 11,
+          "checked_groundings": 8,
+          "clause_visits": 24,
+          "rounds": 3,
+          "terms": 4,
+          "units": 7
+        },
+        "depth": 0,
+        "status": "CLOSED_WITHOUT_REFUTATION",
+        "terms": "rewrite"
+      },
+      {
+        "counts": {
+          "admissible_candidates": 16,
+          "cartesian_candidates": 83,
+          "certified_schemas": 11,
+          "checked_groundings": 16,
+          "clause_visits": 39,
+          "excluded_terms": 3,
+          "function_probes": 3,
+          "merges": 1,
+          "rounds": 3,
+          "terms": 7,
+          "units": 11
+        },
+        "depth": 1,
+        "status": "CLOSED_WITHOUT_REFUTATION",
+        "terms": "rewrite"
+      },
+      {
+        "counts": {
+          "admissible_candidates": 37,
+          "cartesian_candidates": 123,
+          "certified_schemas": 11,
+          "checked_groundings": 37,
+          "clause_visits": 45,
+          "excluded_terms": 22,
+          "function_probes": 5,
+          "merges": 1,
+          "rounds": 3,
+          "terms": 9,
+          "units": 13
+        },
+        "depth": 2,
+        "status": "CLOSED_WITHOUT_REFUTATION",
+        "terms": "rewrite"
+      },
+      {
+        "counts": {
+          "admissible_candidates": 78,
+          "cartesian_candidates": 171,
+          "certified_schemas": 11,
+          "checked_groundings": 78,
+          "clause_visits": 51,
+          "excluded_terms": 61,
+          "function_probes": 7,
+          "merges": 1,
+          "rounds": 3,
+          "terms": 11,
+          "units": 15
+        },
+        "depth": 3,
+        "status": "CLOSED_WITHOUT_REFUTATION",
+        "terms": "rewrite"
+      },
+      {
+        "counts": {
+          "admissible_candidates": 117,
+          "cartesian_candidates": 227,
+          "certified_schemas": 11,
+          "checked_groundings": 117,
+          "clause_visits": 57,
+          "excluded_terms": 98,
+          "function_probes": 9,
+          "merges": 1,
+          "rounds": 3,
+          "terms": 13,
+          "units": 17
+        },
+        "depth": 4,
+        "status": "CLOSED_WITHOUT_REFUTATION",
+        "terms": "rewrite"
+      },
+      {
+        "counts": {
+          "admissible_candidates": 163,
+          "cartesian_candidates": 291,
+          "certified_schemas": 11,
+          "checked_groundings": 163,
+          "clause_visits": 63,
+          "excluded_terms": 142,
+          "function_probes": 11,
+          "merges": 1,
+          "rounds": 3,
+          "terms": 15,
+          "units": 19
+        },
+        "depth": 5,
+        "status": "CLOSED_WITHOUT_REFUTATION",
+        "terms": "rewrite"
+      },
+      {
+        "counts": {
+          "admissible_candidates": 217,
+          "cartesian_candidates": 363,
+          "certified_schemas": 11,
+          "checked_groundings": 217,
+          "clause_visits": 69,
+          "excluded_terms": 194,
+          "function_probes": 13,
+          "merges": 1,
+          "rounds": 3,
+          "terms": 17,
+          "units": 21
+        },
+        "depth": 6,
+        "status": "CLOSED_WITHOUT_REFUTATION",
+        "terms": "rewrite"
+      },
+      {
+        "counts": {
+          "admissible_candidates": 1020,
+          "cartesian_candidates": 2211,
+          "certified_schemas": 11,
+          "checked_groundings": 1020,
+          "clause_visits": 180,
+          "excluded_terms": 960,
+          "explanations": 12,
+          "function_merges": 21,
+          "function_probes": 451,
+          "literal_transports": 6,
+          "merges": 29,
+          "proof_records": 138,
+          "rounds": 4,
+          "terms": 45,
+          "units": 57
+        },
+        "depth": 7,
+        "status": "PROVED",
+        "terms": "rewrite"
+      }
+    ],
+    "control": "NO_REFUTATION_FOUND",
+    "receipt": {
+      "records": 138,
+      "status": "CHECKED_LOGICAL_RECORDS",
+      "unique_records": 119
+    },
+    "status": "CHECKED_UNSEEN_EQUALITY_CLI"
+  },
+  "experiment": {
+    "cases": [
+      {
+        "depth": 2,
+        "eager": {
+          "admissible_candidates": 858,
+          "cartesian_candidates": 903,
+          "certified_schemas": 7,
+          "checked_groundings": 858,
+          "clause_visits": 155,
+          "ground_instances": 696,
+          "status": "PROVED"
+        },
+        "eager_generous": {
+          "admissible_candidates": 858,
+          "cartesian_candidates": 903,
+          "certified_schemas": 7,
+          "checked_groundings": 858,
+          "clause_visits": 155,
+          "ground_instances": 696,
+          "status": "PROVED"
+        },
+        "expected": "PROVED",
+        "id": "peano-congruence-2",
+        "on_demand": {
+          "counts": {
+            "admissible_candidates": 3,
+            "cartesian_candidates": 3,
+            "certified_schemas": 3,
+            "checked_groundings": 3,
+            "clause_visits": 3,
+            "explanations": 1,
+            "function_merges": 4,
+            "function_probes": 18,
+            "merges": 6,
+            "proof_records": 11,
+            "rounds": 2,
+            "terms": 9,
+            "units": 3
+          },
+          "status": "PROVED"
+        },
+        "receipt": {
+          "records": 11,
+          "status": "CHECKED_LOGICAL_RECORDS",
+          "unique_records": 11
+        },
+        "source": {
+          "equality": true,
+          "functions": {
+            "S": [
+              [
+                "Nat"
+              ],
+              "Nat"
+            ],
+            "a": [
+              [],
+              "Nat"
+            ],
+            "b": [
+              [],
+              "Nat"
+            ],
+            "c": [
+              [],
+              "Nat"
+            ]
+          },
+          "goal": [
+            "atom",
+            "=Nat",
+            [
+              "S",
+              [
+                "S",
+                [
+                  "a"
+                ]
+              ]
+            ],
+            [
+              "S",
+              [
+                "S",
+                [
+                  "c"
+                ]
+              ]
+            ]
+          ],
+          "id": "peano-congruence-2",
+          "predicates": {},
+          "premises": [
+            [
+              "atom",
+              "=Nat",
+              [
+                "a"
+              ],
+              [
+                "b"
+              ]
+            ],
+            [
+              "atom",
+              "=Nat",
+              [
+                "b"
+              ],
+              [
+                "c"
+              ]
+            ]
+          ],
+          "sorts": [
+            "Nat"
+          ]
+        }
+      },
+      {
+        "depth": 4,
+        "eager": {
+          "admissible_candidates": 3762,
+          "cartesian_candidates": 3843,
+          "certified_schemas": 7,
+          "checked_groundings": 3424,
+          "status": "INSTANCE_BOUND"
+        },
+        "eager_generous": {
+          "admissible_candidates": 3762,
+          "cartesian_candidates": 3843,
+          "certified_schemas": 7,
+          "checked_groundings": 3762,
+          "clause_visits": 470,
+          "ground_instances": 3312,
+          "status": "PROVED"
+        },
+        "expected": "PROVED",
+        "id": "peano-congruence-4",
+        "on_demand": {
+          "counts": {
+            "admissible_candidates": 3,
+            "cartesian_candidates": 3,
+            "certified_schemas": 3,
+            "checked_groundings": 3,
+            "clause_visits": 3,
+            "explanations": 1,
+            "function_merges": 8,
+            "function_probes": 60,
+            "merges": 10,
+            "proof_records": 15,
+            "rounds": 2,
+            "terms": 15,
+            "units": 3
+          },
+          "status": "PROVED"
+        },
+        "receipt": {
+          "records": 15,
+          "status": "CHECKED_LOGICAL_RECORDS",
+          "unique_records": 15
+        },
+        "source": {
+          "equality": true,
+          "functions": {
+            "S": [
+              [
+                "Nat"
+              ],
+              "Nat"
+            ],
+            "a": [
+              [],
+              "Nat"
+            ],
+            "b": [
+              [],
+              "Nat"
+            ],
+            "c": [
+              [],
+              "Nat"
+            ]
+          },
+          "goal": [
+            "atom",
+            "=Nat",
+            [
+              "S",
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "a"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "S",
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "c"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "id": "peano-congruence-4",
+          "predicates": {},
+          "premises": [
+            [
+              "atom",
+              "=Nat",
+              [
+                "a"
+              ],
+              [
+                "b"
+              ]
+            ],
+            [
+              "atom",
+              "=Nat",
+              [
+                "b"
+              ],
+              [
+                "c"
+              ]
+            ]
+          ],
+          "sorts": [
+            "Nat"
+          ]
+        }
+      },
+      {
+        "depth": 7,
+        "eager": {
+          "admissible_candidates": 14868,
+          "cartesian_candidates": 15003,
+          "certified_schemas": 7,
+          "checked_groundings": 3250,
+          "status": "INSTANCE_BOUND"
+        },
+        "eager_generous": {
+          "admissible_candidates": 14868,
+          "cartesian_candidates": 15003,
+          "certified_schemas": 7,
+          "checked_groundings": 14868,
+          "clause_visits": 1341,
+          "ground_instances": 13716,
+          "status": "PROVED"
+        },
+        "expected": "PROVED",
+        "id": "peano-congruence-7",
+        "on_demand": {
+          "counts": {
+            "admissible_candidates": 3,
+            "cartesian_candidates": 3,
+            "certified_schemas": 3,
+            "checked_groundings": 3,
+            "clause_visits": 3,
+            "explanations": 1,
+            "function_merges": 14,
+            "function_probes": 168,
+            "merges": 16,
+            "proof_records": 21,
+            "rounds": 2,
+            "terms": 24,
+            "units": 3
+          },
+          "status": "PROVED"
+        },
+        "receipt": {
+          "records": 21,
+          "status": "CHECKED_LOGICAL_RECORDS",
+          "unique_records": 21
+        },
+        "source": {
+          "equality": true,
+          "functions": {
+            "S": [
+              [
+                "Nat"
+              ],
+              "Nat"
+            ],
+            "a": [
+              [],
+              "Nat"
+            ],
+            "b": [
+              [],
+              "Nat"
+            ],
+            "c": [
+              [],
+              "Nat"
+            ]
+          },
+          "goal": [
+            "atom",
+            "=Nat",
+            [
+              "S",
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "S",
+                        [
+                          "S",
+                          [
+                            "a"
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "S",
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "S",
+                        [
+                          "S",
+                          [
+                            "c"
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "id": "peano-congruence-7",
+          "predicates": {},
+          "premises": [
+            [
+              "atom",
+              "=Nat",
+              [
+                "a"
+              ],
+              [
+                "b"
+              ]
+            ],
+            [
+              "atom",
+              "=Nat",
+              [
+                "b"
+              ],
+              [
+                "c"
+              ]
+            ]
+          ],
+          "sorts": [
+            "Nat"
+          ]
+        }
+      },
+      {
+        "depth": 2,
+        "eager": {
+          "admissible_candidates": 7786,
+          "cartesian_candidates": 7969,
+          "certified_schemas": 17,
+          "checked_groundings": 3239,
+          "excluded_terms": 42,
+          "status": "INSTANCE_BOUND"
+        },
+        "eager_generous": {
+          "admissible_candidates": 7786,
+          "cartesian_candidates": 7969,
+          "certified_schemas": 17,
+          "checked_groundings": 7786,
+          "clause_visits": 8378,
+          "excluded_terms": 42,
+          "ground_instances": 7492,
+          "status": "PROVED"
+        },
+        "expected": "PROVED",
+        "id": "peano-cancel-2",
+        "on_demand": {
+          "counts": {
+            "admissible_candidates": 253,
+            "cartesian_candidates": 346,
+            "certified_schemas": 10,
+            "checked_groundings": 253,
+            "clause_visits": 988,
+            "excluded_terms": 6,
+            "explanations": 10,
+            "function_probes": 12,
+            "literal_transports": 8,
+            "merges": 2,
+            "proof_records": 18,
+            "rounds": 5,
+            "terms": 9,
+            "units": 95
+          },
+          "status": "PROVED"
+        },
+        "receipt": {
+          "records": 18,
+          "status": "CHECKED_LOGICAL_RECORDS",
+          "unique_records": 18
+        },
+        "source": {
+          "equality": true,
+          "functions": {
+            "S": [
+              [
+                "Nat"
+              ],
+              "Nat"
+            ],
+            "a": [
+              [],
+              "Nat"
+            ],
+            "b": [
+              [],
+              "Nat"
+            ]
+          },
+          "goal": [
+            "atom",
+            "=Nat",
+            [
+              "a"
+            ],
+            [
+              "b"
+            ]
+          ],
+          "id": "peano-cancel-2",
+          "predicates": {},
+          "premises": [
+            [
+              "all",
+              "?x",
+              "Nat",
+              [
+                "all",
+                "?y",
+                "Nat",
+                [
+                  "implies",
+                  [
+                    "atom",
+                    "=Nat",
+                    [
+                      "S",
+                      "?x"
+                    ],
+                    [
+                      "S",
+                      "?y"
+                    ]
+                  ],
+                  [
+                    "atom",
+                    "=Nat",
+                    "?x",
+                    "?y"
+                  ]
+                ]
+              ]
+            ],
+            [
+              "atom",
+              "=Nat",
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "a"
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "b"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "sorts": [
+            "Nat"
+          ]
+        }
+      },
+      {
+        "depth": 4,
+        "eager": {
+          "admissible_candidates": 55522,
+          "cartesian_candidates": 55849,
+          "certified_schemas": 17,
+          "checked_groundings": 3322,
+          "excluded_terms": 12,
+          "status": "INSTANCE_BOUND"
+        },
+        "eager_generous": {
+          "admissible_candidates": 55522,
+          "cartesian_candidates": 55849,
+          "certified_schemas": 17,
+          "checked_groundings": 30737,
+          "excluded_terms": 156,
+          "status": "INSTANCE_BOUND"
+        },
+        "expected": "PROVED",
+        "id": "peano-cancel-4",
+        "on_demand": {
+          "counts": {
+            "admissible_candidates": 769,
+            "cartesian_candidates": 934,
+            "certified_schemas": 10,
+            "checked_groundings": 769,
+            "clause_visits": 3785,
+            "excluded_terms": 12,
+            "explanations": 17,
+            "function_probes": 36,
+            "literal_transports": 15,
+            "merges": 3,
+            "proof_records": 32,
+            "rounds": 6,
+            "terms": 15,
+            "units": 249
+          },
+          "status": "PROVED"
+        },
+        "receipt": {
+          "records": 32,
+          "status": "CHECKED_LOGICAL_RECORDS",
+          "unique_records": 32
+        },
+        "source": {
+          "equality": true,
+          "functions": {
+            "S": [
+              [
+                "Nat"
+              ],
+              "Nat"
+            ],
+            "a": [
+              [],
+              "Nat"
+            ],
+            "b": [
+              [],
+              "Nat"
+            ]
+          },
+          "goal": [
+            "atom",
+            "=Nat",
+            [
+              "a"
+            ],
+            [
+              "b"
+            ]
+          ],
+          "id": "peano-cancel-4",
+          "predicates": {},
+          "premises": [
+            [
+              "all",
+              "?x",
+              "Nat",
+              [
+                "all",
+                "?y",
+                "Nat",
+                [
+                  "implies",
+                  [
+                    "atom",
+                    "=Nat",
+                    [
+                      "S",
+                      "?x"
+                    ],
+                    [
+                      "S",
+                      "?y"
+                    ]
+                  ],
+                  [
+                    "atom",
+                    "=Nat",
+                    "?x",
+                    "?y"
+                  ]
+                ]
+              ]
+            ],
+            [
+              "atom",
+              "=Nat",
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "a"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "b"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "sorts": [
+            "Nat"
+          ]
+        }
+      },
+      {
+        "depth": 7,
+        "eager": {
+          "admissible_candidates": 349741,
+          "cartesian_candidates": 350284,
+          "certified_schemas": 17,
+          "checked_groundings": 3086,
+          "excluded_terms": 21,
+          "status": "INSTANCE_BOUND"
+        },
+        "eager_generous": {
+          "admissible_candidates": 349741,
+          "cartesian_candidates": 350284,
+          "certified_schemas": 17,
+          "checked_groundings": 31663,
+          "excluded_terms": 462,
+          "status": "INSTANCE_BOUND"
+        },
+        "expected": "PROVED",
+        "id": "peano-cancel-7",
+        "on_demand": {
+          "counts": {
+            "admissible_candidates": 2083,
+            "cartesian_candidates": 2356,
+            "certified_schemas": 10,
+            "checked_groundings": 2083,
+            "clause_visits": 13589,
+            "excluded_terms": 21,
+            "explanations": 27,
+            "function_probes": 84,
+            "literal_transports": 25,
+            "merges": 4,
+            "proof_records": 53,
+            "rounds": 7,
+            "terms": 24,
+            "units": 613
+          },
+          "status": "PROVED"
+        },
+        "receipt": {
+          "records": 53,
+          "status": "CHECKED_LOGICAL_RECORDS",
+          "unique_records": 53
+        },
+        "source": {
+          "equality": true,
+          "functions": {
+            "S": [
+              [
+                "Nat"
+              ],
+              "Nat"
+            ],
+            "a": [
+              [],
+              "Nat"
+            ],
+            "b": [
+              [],
+              "Nat"
+            ]
+          },
+          "goal": [
+            "atom",
+            "=Nat",
+            [
+              "a"
+            ],
+            [
+              "b"
+            ]
+          ],
+          "id": "peano-cancel-7",
+          "predicates": {},
+          "premises": [
+            [
+              "all",
+              "?x",
+              "Nat",
+              [
+                "all",
+                "?y",
+                "Nat",
+                [
+                  "implies",
+                  [
+                    "atom",
+                    "=Nat",
+                    [
+                      "S",
+                      "?x"
+                    ],
+                    [
+                      "S",
+                      "?y"
+                    ]
+                  ],
+                  [
+                    "atom",
+                    "=Nat",
+                    "?x",
+                    "?y"
+                  ]
+                ]
+              ]
+            ],
+            [
+              "atom",
+              "=Nat",
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "S",
+                        [
+                          "S",
+                          [
+                            "S",
+                            [
+                              "a"
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "S",
+                        [
+                          "S",
+                          [
+                            "S",
+                            [
+                              "b"
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "sorts": [
+            "Nat"
+          ]
+        }
+      },
+      {
+        "depth": 3,
+        "eager": {
+          "admissible_candidates": 4528,
+          "cartesian_candidates": 4644,
+          "certified_schemas": 9,
+          "checked_groundings": 3391,
+          "status": "INSTANCE_BOUND"
+        },
+        "eager_generous": {
+          "admissible_candidates": 4528,
+          "cartesian_candidates": 4644,
+          "certified_schemas": 9,
+          "checked_groundings": 4528,
+          "clause_visits": 285,
+          "ground_instances": 4016,
+          "status": "PROVED"
+        },
+        "expected": "PROVED",
+        "full_wang": {
+          "fragment_calls": 11,
+          "fresh_tile_runs": 11,
+          "implied_steps": 31627981,
+          "kind": "fol",
+          "machine_sha256": "3d97b22704bf8da27992d74dfb897c312da9274d0cb6298ef447498a7db2c4b6",
+          "status": "CHECKED"
+        },
+        "id": "peano-nonzero-3",
+        "on_demand": {
+          "counts": {
+            "admissible_candidates": 16,
+            "cartesian_candidates": 20,
+            "certified_schemas": 5,
+            "checked_groundings": 16,
+            "clause_visits": 18,
+            "explanations": 1,
+            "function_merges": 3,
+            "function_probes": 48,
+            "merges": 5,
+            "proof_records": 11,
+            "rounds": 2,
+            "terms": 16,
+            "units": 3
+          },
+          "status": "PROVED"
+        },
+        "receipt": {
+          "records": 11,
+          "status": "CHECKED_LOGICAL_RECORDS",
+          "unique_records": 11
+        },
+        "source": {
+          "equality": true,
+          "functions": {
+            "S": [
+              [
+                "Nat"
+              ],
+              "Nat"
+            ],
+            "a": [
+              [],
+              "Nat"
+            ],
+            "b": [
+              [],
+              "Nat"
+            ],
+            "zero": [
+              [],
+              "Nat"
+            ]
+          },
+          "goal": [
+            "not",
+            [
+              "atom",
+              "=Nat",
+              [
+                "a"
+              ],
+              [
+                "zero"
+              ]
+            ]
+          ],
+          "id": "peano-nonzero-3",
+          "predicates": {},
+          "premises": [
+            [
+              "all",
+              "?x",
+              "Nat",
+              [
+                "not",
+                [
+                  "atom",
+                  "=Nat",
+                  [
+                    "S",
+                    "?x"
+                  ],
+                  [
+                    "zero"
+                  ]
+                ]
+              ]
+            ],
+            [
+              "atom",
+              "=Nat",
+              [
+                "a"
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "b"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "sorts": [
+            "Nat"
+          ]
+        }
+      },
+      {
+        "depth": 0,
+        "eager": {
+          "admissible_candidates": 6592,
+          "cartesian_candidates": 7036,
+          "certified_schemas": 56,
+          "checked_groundings": 3126,
+          "status": "INSTANCE_BOUND"
+        },
+        "eager_generous": {
+          "admissible_candidates": 6592,
+          "cartesian_candidates": 7036,
+          "certified_schemas": 56,
+          "checked_groundings": 6592,
+          "clause_visits": 11653,
+          "ground_instances": 6358,
+          "status": "PROVED"
+        },
+        "expected": "PROVED",
+        "id": "hilbert-incidence-uniqueness",
+        "on_demand": {
+          "counts": {
+            "admissible_candidates": 573,
+            "cartesian_candidates": 603,
+            "certified_schemas": 36,
+            "checked_groundings": 573,
+            "clause_visits": 3745,
+            "explanations": 5,
+            "literal_transports": 7,
+            "proof_records": 80,
+            "rounds": 7,
+            "terms": 5,
+            "units": 136
+          },
+          "status": "PROVED"
+        },
+        "receipt": {
+          "records": 80,
+          "status": "CHECKED_LOGICAL_RECORDS",
+          "unique_records": 80
+        },
+        "source": {
+          "equality": true,
+          "functions": {
+            "a": [
+              [],
+              "Point"
+            ],
+            "b": [
+              [],
+              "Point"
+            ],
+            "ell": [
+              [],
+              "Line"
+            ]
+          },
+          "goal": [
+            "all",
+            "?m",
+            "Line",
+            [
+              "implies",
+              [
+                "and",
+                [
+                  "atom",
+                  "I",
+                  [
+                    "a"
+                  ],
+                  "?m"
+                ],
+                [
+                  "atom",
+                  "I",
+                  [
+                    "b"
+                  ],
+                  "?m"
+                ]
+              ],
+              [
+                "atom",
+                "=Line",
+                [
+                  "ell"
+                ],
+                "?m"
+              ]
+            ]
+          ],
+          "id": "hilbert-incidence-uniqueness",
+          "predicates": {
+            "I": [
+              "Point",
+              "Line"
+            ]
+          },
+          "premises": [
+            [
+              "all",
+              "?a",
+              "Point",
+              [
+                "all",
+                "?b",
+                "Point",
+                [
+                  "all",
+                  "?l",
+                  "Line",
+                  [
+                    "all",
+                    "?m",
+                    "Line",
+                    [
+                      "implies",
+                      [
+                        "and",
+                        [
+                          "not",
+                          [
+                            "atom",
+                            "=Point",
+                            "?a",
+                            "?b"
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "atom",
+                            "I",
+                            "?a",
+                            "?l"
+                          ],
+                          [
+                            "and",
+                            [
+                              "atom",
+                              "I",
+                              "?b",
+                              "?l"
+                            ],
+                            [
+                              "and",
+                              [
+                                "atom",
+                                "I",
+                                "?a",
+                                "?m"
+                              ],
+                              [
+                                "atom",
+                                "I",
+                                "?b",
+                                "?m"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "atom",
+                        "=Line",
+                        "?l",
+                        "?m"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "not",
+              [
+                "atom",
+                "=Point",
+                [
+                  "a"
+                ],
+                [
+                  "b"
+                ]
+              ]
+            ],
+            [
+              "atom",
+              "I",
+              [
+                "a"
+              ],
+              [
+                "ell"
+              ]
+            ],
+            [
+              "atom",
+              "I",
+              [
+                "b"
+              ],
+              [
+                "ell"
+              ]
+            ]
+          ],
+          "sorts": [
+            "Point",
+            "Line"
+          ]
+        }
+      },
+      {
+        "depth": 0,
+        "eager": {
+          "admissible_candidates": 19876,
+          "cartesian_candidates": 21224,
+          "certified_schemas": 57,
+          "checked_groundings": 3120,
+          "status": "INSTANCE_BOUND"
+        },
+        "eager_generous": {
+          "admissible_candidates": 19876,
+          "cartesian_candidates": 21224,
+          "certified_schemas": 57,
+          "checked_groundings": 19876,
+          "clause_visits": 36656,
+          "ground_instances": 19476,
+          "status": "PROVED"
+        },
+        "expected": "PROVED",
+        "full_wang": {
+          "fragment_calls": 86,
+          "fresh_tile_runs": 86,
+          "implied_steps": 761450254,
+          "kind": "fol",
+          "machine_sha256": "3d97b22704bf8da27992d74dfb897c312da9274d0cb6298ef447498a7db2c4b6",
+          "status": "CHECKED"
+        },
+        "id": "hilbert-incidence-transfer",
+        "on_demand": {
+          "counts": {
+            "admissible_candidates": 1002,
+            "cartesian_candidates": 1054,
+            "certified_schemas": 37,
+            "checked_groundings": 1002,
+            "clause_visits": 7952,
+            "explanations": 7,
+            "literal_transports": 5,
+            "merges": 1,
+            "proof_records": 86,
+            "rounds": 9,
+            "terms": 6,
+            "units": 275
+          },
+          "status": "PROVED"
+        },
+        "receipt": {
+          "records": 86,
+          "status": "CHECKED_LOGICAL_RECORDS",
+          "unique_records": 86
+        },
+        "source": {
+          "equality": true,
+          "functions": {
+            "a": [
+              [],
+              "Point"
+            ],
+            "b": [
+              [],
+              "Point"
+            ],
+            "ell": [
+              [],
+              "Line"
+            ],
+            "p": [
+              [],
+              "Point"
+            ]
+          },
+          "goal": [
+            "all",
+            "?m",
+            "Line",
+            [
+              "implies",
+              [
+                "and",
+                [
+                  "atom",
+                  "I",
+                  [
+                    "a"
+                  ],
+                  "?m"
+                ],
+                [
+                  "atom",
+                  "I",
+                  [
+                    "b"
+                  ],
+                  "?m"
+                ]
+              ],
+              [
+                "atom",
+                "I",
+                [
+                  "p"
+                ],
+                "?m"
+              ]
+            ]
+          ],
+          "id": "hilbert-incidence-transfer",
+          "predicates": {
+            "I": [
+              "Point",
+              "Line"
+            ]
+          },
+          "premises": [
+            [
+              "all",
+              "?a",
+              "Point",
+              [
+                "all",
+                "?b",
+                "Point",
+                [
+                  "all",
+                  "?l",
+                  "Line",
+                  [
+                    "all",
+                    "?m",
+                    "Line",
+                    [
+                      "implies",
+                      [
+                        "and",
+                        [
+                          "not",
+                          [
+                            "atom",
+                            "=Point",
+                            "?a",
+                            "?b"
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "atom",
+                            "I",
+                            "?a",
+                            "?l"
+                          ],
+                          [
+                            "and",
+                            [
+                              "atom",
+                              "I",
+                              "?b",
+                              "?l"
+                            ],
+                            [
+                              "and",
+                              [
+                                "atom",
+                                "I",
+                                "?a",
+                                "?m"
+                              ],
+                              [
+                                "atom",
+                                "I",
+                                "?b",
+                                "?m"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "atom",
+                        "=Line",
+                        "?l",
+                        "?m"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "not",
+              [
+                "atom",
+                "=Point",
+                [
+                  "a"
+                ],
+                [
+                  "b"
+                ]
+              ]
+            ],
+            [
+              "atom",
+              "I",
+              [
+                "a"
+              ],
+              [
+                "ell"
+              ]
+            ],
+            [
+              "atom",
+              "I",
+              [
+                "b"
+              ],
+              [
+                "ell"
+              ]
+            ],
+            [
+              "atom",
+              "I",
+              [
+                "p"
+              ],
+              [
+                "ell"
+              ]
+            ]
+          ],
+          "sorts": [
+            "Point",
+            "Line"
+          ]
+        }
+      },
+      {
+        "countermodel": {
+          "domains": {
+            "Nat": [
+              0,
+              1
+            ]
+          },
+          "functions": {
+            "S": [
+              [
+                [
+                  0
+                ],
+                0
+              ],
+              [
+                [
+                  1
+                ],
+                0
+              ]
+            ],
+            "a": [
+              [
+                [],
+                0
+              ]
+            ],
+            "b": [
+              [
+                [],
+                1
+              ]
+            ],
+            "c": [
+              [
+                [],
+                0
+              ]
+            ],
+            "zero": [
+              [
+                [],
+                0
+              ]
+            ]
+          },
+          "predicates": {}
+        },
+        "depth": 3,
+        "eager": {
+          "admissible_candidates": 622,
+          "cartesian_candidates": 650,
+          "certified_schemas": 6,
+          "checked_groundings": 622,
+          "clause_visits": 50,
+          "ground_instances": 494,
+          "status": "CLOSED_WITHOUT_REFUTATION"
+        },
+        "eager_generous": {
+          "admissible_candidates": 622,
+          "cartesian_candidates": 650,
+          "certified_schemas": 6,
+          "checked_groundings": 622,
+          "clause_visits": 50,
+          "ground_instances": 494,
+          "status": "CLOSED_WITHOUT_REFUTATION"
+        },
+        "expected": "COUNTERMODEL",
+        "id": "peano-without-injectivity",
+        "on_demand": {
+          "counts": {
+            "admissible_candidates": 2,
+            "cartesian_candidates": 2,
+            "certified_schemas": 2,
+            "checked_groundings": 2,
+            "clause_visits": 4,
+            "function_probes": 6,
+            "merges": 1,
+            "rounds": 2,
+            "terms": 8,
+            "units": 2
+          },
+          "status": "CLOSED_WITHOUT_REFUTATION"
+        },
+        "source": {
+          "equality": true,
+          "functions": {
+            "S": [
+              [
+                "Nat"
+              ],
+              "Nat"
+            ],
+            "a": [
+              [],
+              "Nat"
+            ],
+            "b": [
+              [],
+              "Nat"
+            ]
+          },
+          "goal": [
+            "atom",
+            "=Nat",
+            [
+              "a"
+            ],
+            [
+              "b"
+            ]
+          ],
+          "id": "peano-without-injectivity",
+          "predicates": {},
+          "premises": [
+            [
+              "atom",
+              "=Nat",
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "a"
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "b"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "sorts": [
+            "Nat"
+          ]
+        }
+      },
+      {
+        "countermodel": {
+          "domains": {
+            "Line": [
+              0,
+              1
+            ],
+            "Point": [
+              0,
+              1
+            ]
+          },
+          "functions": {
+            "a": [
+              [
+                [],
+                0
+              ]
+            ],
+            "b": [
+              [
+                [],
+                0
+              ]
+            ],
+            "ell": [
+              [
+                [],
+                0
+              ]
+            ],
+            "p": [
+              [
+                [],
+                1
+              ]
+            ]
+          },
+          "predicates": {
+            "I": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                0
+              ]
+            ]
+          }
+        },
+        "depth": 0,
+        "eager": {
+          "admissible_candidates": 19875,
+          "cartesian_candidates": 21223,
+          "certified_schemas": 56,
+          "checked_groundings": 3120,
+          "status": "INSTANCE_BOUND"
+        },
+        "eager_generous": {
+          "admissible_candidates": 19875,
+          "cartesian_candidates": 21223,
+          "certified_schemas": 56,
+          "checked_groundings": 19875,
+          "clause_visits": 43375,
+          "ground_instances": 19475,
+          "status": "CLOSED_WITHOUT_REFUTATION"
+        },
+        "expected": "COUNTERMODEL",
+        "id": "hilbert-without-distinctness",
+        "on_demand": {
+          "counts": {
+            "admissible_candidates": 1001,
+            "cartesian_candidates": 1053,
+            "certified_schemas": 36,
+            "checked_groundings": 1001,
+            "clause_visits": 7944,
+            "explanations": 6,
+            "rounds": 8,
+            "terms": 6,
+            "units": 265
+          },
+          "status": "CLOSED_WITHOUT_REFUTATION"
+        },
+        "source": {
+          "equality": true,
+          "functions": {
+            "a": [
+              [],
+              "Point"
+            ],
+            "b": [
+              [],
+              "Point"
+            ],
+            "ell": [
+              [],
+              "Line"
+            ],
+            "p": [
+              [],
+              "Point"
+            ]
+          },
+          "goal": [
+            "all",
+            "?m",
+            "Line",
+            [
+              "implies",
+              [
+                "and",
+                [
+                  "atom",
+                  "I",
+                  [
+                    "a"
+                  ],
+                  "?m"
+                ],
+                [
+                  "atom",
+                  "I",
+                  [
+                    "b"
+                  ],
+                  "?m"
+                ]
+              ],
+              [
+                "atom",
+                "I",
+                [
+                  "p"
+                ],
+                "?m"
+              ]
+            ]
+          ],
+          "id": "hilbert-without-distinctness",
+          "predicates": {
+            "I": [
+              "Point",
+              "Line"
+            ]
+          },
+          "premises": [
+            [
+              "all",
+              "?a",
+              "Point",
+              [
+                "all",
+                "?b",
+                "Point",
+                [
+                  "all",
+                  "?l",
+                  "Line",
+                  [
+                    "all",
+                    "?m",
+                    "Line",
+                    [
+                      "implies",
+                      [
+                        "and",
+                        [
+                          "not",
+                          [
+                            "atom",
+                            "=Point",
+                            "?a",
+                            "?b"
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "atom",
+                            "I",
+                            "?a",
+                            "?l"
+                          ],
+                          [
+                            "and",
+                            [
+                              "atom",
+                              "I",
+                              "?b",
+                              "?l"
+                            ],
+                            [
+                              "and",
+                              [
+                                "atom",
+                                "I",
+                                "?a",
+                                "?m"
+                              ],
+                              [
+                                "atom",
+                                "I",
+                                "?b",
+                                "?m"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "atom",
+                        "=Line",
+                        "?l",
+                        "?m"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "atom",
+              "I",
+              [
+                "a"
+              ],
+              [
+                "ell"
+              ]
+            ],
+            [
+              "atom",
+              "I",
+              [
+                "b"
+              ],
+              [
+                "ell"
+              ]
+            ],
+            [
+              "atom",
+              "I",
+              [
+                "p"
+              ],
+              [
+                "ell"
+              ]
+            ]
+          ],
+          "sorts": [
+            "Point",
+            "Line"
+          ]
+        }
+      },
+      {
+        "depth": 3,
+        "eager": {
+          "admissible_candidates": 24973,
+          "cartesian_candidates": 55206,
+          "certified_schemas": 18,
+          "checked_groundings": 3506,
+          "excluded_terms": 83,
+          "status": "INSTANCE_BOUND"
+        },
+        "eager_generous": {
+          "admissible_candidates": 24973,
+          "cartesian_candidates": 55206,
+          "certified_schemas": 18,
+          "checked_groundings": 24973,
+          "clause_visits": 665,
+          "excluded_terms": 21042,
+          "ground_instances": 3466,
+          "status": "PROVED"
+        },
+        "expected": "PROVED",
+        "id": "peano-add-successors-2",
+        "on_demand": {
+          "counts": {
+            "admissible_candidates": 109,
+            "cartesian_candidates": 291,
+            "certified_schemas": 11,
+            "checked_groundings": 109,
+            "clause_visits": 78,
+            "excluded_terms": 83,
+            "explanations": 2,
+            "function_merges": 3,
+            "function_probes": 55,
+            "literal_transports": 2,
+            "merges": 7,
+            "proof_records": 36,
+            "rounds": 4,
+            "terms": 15,
+            "units": 23
+          },
+          "status": "PROVED"
+        },
+        "receipt": {
+          "records": 36,
+          "status": "CHECKED_LOGICAL_RECORDS",
+          "unique_records": 33
+        },
+        "source": {
+          "equality": true,
+          "functions": {
+            "S": [
+              [
+                "Nat"
+              ],
+              "Nat"
+            ],
+            "plus": [
+              [
+                "Nat",
+                "Nat"
+              ],
+              "Nat"
+            ],
+            "zero": [
+              [],
+              "Nat"
+            ]
+          },
+          "goal": [
+            "all",
+            "?x",
+            "Nat",
+            [
+              "atom",
+              "=Nat",
+              [
+                "plus",
+                "?x",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "zero"
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  "?x"
+                ]
+              ]
+            ]
+          ],
+          "id": "peano-add-successors-2",
+          "predicates": {},
+          "premises": [
+            [
+              "all",
+              "?x",
+              "Nat",
+              [
+                "atom",
+                "=Nat",
+                [
+                  "plus",
+                  "?x",
+                  [
+                    "zero"
+                  ]
+                ],
+                "?x"
+              ]
+            ],
+            [
+              "all",
+              "?x",
+              "Nat",
+              [
+                "all",
+                "?y",
+                "Nat",
+                [
+                  "atom",
+                  "=Nat",
+                  [
+                    "plus",
+                    "?x",
+                    [
+                      "S",
+                      "?y"
+                    ]
+                  ],
+                  [
+                    "S",
+                    [
+                      "plus",
+                      "?x",
+                      "?y"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "sorts": [
+            "Nat"
+          ]
+        },
+        "term_proposal": {
+          "counts": {
+            "proposed_terms": 5,
+            "rewrite_proposals": 10,
+            "rules": 3,
+            "seeds": 10
+          },
+          "full_terms": "TERM_BOUND",
+          "selected": {
+            "Nat": [
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "plus",
+                    [
+                      "wdef_2"
+                    ],
+                    [
+                      "zero"
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "wdef_2"
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "zero"
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "plus",
+                  [
+                    "wdef_2"
+                  ],
+                  [
+                    "S",
+                    [
+                      "zero"
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "plus",
+                  [
+                    "wdef_2"
+                  ],
+                  [
+                    "zero"
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "wdef_2"
+                ]
+              ],
+              [
+                "S",
+                [
+                  "zero"
+                ]
+              ],
+              [
+                "plus",
+                [
+                  "wdef_0"
+                ],
+                [
+                  "zero"
+                ]
+              ],
+              [
+                "plus",
+                [
+                  "wdef_2"
+                ],
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "zero"
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "plus",
+                [
+                  "wdef_2"
+                ],
+                [
+                  "S",
+                  [
+                    "zero"
+                  ]
+                ]
+              ],
+              [
+                "plus",
+                [
+                  "wdef_2"
+                ],
+                [
+                  "zero"
+                ]
+              ],
+              [
+                "wdef_0"
+              ],
+              [
+                "wdef_1"
+              ],
+              [
+                "wdef_2"
+              ],
+              [
+                "zero"
+              ]
+            ]
+          }
+        }
+      },
+      {
+        "depth": 5,
+        "eager": {
+          "admissible_candidates": 304813,
+          "cartesian_candidates": 640674,
+          "certified_schemas": 18,
+          "checked_groundings": 3518,
+          "excluded_terms": 325,
+          "status": "INSTANCE_BOUND"
+        },
+        "eager_generous": {
+          "admissible_candidates": 304813,
+          "cartesian_candidates": 640674,
+          "certified_schemas": 18,
+          "checked_groundings": 200000,
+          "excluded_terms": 176871,
+          "status": "GROUND_WORK_BOUND"
+        },
+        "expected": "PROVED",
+        "full_wang": {
+          "fragment_calls": 66,
+          "fresh_tile_runs": 57,
+          "implied_steps": 1075273459,
+          "kind": "fol",
+          "machine_sha256": "3d97b22704bf8da27992d74dfb897c312da9274d0cb6298ef447498a7db2c4b6",
+          "status": "CHECKED"
+        },
+        "id": "peano-add-successors-4",
+        "on_demand": {
+          "counts": {
+            "admissible_candidates": 366,
+            "cartesian_candidates": 902,
+            "certified_schemas": 11,
+            "checked_groundings": 366,
+            "clause_visits": 123,
+            "excluded_terms": 325,
+            "explanations": 5,
+            "function_merges": 10,
+            "function_probes": 192,
+            "literal_transports": 4,
+            "merges": 16,
+            "proof_records": 66,
+            "rounds": 4,
+            "terms": 28,
+            "units": 38
+          },
+          "status": "PROVED"
+        },
+        "receipt": {
+          "records": 66,
+          "status": "CHECKED_LOGICAL_RECORDS",
+          "unique_records": 57
+        },
+        "source": {
+          "equality": true,
+          "functions": {
+            "S": [
+              [
+                "Nat"
+              ],
+              "Nat"
+            ],
+            "plus": [
+              [
+                "Nat",
+                "Nat"
+              ],
+              "Nat"
+            ],
+            "zero": [
+              [],
+              "Nat"
+            ]
+          },
+          "goal": [
+            "all",
+            "?x",
+            "Nat",
+            [
+              "atom",
+              "=Nat",
+              [
+                "plus",
+                "?x",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "S",
+                        [
+                          "zero"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "S",
+                      "?x"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "id": "peano-add-successors-4",
+          "predicates": {},
+          "premises": [
+            [
+              "all",
+              "?x",
+              "Nat",
+              [
+                "atom",
+                "=Nat",
+                [
+                  "plus",
+                  "?x",
+                  [
+                    "zero"
+                  ]
+                ],
+                "?x"
+              ]
+            ],
+            [
+              "all",
+              "?x",
+              "Nat",
+              [
+                "all",
+                "?y",
+                "Nat",
+                [
+                  "atom",
+                  "=Nat",
+                  [
+                    "plus",
+                    "?x",
+                    [
+                      "S",
+                      "?y"
+                    ]
+                  ],
+                  [
+                    "S",
+                    [
+                      "plus",
+                      "?x",
+                      "?y"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "sorts": [
+            "Nat"
+          ]
+        },
+        "term_proposal": {
+          "counts": {
+            "proposed_terms": 14,
+            "rewrite_proposals": 26,
+            "rules": 3,
+            "seeds": 14
+          },
+          "full_terms": "TERM_BOUND",
+          "selected": {
+            "Nat": [
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "plus",
+                        [
+                          "wdef_2"
+                        ],
+                        [
+                          "zero"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "wdef_2"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "zero"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "plus",
+                      [
+                        "wdef_2"
+                      ],
+                      [
+                        "S",
+                        [
+                          "zero"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "plus",
+                      [
+                        "wdef_2"
+                      ],
+                      [
+                        "zero"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "wdef_2"
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "zero"
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "plus",
+                    [
+                      "wdef_2"
+                    ],
+                    [
+                      "S",
+                      [
+                        "S",
+                        [
+                          "zero"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "plus",
+                    [
+                      "wdef_2"
+                    ],
+                    [
+                      "S",
+                      [
+                        "zero"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "plus",
+                    [
+                      "wdef_2"
+                    ],
+                    [
+                      "zero"
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "wdef_2"
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "zero"
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "plus",
+                  [
+                    "wdef_2"
+                  ],
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "S",
+                        [
+                          "zero"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "plus",
+                  [
+                    "wdef_2"
+                  ],
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "zero"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "plus",
+                  [
+                    "wdef_2"
+                  ],
+                  [
+                    "S",
+                    [
+                      "zero"
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "plus",
+                  [
+                    "wdef_2"
+                  ],
+                  [
+                    "zero"
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "wdef_2"
+                ]
+              ],
+              [
+                "S",
+                [
+                  "zero"
+                ]
+              ],
+              [
+                "plus",
+                [
+                  "wdef_0"
+                ],
+                [
+                  "zero"
+                ]
+              ],
+              [
+                "plus",
+                [
+                  "wdef_2"
+                ],
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "S",
+                        [
+                          "zero"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "plus",
+                [
+                  "wdef_2"
+                ],
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "zero"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "plus",
+                [
+                  "wdef_2"
+                ],
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "zero"
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "plus",
+                [
+                  "wdef_2"
+                ],
+                [
+                  "S",
+                  [
+                    "zero"
+                  ]
+                ]
+              ],
+              [
+                "plus",
+                [
+                  "wdef_2"
+                ],
+                [
+                  "zero"
+                ]
+              ],
+              [
+                "wdef_0"
+              ],
+              [
+                "wdef_1"
+              ],
+              [
+                "wdef_2"
+              ],
+              [
+                "zero"
+              ]
+            ]
+          }
+        }
+      },
+      {
+        "depth": 8,
+        "eager": {
+          "admissible_candidates": 5058169,
+          "cartesian_candidates": 9332406,
+          "certified_schemas": 18,
+          "checked_groundings": 4573,
+          "excluded_terms": 1519,
+          "status": "INSTANCE_BOUND"
+        },
+        "eager_generous": {
+          "admissible_candidates": 5058169,
+          "cartesian_candidates": 9332406,
+          "certified_schemas": 18,
+          "checked_groundings": 32623,
+          "excluded_terms": 1519,
+          "status": "INSTANCE_BOUND"
+        },
+        "expected": "PROVED",
+        "id": "peano-add-successors-7",
+        "on_demand": {
+          "counts": {
+            "admissible_candidates": 1590,
+            "cartesian_candidates": 3251,
+            "certified_schemas": 11,
+            "checked_groundings": 1590,
+            "clause_visits": 213,
+            "excluded_terms": 1519,
+            "explanations": 17,
+            "function_merges": 28,
+            "function_probes": 612,
+            "literal_transports": 7,
+            "merges": 37,
+            "proof_records": 152,
+            "rounds": 4,
+            "terms": 55,
+            "units": 68
+          },
+          "status": "PROVED"
+        },
+        "receipt": {
+          "records": 152,
+          "status": "CHECKED_LOGICAL_RECORDS",
+          "unique_records": 130
+        },
+        "source": {
+          "equality": true,
+          "functions": {
+            "S": [
+              [
+                "Nat"
+              ],
+              "Nat"
+            ],
+            "plus": [
+              [
+                "Nat",
+                "Nat"
+              ],
+              "Nat"
+            ],
+            "zero": [
+              [],
+              "Nat"
+            ]
+          },
+          "goal": [
+            "all",
+            "?x",
+            "Nat",
+            [
+              "atom",
+              "=Nat",
+              [
+                "plus",
+                "?x",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "S",
+                        [
+                          "S",
+                          [
+                            "S",
+                            [
+                              "S",
+                              [
+                                "zero"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "S",
+                        [
+                          "S",
+                          [
+                            "S",
+                            "?x"
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "id": "peano-add-successors-7",
+          "predicates": {},
+          "premises": [
+            [
+              "all",
+              "?x",
+              "Nat",
+              [
+                "atom",
+                "=Nat",
+                [
+                  "plus",
+                  "?x",
+                  [
+                    "zero"
+                  ]
+                ],
+                "?x"
+              ]
+            ],
+            [
+              "all",
+              "?x",
+              "Nat",
+              [
+                "all",
+                "?y",
+                "Nat",
+                [
+                  "atom",
+                  "=Nat",
+                  [
+                    "plus",
+                    "?x",
+                    [
+                      "S",
+                      "?y"
+                    ]
+                  ],
+                  [
+                    "S",
+                    [
+                      "plus",
+                      "?x",
+                      "?y"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "sorts": [
+            "Nat"
+          ]
+        },
+        "term_proposal": {
+          "counts": {
+            "proposed_terms": 35,
+            "rewrite_proposals": 65,
+            "rules": 3,
+            "seeds": 20
+          },
+          "full_terms": "TERM_BOUND",
+          "selected": {
+            "Nat": [
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "S",
+                        [
+                          "S",
+                          [
+                            "S",
+                            [
+                              "plus",
+                              [
+                                "wdef_2"
+                              ],
+                              [
+                                "zero"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "S",
+                        [
+                          "S",
+                          [
+                            "S",
+                            [
+                              "wdef_2"
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "S",
+                        [
+                          "S",
+                          [
+                            "S",
+                            [
+                              "zero"
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "S",
+                        [
+                          "S",
+                          [
+                            "plus",
+                            [
+                              "wdef_2"
+                            ],
+                            [
+                              "S",
+                              [
+                                "zero"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "S",
+                        [
+                          "S",
+                          [
+                            "plus",
+                            [
+                              "wdef_2"
+                            ],
+                            [
+                              "zero"
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "S",
+                        [
+                          "S",
+                          [
+                            "wdef_2"
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "S",
+                        [
+                          "S",
+                          [
+                            "zero"
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "S",
+                        [
+                          "plus",
+                          [
+                            "wdef_2"
+                          ],
+                          [
+                            "S",
+                            [
+                              "S",
+                              [
+                                "zero"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "S",
+                        [
+                          "plus",
+                          [
+                            "wdef_2"
+                          ],
+                          [
+                            "S",
+                            [
+                              "zero"
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "S",
+                        [
+                          "plus",
+                          [
+                            "wdef_2"
+                          ],
+                          [
+                            "zero"
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "S",
+                        [
+                          "wdef_2"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "S",
+                        [
+                          "zero"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "plus",
+                        [
+                          "wdef_2"
+                        ],
+                        [
+                          "S",
+                          [
+                            "S",
+                            [
+                              "S",
+                              [
+                                "zero"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "plus",
+                        [
+                          "wdef_2"
+                        ],
+                        [
+                          "S",
+                          [
+                            "S",
+                            [
+                              "zero"
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "plus",
+                        [
+                          "wdef_2"
+                        ],
+                        [
+                          "S",
+                          [
+                            "zero"
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "plus",
+                        [
+                          "wdef_2"
+                        ],
+                        [
+                          "zero"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "wdef_2"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "zero"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "plus",
+                      [
+                        "wdef_2"
+                      ],
+                      [
+                        "S",
+                        [
+                          "S",
+                          [
+                            "S",
+                            [
+                              "S",
+                              [
+                                "zero"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "plus",
+                      [
+                        "wdef_2"
+                      ],
+                      [
+                        "S",
+                        [
+                          "S",
+                          [
+                            "S",
+                            [
+                              "zero"
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "plus",
+                      [
+                        "wdef_2"
+                      ],
+                      [
+                        "S",
+                        [
+                          "S",
+                          [
+                            "zero"
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "plus",
+                      [
+                        "wdef_2"
+                      ],
+                      [
+                        "S",
+                        [
+                          "zero"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "plus",
+                      [
+                        "wdef_2"
+                      ],
+                      [
+                        "zero"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "wdef_2"
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "zero"
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "plus",
+                    [
+                      "wdef_2"
+                    ],
+                    [
+                      "S",
+                      [
+                        "S",
+                        [
+                          "S",
+                          [
+                            "S",
+                            [
+                              "S",
+                              [
+                                "zero"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "plus",
+                    [
+                      "wdef_2"
+                    ],
+                    [
+                      "S",
+                      [
+                        "S",
+                        [
+                          "S",
+                          [
+                            "S",
+                            [
+                              "zero"
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "plus",
+                    [
+                      "wdef_2"
+                    ],
+                    [
+                      "S",
+                      [
+                        "S",
+                        [
+                          "S",
+                          [
+                            "zero"
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "plus",
+                    [
+                      "wdef_2"
+                    ],
+                    [
+                      "S",
+                      [
+                        "S",
+                        [
+                          "zero"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "plus",
+                    [
+                      "wdef_2"
+                    ],
+                    [
+                      "S",
+                      [
+                        "zero"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "plus",
+                    [
+                      "wdef_2"
+                    ],
+                    [
+                      "zero"
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "wdef_2"
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "zero"
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "plus",
+                  [
+                    "wdef_2"
+                  ],
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "S",
+                        [
+                          "S",
+                          [
+                            "S",
+                            [
+                              "S",
+                              [
+                                "zero"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "plus",
+                  [
+                    "wdef_2"
+                  ],
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "S",
+                        [
+                          "S",
+                          [
+                            "S",
+                            [
+                              "zero"
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "plus",
+                  [
+                    "wdef_2"
+                  ],
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "S",
+                        [
+                          "S",
+                          [
+                            "zero"
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "plus",
+                  [
+                    "wdef_2"
+                  ],
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "S",
+                        [
+                          "zero"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "plus",
+                  [
+                    "wdef_2"
+                  ],
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "zero"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "plus",
+                  [
+                    "wdef_2"
+                  ],
+                  [
+                    "S",
+                    [
+                      "zero"
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "plus",
+                  [
+                    "wdef_2"
+                  ],
+                  [
+                    "zero"
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "wdef_2"
+                ]
+              ],
+              [
+                "S",
+                [
+                  "zero"
+                ]
+              ],
+              [
+                "plus",
+                [
+                  "wdef_0"
+                ],
+                [
+                  "zero"
+                ]
+              ],
+              [
+                "plus",
+                [
+                  "wdef_2"
+                ],
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "S",
+                        [
+                          "S",
+                          [
+                            "S",
+                            [
+                              "S",
+                              [
+                                "zero"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "plus",
+                [
+                  "wdef_2"
+                ],
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "S",
+                        [
+                          "S",
+                          [
+                            "S",
+                            [
+                              "zero"
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "plus",
+                [
+                  "wdef_2"
+                ],
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "S",
+                        [
+                          "S",
+                          [
+                            "zero"
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "plus",
+                [
+                  "wdef_2"
+                ],
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "S",
+                        [
+                          "zero"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "plus",
+                [
+                  "wdef_2"
+                ],
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "zero"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "plus",
+                [
+                  "wdef_2"
+                ],
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "zero"
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "plus",
+                [
+                  "wdef_2"
+                ],
+                [
+                  "S",
+                  [
+                    "zero"
+                  ]
+                ]
+              ],
+              [
+                "plus",
+                [
+                  "wdef_2"
+                ],
+                [
+                  "zero"
+                ]
+              ],
+              [
+                "wdef_0"
+              ],
+              [
+                "wdef_1"
+              ],
+              [
+                "wdef_2"
+              ],
+              [
+                "zero"
+              ]
+            ]
+          }
+        }
+      },
+      {
+        "countermodel": {
+          "domains": {
+            "Nat": [
+              0,
+              1
+            ]
+          },
+          "functions": {
+            "S": [
+              [
+                [
+                  0
+                ],
+                1
+              ],
+              [
+                [
+                  1
+                ],
+                0
+              ]
+            ],
+            "plus": [
+              [
+                [
+                  0,
+                  0
+                ],
+                0
+              ],
+              [
+                [
+                  0,
+                  1
+                ],
+                0
+              ],
+              [
+                [
+                  1,
+                  0
+                ],
+                1
+              ],
+              [
+                [
+                  1,
+                  1
+                ],
+                1
+              ]
+            ],
+            "zero": [
+              [
+                [],
+                0
+              ]
+            ]
+          },
+          "predicates": {}
+        },
+        "depth": 8,
+        "eager": {
+          "admissible_candidates": 112567,
+          "cartesian_candidates": 137963,
+          "certified_schemas": 11,
+          "checked_groundings": 3341,
+          "excluded_terms": 22,
+          "status": "INSTANCE_BOUND"
+        },
+        "eager_generous": {
+          "admissible_candidates": 112567,
+          "cartesian_candidates": 137963,
+          "certified_schemas": 11,
+          "checked_groundings": 112567,
+          "clause_visits": 132,
+          "excluded_terms": 105122,
+          "ground_instances": 6723,
+          "status": "CLOSED_WITHOUT_REFUTATION"
+        },
+        "expected": "COUNTERMODEL",
+        "id": "peano-without-addition-recursion",
+        "on_demand": {
+          "counts": {
+            "admissible_candidates": 28,
+            "cartesian_candidates": 42,
+            "certified_schemas": 6,
+            "checked_groundings": 28,
+            "clause_visits": 18,
+            "excluded_terms": 22,
+            "function_probes": 16,
+            "merges": 1,
+            "rounds": 3,
+            "terms": 19,
+            "units": 4
+          },
+          "status": "CLOSED_WITHOUT_REFUTATION"
+        },
+        "source": {
+          "equality": true,
+          "functions": {
+            "S": [
+              [
+                "Nat"
+              ],
+              "Nat"
+            ],
+            "plus": [
+              [
+                "Nat",
+                "Nat"
+              ],
+              "Nat"
+            ],
+            "zero": [
+              [],
+              "Nat"
+            ]
+          },
+          "goal": [
+            "all",
+            "?x",
+            "Nat",
+            [
+              "atom",
+              "=Nat",
+              [
+                "plus",
+                "?x",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "S",
+                        [
+                          "S",
+                          [
+                            "S",
+                            [
+                              "S",
+                              [
+                                "zero"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "S",
+                        [
+                          "S",
+                          [
+                            "S",
+                            "?x"
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "id": "peano-without-addition-recursion",
+          "predicates": {},
+          "premises": [
+            [
+              "all",
+              "?x",
+              "Nat",
+              [
+                "atom",
+                "=Nat",
+                [
+                  "plus",
+                  "?x",
+                  [
+                    "zero"
+                  ]
+                ],
+                "?x"
+              ]
+            ]
+          ],
+          "sorts": [
+            "Nat"
+          ]
+        },
+        "term_proposal": {
+          "counts": {
+            "rewrite_proposals": 1,
+            "rules": 1,
+            "seeds": 19
+          },
+          "full_terms": "TERM_BOUND",
+          "selected": {
+            "Nat": [
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "S",
+                        [
+                          "S",
+                          [
+                            "S",
+                            [
+                              "wdef_1"
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "S",
+                        [
+                          "S",
+                          [
+                            "S",
+                            [
+                              "zero"
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "S",
+                        [
+                          "S",
+                          [
+                            "wdef_1"
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "S",
+                        [
+                          "S",
+                          [
+                            "zero"
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "S",
+                        [
+                          "wdef_1"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "S",
+                        [
+                          "zero"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "wdef_1"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "zero"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "wdef_1"
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "zero"
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "wdef_1"
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "S",
+                  [
+                    "zero"
+                  ]
+                ]
+              ],
+              [
+                "S",
+                [
+                  "wdef_1"
+                ]
+              ],
+              [
+                "S",
+                [
+                  "zero"
+                ]
+              ],
+              [
+                "plus",
+                [
+                  "wdef_0"
+                ],
+                [
+                  "zero"
+                ]
+              ],
+              [
+                "plus",
+                [
+                  "wdef_1"
+                ],
+                [
+                  "S",
+                  [
+                    "S",
+                    [
+                      "S",
+                      [
+                        "S",
+                        [
+                          "S",
+                          [
+                            "S",
+                            [
+                              "S",
+                              [
+                                "zero"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "wdef_0"
+              ],
+              [
+                "wdef_1"
+              ],
+              [
+                "zero"
+              ]
+            ]
+          }
+        }
+      }
+    ],
+    "status": "CHECKED_EQUALITY_EXPERIMENT"
+  },
+  "replay": {
+    "sha256": {
+      "data/equality-audit-v1.json": "44455f2dbd34bfa1d9cfad0be26c0ec43f912b243d8250148ad4ad62ca994172",
+      "data/equality-cli-audit-v1.json": "7f497f55526896f5590ebf154f1d253ff9467a15d8a221803cf2f3360ebf478d",
+      "data/equality-experiment-v1.json": "11bb1c05e6cf0b959b219080d707976ee07ca11235d9d56da8f0984acc0e012d",
+      "data/hilbert-incidence-transfer-logical-v1.json": "4b8395c9e07cdef8c172d96090c21690425b80a9a55d131640700ce77720a8b7",
+      "data/hilbert-incidence-transfer-wang-v1.json": "3c533a0f2f5bbe93d89f8de4b6ce0ff757fb7f1543aca24760d07bb226157626",
+      "data/hilbert-incidence-uniqueness-logical-v1.json": "b447afd0d3ca6bf57dc2bd2e2c9b95aaf52fe97faf9cad7060312c0ed61aac56",
+      "data/peano-add-six-cli-v1.json": "94a5b056077003f464a142315a40735cdeddc211df28e25e061bd5b68f836844",
+      "data/peano-add-successors-2-logical-v1.json": "b112837b9aad9a206e975df604b30832ecfa3cca4e128b94fae3fdeaf3f454ae",
+      "data/peano-add-successors-4-logical-v1.json": "403c826037aa872a1eca28a12c3278b887c067b2cd7e1d4c7154ae1ec6a8ce4b",
+      "data/peano-add-successors-4-wang-v1.json": "ff03b271874f615fff414c03fe54b192bf1f8f1e51e5947c6bff7150a7aac25d",
+      "data/peano-add-successors-7-logical-v1.json": "0e09c5842f744d831650e9a612987e9f9df1387ea3b98a1957d29cf18fa030de",
+      "data/peano-cancel-2-logical-v1.json": "3b7f89d43d9f0178036ef091cf16794a5872e5a00e84a56f26a8086db62a74d4",
+      "data/peano-cancel-4-logical-v1.json": "122204587ba870a8d96b1de939923d35f3f9a8f6e8fbd40863aa984a27355504",
+      "data/peano-cancel-7-logical-v1.json": "cf425280844d7cf788af3f7a04ffcaadbdd476b63ce808752a0401f4b549ff74",
+      "data/peano-congruence-2-logical-v1.json": "3a7f4c35254e6a41c5667eb4e6e9850f5c0ea4cdc8004f12ea881624ee9bc4ac",
+      "data/peano-congruence-4-logical-v1.json": "ef4766e84aa6c0cf5dab4cb8d54385e63cc14340e7c94260a1e8dceb5f2277d5",
+      "data/peano-congruence-7-logical-v1.json": "0c0cd41a7eec94da6191230f0a14bca92b9670f5008e1faa2cf5f1a40f64bff2",
+      "data/peano-nonzero-3-logical-v1.json": "9819e6450d300bedd0241fe5514ff6bbe9ed0a576a4e6eb4a15f566b35328b00",
+      "data/peano-nonzero-3-wang-v1.json": "43f7e0f46f74338d27ec914821d950b3bff6a64c7cfeb7e232e702c8b692f949",
+      "input/hilbert-control-cli-v1.json": "617d9aaa7123726bfffb6274bf7110e6f89f993f95e3d7d0b9859011b4a1a50d",
+      "input/peano-add-six-unseen-v1.json": "de3bd3a53a8a7c0f5edffd70b89c9230dc5dcad821c8aba3ef7dc7a98bdb795a",
+      "report/wang-equality-closure-20261106-v1.html": "6917a3b36b65b8c91078a126c0a22e27f044e1f433a59defae30dc8eb40648f5"
+    },
+    "status": "CHECKED_CLEAN_REPLAY"
+  },
+  "schema": "WANG-EQUALITY-SEARCH-RESULTS-v1",
+  "timing": {
+    "measurements": {
+      "hilbert-incidence-transfer": {
+        "compact_check": [
+          13390334,
+          11619584,
+          7129250,
+          10296000,
+          6664000
+        ],
+        "on_demand": [
+          33831250,
+          34042459,
+          34494041,
+          29911292,
+          34955042
+        ],
+        "z3_source": [
+          3183834,
+          1455000,
+          1799167,
+          4204792,
+          1467000
+        ]
+      },
+      "hilbert-incidence-uniqueness": {
+        "compact_check": [
+          6318292,
+          5285000,
+          7533709,
+          10484292,
+          8484042
+        ],
+        "on_demand": [
+          13793250,
+          14552291,
+          13827541,
+          21057292,
+          18066750
+        ],
+        "z3_source": [
+          11488666,
+          3377042,
+          2855584,
+          2846834,
+          3400000
+        ]
+      },
+      "hilbert-without-distinctness": {
+        "on_demand": [
+          32719542,
+          39609000,
+          40651208,
+          32666667,
+          30236416
+        ],
+        "z3_source": [
+          4158500,
+          3846958,
+          3314084,
+          3127542,
+          1768917
+        ]
+      },
+      "peano-add-successors-2": {
+        "compact_check": [
+          5904750,
+          5567333,
+          6254667,
+          4320708,
+          5737416
+        ],
+        "on_demand": [
+          1078459,
+          2246583,
+          2313292,
+          2286750,
+          1164292
+        ],
+        "z3_source": [
+          2031875,
+          2667333,
+          2186500,
+          2243375,
+          1512625
+        ]
+      },
+      "peano-add-successors-4": {
+        "compact_check": [
+          7838625,
+          10297292,
+          7674084,
+          7973041,
+          10998834
+        ],
+        "on_demand": [
+          2387291,
+          5813959,
+          2492250,
+          5545625,
+          4400917
+        ],
+        "z3_source": [
+          1121708,
+          2482583,
+          1246000,
+          2518792,
+          1919958
+        ]
+      },
+      "peano-add-successors-7": {
+        "compact_check": [
+          23425750,
+          27402750,
+          33649000,
+          28818834,
+          30477792
+        ],
+        "on_demand": [
+          9700500,
+          9136459,
+          10697709,
+          10845875,
+          12659542
+        ],
+        "z3_source": [
+          2760875,
+          1611625,
+          2728458,
+          3092958,
+          2697209
+        ]
+      },
+      "peano-cancel-2": {
+        "compact_check": [
+          2234042,
+          2275417,
+          2258292,
+          2552250,
+          2086334
+        ],
+        "on_demand": [
+          3653041,
+          6843250,
+          7821709,
+          4838042,
+          3627791
+        ],
+        "z3_source": [
+          12664375,
+          2022750,
+          2060500,
+          2220000,
+          2503750
+        ]
+      },
+      "peano-cancel-4": {
+        "compact_check": [
+          3276417,
+          1993750,
+          3514500,
+          4063000,
+          3141166
+        ],
+        "on_demand": [
+          16842292,
+          16998334,
+          18164041,
+          16563166,
+          16472333
+        ],
+        "z3_source": [
+          2248417,
+          1179000,
+          10062959,
+          5646833,
+          2196250
+        ]
+      },
+      "peano-cancel-7": {
+        "compact_check": [
+          7059416,
+          7363500,
+          9137416,
+          7945833,
+          5037125
+        ],
+        "on_demand": [
+          65062500,
+          67038458,
+          79770292,
+          64998292,
+          66990584
+        ],
+        "z3_source": [
+          12061708,
+          2105167,
+          1348625,
+          1132667,
+          1951833
+        ]
+      },
+      "peano-congruence-2": {
+        "compact_check": [
+          750458,
+          1238333,
+          1328625,
+          1398666,
+          1380500
+        ],
+        "on_demand": [
+          274208,
+          400625,
+          361500,
+          381125,
+          350209
+        ],
+        "z3_source": [
+          46861458,
+          676875,
+          835875,
+          1531625,
+          822500
+        ]
+      },
+      "peano-congruence-4": {
+        "compact_check": [
+          2073250,
+          1140583,
+          2128250,
+          2059625,
+          1727875
+        ],
+        "on_demand": [
+          343667,
+          661542,
+          614917,
+          733084,
+          614959
+        ],
+        "z3_source": [
+          997500,
+          531333,
+          916167,
+          1141583,
+          1112292
+        ]
+      },
+      "peano-congruence-7": {
+        "compact_check": [
+          4187041,
+          1634000,
+          1663042,
+          1605417,
+          3764959
+        ],
+        "on_demand": [
+          619208,
+          1353125,
+          996834,
+          1454666,
+          1262041
+        ],
+        "z3_source": [
+          1271541,
+          1949709,
+          956875,
+          1728041,
+          1019792
+        ]
+      },
+      "peano-nonzero-3": {
+        "compact_check": [
+          1608208,
+          1437833,
+          1533625,
+          664666,
+          1504834
+        ],
+        "on_demand": [
+          383917,
+          755667,
+          356416,
+          805208,
+          352500
+        ],
+        "z3_source": [
+          8131000,
+          2424084,
+          7546583,
+          1978875,
+          1393791
+        ]
+      },
+      "peano-without-addition-recursion": {
+        "on_demand": [
+          573708,
+          1316958,
+          1324625,
+          1291042,
+          574500
+        ],
+        "z3_source": [
+          1510250,
+          2206875,
+          3352834,
+          2261792,
+          1390542
+        ]
+      },
+      "peano-without-injectivity": {
+        "on_demand": [
+          140875,
+          296459,
+          133500,
+          854500,
+          126917
+        ],
+        "z3_source": [
+          621417,
+          1109416,
+          651292,
+          845625,
+          845416
+        ]
+      }
+    },
+    "status": "MEASURED_EQUALITY_PROOF_SEARCH",
+    "system": {
+      "architecture": "arm64",
+      "platform": "Darwin",
+      "python": "3.12.14"
+    },
+    "trial_count": 5,
+    "z3": "Z3 4.15.4.0"
+  },
+  "z3": {
+    "cases": [
+      {
+        "id": "peano-congruence-2",
+        "same_terms": {
+          "reason": null,
+          "solve_ns": 206375,
+          "status": "unsat"
+        },
+        "source": {
+          "reason": null,
+          "solve_ns": 480916,
+          "status": "unsat"
+        }
+      },
+      {
+        "id": "peano-congruence-4",
+        "same_terms": {
+          "reason": null,
+          "solve_ns": 185667,
+          "status": "unsat"
+        },
+        "source": {
+          "reason": null,
+          "solve_ns": 192541,
+          "status": "unsat"
+        }
+      },
+      {
+        "id": "peano-congruence-7",
+        "same_terms": {
+          "reason": null,
+          "solve_ns": 174500,
+          "status": "unsat"
+        },
+        "source": {
+          "reason": null,
+          "solve_ns": 175167,
+          "status": "unsat"
+        }
+      },
+      {
+        "id": "peano-cancel-2",
+        "same_terms": {
+          "reason": null,
+          "solve_ns": 328875,
+          "status": "unsat"
+        },
+        "source": {
+          "reason": null,
+          "solve_ns": 2618250,
+          "status": "unsat"
+        }
+      },
+      {
+        "id": "peano-cancel-4",
+        "same_terms": {
+          "reason": null,
+          "solve_ns": 2287750,
+          "status": "unsat"
+        },
+        "source": {
+          "reason": null,
+          "solve_ns": 659666,
+          "status": "unsat"
+        }
+      },
+      {
+        "id": "peano-cancel-7",
+        "same_terms": {
+          "reason": null,
+          "solve_ns": 4267709,
+          "status": "unsat"
+        },
+        "source": {
+          "reason": null,
+          "solve_ns": 748375,
+          "status": "unsat"
+        }
+      },
+      {
+        "id": "peano-nonzero-3",
+        "same_terms": {
+          "reason": null,
+          "solve_ns": 10291375,
+          "status": "unsat"
+        },
+        "source": {
+          "reason": null,
+          "solve_ns": 11275583,
+          "status": "unsat"
+        }
+      },
+      {
+        "id": "hilbert-incidence-uniqueness",
+        "same_terms": {
+          "reason": null,
+          "solve_ns": 11276708,
+          "status": "unsat"
+        },
+        "source": {
+          "reason": null,
+          "solve_ns": 12089292,
+          "status": "unsat"
+        }
+      },
+      {
+        "id": "hilbert-incidence-transfer",
+        "same_terms": {
+          "reason": null,
+          "solve_ns": 2685042,
+          "status": "unsat"
+        },
+        "source": {
+          "reason": null,
+          "solve_ns": 11260375,
+          "status": "unsat"
+        }
+      },
+      {
+        "id": "peano-without-injectivity",
+        "same_terms": {
+          "reason": null,
+          "solve_ns": 1850500,
+          "status": "sat"
+        },
+        "source": {
+          "reason": null,
+          "solve_ns": 655542,
+          "status": "sat"
+        }
+      },
+      {
+        "id": "hilbert-without-distinctness",
+        "same_terms": {
+          "reason": null,
+          "solve_ns": 3192500,
+          "status": "sat"
+        },
+        "source": {
+          "reason": null,
+          "solve_ns": 1396167,
+          "status": "sat"
+        }
+      },
+      {
+        "id": "peano-add-successors-2",
+        "same_terms": {
+          "reason": null,
+          "solve_ns": 506625,
+          "status": "unsat"
+        },
+        "source": {
+          "reason": null,
+          "solve_ns": 8513333,
+          "status": "unsat"
+        }
+      },
+      {
+        "id": "peano-add-successors-4",
+        "same_terms": {
+          "reason": null,
+          "solve_ns": 428375,
+          "status": "unsat"
+        },
+        "source": {
+          "reason": null,
+          "solve_ns": 889042,
+          "status": "unsat"
+        }
+      },
+      {
+        "id": "peano-add-successors-7",
+        "same_terms": {
+          "reason": null,
+          "solve_ns": 1064000,
+          "status": "unsat"
+        },
+        "source": {
+          "reason": null,
+          "solve_ns": 2599750,
+          "status": "unsat"
+        }
+      },
+      {
+        "id": "peano-without-addition-recursion",
+        "same_terms": {
+          "reason": null,
+          "solve_ns": 596500,
+          "status": "sat"
+        },
+        "source": {
+          "reason": null,
+          "solve_ns": 1257833,
+          "status": "sat"
+        }
+      }
+    ],
+    "status": "CHECKED_EXTERNAL_Z3_CONTROL",
+    "timeout_ms": 3000,
+    "version": "Z3 4.15.4.0"
+  }
+}

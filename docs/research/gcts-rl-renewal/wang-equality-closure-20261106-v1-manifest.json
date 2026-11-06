@@ -1,0 +1,435 @@
+{
+  "archive_entries": {
+    "data/equality-audit-v1.json": {
+      "bytes": 284,
+      "sha256": "44455f2dbd34bfa1d9cfad0be26c0ec43f912b243d8250148ad4ad62ca994172"
+    },
+    "data/equality-cli-audit-v1.json": {
+      "bytes": 2447,
+      "sha256": "7f497f55526896f5590ebf154f1d253ff9467a15d8a221803cf2f3360ebf478d"
+    },
+    "data/equality-experiment-v1.json": {
+      "bytes": 24374,
+      "sha256": "11bb1c05e6cf0b959b219080d707976ee07ca11235d9d56da8f0984acc0e012d"
+    },
+    "data/equality-timing-v1.json": {
+      "bytes": 2883,
+      "sha256": "ed13c9b5ff1b61bd4e26cd8720abcf56fcc8d62b3bd515b364ee272690895183"
+    },
+    "data/hilbert-incidence-transfer-logical-v1.json": {
+      "bytes": 62375,
+      "sha256": "4b8395c9e07cdef8c172d96090c21690425b80a9a55d131640700ce77720a8b7"
+    },
+    "data/hilbert-incidence-transfer-wang-v1.json": {
+      "bytes": 28394318,
+      "sha256": "3c533a0f2f5bbe93d89f8de4b6ce0ff757fb7f1543aca24760d07bb226157626"
+    },
+    "data/hilbert-incidence-uniqueness-logical-v1.json": {
+      "bytes": 59126,
+      "sha256": "b447afd0d3ca6bf57dc2bd2e2c9b95aaf52fe97faf9cad7060312c0ed61aac56"
+    },
+    "data/peano-add-six-cli-v1.json": {
+      "bytes": 125987,
+      "sha256": "94a5b056077003f464a142315a40735cdeddc211df28e25e061bd5b68f836844"
+    },
+    "data/peano-add-successors-2-logical-v1.json": {
+      "bytes": 25051,
+      "sha256": "b112837b9aad9a206e975df604b30832ecfa3cca4e128b94fae3fdeaf3f454ae"
+    },
+    "data/peano-add-successors-4-logical-v1.json": {
+      "bytes": 50361,
+      "sha256": "403c826037aa872a1eca28a12c3278b887c067b2cd7e1d4c7154ae1ec6a8ce4b"
+    },
+    "data/peano-add-successors-4-wang-v1.json": {
+      "bytes": 24729486,
+      "sha256": "ff03b271874f615fff414c03fe54b192bf1f8f1e51e5947c6bff7150a7aac25d"
+    },
+    "data/peano-add-successors-7-logical-v1.json": {
+      "bytes": 140978,
+      "sha256": "0e09c5842f744d831650e9a612987e9f9df1387ea3b98a1957d29cf18fa030de"
+    },
+    "data/peano-cancel-2-logical-v1.json": {
+      "bytes": 10151,
+      "sha256": "3b7f89d43d9f0178036ef091cf16794a5872e5a00e84a56f26a8086db62a74d4"
+    },
+    "data/peano-cancel-4-logical-v1.json": {
+      "bytes": 18771,
+      "sha256": "122204587ba870a8d96b1de939923d35f3f9a8f6e8fbd40863aa984a27355504"
+    },
+    "data/peano-cancel-7-logical-v1.json": {
+      "bytes": 34985,
+      "sha256": "cf425280844d7cf788af3f7a04ffcaadbdd476b63ce808752a0401f4b549ff74"
+    },
+    "data/peano-congruence-2-logical-v1.json": {
+      "bytes": 5614,
+      "sha256": "3a7f4c35254e6a41c5667eb4e6e9850f5c0ea4cdc8004f12ea881624ee9bc4ac"
+    },
+    "data/peano-congruence-4-logical-v1.json": {
+      "bytes": 8384,
+      "sha256": "ef4766e84aa6c0cf5dab4cb8d54385e63cc14340e7c94260a1e8dceb5f2277d5"
+    },
+    "data/peano-congruence-7-logical-v1.json": {
+      "bytes": 13649,
+      "sha256": "0c0cd41a7eec94da6191230f0a14bca92b9670f5008e1faa2cf5f1a40f64bff2"
+    },
+    "data/peano-nonzero-3-logical-v1.json": {
+      "bytes": 6047,
+      "sha256": "9819e6450d300bedd0241fe5514ff6bbe9ed0a576a4e6eb4a15f566b35328b00"
+    },
+    "data/peano-nonzero-3-wang-v1.json": {
+      "bytes": 1820190,
+      "sha256": "43f7e0f46f74338d27ec914821d950b3bff6a64c7cfeb7e232e702c8b692f949"
+    },
+    "data/z3-control-v1.json": {
+      "bytes": 2428,
+      "sha256": "f95392eb7664ad272e77a45c87c398d27838ccfa52e936f349dd8e3d178d9e8b"
+    },
+    "data/z3-inputs-v1.json": {
+      "bytes": 641646,
+      "sha256": "d6ae91d198c6d4f7381a11a64b963c626f63d488d8c85b04a387260766e595c1"
+    },
+    "input/archived-cases-v1.json": {
+      "bytes": 4658,
+      "sha256": "2816f73f996fc56bdc7940e69642105a511f3c6fb203023d5387786c38fa9d17"
+    },
+    "input/hilbert-control-cli-v1.json": {
+      "bytes": 692,
+      "sha256": "617d9aaa7123726bfffb6274bf7110e6f89f993f95e3d7d0b9859011b4a1a50d"
+    },
+    "input/peano-add-six-unseen-v1.json": {
+      "bytes": 483,
+      "sha256": "de3bd3a53a8a7c0f5edffd70b89c9230dc5dcad821c8aba3ef7dc7a98bdb795a"
+    },
+    "publication/REPLAY.md": {
+      "bytes": 1413,
+      "sha256": "8dd2d6deeb34b2ef83ecdf60e4c54c9262078ba2a0d5529aa55593ef0230bf84"
+    },
+    "publication/browser-v1.json": {
+      "bytes": 174,
+      "sha256": "af4ee2821be17dcf71e90b4da5f9b32327bbd7e6737820d268439e1f399810d1"
+    },
+    "publication/check_v1.cjs": {
+      "bytes": 2694,
+      "sha256": "fa22bbf7bde7ebc30115881ee2032f133fe69af3ac290cf26cd464e4617bd17e"
+    },
+    "publication/equality-wang-view-v1.png": {
+      "bytes": 63911,
+      "sha256": "3b577f4ecbb63a19079e426074a4be710dd4b5e8f4fe224a7badafebda672249"
+    },
+    "publication/notebook-v1.html": {
+      "bytes": 9010,
+      "sha256": "d9b77fe58796daab70efe98083bb9b245a5178459dd56a91a968848e061522e1"
+    },
+    "publication/package_v1.py": {
+      "bytes": 2422,
+      "sha256": "16402623c2c31858c1a4b16a1cc04d7be981e9c1afdd3678408919166fd4546d"
+    },
+    "publication/proof_views_v1.py": {
+      "bytes": 6335,
+      "sha256": "bf98aa98e3e0c69d1e1a1f353a64fca2026ae13f484e8c51d1c67cfd3f65d34f"
+    },
+    "publication/render_v1.py": {
+      "bytes": 5043,
+      "sha256": "eae2817c7930fba1aea006ef90e87dafc60833c91b29efa54c4f0a2f40264c2f"
+    },
+    "publication/replay-v1.json": {
+      "bytes": 2561,
+      "sha256": "29813ad8738a188b0416dcb6f60bc6f44e3551976261435ff78162e9eaeed5be"
+    },
+    "publication/replay_v1.py": {
+      "bytes": 2296,
+      "sha256": "6b0f7a69b361ab8819b16096ffba7ff81fa8c2c502aed45aacbf6ed0343ef28b"
+    },
+    "report/wang-equality-closure-20261106-v1-results.json": {
+      "bytes": 120829,
+      "sha256": "b46c6f39f4f57ef60246a300d4faf35a65aece47acf52d8be1f84290445df2fc"
+    },
+    "report/wang-equality-closure-20261106-v1.html": {
+      "bytes": 569347,
+      "sha256": "6917a3b36b65b8c91078a126c0a22e27f044e1f433a59defae30dc8eb40648f5"
+    },
+    "source/area_residue_audit_v1.py": {
+      "bytes": 4852,
+      "sha256": "f0050394ebf17998f8a39eb822c274f805c877875cb42b8f1c241e43e86e8669"
+    },
+    "source/area_residue_wang_v1.py": {
+      "bytes": 5381,
+      "sha256": "fdf3f4d54911036aa8215090054b8dd38e6f3de828e1f80d51440cfb815aea61"
+    },
+    "source/arithmetic_spine_v1.py": {
+      "bytes": 4322,
+      "sha256": "e5ba905f3b926b30f2f1d8641df0d7c2c3dd313fa2455ddcdb6041c098101239"
+    },
+    "source/bind_geometry_v1.py": {
+      "bytes": 1521,
+      "sha256": "45fee7c5067c6ea212f86026139b55e15a4a3779bed7b62fe4f0c0b1403568c9"
+    },
+    "source/boundary_kernel_v1.py": {
+      "bytes": 8190,
+      "sha256": "7bc2bcf58ce1d2de90db1000a6c82c51fb6339631199c00c55872f6bdaf04298"
+    },
+    "source/cm2_horn_audit_v1.py": {
+      "bytes": 4813,
+      "sha256": "e0a8f22b2468e4e4caa9763a19d58f95ff8bad316a44ff7d7eb4ae5ce8dea0ee"
+    },
+    "source/cm2_horn_v1.py": {
+      "bytes": 4702,
+      "sha256": "9fad48db15d018a252dcd2ed1d858872fd5da0c3c414d2e53d0d539505cbf5f2"
+    },
+    "source/decode_v1.py": {
+      "bytes": 3902,
+      "sha256": "262e0cdb36a86f42df3fd762e2c20f7fda697779ec0033ed5fc714929cb5ab99"
+    },
+    "source/definition_cases_v1.py": {
+      "bytes": 1946,
+      "sha256": "46e77436ae1174c7cd5adf9e05d1e1c3d070aa7b1d0278132da26a5c2a96175b"
+    },
+    "source/definition_check_v1.py": {
+      "bytes": 6057,
+      "sha256": "561d5a3a6823a956426e619565c8775021d22b4343831c6a671e20aea61c91ba"
+    },
+    "source/definition_composition_v1.py": {
+      "bytes": 7218,
+      "sha256": "7763abee9fd2d5b542a6a8eefcb49767c1745165bb0ed7da280ef6b3b5f9699e"
+    },
+    "source/definition_experiment_v1.py": {
+      "bytes": 2180,
+      "sha256": "297e55bde875783c768c8fd0eb6e571eddb9f25c2392d3b1830ef5c72f81008d"
+    },
+    "source/definitions_v1.py": {
+      "bytes": 4559,
+      "sha256": "dcd85319e3837825010570811c7b4c961361369f3f0350e46bf78f95e6e6b399"
+    },
+    "source/depth_ground_audit_v1.py": {
+      "bytes": 2016,
+      "sha256": "405bbfaf459574af39b4260697ec46df20bce5bab1c71ade9338d51f46cd26fa"
+    },
+    "source/depth_ground_v1.py": {
+      "bytes": 3921,
+      "sha256": "0cdcefcfe109d8c723cdfb1d770e4854ba44b51d08c717a39cb682210d8169fd"
+    },
+    "source/deterministic_tm_wang_v1.py": {
+      "bytes": 21321,
+      "sha256": "54ae552084743639181f416f5ca02d9acf25c031c61c60c4550d34ac7883d7dd"
+    },
+    "source/equality_audit_v1.py": {
+      "bytes": 2331,
+      "sha256": "29c61f2bfe716771965bf086685d89b41b7bdbccf53386fb4fa98f28547b914b"
+    },
+    "source/equality_cases_v1.py": {
+      "bytes": 4960,
+      "sha256": "a6b7509f52ce790d8eb720d433356aa5b11a27e2e607d9259b351a5a6a29eb6d"
+    },
+    "source/equality_cli_audit_v1.py": {
+      "bytes": 2075,
+      "sha256": "a3fd6c55802e1e19e592fc4ea5242b8eb1a4e72c8edbaf64010283e5a425ddb1"
+    },
+    "source/equality_closure_v1.py": {
+      "bytes": 10662,
+      "sha256": "8a48beefefc1138cef7787e84c7421a1ab30bbb3470bddfb5173442e2408388b"
+    },
+    "source/equality_experiment_v1.py": {
+      "bytes": 5456,
+      "sha256": "f07655826e16b724216230068866e5bf4c6e147ccdf92e45cbfef3c5816c4516"
+    },
+    "source/equality_prove_v1.py": {
+      "bytes": 2652,
+      "sha256": "5dd8682225cc43d9d305384316d75ed2e241c3d0d61188966f800b9d9e3a2347"
+    },
+    "source/equality_timing_v1.py": {
+      "bytes": 2754,
+      "sha256": "835b87c01f7d7a0a10cf7ea7228650d0e278d9a622db48d39e3ed0e5129a4717"
+    },
+    "source/fair_ground_audit_v1.py": {
+      "bytes": 2271,
+      "sha256": "d445c8f5f7e8c80e1b2264066d3a723ef5cd5c138b3b1ac98731cb8d0aada82b"
+    },
+    "source/fair_ground_v1.py": {
+      "bytes": 3432,
+      "sha256": "47fb33f62bd506ec1311b7d1bbc8b1c55eafacae2784ba2546e576458b51270b"
+    },
+    "source/fixed_palette_v1.py": {
+      "bytes": 8368,
+      "sha256": "8d4c09e1977302fd89454f1ab6d8b752d475c0a1a318ddcedac3f434518635fc"
+    },
+    "source/flux_induction_v1.py": {
+      "bytes": 2684,
+      "sha256": "652c88bf4e9461083b794f04a8e3b250a76fbc08d6d7da63f6a76cd9943ce69b"
+    },
+    "source/flux_statement_v1.py": {
+      "bytes": 898,
+      "sha256": "60fc3209409b1e643eda587189dc752797b8f2b7486bc871bf3171d8f2b7a368"
+    },
+    "source/fragment_receptors_v1.py": {
+      "bytes": 4904,
+      "sha256": "f80e298a3241cc7b6f56dc40b0febb7124e866881fb77ae898f36c878a6a29ef"
+    },
+    "source/front_v1.py": {
+      "bytes": 8957,
+      "sha256": "5f03c273e72467b70672b9d4ff851b43ba61afa57ca00f84a5c43a2464d612cc"
+    },
+    "source/ground_unit_audit_v1.py": {
+      "bytes": 3739,
+      "sha256": "029538f16105cf4a266dbbb0130a68ab025f4403e32711474e39ec0bedf7370d"
+    },
+    "source/ground_unit_v1.py": {
+      "bytes": 3772,
+      "sha256": "2914f52d0c6edf1fbeddf03e723fbfc277ea98305cea344af47bd4efb8416fe0"
+    },
+    "source/herbrand_v1.py": {
+      "bytes": 10499,
+      "sha256": "ab1698fa88166e33afa446d9f8ca18da25d257c4d07c76da0e261ecedd36e8db"
+    },
+    "source/in_grid_v1.py": {
+      "bytes": 7880,
+      "sha256": "2c2e794b894a41998a3ded276cae78ffaa3012ebb0bdead1cb104293ea246157"
+    },
+    "source/lifted_audit_v1.py": {
+      "bytes": 9454,
+      "sha256": "8e87eb91c348f9a5fe19ce6fcece1ee37c9ab9314cee8e290895e407f8d8c836"
+    },
+    "source/lifted_cases_v1.py": {
+      "bytes": 3908,
+      "sha256": "50f5c3917ca283542828d5428632213ca826a84dcf881a9cfbddc525e56e3517"
+    },
+    "source/lifted_experiment_v1.py": {
+      "bytes": 4824,
+      "sha256": "81d7d0b4b4fb0243387cff3946e4cbb3e5462631e8837cb4617a06984591dc05"
+    },
+    "source/lifted_frames_v1.py": {
+      "bytes": 2671,
+      "sha256": "21631c5e6fa76435a0f19f5a47c9ee85cab26308460e2883e154dd121e91cc4f"
+    },
+    "source/lifted_ground_v1.py": {
+      "bytes": 3157,
+      "sha256": "926016f8790a32e2297e7e727fad60d82ba254759eed7fd2e0bf7e68def1788f"
+    },
+    "source/lifted_marks_v1.py": {
+      "bytes": 1778,
+      "sha256": "4a6f33e35e2947aafdcb887adbedb6c3fca1dc5033c9498f93ea4c5eda994fda"
+    },
+    "source/lifted_native_v1.py": {
+      "bytes": 5758,
+      "sha256": "f2c73193dc1da7812ec9d9fe658c385fb67570b9e8b491cfc2e2c790e74824d3"
+    },
+    "source/lifted_prover_v1.py": {
+      "bytes": 10188,
+      "sha256": "189bd727708b7bd224643edb3df5af126b9636ef8e62815827ef0310093e8f29"
+    },
+    "source/logical_projection_v1.py": {
+      "bytes": 3968,
+      "sha256": "af824d0b1964a8da87a547b74e96ee7c6574ed4439a07ae9ba5c6e95eed6d223"
+    },
+    "source/logical_records_cli_v1.py": {
+      "bytes": 1504,
+      "sha256": "55083fd3859471c3b5bead8b23e46ce8be3dfc02e3532d01843591187292d8a2"
+    },
+    "source/marker_tm_v1.py": {
+      "bytes": 7658,
+      "sha256": "4e6162f52098ba256d4f64c2d32074d3f3a8914ba341b56f5805226c12d32122"
+    },
+    "source/native_audit_v1.py": {
+      "bytes": 10324,
+      "sha256": "1cc5e347ecf73e006f46e819169d4c57074a401ca92281075de6ee604e839a07"
+    },
+    "source/native_experiment_v1.py": {
+      "bytes": 6751,
+      "sha256": "7659de81ad4993cce94f89a830f2b0781f56fe432c37f8520425874ec6532a28"
+    },
+    "source/native_marked_v1.py": {
+      "bytes": 4695,
+      "sha256": "07ee0d52687cef18f586bbfe51646e39776a617a67f8ae0edf7b18ccee85b353"
+    },
+    "source/native_v1.py": {
+      "bytes": 6288,
+      "sha256": "b3dea50c5556d911e9f2a80e073c1aac7c1645cd534a7c40e3a03520c22961e5"
+    },
+    "source/pocket_arithmetic_v1.py": {
+      "bytes": 1236,
+      "sha256": "b7fcb07c20c36dfa1fe49fd3633c6e5f2e72654d16f15eaa3c73f9f48c2cd5d3"
+    },
+    "source/receptor_origin_v1.py": {
+      "bytes": 967,
+      "sha256": "8925419e3a3e5680119a76710e9e627edc48f59fd2c7635b5f1c6df2cc114b98"
+    },
+    "source/receptor_receivers_v1.py": {
+      "bytes": 4187,
+      "sha256": "931d47810424a50bb870e4a7cf091a6cc88d970ac483e5e46fb2b62b660fdbce"
+    },
+    "source/records_cli_audit_v1.py": {
+      "bytes": 1516,
+      "sha256": "cc354045135147cc42d48848348dfd7e9f015a8b0595aa5949176269578e475f"
+    },
+    "source/resolution_v1.py": {
+      "bytes": 14299,
+      "sha256": "8aa3e79d0fecf09a47ef7e7a9c2670f57747b571f30c0ed9cf4a65fba93e9536"
+    },
+    "source/ribbon_checker_v3.py": {
+      "bytes": 14489,
+      "sha256": "e346951922cfe71366f6c31b474c77955a51715eb3e043ff053c169dc8b0adbd"
+    },
+    "source/run_proof_cuts_v1.py": {
+      "bytes": 692,
+      "sha256": "2e40031d2d30846f3f4bcc72e30cd08302d1622e336b9cbce6ca340c1d2a4487"
+    },
+    "source/shared_wang_audit_v1.py": {
+      "bytes": 3321,
+      "sha256": "d6f5f1709dfb5b7e173d23ed15aeff04398a3bff04d939a6c1b924ac88145a52"
+    },
+    "source/shared_wang_v1.py": {
+      "bytes": 5446,
+      "sha256": "2670b3400eb9848de0baaf784ba79325cf851bb490b7c28aecc95c695a6217c7"
+    },
+    "source/sparse_frame_v1.py": {
+      "bytes": 6487,
+      "sha256": "00ca9a90012c5bef798280664e9f4a4583a0c638d196de005c0998bee4a9c9fe"
+    },
+    "source/spine_transfer_v1.py": {
+      "bytes": 2537,
+      "sha256": "00978342a14c09645c3eeab46b4128f8bdb77150bcea25f87a1af83119b3bf23"
+    },
+    "source/study_v1.py": {
+      "bytes": 12483,
+      "sha256": "6e61a85277a8eb8bef32ac5051e7b247dc0c035a73a84651d2c62b54bc5c426b"
+    },
+    "source/tactic_cohort_v1.py": {
+      "bytes": 2880,
+      "sha256": "d47e9740f173187fa4b6fcd2d8d74812c3536ed55f2e4f2a51d5757425a7b3a8"
+    },
+    "source/tactic_policy_audit_v1.py": {
+      "bytes": 1870,
+      "sha256": "c6d37e8ceebebc098fe6fef70e172dad180c81f709aeb3db05341a2fde0404b9"
+    },
+    "source/tactic_policy_v1.py": {
+      "bytes": 5575,
+      "sha256": "40b5041cc74528b60846214c4c89c89c839abd4f9126525e121c68a1db095f8d"
+    },
+    "source/term_demand_v1.py": {
+      "bytes": 3482,
+      "sha256": "78b3528af946f93978704ab951a6a7467100fb042c437e6023ed0c9a8b901edc"
+    },
+    "source/tiles_v1.py": {
+      "bytes": 6290,
+      "sha256": "54cb133bb7139d4b88013ffd45089d8c9a0145e0a770b2b87296f24d9a3bb38a"
+    },
+    "source/z3_control_v1.py": {
+      "bytes": 4341,
+      "sha256": "b46251a5784e688b7485c149aaec8cf55dc512c0712d7b8dc552109c92d68d8c"
+    }
+  },
+  "assets": {
+    "wang-equality-closure-20261106-v1-evidence.zip": {
+      "bytes": 4080702,
+      "sha256": "2804a21e3d2bee60fc8305aaa744552725afcb5acff91604488f1fe2b2dd6c99"
+    },
+    "wang-equality-closure-20261106-v1-results.json": {
+      "bytes": 120829,
+      "sha256": "b46c6f39f4f57ef60246a300d4faf35a65aece47acf52d8be1f84290445df2fc"
+    },
+    "wang-equality-closure-20261106-v1.html": {
+      "bytes": 569347,
+      "sha256": "6917a3b36b65b8c91078a126c0a22e27f044e1f433a59defae30dc8eb40648f5"
+    }
+  },
+  "schema": "WANG-EQUALITY-SEARCH-MANIFEST-v1"
+}
