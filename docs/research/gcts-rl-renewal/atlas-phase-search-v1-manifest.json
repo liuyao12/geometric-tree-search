@@ -1,0 +1,271 @@
+{
+  "archive_entries": {
+    "penrose/data/negative-phases-v1.json": {
+      "bytes": 44617,
+      "sha256": "c1e2d6cc74b55fde21eca6ca3a4d3076028e34ff0c5963cc8004958591c95a2d"
+    },
+    "penrose/data/oracle-v1.json": {
+      "bytes": 145185,
+      "sha256": "e57c9a29ec1fb6f9be1f757cca98d188695f6c46546841621fd6b911e9e211e2"
+    },
+    "penrose/data/receptor-timing-v1.json": {
+      "bytes": 280,
+      "sha256": "6999cd5c11ceed42b292b2e2545613363ce380d86da9a52fb4dad66bc988eb90"
+    },
+    "penrose/data/receptors-v1.json": {
+      "bytes": 146671,
+      "sha256": "3e31f77bfc9b6a2864c8aeb7045bce5ee48c4aab5a3d592f0f4dc691e6cea5d4"
+    },
+    "penrose/data/verified-v1.json": {
+      "bytes": 5419652,
+      "sha256": "854560e41fdebb7c7d085d2acb15dadf15d947473f652b70ed6d71df62e056ba"
+    },
+    "penrose/input/cases-v1.json": {
+      "bytes": 7378,
+      "sha256": "e63761f458fda28680c5b5d15e86335f257757ad5463007bee0061a489174fdf"
+    },
+    "penrose/input/standard-proof-v1.json": {
+      "bytes": 2917,
+      "sha256": "c24f85fe684748886b6026a5acc1d58695f0ed5d1083314d1a8127dd8c1c2c57"
+    },
+    "penrose/source/atlas_phases_v1.py": {
+      "bytes": 5798,
+      "sha256": "bd36bab9d187b6b23bd5c4334d15f55518e1321963ace388e6fb842c42eac2a6"
+    },
+    "penrose/source/check_v1.py": {
+      "bytes": 4131,
+      "sha256": "edd28b8b5b611059b47d8b2b55964c27a1a5b268dabdaf06c2f4f7b340eaf76c"
+    },
+    "penrose/source/clipping_v1.py": {
+      "bytes": 5276,
+      "sha256": "a649384ab8e810d88d28e79906346946b869292c0de2bf81d07469778fc59281"
+    },
+    "penrose/source/cluster_v1.py": {
+      "bytes": 15717,
+      "sha256": "a2eec032406feaf45f7c5ca66b235727db26e414996337981f6b0ff865859b85"
+    },
+    "penrose/source/geometry_v1.py": {
+      "bytes": 10392,
+      "sha256": "9869ab1c6a2fb3928366a8c50e114ff4c4ba14960cb7f28cb8cc5541b8c3936e"
+    },
+    "penrose/source/model_v1.py": {
+      "bytes": 4432,
+      "sha256": "df86798cfa969b57bdca56f4928b3fd12fe908a275ec5e47031546e74bef43f4"
+    },
+    "penrose/source/phase_verify_v1.py": {
+      "bytes": 5212,
+      "sha256": "0e15794f14ddc29d67e62ed9bacbb87fe92fc3271935acdf54bf42047f2206f0"
+    },
+    "penrose/source/receptor_points_v1.py": {
+      "bytes": 4427,
+      "sha256": "7eb4cf8d861e5246bdb5af53a7c3604ae899e11eb183969ee7eabd90044064e7"
+    },
+    "penrose/source/standard_v1.py": {
+      "bytes": 7429,
+      "sha256": "2fcf8a2f85b4d29a3d6a14976acdea3273cbec97f291c611dd490571e43d1689"
+    },
+    "penrose/source/triangle_geometry_v1.py": {
+      "bytes": 9600,
+      "sha256": "4715c6f612b196d257c858d695d604d800ce832cc5f8a1bfee8ae58e400a79ed"
+    },
+    "penrose/source/window_audit_v1.py": {
+      "bytes": 11762,
+      "sha256": "83d4da9bbe8f4f41fa9cf3a25880c6df1a89b42ccea106b2ed4de5ddb9d99f55"
+    },
+    "penrose/source/window_cases_v1.py": {
+      "bytes": 2388,
+      "sha256": "1d3ff5e513dda8e22c8b72dfa6a6fc3e80b581d254a4ef36442c7cd756d541bb"
+    },
+    "penrose/source/window_experiment_v1.py": {
+      "bytes": 3027,
+      "sha256": "c8494172ff8c5c6d258a02fa7170f1836689dc6dc078b692ba2d472f313bc551"
+    },
+    "penrose/source/window_model_v1.py": {
+      "bytes": 9099,
+      "sha256": "83dadf6ba8a99fea2f9bd11d72b7735bd1425019c97791563b1bf408d26d214f"
+    },
+    "penrose/source/window_timing_v1.py": {
+      "bytes": 1202,
+      "sha256": "9fe9b941034ee512f009a941f70750e465082549cc45db4761f6136e3ea2fa36"
+    },
+    "publication/REPLAY.md": {
+      "bytes": 928,
+      "sha256": "3ca51699a067802f356d933233ec667f9b31d67503cb687b218cd3a862d904b3"
+    },
+    "publication/browser-v1.json": {
+      "bytes": 164,
+      "sha256": "1c6f4c5b58e5132e70ab448df34926984aef6fc0107f2370dc7ccf3d6a623c24"
+    },
+    "publication/notebook-v1.html": {
+      "bytes": 6233,
+      "sha256": "06ed839e94985b4ccb44f884ff0e022fd9c667fa7f25594870735dc169b6c723"
+    },
+    "publication/package_v1.py": {
+      "bytes": 2007,
+      "sha256": "40cce817d7337efbe243f168deef11bdd691b1ebe5cc3940dfaa883225610504"
+    },
+    "publication/render_v1.py": {
+      "bytes": 7699,
+      "sha256": "6b8dcc27b0460c7f3aec6b66635b15458056d7dcedd8e73241975d1e7b99c1a2"
+    },
+    "publication/replay-v1.json": {
+      "bytes": 1115,
+      "sha256": "573b60e8b17117d13612f9eaa14b3cfd7f47bfb01a005f2d2f9df7fea4365e68"
+    },
+    "publication/replay_v1.py": {
+      "bytes": 2186,
+      "sha256": "12c2b179d1138190093f257eb67c91ccb69aceefa397f39c8d856062127120f4"
+    },
+    "report/atlas-phase-search-v1.html": {
+      "bytes": 25865,
+      "sha256": "0fabfc8b8d74ec6f3b186a7e511dc68004d28c642c86c98f004b35ad2a8faf48"
+    },
+    "study/data/policy-v1.json": {
+      "bytes": 24632,
+      "sha256": "649cad1576a67493199d71ac3aab654262a33cbab2b8fa7a68cc4e8b79f0272c"
+    },
+    "study/source/negative_phases_v1.py": {
+      "bytes": 3050,
+      "sha256": "c0afa7093e59c41efc2ece2371b129a4d6df0564b6a04c49d45511847a08fea3"
+    },
+    "study/source/phase_policy_v1.py": {
+      "bytes": 5985,
+      "sha256": "5bc66e840c09262f84050474f2c3dbce00f31ec919000d1bfde031fa6be5f0de"
+    },
+    "study/source/receptor_driver_v1.py": {
+      "bytes": 3018,
+      "sha256": "4f7585d658504f35a19d9973112ccda6b743b87cfda1554abe0657d42f2d8c2b"
+    },
+    "study/source/receptor_timing_v1.py": {
+      "bytes": 1990,
+      "sha256": "6f5fda1e3faa165178e394f8571200204c4139061c5bd938ab1242afb6d84daa"
+    },
+    "turtle/data/negative-phases-v1.json": {
+      "bytes": 15323,
+      "sha256": "5fe58053357b8728f5b4853104e07e418482c76bf19e5763773a36a852a41dd9"
+    },
+    "turtle/data/oracle-v1.json": {
+      "bytes": 112291,
+      "sha256": "2056bef0b9138207f9dc6bd1dc61748ddccc1ea3b4825eb3d7de820340d08d0c"
+    },
+    "turtle/data/receptor-timing-v1.json": {
+      "bytes": 202,
+      "sha256": "30f9012a645b72f50cba2230979b47d216cf8a1ebc9e8b4f97d0055d60aeb43b"
+    },
+    "turtle/data/receptors-v1.json": {
+      "bytes": 51046,
+      "sha256": "4dc66ff3d66c824880b1273ed9ead66c169e9997b6beff37e5b25633bb09a178"
+    },
+    "turtle/data/verified-v1.json": {
+      "bytes": 519742,
+      "sha256": "ea6b0524ce1269593a07b16d0a7737e8f197917fc297a7a10cc9fca2a56434c4"
+    },
+    "turtle/input/coordinate-v1.json": {
+      "bytes": 5416,
+      "sha256": "61561c6359a2877ee309fb93f3c6d04a6e29c72d19a51259bb6f467fac4f3a20"
+    },
+    "turtle/input/exact-point-model-v1.json": {
+      "bytes": 5154,
+      "sha256": "1095add09e7ace5846706dc2559ff3482459a6a854290d77d22e731562a230de"
+    },
+    "turtle/input/plane-replay-v1.json": {
+      "bytes": 330,
+      "sha256": "7ff0eb715b4c6b7bad24b3340a4ce467e57c60b37317158e9a4b0c34afcbd470"
+    },
+    "turtle/input/recovered-production-v1.json": {
+      "bytes": 8620,
+      "sha256": "bdca684ea78a331222e7f016e449781cf7ffae8df5722a4b1d9e2961374fb2dd"
+    },
+    "turtle/source/assemble_v1.py": {
+      "bytes": 5378,
+      "sha256": "d1120c67801723e42bb8aca10a333e54f3348a8a2a5d4aaade6fe3333bceb4c7"
+    },
+    "turtle/source/atlas_phases_v1.py": {
+      "bytes": 6248,
+      "sha256": "b52831292b329d7001b6effccd58871032297b765f44cdd1c2acb8d6a12a13cd"
+    },
+    "turtle/source/capped_orbits_v1.py": {
+      "bytes": 4958,
+      "sha256": "b2a61fd9b539dcb75f4fde748339850c998a2cfa0b59d4b1372f115cec5a6379"
+    },
+    "turtle/source/cluster_v1.py": {
+      "bytes": 15717,
+      "sha256": "a2eec032406feaf45f7c5ca66b235727db26e414996337981f6b0ff865859b85"
+    },
+    "turtle/source/collar_audit_v1.py": {
+      "bytes": 15050,
+      "sha256": "441bbfce0bbe5632b6b26a467c677be775ccae748d3358a7334752f44ec97835"
+    },
+    "turtle/source/collar_experiment_v1.py": {
+      "bytes": 4931,
+      "sha256": "1b278165312553bc1daff1ca9067cd1595cec9c3ff03e0b84e9b5685d1085b59"
+    },
+    "turtle/source/collars_v1.py": {
+      "bytes": 9009,
+      "sha256": "3ffbbb443ad4ca62bbe9a6594ef28b579fbfd13e254ec6a7bdf1b1fb0e8502bd"
+    },
+    "turtle/source/coordinate_v1.py": {
+      "bytes": 8261,
+      "sha256": "9aebbc05a4ec7728744fd1450ba29a7e822a45bad3ca358f1e04988061e409b0"
+    },
+    "turtle/source/golden_geometry_v1.py": {
+      "bytes": 4899,
+      "sha256": "528407dae32299ac9982998ffd396687633fe1107d99f782ab8b74f8f5ded786"
+    },
+    "turtle/source/layer_audit_v1.py": {
+      "bytes": 6861,
+      "sha256": "1376983393741a45f6788c55c2acde481684fe1dbb0d8430286859f93d4ddf6b"
+    },
+    "turtle/source/mixed_orbits_v1.py": {
+      "bytes": 6362,
+      "sha256": "42feb552dd443d36a7864e0f87679756f36c99c941fa069d1b38cf40b34bdde2"
+    },
+    "turtle/source/phase_verify_v1.py": {
+      "bytes": 3540,
+      "sha256": "774e50b0523ce07529632ca6adc11278ba9bd4cd523072c5913adc474eab8fae"
+    },
+    "turtle/source/port_score_v1.py": {
+      "bytes": 3846,
+      "sha256": "283c9c05528799e417f903543733593a4fd7f14d8e0089c8094a4bba5b53b617"
+    },
+    "turtle/source/receptor_points_v1.py": {
+      "bytes": 3981,
+      "sha256": "ad238bfc0440d9fb2678ab91f0eea6ea3ef69bbcfd410813ae7e4596af31c70f"
+    },
+    "turtle/source/scaffold_v1.py": {
+      "bytes": 7216,
+      "sha256": "ce412c5ad4982ea96030255cbf081a861a239aa13c99e2565686ec254a5d8026"
+    },
+    "turtle/source/strip_fit_v1.py": {
+      "bytes": 7861,
+      "sha256": "de5644533283f3fb634534453c56c08312505ae5cc5e92df5634a5087a1e34f4"
+    },
+    "turtle/source/triangle_geometry_v1.py": {
+      "bytes": 9600,
+      "sha256": "4715c6f612b196d257c858d695d604d800ce832cc5f8a1bfee8ae58e400a79ed"
+    },
+    "turtle/source/window_origin_v1.py": {
+      "bytes": 1231,
+      "sha256": "013583927b2656c8f7a05a9857e4ef147291383c32e214b792d4ad062b76e0c1"
+    },
+    "turtle/source/window_v1.py": {
+      "bytes": 10181,
+      "sha256": "1d4d480359872d2a1d1a48bbc9a15784338d7a97712d73d41e2f889c66275b7d"
+    },
+    "turtle/source/word_promotion_v1.py": {
+      "bytes": 6337,
+      "sha256": "2e75a86404a3fc6eac932f9b76fda8598822ea8388eb3f8eca591b723f31e590"
+    }
+  },
+  "assets": {
+    "atlas-phase-search-v1-evidence.zip": {
+      "bytes": 523519,
+      "sha256": "86b33ab8161ca159df4d794e70038343d00835ec0516e4399acf61bcd8f05712"
+    },
+    "atlas-phase-search-v1.html": {
+      "bytes": 25865,
+      "sha256": "0fabfc8b8d74ec6f3b186a7e511dc68004d28c642c86c98f004b35ad2a8faf48"
+    }
+  },
+  "schema": "ATLAS-PHASE-SEARCH-MANIFEST-v1"
+}
