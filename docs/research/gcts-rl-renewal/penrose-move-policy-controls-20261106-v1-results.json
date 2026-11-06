@@ -1,0 +1,4583 @@
+{
+  "audit": {
+    "audit": {
+      "EXHAUSTED_INDEPENDENT_UNITS": 19,
+      "solution_traces": 669
+    },
+    "negative_audits": {
+      "alternate-alternating-00": {
+        "counts": {
+          "contact_checks": 27,
+          "nodes": 1
+        },
+        "status": "EXHAUSTED_INDEPENDENT_UNITS"
+      },
+      "alternate-alternating-02": {
+        "counts": {
+          "contact_checks": 38,
+          "nodes": 1
+        },
+        "status": "EXHAUSTED_INDEPENDENT_UNITS"
+      },
+      "alternate-alternating-03": {
+        "counts": {
+          "contact_checks": 1584,
+          "nodes": 17
+        },
+        "status": "EXHAUSTED_INDEPENDENT_UNITS"
+      },
+      "alternate-alternating-04": {
+        "counts": {
+          "contact_checks": 9,
+          "nodes": 1
+        },
+        "status": "EXHAUSTED_INDEPENDENT_UNITS"
+      },
+      "alternate-alternating-05": {
+        "counts": {
+          "contact_checks": 167,
+          "nodes": 3
+        },
+        "status": "EXHAUSTED_INDEPENDENT_UNITS"
+      },
+      "alternate-alternating-06": {
+        "counts": {
+          "contact_checks": 31,
+          "nodes": 1
+        },
+        "status": "EXHAUSTED_INDEPENDENT_UNITS"
+      },
+      "alternate-alternating-07": {
+        "counts": {
+          "contact_checks": 10,
+          "nodes": 1
+        },
+        "status": "EXHAUSTED_INDEPENDENT_UNITS"
+      },
+      "alternate-dense-00": {
+        "counts": {
+          "contact_checks": 35,
+          "nodes": 1
+        },
+        "status": "EXHAUSTED_INDEPENDENT_UNITS"
+      },
+      "alternate-dense-03": {
+        "counts": {
+          "contact_checks": 2023,
+          "nodes": 40
+        },
+        "status": "EXHAUSTED_INDEPENDENT_UNITS"
+      },
+      "alternate-dense-05": {
+        "counts": {
+          "contact_checks": 188,
+          "nodes": 3
+        },
+        "status": "EXHAUSTED_INDEPENDENT_UNITS"
+      },
+      "alternate-dense-06": {
+        "counts": {
+          "contact_checks": 1248,
+          "nodes": 27
+        },
+        "status": "EXHAUSTED_INDEPENDENT_UNITS"
+      },
+      "alternate-ragged-00": {
+        "counts": {
+          "contact_checks": 812,
+          "nodes": 10
+        },
+        "status": "EXHAUSTED_INDEPENDENT_UNITS"
+      },
+      "alternate-ragged-01": {
+        "counts": {
+          "nodes": 1
+        },
+        "status": "EXHAUSTED_INDEPENDENT_UNITS"
+      },
+      "alternate-ragged-02": {
+        "counts": {
+          "contact_checks": 32,
+          "nodes": 1
+        },
+        "status": "EXHAUSTED_INDEPENDENT_UNITS"
+      },
+      "alternate-ragged-03": {
+        "counts": {
+          "contact_checks": 2,
+          "nodes": 1
+        },
+        "status": "EXHAUSTED_INDEPENDENT_UNITS"
+      },
+      "alternate-ragged-04": {
+        "counts": {
+          "contact_checks": 38,
+          "nodes": 1
+        },
+        "status": "EXHAUSTED_INDEPENDENT_UNITS"
+      },
+      "alternate-ragged-05": {
+        "counts": {
+          "contact_checks": 33,
+          "nodes": 1
+        },
+        "status": "EXHAUSTED_INDEPENDENT_UNITS"
+      },
+      "alternate-ragged-06": {
+        "counts": {
+          "contact_checks": 25,
+          "nodes": 1
+        },
+        "status": "EXHAUSTED_INDEPENDENT_UNITS"
+      },
+      "alternate-ragged-07": {
+        "counts": {
+          "contact_checks": 46,
+          "nodes": 1
+        },
+        "status": "EXHAUSTED_INDEPENDENT_UNITS"
+      }
+    },
+    "status": "CHECKED_MOVE_POLICY_CONTROLS",
+    "training": {
+      "donors": 60,
+      "feedback": 1608,
+      "weights": 142
+    }
+  },
+  "diagnostic": {
+    "learned": {
+      "cache_hits": 34,
+      "checks": 77895,
+      "fallbacks": 27,
+      "nodes": 5224,
+      "outcomes": {
+        "NEGATIVE": 19,
+        "POSITIVE": 101
+      },
+      "ranked": 1955,
+      "reordered": 1268,
+      "skipped_doublets": 7439
+    },
+    "static": {
+      "cache_hits": 77,
+      "checks": 70095,
+      "fallbacks": 23,
+      "nodes": 4836,
+      "outcomes": {
+        "BOUNDED": 1,
+        "NEGATIVE": 18,
+        "POSITIVE": 101
+      },
+      "ranked": 0,
+      "reordered": 0,
+      "skipped_doublets": 6540
+    },
+    "unit": {
+      "cache_hits": 0,
+      "checks": 74924,
+      "fallbacks": 0,
+      "nodes": 5288,
+      "outcomes": {
+        "NEGATIVE": 19,
+        "POSITIVE": 101
+      },
+      "ranked": 0,
+      "reordered": 0,
+      "skipped_doublets": 7151
+    }
+  },
+  "paired": {
+    "all": {
+      "random": {
+        "common": 109,
+        "equal": 14,
+        "less": 53,
+        "more": 42,
+        "work": [
+          68099,
+          70996
+        ]
+      },
+      "seam": {
+        "common": 106,
+        "equal": 13,
+        "less": 11,
+        "more": 82,
+        "work": [
+          66045,
+          54561
+        ]
+      },
+      "static": {
+        "common": 110,
+        "equal": 12,
+        "less": 23,
+        "more": 75,
+        "work": [
+          68527,
+          52469
+        ]
+      },
+      "unit": {
+        "common": 109,
+        "equal": 12,
+        "less": 59,
+        "more": 38,
+        "work": [
+          68099,
+          64412
+        ]
+      },
+      "unit_only": {
+        "common": 111,
+        "equal": 7,
+        "less": 61,
+        "more": 43,
+        "work": [
+          68863,
+          38792
+        ]
+      },
+      "unit_uncached": {
+        "common": 105,
+        "equal": 11,
+        "less": 60,
+        "more": 34,
+        "work": [
+          47429,
+          47114
+        ]
+      }
+    },
+    "alternate": {
+      "random": {
+        "common": 20,
+        "equal": 13,
+        "less": 3,
+        "more": 4,
+        "work": [
+          24661,
+          24361
+        ]
+      },
+      "seam": {
+        "common": 20,
+        "equal": 12,
+        "less": 1,
+        "more": 7,
+        "work": [
+          24661,
+          32163
+        ]
+      },
+      "static": {
+        "common": 20,
+        "equal": 12,
+        "less": 1,
+        "more": 7,
+        "work": [
+          24661,
+          22690
+        ]
+      },
+      "unit": {
+        "common": 20,
+        "equal": 12,
+        "less": 1,
+        "more": 7,
+        "work": [
+          24661,
+          22681
+        ]
+      },
+      "unit_only": {
+        "common": 20,
+        "equal": 7,
+        "less": 1,
+        "more": 12,
+        "work": [
+          24661,
+          2884
+        ]
+      },
+      "unit_uncached": {
+        "common": 18,
+        "equal": 11,
+        "less": 3,
+        "more": 4,
+        "work": [
+          9133,
+          13801
+        ]
+      }
+    },
+    "generated": {
+      "random": {
+        "common": 65,
+        "equal": 0,
+        "less": 39,
+        "more": 26,
+        "work": [
+          32188,
+          34822
+        ]
+      },
+      "seam": {
+        "common": 62,
+        "equal": 1,
+        "less": 6,
+        "more": 55,
+        "work": [
+          30134,
+          15850
+        ]
+      },
+      "static": {
+        "common": 66,
+        "equal": 0,
+        "less": 16,
+        "more": 50,
+        "work": [
+          32616,
+          23809
+        ]
+      },
+      "unit": {
+        "common": 65,
+        "equal": 0,
+        "less": 44,
+        "more": 21,
+        "work": [
+          32188,
+          32853
+        ]
+      },
+      "unit_only": {
+        "common": 67,
+        "equal": 0,
+        "less": 46,
+        "more": 21,
+        "work": [
+          32952,
+          27528
+        ]
+      },
+      "unit_uncached": {
+        "common": 63,
+        "equal": 0,
+        "less": 43,
+        "more": 20,
+        "work": [
+          27046,
+          24313
+        ]
+      }
+    },
+    "hierarchy": {
+      "random": {
+        "common": 24,
+        "equal": 1,
+        "less": 11,
+        "more": 12,
+        "work": [
+          11250,
+          11813
+        ]
+      },
+      "seam": {
+        "common": 24,
+        "equal": 0,
+        "less": 4,
+        "more": 20,
+        "work": [
+          11250,
+          6548
+        ]
+      },
+      "static": {
+        "common": 24,
+        "equal": 0,
+        "less": 6,
+        "more": 18,
+        "work": [
+          11250,
+          5970
+        ]
+      },
+      "unit": {
+        "common": 24,
+        "equal": 0,
+        "less": 14,
+        "more": 10,
+        "work": [
+          11250,
+          8878
+        ]
+      },
+      "unit_only": {
+        "common": 24,
+        "equal": 0,
+        "less": 14,
+        "more": 10,
+        "work": [
+          11250,
+          8380
+        ]
+      },
+      "unit_uncached": {
+        "common": 24,
+        "equal": 0,
+        "less": 14,
+        "more": 10,
+        "work": [
+          11250,
+          9000
+        ]
+      }
+    }
+  },
+  "protocol": {
+    "alternate_seed_per_generated_family": 8,
+    "analysis": [
+      "all outcomes by arm",
+      "paired work on cases both arms resolve",
+      "decision differences",
+      "fixed-seed witness and independent unit negative audit"
+    ],
+    "arms": [
+      "unit",
+      "unit_uncached",
+      "unit_only",
+      "seam",
+      "static",
+      "random",
+      "learned"
+    ],
+    "author_seed": 28719303,
+    "macro_offer_cap": 5,
+    "node_budget": 1200,
+    "per_generated_family": 24,
+    "per_hierarchy_source": 6,
+    "random_seed": 8317709,
+    "schema": "PENROSE-MOVE-CONTROL-v1",
+    "training_frozen": true
+  },
+  "reader": {
+    "doubletHighlight": true,
+    "mathTypeset": true,
+    "mobileNoOverflow": true,
+    "players": 2,
+    "requests": 120,
+    "status": "CHECKED_MOVE_POLICY_READER",
+    "stepReplay": true
+  },
+  "replay": {
+    "heldback_absent_during_search": true,
+    "outputs": {
+      "data/controlled-audit-v1.json": {
+        "bytes": 2180,
+        "sha256": "78b2eebd0fb435726778025754652575646737058468ba6079dce3489882527e"
+      },
+      "data/controlled-search-v1.json": {
+        "bytes": 2607894,
+        "sha256": "d0ad07417b71219b908deec7aa0e0afb1c8766e3dece23c9ebd071e362b30e22"
+      },
+      "data/dominance-diagnostic-v1.json": {
+        "bytes": 1186586,
+        "sha256": "5ca0820fde448cc06fb05fe1f848f706d9edd1edf71d29c66ff88ae0b46dcb10"
+      },
+      "input/controlled-cases-v1.json": {
+        "bytes": 63045,
+        "sha256": "887cfac849e8ca5525e3b85166545c5758ba4ed57d3cd3d731ed84eac75dcaf4"
+      },
+      "input/heldback-witnesses-v1.json": {
+        "bytes": 118223,
+        "sha256": "17e2e12144ddd4729f37e51d8fd11f8bede7b33fff7f96cc5d8a88b4570db899"
+      },
+      "report/penrose-move-policy-controls-20261106-v1.html": {
+        "bytes": 37227,
+        "sha256": "6d70b068209db0055c8d6fd08309941ba224c5d45028b7f5816ad212ce56f214"
+      }
+    },
+    "python": [
+      3,
+      12,
+      14
+    ],
+    "stages": [
+      "source/controlled_cases_v1.py",
+      "source/controlled_search_v1.py",
+      "source/controlled_audit_v1.py",
+      "source/dominance_v1.py",
+      "publication/render_v1.py"
+    ],
+    "status": "MATCHED_CLEAN_REPLAY",
+    "timing_input": {
+      "bytes": 48133,
+      "sha256": "4eeb46e23e9bd6a99b9b4da1ffd6a1cd1fd98b5dd91cdc4be16cc5cea95fed78"
+    }
+  },
+  "sampled_cuts": [
+    {
+      "arm": "learned",
+      "case": "generated-dense-00",
+      "certificate": {
+        "edge": [
+          [
+            0,
+            0,
+            -1,
+            -3
+          ],
+          [
+            1,
+            0,
+            -1,
+            -3
+          ]
+        ],
+        "macro": [
+          [
+            [
+              0,
+              0,
+              -1,
+              -3
+            ],
+            [
+              0,
+              0,
+              -1,
+              -2
+            ],
+            [
+              1,
+              1,
+              0,
+              -2
+            ],
+            [
+              1,
+              1,
+              0,
+              -1
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              -1,
+              -3
+            ],
+            [
+              1,
+              0,
+              -1,
+              -3
+            ],
+            [
+              1,
+              1,
+              0,
+              -2
+            ],
+            [
+              2,
+              1,
+              0,
+              -2
+            ]
+          ]
+        ],
+        "path": [
+          [
+            [
+              0,
+              0,
+              -1,
+              0
+            ],
+            [
+              0,
+              0,
+              -1,
+              1
+            ],
+            [
+              1,
+              0,
+              -1,
+              0
+            ],
+            [
+              1,
+              0,
+              -1,
+              1
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              -2,
+              1
+            ],
+            [
+              0,
+              0,
+              -1,
+              1
+            ],
+            [
+              1,
+              0,
+              -2,
+              1
+            ],
+            [
+              1,
+              0,
+              -1,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              0,
+              -2,
+              0
+            ],
+            [
+              1,
+              0,
+              -2,
+              1
+            ],
+            [
+              1,
+              0,
+              -1,
+              0
+            ],
+            [
+              1,
+              0,
+              -1,
+              1
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              -1,
+              0
+            ],
+            [
+              0,
+              0,
+              -1,
+              1
+            ],
+            [
+              0,
+              1,
+              -1,
+              0
+            ],
+            [
+              0,
+              1,
+              -1,
+              1
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              -1,
+              -1
+            ],
+            [
+              0,
+              0,
+              -1,
+              0
+            ],
+            [
+              1,
+              0,
+              -1,
+              -1
+            ],
+            [
+              1,
+              0,
+              -1,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              -1,
+              -1
+            ],
+            [
+              0,
+              0,
+              -1,
+              0
+            ],
+            [
+              0,
+              1,
+              -1,
+              -1
+            ],
+            [
+              0,
+              1,
+              -1,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              -1,
+              -2
+            ],
+            [
+              0,
+              0,
+              -1,
+              -1
+            ],
+            [
+              1,
+              0,
+              -1,
+              -2
+            ],
+            [
+              1,
+              0,
+              -1,
+              -1
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              -1,
+              -2
+            ],
+            [
+              0,
+              0,
+              -1,
+              -1
+            ],
+            [
+              0,
+              1,
+              -1,
+              -2
+            ],
+            [
+              0,
+              1,
+              -1,
+              -1
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              -1,
+              -3
+            ],
+            [
+              0,
+              0,
+              -1,
+              -2
+            ],
+            [
+              1,
+              0,
+              -1,
+              -3
+            ],
+            [
+              1,
+              0,
+              -1,
+              -2
+            ]
+          ]
+        ],
+        "unit": [
+          [
+            0,
+            0,
+            -1,
+            -3
+          ],
+          [
+            1,
+            0,
+            -1,
+            -3
+          ],
+          [
+            1,
+            1,
+            0,
+            -2
+          ],
+          [
+            2,
+            1,
+            0,
+            -2
+          ]
+        ]
+      },
+      "receipt": {
+        "counts": {
+          "contact_checks": 2,
+          "nodes": 1
+        },
+        "status": "EXHAUSTED_INDEPENDENT_UNITS"
+      }
+    },
+    {
+      "arm": "unit",
+      "case": "alternate-dense-00",
+      "certificate": {
+        "edge": [
+          [
+            1,
+            1,
+            -2,
+            -2
+          ],
+          [
+            0,
+            1,
+            -2,
+            -2
+          ]
+        ],
+        "macro": [
+          [
+            [
+              0,
+              0,
+              -2,
+              -1
+            ],
+            [
+              0,
+              1,
+              -2,
+              -1
+            ],
+            [
+              1,
+              0,
+              -2,
+              -1
+            ],
+            [
+              1,
+              1,
+              -2,
+              -1
+            ]
+          ],
+          [
+            [
+              0,
+              1,
+              -2,
+              -2
+            ],
+            [
+              0,
+              1,
+              -2,
+              -1
+            ],
+            [
+              1,
+              1,
+              -2,
+              -2
+            ],
+            [
+              1,
+              1,
+              -2,
+              -1
+            ]
+          ]
+        ],
+        "path": [
+          [
+            [
+              0,
+              1,
+              -2,
+              -2
+            ],
+            [
+              1,
+              1,
+              -2,
+              -2
+            ],
+            [
+              1,
+              2,
+              -1,
+              -1
+            ],
+            [
+              2,
+              2,
+              -1,
+              -1
+            ]
+          ]
+        ],
+        "unit": [
+          [
+            0,
+            1,
+            -2,
+            -2
+          ],
+          [
+            0,
+            1,
+            -2,
+            -1
+          ],
+          [
+            1,
+            1,
+            -2,
+            -2
+          ],
+          [
+            1,
+            1,
+            -2,
+            -1
+          ]
+        ]
+      },
+      "receipt": {
+        "counts": {
+          "contact_checks": 37,
+          "nodes": 1
+        },
+        "status": "EXHAUSTED_INDEPENDENT_UNITS"
+      }
+    },
+    {
+      "arm": "static",
+      "case": "alternate-dense-00",
+      "certificate": {
+        "edge": [
+          [
+            1,
+            1,
+            -2,
+            -2
+          ],
+          [
+            0,
+            1,
+            -2,
+            -2
+          ]
+        ],
+        "macro": [
+          [
+            [
+              0,
+              0,
+              -2,
+              -1
+            ],
+            [
+              0,
+              1,
+              -2,
+              -1
+            ],
+            [
+              1,
+              0,
+              -2,
+              -1
+            ],
+            [
+              1,
+              1,
+              -2,
+              -1
+            ]
+          ],
+          [
+            [
+              0,
+              1,
+              -2,
+              -2
+            ],
+            [
+              0,
+              1,
+              -2,
+              -1
+            ],
+            [
+              1,
+              1,
+              -2,
+              -2
+            ],
+            [
+              1,
+              1,
+              -2,
+              -1
+            ]
+          ]
+        ],
+        "path": [
+          [
+            [
+              0,
+              1,
+              -2,
+              -2
+            ],
+            [
+              1,
+              1,
+              -2,
+              -2
+            ],
+            [
+              1,
+              2,
+              -1,
+              -1
+            ],
+            [
+              2,
+              2,
+              -1,
+              -1
+            ]
+          ]
+        ],
+        "unit": [
+          [
+            0,
+            1,
+            -2,
+            -2
+          ],
+          [
+            0,
+            1,
+            -2,
+            -1
+          ],
+          [
+            1,
+            1,
+            -2,
+            -2
+          ],
+          [
+            1,
+            1,
+            -2,
+            -1
+          ]
+        ]
+      },
+      "receipt": {
+        "counts": {
+          "contact_checks": 37,
+          "nodes": 1
+        },
+        "status": "EXHAUSTED_INDEPENDENT_UNITS"
+      }
+    },
+    {
+      "arm": "learned",
+      "case": "alternate-dense-00",
+      "certificate": {
+        "edge": [
+          [
+            1,
+            1,
+            -2,
+            -2
+          ],
+          [
+            0,
+            1,
+            -2,
+            -2
+          ]
+        ],
+        "macro": [
+          [
+            [
+              -1,
+              1,
+              -2,
+              -2
+            ],
+            [
+              -1,
+              1,
+              -2,
+              -1
+            ],
+            [
+              0,
+              1,
+              -2,
+              -2
+            ],
+            [
+              0,
+              1,
+              -2,
+              -1
+            ]
+          ],
+          [
+            [
+              0,
+              1,
+              -2,
+              -2
+            ],
+            [
+              0,
+              1,
+              -2,
+              -1
+            ],
+            [
+              1,
+              1,
+              -2,
+              -2
+            ],
+            [
+              1,
+              1,
+              -2,
+              -1
+            ]
+          ]
+        ],
+        "path": [
+          [
+            [
+              0,
+              1,
+              -2,
+              -2
+            ],
+            [
+              1,
+              1,
+              -2,
+              -2
+            ],
+            [
+              1,
+              2,
+              -1,
+              -1
+            ],
+            [
+              2,
+              2,
+              -1,
+              -1
+            ]
+          ]
+        ],
+        "unit": [
+          [
+            0,
+            1,
+            -2,
+            -2
+          ],
+          [
+            0,
+            1,
+            -2,
+            -1
+          ],
+          [
+            1,
+            1,
+            -2,
+            -2
+          ],
+          [
+            1,
+            1,
+            -2,
+            -1
+          ]
+        ]
+      },
+      "receipt": {
+        "counts": {
+          "contact_checks": 37,
+          "nodes": 1
+        },
+        "status": "EXHAUSTED_INDEPENDENT_UNITS"
+      }
+    },
+    {
+      "arm": "unit",
+      "case": "generated-dense-08",
+      "certificate": {
+        "edge": [
+          [
+            0,
+            -2,
+            -1,
+            -1
+          ],
+          [
+            1,
+            -1,
+            0,
+            0
+          ]
+        ],
+        "macro": [
+          [
+            [
+              -1,
+              -4,
+              -2,
+              -2
+            ],
+            [
+              -1,
+              -3,
+              -2,
+              -2
+            ],
+            [
+              0,
+              -3,
+              -1,
+              -1
+            ],
+            [
+              0,
+              -2,
+              -1,
+              -1
+            ]
+          ],
+          [
+            [
+              0,
+              -3,
+              -1,
+              -1
+            ],
+            [
+              0,
+              -2,
+              -1,
+              -1
+            ],
+            [
+              1,
+              -2,
+              0,
+              0
+            ],
+            [
+              1,
+              -1,
+              0,
+              0
+            ]
+          ]
+        ],
+        "path": [
+          [
+            [
+              1,
+              0,
+              0,
+              -1
+            ],
+            [
+              1,
+              0,
+              0,
+              0
+            ],
+            [
+              1,
+              1,
+              0,
+              -1
+            ],
+            [
+              1,
+              1,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              -1,
+              -1,
+              -2
+            ],
+            [
+              0,
+              -1,
+              -1,
+              -1
+            ],
+            [
+              1,
+              0,
+              0,
+              -1
+            ],
+            [
+              1,
+              0,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              -2,
+              -1,
+              -2
+            ],
+            [
+              0,
+              -2,
+              -1,
+              -1
+            ],
+            [
+              0,
+              -1,
+              -1,
+              -2
+            ],
+            [
+              0,
+              -1,
+              -1,
+              -1
+            ]
+          ],
+          [
+            [
+              0,
+              -1,
+              -1,
+              -3
+            ],
+            [
+              0,
+              -1,
+              -1,
+              -2
+            ],
+            [
+              1,
+              0,
+              0,
+              -2
+            ],
+            [
+              1,
+              0,
+              0,
+              -1
+            ]
+          ],
+          [
+            [
+              0,
+              -1,
+              -1,
+              -3
+            ],
+            [
+              0,
+              0,
+              -1,
+              -3
+            ],
+            [
+              1,
+              0,
+              0,
+              -2
+            ],
+            [
+              1,
+              1,
+              0,
+              -2
+            ]
+          ],
+          [
+            [
+              1,
+              0,
+              0,
+              -2
+            ],
+            [
+              1,
+              0,
+              0,
+              -1
+            ],
+            [
+              1,
+              1,
+              0,
+              -2
+            ],
+            [
+              1,
+              1,
+              0,
+              -1
+            ]
+          ],
+          [
+            [
+              1,
+              1,
+              0,
+              -2
+            ],
+            [
+              1,
+              1,
+              0,
+              -1
+            ],
+            [
+              1,
+              1,
+              1,
+              -2
+            ],
+            [
+              1,
+              1,
+              1,
+              -1
+            ]
+          ],
+          [
+            [
+              0,
+              1,
+              1,
+              -2
+            ],
+            [
+              0,
+              1,
+              1,
+              -1
+            ],
+            [
+              1,
+              1,
+              1,
+              -2
+            ],
+            [
+              1,
+              1,
+              1,
+              -1
+            ]
+          ],
+          [
+            [
+              -1,
+              1,
+              1,
+              -2
+            ],
+            [
+              -1,
+              1,
+              1,
+              -1
+            ],
+            [
+              0,
+              1,
+              1,
+              -2
+            ],
+            [
+              0,
+              1,
+              1,
+              -1
+            ]
+          ],
+          [
+            [
+              -1,
+              1,
+              1,
+              -2
+            ],
+            [
+              -1,
+              1,
+              1,
+              -1
+            ],
+            [
+              -1,
+              1,
+              2,
+              -2
+            ],
+            [
+              -1,
+              1,
+              2,
+              -1
+            ]
+          ],
+          [
+            [
+              -2,
+              1,
+              2,
+              -2
+            ],
+            [
+              -2,
+              1,
+              2,
+              -1
+            ],
+            [
+              -1,
+              1,
+              2,
+              -2
+            ],
+            [
+              -1,
+              1,
+              2,
+              -1
+            ]
+          ],
+          [
+            [
+              -2,
+              1,
+              1,
+              -1
+            ],
+            [
+              -2,
+              1,
+              2,
+              -1
+            ],
+            [
+              -1,
+              1,
+              1,
+              -1
+            ],
+            [
+              -1,
+              1,
+              2,
+              -1
+            ]
+          ],
+          [
+            [
+              0,
+              1,
+              0,
+              -1
+            ],
+            [
+              0,
+              1,
+              1,
+              -1
+            ],
+            [
+              1,
+              1,
+              0,
+              -1
+            ],
+            [
+              1,
+              1,
+              1,
+              -1
+            ]
+          ],
+          [
+            [
+              -1,
+              1,
+              0,
+              -1
+            ],
+            [
+              -1,
+              1,
+              1,
+              -1
+            ],
+            [
+              0,
+              1,
+              0,
+              -1
+            ],
+            [
+              0,
+              1,
+              1,
+              -1
+            ]
+          ],
+          [
+            [
+              -1,
+              0,
+              0,
+              -1
+            ],
+            [
+              -1,
+              1,
+              0,
+              -1
+            ],
+            [
+              0,
+              0,
+              0,
+              -1
+            ],
+            [
+              0,
+              1,
+              0,
+              -1
+            ]
+          ],
+          [
+            [
+              -1,
+              -1,
+              0,
+              -1
+            ],
+            [
+              -1,
+              0,
+              0,
+              -1
+            ],
+            [
+              0,
+              -1,
+              0,
+              -1
+            ],
+            [
+              0,
+              0,
+              0,
+              -1
+            ]
+          ],
+          [
+            [
+              0,
+              -2,
+              -1,
+              -1
+            ],
+            [
+              0,
+              -1,
+              -1,
+              -1
+            ],
+            [
+              1,
+              -1,
+              0,
+              0
+            ],
+            [
+              1,
+              0,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              -1,
+              -2,
+              0,
+              -1
+            ],
+            [
+              -1,
+              -1,
+              0,
+              -1
+            ],
+            [
+              0,
+              -2,
+              0,
+              -1
+            ],
+            [
+              0,
+              -1,
+              0,
+              -1
+            ]
+          ]
+        ],
+        "unit": [
+          [
+            0,
+            -3,
+            -1,
+            -1
+          ],
+          [
+            0,
+            -2,
+            -1,
+            -1
+          ],
+          [
+            1,
+            -2,
+            0,
+            0
+          ],
+          [
+            1,
+            -1,
+            0,
+            0
+          ]
+        ]
+      },
+      "receipt": {
+        "counts": {
+          "contact_checks": 9,
+          "nodes": 1
+        },
+        "status": "EXHAUSTED_INDEPENDENT_UNITS"
+      }
+    },
+    {
+      "arm": "static",
+      "case": "generated-dense-19",
+      "certificate": {
+        "edge": [
+          [
+            0,
+            -1,
+            -3,
+            -3
+          ],
+          [
+            1,
+            -1,
+            -3,
+            -3
+          ]
+        ],
+        "macro": [
+          [
+            [
+              0,
+              -1,
+              -3,
+              -3
+            ],
+            [
+              0,
+              -1,
+              -3,
+              -2
+            ],
+            [
+              0,
+              -1,
+              -2,
+              -3
+            ],
+            [
+              0,
+              -1,
+              -2,
+              -2
+            ]
+          ],
+          [
+            [
+              0,
+              -1,
+              -3,
+              -3
+            ],
+            [
+              0,
+              -1,
+              -2,
+              -3
+            ],
+            [
+              1,
+              -1,
+              -3,
+              -3
+            ],
+            [
+              1,
+              -1,
+              -2,
+              -3
+            ]
+          ]
+        ],
+        "path": [
+          [
+            [
+              0,
+              -1,
+              -3,
+              -2
+            ],
+            [
+              0,
+              -1,
+              -3,
+              -1
+            ],
+            [
+              1,
+              -1,
+              -3,
+              -2
+            ],
+            [
+              1,
+              -1,
+              -3,
+              -1
+            ]
+          ],
+          [
+            [
+              0,
+              -1,
+              -3,
+              -3
+            ],
+            [
+              0,
+              -1,
+              -3,
+              -2
+            ],
+            [
+              1,
+              -1,
+              -3,
+              -3
+            ],
+            [
+              1,
+              -1,
+              -3,
+              -2
+            ]
+          ]
+        ],
+        "unit": [
+          [
+            0,
+            -1,
+            -3,
+            -3
+          ],
+          [
+            0,
+            -1,
+            -2,
+            -3
+          ],
+          [
+            1,
+            -1,
+            -3,
+            -3
+          ],
+          [
+            1,
+            -1,
+            -2,
+            -3
+          ]
+        ]
+      },
+      "receipt": {
+        "counts": {
+          "contact_checks": 41,
+          "nodes": 1
+        },
+        "status": "EXHAUSTED_INDEPENDENT_UNITS"
+      }
+    },
+    {
+      "arm": "learned",
+      "case": "hierarchy-hole-01",
+      "certificate": {
+        "edge": [
+          [
+            2,
+            1,
+            2,
+            -2
+          ],
+          [
+            2,
+            1,
+            2,
+            -3
+          ]
+        ],
+        "macro": [
+          [
+            [
+              1,
+              0,
+              1,
+              -4
+            ],
+            [
+              1,
+              1,
+              1,
+              -4
+            ],
+            [
+              2,
+              1,
+              2,
+              -3
+            ],
+            [
+              2,
+              2,
+              2,
+              -3
+            ]
+          ],
+          [
+            [
+              2,
+              1,
+              2,
+              -3
+            ],
+            [
+              2,
+              1,
+              2,
+              -2
+            ],
+            [
+              2,
+              2,
+              2,
+              -3
+            ],
+            [
+              2,
+              2,
+              2,
+              -2
+            ]
+          ]
+        ],
+        "path": [
+          [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              1,
+              0,
+              0,
+              0
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              2,
+              1,
+              1,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              0,
+              -1,
+              -1
+            ],
+            [
+              1,
+              0,
+              0,
+              -1
+            ],
+            [
+              2,
+              1,
+              0,
+              0
+            ],
+            [
+              2,
+              1,
+              1,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              0,
+              0,
+              -1
+            ],
+            [
+              1,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              1,
+              1,
+              0
+            ],
+            [
+              2,
+              1,
+              1,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              1,
+              1,
+              0
+            ],
+            [
+              1,
+              1,
+              2,
+              0
+            ],
+            [
+              2,
+              1,
+              1,
+              0
+            ],
+            [
+              2,
+              1,
+              2,
+              0
+            ]
+          ],
+          [
+            [
+              2,
+              0,
+              -1,
+              -2
+            ],
+            [
+              2,
+              1,
+              -1,
+              -2
+            ],
+            [
+              3,
+              0,
+              -1,
+              -2
+            ],
+            [
+              3,
+              1,
+              -1,
+              -2
+            ]
+          ],
+          [
+            [
+              2,
+              0,
+              -1,
+              -2
+            ],
+            [
+              2,
+              1,
+              -1,
+              -2
+            ],
+            [
+              3,
+              1,
+              0,
+              -1
+            ],
+            [
+              3,
+              2,
+              0,
+              -1
+            ]
+          ],
+          [
+            [
+              2,
+              1,
+              1,
+              0
+            ],
+            [
+              2,
+              1,
+              2,
+              0
+            ],
+            [
+              3,
+              1,
+              1,
+              0
+            ],
+            [
+              3,
+              1,
+              2,
+              0
+            ]
+          ],
+          [
+            [
+              2,
+              1,
+              0,
+              0
+            ],
+            [
+              2,
+              1,
+              1,
+              0
+            ],
+            [
+              3,
+              1,
+              0,
+              0
+            ],
+            [
+              3,
+              1,
+              1,
+              0
+            ]
+          ],
+          [
+            [
+              2,
+              1,
+              2,
+              -1
+            ],
+            [
+              2,
+              1,
+              2,
+              0
+            ],
+            [
+              3,
+              1,
+              2,
+              -1
+            ],
+            [
+              3,
+              1,
+              2,
+              0
+            ]
+          ],
+          [
+            [
+              2,
+              1,
+              2,
+              -1
+            ],
+            [
+              2,
+              1,
+              2,
+              0
+            ],
+            [
+              2,
+              2,
+              2,
+              -1
+            ],
+            [
+              2,
+              2,
+              2,
+              0
+            ]
+          ],
+          [
+            [
+              2,
+              2,
+              2,
+              -1
+            ],
+            [
+              2,
+              2,
+              2,
+              0
+            ],
+            [
+              3,
+              3,
+              3,
+              0
+            ],
+            [
+              3,
+              3,
+              3,
+              1
+            ]
+          ],
+          [
+            [
+              2,
+              1,
+              2,
+              -2
+            ],
+            [
+              2,
+              1,
+              2,
+              -1
+            ],
+            [
+              3,
+              1,
+              2,
+              -2
+            ],
+            [
+              3,
+              1,
+              2,
+              -1
+            ]
+          ],
+          [
+            [
+              2,
+              1,
+              2,
+              -2
+            ],
+            [
+              2,
+              1,
+              2,
+              -1
+            ],
+            [
+              2,
+              2,
+              2,
+              -2
+            ],
+            [
+              2,
+              2,
+              2,
+              -1
+            ]
+          ],
+          [
+            [
+              2,
+              2,
+              2,
+              -2
+            ],
+            [
+              2,
+              2,
+              2,
+              -1
+            ],
+            [
+              3,
+              3,
+              3,
+              -1
+            ],
+            [
+              3,
+              3,
+              3,
+              0
+            ]
+          ],
+          [
+            [
+              2,
+              1,
+              2,
+              -3
+            ],
+            [
+              2,
+              1,
+              2,
+              -2
+            ],
+            [
+              3,
+              1,
+              2,
+              -3
+            ],
+            [
+              3,
+              1,
+              2,
+              -2
+            ]
+          ]
+        ],
+        "unit": [
+          [
+            2,
+            1,
+            2,
+            -3
+          ],
+          [
+            2,
+            1,
+            2,
+            -2
+          ],
+          [
+            2,
+            2,
+            2,
+            -3
+          ],
+          [
+            2,
+            2,
+            2,
+            -2
+          ]
+        ]
+      },
+      "receipt": {
+        "counts": {
+          "contact_checks": 9,
+          "nodes": 1
+        },
+        "status": "EXHAUSTED_INDEPENDENT_UNITS"
+      }
+    },
+    {
+      "arm": "unit",
+      "case": "hierarchy-remote-million-03",
+      "certificate": {
+        "edge": [
+          [
+            0,
+            1,
+            0,
+            -1
+          ],
+          [
+            0,
+            2,
+            0,
+            -1
+          ]
+        ],
+        "macro": [
+          [
+            [
+              0,
+              1,
+              0,
+              -1
+            ],
+            [
+              0,
+              2,
+              0,
+              -1
+            ],
+            [
+              1,
+              2,
+              1,
+              0
+            ],
+            [
+              1,
+              3,
+              1,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              2,
+              0,
+              -2
+            ],
+            [
+              0,
+              2,
+              0,
+              -1
+            ],
+            [
+              1,
+              3,
+              1,
+              -1
+            ],
+            [
+              1,
+              3,
+              1,
+              0
+            ]
+          ]
+        ],
+        "path": [
+          [
+            [
+              3,
+              2,
+              -2,
+              -4
+            ],
+            [
+              3,
+              2,
+              -2,
+              -3
+            ],
+            [
+              4,
+              2,
+              -2,
+              -4
+            ],
+            [
+              4,
+              2,
+              -2,
+              -3
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0,
+              0
+            ],
+            [
+              1,
+              0,
+              0,
+              0
+            ],
+            [
+              1,
+              1,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              1,
+              0,
+              -1
+            ],
+            [
+              0,
+              1,
+              0,
+              0
+            ],
+            [
+              1,
+              1,
+              0,
+              -1
+            ],
+            [
+              1,
+              1,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              1,
+              0,
+              -2
+            ],
+            [
+              0,
+              1,
+              0,
+              -1
+            ],
+            [
+              1,
+              1,
+              0,
+              -2
+            ],
+            [
+              1,
+              1,
+              0,
+              -1
+            ]
+          ],
+          [
+            [
+              0,
+              1,
+              0,
+              -2
+            ],
+            [
+              0,
+              1,
+              0,
+              -1
+            ],
+            [
+              0,
+              2,
+              0,
+              -2
+            ],
+            [
+              0,
+              2,
+              0,
+              -1
+            ]
+          ]
+        ],
+        "unit": [
+          [
+            0,
+            1,
+            0,
+            -1
+          ],
+          [
+            0,
+            2,
+            0,
+            -1
+          ],
+          [
+            1,
+            2,
+            1,
+            0
+          ],
+          [
+            1,
+            3,
+            1,
+            0
+          ]
+        ]
+      },
+      "receipt": {
+        "counts": {
+          "contact_checks": 6,
+          "nodes": 1
+        },
+        "status": "EXHAUSTED_INDEPENDENT_UNITS"
+      }
+    }
+  ],
+  "schema": "PENROSE-MOVE-POLICY-CONTROLS-v1",
+  "timing": {
+    "median_totals": {
+      "learned": 18696397578,
+      "static": 16368547537,
+      "unit": 16349384081,
+      "unit_only": 10709317042
+    },
+    "repeats": 3,
+    "samples": {
+      "learned": [
+        {
+          "alternate-alternating-00": 347256292,
+          "alternate-alternating-01": 251149083,
+          "alternate-alternating-02": 11093333,
+          "alternate-alternating-03": 979098250,
+          "alternate-alternating-04": 10757875,
+          "alternate-alternating-05": 645515042,
+          "alternate-alternating-06": 3975208,
+          "alternate-alternating-07": 22474958,
+          "alternate-dense-00": 252008375,
+          "alternate-dense-01": 38225667,
+          "alternate-dense-02": 200622791,
+          "alternate-dense-03": 398444083,
+          "alternate-dense-04": 127895834,
+          "alternate-dense-05": 546977041,
+          "alternate-dense-06": 232658583,
+          "alternate-dense-07": 47815125,
+          "alternate-ragged-00": 43287750,
+          "alternate-ragged-01": 21594708,
+          "alternate-ragged-02": 20347334,
+          "alternate-ragged-03": 14408000,
+          "alternate-ragged-04": 41050125,
+          "alternate-ragged-05": 14936458,
+          "alternate-ragged-06": 20106459,
+          "alternate-ragged-07": 41182291,
+          "generated-alternating-00": 82645291,
+          "generated-alternating-01": 347880000,
+          "generated-alternating-02": 104911583,
+          "generated-alternating-03": 932134583,
+          "generated-alternating-04": 45980916,
+          "generated-alternating-05": 79124125,
+          "generated-alternating-06": 60942666,
+          "generated-alternating-07": 84292000,
+          "generated-alternating-08": 127077666,
+          "generated-alternating-09": 802717875,
+          "generated-alternating-10": 36099875,
+          "generated-alternating-11": 942356750,
+          "generated-alternating-12": 220794625,
+          "generated-alternating-13": 35681833,
+          "generated-alternating-14": 848109458,
+          "generated-alternating-15": 287291333,
+          "generated-alternating-16": 105693667,
+          "generated-alternating-17": 26970958,
+          "generated-alternating-18": 129823500,
+          "generated-alternating-19": 112645625,
+          "generated-alternating-20": 127293209,
+          "generated-alternating-21": 62919208,
+          "generated-alternating-22": 181341417,
+          "generated-alternating-23": 679193875,
+          "generated-dense-00": 50793041,
+          "generated-dense-01": 22691042,
+          "generated-dense-02": 83403708,
+          "generated-dense-03": 88445625,
+          "generated-dense-04": 61120292,
+          "generated-dense-05": 144056958,
+          "generated-dense-06": 26358500,
+          "generated-dense-07": 57800208,
+          "generated-dense-08": 79535250,
+          "generated-dense-09": 177451792,
+          "generated-dense-10": 53798292,
+          "generated-dense-11": 118410500,
+          "generated-dense-12": 148918583,
+          "generated-dense-13": 33192083,
+          "generated-dense-14": 144664625,
+          "generated-dense-15": 125529416,
+          "generated-dense-16": 153946584,
+          "generated-dense-17": 24252042,
+          "generated-dense-18": 31398459,
+          "generated-dense-19": 41118250,
+          "generated-dense-20": 24252958,
+          "generated-dense-21": 36164917,
+          "generated-dense-22": 203591208,
+          "generated-dense-23": 134691959,
+          "generated-ragged-00": 83084500,
+          "generated-ragged-01": 109359541,
+          "generated-ragged-02": 127192667,
+          "generated-ragged-03": 56880708,
+          "generated-ragged-04": 161302500,
+          "generated-ragged-05": 54591334,
+          "generated-ragged-06": 37678333,
+          "generated-ragged-07": 204055166,
+          "generated-ragged-08": 114785250,
+          "generated-ragged-09": 137545375,
+          "generated-ragged-10": 247991375,
+          "generated-ragged-11": 213615042,
+          "generated-ragged-12": 181996958,
+          "generated-ragged-13": 88504167,
+          "generated-ragged-14": 217734958,
+          "generated-ragged-15": 85681250,
+          "generated-ragged-16": 86681458,
+          "generated-ragged-17": 163871583,
+          "generated-ragged-18": 130983167,
+          "generated-ragged-19": 95742542,
+          "generated-ragged-20": 266221000,
+          "generated-ragged-21": 193258750,
+          "generated-ragged-22": 37572042,
+          "generated-ragged-23": 142823709,
+          "hierarchy-hole-00": 21164708,
+          "hierarchy-hole-01": 239922708,
+          "hierarchy-hole-02": 147934250,
+          "hierarchy-hole-03": 24023833,
+          "hierarchy-hole-04": 289174542,
+          "hierarchy-hole-05": 121165125,
+          "hierarchy-local-large-00": 73557750,
+          "hierarchy-local-large-01": 75571708,
+          "hierarchy-local-large-02": 38667083,
+          "hierarchy-local-large-03": 61458458,
+          "hierarchy-local-large-04": 43666417,
+          "hierarchy-local-large-05": 205681667,
+          "hierarchy-remote-million-00": 145966750,
+          "hierarchy-remote-million-01": 175365083,
+          "hierarchy-remote-million-02": 65390458,
+          "hierarchy-remote-million-03": 211768167,
+          "hierarchy-remote-million-04": 351508416,
+          "hierarchy-remote-million-05": 14061750,
+          "hierarchy-split-remote-00": 22349500,
+          "hierarchy-split-remote-01": 72810459,
+          "hierarchy-split-remote-02": 40391000,
+          "hierarchy-split-remote-03": 35562125,
+          "hierarchy-split-remote-04": 52109667,
+          "hierarchy-split-remote-05": 65583584
+        },
+        {
+          "alternate-alternating-00": 308323208,
+          "alternate-alternating-01": 260122583,
+          "alternate-alternating-02": 5851792,
+          "alternate-alternating-03": 872986666,
+          "alternate-alternating-04": 13852375,
+          "alternate-alternating-05": 564969833,
+          "alternate-alternating-06": 4878666,
+          "alternate-alternating-07": 19687292,
+          "alternate-dense-00": 4302212625,
+          "alternate-dense-01": 58772417,
+          "alternate-dense-02": 102239167,
+          "alternate-dense-03": 365156917,
+          "alternate-dense-04": 136355500,
+          "alternate-dense-05": 527386500,
+          "alternate-dense-06": 211962542,
+          "alternate-dense-07": 39368041,
+          "alternate-ragged-00": 26811042,
+          "alternate-ragged-01": 25813708,
+          "alternate-ragged-02": 20848750,
+          "alternate-ragged-03": 14702709,
+          "alternate-ragged-04": 47364292,
+          "alternate-ragged-05": 7621333,
+          "alternate-ragged-06": 17005250,
+          "alternate-ragged-07": 56869583,
+          "generated-alternating-00": 64445541,
+          "generated-alternating-01": 329115542,
+          "generated-alternating-02": 99788750,
+          "generated-alternating-03": 920875250,
+          "generated-alternating-04": 35406083,
+          "generated-alternating-05": 43947750,
+          "generated-alternating-06": 55404375,
+          "generated-alternating-07": 85125959,
+          "generated-alternating-08": 121497083,
+          "generated-alternating-09": 658120708,
+          "generated-alternating-10": 38977166,
+          "generated-alternating-11": 761452042,
+          "generated-alternating-12": 195175584,
+          "generated-alternating-13": 44559625,
+          "generated-alternating-14": 842645959,
+          "generated-alternating-15": 276358667,
+          "generated-alternating-16": 98761083,
+          "generated-alternating-17": 35451250,
+          "generated-alternating-18": 136258459,
+          "generated-alternating-19": 79254875,
+          "generated-alternating-20": 110408750,
+          "generated-alternating-21": 57419916,
+          "generated-alternating-22": 148548125,
+          "generated-alternating-23": 642085334,
+          "generated-dense-00": 50978875,
+          "generated-dense-01": 36036292,
+          "generated-dense-02": 83628792,
+          "generated-dense-03": 81481875,
+          "generated-dense-04": 75529458,
+          "generated-dense-05": 155321459,
+          "generated-dense-06": 27301500,
+          "generated-dense-07": 48361666,
+          "generated-dense-08": 85253458,
+          "generated-dense-09": 192347416,
+          "generated-dense-10": 66332583,
+          "generated-dense-11": 123181334,
+          "generated-dense-12": 142094834,
+          "generated-dense-13": 41303625,
+          "generated-dense-14": 133878000,
+          "generated-dense-15": 145270708,
+          "generated-dense-16": 130806833,
+          "generated-dense-17": 25832709,
+          "generated-dense-18": 31925459,
+          "generated-dense-19": 55954541,
+          "generated-dense-20": 36373583,
+          "generated-dense-21": 45130917,
+          "generated-dense-22": 213235875,
+          "generated-dense-23": 124166334,
+          "generated-ragged-00": 91445916,
+          "generated-ragged-01": 100058584,
+          "generated-ragged-02": 153590334,
+          "generated-ragged-03": 63717875,
+          "generated-ragged-04": 180500958,
+          "generated-ragged-05": 48327125,
+          "generated-ragged-06": 36681667,
+          "generated-ragged-07": 248953791,
+          "generated-ragged-08": 111409709,
+          "generated-ragged-09": 126256750,
+          "generated-ragged-10": 220593459,
+          "generated-ragged-11": 168295708,
+          "generated-ragged-12": 160251417,
+          "generated-ragged-13": 82060000,
+          "generated-ragged-14": 220124959,
+          "generated-ragged-15": 80129875,
+          "generated-ragged-16": 89034667,
+          "generated-ragged-17": 133505083,
+          "generated-ragged-18": 97640959,
+          "generated-ragged-19": 98916625,
+          "generated-ragged-20": 241964833,
+          "generated-ragged-21": 195768708,
+          "generated-ragged-22": 35645125,
+          "generated-ragged-23": 125603250,
+          "hierarchy-hole-00": 20008125,
+          "hierarchy-hole-01": 189969083,
+          "hierarchy-hole-02": 128588709,
+          "hierarchy-hole-03": 19383833,
+          "hierarchy-hole-04": 271138083,
+          "hierarchy-hole-05": 116301458,
+          "hierarchy-local-large-00": 53801958,
+          "hierarchy-local-large-01": 70733375,
+          "hierarchy-local-large-02": 36716291,
+          "hierarchy-local-large-03": 56594292,
+          "hierarchy-local-large-04": 37211083,
+          "hierarchy-local-large-05": 194809500,
+          "hierarchy-remote-million-00": 121423917,
+          "hierarchy-remote-million-01": 159997000,
+          "hierarchy-remote-million-02": 25818417,
+          "hierarchy-remote-million-03": 222062792,
+          "hierarchy-remote-million-04": 314420250,
+          "hierarchy-remote-million-05": 9801542,
+          "hierarchy-split-remote-00": 26248333,
+          "hierarchy-split-remote-01": 71835291,
+          "hierarchy-split-remote-02": 36388417,
+          "hierarchy-split-remote-03": 36909625,
+          "hierarchy-split-remote-04": 48174625,
+          "hierarchy-split-remote-05": 49619667
+        },
+        {
+          "alternate-alternating-00": 303734666,
+          "alternate-alternating-01": 287600541,
+          "alternate-alternating-02": 5985917,
+          "alternate-alternating-03": 977403041,
+          "alternate-alternating-04": 4432750,
+          "alternate-alternating-05": 590929542,
+          "alternate-alternating-06": 7256042,
+          "alternate-alternating-07": 21125041,
+          "alternate-dense-00": 252455458,
+          "alternate-dense-01": 67308334,
+          "alternate-dense-02": 185828834,
+          "alternate-dense-03": 408686625,
+          "alternate-dense-04": 114122875,
+          "alternate-dense-05": 553769541,
+          "alternate-dense-06": 214331834,
+          "alternate-dense-07": 38433416,
+          "alternate-ragged-00": 36045250,
+          "alternate-ragged-01": 30256917,
+          "alternate-ragged-02": 28693417,
+          "alternate-ragged-03": 15367125,
+          "alternate-ragged-04": 38922916,
+          "alternate-ragged-05": 10422333,
+          "alternate-ragged-06": 8265000,
+          "alternate-ragged-07": 45767167,
+          "generated-alternating-00": 77526667,
+          "generated-alternating-01": 334873959,
+          "generated-alternating-02": 106220500,
+          "generated-alternating-03": 976110042,
+          "generated-alternating-04": 33987916,
+          "generated-alternating-05": 54346792,
+          "generated-alternating-06": 42692542,
+          "generated-alternating-07": 92175125,
+          "generated-alternating-08": 131368291,
+          "generated-alternating-09": 686704875,
+          "generated-alternating-10": 29097250,
+          "generated-alternating-11": 851806333,
+          "generated-alternating-12": 193512042,
+          "generated-alternating-13": 38471167,
+          "generated-alternating-14": 819620167,
+          "generated-alternating-15": 279072917,
+          "generated-alternating-16": 104935541,
+          "generated-alternating-17": 45037542,
+          "generated-alternating-18": 141159291,
+          "generated-alternating-19": 80874000,
+          "generated-alternating-20": 98290792,
+          "generated-alternating-21": 57864875,
+          "generated-alternating-22": 151242708,
+          "generated-alternating-23": 622961958,
+          "generated-dense-00": 74177667,
+          "generated-dense-01": 34655125,
+          "generated-dense-02": 142739333,
+          "generated-dense-03": 98572834,
+          "generated-dense-04": 76222042,
+          "generated-dense-05": 149207542,
+          "generated-dense-06": 32991917,
+          "generated-dense-07": 32851584,
+          "generated-dense-08": 92352625,
+          "generated-dense-09": 198980084,
+          "generated-dense-10": 67196875,
+          "generated-dense-11": 124150625,
+          "generated-dense-12": 167760084,
+          "generated-dense-13": 31313458,
+          "generated-dense-14": 120739791,
+          "generated-dense-15": 136712167,
+          "generated-dense-16": 153279917,
+          "generated-dense-17": 26793291,
+          "generated-dense-18": 39692833,
+          "generated-dense-19": 59719542,
+          "generated-dense-20": 44575584,
+          "generated-dense-21": 38946917,
+          "generated-dense-22": 195633500,
+          "generated-dense-23": 121126625,
+          "generated-ragged-00": 105938541,
+          "generated-ragged-01": 85065500,
+          "generated-ragged-02": 134564708,
+          "generated-ragged-03": 74836292,
+          "generated-ragged-04": 185217459,
+          "generated-ragged-05": 59169583,
+          "generated-ragged-06": 35311125,
+          "generated-ragged-07": 224317916,
+          "generated-ragged-08": 117518125,
+          "generated-ragged-09": 132724542,
+          "generated-ragged-10": 195523083,
+          "generated-ragged-11": 186704709,
+          "generated-ragged-12": 162253458,
+          "generated-ragged-13": 89049334,
+          "generated-ragged-14": 233805500,
+          "generated-ragged-15": 81007375,
+          "generated-ragged-16": 82282584,
+          "generated-ragged-17": 140580083,
+          "generated-ragged-18": 147057959,
+          "generated-ragged-19": 93772041,
+          "generated-ragged-20": 236885708,
+          "generated-ragged-21": 179380958,
+          "generated-ragged-22": 37765000,
+          "generated-ragged-23": 137141667,
+          "hierarchy-hole-00": 20756666,
+          "hierarchy-hole-01": 198873584,
+          "hierarchy-hole-02": 135447375,
+          "hierarchy-hole-03": 28881458,
+          "hierarchy-hole-04": 248923333,
+          "hierarchy-hole-05": 110069667,
+          "hierarchy-local-large-00": 52564542,
+          "hierarchy-local-large-01": 60430666,
+          "hierarchy-local-large-02": 39371917,
+          "hierarchy-local-large-03": 39864375,
+          "hierarchy-local-large-04": 39848916,
+          "hierarchy-local-large-05": 185902875,
+          "hierarchy-remote-million-00": 126140542,
+          "hierarchy-remote-million-01": 140818750,
+          "hierarchy-remote-million-02": 53220583,
+          "hierarchy-remote-million-03": 241914834,
+          "hierarchy-remote-million-04": 352977042,
+          "hierarchy-remote-million-05": 14884416,
+          "hierarchy-split-remote-00": 21114541,
+          "hierarchy-split-remote-01": 64503083,
+          "hierarchy-split-remote-02": 47231000,
+          "hierarchy-split-remote-03": 35037375,
+          "hierarchy-split-remote-04": 65175250,
+          "hierarchy-split-remote-05": 56760917
+        }
+      ],
+      "static": [
+        {
+          "alternate-alternating-00": 305438791,
+          "alternate-alternating-01": 182332125,
+          "alternate-alternating-02": 15243333,
+          "alternate-alternating-03": 844425417,
+          "alternate-alternating-04": 6483041,
+          "alternate-alternating-05": 443341792,
+          "alternate-alternating-06": 2754250,
+          "alternate-alternating-07": 21888250,
+          "alternate-dense-00": 251786791,
+          "alternate-dense-01": 12100500,
+          "alternate-dense-02": 39426500,
+          "alternate-dense-03": 2356338375,
+          "alternate-dense-04": 23626875,
+          "alternate-dense-05": 586726833,
+          "alternate-dense-06": 166442583,
+          "alternate-dense-07": 41990541,
+          "alternate-ragged-00": 40779875,
+          "alternate-ragged-01": 21624875,
+          "alternate-ragged-02": 22803167,
+          "alternate-ragged-03": 23340958,
+          "alternate-ragged-04": 36104042,
+          "alternate-ragged-05": 13089292,
+          "alternate-ragged-06": 17855875,
+          "alternate-ragged-07": 45115042,
+          "generated-alternating-00": 65482917,
+          "generated-alternating-01": 227021750,
+          "generated-alternating-02": 181812709,
+          "generated-alternating-03": 904278916,
+          "generated-alternating-04": 43850709,
+          "generated-alternating-05": 50750500,
+          "generated-alternating-06": 37678166,
+          "generated-alternating-07": 181537416,
+          "generated-alternating-08": 49640291,
+          "generated-alternating-09": 775987500,
+          "generated-alternating-10": 22435750,
+          "generated-alternating-11": 704226542,
+          "generated-alternating-12": 84661042,
+          "generated-alternating-13": 132592958,
+          "generated-alternating-14": 719361834,
+          "generated-alternating-15": 270581458,
+          "generated-alternating-16": 637485334,
+          "generated-alternating-17": 29663667,
+          "generated-alternating-18": 87223792,
+          "generated-alternating-19": 61895417,
+          "generated-alternating-20": 39072667,
+          "generated-alternating-21": 53261417,
+          "generated-alternating-22": 62764959,
+          "generated-alternating-23": 641873667,
+          "generated-dense-00": 27685250,
+          "generated-dense-01": 16830833,
+          "generated-dense-02": 46461666,
+          "generated-dense-03": 60360500,
+          "generated-dense-04": 25853041,
+          "generated-dense-05": 56606542,
+          "generated-dense-06": 24931167,
+          "generated-dense-07": 50877458,
+          "generated-dense-08": 67662750,
+          "generated-dense-09": 61663917,
+          "generated-dense-10": 26575416,
+          "generated-dense-11": 59344417,
+          "generated-dense-12": 43167708,
+          "generated-dense-13": 43936791,
+          "generated-dense-14": 76796625,
+          "generated-dense-15": 46552583,
+          "generated-dense-16": 71318625,
+          "generated-dense-17": 19069750,
+          "generated-dense-18": 28574917,
+          "generated-dense-19": 125622333,
+          "generated-dense-20": 24981125,
+          "generated-dense-21": 34035292,
+          "generated-dense-22": 75489791,
+          "generated-dense-23": 128172709,
+          "generated-ragged-00": 72347792,
+          "generated-ragged-01": 87080625,
+          "generated-ragged-02": 84636792,
+          "generated-ragged-03": 69643916,
+          "generated-ragged-04": 201791458,
+          "generated-ragged-05": 45517208,
+          "generated-ragged-06": 43827500,
+          "generated-ragged-07": 215966375,
+          "generated-ragged-08": 106358625,
+          "generated-ragged-09": 111162083,
+          "generated-ragged-10": 151244000,
+          "generated-ragged-11": 211797792,
+          "generated-ragged-12": 164523625,
+          "generated-ragged-13": 85217667,
+          "generated-ragged-14": 219031125,
+          "generated-ragged-15": 69455917,
+          "generated-ragged-16": 87052875,
+          "generated-ragged-17": 138369292,
+          "generated-ragged-18": 119874625,
+          "generated-ragged-19": 103727292,
+          "generated-ragged-20": 226579125,
+          "generated-ragged-21": 196068458,
+          "generated-ragged-22": 32415208,
+          "generated-ragged-23": 117987208,
+          "hierarchy-hole-00": 46956917,
+          "hierarchy-hole-01": 106808500,
+          "hierarchy-hole-02": 134879833,
+          "hierarchy-hole-03": 21595375,
+          "hierarchy-hole-04": 81586458,
+          "hierarchy-hole-05": 116877417,
+          "hierarchy-local-large-00": 45395625,
+          "hierarchy-local-large-01": 79440791,
+          "hierarchy-local-large-02": 28999292,
+          "hierarchy-local-large-03": 48969166,
+          "hierarchy-local-large-04": 44363667,
+          "hierarchy-local-large-05": 60525208,
+          "hierarchy-remote-million-00": 49630375,
+          "hierarchy-remote-million-01": 136995084,
+          "hierarchy-remote-million-02": 44414750,
+          "hierarchy-remote-million-03": 89400958,
+          "hierarchy-remote-million-04": 75378750,
+          "hierarchy-remote-million-05": 15217333,
+          "hierarchy-split-remote-00": 23195708,
+          "hierarchy-split-remote-01": 27816541,
+          "hierarchy-split-remote-02": 42623833,
+          "hierarchy-split-remote-03": 22817917,
+          "hierarchy-split-remote-04": 45320875,
+          "hierarchy-split-remote-05": 51078792
+        },
+        {
+          "alternate-alternating-00": 351657334,
+          "alternate-alternating-01": 213851125,
+          "alternate-alternating-02": 5866500,
+          "alternate-alternating-03": 874732000,
+          "alternate-alternating-04": 4321834,
+          "alternate-alternating-05": 508145500,
+          "alternate-alternating-06": 5145708,
+          "alternate-alternating-07": 15215417,
+          "alternate-dense-00": 251147875,
+          "alternate-dense-01": 12205583,
+          "alternate-dense-02": 70017542,
+          "alternate-dense-03": 394453583,
+          "alternate-dense-04": 49765041,
+          "alternate-dense-05": 607728250,
+          "alternate-dense-06": 216773417,
+          "alternate-dense-07": 29741500,
+          "alternate-ragged-00": 30339708,
+          "alternate-ragged-01": 26098750,
+          "alternate-ragged-02": 16217958,
+          "alternate-ragged-03": 10903125,
+          "alternate-ragged-04": 47384667,
+          "alternate-ragged-05": 13949958,
+          "alternate-ragged-06": 23570250,
+          "alternate-ragged-07": 44355750,
+          "generated-alternating-00": 81484791,
+          "generated-alternating-01": 259080125,
+          "generated-alternating-02": 199853292,
+          "generated-alternating-03": 988772375,
+          "generated-alternating-04": 29097791,
+          "generated-alternating-05": 47259500,
+          "generated-alternating-06": 34797500,
+          "generated-alternating-07": 198699042,
+          "generated-alternating-08": 39240292,
+          "generated-alternating-09": 739933583,
+          "generated-alternating-10": 16569500,
+          "generated-alternating-11": 724921833,
+          "generated-alternating-12": 74656500,
+          "generated-alternating-13": 114365542,
+          "generated-alternating-14": 724515834,
+          "generated-alternating-15": 280377666,
+          "generated-alternating-16": 607646625,
+          "generated-alternating-17": 28591292,
+          "generated-alternating-18": 102948958,
+          "generated-alternating-19": 89382375,
+          "generated-alternating-20": 41778166,
+          "generated-alternating-21": 56771083,
+          "generated-alternating-22": 47241875,
+          "generated-alternating-23": 679026000,
+          "generated-dense-00": 21217625,
+          "generated-dense-01": 16642166,
+          "generated-dense-02": 56610458,
+          "generated-dense-03": 101685042,
+          "generated-dense-04": 40304666,
+          "generated-dense-05": 78311875,
+          "generated-dense-06": 20661125,
+          "generated-dense-07": 62420750,
+          "generated-dense-08": 97974875,
+          "generated-dense-09": 97433375,
+          "generated-dense-10": 25057792,
+          "generated-dense-11": 68047667,
+          "generated-dense-12": 59259042,
+          "generated-dense-13": 46113041,
+          "generated-dense-14": 96556542,
+          "generated-dense-15": 49118125,
+          "generated-dense-16": 90364167,
+          "generated-dense-17": 25324125,
+          "generated-dense-18": 30655083,
+          "generated-dense-19": 163159375,
+          "generated-dense-20": 44256167,
+          "generated-dense-21": 38223417,
+          "generated-dense-22": 78510000,
+          "generated-dense-23": 201730875,
+          "generated-ragged-00": 75784083,
+          "generated-ragged-01": 107407125,
+          "generated-ragged-02": 106101625,
+          "generated-ragged-03": 91403541,
+          "generated-ragged-04": 196112292,
+          "generated-ragged-05": 54257375,
+          "generated-ragged-06": 38112041,
+          "generated-ragged-07": 243720000,
+          "generated-ragged-08": 106296750,
+          "generated-ragged-09": 131570542,
+          "generated-ragged-10": 175640875,
+          "generated-ragged-11": 260828791,
+          "generated-ragged-12": 184339542,
+          "generated-ragged-13": 82024000,
+          "generated-ragged-14": 226829291,
+          "generated-ragged-15": 93928166,
+          "generated-ragged-16": 79275833,
+          "generated-ragged-17": 148281500,
+          "generated-ragged-18": 122699375,
+          "generated-ragged-19": 112101750,
+          "generated-ragged-20": 257315834,
+          "generated-ragged-21": 214541292,
+          "generated-ragged-22": 50392583,
+          "generated-ragged-23": 132871709,
+          "hierarchy-hole-00": 29148875,
+          "hierarchy-hole-01": 94851542,
+          "hierarchy-hole-02": 155841250,
+          "hierarchy-hole-03": 24067833,
+          "hierarchy-hole-04": 77012542,
+          "hierarchy-hole-05": 99938083,
+          "hierarchy-local-large-00": 54762042,
+          "hierarchy-local-large-01": 67756583,
+          "hierarchy-local-large-02": 31405833,
+          "hierarchy-local-large-03": 35569333,
+          "hierarchy-local-large-04": 29942958,
+          "hierarchy-local-large-05": 87357250,
+          "hierarchy-remote-million-00": 58373125,
+          "hierarchy-remote-million-01": 148898833,
+          "hierarchy-remote-million-02": 37391167,
+          "hierarchy-remote-million-03": 100431500,
+          "hierarchy-remote-million-04": 73898500,
+          "hierarchy-remote-million-05": 14970625,
+          "hierarchy-split-remote-00": 26772250,
+          "hierarchy-split-remote-01": 25011833,
+          "hierarchy-split-remote-02": 40399250,
+          "hierarchy-split-remote-03": 32466500,
+          "hierarchy-split-remote-04": 44978417,
+          "hierarchy-split-remote-05": 45228208
+        },
+        {
+          "alternate-alternating-00": 334562167,
+          "alternate-alternating-01": 222457083,
+          "alternate-alternating-02": 8762667,
+          "alternate-alternating-03": 825665208,
+          "alternate-alternating-04": 4320833,
+          "alternate-alternating-05": 453576833,
+          "alternate-alternating-06": 3717208,
+          "alternate-alternating-07": 17338792,
+          "alternate-dense-00": 254518750,
+          "alternate-dense-01": 12288917,
+          "alternate-dense-02": 39892375,
+          "alternate-dense-03": 438961292,
+          "alternate-dense-04": 42757292,
+          "alternate-dense-05": 523362667,
+          "alternate-dense-06": 201623958,
+          "alternate-dense-07": 43633042,
+          "alternate-ragged-00": 33298750,
+          "alternate-ragged-01": 22963500,
+          "alternate-ragged-02": 23806458,
+          "alternate-ragged-03": 16992542,
+          "alternate-ragged-04": 23476166,
+          "alternate-ragged-05": 7688792,
+          "alternate-ragged-06": 12284208,
+          "alternate-ragged-07": 53208792,
+          "generated-alternating-00": 57953292,
+          "generated-alternating-01": 228039958,
+          "generated-alternating-02": 186618375,
+          "generated-alternating-03": 984753750,
+          "generated-alternating-04": 36956875,
+          "generated-alternating-05": 59985958,
+          "generated-alternating-06": 38753958,
+          "generated-alternating-07": 175488125,
+          "generated-alternating-08": 53497416,
+          "generated-alternating-09": 738182667,
+          "generated-alternating-10": 34444125,
+          "generated-alternating-11": 726461250,
+          "generated-alternating-12": 84680208,
+          "generated-alternating-13": 122585833,
+          "generated-alternating-14": 738565125,
+          "generated-alternating-15": 283254000,
+          "generated-alternating-16": 628642208,
+          "generated-alternating-17": 39707875,
+          "generated-alternating-18": 80965875,
+          "generated-alternating-19": 72827125,
+          "generated-alternating-20": 36275875,
+          "generated-alternating-21": 39449166,
+          "generated-alternating-22": 68130625,
+          "generated-alternating-23": 727891125,
+          "generated-dense-00": 21465417,
+          "generated-dense-01": 16914375,
+          "generated-dense-02": 47016750,
+          "generated-dense-03": 65030250,
+          "generated-dense-04": 49262583,
+          "generated-dense-05": 70397000,
+          "generated-dense-06": 25651666,
+          "generated-dense-07": 67061834,
+          "generated-dense-08": 73089584,
+          "generated-dense-09": 50803500,
+          "generated-dense-10": 30103250,
+          "generated-dense-11": 84193417,
+          "generated-dense-12": 59664084,
+          "generated-dense-13": 44668917,
+          "generated-dense-14": 81307459,
+          "generated-dense-15": 41849208,
+          "generated-dense-16": 87903125,
+          "generated-dense-17": 23213666,
+          "generated-dense-18": 26559084,
+          "generated-dense-19": 110744334,
+          "generated-dense-20": 21246667,
+          "generated-dense-21": 27974833,
+          "generated-dense-22": 71986375,
+          "generated-dense-23": 153254792,
+          "generated-ragged-00": 83114458,
+          "generated-ragged-01": 83087250,
+          "generated-ragged-02": 100180667,
+          "generated-ragged-03": 84764458,
+          "generated-ragged-04": 195915083,
+          "generated-ragged-05": 64718375,
+          "generated-ragged-06": 41033000,
+          "generated-ragged-07": 216695167,
+          "generated-ragged-08": 119306709,
+          "generated-ragged-09": 101568500,
+          "generated-ragged-10": 164119375,
+          "generated-ragged-11": 213142291,
+          "generated-ragged-12": 143069958,
+          "generated-ragged-13": 43397875,
+          "generated-ragged-14": 118391833,
+          "generated-ragged-15": 44162042,
+          "generated-ragged-16": 43853875,
+          "generated-ragged-17": 77747375,
+          "generated-ragged-18": 85684875,
+          "generated-ragged-19": 78141792,
+          "generated-ragged-20": 232569875,
+          "generated-ragged-21": 177613750,
+          "generated-ragged-22": 34583375,
+          "generated-ragged-23": 106610833,
+          "hierarchy-hole-00": 41220542,
+          "hierarchy-hole-01": 102593250,
+          "hierarchy-hole-02": 115156208,
+          "hierarchy-hole-03": 22464541,
+          "hierarchy-hole-04": 89621084,
+          "hierarchy-hole-05": 117505333,
+          "hierarchy-local-large-00": 54600583,
+          "hierarchy-local-large-01": 69866875,
+          "hierarchy-local-large-02": 45618041,
+          "hierarchy-local-large-03": 34268166,
+          "hierarchy-local-large-04": 25667708,
+          "hierarchy-local-large-05": 82300833,
+          "hierarchy-remote-million-00": 61734375,
+          "hierarchy-remote-million-01": 147247084,
+          "hierarchy-remote-million-02": 47316334,
+          "hierarchy-remote-million-03": 93404500,
+          "hierarchy-remote-million-04": 65072750,
+          "hierarchy-remote-million-05": 10587583,
+          "hierarchy-split-remote-00": 30616417,
+          "hierarchy-split-remote-01": 29393625,
+          "hierarchy-split-remote-02": 33000333,
+          "hierarchy-split-remote-03": 17295958,
+          "hierarchy-split-remote-04": 42992292,
+          "hierarchy-split-remote-05": 63365917
+        }
+      ],
+      "unit": [
+        {
+          "alternate-alternating-00": 309186084,
+          "alternate-alternating-01": 120323708,
+          "alternate-alternating-02": 3484750,
+          "alternate-alternating-03": 793897792,
+          "alternate-alternating-04": 6672750,
+          "alternate-alternating-05": 516304000,
+          "alternate-alternating-06": 8192042,
+          "alternate-alternating-07": 13586458,
+          "alternate-dense-00": 235796834,
+          "alternate-dense-01": 16017042,
+          "alternate-dense-02": 50752292,
+          "alternate-dense-03": 393824292,
+          "alternate-dense-04": 42330667,
+          "alternate-dense-05": 547963750,
+          "alternate-dense-06": 188175250,
+          "alternate-dense-07": 48962583,
+          "alternate-ragged-00": 25948583,
+          "alternate-ragged-01": 16981875,
+          "alternate-ragged-02": 14016958,
+          "alternate-ragged-03": 8398666,
+          "alternate-ragged-04": 14617375,
+          "alternate-ragged-05": 8232917,
+          "alternate-ragged-06": 16783000,
+          "alternate-ragged-07": 27310834,
+          "generated-alternating-00": 72392458,
+          "generated-alternating-01": 114454709,
+          "generated-alternating-02": 82642417,
+          "generated-alternating-03": 750045417,
+          "generated-alternating-04": 30754708,
+          "generated-alternating-05": 68708959,
+          "generated-alternating-06": 41442959,
+          "generated-alternating-07": 78721625,
+          "generated-alternating-08": 50964625,
+          "generated-alternating-09": 615009000,
+          "generated-alternating-10": 40699292,
+          "generated-alternating-11": 706470042,
+          "generated-alternating-12": 91818208,
+          "generated-alternating-13": 55944791,
+          "generated-alternating-14": 717999959,
+          "generated-alternating-15": 237063125,
+          "generated-alternating-16": 478972875,
+          "generated-alternating-17": 37499625,
+          "generated-alternating-18": 178430750,
+          "generated-alternating-19": 143196625,
+          "generated-alternating-20": 68631666,
+          "generated-alternating-21": 267034917,
+          "generated-alternating-22": 87184334,
+          "generated-alternating-23": 645611458,
+          "generated-dense-00": 26833166,
+          "generated-dense-01": 19305041,
+          "generated-dense-02": 54083958,
+          "generated-dense-03": 45022416,
+          "generated-dense-04": 56660625,
+          "generated-dense-05": 94081958,
+          "generated-dense-06": 33535750,
+          "generated-dense-07": 44311208,
+          "generated-dense-08": 626796958,
+          "generated-dense-09": 75233041,
+          "generated-dense-10": 37956250,
+          "generated-dense-11": 69548583,
+          "generated-dense-12": 105052167,
+          "generated-dense-13": 46806708,
+          "generated-dense-14": 94351625,
+          "generated-dense-15": 54483625,
+          "generated-dense-16": 97003541,
+          "generated-dense-17": 22083666,
+          "generated-dense-18": 33084416,
+          "generated-dense-19": 58307292,
+          "generated-dense-20": 67118125,
+          "generated-dense-21": 48309083,
+          "generated-dense-22": 95320791,
+          "generated-dense-23": 65841042,
+          "generated-ragged-00": 91654209,
+          "generated-ragged-01": 137242916,
+          "generated-ragged-02": 115777292,
+          "generated-ragged-03": 68385333,
+          "generated-ragged-04": 183405625,
+          "generated-ragged-05": 81403333,
+          "generated-ragged-06": 35760875,
+          "generated-ragged-07": 201945792,
+          "generated-ragged-08": 122591167,
+          "generated-ragged-09": 140472916,
+          "generated-ragged-10": 168270875,
+          "generated-ragged-11": 184300291,
+          "generated-ragged-12": 160433042,
+          "generated-ragged-13": 77272083,
+          "generated-ragged-14": 175329667,
+          "generated-ragged-15": 141258083,
+          "generated-ragged-16": 84192042,
+          "generated-ragged-17": 148853541,
+          "generated-ragged-18": 112248666,
+          "generated-ragged-19": 112358417,
+          "generated-ragged-20": 225439042,
+          "generated-ragged-21": 201555875,
+          "generated-ragged-22": 39680542,
+          "generated-ragged-23": 129504000,
+          "hierarchy-hole-00": 21071459,
+          "hierarchy-hole-01": 84560459,
+          "hierarchy-hole-02": 68430750,
+          "hierarchy-hole-03": 15518833,
+          "hierarchy-hole-04": 97787166,
+          "hierarchy-hole-05": 135813708,
+          "hierarchy-local-large-00": 50218708,
+          "hierarchy-local-large-01": 76912875,
+          "hierarchy-local-large-02": 32911083,
+          "hierarchy-local-large-03": 60482792,
+          "hierarchy-local-large-04": 35514166,
+          "hierarchy-local-large-05": 93469417,
+          "hierarchy-remote-million-00": 66067334,
+          "hierarchy-remote-million-01": 177153375,
+          "hierarchy-remote-million-02": 54771917,
+          "hierarchy-remote-million-03": 155128833,
+          "hierarchy-remote-million-04": 124305500,
+          "hierarchy-remote-million-05": 18594833,
+          "hierarchy-split-remote-00": 27736625,
+          "hierarchy-split-remote-01": 35945709,
+          "hierarchy-split-remote-02": 54844375,
+          "hierarchy-split-remote-03": 29705250,
+          "hierarchy-split-remote-04": 59657250,
+          "hierarchy-split-remote-05": 68989250
+        },
+        {
+          "alternate-alternating-00": 349884667,
+          "alternate-alternating-01": 126451166,
+          "alternate-alternating-02": 3673959,
+          "alternate-alternating-03": 890626750,
+          "alternate-alternating-04": 3427125,
+          "alternate-alternating-05": 574128959,
+          "alternate-alternating-06": 2388083,
+          "alternate-alternating-07": 21566417,
+          "alternate-dense-00": 237591209,
+          "alternate-dense-01": 16558833,
+          "alternate-dense-02": 91554958,
+          "alternate-dense-03": 414727708,
+          "alternate-dense-04": 78924959,
+          "alternate-dense-05": 552005583,
+          "alternate-dense-06": 210962583,
+          "alternate-dense-07": 54191583,
+          "alternate-ragged-00": 31173167,
+          "alternate-ragged-01": 10802500,
+          "alternate-ragged-02": 7177250,
+          "alternate-ragged-03": 20665083,
+          "alternate-ragged-04": 26033584,
+          "alternate-ragged-05": 4570000,
+          "alternate-ragged-06": 5209167,
+          "alternate-ragged-07": 29240750,
+          "generated-alternating-00": 66519709,
+          "generated-alternating-01": 157494083,
+          "generated-alternating-02": 119776417,
+          "generated-alternating-03": 970135916,
+          "generated-alternating-04": 45927541,
+          "generated-alternating-05": 59283417,
+          "generated-alternating-06": 36757833,
+          "generated-alternating-07": 120155791,
+          "generated-alternating-08": 65622500,
+          "generated-alternating-09": 688735458,
+          "generated-alternating-10": 27385084,
+          "generated-alternating-11": 797114625,
+          "generated-alternating-12": 96455750,
+          "generated-alternating-13": 56671375,
+          "generated-alternating-14": 842837083,
+          "generated-alternating-15": 356281084,
+          "generated-alternating-16": 599552417,
+          "generated-alternating-17": 40962875,
+          "generated-alternating-18": 211005208,
+          "generated-alternating-19": 191083333,
+          "generated-alternating-20": 71848625,
+          "generated-alternating-21": 273593583,
+          "generated-alternating-22": 92129875,
+          "generated-alternating-23": 707094750,
+          "generated-dense-00": 28008292,
+          "generated-dense-01": 19667750,
+          "generated-dense-02": 91099250,
+          "generated-dense-03": 53731750,
+          "generated-dense-04": 65367542,
+          "generated-dense-05": 113490500,
+          "generated-dense-06": 37075375,
+          "generated-dense-07": 46673959,
+          "generated-dense-08": 711835792,
+          "generated-dense-09": 94231125,
+          "generated-dense-10": 43702875,
+          "generated-dense-11": 100003708,
+          "generated-dense-12": 136374125,
+          "generated-dense-13": 59841667,
+          "generated-dense-14": 87731084,
+          "generated-dense-15": 72009209,
+          "generated-dense-16": 97996167,
+          "generated-dense-17": 29333625,
+          "generated-dense-18": 41132250,
+          "generated-dense-19": 88608708,
+          "generated-dense-20": 83365667,
+          "generated-dense-21": 57269583,
+          "generated-dense-22": 101209292,
+          "generated-dense-23": 71556708,
+          "generated-ragged-00": 133692458,
+          "generated-ragged-01": 145589500,
+          "generated-ragged-02": 119054959,
+          "generated-ragged-03": 53031083,
+          "generated-ragged-04": 182483875,
+          "generated-ragged-05": 105556291,
+          "generated-ragged-06": 56080000,
+          "generated-ragged-07": 225836917,
+          "generated-ragged-08": 141344750,
+          "generated-ragged-09": 217272750,
+          "generated-ragged-10": 201331625,
+          "generated-ragged-11": 239261667,
+          "generated-ragged-12": 197857792,
+          "generated-ragged-13": 95250833,
+          "generated-ragged-14": 189081916,
+          "generated-ragged-15": 149139500,
+          "generated-ragged-16": 87227458,
+          "generated-ragged-17": 162675708,
+          "generated-ragged-18": 128642708,
+          "generated-ragged-19": 127934625,
+          "generated-ragged-20": 273080917,
+          "generated-ragged-21": 219614041,
+          "generated-ragged-22": 45835250,
+          "generated-ragged-23": 132981500,
+          "hierarchy-hole-00": 20495834,
+          "hierarchy-hole-01": 142424125,
+          "hierarchy-hole-02": 88124459,
+          "hierarchy-hole-03": 24584333,
+          "hierarchy-hole-04": 116855458,
+          "hierarchy-hole-05": 133983959,
+          "hierarchy-local-large-00": 81030208,
+          "hierarchy-local-large-01": 96884667,
+          "hierarchy-local-large-02": 38561500,
+          "hierarchy-local-large-03": 59364333,
+          "hierarchy-local-large-04": 43061167,
+          "hierarchy-local-large-05": 98784000,
+          "hierarchy-remote-million-00": 90168042,
+          "hierarchy-remote-million-01": 197691750,
+          "hierarchy-remote-million-02": 60422083,
+          "hierarchy-remote-million-03": 122853125,
+          "hierarchy-remote-million-04": 160277084,
+          "hierarchy-remote-million-05": 22178541,
+          "hierarchy-split-remote-00": 27717375,
+          "hierarchy-split-remote-01": 34936459,
+          "hierarchy-split-remote-02": 49002542,
+          "hierarchy-split-remote-03": 22571000,
+          "hierarchy-split-remote-04": 76181166,
+          "hierarchy-split-remote-05": 82592167
+        },
+        {
+          "alternate-alternating-00": 286075000,
+          "alternate-alternating-01": 144786875,
+          "alternate-alternating-02": 3559125,
+          "alternate-alternating-03": 761096417,
+          "alternate-alternating-04": 3388208,
+          "alternate-alternating-05": 520962375,
+          "alternate-alternating-06": 1743125,
+          "alternate-alternating-07": 9820584,
+          "alternate-dense-00": 241421833,
+          "alternate-dense-01": 16323209,
+          "alternate-dense-02": 54537167,
+          "alternate-dense-03": 337469042,
+          "alternate-dense-04": 65182625,
+          "alternate-dense-05": 492028583,
+          "alternate-dense-06": 263108958,
+          "alternate-dense-07": 49632542,
+          "alternate-ragged-00": 34047041,
+          "alternate-ragged-01": 11612750,
+          "alternate-ragged-02": 14977833,
+          "alternate-ragged-03": 7062458,
+          "alternate-ragged-04": 20858292,
+          "alternate-ragged-05": 4563791,
+          "alternate-ragged-06": 5289541,
+          "alternate-ragged-07": 23965458,
+          "generated-alternating-00": 88468291,
+          "generated-alternating-01": 138251542,
+          "generated-alternating-02": 111171459,
+          "generated-alternating-03": 846180083,
+          "generated-alternating-04": 46949875,
+          "generated-alternating-05": 64636584,
+          "generated-alternating-06": 45257375,
+          "generated-alternating-07": 106786208,
+          "generated-alternating-08": 59803625,
+          "generated-alternating-09": 628155375,
+          "generated-alternating-10": 35519292,
+          "generated-alternating-11": 708168959,
+          "generated-alternating-12": 82608291,
+          "generated-alternating-13": 66816666,
+          "generated-alternating-14": 735777416,
+          "generated-alternating-15": 257925708,
+          "generated-alternating-16": 458871958,
+          "generated-alternating-17": 36574750,
+          "generated-alternating-18": 214493334,
+          "generated-alternating-19": 156812083,
+          "generated-alternating-20": 72229250,
+          "generated-alternating-21": 245326125,
+          "generated-alternating-22": 90296917,
+          "generated-alternating-23": 684344083,
+          "generated-dense-00": 28586500,
+          "generated-dense-01": 19732292,
+          "generated-dense-02": 57185333,
+          "generated-dense-03": 45883875,
+          "generated-dense-04": 59992291,
+          "generated-dense-05": 101125708,
+          "generated-dense-06": 19984083,
+          "generated-dense-07": 44073917,
+          "generated-dense-08": 667755750,
+          "generated-dense-09": 95643042,
+          "generated-dense-10": 26398167,
+          "generated-dense-11": 85763209,
+          "generated-dense-12": 124502834,
+          "generated-dense-13": 50431000,
+          "generated-dense-14": 69322417,
+          "generated-dense-15": 74069250,
+          "generated-dense-16": 63481208,
+          "generated-dense-17": 29769583,
+          "generated-dense-18": 27307416,
+          "generated-dense-19": 86791500,
+          "generated-dense-20": 55697167,
+          "generated-dense-21": 54492167,
+          "generated-dense-22": 98588667,
+          "generated-dense-23": 62695542,
+          "generated-ragged-00": 89208250,
+          "generated-ragged-01": 151532459,
+          "generated-ragged-02": 107447084,
+          "generated-ragged-03": 66595542,
+          "generated-ragged-04": 158240083,
+          "generated-ragged-05": 86028500,
+          "generated-ragged-06": 44227584,
+          "generated-ragged-07": 178366458,
+          "generated-ragged-08": 145752125,
+          "generated-ragged-09": 177606041,
+          "generated-ragged-10": 176765208,
+          "generated-ragged-11": 197148000,
+          "generated-ragged-12": 176235666,
+          "generated-ragged-13": 79106917,
+          "generated-ragged-14": 178455458,
+          "generated-ragged-15": 142041458,
+          "generated-ragged-16": 76886333,
+          "generated-ragged-17": 158556291,
+          "generated-ragged-18": 115666083,
+          "generated-ragged-19": 101955708,
+          "generated-ragged-20": 218875292,
+          "generated-ragged-21": 205544375,
+          "generated-ragged-22": 37827375,
+          "generated-ragged-23": 117046125,
+          "hierarchy-hole-00": 16230750,
+          "hierarchy-hole-01": 119480542,
+          "hierarchy-hole-02": 83322459,
+          "hierarchy-hole-03": 18207166,
+          "hierarchy-hole-04": 110220958,
+          "hierarchy-hole-05": 141580208,
+          "hierarchy-local-large-00": 71980209,
+          "hierarchy-local-large-01": 86999042,
+          "hierarchy-local-large-02": 39024417,
+          "hierarchy-local-large-03": 53980208,
+          "hierarchy-local-large-04": 29208750,
+          "hierarchy-local-large-05": 112739375,
+          "hierarchy-remote-million-00": 62146875,
+          "hierarchy-remote-million-01": 169676583,
+          "hierarchy-remote-million-02": 60618041,
+          "hierarchy-remote-million-03": 124383542,
+          "hierarchy-remote-million-04": 140241125,
+          "hierarchy-remote-million-05": 21218417,
+          "hierarchy-split-remote-00": 26285542,
+          "hierarchy-split-remote-01": 40647375,
+          "hierarchy-split-remote-02": 45989708,
+          "hierarchy-split-remote-03": 44030333,
+          "hierarchy-split-remote-04": 67663125,
+          "hierarchy-split-remote-05": 72183917
+        }
+      ],
+      "unit_only": [
+        {
+          "alternate-alternating-00": 26133084,
+          "alternate-alternating-01": 109482250,
+          "alternate-alternating-02": 3624000,
+          "alternate-alternating-03": 745409917,
+          "alternate-alternating-04": 5702292,
+          "alternate-alternating-05": 7432125,
+          "alternate-alternating-06": 1775500,
+          "alternate-alternating-07": 12948542,
+          "alternate-dense-00": 3575542,
+          "alternate-dense-01": 15573750,
+          "alternate-dense-02": 78042083,
+          "alternate-dense-03": 147026959,
+          "alternate-dense-04": 53282333,
+          "alternate-dense-05": 52185166,
+          "alternate-dense-06": 54602125,
+          "alternate-dense-07": 53429084,
+          "alternate-ragged-00": 37939666,
+          "alternate-ragged-01": 14869583,
+          "alternate-ragged-02": 19289000,
+          "alternate-ragged-03": 8893000,
+          "alternate-ragged-04": 14258208,
+          "alternate-ragged-05": 8109375,
+          "alternate-ragged-06": 10886667,
+          "alternate-ragged-07": 26884792,
+          "generated-alternating-00": 79530250,
+          "generated-alternating-01": 114375917,
+          "generated-alternating-02": 101111292,
+          "generated-alternating-03": 396618500,
+          "generated-alternating-04": 41532625,
+          "generated-alternating-05": 52734750,
+          "generated-alternating-06": 97854709,
+          "generated-alternating-07": 95146375,
+          "generated-alternating-08": 60250167,
+          "generated-alternating-09": 206430041,
+          "generated-alternating-10": 32961875,
+          "generated-alternating-11": 336314875,
+          "generated-alternating-12": 98259958,
+          "generated-alternating-13": 68063708,
+          "generated-alternating-14": 349308375,
+          "generated-alternating-15": 173651666,
+          "generated-alternating-16": 170882542,
+          "generated-alternating-17": 30953334,
+          "generated-alternating-18": 105441833,
+          "generated-alternating-19": 100019167,
+          "generated-alternating-20": 50792667,
+          "generated-alternating-21": 93895125,
+          "generated-alternating-22": 75174541,
+          "generated-alternating-23": 180024958,
+          "generated-dense-00": 26214000,
+          "generated-dense-01": 20228166,
+          "generated-dense-02": 57379667,
+          "generated-dense-03": 45429959,
+          "generated-dense-04": 64489083,
+          "generated-dense-05": 98499250,
+          "generated-dense-06": 30197083,
+          "generated-dense-07": 41263583,
+          "generated-dense-08": 210426584,
+          "generated-dense-09": 81839708,
+          "generated-dense-10": 30981833,
+          "generated-dense-11": 74512416,
+          "generated-dense-12": 108268500,
+          "generated-dense-13": 55330291,
+          "generated-dense-14": 93035000,
+          "generated-dense-15": 52019000,
+          "generated-dense-16": 90002458,
+          "generated-dense-17": 25015500,
+          "generated-dense-18": 30518583,
+          "generated-dense-19": 74332875,
+          "generated-dense-20": 43638292,
+          "generated-dense-21": 38277000,
+          "generated-dense-22": 92780041,
+          "generated-dense-23": 75823000,
+          "generated-ragged-00": 80982542,
+          "generated-ragged-01": 100672792,
+          "generated-ragged-02": 118508334,
+          "generated-ragged-03": 74958791,
+          "generated-ragged-04": 176464792,
+          "generated-ragged-05": 55934042,
+          "generated-ragged-06": 41819042,
+          "generated-ragged-07": 219550583,
+          "generated-ragged-08": 114224375,
+          "generated-ragged-09": 136688083,
+          "generated-ragged-10": 179651875,
+          "generated-ragged-11": 169177459,
+          "generated-ragged-12": 213795166,
+          "generated-ragged-13": 77859167,
+          "generated-ragged-14": 171189917,
+          "generated-ragged-15": 69041625,
+          "generated-ragged-16": 74014583,
+          "generated-ragged-17": 199581625,
+          "generated-ragged-18": 109568209,
+          "generated-ragged-19": 93838750,
+          "generated-ragged-20": 174287083,
+          "generated-ragged-21": 220655459,
+          "generated-ragged-22": 32316375,
+          "generated-ragged-23": 89444125,
+          "hierarchy-hole-00": 17694458,
+          "hierarchy-hole-01": 141620417,
+          "hierarchy-hole-02": 64713292,
+          "hierarchy-hole-03": 19082292,
+          "hierarchy-hole-04": 91608875,
+          "hierarchy-hole-05": 143646709,
+          "hierarchy-local-large-00": 136472167,
+          "hierarchy-local-large-01": 71367042,
+          "hierarchy-local-large-02": 36556500,
+          "hierarchy-local-large-03": 42667042,
+          "hierarchy-local-large-04": 42815583,
+          "hierarchy-local-large-05": 96192083,
+          "hierarchy-remote-million-00": 72625459,
+          "hierarchy-remote-million-01": 71406750,
+          "hierarchy-remote-million-02": 48513125,
+          "hierarchy-remote-million-03": 122571542,
+          "hierarchy-remote-million-04": 109889458,
+          "hierarchy-remote-million-05": 18845958,
+          "hierarchy-split-remote-00": 21876958,
+          "hierarchy-split-remote-01": 44598958,
+          "hierarchy-split-remote-02": 37394166,
+          "hierarchy-split-remote-03": 28753500,
+          "hierarchy-split-remote-04": 64329959,
+          "hierarchy-split-remote-05": 67235333
+        },
+        {
+          "alternate-alternating-00": 25578792,
+          "alternate-alternating-01": 110205209,
+          "alternate-alternating-02": 3585333,
+          "alternate-alternating-03": 729475917,
+          "alternate-alternating-04": 2347750,
+          "alternate-alternating-05": 17156583,
+          "alternate-alternating-06": 4235041,
+          "alternate-alternating-07": 7386917,
+          "alternate-dense-00": 3470125,
+          "alternate-dense-01": 15319334,
+          "alternate-dense-02": 50842875,
+          "alternate-dense-03": 77231750,
+          "alternate-dense-04": 33232375,
+          "alternate-dense-05": 28930208,
+          "alternate-dense-06": 24484333,
+          "alternate-dense-07": 40514875,
+          "alternate-ragged-00": 23443584,
+          "alternate-ragged-01": 15190750,
+          "alternate-ragged-02": 19014792,
+          "alternate-ragged-03": 5584541,
+          "alternate-ragged-04": 32313917,
+          "alternate-ragged-05": 4526250,
+          "alternate-ragged-06": 5230125,
+          "alternate-ragged-07": 23156250,
+          "generated-alternating-00": 74140250,
+          "generated-alternating-01": 103658041,
+          "generated-alternating-02": 106538917,
+          "generated-alternating-03": 422755542,
+          "generated-alternating-04": 33114375,
+          "generated-alternating-05": 60288625,
+          "generated-alternating-06": 97714459,
+          "generated-alternating-07": 91731125,
+          "generated-alternating-08": 70167416,
+          "generated-alternating-09": 215136208,
+          "generated-alternating-10": 33244458,
+          "generated-alternating-11": 342028709,
+          "generated-alternating-12": 80650542,
+          "generated-alternating-13": 48068166,
+          "generated-alternating-14": 387109542,
+          "generated-alternating-15": 155373917,
+          "generated-alternating-16": 153700458,
+          "generated-alternating-17": 34977875,
+          "generated-alternating-18": 124416375,
+          "generated-alternating-19": 103998250,
+          "generated-alternating-20": 54988209,
+          "generated-alternating-21": 87406416,
+          "generated-alternating-22": 89673042,
+          "generated-alternating-23": 204848583,
+          "generated-dense-00": 26580834,
+          "generated-dense-01": 19686916,
+          "generated-dense-02": 52313333,
+          "generated-dense-03": 24000041,
+          "generated-dense-04": 35137666,
+          "generated-dense-05": 55260750,
+          "generated-dense-06": 29247750,
+          "generated-dense-07": 41671875,
+          "generated-dense-08": 235260458,
+          "generated-dense-09": 80485542,
+          "generated-dense-10": 18713750,
+          "generated-dense-11": 76099166,
+          "generated-dense-12": 118018208,
+          "generated-dense-13": 48764500,
+          "generated-dense-14": 86269250,
+          "generated-dense-15": 58952625,
+          "generated-dense-16": 83674917,
+          "generated-dense-17": 22384333,
+          "generated-dense-18": 38036417,
+          "generated-dense-19": 69110541,
+          "generated-dense-20": 28065416,
+          "generated-dense-21": 36166791,
+          "generated-dense-22": 92793208,
+          "generated-dense-23": 67003625,
+          "generated-ragged-00": 95158208,
+          "generated-ragged-01": 111370583,
+          "generated-ragged-02": 103675750,
+          "generated-ragged-03": 60071583,
+          "generated-ragged-04": 157490875,
+          "generated-ragged-05": 43505417,
+          "generated-ragged-06": 42152375,
+          "generated-ragged-07": 218764041,
+          "generated-ragged-08": 118247583,
+          "generated-ragged-09": 163370166,
+          "generated-ragged-10": 146609083,
+          "generated-ragged-11": 155917417,
+          "generated-ragged-12": 196027958,
+          "generated-ragged-13": 59156167,
+          "generated-ragged-14": 195532333,
+          "generated-ragged-15": 76105959,
+          "generated-ragged-16": 73306959,
+          "generated-ragged-17": 197122000,
+          "generated-ragged-18": 117333959,
+          "generated-ragged-19": 99768500,
+          "generated-ragged-20": 195641083,
+          "generated-ragged-21": 224196708,
+          "generated-ragged-22": 36212958,
+          "generated-ragged-23": 122022125,
+          "hierarchy-hole-00": 17697750,
+          "hierarchy-hole-01": 114610083,
+          "hierarchy-hole-02": 66378459,
+          "hierarchy-hole-03": 38596667,
+          "hierarchy-hole-04": 101567416,
+          "hierarchy-hole-05": 144291583,
+          "hierarchy-local-large-00": 158731000,
+          "hierarchy-local-large-01": 74383333,
+          "hierarchy-local-large-02": 31620708,
+          "hierarchy-local-large-03": 60624417,
+          "hierarchy-local-large-04": 38530750,
+          "hierarchy-local-large-05": 88271750,
+          "hierarchy-remote-million-00": 67257083,
+          "hierarchy-remote-million-01": 91255959,
+          "hierarchy-remote-million-02": 46809875,
+          "hierarchy-remote-million-03": 88045000,
+          "hierarchy-remote-million-04": 114945959,
+          "hierarchy-remote-million-05": 10067042,
+          "hierarchy-split-remote-00": 11871209,
+          "hierarchy-split-remote-01": 47689334,
+          "hierarchy-split-remote-02": 51531583,
+          "hierarchy-split-remote-03": 32103916,
+          "hierarchy-split-remote-04": 69080542,
+          "hierarchy-split-remote-05": 66075875
+        },
+        {
+          "alternate-alternating-00": 25424125,
+          "alternate-alternating-01": 115750083,
+          "alternate-alternating-02": 4990542,
+          "alternate-alternating-03": 751379417,
+          "alternate-alternating-04": 2313208,
+          "alternate-alternating-05": 7829959,
+          "alternate-alternating-06": 2138208,
+          "alternate-alternating-07": 15282166,
+          "alternate-dense-00": 3544666,
+          "alternate-dense-01": 15258709,
+          "alternate-dense-02": 51168334,
+          "alternate-dense-03": 77727584,
+          "alternate-dense-04": 33445125,
+          "alternate-dense-05": 24971375,
+          "alternate-dense-06": 34587625,
+          "alternate-dense-07": 48345833,
+          "alternate-ragged-00": 22998000,
+          "alternate-ragged-01": 19685417,
+          "alternate-ragged-02": 12176958,
+          "alternate-ragged-03": 5656667,
+          "alternate-ragged-04": 34300792,
+          "alternate-ragged-05": 4583250,
+          "alternate-ragged-06": 6715458,
+          "alternate-ragged-07": 24433416,
+          "generated-alternating-00": 86659208,
+          "generated-alternating-01": 115397792,
+          "generated-alternating-02": 98374791,
+          "generated-alternating-03": 441844084,
+          "generated-alternating-04": 32922750,
+          "generated-alternating-05": 63111458,
+          "generated-alternating-06": 119619500,
+          "generated-alternating-07": 94765958,
+          "generated-alternating-08": 71073833,
+          "generated-alternating-09": 207520959,
+          "generated-alternating-10": 30178042,
+          "generated-alternating-11": 330976125,
+          "generated-alternating-12": 73022750,
+          "generated-alternating-13": 64417666,
+          "generated-alternating-14": 389200083,
+          "generated-alternating-15": 143283500,
+          "generated-alternating-16": 194817459,
+          "generated-alternating-17": 32303708,
+          "generated-alternating-18": 125042750,
+          "generated-alternating-19": 101130000,
+          "generated-alternating-20": 50838542,
+          "generated-alternating-21": 90234625,
+          "generated-alternating-22": 88881458,
+          "generated-alternating-23": 203806084,
+          "generated-dense-00": 26665083,
+          "generated-dense-01": 19664042,
+          "generated-dense-02": 52360500,
+          "generated-dense-03": 24201084,
+          "generated-dense-04": 35200750,
+          "generated-dense-05": 55552625,
+          "generated-dense-06": 23085708,
+          "generated-dense-07": 48181292,
+          "generated-dense-08": 229645708,
+          "generated-dense-09": 78347625,
+          "generated-dense-10": 35096750,
+          "generated-dense-11": 80741666,
+          "generated-dense-12": 91407083,
+          "generated-dense-13": 49946167,
+          "generated-dense-14": 73163125,
+          "generated-dense-15": 49007083,
+          "generated-dense-16": 85509917,
+          "generated-dense-17": 14597792,
+          "generated-dense-18": 33474292,
+          "generated-dense-19": 54740583,
+          "generated-dense-20": 34979958,
+          "generated-dense-21": 39625958,
+          "generated-dense-22": 119904458,
+          "generated-dense-23": 50096750,
+          "generated-ragged-00": 108267125,
+          "generated-ragged-01": 108971000,
+          "generated-ragged-02": 125586167,
+          "generated-ragged-03": 80604458,
+          "generated-ragged-04": 178096083,
+          "generated-ragged-05": 66555292,
+          "generated-ragged-06": 45198750,
+          "generated-ragged-07": 218759458,
+          "generated-ragged-08": 129263542,
+          "generated-ragged-09": 179202416,
+          "generated-ragged-10": 151699834,
+          "generated-ragged-11": 173759917,
+          "generated-ragged-12": 191890417,
+          "generated-ragged-13": 86399625,
+          "generated-ragged-14": 170842375,
+          "generated-ragged-15": 99049625,
+          "generated-ragged-16": 86939333,
+          "generated-ragged-17": 188702000,
+          "generated-ragged-18": 98615292,
+          "generated-ragged-19": 99281459,
+          "generated-ragged-20": 161416583,
+          "generated-ragged-21": 242743875,
+          "generated-ragged-22": 35667875,
+          "generated-ragged-23": 118790750,
+          "hierarchy-hole-00": 19014166,
+          "hierarchy-hole-01": 128749833,
+          "hierarchy-hole-02": 60040125,
+          "hierarchy-hole-03": 22741167,
+          "hierarchy-hole-04": 103936375,
+          "hierarchy-hole-05": 118304167,
+          "hierarchy-local-large-00": 133713084,
+          "hierarchy-local-large-01": 76735291,
+          "hierarchy-local-large-02": 38296583,
+          "hierarchy-local-large-03": 46500875,
+          "hierarchy-local-large-04": 35199375,
+          "hierarchy-local-large-05": 92021333,
+          "hierarchy-remote-million-00": 59771417,
+          "hierarchy-remote-million-01": 76616875,
+          "hierarchy-remote-million-02": 57082125,
+          "hierarchy-remote-million-03": 119068167,
+          "hierarchy-remote-million-04": 95579250,
+          "hierarchy-remote-million-05": 22836041,
+          "hierarchy-split-remote-00": 18325417,
+          "hierarchy-split-remote-01": 37906084,
+          "hierarchy-split-remote-02": 44759125,
+          "hierarchy-split-remote-03": 25414750,
+          "hierarchy-split-remote-04": 61681708,
+          "hierarchy-split-remote-05": 69394417
+        }
+      ]
+    },
+    "status": "MEASURED_LOCAL_WALL_TIME",
+    "unit": "nanoseconds"
+  },
+  "totals": {
+    "all": {
+      "learned": {
+        "cache_hits": 3265,
+        "checks": 182555,
+        "fallbacks": 42,
+        "nodes": 16120,
+        "outcomes": {
+          "BOUNDED": 9,
+          "NEGATIVE": 15,
+          "POSITIVE": 96
+        },
+        "ranked": 1836,
+        "reordered": 1206
+      },
+      "random": {
+        "cache_hits": 3908,
+        "checks": 192356,
+        "fallbacks": 56,
+        "nodes": 17893,
+        "outcomes": {
+          "BOUNDED": 10,
+          "NEGATIVE": 15,
+          "POSITIVE": 95
+        },
+        "ranked": 1845,
+        "reordered": 1543
+      },
+      "seam": {
+        "cache_hits": 4585,
+        "checks": 185124,
+        "fallbacks": 0,
+        "nodes": 18147,
+        "outcomes": {
+          "BOUNDED": 9,
+          "NEGATIVE": 15,
+          "POSITIVE": 96
+        },
+        "ranked": 0,
+        "reordered": 0
+      },
+      "static": {
+        "cache_hits": 3698,
+        "checks": 175783,
+        "fallbacks": 23,
+        "nodes": 16232,
+        "outcomes": {
+          "BOUNDED": 10,
+          "NEGATIVE": 15,
+          "POSITIVE": 95
+        },
+        "ranked": 0,
+        "reordered": 0
+      },
+      "unit": {
+        "cache_hits": 4209,
+        "checks": 196442,
+        "fallbacks": 0,
+        "nodes": 18626,
+        "outcomes": {
+          "BOUNDED": 11,
+          "NEGATIVE": 15,
+          "POSITIVE": 94
+        },
+        "ranked": 0,
+        "reordered": 0
+      },
+      "unit_only": {
+        "cache_hits": 0,
+        "checks": 72372,
+        "fallbacks": 0,
+        "nodes": 5288,
+        "outcomes": {
+          "NEGATIVE": 19,
+          "POSITIVE": 101
+        },
+        "ranked": 0,
+        "reordered": 0
+      },
+      "unit_uncached": {
+        "cache_hits": 0,
+        "checks": 268728,
+        "fallbacks": 0,
+        "nodes": 21558,
+        "outcomes": {
+          "BOUNDED": 15,
+          "NEGATIVE": 13,
+          "POSITIVE": 92
+        },
+        "ranked": 0,
+        "reordered": 0
+      }
+    },
+    "alternate": {
+      "learned": {
+        "cache_hits": 1619,
+        "checks": 73687,
+        "fallbacks": 11,
+        "nodes": 7046,
+        "outcomes": {
+          "BOUNDED": 4,
+          "NEGATIVE": 15,
+          "POSITIVE": 5
+        },
+        "ranked": 200,
+        "reordered": 164
+      },
+      "random": {
+        "cache_hits": 1619,
+        "checks": 73493,
+        "fallbacks": 11,
+        "nodes": 7042,
+        "outcomes": {
+          "BOUNDED": 4,
+          "NEGATIVE": 15,
+          "POSITIVE": 5
+        },
+        "ranked": 188,
+        "reordered": 156
+      },
+      "seam": {
+        "cache_hits": 1912,
+        "checks": 78982,
+        "fallbacks": 0,
+        "nodes": 7903,
+        "outcomes": {
+          "BOUNDED": 4,
+          "NEGATIVE": 15,
+          "POSITIVE": 5
+        },
+        "ranked": 0,
+        "reordered": 0
+      },
+      "static": {
+        "cache_hits": 1622,
+        "checks": 72064,
+        "fallbacks": 8,
+        "nodes": 6917,
+        "outcomes": {
+          "BOUNDED": 4,
+          "NEGATIVE": 15,
+          "POSITIVE": 5
+        },
+        "ranked": 0,
+        "reordered": 0
+      },
+      "unit": {
+        "cache_hits": 1615,
+        "checks": 71766,
+        "fallbacks": 0,
+        "nodes": 6902,
+        "outcomes": {
+          "BOUNDED": 4,
+          "NEGATIVE": 15,
+          "POSITIVE": 5
+        },
+        "ranked": 0,
+        "reordered": 0
+      },
+      "unit_only": {
+        "cache_hits": 0,
+        "checks": 22644,
+        "fallbacks": 0,
+        "nodes": 1644,
+        "outcomes": {
+          "NEGATIVE": 19,
+          "POSITIVE": 5
+        },
+        "ranked": 0,
+        "reordered": 0
+      },
+      "unit_uncached": {
+        "cache_hits": 0,
+        "checks": 101939,
+        "fallbacks": 0,
+        "nodes": 8264,
+        "outcomes": {
+          "BOUNDED": 6,
+          "NEGATIVE": 13,
+          "POSITIVE": 5
+        },
+        "ranked": 0,
+        "reordered": 0
+      }
+    },
+    "generated": {
+      "learned": {
+        "cache_hits": 1616,
+        "checks": 97618,
+        "fallbacks": 22,
+        "nodes": 8324,
+        "outcomes": {
+          "BOUNDED": 5,
+          "POSITIVE": 67
+        },
+        "ranked": 1300,
+        "reordered": 851
+      },
+      "random": {
+        "cache_hits": 2250,
+        "checks": 107050,
+        "fallbacks": 32,
+        "nodes": 10008,
+        "outcomes": {
+          "BOUNDED": 6,
+          "POSITIVE": 66
+        },
+        "ranked": 1328,
+        "reordered": 1114
+      },
+      "seam": {
+        "cache_hits": 2648,
+        "checks": 99594,
+        "fallbacks": 0,
+        "nodes": 9817,
+        "outcomes": {
+          "BOUNDED": 5,
+          "POSITIVE": 67
+        },
+        "ranked": 0,
+        "reordered": 0
+      },
+      "static": {
+        "cache_hits": 2073,
+        "checks": 97749,
+        "fallbacks": 13,
+        "nodes": 8953,
+        "outcomes": {
+          "BOUNDED": 6,
+          "POSITIVE": 66
+        },
+        "ranked": 0,
+        "reordered": 0
+      },
+      "unit": {
+        "cache_hits": 2584,
+        "checks": 115798,
+        "fallbacks": 0,
+        "nodes": 11121,
+        "outcomes": {
+          "BOUNDED": 7,
+          "POSITIVE": 65
+        },
+        "ranked": 0,
+        "reordered": 0
+      },
+      "unit_only": {
+        "cache_hits": 0,
+        "checks": 41348,
+        "fallbacks": 0,
+        "nodes": 3097,
+        "outcomes": {
+          "POSITIVE": 72
+        },
+        "ranked": 0,
+        "reordered": 0
+      },
+      "unit_uncached": {
+        "cache_hits": 0,
+        "checks": 157789,
+        "fallbacks": 0,
+        "nodes": 12687,
+        "outcomes": {
+          "BOUNDED": 9,
+          "POSITIVE": 63
+        },
+        "ranked": 0,
+        "reordered": 0
+      }
+    },
+    "hierarchy": {
+      "learned": {
+        "cache_hits": 30,
+        "checks": 11250,
+        "fallbacks": 9,
+        "nodes": 750,
+        "outcomes": {
+          "POSITIVE": 24
+        },
+        "ranked": 336,
+        "reordered": 191
+      },
+      "random": {
+        "cache_hits": 39,
+        "checks": 11813,
+        "fallbacks": 13,
+        "nodes": 843,
+        "outcomes": {
+          "POSITIVE": 24
+        },
+        "ranked": 329,
+        "reordered": 273
+      },
+      "seam": {
+        "cache_hits": 25,
+        "checks": 6548,
+        "fallbacks": 0,
+        "nodes": 427,
+        "outcomes": {
+          "POSITIVE": 24
+        },
+        "ranked": 0,
+        "reordered": 0
+      },
+      "static": {
+        "cache_hits": 3,
+        "checks": 5970,
+        "fallbacks": 2,
+        "nodes": 362,
+        "outcomes": {
+          "POSITIVE": 24
+        },
+        "ranked": 0,
+        "reordered": 0
+      },
+      "unit": {
+        "cache_hits": 10,
+        "checks": 8878,
+        "fallbacks": 0,
+        "nodes": 603,
+        "outcomes": {
+          "POSITIVE": 24
+        },
+        "ranked": 0,
+        "reordered": 0
+      },
+      "unit_only": {
+        "cache_hits": 0,
+        "checks": 8380,
+        "fallbacks": 0,
+        "nodes": 547,
+        "outcomes": {
+          "POSITIVE": 24
+        },
+        "ranked": 0,
+        "reordered": 0
+      },
+      "unit_uncached": {
+        "cache_hits": 0,
+        "checks": 9000,
+        "fallbacks": 0,
+        "nodes": 607,
+        "outcomes": {
+          "POSITIVE": 24
+        },
+        "ranked": 0,
+        "reordered": 0
+      }
+    }
+  }
+}

@@ -1,0 +1,215 @@
+{
+  "archive_entries": {
+    "data/audit.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/audit.stdout.log": {
+      "bytes": 109,
+      "sha256": "ffd224988de2b9770c0336c78c0ef5c189fa0b6b5171427803ae6fbc004f4d21"
+    },
+    "data/author.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/author.stdout.log": {
+      "bytes": 52,
+      "sha256": "dc563f7fcc309b5230635e99089e2f397bd61398e5722c091668865832ffbade"
+    },
+    "data/controlled-audit-v1.json": {
+      "bytes": 2180,
+      "sha256": "78b2eebd0fb435726778025754652575646737058468ba6079dce3489882527e"
+    },
+    "data/controlled-search-v1.json": {
+      "bytes": 2607894,
+      "sha256": "d0ad07417b71219b908deec7aa0e0afb1c8766e3dece23c9ebd071e362b30e22"
+    },
+    "data/controlled-timing-v1.json": {
+      "bytes": 48133,
+      "sha256": "4eeb46e23e9bd6a99b9b4da1ffd6a1cd1fd98b5dd91cdc4be16cc5cea95fed78"
+    },
+    "data/dominance-diagnostic-v1.json": {
+      "bytes": 1186586,
+      "sha256": "5ca0820fde448cc06fb05fe1f848f706d9edd1edf71d29c66ff88ae0b46dcb10"
+    },
+    "data/dominance.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/dominance.stdout.log": {
+      "bytes": 548,
+      "sha256": "faaa443641dd8b213992543409752f2e186981fc46c22f7c040e105d1f242f66"
+    },
+    "data/search.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/search.stdout.log": {
+      "bytes": 28320,
+      "sha256": "4389c8aff524ca20d15acc5fc3f9c46255a4c87abeb06530690c140ca1da8c9f"
+    },
+    "data/timing.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "data/timing.stdout.log": {
+      "bytes": 95,
+      "sha256": "fd1fba5fbadcf81f0aa8170cd50cd7fc76d2f43e2d922fdd102fbd46dd2fe412"
+    },
+    "input/controlled-cases-v1.json": {
+      "bytes": 63045,
+      "sha256": "887cfac849e8ca5525e3b85166545c5758ba4ed57d3cd3d731ed84eac75dcaf4"
+    },
+    "input/excluded-boards-v1.json": {
+      "bytes": 59430,
+      "sha256": "c5eaf9f4ee201fd3d5c9758248f24a3c02d36d3d94cef4af1fcb73467e202530"
+    },
+    "input/frozen-policy-v1.json": {
+      "bytes": 6262,
+      "sha256": "8b2e56f2cb2c9f4f70f8561a342d8ea4ab7a2140b4aeb346cc8d92cdeb05964e"
+    },
+    "input/heldback-witnesses-v1.json": {
+      "bytes": 118223,
+      "sha256": "17e2e12144ddd4729f37e51d8fd11f8bede7b33fff7f96cc5d8a88b4570db899"
+    },
+    "input/hierarchy-windows-v1.json": {
+      "bytes": 27314,
+      "sha256": "ca319c34b9c71eb72bcd19e1ad31dc70a3a8c48da9244b29fdee34adc9644b4b"
+    },
+    "input/policy-training-v1.json": {
+      "bytes": 18460,
+      "sha256": "c8a828d1e6d3b5b636cda14cdaf8730374aec4df9c8f92dc15843f1bad4ddb45"
+    },
+    "input/protocol-v1.json": {
+      "bytes": 470,
+      "sha256": "1e0d0a5b120f161c16cf4c506e35b435cafe0bd0b1e6a9ed0d44b7b90367c068"
+    },
+    "publication/REPLAY.md": {
+      "bytes": 1034,
+      "sha256": "90642bb04ccd1eafc3329ccdb6e3c1fbfa05cbab6fa090703c8392ad3e93bdf7"
+    },
+    "publication/browser-v1.json": {
+      "bytes": 181,
+      "sha256": "2334cf717b5e1536634b5d507ed589601e047868d3dde44bb45f8500f9d40e63"
+    },
+    "publication/check_v1.cjs": {
+      "bytes": 2846,
+      "sha256": "b699e422478062d46ced6d93a3bfcd69f0026e003e20098fdb9079266aa37621"
+    },
+    "publication/moves-v1.png": {
+      "bytes": 28239,
+      "sha256": "7756bd7826b0e008b8e9970a32059c2a453b2bd0aa92f2fd47a6f43bdfff0fa2"
+    },
+    "publication/notebook-v1.html": {
+      "bytes": 11086,
+      "sha256": "2b62f1bd1b7d7cf2b65f4a0ac4feb4b8436fc417028b497de9f9870d6b475217"
+    },
+    "publication/package_v1.py": {
+      "bytes": 2660,
+      "sha256": "3c20f44975c0eed5956c8cca9f6ffc847bb52547ce8df5eb945af3afe77b9915"
+    },
+    "publication/render_v1.py": {
+      "bytes": 5937,
+      "sha256": "fe97cd26c97f30c6c82562520b3274a3cbb0c91ee7b98068e895953386608727"
+    },
+    "publication/replay-v1.json": {
+      "bytes": 1400,
+      "sha256": "bd42d7c85b7472da1349568b5fca86c74d8248c8512ab5296333902708e846dc"
+    },
+    "publication/replay_v1.py": {
+      "bytes": 2746,
+      "sha256": "634e19c51d1a475c74ea3f198bdb207e1928ed8e461577c2223a701564fc53ac"
+    },
+    "report/penrose-move-policy-controls-20261106-v1-results.json": {
+      "bytes": 119431,
+      "sha256": "f68e460ec44e8b34924a7ac7b05880b1fcac97396bebf51083651219f491a43a"
+    },
+    "report/penrose-move-policy-controls-20261106-v1.html": {
+      "bytes": 37227,
+      "sha256": "6d70b068209db0055c8d6fd08309941ba224c5d45028b7f5816ad212ce56f214"
+    },
+    "source/boundary_search_v1.py": {
+      "bytes": 13028,
+      "sha256": "f750181a880f819fff08a770370ddfb57db2fbe24bf407828e11fc0f4e635ced"
+    },
+    "source/cases_v1.py": {
+      "bytes": 8451,
+      "sha256": "70ff43195c11a970f45d6acc319bddb7b90d4b394afced7ea4f98ba294b80af3"
+    },
+    "source/cavity_marks_v1.py": {
+      "bytes": 3013,
+      "sha256": "f1a8160edd193aca77ca134f9ca1c7837d5601ebecaf7ed23a07a7362f794d61"
+    },
+    "source/cavity_pilot_v1.py": {
+      "bytes": 4511,
+      "sha256": "24a238e67d695db2de8623ad8509b2accfd02fae7f6f96a2edf00aca5024705f"
+    },
+    "source/check_v1.py": {
+      "bytes": 4131,
+      "sha256": "edd28b8b5b611059b47d8b2b55964c27a1a5b268dabdaf06c2f4f7b340eaf76c"
+    },
+    "source/clipping_v1.py": {
+      "bytes": 5276,
+      "sha256": "a649384ab8e810d88d28e79906346946b869292c0de2bf81d07469778fc59281"
+    },
+    "source/cluster_v1.py": {
+      "bytes": 15717,
+      "sha256": "a2eec032406feaf45f7c5ca66b235727db26e414996337981f6b0ff865859b85"
+    },
+    "source/controlled_audit_v1.py": {
+      "bytes": 7749,
+      "sha256": "9f95bb788d136f77fa475477be8f0fa43f243080cf46682b12e656c0c7698cb5"
+    },
+    "source/controlled_cases_v1.py": {
+      "bytes": 5059,
+      "sha256": "aa1b15e8c7d80429eb86a7c3850ebbbe06a1d29602e9e533b6b4dbd2ca75b33e"
+    },
+    "source/controlled_search_v1.py": {
+      "bytes": 5752,
+      "sha256": "95b41dbce0bbb1195c7ab464f2937c49db3547f2da1376a8cbba3a5dd838a685"
+    },
+    "source/controlled_timing_v1.py": {
+      "bytes": 1701,
+      "sha256": "7b6724ccca25cd1693ca2b866e255854eb3f261593461fb36b59018a1b35a2a0"
+    },
+    "source/dominance_v1.py": {
+      "bytes": 2552,
+      "sha256": "63329a6752ae1eabbd53735d29c5754b2a97e141d29b5a32f1ad91e1cc2a18d6"
+    },
+    "source/geometry_v1.py": {
+      "bytes": 10392,
+      "sha256": "9869ab1c6a2fb3928366a8c50e114ff4c4ba14960cb7f28cb8cc5541b8c3936e"
+    },
+    "source/model_v1.py": {
+      "bytes": 4432,
+      "sha256": "df86798cfa969b57bdca56f4928b3fd12fe908a275ec5e47031546e74bef43f4"
+    },
+    "source/move_policy_v1.py": {
+      "bytes": 5011,
+      "sha256": "a62aeeb1086a92518b3c9b23ecbcfe0e95682077f6cd294ea6a3c855cdfb00f6"
+    },
+    "source/policy_cases_v1.py": {
+      "bytes": 2749,
+      "sha256": "bdf3fcd2152c788aa8a9da283311c2bafb5ed39d6f1474c99a78b05bdf910410"
+    },
+    "source/triangle_geometry_v1.py": {
+      "bytes": 9600,
+      "sha256": "4715c6f612b196d257c858d695d604d800ce832cc5f8a1bfee8ae58e400a79ed"
+    }
+  },
+  "assets": {
+    "penrose-move-policy-controls-20261106-v1-evidence.zip": {
+      "bytes": 339185,
+      "sha256": "99b3cf210aaf9bec51754d6603273e08c97909033a4947dfb0428174a8899899"
+    },
+    "penrose-move-policy-controls-20261106-v1-results.json": {
+      "bytes": 119431,
+      "sha256": "f68e460ec44e8b34924a7ac7b05880b1fcac97396bebf51083651219f491a43a"
+    },
+    "penrose-move-policy-controls-20261106-v1.html": {
+      "bytes": 37227,
+      "sha256": "6d70b068209db0055c8d6fd08309941ba224c5d45028b7f5816ad212ce56f214"
+    }
+  },
+  "schema": "PENROSE-MOVE-POLICY-MANIFEST-v1"
+}
