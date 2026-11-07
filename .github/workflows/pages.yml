@@ -1,10 +1,8 @@
 name: Publish GitHub Pages
 
 on:
-  # Normal publication uses GitHub Pages' main/root branch source. Keep this
-  # artifact workflow as an explicit fallback only; running both publishers on
-  # every push can leave a healthy branch build waiting behind a stuck
-  # deploy-pages record.
+  # Publication is explicitly dispatched. The hosted macOS fallback uses a
+  # separate group so an unassigned Linux job cannot hold its runner queue.
   workflow_dispatch:
     inputs:
       runner:
@@ -14,6 +12,7 @@ on:
         type: choice
         options:
           - ubuntu-latest
+          - macos-latest
           - gcts-pages-ephemeral
 
 permissions:
@@ -22,7 +21,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
+  group: ${{ inputs.runner == 'macos-latest' && 'pages-macos-fallback' || 'pages' }}
   cancel-in-progress: false
 
 jobs:
@@ -30,13 +29,13 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ${{ inputs.runner == 'gcts-pages-ephemeral' && fromJSON('["self-hosted", "gcts-pages-ephemeral"]') || 'ubuntu-latest' }}
+    runs-on: ${{ inputs.runner == 'gcts-pages-ephemeral' && fromJSON('["self-hosted", "gcts-pages-ephemeral"]') || inputs.runner || 'ubuntu-latest' }}
     steps:
       - name: Check out the release
         uses: actions/checkout@v4
       - name: Configure Pages
         uses: actions/configure-pages@v5
-      - name: Provide gtar on the ephemeral macOS runner
+      - name: Provide gtar when needed on macOS
         if: runner.os == 'macOS'
         shell: bash
         run: |
