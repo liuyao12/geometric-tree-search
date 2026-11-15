@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GCTS with an independent branch-order advisor</title>
+<link rel="stylesheet" href="../report.css?v=20261009-r33.1">
+<style>
+.scroll{overflow-x:auto}table{border-collapse:collapse;width:100%;white-space:nowrap}
+td,th{padding:.5rem .65rem;border-bottom:1px solid #ccd8df;text-align:right}
+th:first-child{text-align:left}
+</style>
+</head>
+<body>
+<header class="masthead"><a href="index.html">Fixed-boundary study</a><a href="#results">Results</a></header>
+<main>
+<section class="intro"><h1>GCTS with an independent branch-order advisor</h1>
+<p class="deck">Forced moves run as usual. At the first ambiguous branch, the baseline continues and an optional RL worker orders the legal alternatives in its own search.</p>
+<p>Only a complete fill that passes independent exact rerasterization can be returned. The untouched boundary and full cavity coverage are part of the check. If the advisor runs out of work, the baseline remains eligible to finish. A provisional dead end in the advisor's search has no effect on placements in the baseline.</p>
+</section>
+<section class="panel" id="results"><h2>Fresh hat and turtle cavities</h2>
+<p>Both the baseline and the protected solver filled all 40 cavities. The baseline found the same patch and visited the same states with the advisor enabled. Twelve cavities finished before the baseline reached any ambiguity, so no advisor search was started on them.</p>
+<div class="scroll"><table><thead><tr><th>Tile</th><th>Filled cavities</th><th>Advisor started</th><th>Advisor finished first</th><th>Search and verification time change</th><th>Total time change</th></tr></thead><tbody><tr><th scope="row">Hat</th><td>20</td><td>13</td><td>2 of 60</td><td>-0.4%</td><td>-0.04%</td></tr><tr><th scope="row">Turtle</th><td>20</td><td>15</td><td>3 of 60</td><td>+7.0%</td><td>+0.79%</td></tr></tbody></table></div>
+<p>The advisor reused the frozen primitive-move policy. It starts from the same cavity in a separate process and scores legal alternatives only after forced propagation stalls. Each case ran three paired repetitions. The time columns compare the sum of the per-case medians to the same baseline worker alone. Total time includes shared incidence compilation. The timing captures worker coordination and result checking. The state budget is 3,500 per worker, and startup of the persistent workers is outside the timings.</p>
+<p>A one-state advisor limit on one ambiguous cavity per shape returned the baseline fill. Using a second worker preserves the original search and its budget, while elapsed time still depends on how the processes are scheduled.</p>
+<p><a href="protected-results.json">Per-cavity measurements</a> · <a href="https://github.com/liuyao12/geometric-tree-search/blob/main/research/hat-turtle-speed-rl/README.md">Reproduction instructions</a></p>
+</section>
+</main>
+</body>
+</html>

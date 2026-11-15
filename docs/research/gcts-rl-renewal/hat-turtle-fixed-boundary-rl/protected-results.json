@@ -1,0 +1,623 @@
+[
+  {
+    "shape": "hat",
+    "rows": [
+      {
+        "id": "902391-00",
+        "source": 902391,
+        "tiles": 12,
+        "baselineStates": 13,
+        "advisorStarted": false,
+        "advisorStates": null,
+        "advisorSolved": false,
+        "winnerRepeats": {
+          "base": 3
+        },
+        "baseSeconds": 0.012201707999338396,
+        "raceSeconds": 0.01291670900536701,
+        "compileSeconds": 0.05483675000141375
+      },
+      {
+        "id": "902391-06",
+        "source": 902391,
+        "tiles": 32,
+        "baselineStates": 35,
+        "advisorStarted": true,
+        "advisorStates": 35,
+        "advisorSolved": true,
+        "winnerRepeats": {
+          "base": 3
+        },
+        "baseSeconds": 0.0890650840010494,
+        "raceSeconds": 0.08112179100135108,
+        "compileSeconds": 0.33940187499683816
+      },
+      {
+        "id": "902391-03",
+        "source": 902391,
+        "tiles": 44,
+        "baselineStates": 58,
+        "advisorStarted": true,
+        "advisorStates": 57,
+        "advisorSolved": true,
+        "winnerRepeats": {
+          "advised": 2,
+          "base": 1
+        },
+        "baseSeconds": 0.20984491700073704,
+        "raceSeconds": 0.204064625002502,
+        "compileSeconds": 0.9043754579979577
+      },
+      {
+        "id": "912358-08",
+        "source": 912358,
+        "tiles": 12,
+        "baselineStates": 13,
+        "advisorStarted": false,
+        "advisorStates": null,
+        "advisorSolved": false,
+        "winnerRepeats": {
+          "base": 3
+        },
+        "baseSeconds": 0.0074977920012315735,
+        "raceSeconds": 0.004014958001789637,
+        "compileSeconds": 0.02325879200361669
+      },
+      {
+        "id": "912358-02",
+        "source": 912358,
+        "tiles": 32,
+        "baselineStates": 33,
+        "advisorStarted": true,
+        "advisorStates": 37,
+        "advisorSolved": true,
+        "winnerRepeats": {
+          "base": 3
+        },
+        "baseSeconds": 0.07480166699679103,
+        "raceSeconds": 0.06845579200307839,
+        "compileSeconds": 0.4210985410027206
+      },
+      {
+        "id": "912358-11",
+        "source": 912358,
+        "tiles": 44,
+        "baselineStates": 45,
+        "advisorStarted": true,
+        "advisorStates": 49,
+        "advisorSolved": true,
+        "winnerRepeats": {
+          "base": 3
+        },
+        "baseSeconds": 0.14595399999961955,
+        "raceSeconds": 0.14679020900075557,
+        "compileSeconds": 2.1810796249992563
+      },
+      {
+        "id": "922325-13",
+        "source": 922325,
+        "tiles": 20,
+        "baselineStates": 21,
+        "advisorStarted": false,
+        "advisorStates": null,
+        "advisorSolved": false,
+        "winnerRepeats": {
+          "base": 3
+        },
+        "baseSeconds": 0.02446241700090468,
+        "raceSeconds": 0.016806542000267655,
+        "compileSeconds": 0.7075163330009673
+      },
+      {
+        "id": "922325-10",
+        "source": 922325,
+        "tiles": 32,
+        "baselineStates": 35,
+        "advisorStarted": true,
+        "advisorStates": 35,
+        "advisorSolved": true,
+        "winnerRepeats": {
+          "base": 3
+        },
+        "baseSeconds": 0.07730754200019874,
+        "raceSeconds": 0.08128637500340119,
+        "compileSeconds": 1.5921824999968521
+      },
+      {
+        "id": "922325-03",
+        "source": 922325,
+        "tiles": 44,
+        "baselineStates": 58,
+        "advisorStarted": true,
+        "advisorStates": 50,
+        "advisorSolved": true,
+        "winnerRepeats": {
+          "base": 3
+        },
+        "baseSeconds": 0.1823817090044031,
+        "raceSeconds": 0.18970241700299084,
+        "compileSeconds": 2.8743074579979293
+      },
+      {
+        "id": "932292-12",
+        "source": 932292,
+        "tiles": 12,
+        "baselineStates": 13,
+        "advisorStarted": false,
+        "advisorStates": null,
+        "advisorSolved": false,
+        "winnerRepeats": {
+          "base": 3
+        },
+        "baseSeconds": 0.008683250001922715,
+        "raceSeconds": 0.007891791996371467,
+        "compileSeconds": 0.12902133400348248
+      },
+      {
+        "id": "932292-14",
+        "source": 932292,
+        "tiles": 32,
+        "baselineStates": 36,
+        "advisorStarted": true,
+        "advisorStates": 33,
+        "advisorSolved": true,
+        "winnerRepeats": {
+          "base": 3
+        },
+        "baseSeconds": 0.07093595799960895,
+        "raceSeconds": 0.08475816700229188,
+        "compileSeconds": 0.6379382500017527
+      },
+      {
+        "id": "942259-04",
+        "source": 942259,
+        "tiles": 12,
+        "baselineStates": 13,
+        "advisorStarted": false,
+        "advisorStates": null,
+        "advisorSolved": false,
+        "winnerRepeats": {
+          "base": 3
+        },
+        "baseSeconds": 0.008881750000000466,
+        "raceSeconds": 0.008736292002140544,
+        "compileSeconds": 0.032696290996682364
+      },
+      {
+        "id": "942259-14",
+        "source": 942259,
+        "tiles": 32,
+        "baselineStates": 40,
+        "advisorStarted": true,
+        "advisorStates": 38,
+        "advisorSolved": true,
+        "winnerRepeats": {
+          "base": 3
+        },
+        "baseSeconds": 0.07045691600069404,
+        "raceSeconds": 0.06553649999841582,
+        "compileSeconds": 0.3299945420003496
+      },
+      {
+        "id": "952226-12",
+        "source": 952226,
+        "tiles": 12,
+        "baselineStates": 13,
+        "advisorStarted": false,
+        "advisorStates": null,
+        "advisorSolved": false,
+        "winnerRepeats": {
+          "base": 3
+        },
+        "baseSeconds": 0.010302083996066358,
+        "raceSeconds": 0.009547583002131432,
+        "compileSeconds": 0.059340250001696404
+      },
+      {
+        "id": "962193-08",
+        "source": 962193,
+        "tiles": 12,
+        "baselineStates": 13,
+        "advisorStarted": true,
+        "advisorStates": 16,
+        "advisorSolved": true,
+        "winnerRepeats": {
+          "base": 3
+        },
+        "baseSeconds": 0.010964209002850112,
+        "raceSeconds": 0.011371749998943415,
+        "compileSeconds": 0.048161332997551654
+      },
+      {
+        "id": "962193-14",
+        "source": 962193,
+        "tiles": 32,
+        "baselineStates": 33,
+        "advisorStarted": true,
+        "advisorStates": 33,
+        "advisorSolved": true,
+        "winnerRepeats": {
+          "base": 3
+        },
+        "baseSeconds": 0.06457758299802663,
+        "raceSeconds": 0.06605487499473384,
+        "compileSeconds": 0.40095216700137826
+      },
+      {
+        "id": "962193-03",
+        "source": 962193,
+        "tiles": 44,
+        "baselineStates": 60,
+        "advisorStarted": true,
+        "advisorStates": 77,
+        "advisorSolved": true,
+        "winnerRepeats": {
+          "base": 3
+        },
+        "baseSeconds": 0.20331895800336497,
+        "raceSeconds": 0.21120104100555182,
+        "compileSeconds": 1.5864897499996005
+      },
+      {
+        "id": "972160-12",
+        "source": 972160,
+        "tiles": 12,
+        "baselineStates": 13,
+        "advisorStarted": false,
+        "advisorStates": null,
+        "advisorSolved": false,
+        "winnerRepeats": {
+          "base": 3
+        },
+        "baseSeconds": 0.010742250000475906,
+        "raceSeconds": 0.011734916995919775,
+        "compileSeconds": 0.05376008399616694
+      },
+      {
+        "id": "972160-06",
+        "source": 972160,
+        "tiles": 32,
+        "baselineStates": 45,
+        "advisorStarted": true,
+        "advisorStates": 33,
+        "advisorSolved": true,
+        "winnerRepeats": {
+          "base": 3
+        },
+        "baseSeconds": 0.09013020800193772,
+        "raceSeconds": 0.08235191700077849,
+        "compileSeconds": 0.48924416700174334
+      },
+      {
+        "id": "972160-15",
+        "source": 972160,
+        "tiles": 44,
+        "baselineStates": 73,
+        "advisorStarted": true,
+        "advisorStates": 68,
+        "advisorSolved": true,
+        "winnerRepeats": {
+          "base": 3
+        },
+        "baseSeconds": 0.24844366699835518,
+        "raceSeconds": 0.25066783300280804,
+        "compileSeconds": 1.263164666997909
+      }
+    ],
+    "repeats": 3,
+    "sources": 8,
+    "policySha256": "bad27c35674a26804dc1d50fd53bd141ac38c3a5c3c45dd17197f88693808cce",
+    "faultCheck": "one-state advisor budget"
+  },
+  {
+    "shape": "turtle",
+    "rows": [
+      {
+        "id": "902391-00",
+        "source": 902391,
+        "tiles": 12,
+        "baselineStates": 14,
+        "advisorStarted": true,
+        "advisorStates": 13,
+        "advisorSolved": true,
+        "winnerRepeats": {
+          "base": 3
+        },
+        "baseSeconds": 0.014555499998095911,
+        "raceSeconds": 0.016811000001325738,
+        "compileSeconds": 0.11635708299581893
+      },
+      {
+        "id": "902391-06",
+        "source": 902391,
+        "tiles": 32,
+        "baselineStates": 33,
+        "advisorStarted": false,
+        "advisorStates": null,
+        "advisorSolved": false,
+        "winnerRepeats": {
+          "base": 3
+        },
+        "baseSeconds": 0.10268854099558666,
+        "raceSeconds": 0.09817291700164787,
+        "compileSeconds": 1.6382876669958932
+      },
+      {
+        "id": "902391-03",
+        "source": 902391,
+        "tiles": 44,
+        "baselineStates": 47,
+        "advisorStarted": true,
+        "advisorStates": 46,
+        "advisorSolved": true,
+        "winnerRepeats": {
+          "base": 3
+        },
+        "baseSeconds": 0.2339047909990768,
+        "raceSeconds": 0.23976145800406812,
+        "compileSeconds": 1.7552941249959986
+      },
+      {
+        "id": "912358-08",
+        "source": 912358,
+        "tiles": 12,
+        "baselineStates": 13,
+        "advisorStarted": false,
+        "advisorStates": null,
+        "advisorSolved": false,
+        "winnerRepeats": {
+          "base": 3
+        },
+        "baseSeconds": 0.011107792000984773,
+        "raceSeconds": 0.014214875001925975,
+        "compileSeconds": 0.0902459170029033
+      },
+      {
+        "id": "922325-12",
+        "source": 922325,
+        "tiles": 12,
+        "baselineStates": 13,
+        "advisorStarted": false,
+        "advisorStates": null,
+        "advisorSolved": false,
+        "winnerRepeats": {
+          "base": 3
+        },
+        "baseSeconds": 0.007947792000777554,
+        "raceSeconds": 0.01024429099925328,
+        "compileSeconds": 0.07863841699872864
+      },
+      {
+        "id": "922325-02",
+        "source": 922325,
+        "tiles": 32,
+        "baselineStates": 41,
+        "advisorStarted": true,
+        "advisorStates": 33,
+        "advisorSolved": true,
+        "winnerRepeats": {
+          "base": 3
+        },
+        "baseSeconds": 0.1232998330015107,
+        "raceSeconds": 0.12308849999681115,
+        "compileSeconds": 0.8729362080048304
+      },
+      {
+        "id": "922325-03",
+        "source": 922325,
+        "tiles": 44,
+        "baselineStates": 55,
+        "advisorStarted": true,
+        "advisorStates": 46,
+        "advisorSolved": true,
+        "winnerRepeats": {
+          "base": 3
+        },
+        "baseSeconds": 0.22544570900208782,
+        "raceSeconds": 0.25942299999587703,
+        "compileSeconds": 1.5385193330002949
+      },
+      {
+        "id": "932292-13",
+        "source": 932292,
+        "tiles": 20,
+        "baselineStates": 22,
+        "advisorStarted": true,
+        "advisorStates": 21,
+        "advisorSolved": true,
+        "winnerRepeats": {
+          "base": 3
+        },
+        "baseSeconds": 0.02993929200601997,
+        "raceSeconds": 0.028828916998463683,
+        "compileSeconds": 0.226009250000061
+      },
+      {
+        "id": "932292-14",
+        "source": 932292,
+        "tiles": 32,
+        "baselineStates": 38,
+        "advisorStarted": true,
+        "advisorStates": 33,
+        "advisorSolved": true,
+        "winnerRepeats": {
+          "base": 3
+        },
+        "baseSeconds": 0.15823237499716925,
+        "raceSeconds": 0.13100079199648462,
+        "compileSeconds": 0.8337177919966052
+      },
+      {
+        "id": "932292-11",
+        "source": 932292,
+        "tiles": 44,
+        "baselineStates": 51,
+        "advisorStarted": true,
+        "advisorStates": 47,
+        "advisorSolved": true,
+        "winnerRepeats": {
+          "base": 3
+        },
+        "baseSeconds": 0.1924420840005041,
+        "raceSeconds": 0.2294699159974698,
+        "compileSeconds": 1.4749067079974338
+      },
+      {
+        "id": "942259-08",
+        "source": 942259,
+        "tiles": 12,
+        "baselineStates": 13,
+        "advisorStarted": false,
+        "advisorStates": null,
+        "advisorSolved": false,
+        "winnerRepeats": {
+          "base": 3
+        },
+        "baseSeconds": 0.007080957999278326,
+        "raceSeconds": 0.00717416699626483,
+        "compileSeconds": 0.08981883300293703
+      },
+      {
+        "id": "942259-02",
+        "source": 942259,
+        "tiles": 32,
+        "baselineStates": 41,
+        "advisorStarted": true,
+        "advisorStates": 41,
+        "advisorSolved": true,
+        "winnerRepeats": {
+          "base": 3
+        },
+        "baseSeconds": 0.11488741700304672,
+        "raceSeconds": 0.10972120799851837,
+        "compileSeconds": 0.7830160410012468
+      },
+      {
+        "id": "942259-03",
+        "source": 942259,
+        "tiles": 44,
+        "baselineStates": 70,
+        "advisorStarted": true,
+        "advisorStates": 51,
+        "advisorSolved": true,
+        "winnerRepeats": {
+          "base": 1,
+          "advised": 2
+        },
+        "baseSeconds": 0.4258837500019581,
+        "raceSeconds": 0.4646788750033011,
+        "compileSeconds": 1.848767458999646
+      },
+      {
+        "id": "952226-13",
+        "source": 952226,
+        "tiles": 20,
+        "baselineStates": 26,
+        "advisorStarted": true,
+        "advisorStates": 21,
+        "advisorSolved": true,
+        "winnerRepeats": {
+          "advised": 1,
+          "base": 2
+        },
+        "baseSeconds": 0.03386645799764665,
+        "raceSeconds": 0.04959379100182559,
+        "compileSeconds": 0.29599870799575
+      },
+      {
+        "id": "952226-06",
+        "source": 952226,
+        "tiles": 32,
+        "baselineStates": 38,
+        "advisorStarted": true,
+        "advisorStates": 33,
+        "advisorSolved": true,
+        "winnerRepeats": {
+          "base": 3
+        },
+        "baseSeconds": 0.09518079199915519,
+        "raceSeconds": 0.10289395800646162,
+        "compileSeconds": 1.0725600420046248
+      },
+      {
+        "id": "952226-07",
+        "source": 952226,
+        "tiles": 44,
+        "baselineStates": 50,
+        "advisorStarted": true,
+        "advisorStates": 45,
+        "advisorSolved": true,
+        "winnerRepeats": {
+          "base": 3
+        },
+        "baseSeconds": 0.22895849999622442,
+        "raceSeconds": 0.23420566699496703,
+        "compileSeconds": 1.8296742079983233
+      },
+      {
+        "id": "962193-04",
+        "source": 962193,
+        "tiles": 12,
+        "baselineStates": 13,
+        "advisorStarted": false,
+        "advisorStates": null,
+        "advisorSolved": false,
+        "winnerRepeats": {
+          "base": 3
+        },
+        "baseSeconds": 0.006571500001882669,
+        "raceSeconds": 0.008487125000101514,
+        "compileSeconds": 0.08475416700093774
+      },
+      {
+        "id": "962193-02",
+        "source": 962193,
+        "tiles": 32,
+        "baselineStates": 36,
+        "advisorStarted": true,
+        "advisorStates": 35,
+        "advisorSolved": true,
+        "winnerRepeats": {
+          "base": 3
+        },
+        "baseSeconds": 0.08995245800178964,
+        "raceSeconds": 0.10177933300292352,
+        "compileSeconds": 1.6962739169975976
+      },
+      {
+        "id": "962193-15",
+        "source": 962193,
+        "tiles": 44,
+        "baselineStates": 55,
+        "advisorStarted": true,
+        "advisorStates": 49,
+        "advisorSolved": true,
+        "winnerRepeats": {
+          "base": 3
+        },
+        "baseSeconds": 0.2184579169988865,
+        "raceSeconds": 0.2571263749996433,
+        "compileSeconds": 1.7947097910000593
+      },
+      {
+        "id": "972160-05",
+        "source": 972160,
+        "tiles": 20,
+        "baselineStates": 22,
+        "advisorStarted": true,
+        "advisorStates": 22,
+        "advisorSolved": true,
+        "winnerRepeats": {
+          "base": 3
+        },
+        "baseSeconds": 0.02431820899801096,
+        "raceSeconds": 0.022402333001082297,
+        "compileSeconds": 0.26924145899829455
+      }
+    ],
+    "repeats": 3,
+    "sources": 8,
+    "policySha256": "136ad516ca46943c1f08b74b0187c0b84201fe2120c9b0f0f467a3fc3d122013",
+    "faultCheck": "one-state advisor budget"
+  }
+]
