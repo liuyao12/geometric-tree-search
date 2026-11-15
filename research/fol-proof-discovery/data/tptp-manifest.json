@@ -1,0 +1,49 @@
+{
+  "release": "TPTP v10.0.0",
+  "library": "https://tptp.tptp.org/",
+  "extraction": "Unescaped source text of the official SeeTPTP preformatted block.",
+  "files": {
+    "PUZ001-1.p": {
+      "url": "https://seetptp.tptp.org/file/TPTPWorld/TPTP/Problems/PUZ/PUZ001-1.p",
+      "sha256": "ded0756eaa76228bdff450588f5ad553ee1eff8e14d611b5325e4004822e4aba",
+      "bytes": 2893,
+      "clauses": 12,
+      "status": "Unsatisfiable"
+    },
+    "PUZ002-1.p": {
+      "url": "https://seetptp.tptp.org/file/TPTPWorld/TPTP/Problems/PUZ/PUZ002-1.p",
+      "sha256": "62bc3f75567a4e2360bce7196ed6714dac1670297fcece0eced0e07157d2ef49",
+      "bytes": 2760,
+      "clauses": 12,
+      "status": "Unsatisfiable"
+    },
+    "PUZ003-1.p": {
+      "url": "https://seetptp.tptp.org/file/TPTPWorld/TPTP/Problems/PUZ/PUZ003-1.p",
+      "sha256": "6b279dded49e96ca8241983e5d8f025c6e9f2c23fffbfe502ee57d5bcd0c117a",
+      "bytes": 2028,
+      "clauses": 8,
+      "status": "Unsatisfiable"
+    },
+    "PUZ004-1.p": {
+      "url": "https://seetptp.tptp.org/file/TPTPWorld/TPTP/Problems/PUZ/PUZ004-1.p",
+      "sha256": "de3d8f35217da13d28382f90e5fada63b148a1bd5de39a16fa33f05a60d41bf8",
+      "bytes": 2691,
+      "clauses": 12,
+      "status": "Unsatisfiable"
+    },
+    "SYN054-1.p": {
+      "url": "https://seetptp.tptp.org/file/TPTPWorld/TPTP/Problems/SYN/SYN054-1.p",
+      "sha256": "d1e4c16069bd9e1305d798254f65056b6226c992cd6a8a33328647b865e3a0c5",
+      "bytes": 1507,
+      "clauses": 6,
+      "status": "Unsatisfiable"
+    },
+    "LCL001-1.p": {
+      "url": "https://seetptp.tptp.org/file/TPTPWorld/TPTP/Problems/LCL/LCL001-1.p",
+      "sha256": "ed7c087eabd1a5570f3745b398788652f95ef21adc917712a67c781f87630609",
+      "bytes": 2302,
+      "clauses": 6,
+      "status": "Unsatisfiable"
+    }
+  }
+}
