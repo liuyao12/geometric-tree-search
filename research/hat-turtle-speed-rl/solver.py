@@ -218,7 +218,8 @@ class Policy:
                 self.weights[name] = max(-8.0, min(8.0, self.weights[name]+0.18*reward*value/normalizer))
 
 
-def solve(cavity, mode, *, offers=None, policy=None, train=False, seed=0, budget=3500):
+def solve(cavity, mode, *, offers=None, policy=None, train=False, seed=0, budget=3500,
+          on_first_choice=None):
     started = perf_counter()
     rng = Random(seed)
     counts = Counter()
@@ -231,7 +232,7 @@ def solve(cavity, mode, *, offers=None, policy=None, train=False, seed=0, budget
              for row in range(len(cavity.keys))]
 
     def visit(columns, active, placed):
-        nonlocal solution, best
+        nonlocal solution, best, on_first_choice
         if counts['states'] >= budget:
             return
         counts['states'] += 1
@@ -253,6 +254,9 @@ def solve(cavity, mode, *, offers=None, policy=None, train=False, seed=0, budget
                     branch, degree = domain, width
         if placed > len(best):
             best = [row for _, members in path for row in members]
+        if degree > 1 and on_first_choice is not None:
+            on_first_choice()
+            on_first_choice = None
         options = [pairs[row] for row in bits(branch)]
         if offers:
             seen = set()

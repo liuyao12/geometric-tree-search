@@ -65,3 +65,24 @@ placement is forced in sequence. Its cavities come from the same held-out
 source lineages as the main experiment, with symmetry-equivalent and
 previously measured cavities excluded. Both forced variants use the original
 frozen bank. The largest-first variant omits policy scores.
+
+## Independent branch-order advisor
+
+`protected.py` leaves GCTS's singleton propagation and branch order intact.
+The baseline notifies the coordinator only when its first ambiguous branch
+is reached. An optional second process uses the frozen single-tile RL policy
+to order legal siblings at ambiguous points. Its search state and node budget
+are private. The coordinator commits only a full, independently rerasterized
+cavity cover. The baseline remains eligible to return its result if the second
+worker fails or runs out of work. This preserves the baseline search path
+and solution coverage. Worker coordination and CPU contention affect wall time.
+
+Run on POSIX with Python 3.12. Place the original per-shape result, forced
+follow-up and frozen policy files in `./recorded`, using the filenames read by
+`protected.py`. The comparison times the first verified fill against the
+same baseline worker alone. It uses three paired repetitions on previously
+unused cavities and performs a one-state advisor limit exercise.
+
+```sh
+python3 protected.py ./cavity-data ./recorded ./protected-results.json
+```
