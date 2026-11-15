@@ -1,0 +1,761 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>First-order proof discovery · GCTS + RL</title>
+<link rel="stylesheet" href="../report.css?v=20261009-r33.1">
+<style>
+.scroll{overflow-x:auto}table{border-collapse:collapse;width:100%;white-space:nowrap}
+td,th{padding:.5rem .65rem;border-bottom:1px solid #cbd5dc;text-align:right}
+th:first-child{text-align:left}pre{overflow:auto;max-height:30rem;background:#edf2f4;padding:1rem}
+</style>
+</head><body><header class="masthead"><a href="../index.html">GCTS research notebook</a><a href="#method">Method</a></header>
+<main><section class="intro">
+<h1>Can a numeric policy speed up first-order proof discovery?</h1>
+<p>The selected learned scheduler and the selected fixed scheduler found 23 versus 24 of 24 on the generated set and 3 versus 5 of 6 on the external set within 120 ms per problem. The selected schedules were rl-41 and size.</p>
+<p>GCTS searches directly over symbolic clauses. The runtime uses exact lifted inference, a numeric policy and an independent certificate checker.</p>
+</section>
+<section class="panel"><h2>Generated held-out families</h2><p>30 cases. disconnected-relay, finite-term-orbit, open-disjunction, proof-by-cases, resolution-with-factoring.</p><div class="scroll"><table><thead><tr><th>Scheduler</th><th>15 ms</th><th>50 ms</th><th>120 ms</th><th>Total seconds</th><th>Counted work</th></tr></thead><tbody><tr><th scope="row">fifo</th><td>11 of 24</td><td>15 of 24</td><td>15 of 24</td><td>1.073</td><td>364,682</td></tr><tr><th scope="row">size</th><td>24 of 24</td><td>24 of 24</td><td>24 of 24</td><td>0.552</td><td>76,120</td></tr><tr><th scope="row">goal</th><td>24 of 24</td><td>24 of 24</td><td>24 of 24</td><td>0.461</td><td>70,010</td></tr><tr><th scope="row">random</th><td>12 of 24</td><td>16 of 24</td><td>16 of 24</td><td>0.970</td><td>301,175</td></tr><tr><th scope="row">rl-41</th><td>22 of 24</td><td>23 of 24</td><td>23 of 24</td><td>0.573</td><td>104,231</td></tr></tbody></table></div><p>At the largest time budget, both selected schedules proved 23; 0 were proved only by the learned schedule and 1 only by the selected fixed schedule.</p></section><section class="panel"><h2>External TPTP problems</h2><p>6 cases. TPTP-LCL, TPTP-PUZ, TPTP-SYN.</p><div class="scroll"><table><thead><tr><th>Scheduler</th><th>15 ms</th><th>50 ms</th><th>120 ms</th><th>Total seconds</th><th>Counted work</th></tr></thead><tbody><tr><th scope="row">fifo</th><td>3 of 6</td><td>3 of 6</td><td>3 of 6</td><td>0.302</td><td>50,265</td></tr><tr><th scope="row">size</th><td>5 of 6</td><td>5 of 6</td><td>5 of 6</td><td>0.127</td><td>12,976</td></tr><tr><th scope="row">goal</th><td>5 of 6</td><td>5 of 6</td><td>5 of 6</td><td>0.130</td><td>14,555</td></tr><tr><th scope="row">random</th><td>3 of 6</td><td>3 of 6</td><td>3 of 6</td><td>0.296</td><td>47,484</td></tr><tr><th scope="row">rl-41</th><td>3 of 6</td><td>3 of 6</td><td>3 of 6</td><td>0.345</td><td>59,432</td></tr></tbody></table></div><p>At the largest time budget, both selected schedules proved 3; 0 were proved only by the learned schedule and 2 only by the selected fixed schedule.</p></section><section class="panel"><h2>Checked proof certificate</h2><p>proof-by-cases-02 · proof-by-cases. <a href="example.json">Download the input clauses and certificate</a>.</p><details><summary>Read the machine certificate</summary><pre>{
+  &quot;format&quot;: &quot;lifted-cnf-v1&quot;,
+  &quot;steps&quot;: [
+    {
+      &quot;rule&quot;: &quot;input&quot;,
+      &quot;source&quot;: 2,
+      &quot;clause&quot;: [
+        [
+          false,
+          &quot;n5f7605cbbc7b&quot;,
+          [
+            &quot;nf6b876be5477&quot;,
+            &quot;?v0&quot;
+          ]
+        ],
+        [
+          true,
+          &quot;nf8750d95d5f8&quot;,
+          [
+            &quot;?v0&quot;
+          ]
+        ]
+      ],
+      &quot;renaming&quot;: {
+        &quot;?X&quot;: &quot;?v0&quot;
+      }
+    },
+    {
+      &quot;rule&quot;: &quot;input&quot;,
+      &quot;source&quot;: 11,
+      &quot;clause&quot;: [
+        [
+          false,
+          &quot;n5f7605cbbc7b&quot;,
+          [
+            &quot;nb7d5147275d8&quot;,
+            &quot;?v0&quot;
+          ]
+        ],
+        [
+          true,
+          &quot;n5f7605cbbc7b&quot;,
+          [
+            &quot;n9632cd1dacb9&quot;,
+            &quot;?v0&quot;
+          ]
+        ]
+      ],
+      &quot;renaming&quot;: {
+        &quot;?X&quot;: &quot;?v0&quot;
+      }
+    },
+    {
+      &quot;rule&quot;: &quot;input&quot;,
+      &quot;source&quot;: 15,
+      &quot;clause&quot;: [
+        [
+          false,
+          &quot;n5f7605cbbc7b&quot;,
+          [
+            &quot;nb7c5a7878b38&quot;,
+            &quot;?v0&quot;
+          ]
+        ],
+        [
+          true,
+          &quot;n5f7605cbbc7b&quot;,
+          [
+            &quot;n6a84d99d8a42&quot;,
+            &quot;?v0&quot;
+          ]
+        ]
+      ],
+      &quot;renaming&quot;: {
+        &quot;?X&quot;: &quot;?v0&quot;
+      }
+    },
+    {
+      &quot;rule&quot;: &quot;input&quot;,
+      &quot;source&quot;: 17,
+      &quot;clause&quot;: [
+        [
+          false,
+          &quot;n5f7605cbbc7b&quot;,
+          [
+            &quot;nf0814b584068&quot;,
+            &quot;?v0&quot;
+          ]
+        ],
+        [
+          true,
+          &quot;n5f7605cbbc7b&quot;,
+          [
+            &quot;n2c3fa0fb33d6&quot;,
+            &quot;?v0&quot;
+          ]
+        ]
+      ],
+      &quot;renaming&quot;: {
+        &quot;?X&quot;: &quot;?v0&quot;
+      }
+    },
+    {
+      &quot;rule&quot;: &quot;input&quot;,
+      &quot;source&quot;: 21,
+      &quot;clause&quot;: [
+        [
+          true,
+          &quot;n5f7605cbbc7b&quot;,
+          [
+            &quot;n9e1c499e4b03&quot;,
+            &quot;na88a99a07f96&quot;
+          ]
+        ],
+        [
+          true,
+          &quot;n5f7605cbbc7b&quot;,
+          [
+            &quot;nb30bedaf296a&quot;,
+            &quot;na88a99a07f96&quot;
+          ]
+        ],
+        [
+          true,
+          &quot;n5f7605cbbc7b&quot;,
+          [
+            &quot;nb7d5147275d8&quot;,
+            &quot;na88a99a07f96&quot;
+          ]
+        ],
+        [
+          true,
+          &quot;n5f7605cbbc7b&quot;,
+          [
+            &quot;nf0814b584068&quot;,
+            &quot;na88a99a07f96&quot;
+          ]
+        ]
+      ],
+      &quot;renaming&quot;: {}
+    },
+    {
+      &quot;rule&quot;: &quot;input&quot;,
+      &quot;source&quot;: 22,
+      &quot;clause&quot;: [
+        [
+          false,
+          &quot;n5f7605cbbc7b&quot;,
+          [
+            &quot;n452112e95cad&quot;,
+            &quot;?v0&quot;
+          ]
+        ],
+        [
+          true,
+          &quot;n5f7605cbbc7b&quot;,
+          [
+            &quot;nd76431388463&quot;,
+            &quot;?v0&quot;
+          ]
+        ]
+      ],
+      &quot;renaming&quot;: {
+        &quot;?X&quot;: &quot;?v0&quot;
+      }
+    },
+    {
+      &quot;rule&quot;: &quot;input&quot;,
+      &quot;source&quot;: 28,
+      &quot;clause&quot;: [
+        [
+          false,
+          &quot;n5f7605cbbc7b&quot;,
+          [
+            &quot;n9e1c499e4b03&quot;,
+            &quot;?v0&quot;
+          ]
+        ],
+        [
+          true,
+          &quot;n5f7605cbbc7b&quot;,
+          [
+            &quot;nb7c5a7878b38&quot;,
+            &quot;?v0&quot;
+          ]
+        ]
+      ],
+      &quot;renaming&quot;: {
+        &quot;?X&quot;: &quot;?v0&quot;
+      }
+    },
+    {
+      &quot;rule&quot;: &quot;input&quot;,
+      &quot;source&quot;: 29,
+      &quot;clause&quot;: [
+        [
+          false,
+          &quot;n5f7605cbbc7b&quot;,
+          [
+            &quot;nd76431388463&quot;,
+            &quot;?v0&quot;
+          ]
+        ],
+        [
+          true,
+          &quot;n5f7605cbbc7b&quot;,
+          [
+            &quot;nf6b876be5477&quot;,
+            &quot;?v0&quot;
+          ]
+        ]
+      ],
+      &quot;renaming&quot;: {
+        &quot;?X&quot;: &quot;?v0&quot;
+      }
+    },
+    {
+      &quot;rule&quot;: &quot;input&quot;,
+      &quot;source&quot;: 32,
+      &quot;clause&quot;: [
+        [
+          false,
+          &quot;n5f7605cbbc7b&quot;,
+          [
+            &quot;nb30bedaf296a&quot;,
+            &quot;?v0&quot;
+          ]
+        ],
+        [
+          true,
+          &quot;n5f7605cbbc7b&quot;,
+          [
+            &quot;n452112e95cad&quot;,
+            &quot;?v0&quot;
+          ]
+        ]
+      ],
+      &quot;renaming&quot;: {
+        &quot;?X&quot;: &quot;?v0&quot;
+      }
+    },
+    {
+      &quot;rule&quot;: &quot;input&quot;,
+      &quot;source&quot;: 34,
+      &quot;clause&quot;: [
+        [
+          false,
+          &quot;n5f7605cbbc7b&quot;,
+          [
+            &quot;n6a84d99d8a42&quot;,
+            &quot;?v0&quot;
+          ]
+        ],
+        [
+          true,
+          &quot;nf8750d95d5f8&quot;,
+          [
+            &quot;?v0&quot;
+          ]
+        ]
+      ],
+      &quot;renaming&quot;: {
+        &quot;?X&quot;: &quot;?v0&quot;
+      }
+    },
+    {
+      &quot;rule&quot;: &quot;input&quot;,
+      &quot;source&quot;: 36,
+      &quot;clause&quot;: [
+        [
+          false,
+          &quot;n5f7605cbbc7b&quot;,
+          [
+            &quot;n2c3fa0fb33d6&quot;,
+            &quot;?v0&quot;
+          ]
+        ],
+        [
+          true,
+          &quot;nf8750d95d5f8&quot;,
+          [
+            &quot;?v0&quot;
+          ]
+        ]
+      ],
+      &quot;renaming&quot;: {
+        &quot;?X&quot;: &quot;?v0&quot;
+      }
+    },
+    {
+      &quot;rule&quot;: &quot;input&quot;,
+      &quot;source&quot;: 37,
+      &quot;clause&quot;: [
+        [
+          false,
+          &quot;n5f7605cbbc7b&quot;,
+          [
+            &quot;n9632cd1dacb9&quot;,
+            &quot;?v0&quot;
+          ]
+        ],
+        [
+          true,
+          &quot;nf8750d95d5f8&quot;,
+          [
+            &quot;?v0&quot;
+          ]
+        ]
+      ],
+      &quot;renaming&quot;: {
+        &quot;?X&quot;: &quot;?v0&quot;
+      }
+    },
+    {
+      &quot;rule&quot;: &quot;input&quot;,
+      &quot;source&quot;: 39,
+      &quot;clause&quot;: [
+        [
+          false,
+          &quot;nf8750d95d5f8&quot;,
+          [
+            &quot;na88a99a07f96&quot;
+          ]
+        ]
+      ],
+      &quot;renaming&quot;: {}
+    },
+    {
+      &quot;rule&quot;: &quot;resolve&quot;,
+      &quot;parents&quot;: [
+        11,
+        12
+      ],
+      &quot;sites&quot;: [
+        1,
+        0
+      ],
+      &quot;substitution&quot;: {
+        &quot;?L0&quot;: &quot;na88a99a07f96&quot;
+      },
+      &quot;clause&quot;: [
+        [
+          false,
+          &quot;n5f7605cbbc7b&quot;,
+          [
+            &quot;n9632cd1dacb9&quot;,
+            &quot;na88a99a07f96&quot;
+          ]
+        ]
+      ],
+      &quot;renaming&quot;: {}
+    },
+    {
+      &quot;rule&quot;: &quot;resolve&quot;,
+      &quot;parents&quot;: [
+        10,
+        12
+      ],
+      &quot;sites&quot;: [
+        1,
+        0
+      ],
+      &quot;substitution&quot;: {
+        &quot;?L0&quot;: &quot;na88a99a07f96&quot;
+      },
+      &quot;clause&quot;: [
+        [
+          false,
+          &quot;n5f7605cbbc7b&quot;,
+          [
+            &quot;n2c3fa0fb33d6&quot;,
+            &quot;na88a99a07f96&quot;
+          ]
+        ]
+      ],
+      &quot;renaming&quot;: {}
+    },
+    {
+      &quot;rule&quot;: &quot;resolve&quot;,
+      &quot;parents&quot;: [
+        9,
+        12
+      ],
+      &quot;sites&quot;: [
+        1,
+        0
+      ],
+      &quot;substitution&quot;: {
+        &quot;?L0&quot;: &quot;na88a99a07f96&quot;
+      },
+      &quot;clause&quot;: [
+        [
+          false,
+          &quot;n5f7605cbbc7b&quot;,
+          [
+            &quot;n6a84d99d8a42&quot;,
+            &quot;na88a99a07f96&quot;
+          ]
+        ]
+      ],
+      &quot;renaming&quot;: {}
+    },
+    {
+      &quot;rule&quot;: &quot;resolve&quot;,
+      &quot;parents&quot;: [
+        0,
+        12
+      ],
+      &quot;sites&quot;: [
+        1,
+        0
+      ],
+      &quot;substitution&quot;: {
+        &quot;?L0&quot;: &quot;na88a99a07f96&quot;
+      },
+      &quot;clause&quot;: [
+        [
+          false,
+          &quot;n5f7605cbbc7b&quot;,
+          [
+            &quot;nf6b876be5477&quot;,
+            &quot;na88a99a07f96&quot;
+          ]
+        ]
+      ],
+      &quot;renaming&quot;: {}
+    },
+    {
+      &quot;rule&quot;: &quot;resolve&quot;,
+      &quot;parents&quot;: [
+        7,
+        16
+      ],
+      &quot;sites&quot;: [
+        1,
+        0
+      ],
+      &quot;substitution&quot;: {
+        &quot;?L0&quot;: &quot;na88a99a07f96&quot;
+      },
+      &quot;clause&quot;: [
+        [
+          false,
+          &quot;n5f7605cbbc7b&quot;,
+          [
+            &quot;nd76431388463&quot;,
+            &quot;na88a99a07f96&quot;
+          ]
+        ]
+      ],
+      &quot;renaming&quot;: {}
+    },
+    {
+      &quot;rule&quot;: &quot;resolve&quot;,
+      &quot;parents&quot;: [
+        5,
+        17
+      ],
+      &quot;sites&quot;: [
+        1,
+        0
+      ],
+      &quot;substitution&quot;: {
+        &quot;?L0&quot;: &quot;na88a99a07f96&quot;
+      },
+      &quot;clause&quot;: [
+        [
+          false,
+          &quot;n5f7605cbbc7b&quot;,
+          [
+            &quot;n452112e95cad&quot;,
+            &quot;na88a99a07f96&quot;
+          ]
+        ]
+      ],
+      &quot;renaming&quot;: {}
+    },
+    {
+      &quot;rule&quot;: &quot;resolve&quot;,
+      &quot;parents&quot;: [
+        1,
+        13
+      ],
+      &quot;sites&quot;: [
+        1,
+        0
+      ],
+      &quot;substitution&quot;: {
+        &quot;?L0&quot;: &quot;na88a99a07f96&quot;
+      },
+      &quot;clause&quot;: [
+        [
+          false,
+          &quot;n5f7605cbbc7b&quot;,
+          [
+            &quot;nb7d5147275d8&quot;,
+            &quot;na88a99a07f96&quot;
+          ]
+        ]
+      ],
+      &quot;renaming&quot;: {}
+    },
+    {
+      &quot;rule&quot;: &quot;resolve&quot;,
+      &quot;parents&quot;: [
+        8,
+        18
+      ],
+      &quot;sites&quot;: [
+        1,
+        0
+      ],
+      &quot;substitution&quot;: {
+        &quot;?L0&quot;: &quot;na88a99a07f96&quot;
+      },
+      &quot;clause&quot;: [
+        [
+          false,
+          &quot;n5f7605cbbc7b&quot;,
+          [
+            &quot;nb30bedaf296a&quot;,
+            &quot;na88a99a07f96&quot;
+          ]
+        ]
+      ],
+      &quot;renaming&quot;: {}
+    },
+    {
+      &quot;rule&quot;: &quot;resolve&quot;,
+      &quot;parents&quot;: [
+        2,
+        15
+      ],
+      &quot;sites&quot;: [
+        1,
+        0
+      ],
+      &quot;substitution&quot;: {
+        &quot;?L0&quot;: &quot;na88a99a07f96&quot;
+      },
+      &quot;clause&quot;: [
+        [
+          false,
+          &quot;n5f7605cbbc7b&quot;,
+          [
+            &quot;nb7c5a7878b38&quot;,
+            &quot;na88a99a07f96&quot;
+          ]
+        ]
+      ],
+      &quot;renaming&quot;: {}
+    },
+    {
+      &quot;rule&quot;: &quot;resolve&quot;,
+      &quot;parents&quot;: [
+        3,
+        14
+      ],
+      &quot;sites&quot;: [
+        1,
+        0
+      ],
+      &quot;substitution&quot;: {
+        &quot;?L0&quot;: &quot;na88a99a07f96&quot;
+      },
+      &quot;clause&quot;: [
+        [
+          false,
+          &quot;n5f7605cbbc7b&quot;,
+          [
+            &quot;nf0814b584068&quot;,
+            &quot;na88a99a07f96&quot;
+          ]
+        ]
+      ],
+      &quot;renaming&quot;: {}
+    },
+    {
+      &quot;rule&quot;: &quot;resolve&quot;,
+      &quot;parents&quot;: [
+        4,
+        6
+      ],
+      &quot;sites&quot;: [
+        0,
+        0
+      ],
+      &quot;substitution&quot;: {
+        &quot;?R0&quot;: &quot;na88a99a07f96&quot;
+      },
+      &quot;clause&quot;: [
+        [
+          true,
+          &quot;n5f7605cbbc7b&quot;,
+          [
+            &quot;nb30bedaf296a&quot;,
+            &quot;na88a99a07f96&quot;
+          ]
+        ],
+        [
+          true,
+          &quot;n5f7605cbbc7b&quot;,
+          [
+            &quot;nb7c5a7878b38&quot;,
+            &quot;na88a99a07f96&quot;
+          ]
+        ],
+        [
+          true,
+          &quot;n5f7605cbbc7b&quot;,
+          [
+            &quot;nb7d5147275d8&quot;,
+            &quot;na88a99a07f96&quot;
+          ]
+        ],
+        [
+          true,
+          &quot;n5f7605cbbc7b&quot;,
+          [
+            &quot;nf0814b584068&quot;,
+            &quot;na88a99a07f96&quot;
+          ]
+        ]
+      ],
+      &quot;renaming&quot;: {}
+    },
+    {
+      &quot;rule&quot;: &quot;resolve&quot;,
+      &quot;parents&quot;: [
+        23,
+        19
+      ],
+      &quot;sites&quot;: [
+        2,
+        0
+      ],
+      &quot;substitution&quot;: {},
+      &quot;clause&quot;: [
+        [
+          true,
+          &quot;n5f7605cbbc7b&quot;,
+          [
+            &quot;nb30bedaf296a&quot;,
+            &quot;na88a99a07f96&quot;
+          ]
+        ],
+        [
+          true,
+          &quot;n5f7605cbbc7b&quot;,
+          [
+            &quot;nb7c5a7878b38&quot;,
+            &quot;na88a99a07f96&quot;
+          ]
+        ],
+        [
+          true,
+          &quot;n5f7605cbbc7b&quot;,
+          [
+            &quot;nf0814b584068&quot;,
+            &quot;na88a99a07f96&quot;
+          ]
+        ]
+      ],
+      &quot;renaming&quot;: {}
+    },
+    {
+      &quot;rule&quot;: &quot;resolve&quot;,
+      &quot;parents&quot;: [
+        24,
+        22
+      ],
+      &quot;sites&quot;: [
+        2,
+        0
+      ],
+      &quot;substitution&quot;: {},
+      &quot;clause&quot;: [
+        [
+          true,
+          &quot;n5f7605cbbc7b&quot;,
+          [
+            &quot;nb30bedaf296a&quot;,
+            &quot;na88a99a07f96&quot;
+          ]
+        ],
+        [
+          true,
+          &quot;n5f7605cbbc7b&quot;,
+          [
+            &quot;nb7c5a7878b38&quot;,
+            &quot;na88a99a07f96&quot;
+          ]
+        ]
+      ],
+      &quot;renaming&quot;: {}
+    },
+    {
+      &quot;rule&quot;: &quot;resolve&quot;,
+      &quot;parents&quot;: [
+        25,
+        21
+      ],
+      &quot;sites&quot;: [
+        1,
+        0
+      ],
+      &quot;substitution&quot;: {},
+      &quot;clause&quot;: [
+        [
+          true,
+          &quot;n5f7605cbbc7b&quot;,
+          [
+            &quot;nb30bedaf296a&quot;,
+            &quot;na88a99a07f96&quot;
+          ]
+        ]
+      ],
+      &quot;renaming&quot;: {}
+    },
+    {
+      &quot;rule&quot;: &quot;resolve&quot;,
+      &quot;parents&quot;: [
+        26,
+        20
+      ],
+      &quot;sites&quot;: [
+        0,
+        0
+      ],
+      &quot;substitution&quot;: {},
+      &quot;clause&quot;: [],
+      &quot;renaming&quot;: {}
+    }
+  ],
+  &quot;root&quot;: 27
+}</pre></details></section>
+<section class="panel" id="method"><h2>Method and controls</h2>
+<p>The calculus uses lifted resolution and factoring on equality-free clauses. A signed predicate/arity index offers complementary literals, and exact unification determines which pairs can resolve. A clause can be promoted by a score on a bounded shortlist. Regular FIFO slots keep the rest of the queue moving. The checker replays the recorded parent indices, substitutions and clauses through the empty clause.</p>
+<p>The policy started from zero weights on 30 training cases. A separate 12-case split chose the fixed control and learned seed before evaluation. Input families in the synthetic splits are distinct. The study used 3 interleaved repetitions and a cap of 180 clause activations in each evaluation run. A case counts at a deadline when a majority of repetitions return a verified proof within it.</p>
+<p>Time includes search, scoring and verification from parsed clauses. The total sums per-case medians, including unsuccessful runs. Counted work sums clause activations, candidate pairs inspected and unification equations processed. The time and work include bounded misses. A bounded miss leaves the conjecture open.</p>
+<p>The saved-data audit replayed 407 proofs and checked 6 finite countermodels. It found 1 checked proof among the 180 guarded-relay training episodes. <a href="verification.json">Verification and training by family</a>.</p>
+<p>The six external clause sets come from the TPTP v10.0.0 Problem Library. <a href="https://tptp.tptp.org/">TPTP Problem Library</a>.</p>
+<p><a href="summary.json">Metrics and protocol</a> · <a href="policies.json">Frozen policies</a> · <a href="https://github.com/liuyao12/geometric-tree-search/tree/main/research/fol-proof-discovery">Source and reproduction instructions</a></p>
+</section></main></body></html>

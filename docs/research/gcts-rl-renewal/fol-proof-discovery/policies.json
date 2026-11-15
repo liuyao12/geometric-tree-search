@@ -1,0 +1,120 @@
+{
+  "selectedFixed": "size",
+  "selectedRL": "rl-41",
+  "policies": {
+    "rl-41": {
+      "features": [
+        "unit",
+        "negative unit",
+        "clause width",
+        "symbol count",
+        "term depth",
+        "variable count",
+        "input clause",
+        "goal ancestry",
+        "goal predicate overlap",
+        "active opposite head present",
+        "active opposite-head count",
+        "unit with active opposite head",
+        "derivation depth",
+        "waiting age",
+        "window position"
+      ],
+      "weights": [
+        0.5812311736019654,
+        0.31376290228727544,
+        -0.05481265652901733,
+        0.0008017205762249594,
+        0.08290431509230645,
+        -0.06939047362250592,
+        -0.12682540236819662,
+        0.29202877359041346,
+        0.05475729603013079,
+        0.017865469876174506,
+        -0.06373597820797676,
+        0.6997777969726554,
+        0.09624223545927277,
+        -0.6227276077557472,
+        0.3801796960771497
+      ],
+      "seed": 41,
+      "updates": 120
+    },
+    "rl-229": {
+      "features": [
+        "unit",
+        "negative unit",
+        "clause width",
+        "symbol count",
+        "term depth",
+        "variable count",
+        "input clause",
+        "goal ancestry",
+        "goal predicate overlap",
+        "active opposite head present",
+        "active opposite-head count",
+        "unit with active opposite head",
+        "derivation depth",
+        "waiting age",
+        "window position"
+      ],
+      "weights": [
+        0.3218525361942257,
+        -0.14066442854494546,
+        -0.15141482169566328,
+        -0.09269627017872992,
+        -0.09997098482630157,
+        -0.22122390735909478,
+        0.3996277056154158,
+        -0.25235807481154077,
+        -0.06046067366457183,
+        -0.06964821376691005,
+        -0.1375059362496413,
+        0.2387442801855815,
+        -0.022769562906391205,
+        0.26615890757650973,
+        -0.22696687462472917
+      ],
+      "seed": 229,
+      "updates": 120
+    },
+    "rl-613": {
+      "features": [
+        "unit",
+        "negative unit",
+        "clause width",
+        "symbol count",
+        "term depth",
+        "variable count",
+        "input clause",
+        "goal ancestry",
+        "goal predicate overlap",
+        "active opposite head present",
+        "active opposite-head count",
+        "unit with active opposite head",
+        "derivation depth",
+        "waiting age",
+        "window position"
+      ],
+      "weights": [
+        -0.16784523090262143,
+        0.07563191333636782,
+        -0.08328576489863132,
+        -0.10447566230578974,
+        0.014118260731262187,
+        -0.04975700327390236,
+        -0.2138350929702565,
+        -0.029051813554726504,
+        0.05224219589197435,
+        -0.06242055701277718,
+        0.060048648914007186,
+        -0.197993550076875,
+        0.010417102787162132,
+        0.0897227789314359,
+        0.17581299568811232
+      ],
+      "seed": 613,
+      "updates": 120
+    }
+  }
+}

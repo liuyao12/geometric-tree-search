@@ -1,0 +1,337 @@
+{
+  "schema": "gcts-fol-proof-discovery-v1",
+  "counts": {
+    "train": 30,
+    "calibration": 12,
+    "test": 30,
+    "external": 6
+  },
+  "splitFamilies": {
+    "train": [
+      "guarded-relay",
+      "nested-transitions"
+    ],
+    "calibration": [
+      "parallel-join"
+    ],
+    "test": [
+      "disconnected-relay",
+      "finite-term-orbit",
+      "open-disjunction",
+      "proof-by-cases",
+      "resolution-with-factoring"
+    ],
+    "external": [
+      "TPTP-LCL",
+      "TPTP-PUZ",
+      "TPTP-SYN"
+    ]
+  },
+  "caseDigest": "d36045809f678effd9343aaa06a360a3599b0d98ad7bdd1e387a014d206ab6a6",
+  "policyDigest": "3a6590db5cc4883b02d070d23573da97d147bdc92c1257d4252a2d1bfacfb7ec",
+  "selectedFixed": "size",
+  "selectedRL": "rl-41",
+  "repeats": 3,
+  "epochs": 4,
+  "evalSteps": 180,
+  "timeMarks": [
+    0.015,
+    0.05,
+    0.12
+  ],
+  "trainingSeconds": {
+    "rl-41": 5.434391082999355,
+    "rl-229": 5.738808540998434,
+    "rl-613": 6.365023416998156
+  },
+  "evaluation": {
+    "test": {
+      "summary": {
+        "fifo": {
+          "proofs": [
+            11,
+            15,
+            15
+          ],
+          "countsByRepeat": [
+            {
+              "unknown": 13,
+              "proved": 15,
+              "saturated": 2
+            },
+            {
+              "unknown": 13,
+              "proved": 15,
+              "saturated": 2
+            },
+            {
+              "unknown": 13,
+              "proved": 15,
+              "saturated": 2
+            }
+          ],
+          "seconds": 1.0730785859850585,
+          "work": 364682,
+          "proofWork": 73881
+        },
+        "size": {
+          "proofs": [
+            24,
+            24,
+            24
+          ],
+          "countsByRepeat": [
+            {
+              "proved": 24,
+              "unknown": 4,
+              "saturated": 2
+            },
+            {
+              "proved": 24,
+              "unknown": 4,
+              "saturated": 2
+            },
+            {
+              "proved": 24,
+              "unknown": 4,
+              "saturated": 2
+            }
+          ],
+          "seconds": 0.5519329619928612,
+          "work": 76120,
+          "proofWork": 28776
+        },
+        "goal": {
+          "proofs": [
+            24,
+            24,
+            24
+          ],
+          "countsByRepeat": [
+            {
+              "proved": 24,
+              "unknown": 4,
+              "saturated": 2
+            },
+            {
+              "proved": 24,
+              "unknown": 4,
+              "saturated": 2
+            },
+            {
+              "proved": 24,
+              "unknown": 4,
+              "saturated": 2
+            }
+          ],
+          "seconds": 0.4608181640069233,
+          "work": 70010,
+          "proofWork": 40285
+        },
+        "random": {
+          "proofs": [
+            12,
+            16,
+            16
+          ],
+          "countsByRepeat": [
+            {
+              "unknown": 13,
+              "proved": 15,
+              "saturated": 2
+            },
+            {
+              "proved": 16,
+              "unknown": 12,
+              "saturated": 2
+            },
+            {
+              "unknown": 11,
+              "proved": 17,
+              "saturated": 2
+            }
+          ],
+          "seconds": 0.9698583730059909,
+          "work": 301175,
+          "proofWork": 121249.5
+        },
+        "rl-41": {
+          "proofs": [
+            22,
+            23,
+            23
+          ],
+          "countsByRepeat": [
+            {
+              "unknown": 5,
+              "proved": 23,
+              "saturated": 2
+            },
+            {
+              "unknown": 5,
+              "proved": 23,
+              "saturated": 2
+            },
+            {
+              "unknown": 5,
+              "proved": 23,
+              "saturated": 2
+            }
+          ],
+          "seconds": 0.5734930400067242,
+          "work": 104231,
+          "proofWork": 59397
+        }
+      },
+      "paired": {
+        "fixedOnly": [
+          "proof-by-cases-01"
+        ],
+        "learnedOnly": [],
+        "both": 23,
+        "commonSeconds": {
+          "size": 0.06446191999566508,
+          "rl-41": 0.12133316702238517
+        }
+      },
+      "positives": 24
+    },
+    "external": {
+      "summary": {
+        "fifo": {
+          "proofs": [
+            3,
+            3,
+            3
+          ],
+          "countsByRepeat": [
+            {
+              "unknown": 3,
+              "proved": 3
+            },
+            {
+              "unknown": 3,
+              "proved": 3
+            },
+            {
+              "unknown": 3,
+              "proved": 3
+            }
+          ],
+          "seconds": 0.3020015830043121,
+          "work": 50265,
+          "proofWork": 2435
+        },
+        "size": {
+          "proofs": [
+            5,
+            5,
+            5
+          ],
+          "countsByRepeat": [
+            {
+              "proved": 5,
+              "unknown": 1
+            },
+            {
+              "proved": 5,
+              "unknown": 1
+            },
+            {
+              "proved": 5,
+              "unknown": 1
+            }
+          ],
+          "seconds": 0.12662316600471968,
+          "work": 12976,
+          "proofWork": 940
+        },
+        "goal": {
+          "proofs": [
+            5,
+            5,
+            5
+          ],
+          "countsByRepeat": [
+            {
+              "proved": 5,
+              "unknown": 1
+            },
+            {
+              "proved": 5,
+              "unknown": 1
+            },
+            {
+              "proved": 5,
+              "unknown": 1
+            }
+          ],
+          "seconds": 0.1304798739947728,
+          "work": 14555,
+          "proofWork": 2440
+        },
+        "random": {
+          "proofs": [
+            3,
+            3,
+            3
+          ],
+          "countsByRepeat": [
+            {
+              "unknown": 3,
+              "proved": 3
+            },
+            {
+              "unknown": 4,
+              "proved": 2
+            },
+            {
+              "unknown": 3,
+              "proved": 3
+            }
+          ],
+          "seconds": 0.29571216698968783,
+          "work": 47484,
+          "proofWork": 1091.0
+        },
+        "rl-41": {
+          "proofs": [
+            3,
+            3,
+            3
+          ],
+          "countsByRepeat": [
+            {
+              "unknown": 3,
+              "proved": 3
+            },
+            {
+              "unknown": 3,
+              "proved": 3
+            },
+            {
+              "unknown": 3,
+              "proved": 3
+            }
+          ],
+          "seconds": 0.3447297910024645,
+          "work": 59432,
+          "proofWork": 223
+        }
+      },
+      "paired": {
+        "fixedOnly": [
+          "PUZ001-1",
+          "PUZ003-1"
+        ],
+        "learnedOnly": [],
+        "both": 3,
+        "commonSeconds": {
+          "size": 0.0018126240029232576,
+          "rl-41": 0.0023092080009519123
+        }
+      },
+      "positives": 6
+    }
+  }
+}

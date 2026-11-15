@@ -1,0 +1,42 @@
+{
+  "counts": {
+    "checked finite models": 6,
+    "audited search runs": 624,
+    "checked serialized proofs": 407,
+    "corrupted example rejected": 1,
+    "training runs checked during run": 167
+  },
+  "trainingByFamily": {
+    "rl-41": {
+      "nested-transitions": {
+        "episodes": 60,
+        "verified": 56
+      },
+      "guarded-relay": {
+        "episodes": 60,
+        "verified": 1
+      }
+    },
+    "rl-229": {
+      "nested-transitions": {
+        "episodes": 60,
+        "verified": 55
+      },
+      "guarded-relay": {
+        "episodes": 60,
+        "verified": 0
+      }
+    },
+    "rl-613": {
+      "nested-transitions": {
+        "episodes": 60,
+        "verified": 55
+      },
+      "guarded-relay": {
+        "episodes": 60,
+        "verified": 0
+      }
+    }
+  },
+  "example": "proof-by-cases-02"
+}
