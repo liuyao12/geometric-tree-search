@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore the verified tiled search for the infinitude of primes, from the full board to individual squares.">
+  <title>Prime proof search board · GCTS</title>
+  <link rel="stylesheet" href="viewer.css">
+  <script src="viewer.js" defer></script>
+</head>
+<body>
+  <main>
+    <header class="mast">
+      <a class="back" href="../">← Prime proof report</a>
+      <p class="eyebrow">GEOMETRIC TREE SEARCH</p>
+      <h1>Prime proof search</h1>
+      <p class="intro">Start at the arithmetic boundary and follow the square rows that lead to a proof of infinitely many primes.</p>
+    </header>
+    <section class="viewer" aria-label="Search replay">
+      <div class="toolbar">
+        <label class="attempt-label" for="attempt">Search attempt
+          <select id="attempt" disabled></select>
+        </label>
+        <div class="camera">
+          <button type="button" id="zoom-out" aria-label="Zoom out" disabled>−</button>
+          <output id="scale" aria-live="polite">—</output>
+          <button type="button" id="zoom-in" aria-label="Zoom in" disabled>+</button>
+          <button type="button" id="fit" disabled>Fit whole board</button>
+          <button type="button" id="follow" aria-pressed="false" disabled>Follow row</button>
+        </div>
+      </div>
+      <div class="stage">
+        <canvas id="board" aria-hidden="true"></canvas>
+        <div id="scroll" tabindex="0" aria-label="Scrollable tile board">
+          <div id="extent"></div>
+        </div>
+      </div>
+      <p id="view" class="view"></p>
+      <div class="replay">
+        <button type="button" id="play" disabled>Play replay</button>
+        <input id="position" type="range" min="0" max="1000" aria-label="Replay progress" disabled>
+        <span id="offers" class="counts"></span>
+      </div>
+      <div class="summary">
+        <p id="status" role="status">Loading the recorded search…</p>
+        <p id="library"></p>
+      </div>
+      <div class="legend" aria-label="Tile marks">
+        <span><i class="occupied"></i> Clause present</span>
+        <span><i class="vacant"></i> Vacant slot</span>
+        <span><i class="read"></i> Parent read</span>
+        <span><i class="write"></i> Clause written</span>
+        <span><i class="reject"></i> Rejected proposal</span>
+      </div>
+      <p class="hint">Scroll or drag to pan. Use +, −, or Ctrl/⌘ + scroll to zoom. Follow row brings the newest placement back into view. Playback samples offers from the recorded search.</p>
+    </section>
+  </main>
+</body>
+</html>
