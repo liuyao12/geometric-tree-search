@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Explore the verified tiled search for the infinitude of primes, from the full board to individual squares.">
   <title>Prime proof search board · GCTS</title>
-  <link rel="stylesheet" href="viewer.css">
-  <script src="viewer.js" defer></script>
+  <link rel="stylesheet" href="viewer.css?v=tile-syntax-1">
+  <script src="viewer.js?v=tile-syntax-1" defer></script>
 </head>
 <body>
   <main>
@@ -53,6 +53,8 @@
         <span><i class="write"></i> Clause written</span>
         <span><i class="reject"></i> Rejected proposal</span>
       </div>
+      <div class="legend replay-syntax" id="syntax-legend" aria-label="Syntax colors"></div>
+      <p class="hint" id="syntax-hint" hidden>Colored marks show clause syntax. Zoom in to see the separate bands on read and write tiles.</p>
       <p class="hint">Scroll or drag to pan. Use +, −, or Ctrl/⌘ + scroll to zoom. Follow row brings the newest placement back into view. Playback samples offers from the recorded search.</p>
     </section>
   </main>
