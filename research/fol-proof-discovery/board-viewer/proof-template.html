@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Read the checked prime-infinitude proof one clause at a time.">
+  <title>Prime infinitude proof · GCTS</title>
+  <link rel="stylesheet" href="viewer.css">
+  <link rel="stylesheet" href="proof.css">
+  <script>
+    window.MathJax = {
+      loader: {load: ['[tex]/color']},
+      tex: {packages: {'[+]': ['color']}}
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js"></script>
+</head>
+<body>
+  <main class="proof">
+    <header class="mast">
+      <a class="back" href="./">← Search board</a>
+      <p class="eyebrow">GEOMETRIC TREE SEARCH</p>
+      <h1>The proof, line by line</h1>
+      <p class="intro">Each line shows one clause from the checked proof of prime infinitude. Follow the links to see which earlier lines justify it.</p>
+    </header>
+    <div class="syntax-key" aria-label="Syntax colors">
+      $legend
+    </div>
+    <section class="library" aria-labelledby="library-heading">
+      <h2 id="library-heading">Theorems used</h2>
+      $lemmas
+      <p class="notation">$bindings</p>
+    </section>
+    <section class="proof-history" aria-labelledby="history-heading">
+      <h2 id="history-heading">Proof history</h2>
+      <p class="notation">Each clause shows its own quantifiers. The $input_count input clauses come from the arithmetic boundary, the two theorems, and the negated goal.</p>
+      <ol class="proof-lines">
+        $lines
+      </ol>
+    </section>
+    <section class="proof-result" aria-labelledby="result-heading">
+      <h2 id="result-heading">Infinitely many primes</h2>
+      <p class="notation">The empty clause on <a href="#line-$last_line">line $last_line</a> refutes the negated goal. Thus</p>
+      <p class="formula">$conclusion</p>
+    </section>
+  </main>
+</body>
+</html>

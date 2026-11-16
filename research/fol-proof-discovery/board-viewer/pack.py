@@ -8,6 +8,22 @@ import shutil
 import sys
 
 
+def add_proof(tape, stages, output, source):
+    # Keep supporting tapes exported without a corresponding certificate.
+    if not (tape.parent/'certificate.json').is_file():
+        return
+    if not any(stage['goal']=='unbounded-primes' and stage['status']=='proved' for stage in stages):
+        return
+    sys.path.insert(0,str(source.parent))
+    from proof_view import render
+
+    render(tape.parent,output)
+    shutil.copyfile(source/'proof.css',output/'proof.css')
+    index=output/'index.html'
+    index.write_text(index.read_text().replace('<!-- proof-link -->',
+                     '<a class="proof-link" href="proof.html">Read the checked proof →</a>'))
+
+
 def build(tape, output):
     stages = json.loads(tape.read_text())
     largest_slot = max(len(a['inputs'])+len(a['rows']) for s in stages for a in s['attempts'])
@@ -37,6 +53,7 @@ def build(tape, output):
     source=Path(__file__).resolve().parent
     for name in ('index.html','viewer.css','viewer.js'):
         shutil.copyfile(source/name,output/name)
+    add_proof(tape,stages,output,source)
 
 
 if __name__=='__main__':
