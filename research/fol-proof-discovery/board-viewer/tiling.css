@@ -19,16 +19,24 @@
   border-radius: 0;
   padding: 0;
   position: relative;
-  background: var(--white);
+  background: var(--tile-fill, var(--white));
+  color: var(--tile-ink, var(--ink));
   font: 600 clamp(.55rem, 1.1vw, .78rem) ui-monospace, monospace;
 }
-.tile-carry { background: var(--occupied); color: #344b46; }
-.tile-vacant { background: var(--vacant); }
-.tile-wall { background: #53635d; }
-.tile-read { background: var(--read); color: #fff; }
-.tile-write { background: var(--write); color: #fff; }
+.tile-carry { --tile-fill: var(--occupied); --tile-ink: #344b46; }
+.tile-vacant { --tile-fill: var(--vacant); }
+.tile-wall { --tile-fill: #53635d; }
+.tile-read { --tile-fill: var(--read); --tile-ink: #fff; }
+.tile-write { --tile-fill: var(--write); --tile-ink: #fff; }
 .tile.premise { box-shadow: inset 0 0 0 2px #fff; }
-.tile[aria-pressed="true"] { outline: 2px solid var(--ink); z-index: 1; outline-offset: 1px; }
+.tile[aria-pressed="true"] {
+  background: var(--tile-fill, var(--white));
+  color: var(--tile-ink, var(--ink));
+  border-color: var(--white);
+  outline: 2px solid var(--ink);
+  z-index: 1;
+  outline-offset: 1px;
+}
 .tile:focus-visible { outline: 3px solid #000; z-index: 2; }
 .tile-inspector { margin-top: 1rem; padding: .8rem 1rem; background: var(--white); border: 1px solid var(--line); }
 .tile-inspector h2, .input-formula h2 { font: 400 1.9rem/1.1 "Instrument Serif", Georgia, serif; margin: 0 0 .65rem; }
