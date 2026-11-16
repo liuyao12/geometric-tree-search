@@ -14,33 +14,46 @@
   min-height: 0;
   aspect-ratio: 1;
   display: grid;
-  grid-template-rows: 1fr 1fr;
+  place-items: center;
   border: 1px solid var(--white);
   border-radius: 0;
   padding: 0;
   position: relative;
   background: var(--white);
+  font: 600 clamp(.55rem, 1.1vw, .78rem) ui-monospace, monospace;
 }
-.tile i { pointer-events: none; }
-.tile i:first-child { background: var(--north); }
-.tile i:last-child { background: var(--south); }
-.tile-carry i { opacity: .74; }
+.tile-carry { background: var(--occupied); color: #344b46; }
+.tile-vacant { background: var(--vacant); }
 .tile-wall { background: #53635d; }
-.tile-wall i { display: none; }
-.tile-read::after, .tile-write::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border: 2px solid var(--ink);
-  pointer-events: none;
-}
-.tile-write::after { border: 3px double #f6efde; }
-.tile[aria-pressed="true"] { outline: 3px solid var(--ink); z-index: 1; outline-offset: -2px; }
+.tile-read { background: var(--read); color: #fff; }
+.tile-write { background: var(--write); color: #fff; }
+.tile.premise { box-shadow: inset 0 0 0 2px #fff; }
+.tile[aria-pressed="true"] { outline: 2px solid var(--ink); z-index: 1; outline-offset: 1px; }
 .tile:focus-visible { outline: 3px solid #000; z-index: 2; }
 .tile-inspector { margin-top: 1rem; padding: .8rem 1rem; background: var(--white); border: 1px solid var(--line); }
 .tile-inspector h2, .input-formula h2 { font: 400 1.9rem/1.1 "Instrument Serif", Georgia, serif; margin: 0 0 .65rem; }
 .edge-clauses { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1rem; }
 .edge-clauses h3 { margin: 0 0 .25rem; font-size: .83rem; color: var(--muted); }
+.symbol-strip { display: flex; flex-wrap: wrap; gap: .2rem; align-items: center; min-height: 2.3rem; }
+.symbol {
+  display: inline-grid;
+  place-items: center;
+  width: 2.12rem;
+  height: 2.12rem;
+  background: var(--symbol-bg, #f2eee4);
+  color: var(--symbol-ink, #384842);
+  border: 1px solid var(--line);
+  font-size: .82rem;
+}
+.symbol-legend i { background-color: var(--symbol-ink); }
+.symbol-quantifier { --symbol-bg: #ede4f4; --symbol-ink: #704598; }
+.symbol-variable { --symbol-bg: #e2edf9; --symbol-ink: #1b508d; }
+.symbol-predicate { --symbol-bg: #e0eee6; --symbol-ink: #166353; }
+.symbol-negation { --symbol-bg: #fae5de; --symbol-ink: #a03733; }
+.symbol-connective { --symbol-bg: #eae4f4; --symbol-ink: #715489; }
+.symbol-witness { --symbol-bg: #f3e2e9; --symbol-ink: #884361; }
+.symbol-arithmetic, .symbol-number { --symbol-bg: #f7ead3; --symbol-ink: #825015; }
+.symbol-empty { --symbol-bg: #273537; --symbol-ink: #fff; }
 .input-formula { margin-top: 1.3rem; }
 @media (max-width: 620px) {
   .edge-clauses { grid-template-columns: 1fr; }

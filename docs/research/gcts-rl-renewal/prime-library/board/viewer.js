@@ -409,7 +409,7 @@
     if (!response.ok) throw Error('Could not load '+url);
     return response;
   });
-  Promise.all([fetchFile('trace.json?v=tile-syntax-1').then(r=>r.json()),fetchFile('parents.bin').then(r=>r.arrayBuffer())])
+  Promise.all([fetchFile('trace.json?v=clause-symbols-1').then(r=>r.json()),fetchFile('parents.bin').then(r=>r.arrayBuffer())])
     .then(async ([data,buffer])=>{
       const syntax=data.syntax?.length ? await fetchFile('syntax.bin').then(r=>r.arrayBuffer()) : null;
       configure(data,buffer,syntax);
