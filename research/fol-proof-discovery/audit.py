@@ -11,11 +11,11 @@ from checker import InvalidProof, verify
 from run import fingerprint
 
 
-def audit(directory):
+def audit(directory, *, case_source=benchmark.cases):
     traces = json.loads((directory/'traces.json').read_text())
     summary = json.loads((directory/'summary.json').read_text())
     policies = json.loads((directory/'policies.json').read_text())
-    cases = {c['id']: c for c in benchmark.cases()}
+    cases = {c['id']: c for c in case_source()}
     if (fingerprint(list(cases.values())) != summary['caseDigest']
             or fingerprint(traces['caseInputs']) != summary['caseDigest']
             or fingerprint(policies) != summary['policyDigest']):
@@ -73,6 +73,7 @@ def audit(directory):
     serialized = json.dumps(result, indent=2)
     (directory/'verification.json').write_text(serialized+'\n')
     print(serialized)
+    return result
 
 
 if __name__ == '__main__':

@@ -46,3 +46,23 @@ copyright Geoff Sutcliffe and Christian Suttner. The source links and
 SHA-256 hashes are in `data/tptp-manifest.json`. The parser uses the final
 marked negated conjecture as the guidance seed. The original clause order
 is preserved for these six files. [TPTP redistribution terms](https://seetptp.tptp.org/file/TPTPWorld/TPTP/Documents/ReadMe)
+
+## Relay curriculum follow-up
+
+The follow-up compares six easier-to-harder tiers of guarded relays with a
+shuffled schedule over the same cases and per-episode seeds. Both learn from
+the same checked reward, starting at zero weights. A separate three-way
+witness-join family selects one seed per schedule, and the models are
+written and frozen before generating three new held-out families. Those
+families cover odd-cycle coloring, nested term assembly and finite
+injection. Six explicit finite models give satisfiable controls. Size-first
+is the primary comparator. The follow-up keeps the original search kernel
+and time and activation limits.
+
+```sh
+python3 -B curriculum.py ./curriculum-results
+python3 -B curriculum_report.py ./curriculum-results ./curriculum-reader
+```
+
+The first command also runs the saved-data proof audit on the generated
+curriculum cohort.

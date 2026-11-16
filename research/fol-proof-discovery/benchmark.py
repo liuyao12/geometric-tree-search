@@ -36,8 +36,9 @@ def route_tree(rng, depth, width):
     return edges
 
 
-def relay(rng):
-    depth, width = rng.randint(3, 7), rng.randint(2, 4)
+def relay(rng, *, depth=None, width=None):
+    depth = rng.randint(3, 7) if depth is None else depth
+    width = rng.randint(2, 4) if width is None else width
     edges = route_tree(rng, depth, width)
 
     def site(index):
