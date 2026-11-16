@@ -1,0 +1,483 @@
+{
+  "id": "assembly-02",
+  "family": "nested term assembly",
+  "clauses": [
+    [
+      [
+        true,
+        "nd33ae7bcd3a8",
+        [
+          "n2d9b8b551cd8"
+        ]
+      ]
+    ],
+    [
+      [
+        true,
+        "nd33ae7bcd3a8",
+        [
+          "nf4c7305107b9"
+        ]
+      ]
+    ],
+    [
+      [
+        true,
+        "nd33ae7bcd3a8",
+        [
+          [
+            "n35dc14e18179",
+            "?X",
+            "?Y"
+          ]
+        ]
+      ],
+      [
+        false,
+        "nd33ae7bcd3a8",
+        [
+          "?Y"
+        ]
+      ],
+      [
+        false,
+        "nd33ae7bcd3a8",
+        [
+          "?X"
+        ]
+      ]
+    ],
+    [
+      [
+        true,
+        "nd33ae7bcd3a8",
+        [
+          "n0f526e005136"
+        ]
+      ]
+    ],
+    [
+      [
+        true,
+        "nd33ae7bcd3a8",
+        [
+          "n4c29f781046e"
+        ]
+      ]
+    ],
+    [
+      [
+        true,
+        "nd33ae7bcd3a8",
+        [
+          "n29a80a28ef97"
+        ]
+      ]
+    ],
+    [
+      [
+        true,
+        "nd33ae7bcd3a8",
+        [
+          "n9dde6e6b051c"
+        ]
+      ]
+    ],
+    [
+      [
+        true,
+        "nd33ae7bcd3a8",
+        [
+          "n68508ab6b893"
+        ]
+      ]
+    ],
+    [
+      [
+        true,
+        "nd33ae7bcd3a8",
+        [
+          "ndb63c1c23969"
+        ]
+      ]
+    ],
+    [
+      [
+        true,
+        "nd33ae7bcd3a8",
+        [
+          "n48432a5aa54c"
+        ]
+      ]
+    ],
+    [
+      [
+        false,
+        "nd33ae7bcd3a8",
+        [
+          [
+            "n35dc14e18179",
+            [
+              "n35dc14e18179",
+              [
+                "n35dc14e18179",
+                "n48432a5aa54c",
+                "n29a80a28ef97"
+              ],
+              "n2d9b8b551cd8"
+            ],
+            "n68508ab6b893"
+          ]
+        ]
+      ]
+    ]
+  ],
+  "proof": {
+    "format": "lifted-cnf-v1",
+    "steps": [
+      {
+        "rule": "input",
+        "source": 0,
+        "clause": [
+          [
+            true,
+            "nd33ae7bcd3a8",
+            [
+              "n2d9b8b551cd8"
+            ]
+          ]
+        ],
+        "renaming": {}
+      },
+      {
+        "rule": "input",
+        "source": 2,
+        "clause": [
+          [
+            false,
+            "nd33ae7bcd3a8",
+            [
+              "?v0"
+            ]
+          ],
+          [
+            false,
+            "nd33ae7bcd3a8",
+            [
+              "?v1"
+            ]
+          ],
+          [
+            true,
+            "nd33ae7bcd3a8",
+            [
+              [
+                "n35dc14e18179",
+                "?v0",
+                "?v1"
+              ]
+            ]
+          ]
+        ],
+        "renaming": {
+          "?X": "?v0",
+          "?Y": "?v1"
+        }
+      },
+      {
+        "rule": "input",
+        "source": 5,
+        "clause": [
+          [
+            true,
+            "nd33ae7bcd3a8",
+            [
+              "n29a80a28ef97"
+            ]
+          ]
+        ],
+        "renaming": {}
+      },
+      {
+        "rule": "input",
+        "source": 7,
+        "clause": [
+          [
+            true,
+            "nd33ae7bcd3a8",
+            [
+              "n68508ab6b893"
+            ]
+          ]
+        ],
+        "renaming": {}
+      },
+      {
+        "rule": "input",
+        "source": 9,
+        "clause": [
+          [
+            true,
+            "nd33ae7bcd3a8",
+            [
+              "n48432a5aa54c"
+            ]
+          ]
+        ],
+        "renaming": {}
+      },
+      {
+        "rule": "input",
+        "source": 10,
+        "clause": [
+          [
+            false,
+            "nd33ae7bcd3a8",
+            [
+              [
+                "n35dc14e18179",
+                [
+                  "n35dc14e18179",
+                  [
+                    "n35dc14e18179",
+                    "n48432a5aa54c",
+                    "n29a80a28ef97"
+                  ],
+                  "n2d9b8b551cd8"
+                ],
+                "n68508ab6b893"
+              ]
+            ]
+          ]
+        ],
+        "renaming": {}
+      },
+      {
+        "rule": "resolve",
+        "parents": [
+          0,
+          1
+        ],
+        "sites": [
+          0,
+          1
+        ],
+        "substitution": {
+          "?R1": "n2d9b8b551cd8"
+        },
+        "clause": [
+          [
+            false,
+            "nd33ae7bcd3a8",
+            [
+              "?v0"
+            ]
+          ],
+          [
+            true,
+            "nd33ae7bcd3a8",
+            [
+              [
+                "n35dc14e18179",
+                "?v0",
+                "n2d9b8b551cd8"
+              ]
+            ]
+          ]
+        ],
+        "renaming": {
+          "?R0": "?v0"
+        }
+      },
+      {
+        "rule": "resolve",
+        "parents": [
+          2,
+          1
+        ],
+        "sites": [
+          0,
+          1
+        ],
+        "substitution": {
+          "?R1": "n29a80a28ef97"
+        },
+        "clause": [
+          [
+            false,
+            "nd33ae7bcd3a8",
+            [
+              "?v0"
+            ]
+          ],
+          [
+            true,
+            "nd33ae7bcd3a8",
+            [
+              [
+                "n35dc14e18179",
+                "?v0",
+                "n29a80a28ef97"
+              ]
+            ]
+          ]
+        ],
+        "renaming": {
+          "?R0": "?v0"
+        }
+      },
+      {
+        "rule": "resolve",
+        "parents": [
+          1,
+          5
+        ],
+        "sites": [
+          2,
+          0
+        ],
+        "substitution": {
+          "?L0": [
+            "n35dc14e18179",
+            [
+              "n35dc14e18179",
+              "n48432a5aa54c",
+              "n29a80a28ef97"
+            ],
+            "n2d9b8b551cd8"
+          ],
+          "?L1": "n68508ab6b893"
+        },
+        "clause": [
+          [
+            false,
+            "nd33ae7bcd3a8",
+            [
+              "n68508ab6b893"
+            ]
+          ],
+          [
+            false,
+            "nd33ae7bcd3a8",
+            [
+              [
+                "n35dc14e18179",
+                [
+                  "n35dc14e18179",
+                  "n48432a5aa54c",
+                  "n29a80a28ef97"
+                ],
+                "n2d9b8b551cd8"
+              ]
+            ]
+          ]
+        ],
+        "renaming": {}
+      },
+      {
+        "rule": "resolve",
+        "parents": [
+          6,
+          8
+        ],
+        "sites": [
+          1,
+          1
+        ],
+        "substitution": {
+          "?L0": [
+            "n35dc14e18179",
+            "n48432a5aa54c",
+            "n29a80a28ef97"
+          ]
+        },
+        "clause": [
+          [
+            false,
+            "nd33ae7bcd3a8",
+            [
+              "n68508ab6b893"
+            ]
+          ],
+          [
+            false,
+            "nd33ae7bcd3a8",
+            [
+              [
+                "n35dc14e18179",
+                "n48432a5aa54c",
+                "n29a80a28ef97"
+              ]
+            ]
+          ]
+        ],
+        "renaming": {}
+      },
+      {
+        "rule": "resolve",
+        "parents": [
+          3,
+          9
+        ],
+        "sites": [
+          0,
+          0
+        ],
+        "substitution": {},
+        "clause": [
+          [
+            false,
+            "nd33ae7bcd3a8",
+            [
+              [
+                "n35dc14e18179",
+                "n48432a5aa54c",
+                "n29a80a28ef97"
+              ]
+            ]
+          ]
+        ],
+        "renaming": {}
+      },
+      {
+        "rule": "resolve",
+        "parents": [
+          7,
+          10
+        ],
+        "sites": [
+          1,
+          0
+        ],
+        "substitution": {
+          "?L0": "n48432a5aa54c"
+        },
+        "clause": [
+          [
+            false,
+            "nd33ae7bcd3a8",
+            [
+              "n48432a5aa54c"
+            ]
+          ]
+        ],
+        "renaming": {}
+      },
+      {
+        "rule": "resolve",
+        "parents": [
+          4,
+          11
+        ],
+        "sites": [
+          0,
+          0
+        ],
+        "substitution": {},
+        "clause": [],
+        "renaming": {}
+      }
+    ],
+    "root": 12
+  }
+}

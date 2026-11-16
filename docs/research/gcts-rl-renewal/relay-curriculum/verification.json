@@ -1,0 +1,48 @@
+{
+  "counts": {
+    "checked finite models": 6,
+    "checked serialized proofs": 369,
+    "audited search runs": 900,
+    "corrupted example rejected": 1,
+    "training runs checked during run": 235
+  },
+  "trainingByFamily": {
+    "staged-5101": {
+      "guarded-relays": {
+        "episodes": 144,
+        "verified": 36
+      }
+    },
+    "shuffled-5101": {
+      "guarded-relays": {
+        "episodes": 144,
+        "verified": 43
+      }
+    },
+    "staged-6127": {
+      "guarded-relays": {
+        "episodes": 144,
+        "verified": 49
+      }
+    },
+    "shuffled-6127": {
+      "guarded-relays": {
+        "episodes": 144,
+        "verified": 39
+      }
+    },
+    "staged-7343": {
+      "guarded-relays": {
+        "episodes": 144,
+        "verified": 20
+      }
+    },
+    "shuffled-7343": {
+      "guarded-relays": {
+        "episodes": 144,
+        "verified": 48
+      }
+    }
+  },
+  "example": "assembly-02"
+}

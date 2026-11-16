@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Relay curriculum and proof-search transfer · GCTS research</title>
+<link rel="stylesheet" href="../report.css?v=20261009-r33.1">
+<style>
+.scroll{overflow-x:auto}table{border-collapse:collapse;width:100%;white-space:nowrap}
+td,th{text-align:right;padding:.5rem .7rem;border-bottom:1px solid #cbd5dc}th:first-child{text-align:left}
+</style></head>
+<body><header class="masthead"><a href="../fol-proof-discovery/index.html">First-order proof discovery</a><a href="#test">Results</a></header>
+<main><section class="intro">
+<h1>Does easier-to-harder relay training transfer?</h1>
+<p>At 120 ms, the frozen curriculum policy proved 8 of 45 new conjectures.
+Size-first proved 5, and the frozen shuffled-training control proved 5.</p>
+</section>
+<section class="panel" id="test"><h2>New proof families</h2><div class="scroll"><table><thead><tr><th scope="col">Scheduler</th><th scope="col">15 ms</th><th scope="col">50 ms</th><th scope="col">120 ms</th><th scope="col">Total seconds</th></tr></thead><tbody><tr><th scope="row">Size-first</th><td>5 of 45</td><td>5 of 45</td><td>5 of 45</td><td>4.803</td></tr><tr><th scope="row">Fixed goal-directed</th><td>8 of 45</td><td>9 of 45</td><td>9 of 45</td><td>3.883</td></tr><tr><th scope="row">Easy-to-hard RL</th><td>4 of 45</td><td>5 of 45</td><td>8 of 45</td><td>4.367</td></tr><tr><th scope="row">Shuffled RL</th><td>4 of 45</td><td>5 of 45</td><td>5 of 45</td><td>4.469</td></tr></tbody></table></div>
+<p>Every deadline includes clause ordering, exact lifted search and independent proof replay.
+A result counts if a majority of 3 interleaved repetitions finish by the deadline.
+All runs share the 180-activation cap and the same proof rules.</p>
+<div class="scroll"><table><thead><tr><th scope="col">Held-out family</th><th scope="col">Size-first</th><th scope="col">Fixed goal-directed</th><th scope="col">Easy-to-hard RL</th><th scope="col">Shuffled RL</th></tr></thead><tbody><tr><th scope="row">finite injection</th><td>0 of 15</td><td>0 of 15</td><td>0 of 15</td><td>0 of 15</td></tr><tr><th scope="row">nested term assembly</th><td>5 of 15</td><td>9 of 15</td><td>7 of 15</td><td>4 of 15</td></tr><tr><th scope="row">odd-cycle coloring</th><td>0 of 15</td><td>0 of 15</td><td>1 of 15</td><td>1 of 15</td></tr></tbody></table></div>
+<p>Against size-first at the largest deadline, the easy-to-hard scheduler alone solved
+4 cases and size-first alone solved 1 cases.
+They both solved 4 cases. On those shared successes, the sum of median
+proof times was 88.0 ms for easy-to-hard RL and
+9.2 ms for size-first.</p>
+</section>
+<section class="panel"><h2>Training order control</h2><div class="scroll"><table><thead><tr><th scope="col">Tier</th><th scope="col">Relay depth</th><th scope="col">Max. decoys per node</th><th scope="col">Easy-to-hard</th><th scope="col">Shuffled</th></tr></thead><tbody><tr><th scope="row">Tier 1</th><td>2</td><td>1</td><td>36 of 72</td><td>52 of 72</td></tr><tr><th scope="row">Tier 2</th><td>3</td><td>1</td><td>17 of 72</td><td>30 of 72</td></tr><tr><th scope="row">Tier 3</th><td>3</td><td>2</td><td>25 of 72</td><td>25 of 72</td></tr><tr><th scope="row">Tier 4</th><td>4</td><td>1</td><td>14 of 72</td><td>10 of 72</td></tr><tr><th scope="row">Tier 5</th><td>4</td><td>2</td><td>11 of 72</td><td>10 of 72</td></tr><tr><th scope="row">Tier 6</th><td>5</td><td>2</td><td>2 of 72</td><td>3 of 72</td></tr></tbody></table></div>
+<p>The table pools training episodes across three seeds per schedule. Both schedules used the same
+72 relay cases, two visits per case and the same per-episode exploration seeds.
+The staged schedule finishes each tier before starting the next. The shuffled schedule mixes all six tiers.
+A distinct 12-case witness-join family selected one seed from each schedule
+before the three held-out families were generated. The selected policies were staged-6127 and
+shuffled-6127. Calibrated proof coverage is recorded in the study data.</p>
+</section>
+<section class="panel"><h2>Evidence</h2>
+<p>The saved-data audit replayed 369 serialized proof certificates and checked 6 explicit
+finite countermodels for the negative controls. All search and scoring uses symbolic and numeric code.</p>
+<p><a href="example.json">Example clauses and checked proof certificate</a>.</p>
+<p><a href="summary.json">Case counts and timings</a> · <a href="policies.json">Frozen policies</a>
+· <a href="verification.json">Replay audit</a> ·
+<a href="https://github.com/liuyao12/geometric-tree-search/tree/main/research/fol-proof-discovery">Source and reproduction</a></p>
+</section></main></body></html>

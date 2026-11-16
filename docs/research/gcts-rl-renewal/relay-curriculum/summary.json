@@ -1,0 +1,876 @@
+{
+  "schema": "relay-curriculum-v1",
+  "caseDigest": "3a64972a805682c9cec5dfe4bb28a9f3b005129e1cb84337b4882695901e2f7a",
+  "policyDigest": "aa89cc85d2b671fb50c160fe1c8286599dd8f7c59ab570d4e4316644056a295c",
+  "selectedFixed": "size",
+  "selectedRL": "staged-6127",
+  "selectedShuffled": "shuffled-6127",
+  "counts": {
+    "train": 72,
+    "calibration": 12,
+    "test": 51
+  },
+  "schedules": {
+    "staged-5101": [
+      {
+        "level": 1,
+        "depth": 2,
+        "max_decoys": 1,
+        "episodes": 24,
+        "checked": 10
+      },
+      {
+        "level": 2,
+        "depth": 3,
+        "max_decoys": 1,
+        "episodes": 24,
+        "checked": 6
+      },
+      {
+        "level": 3,
+        "depth": 3,
+        "max_decoys": 2,
+        "episodes": 24,
+        "checked": 12
+      },
+      {
+        "level": 4,
+        "depth": 4,
+        "max_decoys": 1,
+        "episodes": 24,
+        "checked": 4
+      },
+      {
+        "level": 5,
+        "depth": 4,
+        "max_decoys": 2,
+        "episodes": 24,
+        "checked": 4
+      },
+      {
+        "level": 6,
+        "depth": 5,
+        "max_decoys": 2,
+        "episodes": 24,
+        "checked": 0
+      }
+    ],
+    "shuffled-5101": [
+      {
+        "level": 1,
+        "depth": 2,
+        "max_decoys": 1,
+        "episodes": 24,
+        "checked": 17
+      },
+      {
+        "level": 2,
+        "depth": 3,
+        "max_decoys": 1,
+        "episodes": 24,
+        "checked": 13
+      },
+      {
+        "level": 3,
+        "depth": 3,
+        "max_decoys": 2,
+        "episodes": 24,
+        "checked": 7
+      },
+      {
+        "level": 4,
+        "depth": 4,
+        "max_decoys": 1,
+        "episodes": 24,
+        "checked": 3
+      },
+      {
+        "level": 5,
+        "depth": 4,
+        "max_decoys": 2,
+        "episodes": 24,
+        "checked": 2
+      },
+      {
+        "level": 6,
+        "depth": 5,
+        "max_decoys": 2,
+        "episodes": 24,
+        "checked": 1
+      }
+    ],
+    "staged-6127": [
+      {
+        "level": 1,
+        "depth": 2,
+        "max_decoys": 1,
+        "episodes": 24,
+        "checked": 18
+      },
+      {
+        "level": 2,
+        "depth": 3,
+        "max_decoys": 1,
+        "episodes": 24,
+        "checked": 9
+      },
+      {
+        "level": 3,
+        "depth": 3,
+        "max_decoys": 2,
+        "episodes": 24,
+        "checked": 9
+      },
+      {
+        "level": 4,
+        "depth": 4,
+        "max_decoys": 1,
+        "episodes": 24,
+        "checked": 6
+      },
+      {
+        "level": 5,
+        "depth": 4,
+        "max_decoys": 2,
+        "episodes": 24,
+        "checked": 6
+      },
+      {
+        "level": 6,
+        "depth": 5,
+        "max_decoys": 2,
+        "episodes": 24,
+        "checked": 1
+      }
+    ],
+    "shuffled-6127": [
+      {
+        "level": 1,
+        "depth": 2,
+        "max_decoys": 1,
+        "episodes": 24,
+        "checked": 18
+      },
+      {
+        "level": 2,
+        "depth": 3,
+        "max_decoys": 1,
+        "episodes": 24,
+        "checked": 8
+      },
+      {
+        "level": 3,
+        "depth": 3,
+        "max_decoys": 2,
+        "episodes": 24,
+        "checked": 9
+      },
+      {
+        "level": 4,
+        "depth": 4,
+        "max_decoys": 1,
+        "episodes": 24,
+        "checked": 1
+      },
+      {
+        "level": 5,
+        "depth": 4,
+        "max_decoys": 2,
+        "episodes": 24,
+        "checked": 2
+      },
+      {
+        "level": 6,
+        "depth": 5,
+        "max_decoys": 2,
+        "episodes": 24,
+        "checked": 1
+      }
+    ],
+    "staged-7343": [
+      {
+        "level": 1,
+        "depth": 2,
+        "max_decoys": 1,
+        "episodes": 24,
+        "checked": 8
+      },
+      {
+        "level": 2,
+        "depth": 3,
+        "max_decoys": 1,
+        "episodes": 24,
+        "checked": 2
+      },
+      {
+        "level": 3,
+        "depth": 3,
+        "max_decoys": 2,
+        "episodes": 24,
+        "checked": 4
+      },
+      {
+        "level": 4,
+        "depth": 4,
+        "max_decoys": 1,
+        "episodes": 24,
+        "checked": 4
+      },
+      {
+        "level": 5,
+        "depth": 4,
+        "max_decoys": 2,
+        "episodes": 24,
+        "checked": 1
+      },
+      {
+        "level": 6,
+        "depth": 5,
+        "max_decoys": 2,
+        "episodes": 24,
+        "checked": 1
+      }
+    ],
+    "shuffled-7343": [
+      {
+        "level": 1,
+        "depth": 2,
+        "max_decoys": 1,
+        "episodes": 24,
+        "checked": 17
+      },
+      {
+        "level": 2,
+        "depth": 3,
+        "max_decoys": 1,
+        "episodes": 24,
+        "checked": 9
+      },
+      {
+        "level": 3,
+        "depth": 3,
+        "max_decoys": 2,
+        "episodes": 24,
+        "checked": 9
+      },
+      {
+        "level": 4,
+        "depth": 4,
+        "max_decoys": 1,
+        "episodes": 24,
+        "checked": 6
+      },
+      {
+        "level": 5,
+        "depth": 4,
+        "max_decoys": 2,
+        "episodes": 24,
+        "checked": 6
+      },
+      {
+        "level": 6,
+        "depth": 5,
+        "max_decoys": 2,
+        "episodes": 24,
+        "checked": 1
+      }
+    ]
+  },
+  "trainingSeconds": {
+    "staged-5101": 8.541049042003579,
+    "shuffled-5101": 7.683321459000581,
+    "staged-6127": 7.219231958006276,
+    "shuffled-6127": 8.295162833994254,
+    "staged-7343": 9.381069250011933,
+    "shuffled-7343": 7.202667666992056
+  },
+  "calibration": {
+    "size": {
+      "proofs": [
+        12,
+        12,
+        12
+      ],
+      "countsByRepeat": [
+        {
+          "proved": 12
+        },
+        {
+          "proved": 12
+        },
+        {
+          "proved": 12
+        }
+      ],
+      "seconds": 0.030387709994101897,
+      "work": 8969,
+      "proofWork": 8969
+    },
+    "goal": {
+      "proofs": [
+        12,
+        12,
+        12
+      ],
+      "countsByRepeat": [
+        {
+          "proved": 12
+        },
+        {
+          "proved": 12
+        },
+        {
+          "proved": 12
+        }
+      ],
+      "seconds": 0.02828933298587799,
+      "work": 7128,
+      "proofWork": 7128
+    },
+    "staged-5101": {
+      "proofs": [
+        12,
+        12,
+        12
+      ],
+      "countsByRepeat": [
+        {
+          "proved": 12
+        },
+        {
+          "proved": 12
+        },
+        {
+          "proved": 12
+        }
+      ],
+      "seconds": 0.05006333100027405,
+      "work": 14918,
+      "proofWork": 14918
+    },
+    "shuffled-5101": {
+      "proofs": [
+        12,
+        12,
+        12
+      ],
+      "countsByRepeat": [
+        {
+          "proved": 12
+        },
+        {
+          "proved": 12
+        },
+        {
+          "proved": 12
+        }
+      ],
+      "seconds": 0.035838501004036516,
+      "work": 9167,
+      "proofWork": 9167
+    },
+    "staged-6127": {
+      "proofs": [
+        12,
+        12,
+        12
+      ],
+      "countsByRepeat": [
+        {
+          "proved": 12
+        },
+        {
+          "proved": 12
+        },
+        {
+          "proved": 12
+        }
+      ],
+      "seconds": 0.030032000970095396,
+      "work": 6788,
+      "proofWork": 6788
+    },
+    "shuffled-6127": {
+      "proofs": [
+        12,
+        12,
+        12
+      ],
+      "countsByRepeat": [
+        {
+          "proved": 12
+        },
+        {
+          "proved": 12
+        },
+        {
+          "proved": 12
+        }
+      ],
+      "seconds": 0.030005417997017503,
+      "work": 6788,
+      "proofWork": 6788
+    },
+    "staged-7343": {
+      "proofs": [
+        12,
+        12,
+        12
+      ],
+      "countsByRepeat": [
+        {
+          "proved": 12
+        },
+        {
+          "proved": 12
+        },
+        {
+          "proved": 12
+        }
+      ],
+      "seconds": 0.048701706997235306,
+      "work": 14387,
+      "proofWork": 14387
+    },
+    "shuffled-7343": {
+      "proofs": [
+        12,
+        12,
+        12
+      ],
+      "countsByRepeat": [
+        {
+          "proved": 12
+        },
+        {
+          "proved": 12
+        },
+        {
+          "proved": 12
+        }
+      ],
+      "seconds": 0.031115334015339613,
+      "work": 7235,
+      "proofWork": 7235
+    }
+  },
+  "timeMarks": [
+    0.015,
+    0.05,
+    0.12
+  ],
+  "evalSteps": 180,
+  "trainSteps": 90,
+  "trainSeconds": 0.075,
+  "repeats": 3,
+  "evaluation": {
+    "test": {
+      "summary": {
+        "size": {
+          "proofs": [
+            5,
+            5,
+            5
+          ],
+          "countsByRepeat": [
+            {
+              "unknown": 46,
+              "proved": 5
+            },
+            {
+              "unknown": 46,
+              "proved": 5
+            },
+            {
+              "unknown": 46,
+              "proved": 5
+            }
+          ],
+          "seconds": 4.8028150830214145,
+          "work": 1028556,
+          "proofWork": 1596
+        },
+        "goal": {
+          "proofs": [
+            8,
+            9,
+            9
+          ],
+          "countsByRepeat": [
+            {
+              "unknown": 42,
+              "proved": 9
+            },
+            {
+              "unknown": 42,
+              "proved": 9
+            },
+            {
+              "unknown": 42,
+              "proved": 9
+            }
+          ],
+          "seconds": 3.882841711034416,
+          "work": 867995,
+          "proofWork": 9857
+        },
+        "staged-6127": {
+          "proofs": [
+            4,
+            5,
+            8
+          ],
+          "countsByRepeat": [
+            {
+              "unknown": 43,
+              "proved": 8
+            },
+            {
+              "unknown": 43,
+              "proved": 8
+            },
+            {
+              "unknown": 43,
+              "proved": 8
+            }
+          ],
+          "seconds": 4.366503126017051,
+          "work": 906865,
+          "proofWork": 25388
+        },
+        "shuffled-6127": {
+          "proofs": [
+            4,
+            5,
+            5
+          ],
+          "countsByRepeat": [
+            {
+              "unknown": 46,
+              "proved": 5
+            },
+            {
+              "unknown": 46,
+              "proved": 5
+            },
+            {
+              "unknown": 46,
+              "proved": 5
+            }
+          ],
+          "seconds": 4.4694359980057925,
+          "work": 705020,
+          "proofWork": 5222
+        }
+      },
+      "byFamily": {
+        "finite injection": {
+          "size": {
+            "proofs": [
+              0,
+              0,
+              0
+            ],
+            "countsByRepeat": [
+              {
+                "unknown": 17
+              },
+              {
+                "unknown": 17
+              },
+              {
+                "unknown": 17
+              }
+            ],
+            "seconds": 2.0643840430129785,
+            "work": 615439,
+            "proofWork": 0
+          },
+          "goal": {
+            "proofs": [
+              0,
+              0,
+              0
+            ],
+            "countsByRepeat": [
+              {
+                "unknown": 17
+              },
+              {
+                "unknown": 17
+              },
+              {
+                "unknown": 17
+              }
+            ],
+            "seconds": 1.9231777120294282,
+            "work": 566822,
+            "proofWork": 0
+          },
+          "staged-6127": {
+            "proofs": [
+              0,
+              0,
+              0
+            ],
+            "countsByRepeat": [
+              {
+                "unknown": 17
+              },
+              {
+                "unknown": 17
+              },
+              {
+                "unknown": 17
+              }
+            ],
+            "seconds": 2.017145707999589,
+            "work": 612959,
+            "proofWork": 0
+          },
+          "shuffled-6127": {
+            "proofs": [
+              0,
+              0,
+              0
+            ],
+            "countsByRepeat": [
+              {
+                "unknown": 17
+              },
+              {
+                "unknown": 17
+              },
+              {
+                "unknown": 17
+              }
+            ],
+            "seconds": 2.0633983309962787,
+            "work": 410454,
+            "proofWork": 0
+          }
+        },
+        "nested term assembly": {
+          "size": {
+            "proofs": [
+              5,
+              5,
+              5
+            ],
+            "countsByRepeat": [
+              {
+                "unknown": 12,
+                "proved": 5
+              },
+              {
+                "unknown": 12,
+                "proved": 5
+              },
+              {
+                "unknown": 12,
+                "proved": 5
+              }
+            ],
+            "seconds": 1.4864724560029572,
+            "work": 153146,
+            "proofWork": 1596
+          },
+          "goal": {
+            "proofs": [
+              8,
+              9,
+              9
+            ],
+            "countsByRepeat": [
+              {
+                "proved": 9,
+                "unknown": 8
+              },
+              {
+                "proved": 9,
+                "unknown": 8
+              },
+              {
+                "proved": 9,
+                "unknown": 8
+              }
+            ],
+            "seconds": 1.037719999003457,
+            "work": 109790,
+            "proofWork": 9857
+          },
+          "staged-6127": {
+            "proofs": [
+              3,
+              4,
+              7
+            ],
+            "countsByRepeat": [
+              {
+                "unknown": 10,
+                "proved": 7
+              },
+              {
+                "unknown": 10,
+                "proved": 7
+              },
+              {
+                "unknown": 10,
+                "proved": 7
+              }
+            ],
+            "seconds": 1.5512590420112247,
+            "work": 118190,
+            "proofWork": 25033
+          },
+          "shuffled-6127": {
+            "proofs": [
+              3,
+              4,
+              4
+            ],
+            "countsByRepeat": [
+              {
+                "unknown": 13,
+                "proved": 4
+              },
+              {
+                "unknown": 13,
+                "proved": 4
+              },
+              {
+                "unknown": 13,
+                "proved": 4
+              }
+            ],
+            "seconds": 1.648275043015019,
+            "work": 123967,
+            "proofWork": 4867
+          }
+        },
+        "odd-cycle coloring": {
+          "size": {
+            "proofs": [
+              0,
+              0,
+              0
+            ],
+            "countsByRepeat": [
+              {
+                "unknown": 17
+              },
+              {
+                "unknown": 17
+              },
+              {
+                "unknown": 17
+              }
+            ],
+            "seconds": 1.2519585840054788,
+            "work": 259971,
+            "proofWork": 0
+          },
+          "goal": {
+            "proofs": [
+              0,
+              0,
+              0
+            ],
+            "countsByRepeat": [
+              {
+                "unknown": 17
+              },
+              {
+                "unknown": 17
+              },
+              {
+                "unknown": 17
+              }
+            ],
+            "seconds": 0.9219440000015311,
+            "work": 191383,
+            "proofWork": 0
+          },
+          "staged-6127": {
+            "proofs": [
+              1,
+              1,
+              1
+            ],
+            "countsByRepeat": [
+              {
+                "unknown": 16,
+                "proved": 1
+              },
+              {
+                "unknown": 16,
+                "proved": 1
+              },
+              {
+                "unknown": 16,
+                "proved": 1
+              }
+            ],
+            "seconds": 0.7980983760062372,
+            "work": 175716,
+            "proofWork": 355
+          },
+          "shuffled-6127": {
+            "proofs": [
+              1,
+              1,
+              1
+            ],
+            "countsByRepeat": [
+              {
+                "unknown": 16,
+                "proved": 1
+              },
+              {
+                "unknown": 16,
+                "proved": 1
+              },
+              {
+                "unknown": 16,
+                "proved": 1
+              }
+            ],
+            "seconds": 0.7577626239944948,
+            "work": 170599,
+            "proofWork": 355
+          }
+        }
+      },
+      "paired": {
+        "fixedOnly": [
+          "assembly-03"
+        ],
+        "learnedOnly": [
+          "assembly-02",
+          "odd-cycle-05",
+          "assembly-08",
+          "assembly-14"
+        ],
+        "both": 4,
+        "commonSeconds": {
+          "size": 0.009187873976770788,
+          "staged-6127": 0.08798341700457968
+        }
+      },
+      "versusShuffled": {
+        "fixedOnly": [],
+        "learnedOnly": [
+          "assembly-02",
+          "assembly-04",
+          "assembly-08"
+        ],
+        "both": 5,
+        "commonSeconds": {
+          "shuffled-6127": 0.057000790984602645,
+          "staged-6127": 0.051149292004993185
+        }
+      },
+      "positives": 45
+    }
+  }
+}
