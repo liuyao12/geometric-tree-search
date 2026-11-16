@@ -1,59 +1,51 @@
-"""Draw the checked proof board and expand a clause into its symbols."""
+"""Draw the checked proof board and show the clause carried by a tile."""
 
 import json
 from pathlib import Path
 from string import Template
 
 from prime_tiling import assemble, check_patch, final_context
-from proof_view import WITNESS_ALIASES, formula, math, operator, variable
+from proof_view import WITNESS_ALIASES, formula, math, variable_tex
 
 
-def bracket(tokens):
-    return [('punctuation','('),*tokens,('punctuation',')')]
+def bracket(tex):
+    return r'\bigl('+tex+r'\bigr)'
 
 
-def symbols(clause):
+def clause_sentence(clause):
     if not clause:
-        return [('empty',r'\bot')]
+        return r'\bot'
     free = set()
 
     def term(node):
         if isinstance(node,str):
             if node.startswith('?'):
                 free.add(node)
-                return [('variable',variable(node))]
+                return variable_tex(node)
             if node in WITNESS_ALIASES:
-                return [('witness',WITNESS_ALIASES[node])]
-            return [('number',{'zero':'0','one':'1'}[node])]
+                return WITNESS_ALIASES[node]
+            return {'zero':'0','one':'1'}[node]
         name,*args = node
         if name in ('plus','mul'):
             left,right = [bracket(term(a)) if isinstance(a,(tuple,list)) and
                           a[0] in ('plus','mul') else term(a) for a in args]
-            return [*left,('arithmetic','+' if name=='plus' else r'\cdot'),*right]
-        return [('witness',WITNESS_ALIASES[name]),*bracket(join(map(term,args),('punctuation',',')))]
+            symbol = '+' if name=='plus' else r'\cdot'
+            return f'{left} {symbol} {right}'
+        return WITNESS_ALIASES[name]+bracket(','.join(map(term,args)))
 
     literals = []
     for sign,name,args in clause:
         if name=='prime':
-            literal = [('predicate',r'\operatorname{Prime}'),*bracket(term(args[0]))]
+            literal = r'\operatorname{Prime}'+bracket(term(args[0]))
         else:
             relation = {'lt':'<','le':r'\le','divides':r'\mid','eq':'='}[name]
-            literal = [*term(args[0]),('predicate',relation),*term(args[1])]
-        literals.append(literal if sign else [('negation',operator('not')),*bracket(literal)])
-    body = join(literals,('connective',operator('or')))
+            literal = f'{term(args[0])} {relation} {term(args[1])}'
+        literals.append(literal if sign else r'\neg '+bracket(literal))
+    body = r' \lor '.join(literals)
     if not free:
         return body
-    variables = join(([('variable',variable(name))] for name in sorted(free)),('punctuation',','))
-    return [('quantifier',operator('all')),*variables,*bracket(body)]
-
-
-def join(groups,separator):
-    result = []
-    for group in groups:
-        if result:
-            result.append(separator)
-        result.extend(group)
-    return result
+    variables = ','.join(map(variable_tex,sorted(free)))
+    return r'\forall\, '+variables+r'\;'+bracket(body)
 
 
 def tile(row, col, marks, role):
@@ -76,9 +68,8 @@ def render(results, output):
     rows = '\n'.join(f'<div class="tile-row" role="group" aria-label="Row {i+1}">'+
                      ''.join(tile(i,j,marks,roles[i][j]) for j,marks in enumerate(row))+
                      '</div>' for i,row in enumerate(patch['squares']))
-    clauses = '\n'.join(f'<template id="clause-{i}">'+
-                        ''.join(f'<span class="symbol symbol-{kind}" title="{kind}">'+math(tex)+'</span>'
-                                for kind,tex in symbols(clause))+'</template>'
+    clauses = '\n'.join(f'<template id="clause-{i}" data-empty="{str(not clause).lower()}">'+
+                        math(clause_sentence(clause))+'</template>'
                         for i,clause in enumerate(patch['clauses']))
     library = json.loads((results/'certificate.json').read_text())['library']
     conclusion = math(formula(library['unbounded-primes']['formula']))

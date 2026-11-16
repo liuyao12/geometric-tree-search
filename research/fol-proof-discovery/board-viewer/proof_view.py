@@ -41,13 +41,17 @@ def operator(kind):
     return paint(category, tex)
 
 
-def variable(name):
+def variable_tex(name):
     if name.startswith('@') and re.fullmatch('[a-z]', name[1:]):
-        return paint('variable', name[1:])
+        return name[1:]
     match = re.fullmatch(r'\?v([0-9]+)', name)
     if match:
-        return paint('variable', 'v_{'+match[1]+'}')
+        return 'v_{'+match[1]+'}'
     raise ValueError('Unsupported proof variable '+name)
+
+
+def variable(name):
+    return paint('variable', variable_tex(name))
 
 
 def term(value):

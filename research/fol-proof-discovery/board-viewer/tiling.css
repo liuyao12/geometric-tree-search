@@ -42,26 +42,7 @@
 .tile-inspector h2, .input-formula h2 { font: 400 1.9rem/1.1 "Instrument Serif", Georgia, serif; margin: 0 0 .65rem; }
 .edge-clauses { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1rem; }
 .edge-clauses h3 { margin: 0 0 .25rem; font-size: .83rem; color: var(--muted); }
-.symbol-strip { display: flex; flex-wrap: wrap; gap: .2rem; align-items: center; min-height: 2.3rem; }
-.symbol {
-  display: inline-grid;
-  place-items: center;
-  width: 2.12rem;
-  height: 2.12rem;
-  background: var(--symbol-bg, #f2eee4);
-  color: var(--symbol-ink, #384842);
-  border: 1px solid var(--line);
-  font-size: .82rem;
-}
-.symbol-legend i { background-color: var(--symbol-ink); }
-.symbol-quantifier { --symbol-bg: #ede4f4; --symbol-ink: #704598; }
-.symbol-variable { --symbol-bg: #e2edf9; --symbol-ink: #1b508d; }
-.symbol-predicate { --symbol-bg: #e0eee6; --symbol-ink: #166353; }
-.symbol-negation { --symbol-bg: #fae5de; --symbol-ink: #a03733; }
-.symbol-connective { --symbol-bg: #eae4f4; --symbol-ink: #715489; }
-.symbol-witness { --symbol-bg: #f3e2e9; --symbol-ink: #884361; }
-.symbol-arithmetic, .symbol-number { --symbol-bg: #f7ead3; --symbol-ink: #825015; }
-.symbol-empty { --symbol-bg: #273537; --symbol-ink: #fff; }
+.clause-sentence { min-height: 2rem; padding: .3rem 0; overflow-x: auto; }
 .input-formula { margin-top: 1.3rem; }
 @media (max-width: 620px) {
   .edge-clauses { grid-template-columns: 1fr; }

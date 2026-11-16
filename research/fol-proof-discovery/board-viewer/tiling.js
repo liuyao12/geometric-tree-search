@@ -34,7 +34,7 @@
     explanation.textContent='This row reads '+[...new Set(step.parents)].map(clauseName).join(' and ')+
       ' and writes '+clauseName(step.written)+'.';
     const bottom=Number(tile.dataset.south);
-    if (role==='write' && document.getElementById('clause-'+bottom).content.querySelector('.symbol-empty')) {
+    if (role==='write' && document.getElementById('clause-'+bottom).dataset.empty==='true') {
       explanation.textContent+=' This is the empty clause, which closes the proof.';
     }
     grid.querySelectorAll('.premise').forEach(node=>node.classList.remove('premise'));
