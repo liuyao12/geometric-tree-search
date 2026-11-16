@@ -3,16 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Inspect the syntax marks on the checked prime-infinitude tiling.">
-  <title>Colored proof tiling · GCTS</title>
+  <meta name="description" content="Follow the checked proof of prime infinitude one tile and one symbol at a time.">
+  <title>Prime proof tiling · GCTS</title>
   <link rel="stylesheet" href="viewer.css">
   <link rel="stylesheet" href="proof.css">
-  <link rel="stylesheet" href="tiling.css">
+  <link rel="stylesheet" href="tiling.css?v=clause-symbols-1">
   <script>
     window.MathJax = {loader: {load: ['[tex]/color']}, tex: {packages: {'[+]': ['color']}}};
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js"></script>
-  <script defer src="tiling.js"></script>
+  <script defer src="tiling.js?v=clause-symbols-1"></script>
 </head>
 <body>
   <main>
@@ -22,11 +22,16 @@
         <a class="back" href="proof.html">Proof line by line</a>
       </nav>
       <p class="eyebrow">GEOMETRIC TREE SEARCH</p>
-      <h1>Colored proof tiling</h1>
-      <p class="intro">The $nrows rows and $ncolumns columns form the checked proof patch. Each half of a square shows the syntax carried at that edge. Select a tile to inspect its clauses.</p>
+      <h1>Prime proof tiling</h1>
+      <p class="intro">Read from top to bottom. Each row reads earlier clauses and writes one new clause. A square labeled C12 holds clause 12. Select a square to read its symbols in order.</p>
     </header>
     <section aria-label="Checked tiling">
-      <div class="legend tile-legend" aria-label="Syntax colors">$legend</div>
+      <div class="legend tile-legend" aria-label="What squares do">
+        <span><i class="read"></i> Read a clause</span>
+        <span><i class="write"></i> Write a clause</span>
+        <span><i class="occupied"></i> Carry a clause</span>
+        <span><i class="vacant"></i> Vacant slot</span>
+      </div>
       <div class="tile-board">
         <div id="tile-grid" class="tile-grid" style="--columns:$ncolumns" aria-label="Checked proof tiles">
           $rows
@@ -34,18 +39,29 @@
       </div>
       <section class="tile-inspector" aria-labelledby="tile-selection">
         <h2 id="tile-selection" aria-live="polite">Select a tile</h2>
+        <p id="tile-step" class="notation"></p>
         <div class="edge-clauses">
-          <div><h3>North clause</h3><div id="tile-north" class="clause"></div></div>
-          <div><h3>South clause</h3><div id="tile-south" class="clause"></div></div>
+          <div><h3>Before this row</h3><div id="tile-north" class="symbol-strip"></div></div>
+          <div><h3>After this row</h3><div id="tile-south" class="symbol-strip"></div></div>
+        </div>
+        <div class="legend symbol-legend" aria-label="Symbol types">
+          <span><i class="symbol-quantifier"></i> Quantifier</span>
+          <span><i class="symbol-variable"></i> Variable</span>
+          <span><i class="symbol-predicate"></i> Predicate</span>
+          <span><i class="symbol-negation"></i> Negation</span>
+          <span><i class="symbol-connective"></i> Connective</span>
+          <span><i class="symbol-witness"></i> Witness</span>
+          <span><i class="symbol-arithmetic"></i> Arithmetic</span>
         </div>
       </section>
     </section>
     <section class="input-formula" aria-labelledby="formula-heading">
-      <h2 id="formula-heading">Before conversion to clauses</h2>
-      <p class="notation">The prime divisor theorem enters the search as this arithmetic formula. Conversion replaces existential witnesses with witness symbols, expresses implication using disjunction and negation, and leaves clause variables universally quantified.</p>
-      <p class="formula">$exemplar</p>
+      <h2 id="formula-heading">What the last row proves</h2>
+      <p class="notation">The proof assumes there is a bound above which no prime exists. The last row derives the empty clause, a contradiction. So there is a prime above every natural-number bound.</p>
+      <p class="formula">$conclusion</p>
     </section>
   </main>
+  <script id="proof-steps" type="application/json">$steps</script>
   $clauses
 </body>
 </html>

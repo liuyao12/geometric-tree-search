@@ -3,8 +3,11 @@
   const north=document.getElementById('tile-north');
   const south=document.getElementById('tile-south');
   const heading=document.getElementById('tile-selection');
+  const explanation=document.getElementById('tile-step');
+  const steps=JSON.parse(document.getElementById('proof-steps').textContent);
   const rows=[...grid.querySelectorAll('.tile-row')].map(row=>[...row.querySelectorAll('button')]);
-  const roles={write:'Write',read:'Read',carry:'Carry',vacant:'Vacant',wall:'Side wall'};
+  const roles={write:'new clause',read:'premise',carry:'carried clause',vacant:'vacant slot',wall:'side wall'};
+  const clauseName=id=>'C'+(Number(id)+1);
   let selected, revision=0;
 
   function showClause(container,id,role) {
@@ -25,8 +28,17 @@
     selected.setAttribute('aria-pressed','true');
     selected.tabIndex=0;
     if (focus) selected.focus();
-    const {row,col,role}=tile.dataset;
-    heading.textContent='Row '+(+row+1)+' · column '+(+col+1)+' · '+roles[role];
+    const {row,role}=tile.dataset;
+    const step=steps[Number(row)];
+    heading.textContent='Step '+(+row+1)+' · '+(tile.dataset.south==='' ? '' : clauseName(tile.dataset.south)+' · ')+roles[role];
+    explanation.textContent='This row reads '+[...new Set(step.parents)].map(clauseName).join(' and ')+
+      ' and writes '+clauseName(step.written)+'.';
+    const bottom=Number(tile.dataset.south);
+    if (role==='write' && document.getElementById('clause-'+bottom).content.querySelector('.symbol-empty')) {
+      explanation.textContent+=' This is the empty clause, which closes the proof.';
+    }
+    grid.querySelectorAll('.premise').forEach(node=>node.classList.remove('premise'));
+    rows[row].filter(node=>node.dataset.role==='read').forEach(node=>node.classList.add('premise'));
     const math=window.MathJax;
     const ticket=++revision;
     if (math?.typesetClear) math.typesetClear([north,south]);

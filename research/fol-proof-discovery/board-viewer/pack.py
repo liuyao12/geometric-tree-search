@@ -26,7 +26,7 @@ def add_proof(tape, stages, output, source):
     index=output/'index.html'
     index.write_text(index.read_text().replace('<!-- proof-link -->',
                      '<nav class="view-links proof-link" aria-label="Prime proof views">'
-                     '<a href="tiling.html">See the colored proof tiling</a>'
+                     '<a href="tiling.html">Explore the proof tiling</a>'
                      '<a href="proof.html">Read the checked proof</a></nav>'))
 
 
