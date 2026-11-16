@@ -1,0 +1,47 @@
+.view-links { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+.tile-legend { margin: 0 0 .8rem; }
+.tile-board {
+  max-width: 100%;
+  overflow: auto;
+  padding: .45rem;
+  background: var(--white);
+  border: 1px solid var(--line);
+}
+.tile-grid { min-width: calc(var(--columns) * 27px); }
+.tile-row { display: grid; grid-template-columns: repeat(var(--columns),minmax(0,1fr)); }
+.tile {
+  min-width: 0;
+  min-height: 0;
+  aspect-ratio: 1;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  border: 1px solid var(--white);
+  border-radius: 0;
+  padding: 0;
+  position: relative;
+  background: var(--white);
+}
+.tile i { pointer-events: none; }
+.tile i:first-child { background: var(--north); }
+.tile i:last-child { background: var(--south); }
+.tile-carry i { opacity: .74; }
+.tile-wall { background: #53635d; }
+.tile-wall i { display: none; }
+.tile-read::after, .tile-write::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 2px solid var(--ink);
+  pointer-events: none;
+}
+.tile-write::after { border: 3px double #f6efde; }
+.tile[aria-pressed="true"] { outline: 3px solid var(--ink); z-index: 1; outline-offset: -2px; }
+.tile:focus-visible { outline: 3px solid #000; z-index: 2; }
+.tile-inspector { margin-top: 1rem; padding: .8rem 1rem; background: var(--white); border: 1px solid var(--line); }
+.tile-inspector h2, .input-formula h2 { font: 400 1.9rem/1.1 "Instrument Serif", Georgia, serif; margin: 0 0 .65rem; }
+.edge-clauses { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1rem; }
+.edge-clauses h3 { margin: 0 0 .25rem; font-size: .83rem; color: var(--muted); }
+.input-formula { margin-top: 1.3rem; }
+@media (max-width: 620px) {
+  .edge-clauses { grid-template-columns: 1fr; }
+}

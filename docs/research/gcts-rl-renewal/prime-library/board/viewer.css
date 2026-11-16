@@ -25,6 +25,8 @@ main { width: min(100% - 56px, 1230px); margin: 0 auto 3rem; }
 h1 { font: 400 clamp(3rem,7vw,5rem)/.99 "Instrument Serif", Georgia, serif; margin: 0; }
 .intro { color: var(--muted); font-size: .98rem; line-height: 1.55; margin: .75rem 0 0; max-width: 65ch; }
 .proof-link { display: inline-block; margin-top: .8rem; color: var(--read); font-weight: 600; text-underline-offset: .2em; }
+.view-links { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+.view-links a { color: var(--read); }
 .toolbar, .camera, .replay, .summary, .legend { display: flex; flex-wrap: wrap; align-items: center; gap: .55rem; }
 .toolbar { justify-content: space-between; margin-bottom: .85rem; gap: .85rem 1.4rem; }
 .attempt-label { display: grid; gap: .35rem; color: var(--muted); font-size: .82rem; min-width: min(100%, 19rem); }

@@ -14,6 +14,7 @@
     key => [key,styles.getPropertyValue('--'+key).trim()]));
   const margin = 20, maxScale = 26;
   let attempts, parents, total, state, texture;
+  let syntaxMasks, syntaxPalette;
   let scale = 1, fitted = true, follow = false;
   let playTime = 0, playStarted = null, playbackFrame = 0, queued = false, drag;
 
@@ -118,16 +119,48 @@
     raster.width=1100;
     raster.height=Math.max(1,Math.ceil(attempt.rows*raster.width/attempt.width));
     const paint=raster.getContext('2d');
-    paint.fillStyle=palette.read;
     const ratio=raster.width/attempt.width;
     for (let row=0;row<attempt.rows;row++) {
       const offset=2*(attempt.first+row);
       const y=Math.floor(row*ratio);
-      paint.fillRect(Math.floor(parents[offset]*ratio),y,1,1);
-      paint.fillRect(Math.floor(parents[offset+1]*ratio),y,1,1);
+      for (let index=offset;index<offset+2;index++) {
+        const slot=parents[index];
+        paint.fillStyle=markColor(attempt,slot,row,palette.read);
+        paint.fillRect(Math.floor(slot*ratio),y,1,1);
+      }
+      if (syntaxMasks) {
+        const slot=attempt.inputs+row;
+        paint.fillStyle=markColor(attempt,slot,row,palette.write);
+        paint.fillRect(Math.floor(slot*ratio),y,1,1);
+      }
     }
     texture=raster;
     return texture;
+  }
+
+  function markColors(attempt,slot) {
+    return syntaxMasks && syntaxPalette[syntaxMasks[attempt.syntaxFirst+slot]];
+  }
+
+  function markColor(attempt,slot,row,fallback) {
+    const colors=markColors(attempt,slot);
+    return colors?.length ? colors[(slot+row)%colors.length] : fallback;
+  }
+
+  function drawMark(attempt,slot,row,x,y,size,border) {
+    const colors=markColors(attempt,slot);
+    if (!colors?.length || size<8) {
+      ctx.fillStyle=markColor(attempt,slot,row,border);
+      ctx.fillRect(x,y,size,size);
+      return;
+    }
+    ctx.fillStyle=border;
+    ctx.fillRect(x,y,size,size);
+    const band=(size-3)/colors.length;
+    colors.forEach((color,i)=>{
+      ctx.fillStyle=color;
+      ctx.fillRect(x+1.5+i*band,y+1.5,band+.2,size-3);
+    });
   }
 
   function grid(x,y,w,h,left,top,right,bottom) {
@@ -186,14 +219,12 @@
           const offset=(attempt.first+row)*2, out=attempt.inputs+row, v=y+row*scale;
           ctx.fillStyle=palette.occupied;
           ctx.fillRect(x,v,out*scale,scale);
-          ctx.fillStyle=palette.read;
           for (let index=offset;index<offset+2;index++) {
             const slot=parents[index];
-            if (slot>=left && slot<right) ctx.fillRect(x+slot*scale,v,tile,tile);
+            if (slot>=left && slot<right) drawMark(attempt,slot,row,x+slot*scale,v,tile,palette.read);
           }
           if (out>=left && out<right) {
-            ctx.fillStyle=palette.write;
-            ctx.fillRect(x+out*scale,v,tile,tile);
+            drawMark(attempt,out,row,x+out*scale,v,tile,palette.write);
           }
         }
       } else {
@@ -208,9 +239,11 @@
         ctx.imageSmoothingEnabled=false;
         ctx.drawImage(raster,x,y,w,raster.height*w/raster.width);
         ctx.restore();
-        ctx.strokeStyle=palette.write;
-        ctx.beginPath();ctx.moveTo(x+attempt.inputs*scale,y);
-        ctx.lineTo(x+(attempt.inputs+rows)*scale,edge);ctx.stroke();
+        if (!syntaxMasks) {
+          ctx.strokeStyle=palette.write;
+          ctx.beginPath();ctx.moveTo(x+attempt.inputs*scale,y);
+          ctx.lineTo(x+(attempt.inputs+rows)*scale,edge);ctx.stroke();
+        }
       }
     }
     grid(x,y,w,h,left,top,right,bottom);
@@ -218,8 +251,15 @@
       ctx.fillStyle=palette.reject;
       ctx.fillRect(x,edge,w,Math.max(2,scale));
     }
-    ctx.fillStyle=palette.read;
-    ctx.fillRect(x,y-2,Math.max(1,attempt.inputs*scale),2);
+    if (syntaxMasks && scale>=.14) {
+      for (let slot=0;slot<attempt.inputs;slot++) {
+        ctx.fillStyle=markColor(attempt,slot,0,palette.read);
+        ctx.fillRect(x+slot*scale,y-2,Math.max(1,scale),2);
+      }
+    } else {
+      ctx.fillStyle=palette.read;
+      ctx.fillRect(x,y-2,Math.max(1,attempt.inputs*scale),2);
+    }
     minus.disabled=scale<=fitScale()*1.001;
     plus.disabled=scale>=maxScale;
     followButton.setAttribute('aria-pressed',String(follow));
@@ -253,7 +293,7 @@
     else playbackFrame=requestAnimationFrame(tick);
   }
 
-  function configure(data,buffer) {
+  function configure(data,buffer,syntaxBuffer) {
     const words=data.bits===16 ? 2 : 4;
     const view=new DataView(buffer);
     parents=data.bits===16 ? new Uint16Array(buffer.byteLength/2) : new Uint32Array(buffer.byteLength/4);
@@ -279,6 +319,22 @@
     total=start;
     if (attempts.at(-1).first+attempts.at(-1).rows!==parents.length/2) {
       throw Error('Tile records are incomplete');
+    }
+    if (syntaxBuffer) {
+      const last=attempts.at(-1);
+      if (syntaxBuffer.byteLength!==last.syntaxFirst+last.inputs+last.rows) {
+        throw Error('Syntax marks are incomplete');
+      }
+      syntaxMasks=new Uint8Array(syntaxBuffer);
+      syntaxPalette=Array.from({length:256},(_,mask)=>data.syntax.flatMap((item,i)=>
+        mask & (1<<i) ? [item.color] : []));
+      for (const item of data.syntax) {
+        const entry=document.createElement('span'), swatch=document.createElement('i');
+        swatch.style.backgroundColor=item.color;
+        entry.append(swatch,item.label);
+        get('syntax-legend').append(entry);
+      }
+      get('syntax-hint').hidden=false;
     }
     controls.forEach(button=>{button.disabled=false;});
     setTime(total);
@@ -353,7 +409,10 @@
     if (!response.ok) throw Error('Could not load '+url);
     return response;
   });
-  Promise.all([fetchFile('trace.json').then(r=>r.json()),fetchFile('parents.bin').then(r=>r.arrayBuffer())])
-    .then(([data,buffer])=>configure(data,buffer))
+  Promise.all([fetchFile('trace.json?v=tile-syntax-1').then(r=>r.json()),fetchFile('parents.bin').then(r=>r.arrayBuffer())])
+    .then(async ([data,buffer])=>{
+      const syntax=data.syntax?.length ? await fetchFile('syntax.bin').then(r=>r.arrayBuffer()) : null;
+      configure(data,buffer,syntax);
+    })
     .catch(error=>{get('status').textContent='Search failed to load. '+error.message;});
 })();
