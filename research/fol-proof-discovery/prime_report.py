@@ -1,0 +1,107 @@
+"""Render and package the replayed arithmetic proof library for Pages."""
+
+import argparse
+from html import escape
+import json
+from pathlib import Path
+import shutil
+
+from prime_run import replay
+
+
+def render(results, output):
+    audit = replay(results)
+    expected = {'prime-divisor', 'bounded-positive-le-divides'}
+    if not expected <= set(audit['dependencies'].get('unbounded-primes', ())):
+        raise ValueError('the run did not prove infinitude via the expected two library entries')
+    run = json.loads((results/'certificate.json').read_text())
+    names = {
+        'prime-divisor': 'Prime divisor',
+        'bounded-positive-le-divides': 'Bounded common multiple',
+        'unbounded-primes': 'Primes above every bound',
+    }
+    rows = []
+    for entry in run['trace']:
+        name = names.get(entry['goal'], entry['goal'])
+        result = ('Checked by '+entry['method'].replace('-', ' ')
+                  if entry['status'] == 'proved' else 'Open within budget')
+        stats = entry['stats']
+        rows.append(f'<tr><th scope="row">{escape(name)}</th><td>{escape(result)}</td>'
+                    f'<td>{stats["pair_offers"]:,}</td></tr>')
+    chains = []
+    for name in audit['checked']:
+        label = names.get(name, name)
+        used = audit['dependencies'][name]
+        links = ', '.join(f'<code>{escape(item)}</code>' for item in used
+                          if item != 'goal-denial' and not item.startswith('induction-hypothesis:'))
+        chains.append(f'<details><summary>{escape(label)}</summary><p>{links}</p></details>')
+    multiple = run['library']['bounded-positive-le-divides']['certificate']
+    witness = multiple['phases'][-1].get('witness')
+    witness_note = ''
+    if (multiple['method'] == 'induction' and isinstance(witness, list)
+            and witness[0] == 'mul' and isinstance(witness[1], str) and witness[1].startswith('_sk')
+            and witness[2] == ['plus', '_induction_n', 'one']):
+        witness_note = r' In the induction step it found \(m(n+1)\), with \(m\) supplied by the induction hypothesis.'
+    doc = rf"""<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>From an empty theorem library to infinitely many primes · GCTS research</title>
+<link rel="stylesheet" href="../report.css?v=20261009-r33.1">
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<style>
+.intro p,.panel p{{max-width:72ch}}
+.scroll{{overflow-x:auto}}table{{border-collapse:collapse;width:100%}}
+td,th{{padding:.55rem .65rem;text-align:left;border-bottom:1px solid #cbd5dc}}
+th:last-child,td:last-child{{text-align:right}}details{{margin:.65rem 0}}summary{{cursor:pointer}}
+</style></head><body>
+<header class="masthead"><a href="../fol-proof-discovery/index.html">First-order proof discovery</a>
+<a href="#run">Run</a><a href="#evidence">Evidence</a></header>
+<main>
+<section class="intro">
+<h1>From an empty theorem library to infinitely many primes</h1>
+<p>In one continuous run, the search proved that every natural number greater than one has a
+prime divisor, then reused that checked theorem to show there is a prime above every bound.</p>
+</section>
+<section class="panel" id="run"><h2>What the search found</h2>
+<div class="scroll"><table><thead><tr><th scope="col">Goal</th><th scope="col">Result</th>
+<th scope="col">Inference pairs tried</th></tr></thead><tbody>{''.join(rows)}</tbody></table></div>
+<p>The search proved \(\forall n&gt;1,\ \exists p\,(\operatorname{{Prime}}(p)\land p\mid n)\)
+by strong induction. Its auxiliary grammar generated the claim that each bound \(n\) admits a
+positive common multiple of the integers from \(1\) through \(n\).{witness_note}</p>
+<p>For infinitude, take a positive common multiple \(m\) up to the bound \(n\).
+A prime divisor of \(m+1\) cannot be at most \(n\): it would then divide both \(m\) and
+\(m+1\), and cancellation would make it divide \(1\). The checker confirmed that the saved
+proof uses both earlier theorems, yielding
+\(\forall n\in\mathbb{{N}},\ \exists p\,(\operatorname{{Prime}}(p)\land n&lt;p)\).</p>
+</section>
+<section class="panel"><h2>What the run was given</h2>
+<p>The fixed boundary supplied {audit['declaredBoundarySize']} elementary arithmetic laws,
+including the primality case split and general divisibility cancellation under addition.
+Ordinary and strong induction were available as inference schemas. Terms have fixed lattice
+addresses, and compatible marks are joined by unification. The search uses fixed clause
+priorities and a finite grammar for auxiliary goals and witness terms. This experiment starts
+from the declared arithmetic laws and tests theorem reuse; it does not measure an RL speedup.</p>
+</section>
+<section class="panel" id="evidence"><h2>Proof replay</h2>
+<p>The replay reconstructs each induction obligation, checks witness scope and library order,
+and sends every resolution and factoring derivation to a separate clause checker. Below are
+the directly used arithmetic laws and earlier library entries for each admitted theorem.</p>
+{''.join(chains)}
+<p><a href="boundary.json">Declared boundary</a> · <a href="certificate.json">Proof certificates and run log</a> ·
+<a href="verification.json">Verification report</a> ·
+<a href="https://github.com/liuyao12/geometric-tree-search/tree/main/research/fol-proof-discovery">Source and reproduction</a></p>
+</section></main></body></html>
+"""
+    output.mkdir(parents=True, exist_ok=True)
+    for name in ('boundary.json', 'certificate.json'):
+        shutil.copyfile(results/name, output/name)
+    (output/'verification.json').write_text(json.dumps(audit, indent=2)+'\n')
+    (output/'index.html').write_text(doc)
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('results', type=Path)
+    parser.add_argument('output', type=Path)
+    args = parser.parse_args()
+    render(args.results, args.output)

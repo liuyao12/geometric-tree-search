@@ -66,3 +66,31 @@ python3 -B curriculum_report.py ./curriculum-results ./curriculum-reader
 
 The first command also runs the saved-data proof audit on the generated
 curriculum cohort.
+
+## A theorem library from an arithmetic boundary
+
+This run starts with an empty library and two named targets: every natural
+number greater than one has a prime divisor, and there is a prime above
+every natural number. Search aligns marked term positions on a lattice and
+grows resolution and factoring steps from the negated goal. A fixed
+grammar generates auxiliary statements and candidate witnesses. Verified
+theorems become new boundary clauses for the next stage of the same run.
+
+The declared boundary consists of elementary order, divisibility,
+multiplication and primality laws. Ordinary and strong induction are
+trusted inference schemas. The run uses these arithmetic laws directly
+and uses fixed scheduling, so it measures theorem discovery and reuse.
+The proof replay validates the witnesses, induction obligations and lemma
+admission order, and an independent clause checker verifies the refutations.
+
+```sh
+python3 -B prime_run.py ./prime-results
+python3 -B prime_run.py ./prime-results --verify
+python3 -B prime_report.py ./prime-results ./prime-reader
+```
+
+`boundary.json` declares the input laws and search bounds.
+`certificate.json` records the attempt order, induction steps and exact
+proofs. `verification.json` records which dependency leaves the checker
+replayed, including whether the final proof used the newly admitted
+prime-divisor theorem.

@@ -172,6 +172,8 @@ class Limit(Exception):
 
 
 class GivenClauseSearch:
+    unify_arguments = staticmethod(unify)
+
     def __init__(self, clauses, select, max_steps, seconds, max_offers, max_nodes):
         self.deadline = monotonic()+seconds
         self.clauses = clauses
@@ -262,7 +264,8 @@ class GivenClauseSearch:
         scoped_a = scope(a, "L")
         scoped_b = scoped_a if factor else scope(b, "R")
         self.counts["unifications"] += 1
-        bindings = unify(scoped_a[first][2], scoped_b[second][2], self.counts, self.check_time)
+        bindings = self.unify_arguments(scoped_a[first][2], scoped_b[second][2],
+                                        self.counts, self.check_time)
         if bindings is None:
             self.counts["failed_unifications"] += 1
             return None
