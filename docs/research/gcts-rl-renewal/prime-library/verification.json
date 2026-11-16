@@ -1,0 +1,43 @@
+{
+  "checked": [
+    "prime-divisor",
+    "bounded-positive-le-divides",
+    "unbounded-primes"
+  ],
+  "primeDivisor": true,
+  "unboundedPrimes": true,
+  "reusedPrimeDivisor": true,
+  "dependencies": {
+    "prime-divisor": [
+      "divides-reflexive",
+      "divides-transitive",
+      "goal-denial",
+      "induction-hypothesis:0",
+      "prime-definition-cases"
+    ],
+    "bounded-positive-le-divides": [
+      "divides-product-extension",
+      "divides-product-right",
+      "divisor-substitution",
+      "goal-denial",
+      "induction-hypothesis:0",
+      "no-positive-below-zero",
+      "positive-one",
+      "positive-product",
+      "positive-successor",
+      "successor-order-split"
+    ],
+    "unbounded-primes": [
+      "bounded-positive-le-divides",
+      "divides-additive-cancellation",
+      "goal-denial",
+      "greater-than-one-is-positive",
+      "one-has-no-larger-divisor",
+      "order-totality",
+      "prime-divisor",
+      "prime-greater-than-one",
+      "successor-of-positive"
+    ]
+  },
+  "declaredBoundarySize": 19
+}

@@ -1,0 +1,2831 @@
+{
+  "schema": "marked-prime-run-v1",
+  "declarationSha256": "98674fa961ade3c6b0f4fed71e72f1934089a45a567529c1d54c108ab4a9caf2",
+  "trace": [
+    {
+      "goal": "prime-divisor",
+      "status": "proved",
+      "method": "strong-induction",
+      "stats": {
+        "attempts": 5,
+        "seconds": 20.154148416,
+        "placed_clauses": 6912,
+        "pair_offers": 2251441,
+        "marked_point_joins": 829058,
+        "offers": 4,
+        "proved": 1
+      },
+      "used": [
+        "divides-reflexive",
+        "divides-transitive",
+        "goal-denial",
+        "induction-hypothesis:0",
+        "prime-definition-cases"
+      ]
+    },
+    {
+      "goal": "unbounded-primes",
+      "status": "unknown",
+      "stats": {
+        "attempts": 2,
+        "seconds": 8.405970084000003,
+        "placed_clauses": 2385,
+        "pair_offers": 1120000,
+        "marked_point_joins": 344620,
+        "offers": 2
+      }
+    },
+    {
+      "goal": "bounded-positive-le-divides",
+      "status": "proved",
+      "method": "induction",
+      "stats": {
+        "attempts": 51,
+        "seconds": 20.584749084000027,
+        "placed_clauses": 12834,
+        "pair_offers": 1967561,
+        "marked_point_joins": 1155958,
+        "proved": 17,
+        "offers": 34,
+        "witness_offers": 33
+      },
+      "used": [
+        "divides-product-extension",
+        "divides-product-right",
+        "divisor-substitution",
+        "goal-denial",
+        "induction-hypothesis:0",
+        "no-positive-below-zero",
+        "positive-one",
+        "positive-product",
+        "positive-successor",
+        "successor-order-split"
+      ]
+    },
+    {
+      "goal": "unbounded-primes",
+      "status": "proved",
+      "method": "direct",
+      "stats": {
+        "attempts": 2,
+        "seconds": 9.011953874999996,
+        "placed_clauses": 2764,
+        "pair_offers": 1106396,
+        "marked_point_joins": 360673,
+        "offers": 1,
+        "proved": 1
+      },
+      "used": [
+        "bounded-positive-le-divides",
+        "divides-additive-cancellation",
+        "goal-denial",
+        "greater-than-one-is-positive",
+        "one-has-no-larger-divisor",
+        "order-totality",
+        "prime-divisor",
+        "prime-greater-than-one",
+        "successor-of-positive"
+      ]
+    }
+  ],
+  "library": {
+    "prime-divisor": {
+      "formula": [
+        "all",
+        "@n",
+        [
+          "or",
+          [
+            "not",
+            [
+              "atom",
+              "lt",
+              [
+                "one",
+                "@n"
+              ]
+            ]
+          ],
+          [
+            "some",
+            "@p",
+            [
+              "and",
+              [
+                "atom",
+                "prime",
+                [
+                  "@p"
+                ]
+              ],
+              [
+                "atom",
+                "divides",
+                [
+                  "@p",
+                  "@n"
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "certificate": {
+        "method": "strong-induction",
+        "phases": [
+          {
+            "mode": "refutation",
+            "records": [
+              {
+                "proof": {
+                  "format": "lifted-cnf-v1",
+                  "steps": [
+                    {
+                      "rule": "input",
+                      "source": 10,
+                      "clause": [
+                        [
+                          true,
+                          "divides",
+                          [
+                            "?v0",
+                            "?v0"
+                          ]
+                        ]
+                      ],
+                      "renaming": {
+                        "?u10_0": "?v0"
+                      }
+                    },
+                    {
+                      "rule": "input",
+                      "source": 12,
+                      "clause": [
+                        [
+                          false,
+                          "divides",
+                          [
+                            "?v0",
+                            "?v1"
+                          ]
+                        ],
+                        [
+                          false,
+                          "divides",
+                          [
+                            "?v1",
+                            "?v2"
+                          ]
+                        ],
+                        [
+                          true,
+                          "divides",
+                          [
+                            "?v0",
+                            "?v2"
+                          ]
+                        ]
+                      ],
+                      "renaming": {
+                        "?u12_0": "?v0",
+                        "?u12_1": "?v1",
+                        "?u12_2": "?v2"
+                      }
+                    },
+                    {
+                      "rule": "input",
+                      "source": 16,
+                      "clause": [
+                        [
+                          false,
+                          "lt",
+                          [
+                            "one",
+                            "?v0"
+                          ]
+                        ],
+                        [
+                          true,
+                          "lt",
+                          [
+                            "one",
+                            [
+                              "_sk16_1",
+                              "?v0"
+                            ]
+                          ]
+                        ],
+                        [
+                          true,
+                          "prime",
+                          [
+                            "?v0"
+                          ]
+                        ]
+                      ],
+                      "renaming": {
+                        "?u16_0": "?v0"
+                      }
+                    },
+                    {
+                      "rule": "input",
+                      "source": 17,
+                      "clause": [
+                        [
+                          false,
+                          "lt",
+                          [
+                            "one",
+                            "?v0"
+                          ]
+                        ],
+                        [
+                          true,
+                          "lt",
+                          [
+                            [
+                              "_sk16_1",
+                              "?v0"
+                            ],
+                            "?v0"
+                          ]
+                        ],
+                        [
+                          true,
+                          "prime",
+                          [
+                            "?v0"
+                          ]
+                        ]
+                      ],
+                      "renaming": {
+                        "?u16_0": "?v0"
+                      }
+                    },
+                    {
+                      "rule": "input",
+                      "source": 18,
+                      "clause": [
+                        [
+                          false,
+                          "lt",
+                          [
+                            "one",
+                            "?v0"
+                          ]
+                        ],
+                        [
+                          true,
+                          "divides",
+                          [
+                            [
+                              "_sk16_1",
+                              "?v0"
+                            ],
+                            "?v0"
+                          ]
+                        ],
+                        [
+                          true,
+                          "prime",
+                          [
+                            "?v0"
+                          ]
+                        ]
+                      ],
+                      "renaming": {
+                        "?u16_0": "?v0"
+                      }
+                    },
+                    {
+                      "rule": "input",
+                      "source": 21,
+                      "clause": [
+                        [
+                          false,
+                          "lt",
+                          [
+                            "?v0",
+                            "_induction_n"
+                          ]
+                        ],
+                        [
+                          false,
+                          "lt",
+                          [
+                            "one",
+                            "?v0"
+                          ]
+                        ],
+                        [
+                          true,
+                          "prime",
+                          [
+                            [
+                              "_sk19_1",
+                              "?v0"
+                            ]
+                          ]
+                        ]
+                      ],
+                      "renaming": {
+                        "?u19_0": "?v0"
+                      }
+                    },
+                    {
+                      "rule": "input",
+                      "source": 22,
+                      "clause": [
+                        [
+                          false,
+                          "lt",
+                          [
+                            "?v0",
+                            "_induction_n"
+                          ]
+                        ],
+                        [
+                          false,
+                          "lt",
+                          [
+                            "one",
+                            "?v0"
+                          ]
+                        ],
+                        [
+                          true,
+                          "divides",
+                          [
+                            [
+                              "_sk19_1",
+                              "?v0"
+                            ],
+                            "?v0"
+                          ]
+                        ]
+                      ],
+                      "renaming": {
+                        "?u19_0": "?v0"
+                      }
+                    },
+                    {
+                      "rule": "input",
+                      "source": 23,
+                      "clause": [
+                        [
+                          true,
+                          "lt",
+                          [
+                            "one",
+                            "_induction_n"
+                          ]
+                        ]
+                      ],
+                      "renaming": {}
+                    },
+                    {
+                      "rule": "input",
+                      "source": 24,
+                      "clause": [
+                        [
+                          false,
+                          "divides",
+                          [
+                            "?v0",
+                            "_induction_n"
+                          ]
+                        ],
+                        [
+                          false,
+                          "prime",
+                          [
+                            "?v0"
+                          ]
+                        ]
+                      ],
+                      "renaming": {
+                        "?ugoal_0": "?v0"
+                      }
+                    },
+                    {
+                      "rule": "resolve",
+                      "parents": [
+                        7,
+                        2
+                      ],
+                      "sites": [
+                        0,
+                        0
+                      ],
+                      "substitution": {
+                        "?R0": "_induction_n"
+                      },
+                      "clause": [
+                        [
+                          true,
+                          "lt",
+                          [
+                            "one",
+                            [
+                              "_sk16_1",
+                              "_induction_n"
+                            ]
+                          ]
+                        ],
+                        [
+                          true,
+                          "prime",
+                          [
+                            "_induction_n"
+                          ]
+                        ]
+                      ],
+                      "renaming": {}
+                    },
+                    {
+                      "rule": "resolve",
+                      "parents": [
+                        7,
+                        3
+                      ],
+                      "sites": [
+                        0,
+                        0
+                      ],
+                      "substitution": {
+                        "?R0": "_induction_n"
+                      },
+                      "clause": [
+                        [
+                          true,
+                          "lt",
+                          [
+                            [
+                              "_sk16_1",
+                              "_induction_n"
+                            ],
+                            "_induction_n"
+                          ]
+                        ],
+                        [
+                          true,
+                          "prime",
+                          [
+                            "_induction_n"
+                          ]
+                        ]
+                      ],
+                      "renaming": {}
+                    },
+                    {
+                      "rule": "resolve",
+                      "parents": [
+                        7,
+                        4
+                      ],
+                      "sites": [
+                        0,
+                        0
+                      ],
+                      "substitution": {
+                        "?R0": "_induction_n"
+                      },
+                      "clause": [
+                        [
+                          true,
+                          "divides",
+                          [
+                            [
+                              "_sk16_1",
+                              "_induction_n"
+                            ],
+                            "_induction_n"
+                          ]
+                        ],
+                        [
+                          true,
+                          "prime",
+                          [
+                            "_induction_n"
+                          ]
+                        ]
+                      ],
+                      "renaming": {}
+                    },
+                    {
+                      "rule": "resolve",
+                      "parents": [
+                        0,
+                        8
+                      ],
+                      "sites": [
+                        0,
+                        0
+                      ],
+                      "substitution": {
+                        "?L0": "_induction_n",
+                        "?R0": "_induction_n"
+                      },
+                      "clause": [
+                        [
+                          false,
+                          "prime",
+                          [
+                            "_induction_n"
+                          ]
+                        ]
+                      ],
+                      "renaming": {}
+                    },
+                    {
+                      "rule": "resolve",
+                      "parents": [
+                        1,
+                        8
+                      ],
+                      "sites": [
+                        2,
+                        0
+                      ],
+                      "substitution": {
+                        "?L2": "_induction_n",
+                        "?L0": "?R0"
+                      },
+                      "clause": [
+                        [
+                          false,
+                          "divides",
+                          [
+                            "?v0",
+                            "?v1"
+                          ]
+                        ],
+                        [
+                          false,
+                          "divides",
+                          [
+                            "?v1",
+                            "_induction_n"
+                          ]
+                        ],
+                        [
+                          false,
+                          "prime",
+                          [
+                            "?v0"
+                          ]
+                        ]
+                      ],
+                      "renaming": {
+                        "?R0": "?v0",
+                        "?L1": "?v1"
+                      }
+                    },
+                    {
+                      "rule": "resolve",
+                      "parents": [
+                        9,
+                        5
+                      ],
+                      "sites": [
+                        0,
+                        1
+                      ],
+                      "substitution": {
+                        "?R0": [
+                          "_sk16_1",
+                          "_induction_n"
+                        ]
+                      },
+                      "clause": [
+                        [
+                          false,
+                          "lt",
+                          [
+                            [
+                              "_sk16_1",
+                              "_induction_n"
+                            ],
+                            "_induction_n"
+                          ]
+                        ],
+                        [
+                          true,
+                          "prime",
+                          [
+                            "_induction_n"
+                          ]
+                        ],
+                        [
+                          true,
+                          "prime",
+                          [
+                            [
+                              "_sk19_1",
+                              [
+                                "_sk16_1",
+                                "_induction_n"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      "renaming": {}
+                    },
+                    {
+                      "rule": "resolve",
+                      "parents": [
+                        9,
+                        6
+                      ],
+                      "sites": [
+                        0,
+                        1
+                      ],
+                      "substitution": {
+                        "?R0": [
+                          "_sk16_1",
+                          "_induction_n"
+                        ]
+                      },
+                      "clause": [
+                        [
+                          false,
+                          "lt",
+                          [
+                            [
+                              "_sk16_1",
+                              "_induction_n"
+                            ],
+                            "_induction_n"
+                          ]
+                        ],
+                        [
+                          true,
+                          "divides",
+                          [
+                            [
+                              "_sk19_1",
+                              [
+                                "_sk16_1",
+                                "_induction_n"
+                              ]
+                            ],
+                            [
+                              "_sk16_1",
+                              "_induction_n"
+                            ]
+                          ]
+                        ],
+                        [
+                          true,
+                          "prime",
+                          [
+                            "_induction_n"
+                          ]
+                        ]
+                      ],
+                      "renaming": {}
+                    },
+                    {
+                      "rule": "resolve",
+                      "parents": [
+                        11,
+                        12
+                      ],
+                      "sites": [
+                        1,
+                        0
+                      ],
+                      "substitution": {},
+                      "clause": [
+                        [
+                          true,
+                          "divides",
+                          [
+                            [
+                              "_sk16_1",
+                              "_induction_n"
+                            ],
+                            "_induction_n"
+                          ]
+                        ]
+                      ],
+                      "renaming": {}
+                    },
+                    {
+                      "rule": "resolve",
+                      "parents": [
+                        16,
+                        13
+                      ],
+                      "sites": [
+                        0,
+                        1
+                      ],
+                      "substitution": {
+                        "?R1": [
+                          "_sk16_1",
+                          "_induction_n"
+                        ]
+                      },
+                      "clause": [
+                        [
+                          false,
+                          "divides",
+                          [
+                            "?v0",
+                            [
+                              "_sk16_1",
+                              "_induction_n"
+                            ]
+                          ]
+                        ],
+                        [
+                          false,
+                          "prime",
+                          [
+                            "?v0"
+                          ]
+                        ]
+                      ],
+                      "renaming": {
+                        "?R0": "?v0"
+                      }
+                    },
+                    {
+                      "rule": "resolve",
+                      "parents": [
+                        10,
+                        14
+                      ],
+                      "sites": [
+                        0,
+                        0
+                      ],
+                      "substitution": {},
+                      "clause": [
+                        [
+                          true,
+                          "prime",
+                          [
+                            "_induction_n"
+                          ]
+                        ],
+                        [
+                          true,
+                          "prime",
+                          [
+                            [
+                              "_sk19_1",
+                              [
+                                "_sk16_1",
+                                "_induction_n"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      "renaming": {}
+                    },
+                    {
+                      "rule": "resolve",
+                      "parents": [
+                        18,
+                        12
+                      ],
+                      "sites": [
+                        0,
+                        0
+                      ],
+                      "substitution": {},
+                      "clause": [
+                        [
+                          true,
+                          "prime",
+                          [
+                            [
+                              "_sk19_1",
+                              [
+                                "_sk16_1",
+                                "_induction_n"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      "renaming": {}
+                    },
+                    {
+                      "rule": "resolve",
+                      "parents": [
+                        19,
+                        17
+                      ],
+                      "sites": [
+                        0,
+                        1
+                      ],
+                      "substitution": {
+                        "?R0": [
+                          "_sk19_1",
+                          [
+                            "_sk16_1",
+                            "_induction_n"
+                          ]
+                        ]
+                      },
+                      "clause": [
+                        [
+                          false,
+                          "divides",
+                          [
+                            [
+                              "_sk19_1",
+                              [
+                                "_sk16_1",
+                                "_induction_n"
+                              ]
+                            ],
+                            [
+                              "_sk16_1",
+                              "_induction_n"
+                            ]
+                          ]
+                        ]
+                      ],
+                      "renaming": {}
+                    },
+                    {
+                      "rule": "resolve",
+                      "parents": [
+                        15,
+                        20
+                      ],
+                      "sites": [
+                        1,
+                        0
+                      ],
+                      "substitution": {},
+                      "clause": [
+                        [
+                          false,
+                          "lt",
+                          [
+                            [
+                              "_sk16_1",
+                              "_induction_n"
+                            ],
+                            "_induction_n"
+                          ]
+                        ],
+                        [
+                          true,
+                          "prime",
+                          [
+                            "_induction_n"
+                          ]
+                        ]
+                      ],
+                      "renaming": {}
+                    },
+                    {
+                      "rule": "resolve",
+                      "parents": [
+                        10,
+                        21
+                      ],
+                      "sites": [
+                        0,
+                        0
+                      ],
+                      "substitution": {},
+                      "clause": [
+                        [
+                          true,
+                          "prime",
+                          [
+                            "_induction_n"
+                          ]
+                        ]
+                      ],
+                      "renaming": {}
+                    },
+                    {
+                      "rule": "resolve",
+                      "parents": [
+                        22,
+                        12
+                      ],
+                      "sites": [
+                        0,
+                        0
+                      ],
+                      "substitution": {},
+                      "clause": [],
+                      "renaming": {}
+                    }
+                  ],
+                  "root": 23
+                },
+                "used": [
+                  "divides-reflexive",
+                  "divides-transitive",
+                  "goal-denial",
+                  "induction-hypothesis:0",
+                  "prime-definition-cases"
+                ],
+                "counters": {
+                  "stored": 2188,
+                  "given": 239,
+                  "offers": 11441,
+                  "unifications": 2882,
+                  "marked_point_joins": 4792,
+                  "solved_equations": 4792,
+                  "resolutions": 2757,
+                  "shallow_skips": 8559,
+                  "marked_point_conflicts": 121,
+                  "failed_unifications": 124,
+                  "duplicates": 468,
+                  "age_slots": 47,
+                  "tautologies": 49,
+                  "factors": 1,
+                  "bounded_placements": 78
+                },
+                "seconds": 0.09938687500000043
+              }
+            ]
+          }
+        ]
+      },
+      "used": [
+        "divides-reflexive",
+        "divides-transitive",
+        "goal-denial",
+        "induction-hypothesis:0",
+        "prime-definition-cases"
+      ],
+      "imports": []
+    },
+    "bounded-positive-le-divides": {
+      "formula": [
+        "all",
+        "@n",
+        [
+          "some",
+          "@m",
+          [
+            "and",
+            [
+              "atom",
+              "lt",
+              [
+                "zero",
+                "@m"
+              ]
+            ],
+            [
+              "all",
+              "@d",
+              [
+                "or",
+                [
+                  "not",
+                  [
+                    "and",
+                    [
+                      "atom",
+                      "lt",
+                      [
+                        "zero",
+                        "@d"
+                      ]
+                    ],
+                    [
+                      "atom",
+                      "le",
+                      [
+                        "@d",
+                        "@n"
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "atom",
+                  "divides",
+                  [
+                    "@d",
+                    "@m"
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "certificate": {
+        "method": "induction",
+        "phases": [
+          {
+            "mode": "refutation",
+            "records": [
+              {
+                "proof": {
+                  "format": "lifted-cnf-v1",
+                  "steps": [
+                    {
+                      "rule": "input",
+                      "source": 0,
+                      "clause": [
+                        [
+                          true,
+                          "lt",
+                          [
+                            "zero",
+                            "one"
+                          ]
+                        ]
+                      ],
+                      "renaming": {}
+                    },
+                    {
+                      "rule": "input",
+                      "source": 4,
+                      "clause": [
+                        [
+                          false,
+                          "le",
+                          [
+                            "?v0",
+                            "zero"
+                          ]
+                        ],
+                        [
+                          false,
+                          "lt",
+                          [
+                            "zero",
+                            "?v0"
+                          ]
+                        ]
+                      ],
+                      "renaming": {
+                        "?u4_0": "?v0"
+                      }
+                    },
+                    {
+                      "rule": "input",
+                      "source": 23,
+                      "clause": [
+                        [
+                          false,
+                          "lt",
+                          [
+                            "zero",
+                            "?v0"
+                          ]
+                        ],
+                        [
+                          true,
+                          "lt",
+                          [
+                            "zero",
+                            [
+                              "_skgoal_1",
+                              "?v0"
+                            ]
+                          ]
+                        ]
+                      ],
+                      "renaming": {
+                        "?ugoal_0": "?v0"
+                      }
+                    },
+                    {
+                      "rule": "input",
+                      "source": 24,
+                      "clause": [
+                        [
+                          false,
+                          "lt",
+                          [
+                            "zero",
+                            "?v0"
+                          ]
+                        ],
+                        [
+                          true,
+                          "le",
+                          [
+                            [
+                              "_skgoal_1",
+                              "?v0"
+                            ],
+                            "zero"
+                          ]
+                        ]
+                      ],
+                      "renaming": {
+                        "?ugoal_0": "?v0"
+                      }
+                    },
+                    {
+                      "rule": "resolve",
+                      "parents": [
+                        0,
+                        2
+                      ],
+                      "sites": [
+                        0,
+                        0
+                      ],
+                      "substitution": {
+                        "?R0": "one"
+                      },
+                      "clause": [
+                        [
+                          true,
+                          "lt",
+                          [
+                            "zero",
+                            [
+                              "_skgoal_1",
+                              "one"
+                            ]
+                          ]
+                        ]
+                      ],
+                      "renaming": {}
+                    },
+                    {
+                      "rule": "resolve",
+                      "parents": [
+                        4,
+                        1
+                      ],
+                      "sites": [
+                        0,
+                        1
+                      ],
+                      "substitution": {
+                        "?R0": [
+                          "_skgoal_1",
+                          "one"
+                        ]
+                      },
+                      "clause": [
+                        [
+                          false,
+                          "le",
+                          [
+                            [
+                              "_skgoal_1",
+                              "one"
+                            ],
+                            "zero"
+                          ]
+                        ]
+                      ],
+                      "renaming": {}
+                    },
+                    {
+                      "rule": "resolve",
+                      "parents": [
+                        3,
+                        5
+                      ],
+                      "sites": [
+                        1,
+                        0
+                      ],
+                      "substitution": {
+                        "?L0": "one"
+                      },
+                      "clause": [
+                        [
+                          false,
+                          "lt",
+                          [
+                            "zero",
+                            "one"
+                          ]
+                        ]
+                      ],
+                      "renaming": {}
+                    },
+                    {
+                      "rule": "resolve",
+                      "parents": [
+                        0,
+                        6
+                      ],
+                      "sites": [
+                        0,
+                        0
+                      ],
+                      "substitution": {},
+                      "clause": [],
+                      "renaming": {}
+                    }
+                  ],
+                  "root": 7
+                },
+                "used": [
+                  "goal-denial",
+                  "no-positive-below-zero",
+                  "positive-one"
+                ],
+                "counters": {
+                  "stored": 61,
+                  "given": 6,
+                  "offers": 69,
+                  "unifications": 36,
+                  "marked_point_joins": 73,
+                  "solved_equations": 73,
+                  "resolutions": 36,
+                  "shallow_skips": 33,
+                  "duplicates": 1,
+                  "age_slots": 1
+                },
+                "seconds": 0.0017635409999989804
+              }
+            ]
+          },
+          {
+            "mode": "witness",
+            "witness": [
+              "mul",
+              "_sk19_0",
+              [
+                "plus",
+                "_induction_n",
+                "one"
+              ]
+            ],
+            "records": [
+              {
+                "proof": {
+                  "format": "lifted-cnf-v1",
+                  "steps": [
+                    {
+                      "rule": "input",
+                      "source": 1,
+                      "clause": [
+                        [
+                          true,
+                          "lt",
+                          [
+                            "zero",
+                            [
+                              "plus",
+                              "?v0",
+                              "one"
+                            ]
+                          ]
+                        ]
+                      ],
+                      "renaming": {
+                        "?u1_0": "?v0"
+                      }
+                    },
+                    {
+                      "rule": "input",
+                      "source": 5,
+                      "clause": [
+                        [
+                          false,
+                          "lt",
+                          [
+                            "zero",
+                            "?v0"
+                          ]
+                        ],
+                        [
+                          false,
+                          "lt",
+                          [
+                            "zero",
+                            "?v1"
+                          ]
+                        ],
+                        [
+                          true,
+                          "lt",
+                          [
+                            "zero",
+                            [
+                              "mul",
+                              "?v0",
+                              "?v1"
+                            ]
+                          ]
+                        ]
+                      ],
+                      "renaming": {
+                        "?u5_0": "?v0",
+                        "?u5_1": "?v1"
+                      }
+                    },
+                    {
+                      "rule": "input",
+                      "source": 21,
+                      "clause": [
+                        [
+                          true,
+                          "lt",
+                          [
+                            "zero",
+                            "_sk19_0"
+                          ]
+                        ]
+                      ],
+                      "renaming": {}
+                    },
+                    {
+                      "rule": "input",
+                      "source": 25,
+                      "clause": [
+                        [
+                          false,
+                          "lt",
+                          [
+                            "zero",
+                            [
+                              "mul",
+                              "_sk19_0",
+                              [
+                                "plus",
+                                "_induction_n",
+                                "one"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      "renaming": {}
+                    },
+                    {
+                      "rule": "resolve",
+                      "parents": [
+                        1,
+                        3
+                      ],
+                      "sites": [
+                        2,
+                        0
+                      ],
+                      "substitution": {
+                        "?L1": [
+                          "plus",
+                          "_induction_n",
+                          "one"
+                        ],
+                        "?L0": "_sk19_0"
+                      },
+                      "clause": [
+                        [
+                          false,
+                          "lt",
+                          [
+                            "zero",
+                            "_sk19_0"
+                          ]
+                        ],
+                        [
+                          false,
+                          "lt",
+                          [
+                            "zero",
+                            [
+                              "plus",
+                              "_induction_n",
+                              "one"
+                            ]
+                          ]
+                        ]
+                      ],
+                      "renaming": {}
+                    },
+                    {
+                      "rule": "resolve",
+                      "parents": [
+                        0,
+                        4
+                      ],
+                      "sites": [
+                        0,
+                        1
+                      ],
+                      "substitution": {
+                        "?L0": "_induction_n"
+                      },
+                      "clause": [
+                        [
+                          false,
+                          "lt",
+                          [
+                            "zero",
+                            "_sk19_0"
+                          ]
+                        ]
+                      ],
+                      "renaming": {}
+                    },
+                    {
+                      "rule": "resolve",
+                      "parents": [
+                        2,
+                        5
+                      ],
+                      "sites": [
+                        0,
+                        0
+                      ],
+                      "substitution": {},
+                      "clause": [],
+                      "renaming": {}
+                    }
+                  ],
+                  "root": 6
+                },
+                "used": [
+                  "goal-denial",
+                  "induction-hypothesis:0",
+                  "positive-product",
+                  "positive-successor"
+                ],
+                "counters": {
+                  "stored": 43,
+                  "given": 6,
+                  "offers": 58,
+                  "shallow_skips": 40,
+                  "unifications": 18,
+                  "marked_point_joins": 37,
+                  "solved_equations": 37,
+                  "resolutions": 18,
+                  "age_slots": 1,
+                  "duplicates": 1
+                },
+                "seconds": 0.001171458000001735
+              },
+              {
+                "proof": {
+                  "format": "lifted-cnf-v1",
+                  "steps": [
+                    {
+                      "rule": "input",
+                      "source": 7,
+                      "clause": [
+                        [
+                          false,
+                          "le",
+                          [
+                            "?v0",
+                            [
+                              "plus",
+                              "?v1",
+                              "one"
+                            ]
+                          ]
+                        ],
+                        [
+                          true,
+                          "eq",
+                          [
+                            "?v0",
+                            [
+                              "plus",
+                              "?v1",
+                              "one"
+                            ]
+                          ]
+                        ],
+                        [
+                          true,
+                          "le",
+                          [
+                            "?v0",
+                            "?v1"
+                          ]
+                        ]
+                      ],
+                      "renaming": {
+                        "?u7_0": "?v0",
+                        "?u7_1": "?v1"
+                      }
+                    },
+                    {
+                      "rule": "input",
+                      "source": 9,
+                      "clause": [
+                        [
+                          true,
+                          "divides",
+                          [
+                            "?v0",
+                            [
+                              "mul",
+                              "?v1",
+                              "?v0"
+                            ]
+                          ]
+                        ]
+                      ],
+                      "renaming": {
+                        "?u9_1": "?v0",
+                        "?u9_0": "?v1"
+                      }
+                    },
+                    {
+                      "rule": "input",
+                      "source": 11,
+                      "clause": [
+                        [
+                          false,
+                          "divides",
+                          [
+                            "?v0",
+                            "?v1"
+                          ]
+                        ],
+                        [
+                          true,
+                          "divides",
+                          [
+                            "?v0",
+                            [
+                              "mul",
+                              "?v1",
+                              "?v2"
+                            ]
+                          ]
+                        ]
+                      ],
+                      "renaming": {
+                        "?u11_0": "?v0",
+                        "?u11_1": "?v1",
+                        "?u11_2": "?v2"
+                      }
+                    },
+                    {
+                      "rule": "input",
+                      "source": 13,
+                      "clause": [
+                        [
+                          false,
+                          "divides",
+                          [
+                            "?v0",
+                            "?v1"
+                          ]
+                        ],
+                        [
+                          false,
+                          "eq",
+                          [
+                            "?v2",
+                            "?v0"
+                          ]
+                        ],
+                        [
+                          true,
+                          "divides",
+                          [
+                            "?v2",
+                            "?v1"
+                          ]
+                        ]
+                      ],
+                      "renaming": {
+                        "?u13_1": "?v0",
+                        "?u13_2": "?v1",
+                        "?u13_0": "?v2"
+                      }
+                    },
+                    {
+                      "rule": "input",
+                      "source": 22,
+                      "clause": [
+                        [
+                          false,
+                          "le",
+                          [
+                            "?v0",
+                            "_induction_n"
+                          ]
+                        ],
+                        [
+                          false,
+                          "lt",
+                          [
+                            "zero",
+                            "?v0"
+                          ]
+                        ],
+                        [
+                          true,
+                          "divides",
+                          [
+                            "?v0",
+                            "_sk19_0"
+                          ]
+                        ]
+                      ],
+                      "renaming": {
+                        "?u19_1": "?v0"
+                      }
+                    },
+                    {
+                      "rule": "input",
+                      "source": 25,
+                      "clause": [
+                        [
+                          true,
+                          "lt",
+                          [
+                            "zero",
+                            "_skgoal_0"
+                          ]
+                        ]
+                      ],
+                      "renaming": {}
+                    },
+                    {
+                      "rule": "input",
+                      "source": 26,
+                      "clause": [
+                        [
+                          true,
+                          "le",
+                          [
+                            "_skgoal_0",
+                            [
+                              "plus",
+                              "_induction_n",
+                              "one"
+                            ]
+                          ]
+                        ]
+                      ],
+                      "renaming": {}
+                    },
+                    {
+                      "rule": "input",
+                      "source": 27,
+                      "clause": [
+                        [
+                          false,
+                          "divides",
+                          [
+                            "_skgoal_0",
+                            [
+                              "mul",
+                              "_sk19_0",
+                              [
+                                "plus",
+                                "_induction_n",
+                                "one"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      "renaming": {}
+                    },
+                    {
+                      "rule": "resolve",
+                      "parents": [
+                        5,
+                        4
+                      ],
+                      "sites": [
+                        0,
+                        1
+                      ],
+                      "substitution": {
+                        "?R0": "_skgoal_0"
+                      },
+                      "clause": [
+                        [
+                          false,
+                          "le",
+                          [
+                            "_skgoal_0",
+                            "_induction_n"
+                          ]
+                        ],
+                        [
+                          true,
+                          "divides",
+                          [
+                            "_skgoal_0",
+                            "_sk19_0"
+                          ]
+                        ]
+                      ],
+                      "renaming": {}
+                    },
+                    {
+                      "rule": "resolve",
+                      "parents": [
+                        6,
+                        0
+                      ],
+                      "sites": [
+                        0,
+                        0
+                      ],
+                      "substitution": {
+                        "?R1": "_induction_n",
+                        "?R0": "_skgoal_0"
+                      },
+                      "clause": [
+                        [
+                          true,
+                          "eq",
+                          [
+                            "_skgoal_0",
+                            [
+                              "plus",
+                              "_induction_n",
+                              "one"
+                            ]
+                          ]
+                        ],
+                        [
+                          true,
+                          "le",
+                          [
+                            "_skgoal_0",
+                            "_induction_n"
+                          ]
+                        ]
+                      ],
+                      "renaming": {}
+                    },
+                    {
+                      "rule": "resolve",
+                      "parents": [
+                        2,
+                        7
+                      ],
+                      "sites": [
+                        1,
+                        0
+                      ],
+                      "substitution": {
+                        "?L2": [
+                          "plus",
+                          "_induction_n",
+                          "one"
+                        ],
+                        "?L1": "_sk19_0",
+                        "?L0": "_skgoal_0"
+                      },
+                      "clause": [
+                        [
+                          false,
+                          "divides",
+                          [
+                            "_skgoal_0",
+                            "_sk19_0"
+                          ]
+                        ]
+                      ],
+                      "renaming": {}
+                    },
+                    {
+                      "rule": "resolve",
+                      "parents": [
+                        3,
+                        7
+                      ],
+                      "sites": [
+                        2,
+                        0
+                      ],
+                      "substitution": {
+                        "?L1": [
+                          "mul",
+                          "_sk19_0",
+                          [
+                            "plus",
+                            "_induction_n",
+                            "one"
+                          ]
+                        ],
+                        "?L2": "_skgoal_0"
+                      },
+                      "clause": [
+                        [
+                          false,
+                          "divides",
+                          [
+                            "?v0",
+                            [
+                              "mul",
+                              "_sk19_0",
+                              [
+                                "plus",
+                                "_induction_n",
+                                "one"
+                              ]
+                            ]
+                          ]
+                        ],
+                        [
+                          false,
+                          "eq",
+                          [
+                            "_skgoal_0",
+                            "?v0"
+                          ]
+                        ]
+                      ],
+                      "renaming": {
+                        "?L0": "?v0"
+                      }
+                    },
+                    {
+                      "rule": "resolve",
+                      "parents": [
+                        8,
+                        10
+                      ],
+                      "sites": [
+                        1,
+                        0
+                      ],
+                      "substitution": {},
+                      "clause": [
+                        [
+                          false,
+                          "le",
+                          [
+                            "_skgoal_0",
+                            "_induction_n"
+                          ]
+                        ]
+                      ],
+                      "renaming": {}
+                    },
+                    {
+                      "rule": "resolve",
+                      "parents": [
+                        9,
+                        12
+                      ],
+                      "sites": [
+                        1,
+                        0
+                      ],
+                      "substitution": {},
+                      "clause": [
+                        [
+                          true,
+                          "eq",
+                          [
+                            "_skgoal_0",
+                            [
+                              "plus",
+                              "_induction_n",
+                              "one"
+                            ]
+                          ]
+                        ]
+                      ],
+                      "renaming": {}
+                    },
+                    {
+                      "rule": "resolve",
+                      "parents": [
+                        1,
+                        11
+                      ],
+                      "sites": [
+                        0,
+                        0
+                      ],
+                      "substitution": {
+                        "?L0": [
+                          "plus",
+                          "_induction_n",
+                          "one"
+                        ],
+                        "?L1": "_sk19_0",
+                        "?R0": [
+                          "plus",
+                          "_induction_n",
+                          "one"
+                        ]
+                      },
+                      "clause": [
+                        [
+                          false,
+                          "eq",
+                          [
+                            "_skgoal_0",
+                            [
+                              "plus",
+                              "_induction_n",
+                              "one"
+                            ]
+                          ]
+                        ]
+                      ],
+                      "renaming": {}
+                    },
+                    {
+                      "rule": "resolve",
+                      "parents": [
+                        13,
+                        14
+                      ],
+                      "sites": [
+                        0,
+                        0
+                      ],
+                      "substitution": {},
+                      "clause": [],
+                      "renaming": {}
+                    }
+                  ],
+                  "root": 15
+                },
+                "used": [
+                  "divides-product-extension",
+                  "divides-product-right",
+                  "divisor-substitution",
+                  "goal-denial",
+                  "induction-hypothesis:0",
+                  "successor-order-split"
+                ],
+                "counters": {
+                  "stored": 2547,
+                  "given": 256,
+                  "offers": 15278,
+                  "shallow_skips": 12103,
+                  "unifications": 3175,
+                  "marked_point_joins": 6323,
+                  "solved_equations": 6323,
+                  "resolutions": 3056,
+                  "duplicates": 472,
+                  "age_slots": 51,
+                  "marked_point_conflicts": 113,
+                  "failed_unifications": 116,
+                  "bounded_placements": 64,
+                  "tautologies": 4,
+                  "factors": 3
+                },
+                "seconds": 0.1165476250000026
+              }
+            ]
+          }
+        ]
+      },
+      "used": [
+        "divides-product-extension",
+        "divides-product-right",
+        "divisor-substitution",
+        "goal-denial",
+        "induction-hypothesis:0",
+        "no-positive-below-zero",
+        "positive-one",
+        "positive-product",
+        "positive-successor",
+        "successor-order-split"
+      ],
+      "imports": [
+        "prime-divisor"
+      ]
+    },
+    "unbounded-primes": {
+      "formula": [
+        "all",
+        "@n",
+        [
+          "some",
+          "@p",
+          [
+            "and",
+            [
+              "atom",
+              "prime",
+              [
+                "@p"
+              ]
+            ],
+            [
+              "atom",
+              "lt",
+              [
+                "@n",
+                "@p"
+              ]
+            ]
+          ]
+        ]
+      ],
+      "certificate": {
+        "method": "direct",
+        "phases": [
+          {
+            "mode": "refutation",
+            "records": [
+              {
+                "proof": {
+                  "format": "lifted-cnf-v1",
+                  "steps": [
+                    {
+                      "rule": "input",
+                      "source": 2,
+                      "clause": [
+                        [
+                          false,
+                          "lt",
+                          [
+                            "one",
+                            "?v0"
+                          ]
+                        ],
+                        [
+                          true,
+                          "lt",
+                          [
+                            "zero",
+                            "?v0"
+                          ]
+                        ]
+                      ],
+                      "renaming": {
+                        "?u2_0": "?v0"
+                      }
+                    },
+                    {
+                      "rule": "input",
+                      "source": 3,
+                      "clause": [
+                        [
+                          false,
+                          "lt",
+                          [
+                            "zero",
+                            "?v0"
+                          ]
+                        ],
+                        [
+                          true,
+                          "lt",
+                          [
+                            "one",
+                            [
+                              "plus",
+                              "?v0",
+                              "one"
+                            ]
+                          ]
+                        ]
+                      ],
+                      "renaming": {
+                        "?u3_0": "?v0"
+                      }
+                    },
+                    {
+                      "rule": "input",
+                      "source": 6,
+                      "clause": [
+                        [
+                          true,
+                          "le",
+                          [
+                            "?v0",
+                            "?v1"
+                          ]
+                        ],
+                        [
+                          true,
+                          "lt",
+                          [
+                            "?v1",
+                            "?v0"
+                          ]
+                        ]
+                      ],
+                      "renaming": {
+                        "?u6_0": "?v0",
+                        "?u6_1": "?v1"
+                      }
+                    },
+                    {
+                      "rule": "input",
+                      "source": 14,
+                      "clause": [
+                        [
+                          false,
+                          "divides",
+                          [
+                            "?v0",
+                            "one"
+                          ]
+                        ],
+                        [
+                          false,
+                          "lt",
+                          [
+                            "one",
+                            "?v0"
+                          ]
+                        ]
+                      ],
+                      "renaming": {
+                        "?u14_0": "?v0"
+                      }
+                    },
+                    {
+                      "rule": "input",
+                      "source": 15,
+                      "clause": [
+                        [
+                          false,
+                          "prime",
+                          [
+                            "?v0"
+                          ]
+                        ],
+                        [
+                          true,
+                          "lt",
+                          [
+                            "one",
+                            "?v0"
+                          ]
+                        ]
+                      ],
+                      "renaming": {
+                        "?u15_0": "?v0"
+                      }
+                    },
+                    {
+                      "rule": "input",
+                      "source": 20,
+                      "clause": [
+                        [
+                          false,
+                          "divides",
+                          [
+                            "?v0",
+                            "?v1"
+                          ]
+                        ],
+                        [
+                          false,
+                          "divides",
+                          [
+                            "?v0",
+                            [
+                              "plus",
+                              "?v1",
+                              "?v2"
+                            ]
+                          ]
+                        ],
+                        [
+                          true,
+                          "divides",
+                          [
+                            "?v0",
+                            "?v2"
+                          ]
+                        ]
+                      ],
+                      "renaming": {
+                        "?u18_0": "?v0",
+                        "?u18_1": "?v1",
+                        "?u18_2": "?v2"
+                      }
+                    },
+                    {
+                      "rule": "input",
+                      "source": 21,
+                      "clause": [
+                        [
+                          false,
+                          "lt",
+                          [
+                            "one",
+                            "?v0"
+                          ]
+                        ],
+                        [
+                          true,
+                          "prime",
+                          [
+                            [
+                              "_sk19_1",
+                              "?v0"
+                            ]
+                          ]
+                        ]
+                      ],
+                      "renaming": {
+                        "?u19_0": "?v0"
+                      }
+                    },
+                    {
+                      "rule": "input",
+                      "source": 22,
+                      "clause": [
+                        [
+                          false,
+                          "lt",
+                          [
+                            "one",
+                            "?v0"
+                          ]
+                        ],
+                        [
+                          true,
+                          "divides",
+                          [
+                            [
+                              "_sk19_1",
+                              "?v0"
+                            ],
+                            "?v0"
+                          ]
+                        ]
+                      ],
+                      "renaming": {
+                        "?u19_0": "?v0"
+                      }
+                    },
+                    {
+                      "rule": "input",
+                      "source": 23,
+                      "clause": [
+                        [
+                          true,
+                          "lt",
+                          [
+                            "zero",
+                            [
+                              "_sk20_1",
+                              "?v0"
+                            ]
+                          ]
+                        ]
+                      ],
+                      "renaming": {
+                        "?u20_0": "?v0"
+                      }
+                    },
+                    {
+                      "rule": "input",
+                      "source": 24,
+                      "clause": [
+                        [
+                          false,
+                          "le",
+                          [
+                            "?v0",
+                            "?v1"
+                          ]
+                        ],
+                        [
+                          false,
+                          "lt",
+                          [
+                            "zero",
+                            "?v0"
+                          ]
+                        ],
+                        [
+                          true,
+                          "divides",
+                          [
+                            "?v0",
+                            [
+                              "_sk20_1",
+                              "?v1"
+                            ]
+                          ]
+                        ]
+                      ],
+                      "renaming": {
+                        "?u20_2": "?v0",
+                        "?u20_0": "?v1"
+                      }
+                    },
+                    {
+                      "rule": "input",
+                      "source": 25,
+                      "clause": [
+                        [
+                          false,
+                          "lt",
+                          [
+                            "_skgoal_0",
+                            "?v0"
+                          ]
+                        ],
+                        [
+                          false,
+                          "prime",
+                          [
+                            "?v0"
+                          ]
+                        ]
+                      ],
+                      "renaming": {
+                        "?ugoal_1": "?v0"
+                      }
+                    },
+                    {
+                      "rule": "resolve",
+                      "parents": [
+                        2,
+                        10
+                      ],
+                      "sites": [
+                        1,
+                        0
+                      ],
+                      "substitution": {
+                        "?L0": "?R0",
+                        "?L1": "_skgoal_0"
+                      },
+                      "clause": [
+                        [
+                          false,
+                          "prime",
+                          [
+                            "?v0"
+                          ]
+                        ],
+                        [
+                          true,
+                          "le",
+                          [
+                            "?v0",
+                            "_skgoal_0"
+                          ]
+                        ]
+                      ],
+                      "renaming": {
+                        "?R0": "?v0"
+                      }
+                    },
+                    {
+                      "rule": "resolve",
+                      "parents": [
+                        11,
+                        9
+                      ],
+                      "sites": [
+                        1,
+                        0
+                      ],
+                      "substitution": {
+                        "?R1": "_skgoal_0",
+                        "?L0": "?R0"
+                      },
+                      "clause": [
+                        [
+                          false,
+                          "lt",
+                          [
+                            "zero",
+                            "?v0"
+                          ]
+                        ],
+                        [
+                          false,
+                          "prime",
+                          [
+                            "?v0"
+                          ]
+                        ],
+                        [
+                          true,
+                          "divides",
+                          [
+                            "?v0",
+                            [
+                              "_sk20_1",
+                              "_skgoal_0"
+                            ]
+                          ]
+                        ]
+                      ],
+                      "renaming": {
+                        "?R0": "?v0"
+                      }
+                    },
+                    {
+                      "rule": "resolve",
+                      "parents": [
+                        0,
+                        12
+                      ],
+                      "sites": [
+                        1,
+                        0
+                      ],
+                      "substitution": {
+                        "?L0": "?R0"
+                      },
+                      "clause": [
+                        [
+                          false,
+                          "lt",
+                          [
+                            "one",
+                            "?v0"
+                          ]
+                        ],
+                        [
+                          false,
+                          "prime",
+                          [
+                            "?v0"
+                          ]
+                        ],
+                        [
+                          true,
+                          "divides",
+                          [
+                            "?v0",
+                            [
+                              "_sk20_1",
+                              "_skgoal_0"
+                            ]
+                          ]
+                        ]
+                      ],
+                      "renaming": {
+                        "?R0": "?v0"
+                      }
+                    },
+                    {
+                      "rule": "resolve",
+                      "parents": [
+                        13,
+                        5
+                      ],
+                      "sites": [
+                        2,
+                        0
+                      ],
+                      "substitution": {
+                        "?R1": [
+                          "_sk20_1",
+                          "_skgoal_0"
+                        ],
+                        "?L0": "?R0"
+                      },
+                      "clause": [
+                        [
+                          false,
+                          "divides",
+                          [
+                            "?v0",
+                            [
+                              "plus",
+                              [
+                                "_sk20_1",
+                                "_skgoal_0"
+                              ],
+                              "?v1"
+                            ]
+                          ]
+                        ],
+                        [
+                          false,
+                          "lt",
+                          [
+                            "one",
+                            "?v0"
+                          ]
+                        ],
+                        [
+                          false,
+                          "prime",
+                          [
+                            "?v0"
+                          ]
+                        ],
+                        [
+                          true,
+                          "divides",
+                          [
+                            "?v0",
+                            "?v1"
+                          ]
+                        ]
+                      ],
+                      "renaming": {
+                        "?R0": "?v0",
+                        "?R2": "?v1"
+                      }
+                    },
+                    {
+                      "rule": "resolve",
+                      "parents": [
+                        14,
+                        3
+                      ],
+                      "sites": [
+                        3,
+                        0
+                      ],
+                      "substitution": {
+                        "?L1": "one",
+                        "?L0": "?R0"
+                      },
+                      "clause": [
+                        [
+                          false,
+                          "divides",
+                          [
+                            "?v0",
+                            [
+                              "plus",
+                              [
+                                "_sk20_1",
+                                "_skgoal_0"
+                              ],
+                              "one"
+                            ]
+                          ]
+                        ],
+                        [
+                          false,
+                          "lt",
+                          [
+                            "one",
+                            "?v0"
+                          ]
+                        ],
+                        [
+                          false,
+                          "prime",
+                          [
+                            "?v0"
+                          ]
+                        ]
+                      ],
+                      "renaming": {
+                        "?R0": "?v0"
+                      }
+                    },
+                    {
+                      "rule": "resolve",
+                      "parents": [
+                        4,
+                        15
+                      ],
+                      "sites": [
+                        1,
+                        1
+                      ],
+                      "substitution": {
+                        "?L0": "?R0"
+                      },
+                      "clause": [
+                        [
+                          false,
+                          "divides",
+                          [
+                            "?v0",
+                            [
+                              "plus",
+                              [
+                                "_sk20_1",
+                                "_skgoal_0"
+                              ],
+                              "one"
+                            ]
+                          ]
+                        ],
+                        [
+                          false,
+                          "prime",
+                          [
+                            "?v0"
+                          ]
+                        ]
+                      ],
+                      "renaming": {
+                        "?R0": "?v0"
+                      }
+                    },
+                    {
+                      "rule": "resolve",
+                      "parents": [
+                        7,
+                        16
+                      ],
+                      "sites": [
+                        1,
+                        0
+                      ],
+                      "substitution": {
+                        "?L0": [
+                          "plus",
+                          [
+                            "_sk20_1",
+                            "_skgoal_0"
+                          ],
+                          "one"
+                        ],
+                        "?R0": [
+                          "_sk19_1",
+                          [
+                            "plus",
+                            [
+                              "_sk20_1",
+                              "_skgoal_0"
+                            ],
+                            "one"
+                          ]
+                        ]
+                      },
+                      "clause": [
+                        [
+                          false,
+                          "lt",
+                          [
+                            "one",
+                            [
+                              "plus",
+                              [
+                                "_sk20_1",
+                                "_skgoal_0"
+                              ],
+                              "one"
+                            ]
+                          ]
+                        ],
+                        [
+                          false,
+                          "prime",
+                          [
+                            [
+                              "_sk19_1",
+                              [
+                                "plus",
+                                [
+                                  "_sk20_1",
+                                  "_skgoal_0"
+                                ],
+                                "one"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      "renaming": {}
+                    },
+                    {
+                      "rule": "resolve",
+                      "parents": [
+                        6,
+                        17
+                      ],
+                      "sites": [
+                        1,
+                        1
+                      ],
+                      "substitution": {
+                        "?L0": [
+                          "plus",
+                          [
+                            "_sk20_1",
+                            "_skgoal_0"
+                          ],
+                          "one"
+                        ]
+                      },
+                      "clause": [
+                        [
+                          false,
+                          "lt",
+                          [
+                            "one",
+                            [
+                              "plus",
+                              [
+                                "_sk20_1",
+                                "_skgoal_0"
+                              ],
+                              "one"
+                            ]
+                          ]
+                        ]
+                      ],
+                      "renaming": {}
+                    },
+                    {
+                      "rule": "resolve",
+                      "parents": [
+                        1,
+                        18
+                      ],
+                      "sites": [
+                        1,
+                        0
+                      ],
+                      "substitution": {
+                        "?L0": [
+                          "_sk20_1",
+                          "_skgoal_0"
+                        ]
+                      },
+                      "clause": [
+                        [
+                          false,
+                          "lt",
+                          [
+                            "zero",
+                            [
+                              "_sk20_1",
+                              "_skgoal_0"
+                            ]
+                          ]
+                        ]
+                      ],
+                      "renaming": {}
+                    },
+                    {
+                      "rule": "resolve",
+                      "parents": [
+                        8,
+                        19
+                      ],
+                      "sites": [
+                        0,
+                        0
+                      ],
+                      "substitution": {
+                        "?L0": "_skgoal_0"
+                      },
+                      "clause": [],
+                      "renaming": {}
+                    }
+                  ],
+                  "root": 20
+                },
+                "used": [
+                  "bounded-positive-le-divides",
+                  "divides-additive-cancellation",
+                  "goal-denial",
+                  "greater-than-one-is-positive",
+                  "one-has-no-larger-divisor",
+                  "order-totality",
+                  "prime-divisor",
+                  "prime-greater-than-one",
+                  "successor-of-positive"
+                ],
+                "counters": {
+                  "stored": 42104,
+                  "given": 1249,
+                  "offers": 546396,
+                  "shallow_skips": 430181,
+                  "unifications": 116215,
+                  "marked_point_joins": 170536,
+                  "solved_equations": 170536,
+                  "resolutions": 112154,
+                  "duplicates": 18452,
+                  "age_slots": 249,
+                  "bounded_placements": 51530,
+                  "marked_point_conflicts": 3140,
+                  "failed_unifications": 4044,
+                  "tautologies": 111,
+                  "factors": 17
+                },
+                "seconds": 4.45524125
+              }
+            ]
+          }
+        ]
+      },
+      "used": [
+        "bounded-positive-le-divides",
+        "divides-additive-cancellation",
+        "goal-denial",
+        "greater-than-one-is-positive",
+        "one-has-no-larger-divisor",
+        "order-totality",
+        "prime-divisor",
+        "prime-greater-than-one",
+        "successor-of-positive"
+      ],
+      "imports": [
+        "bounded-positive-le-divides",
+        "prime-divisor"
+      ]
+    }
+  },
+  "seconds": 58.717885292000005
+}
