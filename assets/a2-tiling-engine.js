@@ -743,15 +743,16 @@ export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],fix
     if(!maximize&&(chosen.some(other=>polygonsOverlap(placement.loop,other.loop))||(seed&&polygonsOverlap(placement.loop,seed.loop))))return false;
     return ignoreMarking||learner.compatible(placement,markingSeed?[markingSeed,...chosen]:chosen,count);
   };
-  const sharesFrontierEdge = (placement, pointKey) => {
-    // Unoccupied anchors can start a patch or a disconnected finite component.
-    if (!requireEdgeSharing || !(sums.get(pointKey) > 0)) return true;
+  const sharedFrontierEdge = (placement, pointKey) => {
     for (const edge of boundaryEdgesFor(placement)) {
       if (edge.from !== pointKey && edge.to !== pointKey) continue;
-      if (exposedBoundary.get(edge.key) === -edge.direction) return true;
+      if (exposedBoundary.get(edge.key) === -edge.direction) return edge;
     }
-    return false;
+    return null;
   };
+  // Unoccupied anchors can start a patch or a disconnected finite component.
+  const sharesFrontierEdge = (placement, pointKey) =>
+    !requireEdgeSharing || !(sums.get(pointKey) > 0) || sharedFrontierEdge(placement, pointKey) !== null;
   const legalAt=(point,limit=Infinity,ignoreMarking=false)=>{
     const legal=[];
     for(const placement of candidatesForPoint(point)){
@@ -929,10 +930,30 @@ export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],fix
     if(maximize?(!requiredPointMap&&!completePointGrowth&&chosen.length>=targetPlacements):[...desired].every(([key,entry])=>Math.abs((sums.get(key)||0)-entry.weight)<1e-7))return true;
     let choicePoint=null,options=null,choiceByPlacement=null,nearestDistance,baseChoiceInfo={forced:false,branchCount:0,frontierValue:0};
     const selectBaseOptions=frontier=>{
-      const {forced,moves}=selectBaseTilingMoves(frontier,random);
+      const selected = selectBaseTilingMoves(frontier, random);
+      let moves = selected.moves;
+      const first = moves[0];
+      const edge = requireEdgeSharing && first
+        ? sharedFrontierEdge(first.placement, first.frontier.point) : null;
+      if (edge && !selected.forced) {
+        // Keep the uniform first draw from the full priority pool. That move
+        // fixes one exposed segment to fill at this node, including on retries.
+        const alternatives = new Set(first.frontier.legal.filter(placement =>
+          boundaryEdgesFor(placement).some(candidate =>
+            candidate.key === edge.key && candidate.direction === edge.direction
+          )
+        ).map(placement => placement.id));
+        moves = moves.filter(move => alternatives.has(move.placement.id))
+          .map(move => ({ ...move, frontier: first.frontier }));
+      }
       options=moves.map(move=>move.placement);
       choiceByPlacement=new Map(moves.map(({placement,frontier})=>[placement.id,frontier]));
-      baseChoiceInfo={forced,branchCount:options.length,nearestFrontierDistance:nearestDistance};
+      baseChoiceInfo = {
+        forced: selected.forced || options.length === 1,
+        branchCount: options.length,
+        nearestFrontierDistance: nearestDistance,
+        branchEdge: edge ? [edge.from.split(",").map(Number), edge.to.split(",").map(Number)] : null
+      };
     };
     if(maximize){
       // The frontier-candidate graph is the branching engine.
