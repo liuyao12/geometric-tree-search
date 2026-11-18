@@ -157,7 +157,7 @@
   </main>
 
   <script type="module">
-    import { A2_TILE_LOOPS, FixedA2Marking, NoA2Marking, a2Transform, makeHexBoundary, solveA2Tiling, tileOrientations } from './assets/a2-tiling-engine.js?v=20260921-viable-corona';
+    import { A2_TILE_LOOPS, FixedA2Marking, NoA2Marking, a2Transform, makeHexBoundary, solveA2Tiling, tileOrientations } from './assets/a2-tiling-engine.js?v=random-choice-moves';
     import {createCoronaLearner as createConnectionLearner, TILE_SETS, parity} from './assets/tile-corona-learning.js?v=20260921-online-marking';
     import {savedMarkings,rememberMarking,markingDomain,markingName} from './assets/marking-library.js?v=20260921-component-stars';
     import {reduceMarking,activeMarkingSupport,CompactA2Marking} from './assets/marking-reduction.js?v=20260921-component-stars';
@@ -2169,10 +2169,8 @@
           marking: useMarking ? (usingHatRank3() ? createHatRank3Marking(hatExtensionOptions()) : markingSource === 'learned' ? new CompactA2Marking(displayMarking) : new FixedA2Marking(markingExtension, { pointFilter: latticePointFilter, rank: markingRank, tiles:TILE_SETS[selectedTileSet].tiles })) : new NoA2Marking(),
           rescanAfterBacktrack: usingHatRank3(),
           latticePointFilter,
-          // These deterministic branch orders keep both comparison modes
-          // representative without making the reader wait through a long,
-          // unlucky prefix before the first complete outward burst.
-          randomSeed: 10,
+          randomizeChoices: true,
+          randomSeed: Math.floor(Math.random() * 0x100000000),
           stopToken,
           waitForSearchDemand,
           onEvent: event => { const converted = adapt(event); if (converted) push(converted); }

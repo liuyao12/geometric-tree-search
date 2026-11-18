@@ -551,7 +551,7 @@ export function learnA2ClusterProposals(placements,{maxDistance=12,window=16}={}
   return [...weights.entries()];
 }
 
-export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],fixedInitialPlacements=false,completePointGrowth=false,requiredPoints=null,requireViableFrontier=false,allowReflections=true,startPoints=[],tiles=["hat"],customTiles={},maximize=false,targetPlacements=500,preferredPlacements=[],clusterProposals=[],placementFilter=null,latticePointFilter=null,pointTarget=null,nodeLimit=250000,animationDelayMs=0,learningWarmupDepth=0,maxMarkingRevisions=Infinity,markingStagnationNodes=1200,randomSeed=1,marking=null,auditFrontierGraph=false,waitForSearchDemand=null,onEvent=()=>{},stopToken={stop:false}}){
+export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],fixedInitialPlacements=false,completePointGrowth=false,requiredPoints=null,requireViableFrontier=false,allowReflections=true,startPoints=[],tiles=["hat"],customTiles={},maximize=false,targetPlacements=500,preferredPlacements=[],clusterProposals=[],placementFilter=null,latticePointFilter=null,pointTarget=null,nodeLimit=250000,animationDelayMs=0,learningWarmupDepth=0,maxMarkingRevisions=Infinity,markingStagnationNodes=1200,randomSeed=1,randomizeChoices=false,marking=null,auditFrontierGraph=false,waitForSearchDemand=null,onEvent=()=>{},stopToken={stop:false}}){
   if(requiredPoints!==null&&(!maximize||!completePointGrowth||!Array.isArray(requiredPoints)||requiredPoints.some(p=>!Array.isArray(p)||p.length!==3||!p.every(Number.isSafeInteger)||p.reduce((s,v)=>s+v,0)!==0)))throw new Error("Finite required points need complete point growth and integer A2 coordinates");
   if(requireViableFrontier&&requiredPoints===null)throw new Error("Viable frontier checks need finite required points");
   const requiredPointMap=requiredPoints===null?null:new Map(requiredPoints.map(p=>[a2Key(p),p]));
@@ -829,14 +829,24 @@ export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],fix
       const forced=viable.filter(entry=>entry.legal.length===1).sort(byGeneration);
       const selected=forced[0]??viable.sort(byGeneration)[0];
       if(chosen.length>best.length){best=chosen.slice();bestFilled=filledWeight();lastImprovementNode=nodes;learner.rememberPositive?.(best);}
-      choice=selected.point;options=selected.legal.map(placement=>{
-        let atChoice=0,coverage=0,size=0;
-        const materialized=!!placement.occupancy,source=materialized?placement.occupancy.values():placement.orientation.occupancy.values();
-        for(const local of source){const entry=materialized?local:{point:a2Add(local.point,placement.translation),weight:local.weight},key=a2Key(entry.point);size++;if(key===choice)atChoice=entry.weight;if((sums.get(key)||0)>0)coverage++;}
-        const newPoints=size-coverage;
-        const graphDegree=incrementalGraphActive?[...(candidateIncidence.get(placement.id)?.frontierPoints??[])].filter(pointKey=>frontierGraph.get(pointKey)?.legal.has(placement.id)).length:0;
-        return{placement,clusterScore:clusterProposalScore(placement),markScore:learner.score?.(placement)??0,fills:selected.value+atChoice>=targetAt(choice.split(",").map(Number))-1e-7,graphDegree,coverage,newPoints,tie:random()};
-      }).sort((a,b)=>b.clusterScore-a.clusterScore||b.markScore-a.markScore||Number(b.fills)-Number(a.fills)||b.graphDegree-a.graphDegree||b.coverage-a.coverage||b.newPoints-a.newPoints||a.tie-b.tie).map(entry=>entry.placement);
+      choice=selected.point;
+      if(randomizeChoices){
+        // Shuffle a copy once per branch, so backtracking tries each alternative once.
+        options=selected.legal.slice();
+        for(let i=options.length-1;i>0;i--){
+          const j=Math.floor(random()*(i+1));
+          [options[i],options[j]]=[options[j],options[i]];
+        }
+      }else{
+        options=selected.legal.map(placement=>{
+          let atChoice=0,coverage=0,size=0;
+          const materialized=!!placement.occupancy,source=materialized?placement.occupancy.values():placement.orientation.occupancy.values();
+          for(const local of source){const entry=materialized?local:{point:a2Add(local.point,placement.translation),weight:local.weight},key=a2Key(entry.point);size++;if(key===choice)atChoice=entry.weight;if((sums.get(key)||0)>0)coverage++;}
+          const newPoints=size-coverage;
+          const graphDegree=incrementalGraphActive?[...(candidateIncidence.get(placement.id)?.frontierPoints??[])].filter(pointKey=>frontierGraph.get(pointKey)?.legal.has(placement.id)).length:0;
+          return{placement,clusterScore:clusterProposalScore(placement),markScore:learner.score?.(placement)??0,fills:selected.value+atChoice>=targetAt(choice.split(",").map(Number))-1e-7,graphDegree,coverage,newPoints,tie:random()};
+        }).sort((a,b)=>b.clusterScore-a.clusterScore||b.markScore-a.markScore||Number(b.fills)-Number(a.fills)||b.graphDegree-a.graphDegree||b.coverage-a.coverage||b.newPoints-a.newPoints||a.tie-b.tie).map(entry=>entry.placement);
+      }
       choiceInfo={forced:options.length===1,branchCount:options.length,frontierValue:selected.value,frontierDistance:selected.distance,nearestFrontierDistance:nearestDistance};
     }else{
       for(const [point,target] of desired){const current=sums.get(point)||0;if(current>=target.weight-1e-7)continue;
