@@ -9,7 +9,13 @@ for(const useMarkings of [false,true]){
    const points=before,minimum=Math.min(...points.map(p=>p.candidates.length));
    assert(minimum>0,'must detect every dead point before branching');
    assert.equal(r.value.forced,minimum===1);
-   assert.equal(r.value.branchCount,minimum);
+   const selected=points.find(p=>p.key===r.value.frontier);
+   assert.equal(r.value.branchCount,selected.candidates.length);
+   if(!r.value.forced){
+    const placements=search.snapshot().tiles;
+    const age=point=>placements.findIndex(tile=>tile.vertices.includes(point.key));
+    assert.equal(age(selected),Math.min(...points.map(age)),'branch point must be in the oldest chronological group');
+   }
    stack.push(before);
   }
   if(r.value.type==='add'){
