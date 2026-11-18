@@ -157,7 +157,7 @@
   </main>
 
   <script type="module">
-    import { A2_TILE_LOOPS, FixedA2Marking, NoA2Marking, a2Transform, makeHexBoundary, solveA2Tiling, tileOrientations } from './assets/a2-tiling-engine.js?v=random-choice-moves';
+    import { A2_TILE_LOOPS, FixedA2Marking, NoA2Marking, a2Transform, makeHexBoundary, solveA2Tiling, tileOrientations } from './assets/a2-tiling-engine.js?v=oldest-frontier';
     import {createCoronaLearner as createConnectionLearner, TILE_SETS, parity} from './assets/tile-corona-learning.js?v=20260921-online-marking';
     import {savedMarkings,rememberMarking,markingDomain,markingName} from './assets/marking-library.js?v=20260921-component-stars';
     import {reduceMarking,activeMarkingSupport,CompactA2Marking} from './assets/marking-reduction.js?v=20260921-component-stars';
@@ -308,7 +308,7 @@
         },
         tiling: {
           label: 'Stage: live tiling search',
-          note: 'The search now runs live: it tries candidates, hits dead ends, backtracks, takes forced moves, then branches at a minimum-choice frontier point.',
+          note: 'The search runs live: it takes forced moves, tries a random placement from the oldest frontier points, and backtracks at dead ends.',
           tiles: 1,
           markings: false,
           useMarkingRules: false,
@@ -625,19 +625,21 @@
       }
 
       function makeSeedPlacement() {
-        if (genericMode()) {
+        if (selectedTileSet !== 'turtle') {
           const learner = createConnectionLearner(selectedTileSet,{lattice:usingSublattice()?'turtle-sublattice':'A2'});
           return demoPlacementFromShared(learner.materialize(learner.roots[0]), {generation:0,step:0,forced:true,branchCount:0});
         }
         const orientation = orientations[seedOrientationIndex];
         const translation = [0, 0, 0];
-        return makePlacement(orientation, translation, {
+        const extras = {
           step: 0,
           forced: true,
           generation: 0,
           branchCount: 0,
           placementKey: `${seedOrientationIndex}|${key3(translation)}`
-        });
+        };
+        const seed = makePlacement(orientation, translation, extras);
+        return genericMode() ? demoPlacementFromShared(sharedPlacementFromDemo(seed), extras) : seed;
       }
 
       function visiblePlacements() {
@@ -1832,7 +1834,7 @@
         canvas.dataset.paintedTiles = String(paintedTiles);
         const latest = visible[visible.length - 1];
         const branchText = statusText || (latest && latest.branchCount
-          ? `${latest.forced ? 'forced move' : `${latest.branchCount}-way branching`} at ${formatFrontierPoint(latest.frontier)}`
+          ? `${latest.forced ? 'forced move at' : `${latest.branchCount} frontier choices · placed via`} ${formatFrontierPoint(latest.frontier)}`
           : 'seed tile');
         if (statusReadout) statusReadout.textContent = `${visible.length} Tile${visible.length === 1 ? '' : 's'} placed · ${branchText}`;
         window.requestAnimationFrame(updateTextWrap);
@@ -2121,11 +2123,11 @@
       function createSharedLiveTilingSearch(useMarking, retainedPlacements = null) {
         const existing = retainedPlacements?.length ? retainedPlacements : [makeSeedPlacement()];
         const seed = existing[0];
-        const generic = genericMode();
-        const initialPlacements = (generic ? existing : existing.slice(1)).map(sharedPlacementFromDemo);
+        // A marking changes the graph edges, not the seed or growth rules.
+        const seedInPlacements = selectedTileSet !== 'turtle';
+        const initialPlacements = (seedInPlacements ? existing : existing.slice(1)).map(sharedPlacementFromDemo);
         const latticePointFilter = usingSublattice() ? isTurtleSublatticeVector : null;
-        const sharedSeedOrientation = generic ? null : sharedOrientationFor(seed.orientation);
-        const sharedSeedTranslation = generic ? null : add3(a2Transform(turtleVertices3d[0], seed.orientation), seed.translation);
+        const markingSeed = seedInPlacements ? null : sharedPlacementFromDemo(seed);
         const stopToken = { stop: false };
         const queue = [];
         const waiters = [];
@@ -2143,7 +2145,7 @@
           if (waiter) waiter({ value, done: false });
           else queue.push(value);
         };
-        const placementsFor = event => [...(generic ? [] : [seed]), ...(event.placements || []).map(placement => demoPlacementFromShared(placement))];
+        const placementsFor = event => [...(seedInPlacements ? [] : [seed]), ...(event.placements || []).map(placement => demoPlacementFromShared(placement))];
         const adapt = event => {
           const frontier = typeof event.choice === 'string' ? event.choice.split(',').map(Number) : event.choice;
           if (event.type === 'trial') return { type: 'trial', valid: true, frontier, frontierValue: event.frontierValue || 0, branchCount: event.branchCount || 0, placement: demoPlacementFromShared(event.candidate, { frontier }) };
@@ -2157,19 +2159,18 @@
         };
         solveA2Tiling({
           boundary: makeHexBoundary(220),
-          seed: generic ? null : { loop: seed.vertices3d, markingPlacement: { tile: 'turtle', orientation: sharedSeedOrientation, translation: sharedSeedTranslation } },
+          seed: seedInPlacements ? null : { loop: seed.vertices3d, markingPlacement: markingSeed },
           initialPlacements,
           tiles: TILE_SETS[selectedTileSet].tiles,
           allowReflections: TILE_SETS[selectedTileSet].allowReflections,
-          fixedInitialPlacements: generic,
-          completePointGrowth: generic,
+          fixedInitialPlacements: seedInPlacements,
+          completePointGrowth: seedInPlacements,
           maximize: true,
           targetPlacements: 1000,
           nodeLimit: 1000000,
           marking: useMarking ? (usingHatRank3() ? createHatRank3Marking(hatExtensionOptions()) : markingSource === 'learned' ? new CompactA2Marking(displayMarking) : new FixedA2Marking(markingExtension, { pointFilter: latticePointFilter, rank: markingRank, tiles:TILE_SETS[selectedTileSet].tiles })) : new NoA2Marking(),
-          rescanAfterBacktrack: usingHatRank3(),
           latticePointFilter,
-          randomizeChoices: true,
+          branchPolicy: 'oldest-frontier',
           randomSeed: Math.floor(Math.random() * 0x100000000),
           stopToken,
           waitForSearchDemand,
@@ -2444,7 +2445,7 @@
             trialGhost = event;
             if (event.branchCount > 1) {
               forcedMoveStreak = 0;
-              statusText = `${event.branchCount}-way branching at ${formatFrontierPoint(event.frontier)}`;
+              statusText = `${event.branchCount} frontier choices · trying one via ${formatFrontierPoint(event.frontier)}`;
             }
           } else if (event.type === 'fail') {
             forcedMoveStreak = 0;
@@ -2471,7 +2472,7 @@
               statusText = `${forcedMoveStreak} forced move${forcedMoveStreak === 1 ? '' : 's'}`;
             } else {
               forcedMoveStreak = 0;
-              statusText = `${event.branchCount}-way branching at ${formatFrontierPoint(frontier)}`;
+              statusText = `${event.branchCount} frontier choices · placed via ${formatFrontierPoint(frontier)}`;
             }
             const frontierGeneration = event.minimumFrontierGeneration;
             if (frontierGeneration >= 3 && frontierGeneration % 2 === 1 && frontierGeneration > highestPausedCorona) {

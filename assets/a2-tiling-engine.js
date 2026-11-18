@@ -551,7 +551,29 @@ export function learnA2ClusterProposals(placements,{maxDistance=12,window=16}={}
   return [...weights.entries()];
 }
 
-export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],fixedInitialPlacements=false,completePointGrowth=false,requiredPoints=null,requireViableFrontier=false,allowReflections=true,startPoints=[],tiles=["hat"],customTiles={},maximize=false,targetPlacements=500,preferredPlacements=[],clusterProposals=[],placementFilter=null,latticePointFilter=null,pointTarget=null,nodeLimit=250000,animationDelayMs=0,learningWarmupDepth=0,maxMarkingRevisions=Infinity,markingStagnationNodes=1200,randomSeed=1,randomizeChoices=false,marking=null,auditFrontierGraph=false,waitForSearchDemand=null,onEvent=()=>{},stopToken={stop:false}}){
+// The base policy uses only the point-to-legal-move graph and point ages.
+// The same placement may be adjacent to several of the oldest points.
+export function selectBaseTilingMoves(frontier, random = Math.random) {
+  const forced = frontier.find(point => point.legal.length === 1);
+  if (forced) return { forced: true, moves: [{ placement: forced.legal[0], frontier: forced }] };
+  let oldest = Infinity;
+  for (const point of frontier) oldest = Math.min(oldest, point.introducedAt);
+  const pool = new Map();
+  for (const point of frontier) {
+    if (point.introducedAt !== oldest) continue;
+    for (const placement of point.legal) {
+      if (!pool.has(placement.id)) pool.set(placement.id, { placement, frontier: point });
+    }
+  }
+  const moves = [...pool.values()];
+  for (let i = moves.length - 1; i > 0; i--) {
+    const j = Math.floor(random() * (i + 1));
+    [moves[i], moves[j]] = [moves[j], moves[i]];
+  }
+  return { forced: false, moves };
+}
+
+export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],fixedInitialPlacements=false,completePointGrowth=false,requiredPoints=null,requireViableFrontier=false,allowReflections=true,startPoints=[],tiles=["hat"],customTiles={},maximize=false,targetPlacements=500,preferredPlacements=[],clusterProposals=[],placementFilter=null,latticePointFilter=null,pointTarget=null,nodeLimit=250000,animationDelayMs=0,learningWarmupDepth=0,maxMarkingRevisions=Infinity,markingStagnationNodes=1200,randomSeed=1,branchPolicy="ranked",marking=null,auditFrontierGraph=false,waitForSearchDemand=null,onEvent=()=>{},stopToken={stop:false}}){
   if(requiredPoints!==null&&(!maximize||!completePointGrowth||!Array.isArray(requiredPoints)||requiredPoints.some(p=>!Array.isArray(p)||p.length!==3||!p.every(Number.isSafeInteger)||p.reduce((s,v)=>s+v,0)!==0)))throw new Error("Finite required points need complete point growth and integer A2 coordinates");
   if(requireViableFrontier&&requiredPoints===null)throw new Error("Viable frontier checks need finite required points");
   const requiredPointMap=requiredPoints===null?null:new Map(requiredPoints.map(p=>[a2Key(p),p]));
@@ -604,6 +626,21 @@ export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],fix
   const placementGeneration=placement=>{const adjacent=[...placement.occupancy.keys()].map(key=>pointDepth.get(key)).filter(Number.isFinite);return adjacent.length?Math.min(...adjacent)+1:0;};
   initialChosen.forEach(placement=>{if(!Number.isFinite(placement.generation))placement.generation=completePointGrowth?0:placementGeneration(placement);for(const [key,entry] of placement.occupancy){const next=(sums.get(key)||0)+entry.weight;if(next>targetAt(entry.point)+1e-7)throw new Error(`Initial placements exceed the t-value maximum at ${key}`);pointDepth.set(key,Math.min(pointDepth.get(key)??Infinity,placement.generation));sums.set(key,next);}});
   for(const key of startPointMap.keys()){if(!sums.has(key))sums.set(key,0);pointDepth.set(key,0);}let nodes=0,backtracks=0,exactMemoPrunes=0,best=initialChosen.slice(),bestFilled=0,lastImprovementNode=0;
+  // Track when a point first entered the current board independently of its
+  // geometric generation, which is used for corona display and ranked search.
+  const useBasePolicy=branchPolicy==="oldest-frontier";
+  const pointIntroducedAt=useBasePolicy?new Map():null;
+  const recordPointIntroductions=(placement,step)=>{
+    if(pointIntroducedAt)for(const key of placement.occupancy.keys())if(!pointIntroducedAt.has(key))pointIntroducedAt.set(key,step);
+  };
+  const rebuildPointIntroductions=()=>{
+    if(!pointIntroducedAt)return;
+    pointIntroducedAt.clear();
+    for(const key of seedOccupancy.keys())pointIntroducedAt.set(key,0);
+    for(const key of startPointMap.keys())pointIntroducedAt.set(key,0);
+    chosen.forEach((placement,index)=>recordPointIntroductions(placement,index+1));
+  };
+  rebuildPointIntroductions();
   const frontierPattern=(pointKey,additions=null)=>{
     const center=pointKey.split(",").map(Number),tokens=[];
     for(let dq=-memoRadius;dq<=memoRadius;dq++)for(let dr=Math.max(-memoRadius,-dq-memoRadius);dr<=Math.min(memoRadius,-dq+memoRadius);dr++){
@@ -799,11 +836,15 @@ export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],fix
     if(nodes>=nodeLimit&&!coreComplete)return "unknown";
     if(maximize&&learner.revision>0&&nodes-lastImprovementNode>=markingStagnationNodes)return "stagnant";
     if(maximize?(!requiredPointMap&&!completePointGrowth&&chosen.length>=targetPlacements):[...desired].every(([key,entry])=>Math.abs((sums.get(key)||0)-entry.weight)<1e-7))return true;
-    let choice=null,options=null,choiceInfo={forced:false,branchCount:0,frontierValue:0};
+    let choicePoint=null,options=null,choiceByPlacement=null,nearestDistance,baseChoiceInfo={forced:false,branchCount:0,frontierValue:0};
+    const selectBaseOptions=frontier=>{
+      const {forced,moves}=selectBaseTilingMoves(frontier,random);
+      options=moves.map(move=>move.placement);
+      choiceByPlacement=new Map(moves.map(({placement,frontier})=>[placement.id,frontier]));
+      baseChoiceInfo={forced,branchCount:options.length,nearestFrontierDistance:nearestDistance};
+    };
     if(maximize){
-      // The frontier-candidate graph is the branching engine. Close forced
-      // points first; for a genuine choice, preserve balanced growth by using
-      // the frontier point introduced in the earliest placement generation.
+      // The frontier-candidate graph is the branching engine.
       const incrementalGraphActive=!graphNeedsGlobalPlacementUpdate();
       const frontier=(incrementalGraphActive?[...frontierGraph.values()]:[...sums].filter(([point,value])=>isTracked(point)&&value<targetAt(point.split(",").map(Number))-1e-7).map(([point,value])=>{
         const coordinates=point.split(",").map(Number);return{point,value,distance:distanceFromInitial(point),introduced:pointDepth.get(point)??Infinity,norm:coordinates.reduce((sum,v)=>sum+Math.abs(v),0)};
@@ -814,7 +855,7 @@ export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],fix
         if(missing.length||extra.length)throw new Error(`Frontier graph divergence at ${entry.point}: missing ${missing.slice(0,3).join(",")}; extra ${extra.slice(0,3).join(",")}`);
       }
       if(!frontier.length)return true;
-      const nearestDistance=frontier[0].distance;
+      nearestDistance=frontier[0].distance;
       const viable=[];
       for(const entry of frontier){
         const legal=incrementalGraphActive?[...entry.legal.values()]:legalAt(entry.point);
@@ -826,36 +867,50 @@ export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],fix
       // A growth checkpoint must pass the whole-frontier dead-point scan.
       if(!requiredPointMap&&completePointGrowth&&chosen.length>=targetPlacements)return true;
       const byGeneration=(left,right)=>left.introduced-right.introduced||left.legal.length-right.legal.length||left.distance-right.distance||right.value-left.value||left.norm-right.norm||lexicalCompare(left.point,right.point);
-      const forced=viable.filter(entry=>entry.legal.length===1).sort(byGeneration);
-      const selected=forced[0]??viable.sort(byGeneration)[0];
       if(chosen.length>best.length){best=chosen.slice();bestFilled=filledWeight();lastImprovementNode=nodes;learner.rememberPositive?.(best);}
-      choice=selected.point;
-      if(randomizeChoices){
-        // Shuffle a copy once per branch, so backtracking tries each alternative once.
-        options=selected.legal.slice();
-        for(let i=options.length-1;i>0;i--){
-          const j=Math.floor(random()*(i+1));
-          [options[i],options[j]]=[options[j],options[i]];
-        }
+      if(useBasePolicy){
+        selectBaseOptions(viable.map(entry=>({...entry,introducedAt:pointIntroducedAt.get(entry.point)})));
       }else{
+        const forced=viable.filter(entry=>entry.legal.length===1).sort(byGeneration);
+        const selected=forced[0]??viable.sort(byGeneration)[0];
+        choicePoint=selected.point;
         options=selected.legal.map(placement=>{
           let atChoice=0,coverage=0,size=0;
           const materialized=!!placement.occupancy,source=materialized?placement.occupancy.values():placement.orientation.occupancy.values();
-          for(const local of source){const entry=materialized?local:{point:a2Add(local.point,placement.translation),weight:local.weight},key=a2Key(entry.point);size++;if(key===choice)atChoice=entry.weight;if((sums.get(key)||0)>0)coverage++;}
+          for(const local of source){const entry=materialized?local:{point:a2Add(local.point,placement.translation),weight:local.weight},key=a2Key(entry.point);size++;if(key===choicePoint)atChoice=entry.weight;if((sums.get(key)||0)>0)coverage++;}
           const newPoints=size-coverage;
           const graphDegree=incrementalGraphActive?[...(candidateIncidence.get(placement.id)?.frontierPoints??[])].filter(pointKey=>frontierGraph.get(pointKey)?.legal.has(placement.id)).length:0;
-          return{placement,clusterScore:clusterProposalScore(placement),markScore:learner.score?.(placement)??0,fills:selected.value+atChoice>=targetAt(choice.split(",").map(Number))-1e-7,graphDegree,coverage,newPoints,tie:random()};
+          return{placement,clusterScore:clusterProposalScore(placement),markScore:learner.score?.(placement)??0,fills:selected.value+atChoice>=targetAt(choicePoint.split(",").map(Number))-1e-7,graphDegree,coverage,newPoints,tie:random()};
         }).sort((a,b)=>b.clusterScore-a.clusterScore||b.markScore-a.markScore||Number(b.fills)-Number(a.fills)||b.graphDegree-a.graphDegree||b.coverage-a.coverage||b.newPoints-a.newPoints||a.tie-b.tie).map(entry=>entry.placement);
+        baseChoiceInfo={forced:options.length===1,branchCount:options.length,frontierValue:selected.value,frontierDistance:selected.distance,nearestFrontierDistance:nearestDistance};
       }
-      choiceInfo={forced:options.length===1,branchCount:options.length,frontierValue:selected.value,frontierDistance:selected.distance,nearestFrontierDistance:nearestDistance};
+    }else if(useBasePolicy){
+      const frontier=[];
+      for(const [point,introducedAt] of pointIntroducedAt){
+        const value=sums.get(point)||0,target=desired.get(point);
+        if(target&&value<target.weight-1e-7)frontier.push({point,value,introducedAt});
+      }
+      // An empty board (or a new disconnected component) needs an anchor.
+      if(!frontier.length)for(const [point,target] of desired){
+        const value=sums.get(point)||0;
+        if(value<target.weight-1e-7){frontier.push({point,value,introducedAt:chosen.length});break;}
+      }
+      for(const entry of frontier){
+        entry.legal=legalAt(entry.point);
+        if(!entry.legal.length){noteFailedPath(trackers,entry.point);emit("fail",{choice:entry.point,frontierValue:entry.value});return false;}
+      }
+      selectBaseOptions(frontier);
     }else{
       for(const [point,target] of desired){const current=sums.get(point)||0;if(current>=target.weight-1e-7)continue;
         const legal=legalAt(point).sort((left,right)=>(preferredRanks.get(left.id)??Infinity)-(preferredRanks.get(right.id)??Infinity));if(!legal.length){noteFailedPath(trackers,point);emit("fail",{choice:point,frontierValue:current});return false;}
-        choice=point;options=legal;choiceInfo={forced:legal.length===1,branchCount:legal.length,frontierValue:current};break;
+        choicePoint=point;options=legal;baseChoiceInfo={forced:legal.length===1,branchCount:legal.length,frontierValue:current};break;
       }
     }
     if(!options)return false;
     for(const placement of options){
+      const frontier=choiceByPlacement?.get(placement.id);
+      const choice=frontier?.point??choicePoint;
+      const choiceInfo=frontier?{...baseChoiceInfo,frontierValue:frontier.value,frontierDistance:frontier.distance,frontierIntroducedAt:frontier.introducedAt}:baseChoiceInfo;
       if(waitForSearchDemand)await waitForSearchDemand();
       if(stopToken.stop)return "unknown";
       if(nodes>=nodeLimit)return "unknown";
@@ -870,6 +925,7 @@ export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],fix
       const context=chosen.slice(),candidateContacts=new Set(placement.occupancy.keys());
       const branchTracker={rootDepth:chosen.length,path:[],failurePoint:null,failurePoints:new Map(),footprint:new Map(),frontier:context.filter(prior=>[...prior.occupancy.keys()].some(key=>candidateContacts.has(key)))},childTrackers=[...trackers,branchTracker];
       nodes++;chosen.push(placement);usedPlacements.add(placement.id);learner.push?.(placement);for(const [key,e] of placement.occupancy){pointDepth.set(key,Math.min(pointDepth.get(key)??Infinity,placement.generation));sums.set(key,(sums.get(key)||0)+e.weight);}
+      recordPointIntroductions(placement,chosen.length);
       const frontierGraphDelta=updateGraphAfterPlacement(placement);
       if(maximize&&frontierGraphDelta)frontierGraphDeltaStack.push(frontierGraphDelta);
       noteFailedPath(childTrackers);
@@ -884,6 +940,7 @@ export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],fix
       if(result===true)return true;
       chosen.pop();usedPlacements.delete(placement.id);learner.pop?.(placement);for(const [key,e] of placement.occupancy){const next=(sums.get(key)||0)-e.weight;if(next<1e-7){if(startPointMap.has(key)){sums.set(key,0);pointDepth.set(key,0);}else{sums.delete(key);pointDepth.delete(key);}}else{const incident=[seedOccupancy.has(key)?0:Infinity,...chosen.filter(prior=>prior.occupancy.has(key)).map(prior=>prior.generation)];sums.set(key,next);pointDepth.set(key,Math.min(...incident));}}if(frontierGraphDelta){restoreFrontierGraph(frontierGraphDelta);frontierGraphDeltaStack.pop();}
       for(const key of placement.occupancy.keys())updateFrontierGeneration(key);
+      if(pointIntroducedAt)for(const key of placement.occupancy.keys())if(!sums.has(key))pointIntroducedAt.delete(key);
       if(result==="unknown"||result==="stagnant")return result;
       // This exact candidate and placement context has been exhausted. Keep it
       // across marking re-encodings: a new geometric witness may generalize a
@@ -919,7 +976,7 @@ export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],fix
     const removed=chosen[chosen.length-1],context=chosen.slice(0,-1);exhaustedBranches.add(branchKey(removed,context));
     chosen.pop();usedPlacements.delete(removed.id);learner.pop?.(removed);backtracks++;
     sums.clear();pointDepth.clear();for(const [key,e] of seedOccupancy){sums.set(key,e.weight);pointDepth.set(key,0);}chosen.forEach(placement=>{for(const [key,e] of placement.occupancy){pointDepth.set(key,Math.min(pointDepth.get(key)??Infinity,placement.generation));sums.set(key,(sums.get(key)||0)+e.weight);}});for(const key of startPointMap.keys()){if(!sums.has(key))sums.set(key,0);pointDepth.set(key,0);}
-    rebuildFrontierGenerations();frontierGraphEpoch++;if(maximize&&!graphNeedsGlobalPlacementUpdate())rebuildFrontierGraph();emit("backtrack",{removed,reason:"retained-prefix"});
+    rebuildPointIntroductions();rebuildFrontierGenerations();frontierGraphEpoch++;if(maximize&&!graphNeedsGlobalPlacementUpdate())rebuildFrontierGraph();emit("backtrack",{removed,reason:"retained-prefix"});
     result=await search(chosen.length);
   }
   while((result===false||result==="stagnant")&&!stopToken.stop){
@@ -927,7 +984,7 @@ export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],fix
     chosen.splice(0,chosen.length,...initialChosen);usedPlacements.clear();for(const placement of initialChosen)usedPlacements.add(placement.id);sums.clear();pointDepth.clear();
     for(const [key,e] of seedOccupancy){sums.set(key,e.weight);pointDepth.set(key,0);}initialChosen.forEach(placement=>{for(const [key,e] of placement.occupancy){pointDepth.set(key,Math.min(pointDepth.get(key)??Infinity,placement.generation));sums.set(key,(sums.get(key)||0)+e.weight);}});for(const key of startPointMap.keys()){if(!sums.has(key))sums.set(key,0);pointDepth.set(key,0);}
     learner.reset?.(markingSeed?[markingSeed,...initialChosen]:initialChosen);
-    rebuildFrontierGenerations();
+    rebuildPointIntroductions();rebuildFrontierGenerations();
     frontierGraphEpoch++;if(maximize&&!graphNeedsGlobalPlacementUpdate())rebuildFrontierGraph();
     emit("marking-reencoded",{reencoding,reason:result==="stagnant"?"stagnation":"root-exhausted"});
     lastImprovementNode=nodes;
