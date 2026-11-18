@@ -157,7 +157,7 @@
   </main>
 
   <script type="module">
-    import { A2_TILE_LOOPS, FixedA2Marking, NoA2Marking, a2Transform, makeHexBoundary, solveA2Tiling, tileOrientations } from './assets/a2-tiling-engine.js?v=shared-edge-branches';
+    import { A2_TILE_LOOPS, FixedA2Marking, NoA2Marking, a2Transform, makeHexBoundary, solveA2Tiling, tileOrientations } from './assets/a2-tiling-engine.js?v=point-base-adjacency';
     import {createCoronaLearner as createConnectionLearner, TILE_SETS, parity} from './assets/tile-corona-learning.js?v=20260921-online-marking';
     import {savedMarkings,rememberMarking,markingDomain,markingName} from './assets/marking-library.js?v=20260921-component-stars';
     import {reduceMarking,activeMarkingSupport,CompactA2Marking} from './assets/marking-reduction.js?v=20260921-component-stars';
@@ -2573,24 +2573,10 @@
         if (next !== markingExtension) resetTilingForMarkingExtension();
       });
       sublatticeToggle?.addEventListener('change', () => {
-        if(genericMode()||(markingSource==='none'&&learnedModels.has(markingContext()))){configurePanel(selectedTileSet,markingSource==='standard'?'standard':learnedModels.has(markingContext())?'learned':'none');return;}
-        stopTiling();
-        liveSearchIterator?.cancel?.();
-        orientations = buildOrientations(markingExtension, markingRank);
-        refreshPlacementsForMarkingRank();
-        liveSearchIterator = null;
-        preservePatchOnNextStart = true;
-        trialGhost = null;
-        liveSearchUsesSublattice = usingSublattice();
-        statusText = usingSublattice()
-          ? 'turtle sublattice · original A2 coordinates'
-          : 'full A2 lattice';
-        if (stageLabel) stageLabel.textContent = usingSublattice() ? 'Stage: turtle sublattice' : 'Stage: full lattice';
-        if (stageNote) stageNote.textContent = usingSublattice()
-          ? 'The grid and search use the sublattice containing 11 turtle boundary vertices and every marking line; retained t- and m-values are unchanged.'
-          : 'The grid and search use every A2 lattice point.';
-        updatePanelControls();
-        draw();
+        const source = markingSource === 'standard' ? 'standard'
+          : markingSource === 'learned' && learnedModels.has(markingContext()) ? 'learned' : 'none';
+        // A different point domain needs a seed aligned to that domain.
+        configurePanel(selectedTileSet, source);
       });
       latticeToggle.addEventListener('change', draw);
       resetButton.addEventListener('click', () => {

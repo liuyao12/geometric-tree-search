@@ -1,4 +1,6 @@
 import { GeometricFailureMemo } from "./geometric-failure-memo.js";
+import { selectPointBranch as selectBaseTilingMoves } from "./gcts-point-branching.js";
+export { selectBaseTilingMoves };
 
 export const A2_TILE_LOOPS = Object.freeze({
   turtle: [[3,-2,-1],[2,0,-2],[0,1,-1],[0,2,-2],[-1,3,-2],[-2,2,0],[-1,0,1],[-2,0,2],[-2,-1,3],[0,-2,2],[1,-4,3],[2,-4,2],[3,-5,2],[4,-4,0]],
@@ -569,29 +571,8 @@ export function learnA2ClusterProposals(placements,{maxDistance=12,window=16}={}
   return [...weights.entries()];
 }
 
-// The base policy uses only the point-to-legal-move graph and point ages.
-// The same placement may be adjacent to several of the oldest points.
-export function selectBaseTilingMoves(frontier, random = Math.random) {
-  const forced = frontier.find(point => point.legal.length === 1);
-  if (forced) return { forced: true, moves: [{ placement: forced.legal[0], frontier: forced }] };
-  let oldest = Infinity;
-  for (const point of frontier) oldest = Math.min(oldest, point.introducedAt);
-  const pool = new Map();
-  for (const point of frontier) {
-    if (point.introducedAt !== oldest) continue;
-    for (const placement of point.legal) {
-      if (!pool.has(placement.id)) pool.set(placement.id, { placement, frontier: point });
-    }
-  }
-  const moves = [...pool.values()];
-  for (let i = moves.length - 1; i > 0; i--) {
-    const j = Math.floor(random() * (i + 1));
-    [moves[i], moves[j]] = [moves[j], moves[i]];
-  }
-  return { forced: false, moves };
-}
 
-export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],fixedInitialPlacements=false,completePointGrowth=false,requiredPoints=null,requireViableFrontier=false,allowReflections=true,startPoints=[],tiles=["hat"],customTiles={},maximize=false,targetPlacements=500,preferredPlacements=[],clusterProposals=[],placementFilter=null,latticePointFilter=null,pointTarget=null,nodeLimit=250000,animationDelayMs=0,learningWarmupDepth=0,maxMarkingRevisions=Infinity,markingStagnationNodes=1200,randomSeed=1,branchPolicy="ranked",requireEdgeSharing=false,marking=null,auditFrontierGraph=false,waitForSearchDemand=null,onEvent=()=>{},stopToken={stop:false}}){
+export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],fixedInitialPlacements=false,completePointGrowth=false,requiredPoints=null,requireViableFrontier=false,allowReflections=true,startPoints=[],tiles=["hat"],customTiles={},maximize=false,targetPlacements=500,preferredPlacements=[],clusterProposals=[],placementFilter=null,latticePointFilter=null,pointTarget=null,nodeLimit=250000,animationDelayMs=0,learningWarmupDepth=0,maxMarkingRevisions=Infinity,markingStagnationNodes=1200,randomSeed=1,branchPolicy="oldest-frontier",requireEdgeSharing=false,marking=null,auditFrontierGraph=false,waitForSearchDemand=null,onEvent=()=>{},stopToken={stop:false}}){
   if(requiredPoints!==null&&(!maximize||!completePointGrowth||!Array.isArray(requiredPoints)||requiredPoints.some(p=>!Array.isArray(p)||p.length!==3||!p.every(Number.isSafeInteger)||p.reduce((s,v)=>s+v,0)!==0)))throw new Error("Finite required points need complete point growth and integer A2 coordinates");
   if(requireViableFrontier&&requiredPoints===null)throw new Error("Viable frontier checks need finite required points");
   const requiredPointMap=requiredPoints===null?null:new Map(requiredPoints.map(p=>[a2Key(p),p]));
@@ -672,9 +653,10 @@ export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],fix
   const rebuildPointIntroductions=()=>{
     if(!pointIntroducedAt)return;
     pointIntroducedAt.clear();
+    if (!maximize) for (const key of desired.keys()) pointIntroducedAt.set(key, 0);
     for(const key of seedOccupancy.keys())pointIntroducedAt.set(key,0);
     for(const key of startPointMap.keys())pointIntroducedAt.set(key,0);
-    chosen.forEach((placement,index)=>recordPointIntroductions(placement,index+1));
+    chosen.forEach((placement,index)=>recordPointIntroductions(placement,fixedInitialPlacements?0:index+1));
   };
   rebuildPointIntroductions();
   const frontierPattern=(pointKey,additions=null)=>{
@@ -701,7 +683,7 @@ export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],fix
   let memoExcluded = new Set();
   const rememberExhaustedBranch = (candidate, context) => {
     exhaustedBranches.add(branchKey(candidate, context));
-    if (!requireEdgeSharing) return;
+    if (!useBasePolicy && !requireEdgeSharing) return;
     const key = context.map(placement => placement.id).sort().join(";");
     const excluded = new Set(exhaustedByContext.get(key));
     excluded.add(candidate.id);
@@ -725,7 +707,7 @@ export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],fix
       for(const key of incidence.occupancyKeys)addIncidence(candidatesByOccupancy,key,placement.id);
       for(const key of incidence.markingKeys)addIncidence(candidatesByMarking,key,placement.id);
     }
-    if(!candidateLegal.has(placement.id)){rememberCandidateBeforeChange(delta,placement.id);candidateLegal.set(placement.id,candidateIsLegal(placement,{ignoreMemo:requireEdgeSharing}));frontierGraphCandidateRevalidations++;}
+    if(!candidateLegal.has(placement.id)){rememberCandidateBeforeChange(delta,placement.id);candidateLegal.set(placement.id,candidateIsLegal(placement,{ignoreMemo:useBasePolicy||requireEdgeSharing}));frontierGraphCandidateRevalidations++;}
     if(pointKey!==null)incidence.frontierPoints.add(pointKey);
     return incidence;
   };
@@ -843,7 +825,7 @@ export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],fix
       const incidence=candidateIncidence.get(candidateId);if(!incidence)continue;
       if(!candidateLegal.get(candidateId))continue;
       frontierGraphCandidateRevalidations++;
-      let invalid=usedPlacements.has(candidateId)||(!requireEdgeSharing&&!requireViableFrontier&&exhaustedBranches.has(`${contextPrefix}=>${candidateId}`));
+      let invalid=usedPlacements.has(candidateId)||(!useBasePolicy&&!requireEdgeSharing&&!requireViableFrontier&&exhaustedBranches.has(`${contextPrefix}=>${candidateId}`));
       if(!invalid)for(const key of occupancyKeys){
         const entry=incidence.placement.occupancy.get(key);if(!entry)continue;
         if((sums.get(key)||0)+entry.weight>targetAt(entry.point)+1e-7){invalid=true;break;}
@@ -899,7 +881,7 @@ export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],fix
   const invalidateExhaustedCandidate=candidateId=>{
     const incidence=candidateIncidence.get(candidateId);if(!incidence)return;
     const activeDelta=frontierGraphDeltaStack.at(-1)??null;let removed=false;
-    if (!requireEdgeSharing) {
+    if (!useBasePolicy && !requireEdgeSharing) {
       rememberCandidateBeforeChange(activeDelta, candidateId);
       candidateLegal.set(candidateId, false);
     }
@@ -927,10 +909,19 @@ export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],fix
     if(coreComplete&&!requireViableFrontier)return true;
     if(nodes>=nodeLimit&&!coreComplete)return "unknown";
     if(maximize&&learner.revision>0&&nodes-lastImprovementNode>=markingStagnationNodes)return "stagnant";
-    if(maximize?(!requiredPointMap&&!completePointGrowth&&chosen.length>=targetPlacements):[...desired].every(([key,entry])=>Math.abs((sums.get(key)||0)-entry.weight)<1e-7))return true;
+    if(!maximize&&[...desired].every(([key,entry])=>Math.abs((sums.get(key)||0)-entry.weight)<1e-7))return true;
     let choicePoint=null,options=null,choiceByPlacement=null,nearestDistance,baseChoiceInfo={forced:false,branchCount:0,frontierValue:0};
     const selectBaseOptions=frontier=>{
-      const selected = selectBaseTilingMoves(frontier, random);
+      const last = chosen.at(-1) ?? seed;
+      const lastPoints = new Set(chosen.at(-1)?.occupancy.keys() ?? seedOccupancy.keys());
+      const lastEdges = requireEdgeSharing && last
+        ? new Map(boundaryEdgesFor(last).map(edge => [edge.key, edge.direction])) : null;
+      const isAdjacent = placement => lastEdges
+        ? boundaryEdgesFor(placement).some(edge => lastEdges.get(edge.key) === -edge.direction)
+        : [...placement.occupancy.keys()].some(key => lastPoints.has(key));
+      const selected = selectBaseTilingMoves(frontier, random, {
+        restrictToPoint: !requireEdgeSharing, isAdjacent
+      });
       let moves = selected.moves;
       const first = moves[0];
       const edge = requireEdgeSharing && first
@@ -977,7 +968,7 @@ export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],fix
       // Completing the core is only a success after all exposed points pass.
       if(coreComplete&&requireViableFrontier){emit("frontier-viable",{frontierPoints:frontier.length});return true;}
       // A growth checkpoint must pass the whole-frontier dead-point scan.
-      if(!requiredPointMap&&completePointGrowth&&chosen.length>=targetPlacements)return true;
+      if(!requiredPointMap&&chosen.length>=targetPlacements)return true;
       const byGeneration=(left,right)=>left.introduced-right.introduced||left.legal.length-right.legal.length||left.distance-right.distance||right.value-left.value||left.norm-right.norm||lexicalCompare(left.point,right.point);
       if(chosen.length>best.length){best=chosen.slice();bestFilled=filledWeight();lastImprovementNode=nodes;learner.rememberPositive?.(best);}
       if(useBasePolicy){
@@ -1052,7 +1043,7 @@ export async function solveA2Tiling({boundary,seed=null,initialPlacements=[],fix
       const result=stranded?false:await search(depth+1,childTrackers);
       if(result===true)return true;
       updatePatchBoundary(placement,-1);
-      chosen.pop();usedPlacements.delete(placement.id);learner.pop?.(placement);for(const [key,e] of placement.occupancy){const next=(sums.get(key)||0)-e.weight;if(next<1e-7){if(startPointMap.has(key)){sums.set(key,0);pointDepth.set(key,0);}else{sums.delete(key);pointDepth.delete(key);}}else{const incident=[seedOccupancy.has(key)?0:Infinity,...chosen.filter(prior=>prior.occupancy.has(key)).map(prior=>prior.generation)];sums.set(key,next);pointDepth.set(key,Math.min(...incident));}}if(frontierGraphDelta){restoreFrontierGraph(frontierGraphDelta);frontierGraphDeltaStack.pop();}
+      chosen.pop();usedPlacements.delete(placement.id);learner.pop?.(placement);for(const [key,e] of placement.occupancy){const next=(sums.get(key)||0)-e.weight;if(next<1e-7){if(startPointMap.has(key)){sums.set(key,0);pointDepth.set(key,0);}else{sums.delete(key);pointDepth.delete(key);}}else{const incident=[seedOccupancy.has(key)||startPointMap.has(key)?0:Infinity,...chosen.filter(prior=>prior.occupancy.has(key)).map(prior=>prior.generation)];sums.set(key,next);pointDepth.set(key,Math.min(...incident));}}if(frontierGraphDelta){restoreFrontierGraph(frontierGraphDelta);frontierGraphDeltaStack.pop();}
       for(const key of placement.occupancy.keys())updateFrontierGeneration(key);
       if(pointIntroducedAt)for(const key of placement.occupancy.keys())if(!sums.has(key))pointIntroducedAt.delete(key);
       if(result==="unknown"||result==="stagnant")return result;

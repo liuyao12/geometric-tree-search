@@ -17,8 +17,8 @@ const saved=graph.inspect();const refinement=graph.refine(t=>t.id!=="A");
 assert(graph.choose().dead);assert(graph.inspect().filter(p=>p.key==="p"||p.key==="q").every(p=>!p.candidates.includes("A")));
 graph.pop(refinement);assert.deepEqual(graph.inspect(),saved,"learned-domain refinement must trail every shared incidence");
 
-// Earlier generation wins over a smaller non-singleton degree only in the
-// reference mode. Preserve the historical mode for old benchmark callers.
+// Historical scheduling is available only when selected explicitly.
+// The default point policy is covered by test-gcts-point-branching.mjs.
 for(const generationFirst of [false,true]){
  const options={early:[0,1,2].map(i=>({id:'e'+i,vertices:['early']})),late:[0,1].map(i=>({id:'l'+i,vertices:['late']}))};
  const g=createFrontierGraph({generationFirst,enumerate:p=>options[p.key],legal:()=>true,compatibleWithAddition:()=>true,footprint:()=>({x0:0,x1:0,y0:0,y1:0})});g.build([point('early',0),point('late',5)]);
@@ -27,4 +27,4 @@ for(const generationFirst of [false,true]){
  const kill=g.refine(t=>!t.id.startsWith('e'));assert(g.choose().dead);g.pop(kill);g.pop(force);
  assert.equal(g.choose().point.key,generationFirst?'early':'late');
 }
-console.log('ok: explicit generation-first scheduling preserves global dead/forced priority and historical default');
+console.log('ok: explicit historical scheduling controls preserve global dead/forced priority');

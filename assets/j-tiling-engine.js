@@ -1,4 +1,5 @@
 import {ORIENTATIONS,materialize,key,sub,bits,VERSION} from './j-tiling-model.js';
+import {selectPointBranch} from './gcts-point-branching.js';
 const cloneRow=r=>r?{...r,legal:new Set(r.legal)}:null;
 export class JSearch{
  constructor({target=100,nodeLimit=20000,seed=1,audit=false}={}){
@@ -18,10 +19,10 @@ export class JSearch{
  rememberValidity(d,k){if(d&&!d.validity.has(k))d.validity.set(k,this.validity.has(k)?this.validity.get(k):undefined);}
  rebuildRow(k,d){const p=this.points.get(k);this.rememberRow(d,k);if(!p||p.total===12){this.rows.delete(k);return;}
   const candidates=this.candidatesAt(p),legal=new Set();for(const c of candidates){if(!this.incidence.has(c.id))this.incidence.set(c.id,new Set());this.incidence.get(c.id).add(k);this.rememberValidity(d,c.id);const ok=!this.reason(c);this.validity.set(c.id,ok);if(ok)legal.add(c.id);}
-  this.rows.set(k,{key:k,generation:p.generation,candidates,legal});
+   this.rows.set(k,{key:k,generation:p.generation,introducedAt:p.introducedAt,candidates,legal});
  }
  apply(c,generation){if(this.reason(c))throw Error('Illegal placement');const d={id:c.id,points:new Map(),rows:new Map(),validity:new Map()};
-  for(const e of c.corners){const old=this.points.get(e.key);d.points.set(e.key,old?{...old}:null);this.points.set(e.key,{point:e.point,mask:(old?.mask??0)|e.mask,total:(old?.total??0)+e.weight,generation:Math.min(old?.generation??generation,generation)});}
+   for(const e of c.corners){const old=this.points.get(e.key);d.points.set(e.key,old?{...old}:null);this.points.set(e.key,{point:e.point,mask:(old?.mask??0)|e.mask,total:(old?.total??0)+e.weight,generation:Math.min(old?.generation??generation,generation),introducedAt:old?.introducedAt??this.placed.length});}
   this.used.add(c.id);this.placed.push({orientation:c.orientation,translation:c.translation,generation,id:c.id});
   const affected=new Set();for(const k of d.points.keys())for(const id of this.dependents.get(k)??[])affected.add(id);
   for(const id of affected){this.rememberValidity(d,id);const ok=!this.reason(this.pool.get(id)),was=this.validity.get(id);this.validity.set(id,ok);if(was&&!ok&&!this.used.has(id))this.stats.sectorRejections++;
@@ -38,14 +39,19 @@ export class JSearch{
   this.stats.graphAudits++;
  }
  choice(){if(this.audit)this.auditGraph();const rows=[...this.rows.values()];const dead=rows.find(r=>r.legal.size===0);if(dead)return{kind:'dead',row:dead};
-  const cmp=(a,b)=>a.generation-b.generation||a.legal.size-b.legal.size||a.key.localeCompare(b.key);const forced=rows.filter(r=>r.legal.size===1).sort(cmp);if(forced.length)return{kind:'forced',row:forced[0]};rows.sort(cmp);return rows.length?{kind:'branch',row:rows[0]}:{kind:'complete'};
+   const last=this.placed.at(-1),lastPoints=new Set(last?this.pool.get(last.id).corners.map(e=>e.key):[]);
+   const selected=selectPointBranch(rows.map(row=>({...row,legal:[...row.legal].map(id=>this.pool.get(id))})),()=>this.random(),{
+    isAdjacent:candidate=>candidate.corners.some(e=>lastPoints.has(e.key))
+   });
+   const first=selected.moves[0];
+   return first?{kind:selected.forced?'forced':'branch',row:this.rows.get(first.frontier.key),candidates:selected.moves.map(move=>move.placement)}:{kind:'complete'};
  }
  *search(){if(this.stopped||this.stats.attempts>=this.nodeLimit)return'unknown';const pick=this.choice();this.lastChoice={kind:pick.kind,key:pick.row?.key,generation:pick.row?.generation,degree:pick.row?.legal.size};yield{type:pick.kind};if(pick.kind==='dead')return false;
   if(this.placed.length>this.bestViable.length)this.bestViable=this.placed.map(p=>({...p,translation:[...p.translation]}));
   if(this.placed.length>=this.target||pick.kind==='complete')return'checkpoint';
-  const options=[...pick.row.legal].map(id=>{const c=this.pool.get(id);let fills=0,contacts=0;for(const e of c.corners){const p=this.points.get(e.key);if(p){contacts++;if(p.total+e.weight===12)fills++;}}return{c,score:fills*100+contacts,tie:this.random()};}).sort((a,b)=>b.score-a.score||a.tie-b.tie);
+   const options=pick.candidates;
   if(pick.kind==='branch')this.stats.branches++;
-  for(const{c}of options){if(this.stopped||this.stats.attempts>=this.nodeLimit)return'unknown';if(this.reason(c))continue;this.stats.attempts++;if(pick.kind==='forced')this.stats.forced++;
+   for(const c of options){if(this.stopped||this.stats.attempts>=this.nodeLimit)return'unknown';if(this.reason(c))continue;this.stats.attempts++;if(pick.kind==='forced')this.stats.forced++;
    const generation=1+Math.min(...c.corners.flatMap(e=>this.points.has(e.key)?[this.points.get(e.key).generation]:[]));const d=this.apply(c,generation);yield{type:'placement'};
    const result=yield* this.search();if(result==='checkpoint')return result;this.undo(d);this.stats.backtracks++;yield{type:'rollback'};if(result==='unknown')return result;
   }return false;

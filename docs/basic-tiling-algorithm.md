@@ -2,11 +2,11 @@
 
 This is the normative algorithm contract for current and future subprojects.
 The conceptual reference is the Turtle demo in [GCTS-I.html](../GCTS-I.html).
-Its shared A₂ growth engine supplies the reference decision order: global
-dead ends, global forced moves, then earliest generation. Existing programs
-and historical experiment notes are not automatically conforming; the audit
-below records known gaps. This contract supersedes older descriptions that
-put minimum candidate count before generation or geometry inside the base.
+Its shared growth engine uses global dead/forced checks, chronological point
+age, adjacency preference within the oldest group, and randomized point-based
+branching. The Hat/Turtle demo explicitly adds its shared-boundary-segment
+specialization. Historical experiment records retain their original scheduling
+and are not automatically conforming to this updated contract.
 
 ## 1. The mathematical object is values at points
 
@@ -74,39 +74,59 @@ Lazy enumeration is acceptable only if exhaustion and singleton claims are
 certified. Keep candidate dependencies on all t- and m-support, including
 points outside Q. A candidate illegal anywhere is unavailable everywhere.
 
-## 3. Decision order and generations
+## 3. Decision order and chronological point ages
 
-The order is mandatory:
+The reference order is the same with or without markings.
 
 1. Check the entire active frontier for degree zero. Any such point kills
-   the branch, including a distant or late-generation point.
-2. Otherwise, if any point has degree one, place its sole candidate and update
-   the graph. Repeat from step 1 until no forced move remains. A shared forced
-   candidate is placed only once. If it leaves an unfillable residual deficit,
-   the next iteration detects the dead end.
-3. Otherwise choose a point in the earliest frontier generation. Candidate
-   count, distance, a deterministic key, or a policy may break ties within
-   that generation. A later point with two options does not outrank an earlier
-   point with ten. Choose among its legal incident candidates and recurse.
-4. On failure, restore the complete state and try the remaining alternatives.
-   After every change, return to global dead/forced checks before branching.
+   the branch, including a distant point or one introduced late.
+2. If any point has degree one, place its sole candidate and update the graph.
+   Repeat the global dead/forced checks until no forced move remains. A shared
+   forced candidate is placed once.
+3. Collect the frontier points introduced at the earliest placement step and
+   pool their distinct legal incident placements. Count a placement once even
+   when several points are adjacent to it.
+4. Within that age group, prefer placements neighboring the last placement.
+   In the point model, neighboring means that their positive point supports
+   intersect. Draw uniformly among adjacent moves when there are any, otherwise
+   draw uniformly from the full priority pool.
+5. Fix an incident frontier point of the selected move. The siblings at this
+   node are all legal placements incident to that point. Keep the first move
+   first and try the other siblings in randomized order. The adjacency
+   preference orders choices and does not delete legal sibling alternatives.
+6. After a placement or rollback, run the global dead/forced checks again.
+   Backtracking restores the fixed point and remaining siblings of its parent.
 
-Use the Turtle growth convention for generations: seed tiles and explicitly
-activated root obligations have generation 0. A newly placed tile gets one
-plus the minimum existing point generation on its positive t-support; a new
-disconnected root, when the target requires one, starts at 0. A point's
-generation is the minimum generation of its currently incident placed tiles
-and any explicit root obligation. Save and restore this metadata on rollback.
-It is a growth layer, not the chronological placement index, distance, or
-current graph degree. Declared scheduling variants belong in separate
-experiments and cannot be labeled the reference baseline.
+Point age is the chronological step when a point first entered the current
+board. All seed obligations and fixed finite-target obligations start at step
+zero. A new point introduced by the next placement gets that placement step.
+Existing points keep their age. Undo the age when its introducing placement
+rolls back. Geometric generations remain available for corona display and
+checkpoint statistics.
+
+The implementation is `assets/gcts-point-branching.js`. Its input consists of
+point records, introduction ages, legal placements, a random source, and an
+optional adjacency predicate. It contains no geometric edge representation.
+The A2 engine uses this policy by default. An explicitly selected historical
+ranking remains an experimental control.
+
+### Polygon specialization in the Hat/Turtle demo
+
+The demo explicitly sets `requireEdgeSharing: true`. Its graph keeps an
+incidence only when the candidate shares a positive-length exposed boundary
+segment incident to the frontier point. Subdivide sides at lattice points, so
+a partial shared side qualifies. Within the oldest group, neighboring moves
+share a boundary segment with the last tile.
+
+Draw the first move from that priority pool, fix one shared exposed segment,
+and retain only placements covering that same segment as sibling alternatives.
+This uses the known polygon geometry of the demo. The general point-value
+algorithm fixes a point instead.
 
 Before reporting a finite exact solution, verify the entire target and
-markings. A growth milestone may pause a run with its stack intact, but must
-first rule out known dead points; it does not establish infinite extension.
-Budget exhaustion, cancellation, or a learner restart means unknown, not
-untileable. Forced propagation can itself continue indefinitely on an infinite
-domain; a finite pause is a checkpoint, not a new branch decision.
+markings. A growth milestone must first rule out known dead points. Budget
+exhaustion, cancellation, or a learner restart means unknown. A finite pause
+during propagation is a checkpoint.
 
 ## 4. Incremental updates and exact rollback
 
@@ -393,7 +413,7 @@ constituents; its aggregate m is their compatible union. Overlapping cluster
 descriptions must identify shared placements so they are not counted twice.
 
 A proposal supplies base candidates or continuation preferences after global
-propagation and earliest-generation selection. Its absence is not a proof that
+propagation and chronological point-age selection. Its absence is not a proof that
 a base candidate is impossible. Retain base-placement fallback for completeness.
 If executing a cluster as a macro, process constituent placements through the
 same scheduler and propagation, with a reversible transaction. Any shortcut
@@ -414,7 +434,8 @@ For each engine, test the following before claiming conformance:
 - Incremental domains equal independent exhaustive re-enumeration, including
   zero-valued required points, pockets, and extended marking-only interactions.
 - Global dead ends outrank all forced moves; forced moves outrank all branches;
-  earlier generation outranks a later point of smaller non-singleton degree.
+  earlier point introduction outranks a later point of smaller non-singleton degree;
+  adjacency only breaks age ties, and siblings retain the same branching point.
 - Fractional residuals and candidates shared by several points behave correctly.
 - Failed branches and cluster transactions restore complete state exactly;
   rule changes cannot revive stale graph data or retain unjustified exclusions.
@@ -439,19 +460,25 @@ configuration, and versions for independent replay and verification.
 
 ## 9. Current implementation audit and migration
 
-Source inspection on 2026-09-08 establishes the following limited status;
+The November 18, 2026 update shares the point selector across the A2, J,
+frontier-graph, 3D growth, 3D corona, and finite-window point engines. It adds
+chronological point ages and preserves fixed-point siblings. The Hat/Turtle
+demo explicitly retains the segment specialization. The earlier audit below
+records remaining model and verification gaps.
+
+Source inspection on 2026-09-08 established the following limited status;
 it is not a completed repository-wide runtime audit.
 
 | Implementation | Observed alignment and remaining work |
 | --- | --- |
-| Turtle article / `assets/a2-tiling-engine.js`, growth mode | Uses shared point–candidate incidence, global dead/forced checks, then generation-first ordering. Integer twelfths represent occupancy, although comparisons use tolerances. Audit target-stop checks, untouched-point activation, and exactness claims against this contract. |
-| A₂ finite-boundary mode in the same engine | Uses a separate target traversal and polygon containment/overlap checks. Needs conversion to point-defined boundary data and the same global graph scheduler before claiming full conformance. |
-| `assets/tiling-frontier-graph.js` / `assets/penrose-point-search.js` | Shared incidence and reversible updates exist, but the graph currently ranks degree before generation; Penrose also uses polygon/contact predicates and continuous marking support. These require an explicit point-model implementation or a separately labeled geometric experiment. |
+| Turtle demo / `assets/a2-tiling-engine.js`, growth mode | The shared engine defaults to chronological point ages, adjacency within the oldest group, and fixed-point siblings. The demo explicitly enables segment incidence and fixed-segment siblings. Integer twelfths represent occupancy, with tolerances in comparisons. Finite checkpoints do not certify infinite extension. |
+| A2 finite-boundary mode in the same engine | All target obligations start at age zero and use the common point selector with global dead/forced checks. Polygon containment and overlap remain part of this adapter, so a pure point-defined boundary model remains separate work. |
+| `assets/tiling-frontier-graph.js` / `assets/penrose-point-search.js` | The default shares chronological ages, adjacency preference, and fixed-point siblings with the base selector. Explicit generation-first/degree-first settings remain historical controls. Penrose still adds geometric/contact predicates in its adapter and is a specialized geometric experiment. |
 | `apps/3d-lattice-tiler/lattice-search.js` | Has a point-value search path and candidate cache; its point births use placement order. Audit generation semantics, global propagation, complete incidence, and marking updates. |
 | `apps/3d-lattice-tiler/engine.js` and other geometric engines | Geometry, strategy shortcuts, and forced-move throttling need auditing. A geometric or specialized control can remain useful, but is not automatically the shared point-value baseline. |
-| 3D seed-growth comparison, `apps/3d-lattice-tiler/growth-search.js` | Main v2 and v1 tile-count lanes now share a fixed seed, dynamic complete frontier, global dead/forced scans, minimum incident generations, article-style candidate ranking, exact point/mark rollback and independent whole-frontier viability replay. GCTS adds validated browser-local component markings; RL orders via short validated rollouts. Direct ten-tile Hat prefix agrees with the article engine; deeper contextual memoization traces are not identical. Finite checkpoints only; no fair untouched-domain activation or infinite claim. Legacy non-count controls remain separate. See [growth audit and evidence](projects/3d-reference-growth-audit.md). |
-| 3D v2 fixed-window control, `apps/3d-lattice-tiler/v2/search.js` | Complete finite-target incidence, global dead/forced checks and exact rollback/replay. Every target point is an explicit generation-zero root, so branch selection reduces to minimum degree; candidate order is a seeded hash. This is not the article’s seeded outward-growth algorithm. Its Hat timing result compares two fixed-window runs only. See [reference-growth audit](projects/3d-reference-growth-audit.md). |
-| 3D shared pair-corona learner, `apps/3d-lattice-tiler/corona-graph.js` | Complete dynamic point/candidate incidence, global dead/forced checks, earliest-generation branching, exact integer weights and rollback; positive witnesses independently replayed with viable frontier. Shared spatial totals accelerate legality checks; complete mutation traces match the prior oracle on ten diagnostic cases. Finite pair labels supply learned restrictions. See [both-version learning report](projects/3d-gcts-marking-learning.md); v1 geometric growth gaps remain separate. |
+| 3D seed-growth comparison, `apps/3d-lattice-tiler/growth-search.js` | Both live versions share chronological point ages, global dead/forced checks, adjacency preference, and fixed-point siblings through the common selector. Marks eliminate candidates through the same graph. RL rollout ranking remains an explicit experimental mode. Whole-frontier replay verifies finite checkpoints. Earlier timing and prefix-comparison records describe their original algorithms. See [historical growth evidence](projects/3d-reference-growth-audit.md). |
+| 3D finite-window point engine, `apps/3d-lattice-tiler/v2/search.js` | Complete finite-target incidence uses the common point selector with every target obligation at age zero, global propagation, fixed-point siblings, and exact rollback/replay. The fixed-window target differs from unbounded seeded growth. Historical timing records retain their original scheduling. |
+| 3D shared pair-corona learner, `apps/3d-lattice-tiler/corona-graph.js` | Complete dynamic point incidence uses the common selector and chronological point births. Both fixed seed placements introduce age-zero points. Exact integer weights, independent corona/frontier replay, and reversible candidate caches retain their existing proof scopes. Finite pair labels supply learned restrictions. |
 | 3D center-and-corner polycube research model, `apps/3d-lattice-tiler/voxel-point-model.js` | Explicit center constraints make capacity legality equivalent to voxel nonoverlap for cubic rotations and integer physical translations. The fourteen research catalogue entries in v2 use this model, with independent voxel replay for positive coronas and final results; v1 retains its legacy model. See [live catalogue scope](projects/3d-research-catalogue.md). Shared learning/search and independent voxel replay are tested; no unrestricted geometric alignment or infinite-tiling claim. See [geometric audit and oracle experiments](projects/3d-voxel-marking-research.md). |
 | Finite point-corona PB/SAT research control, `scripts/solve_point_pair_corona.py` | Same unmarked point sums and viable-frontier existence question, with a proved finite seed-support reduction, validated binary voxel encoding and optional exact occupancy-frontier conditions, added singly or in explicit batches. Pair symmetries carry explicit transports and all positive members are replayed. Uses different scheduling, not the reference graph lane. Trusted-solver UNSAT rather than an exported proof. See [local-label refinement](projects/3d-point-corona-sat.md). |
 | 3D finite voxel-window SAT control, `scripts/solve_voxel_point_window.py` | Validated center/corner-to-voxel reduction, full finite placement universe, scalar point marking agreement; 72 exhaustive small comparisons. Separate SAT scheduling, no frontier viability requirement beyond the finite target. Learned UNSAT remains restricted. See [larger-window controls](projects/3d-point-corona-sat.md#larger-growth-and-period-proposals-after-complete-pair-learning). |
