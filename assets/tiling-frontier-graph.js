@@ -1,8 +1,10 @@
 // Base tiling bookkeeping. Geometry, markings and branch policies are adapters;
 // none of them may bypass zero-degree detection or forced-point propagation.
-export function createFrontierGraph({ enumerate, legal, compatibleWithAddition, footprint, generationFirst = false }) {
+import { selectPointBranch } from './gcts-point-branching.js';
+export function createFrontierGraph({ enumerate, legal, compatibleWithAddition, footprint, generationFirst, random = Math.random }) {
   const points = new Map(), candidates = new Map(), buckets = new Map(), incidence = new Map();
   let trail = null;
+  let placementStep = 0, lastVertices = new Set();
   const counters = { fullBuilds: 0, updates: 0, rollbacks: 0, candidateChecks: 0 };
   const set = (map, key, value) => { const had = map.has(key), old = map.get(key); trail?.push(() => had ? map.set(key, old) : map.delete(key)); map.set(key, value); };
   const del = (map, key) => { if (!map.has(key)) return; const old = map.get(key); trail?.push(() => map.set(key, old)); map.delete(key); };
@@ -43,8 +45,8 @@ export function createFrontierGraph({ enumerate, legal, compatibleWithAddition, 
     const fresh = [];
     for (const [key, meta] of next) {
       const old = points.get(key);
-      if (old) { if (old.depth !== meta.depth || old.total !== meta.total) set(points, key, { ...meta, legal: old.legal }); }
-      else { set(points, key, { ...meta, legal: new Set() }); fresh.push(meta); }
+      if (old) { if (old.depth !== meta.depth || old.total !== meta.total) set(points, key, { ...meta, introducedAt: old.introducedAt, legal: old.legal }); }
+      else { set(points, key, { ...meta, introducedAt: meta.introducedAt ?? placementStep, legal: new Set() }); fresh.push(meta); }
     }
     for (const point of fresh) for (const tile of enumerate(point)) ensure(tile);
   }
@@ -52,6 +54,10 @@ export function createFrontierGraph({ enumerate, legal, compatibleWithAddition, 
   function push(tile, frontier) {
     if (trail) throw Error('Nested graph transaction');
     trail = [];
+    const previousStep = placementStep, previousVertices = lastVertices;
+    trail.push(() => { placementStep = previousStep; lastVertices = previousVertices; });
+    placementStep++;
+    lastVertices = new Set(tile.vertices);
     const affected = new Set(cells(footprint(tile)).flatMap(c => [...(buckets.get(c) || [])]));
     for (const id of affected) {
       const record = candidates.get(id); if (!record?.legal) continue;
@@ -78,6 +84,14 @@ export function createFrontierGraph({ enumerate, legal, compatibleWithAddition, 
     const frontier = [...points.values()];
     const dead = frontier.find(p => p.legal.size === 0);
     if (dead) return { point: dead, candidates: [], forced: false, dead: true };
+    if (generationFirst === undefined) {
+      const selected = selectPointBranch(frontier.map(point => ({
+        ...point, legal: [...point.legal].map(id => candidates.get(id).tile)
+      })), random, { isAdjacent: tile => tile.vertices.some(key => lastVertices.has(key)) });
+      const first = selected.moves[0];
+      return first ? { point: points.get(first.frontier.key),
+        candidates: selected.moves.map(move => move.placement), forced: selected.forced, dead: false } : null;
+    }
     const forced = frontier.filter(p => p.legal.size === 1).sort(compare);
     const selected = forced[0] || frontier.sort((a, b) => (generationFirst ? a.depth - b.depth : 0) || a.legal.size - b.legal.size || compare(a, b))[0];
     return selected ? { point: selected, candidates: [...selected.legal].map(id => candidates.get(id).tile), forced: selected.legal.size === 1, dead: false } : null;
@@ -88,7 +102,7 @@ export function createFrontierGraph({ enumerate, legal, compatibleWithAddition, 
     return { retainedCandidates:candidates.size, points: points.size, candidates: live.size, incidences, forcedPoints, deadPoints, ...counters };
   }
   // Read-only copies for tests and policy adapters; no engine state escapes.
-  function inspect() { return [...points.values()].map(p => ({ key: p.key, depth: p.depth, total: p.total, candidates: [...p.legal].sort() })).sort((a,b) => a.key.localeCompare(b.key)); }
+  function inspect() { return [...points.values()].map(p => ({ key: p.key, depth: p.depth, introducedAt:p.introducedAt, total: p.total, candidates: [...p.legal].sort() })).sort((a,b) => a.key.localeCompare(b.key)); }
   function candidateRecords() { return [...candidates.values()].filter(r => r.points.size > 0).map(r => ({tile:r.tile,legal:r.legal})); }
   const deadCount=()=>{let count=0;for(const p of points.values())count+=+(p.legal.size===0);return count;};
   return { build, push, pop, refine, choose, summary, inspect, candidateRecords, deadCount };

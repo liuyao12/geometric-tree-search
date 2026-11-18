@@ -1,4 +1,5 @@
 // Exact unmarked local-completion oracle. Geometry is display data only.
+import { selectPointBranch } from '../../assets/gcts-point-branching.js';
 export const pointKey=p=>p.join(',');
 export const add=(a,b)=>a.map((v,i)=>v+b[i]);
 export const sub=(a,b)=>a.map((v,i)=>v-b[i]);
@@ -23,6 +24,7 @@ export class CoronaGraph{
   // are orientation data, so neither coordinate strings nor weights need to be
   // copied into a new object for every candidate/point incidence.
   this.sites=new Map();this.orientationWeights=model.orientations.map(o=>o.cells.map(c=>c.weight));
+  this.introducedAt = new Map();
   for(const p of fixed){
    const id=placementKey(p),o=model.orientations[p.oi];
    if(!o||!allowedTranslation(model,p.translation)||this.fixedIds.has(id))throw Error('Invalid fixed oracle seed');
@@ -75,13 +77,13 @@ export class CoronaGraph{
   if(!allowedTranslation(this.model,spec.translation))throw Error('Placement leaves learning lattice');
   const c=this.candidate(spec.oi,spec.translation);if(!c||!this.legal(c))throw Error('Illegal oracle placement');
   const generation=root?0:1+Math.min(...c.cells.flatMap(p=>[...(this.generations.get(p.k)?.keys()??[])]));
-  const undo=c.cells.map(p=>[p.k,this.totals.get(p.k),this.generations.get(p.k)]);
+   const undo=c.cells.map(p=>[p.k,this.totals.get(p.k),this.generations.get(p.k),this.introducedAt.get(p.k)]);
   undo.cacheSizes=[this.pointOrder.length,this.candidateOrder.length,this.rejectedOrder.length];
   this.selected.push(c);this.used.add(c.id);c.selected=true;
-  for(let i=0;i<c.cells.length;i++){const p=c.cells[i];p.total+=c.weights[i];this.totals.set(p.k,p.total);const counts=new Map(this.generations.get(p.k));counts.set(generation,(counts.get(generation)??0)+1);this.generations.set(p.k,counts);}
+   for(let i=0;i<c.cells.length;i++){const p=c.cells[i];p.total+=c.weights[i];this.totals.set(p.k,p.total);const counts=new Map(this.generations.get(p.k));counts.set(generation,(counts.get(generation)??0)+1);this.generations.set(p.k,counts);if(!this.introducedAt.has(p.k))this.introducedAt.set(p.k,root?0:this.selected.length-1);}
   this.refresh(c.cells.map(p=>p.k));return undo;
  }
- rollback(undo){const c=this.selected.at(-1);if(this.fixedIds.has(c.id))throw Error('Cannot roll back a fixed oracle seed');this.selected.pop();this.used.delete(c.id);c.selected=false;for(const [k,n,g] of undo){this.sites.get(k).total=n??0;if(n===undefined){this.totals.delete(k);this.generations.delete(k);}else{this.totals.set(k,n);this.generations.set(k,g);}}this.refresh(undo.map(([k])=>k));if(!this.retainBranchCaches)this.releaseCaches(undo.cacheSizes);}
+  rollback(undo){const c=this.selected.at(-1);if(this.fixedIds.has(c.id))throw Error('Cannot roll back a fixed oracle seed');this.selected.pop();this.used.delete(c.id);c.selected=false;for(const [k,n,g,birth] of undo){this.sites.get(k).total=n??0;if(n===undefined){this.totals.delete(k);this.generations.delete(k);}else{this.totals.set(k,n);this.generations.set(k,g);}if(birth===undefined)this.introducedAt.delete(k);else this.introducedAt.set(k,birth);}this.refresh(undo.map(([k])=>k));if(!this.retainBranchCaches)this.releaseCaches(undo.cacheSizes);}
  releaseCaches([pointCount,candidateCount,rejectedCount]){
   // A parent frontier already had complete incidence. Newly created points
   // therefore become inactive on rollback; their cache entries are disposable.
@@ -99,9 +101,19 @@ export class CoronaGraph{
   }
   while(this.rejectedOrder.length>rejectedCount)this.fixedRejected.delete(this.rejectedOrder.pop());
  }
- schedule(){let forced=null,branch=null;
-  for(const k of this.active){const p=this.points.get(k);if(!p.degree)return {kind:'dead',point:p};if(p.degree===1)forced??=p;const generation=Math.min(...this.generations.get(k).keys());if(!branch||generation<branch.generation||generation===branch.generation&&p.degree<branch.point.degree)branch={point:p,generation};}
-  return {kind:forced?'forced':branch?'branch':'closed',point:forced??branch?.point};
+  schedule(random = Math.random) {
+   const lastPoints = new Set(this.selected.at(-1)?.cells.map(cell => cell.k));
+   const frontier = [...this.active].map(k => ({
+    point: this.points.get(k), introducedAt: this.introducedAt.get(k),
+    legal: [...this.points.get(k).incident].filter(candidate => candidate.valid)
+   }));
+   const selected = selectPointBranch(frontier, random, {
+    isAdjacent: candidate => candidate.cells.some(cell => lastPoints.has(cell.k))
+   });
+   if (selected.dead) return {kind:'dead',point:selected.dead.point};
+   const first = selected.moves[0];
+   return {kind:first?(selected.forced?'forced':'branch'):'closed',point:first?.frontier.point,
+    candidates:selected.moves.map(move=>move.placement)};
  }
  descriptors(){return this.selected.map(c=>({oi:c.oi,translation:[...c.translation]}));}
  audit(){for(const s of this.sites.values())if(s.total!==(this.totals.get(s.k)??0))throw Error('Shared point total mismatch');for(const c of this.candidates.values())if(c.selected!==this.used.has(c.id))throw Error('Shared candidate selection mismatch');for(const p of this.points.values()){const valid=[...p.incident].filter(c=>this.legal(c));if(valid.length!==p.degree||[...p.incident].some(c=>c.valid!==this.legal(c)))throw Error('Oracle incidence mismatch');}return true;}
@@ -120,17 +132,18 @@ export function verifyCorona(model,pair,placements){
  }
  return {complete:[...core].every(k=>totals.get(k)===model.capacity)&&!dead.length,coreComplete:[...core].every(k=>totals.get(k)===model.capacity),frontierViable:!dead.length,deadPoints:dead};
 }
-export async function* checkCorona(model,pair,{nodes=500,deadline=Infinity,stop=()=>false,audit=false,candidateLimit=100000,dependencyLimit=1000000,fixedSeedFilter=true,retainBranchCaches=true,filterAtBirth=!retainBranchCaches}={}){
+export async function* checkCorona(model,pair,{nodes=500,deadline=Infinity,stop=()=>false,audit=false,candidateLimit=100000,dependencyLimit=1000000,fixedSeedFilter=true,retainBranchCaches=true,filterAtBirth=!retainBranchCaches,seed=1}={}){
  let graph,n=0,backtracks=0,reason=null,last=0,best=pair,won=false;const core=new Set(pair.flatMap(p=>model.orientations[p.oi].cells.map(c=>pointKey(add(c.pos,p.translation)))));
+  let rng = seed >>> 0;
+  const random = () => ((rng = (Math.imul(rng, 1664525) + 1013904223) >>> 0) / 4294967296);
  const expired=()=>{if(stop())reason='cancelled';else if(performance.now()>=deadline)reason='time budget';else if(n>=nodes)reason='attempt budget';return !!reason;};
  async function* visit(depth){
   if(expired())return false;if(depth>256){reason='depth budget';return false;}
-  const s=graph.schedule();if(audit)graph.audit();
+   const s=graph.schedule(random);if(audit)graph.audit();
   if(s.kind==='dead'){yield {type:'corona-step',action:'dead',point:s.point.pos,placements:graph.descriptors(),nodes:n,backtracks};return false;}
   if([...core].every(k=>graph.totals.get(k)===model.capacity))return true;
   if(!s.point)throw Error('Incomplete core without an obligation');
-  // Branch order is generation first, degree only breaking generation ties.
-  for(const c of s.point.incident){if(!c.valid)continue;if(expired())return false;n++;const undo=graph.apply(c);best=graph.descriptors();
+   for(const c of s.candidates){if(!c.valid)continue;if(expired())return false;n++;const undo=graph.apply(c);best=graph.descriptors();
    if(performance.now()-last>35){last=performance.now();yield {type:'corona-step',action:s.kind==='forced'?'forced':'place',placements:best,nodes:n,backtracks};await new Promise(r=>setTimeout(r,0));}
    if(yield* visit(depth+1))return true;
    graph.rollback(undo);backtracks++;if(audit)graph.audit();if(reason)return false;

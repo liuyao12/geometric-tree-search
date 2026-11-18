@@ -20,7 +20,16 @@ const g=new PointGraph(fixtures[1]);assert(g.candidates.some(c=>c.points.length=
 const decorated=model([[p(0)],[p(0)]],[0,1]);decorated.orientations[0].marks=[{pos:[4,0,0],value:0}];decorated.orientations[1].marks=[{pos:[3,0,0],value:1}];
 const dg=new PointGraph(decorated),before=dg.digest(),a=dg.candidates.find(c=>c.oi===0&&c.translation[0]===0),b=dg.candidates.find(c=>c.oi===1&&c.translation[0]===1),trail=dg.apply(a);assert.equal(b.valid,false);dg.verifyDomains();dg.rollback(trail);assert.equal(dg.digest(),before);assert.equal(b.valid,true);
 // Decision precedence, independent of iteration order.
-const sg=new PointGraph(model([[p(0)],[p(0)]],[0,1,2]));const pts=[...sg.points.values()];pts[0].degree=1;pts[1].degree=0;assert.equal(sg.schedule().kind,'dead');pts[1].degree=2;assert.equal(sg.schedule().point,pts[0]);pts[0].degree=9;pts[0].generation=0;pts[1].generation=1;pts[2].generation=1;assert.equal(sg.schedule().point,pts[0]);
+const sg=new PointGraph(model([[p(0)],[p(0)]],[0,1,2])),pts=[...sg.points.values()];
+const domain=sg.domain.bind(sg);
+let deadPoint=true;
+sg.domain=point=>point===pts[1]&&deadPoint?[]:point===pts[0]?domain(point).slice(0,1):domain(point);
+assert.equal(sg.schedule(()=>0).kind,'dead');
+deadPoint=false;assert.equal(sg.schedule(()=>0).point,pts[0]);assert.equal(sg.schedule(()=>0).kind,'forced');
+sg.domain=domain;pts[0].generation=999;
+const choice=sg.schedule(()=>.999);
+assert.equal(choice.point,pts[0],'All fixed-window obligations have age zero, regardless of geometric generation.');
+assert.deepEqual(new Set(choice.candidates.map(c=>c.id)),new Set(domain(choice.point).map(c=>c.id)));
 // Budget exhaustion cannot be called a proof; truncated graphs throw.
 assert.equal((await result(fixtures[1],{timeMs:0})).result,'unknown');assert.throws(()=>new PointGraph(fixtures[1],{candidateLimit:1}),/Complete graph/);
 assert.equal(verify(fixtures[0],[{oi:0,translation:[0,0,0]},{oi:0,translation:[0,0,0]}]).ok,false);

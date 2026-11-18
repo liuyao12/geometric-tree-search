@@ -1,14 +1,15 @@
 import {createOnlineMarkings} from './penrose-online-markings.js';
 import {collectCandidateContacts} from './penrose-candidate-contacts.js?v=20260908-online';
-import {embedding,latticeKey} from './cyclotomic-five.js';
+import {latticeKey} from './cyclotomic-five.js';
 import {num,sub,box,separated} from './penrose-polygon.js';
 import {mixedVariants,translateVariant,mixedGeometryConflict,TILE_KINDS} from './penrose-mixed-growth.js?v=20260908-online';
 import {tileStates,mixedMarkingsCompatible,extendedBars} from './penrose-mixed-markings.js?v=20260907-frontier';
 import {arrowStates} from './penrose-arrows.js?v=20260907-extent';
 import {validateExtent} from './penrose-extensions.js?v=20260907-extent';
 import {createFrontierGraph} from './tiling-frontier-graph.js?v=20260908-online';
-const priority=(key,seed)=>{let h=(2166136261^seed)>>>0;for(const c of key)h=Math.imul(h^c.charCodeAt(0),16777619)>>>0;return h;};
 export function createPenrosePointSearch({tileKinds=['thick','thin'],useMarkings=true,extent=0,targetCount=60,nodeLimit=10000,seed=1,markingDirections=5,learnMarkings=true}={}) {
+  let rng = seed >>> 0;
+  const random = () => ((rng = (Math.imul(rng, 1664525) + 1013904223) >>> 0) / 4294967296);
   validateExtent(extent);
   if(!Array.isArray(tileKinds)||!tileKinds.length||tileKinds.some(k=>!TILE_KINDS.includes(k)))throw Error('Choose at least one tile');
   if(markingDirections!==5)throw Error('Tiling requires all five Ammann directions');
@@ -42,6 +43,7 @@ export function createPenrosePointSearch({tileKinds=['thick','thin'],useMarkings
   }
   function capacity(t){if(ids.has(t.id))return false;if(t.vertices.some((v,k)=>(totals.get(v)||0)+t.weights[k]>10)){stats.capacityPrunes++;return false;}return true;}
   const graph=createFrontierGraph({
+    random,
     enumerate(point){return [...anchored.values()].map(v=>translateVariant(v,point.exact));},
     legal(t){return capacity(t)&&active.every(a=>pair(t,a));},
     compatibleWithAddition(t,added){return capacity(t)&&pair(t,added);}, footprint
@@ -49,8 +51,6 @@ export function createPenrosePointSearch({tileKinds=['thick','thin'],useMarkings
   function frontier(){const points=[];for(const[key,total]of totals)if(total>0&&total<10)points.push({key,total,exact:positions.get(key),depth:Math.min(...depths.get(key))});minimumFrontierGeneration=points.length?Math.min(...points.map(p=>p.depth)):null;return points;}
   function put(t){const near=t.vertices.flatMap(v=>depths.get(v)||[]);t.generation=near.length?Math.min(...near)+1:0;active.push(t);ids.add(t.id);t.vertices.forEach((v,k)=>{totals.set(v,(totals.get(v)||0)+t.weights[k]);positions.set(v,t.exactPoints[k]);if(!depths.has(v))depths.set(v,[]);depths.get(v).push(t.generation);});}
   function remove(t){active.pop();ids.delete(t.id);t.vertices.forEach((v,k)=>{const total=totals.get(v)-t.weights[k];if(total)totals.set(v,total);else{totals.delete(v);positions.delete(v);}depths.get(v).pop();if(!depths.get(v).length)depths.delete(v);});frontier();}
-  const compare=(a,b)=>a.depth-b.depth||distance(a)-distance(b)||a.key.localeCompare(b.key);
-  function distance(p){const e=embedding(p.exact);return e.x*e.x+e.y*e.y;}
   function learnAtDecision(choice){
     if(!learner)return;
     // The teacher already gives exact graph domains. Learn one unresolved
@@ -63,18 +63,18 @@ export function createPenrosePointSearch({tileKinds=['thick','thin'],useMarkings
     }
   }
   function* dfs(){
-    const choice=graph.choose(compare);
+    const choice=graph.choose();
     if(choice?.dead){stats.deadPoints++;yield{type:'dead',frontier:choice.point.key,message:'Dead point: no legal candidate'};return false;}
     if(targetCount!==null&&active.length>=targetCount){status='target reached';return true;}
     if(stats.proposals>=nodeLimit||active.length>=2000){status=active.length>=2000?'2000-tile safety limit reached':'budget reached';stopped=true;return false;}
     if(!choice)return false;
     learnAtDecision(choice);
-    const options=choice.candidates.sort((a,b)=>priority(a.id,seed)-priority(b.id,seed)||a.id.localeCompare(b.id));
+    const options=choice.candidates;
     if(!choice.forced)stats.branches++;
     for(const candidate of options){
       const t={...candidate}; // Candidate nodes stay immutable; generation belongs to the placement.
       if(stats.proposals>=nodeLimit){status='budget reached';stopped=true;return false;}
-      stats.proposals++;yield{type:'try',tile:t,forced:choice.forced,branchCount:options.length,frontier:choice.point.key,message:choice.forced?'Forced tile at a one-candidate point':`${options.length}-way branch at a minimum-degree point`};
+      stats.proposals++;yield{type:'try',tile:t,forced:choice.forced,branchCount:options.length,frontier:choice.point.key,message:choice.forced?'Forced tile at a one-candidate point':`${options.length}-way branch at the selected frontier point`};
       put(t);const delta=graph.push(t,frontier());stats.peak=Math.max(stats.peak,active.length);if(choice.forced)stats.forcedMoves++;
       yield{type:'add',tile:t,forced:choice.forced,branchCount:options.length,frontier:choice.point.key,message:choice.forced?`Forced ${t.kind}`:`Place ${t.kind}`};
       if(yield*dfs())return true;if(stopped)return false;

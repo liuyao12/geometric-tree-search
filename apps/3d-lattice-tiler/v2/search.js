@@ -1,5 +1,6 @@
 // Exact finite point-window engine. No face, volume, periodic, or catalog rule
 // participates in legality. All reversible changes share one trail.
+import { selectPointBranch } from '../../../assets/gcts-point-branching.js';
 export const key=p=>p.join(',');
 const plus=(a,b)=>a.map((x,i)=>x+b[i]);
 // Absent components are free; assigned zero is still a matching value.
@@ -56,15 +57,18 @@ export class PointGraph {
     return mark;
   }
   rollback(mark){while(this.trail.length>mark){const [kind,item,old]=this.trail.pop();if(kind==='valid'){item.valid=true;for(const p of item.points)p.degree++;}else if(kind==='selected'){item.selected=false;delete item.generation;this.selected.pop();}else{const map=kind==='total'?this.totals:this.section;if(old===undefined)map.delete(item);else map.set(item,old);}}}
-  schedule(){
-    let forced=null,branch=null,remaining=0;
+  schedule(random = Math.random){
+    const frontier=[];
     for(const [k,p] of this.points){
-      if(this.totals.get(k)===this.model.capacity)continue;remaining++;
-      if(!p.degree)return {kind:'dead',point:p,remaining};
-      if(p.degree===1)forced??=p;
-      if(!branch||p.generation<branch.generation||(p.generation===branch.generation&&p.degree<branch.degree))branch=p;
+      if(this.totals.get(k)===this.model.capacity)continue;
+      frontier.push({point:p,introducedAt:0,legal:this.domain(p)});
     }
-    return {kind:!remaining?'solved':forced?'forced':'branch',point:forced??branch,remaining};
+    const lastPoints=new Set(this.selected.at(-1)?.cells.map(cell=>cell.k));
+    const selected=selectPointBranch(frontier,random,{isAdjacent:candidate=>candidate.cells.some(cell=>lastPoints.has(cell.k))});
+    if(selected.dead)return {kind:'dead',point:selected.dead.point,remaining:frontier.length};
+    const first=selected.moves[0];
+    return {kind:first?(selected.forced?'forced':'branch'):'solved',point:first?.frontier.point,
+      remaining:frontier.length,candidates:selected.moves.map(move=>move.placement)};
   }
   domain(p){return p.incident.filter(c=>c.valid);}
   digest(){return JSON.stringify({totals:[...this.totals].sort(),marks:[...this.section].sort(),selected:this.selected.map(c=>c.id),valid:this.candidates.map(c=>c.valid),degrees:[...this.points.values()].map(p=>p.degree)});}
@@ -106,6 +110,8 @@ export async function* search(model,config={}) {
   const stats={attempts:0,accepted:0,forced:0,branches:0,backtracks:0,capacityCuts:0,lookaheadCuts:0,probes:0,clusterProposals:0,clusterValidated:0,clusterUses:0,learningMs:0,graphMs:0,peakTrail:0};
   const graph=new PointGraph(model);stats.graphMs=performance.now()-started;
   const seed=config.seed??1,library=new Map(),limit=config.timeMs??10000,nodeLimit=config.nodes??10000;
+  let rng=seed>>>0;
+  const random=()=>((rng=(Math.imul(rng,1664525)+1013904223)>>>0)/4294967296);
   let stopReason=null,best=[],lastEmit=0;
   const expired=()=>{if(performance.now()-started>=limit)stopReason='time budget';else if(stats.attempts>=nodeLimit)stopReason='attempt budget';return !!stopReason;};
   const descriptors=()=>graph.selected.map(c=>({oi:c.oi,translation:c.translation.slice(),generation:c.generation}));
@@ -118,12 +124,12 @@ export async function* search(model,config={}) {
   }
   function filter(){
     if(residualDead()){stats.capacityCuts++;return;}
-    let s=graph.schedule();if(s.kind!=='branch')return;
+    let s=graph.schedule(random);if(s.kind!=='branch')return;
     // A bounded subset affects pruning strength only, never the base universe.
     for(const c of graph.domain(s.point).slice(0,8)){
       if(expired())return;const mark=graph.apply(c);stats.probes++;
-      let next=graph.schedule(),steps=0;
-      while(next.kind==='forced'&&steps++<3){graph.apply(graph.domain(next.point)[0]);next=graph.schedule();}
+      let next=graph.schedule(random),steps=0;
+      while(next.kind==='forced'&&steps++<3){graph.apply(graph.domain(next.point)[0]);next=graph.schedule(random);}
       const dead=next.kind==='dead'||residualDead();graph.rollback(mark);
       if(dead){graph.disable(c);stats.lookaheadCuts++;}
     }
@@ -135,11 +141,11 @@ export async function* search(model,config={}) {
       const mark=graph.trail.length,expansion=[];let next=first;
       for(let i=0;i<3&&next;i++){
         graph.apply(next);expansion.push({oi:next.oi,translation:next.translation.map((x,j)=>x-first.translation[j])});
-        const s=graph.schedule();if(s.kind==='dead')break;
+        const s=graph.schedule(random);if(s.kind==='dead')break;
         next=s.point?graph.domain(s.point).sort((a,b)=>hash(`${seed}:${a.id}`)-hash(`${seed}:${b.id}`))[0]:null;
       }
       stats.clusterProposals++;
-      const s=graph.schedule(),signature=JSON.stringify(expansion);
+      const s=graph.schedule(random),signature=JSON.stringify(expansion);
       const covered=model.required.length-s.remaining;
       if(s.kind!=='dead'){
         stats.clusterValidated++;let record=library.get(signature);
@@ -155,13 +161,13 @@ export async function* search(model,config={}) {
     if(expired())return false;
     if(depth>1024){stopReason='depth budget';return false;}
     const mark=graph.trail.length;
-    let s=graph.schedule(); // Global dead always precedes forced or goal.
+    let s=graph.schedule(random); // Global dead always precedes forced or goal.
     if(s.kind==='dead'){graph.rollback(mark);return false;}
-    if(gcts){filter();s=graph.schedule();if(residualDead()){graph.rollback(mark);return false;}}
+    if(gcts){filter();s=graph.schedule(random);if(residualDead()){graph.rollback(mark);return false;}}
     if(expired()){graph.rollback(mark);return false;}
     if(s.kind==='solved')return true;
     if(s.kind==='dead'){graph.rollback(mark);return false;}
-    let moves=graph.domain(s.point).sort((a,b)=>hash(`${seed}:${a.id}`)-hash(`${seed}:${b.id}`));
+    let moves=s.candidates;
     let proposal=null;
     if(s.kind==='branch'){stats.branches++;if(rl){proposal=proposals(moves);if(proposal){moves=[proposal.first,...moves.filter(c=>c!==proposal.first)];stats.clusterUses++;}}}
     for(const c of moves){

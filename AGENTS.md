@@ -6,21 +6,32 @@ The user checks the 3D tiler on GitHub Pages. After changes to
 Pages site and verify the live update, unless the user explicitly asks for
 local-only work. Preserve unrelated work when preparing the publication.
 
-## Base GCTS tiling search
+## Base GCTS search across projects
 
-Use the same search policy for every GCTS tiling problem. At each node, build or
-update the bipartite graph of frontier points and legal placements. Backtrack
-at a point with no moves, and take forced moves before branching. When there
-are no forced moves, pool the distinct placements adjacent to all frontier
-points that first entered the current board at the earliest step. Shuffle this
-pool uniformly and try each move at most once at that node. Restore point
-introduction times when backtracking. Point age means placement order, not
-geometric distance or corona generation.
+Use point-value incidence as the base GCTS model. Frontier points connect to
+complete legal placement domains wherever the placement contributes a positive
+point value. Markings remove incompatible incidences. The search rule is the same
+with and without markings.
 
-Treat geometric markings as compatibility constraints that remove edges from
-this graph. The base tree search, including forced moves and randomized oldest
-frontier choices, is the same with or without markings. The A2 engine exposes
-this as `branchPolicy: "oldest-frontier"`; use it for baseline comparisons.
+At each node, detect dead points globally, then exhaust forced moves globally.
+Pool distinct moves adjacent to the frontier points with the earliest
+chronological introduction step. Within that age group, prefer moves adjacent
+to the last placement, meaning that their positive point supports intersect.
+Choose randomly among equally preferred moves. After the first draw, fix one
+incident frontier point and keep all of its legal moves as sibling alternatives,
+including moves outside the adjacency preference. Preserve their randomized
+order and restore point ages, domains, and branch state on rollback. Fixed finite
+target obligations start at step zero. Geometric corona layers and spatial
+distance do not determine point age.
+
+Use `assets/gcts-point-branching.js` when working in the geometric-tree-search
+repository. The A2 engine defaults to `branchPolicy: "oldest-frontier"` and
+`requireEdgeSharing: false`. The Hat/Turtle demo in `GCTS-I.html` explicitly
+enables shared-boundary-segment incidence and fixes a shared segment for sibling
+alternatives. Its adjacency preference uses shared boundary segments. Keep this
+polygon specialization out of the general point-value baseline. Other scheduling
+policies must be named experimental controls. Preserve the original descriptions
+and results of historical experiments.
 
 ## Materials research retirement
 

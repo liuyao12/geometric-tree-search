@@ -36,20 +36,16 @@ export class GrowthGraph extends CoronaGraph {
   for(const c of this.candidateOrder.slice(sizes[1]))for(const m of c.marks){const set=this.markDependencies.get(m.k);set.delete(c);if(!set.size)this.markDependencies.delete(m.k);}
   super.releaseCaches(sizes);
  }
- schedule(){
-  const entries=[];
-  for(const k of this.active){const p=this.points.get(k);if(!p.degree)return {kind:'dead',point:p};const layer=this.model.slab?p.pos.reduce((a,b)=>a+b,0)/3:0,rankPos=p.pos.map(x=>x-layer);entries.push({point:p,rankPos,rankKey:rankPos.join(','),generation:Math.min(...this.generations.get(k).keys())});}
-  const order=(a,b)=>a.generation-b.generation||a.point.degree-b.point.degree||Math.max(...a.rankPos.map(Math.abs))-Math.max(...b.rankPos.map(Math.abs))||(this.totals.get(b.point.k)??0)-(this.totals.get(a.point.k)??0)||a.rankPos.reduce((s,x)=>s+Math.abs(x),0)-b.rankPos.reduce((s,x)=>s+Math.abs(x),0)||(a.rankKey<b.rankKey?-1:a.rankKey>b.rankKey?1:0);
-  const forced=entries.filter(e=>e.point.degree===1).sort(order)[0],branch=entries.sort(order)[0];
-  return {kind:forced?'forced':branch?'branch':'closed',point:(forced??branch)?.point,generation:(forced??branch)?.generation};
+  schedule(random){
+   const selected=super.schedule(random);
+   return {...selected,generation:selected.point?Math.min(...this.generations.get(selected.point.k).keys()):undefined};
  }
  descriptors(){return this.selected.map(c=>({oi:c.oi,translation:[...c.translation],generation:c.generation}));}
 }
 export function orderGrowthCandidates(graph,point,random){
- return [...point.incident].filter(c=>c.valid).map(c=>{
-  const coverage=c.cells.filter(p=>p.total>0).length,index=c.cells.findIndex(p=>p.k===point.k);
-  return {c,fills:(graph.totals.get(point.k)??0)+c.weights[index]>=graph.model.capacity,degree:[...c.points].filter(p=>graph.active.has(p.k)).length,coverage,newPoints:c.cells.length-coverage,tie:random()};
- }).sort((a,b)=>Number(b.fills)-Number(a.fills)||b.degree-a.degree||b.coverage-a.coverage||b.newPoints-a.newPoints||a.tie-b.tie).map(e=>e.c);
+ const moves=[...point.incident].filter(c=>c.valid);
+ for(let i=moves.length-1;i>0;i--){const j=Math.floor(random()*(i+1));[moves[i],moves[j]]=[moves[j],moves[i]];}
+ return moves;
 }
 // Independent replay: sum point weights, compare assigned components, and
 // exhaustively enumerate candidates at every exposed point (including outside
@@ -91,9 +87,9 @@ export async function* grow(model,config={}){
    try{
     for(let i=0;i<3&&next;i++){
      undos.push(graph.apply(next));expansion.push({oi:next.oi,translation:sub(next.translation,first.translation)});
-     const s=graph.schedule();if(s.kind==='dead')break;next=s.point?orderGrowthCandidates(graph,s.point,random)[0]:null;
+     const s=graph.schedule(random);if(s.kind==='dead')break;next=s.candidates[0]??null;
     }
-    stats.clusterProposals++;const s=graph.schedule();
+    stats.clusterProposals++;const s=graph.schedule(random);
     if(s.kind!=='dead'){
      stats.clusterValidated++;const key=JSON.stringify(expansion);let record=library.get(key);
      if(!record){record={expansion,visits:0,value:0,source:'online growth scheduler-valid rollout'};if(library.size<512)library.set(key,record);}
@@ -112,11 +108,11 @@ export async function* grow(model,config={}){
   while(true){
    if(expired())break;
    if(entering){
-    const s=graph.schedule();if(config.audit)graph.audit();
+     const s=graph.schedule(random);if(config.audit)graph.audit();
     if(s.kind!=='dead'){
      if(graph.selected.length>best.length)best=graph.descriptors();
      if(graph.selected.length>=target||s.kind==='closed'){won=true;break;}
-     let moves=orderGrowthCandidates(graph,s.point,random),pick=null;
+      let moves=s.candidates,pick=null;
      if(s.kind==='branch'){stats.branches++;if(rl){pick=proposal(moves);if(pick){moves=[pick.first,...moves.filter(c=>c!==pick.first)];stats.clusterUses++;}}}
      stack.push({moves,index:0,kind:s.kind,point:s.point.pos,pick,undo:null});
     }else if(config.trace||performance.now()-lastEmit>50){lastEmit=performance.now();yield frame('progress','dead',s.point.pos);await new Promise(r=>setTimeout(r,0));}
