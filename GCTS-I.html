@@ -228,6 +228,8 @@
         reflectedStroke: '#a74700'
       };
       const markValueColors = { positive: '#d55e00', negative: '#0072b2' };
+      const turtleOverlayModels = new Map();
+      const turtleOverlays = new WeakMap();
       const coordinatePermutations = [[0, 1, 2], [0, 2, 1], [1, 0, 2], [1, 2, 0], [2, 0, 1], [2, 1, 0]];
       const turtleMarkSegments = turtleMarkSegmentSpecs.map(cotangentMarkSegmentFromSpec);
       const rawTurtle = turtleVertices3d.map(projectA2Raw);
@@ -664,7 +666,7 @@
       function visibleMarkVectors() {
         const markSums = new Map();
         visiblePlacements().forEach(placement => {
-          placement.markings.forEach(entry => {
+          displayedMarkingEntries(placement).forEach(entry => {
             const key = markingKey(entry);
             const existing = markSums.get(key);
             const values = existing?.values ? new Set(existing.values) : new Set();
@@ -1498,8 +1500,56 @@
         ctx.restore();
       }
 
+      function scalarTurtlePreview() {
+        return !manualPanelMode && activeDemoStage === 'marking' && !markingEnabled();
+      }
+
+      function turtleOverlay(placement) {
+        if (placement.sharedSpec && placement.sharedSpec.tile !== 'turtle') return null;
+        const monochrome = scalarTurtlePreview();
+        const extent = markingSource === 'standard' ? markingExtension : 0;
+        const sublattice = usingSublattice();
+        const key = `${monochrome}:${extent}:${sublattice}`;
+        const cached = turtleOverlays.get(placement);
+        if (cached?.key === key) return cached;
+        if (!turtleOverlayModels.has(key)) {
+          turtleOverlayModels.set(key, new FixedA2Marking(extent, {
+            rank: monochrome ? 1 : 3,
+            pointFilter: sublattice ? isTurtleSublatticeVector : null
+          }));
+        }
+        const marking = turtleOverlayModels.get(key);
+        const symmetry = placement.orientation;
+        const translation = placement.sharedSpec ? placement.translation
+          : add3(transform3(turtleVertices3d[0], symmetry), placement.translation);
+        const shared = { tile: 'turtle', orientation: { symmetry, index: symmetry.orientationIndex }, translation };
+        const overlay = { key, monochrome, marking, shared, segments: marking.segments(shared) };
+        turtleOverlays.set(placement, overlay);
+        return overlay;
+      }
+
+      function markingEntries(marking, placement) {
+        return [...marking.entries(placement)].map(([key, value]) => {
+          const [point, component] = key.split('|');
+          return { point: point.split(',').map(Number), component: Number(component), value };
+        });
+      }
+
+      function displayedMarkingEntries(placement) {
+        if (markingEnabled()) return placement.markings;
+        const overlay = turtleOverlay(placement);
+        if (!overlay) return [];
+        return overlay.entries ??= markingEntries(overlay.marking, overlay.shared);
+      }
+
+      function displaysMarkingPoints(placement) {
+        return placement.sharedSpec && (markingSource === 'learned' || usingHatRank3());
+      }
+
       function drawMarkings(placement) {
-        if (placement.sharedSpec && (markingSource === 'learned' || usingHatRank3())) {
+        const overlay = turtleOverlay(placement);
+        if (overlay) drawMarkingSegments(overlay.segments, overlay.monochrome);
+        if (displaysMarkingPoints(placement)) {
           ctx.save();
           ctx.lineCap = 'round';
           for (const entry of placement.markings) {
@@ -1513,22 +1563,29 @@
             ctx.setLineDash(entry.value < 0 ? [2,2] : []);
             drawLine(worldToScreen(a.x,a.y),worldToScreen(b.x,b.y),entry.value===0?'#7d9088':`hsl(${Math.abs(entry.value)*137.5%360} 65% 36%)`,Math.max(.5,1.7*scale));
           }
-          ctx.restore(); return;
+          ctx.restore();
+        } else if (!overlay && markingEnabled()) {
+          drawMarkingSegments(placement.markSegments, markingRank === 1);
         }
+      }
+
+      function drawMarkingSegments(segments, monochrome) {
         ctx.save();
         ctx.lineCap = 'round';
-        placement.markSegments.forEach(segment => {
+        segments.forEach(segment => {
           const displayFrom = projectA2(segment.displayFromPoint || segment.fromPoint);
           const from = projectA2(segment.fromPoint);
           const to = projectA2(segment.toPoint);
           const displayTo = projectA2(segment.displayToPoint || segment.toPoint);
-          const color = markingRank === 1
+          const color = monochrome
             ? '#707875'
             : segment.value > 0 ? markValueColors.positive : markValueColors.negative;
           const width = Math.max(0.35, 4.1 * scale);
-          ctx.globalAlpha = 0.3;
-          drawLine(worldToScreen(displayFrom.x, displayFrom.y), worldToScreen(from.x, from.y), color, width);
-          drawLine(worldToScreen(to.x, to.y), worldToScreen(displayTo.x, displayTo.y), color, width);
+          if (markingSource === 'standard' && markingExtension > 0) {
+            ctx.globalAlpha = 0.3;
+            drawLine(worldToScreen(displayFrom.x, displayFrom.y), worldToScreen(from.x, from.y), color, width);
+            drawLine(worldToScreen(to.x, to.y), worldToScreen(displayTo.x, displayTo.y), color, width);
+          }
           ctx.globalAlpha = 1;
           drawLine(worldToScreen(from.x, from.y), worldToScreen(to.x, to.y), color, width);
         });
@@ -1536,6 +1593,7 @@
       }
 
       function drawExteriorMarkingPoints(placement) {
+        if (!markingEnabled()) return;
         const occupancyKeys = new Set(placement.occupancy.map(item => key3(item.point)));
         const exterior = new Map();
         placement.markings.forEach(entry => {
@@ -1647,7 +1705,7 @@
         const lines = [`t=${formatTValue(pointEntry.value)} at (${pointEntry.point.join(',')})`];
         if (showMarkings) {
           const mark = markStateAt(pointEntry.point);
-          if (markingSource === 'standard' && markingRank === 1) {
+          if ((markingSource === 'standard' && markingRank === 1) || scalarTurtlePreview()) {
             lines.push(`m=${mark.vector.some(value => value !== null && value !== 0) ? 1 : 0}`);
           } else {
             lines.push(formatMarkVector(mark.vector));
@@ -1713,11 +1771,12 @@
         placement.vertices3d.forEach(include);
         placement.occupancy.forEach(entry => include(entry.point));
         if (showMarkings) {
-          placement.markings.forEach(entry => {
+          displayedMarkingEntries(placement).forEach(entry => {
             include(entry.point);
-            if (placement.sharedSpec && (markingSource === 'learned' || usingHatRank3())) markingSegmentEndpoints(entry).forEach(include);
+            if (displaysMarkingPoints(placement)) markingSegmentEndpoints(entry).forEach(include);
           });
-          placement.markSegments.forEach(segment => {
+          const segments = turtleOverlay(placement)?.segments ?? placement.markSegments;
+          segments.forEach(segment => {
             include(segment.displayFromPoint || segment.fromPoint);
             include(segment.displayToPoint || segment.toPoint);
           });
@@ -1744,7 +1803,7 @@
         const visible = visiblePlacements();
         const keys = visible.map(placement => `${placement.sharedSpec?.tile||'turtle'}:${placement.orientation.orientationIndex}|${key3(placement.translation)}`);
         const viewKey = [canvas.width, canvas.height, ratio, scale, offset.x, offset.y,
-          showMarkings, markingSource, hatMarkingComponent.value, hatMarkingZeros.checked, hatMarkingPatternInput.value, markingRank, markingExtension, latticeToggle.checked, usingSublattice(), seedOrientationIndex].join('|');
+          showMarkings, markingSource, scalarTurtlePreview(), hatMarkingComponent.value, hatMarkingZeros.checked, hatMarkingPatternInput.value, markingRank, markingExtension, latticeToggle.checked, usingSublattice(), seedOrientationIndex].join('|');
         // Shared-engine events reconstruct placement objects, so compare stable
         // geometric keys rather than object identities to recognize an append.
         const fullRedraw = !renderCache || renderCache.viewKey !== viewKey
@@ -1990,6 +2049,7 @@
           return;
         }
         if (stageName === 'marking' || stageName === 'markings') {
+          markingSource = 'none';
           markingRank = stage.markingRank;
           orientations = buildOrientations(markingExtension, markingRank);
           refreshPlacementsForMarkingRank();
@@ -2106,10 +2166,9 @@
           const spec = {tile:placement.tile,orientation:placement.orientation.index,translation:[...placement.translation]};
           const learner = createConnectionLearner(selectedTileSet,{lattice:usingSublattice()?'turtle-sublattice':'A2'}), full = learner.materialize(spec);
           const fixed = markingSource === 'standard' ? fixedPanelMarking() : null;
-          const fixedEntries = fixed ? [...fixed.entries(placement)].map(([key,value])=>{const [point,component]=key.split('|');return {point:point.split(',').map(Number),component:Number(component),value};}) : [];
           return {sharedSpec:spec,orientation:{...symmetry,orientationIndex:placement.orientation.index,planeSign:parity(symmetry.permutation)},translation:spec.translation,
             vertices3d:full.loop,points:full.loop.map(projectA2),occupancy:[...placement.orientation.occupancy.values()].map(e=>({point:add3(e.point,spec.translation),value:e.weight,kind:e.weight===12?'interior':'vertex'})),
-            markings:fixed?fixedEntries:displayMarking?learner.entries(spec,activeMarkingSupport(displayMarking)):[],markSegments:fixed?.segments?.(placement)??[],values:[],generation:placement.generation,...extras};
+            markings:fixed?markingEntries(fixed,placement):displayMarking?learner.entries(spec,activeMarkingSupport(displayMarking)):[],markSegments:fixed?.segments?.(placement)??[],values:[],generation:placement.generation,...extras};
         }
         const localOrientation = orientations.find(orientation => sameSymmetry(orientation, placement.orientation.symmetry)) || orientations[0];
         const shiftedOrigin = a2Transform(turtleVertices3d[0], placement.orientation.symmetry);
@@ -2492,6 +2551,7 @@
 
       startButton.addEventListener('click', () => startTilingPlayback());
       markingsButton.addEventListener('click', () => {
+        manualPanelMode = true;
         showMarkings = !showMarkings;
         if (stageLabel) stageLabel.textContent = showMarkings ? 'Stage: markings enabled manually' : 'Stage: markings hidden manually';
         if (stageNote) stageNote.textContent = showMarkings ? 'The specified vertex-to-vertex marking segments are now drawn on each turtle.' : 'The Turtle shapes remain, but the three marking components are hidden.';
