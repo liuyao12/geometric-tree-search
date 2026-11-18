@@ -630,7 +630,8 @@
           return demoPlacementFromShared(learner.materialize(learner.roots[0]), {generation:0,step:0,forced:true,branchCount:0});
         }
         const orientation = orientations[seedOrientationIndex];
-        const translation = [0, 0, 0];
+        // Anchor the same turtle in the zero coset for both marking modes.
+        const translation = usingSublattice() ? orientation.vertices3d[0].map(value => -value) : [0, 0, 0];
         const extras = {
           step: 0,
           forced: true,
