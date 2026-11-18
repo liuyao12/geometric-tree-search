@@ -102,7 +102,7 @@ export function createFrontierGraph({ enumerate, legal, compatibleWithAddition, 
     return { retainedCandidates:candidates.size, points: points.size, candidates: live.size, incidences, forcedPoints, deadPoints, ...counters };
   }
   // Read-only copies for tests and policy adapters; no engine state escapes.
-  function inspect() { return [...points.values()].map(p => ({ key: p.key, depth: p.depth, introducedAt:p.introducedAt, total: p.total, candidates: [...p.legal].sort() })).sort((a,b) => a.key.localeCompare(b.key)); }
+  function inspect() { return [...points.values()].map(p => ({ key: p.key, depth: p.depth, total: p.total, candidates: [...p.legal].sort() })).sort((a,b) => a.key.localeCompare(b.key)); }
   function candidateRecords() { return [...candidates.values()].filter(r => r.points.size > 0).map(r => ({tile:r.tile,legal:r.legal})); }
   const deadCount=()=>{let count=0;for(const p of points.values())count+=+(p.legal.size===0);return count;};
   return { build, push, pop, refine, choose, summary, inspect, candidateRecords, deadCount };

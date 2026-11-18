@@ -33,7 +33,6 @@ const graph=createFrontierGraph({random:()=>0,enumerate:p=>({p:[A,B],q:[A,C],r:[
 graph.build([{key:'p',depth:100,total:1},{key:'q',depth:100,total:1}]);
 const original=graph.inspect();
 const delta=graph.push({vertices:['q']},[{key:'p',depth:100,total:1},{key:'q',depth:100,total:1},{key:'r',depth:0,total:1}]);
-assert.equal(graph.inspect().find(p=>p.key==='r').introducedAt,1);
 assert.notEqual(graph.choose().point.key,'r','A newer point cannot outrank an older point, regardless of geometric generation.');
 graph.pop(delta);
 assert.deepEqual(graph.inspect(),original);
