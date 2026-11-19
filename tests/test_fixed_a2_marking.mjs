@@ -1,8 +1,19 @@
 import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {createHatRank3Marking} from '../assets/hat-rank3-marking.js';
 import {A2_TILE_LOOPS, FixedA2Marking, FixedTurtleMarking, tileOrientations, solveA2Tiling, makeHexBoundary} from '../assets/a2-tiling-engine.js';
 globalThis.requestAnimationFrame = callback => setTimeout(callback, 0);
 const root = tile => ({tile, orientation:tileOrientations(tile,A2_TILE_LOOPS[tile])[0], translation:[0,0,0]});
 const hat = root('hat');
+// Replay the full displayed sign vectors, including assigned zero and exterior
+// sites, against the independent Hat-only phase certificate at every extent.
+const phaseCertificate=JSON.parse(readFileSync(new URL('../research/hat-kagome-phase/certificate.json',import.meta.url),'utf8'));
+for(const [extent,rows] of phaseCertificate.full_marking_xy_xyz_components_by_extent.entries()){
+ const expected=new Map();
+ for(const [x,y,...vector] of rows)vector.forEach((value,component)=>expected.set(`${x},${y},${-x-y}|${component}`,value));
+ const stripes=createHatRank3Marking({extent,pattern:'more'});
+ assert.deepEqual(stripes.entries(hat),expected);
+}
 const marking = new FixedA2Marking(0,{rank:1,tiles:['hat']});
 // Explicit Hat fixture: four scalar stripes, with the intervening boundary site zero.
 const ones = [[0,0,0],[1,1,-2],[2,2,-4],[3,3,-6],[0,3,-3],[-1,5,-4],[4,1,-5],[0,6,-6]];

@@ -43,3 +43,11 @@ console.log('PASS lattice-specific identity, compact local timestamps, same-minu
 const masked={...mixed,reducedSupport:mixed.support.slice(0,2)};
 assert.notEqual(markingValues(masked),markingValues(mixed),'Individual stars change marking identity');
 assert.match(markingName(masked),/2 points · 2 values$/);
+
+// The article and learner use the default, in-memory library. A new page
+// gets a fresh module instance and must never inherit the previous results.
+const current=rememberMarking(model);
+assert.equal(current.persisted,false);
+assert.deepEqual(savedMarkings().map(m=>m.marking.id),[current.model.marking.id]);
+const nextVisit=await import('../assets/marking-library.js?new-visit');
+assert.deepEqual(nextVisit.savedMarkings(),[]);

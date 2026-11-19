@@ -2,7 +2,7 @@
 <html lang="en">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Learn tiling markings · GCTS</title><link rel="stylesheet" href="assets/tile-learning.css?v=20260921-domain-names"></head>
 <body class="learning-page">
-<header><h1>Learn local matching rules</h1><a href="GCTS-I.html#anchor-learning">Back to the tiler</a></header>
+<header><h1>Learn local matching rules</h1><a id="back-to-tiler" href="GCTS-I.html#anchor-learning">Back to the tiler</a></header>
 <main>
  <div id="learning-set-control" class="tile-set-options" role="radiogroup" aria-label="Tiles">
   <label><input type="radio" name="learning-tiles" value="turtle" checked> Turtle</label><label><input type="radio" name="learning-tiles" value="hat"> Hat</label><label><input type="radio" name="learning-tiles" value="mixed"> Turtle + Hat</label>
@@ -12,7 +12,7 @@
  <canvas id="learn-canvas" width="720" height="360" aria-label="Connection and extension on the left; learned tile markings on the right"></canvas>
  <div id="learn-metrics"></div><div id="learn-metadata"></div><div id="learn-sync" role="status"></div><div id="learn-status" role="status" aria-live="polite"></div>
  <div class="learning-controls actions"><button id="learn-export" disabled>Export evidence</button></div>
- <p class="scope">Check every neighboring pair with unmarked one-corona search. A completion succeeds only if every exposed frontier point has a legal candidate. Update the provisional marking after each label; hover over its points to inspect individual values and *. Save when every valid pair passes and more than half of invalid pairs are blocked, with none unresolved. One corona does not establish an infinite tiling.</p>
+ <p class="scope">Check every neighboring pair with unmarked one-corona search. A completion succeeds only if every exposed frontier point has a legal candidate. Update the provisional marking after each label; hover over its points to inspect individual values and *. An accepted marking is available during this visit. Use Export evidence to keep a copy. One corona does not establish an infinite tiling.</p>
 </main>
-<script type="module" src="assets/tile-learning-page.js?v=20260921-online-marking"></script>
+<script type="module" src="assets/tile-learning-page.js?v=visit-markings"></script>
 </body></html>
