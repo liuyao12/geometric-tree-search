@@ -48,49 +48,65 @@ export function normalizeHatRank3Extent(value){
  return Number.isFinite(n)?Math.max(0,Math.min(HAT_RANK3_MAX_EXTENT,n)):0;
 }
 const gcd=(a,b)=>b?gcd(b,a%b):Math.abs(a);
+function alternatingSupport(tiles, extent) {
+  const core = new FixedA2Marking(0, {tiles, rank: 1});
+  const entries = new Map();
+  function assign(tile, point, component, value) {
+    entries.set(`${tile}:${point}|${component}`, {tile, point, component, value});
+  }
+  for (const {tile, point} of core.support) {
+    const values = hatKagomeValues(point) ?? [0, 0, 0];
+    values.forEach((value, component) => assign(tile, point, component, value));
+  }
+  if (extent > 0) {
+    const orientation = {symmetry: {sign: 1, permutation: [0, 1, 2]}};
+    for (const tile of new Set(tiles)) {
+      const lines = core.segments({tile, orientation, translation: [0, 0, 0]});
+      for (const {fromPoint, toPoint} of lines) {
+        const delta = toPoint.map((v, i) => v - fromPoint[i]);
+        const steps = delta.reduce(gcd);
+        const step = delta.map(v => v / steps);
+        const component = step.findIndex(v => Math.abs(v) === 2);
+        for (let k = 1; k <= extent; k++) {
+          const before = fromPoint.map((v, i) => v - k * step[i]);
+          const after = toPoint.map((v, i) => v + k * step[i]);
+          for (const point of [before, after]) {
+            // Other directions remain unassigned unless their own stripes reach this point.
+            assign(tile, point, component, hatKagomeValues(point)[component]);
+          }
+        }
+      }
+    }
+  }
+  return [...entries.values()];
+}
+
 export function hatRank3Support({extent=0,pattern='sparse'}={}){
  const sparse=pattern==='sparse'||pattern==='sparse-reverse';
- const extra=sparse?0:normalizeHatRank3Extent(extent),reverse=pattern==='alternate'||pattern==='reverse'||pattern==='sparse-reverse';
+ const reverse=pattern==='alternate'||pattern==='reverse'||pattern==='sparse-reverse';
+ if(!sparse){
+  const support=alternatingSupport(['hat'],normalizeHatRank3Extent(extent));
+  return reverse?support.map(entry=>({...entry,value:entry.value===0?0:-entry.value})):support;
+ }
  const points=new Map(HAT_RANK3_ZERO_POINTS.map(point=>[point.join(','),{point,values:[0,0,0]}]));
- if(sparse){
-  for(const entry of HAT_RANK3_SPARSE_POINTS)points.set(entry.point.join(','),entry);
-  return [...points.values()].flatMap(({point,values})=>values.flatMap((value,component)=>value==='*'?[]:[{tile:'hat',point:[...point],component,value:reverse&&value!==0?-value:value}]));
- }
- for(const [a,b]of HAT_RANK3_SEGMENTS){
-  const delta=b.map((v,i)=>v-a[i]),steps=delta.reduce(gcd),step=delta.map(v=>v/steps);
-  for(let k=-extra;k<=steps+extra;k++){
-   const point=a.map((v,i)=>v+k*step[i]),values=hatKagomeValues(point);
-   if(!values)throw new Error('Hat marking segment left its rank-1 Kagome pattern');
-   points.set(point.join(','),{point,values});
-  }
- }
- return [...points.values()].flatMap(({point,values})=>values.map((value,component)=>({tile:'hat',point:[...point],component,value:reverse&&value!==0?-value:value})));
+ for(const entry of HAT_RANK3_SPARSE_POINTS)points.set(entry.point.join(','),entry);
+ return [...points.values()].flatMap(({point,values})=>values.flatMap((value,component)=>value==='*'?[]:[{tile:'hat',point:[...point],component,value:reverse&&value!==0?-value:value}]));
 }
 export function createHatRank3Marking(options={}){
  const sparse=(options.pattern??'sparse').startsWith('sparse');
  const extent=sparse?0:normalizeHatRank3Extent(options.extent??0);
  return new SparseA2Marking(hatRank3Support({...options,extent}),{
-  label:`Hat rank 3 Kagome · ${sparse?'sparse core':`extent ${extent}`}`,valueAction:'signed-permutation',version:'hat-kagome-rank3-v2',
+  label:`Hat rank 3 Kagome · ${sparse?'sparse core':`extent ${extent}`}`,valueAction:'signed-permutation',version:'hat-kagome-rank3-v3',
   coreSignMask:sparse?0:42598,activeLineMask:sparse?3903:65535,coreAssignments:sparse?66:72,coreCertified:true,exteriorCertified:!sparse && extent>0 && extent<=HAT_RANK3_CERTIFIED_EXTENT
  });
 }
 
 // Both prototiles sample the same Kagome field in first-vertex coordinates.
 // The fixed scalar stripes supply the four geometric line domains per tile.
-// Sample the same periodic field at their exterior sites as in the core.
+// An exterior stripe samples only its own directional component of the field.
 export const MIXED_RANK3_ID = 'mixed-hat-turtle-rank3';
 export function createAlternatingMarking(tiles, extent = 0) {
   extent = normalizeHatRank3Extent(extent);
-  const scalar = new FixedA2Marking(extent, {tiles, rank: 1});
-  const support = [];
-  const sites = new Set();
-  for (const {tile, point} of scalar.support) {
-    const key = tile + ':' + point.join(',');
-    if (sites.has(key)) continue;
-    sites.add(key);
-    const values = hatKagomeValues(point) ?? [0, 0, 0];
-    values.forEach((value, component) => support.push({tile, point, component, value}));
-  }
-  return new SparseA2Marking(support, {label: 'Alternating rank 3 · extent ' + extent});
+  return new SparseA2Marking(alternatingSupport(tiles, extent), {label: 'Alternating rank 3 · extent ' + extent});
 }
 export {createAlternatingMarking as createAlternatingCoreMarking};
