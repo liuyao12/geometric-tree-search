@@ -6,10 +6,8 @@
 .hat-extension-evidence { color: #52665b; }
 .hat-marking-legend { margin-top: 5px; }
 .hat-marking-legend > span { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
-.hat-marking-swatch { display: inline-block; width: 18px; height: 0; border-top: 3px solid #d55e00; }
-.hat-marking-swatch.negative { border-color: #0072b2; }
+.hat-marking-swatch { display: inline-block; width: 18px; height: 0; border-top: 3px solid #bf3e30; }
+.hat-marking-swatch.negative { border-color: #186aa0; }
 .hat-marking-swatch.zero { border-top: 1px dashed #6b7c73; }
 .hat-marking-panel p { font: inherit; margin: 4px 0 0; max-width: 100%; }
 .hat-marking-panel mjx-container { margin: 0 !important; }
-
-.hat-extension-evidence.is-experimental { color: #925322; }

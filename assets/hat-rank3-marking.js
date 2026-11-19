@@ -9,11 +9,11 @@ import {SparseA2Marking} from './a2-tiling-engine.js?v=20260921-viable-corona';
 // A sparse core retains ten negative entries and leaves six line entries *.
 // Its 115 exclusions also have independently replayed unmarked certificates.
 // It reached 100 Hats in 158 nodes versus 1546 for the full rule in seed 10.
-// Core support is certified for Hat-only point tilings. Exterior extents 1–3
-// pass the known patch but have no universal or mixed-inventory certificate.
+// research/hat-kagome-phase/verify.py certifies the common field and the
+// full marking at extents 0–3 for complete Hat-only point tilings.
 export const HAT_RANK3_ID='hat-kagome-rank3';
 export const HAT_RANK3_MAX_EXTENT=3;
-export const HAT_RANK3_CERTIFIED_EXTENT=0;
+export const HAT_RANK3_CERTIFIED_EXTENT=3;
 export const HAT_RANK3_ZERO_POINTS=Object.freeze([
  [1,0,-1],[3,0,-3],[3,2,-5],[1,4,-5],[-1,6,-5],[-1,4,-3],[-1,2,-1],
  [0,1,-1],[0,2,-2],[0,4,-4],[0,5,-5],[1,2,-3],[1,3,-4],[2,1,-3],[2,3,-5],[3,1,-4]
@@ -71,6 +71,6 @@ export function createHatRank3Marking(options={}){
  const extent=sparse?0:normalizeHatRank3Extent(options.extent??0);
  return new SparseA2Marking(hatRank3Support({...options,extent}),{
   label:`Hat rank 3 Kagome · ${sparse?'sparse core':`extent ${extent}`}`,valueAction:'signed-permutation',version:'hat-kagome-rank3-v2',
-  coreSignMask:sparse?0:42598,activeLineMask:sparse?3903:65535,coreAssignments:sparse?66:72,coreCertified:true,exteriorCertified:false
+  coreSignMask:sparse?0:42598,activeLineMask:sparse?3903:65535,coreAssignments:sparse?66:72,coreCertified:true,exteriorCertified:!sparse && extent>0 && extent<=HAT_RANK3_CERTIFIED_EXTENT
  });
 }

@@ -2,6 +2,27 @@
 // names, run times and array order. Omitted components are part of identity.
 import {markingMetadata} from './marking-metadata.js?v=20260921-domain-names';
 export const MARKING_LIBRARY_KEY='gcts-marking-library-v1';
+let visitModels=[];
+export function clearCachedMarkings(){
+ for(const area of ['localStorage','sessionStorage'])try{
+  const storage=globalThis[area];
+  for(let i=storage.length-1;i>=0;i--){
+   const key=storage.key(i);
+   if(key===MARKING_LIBRARY_KEY||key.startsWith('gcts-corona-marking:')||key.startsWith('gcts-selected-marking:'))storage.removeItem(key);
+  }
+ }catch{} // Browser storage may be disabled.
+}
+// The standalone learner transfers a fresh result only when its tiler link
+// is followed. Normal loads discard the old unscoped session slot.
+export function takeRequestedMarking(token){
+ try{
+  const raw=sessionStorage.getItem('gcts-requested-marking');
+  sessionStorage.removeItem('gcts-requested-marking');
+  if(!raw||!token)return null;
+  const transfer=JSON.parse(raw);
+  return transfer.token===token?transfer.model:null;
+ }catch{return null;}
+}
 export const markingDomain=model=>`${model.setId}:${model.lattice??'A2'}`;
 function shortTimestamp(model){
  const date=new Date(model.marking?.createdAt),pad=n=>String(n).padStart(2,'0');
@@ -29,14 +50,14 @@ function read(storage){
  if(models.length!==data.models.length)try{storage.setItem(MARKING_LIBRARY_KEY,JSON.stringify({version:1,models}));}catch{}
  return nameRuns(models);
 }
-export function savedMarkings(storage=globalThis.localStorage){try{return read(storage);}catch{return [];}}
-export function rememberMarking(model,{origin='training',storage=globalThis.localStorage,now=new Date()}={}){
+export function savedMarkings(storage=null){try{return storage?read(storage):visitModels.slice();}catch{return [];}}
+export function rememberMarking(model,{origin='training',storage=null,now=new Date()}={}){
  if(origin==='recorded'||model.marking?.origin==='recorded')throw new Error('Only browser-trained markings can be saved');
- let models=[],readable=true;try{models=read(storage);}catch{readable=false;}
+ let models=visitModels,readable=true;if(storage)try{models=read(storage);}catch{models=[];readable=false;}
  const signature=markingValues(model),same=models.filter(m=>m.setId===model.setId&&markingValues(m)===signature);
  const existing=model.marking?.id?models.find(m=>m.marking?.id===model.marking.id):null;
- if(existing&&markingValues(existing)===signature)return {model:existing,persisted:true};
- if(!model.marking?.id&&origin!=='training'&&same.length)return {model:same.at(-1),persisted:true};
+ if(existing&&markingValues(existing)===signature)return {model:existing,persisted:!!storage};
+ if(!model.marking?.id&&origin!=='training'&&same.length)return {model:same.at(-1),persisted:!!storage};
  let named=model;
  if(!model.marking?.id||existing){
   const id=crypto.randomUUID(),createdAt=now.toISOString();
@@ -45,6 +66,7 @@ export function rememberMarking(model,{origin='training',storage=globalThis.loca
  }
  named=nameRuns([...models,named]).at(-1);
  let persisted=false;
+ if(!storage)visitModels=[...models,named];
  if(readable&&storage)try{storage.setItem(MARKING_LIBRARY_KEY,JSON.stringify({version:1,models:[...models,named]}));persisted=true;}catch{}
  return {model:named,persisted};
 }
