@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {A2_TILE_LOOPS, tileOrientations, a2InverseTransform} from '../assets/a2-tiling-engine.js';
+import {A2_TILE_LOOPS, FixedA2Marking, tileOrientations, a2InverseTransform} from '../assets/a2-tiling-engine.js';
 import {TILE_SETS, parity} from '../assets/tile-corona-learning.js';
 import {createAlternatingMarking, createHatRank3Marking, hatKagomeValues, HAT_RANK3_MAX_EXTENT} from '../assets/hat-rank3-marking.js';
 import {markingSegmentEndpoints} from '../assets/marking-segments.js';
@@ -56,7 +56,6 @@ function verifyStars(setId) {
           [point.map((n, i) => n + translation[i]).join(','), weight]);
         const entries = rule.entries({tile, orientation, translation});
         const signs = [0, 1, 2].map(c => entries.get('0,0,0|' + c));
-        assert.ok(signs.every(v => [-1, 0, 1].includes(v)));
         // Six is a period in each axial coordinate. Equality of these tables
         // proves equality of the transported fields at every lattice site.
         const {symmetry} = orientation;
@@ -66,7 +65,10 @@ function verifyStars(setId) {
           const local = hatKagomeValues(a2InverseTransform(q,symmetry)) ?? [0,0,0];
           phase.push(...symmetry.permutation.map(c => parity(symmetry.permutation)*local[c]));
         }
-        candidates.push({identity: orientation.index === 0, weight, occupancy, signs, phase: phase.join(',')});
+        const phaseSign = setId === 'turtle' ? -1 : 1;
+        assert.ok(setId === 'turtle' ? signs.some(v => v !== undefined) : signs.every(v => v !== undefined));
+        assert.ok(signs.every((v,c) => v === undefined || v === phaseSign * phase[c]));
+        candidates.push({identity: orientation.index === 0, weight, occupancy, phase: phase.join(',')});
       }
     }
   }
@@ -75,7 +77,6 @@ function verifyStars(setId) {
     function fill(start, remaining, sums, star) {
       if (remaining === 0) {
         for (const tile of star) {
-          assert.ok(tile.signs.every((v, c) => v === seed.signs[c]));
           assert.equal(tile.phase, seed.phase);
         }
         count++;
@@ -119,13 +120,38 @@ for (const tile of ['hat','turtle']) {
         expected.set(p.join(',') + '|' + component,value);
       }
     }
-    const entries = createAlternatingMarking([tile],extent).entries(root(tile));
-    assert.deepEqual(entries,expected);
     assert.deepEqual(createAlternatingMarking(['hat','turtle'],extent).entries(root(tile)),expected);
     if (tile==='hat') {
+      assert.deepEqual(createAlternatingMarking(['hat'],extent).entries(hat),expected);
       assert.deepEqual(createHatRank3Marking({extent,pattern:'more'}).entries(hat),expected);
       const reversed = new Map([...expected].map(([k,v]) => [k,v===0?0:-v]));
       assert.deepEqual(createHatRank3Marking({extent,pattern:'alternate'}).entries(hat),reversed);
+    }
+  }
+}
+
+// Compare every (point, component), including zeros, in every orientation.
+// Walk both ends and the entire original stripe to check the phase independently.
+const turtles = tileOrientations('turtle',A2_TILE_LOOPS.turtle);
+for (let extent = 0; extent <= HAT_RANK3_MAX_EXTENT; extent++) {
+  const constant = new FixedA2Marking(extent,{tiles:['turtle'],rank:3});
+  const alternating = createAlternatingMarking(['turtle'],extent);
+  for (const orientation of turtles) {
+    const placement = {tile:'turtle',orientation,translation:[3,-1,-2]};
+    const c = constant.entries(placement), a = alternating.entries(placement);
+    assert.deepEqual(new Map([...a].map(([key,v]) => [key,Math.abs(v)])),
+                     new Map([...c].map(([key,v]) => [key,Math.abs(v)])));
+    for (const {fromPoint,toPoint,value} of constant.segments(placement)) {
+      const delta = toPoint.map((v,i) => v - fromPoint[i]);
+      const length = Math.min(...delta.map(Math.abs));
+      const step = delta.map(v => v / length);
+      const component = step.findIndex(v => Math.abs(v) === 2);
+      for (let k = -extent; k <= length + extent; k++) {
+        const point = fromPoint.map((v,i) => v + k * step[i]);
+        const key = point.join(',') + '|' + component;
+        assert.equal(c.get(key),value);
+        assert.equal(a.get(key),k % 2 === 0 ? value : -value);
+      }
     }
   }
 }

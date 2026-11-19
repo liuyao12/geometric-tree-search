@@ -105,8 +105,20 @@ export function createHatRank3Marking(options={}){
 // The fixed scalar stripes supply the four geometric line domains per tile.
 // An exterior stripe samples only its own directional component of the field.
 export const MIXED_RANK3_ID = 'mixed-hat-turtle-rank3';
-export function createAlternatingMarking(tiles, extent = 0) {
+export function createAlternatingMarking(tiles = ['turtle'], extent = 0) {
   extent = normalizeHatRank3Extent(extent);
-  return new SparseA2Marking(alternatingSupport(tiles, extent), {label: 'Alternating rank 3 · extent ' + extent});
+  const tileSet = [...new Set(tiles)];
+  let support;
+  if (tileSet.length === 1 && tileSet[0] === 'turtle') {
+    // On all four Turtle stripes the opposite phase matches the constant sign at
+    // both original endpoints. Only the signs at odd steps along the stripe flip.
+    const constant = new FixedA2Marking(extent, {tiles: tileSet, rank: 3});
+    support = constant.support.map(entry => ({
+      ...entry, value: entry.value === 0 ? 0 : -hatKagomeValues(entry.point)[entry.component]
+    }));
+  } else {
+    support = alternatingSupport(tileSet, extent);
+  }
+  return new SparseA2Marking(support, {label: 'Alternating rank 3 · extent ' + extent});
 }
 export {createAlternatingMarking as createAlternatingCoreMarking};
