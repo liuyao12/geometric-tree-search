@@ -520,9 +520,13 @@
         return symmetries;
       }
 
+      function defaultMarkingExtent(setId) {
+        return TILE_SETS[setId].tiles.includes('hat') ? 0 : 1;
+      }
+
       function normalizedMarkingExtension() {
-        const parsed = Number.parseInt(markExtensionInput?.value || '1', 10);
-        return Math.max(0, Math.min(hasHatStripes() ? HAT_RANK3_MAX_EXTENT : 9, Number.isFinite(parsed) ? parsed : 1));
+        const parsed = Number.parseInt(markExtensionInput.value, 10);
+        return Math.max(0, Math.min(hasHatStripes() ? HAT_RANK3_MAX_EXTENT : 9, Number.isFinite(parsed) ? parsed : defaultMarkingExtent(selectedTileSet)));
       }
 
       function buildOrientations(extensionSteps = markingExtension, rank = markingRank) {
@@ -2578,7 +2582,7 @@
         markingExtension = hatMarkingPatternInput.value.startsWith('sparse') ? 0 : normalizeHatRank3Extent(markExtensionInput.value);
         markExtensionInput.value = String(markingExtension);
         if (usingHatRank3()) {
-          configurePanel('hat', 'standard', null, showMarkings);
+          configurePanel('hat', 'standard', {markingsVisible: showMarkings});
           return;
         }
         updateMarkingButton();
@@ -2630,13 +2634,20 @@
         sublatticeToggle.disabled = false;
         updateMarkingButton();
       }
-      function configurePanel(setId, source, markingId=null, markingsVisible=source!=='none') {
+      function configurePanel(setId, source, {
+        markingId, markingsVisible = source !== 'none',
+        extent = setId === selectedTileSet ? markingExtension : defaultMarkingExtent(setId)
+      } = {}) {
         if(source==='hat-provisional'){source='standard';markingRank=3;}
         if(source==='standard'&&markingRank===3&&(setId==='mixed'||(setId==='hat'&&usingSublattice())))source='none';
         manualPanelMode = true;
         stopTiling(); liveSearchIterator?.cancel?.(); liveSearchIterator = null;
         selectedTileSet = setId; markingSource = source; tileSetInputs.forEach(input=>{input.checked=input.value===setId;});
-        if(hasHatStripes()){markingExtension=hatMarkingPatternInput.value.startsWith('sparse')?0:normalizeHatRank3Extent(markExtensionInput.value);markExtensionInput.value=String(markingExtension);}
+        markingExtension = extent;
+        if (hasHatStripes()) {
+          markingExtension = hatMarkingPatternInput.value.startsWith('sparse') ? 0 : normalizeHatRank3Extent(extent);
+        }
+        markExtensionInput.value = String(markingExtension);
         if(markingId){const model=markingLibrary.get(markingId);if(model&&markingDomain(model)===markingContext(setId))learnedModels.set(markingContext(setId),model);}
         displayMarking = source === 'learned' ? learnedModels.get(markingContext(setId))??null : null;
         if(source==='learned'&&!displayMarking)source=markingSource='none';
@@ -2692,7 +2703,7 @@
       markingSourcePicker.onchange = () => {
         const value = markingSourcePicker.value;
         if (value === 'rank1' || value === 'rank3') markingRank = value === 'rank1' ? 1 : 3;
-        configurePanel(selectedTileSet, value.startsWith('rank') ? 'standard' : value.startsWith('learned:')?'learned':value, value.startsWith('learned:')?value.slice(8):null);
+        configurePanel(selectedTileSet, value.startsWith('rank') ? 'standard' : value.startsWith('learned:')?'learned':value, {markingId: value.startsWith('learned:')?value.slice(8):null});
       };
       function registerMarking(model,{origin='training',select=false}={}) {
         if(model.marking?.origin==='recorded')throw new Error('Bundled recordings are not browser-trained markings');
@@ -2713,7 +2724,7 @@
         let saved;try {saved=registerMarking(data.model,{select:!!data.completed}).model;} catch {return;}
         if((activeScrollAnchor==='learning'||learningPanelVisible()) && selectedTileSet===data.setId && data.completed){
           sublatticeToggle.checked=(saved.lattice??'A2')==='turtle-sublattice';
-          configurePanel(data.setId,'learned',saved.marking.id);
+          configurePanel(data.setId,'learned',{markingId: saved.marking.id});
           panelView('tiling', {manual:false});
           startTilingPlayback({reset:true});
         }
@@ -2731,7 +2742,7 @@
         const {model}=registerMarking(transferred,{select:true});
         learningSectionEntered=true; learningTileSet=model.setId; learningLattice=model.lattice??'A2';
         sublatticeToggle.checked=learningLattice==='turtle-sublattice';
-        configurePanel(model.setId,'learned',model.marking.id); panelView('tiling');
+        configurePanel(model.setId,'learned',{markingId: model.marking.id}); panelView('tiling');
       }catch{}
       window.addEventListener('pageshow', event => {
         if (event.persisted && markingLibrary.size) location.reload();
@@ -2812,11 +2823,9 @@
       else
       if(['hat-provisional','hat-rank3'].includes(params.get('marking'))||(params.get('marking')==='rank3'&&params.get('tiles')==='hat')){
         markingRank=3;
-        markingExtension=normalizeHatRank3Extent(params.get('extend'));
-        markExtensionInput.value=String(markingExtension);
         const requestedPattern=params.get('pattern');
         hatMarkingPatternInput.value=['sparse','sparse-reverse','more','alternate'].includes(requestedPattern)?requestedPattern:'more';
-        configurePanel('hat','standard');
+        configurePanel('hat','standard',{extent: normalizeHatRank3Extent(params.get('extend'))});
       }
     })();
   </script>
