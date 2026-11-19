@@ -1,6 +1,7 @@
 """Verify the shipped chord marking for every full-plane tiling in the demo's two domains.
 
 Run with python3 tests/verify_deep_chords.py (Node on PATH, or set NODE).
+Pass --economical to verify the search-tuned preset.
 The input is the production geometry and actual marking entries. Search starts
 unmarked, admits every geometric orientation, and has no node or time cutoff.
 """
@@ -8,6 +9,7 @@ unmarked, admits every geometric orientation, and has no node or time cutoff.
 import json
 import os
 import subprocess
+import argparse
 from collections import Counter, defaultdict
 from functools import lru_cache
 from itertools import combinations
@@ -218,6 +220,12 @@ if __name__ == '__main__':
     if not __debug__:
         raise SystemExit('Run with assertions enabled.')
     test = Path(__file__).with_name('test_deep_chord_marking.mjs')
-    data = json.loads(subprocess.check_output([os.environ.get('NODE','node'),test,'--geometry']))
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--economical',action='store_true')
+    args = parser.parse_args()
+    command = [os.environ.get('NODE','node'),test,'--geometry']
+    if args.economical:
+        command.append('--economical')
+    data = json.loads(subprocess.check_output(command))
     for name, records in data.items():
         verify(name,records)

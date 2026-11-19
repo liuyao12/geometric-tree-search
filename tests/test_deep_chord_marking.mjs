@@ -6,12 +6,15 @@ import {createAlternatingMarking} from '../assets/hat-rank3-marking.js';
 import {CHORD_MAX_EXTENT, DeepChordMarking} from '../assets/deep-chord-marking.js';
 
 const mixed = createCoronaLearner('mixed');
+const economical = process.argv.includes('--economical');
+const markingFor = (setId,extent) => new DeepChordMarking(setId,extent,{economical});
 const pose = (catalog, [tile, orientation, x, y]) =>
   catalog.materialize({tile, orientation, translation:[x,y,-x-y]});
 const snapshot = {};
 for (const setId of ['hat','mixed']) {
   const catalog = createCoronaLearner(setId);
-  const rules = Array.from({length:CHORD_MAX_EXTENT+1}, (_,e) => new DeepChordMarking(setId,e));
+  const rules = Array.from({length:CHORD_MAX_EXTENT+1}, (_,e) => markingFor(setId,e));
+  if (economical) assert.equal(rules.at(-1).stats().supportSites,setId==='hat'?26:52);
   snapshot[setId] = [];
   for (const orientation of catalog.orientations) {
     const {tile, index, symmetry} = orientation;
@@ -55,13 +58,13 @@ if (process.argv.includes('--geometry')) {
     ['turtle',9,-7,5],['turtle',9,-5,1],['turtle',9,5,-1],['turtle',10,2,-7]
   ].map(spec => pose(mixed,spec));
   const key = '0,2,-2|chord0', [hat,,turtle] = patch;
-  const deep = new DeepChordMarking('mixed');
+  const deep = markingFor('mixed');
   assert.equal(deep.entries(hat).get(key),-1);
   assert.equal(deep.entries(turtle).get(key),1);
-  assert.equal(new DeepChordMarking('mixed',5).entries(hat).has(key),false);
-  assert.equal(new DeepChordMarking('mixed',6).entries(hat).get(key),-1);
+  assert.equal(markingFor('mixed',5).entries(hat).has(key),false);
+  assert.equal(markingFor('mixed',6).entries(hat).get(key),-1);
   for (let extent=0; extent<=CHORD_MAX_EXTENT; extent++) {
-    const rule = new DeepChordMarking('mixed',extent);
+    const rule = markingFor('mixed',extent);
     const accepts = patch.every(p=>{
       if (!rule.compatible(p)) return false;
       rule.push(p);
@@ -80,15 +83,20 @@ if (process.argv.includes('--geometry')) {
   assert.equal((await replay(prior)).result,'yes');
   await assert.rejects(replay(deep),/Initial placements disagree on m-values/);
 
-  // Recorded traces from the original sparse research rule at the same seed.
-  for (const [setId,tile,expected] of [
+  // Recorded traces from the research kernels, including rollback from a Turtle start.
+  const cases = economical ? [
+    ['hat','hat','a316a67bc56e01dfc14438269743e8fc47dc45af7defb353d716f96fd22ad667'],
+    ['mixed','hat','4f67b0f3f2b11b91a682812f6d25f4e2d4b1cc270ff551b47ba1a21538adbea9'],
+    ['mixed','turtle','33e0a50babd2a4c5f5ca46f89b02bbee08af938c3c7b9ac2a2ba51142b7d3806']
+  ] : [
     ['hat','hat','2786d10bdf20d049dd3014ae5bd86679d5fcd13a25cea29a10ea25200f81b99b'],
     ['mixed','hat','f2a8f0947a52e9fa80d2244cbdf6e2eff077c4b33ac820a0625d66ca9ae72aea'],
     ['mixed','turtle','aca290849dd634288d11bcba767fbe2cb6c22f8523f6cb6ae679b1d2f43bc3d8']
-  ]) {
+  ];
+  for (const [setId,tile,expected] of cases) {
     const catalog = createCoronaLearner(setId), trace = createHash('sha256');
-    const answer = await solveA2Tiling({...catalog.config,...opts,marking:new DeepChordMarking(setId),
-      initialPlacements:[pose(catalog,[tile,0,0,0])], targetPlacements:75, randomSeed:3496741806,
+    const answer = await solveA2Tiling({...catalog.config,...opts,marking:markingFor(setId),
+      initialPlacements:[pose(catalog,[tile,0,0,0])], targetPlacements:75, randomSeed:economical?3956800648:3496741806,
       auditFrontierGraph:true, onEvent:e=>{
         if (e.type==='placement') trace.update('+'+e.placements.at(-1).id+'\n');
         if (e.type==='backtrack') trace.update('-'+e.removed.id+'\n');

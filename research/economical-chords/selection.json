@@ -1,0 +1,292 @@
+{
+  "reference": "rank 3 chords at extent 9",
+  "training_field": "certified unmarked-neighborhood chord predictions plus the scalar and corner samples from the published preset",
+  "required": "Keep both signs of the previously reported tile-set obstruction.",
+  "training": {
+    "reference_frontiers": [
+      100,
+      101,
+      102,
+      103
+    ],
+    "selected_reference_points": [
+      120,
+      121,
+      122,
+      123,
+      124
+    ],
+    "mistake_collection": [
+      114,
+      115,
+      116,
+      117,
+      118
+    ],
+    "screening": [
+      111,
+      112,
+      113
+    ]
+  },
+  "selection": {
+    "target75": [
+      130,
+      131,
+      132,
+      133
+    ],
+    "target120": [
+      145,
+      146,
+      147
+    ],
+    "criterion": "Among evaluated finalists, choose the fewest canonical assignments that completed every selection run, whose returned patches passed the reference rule, and whose positive paired excess summed to at most five backtracks per hundred additional tiles. Both roots count in the mixed set. Improvements on one seed do not cancel regressions on another."
+  },
+  "held_out": {
+    "target75": [
+      210,
+      211,
+      212,
+      213,
+      214,
+      215,
+      216,
+      217
+    ],
+    "target150": [
+      310,
+      311,
+      312,
+      313
+    ],
+    "timing": "Warm one Node process and alternate the order of the two presets by seed. Measure elapsed solve time, including search events and excluding rendering, model setup and the separate final-patch replay."
+  },
+  "sets": {
+    "hat": {
+      "distinct_experimental_supports_screened": 28,
+      "selected": "peel26",
+      "finalists": [
+        {
+          "candidate": "peel22",
+          "marks": 22,
+          "runs": 7,
+          "finished": 7,
+          "passed_reference": 7,
+          "backtracks": 110,
+          "positive_excess_per_100_tiles": 10.873
+        },
+        {
+          "candidate": "peel23",
+          "marks": 23,
+          "runs": 7,
+          "finished": 7,
+          "passed_reference": 7,
+          "backtracks": 182,
+          "positive_excess_per_100_tiles": 17.152
+        },
+        {
+          "candidate": "core24",
+          "marks": 24,
+          "runs": 7,
+          "finished": 7,
+          "passed_reference": 7,
+          "backtracks": 123,
+          "positive_excess_per_100_tiles": 15.467
+        },
+        {
+          "candidate": "peel24",
+          "marks": 24,
+          "runs": 7,
+          "finished": 7,
+          "passed_reference": 7,
+          "backtracks": 196,
+          "positive_excess_per_100_tiles": 19.296
+        },
+        {
+          "candidate": "peel25",
+          "marks": 25,
+          "runs": 7,
+          "finished": 7,
+          "passed_reference": 7,
+          "backtracks": 196,
+          "positive_excess_per_100_tiles": 19.296
+        },
+        {
+          "candidate": "peel26",
+          "marks": 26,
+          "runs": 7,
+          "finished": 7,
+          "passed_reference": 7,
+          "backtracks": 14,
+          "positive_excess_per_100_tiles": 1.991
+        },
+        {
+          "candidate": "core26",
+          "marks": 26,
+          "runs": 7,
+          "finished": 7,
+          "passed_reference": 7,
+          "backtracks": 80,
+          "positive_excess_per_100_tiles": 8.882
+        },
+        {
+          "candidate": "basefrequent28",
+          "marks": 28,
+          "runs": 7,
+          "finished": 7,
+          "passed_reference": 7,
+          "backtracks": 36,
+          "positive_excess_per_100_tiles": 1.531
+        },
+        {
+          "candidate": "joint32",
+          "marks": 32,
+          "runs": 7,
+          "finished": 7,
+          "passed_reference": 7,
+          "backtracks": 143,
+          "positive_excess_per_100_tiles": 11.179
+        },
+        {
+          "candidate": "basefocus36",
+          "marks": 36,
+          "runs": 7,
+          "finished": 7,
+          "passed_reference": 7,
+          "backtracks": 72,
+          "positive_excess_per_100_tiles": 0.306
+        },
+        {
+          "candidate": "full",
+          "marks": 70,
+          "runs": 7,
+          "finished": 7,
+          "passed_reference": 7,
+          "backtracks": 70,
+          "positive_excess_per_100_tiles": 0.0
+        }
+      ]
+    },
+    "mixed": {
+      "distinct_experimental_supports_screened": 34,
+      "selected": "peel52",
+      "finalists": [
+        {
+          "candidate": "peel46",
+          "marks": 46,
+          "runs": 14,
+          "finished": 14,
+          "passed_reference": 14,
+          "backtracks": 126,
+          "positive_excess_per_100_tiles": 9.495
+        },
+        {
+          "candidate": "peel48",
+          "marks": 48,
+          "runs": 14,
+          "finished": 14,
+          "passed_reference": 14,
+          "backtracks": 85,
+          "positive_excess_per_100_tiles": 6.355
+        },
+        {
+          "candidate": "core48",
+          "marks": 48,
+          "runs": 14,
+          "finished": 14,
+          "passed_reference": 13,
+          "backtracks": 214,
+          "positive_excess_per_100_tiles": 16.233
+        },
+        {
+          "candidate": "peel50",
+          "marks": 50,
+          "runs": 14,
+          "finished": 14,
+          "passed_reference": 14,
+          "backtracks": 81,
+          "positive_excess_per_100_tiles": 6.049
+        },
+        {
+          "candidate": "peel52",
+          "marks": 52,
+          "runs": 14,
+          "finished": 14,
+          "passed_reference": 14,
+          "backtracks": 37,
+          "positive_excess_per_100_tiles": 2.833
+        },
+        {
+          "candidate": "peel54",
+          "marks": 54,
+          "runs": 14,
+          "finished": 14,
+          "passed_reference": 14,
+          "backtracks": 36,
+          "positive_excess_per_100_tiles": 2.757
+        },
+        {
+          "candidate": "joint54",
+          "marks": 54,
+          "runs": 14,
+          "finished": 14,
+          "passed_reference": 14,
+          "backtracks": 103,
+          "positive_excess_per_100_tiles": 7.734
+        },
+        {
+          "candidate": "core54",
+          "marks": 54,
+          "runs": 14,
+          "finished": 14,
+          "passed_reference": 14,
+          "backtracks": 231,
+          "positive_excess_per_100_tiles": 17.534
+        },
+        {
+          "candidate": "peel60",
+          "marks": 60,
+          "runs": 14,
+          "finished": 14,
+          "passed_reference": 14,
+          "backtracks": 14,
+          "positive_excess_per_100_tiles": 0.919
+        },
+        {
+          "candidate": "core60",
+          "marks": 60,
+          "runs": 14,
+          "finished": 14,
+          "passed_reference": 13,
+          "backtracks": 96,
+          "positive_excess_per_100_tiles": 7.198
+        },
+        {
+          "candidate": "basefocus68",
+          "marks": 68,
+          "runs": 14,
+          "finished": 14,
+          "passed_reference": 14,
+          "backtracks": 8,
+          "positive_excess_per_100_tiles": 0.536
+        },
+        {
+          "candidate": "full",
+          "marks": 142,
+          "runs": 14,
+          "finished": 14,
+          "passed_reference": 14,
+          "backtracks": 2,
+          "positive_excess_per_100_tiles": 0.0
+        }
+      ]
+    }
+  },
+  "counting_unit": "One assigned value at a canonical tile point and channel, including scalar zeros, corner signs and directional signs. Rotations and copies do not add assignments.",
+  "candidate_search": [
+    "Extract geometric edge attachments along reference growth traces and at frontier points selected by GCTS.",
+    "Collect moves that led smaller markings into branches rejected by the reference. Weight those observations by frequency and branch length.",
+    "Generate budgets using greedy pairs of opposite signs, fixed-size swaps and successive deletions. Compare whole candidate markings by running the original GCTS solver."
+  ]
+}
