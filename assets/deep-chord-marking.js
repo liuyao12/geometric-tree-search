@@ -49,15 +49,38 @@ const bands = {
 
 export const CHORD_MAX_EXTENT = 9;
 
+// Local axis-zero samples of the two tiles that disagree in the recorded
+// mixed eight-tile patch, or in the three-Hat obstruction for the Hat set.
+const obstructionPoints = {
+  mixed: {hat: [[-2,-4]], turtle: [[-2,0]]},
+  hat: {hat: [[-3,9],[-1,5]]}
+};
+
 export class DeepChordMarking extends FixedA2Marking {
-  constructor(setId, extent = CHORD_MAX_EXTENT) {
+  constructor(setId, extent = CHORD_MAX_EXTENT, {twoMarks = false} = {}) {
     if (!Object.hasOwn(bands, setId)) throw new RangeError('Chords require the Hat or mixed tile set');
     if (!Number.isInteger(extent) || extent < 0 || extent > CHORD_MAX_EXTENT) throw new RangeError('Invalid chord extent');
     super(0, {tiles: Object.keys(bands[setId]), rank: 1});
-    this.chords = Object.fromEntries(Object.entries(bands[setId]).map(([tile, rows]) =>
-      [tile, rows.slice(0, extent + 1).flat()]));
+    this.twoMarks = twoMarks;
+    this.chords = {};
+    const scalarSites = new Set();
+    for (const [tile, rows] of Object.entries(bands[setId])) {
+      const chords = rows.slice(0, extent + 1).flat();
+      this.chords[tile] = twoMarks ? chords.filter(([x,y,axis]) =>
+        axis === 0 && obstructionPoints[setId][tile].some(([u,v]) => u === x && v === y)) : chords;
+      if (twoMarks) continue;
+      // The twelve listed boundary vertices other than the two 270-degree
+      // notches suffice for every former scalar rejection on a legal pair.
+      const [canonical] = tileOrientations(tile, A2_TILE_LOOPS[tile]);
+      for (const point of canonical.loop) {
+        if (canonical.occupancy.get(String(point)).weight !== 9) scalarSites.add(tile + ':' + point);
+      }
+    }
+    this.support = this.support.filter(m => scalarSites.has(m.tile + ':' + m.point));
     this.rotated = new Map();
   }
+
+  segments() { return []; } // The remaining scalar samples are individual sites.
 
   entries(placement) {
     const {tile, orientation, translation} = placement;
@@ -70,7 +93,7 @@ export class DeepChordMarking extends FixedA2Marking {
       // Convex 120 degree corner signs change under reflection. Chord
       // containment is an unoriented geometric predicate, so only its axis moves.
       const sign = (tile === 'hat' ? 1 : -1) * parity(symmetry.permutation);
-      const marks = [...orientation.occupancy.values()].filter(e => e.weight === 4)
+      const marks = this.twoMarks ? [] : [...orientation.occupancy.values()].filter(e => e.weight === 4)
         .map(({point}) => [point, 'corner', sign]);
       for (const [x, y, axis, value] of this.chords[tile]) {
         marks.push([a2Transform([x, y, -x-y], symmetry), 'chord' + symmetry.permutation.indexOf(axis), value]);
