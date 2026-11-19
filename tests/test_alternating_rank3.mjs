@@ -97,18 +97,36 @@ function verifyStars(setId) {
 assert.equal(verifyStars('turtle'), 200);
 assert.equal(verifyStars('hat'), 196);
 assert.equal(verifyStars('mixed'), 376);
+// Use the outline endpoints to reconstruct the new (site, direction) pairs
+// independently. A site reached by two stripe ends acquires both components.
+const stripeVertices = {
+  hat: [[0,6],[2,10],[4,12],[8,10]],
+  turtle: [[0,10],[2,8],[0,6],[4,12]]
+};
 for (const tile of ['hat','turtle']) {
-  let previous = mixed.entries(root(tile));
+  const loop = A2_TILE_LOOPS[tile];
+  const expected = new Map(mixed.entries(root(tile)));
   for (let extent = 1; extent <= HAT_RANK3_MAX_EXTENT; extent++) {
-    const entries = createAlternatingMarking([tile],extent).entries(root(tile));
-    assert.ok(entries.size > previous.size);
-    for (const [k,v] of previous) assert.equal(entries.get(k),v);
-    for (const [key,value] of entries) {
-      const [xyz,c] = key.split('|');
-      assert.equal(value,(hatKagomeValues(xyz.split(',').map(Number)) ?? [0,0,0])[Number(c)]);
+    for (const [a,b] of stripeVertices[tile]) {
+      const delta = loop[b].map((v,i) => v - loop[a][i]);
+      const length = Math.min(...delta.map(Math.abs));
+      const step = delta.map(v => v / length);
+      const component = step.findIndex(v => Math.abs(v) === 2);
+      for (const [end, sign] of [[a,-1],[b,1]]) {
+        const p = loop[end].map((v,i) => v - loop[0][i] + sign * extent * step[i]);
+        const value = hatKagomeValues(p)[component];
+        assert.equal(Math.abs(value),1);
+        expected.set(p.join(',') + '|' + component,value);
+      }
     }
-    if (tile==='hat') assert.deepEqual(entries,createHatRank3Marking({extent,pattern:'more'}).entries(root(tile)));
-    previous=entries;
+    const entries = createAlternatingMarking([tile],extent).entries(root(tile));
+    assert.deepEqual(entries,expected);
+    assert.deepEqual(createAlternatingMarking(['hat','turtle'],extent).entries(root(tile)),expected);
+    if (tile==='hat') {
+      assert.deepEqual(createHatRank3Marking({extent,pattern:'more'}).entries(hat),expected);
+      const reversed = new Map([...expected].map(([k,v]) => [k,v===0?0:-v]));
+      assert.deepEqual(createHatRank3Marking({extent,pattern:'alternate'}).entries(hat),reversed);
+    }
   }
 }
 for(let c=0;c<3;c++) {
