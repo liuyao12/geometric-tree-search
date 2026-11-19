@@ -2577,8 +2577,6 @@
         draw();
       });
       function updatePanelControls() {
-        const scalar = markingSourcePicker.querySelector('[value="rank1"]');
-        scalar.hidden = scalar.disabled = selectedTileSet === 'mixed';
         markingSourcePicker.querySelector('[value="rank3"]').disabled = selectedTileSet !== 'turtle' && !supportsHatRank3();
         markingSourcePicker.querySelector('[value="rank3"]').textContent = selectedTileSet === 'turtle' ? 'rank 3 · constant' : selectedTileSet === 'mixed' ? 'rank 3 · alternating' : 'rank 3';
         const alternate = markingSourcePicker.querySelector('[value="alternating"]');
@@ -2595,11 +2593,10 @@
         extent = setId === selectedTileSet ? markingExtension : defaultMarkingExtent(setId)
       } = {}) {
         if(source==='hat-provisional'){source='standard';markingRank=3;}
-        if (setId === 'mixed' && (source === 'standard' || source === 'alternating')) {
-          source = 'standard';
+        if (source === 'alternating') {
           markingRank = 3;
+          if (setId === 'mixed') source = 'standard';
         }
-        if (source === 'alternating') markingRank = 3;
         if(source==='standard'&&markingRank===3&&setId!=='turtle'&&!supportsHatRank3(setId))source='none';
         if (setId !== 'hat') hatPattern = 'more';
         manualPanelMode = true;
@@ -2733,8 +2730,8 @@
       }
       function syncDemoStageToScroll() {
         if(!document.getElementById('j-panel-page').hidden)return;
-        // Keep a manually selected rank-three rule while the reader scrolls.
-        if (manualPanelMode && (hasHatStripes() || markingSource === 'alternating' || (markingSource === 'standard' && markingRank === 3))) return;
+        // Keep a manually selected mixed or rank-three rule while the reader scrolls.
+        if (manualPanelMode && (hasHatStripes() || markingSource === 'alternating' || (markingSource === 'standard' && (markingRank === 3 || selectedTileSet === 'mixed')))) return;
         const heading = document.getElementById('anchor-learning');
         const anchor = heading.getBoundingClientRect().top <= window.innerHeight * .65
           ? 'learning' : demoStageForScroll();
@@ -2789,10 +2786,10 @@
         const requestedPattern=params.get('pattern');
         hatPattern=['sparse','sparse-reverse','more','alternate'].includes(requestedPattern)?requestedPattern:'more';
         configurePanel('hat','standard',{extent: normalizeHatRank3Extent(params.get('extend'))});
-      } else if (params.get('marking') === 'rank3' && ['mixed', 'turtle'].includes(params.get('tiles'))) {
-        markingRank = 3;
+      } else if (['rank1','rank3'].includes(params.get('marking')) && ['mixed', 'turtle'].includes(params.get('tiles'))) {
+        markingRank = params.get('marking') === 'rank1' ? 1 : 3;
         const setId = params.get('tiles');
-        const source = setId === 'turtle' && params.get('pattern') === 'alternate' ? 'alternating' : 'standard';
+        const source = markingRank === 3 && setId === 'turtle' && params.get('pattern') === 'alternate' ? 'alternating' : 'standard';
         configurePanel(setId, source, {extent: params.has('extend') ? normalizeHatRank3Extent(params.get('extend')) : defaultMarkingExtent(setId)});
       }
     })();
