@@ -159,4 +159,10 @@ for(let c=0;c<3;c++) {
   const p=[0,0,0], q=p.map((v,i)=>i===c?-2:1);
   assert.deepEqual(markingSegmentEndpoints({point:p,component:c})[1],markingSegmentEndpoints({point:q,component:c})[0]);
 }
+const sublattice = ([x,y,z]) => (x-y)%3 === 0 && (y-z)%3 === 0;
+for (const tiles of [['turtle'],['hat','turtle']]) {
+  const full = createAlternatingMarking(tiles,2);
+  const filtered = createAlternatingMarking(tiles,2,{pointFilter:sublattice});
+  assert.deepEqual(filtered.support,full.support.filter(entry=>sublattice(entry.point)));
+}
 console.log('Every complete rooted point star shares one periodic field: 200 Turtle, 196 Hat, 376 mixed. Extents and midpoint joins passed.');

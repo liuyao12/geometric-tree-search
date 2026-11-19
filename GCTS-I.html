@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="style.css?v=20260831-lower-closer-sidenote">
 
   <link rel="stylesheet" href="assets/tile-learning.css?v=20260921-domain-names">
-  <link rel="stylesheet" href="assets/hat-rank3-marking.css?v=wave-extent">
   <link rel="stylesheet" href="assets/j-tiling-host.css?v=20261101-j30r2">
   <script>
     window.MathJax = {
@@ -63,27 +62,9 @@
 
                       </div>
                       <div class="toolbar-row toolbar-toggle-row">
-                        <label class="toolbar-toggle">Tiling with <select id="turtle-marking-source"><option value="none">no marking</option><option value="rank1">rank 1</option><option value="rank3">rank 3</option><option value="alternating">rank 3 · alternating</option></select></label>
+                        <label class="toolbar-toggle">Tiling with <select id="turtle-marking-source"><option value="none">no marking</option><option value="rank1">rank 1</option><option value="rank3" selected>rank 3 · constant</option><option value="alternating">rank 3 · alternating</option></select></label>
                         <label class="toolbar-toggle mark-extension-control is-disabled" id="turtle-mark-extension-control"><span id="turtle-mark-extension-label">extent</span> <input type="number" id="turtle-mark-extension" min="0" max="9" step="1" value="1" inputmode="numeric" aria-label="Marking extent in lattice steps" disabled>
         </label>
-                      </div>
-                    </div>
-                    <div id="hat-marking-panel" class="hat-marking-panel" hidden>
-                      <div class="hat-marking-options">
-                        <label>Stripes <select id="hat-marking-component"><option value="all">All components</option><option value="0">First component</option><option value="1">Second component</option><option value="2">Third component</option></select></label>
-                        <label><input id="hat-marking-zeros" type="checkbox"> Show assigned zeros</label>
-                        <label id="hat-marking-signs">Signs <select id="hat-marking-extension-pattern"><option value="more">Full alternating</option><option value="alternate">Full reversed</option><option value="sparse">Sparse core</option><option value="sparse-reverse">Sparse reversed</option></select></label>
-                      </div>
-                      <div class="hat-marking-legend" aria-label="Directional marking values">
-                        <span><i class="hat-marking-swatch" aria-hidden="true"></i>\(+1\)</span>
-                        <span><i class="hat-marking-swatch negative" aria-hidden="true"></i>\(-1\)</span>
-                        <span><i class="hat-marking-swatch zero" aria-hidden="true"></i>\(0\) assigned</span>
-                        <span id="hat-marking-unassigned">\(\ast\) unassigned</span>
-                      </div>
-                      <p id="hat-extension-evidence" class="hat-extension-evidence"></p>
-                      <a id="hat-phase-proof" href="https://github.com/liuyao12/geometric-tree-search/tree/main/research/hat-kagome-phase">Hat stripe proof and verifier</a>
-                      <div id="wave-model-files" hidden>
-                        <a href="assets/gcts-wave-pair.glb" download>3D wave pair</a> · <a href="assets/gcts-wave-tiles.zip" download>Printable tiles and verifier</a>
                       </div>
                     </div>
                     <canvas id="turtle-tiling" width="960" height="520" aria-label="Interactive Turtle tiling canvas. Start a rudimentary frontier tiling, drag to pan, and use the mouse wheel or trackpad to zoom.">
@@ -165,7 +146,7 @@
     import {clearCachedMarkings,takeRequestedMarking,rememberMarking,markingDomain,markingName} from './assets/marking-library.js?v=visit-markings';
     import {reduceMarking,activeMarkingSupport,CompactA2Marking} from './assets/marking-reduction.js?v=20260921-component-stars';
     import {markingSegmentEndpoints} from './assets/marking-segments.js?v=wave-extent';
-    import {createHatRank3Marking,createAlternatingMarking,HAT_RANK3_ID,MIXED_RANK3_ID,HAT_RANK3_MAX_EXTENT,normalizeHatRank3Extent} from './assets/hat-rank3-marking.js?v=turtle-shared-support';
+    import {createHatRank3Marking,createAlternatingMarking,HAT_RANK3_ID,MIXED_RANK3_ID,HAT_RANK3_MAX_EXTENT,normalizeHatRank3Extent} from './assets/hat-rank3-marking.js?v=marking-defaults';
     (() => {
       const canvas = document.getElementById('turtle-tiling');
       if (!canvas) return;
@@ -188,23 +169,17 @@
       const windowResizeHandle = document.getElementById('turtle-window-resize');
       const tileSetInputs = Array.from(document.querySelectorAll('input[name="tiling-tiles"]'));
       const markingSourcePicker = document.getElementById('turtle-marking-source');
-      const hatMarkingPanel = document.getElementById('hat-marking-panel');
-      const hatMarkingComponent = document.getElementById('hat-marking-component');
-      const hatMarkingZeros = document.getElementById('hat-marking-zeros');
-      const hatMarkingPatternInput = document.getElementById('hat-marking-extension-pattern');
-      const hatExtensionEvidence = document.getElementById('hat-extension-evidence');
-      const markExtensionLabel = document.getElementById('turtle-mark-extension-label');
-      const hatExtensionOptions = () => ({extent:markingExtension, pattern:hatMarkingPatternInput.value});
+      let hatPattern = 'more';
       const learningFrame = document.getElementById('tiling-learning-frame');
-      let selectedTileSet = 'turtle', markingSource = 'none', manualPanelMode = false;
-      const learnedModels = new Map(), customModels = new Set(), markingLibrary = new Map();
+      let selectedTileSet = 'turtle', markingSource = 'standard', manualPanelMode = false;
+      const learnedModels = new Map(), markingLibrary = new Map();
       const tilingLattice = () => usingSublattice()?'turtle-sublattice':'A2';
       const markingContext = (setId=selectedTileSet) => markingDomain({setId,lattice:tilingLattice()});
       let learningSectionEntered=false, learnerReady=false, pendingLearningStart=null;
       let learningTileSet = 'turtle', learningLattice = 'A2';
       let displayMarking = null;
       const markingEnabled = () => markingSource !== 'none';
-      const supportsHatRank3 = (setId = selectedTileSet) => TILE_SETS[setId].tiles.includes('hat') && !usingSublattice();
+      const supportsHatRank3 = (setId = selectedTileSet) => setId === 'mixed' || (setId === 'hat' && !usingSublattice());
       const usingHatRank3 = () => supportsHatRank3() && markingSource === 'standard' && markingRank === 3;
       const previewingHatRank3 = () => supportsHatRank3() && markingSource === 'none';
       const hasHatStripes = () => usingHatRank3() || previewingHatRank3();
@@ -287,7 +262,7 @@
       let searchTimerStartedAt = null;
       let searchTimerFrame = null;
       let renderCache = null;
-      let showMarkings = false;
+      let showMarkings = true;
       let windowDragging = false;
       let windowResizing = false;
       let windowDragLast = { x: 0, y: 0 };
@@ -305,15 +280,17 @@
           label: 'Stage: one lattice tile',
           note: 'Start with a single Turtle before the definition introduces lattice tiles and their t-values.',
           tiles: 1,
-          markings: false,
-          useMarkingRules: false
+          markings: true,
+          markingRank: 3,
+          useMarkingRules: true
         },
         tile: {
           label: 'Stage: one lattice tile',
           note: 'At the lattice-tile definition, the app isolates one Turtle so the vertex t-values can be read directly in units of 1/12.',
           tiles: 1,
-          markings: false,
-          useMarkingRules: false
+          markings: true,
+          markingRank: 3,
+          useMarkingRules: true
         },
         tiling: {
           label: 'Stage: live tiling search',
@@ -1519,7 +1496,7 @@
       function turtleOverlay(placement) {
         if (placement.sharedSpec && placement.sharedSpec.tile !== 'turtle') return null;
         const monochrome = scalarTurtlePreview();
-        const extent = markingSource === 'standard' ? markingExtension : 0;
+        const extent = markingSource === 'learned' || monochrome ? 0 : markingExtension;
         const sublattice = usingSublattice();
         const key = `${monochrome}:${extent}:${sublattice}`;
         const cached = turtleOverlays.get(placement);
@@ -1572,17 +1549,14 @@
       }
 
       function drawPointSegments(entries, signed) {
-        const filter = signed && (hasHatStripes() || markingSource === 'alternating');
         ctx.save();
         ctx.lineCap = 'round';
         for (const entry of entries) {
-          if (signed && entry.value === 0 && !(filter && hatMarkingZeros.checked)) continue;
-          if (filter && hatMarkingComponent.value !== 'all' && entry.component !== Number(hatMarkingComponent.value)) continue;
+          if (signed && entry.value === 0) continue;
           const [a, b] = markingSegmentEndpoints(entry).map(projectA2);
           if (signed) {
-            ctx.setLineDash(entry.value === 0 ? [2,3] : []);
-            const color = entry.value === 0 ? '#6b7c73' : entry.value > 0 ? '#186aa0' : '#bf3e30';
-            drawLine(worldToScreen(a.x,a.y), worldToScreen(b.x,b.y), color, Math.max(.5, (entry.value === 0 ? .85 : 2.6) * scale));
+            const color = entry.value > 0 ? '#186aa0' : '#bf3e30';
+            drawLine(worldToScreen(a.x,a.y), worldToScreen(b.x,b.y), color, Math.max(.5, 2.6 * scale));
           } else {
             ctx.setLineDash(entry.value < 0 ? [2,2] : []);
             drawLine(worldToScreen(a.x,a.y),worldToScreen(b.x,b.y),entry.value===0?'#7d9088':`hsl(${Math.abs(entry.value)*137.5%360} 65% 36%)`,Math.max(.5,1.7*scale));
@@ -1839,7 +1813,7 @@
         const visible = visiblePlacements();
         const keys = visible.map(placement => `${placement.sharedSpec?.tile||'turtle'}:${placement.orientation.orientationIndex}|${key3(placement.translation)}`);
         const viewKey = [canvas.width, canvas.height, ratio, scale, offset.x, offset.y,
-          showMarkings, markingSource, scalarTurtlePreview(), hatMarkingComponent.value, hatMarkingZeros.checked, hatMarkingPatternInput.value, markingRank, markingExtension, latticeToggle.checked, usingSublattice(), seedOrientationIndex].join('|');
+          showMarkings, markingSource, scalarTurtlePreview(), hatPattern, markingRank, markingExtension, latticeToggle.checked, usingSublattice(), seedOrientationIndex].join('|');
         // Shared-engine events reconstruct placement objects, so compare stable
         // geometric keys rather than object identities to recognize an append.
         const fullRedraw = !renderCache || renderCache.viewKey !== viewKey
@@ -1986,26 +1960,10 @@
       }
 
       function updateMarkExtensionControl() {
-        const hatControls = usingHatRank3() || markingSource === 'alternating' || (previewingHatRank3() && showMarkings);
-        const sharedField = sharedAlternatingField();
-        const sparse = hatControls && !sharedField && hatMarkingPatternInput.value.startsWith('sparse');
-        const disabled = (!hatControls && markingSource !== 'standard') || sparse;
-        markExtensionControl.hidden = false;
-        hatMarkingPanel.hidden = !hatControls;
-        markExtensionInput.max = String(hatControls ? HAT_RANK3_MAX_EXTENT : 9);
-        markExtensionLabel.textContent = sparse ? 'core extent' : hatControls ? 'Kagome extent' : 'extent';
-        markExtensionInput.setAttribute('aria-label', hatControls ? 'Kagome marking extent in lattice steps' : 'Marking extent in lattice steps');
-        if (hatControls) {
-          document.getElementById('hat-marking-signs').hidden = sharedField;
-          document.getElementById('hat-phase-proof').hidden = sparse || sharedField;
-          document.getElementById('hat-marking-unassigned').hidden = !sparse;
-          document.getElementById('wave-model-files').hidden = sparse;
-          hatExtensionEvidence.textContent = sharedField
-            ? (selectedTileSet === 'mixed' ? 'Hats and Turtles alternate colors in all three directions. Marked search matches their signs at shared sites.' : 'Turtle colors alternate at successive sites in each of the three stripe directions.')
-            : sparse
-            ? 'The sparse core keeps ten signs. Choose Full alternating to extend the stripes.'
-            : 'Red and blue alternate in all three directions. Increase extent to add a lattice step at each end of the marked lines.';
-        }
+        const sparse = selectedTileSet === 'hat' && hasHatStripes() && hatPattern.startsWith('sparse');
+        const preview = showMarkings && (previewingHatRank3() ||
+          (selectedTileSet === 'turtle' && markingSource === 'none' && !scalarTurtlePreview()));
+        const disabled = sparse || (!preview && markingSource !== 'standard' && markingSource !== 'alternating');
         markExtensionInput.disabled = disabled;
         markExtensionControl.classList.toggle('is-disabled', disabled);
       }
@@ -2032,35 +1990,15 @@
 
       function resetTilingForMarkingExtension() {
         if (markExtensionInput.disabled) return;
-        if (hasHatStripes() || markingSource === 'alternating') {
-          if (normalizeHatRank3Extent(markExtensionInput.value) === markingExtension) {
-            markExtensionInput.value = String(markingExtension);
-            return;
-          }
-          updateHatMarkingOptions();
-          return;
+        const extent = normalizedMarkingExtension();
+        markExtensionInput.value = String(extent);
+        if (extent === markingExtension) return;
+        if (markingEnabled()) {
+          configurePanel(selectedTileSet, markingSource, {markingsVisible: showMarkings, extent});
+        } else {
+          markingExtension = extent;
+          draw();
         }
-        stopTiling();
-        liveSearchIterator?.cancel?.();
-        markingExtension = normalizedMarkingExtension();
-        orientations = buildOrientations(markingExtension, markingRank);
-        const seed = makeSeedPlacement();
-        tilingRun = { placements: [seed], trace: [] };
-        tilingOrder = tilingRun.placements;
-        tilingTrace = tilingRun.trace;
-        tilingRunUsesMarking = markingEnabled();
-        shownTiles = 1;
-        playbackPlacements = null;
-        traceIndex = 0;
-        liveSearchIterator = null;
-        highestPausedCorona = 0;
-        trialGhost = null;
-        statusText = `rank-${markingRank} marking · extent ${markingExtension} lattice step${markingExtension === 1 ? '' : 's'}`;
-        hasStartedTiling = false;
-        startButton.textContent = 'Start tiling';
-        syncMarkingSelection();
-        centerSeedView();
-        draw();
       }
 
       function setDemoStage(stageName) {
@@ -2083,13 +2021,6 @@
         }
         stopTiling();
         liveSearchIterator?.cancel?.();
-        if (stageName === 'intro') {
-          stageChips.forEach(chip => {
-            chip.setAttribute('aria-current', 'false');
-          });
-          updateTextWrap();
-          return;
-        }
         if (stageName === 'marking' || stageName === 'markings') {
           markingSource = 'none';
           markingRank = stage.markingRank;
@@ -2121,6 +2052,7 @@
           markingRank = stage.markingRank;
           syncMarkingSelection();
           orientations = buildOrientations(markingExtension, markingRank);
+          refreshPlacementsForMarkingRank();
         }
         shownTiles = stage.tiles;
         playbackPlacements = null;
@@ -2199,14 +2131,15 @@
       let fixedDisplayCache = null;
       const previewEntriesCache = new WeakMap();
       function createPanelFixedMarking() {
-        if (sharedAlternatingField()) return createAlternatingMarking(TILE_SETS[selectedTileSet].tiles, markingExtension);
+        const pointFilter = usingSublattice() ? isTurtleSublatticeVector : null;
+        if (sharedAlternatingField()) return createAlternatingMarking(TILE_SETS[selectedTileSet].tiles, markingExtension, {pointFilter});
         if (hasHatStripes()) {
-          return createHatRank3Marking(hatExtensionOptions());
+          return createHatRank3Marking({extent: markingExtension, pattern: hatPattern});
         }
-        return new FixedA2Marking(markingExtension, {pointFilter: usingSublattice() ? isTurtleSublatticeVector : null, rank: markingRank, tiles: TILE_SETS[selectedTileSet].tiles});
+        return new FixedA2Marking(markingExtension, {pointFilter, rank: markingRank, tiles: TILE_SETS[selectedTileSet].tiles});
       }
       function fixedPanelMarking() {
-        const key = `${markingSource}:${selectedTileSet}:${markingRank}:${markingExtension}:${usingSublattice()}:${hatMarkingPatternInput.value}`;
+        const key = `${markingSource}:${selectedTileSet}:${markingRank}:${markingExtension}:${usingSublattice()}:${hatPattern}`;
         if (fixedDisplayCache?.key !== key) fixedDisplayCache = {key, marking: createPanelFixedMarking()};
         return fixedDisplayCache.marking;
       }
@@ -2469,12 +2402,9 @@
         hasStartedTiling = true;
         if (!playbackPlacements) playbackPlacements = tilingOrder.slice(0, Math.max(1, shownTiles));
         trialGhost = null;
-        if (sharedAlternatingField() && useMarking) statusText = `branching with alternating rank 3 signs · extent ${markingExtension}`;
-        else if (usingHatRank3()) statusText = `branching with Hat rank 3 Kagome · extent ${markingExtension}`;
-        else if (markingSource === 'learned') statusText = 'branching with provisional learned marking';
+        if (markingSource === 'learned') statusText = 'branching with provisional learned marking';
         else statusText = useMarking ? `branching with rank-${markingRank} marking constraints` : 'branching without marking constraints';
         if (usingSublattice()) statusText += ' on the turtle sublattice';
-        if (markingEnabled() && !usingHatRank3() && markingSource !== 'alternating') showMarkings = true;
         updateMarkingButton();
         startButton.textContent = 'Pause tiling';
         resumeSearchTimer();
@@ -2612,26 +2542,12 @@
         draw();
       });
       markExtensionInput?.addEventListener('change', resetTilingForMarkingExtension);
-      hatMarkingComponent.addEventListener('change',draw);
-      hatMarkingZeros.addEventListener('change',draw);
-      function updateHatMarkingOptions() {
-        markingExtension = !sharedAlternatingField() && hatMarkingPatternInput.value.startsWith('sparse') ? 0 : normalizeHatRank3Extent(markExtensionInput.value);
-        markExtensionInput.value = String(markingExtension);
-        if (markingEnabled()) {
-          configurePanel(selectedTileSet, markingSource, {markingsVisible: showMarkings, extent: markingExtension});
-          return;
-        }
-        updateMarkingButton();
-        draw();
-      }
-      hatMarkingPatternInput.addEventListener('change',updateHatMarkingOptions);
       markExtensionInput?.addEventListener('input', () => {
         const next = normalizedMarkingExtension();
         if (next !== markingExtension) resetTilingForMarkingExtension();
       });
       sublatticeToggle?.addEventListener('change', () => {
-        const source = markingSource === 'standard' || markingSource === 'alternating' ? 'standard'
-          : markingSource === 'learned' && learnedModels.has(markingContext()) ? 'learned' : 'none';
+        const source = markingSource === 'learned' && !learnedModels.has(markingContext()) ? 'none' : markingSource;
         // A different point domain needs a seed aligned to that domain.
         configurePanel(selectedTileSet, source);
       });
@@ -2661,11 +2577,12 @@
         draw();
       });
       function updatePanelControls() {
-        markingSourcePicker.querySelector('[value="rank1"]').disabled = false;
+        const scalar = markingSourcePicker.querySelector('[value="rank1"]');
+        scalar.hidden = scalar.disabled = selectedTileSet === 'mixed';
         markingSourcePicker.querySelector('[value="rank3"]').disabled = selectedTileSet !== 'turtle' && !supportsHatRank3();
         markingSourcePicker.querySelector('[value="rank3"]').textContent = selectedTileSet === 'turtle' ? 'rank 3 · constant' : selectedTileSet === 'mixed' ? 'rank 3 · alternating' : 'rank 3';
         const alternate = markingSourcePicker.querySelector('[value="alternating"]');
-        alternate.hidden = alternate.disabled = selectedTileSet !== 'turtle' || usingSublattice();
+        alternate.hidden = alternate.disabled = selectedTileSet !== 'turtle';
         markingSourcePicker.querySelectorAll('[data-learned-marking]').forEach(option=>option.remove());
         const saved=[...markingLibrary.values()].filter(model=>markingDomain(model)===markingContext()).sort((a,b)=>b.marking.createdAt.localeCompare(a.marking.createdAt));
         for(const model of saved){const option=document.createElement('option');option.value=`learned:${model.marking.id}`;option.textContent=markingName(model);option.dataset.learnedMarking=model.marking.id;markingSourcePicker.append(option);}
@@ -2678,22 +2595,27 @@
         extent = setId === selectedTileSet ? markingExtension : defaultMarkingExtent(setId)
       } = {}) {
         if(source==='hat-provisional'){source='standard';markingRank=3;}
+        if (setId === 'mixed' && (source === 'standard' || source === 'alternating')) {
+          source = 'standard';
+          markingRank = 3;
+        }
         if (source === 'alternating') markingRank = 3;
         if(source==='standard'&&markingRank===3&&setId!=='turtle'&&!supportsHatRank3(setId))source='none';
+        if (setId !== 'hat') hatPattern = 'more';
         manualPanelMode = true;
         stopTiling(); liveSearchIterator?.cancel?.(); liveSearchIterator = null;
         selectedTileSet = setId; markingSource = source; tileSetInputs.forEach(input=>{input.checked=input.value===setId;});
         markingExtension = extent;
         if (sharedAlternatingField()) markingExtension = normalizeHatRank3Extent(extent);
         else if (hasHatStripes()) {
-          markingExtension = hatMarkingPatternInput.value.startsWith('sparse') ? 0 : normalizeHatRank3Extent(extent);
+          markingExtension = hatPattern.startsWith('sparse') ? 0 : normalizeHatRank3Extent(extent);
         }
         markExtensionInput.value = String(markingExtension);
         if(markingId){const model=markingLibrary.get(markingId);if(model&&markingDomain(model)===markingContext(setId))learnedModels.set(markingContext(setId),model);}
         displayMarking = source === 'learned' ? learnedModels.get(markingContext(setId))??null : null;
         if(source==='learned'&&!displayMarking)source=markingSource='none';
         orientations = buildOrientations(markingExtension, markingRank);
-        showMarkings = markingsVisible && (source !== 'none' || previewingHatRank3());
+        showMarkings = markingsVisible;
         updatePanelControls(); resetButton.click(); centerSeedView({resetScale:true}); renderCache=null; draw();
         if(activeScrollAnchor==='learning')learningFrame.contentWindow?.postMessage({type:'gcts-select-tiles',setId,lattice:learningLattice},location.origin);
       }
@@ -2732,13 +2654,8 @@
       document.getElementById('open-marking-lab').onclick=()=>{panelView('learning');demoCard.scrollIntoView({block:'nearest'});};
       tileSetInputs.forEach(input=>input.addEventListener('change',()=>{
         if(!input.checked)return;
-        let source='none';
-        if(!learningPanelVisible()){
-          if(markingSource==='standard'&&markingRank===1)source='standard';
-          else if(!customModels.has(markingContext(input.value))){markingRank=3;source='standard';}
-          else if(learnedModels.has(markingContext(input.value)))source='learned';
-        }
-        configurePanel(input.value,source);
+        markingRank = 3;
+        configurePanel(input.value, learningPanelVisible() ? 'none' : 'standard');
         if(learningPanelVisible())requestLearningFor(input.value);
       }));
       markingSourcePicker.onchange = () => {
@@ -2753,7 +2670,6 @@
         const result=rememberMarking(model.reducedSupport||model.marking?.id?model:reduceMarking(model),{origin});
         const saved=result.model;saved.marking={...saved.marking,name:markingName(saved)};markingLibrary.set(saved.marking.id,saved);
         if(select||!learnedModels.has(markingDomain(saved)))learnedModels.set(markingDomain(saved),saved);
-        customModels.add(markingDomain(saved));
         return {...result,model:saved};
       }
       window.addEventListener('message', event => {
@@ -2793,8 +2709,9 @@
         setId:selectedTileSet, source:markingSource, lattice:tilingLattice(), rank:markingRank, extent:markingExtension,
         usesMarking:markingEnabled(), placements:visiblePlacements().filter(p=>p.sharedSpec).map(p=>p.sharedSpec),
         model:displayMarking, candidate:usingHatRank3()?(selectedTileSet==='mixed'?MIXED_RANK3_ID:HAT_RANK3_ID):null,
-        stripeComponent:hatMarkingComponent.value, showAssignedZeros:hatMarkingZeros.checked,
-        extensionPattern:sharedAlternatingField()?(markingExtension===0?'alternating-core':'alternating'):hatMarkingPatternInput.value
+        stripeComponent:'all', showAssignedZeros:false,
+        extensionPattern:sharedAlternatingField()?(markingExtension===0?'alternating-core':'alternating'):
+          hasHatStripes()?hatPattern:markingSource==='standard'&&markingRank===3?'constant':null
       });
       function demoStageForScroll() {
         const demoRect = demoCard?.getBoundingClientRect();
@@ -2816,9 +2733,8 @@
       }
       function syncDemoStageToScroll() {
         if(!document.getElementById('j-panel-page').hidden)return;
-        // Keep an explicitly selected Hat marking stable while its controls
-        // scroll into view; article section changes must not replace it.
-        if (manualPanelMode && (hasHatStripes() || markingSource === 'alternating')) return;
+        // Keep a manually selected rank-three rule while the reader scrolls.
+        if (manualPanelMode && (hasHatStripes() || markingSource === 'alternating' || (markingSource === 'standard' && markingRank === 3))) return;
         const heading = document.getElementById('anchor-learning');
         const anchor = heading.getBoundingClientRect().top <= window.innerHeight * .65
           ? 'learning' : demoStageForScroll();
@@ -2871,7 +2787,7 @@
       if(['hat-provisional','hat-rank3'].includes(params.get('marking'))||(params.get('marking')==='rank3'&&params.get('tiles')==='hat')){
         markingRank=3;
         const requestedPattern=params.get('pattern');
-        hatMarkingPatternInput.value=['sparse','sparse-reverse','more','alternate'].includes(requestedPattern)?requestedPattern:'more';
+        hatPattern=['sparse','sparse-reverse','more','alternate'].includes(requestedPattern)?requestedPattern:'more';
         configurePanel('hat','standard',{extent: normalizeHatRank3Extent(params.get('extend'))});
       } else if (params.get('marking') === 'rank3' && ['mixed', 'turtle'].includes(params.get('tiles'))) {
         markingRank = 3;
