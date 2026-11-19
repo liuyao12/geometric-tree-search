@@ -1,4 +1,4 @@
-import {A2_TILE_LOOPS, SparseA2Marking, tileOrientations} from './a2-tiling-engine.js?v=20260921-viable-corona';
+import {FixedA2Marking, SparseA2Marking} from './a2-tiling-engine.js?v=20260921-viable-corona';
 
 // Rank-3 signs on the existing Hat rank-1 Kagome pattern, 2026-10-30.
 // There are eight core Kagome points, two nonzero directions per point:
@@ -12,7 +12,7 @@ import {A2_TILE_LOOPS, SparseA2Marking, tileOrientations} from './a2-tiling-engi
 // research/hat-kagome-phase/verify.py certifies the common field and the
 // full marking at extents 0–3 for complete Hat-only point tilings.
 export const HAT_RANK3_ID='hat-kagome-rank3';
-export const HAT_RANK3_MAX_EXTENT=3;
+export const HAT_RANK3_MAX_EXTENT=9;
 export const HAT_RANK3_CERTIFIED_EXTENT=3;
 export const HAT_RANK3_ZERO_POINTS=Object.freeze([
  [1,0,-1],[3,0,-3],[3,2,-5],[1,4,-5],[-1,6,-5],[-1,4,-3],[-1,2,-1],
@@ -76,17 +76,21 @@ export function createHatRank3Marking(options={}){
 }
 
 // Both prototiles sample the same Kagome field in first-vertex coordinates.
-// Evaluate only the occupied core; SparseA2Marking transports signs and
-// components with the placement and compares them on shared sites.
+// The fixed scalar stripes supply the four geometric line domains per tile.
+// Sample the same periodic field at their exterior sites as in the core.
 export const MIXED_RANK3_ID = 'mixed-hat-turtle-rank3';
-export function createAlternatingCoreMarking(tiles) {
+export function createAlternatingMarking(tiles, extent = 0) {
+  extent = normalizeHatRank3Extent(extent);
+  const scalar = new FixedA2Marking(extent, {tiles, rank: 1});
   const support = [];
-  for (const tile of tiles) {
-    const [identity] = tileOrientations(tile, A2_TILE_LOOPS[tile]);
-    for (const {point} of identity.occupancy.values()) {
-      const values = hatKagomeValues(point) ?? [0, 0, 0];
-      values.forEach((value, component) => support.push({tile, point, component, value}));
-    }
+  const sites = new Set();
+  for (const {tile, point} of scalar.support) {
+    const key = tile + ':' + point.join(',');
+    if (sites.has(key)) continue;
+    sites.add(key);
+    const values = hatKagomeValues(point) ?? [0, 0, 0];
+    values.forEach((value, component) => support.push({tile, point, component, value}));
   }
-  return new SparseA2Marking(support, {label: 'Alternating rank 3 core'});
+  return new SparseA2Marking(support, {label: 'Alternating rank 3 · extent ' + extent});
 }
+export {createAlternatingMarking as createAlternatingCoreMarking};
