@@ -1,4 +1,4 @@
-import {SparseA2Marking} from './a2-tiling-engine.js?v=20260921-viable-corona';
+import {A2_TILE_LOOPS, SparseA2Marking, tileOrientations} from './a2-tiling-engine.js?v=20260921-viable-corona';
 
 // Rank-3 signs on the existing Hat rank-1 Kagome pattern, 2026-10-30.
 // There are eight core Kagome points, two nonzero directions per point:
@@ -73,4 +73,20 @@ export function createHatRank3Marking(options={}){
   label:`Hat rank 3 Kagome · ${sparse?'sparse core':`extent ${extent}`}`,valueAction:'signed-permutation',version:'hat-kagome-rank3-v2',
   coreSignMask:sparse?0:42598,activeLineMask:sparse?3903:65535,coreAssignments:sparse?66:72,coreCertified:true,exteriorCertified:!sparse && extent>0 && extent<=HAT_RANK3_CERTIFIED_EXTENT
  });
+}
+
+// Both prototiles sample the same Kagome field in first-vertex coordinates.
+// Evaluate only the occupied core; SparseA2Marking transports signs and
+// components with the placement and compares them on shared sites.
+export const MIXED_RANK3_ID = 'mixed-hat-turtle-rank3';
+export function createAlternatingCoreMarking(tiles) {
+  const support = [];
+  for (const tile of tiles) {
+    const [identity] = tileOrientations(tile, A2_TILE_LOOPS[tile]);
+    for (const {point} of identity.occupancy.values()) {
+      const values = hatKagomeValues(point) ?? [0, 0, 0];
+      values.forEach((value, component) => support.push({tile, point, component, value}));
+    }
+  }
+  return new SparseA2Marking(support, {label: 'Alternating rank 3 core'});
 }
