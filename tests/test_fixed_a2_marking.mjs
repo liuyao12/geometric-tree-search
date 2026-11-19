@@ -1,16 +1,29 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {createHatRank3Marking} from '../assets/hat-rank3-marking.js';
+import {createHatRank3Marking,HAT_RANK3_SEGMENTS} from '../assets/hat-rank3-marking.js';
 import {A2_TILE_LOOPS, FixedA2Marking, FixedTurtleMarking, tileOrientations, solveA2Tiling, makeHexBoundary} from '../assets/a2-tiling-engine.js';
 globalThis.requestAnimationFrame = callback => setTimeout(callback, 0);
 const root = tile => ({tile, orientation:tileOrientations(tile,A2_TILE_LOOPS[tile])[0], translation:[0,0,0]});
 const hat = root('hat');
-// Replay the full displayed sign vectors, including assigned zero and exterior
-// sites, against the independent Hat-only phase certificate at every extent.
+// The historical certificate tabulates the whole field at each sampled point.
+// The current preset assigns all core components and only the continuing
+// stripe's component outside the core. Use the certificate for every sign.
 const phaseCertificate=JSON.parse(readFileSync(new URL('../research/hat-kagome-phase/certificate.json',import.meta.url),'utf8'));
+const core = new Set(phaseCertificate.full_marking_xy_xyz_components_by_extent[0].map(([x,y])=>[x,y].join(',')));
 for(const [extent,rows] of phaseCertificate.full_marking_xy_xyz_components_by_extent.entries()){
+ const exterior=new Set();
+ for(const [a,b] of HAT_RANK3_SEGMENTS){
+  const delta=b.map((v,i)=>v-a[i]), length=Math.min(...delta.map(Math.abs));
+  const step=delta.map(v=>v/length), axis=step.findIndex(v=>Math.abs(v)===2);
+  for(let k=1;k<=extent;k++)for(const [end,sign] of [[a,-1],[b,1]]){
+   exterior.add(end.map((v,i)=>v+sign*k*step[i])+'|'+axis);
+  }
+ }
  const expected=new Map();
- for(const [x,y,...vector] of rows)vector.forEach((value,component)=>expected.set(`${x},${y},${-x-y}|${component}`,value));
+ for(const [x,y,...vector] of rows)vector.forEach((value,component)=>{
+  const key=`${x},${y},${-x-y}|${component}`;
+  if(core.has([x,y].join(','))||exterior.has(key))expected.set(key,value);
+ });
  const stripes=createHatRank3Marking({extent,pattern:'more'});
  assert.deepEqual(stripes.entries(hat),expected);
 }
