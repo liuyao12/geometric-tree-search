@@ -2,6 +2,7 @@
 .hat-marking-panel[hidden] { display: none; }
 .hat-marking-options, .hat-marking-legend { display: flex; align-items: center; flex-wrap: wrap; gap: 5px 13px; }
 .hat-marking-options label { display: inline-flex; align-items: center; gap: 5px; }
+.hat-marking-options label[hidden], .hat-marking-legend > span[hidden] { display: none; }
 .hat-marking-options select { font: inherit; max-width: 150px; }
 .hat-extension-evidence { color: #52665b; }
 .hat-marking-legend { margin-top: 5px; }
