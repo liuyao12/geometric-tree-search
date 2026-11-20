@@ -5,7 +5,7 @@ import {tileModel} from './model.mjs';
 import {verify} from './verify.mjs';
 
 const tile=JSON.parse(readFileSync(new URL('two-weights.json',import.meta.url)));
-const opts={radius:1,through:2,extent:0,proofNodes:0,proposals:32,seed:6};
+const opts={radius:1,through:2,nodes:100000,extent:0,proofNodes:0,proposals:32,seed:6};
 const results=[...windows(tile,opts)];
 assert.deepEqual(results,[...windows(tile,opts)]);
 assert.deepEqual(results,[...windows({...tile,points:[...tile.points].reverse()},opts)]);
@@ -18,6 +18,19 @@ assert.ok(results[0].revisions.length>0);
 assert.deepEqual(results[0].revisions[0].pair,['0@0,0,0','4@-1,1,0']);
 assert.deepEqual(results[0].marking,[['0,0,0',0,1],['0,0,0',2,-1]]);
 assert.deepEqual(results[1].marking,results[0].marking);
+// At radius zero the root contributes five. Exactly one seven-end must
+// cover the origin; compare against explicit enumeration of that whole domain.
+const model=tileModel(tile), zero=[0n,0n,0n];
+const choices=model.incident(zero).filter(p=>p.rows.some(r=>r.key==='0,0,0'&&r.w===7n));
+const rank=p=>[Math.max(...p.shift.map(x=>Math.abs(Number(x)))),...p.shift.map(Number),p.form.index];
+choices.sort((p,q)=>{const a=rank(p),b=rank(q);return a.map((v,i)=>v-b[i]).find(v=>v!==0)??0;});
+for (const seed of [1,6,21]) {
+  const witness=search(tile,{radius:0,stabilize:true,proposals:0,seed});
+  assert.deepEqual(new Set(witness.placements),new Set([model.root.id,choices.at(-1).id]));
+}
+const tight=search(tile,{...opts,nodes:12});
+assert.equal(tight.status,'unknown');
+assert.ok(tight.orderQueries>0);
 const raw=search(tile,{...opts,proposals:0});
 assert.equal(raw.status,'covered'); assert.deepEqual(raw.marking,[]); verify(tile,raw);
 const cutoff=search(tile,{...opts,nodes:0});
