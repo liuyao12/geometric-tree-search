@@ -2,13 +2,14 @@ import {readFileSync} from 'node:fs';
 import {pathToFileURL} from 'node:url';
 import {A2_TILE_LOOPS,tileOrientations} from '../../assets/a2-tiling-engine.js';
 import {hex,origin,tileModel} from './model.mjs';
-import {fill,rng} from './search.mjs';
+import {fill,leastCover,rng} from './search.mjs';
 import {learner} from './learn.mjs';
 
 export function* windows(input,options={}) {
   const defaults={radius:1,extent:1,proofRadius:0,proofNodes:8,proposals:24,
     seed:1,nodes:10000};
-  const {through,...specified}=options;
+  const {through,stabilize=through!==undefined,...specified}=options;
+  if (typeof stabilize!=='boolean') throw new Error('stabilize must be a boolean');
   const config={...defaults,...specified};
   for (const [key,v] of Object.entries(config)) {
     if (!Object.hasOwn(defaults,key)) throw new Error('Unknown option '+key);
@@ -29,7 +30,14 @@ export function* windows(input,options={}) {
         (config.nodes??Infinity)-nodes,learning.consider,exhausted);
       nodes+=result.nodes; failures+=result.failures; backtracks+=result.backtracks;
     } while (result.status==='revised');
-    yield {status:result.status,config:{...config,radius},nodes,failures,backtracks,...learning.stats(),
+    let orderNodes=0,orderQueries=0;
+    if (stabilize && result.status==='covered') {
+      result=leastCover(model,targets,[...learning.support.values()],result.placements,config.seed,
+        (config.nodes??Infinity)-nodes);
+      orderNodes=result.nodes; orderQueries=result.queries; nodes+=orderNodes;
+    }
+    yield {status:result.status,config:{...config,radius,stabilize},nodes,orderNodes,orderQueries,
+      failures,backtracks,...learning.stats(),
       revisions:learning.revisions.slice(),placements:result.placements.map(p=>p.id),
       marking:[...learning.support.values()].map(m=>[String(m.point),m.axis,m.value])};
     if (result.status!=='covered') return;

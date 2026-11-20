@@ -7,7 +7,7 @@ export function rng(seed) {
 }
 // Only requirements in targets must finish. Every incidence that can help fill
 // one is enumerated, including translated tiles spilling outside the window.
-export function fill(model,targets,fixed,marks,random,limit,onFailure,exhausted=new Set()) {
+export function fill(model,targets,fixed,marks,random,limit,onFailure,exhausted=new Set(),excluded=new Set()) {
   const obligations = [...new Map(targets.map(q=>[String(q),q])).values()].sort(pointOrder)
     .map(q=>({key:String(q),placements:model.incident(q)}));
   const totals=new Map(), values=new Map(), moved=new Set(), stack=[], cache=new Map();
@@ -18,7 +18,7 @@ export function fill(model,targets,fixed,marks,random,limit,onFailure,exhausted=
     return cache.get(p.id);
   }
   function fits(p) {
-    return !moved.has(p.id) && p.rows.every(r=>(totals.get(r.key)??0n)+r.w<=model.capacity)
+    return !excluded.has(p.id) && !moved.has(p.id) && p.rows.every(r=>(totals.get(r.key)??0n)+r.w<=model.capacity)
       && entries(p).every(([k,v])=>!values.has(k)||values.get(k).v===v);
   }
   function push(p) {
@@ -80,4 +80,33 @@ export function fill(model,targets,fixed,marks,random,limit,onFailure,exhausted=
     }
   }
   return {status,nodes,backtracks,failures,placements:status==='covered'?stack.slice():[]};
+}
+
+// Select the least bit vector in one fixed whole-lattice placement order.
+// Omitting a placement precedes taking it. All nonincident optional tiles
+// can be omitted without affecting the window, so only finitely many queries
+// are needed. A failure with an artificial exclusion cannot train a marking.
+export function leastCover(model,targets,marks,witness,seed,limit) {
+  const catalogue=new Map();
+  for (const q of targets) for (const p of model.incident(q)) catalogue.set(p.id,p);
+  const norm=q=>q.reduce((n,x)=>x>n?x:-x>n?-x:n,0n);
+  const ordered=[...catalogue.values()].map(p=>({p,r:norm(p.shift)}))
+    .sort((a,b)=>a.r<b.r?-1:a.r>b.r?1:pointOrder(a.p.shift,b.p.shift)||a.p.form.index-b.p.form.index);
+  const fixed=[model.root], excluded=new Set();
+  let nodes=0,queries=0,used=new Set(witness.map(p=>p.id));
+  for (const {p} of ordered) {
+    if (p.id===model.root.id) continue;
+    excluded.add(p.id);
+    if (!used.has(p.id)) continue; // The current witness already realizes zero.
+    queries++;
+    const trial=fill(model,targets,fixed,marks,rng(seed),limit-nodes,null,new Set(),excluded);
+    nodes+=trial.nodes;
+    if (trial.status==='unknown') return {status:'unknown',placements:[],nodes,queries};
+    if (trial.status==='exhausted') {
+      excluded.delete(p.id); fixed.push(p);
+    } else {
+      witness=trial.placements; used=new Set(witness.map(t=>t.id));
+    }
+  }
+  return {status:'covered',placements:witness,nodes,queries};
 }
