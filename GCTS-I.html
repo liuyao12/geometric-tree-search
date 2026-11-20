@@ -62,7 +62,7 @@
 
                       </div>
                       <div class="toolbar-row toolbar-toggle-row">
-                        <label class="toolbar-toggle">Tiling with <select id="turtle-marking-source"><option value="none">no marking</option><option value="rank1">rank 1</option><option value="rank3" selected>rank 3 · constant</option><option value="alternating">rank 3 · alternating</option><option value="chords" hidden disabled title="Blue means a single tile contains the chord. Red means the chord crosses between tiles.">rank 3 · chords</option><option value="economical" hidden disabled title="Chord marking selected by tile growth and number of assigned values.">chords · economical</option><option value="two-chords" hidden disabled title="Keep only the two chord values that reject the example patch.">two chords · obstruction</option></select></label>
+                        <label class="toolbar-toggle">Tiling with <select id="turtle-marking-source"><option value="none">no marking</option><option value="rank1">rank 1</option><option value="rank3" selected>rank 3 · constant</option><option value="alternating">rank 3 · alternating</option><option value="failures" hidden disabled>rank 3 · from failures</option></select></label>
                         <label class="toolbar-toggle mark-extension-control is-disabled" id="turtle-mark-extension-control"><span id="turtle-mark-extension-label">extent</span> <input type="number" id="turtle-mark-extension" min="0" max="9" step="1" value="1" inputmode="numeric" aria-label="Marking extent in lattice steps" disabled>
         </label>
                       </div>
@@ -108,7 +108,7 @@
         <p>Finding the subsets \(K_i\) (or showing none exists) is a problem of combinatorial tree search. We could place the first tile anywhere (or simply with \(i=1\), \(g=1\)), and for a specific \({\bf p}\) with \(0 &lt; t_1({\bf p}) &lt; 1\), there are <em>finitely</em> many ways to place the second tile (choices of \(i\) and \(g \in G\)) such that \(t_i(g^{-1} {\bf p}) &gt; 0\) and</p>
         <div class="math-display">\[t_1({\bf x}) + t_i(g^{-1} {\bf x}) \leq 1\]</div>
         <p>for all \({\bf x}\), and we put this \(g\) in \(K_i\), and repeat the process. Thus we obtain a finite-branching tree to search over. A branch stops or dies if it runs out of choices (for any "boundary point" \({\bf p}\)). We are particularly interested in tiles that admit nontrivial tilings: neither too restricted that the branchings all have a unique choice, nor too loose that <em>any</em> branch appears to lead to valid tilings. Note that this algorithm could not tell whether a (partial) tiling is periodic, and by itself is unable to say if it actually extends to a tiling of the whole space.</p>
-        <p>The live search maintains this choice structure as a bipartite graph: one class of vertices consists of the current frontier points, and the other consists of candidate tile placements, with an edge whenever a candidate can legally complete a frontier point. Placing or removing a tile changes only the nearby incidences, so the graph is updated locally and rolled back with the search branch. The algorithm can therefore branch at a frontier point of minimum degree without recomputing every point's candidate list from scratch.</p>
+        <p>The live search maintains this choice structure as a bipartite graph: one class of vertices consists of the current frontier points, and the other consists of candidate tile placements, with an edge whenever a legal candidate contributes positive point value there. Placing or removing a tile changes only the nearby incidences, so the graph is updated locally and rolled back with the search branch. The live demo checks for dead points and forced moves across the entire frontier. It then gives priority to the oldest frontier points and prefers placements sharing a boundary segment with the last tile. After the first draw it keeps every legal alternative on the chosen segment.</p>
         <p>In practice, it may be more natural to "branch over" faces instead of boundary points; and we may adopt simple rules to choose the face or the point \({\bf p}\) for each branching, but no need to employ more sophisticated heuristics. This is essentially what is implemented <a href="./apps/3d-lattice-tiler/">here</a>.</p>
         <h2>Markings and matching rules</h2>
         <p>When playing jigsaw puzzles, we would direct our attention to the colors and patterns on the pieces; two pieces fit not just by the geometry (shape of the boundary) but the patterns have to "match". Similarly in tiling, we would often, for the sake of forcing aperiodicity, introduce "markings" on the tiles, along with "matching rules" that the markings need to match in certain ways. Not the least, the Wang tiles work via color matching. Let's formalize all these in a definition, specialized for our discrete setting.</p>
@@ -121,7 +121,7 @@
         <div class="math-display">\[m : \mathbb{Z}^3 \to \mathbb{R}^n\]</div>
         <p>and there is an action of \(G\) on \(\mathbb{R}^n\) (a representation), then the matching rule would be</p>
         <div class="math-display">\[g\cdot m(g^{-1} {\bf x}) = h \cdot m(h^{-1} {\bf x})\]</div>
-        <p>on the overlap.</p>
+        <p>on the overlap. In the demo, each component can also be unassigned, written \(\ast\). Two tiles agree when their values coincide in every component that both assign.</p>
         <p><em>Remark (made by GPT).</em> In Yasushi Nagai's <a href="https://doi.org/10.1007/s00454-019-00081-2"><em>A General Framework for Tilings, Delone Sets, Functions, and Measures and Their Interrelation</em></a> (2019), a tiling and its global marking function are <em>abstract patterns</em> in possibly different \(G\)-abstract pattern spaces. Nagai writes this symmetry group as \(\Gamma\). His Theorems 3.6 and 5.5 say, under their hypotheses, that pattern-equivariant functions determine the original pattern up to mutual local derivability (MLD); Theorem 5.5 includes actions on vector-valued functions.</p>
         <p id="anchor-known-marking" data-demo-stage="markedTiling">
         <em>Example.</em> The turtle admits a marking of straight lines (see <a href="https://arxiv.org/abs/2307.12322">Akiyama &amp; Araki</a> or <a href="https://mathblock8128.wordpress.com/">mathblock8128</a>). The two colors represent \(\pm 1\) values for the lattice points on <em>three</em> separate markings, or a rank-3 bundle. The group \(G\) acts on \(\mathbb{R}^3\) by permuting and negating the components (swapping the two colors upon reflections). Note that the domain of each marking may be taken to be arbitrarily long, a sign of long-range order.</p>
@@ -131,6 +131,7 @@
         </figure>
         <p>
         <em>Example.</em> The classic "domino puzzle" (with the checkerboard argument) may be cast as a problem of tiling with marking. It seems that a good source of candidates for markings would be the eigenfunctions of the Laplacian operator, with Dirichlet or Neumann (or mixed) boundary conditions.</p>
+        <p>For the Hat and the mixed tile set, “rank 3 · from failures” assigns a blue \((+1)\) or red \((-1)\) segment in each marked direction. For a placement \(g\) with coordinate permutation \(\pi\), the value in direction \(j\) at \(g x\) is \(\operatorname{sgn}(\pi)\,m_{\pi(j)}(x)\). A translation carries the segment with the tile. A reflection permutes its direction and swaps its color. The extent counts lattice steps from the tile’s positive support. The values encode unmarked search failures and the earlier obstruction examples.</p>
         <p>The (naive) tiling algorithm can be easily modified to incorporate this kind of matching rule, simply by excluding those branches that disagree on overlap, and keeping track of a "global section" from all the tiles. This turns out to work remarkably well for the turtle.</p>
         <h2 id="anchor-learning">Geometric Deep Learning</h2>
         <p>We have reduced tiling to its combinatorics, though the markings do retain a geometric flavor, one might say. Where does deep learning come in? As we have seen, the (naive) tiling algorithm for the turtle is greatly accelerated when we enforce the matching rules with straight line markings, which incidentally were identified by human intelligence. It seems natural (and perfectly set up) for a simple machine learning algorithm to <em>learn</em> the markings on this and other tiles, from enough (or even a complete set of) positive and negative samples of local patches. The presence of group action may remind one of <em>equivariant</em> neural networks, sometimes branded as <em>geometric deep learning</em>.</p>
@@ -146,8 +147,8 @@
     import {clearCachedMarkings,takeRequestedMarking,rememberMarking,markingDomain,markingName} from './assets/marking-library.js?v=visit-markings';
     import {reduceMarking,activeMarkingSupport,CompactA2Marking} from './assets/marking-reduction.js?v=20260921-component-stars';
     import {markingSegmentEndpoints} from './assets/marking-segments.js?v=wave-extent';
-    import {CHORD_MAX_EXTENT, DeepChordMarking} from './assets/deep-chord-marking.js?v=economical';
-    import {createHatRank3Marking,createAlternatingMarking,HAT_RANK3_ID,MIXED_RANK3_ID,HAT_RANK3_MAX_EXTENT,normalizeHatRank3Extent} from './assets/hat-rank3-marking.js?v=marking-defaults';
+    import {createFailureMarking, failureExtent} from './assets/failure-rank3-marking.js';
+    import {createHatRank3Marking,createAlternatingMarking,HAT_RANK3_ID,MIXED_RANK3_ID,normalizeHatRank3Extent} from './assets/hat-rank3-marking.js?v=marking-defaults';
     (() => {
       const canvas = document.getElementById('turtle-tiling');
       if (!canvas) return;
@@ -180,9 +181,8 @@
       let learningTileSet = 'turtle', learningLattice = 'A2';
       let displayMarking = null;
       const markingEnabled = () => markingSource !== 'none';
-      const chordCandidates = {chords:'deep-chords','two-chords':'obstruction-chords',economical:'economical-chords'};
-      const isChordSource = (source = markingSource) => Object.hasOwn(chordCandidates,source);
-      const supportsChords = (setId = selectedTileSet) => ['hat', 'mixed'].includes(setId) && !usingSublattice();
+      const usingFailureMarking = (source = markingSource) => source === 'failures';
+      const supportsFailureMarking = (setId = selectedTileSet) => ['hat', 'mixed'].includes(setId) && !usingSublattice();
       const supportsHatRank3 = (setId = selectedTileSet) => setId === 'mixed' || (setId === 'hat' && !usingSublattice());
       const usingHatRank3 = () => supportsHatRank3() && markingSource === 'standard' && markingRank === 3;
       const previewingHatRank3 = () => supportsHatRank3() && markingSource === 'none';
@@ -512,7 +512,7 @@
 
       function normalizedMarkingExtension() {
         const parsed = Number.parseInt(markExtensionInput.value, 10);
-        return Math.max(0, Math.min(hasHatStripes() ? HAT_RANK3_MAX_EXTENT : 9, Number.isFinite(parsed) ? parsed : defaultMarkingExtent(selectedTileSet)));
+        return Math.max(0, Math.min(usingFailureMarking() ? failureExtent(selectedTileSet) : 9, Number.isFinite(parsed) ? parsed : defaultMarkingExtent(selectedTileSet)));
       }
 
       function buildOrientations(extensionSteps = markingExtension, rank = markingRank) {
@@ -678,19 +678,14 @@
       function markStateAt(point) {
         const vector = [null, null, null];
         const conflicts = [];
-        const named = new Map();
         visibleMarkVectors().forEach((entry, key) => {
           const [pointKey, componentText] = key.split('|');
           if (pointKey !== key3(point)) return;
-          if (isChordSource() && typeof entry.component !== 'number') {
-            named.set(entry.component, entry.values);
-            return;
-          }
           const component = Number(componentText);
           vector[component] = entry.value;
           if (Number.isNaN(entry.value)) conflicts.push({ component, values: entry.values || [] });
         });
-        return { vector, conflicts, named };
+        return { vector, conflicts };
       }
 
       function frontierPoints(sums, frontierCoronas = new Map()) {
@@ -1391,8 +1386,8 @@
         const seed = makeSeedPlacement();
         const bounds = placementBounds([seed]);
         const turtleRank3 = selectedTileSet === 'turtle' && markingRank === 3 && markingSource === 'standard';
-        if(bounds&&(hasHatStripes()||markingSource==='alternating'||isChordSource()||turtleRank3)&&showMarkings)for(const entry of displayedMarkingEntries(seed)){
-          for(const p of displayEndpoints(entry).map(projectA2)){
+        if(bounds&&(hasHatStripes()||markingSource==='alternating'||usingFailureMarking()||turtleRank3)&&showMarkings)for(const entry of displayedMarkingEntries(seed)){
+          for(const p of markingSegmentEndpoints(entry).map(projectA2)){
             bounds.minX=Math.min(bounds.minX,p.x);bounds.maxX=Math.max(bounds.maxX,p.x);
             bounds.minY=Math.min(bounds.minY,p.y);bounds.maxY=Math.max(bounds.maxY,p.y);
           }
@@ -1529,16 +1524,8 @@
       function markingEntries(marking, placement) {
         return [...marking.entries(placement)].map(([key, value]) => {
           const [point, component] = key.split('|');
-          if (isChordSource()) {
-            const channel = component.startsWith('chord') ? Number(component.slice(5)) : component === '0' ? 'scalar' : component;
-            return {point: point.split(',').map(Number), component: channel, value};
-          }
           return { point: point.split(',').map(Number), component: Number(component), value };
         });
-      }
-
-      function displayEndpoints(entry) {
-        return typeof entry.component === 'number' ? markingSegmentEndpoints(entry) : [entry.point];
       }
 
       function displayedMarkingEntries(placement) {
@@ -1583,25 +1570,7 @@
       }
 
       function drawMarkings(placement) {
-        if (isChordSource()) {
-          for (const entry of placement.markings.filter(e => e.component === 'scalar')) {
-            const p = projectA2(entry.point), screen = worldToScreen(p.x,p.y);
-            ctx.beginPath();
-            ctx.arc(screen.x, screen.y, Math.max(1, 2 * scale), 0, Math.PI * 2);
-            ctx.fillStyle = ctx.strokeStyle = '#707875';
-            ctx.lineWidth = Math.max(.6, scale);
-            if (entry.value) ctx.fill(); else ctx.stroke();
-          }
-          drawPointSegments(placement.markings.filter(e => typeof e.component === 'number'), true);
-          for (const entry of placement.markings.filter(e => e.component === 'corner')) {
-            const p = projectA2(entry.point), screen = worldToScreen(p.x,p.y);
-            ctx.beginPath();
-            ctx.arc(screen.x, screen.y, Math.max(1.5, 4 * scale), 0, Math.PI * 2);
-            ctx.strokeStyle = entry.value > 0 ? '#186aa0' : '#bf3e30';
-            ctx.lineWidth = Math.max(1, 1.8 * scale);
-            ctx.stroke();
-          }
-        } else if (displaysSignedSegments(placement)) {
+        if (displaysSignedSegments(placement)) {
           drawPointSegments(displayedMarkingEntries(placement), true);
         } else if (markingSource === 'learned') {
           const turtle = turtleOverlay(placement);
@@ -1750,10 +1719,7 @@
         const lines = [`t=${formatTValue(pointEntry.value)} at (${pointEntry.point.join(',')})`];
         if (showMarkings) {
           const mark = markStateAt(pointEntry.point);
-          if (isChordSource()) {
-            lines.push('chord ' + formatMarkVector(mark.vector));
-            for (const [name, values] of mark.named) lines.push(name + ' ' + values.join('/'));
-          } else if ((markingSource === 'standard' && markingRank === 1) || scalarTurtlePreview()) {
+          if ((markingSource === 'standard' && markingRank === 1) || scalarTurtlePreview()) {
             lines.push(`m=${mark.vector.some(value => value !== null && value !== 0) ? 1 : 0}`);
           } else {
             lines.push(formatMarkVector(mark.vector));
@@ -1821,9 +1787,9 @@
         if (showMarkings) {
           displayedMarkingEntries(placement).forEach(entry => {
             include(entry.point);
-            if (displaysSignedSegments(placement) || markingSource === 'learned') displayEndpoints(entry).forEach(include);
+            if (displaysSignedSegments(placement) || markingSource === 'learned') markingSegmentEndpoints(entry).forEach(include);
           });
-          const segments = isChordSource() ? placement.markSegments : turtleOverlay(placement)?.segments ?? placement.markSegments;
+          const segments = placement.sharedSpec ? placement.markSegments : turtleOverlay(placement)?.segments ?? placement.markSegments;
           segments.forEach(segment => {
             include(segment.displayFromPoint || segment.fromPoint);
             include(segment.displayToPoint || segment.toPoint);
@@ -2001,8 +1967,9 @@
         const sparse = selectedTileSet === 'hat' && hasHatStripes() && hatPattern.startsWith('sparse');
         const preview = showMarkings && (previewingHatRank3() ||
           (selectedTileSet === 'turtle' && markingSource === 'none' && !scalarTurtlePreview()));
-        const disabled = sparse || (!preview && !isChordSource() && !['standard', 'alternating'].includes(markingSource));
+        const disabled = sparse || (!preview && !usingFailureMarking() && !['standard', 'alternating'].includes(markingSource));
         markExtensionInput.disabled = disabled;
+        markExtensionInput.max = String(usingFailureMarking() ? failureExtent(selectedTileSet) : 9);
         markExtensionControl.classList.toggle('is-disabled', disabled);
       }
 
@@ -2169,9 +2136,7 @@
       let fixedDisplayCache = null;
       const previewEntriesCache = new WeakMap();
       function createPanelFixedMarking() {
-        if (isChordSource()) return new DeepChordMarking(selectedTileSet, markingExtension, {
-          twoMarks: markingSource === 'two-chords', economical: markingSource === 'economical'
-        });
+        if (usingFailureMarking()) return createFailureMarking(selectedTileSet, markingExtension);
         const pointFilter = usingSublattice() ? isTurtleSublatticeVector : null;
         if (sharedAlternatingField()) return createAlternatingMarking(TILE_SETS[selectedTileSet].tiles, markingExtension, {pointFilter});
         if (hasHatStripes()) {
@@ -2189,7 +2154,7 @@
           const symmetry = placement.orientation.symmetry;
           const spec = {tile:placement.tile,orientation:placement.orientation.index,translation:[...placement.translation]};
           const learner = createConnectionLearner(selectedTileSet,{lattice:usingSublattice()?'turtle-sublattice':'A2'}), full = learner.materialize(spec);
-          const fixed = markingSource === 'standard' || isChordSource() ? fixedPanelMarking() : null;
+          const fixed = markingSource === 'standard' || usingFailureMarking() ? fixedPanelMarking() : null;
           return {sharedSpec:spec,orientation:{...symmetry,orientationIndex:placement.orientation.index,planeSign:parity(symmetry.permutation)},translation:spec.translation,
             vertices3d:full.loop,points:full.loop.map(projectA2),occupancy:[...placement.orientation.occupancy.values()].map(e=>({point:add3(e.point,spec.translation),value:e.weight,kind:e.weight===12?'interior':'vertex'})),
             markings:fixed?markingEntries(fixed,placement):displayMarking?learner.entries(spec,activeMarkingSupport(displayMarking)):[],markSegments:fixed?.segments?.(placement)??[],values:[],generation:placement.generation,...extras};
@@ -2619,12 +2584,11 @@
       });
       function updatePanelControls() {
         markingSourcePicker.querySelector('[value="rank3"]').disabled = selectedTileSet !== 'turtle' && !supportsHatRank3();
-        markingSourcePicker.querySelector('[value="rank3"]').textContent = selectedTileSet === 'turtle' ? 'rank 3 · constant' : selectedTileSet === 'mixed' ? 'rank 3 · alternating' : 'rank 3';
+        markingSourcePicker.querySelector('[value="rank3"]').textContent = selectedTileSet === 'turtle' ? 'rank 3 · constant' : 'rank 3 · alternating';
         const alternate = markingSourcePicker.querySelector('[value="alternating"]');
         alternate.hidden = alternate.disabled = selectedTileSet !== 'turtle';
-        for (const option of markingSourcePicker.options) {
-          if (isChordSource(option.value)) option.hidden = option.disabled = !supportsChords();
-        }
+        const failureOption = markingSourcePicker.querySelector('[value="failures"]');
+        failureOption.hidden = failureOption.disabled = !supportsFailureMarking();
         markingSourcePicker.querySelectorAll('[data-learned-marking]').forEach(option=>option.remove());
         const saved=[...markingLibrary.values()].filter(model=>markingDomain(model)===markingContext()).sort((a,b)=>b.marking.createdAt.localeCompare(a.marking.createdAt));
         for(const model of saved){const option=document.createElement('option');option.value=`learned:${model.marking.id}`;option.textContent=markingName(model);option.dataset.learnedMarking=model.marking.id;markingSourcePicker.append(option);}
@@ -2636,12 +2600,13 @@
         markingId, markingsVisible = source !== 'none', extent
       } = {}) {
         if (extent === undefined) {
-          if (isChordSource(source)) extent = isChordSource() && setId === selectedTileSet ? markingExtension : CHORD_MAX_EXTENT;
-          else extent = !isChordSource() && setId === selectedTileSet ? markingExtension : defaultMarkingExtent(setId);
+          if (usingFailureMarking(source)) extent = usingFailureMarking() && setId === selectedTileSet ? markingExtension : failureExtent(setId);
+          else extent = !usingFailureMarking() && setId === selectedTileSet ? markingExtension : defaultMarkingExtent(setId);
         }
-        if (isChordSource(source)) {
+        if (usingFailureMarking(source)) {
           markingRank = 3;
-          if (!supportsChords(setId)) { source = 'standard'; extent = defaultMarkingExtent(setId); }
+          if (!supportsFailureMarking(setId)) { source = 'standard'; extent = defaultMarkingExtent(setId); }
+          else extent = Math.min(extent, failureExtent(setId));
         }
         if(source==='hat-provisional'){source='standard';markingRank=3;}
         if (source === 'alternating') {
@@ -2703,7 +2668,8 @@
       tileSetInputs.forEach(input=>input.addEventListener('change',()=>{
         if(!input.checked)return;
         markingRank = 3;
-        configurePanel(input.value, learningPanelVisible() ? 'none' : 'standard');
+        const source = supportsFailureMarking(input.value) ? 'failures' : 'standard';
+        configurePanel(input.value, learningPanelVisible() ? 'none' : source);
         if(learningPanelVisible())requestLearningFor(input.value);
       }));
       markingSourcePicker.onchange = () => {
@@ -2756,7 +2722,7 @@
       window.gctsPanelState=()=>({
         setId:selectedTileSet, source:markingSource, lattice:tilingLattice(), rank:markingRank, extent:markingExtension,
         usesMarking:markingEnabled(), placements:visiblePlacements().filter(p=>p.sharedSpec).map(p=>p.sharedSpec),
-        model:displayMarking, candidate:isChordSource()?chordCandidates[markingSource]:usingHatRank3()?(selectedTileSet==='mixed'?MIXED_RANK3_ID:HAT_RANK3_ID):null,
+        model:displayMarking, candidate:usingFailureMarking()?'failure-rank3':usingHatRank3()?(selectedTileSet==='mixed'?MIXED_RANK3_ID:HAT_RANK3_ID):null,
         stripeComponent:'all', showAssignedZeros:false,
         extensionPattern:sharedAlternatingField()?(markingExtension===0?'alternating-core':'alternating'):
           hasHatStripes()?hatPattern:markingSource==='standard'&&markingRank===3?'constant':null
@@ -2782,7 +2748,7 @@
       function syncDemoStageToScroll() {
         if(!document.getElementById('j-panel-page').hidden)return;
         // Keep a manually selected mixed or rank-three rule while the reader scrolls.
-        if (manualPanelMode && (hasHatStripes() || markingSource === 'alternating' || isChordSource() || (markingSource === 'standard' && (markingRank === 3 || selectedTileSet === 'mixed')))) return;
+        if (manualPanelMode && (hasHatStripes() || markingSource === 'alternating' || usingFailureMarking() || (markingSource === 'standard' && (markingRank === 3 || selectedTileSet === 'mixed')))) return;
         const heading = document.getElementById('anchor-learning');
         const anchor = heading.getBoundingClientRect().top <= window.innerHeight * .65
           ? 'learning' : demoStageForScroll();
@@ -2832,8 +2798,8 @@
       const params=new URLSearchParams(location.search);
       if(params.get('rule')==='j'||params.get('view')==='j'){if(params.get('demo')==='rotation')document.getElementById('j-search-frame').src='GCTS-J-rotation.html?embedded=1&v=20261102-j-rotation';panelView('j');window.requestAnimationFrame(()=>{updateTextWrap();window.requestAnimationFrame(fitJPanelToViewport);});window.addEventListener('load',()=>{updateTextWrap();window.requestAnimationFrame(fitJPanelToViewport);});}
       else
-      if (isChordSource(params.get('marking')) && supportsChords(params.get('tiles'))) {
-        configurePanel(params.get('tiles'), params.get('marking'), {extent: params.has('extend') ? normalizeHatRank3Extent(params.get('extend')) : CHORD_MAX_EXTENT});
+      if (supportsFailureMarking(params.get('tiles')) && [null, 'failures', 'chords', 'two-chords', 'economical'].includes(params.get('marking'))) {
+        configurePanel(params.get('tiles'), 'failures', {extent: params.has('extend') ? normalizeHatRank3Extent(params.get('extend')) : undefined});
       } else if(['hat-provisional','hat-rank3'].includes(params.get('marking'))||(params.get('marking')==='rank3'&&params.get('tiles')==='hat')){
         markingRank=3;
         const requestedPattern=params.get('pattern');
