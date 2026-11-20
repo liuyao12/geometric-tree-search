@@ -7,12 +7,12 @@ export function rng(seed) {
 }
 // Only requirements in targets must finish. Every incidence that can help fill
 // one is enumerated, including translated tiles spilling outside the window.
-export function fill(model,targets,fixed,marks,random,limit,onFailure,exhausted=new Set(),excluded=new Set()) {
+export function fill(model,targets,fixed,marks,random,limit,onFailure,exhausted=new Set(),excluded=new Set(),onVisit) {
   const obligations = [...new Map(targets.map(q=>[String(q),q])).values()].sort(pointOrder)
     .map(q=>({key:String(q),placements:model.incident(q)}));
   const totals=new Map(), values=new Map(), moved=new Set(), stack=[], cache=new Map();
   function entries(p) {
-    if (!cache.has(p.id)) cache.set(p.id,marks.map(m=>{
+    if (!cache.has(p.id)) cache.set(p.id,marks.filter(m=>m.tile===undefined || m.tile===p.tile).map(m=>{
       const v=worldMark(p,m); return [markId(v),v.value];
     }));
     return cache.get(p.id);
@@ -56,6 +56,7 @@ export function fill(model,targets,fixed,marks,random,limit,onFailure,exhausted=
   const frames=[];
   let status;
   while (!status) {
+    onVisit?.(stack,nodes,backtracks);
     const key=[...moved].sort().join(';');
     const known=exhausted.has(key);
     const moves=known?[]:choose();
