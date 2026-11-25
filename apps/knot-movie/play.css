@@ -1,0 +1,9 @@
+.playlayout{display:grid;grid-template-columns:minmax(0,2.3fr) minmax(215px,1fr);gap:16px;align-items:start}
+.pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.pair canvas,aside canvas{border:1px solid var(--line)}
+.playlayout label[for=choice]{display:block;margin-top:18px}.playlayout select{width:100%;margin:4px 0 0}
+#progress{color:var(--mint);font-size:.85rem}#description,#crossing{color:var(--muted);font-size:.88rem;min-height:1.2em}
+.buttons,.word{display:flex;flex-wrap:wrap;gap:6px}.word button{font:600 .78rem ui-monospace,monospace;padding:7px 8px}
+.word button[aria-pressed=true]{border-color:var(--amber);background:var(--amber);color:#172730}aside a{font-size:.83rem}
+button:focus-visible,select:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+@media(max-width:800px){.playlayout{grid-template-columns:1fr}.playlayout aside{margin-top:0}aside canvas{max-width:360px}}
+@media(max-width:500px){main{padding:18px 12px}.viewer,.toolbar{padding:14px}.toolbar .example-label{min-width:0;width:100%;flex:auto}.pair{gap:5px}.buttons button{padding:9px}.move-header{flex-wrap:wrap;gap:4px}.pair figcaption{font-size:.72rem}}

@@ -1,0 +1,19 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Play the knot game · GCTS</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="play.css">
+<script type="module" src="play.mjs"></script></head><body><main>
+<header><a href="./">Knot movies</a><a href="../../">Geometric tree search</a></header>
+<h1>Play the <em>knot game.</em></h1>
+<p class="intro">Reach the target diagram one Reidemeister move at a time. Preview a move to see the strands it changes.</p>
+<div class="toolbar"><label class="example-label">Puzzle <select id="puzzle"></select></label>
+<button id="reverse" class="secondary">Swap start and target</button><button id="reset" class="secondary">Start over</button></div>
+<div class="playlayout"><section class="viewer"><div class="move-header"><h2 id="heading">Your diagram</h2><span id="progress" role="status"></span></div>
+<div class="pair"><figure><figcaption id="currentLabel">Current diagram</figcaption><canvas id="current" width="600" height="540" aria-label="Current knot diagram"></canvas></figure>
+<figure><figcaption id="previewLabel">Move preview</figcaption><canvas id="preview" width="600" height="540" aria-label="Diagram after the selected move"></canvas></figure></div>
+<label for="choice">Choose a local move</label><select id="choice"></select><p id="description"></p>
+<div class="buttons"><button id="apply">Play this move</button><button id="undo" class="secondary">Undo</button><button id="save" class="secondary">Download checked path</button></div>
+<h3>Follow a crossing</h3><p class="hint">Read along the strand. Select a visit to light up both occurrences of that crossing and its location on the current diagram.</p>
+<div id="word" class="word"></div><p id="crossing" aria-live="polite"></p></section>
+<aside class="viewer"><h2>Target</h2><canvas id="target" width="560" height="460" aria-label="Target knot diagram"></canvas>
+<p class="hint" id="bounds"></p><h3>Your moves</h3><ol id="history"></ol><p id="empty" class="hint">Your first move will appear here.</p>
+<a href="./?example=identification">Watch the original search solve a trefoil</a></aside></div>
+<footer>Each completed path is checked against the original Reidemeister move engine.</footer></main></body></html>
