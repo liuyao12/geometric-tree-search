@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f6f4ec"><title>Symbolic integration playground · Tessera</title>
+<link rel="stylesheet" href="style.css"><script src="vendor/katex.min.js" defer></script>
+<script type="module" src="player.mjs"></script></head>
+<body><main>
+<header><a href="../../../">Geometric tree search</a><span aria-hidden="true"> / </span>Tessera</header>
+<h1>Symbolic integration playground</h1>
+<p class="intro">Watch GCTS build an antiderivative, undo a wrong choice, and try again. Train it on smaller integrals to see which choices it remembers.</p>
+<div class="settings">
+  <label>Integral <select id="problem"></select></label>
+  <label>Search seed <select id="seed"><option>0</option><option>1024</option><option>4096</option><option>8192</option></select></label>
+</div>
+<div class="layout"><section class="workspace" aria-label="Proof search">
+  <div class="problem"><div class="label">Integral to solve</div><div class="math-scroll" id="integral"></div><div class="sub" id="sub"></div></div>
+  <div class="board" aria-label="Antiderivative tile placements">
+    <div class="board-head"><h2>Search board</h2><span id="phase"></span></div>
+    <div id="slots"></div>
+    <p class="board-tip">One tile chooses a function for one power. A complete row is checked by differentiation.</p>
+  </div>
+  <div class="reading" aria-live="polite"><div class="reading-head"><strong id="eventName"></strong><span id="eventCount"></span></div>
+    <div id="explanation"></div><div id="witness" class="math-scroll"></div></div>
+  <div class="playback"><label class="sr" for="position">Replay position</label><input id="position" type="range" min="0" max="1" value="0">
+    <div class="commands"><button id="play" class="primary">Play</button><button id="prev" aria-label="Previous event">Previous</button><button id="next">Step</button><button id="backtrack">Next rollback</button><button id="end">Result</button></div>
+    <div class="totals"><span><b id="placed"></b> placements</span><span><b id="rolls"></b> rollbacks</span><span><b id="checks"></b> candidate checks</span></div>
+  </div>
+</section><aside>
+  <div class="memory-head"><h2>Training memory</h2><span id="trained"></span></div>
+  <p>Each example gets an unrestricted search. Only a verified answer contributes markings.</p>
+  <div class="commands"><button id="trainOne">Train one</button><button id="trainAll" class="primary">Train all nine</button><button id="reset" class="quiet">Reset</button></div>
+  <div id="lastLesson"></div>
+  <div class="mem-rules"><div class="label">Learned tile pairs</div><div id="pairs"></div></div>
+  <details><summary>Training examples and highest tiles</summary><div id="lessons"></div><div class="label">Integrand to highest tile</div><div id="tops"></div></details>
+  <div class="compare"><h3>Same integral, same seed</h3>
+    <div class="mode"><label><input type="radio" name="mode" value="cold" checked> Untrained</label><label><input type="radio" name="mode" value="warm"> With experience</label></div>
+    <table><thead><tr><th>Full run</th><th>Placements</th><th>Rollbacks</th></tr></thead><tbody id="comparison"></tbody></table>
+    <p id="difference"></p>
+  </div>
+</aside></div>
+<details class="method"><summary>What is supplied, and what is learned?</summary>
+ <p>The experiment supplies the substitution, a choice of three elementary functions per degree, and their symbolic derivatives. GCTS chooses tiles and solves for their coefficients. A nonzero derivative residual rejects the row. SymPy checked the original-variable answers in the research benchmark. This player recomputes the search in your browser using exact integer coefficient checks on the supplied derivative tiles.</p>
+ <p>Training records the highest tile and adjacent tile pairs from successful rows. If those markings rule out every solution, GCTS retries without them using the remaining allowance of 512 placements. The benchmark also tried the same markings with randomized depth-first search, which matched the trained GCTS score on ordinary transfer cases. All examples use <span id="domain"></span>.</p>
+</details>
+<noscript>Enable JavaScript to run the search.</noscript><div id="error" role="alert"></div>
+</main></body></html>

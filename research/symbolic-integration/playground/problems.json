@@ -1,0 +1,987 @@
+{
+ "names": [
+  "exp",
+  "sin",
+  "cos"
+ ],
+ "columns": [
+  [
+   [
+    [
+     1,
+     0,
+     0
+    ]
+   ],
+   [
+    [
+     0,
+     0,
+     1
+    ]
+   ],
+   [
+    [
+     0,
+     -1,
+     0
+    ]
+   ]
+  ],
+  [
+   [
+    [
+     1,
+     0,
+     0
+    ],
+    [
+     1,
+     0,
+     0
+    ]
+   ],
+   [
+    [
+     0,
+     1,
+     0
+    ],
+    [
+     0,
+     0,
+     1
+    ]
+   ],
+   [
+    [
+     0,
+     0,
+     1
+    ],
+    [
+     0,
+     -1,
+     0
+    ]
+   ]
+  ],
+  [
+   [
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     2,
+     0,
+     0
+    ],
+    [
+     1,
+     0,
+     0
+    ]
+   ],
+   [
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     2,
+     0
+    ],
+    [
+     0,
+     0,
+     1
+    ]
+   ],
+   [
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     2
+    ],
+    [
+     0,
+     -1,
+     0
+    ]
+   ]
+  ],
+  [
+   [
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     3,
+     0,
+     0
+    ],
+    [
+     1,
+     0,
+     0
+    ]
+   ],
+   [
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     3,
+     0
+    ],
+    [
+     0,
+     0,
+     1
+    ]
+   ],
+   [
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     3
+    ],
+    [
+     0,
+     -1,
+     0
+    ]
+   ]
+  ],
+  [
+   [
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     4,
+     0,
+     0
+    ],
+    [
+     1,
+     0,
+     0
+    ]
+   ],
+   [
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     4,
+     0
+    ],
+    [
+     0,
+     0,
+     1
+    ]
+   ],
+   [
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     4
+    ],
+    [
+     0,
+     -1,
+     0
+    ]
+   ]
+  ]
+ ],
+ "training": [
+  {
+   "id": "train-0-exp",
+   "formula": "e^{x}",
+   "substitution": "x",
+   "rows": [
+    [
+     1,
+     0,
+     0
+    ]
+   ]
+  },
+  {
+   "id": "train-0-sin",
+   "formula": "\\sin{\\left(x \\right)}",
+   "substitution": "x",
+   "rows": [
+    [
+     0,
+     1,
+     0
+    ]
+   ]
+  },
+  {
+   "id": "train-0-cos",
+   "formula": "\\cos{\\left(x \\right)}",
+   "substitution": "x",
+   "rows": [
+    [
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "id": "train-1-exp",
+   "formula": "x e^{x}",
+   "substitution": "x",
+   "rows": [
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     1,
+     0,
+     0
+    ]
+   ]
+  },
+  {
+   "id": "train-1-sin",
+   "formula": "x \\sin{\\left(x \\right)}",
+   "substitution": "x",
+   "rows": [
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     1,
+     0
+    ]
+   ]
+  },
+  {
+   "id": "train-1-cos",
+   "formula": "x \\cos{\\left(x \\right)}",
+   "substitution": "x",
+   "rows": [
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "id": "train-2-exp",
+   "formula": "x^{2} e^{x}",
+   "substitution": "x",
+   "rows": [
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     1,
+     0,
+     0
+    ]
+   ]
+  },
+  {
+   "id": "train-2-sin",
+   "formula": "x^{2} \\sin{\\left(x \\right)}",
+   "substitution": "x",
+   "rows": [
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     1,
+     0
+    ]
+   ]
+  },
+  {
+   "id": "train-2-cos",
+   "formula": "x^{2} \\cos{\\left(x \\right)}",
+   "substitution": "x",
+   "rows": [
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     1
+    ]
+   ]
+  }
+ ],
+ "problems": [
+  {
+   "id": "quadratic-3-exp",
+   "formula": "2 x\\,t^{3} e^{t}",
+   "substitution": "x^{2} + 1",
+   "rows": [
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     1,
+     0,
+     0
+    ]
+   ],
+   "group": "transfer"
+  },
+  {
+   "id": "quadratic-3-sin",
+   "formula": "2 x\\,t^{3} \\sin{\\left(t \\right)}",
+   "substitution": "x^{2} + 1",
+   "rows": [
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     1,
+     0
+    ]
+   ],
+   "group": "transfer"
+  },
+  {
+   "id": "quadratic-3-cos",
+   "formula": "2 x\\,t^{3} \\cos{\\left(t \\right)}",
+   "substitution": "x^{2} + 1",
+   "rows": [
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     1
+    ]
+   ],
+   "group": "transfer"
+  },
+  {
+   "id": "quadratic-4-exp",
+   "formula": "2 x\\,t^{4} e^{t}",
+   "substitution": "x^{2} + 1",
+   "rows": [
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     1,
+     0,
+     0
+    ]
+   ],
+   "group": "transfer"
+  },
+  {
+   "id": "quadratic-4-sin",
+   "formula": "2 x\\,t^{4} \\sin{\\left(t \\right)}",
+   "substitution": "x^{2} + 1",
+   "rows": [
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     1,
+     0
+    ]
+   ],
+   "group": "transfer"
+  },
+  {
+   "id": "quadratic-4-cos",
+   "formula": "2 x\\,t^{4} \\cos{\\left(t \\right)}",
+   "substitution": "x^{2} + 1",
+   "rows": [
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     1
+    ]
+   ],
+   "group": "transfer"
+  },
+  {
+   "id": "trigonometric-3-exp",
+   "formula": "\\cos{\\left(x \\right)} + 1\\,t^{3} e^{t}",
+   "substitution": "x + \\sin{\\left(x \\right)}",
+   "rows": [
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     1,
+     0,
+     0
+    ]
+   ],
+   "group": "transfer"
+  },
+  {
+   "id": "trigonometric-3-sin",
+   "formula": "\\cos{\\left(x \\right)} + 1\\,t^{3} \\sin{\\left(t \\right)}",
+   "substitution": "x + \\sin{\\left(x \\right)}",
+   "rows": [
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     1,
+     0
+    ]
+   ],
+   "group": "transfer"
+  },
+  {
+   "id": "trigonometric-3-cos",
+   "formula": "\\cos{\\left(x \\right)} + 1\\,t^{3} \\cos{\\left(t \\right)}",
+   "substitution": "x + \\sin{\\left(x \\right)}",
+   "rows": [
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     1
+    ]
+   ],
+   "group": "transfer"
+  },
+  {
+   "id": "trigonometric-4-exp",
+   "formula": "\\cos{\\left(x \\right)} + 1\\,t^{4} e^{t}",
+   "substitution": "x + \\sin{\\left(x \\right)}",
+   "rows": [
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     1,
+     0,
+     0
+    ]
+   ],
+   "group": "transfer"
+  },
+  {
+   "id": "trigonometric-4-sin",
+   "formula": "\\cos{\\left(x \\right)} + 1\\,t^{4} \\sin{\\left(t \\right)}",
+   "substitution": "x + \\sin{\\left(x \\right)}",
+   "rows": [
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     1,
+     0
+    ]
+   ],
+   "group": "transfer"
+  },
+  {
+   "id": "trigonometric-4-cos",
+   "formula": "\\cos{\\left(x \\right)} + 1\\,t^{4} \\cos{\\left(t \\right)}",
+   "substitution": "x + \\sin{\\left(x \\right)}",
+   "rows": [
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     1
+    ]
+   ],
+   "group": "transfer"
+  },
+  {
+   "id": "logarithmic-3-exp",
+   "formula": "\\log{\\left(x + 1 \\right)}^{3}",
+   "rows": null,
+   "group": "transfer"
+  },
+  {
+   "id": "logarithmic-3-sin",
+   "formula": "\\frac{1}{x + 1}\\,t^{3} \\sin{\\left(t \\right)}",
+   "substitution": "\\log{\\left(x + 1 \\right)}",
+   "rows": [
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     1,
+     0
+    ]
+   ],
+   "group": "transfer"
+  },
+  {
+   "id": "logarithmic-3-cos",
+   "formula": "\\frac{1}{x + 1}\\,t^{3} \\cos{\\left(t \\right)}",
+   "substitution": "\\log{\\left(x + 1 \\right)}",
+   "rows": [
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     1
+    ]
+   ],
+   "group": "transfer"
+  },
+  {
+   "id": "logarithmic-4-exp",
+   "formula": "\\log{\\left(x + 1 \\right)}^{4}",
+   "rows": null,
+   "group": "transfer"
+  },
+  {
+   "id": "logarithmic-4-sin",
+   "formula": "\\frac{1}{x + 1}\\,t^{4} \\sin{\\left(t \\right)}",
+   "substitution": "\\log{\\left(x + 1 \\right)}",
+   "rows": [
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     1,
+     0
+    ]
+   ],
+   "group": "transfer"
+  },
+  {
+   "id": "logarithmic-4-cos",
+   "formula": "\\frac{1}{x + 1}\\,t^{4} \\cos{\\left(t \\right)}",
+   "substitution": "\\log{\\left(x + 1 \\right)}",
+   "rows": [
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     1
+    ]
+   ],
+   "group": "transfer"
+  },
+  {
+   "id": "mixed-sin",
+   "formula": "2 x\\left[\\left(3 t^{2} + 2 t + 1\\right) \\sin{\\left(t \\right)} + \\left(t^{3} + t^{2} + t + 1\\right) \\cos{\\left(t \\right)}\\right]",
+   "substitution": "x^{2} + 1",
+   "rows": [
+    [
+     0,
+     1,
+     1
+    ],
+    [
+     0,
+     2,
+     1
+    ],
+    [
+     0,
+     3,
+     1
+    ],
+    [
+     0,
+     0,
+     1
+    ]
+   ],
+   "group": "shift"
+  },
+  {
+   "id": "mixed-cos",
+   "formula": "2 x\\left[\\left(3 t^{2} + 2 t + 1\\right) \\cos{\\left(t \\right)} + \\left(- t^{3} - t^{2} - t - 1\\right) \\sin{\\left(t \\right)}\\right]",
+   "substitution": "x^{2} + 1",
+   "rows": [
+    [
+     0,
+     -1,
+     1
+    ],
+    [
+     0,
+     -1,
+     2
+    ],
+    [
+     0,
+     -1,
+     3
+    ],
+    [
+     0,
+     -1,
+     0
+    ]
+   ],
+   "group": "shift"
+  }
+ ]
+}
