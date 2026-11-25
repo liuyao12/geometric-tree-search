@@ -1,0 +1,8 @@
+#goal{font-size:1.55rem;margin-top:7px}.rail{position:relative;padding-top:42px;margin-top:12px}
+#arc{position:absolute;left:0;top:0;width:100%;height:44px;overflow:visible}
+#cells{display:grid;grid-template-columns:repeat(var(--slots),minmax(0,1fr));gap:2px}
+.symbol-cell{position:relative;height:64px;border:1px dashed #88a899;border-radius:4px;display:grid;place-content:center;text-align:center;color:#d8e5d6;font-size:1.5rem}.symbol-cell.filled{background:#d6e5ce;color:#15382c;border:1px solid #d6e5ce}
+.symbol-cell i{font:normal .62rem var(--mono);position:absolute;bottom:3px;left:5px}.symbol-cell.source{border:2px solid #f6c36e;background:#f6dbab;color:#42351c}.symbol-cell.candidate{border:2px dashed #f6c36e;background:#324a39;color:#ffdc97}.symbol-cell.current{outline:2px solid #f3d599;outline-offset:-2px}
+#mode,#counter{font:.74rem var(--mono)}#mode{color:#c8d8cf}#counter,#reason,.method{color:var(--muted)}#reason{font-size:.9rem;margin:6px 0;min-height:2.8em}.reading{padding-bottom:4px}.playback{padding-top:8px}
+#training{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}#training span{padding:4px 7px;background:#eef2e8;border-radius:4px}.method>a{color:var(--green)}
+@media(max-width:500px){.symbol-cell{height:52px;font-size:1.18rem}.settings label:first-child{min-width:0}.settings label:last-child{flex:0 1 66px}}

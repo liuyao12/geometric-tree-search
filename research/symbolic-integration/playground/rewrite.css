@@ -1,0 +1,11 @@
+.workspace h2,.workspace h3{font-family:"Instrument Serif",Georgia,serif;font-weight:500}
+.workspace h2{font-size:1.45rem}.reading p,.playback p{font-size:.87rem;color:var(--muted);margin:5px 0 11px}
+#target{margin-top:8px;font-size:1.4rem}#boardEq{font-size:1.45rem;min-height:75px;padding:17px 0}
+#nMoves,#cost{font:normal .78rem var(--mono)}#nMoves{color:#d4e1d3}
+#factorButtons button{min-width:48px;background:#edf2e7}.coefficient{display:flex;flex-wrap:wrap;gap:9px;align-items:end;margin:12px 0}
+.coefficient label{display:grid;font-size:.74rem;gap:3px}.coefficient input{background:#fffdf8;border:1px solid var(--rule);border-radius:4px;width:77px;padding:6px;font:inherit;font-size:.9rem}
+#preview{padding:10px 0;margin-bottom:7px}.library-switch{display:block;font-size:.82rem;margin-bottom:12px}
+#searchState,#savedNote,#memoryInfo{color:var(--muted);font-size:.85rem;margin:10px 0}#history>div,#found>div,#library>div{border-bottom:1px solid var(--rule);padding:9px 0}
+#history small,#found small,#library small{font-size:.75rem;color:var(--muted)}#save,#playProof{margin-top:12px}
+.proof-line{overflow-x:auto;margin-top:4px}button[hidden]{display:none}#library button{margin-top:6px}
+.settings label:first-child{min-width:min(300px,100%)}

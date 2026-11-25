@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f7f5ed"><title>Exact differential game · Tessera</title>
+<link rel="stylesheet" href="style.css"><link rel="stylesheet" href="rewrite.css">
+<script src="vendor/katex.min.js" defer></script><script type="module" src="rewrite-player.mjs"></script></head>
+<body><main><header><a href="./">Symbolic integration playground</a><span aria-hidden="true"> / </span>Tessera</header>
+<h1>Exact differential game</h1>
+<p class="intro">Pick an expression to pull out of the integral. Win when the remaining integrand is zero. Every move is reversible.</p>
+<div class="settings"><label>Integral <select id="task"></select></label></div>
+<div class="layout"><section class="workspace" aria-label="Rewrite board">
+ <div class="problem"><div class="label">Starting integral</div><div id="target" class="math-scroll"></div></div>
+ <div class="board"><div class="board-head"><h2>Your blackboard</h2><span id="nMoves"></span></div><div id="boardEq" class="math-scroll"></div></div>
+ <div class="reading"><h2>Choose a differential</h2><p>Tap factors to build the expression. Change its signed coefficient or remove a factor before playing it.</p>
+ <div id="factorButtons" class="commands"></div>
+ <div class="coefficient"><label>Numerator <input id="num" type="number" value="1" min="-99" max="99" step="1"></label><label>Denominator <input id="den" type="number" value="1" min="1" max="99" step="1"></label><button id="pop">Remove factor</button></div>
+ <div id="preview" class="math-scroll"></div><div class="commands"><button id="apply" class="primary">Play this differential</button><button id="undo">Undo move</button></div></div>
+ <div class="playback"><h3>Derivation</h3><div id="history"></div><button id="save">Save checked proof</button> <span id="savedNote" role="status"></span></div>
+</section><aside><div class="memory-head"><h2>Fair search</h2><span id="cost"></span></div>
+ <p>One round explores a total cost across all eligible branches. A branch can keep growing while shorter alternatives get their turn.</p>
+ <label class="library-switch"><input id="useLibrary" type="checkbox" checked> Use saved proofs</label>
+ <div class="commands"><button id="advance" class="primary">Explore next cost</button><button id="run">Explore through cost 7</button></div>
+ <div id="searchState" role="status"></div>
+ <table><thead><tr><th>Cost</th><th>Parents tried</th><th>Moves tried</th><th>New states</th></tr></thead><tbody id="rounds"></tbody></table>
+ <div id="found"></div><button id="playProof" hidden>Play found proof</button>
+ <div class="compare"><h3>Saved proofs</h3><p id="memoryInfo"></p><div id="library"></div></div>
+</aside></div>
+<details class="method"><summary>Move rules, search cost and limits</summary>
+<p id="ruleEq" class="math-scroll"></p>
+<p>The game uses linearity, the product rule and the elementary derivatives of its four factors. Primitives are considered up to an additive constant on the real line. The catalogue enumerates every nonconstant monomial in those factors with a nonzero rational coefficient. Products may repeat factors.</p>
+<p>Each extraction costs one plus its number of factors, plus one for each extra unit in the reduced numerator magnitude or denominator. Both signs have the same cost. A stored proof costs one move when a proportional copy of its integrand occurs as a group of terms. Its derivative is checked on admission. Search merges identical expanded remainders. Within each cost GCTS orders the candidate moves at one open rewrite obligation.</p>
+<p>The interactive search stops after cost seven; an open problem at that limit can still have a proof. The hand controls accept coefficients up to 99 in magnitude and up to twelve factors per move.</p></details>
+<p class="method"><a href="symbol-tiles.html">Watch GCTS place individual symbols with markings across the row</a></p>
+<noscript>Enable JavaScript to play.</noscript></main></body></html>

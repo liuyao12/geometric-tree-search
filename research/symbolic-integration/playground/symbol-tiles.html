@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f7f5ed"><title>One symbol per tile · Tessera</title>
+<link rel="stylesheet" href="style.css"><link rel="stylesheet" href="symbol-tiles.css">
+<script src="vendor/katex.min.js" defer></script><script type="module" src="symbol-player.mjs"></script></head>
+<body><main><header><a href="./">Symbolic integration playground</a><span aria-hidden="true"> / </span>Tessera</header>
+<h1>One symbol per tile</h1>
+<p class="intro">Build an antiderivative one symbol at a time. Watch a symbol already on the row change which tiles fit several places away.</p>
+<div class="settings"><label>Integral <select id="problem"><option value="product">Exponential product</option><option value="control">Linear polynomial</option></select></label>
+<label>Seed <select id="seed"><option>0</option><option>1</option><option>2</option><option>3</option></select></label></div>
+<div class="layout"><section class="workspace" aria-label="Symbol search replay">
+<div class="problem"><div class="label">Find an antiderivative</div><div id="goal" class="math-scroll"></div></div>
+<div class="board"><div class="board-head"><h2>Symbol row</h2><span id="mode"></span></div>
+<div class="rail"><svg id="arc" aria-hidden="true" viewBox="0 0 800 70" preserveAspectRatio="none"></svg><div id="cells"></div></div>
+<p class="board-tip" id="legend"></p></div>
+<div class="reading" aria-live="polite"><div class="reading-head"><h3 id="action"></h3><span id="counter"></span></div><p id="reason"></p></div>
+<div class="playback"><label class="sr" for="position">Search event</label><input type="range" id="position" min="0" value="0">
+<div class="commands"><button id="prev">Back</button><button class="primary" id="next">Next event</button><button id="nextMark">Next distant mark</button><button id="rollback">Next rollback</button><button id="finish">Checked answer</button></div></div>
+</section><aside><h2>Compare searches</h2><p>Both runs use the same GCTS rule and seed. A marked pass uses patterns learned from eight other integrals. If it exhausts a width, every choice is restored for an unrestricted pass.</p>
+<div class="mode"><label><input type="radio" name="replay" value="learned" checked> With learned marks</label><label><input type="radio" name="replay" value="plain"> Syntax only</label></div>
+<table><thead><tr><th>All widths</th><th>Placements</th><th>Rollbacks</th></tr></thead><tbody id="scores"></tbody></table>
+<p id="measured"></p><details><summary>Training examples</summary><p>Each row below was found and checked by differentiation. Repeated factors denote multiplication.</p><div id="training"></div></details></aside></div>
+<details class="method"><summary>How a symbol becomes a lattice tile</summary>
+<p id="tileDef"></p><p>Neighbouring half-points carry grammar states that must agree. End caps fill the two outer half-points. All strip points start at the same age. GCTS can place a symbol in the middle while both ends are still empty.</p>
+<p>A learned mark records an ordered pair of symbols at a fixed offset. For each excluded pair, its left symbol writes one value at that offset and its right symbol writes a different value at its own centre. When both marks land on the same point, the placement is excluded. Marks may reach beyond the tile’s three occupied points.</p>
+<p>The learner excludes pairs observed at least three times in failed rows and never in a winning training row, at distances of two through seven cells. Differentiation makes the final decision. The replay shows every placement and rollback at the concluding width. Totals include all shorter widths and fallback passes.</p>
+<p id="markDef"></p><p id="orientation"></p></details>
+<p class="method"><a href="rewrite.html">Play the reversible differential game</a></p>
+<noscript>Enable JavaScript to replay the search.</noscript></main></body></html>
