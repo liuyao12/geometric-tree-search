@@ -6,6 +6,9 @@
   const area = document.createElement('div'); area.className = 'widget-stage-area';
   const ui = document.createElement('div'); ui.className = 'widget-ui';
   document.body.append(area, ui);
+  Object.assign(document.body.style,{display:'flex',flexDirection:'row',alignItems:'stretch',gap:'0',overflow:'hidden'});
+  Object.assign(ui.style,{display:'flex',flexDirection:'column',alignItems:'stretch',justifyContent:'flex-start',flex:'0 0 205px',width:'205px',boxSizing:'border-box',padding:'12px',gap:'12px',borderLeft:'1px solid #d9dee5',background:'#fafbfc',overflowY:'auto',color:'#202a35',font:'13px system-ui'});
+  Object.assign(area.style,{flex:'1 1 0',minWidth:'0',width:'auto'});
   Object.assign(area.style, {position:'relative', overflow:'hidden', minHeight:'240px', background:'#fff'});
   const canvas = document.createElement('canvas');
   Object.assign(canvas.style,{width:'100%',height:'100%',display:'block',position:'absolute',inset:'0',touchAction:'none',cursor:'grab'});
@@ -1351,7 +1354,7 @@ async function selectA2MarkingCandidates({candidates,solveOptions,validationSeed
   return{marking:selected?.marking??candidates[0],selected,candidates,validation,seeds};
 }
 
-return {A2_TILE_LOOPS,tileOrientations,a2Add,makeHexBoundary,solveA2Tiling,NoA2Marking,FixedA2Marking,SparseA2Marking};
+return {A2_TILE_LOOPS,tileOrientations,a2Add,makeHexBoundary,solveA2Tiling,NoA2Marking,FixedA2Marking,SparseA2Marking,polygonBoundaryEdges};
 })();
 // ---------- Embedded hat-rank3-marking.js ----------
 const H = (() => {
@@ -1616,18 +1619,22 @@ return {failureExtent,createFailureMarking};
   const sets={turtle:['turtle'],hat:['hat'],mixed:['turtle','hat']};
   const mk=(tag,props={})=>Object.assign(document.createElement(tag),props);
   function label(text,el){const l=mk('label');Object.assign(l.style,{display:'inline-flex',alignItems:'center',gap:'5px',font:'13px system-ui'});l.append(document.createTextNode(text),el);return l;}
-  function select(options){const el=mk('select');for(const [value,text] of options)el.append(mk('option',{value,textContent:text}));return el;}
-  const set=select([['turtle','Turtle'],['hat','Hat'],['mixed','Turtle + Hat']]);
-  const manual=select([['hat','Hat'],['turtle','Turtle']]); const add=mk('button',{textContent:'Add tile'}), remove=mk('button',{textContent:'Delete selected'}), edit=mk('button',{textContent:'Edit seed'}), flip=mk('button',{textContent:'Flip'});
-  const rule=select([]), start=mk('button',{textContent:'Start tiling'}),reset=mk('button',{textContent:'Reset'}),fit=mk('button',{textContent:'Fit'});
+  function radios(name,options,initial){const el=mk('div');Object.assign(el.style,{display:'flex',flexDirection:'column',gap:'4px'});el.setAttribute('role','radiogroup');for(const [value,text] of options){const input=mk('input',{type:'radio',name,value,checked:value===initial});const l=label(text,input);l.replaceChildren(input,document.createTextNode(text));el.append(l);}Object.defineProperty(el,'value',{get(){return el.querySelector('input:checked')?.value},set(v){for(const x of el.querySelectorAll('input'))x.checked=x.value===v;}});return el;}
+  const set=radios('gcts-search',[['hat','Hats'],['turtle','Turtles'],['mixed','Both']],'turtle');
+  const manual=radios('gcts-manual',[['hat','Hat'],['turtle','Turtle']],'hat');
+  const add=mk('button',{textContent:'Add'}),remove=mk('button',{textContent:'Delete selected'}),edit=mk('button',{textContent:'Edit seed'}),flip=mk('button',{textContent:'Flip'});
+  const rule=radios('gcts-rule',[['none','None'],['rank1','Rank 1'],['constant','Rank 3 constant'],['alternating','Rank 3 wave']],'none');
+  const start=mk('button',{textContent:'Start tiling'}),reset=mk('button',{textContent:'Reset'}),fit=mk('button',{textContent:'Fit'});
   const marks=mk('input',{type:'checkbox',checked:true}),grid=mk('input',{type:'checkbox',checked:true});
   const extent=mk('input',{type:'number',min:'0',max:'9',step:'1',value:'1'});extent.style.width='45px';
   const speed=mk('input',{type:'range',min:'1',max:'60',value:'20'});speed.style.width='90px';
-  start.style.minWidth='100px';start.style.fontWeight='600';
-  ui.append(label('Add',manual),add,remove,flip,edit);
-  const searchRow=mk('div');Object.assign(searchRow.style,{display:'flex',alignItems:'center',flexWrap:'wrap',gap:'8px',flexBasis:'100%'});searchRow.append(label('Search with',set),start,reset,fit,label('Grid',grid),label('Markings',marks));ui.append(searchRow);
-  const row=mk('div');Object.assign(row.style,{display:'flex',alignItems:'center',flexWrap:'wrap',gap:'10px',flexBasis:'100%'});
-  row.append(label('Matching rule',rule),label('Extent',extent),label('Speed',speed));ui.append(row);
+  start.style.fontWeight='600';
+  function group(title,...children){const g=mk('div');Object.assign(g.style,{display:'flex',flexDirection:'column',gap:'7px'});const h=mk('div',{textContent:title});h.style.fontWeight='600';g.append(h,...children);return g;}
+  function line(...children){const l=mk('div');Object.assign(l.style,{display:'flex',alignItems:'center',flexWrap:'wrap',gap:'6px'});l.append(...children);return l;}
+  const notice=mk('div');Object.assign(notice.style,{fontSize:'12px',color:'#a13a32',overflowWrap:'anywhere'});notice.setAttribute('role','status');
+  const hint=mk('div',{textContent:'Click to rotate · right-click to flip · drag to move'});Object.assign(hint.style,{fontSize:'11px',color:'#66717f'});
+  manual.style.flexDirection='row';manual.style.gap='6px';
+  ui.append(group('Initial tiles',line(add,manual),line(remove,flip),edit,hint),group('Tile with',set,start,line(reset,fit)),group('Matching rules',rule,label('Extent',extent),label('Show markings',marks)),group('View',label('Grid',grid),label('Speed',speed)),notice);
   let W=1,HH=1,scale=24,cx=0,cy=0,dpr=1,patch=[],ghost=null,marking=null,job=null,running=false,finished=false,nodes=0,backtracks=0,message='',autoFit=true, manualPatch=[], selected=-1, editing=true;
   const project=([x,y,z])=>[(z-x)/Math.sqrt(2),(2*y-x-z)/Math.sqrt(6)];
   const screen=p=>{const [x,y]=project(p);return [W/2+(x-cx)*scale,HH/2+(y-cy)*scale];};
@@ -1638,29 +1645,35 @@ return {failureExtent,createFailureMarking};
   function snap(x,y){const q=-x/Math.sqrt(2)-y/Math.sqrt(6),r=2*y/Math.sqrt(6),z=-q-r;const f=[q,r,z],a=f.map(Math.round);let k=0;for(let i=1;i<3;i++)if(Math.abs(a[i]-f[i])>Math.abs(a[k]-f[k]))k=i;a[k]-=a.reduce((u,v)=>u+v,0);return a;}
   function world(x,y){return [cx+(x-W/2)/scale,cy+(y-HH/2)/scale];}
   function validateSeed(checkMarks=true){const sums=new Map(),ms=new Map();for(const p of manualPatch){for(const v of p.orientation.occupancy.values()){const k=a2Add(v.point,p.translation).join(',');const n=(sums.get(k)||0)+v.weight;if(n>12)return 'Seed tiles overlap';sums.set(k,n);}if(checkMarks&&marking?.entries){for(const [k,v] of marking.entries(p)){if(ms.has(k)&&ms.get(k)!==v)return 'Seed markings disagree';ms.set(k,v);}}}return '';}
-  function refreshEdit(){patch=manualPatch.slice();ghost=null;message=validateSeed()||'Click: rotate 60° · right-click: flip · drag: snap';draw();button();}
-  function transformTile(flipIt){if(!editing||selected<0)return;const p=manualPatch[selected],s=p.orientation.symmetry;const perm=flipIt?[s.permutation[2],s.permutation[1],s.permutation[0]]:[s.permutation[1],s.permutation[2],s.permutation[0]],sign=flipIt?s.sign:-s.sign;const o=orientations[p.tile].find(o=>o.symmetry.sign===sign&&o.symmetry.permutation.every((v,i)=>v===perm[i]));if(o){manualPatch[selected]={...p,orientation:o};refreshEdit();}}
+  function refreshEdit(){patch=manualPatch.slice();ghost=null;options();marking=makeMarking();message=validateSeed();draw();button();}
+  function transformTile(flipIt,pivot=null){if(!editing||selected<0)return;const p=manualPatch[selected],s=p.orientation.symmetry;const perm=flipIt?[s.permutation[2],s.permutation[1],s.permutation[0]]:[s.permutation[1],s.permutation[2],s.permutation[0]],sign=flipIt?s.sign:-s.sign;const o=orientations[p.tile].find(o=>o.symmetry.sign===sign&&o.symmetry.permutation.every((v,i)=>v===perm[i]));if(o){let translation=p.translation;if(pivot&&!flipIt){const [px,py]=world(...pivot),[tx,ty]=project(p.translation);const dx=tx-px,dy=ty-py;// determine actual 60° direction from the lattice rotation
+      const v=[1,-1,0],w=[-v[1],-v[2],-v[0]],u2=project(v),w2=project(w),cos=(u2[0]*w2[0]+u2[1]*w2[1])/2,sin=(u2[0]*w2[1]-u2[1]*w2[0])/2;
+      translation=snap(px+cos*dx-sin*dy,py+sin*dx+cos*dy);}
+      manualPatch[selected]={...p,orientation:o,translation};refreshEdit();}}
   function hit(x,y){for(let i=manualPatch.length-1;i>=0;i--){path(manualPatch[i]);if(ctx.isPointInPath(x*dpr,y*dpr))return i;}return -1;}
   function toEdit(){cancel();editing=true;finished=false;nodes=backtracks=0;marking=makeMarking();refreshEdit();}
 
-  function options(){rule.replaceChildren();const opts=[['none','No marking'],['rank1','Rank 1']];if(set.value==='turtle')opts.push(['constant','Rank 3 · constant'],['alternating','Rank 3 · alternating']);else opts.push(['alternating','Rank 3 · alternating'],['failures','Rank 3 · from failures']);for(const [value,text] of opts)rule.append(mk('option',{value,textContent:text}));rule.value='none';extent.value=set.value==='turtle'?'1':String(F.failureExtent(set.value));}
-  function makeMarking(){const tiles=sets[set.value],n=Math.max(0,Math.min(9,Math.trunc(Number(extent.value)||0)));if(rule.value==='none')return new NoA2Marking();if(rule.value==='failures')return F.createFailureMarking(set.value,Math.min(n,F.failureExtent(set.value)));if(rule.value==='alternating')return set.value==='hat'?H.createHatRank3Marking({extent:n,pattern:'more'}):H.createAlternatingMarking(tiles,n);return new FixedA2Marking(n,{rank:rule.value==='rank1'?1:3,tiles});}
+  const activeTiles=()=>[...new Set([...sets[set.value],...manualPatch.map(p=>p.tile)])];
+  function options(){const constant=rule.querySelector('input[value="constant"]');constant.disabled=activeTiles().includes('hat');constant.parentElement.style.opacity=constant.disabled?'0.45':'1';constant.parentElement.title=constant.disabled?'Constant rank-3 marking is defined only for turtles':'';if(constant.disabled&&rule.value==='constant')rule.value='none';extent.disabled=marks.disabled=rule.value==='none';}
+  function makeMarking(){const tiles=activeTiles(),n=Math.max(0,Math.min(9,Math.trunc(Number(extent.value)||0)));if(rule.value==='none')return new NoA2Marking();if(rule.value==='alternating')return tiles.length===1&&tiles[0]==='hat'?H.createHatRank3Marking({extent:n,pattern:'more'}):H.createAlternatingMarking(tiles,n);return new FixedA2Marking(n,{rank:rule.value==='rank1'?1:3,tiles});}
   function fitPatch(){if(!patch.length)return;let x0=Infinity,x1=-Infinity,y0=Infinity,y1=-Infinity;for(const p of patch)for(const v of loop(p)){const [x,y]=project(v);x0=Math.min(x0,x);x1=Math.max(x1,x);y0=Math.min(y0,y);y1=Math.max(y1,y);}cx=(x0+x1)/2;cy=(y0+y1)/2;scale=Math.max(.25,Math.min(35,(W-45)/Math.max(1,x1-x0),(HH-65)/Math.max(1,y1-y0)));}
   function path(p){ctx.beginPath();loop(p).forEach((v,i)=>{const [x,y]=screen(v);i?ctx.lineTo(x,y):ctx.moveTo(x,y);});ctx.closePath();}
   function draw(){ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,HH);ctx.fillStyle='#fff';ctx.fillRect(0,0,W,HH);
     if(grid.checked&&scale>4){const radius=Math.ceil((Math.hypot(W,HH)/2)/scale)+3;const q0=Math.round(-cx/Math.sqrt(2)-cy/Math.sqrt(6)),r0=Math.round(2*cy/Math.sqrt(6));ctx.strokeStyle='#e6e8eb';ctx.lineWidth=.65;ctx.beginPath();for(let q=q0-radius;q<=q0+radius;q++)for(let r=r0-radius;r<=r0+radius;r++){const p=[q,r,-q-r],a=screen(p);if(a[0]<-scale*2||a[0]>W+scale*2||a[1]<-scale*2||a[1]>HH+scale*2)continue;for(const v of [[1,-1,0],[1,0,-1],[0,1,-1]]){const b=screen(a2Add(p,v));ctx.moveTo(...a);ctx.lineTo(...b);}}ctx.stroke();}
     for(const [i,p] of patch.entries()){path(p);const reflected=parity(p.orientation.symmetry.permutation)<0;ctx.fillStyle=p.tile==='hat'?(reflected?'#f1b684':'#f5d79a'):(reflected?'#86afdc':'#b6d4ef');ctx.fill();ctx.strokeStyle=editing&&i===selected?'#175fba':'#344454';ctx.lineWidth=editing&&i===selected?2.5:1;ctx.stroke();}
     if(marks.checked&&marking&&rule.value!=='none'){ctx.lineCap='round';for(const p of patch){if(typeof marking.segments==='function'){for(const s of marking.segments(p)){const a=screen(s.fromPoint),b=screen(s.toPoint);ctx.strokeStyle=s.value<0?'#cf4242':'#2563b7';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(...a);ctx.lineTo(...b);ctx.stroke();}}else if(typeof marking.entries==='function'){for(const [key,value] of marking.entries(p)){if(!value)continue;const [coord,comp]=key.split('|'),v=coord.split(',').map(Number),a=screen(v),dir=[0,1,2].map(i=>i===Number(comp)?-2:1),b=screen(v.map((x,i)=>x+dir[i]*.23)),c=screen(v.map((x,i)=>x-dir[i]*.23));ctx.strokeStyle=value<0?'#cf4242':'#2563b7';ctx.lineWidth=1.8;ctx.beginPath();ctx.moveTo(...c);ctx.lineTo(...b);ctx.stroke();}}}ctx.lineCap='butt';}
+    // Draw the exterior boundary of the entire initial patch above all tiles.
+    const boundary=new Map();for(const p of manualPatch)for(const e of E.polygonBoundaryEdges(loop(p))){const n=(boundary.get(e.key)||0)+e.direction;if(n)boundary.set(e.key,n);else boundary.delete(e.key);}
+    ctx.beginPath();for(const k of boundary.keys()){const [a,b]=k.split('|').map(x=>screen(x.split(',').map(Number)));ctx.moveTo(...a);ctx.lineTo(...b);}ctx.strokeStyle='#172e4a';ctx.lineWidth=3;ctx.stroke();
     if(ghost){path(ghost);ctx.fillStyle='rgba(230,90,70,.25)';ctx.fill();ctx.strokeStyle='#d34838';ctx.lineWidth=2;ctx.stroke();}
-    status.textContent=`${patch.length} tiles · ${nodes} nodes · ${backtracks} backtracks${message?' · '+message:''}`;
+    const hats=patch.filter(p=>p.tile==='hat').length,turtles=patch.length-hats;status.textContent=`${patch.length} tiles · ${hats} hats · ${turtles} turtles`;notice.textContent=/^(Seed |Add a seed)/.test(message)||finished&&message!=='search ended'?message:'';
   }
   function resize(){const r=area.getBoundingClientRect();W=Math.max(1,r.width);HH=Math.max(1,r.height);dpr=Math.min(2,window.devicePixelRatio||1);canvas.width=Math.round(W*dpr);canvas.height=Math.round(HH*dpr);if(autoFit)fitPatch();draw();}
   function button(){add.disabled=remove.disabled=flip.disabled=!editing;remove.disabled=flip.disabled=!editing||selected<0;edit.disabled=editing;start.textContent=running?'Pause':finished?'Start again':job?'Resume':'Start tiling';start.style.background=running?'#d9534f':'#4a90d9';start.style.color='#fff';}
   function cancel(){if(job){job.token.stop=true;job.wake?.();job=null;}running=false;}
-  function clear(){cancel();finished=false;editing=true;nodes=backtracks=0;ghost=null;extent.disabled=rule.value==='none';marks.disabled=rule.value==='none';marking=makeMarking();manualPatch=[seed()];selected=0;patch=manualPatch.slice();autoFit=false;cx=cy=0;scale=24;refreshEdit();}
+  function clear(){cancel();finished=false;editing=true;nodes=backtracks=0;ghost=null;extent.disabled=rule.value==='none';marks.disabled=rule.value==='none';manualPatch=[seed()];options();marking=makeMarking();selected=0;patch=manualPatch.slice();autoFit=false;cx=cy=0;scale=24;refreshEdit();}
   const sleep=ms=>new Promise(r=>setTimeout(r,ms));
   async function begin(){if(finished)toEdit();if(!job){if(!manualPatch.length){message='Add a seed tile first';draw();return;}const invalid=validateSeed();if(invalid){message=invalid;draw();return;}editing=false;autoFit=true;}running=true;button();if(job){job.wake?.();return;}const current={token:{stop:false},wake:null};job=current;const initial=manualPatch.slice(),allowed=sets[set.value],tiles=[...new Set([...allowed,...initial.map(p=>p.tile)])];
-    if(rule.value!=='none'&&initial.some(p=>!allowed.includes(p.tile))){job=null;running=false;editing=true;message='Choose No marking for seed types outside the search set';button();draw();return;}
     marking=makeMarking();
     const wait=async()=>{while(!running&&!current.token.stop)await new Promise(r=>current.wake=r);current.wake=null;if(!current.token.stop)await sleep(1000/Number(speed.value));while(!running&&!current.token.stop)await new Promise(r=>current.wake=r);current.wake=null;};
     try{await solveA2Tiling({boundary:makeHexBoundary(220),initialPlacements:initial,tiles,allowReflections:true,placementFilter:p=>allowed.includes(p.tile)&&(set.value!=='mixed'||parity(p.orientation.symmetry.permutation)>0),fixedInitialPlacements:true,completePointGrowth:true,maximize:true,targetPlacements:1000,nodeLimit:1000000,marking,branchPolicy:'oldest-frontier',requireEdgeSharing:true,randomSeed:1,stopToken:current.token,waitForSearchDemand:wait,onEvent:e=>{if(job!==current)return;nodes=e.nodes;backtracks=e.backtracks;if(['placement','backtrack','fail'].includes(e.type)){patch=e.placements;ghost=e.type==='backtrack'?e.removed:null;message=e.type==='backtrack'?'backtracking':e.type==='fail'?'dead frontier':e.forced?'forced move':'growing';if(autoFit)fitPatch();draw();}}});if(job===current){finished=true;message='search ended';}}
@@ -1673,7 +1686,7 @@ return {failureExtent,createFailureMarking};
   canvas.addEventListener('contextmenu',e=>{e.preventDefault();if(!editing)return;selected=hit(...local(e));if(selected>=0)transformTile(true);});
   canvas.addEventListener('pointerdown',e=>{if(e.button!==0)return;autoFit=false;const [x,y]=local(e);const i=editing?hit(x,y):-1;if(editing)selected=i;drag={x,y,cx,cy,i,moved:false,translation:i>=0?[...manualPatch[i].translation]:null};canvas.setPointerCapture(e.pointerId);canvas.style.cursor='grabbing';draw();button();});
   canvas.addEventListener('pointermove',e=>{if(!drag)return;const [x,y]=local(e),dx=x-drag.x,dy=y-drag.y;if(Math.hypot(dx,dy)>4)drag.moved=true;if(!drag.moved)return;if(drag.i>=0&&editing){const delta=snap(dx/scale,dy/scale);manualPatch[drag.i]={...manualPatch[drag.i],translation:a2Add(drag.translation,delta)};refreshEdit();}else{cx=drag.cx-dx/scale;cy=drag.cy-dy/scale;draw();}});
-  canvas.addEventListener('pointerup',()=>{if(drag&&!drag.moved&&drag.i>=0&&editing)transformTile(false);drag=null;canvas.style.cursor='grab';});
+  canvas.addEventListener('pointerup',()=>{if(drag&&!drag.moved&&drag.i>=0&&editing)transformTile(false,[drag.x,drag.y]);drag=null;canvas.style.cursor='grab';});
   for(const type of ['pointercancel','lostpointercapture'])canvas.addEventListener(type,()=>{drag=null;canvas.style.cursor='grab';});
   canvas.addEventListener('wheel',e=>{e.preventDefault();autoFit=false;const r=canvas.getBoundingClientRect(),x=e.clientX-r.left-W/2,y=e.clientY-r.top-HH/2,old=scale;scale=Math.max(.25,Math.min(150,scale*Math.exp(-e.deltaY*.0015)));cx+=x/old-x/scale;cy+=y/old-y/scale;draw();},{passive:false});
   options();clear();new ResizeObserver(resize).observe(area);resize();fitPatch();scale=Math.min(scale,24);draw();
