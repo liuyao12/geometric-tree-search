@@ -1622,7 +1622,8 @@ return {failureExtent,createFailureMarking};
   const mk=(tag,props={})=>Object.assign(document.createElement(tag),props);
   function label(text,el){const l=mk('label');Object.assign(l.style,{display:'inline-flex',alignItems:'center',gap:'5px',font:'13px system-ui'});l.append(document.createTextNode(text),el);return l;}
   function radios(name,options,initial){const el=mk('div');Object.assign(el.style,{display:'flex',flexDirection:'column',gap:'4px'});el.setAttribute('role','radiogroup');for(const [value,text] of options){const input=mk('input',{type:'radio',name,value,checked:value===initial});const l=label(text,input);l.replaceChildren(input,document.createTextNode(text));el.append(l);}Object.defineProperty(el,'value',{get(){return el.querySelector('input:checked')?.value},set(v){for(const x of el.querySelectorAll('input'))x.checked=x.value===v;}});return el;}
-  const set=radios('gcts-search',[['hat','Hats'],['turtle','Turtles'],['mixed','Both']],'turtle');
+  function dropdown(options,initial){const el=mk('select');for(const [value,text] of options)el.append(mk('option',{value,textContent:text}));el.value=initial;Object.assign(el.style,{display:'block',width:'100%',minWidth:'0',boxSizing:'border-box',margin:'0'});return el;}
+  const set=dropdown([['hat','Hats'],['turtle','Turtles'],['mixed','Both']],'turtle');
   const manual=radios('gcts-manual',[['hat','Hat'],['turtle','Turtle']],'hat');
   const add=mk('button',{textContent:'Add'}),remove=mk('button',{textContent:'Delete selected'}),edit=mk('button',{textContent:'Edit seed'}),flip=mk('button',{textContent:'Flip'});
   const rule=mk('select');for(const [value,text] of [['none','None'],['rank1','Rank 1'],['constant','Rank 3 constant'],['alternating','Rank 3 wave'],['gcts','GCTS']])rule.append(mk('option',{value,textContent:text}));rule.value='none';Object.assign(rule.style,{width:'100%',minWidth:'0',boxSizing:'border-box'});
@@ -1635,10 +1636,19 @@ return {failureExtent,createFailureMarking};
   function line(...children){const l=mk('div');Object.assign(l.style,{display:'flex',alignItems:'center',flexWrap:'wrap',gap:'6px'});l.append(...children);return l;}
   const notice=mk('div');Object.assign(notice.style,{fontSize:'12px',color:'#a13a32',overflowWrap:'anywhere'});notice.setAttribute('role','status');
   const hint=mk('div',{textContent:'Click to rotate · right-click to flip · drag to move'});Object.assign(hint.style,{position:'absolute',bottom:'10px',left:'10px',right:'10px',textAlign:'center',font:'12px system-ui',color:'#66717f',pointerEvents:'none',background:'rgba(255,255,255,.88)',padding:'4px'});area.append(hint);
-  const seedControls=group('Initial tiles',add,manual,remove,flip);
+  const seedControls=mk('details');seedControls.open=true;
+  Object.assign(seedControls.style,{display:'block',width:'100%',minWidth:'0',boxSizing:'border-box'});
+  const seedSummary=mk('summary',{textContent:'Add new tiles'});
+  Object.assign(seedSummary.style,{cursor:'pointer',fontWeight:'600',listStyle:'revert',display:'list-item',padding:'3px 0'});
+  const seedBody=mk('div');Object.assign(seedBody.style,{display:'flex',flexDirection:'column',alignItems:'stretch',gap:'6px',paddingTop:'7px'});
+  seedBody.append(manual,add,remove,flip);
+  seedControls.append(seedSummary,seedBody);
+  seedControls.addEventListener('toggle',()=>{if(seedControls.open&&!editing)toEdit();if(typeof editing!=='undefined')hint.style.display=editing&&seedControls.open?'block':'none';});
   // Explicit widths prevent inherited notebook button and label styles from wrapping into columns.
   for(const el of [add,remove,flip,edit,start,reset,fit])Object.assign(el.style,{width:'100%',boxSizing:'border-box',margin:'0'});
-  ui.append(seedControls,edit,group('Tile with',set,start,reset,fit),group('Matching rules',rule,label('Extent',extent),label('Show markings',marks)),group('View',label('Grid',grid),label('Speed',speed)),notice);
+  ui.append(seedControls,group('Tile with',set),group('Marking',rule),label('Extent',extent),label('Show markings',marks),start,reset,fit,label('Grid',grid),label('Speed',speed),notice);
+  for(const el of ui.children){el.style.flex='0 0 auto';el.style.maxWidth='100%';el.style.boxSizing='border-box';}
+  set.setAttribute('aria-label','Tile with');rule.setAttribute('aria-label','Marking');
   let W=1,HH=1,scale=24,cx=0,cy=0,dpr=1,patch=[],ghost=null,marking=null,job=null,running=false,finished=false,nodes=0,backtracks=0,message='',autoFit=true, manualPatch=[], selected=-1, editing=true;
   const project=([x,y,z])=>[(z-x)/Math.sqrt(2),(2*y-x-z)/Math.sqrt(6)];
   const screen=p=>{const [x,y]=project(p);return [W/2+(x-cx)*scale,HH/2+(y-cy)*scale];};
@@ -1655,7 +1665,7 @@ return {failureExtent,createFailureMarking};
       translation=snap(px+cos*dx-sin*dy,py+sin*dx+cos*dy);}
       manualPatch[selected]={...p,orientation:o,translation};refreshEdit();}}
   function hit(x,y){for(let i=manualPatch.length-1;i>=0;i--){path(manualPatch[i]);if(ctx.isPointInPath(x*dpr,y*dpr))return i;}return -1;}
-  function toEdit(){cancel();editing=true;finished=false;nodes=backtracks=0;marking=makeMarking();refreshEdit();}
+  function toEdit(){cancel();editing=true;seedControls.open=true;finished=false;nodes=backtracks=0;marking=makeMarking();refreshEdit();}
 
   const activeTiles=()=>[...new Set([...sets[set.value],...manualPatch.map(p=>p.tile)])];
   function options(){const constant=rule.querySelector('option[value="constant"]');constant.disabled=activeTiles().includes('hat');constant.title=constant.disabled?'Constant rank-3 marking is defined only for turtles':'';if(constant.disabled&&rule.value==='constant')rule.value='none';extent.disabled=rule.value==='none'||rule.value==='gcts';marks.disabled=rule.value==='none';}
@@ -1718,9 +1728,9 @@ return {failureExtent,createFailureMarking};
     const hats=patch.filter(p=>p.tile==='hat').length,turtles=patch.length-hats;status.textContent=`${patch.length} tiles · ${hats} hats · ${turtles} turtles`;notice.textContent=/^(Seed |Add a seed)/.test(message)||finished&&message!=='search ended'?message:'';
   }
   function resize(){const r=area.getBoundingClientRect();W=Math.max(1,r.width);HH=Math.max(1,r.height);dpr=Math.min(2,window.devicePixelRatio||1);canvas.width=Math.round(W*dpr);canvas.height=Math.round(HH*dpr);if(autoFit)fitPatch();draw();}
-  function button(){seedControls.style.display=editing?'flex':'none';edit.style.display=editing?'none':'block';hint.style.display=editing?'block':'none';add.disabled=remove.disabled=flip.disabled=!editing;remove.disabled=flip.disabled=!editing||selected<0;edit.disabled=editing;start.textContent=running?'Pause':finished?'Start again':job?'Resume':'Start tiling';start.style.background=running?'#d9534f':'#4a90d9';start.style.color='#fff';}
+  function button(){if(!editing)seedControls.open=false;hint.style.display=editing&&seedControls.open?'block':'none';add.disabled=remove.disabled=flip.disabled=!editing;remove.disabled=flip.disabled=!editing||selected<0;edit.disabled=editing;start.textContent=running?'Pause':finished?'Start again':job?'Resume':'Start tiling';start.style.background=running?'#d9534f':'#4a90d9';start.style.color='#fff';}
   function cancel(){if(job){job.token.stop=true;job.wake?.();job=null;}running=false;}
-  function clear(){cancel();finished=false;editing=true;nodes=backtracks=0;ghost=null;extent.disabled=rule.value==='none';marks.disabled=rule.value==='none';manualPatch=[seed()];options();marking=makeMarking();selected=0;patch=manualPatch.slice();autoFit=false;cx=cy=0;scale=24;refreshEdit();}
+  function clear(){cancel();finished=false;editing=true;seedControls.open=true;nodes=backtracks=0;ghost=null;extent.disabled=rule.value==='none';marks.disabled=rule.value==='none';manualPatch=[seed()];options();marking=makeMarking();selected=0;patch=manualPatch.slice();autoFit=false;cx=cy=0;scale=24;refreshEdit();}
   const sleep=ms=>new Promise(r=>setTimeout(r,ms));
   async function begin(){if(finished)toEdit();if(!job){if(!manualPatch.length){message='Add a seed tile first';draw();return;}const invalid=validateSeed();if(invalid){message=invalid;draw();return;}editing=false;autoFit=true;}running=true;button();if(job){job.wake?.();return;}const current={token:{stop:false},wake:null};job=current;const initial=manualPatch.slice(),allowed=sets[set.value],tiles=[...new Set([...allowed,...initial.map(p=>p.tile)])];
     marking=makeMarking();
