@@ -1,0 +1,986 @@
+{
+  "trainingPatch": [
+    [
+      "turtle",
+      0,
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    [
+      "hat",
+      8,
+      [
+        3,
+        3,
+        -6
+      ]
+    ],
+    [
+      "turtle",
+      4,
+      [
+        -6,
+        9,
+        -3
+      ]
+    ],
+    [
+      "hat",
+      5,
+      [
+        -4,
+        2,
+        2
+      ]
+    ],
+    [
+      "hat",
+      11,
+      [
+        -12,
+        12,
+        0
+      ]
+    ],
+    [
+      "hat",
+      5,
+      [
+        4,
+        -8,
+        4
+      ]
+    ],
+    [
+      "turtle",
+      10,
+      [
+        4,
+        -5,
+        1
+      ]
+    ],
+    [
+      "turtle",
+      11,
+      [
+        -2,
+        -2,
+        4
+      ]
+    ],
+    [
+      "hat",
+      7,
+      [
+        -6,
+        -3,
+        9
+      ]
+    ],
+    [
+      "hat",
+      3,
+      [
+        -3,
+        9,
+        -6
+      ]
+    ],
+    [
+      "hat",
+      5,
+      [
+        8,
+        2,
+        -10
+      ]
+    ],
+    [
+      "hat",
+      7,
+      [
+        6,
+        -3,
+        -3
+      ]
+    ],
+    [
+      "hat",
+      8,
+      [
+        3,
+        9,
+        -12
+      ]
+    ],
+    [
+      "hat",
+      1,
+      [
+        -6,
+        15,
+        -9
+      ]
+    ],
+    [
+      "hat",
+      9,
+      [
+        -9,
+        3,
+        6
+      ]
+    ],
+    [
+      "hat",
+      2,
+      [
+        -15,
+        9,
+        6
+      ]
+    ],
+    [
+      "turtle",
+      6,
+      [
+        -14,
+        4,
+        10
+      ]
+    ],
+    [
+      "hat",
+      1,
+      [
+        -10,
+        17,
+        -7
+      ]
+    ],
+    [
+      "hat",
+      2,
+      [
+        -17,
+        13,
+        4
+      ]
+    ],
+    [
+      "turtle",
+      0,
+      [
+        8,
+        -10,
+        2
+      ]
+    ],
+    [
+      "hat",
+      7,
+      [
+        2,
+        -13,
+        11
+      ]
+    ],
+    [
+      "turtle",
+      6,
+      [
+        -6,
+        -6,
+        12
+      ]
+    ],
+    [
+      "turtle",
+      10,
+      [
+        8,
+        -7,
+        -1
+      ]
+    ],
+    [
+      "turtle",
+      4,
+      [
+        -10,
+        -1,
+        11
+      ]
+    ],
+    [
+      "turtle",
+      9,
+      [
+        5,
+        11,
+        -16
+      ]
+    ],
+    [
+      "hat",
+      6,
+      [
+        8,
+        8,
+        -16
+      ]
+    ],
+    [
+      "turtle",
+      3,
+      [
+        11,
+        -1,
+        -10
+      ]
+    ]
+  ],
+  "support": [
+    {
+      "tile": "hat",
+      "point": [
+        -1,
+        0,
+        1
+      ],
+      "component": 2,
+      "value": 257
+    },
+    {
+      "tile": "hat",
+      "point": [
+        -1,
+        1,
+        0
+      ],
+      "component": 1,
+      "value": 5
+    },
+    {
+      "tile": "hat",
+      "point": [
+        0,
+        -1,
+        1
+      ],
+      "component": 1,
+      "value": 8
+    },
+    {
+      "tile": "hat",
+      "point": [
+        0,
+        0,
+        0
+      ],
+      "component": 0,
+      "value": 10
+    },
+    {
+      "tile": "hat",
+      "point": [
+        0,
+        0,
+        0
+      ],
+      "component": 1,
+      "value": 11
+    },
+    {
+      "tile": "hat",
+      "point": [
+        2,
+        -1,
+        -1
+      ],
+      "component": 2,
+      "value": 27
+    },
+    {
+      "tile": "hat",
+      "point": [
+        0,
+        2,
+        -2
+      ],
+      "component": 2,
+      "value": -8
+    },
+    {
+      "tile": "hat",
+      "point": [
+        3,
+        -1,
+        -2
+      ],
+      "component": 0,
+      "value": 40
+    },
+    {
+      "tile": "hat",
+      "point": [
+        3,
+        0,
+        -3
+      ],
+      "component": 1,
+      "value": 44
+    },
+    {
+      "tile": "hat",
+      "point": [
+        4,
+        -1,
+        -3
+      ],
+      "component": 1,
+      "value": 50
+    },
+    {
+      "tile": "hat",
+      "point": [
+        4,
+        1,
+        -5
+      ],
+      "component": 1,
+      "value": 10
+    },
+    {
+      "tile": "hat",
+      "point": [
+        5,
+        0,
+        -5
+      ],
+      "component": 0,
+      "value": 257
+    },
+    {
+      "tile": "hat",
+      "point": [
+        2,
+        4,
+        -6
+      ],
+      "component": 0,
+      "value": 8
+    },
+    {
+      "tile": "hat",
+      "point": [
+        2,
+        4,
+        -6
+      ],
+      "component": 2,
+      "value": 81
+    },
+    {
+      "tile": "hat",
+      "point": [
+        3,
+        4,
+        -7
+      ],
+      "component": 0,
+      "value": -257
+    },
+    {
+      "tile": "hat",
+      "point": [
+        4,
+        3,
+        -7
+      ],
+      "component": 2,
+      "value": 87
+    },
+    {
+      "tile": "hat",
+      "point": [
+        0,
+        4,
+        -4
+      ],
+      "component": 2,
+      "value": -50
+    },
+    {
+      "tile": "hat",
+      "point": [
+        -1,
+        6,
+        -5
+      ],
+      "component": 0,
+      "value": -257
+    },
+    {
+      "tile": "hat",
+      "point": [
+        0,
+        7,
+        -7
+      ],
+      "component": 2,
+      "value": 40
+    },
+    {
+      "tile": "hat",
+      "point": [
+        1,
+        6,
+        -7
+      ],
+      "component": 2,
+      "value": 117
+    },
+    {
+      "tile": "hat",
+      "point": [
+        -2,
+        6,
+        -4
+      ],
+      "component": 0,
+      "value": 8
+    },
+    {
+      "tile": "hat",
+      "point": [
+        -2,
+        7,
+        -5
+      ],
+      "component": 2,
+      "value": 11
+    },
+    {
+      "tile": "hat",
+      "point": [
+        -2,
+        2,
+        0
+      ],
+      "component": 2,
+      "value": 144
+    },
+    {
+      "tile": "hat",
+      "point": [
+        -1,
+        2,
+        -1
+      ],
+      "component": 0,
+      "value": 44
+    },
+    {
+      "tile": "hat",
+      "point": [
+        -1,
+        2,
+        -1
+      ],
+      "component": 2,
+      "value": 44
+    },
+    {
+      "tile": "turtle",
+      "point": [
+        1,
+        -1,
+        0
+      ],
+      "component": 0,
+      "value": -87
+    },
+    {
+      "tile": "turtle",
+      "point": [
+        1,
+        0,
+        -1
+      ],
+      "component": 2,
+      "value": 257
+    },
+    {
+      "tile": "turtle",
+      "point": [
+        -2,
+        3,
+        -1
+      ],
+      "component": 2,
+      "value": 177
+    },
+    {
+      "tile": "turtle",
+      "point": [
+        -1,
+        2,
+        -1
+      ],
+      "component": 0,
+      "value": 178
+    },
+    {
+      "tile": "turtle",
+      "point": [
+        -1,
+        2,
+        -1
+      ],
+      "component": 1,
+      "value": 179
+    },
+    {
+      "tile": "turtle",
+      "point": [
+        -1,
+        2,
+        -1
+      ],
+      "component": 2,
+      "value": 180
+    },
+    {
+      "tile": "turtle",
+      "point": [
+        -4,
+        4,
+        0
+      ],
+      "component": 2,
+      "value": -50
+    },
+    {
+      "tile": "turtle",
+      "point": [
+        -3,
+        4,
+        -1
+      ],
+      "component": 0,
+      "value": 257
+    },
+    {
+      "tile": "turtle",
+      "point": [
+        -2,
+        4,
+        -2
+      ],
+      "component": 2,
+      "value": -10
+    },
+    {
+      "tile": "turtle",
+      "point": [
+        -5,
+        6,
+        -1
+      ],
+      "component": 1,
+      "value": 215
+    },
+    {
+      "tile": "turtle",
+      "point": [
+        -5,
+        6,
+        -1
+      ],
+      "component": 2,
+      "value": 216
+    },
+    {
+      "tile": "turtle",
+      "point": [
+        -6,
+        5,
+        1
+      ],
+      "component": 0,
+      "value": -50
+    },
+    {
+      "tile": "turtle",
+      "point": [
+        -6,
+        5,
+        1
+      ],
+      "component": 1,
+      "value": 224
+    },
+    {
+      "tile": "turtle",
+      "point": [
+        -5,
+        4,
+        1
+      ],
+      "component": 2,
+      "value": -44
+    },
+    {
+      "tile": "turtle",
+      "point": [
+        -6,
+        2,
+        4
+      ],
+      "component": 0,
+      "value": 8
+    },
+    {
+      "tile": "turtle",
+      "point": [
+        -6,
+        2,
+        4
+      ],
+      "component": 2,
+      "value": -50
+    },
+    {
+      "tile": "turtle",
+      "point": [
+        -6,
+        3,
+        3
+      ],
+      "component": 0,
+      "value": 247
+    },
+    {
+      "tile": "turtle",
+      "point": [
+        -5,
+        0,
+        5
+      ],
+      "component": 1,
+      "value": 257
+    },
+    {
+      "tile": "turtle",
+      "point": [
+        -2,
+        -1,
+        3
+      ],
+      "component": 2,
+      "value": 87
+    },
+    {
+      "tile": "turtle",
+      "point": [
+        -2,
+        -2,
+        4
+      ],
+      "component": 0,
+      "value": 280
+    },
+    {
+      "tile": "turtle",
+      "point": [
+        -2,
+        -2,
+        4
+      ],
+      "component": 2,
+      "value": -10
+    },
+    {
+      "tile": "turtle",
+      "point": [
+        -1,
+        -2,
+        3
+      ],
+      "component": 0,
+      "value": -257
+    },
+    {
+      "tile": "turtle",
+      "point": [
+        0,
+        -4,
+        4
+      ],
+      "component": 1,
+      "value": 299
+    },
+    {
+      "tile": "turtle",
+      "point": [
+        1,
+        -3,
+        2
+      ],
+      "component": 2,
+      "value": 8
+    },
+    {
+      "tile": "turtle",
+      "point": [
+        1,
+        -2,
+        1
+      ],
+      "component": 0,
+      "value": 179
+    }
+  ],
+  "history": [
+    {
+      "size": 0,
+      "mean": 13.884615384615385,
+      "geomean": 12.11688125092699
+    },
+    {
+      "size": 2,
+      "mean": 13.423076923076923,
+      "geomean": 11.371081944993831,
+      "pruned": 12
+    },
+    {
+      "size": 4,
+      "mean": 12.884615384615385,
+      "geomean": 10.837637035237352,
+      "pruned": 26
+    },
+    {
+      "size": 6,
+      "mean": 12.23076923076923,
+      "geomean": 10.371439053882742,
+      "pruned": 43
+    },
+    {
+      "size": 8,
+      "mean": 11.23076923076923,
+      "geomean": 9.327613424910467,
+      "pruned": 69
+    },
+    {
+      "size": 10,
+      "mean": 10.192307692307692,
+      "geomean": 8.53901117134923,
+      "pruned": 96
+    },
+    {
+      "size": 12,
+      "mean": 9.423076923076923,
+      "geomean": 7.803795961069076,
+      "pruned": 116
+    },
+    {
+      "size": 14,
+      "mean": 8.923076923076923,
+      "geomean": 7.079196407723004,
+      "pruned": 129
+    },
+    {
+      "size": 16,
+      "mean": 8.23076923076923,
+      "geomean": 6.4996629757886755,
+      "pruned": 147
+    },
+    {
+      "size": 18,
+      "mean": 7.653846153846154,
+      "geomean": 6.050936816194268,
+      "pruned": 162
+    },
+    {
+      "size": 20,
+      "mean": 7.038461538461538,
+      "geomean": 5.622176242993611,
+      "pruned": 178
+    },
+    {
+      "size": 22,
+      "mean": 6.3076923076923075,
+      "geomean": 5.136277243912626,
+      "pruned": 197
+    },
+    {
+      "size": 23,
+      "mean": 5.846153846153846,
+      "geomean": 4.727279980513515,
+      "pruned": 209
+    },
+    {
+      "size": 25,
+      "mean": 5.3076923076923075,
+      "geomean": 4.21993071373402,
+      "pruned": 223
+    },
+    {
+      "size": 26,
+      "mean": 4.923076923076923,
+      "geomean": 3.908387481164916,
+      "pruned": 233
+    },
+    {
+      "size": 28,
+      "mean": 4.538461538461538,
+      "geomean": 3.6204306421361236,
+      "pruned": 243
+    },
+    {
+      "size": 30,
+      "mean": 3.9615384615384617,
+      "geomean": 3.3306511930955955,
+      "pruned": 258
+    },
+    {
+      "size": 32,
+      "mean": 3.769230769230769,
+      "geomean": 3.0408121137666804,
+      "pruned": 263
+    },
+    {
+      "size": 34,
+      "mean": 3.423076923076923,
+      "geomean": 2.8427755276638433,
+      "pruned": 272
+    },
+    {
+      "size": 36,
+      "mean": 3.1153846153846154,
+      "geomean": 2.5711954744254824,
+      "pruned": 280
+    },
+    {
+      "size": 38,
+      "mean": 2.9615384615384617,
+      "geomean": 2.354001059318252,
+      "pruned": 284
+    },
+    {
+      "size": 39,
+      "mean": 2.8076923076923075,
+      "geomean": 2.231775473070225,
+      "pruned": 288
+    },
+    {
+      "size": 40,
+      "mean": 2.6538461538461537,
+      "geomean": 2.0978142865713827,
+      "pruned": 292
+    },
+    {
+      "size": 42,
+      "mean": 2.5,
+      "geomean": 1.974992508789158,
+      "pruned": 296
+    },
+    {
+      "size": 44,
+      "mean": 2.3461538461538463,
+      "geomean": 1.8613773401393143,
+      "pruned": 300
+    },
+    {
+      "size": 45,
+      "mean": 2.230769230769231,
+      "geomean": 1.7647300018865395,
+      "pruned": 303
+    },
+    {
+      "size": 46,
+      "mean": 2.1923076923076925,
+      "geomean": 1.7374228479231768,
+      "pruned": 304
+    },
+    {
+      "size": 48,
+      "mean": 2.1153846153846154,
+      "geomean": 1.6772590483036642,
+      "pruned": 306
+    },
+    {
+      "size": 50,
+      "mean": 2,
+      "geomean": 1.6290861027356827,
+      "pruned": 309
+    }
+  ],
+  "baseCounts": [
+    8,
+    24,
+    4,
+    6,
+    18,
+    19,
+    9,
+    17,
+    17,
+    16,
+    7,
+    14,
+    4,
+    7,
+    17,
+    19,
+    8,
+    24,
+    10,
+    4,
+    19,
+    19,
+    14,
+    24,
+    17,
+    16
+  ],
+  "learnedCounts": [
+    4,
+    5,
+    3,
+    1,
+    5,
+    3,
+    1,
+    1,
+    3,
+    2,
+    1,
+    1,
+    1,
+    3,
+    1,
+    1,
+    1,
+    2,
+    1,
+    2,
+    1,
+    1,
+    1,
+    1,
+    5,
+    1
+  ],
+  "parameters": {
+    "halo": 1,
+    "seed": 42,
+    "steps": 28,
+    "trials": 100
+  }
+}
