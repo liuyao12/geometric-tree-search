@@ -1623,17 +1623,19 @@ return {failureExtent,createFailureMarking};
   const set=radios('gcts-search',[['hat','Hats'],['turtle','Turtles'],['mixed','Both']],'turtle');
   const manual=radios('gcts-manual',[['hat','Hat'],['turtle','Turtle']],'hat');
   const add=mk('button',{textContent:'Add'}),remove=mk('button',{textContent:'Delete selected'}),edit=mk('button',{textContent:'Edit seed'}),flip=mk('button',{textContent:'Flip'});
-  const rule=radios('gcts-rule',[['none','None'],['rank1','Rank 1'],['constant','Rank 3 constant'],['alternating','Rank 3 wave']],'none');
+  const rule=mk('select');for(const [value,text] of [['none','None'],['rank1','Rank 1'],['constant','Rank 3 constant'],['alternating','Rank 3 wave']])rule.append(mk('option',{value,textContent:text}));rule.value='none';Object.assign(rule.style,{width:'100%',minWidth:'0',boxSizing:'border-box'});
   const start=mk('button',{textContent:'Start tiling'}),reset=mk('button',{textContent:'Reset'}),fit=mk('button',{textContent:'Fit'});
   const marks=mk('input',{type:'checkbox',checked:true}),grid=mk('input',{type:'checkbox',checked:true});
   const extent=mk('input',{type:'number',min:'0',max:'9',step:'1',value:'1'});extent.style.width='45px';
   const speed=mk('input',{type:'range',min:'1',max:'60',value:'20'});speed.style.width='90px';
   start.style.fontWeight='600';
-  function group(title,...children){const g=mk('div');Object.assign(g.style,{display:'flex',flexDirection:'column',gap:'7px'});const h=mk('div',{textContent:title});h.style.fontWeight='600';g.append(h,...children);return g;}
+  function group(title,...children){const g=mk('div');Object.assign(g.style,{display:'flex',flexDirection:'column',alignItems:'stretch',width:'100%',gap:'7px'});const h=mk('div',{textContent:title});h.style.fontWeight='600';g.append(h,...children);return g;}
   function line(...children){const l=mk('div');Object.assign(l.style,{display:'flex',alignItems:'center',flexWrap:'wrap',gap:'6px'});l.append(...children);return l;}
   const notice=mk('div');Object.assign(notice.style,{fontSize:'12px',color:'#a13a32',overflowWrap:'anywhere'});notice.setAttribute('role','status');
   const hint=mk('div',{textContent:'Click to rotate · right-click to flip · drag to move'});Object.assign(hint.style,{position:'absolute',bottom:'10px',left:'10px',right:'10px',textAlign:'center',font:'12px system-ui',color:'#66717f',pointerEvents:'none',background:'rgba(255,255,255,.88)',padding:'4px'});area.append(hint);
   const seedControls=group('Initial tiles',add,manual,remove,flip);
+  // Explicit widths prevent inherited notebook button and label styles from wrapping into columns.
+  for(const el of [add,remove,flip,edit,start,reset,fit])Object.assign(el.style,{width:'100%',boxSizing:'border-box',margin:'0'});
   ui.append(seedControls,edit,group('Tile with',set,start,reset,fit),group('Matching rules',rule,label('Extent',extent),label('Show markings',marks)),group('View',label('Grid',grid),label('Speed',speed)),notice);
   let W=1,HH=1,scale=24,cx=0,cy=0,dpr=1,patch=[],ghost=null,marking=null,job=null,running=false,finished=false,nodes=0,backtracks=0,message='',autoFit=true, manualPatch=[], selected=-1, editing=true;
   const project=([x,y,z])=>[(z-x)/Math.sqrt(2),(2*y-x-z)/Math.sqrt(6)];
@@ -1654,8 +1656,9 @@ return {failureExtent,createFailureMarking};
   function toEdit(){cancel();editing=true;finished=false;nodes=backtracks=0;marking=makeMarking();refreshEdit();}
 
   const activeTiles=()=>[...new Set([...sets[set.value],...manualPatch.map(p=>p.tile)])];
-  function options(){const constant=rule.querySelector('input[value="constant"]');constant.disabled=activeTiles().includes('hat');constant.parentElement.style.opacity=constant.disabled?'0.45':'1';constant.parentElement.title=constant.disabled?'Constant rank-3 marking is defined only for turtles':'';if(constant.disabled&&rule.value==='constant')rule.value='none';extent.disabled=marks.disabled=rule.value==='none';}
-  function makeMarking(){const tiles=activeTiles(),n=Math.max(0,Math.min(9,Math.trunc(Number(extent.value)||0)));if(rule.value==='none')return new NoA2Marking();if(rule.value==='alternating')return tiles.length===1&&tiles[0]==='hat'?H.createHatRank3Marking({extent:n,pattern:'more'}):H.createAlternatingMarking(tiles,n);return new FixedA2Marking(n,{rank:rule.value==='rank1'?1:3,tiles});}
+  function options(){const constant=rule.querySelector('option[value="constant"]');constant.disabled=activeTiles().includes('hat');constant.title=constant.disabled?'Constant rank-3 marking is defined only for turtles':'';if(constant.disabled&&rule.value==='constant')rule.value='none';extent.disabled=marks.disabled=rule.value==='none';}
+  function markingExtent(){return Math.max(0,Math.min(9,Math.trunc(Number(extent.value)||0)));}
+  function makeMarking(){const tiles=activeTiles(),n=markingExtent();if(rule.value==='none')return new NoA2Marking();if(rule.value==='alternating')return tiles.length===1&&tiles[0]==='hat'?H.createHatRank3Marking({extent:n,pattern:'more'}):H.createAlternatingMarking(tiles,n);return new FixedA2Marking(n,{rank:rule.value==='rank1'?1:3,tiles});}
   function fitPatch(){if(!patch.length)return;let x0=Infinity,x1=-Infinity,y0=Infinity,y1=-Infinity;for(const p of patch)for(const v of loop(p)){const [x,y]=project(v);x0=Math.min(x0,x);x1=Math.max(x1,x);y0=Math.min(y0,y);y1=Math.max(y1,y);}cx=(x0+x1)/2;cy=(y0+y1)/2;scale=Math.max(.25,Math.min(35,(W-45)/Math.max(1,x1-x0),(HH-65)/Math.max(1,y1-y0)));}
   function path(p){ctx.beginPath();loop(p).forEach((v,i)=>{const [x,y]=screen(v);i?ctx.lineTo(x,y):ctx.moveTo(x,y);});ctx.closePath();}
   function draw(){ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,HH);ctx.fillStyle='#fff';ctx.fillRect(0,0,W,HH);
@@ -1663,7 +1666,8 @@ return {failureExtent,createFailureMarking};
     for(const [i,p] of patch.entries()){path(p);const reflected=parity(p.orientation.symmetry.permutation)<0;ctx.fillStyle=p.tile==='hat'?(reflected?'#f1b684':'#f5d79a'):(reflected?'#86afdc':'#b6d4ef');ctx.fill();ctx.strokeStyle=editing&&i===selected?'#175fba':'#344454';ctx.lineWidth=editing&&i===selected?2.5:1;ctx.stroke();}
     if(marks.checked&&marking&&rule.value!=='none'){
       const blue='#2563b7',green='#23945d',width=Math.min(1.5,scale*.055);
-      ctx.lineCap='round';ctx.lineWidth=width;
+      const waveGeometry=rule.value==='alternating'?new FixedA2Marking(markingExtent(),{rank:1,tiles:activeTiles()}):null;
+      ctx.lineCap='butt';ctx.lineWidth=width;
       function stroke(a,b,va,vb=va){
         if(va===vb)ctx.strokeStyle=va<0?green:blue;
         else{const g=ctx.createLinearGradient(...a,...b);g.addColorStop(0,va<0?green:blue);g.addColorStop(1,vb<0?green:blue);ctx.strokeStyle=g;}
@@ -1671,19 +1675,23 @@ return {failureExtent,createFailureMarking};
       }
       for(const p of patch){
         if(typeof marking.segments==='function'){
-          for(const m of marking.segments(p))stroke(screen(m.fromPoint),screen(m.toPoint),m.value);
+          for(const m of marking.segments(p))stroke(screen(m.displayFromPoint),screen(m.displayToPoint),m.value);
         }else if(typeof marking.entries==='function'){
           const entries=marking.entries(p);
-          // Interpolate only between adjacent assigned nonzero samples in the same directional component.
-          // Missing and zero samples are not bridged, and the discrete search values are unchanged.
-          for(const [key,value] of entries){
-            if(!value)continue;
-            const [coord,comp]=key.split('|'),v=coord.split(',').map(Number),dir=[0,1,2].map(i=>i===Number(comp)?-2:1);
-            const next=v.map((x,i)=>x+dir[i]),prev=v.map((x,i)=>x-dir[i]);
-            const nv=entries.get(next.join(',')+'|'+comp),pv=entries.get(prev.join(',')+'|'+comp);
-            if(nv)stroke(screen(v),screen(next),value,nv);
-            else stroke(screen(v),screen(v.map((x,i)=>x+dir[i]*.23)),value);
-            if(!pv)stroke(screen(v.map((x,i)=>x-dir[i]*.23)),screen(v),value);
+          // Use the same finite geometric stripe domains as the constant rule.
+          // Their endpoints are exactly the outermost assigned lattice samples.
+          const stripeGeometry=waveGeometry;
+          for(const m of stripeGeometry.segments(p)){
+            const a=m.displayFromPoint,b=m.displayToPoint,delta=b.map((v,i)=>v-a[i]);
+            const gcd=(x,y)=>y?gcd(y,x%y):Math.abs(x),steps=delta.reduce(gcd);
+            if(!steps)continue;
+            const d=delta.map(v=>v/steps),comp=d.findIndex(v=>Math.abs(v)===2);
+            if(comp<0)continue;
+            for(let k=0;k<steps;k++){
+              const u=a.map((v,i)=>v+k*d[i]),v=u.map((x,i)=>x+d[i]);
+              const va=entries.get(u.join(',')+'|'+comp),vb=entries.get(v.join(',')+'|'+comp);
+              if(va&&vb)stroke(screen(u),screen(v),va,vb);
+            }
           }
         }
       }
@@ -1703,11 +1711,11 @@ return {failureExtent,createFailureMarking};
   async function begin(){if(finished)toEdit();if(!job){if(!manualPatch.length){message='Add a seed tile first';draw();return;}const invalid=validateSeed();if(invalid){message=invalid;draw();return;}editing=false;autoFit=true;}running=true;button();if(job){job.wake?.();return;}const current={token:{stop:false},wake:null};job=current;const initial=manualPatch.slice(),allowed=sets[set.value],tiles=[...new Set([...allowed,...initial.map(p=>p.tile)])];
     marking=makeMarking();
     const wait=async()=>{while(!running&&!current.token.stop)await new Promise(r=>current.wake=r);current.wake=null;if(!current.token.stop)await sleep(1000/Number(speed.value));while(!running&&!current.token.stop)await new Promise(r=>current.wake=r);current.wake=null;};
-    try{await solveA2Tiling({boundary:makeHexBoundary(220),initialPlacements:initial,tiles,allowReflections:true,placementFilter:p=>allowed.includes(p.tile)&&(set.value!=='mixed'||parity(p.orientation.symmetry.permutation)>0),fixedInitialPlacements:true,completePointGrowth:true,maximize:true,targetPlacements:1000,nodeLimit:1000000,marking,branchPolicy:'oldest-frontier',requireEdgeSharing:true,randomSeed:1,stopToken:current.token,waitForSearchDemand:wait,onEvent:e=>{if(job!==current)return;nodes=e.nodes;backtracks=e.backtracks;if(['placement','backtrack','fail'].includes(e.type)){patch=e.placements;ghost=e.type==='backtrack'?e.removed:null;message=e.type==='backtrack'?'backtracking':e.type==='fail'?'dead frontier':e.forced?'forced move':'growing';if(autoFit)fitPatch();draw();}}});if(job===current){finished=true;message='search ended';}}
+    try{await solveA2Tiling({boundary:makeHexBoundary(220),initialPlacements:initial,tiles,allowReflections:true,placementFilter:p=>allowed.includes(p.tile),fixedInitialPlacements:true,completePointGrowth:true,maximize:true,targetPlacements:1000,nodeLimit:1000000,marking,branchPolicy:'oldest-frontier',requireEdgeSharing:true,randomSeed:1,stopToken:current.token,waitForSearchDemand:wait,onEvent:e=>{if(job!==current)return;nodes=e.nodes;backtracks=e.backtracks;if(['placement','backtrack','fail'].includes(e.type)){patch=e.placements;ghost=e.type==='backtrack'?e.removed:null;message=e.type==='backtrack'?'backtracking':e.type==='fail'?'dead frontier':e.forced?'forced move':'growing';if(autoFit)fitPatch();draw();}}});if(job===current){finished=true;message='search ended';}}
     catch(error){if(job===current){finished=true;message=error.message;}}
     finally{if(job===current){job=null;running=false;button();draw();}}
   }
-  start.onclick=()=>{if(running){running=false;button();}else begin();};reset.onclick=clear;edit.onclick=toEdit;flip.onclick=()=>transformTile(true);remove.onclick=()=>{if(editing&&selected>=0){manualPatch.splice(selected,1);selected=-1;refreshEdit();}};add.onclick=()=>{if(!editing)return;const t=manual.value;const pos=snap(cx,cy);let p=seed(t,pos);const occupied=new Set(manualPatch.map(p=>p.translation.join(',')));const sums=new Map();for(const q of manualPatch)for(const v of q.orientation.occupancy.values()){const k=a2Add(v.point,q.translation).join(',');sums.set(k,(sums.get(k)||0)+v.weight);}while(occupied.has(p.translation.join(','))||[...p.orientation.occupancy.values()].some(v=>(sums.get(a2Add(v.point,p.translation).join(','))||0)+v.weight>12))p=seed(t,a2Add(p.translation,[1,-1,0]));manualPatch.push(p);selected=manualPatch.length-1;refreshEdit();};fit.onclick=()=>{autoFit=true;fitPatch();draw();};set.onchange=()=>{options();toEdit();};rule.onchange=extent.onchange=()=>{extent.disabled=marks.disabled=rule.value==='none';toEdit();};marks.onchange=grid.onchange=draw;
+  start.onclick=()=>{if(running){running=false;button();}else begin();};reset.onclick=clear;edit.onclick=toEdit;flip.onclick=()=>transformTile(true);remove.onclick=()=>{if(editing&&selected>=0){manualPatch.splice(selected,1);selected=-1;refreshEdit();}};add.onclick=()=>{if(!editing)return;const t=manual.value;const pos=snap(cx,cy);let p=seed(t,pos);const occupied=new Set(manualPatch.map(p=>p.translation.join(',')));const sums=new Map();for(const q of manualPatch)for(const v of q.orientation.occupancy.values()){const k=a2Add(v.point,q.translation).join(',');sums.set(k,(sums.get(k)||0)+v.weight);}while(occupied.has(p.translation.join(','))||[...p.orientation.occupancy.values()].some(v=>(sums.get(a2Add(v.point,p.translation).join(','))||0)+v.weight>12))p=seed(t,a2Add(p.translation,[1,-1,0]));manualPatch.push(p);selected=manualPatch.length-1;refreshEdit();};fit.onclick=()=>{autoFit=true;fitPatch();draw();};set.onchange=()=>{options();toEdit();};rule.onchange=extent.onchange=()=>{extent.disabled=marks.disabled=rule.value==='none';toEdit();}; extent.oninput=()=>{if(editing)refreshEdit();else toEdit();};marks.onchange=grid.onchange=draw;
   let drag=null;
   function local(e){const r=canvas.getBoundingClientRect();return [e.clientX-r.left,e.clientY-r.top];}
   canvas.addEventListener('contextmenu',e=>{e.preventDefault();if(!editing)return;selected=hit(...local(e));if(selected>=0)transformTile(true);});
